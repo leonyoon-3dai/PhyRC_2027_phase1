@@ -11,7 +11,7 @@ These rules apply to generating training data, training, and inference.
 - Static camera calibration, joint names and units, and public action scales needed to interpret the spec.
 - Models and controllers that **estimate** object or garment positions and features from allowed observations.
 - Training on demonstrations of public observations and actions recorded by humans through teleop.
-- Publicly available pretrained models and training data from outside this environment (for example, another simulator), as long as none of it comes from this environment's internal information listed under "Not allowed". List them in your training records.
+- Publicly available pretrained models, and training data from outside this environment (for example, your own simulator, public or not), as long as none of it comes from this environment's internal information listed under "Not allowed" (see rule 2 for simulators that use the official shirt or manikin assets). List them in your training records.
 - Using scores and success labels to select demonstrations and analyze results, and as training rewards (rule 3). These labels must not be used as policy inputs or to create action targets.
 
 The robot base's world pose counts as allowed localization in this track; using it is not a violation.
@@ -20,8 +20,11 @@ That is different from reading ground-truth poses of the manikin, shirt, or chai
 ## Not allowed
 
 1. Giving the policy cloth vertex/particle positions or velocities, exact shirt/manikin/chair positions, ground-truth segmentation,
-   collision meshes, internal grasp anchors or success state, or the evaluator's geometric checks.
+   collision meshes of the shirt, manikin or chair, internal grasp anchors or success state, or the evaluator's geometric checks.
+   The robot's own published geometry, combined with public joint positions, is allowed.
 2. Using that internal information to create target points, action labels, or automatic demonstrations, or to train and distill a teacher policy.
+   Rules 1 and 2 also apply to any simulator that uses the official shirt or manikin assets: its privileged state may be used
+   only for training rewards, terminations and resets (rule 3).
 3. Replaying robot or cloth state trajectories from the raw archive as if they were answers, or directly setting USD or simulator state during evaluation.
    During training, how you reset or set up the simulator is up to you, and rewards, terminations and resets may be computed from internal state,
    as long as no model receives internal state as an input. Rules 1 and 2 still apply: no internal information as inputs, action labels or teacher policies.
