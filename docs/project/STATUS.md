@@ -1,7 +1,7 @@
 # Project status
 
 Updated: **2026-10-22 · KST / UTC+09:00**  
-Phase: **implementation and runtime verification on the existing Brev server**
+Phase: **first implementation session closed; slow/uncertain work handed off at the owner’s request**
 
 [English overview](../../README.md) · [한국어](../../README.ko.md) · [First server session](START_HERE.ko.md)
 
@@ -27,29 +27,31 @@ Evidence: [first server session](sessions/20261022-bootstrap.md), [measured run 
 | π₀.₅ JAX LoRA | 30 steps completed; 0.476 effective epochs; overfitting not established |
 | Offline inference | Official-image base fixture passed without changing bundled torch/torchvision/NumPy; learned policy debug action ran |
 | Debug score | Raw points 0, points/s 0, no_contact; no dressing success |
-| Submission | Complete ZIP built; fresh-clone 900-second official self-check running; not submitted |
-| Artifact preservation | HF dataset and full model/train state uploaded at immutable revisions; download checksum restoration passed |
+| Submission | Complete ZIP, fresh-clone unpack/build and 259 actions verified; 900-second test interrupted by owner, no valid final score; not submitted |
+| Artifact preservation | HF data, full model/train state, ZIP and session evidence uploaded at immutable revisions; re-download checksums passed; CPU full-state restore at step 30 passed |
 | New clean server | Not tested; same-server fresh-directory recovery passed |
 
-## Current commands
+## Next clean server
+
+[Prioritized TODO with time estimates](TODO.ko.md) · [exact artifact restore commands](RECOVERY.ko.md).
+
+The owner requested ending this session after preserving the quick, verified work. All active GPU processes and the temporary viewer were stopped. The Brev server itself was not stopped or deleted. Expected environment reconstruction on a comparable prepared Brev server: 20–40 minutes, allow 30–60 minutes for setup/download variation. Full 900-second evaluation is a separate roughly three-hour task at the observed rate.
+
+The failed teleop archive is incomplete and the official exporter refused it; it remains failure evidence, not a finished human dataset. Codabench registration is complete but the site is inaccessible from both the owner and server. No submission/accepted/scored status exists.
 
 ```bash
-cd /home/shadeform/workspace/PhyRC_2027_phase1
 participant/ops/bootstrap.sh --check
 PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m unittest discover -s tests -v
-tail -n 20 output/runs/20261022T0429Z-fresh-official-900/command.log
 ```
-
-Do not start collection/training/GPU evaluation while the official 900-second check is active. Original logs and unfinished recordings remain on this server; do not delete it. Next gates: finish self-check, recover deferred export, verify Chrome keys, preserve the exact tested ZIP, and guide the owner through Codabench login/upload only when ready.
 
 ## Open technical questions
 
 | Question | How it will be resolved |
 |---|---|
 | Does WebRTC preserve PhyRC's keyboard events and app window on this server? | Two-robot movement, numpad mapping, key release, reconnect tests |
-| Does the chosen π₀.₅ JAX/LoRA inference fit the submission image and 12 GB policy budget? | Official-image load, offline fixed-input inference, actual memory/latency measurement |
+| Does π₀.₅ meet the judging hardware budget? | Official-image L40S fixture and learned-policy partial run passed; RTX 3090 and full 900-second checks remain pending |
 | Can the AI operator generate useful demonstrations from allowed observations? | Short bounded trials, recorded inputs/actions, human review; no success assumption |
-| Can the automatic collector reproduce the public dataset contract? | `DatasetWriter` checks, independent transition/episode validation, source audit |
+| Is automatic recording valid? | Live HDF5 schema/continuity passed for 63 transitions; raw/deferred parity is not claimed |
 | How fast is clean-server recovery? | Measure download/build/compile/restore/smoke separately on a second clean server |
 
 The automatic-demonstration rules interpretation is documented in [TELEOP.ko.md](TELEOP.ko.md). No organizer approval has been obtained or claimed.

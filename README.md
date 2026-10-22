@@ -9,7 +9,35 @@ Leonard Yoon, Ph.D. · Independent research project
 
 This public participant fork documents my work on robot-assisted dressing in PhyRC 2027. The initial experiment will collect demonstrations remotely, adapt π₀.₅ on one NVIDIA L40S, run the learned policy in the official simulator, and submit an offline package to Codabench. Each session should be recoverable on a new clean server.
 
-> **Status · 2026-10-22:** implementation has begun on an L40S. Official smoke passed; 3 real-sensor scripted test episodes were recorded, a 30-step π₀.₅ JAX LoRA checkpoint was trained, and its first official-environment debug action ran (0 points). Fresh-clone 900-second validation is running. Chrome human control, Codabench acceptance, dressing performance and clean-server recovery remain unverified. [Session evidence](docs/project/sessions/20261022-bootstrap.md).
+> **Status · 2026-10-22:** first implementation session completed. Official smoke passed; 3 real-sensor scripted episodes were recorded; a 30-step π₀.₅ JAX LoRA policy ran in the official environment (0 points). Data, full training state, ZIP and evidence are preserved on HF. At the owner's request, the slow 900-second test was stopped and uncertain work was deferred to the next clean server. **No Codabench submission or dressing success is claimed.**
+
+## Today: a real pipeline, with explicit limits
+
+| Completed | Evidence / result |
+|---|---|
+| Official L40S environment | `PHYRC-SMOKE-PASS`; build 2m44s, prepare 8.64s, cold smoke 5m43s |
+| Actual synchronized collection | 3 episodes, 63 transitions, 5 RGB-D cameras; official schema + continuity checks |
+| π₀.₅ JAX LoRA and policy execution | 30 optimizer steps / 0.476 effective epochs; offline official-image load; debug result 0 points, no_contact |
+| Preservation and restore | Dataset, full params + optimizer/train state, tokenizer, normalization and ZIP uploaded; download checksums verified; CPU training-state restore at step 30 |
+| Fresh-clone submission path | ZIP unpack/checksum/build and actual policy steps worked; full 900-second validation **not completed** |
+
+The data comes from a **Codex-authored bounded script**, labeled `integration_test`, with no extra billed GPT API calls. It is not a human demonstration or live GPT operator. The short training run has not established overfitting or dressing skill.
+
+![Designated overview from our actual recorder wiring test, not a dressing success](docs/project/assets/first-recorder-test.png)
+
+[Measured session and failures](docs/project/sessions/20261022-bootstrap.md) · [Three-camera test video](https://huggingface.co/datasets/leonayoon/phyrc-2027-phase1-data/resolve/da172805036d5e53daf1834f32baf367820f9183/derived/20261022T0409Z-integration/integration-public-cameras.mp4) · [Next-server TODO and commands](docs/project/TODO.ko.md) · [Restore guide](docs/project/RECOVERY.ko.md)
+
+## Next clean server
+
+| Work deferred | Estimate / current limit |
+|---|---|
+| Reconstruct the pinned environment and artifacts | About 20–40 min; allow 30–60 min with download/setup variation, assuming working Docker/NVIDIA on a similar Brev server |
+| Verify Chrome control and complete human export | 30–90+ min; networking, all keys, disconnect release and READY still unverified |
+| Improve the small-data overfit test and verify a resumed optimizer step | Separate follow-up; loss decline alone will not count as robot success |
+| Complete the official 900-second check | Roughly 3 hours at the observed 1.2–1.3 action steps/wall-second; previous run stopped after 259 actions / 12.95 simulated seconds, with no valid final score |
+| Make the first Codabench submission | Registration is complete, but the site was inaccessible from both the owner and server; accepted/scored status remains absent |
+
+These are estimates, not completed runs. [The TODO](docs/project/TODO.ko.md) lists completion criteria and exact existing commands. Collection, training and GPU evaluation stay sequential. The server has **not** been stopped or deleted; active GPU jobs and the temporary streaming viewer were stopped for this handoff.
 
 ## The task
 
@@ -34,7 +62,7 @@ The first run validates the full process with a small dataset. It does not requi
 | Human collection | Chrome keyboard control and a complete recorded episode | Pending |
 | Automatic collection | Public observation → bounded action → recorded transition | 3 scripted test episodes verified |
 | π₀.₅ baseline | Small-data SFT, checkpoint, and closed-loop rollout | 30-step wiring test; one-action debug passed, 0 points |
-| Submission | Offline official self-check and Codabench accepted ID | Pending |
+| Submission | Offline official self-check and Codabench accepted ID | ZIP + partial fresh-clone execution verified; full check/submission deferred |
 | Fresh-server recovery | Verified artifacts and a successful rerun after restore | Pending |
 
 After this path works, the performance target is repeatable dressing progress, starting with the first sleeve, before the November 17 checkpoint. An internal submission target of **November 16, 2026** leaves time to inspect acceptance. This is a target, not a reported result.
@@ -64,7 +92,7 @@ flowchart TD
 | AI input | Restricted observation/action tools | Avoid free-viewport screenshots and simulator ground truth |
 | Persistence | GitHub for source and reports; Hugging Face for large artifacts | Rebuild on disposable servers with immutable revisions |
 
-Participant collection, shared preprocessing, JAX LoRA training, offline adapter, ZIP packaging and recovery helpers are implemented. Their verified scope and remaining gaps are recorded in the [session report](docs/project/sessions/20261022-bootstrap.md). Chrome integration is under test; no remote human demonstration is claimed.
+Participant collection, shared preprocessing, JAX LoRA training, offline adapter, ZIP packaging and recovery helpers are implemented. Their verified scope and remaining gaps are recorded in the [session report](docs/project/sessions/20261022-bootstrap.md). Chrome integration is deferred for further testing; no remote human demonstration is claimed.
 
 ## Constraints that shape the experiment
 

@@ -236,10 +236,11 @@
     ],
     "code_commit": "b51ca92b970c796ababa3c34268af2fb30c3536a",
     "upstream_commit": "4dbbebcf93a06c1bfe12136eadc2e580f30125d6",
-    "status": "running",
-    "wall_s": null,
+    "status": "owner_interrupted",
+    "wall_s": 708.9497460709999,
     "peak_total_cpu_percent": 425.1,
     "peak_host_ram_gib": 6.184932708740234,
-    "peak_device_memory_mib": 0.0
+    "peak_device_memory_mib": 0.0,
+    "valid_final_score": false
   }
 ]

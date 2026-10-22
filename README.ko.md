@@ -9,7 +9,35 @@ Leonard Yoon, Ph.D. · 윤영호 · 독립 연구 프로젝트
 
 이 저장소는 공식 PhyRC 환경을 바탕으로 진행하는 개인 참가 프로젝트입니다. 원격으로 시연을 수집하고, L40S 한 대에서 π₀.₅를 LoRA로 학습해 공식 평가와 제출까지 연결합니다. 작업할 때만 서버를 사용하고, 새 클린 서버에서 정확하게 이어갈 수 있도록 코드와 실험 자료를 기록합니다.
 
-> **2026-10-22 현재: L40S 서버에서 구현·검증을 시작했습니다.** 공식 smoke, 실제 센서 기반 scripted 시험 3 episode, π₀.₅ JAX LoRA 30-step 학습, 공식 환경의 첫 debug action을 확인했습니다(0점). Fresh clone 900초 검증은 진행 중입니다. Chrome 사람 조작·Codabench 승인·착의 성능·새 서버 복원은 아직 검증되지 않았습니다. [세션 증거](docs/project/sessions/20261022-bootstrap.md).
+> **2026-10-22: 첫 구현 세션을 마쳤습니다.** 공식 smoke, 실제 센서 기반 scripted 3 episode, π₀.₅ JAX LoRA 30-step 학습과 공식 환경 debug 실행을 확인했습니다(0점). 데이터·전체 학습 상태·ZIP·증거를 HF에 보존하고 checksum을 확인했습니다. 사용자 요청에 따라 장시간 900초 검사는 중단하고 불확실한 작업은 다음 클린 서버로 넘겼습니다. **Codabench 제출·착의 성공을 주장하지 않습니다.**
+
+## 오늘 완료한 작업
+
+| 완료 범위 | 실제 결과 |
+|---|---|
+| 공식 L40S 환경 | `PHYRC-SMOKE-PASS`, build 2분44초, prepare 8.64초, 첫 smoke 5분43초 |
+| 동기화된 실제 데이터 | 3 episode / 63 transition / 5 RGB-D 카메라, 공식 schema·관측 연속성·0.05초 정렬 통과 |
+| π₀.₅ JAX LoRA·정책 실행 | 30 step / 0.476 effective epochs, 공식 이미지에서 로컬 자료만 로드, debug 0점·no_contact |
+| 원격 보존·복원 | 데이터·전체 params/optimizer/train state·tokenizer·정규화·ZIP의 HF 업로드와 재다운로드 checksum 확인, CPU에서 step 30 상태 복원 |
+| fresh clone 제출 경로 | 실제 ZIP unpack·checksum·build·정책 부분 실행 확인. **900초 전체 검사는 미완료** |
+
+추가 API 과금 없이 **Codex가 작성한 제한된 고정 명령**으로 수집했고 `integration_test`로 표시했습니다. 인간 시연이나 live GPT 조작으로 바꾸어 표시하지 않습니다. 짧은 학습으로 과적합·착의 능력이 입증된 것은 아닙니다.
+
+![실제 recorder 시험의 허용 overview 카메라: 착의 성공 결과 아님](docs/project/assets/first-recorder-test.png)
+
+[오늘의 측정·실패 기록](docs/project/sessions/20261022-bootstrap.md) · [실제 3시점 시험 영상](https://huggingface.co/datasets/leonayoon/phyrc-2027-phase1-data/resolve/da172805036d5e53daf1834f32baf367820f9183/derived/20261022T0409Z-integration/integration-public-cameras.mp4) · [다음 서버 TODO·재개 명령](docs/project/TODO.ko.md) · [자료 복원](docs/project/RECOVERY.ko.md)
+
+## 다음 클린 서버에서 할 일
+
+| 이관 작업 | 예상 시간·현재 한계 |
+|---|---|
+| 고정 환경·산출물 재구성 | 동일급 Brev + Docker/NVIDIA 준비 시 약 20–40분, 다운로드·설치 변동 포함 30–60분 여유 |
+| Chrome 키보드·정상 export 검증 | 30–90분 이상. 네트워크·두 로봇 모든 키·연결 종료 해제·READY 미검증 |
+| 충분한 과적합 시험·optimizer step 재개 | 후속 검증. loss 감소만으로 로봇 동작 성공 처리하지 않음 |
+| 공식 900초 전체 검증 | 관측 속도 1.2–1.3 action step/실제 초 기준 약 3시간 전후 추정. 기존 실행은 259 action / simulation 12.95초에서 중단, 유효한 최종 점수 없음 |
+| Codabench 첫 제출 | 참가 등록 완료. 현재 사용자·서버 모두 사이트 접근 불가, 제출·accepted·주최 측 점수 없음 |
+
+이 시간은 측정 완료 결과가 아니라 다음 작업의 예상입니다. 완료 기준과 실제 존재하는 명령은 [TODO](docs/project/TODO.ko.md)에 정리했습니다. GPU 작업은 순차 실행합니다. 인계 시 GPU 작업과 임시 viewer는 종료했지만 **Brev 서버 자체는 종료·삭제하지 않았습니다.**
 
 ## 첫 목표
 
@@ -21,7 +49,7 @@ Leonard Yoon, Ph.D. · 윤영호 · 독립 연구 프로젝트
 | Chrome 사람 조작 | 두 로봇 키보드 조작, 정상 저장된 짧은 시연 | 미구현·미검증 |
 | 자동 수집 | 허용 관측·공식 action·실제 transition 저장 | Codex 작성 고정 명령 시험 3 episode 검증 |
 | π₀.₅ SFT | 소량 데이터 학습, checkpoint, closed-loop 실행 | 30-step 연결 시험·첫 debug action 완료, 0점 |
-| 제출 | 오프라인 self-check와 accepted 제출 ID | 미실행 |
+| 제출 | 오프라인 self-check와 accepted 제출 ID | ZIP·fresh clone 부분 실행 확인, 전체 검사·제출 이관 |
 | 재개 | 새 서버 복원 후 동일 자료로 재검증 | 미실행 |
 
 이 경로가 확인된 후에는 첫 소매 삽입 등 실제 착의 점수를 여러 배치에서 반복 달성하는 것을 목표로 합니다. 내부 제출 목표는 **2026년 11월 16일**, 첫 leaderboard checkpoint는 **11월 17일 AoE**입니다. 이는 향후 목표이며 현재 실적이 아닙니다.
@@ -35,7 +63,7 @@ Leonard Yoon, Ph.D. · 윤영호 · 독립 연구 프로젝트
 
 자동 조작은 자유 GUI 화면을 보고 키를 누르는 구조보다 **허용 관측 → 모델 판단 → 공식 action → 재관측** 방식으로 준비합니다. GPT는 저빈도로 행동을 결정하고 로컬 실행기가 20Hz 시뮬레이션 시간에 맞춰 실행합니다. 사람이 인계받아 수정한 구간도 출처를 구분합니다.
 
-공식 저장소의 물리·평가는 유지하고 참가자 경로에 수집기·학습·adapter를 구현했습니다. Chrome 연결은 시험 중이며 실제 원격 인간 시연을 완료했다고 주장하지 않습니다. 자세한 조건은 [원격 수집 설계](docs/project/TELEOP.ko.md)에 정리했습니다.
+공식 저장소의 물리·평가는 유지하고 참가자 경로에 수집기·학습·adapter를 구현했습니다. Chrome 연결은 후속 검증으로 넘겼으며 실제 원격 인간 시연을 완료했다고 주장하지 않습니다. 자세한 조건은 [원격 수집 설계](docs/project/TELEOP.ko.md)에 정리했습니다.
 
 ## 초기 학습과 운영 선택
 
