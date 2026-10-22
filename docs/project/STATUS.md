@@ -1,11 +1,11 @@
 # Project status
 
 Updated: **2026-10-22 · KST / UTC+09:00**  
-Phase: **pre-server planning and documentation**
+Phase: **implementation and runtime verification on the existing Brev server**
 
 [English overview](../../README.md) · [한국어](../../README.ko.md) · [First server session](START_HERE.ko.md)
 
-## Completed in this documentation stage
+## Reviewed planning baseline
 
 - Reviewed the official simulator, data contract, rules, scoring, and submission process at upstream `4dbbebcf93a06c1bfe12136eadc2e580f30125d6`.
 - Preserved the original README separately and prepared this participant project's English/Korean overview.
@@ -15,26 +15,32 @@ Phase: **pre-server planning and documentation**
 
 ## Runtime state
 
-| Item | State | Evidence |
-|---|---|---|
-| Project Brev/GPU server | Not started | Server is not available yet |
-| Official environment smoke on project server | Not run | None |
-| Chrome streaming and keyboard | Not implemented or tested | Source review only |
-| AI operator bridge and dataset recorder | Not implemented or tested | Design only |
-| Own demonstrations / HF dataset | None | No artifact repository yet |
-| π₀.₅ converter/config/adapter | Not implemented | Design only |
-| Trained policy / HF model | None | No checkpoint |
-| Local dressing evaluation | Not run | No measured score |
-| Codabench submission | Not made | No submission ID |
-| Fresh-server recovery | Not tested | Procedure only |
+Evidence: [first server session](sessions/20261022-bootstrap.md), [measured run index](sessions/20261022-bootstrap-metrics.json).
 
-The empty [experiment index](../../experiments/index.csv) is intentional. Upstream demos and sample data are not runs of this project.
+| Item | State |
+|---|---|
+| Brev server | L40S ×1, 12 vCPU, approximately 70 GiB RAM; driver/container GPU verified |
+| Official environment | build / prepare / actual PHYRC-SMOKE-PASS completed |
+| Chrome streaming/keyboard | Viewer and launcher implemented; two failed attempts preserved, fixes pending full runtime test; remote Chrome not verified |
+| Restricted recorder | 3 real-sensor scripted integration episodes, 63 synchronized transitions; official schema + continuity checks passed |
+| Human / live GPT demonstrations | None; owner requested no extra billed GPT API and approved low-quality valid scripted data for pipeline testing |
+| π₀.₅ JAX LoRA | 30 steps completed; 0.476 effective epochs; overfitting not established |
+| Offline inference | Official-image base fixture passed without changing bundled torch/torchvision/NumPy; learned policy debug action ran |
+| Debug score | Raw points 0, points/s 0, no_contact; no dressing success |
+| Submission | Complete ZIP built; fresh-clone 900-second official self-check running; not submitted |
+| Artifact preservation | HF dataset and full model/train state uploaded at immutable revisions; download checksum restoration passed |
+| New clean server | Not tested; same-server fresh-directory recovery passed |
 
-## Next actions
+## Current commands
 
-1. Review this public repository and incorporate owner feedback while no GPU server is running.
-2. When a clean server becomes available, clone this fork and follow [START_HERE.ko.md](START_HERE.ko.md). Capture hardware/driver/container details before installation changes.
-3. Obtain the official smoke pass, then validate a short remote recording and the π₀.₅ offline inference path before expanding collection.
+```bash
+cd /home/shadeform/workspace/PhyRC_2027_phase1
+participant/ops/bootstrap.sh --check
+PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m unittest discover -s tests -v
+tail -n 20 output/runs/20261022T0429Z-fresh-official-900/command.log
+```
+
+Do not start collection/training/GPU evaluation while the official 900-second check is active. Original logs and unfinished recordings remain on this server; do not delete it. Next gates: finish self-check, recover deferred export, verify Chrome keys, preserve the exact tested ZIP, and guide the owner through Codabench login/upload only when ready.
 
 ## Open technical questions
 

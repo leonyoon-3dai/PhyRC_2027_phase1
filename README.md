@@ -9,7 +9,7 @@ Leonard Yoon, Ph.D. · Independent research project
 
 This public participant fork documents my work on robot-assisted dressing in PhyRC 2027. The initial experiment will collect demonstrations remotely, adapt π₀.₅ on one NVIDIA L40S, run the learned policy in the official simulator, and submit an offline package to Codabench. Each session should be recoverable on a new clean server.
 
-> **Status · 2026-10-22:** planning and documentation. No project GPU server, demonstrations, trained policy, runtime benchmark, or Codabench submission has been produced yet. Chrome teleoperation and AI-assisted collection below are proposed integrations, not released features.
+> **Status · 2026-10-22:** implementation has begun on an L40S. Official smoke passed; 3 real-sensor scripted test episodes were recorded, a 30-step π₀.₅ JAX LoRA checkpoint was trained, and its first official-environment debug action ran (0 points). Fresh-clone 900-second validation is running. Chrome human control, Codabench acceptance, dressing performance and clean-server recovery remain unverified. [Session evidence](docs/project/sessions/20261022-bootstrap.md).
 
 ## The task
 
@@ -30,10 +30,10 @@ The first run validates the full process with a small dataset. It does not requi
 
 | Stage | Evidence required | Current state |
 |---|---|---|
-| Official environment | Pinned versions and `PHYRC-SMOKE-PASS` | Pending |
+| Official environment | Pinned versions and `PHYRC-SMOKE-PASS` | Passed on L40S |
 | Human collection | Chrome keyboard control and a complete recorded episode | Pending |
-| AI collection | Public observation → bounded action → recorded transition | Pending |
-| π₀.₅ baseline | Small-data SFT, checkpoint, and closed-loop rollout | Pending |
+| Automatic collection | Public observation → bounded action → recorded transition | 3 scripted test episodes verified |
+| π₀.₅ baseline | Small-data SFT, checkpoint, and closed-loop rollout | 30-step wiring test; one-action debug passed, 0 points |
 | Submission | Offline official self-check and Codabench accepted ID | Pending |
 | Fresh-server recovery | Verified artifacts and a successful rerun after restore | Pending |
 
@@ -64,7 +64,7 @@ flowchart TD
 | AI input | Restricted observation/action tools | Avoid free-viewport screenshots and simulator ground truth |
 | Persistence | GitHub for source and reports; Hugging Face for large artifacts | Rebuild on disposable servers with immutable revisions |
 
-The Chrome launcher, AI tools, automatic collector, dataset converter, training configuration, and submission adapter **still need implementation and server validation**. No placeholder commands are advertised as working tools.
+Participant collection, shared preprocessing, JAX LoRA training, offline adapter, ZIP packaging and recovery helpers are implemented. Their verified scope and remaining gaps are recorded in the [session report](docs/project/sessions/20261022-bootstrap.md). Chrome integration is under test; no remote human demonstration is claimed.
 
 ## Constraints that shape the experiment
 
@@ -94,7 +94,7 @@ Sources: [Rules](docs/competition/RULES.md), [Policy and submission](docs/compet
 
 I will publish implementation decisions, failed attempts, measured results, videos, and recovery records as work progresses. Each result should link its code commit, dataset revision, checkpoint, evaluation settings, and original evidence. Planned, implemented, locally measured, submitted, and organizer-scored are distinct states.
 
-The current record contains **planning only**. The [experiment index](experiments/index.csv) has no completed runs. Hugging Face artifact repositories and project rollout videos will be linked after they exist.
+The [session report](docs/project/sessions/20261022-bootstrap.md) separates implementation and measurements. Original [test data](https://huggingface.co/datasets/leonayoon/phyrc-2027-phase1-data) and the full [training checkpoint](https://huggingface.co/leonayoon/phyrc-2027-phase1-pi05) are preserved on Hugging Face with checksums. These are pipeline tests, not dressing success results.
 
 The workflow carries forward lessons from my [BEHAVIOR 2026 project](https://github.com/leonyoon-3dai/behavior-submission-2026): profile CPU and I/O before adding GPUs; preserve an unmodified baseline for matched comparisons; track data exposure as datasets grow; and distinguish submission acceptance from verified performance.
 

@@ -1,0 +1,245 @@
+[
+  {
+    "run_id": "20261022T0405Z-prepare",
+    "command": [
+      "./run.sh",
+      "prepare"
+    ],
+    "code_commit": "9d978072c0064f01fe13243def30c2766602e86d",
+    "upstream_commit": "4dbbebcf93a06c1bfe12136eadc2e580f30125d6",
+    "status": "passed",
+    "wall_s": 8.643392873000039,
+    "peak_total_cpu_percent": 147.5,
+    "peak_host_ram_gib": 1.6752433776855469,
+    "peak_device_memory_mib": 0.0
+  },
+  {
+    "run_id": "20261022T0408Z-smoke",
+    "command": [
+      "./run.sh",
+      "smoke"
+    ],
+    "code_commit": "9d978072c0064f01fe13243def30c2766602e86d",
+    "upstream_commit": "4dbbebcf93a06c1bfe12136eadc2e580f30125d6",
+    "status": "passed",
+    "wall_s": 342.8306037230002,
+    "peak_total_cpu_percent": 1200.0,
+    "peak_host_ram_gib": 13.62637710571289,
+    "peak_device_memory_mib": 8001.0
+  },
+  {
+    "run_id": "20261022T0409Z-recorder-integration",
+    "command": [
+      "./run.sh",
+      "python",
+      "/scripts/collect_integration.py",
+      "--output",
+      "/output/collections/20261022T0409Z-integration"
+    ],
+    "code_commit": "9d978072c0064f01fe13243def30c2766602e86d",
+    "upstream_commit": "4dbbebcf93a06c1bfe12136eadc2e580f30125d6",
+    "status": "passed",
+    "wall_s": 110.02317510000012,
+    "peak_total_cpu_percent": 422.4,
+    "peak_host_ram_gib": 7.755733489990234,
+    "peak_device_memory_mib": 9376.0
+  },
+  {
+    "run_id": "20261022T0411Z-pi05-offline-gate",
+    "command": [
+      "./run.sh",
+      "python",
+      "/scripts/pi05_inference_gate.py",
+      "--params",
+      "/output/models/pi05_base/params",
+      "--tokenizer",
+      "/output/models/pi05_base/tokenizer.model",
+      "--output",
+      "/output/gates/20261022T0411Z-pi05-base"
+    ],
+    "code_commit": "850db173dd26f638b947b1fe1d0c80f4697c1830",
+    "upstream_commit": "4dbbebcf93a06c1bfe12136eadc2e580f30125d6",
+    "status": "failed",
+    "wall_s": 26.220678034000002,
+    "peak_total_cpu_percent": 333.4,
+    "peak_host_ram_gib": 6.763813018798828,
+    "peak_device_memory_mib": 2338.0
+  },
+  {
+    "run_id": "20261022T0412Z-webrtc-human",
+    "command": [
+      "participant/streaming/start.sh"
+    ],
+    "code_commit": "850db173dd26f638b947b1fe1d0c80f4697c1830",
+    "upstream_commit": "4dbbebcf93a06c1bfe12136eadc2e580f30125d6",
+    "status": "failed",
+    "wall_s": 37.5633668989999,
+    "peak_total_cpu_percent": 437.4,
+    "peak_host_ram_gib": 7.23193359375,
+    "peak_device_memory_mib": 7713.0
+  },
+  {
+    "run_id": "20261022T0413Z-webrtc-human-02",
+    "command": [
+      "participant/streaming/start.sh"
+    ],
+    "code_commit": "850db173dd26f638b947b1fe1d0c80f4697c1830",
+    "upstream_commit": "4dbbebcf93a06c1bfe12136eadc2e580f30125d6",
+    "status": "failed",
+    "wall_s": 46.18990927499999,
+    "peak_total_cpu_percent": 369.7,
+    "peak_host_ram_gib": 7.453529357910156,
+    "peak_device_memory_mib": 8010.0
+  },
+  {
+    "run_id": "20261022T0414Z-pi05-offline-gate-02",
+    "command": [
+      "./run.sh",
+      "python",
+      "/scripts/pi05_inference_gate.py",
+      "--params",
+      "/output/models/pi05_base/params",
+      "--tokenizer",
+      "/output/models/pi05_base/tokenizer.model",
+      "--output",
+      "/output/gates/20261022T0414Z-pi05-base"
+    ],
+    "code_commit": "850db173dd26f638b947b1fe1d0c80f4697c1830",
+    "upstream_commit": "4dbbebcf93a06c1bfe12136eadc2e580f30125d6",
+    "status": "failed",
+    "wall_s": 24.362329673999966,
+    "peak_total_cpu_percent": 306.3,
+    "peak_host_ram_gib": 6.842735290527344,
+    "peak_device_memory_mib": 2338.0
+  },
+  {
+    "run_id": "20261022T0415Z-pi05-offline-gate-03",
+    "command": [
+      "./run.sh",
+      "python",
+      "/scripts/pi05_inference_gate.py",
+      "--params",
+      "/output/models/pi05_base/params",
+      "--tokenizer",
+      "/output/models/pi05_base/tokenizer.model",
+      "--output",
+      "/output/gates/20261022T0415Z-pi05-base"
+    ],
+    "code_commit": "850db173dd26f638b947b1fe1d0c80f4697c1830",
+    "upstream_commit": "4dbbebcf93a06c1bfe12136eadc2e580f30125d6",
+    "status": "failed",
+    "wall_s": 24.775572216,
+    "peak_total_cpu_percent": 318.3,
+    "peak_host_ram_gib": 6.865436553955078,
+    "peak_device_memory_mib": 2338.0
+  },
+  {
+    "run_id": "20261022T0417Z-pi05-offline-gate-04",
+    "command": [
+      "./run.sh",
+      "python",
+      "/scripts/pi05_inference_gate.py",
+      "--params",
+      "/output/models/pi05_base/params",
+      "--tokenizer",
+      "/output/models/pi05_base/tokenizer.model",
+      "--output",
+      "/output/gates/20261022T0417Z-pi05-base"
+    ],
+    "code_commit": "850db173dd26f638b947b1fe1d0c80f4697c1830",
+    "upstream_commit": "4dbbebcf93a06c1bfe12136eadc2e580f30125d6",
+    "status": "failed",
+    "wall_s": 27.79455630700022,
+    "peak_total_cpu_percent": 339.5,
+    "peak_host_ram_gib": 6.972511291503906,
+    "peak_device_memory_mib": 2338.0
+  },
+  {
+    "run_id": "20261022T0419Z-pi05-offline-gate-05",
+    "command": [
+      "./run.sh",
+      "python",
+      "/scripts/pi05_inference_gate.py",
+      "--params",
+      "/output/models/pi05_base/params",
+      "--tokenizer",
+      "/output/models/pi05_base/tokenizer.model",
+      "--output",
+      "/output/gates/20261022T0419Z-pi05-base"
+    ],
+    "code_commit": "850db173dd26f638b947b1fe1d0c80f4697c1830",
+    "upstream_commit": "4dbbebcf93a06c1bfe12136eadc2e580f30125d6",
+    "status": "passed",
+    "wall_s": 57.55283937200011,
+    "peak_total_cpu_percent": 1186.5,
+    "peak_host_ram_gib": 20.74679946899414,
+    "peak_device_memory_mib": 10566.0
+  },
+  {
+    "run_id": "20261022T0420Z-pi05-overfit",
+    "command": [
+      "/home/shadeform/workspace/openpi/.venv/bin/python",
+      "participant/pi05/train.py",
+      "--openpi",
+      "/home/shadeform/workspace/openpi",
+      "--manifest",
+      "output/collections/overfit-manifest.json",
+      "--base-params",
+      "output/models/pi05_base/params",
+      "--tokenizer",
+      "output/models/pi05_base/tokenizer.model",
+      "--output",
+      "output/checkpoints",
+      "--steps",
+      "30",
+      "--batch-size",
+      "1"
+    ],
+    "code_commit": "850db173dd26f638b947b1fe1d0c80f4697c1830",
+    "upstream_commit": "4dbbebcf93a06c1bfe12136eadc2e580f30125d6",
+    "status": "passed",
+    "wall_s": 157.80222544199978,
+    "peak_total_cpu_percent": 1166.2,
+    "peak_host_ram_gib": 28.633438110351562,
+    "peak_device_memory_mib": 33265.0
+  },
+  {
+    "run_id": "20261022T0426Z-trained-policy-debug",
+    "command": [
+      "./run.sh",
+      "python",
+      "/scripts/evaluate_policy.py",
+      "--policy",
+      "/output/submissions/20261022T0425Z-pi05-overfit/policy.py",
+      "--seeds",
+      "42",
+      "--seconds",
+      "1",
+      "--output",
+      "/output/evaluation/20261022T0426Z-debug"
+    ],
+    "code_commit": "850db173dd26f638b947b1fe1d0c80f4697c1830",
+    "upstream_commit": "4dbbebcf93a06c1bfe12136eadc2e580f30125d6",
+    "status": "passed",
+    "wall_s": 92.70677450099993,
+    "peak_total_cpu_percent": 1179.7,
+    "peak_host_ram_gib": 16.290931701660156,
+    "peak_device_memory_mib": 17444.0
+  },
+  {
+    "run_id": "20261022T0429Z-fresh-official-900",
+    "command": [
+      "participant/ops/selfcheck.sh",
+      "output/submissions/20261022T0429Z-pi05-release.zip",
+      "20261022T0429Z-official900",
+      "900"
+    ],
+    "code_commit": "b51ca92b970c796ababa3c34268af2fb30c3536a",
+    "upstream_commit": "4dbbebcf93a06c1bfe12136eadc2e580f30125d6",
+    "status": "running",
+    "wall_s": null,
+    "peak_total_cpu_percent": 425.1,
+    "peak_host_ram_gib": 6.184932708740234,
+    "peak_device_memory_mib": 0.0
+  }
+]

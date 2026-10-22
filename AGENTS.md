@@ -1,6 +1,6 @@
 # Working in this participant fork
 
-This is Leonard Yoon's public PhyRC 2027 Phase 1 project. Read `README.md`, `docs/project/STATUS.md`, and `docs/project/START_HERE.ko.md` before working. Current phase: documentation before a GPU server is available. Do not provision paid compute or start training during this phase.
+This is Leonard Yoon's public PhyRC 2027 Phase 1 project. Read `README.md`, `docs/project/STATUS.md`, and `docs/project/START_HERE.ko.md` before working. Current phase: implementation and runtime verification on the existing Brev server, authorized by the owner on 2026-10-22. Run collection, training and GPU evaluation sequentially. Do not provision additional paid compute or delete/stop this server without an explicit request.
 
 ## Scope and truthfulness
 

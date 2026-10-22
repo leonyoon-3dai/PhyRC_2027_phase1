@@ -1,0 +1,11 @@
+{
+  "schema": "participant-execution-lock-v1",
+  "official_upstream_commit": "4dbbebcf93a06c1bfe12136eadc2e580f30125d6",
+  "initial_participant_commit": "9d978072c0064f01fe13243def30c2766602e86d",
+  "openpi_commit": "215abfb217dbac7d5f1273282331b9b1866c0479",
+  "isaac_base": "nvcr.io/nvidia/isaac-sim:6.0.1@sha256:783444c706538aa76cf5126e911ddc5e618779e6105305ad4af4260362a30aa9",
+  "asset_lock_sha256": "ebbbaf6d2f2aea8237451d890d0e54458f83e2a503bcfa47228c7f61b60835cd",
+  "base_model_source": "gs://openpi-assets/checkpoints/pi05_base",
+  "tokenizer_sha256": "8986bb4f423f07f8c7f70d0dbe3526fb2316056c17bae71b1ea975e77a168fc6",
+  "base_model_content_revision": "See per-file SHA256 manifest produced by participant/ops/artifacts.py; GCS URL alone is not immutable"
+}

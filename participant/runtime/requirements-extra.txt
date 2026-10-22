@@ -1,0 +1,5 @@
+filelock==3.18.0
+hf-xet==1.1.2
+protobuf==4.25.8
+tqdm==4.67.1
+tqdm-loggable==0.2
