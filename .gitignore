@@ -16,3 +16,15 @@ __pycache__/
 *.pem
 *.key
 .DS_Store
+
+# Participant fork additions — Leonard Yoon, 2026-10-22.
+# Publish large research artifacts through versioned Hugging Face repositories.
+/artifacts/
+/checkpoints/
+/datasets/
+/.cache/
+/.codex/auth.json
+*.safetensors
+*.ckpt
+*.pt
+*.pth

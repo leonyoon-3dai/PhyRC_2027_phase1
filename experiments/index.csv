@@ -1,0 +1,1 @@
+run_id,phase,status,started_at_utc,ended_at_utc,operator_source,code_commit,upstream_commit,dataset_revision,model_revision,config_path,report_path,episodes_total,episodes_valid,successes,mean_raw_points,mean_rate_points,mean_points_per_s,wall_time_s,simulation_time_s,peak_policy_vram_gb,server_cost_usd,video_url,artifact_manifest_url,submission_id,submission_status,score_scope
