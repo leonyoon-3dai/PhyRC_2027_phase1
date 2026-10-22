@@ -1,162 +1,169 @@
-# PhyRC 2027 · Phase 1
+# PhyRC 2027 Phase 1
 
-[![Original README — official participant guide](docs/project/assets/original-readme-button.svg)](README.upstream.md)
+[![Original README - official participant guide](docs/project/assets/original-readme-button.svg)](README.upstream.md)
 
-**Two Stretch 4 robots, one T-shirt, and a reproducible path from demonstration to policy submission.**
+**Cooperative robot dressing with RGB-D observation processing and VLA adaptation.**
 
-Leonard Yoon, Ph.D. · Independent research project  
-[한국어](README.ko.md) · [Current status](docs/project/STATUS.md) · [First server session](docs/project/START_HERE.ko.md) · [Challenge](https://emprise.cs.cornell.edu/phyrc/challenge-2027/) · [Codabench](https://www.codabench.org/competitions/18366/)
+Leonard Yoon, Ph.D. | Independent research project  
+[한국어](README.ko.md) / [Current status](docs/project/STATUS.md) / [Clean-server start](docs/project/START_HERE.ko.md) / [Two-week plan](docs/project/RGBD_TWO_WEEK_PLAN.ko.md)
 
-This public participant fork documents my work on robot-assisted dressing in PhyRC 2027. The initial experiment will collect demonstrations remotely, adapt π₀.₅ on one NVIDIA L40S, run the learned policy in the official simulator, and submit an offline package to Codabench. Each session should be recoverable on a new clean server.
+This participant fork develops a reproducible workflow for two Stretch 4 robots in the official PhyRC Isaac Sim environment: collect demonstrations, validate observations and actions, adapt π₀.₅, evaluate policy execution, and preserve the submission artifacts.
 
-> **Status · 2026-10-22:** first implementation session completed. Official smoke passed; 3 real-sensor scripted episodes were recorded; a 30-step π₀.₅ JAX LoRA policy ran in the official environment (0 points). Data, full training state, ZIP and evidence are preserved on HF. At the owner's request, the slow 900-second test was stopped and uncertain work was deferred to the next clean server. **No Codabench submission or dressing success is claimed.**
+> **Documentation update: October 22, 2026.** The next clean-server session is planned for **October 23**. Today's update changes documentation only. The measured baseline below is unchanged. Human demonstrations, full 900-second validation, Codabench submission, and recovery on a separate clean server remain unverified.
 
-## Today: a real pipeline, with explicit limits
+## Start here on a clean server
 
-| Completed | Evidence / result |
+Read `AGENTS.md`, [STATUS](docs/project/STATUS.md), [START_HERE](docs/project/START_HERE.ko.md), and the [two-week execution plan](docs/project/RGBD_TWO_WEEK_PLAN.ko.md). The start guide contains a paste-ready Codex handoff, existing commands, and the first session's completion criteria.
+
+```bash
+git clone https://github.com/leonyoon-3dai/PhyRC_2027_phase1.git
+cd PhyRC_2027_phase1
+git status --short
+git rev-parse HEAD
+# Read the documents above before installing or starting GPU work.
+participant/ops/bootstrap.sh --check
+```
+
+First session: inspect the new server, restore pinned artifacts, pass the official smoke test, rerun the existing policy briefly, and obtain **one valid human-recorded episode** through Chrome. Run collection, training, and GPU evaluation sequentially. Historical recovery commits describe previous runs; read the latest handoff before checking out an old snapshot.
+
+## Verified baseline
+
+Measured on October 22 on one L40S, 12 vCPU, and approximately 70 GiB RAM. Source: [session report](docs/project/sessions/20261022-bootstrap.md).
+
+| Item | Verified scope |
 |---|---|
-| Official L40S environment | `PHYRC-SMOKE-PASS`; build 2m44s, prepare 8.64s, cold smoke 5m43s |
-| Actual synchronized collection | 3 episodes, 63 transitions, 5 RGB-D cameras; official schema + continuity checks |
-| π₀.₅ JAX LoRA and policy execution | 30 optimizer steps / 0.476 effective epochs; offline official-image load; debug result 0 points, no_contact |
-| Preservation and restore | Dataset, full params + optimizer/train state, tokenizer, normalization and ZIP uploaded; download checksums verified; CPU training-state restore at step 30 |
-| Fresh-clone submission path | ZIP unpack/checksum/build and actual policy steps worked; full 900-second validation **not completed** |
+| Official environment | Build, prepare, and actual `PHYRC-SMOKE-PASS` |
+| Synchronized recording | 3 scripted episodes, 63 transitions, 5 RGB-D cameras; schema and continuity checks |
+| π₀.₅ training | JAX LoRA configuration, 30 updates / 0.476 effective epochs; overfitting not established |
+| Offline execution | Official-image load and debug policy execution; **0 points / no_contact** |
+| Preservation | HF data, full model/training state, ZIP and evidence; download checksums and CPU state restore at step 30 |
+| Submission path | ZIP unpack/build and 259 actions in a fresh clone; **full 900-second check incomplete, not submitted** |
 
-The data comes from a **Codex-authored bounded script**, labeled `integration_test`, with no extra billed GPT API calls. It is not a human demonstration or live GPT operator. The short training run has not established overfitting or dressing skill.
+The recorded data is a **Codex-authored bounded script**, labeled `integration_test`. It is neither human demonstration nor live GPT operation. No dressing success or policy improvement is claimed. The upstream freeze filter also leaves some vision/projection parameters trainable; the run is not described as training only small LoRA matrices.
 
-![Designated overview from our actual recorder wiring test, not a dressing success](docs/project/assets/first-recorder-test.png)
+![Actual designated overview camera from the recorder integration test; not a dressing success](docs/project/assets/first-recorder-test.png)
 
-[Measured session and failures](docs/project/sessions/20261022-bootstrap.md) · [Three-camera test video](https://huggingface.co/datasets/leonayoon/phyrc-2027-phase1-data/resolve/da172805036d5e53daf1834f32baf367820f9183/derived/20261022T0409Z-integration/integration-public-cameras.mp4) · [Next-server TODO and commands](docs/project/TODO.ko.md) · [Restore guide](docs/project/RECOVERY.ko.md)
+[Three-camera test video](https://huggingface.co/datasets/leonayoon/phyrc-2027-phase1-data/resolve/da172805036d5e53daf1834f32baf367820f9183/derived/20261022T0409Z-integration/integration-public-cameras.mp4) / [Data](https://huggingface.co/datasets/leonayoon/phyrc-2027-phase1-data) / [Model and training state](https://huggingface.co/leonayoon/phyrc-2027-phase1-pi05) / [Exact recovery revisions](docs/project/RECOVERY.ko.md)
 
-## Next clean server
+## Next two weeks: October 23 - November 5
 
-| Work deferred | Estimate / current limit |
-|---|---|
-| Reconstruct the pinned environment and artifacts | About 20–40 min; allow 30–60 min with download/setup variation, assuming working Docker/NVIDIA on a similar Brev server |
-| Verify Chrome control and complete human export | 30–90+ min; networking, all keys, disconnect release and READY still unverified |
-| Improve the small-data overfit test and verify a resumed optimizer step | Separate follow-up; loss decline alone will not count as robot success |
-| Complete the official 900-second check | Roughly 3 hours at the observed 1.2–1.3 action steps/wall-second; previous run stopped after 259 actions / 12.95 simulated seconds, with no valid final score |
-| Make the first Codabench submission | Registration is complete, but the site was inaccessible from both the owner and server; accepted/scored status remains absent |
+The dates and counts are **targets, not results**. The initial task segment is approach, grasp, and briefly lift the garment, while retaining the two-robot interface. Full dressing and positive official points/s are later performance goals.
 
-These are estimates, not completed runs. [The TODO](docs/project/TODO.ko.md) lists completion criteria and exact existing commands. Collection, training and GPU evaluation stay sequential. The server has **not** been stopped or deleted; active GPU jobs and the temporary streaming viewer were stopped for this handoff.
-
-## The task
-
-Two Hello Robot Stretch 4 mobile manipulators put a T-shirt on a seated manikin in the official Isaac Sim 6.0.1 environment. Both robots are controlled together through 18 normalized action values.
-
-<details>
-<summary>See the organizers' task demonstration</summary>
-
-![Official PhyRC teleoperation demonstration, not a result of this project](docs/videos/Back_Front_32x.gif)
-
-This is the **organizers' successful teleoperation demonstration**, inherited from the upstream repository, shown at 32× speed. It is not my policy or an experimental result from this fork. See the [original guide](README.upstream.md) and [upstream source](https://github.com/rirolab/PhyRC_2027_Challenge).
-
-</details>
-
-## First milestone: complete the pipeline
-
-The first run validates the full process with a small dataset. It does not require complete dressing or a positive leaderboard score.
-
-| Stage | Evidence required | Current state |
+| Workstream | Planned implementation | Evidence to retain |
 |---|---|---|
-| Official environment | Pinned versions and `PHYRC-SMOKE-PASS` | Passed on L40S |
-| Human collection | Chrome keyboard control and a complete recorded episode | Pending |
-| Automatic collection | Public observation → bounded action → recorded transition | 3 scripted test episodes verified |
-| π₀.₅ baseline | Small-data SFT, checkpoint, and closed-loop rollout | 30-step wiring test; one-action debug passed, 0 points |
-| Submission | Offline official self-check and Codabench accepted ID | ZIP + partial fresh-clone execution verified; full check/submission deferred |
-| Fresh-server recovery | Verified artifacts and a successful rerun after restore | Pending |
-
-After this path works, the performance target is repeatable dressing progress, starting with the first sleeve, before the November 17 checkpoint. An internal submission target of **November 16, 2026** leaves time to inspect acceptance. This is a target, not a reported result.
-
-## Planned approach
+| Demonstration quality | Human teleoperation, replay, timestamp/action validation, episode-level split | Valid exports, dataset manifest, QC report, exclusion reasons |
+| RGB-D analysis | Prompted offline garment masks, valid depth, camera-frame surface point clouds | Reviewed frames, mask/depth metrics, normal/occluded examples |
+| VLA adaptation | One π₀.₅ LoRA SFT configuration and checkpoint reload | Trainable parameters, exposure, checkpoint, policy outputs |
+| Matched evaluation | Base and adapted policy under fixed conditions | 3 seeds initially, up to 5 if feasible; videos, scores, runtime |
+| Reproducibility | Full self-check, artifact restoration, submission when available | Code/config/revisions, checksums, result JSON and submission status |
 
 ```mermaid
 flowchart TD
-    H["Human · Chrome keyboard"] --> X["One input owner + action executor"]
-    A["Codex / GPT · allowed observations"] --> X
-    X --> E["Official PhyRC environment"]
-    E -->|"Allowed cameras + robot state"| A
-    E --> R["Synchronized observations, actions, next observations"]
-    R --> D["Versioned dataset · human / AI / corrected"]
-    D --> T["π₀.₅ LoRA · one L40S"]
-    T --> P["Offline policy package"]
-    P --> C["Official self-check + Codabench"]
+    R["Official RGB-D, robot state, actions"] --> Q["Episode validation and replay"]
+    Q --> V["Offline masks and camera-frame point clouds"]
+    Q --> T["Reviewed demonstrations and pi0.5 SFT"]
+    T --> E["Matched policy evaluation"]
+    V --> D["Dataset quality report"]
+    E --> D
 ```
 
-| Decision | Initial choice | Reason |
+RGB-D analysis is initially an **offline diagnostic path**. The current policy uses three RGB views and robot state; adding depth diagnostics alone does not establish a policy-performance gain.
+
+| Days | Focus | Gate |
 |---|---|---|
-| Compute | One L40S; collect, train, and evaluate sequentially | Measure CPU, rendering, I/O, and GPU costs before scaling |
-| Baseline | π₀.₅ base model, JAX LoRA through openpi | Establish an SFT baseline before adding RL or action editing |
-| Coordination | One policy predicts both robots' actions | Learn the coupled 18-dimensional action together |
-| Initial images | Allowed overview + two wrist RGB views | Map to openpi's three image slots with shared preprocessing |
-| Human input | Chrome WebRTC keyboard teleop | Remote demonstrations with explicit key and focus tests |
-| AI input | Restricted observation/action tools | Avoid free-viewport screenshots and simulator ground truth |
-| Persistence | GitHub for source and reports; Hugging Face for large artifacts | Rebuild on disposable servers with immutable revisions |
+| D1-2, Oct 23-24 | Restore, smoke, short replay, Chrome control | One valid human episode or a documented blocker |
+| D3-4, Oct 25-26 | Synchronized replay and RGB-D checks | QC report and viewer |
+| D5-6, Oct 27-28 | Garment masks and local point clouds | Reviewed visibility/occlusion examples |
+| D7-8, Oct 29-30 | Collect, review, split | Frozen dataset manifest and train-only normalization |
+| D9-10, Oct 31-Nov 1 | Small overfit test and LoRA SFT | Reloaded checkpoint with valid actions |
+| D11-12, Nov 2-3 | Paired evaluation and profiling | Original results, videos, latency and memory |
+| D13-14, Nov 4-5 | Full self-check, recovery, evidence | Validated package, report, short demonstration video |
 
-Participant collection, shared preprocessing, JAX LoRA training, offline adapter, ZIP packaging and recovery helpers are implemented. Their verified scope and remaining gaps are recorded in the [session report](docs/project/sessions/20261022-bootstrap.md). Chrome integration is deferred for further testing; no remote human demonstration is claimed.
+Plan for roughly 60-70 focused hours plus GPU and export waits. The data target is 8-12 useful short human demonstrations and 3-5 failure examples. If teleoperation is blocked, prioritize recording and validation rather than expanding training on the 63-transition integration fixture. Details, fallback decisions, and metrics: [two-week plan](docs/project/RGBD_TWO_WEEK_PLAN.ko.md).
 
-## Constraints that shape the experiment
+## Observation and policy contract
 
-- The official action is `float32 (2,9)` in `[-1,1]`, at 20 Hz of simulation time. Gripper `0` preserves the previous intent; it does not mean open.
-- The official evaluation uses a **24 GB RTX 3090**; the policy should stay within **12 GB** alongside the simulator. L40S success alone does not verify that target.
-- The submission must run offline with all weights, tokenizer assets, normalization statistics, and code included. The official image's existing package versions must remain intact.
-- Only designated cameras and public robot observations may drive training and control. The AI bridge must not expose the environment's privileged `info` fields.
-- GPT-generated demonstrations based on allowed observations are a **rules-based interpretation**, not explicit organizer approval. The implementation and data provenance must be auditable.
-- Pickup alone gives **0 points/s**. Raw points, dressing points/s, and full-dressing success are separate results.
+| Interface | Current implementation |
+|---|---|
+| Available cameras | Overview, robot_0/robot_1 wrist, robot_0/robot_1 head; native 256×256 RGB-D |
+| Depth | Optical-axis Z in metres; invalid=0 with `depth_valid=false` |
+| Current policy images | Overview + each robot's wrist RGB; depth and head images unused |
+| Policy state | 32D: 26 joint positions + 2 fingertip distances + 2 gripper intents + 2 previous grip commands |
+| Action | 18 normalized values, padded to 32 for the model and restored to `float32 (2,9)` |
+| Timing | 20 Hz policy, 60 Hz control, 240 Hz physics; one action spans 0.05 simulated seconds |
 
-Sources: [Rules](docs/competition/RULES.md), [Policy and submission](docs/competition/POLICY.md), [Scoring](docs/competition/EVALUATION.md), [openpi](https://github.com/Physical-Intelligence/openpi).
+The 32D representation is not a robot DoF count. Gripper zero preserves intent. Camera-local geometry is the first RGB-D target; robot/world transforms require validated FK and static calibration from permitted data. Audit camera matrices, cloth ground truth, object poses, seeds, and raw simulator state are not policy inputs.
+
+Sources: [DATA](docs/competition/DATA.md), [RULES](docs/competition/RULES.md), [interface configuration](config/policy_interface.json), [shared preprocessing](participant/pi05/preprocessing.py).
+
+## Execution and evaluation limits
+
+- Preserve the official physics, action limits, reset rules, and evaluator. Keep SAM 2 analysis, JAX training, and the official simulator environments separate.
+- Preserve the base policy and compare on matched seeds, controller, action rate, adapter, normalization, and horizon. Loss, segment completion, raw points, points/s, and full-dressing success are separate metrics.
+- Pickup alone can yield zero dressing points/s. Retain failed rollouts and report the small evaluation sample size.
+- The full official check has a 900-second simulation-plus-inference budget. At the earlier observed speed, approximately three hours of wall time was estimated; reserve a separate slot and remeasure.
+- L40S execution does not verify the judging RTX 3090 24GB or the policy's 12GB budget. The package must load offline with weights, tokenizer, normalization, and code.
+- Restricted Codex/GPT collection remains an optional research path. No extra billed API usage is planned, and no organizer approval of that interpretation is claimed.
+- Preserve pinned artifacts before ending a disposable session. Do not provision additional compute or stop/delete a server without the owner's request.
+
+After the two-week baseline, the broader target remains repeatable dressing progress before the November 17 checkpoint, with an internal submission target of November 16. These remain planned milestones.
 
 ## Read and continue
 
 | Document | Purpose |
 |---|---|
-| [Current status](docs/project/STATUS.md) | Completed work, open questions, and next actions |
-| [Initial plan · 한국어](docs/project/PLAN.ko.md) | First-run gates and November target |
-| [Two collection modes · 한국어](docs/project/TELEOP.ko.md) | Chrome keyboard and Codex/GPT design |
-| [First server session · 한국어](docs/project/START_HERE.ko.md) | Clone, inspect, establish the official environment |
-| [Recovery and evidence · 한국어](docs/project/REPRODUCIBILITY.ko.md) | Save, restore, measure time, and publish evidence |
-| [Research notes](docs/project/RESEARCH.md) | Verified references and limits of existing Stretch 4 resources |
-| [Experiment register](experiments/README.md) | Run IDs, templates, metrics, and comparison rules |
-| [Source snapshot](docs/project/SOURCES.md) | Reviewed revisions and official references |
+| [START_HERE](docs/project/START_HERE.ko.md) | Current clean-server entry point and Codex prompt |
+| [Two-week plan](docs/project/RGBD_TWO_WEEK_PLAN.ko.md) | Implementation scope, daily gates, evaluation and evidence |
+| [STATUS](docs/project/STATUS.md) | Measured state and unresolved items |
+| [RECOVERY](docs/project/RECOVERY.ko.md) / [TODO](docs/project/TODO.ko.md) | Pinned HF revisions, actual commands, remaining work |
+| [TELEOP](docs/project/TELEOP.ko.md) | Human and restricted AI collection design |
+| [Experiment register](experiments/README.md) | Session/experiment templates and run index |
+| [Initial plan archive](docs/project/PLAN.ko.md) | Original pre-implementation design, retained for history |
+| [Sources](docs/project/SOURCES.md) | Reviewed official references and revisions |
 
-## Public research record
-
-I will publish implementation decisions, failed attempts, measured results, videos, and recovery records as work progresses. Each result should link its code commit, dataset revision, checkpoint, evaluation settings, and original evidence. Planned, implemented, locally measured, submitted, and organizer-scored are distinct states.
-
-The [session report](docs/project/sessions/20261022-bootstrap.md) separates implementation and measurements. Original [test data](https://huggingface.co/datasets/leonayoon/phyrc-2027-phase1-data) and the full [training checkpoint](https://huggingface.co/leonayoon/phyrc-2027-phase1-pi05) are preserved on Hugging Face with checksums. These are pipeline tests, not dressing success results.
-
-The workflow carries forward lessons from my [BEHAVIOR 2026 project](https://github.com/leonyoon-3dai/behavior-submission-2026): profile CPU and I/O before adding GPUs; preserve an unmodified baseline for matched comparisons; track data exposure as datasets grow; and distinguish submission acceptance from verified performance.
-
-## Upstream and attribution
-
-Forked from [RIRO Lab's PhyRC 2027 Challenge](https://github.com/rirolab/PhyRC_2027_Challenge). This participant project is maintained by Leonard Yoon and is not an official organizer repository. The original simulator, competition documents, assets, and organizer demonstrations retain their attribution.
-
-[README.upstream.md](README.upstream.md) preserves the original participant guide at [`4dbbebc`](https://github.com/rirolab/PhyRC_2027_Challenge/commit/4dbbebcf93a06c1bfe12136eadc2e580f30125d6). Project documentation is under `docs/project/`; upstream competition documentation remains under `docs/competition/`. See [LICENSE](LICENSE), [NOTICE](NOTICE), and [THIRD_PARTY.md](THIRD_PARTY.md) for component-specific terms.
+## Task and attribution
 
 <details>
-<summary>Original guide shortcuts and compatibility anchors</summary>
+<summary>Organizers' cooperative dressing demonstration</summary>
+
+![Organizers' teleoperation demonstration, not this project's result](docs/videos/Back_Front_32x.gif)
+
+Official upstream demonstration at 32× speed, showing two Stretch 4 robots dressing a seated manikin. This is not a learned-policy result from this fork.
+
+</details>
+
+This is Leonard Yoon's participant project, not an organizer repository. [README.upstream.md](README.upstream.md) preserves the reviewed guide at upstream `4dbbebcf93a06c1bfe12136eadc2e580f30125d6`. Official simulation, assets, evaluation, and demonstrations retain their attribution. See [LICENSE](LICENSE), [NOTICE](NOTICE), and [THIRD_PARTY.md](THIRD_PARTY.md).
+
+Official challenge: https://emprise.cs.cornell.edu/phyrc/challenge-2027/  
+Official code: https://github.com/rirolab/PhyRC_2027_Challenge  
+Codabench: https://www.codabench.org/competitions/18366/  
+Previous BEHAVIOR project: https://github.com/leonyoon-3dai/behavior-submission-2026
+
+<details>
+<summary>Original guide compatibility anchors</summary>
 
 <a id="1-install-and-run"></a>
-[1. Install and run](README.upstream.md#1-install-and-run)
+[Install and run](README.upstream.md#1-install-and-run)
 
 <a id="2-teleop-controls"></a>
-[2. Teleop controls](README.upstream.md#2-teleop-controls)
+[Teleop controls](README.upstream.md#2-teleop-controls)
 
 <a id="3-collect-training-data"></a>
-[3. Collect training data](README.upstream.md#3-collect-training-data)
+[Collect training data](README.upstream.md#3-collect-training-data)
 
 <a id="4-observations"></a>
-[4. Observations](README.upstream.md#4-observations)
+[Observations](README.upstream.md#4-observations)
 
 <a id="5-actions"></a>
-[5. Actions](README.upstream.md#5-actions)
+[Actions](README.upstream.md#5-actions)
 
 <a id="6-train-and-run-a-policy"></a>
-[6. Train and run a policy](README.upstream.md#6-train-and-run-a-policy)
+[Train and run a policy](README.upstream.md#6-train-and-run-a-policy)
 
 <a id="7-scoring-and-pointss"></a>
-[7. Scoring and points/s](README.upstream.md#7-scoring-and-pointss)
+[Scoring and points/s](README.upstream.md#7-scoring-and-pointss)
 
 <a id="8-allowed-information-and-fair-play"></a>
-[8. Allowed information and fair play](README.upstream.md#8-allowed-information-and-fair-play)
+[Allowed information and fair play](README.upstream.md#8-allowed-information-and-fair-play)
 
 </details>

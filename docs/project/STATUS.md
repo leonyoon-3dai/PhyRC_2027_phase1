@@ -1,9 +1,17 @@
 # Project status
 
 Updated: **2026-10-22 · KST / UTC+09:00**  
-Phase: **first implementation session closed; slow/uncertain work handed off at the owner’s request**
+Phase: **documentation-only planning update; next clean-server session planned for 2026-10-23**
 
-[English overview](../../README.md) · [한국어](../../README.ko.md) · [First server session](START_HERE.ko.md)
+[English overview](../../README.md) · [한국어](../../README.ko.md) · [Clean-server start](START_HERE.ko.md) / [Two-week plan](RGBD_TWO_WEEK_PLAN.ko.md)
+
+## Documentation update and next execution
+
+- No new server, collection, training, or evaluation was run during this documentation update. The measured runtime table below remains the 2026-10-22 first-session evidence.
+- Next session: restore pinned artifacts, pass official smoke, rerun the existing policy briefly, and validate Chrome control with one complete human episode.
+- Active plan: RGB-D/replay QC, prompted offline garment masks, camera-frame point clouds, one pi0.5 SFT setting, and matched evaluation over a two-week target window (2026-10-23 through 2026-11-05).
+- Human-demo counts, mask/point-cloud modules, new SFT results, and benchmark numbers are planned work, not completed capabilities.
+- Operational entry: `START_HERE.ko.md`. Artifact commands: `RECOVERY.ko.md`. The archived `PLAN.ko.md` is retained as history.
 
 ## Reviewed planning baseline
 
@@ -35,7 +43,7 @@ Evidence: [first server session](sessions/20261022-bootstrap.md), [measured run 
 
 [Prioritized TODO with time estimates](TODO.ko.md) · [exact artifact restore commands](RECOVERY.ko.md).
 
-The owner requested ending this session after preserving the quick, verified work. All active GPU processes and the temporary viewer were stopped. The Brev server itself was not stopped or deleted. Expected environment reconstruction on a comparable prepared Brev server: 20–40 minutes, allow 30–60 minutes for setup/download variation. Full 900-second evaluation is a separate roughly three-hour task at the observed rate.
+At the end of the recorded 2026-10-22 runtime session, the owner requested preserving the quick, verified work. Active GPU processes and the temporary viewer were stopped then; the Brev server itself was not stopped or deleted. This documentation update did not inspect or change its current power state. Expected environment reconstruction on a comparable prepared Brev server: 20–40 minutes, allow 30–60 minutes for setup/download variation. Full 900-second evaluation is a separate roughly three-hour task at the observed rate.
 
 The failed teleop archive is incomplete and the official exporter refused it; it remains failure evidence, not a finished human dataset. Codabench registration is complete but the site is inaccessible from both the owner and server. No submission/accepted/scored status exists.
 
@@ -59,3 +67,4 @@ The automatic-demonstration rules interpretation is documented in [TELEOP.ko.md]
 ## Update after each real session
 
 Link the session record and experiment run IDs, state what was actually verified, preserve failures, and list the next commands and expected checks. Move an item out of pending only when its evidence exists. Keep README status consistent.
+

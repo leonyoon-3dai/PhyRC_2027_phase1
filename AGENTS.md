@@ -1,6 +1,6 @@
 # Working in this participant fork
 
-This is Leonard Yoon's public PhyRC 2027 Phase 1 project. Read `README.md`, `docs/project/STATUS.md`, and `docs/project/START_HERE.ko.md` before working. Current phase: implementation and runtime verification on the existing Brev server, authorized by the owner on 2026-10-22. Run collection, training and GPU evaluation sequentially. Do not provision additional paid compute or delete/stop this server without an explicit request.
+This is Leonard Yoon's public PhyRC 2027 Phase 1 project. Read `README.md`, `docs/project/STATUS.md`, `docs/project/START_HERE.ko.md`, and `docs/project/RGBD_TWO_WEEK_PLAN.ko.md` before working. The 2026-10-22 update is documentation-only. The next clean-server session is planned for 2026-10-23 when the owner starts that session; no new GPU execution is claimed by this update. Inspect the actual server and checkout before resuming. Run collection, training and GPU evaluation sequentially. Do not provision additional paid compute or delete/stop a server without an explicit request. Do not use extra billed GPT APIs without a separate request.
 
 ## Scope and truthfulness
 
@@ -10,6 +10,16 @@ This is Leonard Yoon's public PhyRC 2027 Phase 1 project. Read `README.md`, `doc
 - Preserve `README.upstream.md` as the exact reviewed upstream README. Record any later refresh, upstream commit, and old snapshot history.
 - Preserve `LICENSE`, `NOTICE`, and `THIRD_PARTY.md`. New documentation describes the participant work and credits upstream material.
 - Keep the main README concise and accessible to external researchers and interviewers. Update English and Korean status together. Put operational detail under `docs/project/`.
+
+## Active two-week scope
+
+- Follow `START_HERE.ko.md` for the current entry point and `RGBD_TWO_WEEK_PLAN.ko.md` for day-by-day gates. `PLAN.ko.md` is an archived initial design, not current runtime state.
+- First obtain a valid human-recorded episode after restore/smoke and a short existing-policy rerun. The 3 scripted episodes / 63 transitions are integration fixtures, not human demonstrations.
+- Add episode QC, offline RGB-D garment-mask and camera-frame point-cloud diagnostics, one pi0.5 SFT configuration, and matched evaluation. Counts and dates in the plan are targets until evidence exists.
+- Reuse the official recorder and existing participant helpers. Inspect implementation before replacing tools described as pending runtime validation.
+- The current policy consumes three RGB views and a 32D robot state, returning 18D actions. Depth analysis is initially offline and does not by itself establish a policy-performance gain.
+- Keep SAM 2 analysis separate from the official simulator environment. Do not treat camera audit matrices or reference overview pose as permitted per-episode world calibration.
+- Historical recovery commits identify earlier experiments. Read the latest handoff first; use a separate worktree for an exact historical reproduction when needed.
 
 ## Public observation and action boundary
 
@@ -44,4 +54,5 @@ Read `docs/competition/RULES.md`, `POLICY.md`, and `config/policy_interface.json
 
 Never commit credentials, `.env` files, SSH keys, auth caches, cloud access URLs, or unreviewed private logs. Public research outputs remain the default. Keep artifacts' source/license provenance; asset and pretrained-model terms are component-specific.
 
-At session end update `docs/project/STATUS.md` with evidence, blockers, and the next concrete commands. Do not replace a real command with a hypothetical script name. Bootstrap, snapshot, streaming, and AI collection helpers are not implemented at this initial documentation stage.
+At session end update `docs/project/STATUS.md` with evidence, blockers, and the next concrete commands. Do not replace a real command with a hypothetical script name. Participant bootstrap, artifact, collection, training, streaming, and packaging code exists. Check STATUS and the recorded session for its actual runtime-verified scope; Chrome human collection, separate-server recovery, and full submission validation remain pending at this documentation update.
+

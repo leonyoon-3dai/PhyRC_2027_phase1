@@ -1,10 +1,10 @@
-# 초기 실행 계획
+# 초기 실행 계획 (보존본)
 
-> 2026-10-22 실행 단계로 전환했습니다. 아래는 초기 설계·계획을 보존한 문서입니다. 실제 구현·측정·실패·미검증 항목은 [STATUS](STATUS.md), [첫 세션 기록](sessions/20261022-bootstrap.md), [실제 복원 명령](RECOVERY.ko.md)을 따릅니다. API 과금 없는 Codex 작성 제한 명령 데이터로 첫 경로를 검증하며 live GPT API는 사용하지 않습니다.
+> 이 문서는 첫 구현 이전 설계를 보존한 이력이다. 현재 실행 순서는 [START_HERE](START_HERE.ko.md)와 [2주 계획](RGBD_TWO_WEEK_PLAN.ko.md), 실제 검증 범위는 [STATUS](STATUS.md)를 따른다. 아래의 초기 미래형 문장을 현재 구현 상태로 해석하지 않는다.
 
 [프로젝트 README](../../README.md) · [원격 조작 설계](TELEOP.ko.md) · [공식 정책·제출 가이드](../competition/POLICY.md)
 
-기준일: **2026-10-22**. 이 문서는 서버 개설 전의 실행 계획이다. 이 프로젝트에서 설치, 원격 조작, 학습, 평가, 제출은 아직 수행하지 않았다.
+초기 검토 기준일: **2026-10-22**. 서버 개설 전 작성한 설계이며, 이후 첫 구현 결과는 별도 [세션 기록](sessions/20261022-bootstrap.md)에 남겼다.
 
 공식 환경 검토 기준은 [`rirolab/PhyRC_2027_Challenge@4dbbebc`](https://github.com/rirolab/PhyRC_2027_Challenge/tree/4dbbebcf93a06c1bfe12136eadc2e580f30125d6), openpi 검토 기준은 [`215abfb`](https://github.com/Physical-Intelligence/openpi/tree/215abfb217dbac7d5f1273282331b9b1866c0479)이다. 실제 시작 시 변경 사항을 확인하고 사용할 commit을 기록한다.
 
@@ -100,4 +100,5 @@ BEHAVIOR에서의 경험을 반영해 다음을 기록한다.
 
 GitHub에는 코드·설정·요약·실험 인덱스를, Hugging Face에는 대용량 데이터·모델·영상·로그를 보관한다. 학습 재개용으로 전체 params와 optimizer·step·RNG 등 학습 상태를 저장한다. 공식 openpi는 data-loader cursor까지 자동 복원하지 않으므로, 첫 복원 목표는 같은 모델·데이터·설정의 정확한 복원이다. 학습 순서까지 동일한 재개가 필요하면 sampler 상태 저장을 추가한다.
 
-현재는 설계와 문서 준비 단계다. 성능 수치, 자체 데모, 학습 모델, 제출 결과는 실행 증거가 생긴 뒤 추가한다.
+초기 작성 시점에는 설계 단계였다. 이후의 실행 결과는 이 보존본에 소급해 넣지 않고 STATUS와 각 세션 기록에서 추적한다.
+

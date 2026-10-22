@@ -1,5 +1,7 @@
 # 첫 실행 자료 복원
 
+새 서버의 현재 진입점은 [START_HERE](START_HERE.ko.md)다. 아래 commit과 revision은 이전 실험 재현용 고정 자료다. 최신 인계 문서를 먼저 읽고, 과거 실행을 재현할 때는 별도 checkout에서 이 snapshot을 사용한다. 새 run의 코드/데이터/정규화와 과거 실험을 섞지 않는다.
+
 현재까지 **같은 서버의 새 디렉터리**에서 HF 다운로드 checksum, snapshot pack/restore를 검증했다. 별도의 클린 서버 전체 복원과 학습 step 재개는 아직 검증되지 않았다. 서버 삭제·종료 전에 원격 자료를 확인해야 하며 이번 요청으로 서버를 종료하지 않는다.
 
 ## 고정된 자료
@@ -13,7 +15,7 @@
 
 ## 현재 존재하는 복원 명령
 
-새 서버에서 이 프로젝트를 clone하고 해당 공개 commit으로 checkout한 뒤 공식 SETUP의 Docker/NVIDIA prerequisites를 준비한다. 아래 helper는 호스트 prerequisite 확인을 현재 서버에서 시험했다. `--install` 전체를 두 번째 클린 서버에서 실행했다고 주장하지 않는다.
+최신 인계 문서를 읽은 뒤, 이전 실험을 정확히 재현하는 별도 checkout에는 위 공개 commit을 사용한다. 새 작업은 선택한 source commit을 명시하고 공식 SETUP의 Docker/NVIDIA prerequisites를 준비한다. 아래 helper는 호스트 prerequisite 확인을 현재 서버에서 시험했다. `--install` 전체를 두 번째 클린 서버에서 실행했다고 주장하지 않는다.
 
 ```bash
 participant/ops/bootstrap.sh --check
@@ -97,3 +99,4 @@ XLA_PYTHON_CLIENT_PREALLOCATE=false PYTHONPATH="$PWD" \
 ```
 
 Upstream의 freeze filter는 language/action expert LoRA 외에도 vision/projection을 trainable로 둔다. 이번 복원에서 전체 3,403,421,456 parameter 중 466,957,072개가 trainable임을 확인했다. 순수 adapter 행렬만 학습·보관했다고 표현하지 않는다. 원본 30-step 설정의 LR warmup은 1,000이므로 짧은 overfit 시험 설정은 다음에 별도 run으로 수정하고 비교한다.
+
