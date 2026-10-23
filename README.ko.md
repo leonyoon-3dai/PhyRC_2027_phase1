@@ -9,7 +9,64 @@ Leonard Yoon, Ph.D. | 윤영호 | 독립 연구 프로젝트
 
 공식 PhyRC Isaac Sim 환경에서 시연 수집, 관측과 행동 검증, π₀.₅ 적응, 정책 평가와 제출 자료 보존을 연결합니다. 저장소만으로 작업의 상태와 근거를 확인하고 새 서버에서 이어갈 수 있도록 기록합니다.
 
-> **2026-10-23 문서 업데이트.** 10월 23–28일의 짧은 증거 확보 계획으로 우선순위를 바꿨습니다. 사용자가 내용을 검토한 뒤 클린 서버를 열 예정입니다. 이번에는 문서만 갱신했으며, 기존 실측 결과는 그대로입니다. 사람 시연, 전체 900초 검사, 제출, 별도 클린 서버 복원은 아직 미검증입니다.
+> **2026-10-23 실행 종료:** 사용자 요청으로 테스트를 중단하고 다음 클린 서버를 위한 자료를 보존합니다. 클린 서버 복원·공식 smoke·Chrome 키보드/이동·최소 사람 이동 샘플의 포맷은 검증했습니다. **전체 900초 검사 미완료, Codabench 미제출, 착의 성공 없음.** 실작업 시연 수집과 새 학습은 보류합니다.
+
+## 10월 23일 클린 서버 결과와 인계
+
+상세 근거: [오늘 세션 기록](docs/project/sessions/20261023-clean-start.md) · [현재 상태](docs/project/STATUS.md) · [다음 서버 시작](docs/project/START_HERE.ko.md).
+
+| 항목 | 실제 결과 |
+|---|---|
+| 서버 | L40S 46,068 MiB ×1, Xeon Platinum 8452Y 12 vCPU, RAM 약 70 GiB, Ubuntu 22.04.5, driver 580.126.09 |
+| 실행 코드 | 현재 작업 시작 `5a2ab4ec2b47d907198a171da35c17364e8a185c`; 공식 upstream `4dbbebcf93a06c1bfe12136eadc2e580f30125d6` |
+| 복원 | 기존 데이터·전체 모델/train state·제출 ZIP의 고정 revision 다운로드와 checksum 통과. 새 학습·optimizer 재개는 하지 않음 |
+| 공식 환경 | build 218.53초, prepare 9.14초, smoke 367.80초. 실제 `PHYRC-SMOKE-PASS`와 exit 0 |
+| 정책 실행 | 추가 패키지 이미지 build 68.40초; 짧은 offline 실행 91.11초, 한 번의 action/시뮬레이션 0.05초, 0점·no_contact |
+| 복원 총시간 | KST 13:04경 시작, 13:16 공식 환경 검증, 13:18 Chrome 준비. 기본 환경 약 10분, 정책/조작 준비까지 약 14–15분. 다운로드·일부 build 병렬; 각 시간을 단순 합산하지 않음 |
+| Chrome | 사용자가 키보드와 로봇 이동 정상 확인. 우하단 13px 동작/키 표, 누른 키·서버 수신/왕복 지연·포커스 해제 표시 추가. 전체 reconnect/gripper checklist 완료를 주장하지 않음 |
+| 사람 원본 | ESC 정상 종료, 2,419 transition/120.95 simulation seconds, 수집 wall 1,172.86초, raw capture complete=true |
+| 최소 포맷 샘플 | 이미 렌더링된 앞부분에서 이동 입력과 공개 joint/base 변화를 함께 확인한 연속 3구간, 12 transition/0.6초. 전체 이동 구간 314개를 모두 추출한 자료는 아님 |
+| 샘플 검사 | 원본 public state/action 일치, 5 RGB-D 카메라 유효성, obs/action/next_obs 연속성, 20Hz, 공식 PolicyDataset 로딩 통과 |
+| 전체 export | 긴 대기 때문에 364 transition의 렌더링 prefix 이후 의도적으로 중단. 원본은 유지. 전체 dataset을 READY로 바꾸지 않았으며, 별도 파생 샘플만 완결 검증 |
+| 900초 self-check | fresh clone에서 시작 후 사용자 요청으로 중단. **1,460 action/시뮬레이션 73.0초**, 전체 wall **1,814.08초(30분 14초)**. 유효한 최종 점수·통과 없음 |
+| 종료 상태 | 평가 GPU 프로세스와 viewer HTTP server 중단, GPU 0 MiB 확인. 서버 자체의 전원 종료·삭제는 수행하지 않음 |
+
+사람 샘플의 출처는 `human`, 목적은 `teleoperation_format_test`, 검수 상태는 `format_only_not_for_sft`입니다. 실제 사람이 입력한 자료지만 **옷 집기/착의 전문가 시연이나 학습 승인 데이터가 아닙니다.** 별도 audit/raw의 privileged state는 정책 입력으로 사용하지 않습니다. 오늘 새 SFT나 성능 비교는 하지 않았습니다.
+
+### 느린 실행과 900초의 의미
+
+공식 주기는 **시뮬레이션 기준** 정책 20Hz/제어 60Hz/물리 240Hz이며, action 하나가 0.05초와 물리 12 step에 해당합니다. 실제 화면/실행이 20 FPS여야 한다는 조건으로 해석하지 않습니다. 공식 runner의 예산은 `누적 simulation seconds + 누적 policy-call wall seconds`입니다. 환경의 물리/렌더링 wall time은 이 합산에 포함되지 않으므로 실제 15분보다 훨씬 오래 걸릴 수 있습니다. [공식 정책/시간 규정](https://github.com/rirolab/PhyRC_2027_Challenge/blob/4dbbebcf93a06c1bfe12136eadc2e580f30125d6/docs/competition/POLICY.md)
+
+실측 중 한 지점에서 simulation 19.85초에 평가 wall 379.6초, 이후 simulation 54.85초에 wall 993.5초였습니다. 따라서 당시 평균은 simulation 1분당 실제 약 18–19분입니다. 첫 정책 compile도 포함하며, 고정 처리량의 warm benchmark는 아닙니다. 누적 추론 시간을 별도로 기록하지 않아 **중단 시 900초 예산을 정확히 몇 초 소비했는지는 알 수 없습니다.** 시뮬레이션 73초를 900초 전체 진행률로 쓰지 않습니다. 이전 약 3시간 예상과 이후 약 4시간 15분 보수적 환산은 완료 실측이 아니며, 다음 서버의 ETA로 재사용하지 않습니다.
+
+10초/20Hz py-spy 샘플링(메인 스레드 199개 샘플)은 공식 평가·접촉 계산 41.2%, 물리·제어 39.2%, 카메라 16.1%, 추론 3.5%였습니다. 짧은 구간의 스택 점유 비중이며 정확한 component timer/전체 평균은 아닙니다. 코드에는 매 물리 step의 평가와 GPU→CPU 상태 복사, 5 RGB-D 카메라 동기 렌더링이 있습니다. CPU 순차 처리와 동기화가 유력한 병목 후보이며, GPU 성능 부족으로 단정하지 않습니다.
+
+당시 GPU 약 39%/17,446 MiB/38°C, P0, active thermal/power slowdown 없음; RAM available 약 49 GiB; swap/I/O wait/CPU steal 거의 없음; container CPU·RAM quota 제한, throttling/OOM 없음. 전체 12 vCPU 중 프로세스의 2초 표본 CPU 사용은 약 2.19코어였습니다. VRAM 17GB는 simulator+policy 합계이므로 **정책 12GB hard cap, 심사 RTX 3090 호환성을 증명하지 않습니다.**
+
+### 다음 클린 서버에서 할 일
+
+1. 이 README와 [오늘 보고서](docs/project/sessions/20261023-clean-start.md), `AGENTS.md`, STATUS를 먼저 읽고 [복원 명령](docs/project/RECOVERY.ko.md)을 따릅니다. 아래 과거 스프린트 목표보다 이번 사용자 범위가 우선합니다. **옷 집기 시연·새 학습을 자동 시작하지 않습니다.**
+2. 고정 자료를 복원하고 공식 smoke와 짧은 offline 경로부터 확인합니다. 사람 조작 서버/IP는 새로 설정하며 공개 저장소에 주소·토큰을 남기지 않습니다.
+3. 장시간 검사 전에 warm-up을 분리한 고정 100–200 step의 짧은 진단을 준비합니다. simulation seconds, policy-call time, 환경 처리 wall, 실제 총 wall, compile, GPU 메모리를 각각 기록합니다. 이 진단을 공식 self-check 통과로 표현하지 않습니다.
+4. 스레드 수/CPU affinity/NUMA와 cache 재사용은 후보이며 **아직 적용·효과 검증하지 않았습니다.** 더 많은 RAM/GPU나 CPU 코어가 해결책이라는 근거는 없습니다. 짧은 동일 조건 비교부터 합니다. 물리 주기·solver·형상·평가기·센서 정렬을 바꿔 빠르게 통과시키지 않습니다.
+5. 전체 900초 검사는 실행 코드·ZIP·image·예상 wall 예산을 명시한 뒤 별도 슬롯에서 수행합니다. 오늘 helper는 **역사적 simulator `9d97807`**을 선택했습니다. 현재 main 전체 검사가 아닙니다. 새 main을 검사하려면 helper의 source/base 선택을 명시적으로 수정하고 확인해야 합니다.
+6. Codabench는 서버와 사용자 Mac 모두 접속 불가였으며 사용자 요청으로 후속 확인을 보류했습니다. 로컬 통과와 실제 업로드/접수/주최 측 점수를 분리합니다.
+
+이미 검증된 최소 샘플은 다음과 같이 복원할 수 있습니다.
+
+```bash
+hf download leonayoon/phyrc-2027-phase1-data --type dataset \
+  --revision c31241f626c4cbf02c2bd69a10f70a3841fa58a3 \
+  --include 'samples/20261023-human-motion-format-test/*' --local-dir output/recovered-human-sample
+.venv/bin/python participant/ops/artifacts.py verify \
+  output/recovered-human-sample/samples/20261023-human-motion-format-test
+```
+
+[E0 복원 근거](https://huggingface.co/datasets/leonayoon/phyrc-2027-phase1-data/tree/2234dfd306df355bf8a9f879b6b3aaae4c3b56f8/sessions/20261023-clean-start-e0) · [최소 사람 이동 샘플](https://huggingface.co/datasets/leonayoon/phyrc-2027-phase1-data/tree/c31241f626c4cbf02c2bd69a10f70a3841fa58a3/samples/20261023-human-motion-format-test) · 최종 원본/중단 로그 보존 revision과 정확한 복원은 [세션 기록](docs/project/sessions/20261023-clean-start.md)을 확인합니다.
+
+최종 보존: [원본 조작 기록·중단 export archive](https://huggingface.co/datasets/leonayoon/phyrc-2027-phase1-data/tree/32fc6d21c5d358caefd17c6aadfc4f25a843e368/captures/20261023-human-source) · [중단된 900초 검사·성능 진단·소스 snapshot](https://huggingface.co/datasets/leonayoon/phyrc-2027-phase1-data/tree/93753f568811c5cfcd0235f5d8cb9940c5ce6a23/sessions/20261023-final-evidence). 원본 archive SHA256: `94dfa0238bfab003c255ea6d48f64e7b4b15e9e0e92293e5a360210514a47bd1`. 접속 주소는 보존용 manifest에서만 제거했고 원본 chunk/scene/event bytes는 유지했습니다. 재다운로드/restore 확인 결과와 명령은 세션 보고서에 기록합니다.
+
+원본 archive도 HF 재다운로드→새 디렉터리 restore→샘플 재생성을 완료했으며, 기존 샘플의 public HDF5 배열 **171개가 모두 정확히 일치**했습니다. 이는 같은 서버의 원격 왕복 복원 검사이며, 또 다른 클린 서버 GPU 검증은 아닙니다.
 
 ## 다음 클린 서버에서 시작하는 순서
 
@@ -24,7 +81,7 @@ git rev-parse HEAD
 participant/ops/bootstrap.sh --check
 ```
 
-첫 세션은 새 서버 점검, 고정 자료 복원, 공식 smoke, 기존 정책의 짧은 실행, Chrome을 통한 **유효한 사람 시연 1개 확보**에 집중합니다. 수집, 학습, GPU 평가는 순차 실행합니다. 복원 문서의 과거 commit으로 이동하기 전에 최신 인계 문서를 읽고 실행 revision을 기록합니다.
+다음 세션은 새 서버 점검, 고정 자료 복원, 공식 smoke, 짧은 정책 실행과 고정 step 성능 진단에 집중합니다. 사람 실작업 시연 수집과 새 학습은 사용자 준비 전까지 보류합니다. 수집, 학습, GPU 평가는 순차 실행합니다. 복원 문서의 과거 commit으로 이동하기 전에 최신 인계 문서를 읽고 실행 revision을 기록합니다.
 
 ## 현재 확인한 결과
 

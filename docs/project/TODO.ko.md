@@ -1,5 +1,7 @@
 # 다음 클린 서버 TODO
 
+**10월 23일 실행 종료 인계가 우선합니다.** [오늘 보고서](sessions/20261023-clean-start.md)와 README를 먼저 읽으세요. 복원/smoke/Chrome 이동/최소 사람 이동 포맷은 확인했고, 전체 검사는 1460 actions/73.0 simulation seconds에서 중단했습니다. 다음 서버에서는 짧은 offline 확인과 별도 고정-step warm 시간 진단이 우선입니다. 옷 시연·새 SFT와 Codabench 확인은 현재 보류입니다. 아래 날짜 스프린트는 후속 참고이며 자동 재개 지시가 아닙니다.
+
 문서 갱신: **2026-10-23**. 문서만 변경했고 실행 결과는 추가하지 않았다. 현재 기준은 [ENGINEERING_SPRINT](ENGINEERING_SPRINT.ko.md)와 [EVIDENCE_MAP](EVIDENCE_MAP.md)다. D0는 실제 다음 클린 서버 개설일이다.
 
 **현재 시작점은 [START_HERE](START_HERE.ko.md), 일정은 [실행 스프린트](ENGINEERING_SPRINT.ko.md)다.** 사용자가 다음 서버를 열면 복원과 smoke 후 짧은 정책 실행, 유효한 사람 시연 1개, QC부터 진행한다. 아래 항목은 미해결 기술 작업의 근거와 명령을 보존한다.

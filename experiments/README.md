@@ -1,8 +1,8 @@
 # Experiment index
 
-2026-10-22: **실행된 실험 없음.** 현재 저장소는 초기 설계와 작업 준비 단계입니다. GPU 서버, 수집 데이터, 학습 checkpoint, 제출 결과는 아직 없습니다.
+Latest runtime: [October 23 clean-server session](../docs/project/sessions/20261023-clean-start.md), preceded by [October 22 baseline](../docs/project/sessions/20261022-bootstrap.md). Restore/smoke and minimal human-motion format checks passed; full 900-second checks were interrupted and no submission is established. Current scope is format/submission verification, with task demos/new training deferred.
 
-[`index.csv`](index.csv)는 실제 run을 연결하기 위한 인덱스이며 현재 header만 포함합니다. 아래 절차로 기록을 추가합니다.
+`index.csv` may retain historical coverage; the linked session reports contain the detailed run IDs and evidence. Use the following process for future experiments.
 
 1. [실험 템플릿](../docs/project/templates/EXPERIMENT.md)을 복사하여 `experiments/<run-id>/README.md`에 작성합니다. 이 경로는 각 실험 때 생성합니다.
 2. 참가자·upstream commit, HF 데이터·모델의 불변 revision, 정확한 실행 조건을 고정합니다.

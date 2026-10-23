@@ -11,6 +11,14 @@ This is Leonard Yoon's public PhyRC 2027 Phase 1 project. Read `README.md`, `doc
 - Preserve `LICENSE`, `NOTICE`, and `THIRD_PARTY.md`. New documentation describes the participant work and credits upstream material.
 - Keep the main README concise and accessible to external researchers and interviewers. Keep private recruiting logistics out of public project documents. Update English and Korean status together. Put operational detail under `docs/project/`.
 
+## Owner handoff after October 23 runtime
+
+- Tests were stopped by the owner for review before another clean server. Read the October 23 results in both READMEs and `docs/project/sessions/20261023-clean-start.md` first.
+- Current scope is data-format and existing-package/submission validation only. Do not automatically resume task-demonstration collection, human SFT, SAM/FK/IK or the earlier dated sprint.
+- Official smoke and Chrome movement passed; derived human format sample is 3 clips/12 transitions. Full raw export and 900-second check were intentionally interrupted. Full check stopped at 1460 actions/73.0 simulation seconds; no valid final score or submission.
+- Next server: restore pinned assets, short offline check, then a separate fixed-step warm timing diagnostic before budgeting another long run. Measure policy-call and environment wall time separately. Thread/NUMA/cache changes are untested candidates, not verified fixes.
+- Keep the original model and format-only human sample separate; no new training is authorized. Codabench access checking is deferred. Server power/deletion follows a separate explicit request after preservation.
+
 ## Active engineering sprint
 
 - Follow `START_HERE.ko.md` for the current entry point and `ENGINEERING_SPRINT.ko.md` for the October 23–28 evidence sprint. Freeze evidence on October 28; if the server opens later, reduce scope without inventing completion. `RGBD_TWO_WEEK_PLAN.ko.md` and `PLAN.ko.md` are historical plans.

@@ -1,5 +1,7 @@
 # Robot learning capability and evidence
 
+**October 23 runtime update:** [latest session](sessions/20261023-clean-start.md) supersedes the pending statuses in the historical table below for clean restore, smoke, owner-confirmed Chrome movement and the 12-transition format-only human sample. Task demonstrations/SFT and full 900-second check remain incomplete; the latter was owner-interrupted at 1460 actions/73.0 simulated seconds. No submission or dressing success. Read both READMEs for current scope and handoff.
+
 Updated: **2026-10-23**. Review baseline: repository documentation at `ee7e891`. Individual runtime revisions and artifacts are recorded in the [first-session report](sessions/20261022-bootstrap.md) and [metrics](sessions/20261022-bootstrap-metrics.json).
 
 This page connects engineering capabilities to observable evidence and bounded claims. Source code, a completed runtime check, task performance, submission acceptance, and real-robot validation are different evidence levels. Use the [current plan entry](../../README.md) and [status](STATUS.md) before starting work.

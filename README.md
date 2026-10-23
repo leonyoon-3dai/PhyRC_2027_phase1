@@ -9,7 +9,62 @@ Leonard Yoon, Ph.D. | Independent research project
 
 This participant fork develops a reproducible workflow for two Stretch 4 robots in the official PhyRC Isaac Sim environment: collect demonstrations, validate observations and actions, adapt π₀.₅, evaluate policy execution, and preserve the submission artifacts.
 
-> **Documentation update: October 23, 2026.** Priorities now follow the October 23–28 evidence sprint. The owner will start a clean server after reviewing this plan. This is a documentation-only update; the measured baseline below is unchanged. Human demonstrations, full 900-second validation, submission, and recovery on a separate clean server remain unverified.
+> **October 23 execution stopped:** tests ended at the owner's request for review before another clean server. Clean-server restore, official smoke, Chrome keyboard/robot movement and a minimal human-motion data format sample were verified. **No full 900-second pass, Codabench submission or dressing success.** Task demonstrations and new SFT are deferred.
+
+## October 23 clean-server results and handoff
+
+[Detailed session report](docs/project/sessions/20261023-clean-start.md) · [Status](docs/project/STATUS.md) · [Next clean-server entry](docs/project/START_HERE.ko.md). The Korean README contains the full operational handoff; this section records the same measured scope.
+
+| Item | Measured result |
+|---|---|
+| Host | L40S 46,068 MiB, Xeon Platinum 8452Y 12 vCPU, ~70 GiB RAM, Ubuntu 22.04.5, driver 580.126.09 |
+| Source | Session start `5a2ab4ec2b47d907198a171da35c17364e8a185c`; official upstream `4dbbebcf93a06c1bfe12136eadc2e580f30125d6` |
+| Restore | Pinned dataset, full model/train-state files and release ZIP downloaded and checksums passed; no optimizer continuation or new training |
+| Official environment | Build 218.53 s; prepare 9.14 s; smoke 367.80 s, actual `PHYRC-SMOKE-PASS` and exit 0 |
+| Policy runtime | Additive image build 68.40 s; short offline run 91.11 s, one action/0.05 simulated seconds, 0 points/no_contact |
+| Setup wall time | Approximately 10 minutes for the core environment, 14–15 minutes through policy and Chrome readiness. Started ~04:04 UTC, smoke done 04:16, Chrome ready 04:18. Downloads/build partly overlapped |
+| Chrome | Owner confirmed keyboard/robot movement. Compact bottom-right 13 px action/key guide, held keys, server-receipt/latency and focus-release feedback implemented; full reconnect/gripper checklist not established |
+| Human capture | ESC completed 2,419 transitions/120.95 simulated seconds, 1,172.86 s collection wall, raw complete=true |
+| Derived motion sample | Three contiguous clips from the rendered prefix, 12 transitions/0.6 s, with nonzero movement input and public joint/base change; not an exhaustive extract of all 314 commanded-motion transitions |
+| Data checks | Original public state/action equality, five-camera RGB-D validity, obs/action/next_obs continuity, 20 Hz timing and official PolicyDataset load passed |
+| Full export | Intentionally interrupted after a rendered prefix of 364 transitions; original retained, full dataset stays incomplete; only the independently validated derived sample is complete |
+| Full 900-second check | Owner-interrupted at **1,460 actions/73.0 simulated seconds**, total **1,814.08 s wall**. No valid final score or full pass |
+| End state | Evaluation GPU process and viewer server stopped; GPU 0 MiB confirmed. Server power/deletion not performed |
+
+Human sample labels are `source=human`, `purpose=teleoperation_format_test`, `review=format_only_not_for_sft`. It is genuine human interface testing, not a garment expert demonstration or approved training data. No new SFT or task-performance comparison was performed. Audit/raw privileged state is not a policy input.
+
+### Runtime and rules findings
+
+The official clocks are policy 20 Hz, control 60 Hz and physics 240 Hz **in simulation time**: one action advances 0.05 s through 12 physics steps. The episode budget adds simulation time and policy-call wall time; environment physics/rendering wall time is outside that accumulator. A slow real-time display is not by itself a clock violation. [Official policy/time contract](https://github.com/rirolab/PhyRC_2027_Challenge/blob/4dbbebcf93a06c1bfe12136eadc2e580f30125d6/docs/competition/POLICY.md).
+
+Observed points: 19.85 simulated seconds in 379.6 s evaluation wall; later 54.85 s in 993.5 s wall, approximately 18–19 wall minutes per simulated minute including first policy compilation. Cumulative inference time was not logged, so the exact 900-budget consumption at interruption is unknown. The historical ~3-hour estimate and later conservative ~4h15 extrapolation were not completed-run timings or reliable next-server ETAs.
+
+A 10 s/20 Hz py-spy snapshot (199 main-thread samples) attributed approximately 41.2% to official evaluation/contact checks, 39.2% to physics/control, 16.1% to camera capture and 3.5% to inference. These are short-window stack shares, not exact component timers. Per-physics-step evaluation, GPU-to-CPU state copies and synchronous five-camera rendering are plausible contributors; a pure GPU or CPU hardware bottleneck was not established.
+
+Hardware pressure checks: GPU ~39%, 17,446 MiB, 38 C, P0, no active thermal/power slowdown; ~49 GiB available RAM; no active swap/I/O wait/CPU steal; no container CPU/RAM quota, throttling or OOM. A 2 s process sample used ~2.19 of 12 vCPUs. Total VRAM includes simulator and policy: **policy-alone 12 GB compliance and RTX 3090 execution remain unverified**.
+
+### Next clean-server priorities
+
+1. Read this README, today's report, AGENTS, STATUS and [recovery commands](docs/project/RECOVERY.ko.md). Current owner scope supersedes the earlier sprint: format/submission verification only; do not start task demonstrations or new SFT automatically.
+2. Restore pinned artifacts, pass smoke and a short offline check. Reconfigure streaming addresses only if needed; keep connection details private.
+3. Before another long run, prepare a separate fixed 100–200-step warm diagnostic. Log simulation time, policy-call time, environment wall time, compile/startup, total wall and memory separately; this diagnostic is not the official self-check.
+4. Benchmark thread count/CPU affinity/NUMA and cache reuse only as controlled candidates. None was applied or proven beneficial. Do not change official physics, solver, geometry, evaluator or sensor alignment to speed up a check. No evidence currently justifies buying more GPU/RAM/cores.
+5. Reserve a separate full-check slot with explicit source/base commit, ZIP and image. Today's helper deliberately selected historical simulator **`9d97807`**, not current main. A current-main package check needs an explicit helper source-selection change and verification.
+6. Codabench was unreachable from server and owner's Mac; further access checking is deferred by request. Local pass, portal acceptance and organizer score are separate states.
+
+```bash
+hf download leonayoon/phyrc-2027-phase1-data --type dataset \
+  --revision c31241f626c4cbf02c2bd69a10f70a3841fa58a3 \
+  --include 'samples/20261023-human-motion-format-test/*' --local-dir output/recovered-human-sample
+.venv/bin/python participant/ops/artifacts.py verify \
+  output/recovered-human-sample/samples/20261023-human-motion-format-test
+```
+
+[Verified E0 evidence](https://huggingface.co/datasets/leonayoon/phyrc-2027-phase1-data/tree/2234dfd306df355bf8a9f879b6b3aaae4c3b56f8/sessions/20261023-clean-start-e0) · [Verified human motion sample](https://huggingface.co/datasets/leonayoon/phyrc-2027-phase1-data/tree/c31241f626c4cbf02c2bd69a10f70a3841fa58a3/samples/20261023-human-motion-format-test). Final raw-source/interrupted-run preservation revisions and restore instructions are in the [session report](docs/project/sessions/20261023-clean-start.md).
+
+Final preservation: [human raw capture/interrupted render archive](https://huggingface.co/datasets/leonayoon/phyrc-2027-phase1-data/tree/32fc6d21c5d358caefd17c6aadfc4f25a843e368/captures/20261023-human-source) · [interrupted 900-second run, profiles and source snapshot](https://huggingface.co/datasets/leonayoon/phyrc-2027-phase1-data/tree/93753f568811c5cfcd0235f5d8cb9940c5ce6a23/sessions/20261023-final-evidence). Archive SHA256: `94dfa0238bfab003c255ea6d48f64e7b4b15e9e0e92293e5a360210514a47bd1`. Only connection metadata was redacted in the preserved manifest; chunk/scene/event bytes were retained. See the session report for round-trip restore checks and exact commands.
+
+The raw archive also passed HF re-download, restore into a new directory and CPU sample re-derivation: **all 171 public HDF5 datasets matched exactly**. This is same-server remote round-trip recovery, not another clean-server GPU test.
 
 ## Start here on a clean server
 
@@ -24,7 +79,7 @@ git rev-parse HEAD
 participant/ops/bootstrap.sh --check
 ```
 
-First session: inspect the new server, restore pinned artifacts, pass the official smoke test, rerun the existing policy briefly, and obtain **one valid human-recorded episode** through Chrome. Run collection, training, and GPU evaluation sequentially. Historical recovery commits describe previous runs; read the latest handoff before checking out an old snapshot.
+Next session: inspect the new server, restore pinned artifacts, pass official smoke, rerun the policy briefly and measure a fixed-step warm diagnostic. Task demonstrations and new training stay deferred until the owner is ready. Run collection, training, and GPU evaluation sequentially. Historical recovery commits describe previous runs; read the latest handoff before checking out an old snapshot.
 
 ## Verified baseline
 

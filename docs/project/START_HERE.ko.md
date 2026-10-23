@@ -1,8 +1,10 @@
 # 다음 클린 서버에서 시작하기
 
-문서 갱신: **2026-10-23**. 이번에는 문서만 갱신했으며 새 GPU 결과는 없다. 사용자가 계획을 검토하고 클린 서버를 실제로 연 날을 D0로 기록한다. 기존 날짜에 맞춰 서버가 이미 준비되었다고 추정하지 않는다.
+최종 인계: **2026-10-23 실제 클린 서버 테스트를 사용자 요청으로 종료**했습니다. 상세 결과·성능 분석·검증 한계는 [README.ko.md](../../README.ko.md)와 [오늘 세션](sessions/20261023-clean-start.md)을 먼저 읽으세요. 기본 환경 약 10분/Chrome 준비까지 약 14–15분, 실제 smoke 통과와 사람 조작을 확인했습니다. 전체 900초 검사는 1,460 action/73.0 simulation seconds에서 중단됐고 통과가 아닙니다.
 
-[README](../../README.ko.md) / [현재 상태](STATUS.md) / [실행 스프린트](ENGINEERING_SPRINT.ko.md) / [기술 증거](EVIDENCE_MAP.md) / [복원 명령](RECOVERY.ko.md) / [미해결 작업](TODO.ko.md)
+**현재 사용자 범위는 포맷·기존 패키지 검증입니다.** 실작업 사람 시연·새 학습·이전 날짜 스프린트를 자동 재개하지 않습니다. 다음 서버에서는 고정 자료 복원→smoke→짧은 offline 실행→별도 고정 step warm 진단을 우선하고, 그 뒤 전체 검사의 예상 wall 시간을 다시 산정합니다. Codabench 확인은 보류합니다. 아래 수집·학습 절차는 후속 준비 시 사용할 참고이며 현재 실행 지시가 아닙니다.
+
+[현재 상태](STATUS.md) · [자료 복원](RECOVERY.ko.md) · [오늘 중단/복원 근거](sessions/20261023-clean-start.md)
 
 ## 1. 읽을 순서
 
@@ -13,7 +15,7 @@
 5. [RECOVERY](RECOVERY.ko.md)와 [TODO](TODO.ko.md): 고정 HF revision, checksum, 존재하는 실행 명령.
 6. [RULES](../competition/RULES.md), [DATA](../competition/DATA.md), [POLICY](../competition/POLICY.md).
 
-`PLAN.ko.md`와 `RGBD_TWO_WEEK_PLAN.ko.md`는 과거 설계·일정의 보존본이다. 현재 우선순위는 이 문서와 ENGINEERING_SPRINT를 따른다. 이전 세션의 권한이나 살아 있는 서버를 추정하지 않는다.
+`PLAN.ko.md`와 `RGBD_TWO_WEEK_PLAN.ko.md`는 과거 설계·일정의 보존본이다. 현재 우선순위는 위 10월 23일 종료 인계와 사용자가 좁힌 범위를 따른다. ENGINEERING_SPRINT의 날짜별 수집/학습은 후속 계획이다. 이전 세션의 권한이나 살아 있는 서버를 추정하지 않는다.
 
 ## 2. 현재 상태를 확인하는 시작 명령
 
@@ -37,7 +39,7 @@ participant/ops/bootstrap.sh --check
 participant/ops/bootstrap.sh --install
 ```
 
-`--check`는 prerequisite 명령과 장치를 확인하지만 GPU/Vulkan 정상 동작은 smoke로 확인해야 한다. `--install`은 host helper용 Python 3.12 환경과 HF CLI를 준비하고 공식 doctor/build/prepare/smoke를 실행한다. 오늘은 실행하지 않았고 전체 clean-server 설치 경로도 아직 미검증이다. host driver, Docker, uv와 openpi 학습 환경을 모두 자동 설치하는 도구가 아니다. 이미지 버전을 임의로 `latest`로 바꾸거나 공식 torch/torchvision/NumPy를 교체하지 않는다.
+`--check`는 prerequisite 명령과 장치를 확인하지만 GPU/Vulkan 정상 동작은 smoke로 확인해야 한다. `--install`은 host helper용 Python 3.12 환경과 HF CLI를 준비하고 공식 doctor/build/prepare/smoke를 실행한다. 10월 23일 실제 클린 서버에서 --install과 smoke까지 통과했다. 개별 시간은 README/세션 기록에 있으며 다른 서버의 성공을 보장하지 않는다. host driver, Docker, uv와 openpi 학습 환경을 모두 자동 설치하는 도구가 아니다. 이미지 버전을 임의로 `latest`로 바꾸거나 공식 torch/torchvision/NumPy를 교체하지 않는다.
 
 ## 3. 첫 실행 세션의 순서와 완료 조건
 
@@ -87,46 +89,42 @@ ESC 후 창이 닫혀도 `[Dataset export] READY`까지 기다린다. `capture.j
 - `participant/ops/selfcheck.sh`는 과거 `9d97807`을 checkout한다. 새 ZIP에는 검사 source/base commit을 명시하고 실제 검사 대상을 확인하도록 수정한다. 이 문서는 변경된 CLI가 이미 존재한다고 주장하지 않는다.
 - 전체 900초 self-check는 짧은 비교 뒤 별도 슬롯에 수행한다. Codabench 접근이 가능하면 검증 ZIP의 실제 ID/상태를 남긴다. 미접근·미검증은 그대로 기록한다.
 
-## 6. 서버의 Codex에 붙여넣을 요청
+## 6. 다음 서버의 Codex에 붙여넣을 요청
 
 ```text
-이 저장소에서 PhyRC 2027 연구를 새 클린 서버로 이어갑니다.
-AGENTS.md, README.ko.md, docs/project/STATUS.md,
-docs/project/START_HERE.ko.md, docs/project/ENGINEERING_SPRINT.ko.md,
-docs/project/EVIDENCE_MAP.md, docs/project/RECOVERY.ko.md,
-docs/project/TODO.ko.md를 읽고 RULES, DATA, POLICY와 현재 코드를 확인하세요.
-이전 RGBD_TWO_WEEK_PLAN은 보존본이며 현재 일정이 아닙니다.
+이 저장소의 2026-10-23 종료 인계를 이어갑니다.
+AGENTS.md, README.ko.md, README.md, STATUS, 오늘 세션
+(docs/project/sessions/20261023-clean-start.md), START_HERE와 RECOVERY를 읽으세요.
 
-실제 서버 개설일을 D0로 기록하고 E0 복원/공식 smoke/기존 정책 짧은 실행,
-E1 Chrome 키보드 검증과 인간 시연 1개의 정상 export를 먼저 진행하세요.
-실제 사용자 키 입력이 필요한 시점에는 구체적인 조작 안내를 주세요.
-Chrome 수정은 우선 2시간으로 제한하고 막히면 실패 근거와 대체 경로를 정리하세요.
-수집 뒤 QC와 작은 camera-local RGB-D 진단, 인간 SFT, 같은 3개 practice seed의
-짧은 base/adapted 비교로 이어갑니다. 서버가 늦게 열리면 규모를 줄이세요.
-10/27부터 새 기능 추가를 멈추고 10/28 결과/영상/복원 근거를 고정하는 것이 목표입니다.
+이전 날짜 스프린트보다 현재 사용자 범위가 우선입니다.
+지금은 데이터 포맷과 기존 패키지/제출 검증만 수행합니다.
+실작업 사람 시연 수집, 새 SFT, SAM/FK/IK를 자동 시작하지 마세요.
+Codabench 접속 확인도 사용자가 다시 요청할 때까지 보류합니다.
 
-SFT 전에 실제 인간 검수 상태와 loader 허용 조건을 명세하고,
-짧은 학습 LR schedule, train-only 정규화와 update 검증을 준비하세요.
-새 인간 데이터 학습은 pi05_base에서 새 run으로 시작하고 fixture checkpoint를 보존하세요.
-새 ZIP의 self-check는 역사적 9d97807 고정과 구별해 검사 source/base commit을 기록하세요.
-전체 900초 검사와 제출은 짧은 비교 뒤 별도 슬롯으로 진행하세요.
+오늘 smoke와 Chrome 이동은 통과했고, raw 사람 조작 2419 transition을 기록했습니다.
+전체 export는 중단했으며 별도 이동 샘플 3 clip/12 transition만 포맷 검증했습니다.
+사람 샘플은 format_only_not_for_sft이고 실제 착의 시연/학습 데이터가 아닙니다.
+전체 900초 검사는 1460 actions/73.0 simulation seconds, wall 1814.08 s에서
+사용자 요청으로 중단했습니다. full pass나 유효한 최종 점수는 없습니다.
 
-기존 3 episode/63 transition은 scripted integration_test이고,
-30-update 정책은 debug 0점/no_contact입니다. 사람 시연, full self-check,
-Codabench 제출, 별도 새 서버 복원은 증거 없이 완료 처리하지 마세요.
-README의 계획 수량을 현재 성과로 옮기지 마세요.
+새 서버 환경과 checkout을 확인하고 고정 자료 checksum, 공식 smoke,
+기존 정책 짧은 offline 실행부터 검증하세요. GPU 작업은 순차로 수행합니다.
+긴 검사를 바로 재개하지 말고 고정 100–200 step warm 진단을 별도로 준비하세요.
+이 고정-step helper와 self-check source-selection 개선은 아직 구현되지 않았습니다.
+simulation time, policy-call time, 환경 step wall, compile/시작, 총 wall,
+CPU/GPU/RAM을 따로 측정하고 다음 전체 검사 시간을 다시 산정하세요.
+이전 약 3시간 추정은 다음 서버의 확정 ETA가 아닙니다.
 
-공식 물리/평가/action을 유지하고 공개 관측만 정책과 자동 수집기에 전달하세요.
-raw/audit/info/seed/cloth GT/camera world matrix를 입력으로 사용하지 마세요.
-현재 정책은 RGB/state이며 depth 효과가 검증된 모델로 표현하지 마세요.
-SAM 2와 RGB-D 진단은 공식 simulator와 별도 분석 환경에 두세요.
-GPU 수집, 학습, 평가는 순차 실행하세요.
-추가 유료 API나 다른 서버를 열지 말고 서버 종료/삭제도 하지 마세요.
+현재 selfcheck.sh는 simulator 9d97807을 선택합니다.
+기존 ZIP 재현과 새 main 검사를 구별하고 source/base/ZIP/image를 기록하세요.
+공식 물리·형상·action·평가기·센서 정렬은 바꾸지 마세요.
+현재 병목은 평가/물리/렌더링 쪽 표본이 크지만 정확한 CPU/GPU 원인은 미확정입니다.
+스레드/NUMA/cache 후보는 아직 적용하거나 효과를 검증하지 않았습니다.
+12GB 정책 메모리와 RTX 3090 호환성도 미검증입니다.
 
-원본 checkpoint와 실패 기록을 보존하고 run별 commit, 설정, 데이터/모델 revision,
-실제 명령, 시간, 결과 JSON, 영상과 checksum을 남기세요.
-세션 종료 전에 산출물을 원격 보존하고 STATUS와 양쪽 README를 실제 근거에 맞춰 갱신하세요.
-막히면 가장 작은 다음 조치와 실패 근거를 기록하고 실행하지 않은 검증을 통과라고 쓰지 마세요.
+소스와 실패 기록, 원본 checkpoint를 보존하고 원격 revision/checksum을 확인하세요.
+추가 유료 API/서버를 열거나 서버를 종료/삭제하지 마세요.
+확인하지 않은 실행을 통과로 쓰지 말고 README/STATUS에 실제 결과를 남기세요.
 ```
 
 ## 7. 종료 전

@@ -1,9 +1,28 @@
 # Project status
 
 Updated: **2026-10-23 · KST / UTC+09:00**  
-Phase: **documentation-only reprioritization; clean server starts after owner review**
+Phase: **tests stopped by owner; restore/smoke and human format sample verified; full check incomplete**
 
 [English overview](../../README.md) · [한국어](../../README.ko.md) · [Clean-server start](START_HERE.ko.md) / [Engineering sprint](ENGINEERING_SPRINT.ko.md) / [Evidence map](EVIDENCE_MAP.md)
+
+## Final October 23 state / 오늘 종료 상태
+
+- Owner requested stopping tests for review before a future clean server. Evaluation and viewer processes are stopped; GPU 0 MiB confirmed. Server power/deletion was not performed.
+- Official build/prepare/smoke passed: 218.53/9.14/367.80 s. Core setup ~10 min, through policy/Chrome readiness ~14–15 min; initial downloads/build overlapped.
+- Pinned data/model/train-state/ZIP recovery hashes passed. Short policy check: exit 0, 91.11 s wall, one action/0.05 simulation s, 0 points/no_contact. No optimizer continuation or new SFT.
+- Owner confirmed real Chrome keyboard and robot movement. Bottom-right compact live control guide implemented; headless Chromium UI checks passed with mocked input. Full reconnect/gripper checklist remains unverified.
+- Human ESC capture: complete raw 2419 transitions/120.95 simulation s. Full export deliberately interrupted after a rendered prefix of 364 transitions. A separate **format-only** motion sample of 3 clips/12 transitions/0.6 s passed original state/action, five RGB-D camera, timing, continuity and official loader checks. It is not approved SFT or dressing data.
+- Full 900-second check deliberately interrupted: **1460 actions/73.0 simulation s**, run wall **1814.08 s**, no final score. Child process returned 0 on signal, but wrapper correctly reports verification failure 1 because `FINAL SCORE:` is absent; this is not a pass. Exact consumed 900-budget time is unknown because cumulative inference latency was not logged.
+- Short profiler snapshot: evaluation/contact ~41%, physics/control ~39%, camera ~16%, inference ~4%. Hardware checks did not show RAM/GPU capacity pressure, thermal throttling, I/O wait, CPU quota/throttling or OOM. Pure CPU/GPU bottleneck and any tuning benefit remain unproven.
+- Policy-alone 12 GB cap and RTX 3090 compatibility remain unverified. No official physics/evaluator/sensor timing changes made.
+- Codabench unreachable from server and owner's Mac; follow-up deferred. No submission/acceptance/organizer score.
+- Next server: follow READMEs and latest [session report](sessions/20261023-clean-start.md), restore pinned assets, short check, separate fixed 100–200-step warm diagnostic, then explicitly budget a full run. No task demos/new training until owner is ready.
+
+검증된 결과는 클린 서버 복원·공식 smoke·Chrome 이동·최소 사람 데이터 포맷이다. 900초 전체 검사는 사용자 요청 중단이며 착의 성공·제출·학습 성능 향상은 없다. 아래 과거 스프린트보다 현재 사용자 범위가 우선한다.
+
+Remote evidence: [E0](https://huggingface.co/datasets/leonayoon/phyrc-2027-phase1-data/tree/2234dfd306df355bf8a9f879b6b3aaae4c3b56f8/sessions/20261023-clean-start-e0), [human format sample](https://huggingface.co/datasets/leonayoon/phyrc-2027-phase1-data/tree/c31241f626c4cbf02c2bd69a10f70a3841fa58a3/samples/20261023-human-motion-format-test). Final raw source revision `32fc6d21c5d358caefd17c6aadfc4f25a843e368` and final interrupted-test evidence `93753f568811c5cfcd0235f5d8cb9940c5ce6a23` are recorded with restore commands in the session report. Final raw-source download/restore/re-derivation passed, with exact equality of all 171 public HDF5 datasets.
+
+The following October 22 runtime tables and documentation-update notes are preserved as historical evidence; they do not supersede this new session.
 
 ## Documentation update and next execution
 
