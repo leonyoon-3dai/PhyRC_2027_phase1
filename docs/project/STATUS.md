@@ -1,17 +1,19 @@
 # Project status
 
-Updated: **2026-10-22 · KST / UTC+09:00**  
-Phase: **documentation-only planning update; next clean-server session planned for 2026-10-23**
+Updated: **2026-10-23 · KST / UTC+09:00**  
+Phase: **documentation-only reprioritization; clean server starts after owner review**
 
-[English overview](../../README.md) · [한국어](../../README.ko.md) · [Clean-server start](START_HERE.ko.md) / [Two-week plan](RGBD_TWO_WEEK_PLAN.ko.md)
+[English overview](../../README.md) · [한국어](../../README.ko.md) · [Clean-server start](START_HERE.ko.md) / [Engineering sprint](ENGINEERING_SPRINT.ko.md) / [Evidence map](EVIDENCE_MAP.md)
 
 ## Documentation update and next execution
 
-- No new server, collection, training, or evaluation was run during this documentation update. The measured runtime table below remains the 2026-10-22 first-session evidence.
-- Next session: restore pinned artifacts, pass official smoke, rerun the existing policy briefly, and validate Chrome control with one complete human episode.
-- Active plan: RGB-D/replay QC, prompted offline garment masks, camera-frame point clouds, one pi0.5 SFT setting, and matched evaluation over a two-week target window (2026-10-23 through 2026-11-05).
-- Human-demo counts, mask/point-cloud modules, new SFT results, and benchmark numbers are planned work, not completed capabilities.
-- Operational entry: `START_HERE.ko.md`. Artifact commands: `RECOVERY.ko.md`. The archived `PLAN.ko.md` is retained as history.
+- No server, collection, training, or evaluation was run during this update. The runtime table remains the 2026-10-22 evidence.
+- Active plan: [October 23–28 engineering sprint](ENGINEERING_SPRINT.ko.md). D0 is the actual next server session, not an assumed October 23 start.
+- E0 restores pinned artifacts and checks smoke/offline execution. E1 obtains genuine human data. E2 checks synchronization and a few camera-local RGB-D samples. E3 uses a new human-data SFT run and short base/adapted evaluation on the same three practice seeds.
+- Move the small learning/comparison loop to October 26–27; freeze evidence on October 28. SAM 2, GPT collection and FK/IK are optional. Full 900-second validation and submission follow this loop.
+- Before human SFT: define human review/loader states, configure short-run LR, and start from `pi05_base` with train-only normalization. The historical self-check commit must be explicit for each package. These are pending implementation tasks, not fixes delivered here.
+- [EVIDENCE_MAP](EVIDENCE_MAP.md) separates current CV-safe claims from conditional statements after future runs. Human collection, depth processing, improved manipulation and real-robot results remain unverified.
+- Operational entry: `START_HERE.ko.md`. Artifact commands: `RECOVERY.ko.md`. `RGBD_TWO_WEEK_PLAN.ko.md` and `PLAN.ko.md` are archived plans.
 
 ## Reviewed planning baseline
 
@@ -45,7 +47,7 @@ Evidence: [first server session](sessions/20261022-bootstrap.md), [measured run 
 
 At the end of the recorded 2026-10-22 runtime session, the owner requested preserving the quick, verified work. Active GPU processes and the temporary viewer were stopped then; the Brev server itself was not stopped or deleted. This documentation update did not inspect or change its current power state. Expected environment reconstruction on a comparable prepared Brev server: 20–40 minutes, allow 30–60 minutes for setup/download variation. Full 900-second evaluation is a separate roughly three-hour task at the observed rate.
 
-The failed teleop archive is incomplete and the official exporter refused it; it remains failure evidence, not a finished human dataset. Codabench registration is complete but the site is inaccessible from both the owner and server. No submission/accepted/scored status exists.
+The failed teleop archive is incomplete and the official exporter refused it; it remains failure evidence, not a finished human dataset. Codabench registration is recorded as complete; the prior session reported access failures from the owner and server. Access was not rechecked in this documentation update. No submission/accepted/scored status exists.
 
 ```bash
 participant/ops/bootstrap.sh --check
@@ -57,6 +59,8 @@ PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m unittest discover -s tests -v
 | Question | How it will be resolved |
 |---|---|
 | Does WebRTC preserve PhyRC's keyboard events and app window on this server? | Two-robot movement, numpad mapping, key release, reconnect tests |
+| Can genuine human data produce a useful small adaptation? | New human review schema, short-run LR, overfit/update checks, then matched three-seed runs |
+| Does RGB-D analysis improve policy execution? | Not tested: E2 is offline diagnostics; a controlled depth-connected comparison is later work |
 | Does π₀.₅ meet the judging hardware budget? | Official-image L40S fixture and learned-policy partial run passed; RTX 3090 and full 900-second checks remain pending |
 | Can the AI operator generate useful demonstrations from allowed observations? | Short bounded trials, recorded inputs/actions, human review; no success assumption |
 | Is automatic recording valid? | Live HDF5 schema/continuity passed for 63 transitions; raw/deferred parity is not claimed |

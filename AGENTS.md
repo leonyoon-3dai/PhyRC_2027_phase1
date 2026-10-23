@@ -1,6 +1,6 @@
 # Working in this participant fork
 
-This is Leonard Yoon's public PhyRC 2027 Phase 1 project. Read `README.md`, `docs/project/STATUS.md`, `docs/project/START_HERE.ko.md`, and `docs/project/RGBD_TWO_WEEK_PLAN.ko.md` before working. The 2026-10-22 update is documentation-only. The next clean-server session is planned for 2026-10-23 when the owner starts that session; no new GPU execution is claimed by this update. Inspect the actual server and checkout before resuming. Run collection, training and GPU evaluation sequentially. Do not provision additional paid compute or delete/stop a server without an explicit request. Do not use extra billed GPT APIs without a separate request.
+This is Leonard Yoon's public PhyRC 2027 Phase 1 project. Read `README.md`, `docs/project/STATUS.md`, `docs/project/START_HERE.ko.md`, `docs/project/ENGINEERING_SPRINT.ko.md`, and `docs/project/EVIDENCE_MAP.md` before working. The 2026-10-23 update is documentation-only. The owner will review the plan before starting the next clean server; D0 is the actual session start, not an assumed calendar date. No new GPU execution is claimed by this update. Inspect the actual server and checkout before resuming. Run collection, training and GPU evaluation sequentially. Do not provision additional paid compute or delete/stop a server without an explicit request. Do not use extra billed GPT APIs without a separate request.
 
 ## Scope and truthfulness
 
@@ -9,13 +9,15 @@ This is Leonard Yoon's public PhyRC 2027 Phase 1 project. Read `README.md`, `doc
 - Do not present upstream demos, generic base checkpoints, or other robots' results as this project's results.
 - Preserve `README.upstream.md` as the exact reviewed upstream README. Record any later refresh, upstream commit, and old snapshot history.
 - Preserve `LICENSE`, `NOTICE`, and `THIRD_PARTY.md`. New documentation describes the participant work and credits upstream material.
-- Keep the main README concise and accessible to external researchers and interviewers. Update English and Korean status together. Put operational detail under `docs/project/`.
+- Keep the main README concise and accessible to external researchers and interviewers. Keep private recruiting logistics out of public project documents. Update English and Korean status together. Put operational detail under `docs/project/`.
 
-## Active two-week scope
+## Active engineering sprint
 
-- Follow `START_HERE.ko.md` for the current entry point and `RGBD_TWO_WEEK_PLAN.ko.md` for day-by-day gates. `PLAN.ko.md` is an archived initial design, not current runtime state.
+- Follow `START_HERE.ko.md` for the current entry point and `ENGINEERING_SPRINT.ko.md` for the October 23–28 evidence sprint. Freeze evidence on October 28; if the server opens later, reduce scope without inventing completion. `RGBD_TWO_WEEK_PLAN.ko.md` and `PLAN.ko.md` are historical plans.
 - First obtain a valid human-recorded episode after restore/smoke and a short existing-policy rerun. The 3 scripted episodes / 63 transitions are integration fixtures, not human demonstrations.
-- Add episode QC, offline RGB-D garment-mask and camera-frame point-cloud diagnostics, one pi0.5 SFT configuration, and matched evaluation. Counts and dates in the plan are targets until evidence exists.
+- Prioritize E0 clean-server recovery, E1 genuine human collection, E2 synchronized QC and small camera-local RGB-D diagnostics, and E3 human-data SFT with short matched three-seed evaluation. Keep SAM 2 and FK/IK optional. Counts and dates remain targets until evidence exists.
+- Before human SFT, define a genuine-human review state in the loader/manifest and a short-run LR schedule. Start from pi05_base with train-only normalization, preserving the old integration checkpoint. Do not relabel human demonstrations as approved_pipeline_test.
+- Record the source/base commit selected for each new self-check package. The historical helper pins 9d97807; do not silently describe it as testing current main. The full 900-second check follows the short evidence loop.
 - Reuse the official recorder and existing participant helpers. Inspect implementation before replacing tools described as pending runtime validation.
 - The current policy consumes three RGB views and a 32D robot state, returning 18D actions. Depth analysis is initially offline and does not by itself establish a policy-performance gain.
 - Keep SAM 2 analysis separate from the official simulator environment. Do not treat camera audit matrices or reference overview pose as permitted per-episode world calibration.

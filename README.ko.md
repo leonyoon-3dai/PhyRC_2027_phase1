@@ -5,15 +5,15 @@
 **RGB-D 관측 처리와 VLA 적응을 활용한 두 Stretch 4의 협동 착의 연구.**
 
 Leonard Yoon, Ph.D. | 윤영호 | 독립 연구 프로젝트  
-[English](README.md) / [현재 상태](docs/project/STATUS.md) / [클린 서버 시작](docs/project/START_HERE.ko.md) / [2주 계획](docs/project/RGBD_TWO_WEEK_PLAN.ko.md)
+[English](README.md) / [현재 상태](docs/project/STATUS.md) / [클린 서버 시작](docs/project/START_HERE.ko.md) / [실행 스프린트](docs/project/ENGINEERING_SPRINT.ko.md) / [기술 증거](docs/project/EVIDENCE_MAP.md)
 
 공식 PhyRC Isaac Sim 환경에서 시연 수집, 관측과 행동 검증, π₀.₅ 적응, 정책 평가와 제출 자료 보존을 연결합니다. 저장소만으로 작업의 상태와 근거를 확인하고 새 서버에서 이어갈 수 있도록 기록합니다.
 
-> **2026-10-22 문서 업데이트.** 오늘은 문서만 정리했습니다. 다음 클린 서버 작업은 **10월 23일 시작 예정**입니다. 아래의 기존 실측 결과는 그대로이며, 사람 시연, 전체 900초 검사, Codabench 제출, 별도 클린 서버 복원은 아직 미검증입니다.
+> **2026-10-23 문서 업데이트.** 10월 23–28일의 짧은 증거 확보 계획으로 우선순위를 바꿨습니다. 사용자가 내용을 검토한 뒤 클린 서버를 열 예정입니다. 이번에는 문서만 갱신했으며, 기존 실측 결과는 그대로입니다. 사람 시연, 전체 900초 검사, 제출, 별도 클린 서버 복원은 아직 미검증입니다.
 
-## 내일 클린 서버에서 시작하는 순서
+## 다음 클린 서버에서 시작하는 순서
 
-`AGENTS.md`, [STATUS](docs/project/STATUS.md), [START_HERE](docs/project/START_HERE.ko.md), [2주 실행 계획](docs/project/RGBD_TWO_WEEK_PLAN.ko.md)을 먼저 읽습니다. 시작 가이드에 실제 존재하는 명령, 첫 세션의 완료 기준, **Codex에 붙여넣을 인계문**이 있습니다.
+`AGENTS.md`, [STATUS](docs/project/STATUS.md), [START_HERE](docs/project/START_HERE.ko.md), [실행 스프린트](docs/project/ENGINEERING_SPRINT.ko.md)을 먼저 읽습니다. 시작 가이드에 실제 존재하는 명령, 첫 세션의 완료 기준, **Codex에 붙여넣을 인계문**이 있습니다.
 
 ```bash
 git clone https://github.com/leonyoon-3dai/PhyRC_2027_phase1.git
@@ -45,41 +45,32 @@ participant/ops/bootstrap.sh --check
 
 [실제 3시점 시험 영상](https://huggingface.co/datasets/leonayoon/phyrc-2027-phase1-data/resolve/da172805036d5e53daf1834f32baf367820f9183/derived/20261022T0409Z-integration/integration-public-cameras.mp4) / [데이터](https://huggingface.co/datasets/leonayoon/phyrc-2027-phase1-data) / [모델과 학습 상태](https://huggingface.co/leonayoon/phyrc-2027-phase1-pi05) / [고정 복원 자료](docs/project/RECOVERY.ko.md)
 
-## 다음 2주: 10월 23일 - 11월 5일
+## 10월 23–28일: 작은 실험 하나를 완결하기
 
-아래 날짜와 수량은 **목표이며 실적이 아닙니다.** 먼저 접근, 의복 집기, 짧게 들어 올리기를 대상으로 두 로봇의 역할을 단순하게 고정합니다. 전체 착의와 양수 points/s는 이후 성능 목표입니다.
+**실제 사람 수집 → 데이터 검수 → π₀.₅ SFT → 동일 조건 rollout**을 먼저 연결합니다. 날짜·수량은 목표입니다. D0는 사용자가 클린 서버를 실제로 여는 날이며, 10월 23일 개설을 가정하지 않습니다.
 
-| 작업 | 추가할 내용 | 남길 근거 |
+| 증거 | 작업 범위 | 완료 기준 |
 |---|---|---|
-| 시연 품질 | 사람 조작, replay, 시간/행동 검증, episode 단위 분할 | 유효 export, manifest, QC 보고서와 제외 사유 |
-| RGB-D 분석 | prompt 기반 의복 mask, 유효 depth, camera-frame 점군 | 수동 검수 표본, 정상/가림 비교, 품질 지표 |
-| VLA 적응 | 단일 π₀.₅ LoRA SFT 설정, checkpoint 재로딩 | 학습 대상 parameter, 데이터 노출량, 행동 출력 |
-| 비교 평가 | base와 적응 정책을 같은 조건에서 비교 | 같은 seed 3개부터, 가능하면 5개. 영상, 점수, 실행 비용 |
-| 재현과 제출 | 전체 self-check, 복원, 가능한 경우 Codabench | 버전, checksum, 결과 JSON, 실제 제출 상태 |
+| E0 · 복원 | 고정 자료, 공식 smoke, 짧은 offline 실행 | 새 서버 로그·checksum·복원 시간 |
+| E1 · 사람 수집 | Chrome 입력/export 검증, 유용한 짧은 시연 3–5개와 실패 1–2개 목표 | 실제 사람 출처, READY/complete, 검수 데이터 |
+| E2 · 데이터와 기하 | 20Hz 정렬, 단위, 유효 depth, camera-local 점군 | QC 보고서, 검수한 RGB-D 사례 2–3개 |
+| E3 · 적응과 비교 | 소량 인간 데이터 overfit, 단일 SFT, base/학습 정책 비교 | 재로딩 checkpoint, 같은 practice seed 3개와 실패 포함 결과 |
 
-```mermaid
-flowchart TD
-    R["공식 RGB-D, 로봇 상태, 행동"] --> Q["Episode 검증과 replay"]
-    Q --> V["오프라인 mask와 camera-frame 점군"]
-    Q --> T["검수 시연과 pi0.5 SFT"]
-    T --> E["동일 조건 정책 평가"]
-    V --> D["데이터 품질 보고서"]
-    E --> D
-```
+| 목표 날짜 | 우선순위 |
+|---|---|
+| 10/23–24, 서버가 준비되면 | E0와 유효한 첫 사람 시연 |
+| 10/25 | 데이터 QC와 작은 camera-local RGB-D 진단 |
+| 10/26–27 | 사람 데이터 SFT와 짧은 paired 평가, 새 기능 추가 중단 |
+| 10/28 | 결과·60–90초 영상·한계·복원 절차 고정 |
+| 10/29 이후 | 전체 900초 검사, 제출, 착의 성능 연구 |
 
-RGB-D 모듈은 먼저 **오프라인 진단**에 사용합니다. 현재 정책 입력은 RGB 3개와 로봇 상태입니다. Depth 분석 도구를 추가한 것만으로 정책 성능이 개선되었다고 주장하지 않습니다.
+집중 작업 **12–18시간에 다운로드·build·compile·export·GPU 대기는 별도**로 측정합니다. 서버 개설이 늦어지면 범위를 줄입니다. Chrome 수정은 우선 2시간으로 제한하고, 막히면 실패 근거를 남긴 뒤 다른 원격 데스크톱 경로를 검토합니다. SAM 2, GPT 자동 조작, FK/IK 확장은 선택 작업입니다.
 
-| 기간 | 중심 작업 | 완료 기준 |
-|---|---|---|
-| D1-2, 10/23-24 | 복원, smoke, 짧은 실행, Chrome 조작 | 유효한 사람 시연 1개 또는 구체적 blocker |
-| D3-4, 10/25-26 | 동기화 replay, RGB-D 검사 | QC 보고서와 viewer |
-| D5-6, 10/27-28 | 의복 mask와 가시 표면 점군 | 정상/가림 사례 검수 화면 |
-| D7-8, 10/29-30 | 수집, 검수, 분할 | 고정 manifest와 train-only 정규화 |
-| D9-10, 10/31-11/1 | 작은 overfit, LoRA 학습 | 재로딩한 checkpoint와 유효 행동 |
-| D11-12, 11/2-3 | 같은 seed 비교와 profiling | 원본 결과, 영상, 지연과 메모리 |
-| D13-14, 11/4-5 | 전체 검사, 복원, 결과 정리 | 검증 패키지, 보고서, 짧은 시연 영상 |
+사람 SFT 전에 loader에 실제 인간 검수 상태를 명세하고 짧은 학습용 LR schedule을 설정해야 합니다. 신규 인간 데이터 학습은 `pi05_base`에서 시작하고 기존 integration checkpoint는 보존합니다. 새 패키지 검사 시 self-check의 역사적 고정 commit과 실제 검사 source를 구분해야 합니다. 이번 문서 갱신에서 코드를 고친 것은 아닙니다.
 
-집중 작업 약 60-70시간에 GPU/export 대기를 별도로 잡습니다. 짧은 사람 시연 8-12개와 실패 사례 3-5개를 목표로 합니다. 조작 경로가 막히면 기존 63 transition의 학습량을 늘리기보다 정상 기록과 검수부터 해결합니다. 상세 구현 범위와 막혔을 때의 순서는 [2주 계획](docs/project/RGBD_TWO_WEEK_PLAN.ko.md)에 정리했습니다.
+RGB-D는 우선 **오프라인 진단**입니다. 현재 정책은 RGB 3개와 로봇 상태만 읽습니다. Depth 진단 추가만으로 정책 향상을 주장하지 않습니다. 먼저 두 로봇 인터페이스를 유지하며 접근·집기·짧게 들기를 다룹니다. 전체 착의와 양수 points/s는 다음 성능 목표입니다.
+
+상세 범위: [엔지니어링 스프린트](docs/project/ENGINEERING_SPRINT.ko.md) · [기술 증거와 성과 표현](docs/project/EVIDENCE_MAP.md). 이전 [2주 계획](docs/project/RGBD_TWO_WEEK_PLAN.ko.md)은 보존본이며, 그 일정과 60–70시간 범위는 현재 실행 기준이 아닙니다.
 
 ## 데이터와 정책의 현재 형식
 
@@ -106,14 +97,16 @@ RGB-D 모듈은 먼저 **오프라인 진단**에 사용합니다. 현재 정책
 - 제한된 Codex/GPT 자동 수집은 선택 확장으로 보존합니다. 추가 과금 API를 계획하지 않으며 주최 측 승인으로 표현하지 않습니다.
 - 서버 종료 전 원격 산출물을 검증합니다. 추가 서버 개설과 서버 종료/삭제는 별도 사용자 요청 없이 수행하지 않습니다.
 
-2주 기준선을 확보한 뒤 첫 소매 삽입 등 반복 가능한 착의 진행을 목표로 합니다. 기존 내부 제출 목표 11월 16일, 첫 checkpoint 11월 17일은 향후 일정으로 유지합니다.
+이번 스프린트의 데이터·검수·학습·평가 도구를 그대로 이어 첫 소매 삽입 등 반복 가능한 착의 진행을 목표로 합니다. 기존 내부 제출 목표 11월 16일, 첫 checkpoint 11월 17일은 향후 일정으로 유지합니다.
 
 ## 문서 안내
 
 | 문서 | 내용 |
 |---|---|
 | [START_HERE](docs/project/START_HERE.ko.md) | 현재 클린 서버 진입점과 Codex 인계문 |
-| [2주 실행 계획](docs/project/RGBD_TWO_WEEK_PLAN.ko.md) | 구현 범위, 일별 기준, 평가와 결과 자료 |
+| [실행 스프린트](docs/project/ENGINEERING_SPRINT.ko.md) | 현재 우선순위, 일별 기준, 범위 제한과 평가 |
+| [기술 증거](docs/project/EVIDENCE_MAP.md) | 엔지니어링 역량, 검증한 주장, 포트폴리오 갱신 |
+| [이전 2주 계획](docs/project/RGBD_TWO_WEEK_PLAN.ko.md) | 새 스프린트로 대체된 과거 일정 보존 |
 | [STATUS](docs/project/STATUS.md) | 실제 검증과 미해결 항목 |
 | [RECOVERY](docs/project/RECOVERY.ko.md) / [TODO](docs/project/TODO.ko.md) | 고정 HF revision, 실제 명령, 남은 작업 |
 | [TELEOP](docs/project/TELEOP.ko.md) | 사람 조작과 제한된 AI 수집 설계 |

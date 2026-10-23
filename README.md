@@ -5,15 +5,15 @@
 **Cooperative robot dressing with RGB-D observation processing and VLA adaptation.**
 
 Leonard Yoon, Ph.D. | Independent research project  
-[한국어](README.ko.md) / [Current status](docs/project/STATUS.md) / [Clean-server start](docs/project/START_HERE.ko.md) / [Two-week plan](docs/project/RGBD_TWO_WEEK_PLAN.ko.md)
+[한국어](README.ko.md) / [Current status](docs/project/STATUS.md) / [Clean-server start](docs/project/START_HERE.ko.md) / [Engineering sprint](docs/project/ENGINEERING_SPRINT.ko.md) / [Evidence map](docs/project/EVIDENCE_MAP.md)
 
 This participant fork develops a reproducible workflow for two Stretch 4 robots in the official PhyRC Isaac Sim environment: collect demonstrations, validate observations and actions, adapt π₀.₅, evaluate policy execution, and preserve the submission artifacts.
 
-> **Documentation update: October 22, 2026.** The next clean-server session is planned for **October 23**. Today's update changes documentation only. The measured baseline below is unchanged. Human demonstrations, full 900-second validation, Codabench submission, and recovery on a separate clean server remain unverified.
+> **Documentation update: October 23, 2026.** Priorities now follow the October 23–28 evidence sprint. The owner will start a clean server after reviewing this plan. This is a documentation-only update; the measured baseline below is unchanged. Human demonstrations, full 900-second validation, submission, and recovery on a separate clean server remain unverified.
 
 ## Start here on a clean server
 
-Read `AGENTS.md`, [STATUS](docs/project/STATUS.md), [START_HERE](docs/project/START_HERE.ko.md), and the [two-week execution plan](docs/project/RGBD_TWO_WEEK_PLAN.ko.md). The start guide contains a paste-ready Codex handoff, existing commands, and the first session's completion criteria.
+Read `AGENTS.md`, [STATUS](docs/project/STATUS.md), [START_HERE](docs/project/START_HERE.ko.md), and the [engineering sprint](docs/project/ENGINEERING_SPRINT.ko.md). The start guide contains a paste-ready Codex handoff, existing commands, and the first session's completion criteria.
 
 ```bash
 git clone https://github.com/leonyoon-3dai/PhyRC_2027_phase1.git
@@ -45,41 +45,32 @@ The recorded data is a **Codex-authored bounded script**, labeled `integration_t
 
 [Three-camera test video](https://huggingface.co/datasets/leonayoon/phyrc-2027-phase1-data/resolve/da172805036d5e53daf1834f32baf367820f9183/derived/20261022T0409Z-integration/integration-public-cameras.mp4) / [Data](https://huggingface.co/datasets/leonayoon/phyrc-2027-phase1-data) / [Model and training state](https://huggingface.co/leonayoon/phyrc-2027-phase1-pi05) / [Exact recovery revisions](docs/project/RECOVERY.ko.md)
 
-## Next two weeks: October 23 - November 5
+## Evidence sprint: October 23–28
 
-The dates and counts are **targets, not results**. The initial task segment is approach, grasp, and briefly lift the garment, while retaining the two-robot interface. Full dressing and positive official points/s are later performance goals.
+Complete one small **human collection → dataset QC → π₀.₅ SFT → matched rollout** loop before expanding the system. Dates and counts below are targets, not results. D0 is the day the owner actually starts the next clean server; no server is assumed to have started on October 23.
 
-| Workstream | Planned implementation | Evidence to retain |
+| Evidence | Scope | Gate |
 |---|---|---|
-| Demonstration quality | Human teleoperation, replay, timestamp/action validation, episode-level split | Valid exports, dataset manifest, QC report, exclusion reasons |
-| RGB-D analysis | Prompted offline garment masks, valid depth, camera-frame surface point clouds | Reviewed frames, mask/depth metrics, normal/occluded examples |
-| VLA adaptation | One π₀.₅ LoRA SFT configuration and checkpoint reload | Trainable parameters, exposure, checkpoint, policy outputs |
-| Matched evaluation | Base and adapted policy under fixed conditions | 3 seeds initially, up to 5 if feasible; videos, scores, runtime |
-| Reproducibility | Full self-check, artifact restoration, submission when available | Code/config/revisions, checksums, result JSON and submission status |
+| E0 · Restore | Pinned artifacts, official smoke, bounded offline execution | New-server logs, checksums and measured recovery times |
+| E1 · Human collection | Validate Chrome input/export; target 3–5 useful short demonstrations and 1–2 failures | Genuine human source, READY/complete, reviewed dataset |
+| E2 · Data and geometry | 20 Hz alignment, units, valid depth, camera-local surface points | QC report and 2–3 reviewed RGB-D examples |
+| E3 · Adapt and compare | Small human-data overfit, one SFT configuration, base vs adapted policy | Reloaded checkpoint and same three practice seeds, including failures |
 
-```mermaid
-flowchart TD
-    R["Official RGB-D, robot state, actions"] --> Q["Episode validation and replay"]
-    Q --> V["Offline masks and camera-frame point clouds"]
-    Q --> T["Reviewed demonstrations and pi0.5 SFT"]
-    T --> E["Matched policy evaluation"]
-    V --> D["Dataset quality report"]
-    E --> D
-```
+| Target dates | Priority |
+|---|---|
+| Oct 23–24, if a server is ready | E0 and the first valid human recording |
+| Oct 25 | Data QC and a small camera-local RGB-D diagnostic |
+| Oct 26–27 | Human-data SFT and short paired evaluation; stop adding features |
+| Oct 28 | Freeze evidence, a 60–90 second video, limitations and recovery instructions |
+| Oct 29 onward | Full 900-second check, submission and dressing-performance work |
 
-RGB-D analysis is initially an **offline diagnostic path**. The current policy uses three RGB views and robot state; adding depth diagnostics alone does not establish a policy-performance gain.
+Budget **12–18 focused hours plus measured download/build/compile/export/GPU waits**. Reduce scope if the server opens later. Cap initial Chrome debugging at two focused hours, then document the blocker and consider another remote desktop path. SAM 2, automatic GPT collection, and FK/IK extensions are optional.
 
-| Days | Focus | Gate |
-|---|---|---|
-| D1-2, Oct 23-24 | Restore, smoke, short replay, Chrome control | One valid human episode or a documented blocker |
-| D3-4, Oct 25-26 | Synchronized replay and RGB-D checks | QC report and viewer |
-| D5-6, Oct 27-28 | Garment masks and local point clouds | Reviewed visibility/occlusion examples |
-| D7-8, Oct 29-30 | Collect, review, split | Frozen dataset manifest and train-only normalization |
-| D9-10, Oct 31-Nov 1 | Small overfit test and LoRA SFT | Reloaded checkpoint with valid actions |
-| D11-12, Nov 2-3 | Paired evaluation and profiling | Original results, videos, latency and memory |
-| D13-14, Nov 4-5 | Full self-check, recovery, evidence | Validated package, report, short demonstration video |
+Before human SFT, explicitly support reviewed human episodes in the loader and configure an appropriate short-run learning-rate schedule. Start the new human-data run from `pi05_base`; preserve the old integration checkpoint. The self-check helper's historical base commit must also be distinguished from the selected source for a new package. These are planned code changes, not fixes made by this documentation update.
 
-Plan for roughly 60-70 focused hours plus GPU and export waits. The data target is 8-12 useful short human demonstrations and 3-5 failure examples. If teleoperation is blocked, prioritize recording and validation rather than expanding training on the 63-transition integration fixture. Details, fallback decisions, and metrics: [two-week plan](docs/project/RGBD_TWO_WEEK_PLAN.ko.md).
+RGB-D is initially an **offline diagnostic**. The current policy consumes three RGB views and robot state; depth diagnostics alone do not demonstrate a policy gain. The initial manipulation segment is approach, grasp and briefly lift while retaining both robots' interface. Full dressing and positive official points/s remain later goals.
+
+Details: [engineering sprint](docs/project/ENGINEERING_SPRINT.ko.md) · [evidence and claim map](docs/project/EVIDENCE_MAP.md). The previous [two-week plan](docs/project/RGBD_TWO_WEEK_PLAN.ko.md) is archived; its dates and 60–70 hour scope no longer govern execution.
 
 ## Observation and policy contract
 
@@ -106,14 +97,16 @@ Sources: [DATA](docs/competition/DATA.md), [RULES](docs/competition/RULES.md), [
 - Restricted Codex/GPT collection remains an optional research path. No extra billed API usage is planned, and no organizer approval of that interpretation is claimed.
 - Preserve pinned artifacts before ending a disposable session. Do not provision additional compute or stop/delete a server without the owner's request.
 
-After the two-week baseline, the broader target remains repeatable dressing progress before the November 17 checkpoint, with an internal submission target of November 16. These remain planned milestones.
+After this evidence sprint, continue the same data and experiment workflow toward repeatable dressing progress before the November 17 checkpoint, with an internal submission target of November 16. These remain planned milestones.
 
 ## Read and continue
 
 | Document | Purpose |
 |---|---|
 | [START_HERE](docs/project/START_HERE.ko.md) | Current clean-server entry point and Codex prompt |
-| [Two-week plan](docs/project/RGBD_TWO_WEEK_PLAN.ko.md) | Implementation scope, daily gates, evaluation and evidence |
+| [Engineering sprint](docs/project/ENGINEERING_SPRINT.ko.md) | Active priorities, daily gates, scope limits and evaluation |
+| [Evidence map](docs/project/EVIDENCE_MAP.md) | Engineering competencies, verified claims and portfolio updates |
+| [Previous two-week plan](docs/project/RGBD_TWO_WEEK_PLAN.ko.md) | Archived schedule; superseded by the active sprint |
 | [STATUS](docs/project/STATUS.md) | Measured state and unresolved items |
 | [RECOVERY](docs/project/RECOVERY.ko.md) / [TODO](docs/project/TODO.ko.md) | Pinned HF revisions, actual commands, remaining work |
 | [TELEOP](docs/project/TELEOP.ko.md) | Human and restricted AI collection design |

@@ -1,19 +1,19 @@
 # 다음 클린 서버에서 시작하기
 
-문서 갱신: **2026-10-22**. 오늘은 문서만 정리했고 새로운 GPU 실행 결과는 없다. 다음 실행은 **2026-10-23 클린 서버에서 시작할 예정**이다. 서버가 실제 준비되었는지 먼저 확인한다.
+문서 갱신: **2026-10-23**. 이번에는 문서만 갱신했으며 새 GPU 결과는 없다. 사용자가 계획을 검토하고 클린 서버를 실제로 연 날을 D0로 기록한다. 기존 날짜에 맞춰 서버가 이미 준비되었다고 추정하지 않는다.
 
-[README](../../README.ko.md) / [현재 상태](STATUS.md) / [2주 계획](RGBD_TWO_WEEK_PLAN.ko.md) / [복원 명령](RECOVERY.ko.md) / [미해결 작업](TODO.ko.md)
+[README](../../README.ko.md) / [현재 상태](STATUS.md) / [실행 스프린트](ENGINEERING_SPRINT.ko.md) / [기술 증거](EVIDENCE_MAP.md) / [복원 명령](RECOVERY.ko.md) / [미해결 작업](TODO.ko.md)
 
 ## 1. 읽을 순서
 
 1. 루트 [AGENTS.md](../../AGENTS.md): 실행 범위, 관측 제한, 기록 원칙.
 2. [STATUS](STATUS.md): 실제 검증과 미완료 항목.
 3. 이 문서: 새 서버에서 재개할 순서.
-4. [RGBD_TWO_WEEK_PLAN](RGBD_TWO_WEEK_PLAN.ko.md): 14일 목표, 데이터/기하 계약, 평가 기준.
+4. [ENGINEERING_SPRINT](ENGINEERING_SPRINT.ko.md)와 [EVIDENCE_MAP](EVIDENCE_MAP.md): E0–E3, 10/28 결과 고정, 기술 증거와 주장 범위.
 5. [RECOVERY](RECOVERY.ko.md)와 [TODO](TODO.ko.md): 고정 HF revision, checksum, 존재하는 실행 명령.
 6. [RULES](../competition/RULES.md), [DATA](../competition/DATA.md), [POLICY](../competition/POLICY.md).
 
-`PLAN.ko.md`는 첫 실행 전 설계의 보존본이다. 현재 우선순위는 이 문서와 2주 계획을 따른다. 이전 세션의 권한이나 살아 있는 서버를 추정하지 않는다.
+`PLAN.ko.md`와 `RGBD_TWO_WEEK_PLAN.ko.md`는 과거 설계·일정의 보존본이다. 현재 우선순위는 이 문서와 ENGINEERING_SPRINT를 따른다. 이전 세션의 권한이나 살아 있는 서버를 추정하지 않는다.
 
 ## 2. 현재 상태를 확인하는 시작 명령
 
@@ -66,6 +66,8 @@ participant/ops/bootstrap.sh --install
 4. 새 서버의 advertised IPv4를 `STRETCH4_STREAM_HOST`로 설정한 뒤 `participant/streaming/start.sh`를 실행한다. 이 경로는 recording과 deferred export를 설정한다.
 5. 실제 Chrome에서 키 입력을 확인하고 새 recording을 정상 종료한다. 첫 연결 성공만으로 전체 조작 검증을 완료 처리하지 않는다.
 
+Chrome 수정은 첫 2시간으로 제한한다. 계속 막히면 실패 로그와 원인을 보존하고 다른 GPU 원격 데스크톱 경로를 검토한다. 대체 수집 성공을 Chrome 성공으로 기록하지 않는다.
+
 아래 GUI 명령은 로컬 화면 또는 별도 원격 데스크톱 경로를 사용할 때의 공식 수집 예다. Chrome streaming helper와 동시에 두 번째 simulator를 시작하지 않는다.
 
 ```bash
@@ -77,43 +79,54 @@ ESC 후 창이 닫혀도 `[Dataset export] READY`까지 기다린다. `capture.j
 
 ## 5. 이후 연결
 
-- 유효한 사람 시연을 얻으면 [2주 계획의 작업 A](RGBD_TWO_WEEK_PLAN.ko.md#4-작업-a-기록-재생-품질-검증)부터 이어간다.
-- checkpoint step 30→31의 재개 시험은 RECOVERY의 명령을 사용하고 별도 run으로 기록한다. 이것이 새로운 사람 시연 학습을 대신하지 않는다.
-- RGB-D 분석 도구는 아직 신규 구현 대상이다. 카메라 좌표계 점군부터 시작하고 depth를 현재 정책 입력에 사용한다고 가정하지 않는다.
-- 전체 900초 self-check는 짧은 실행과 분리해 시간 슬롯을 배정한다. 기존 부분 실행은 통과가 아니다.
-- Codabench 접근이 가능하면 검증된 ZIP을 제출하고 실제 ID/상태를 기록한다. 불가하면 미제출로 남긴다.
+- 유효한 사람 시연 뒤 E1/QC → 작은 E2 → E3로 이어간다. 10/26–27 소량 학습·같은 3개 practice seed 비교, 10/28 증거 고정이 목표다.
+- 학습 전 `participant/pi05/data.py`의 `approved_pipeline_test` 전용 조건에 인간 데이터용 검수 상태를 명세한다. 인간 데이터를 fixture로 재분류하지 않는다.
+- 짧은 학습 LR schedule을 별도로 정하고 실제 update·노출량을 검사한다. 새 인간 SFT는 `pi05_base`와 train-only 정규화로 새 run을 만든다.
+- step 30→31 재개는 선택적인 별도 복원 실험이며 기존 checkpoint를 덮어쓰지 않는다. 인간 데이터 학습을 대신하지 않는다.
+- RGB-D 도구는 신규 구현 대상이다. camera-local 진단으로 제한하고 SAM/새 IK 설치로 E3를 미루지 않는다. 현재 정책에는 depth가 입력되지 않는다.
+- `participant/ops/selfcheck.sh`는 과거 `9d97807`을 checkout한다. 새 ZIP에는 검사 source/base commit을 명시하고 실제 검사 대상을 확인하도록 수정한다. 이 문서는 변경된 CLI가 이미 존재한다고 주장하지 않는다.
+- 전체 900초 self-check는 짧은 비교 뒤 별도 슬롯에 수행한다. Codabench 접근이 가능하면 검증 ZIP의 실제 ID/상태를 남긴다. 미접근·미검증은 그대로 기록한다.
 
 ## 6. 서버의 Codex에 붙여넣을 요청
 
 ```text
 이 저장소에서 PhyRC 2027 연구를 새 클린 서버로 이어갑니다.
 AGENTS.md, README.ko.md, docs/project/STATUS.md,
-docs/project/START_HERE.ko.md, docs/project/RGBD_TWO_WEEK_PLAN.ko.md,
-docs/project/RECOVERY.ko.md, docs/project/TODO.ko.md를 순서대로 읽으세요.
-공식 RULES, DATA, POLICY와 현재 코드를 확인한 뒤 작업하세요.
+docs/project/START_HERE.ko.md, docs/project/ENGINEERING_SPRINT.ko.md,
+docs/project/EVIDENCE_MAP.md, docs/project/RECOVERY.ko.md,
+docs/project/TODO.ko.md를 읽고 RULES, DATA, POLICY와 현재 코드를 확인하세요.
+이전 RGBD_TWO_WEEK_PLAN은 보존본이며 현재 일정이 아닙니다.
 
-이번 세션은 2주 계획의 D1-D2입니다. 현재 서버/checkout을 조사하고,
-고정 산출물 복원, 공식 smoke, 기존 정책의 짧은 재실행,
-Chrome 키보드 검증과 사람 시연 1개의 정상 export를 우선 진행하세요.
+실제 서버 개설일을 D0로 기록하고 E0 복원/공식 smoke/기존 정책 짧은 실행,
+E1 Chrome 키보드 검증과 인간 시연 1개의 정상 export를 먼저 진행하세요.
 실제 사용자 키 입력이 필요한 시점에는 구체적인 조작 안내를 주세요.
-유효 시연 확보 후 QC를 진행하고 다음 단계의 실제 명령을 남기세요.
+Chrome 수정은 우선 2시간으로 제한하고 막히면 실패 근거와 대체 경로를 정리하세요.
+수집 뒤 QC와 작은 camera-local RGB-D 진단, 인간 SFT, 같은 3개 practice seed의
+짧은 base/adapted 비교로 이어갑니다. 서버가 늦게 열리면 규모를 줄이세요.
+10/27부터 새 기능 추가를 멈추고 10/28 결과/영상/복원 근거를 고정하는 것이 목표입니다.
 
-이전의 3 episode/63 transition은 scripted integration_test이고,
+SFT 전에 실제 인간 검수 상태와 loader 허용 조건을 명세하고,
+짧은 학습 LR schedule, train-only 정규화와 update 검증을 준비하세요.
+새 인간 데이터 학습은 pi05_base에서 새 run으로 시작하고 fixture checkpoint를 보존하세요.
+새 ZIP의 self-check는 역사적 9d97807 고정과 구별해 검사 source/base commit을 기록하세요.
+전체 900초 검사와 제출은 짧은 비교 뒤 별도 슬롯으로 진행하세요.
+
+기존 3 episode/63 transition은 scripted integration_test이고,
 30-update 정책은 debug 0점/no_contact입니다. 사람 시연, full self-check,
-Codabench 제출, 새 서버 복원은 증거 없이 완료 처리하지 마세요.
+Codabench 제출, 별도 새 서버 복원은 증거 없이 완료 처리하지 마세요.
 README의 계획 수량을 현재 성과로 옮기지 마세요.
 
 공식 물리/평가/action을 유지하고 공개 관측만 정책과 자동 수집기에 전달하세요.
 raw/audit/info/seed/cloth GT/camera world matrix를 입력으로 사용하지 마세요.
+현재 정책은 RGB/state이며 depth 효과가 검증된 모델로 표현하지 마세요.
 SAM 2와 RGB-D 진단은 공식 simulator와 별도 분석 환경에 두세요.
-수집, 학습, GPU 평가는 순차 실행하세요.
+GPU 수집, 학습, 평가는 순차 실행하세요.
 추가 유료 API나 다른 서버를 열지 말고 서버 종료/삭제도 하지 마세요.
 
 원본 checkpoint와 실패 기록을 보존하고 run별 commit, 설정, 데이터/모델 revision,
 실제 명령, 시간, 결과 JSON, 영상과 checksum을 남기세요.
-세션 종료 전에 필요한 산출물을 원격 보존하고 STATUS와 양쪽 README를
-실제 검증 범위에 맞춰 갱신하세요. 설치/수집/학습/평가가 막히면 실패 근거와
-가장 작은 다음 조치를 기록하고, 실행하지 않은 검증을 통과했다고 쓰지 마세요.
+세션 종료 전에 산출물을 원격 보존하고 STATUS와 양쪽 README를 실제 근거에 맞춰 갱신하세요.
+막히면 가장 작은 다음 조치와 실패 근거를 기록하고 실행하지 않은 검증을 통과라고 쓰지 마세요.
 ```
 
 ## 7. 종료 전
