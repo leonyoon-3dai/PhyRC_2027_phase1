@@ -1,5 +1,10 @@
 # Working in this participant fork
 
+## Current owner instruction — October 26
+
+The owner explicitly resumed genuine human task-demonstration collection on October 26. Prioritize minimal environment verification and live MacBook Chrome access, then human two-robot practice and capture. Update upstream, simplify the main page in Korean, and publish verified visual results as data becomes available. This supersedes the October 23 collection deferral below. New SFT, long policy evaluation and additional paid compute are not prerequisites for today's collection. Read `docs/project/LIVE.ko.md` and `docs/project/sessions/20261026-live.md`. Preserve historical evidence; do not claim success before actual collection/export/QC.
+
+
 This is Leonard Yoon's public PhyRC 2027 Phase 1 project. Read `README.md`, `docs/project/STATUS.md`, `docs/project/START_HERE.ko.md`, `docs/project/ENGINEERING_SPRINT.ko.md`, and `docs/project/EVIDENCE_MAP.md` before working. The 2026-10-23 update is documentation-only. The owner will review the plan before starting the next clean server; D0 is the actual session start, not an assumed calendar date. No new GPU execution is claimed by this update. Inspect the actual server and checkout before resuming. Run collection, training and GPU evaluation sequentially. Do not provision additional paid compute or delete/stop a server without an explicit request. Do not use extra billed GPT APIs without a separate request.
 
 ## Scope and truthfulness
