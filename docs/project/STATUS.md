@@ -2,7 +2,7 @@
 
 ## 2026-10-26 · 사람 시연 수집 재개
 
-사용자 지시로 실제 착의 연습·사람 시연 수집을 재개했습니다. 최소 환경 점검과 크롬 접속을 먼저 준비하며, 학습·긴 정책 검사는 선행하지 않습니다. 공식 최신 upstream은 기존 `4dbbebcf93a06c1bfe12136eadc2e580f30125d6`와 같음을 확인했습니다. 새 서버 prerequisite와 viewer build는 통과했고 공식 build/prepare는 exit 0(169.02초/8.81초), smoke는 진행 중입니다. 오늘 사람 조작·export·착의 성공은 아직 확인 전입니다. [오늘 기록](sessions/20261026-live.md) · [크롬 안내](LIVE.ko.md) · [시연 결과](RESULTS.ko.md)
+사용자 지시로 실제 착의 연습·사람 시연 수집을 재개했습니다. 최소 환경 점검과 크롬 접속을 먼저 준비하며, 학습·긴 정책 검사는 선행하지 않습니다. 공식 최신 upstream은 기존 `4dbbebcf93a06c1bfe12136eadc2e580f30125d6`와 같음을 확인했습니다. 새 서버 prerequisite와 viewer build는 통과했고 공식 build/prepare는 exit 0(169.02초/8.81초), smoke도 355.79초, exit 0·`PHYRC-SMOKE-PASS`로 통과했습니다. 녹화 가능한 스트림의 장면·WebRTC·키보드 브리지·성능 로그를 확인했고 사용자 실제 접속/조작을 기다립니다. [성능 기록](PERFORMANCE.ko.md)을 추가했으며 실제 정책 추론과 고정-step GPU 진단은 미실행입니다. 오늘 사람 조작·export·착의 성공은 아직 확인 전입니다. [오늘 기록](sessions/20261026-live.md) · [크롬 안내](LIVE.ko.md) · [시연 결과](RESULTS.ko.md)
 
 아래 10월 23일 중단 상태는 역사적 기록이며 오늘의 수집 재개 지시를 대체하지 않습니다.
 

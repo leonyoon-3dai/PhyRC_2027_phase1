@@ -1,0 +1,200 @@
+{
+  "scope": "human WebRTC stream with recording; no policy inference; initial world.current_time <= 1s excluded",
+  "windows": 17,
+  "window_wall_s": 86.31951681500004,
+  "simulation_s": 9.05000047199428,
+  "simulation_s_per_wall_s": 0.10484303904747566,
+  "wall_s_per_simulation_s": 9.538067658904604,
+  "min_ratio": 0.09037683818115069,
+  "max_ratio": 0.114775624963386,
+  "profiler_note": "10-second 20Hz main-thread leaf samples: 155/199 in SimulationApp.update; not isolated physics/rendering CPU time",
+  "samples": [
+    {
+      "wall_monotonic_s": 1414.068638757,
+      "window_wall_s": 5.163565138999957,
+      "simulation_time_s": 1.058333388529718,
+      "simulation_dt_s": 0.46666669100522995,
+      "app_update_events": 28,
+      "app_updates_per_wall_s": 5.422610008057891,
+      "simulation_s_per_wall_s": 0.09037683818115069,
+      "reset_detected": false,
+      "mode": "human_stream_no_policy_inference"
+    },
+    {
+      "wall_monotonic_s": 1419.091648489,
+      "window_wall_s": 5.023009731999991,
+      "simulation_time_s": 1.55833341460675,
+      "simulation_dt_s": 0.5000000260770321,
+      "app_update_events": 30,
+      "app_updates_per_wall_s": 5.972514806985059,
+      "simulation_s_per_wall_s": 0.09954191864126632,
+      "reset_detected": false,
+      "mode": "human_stream_no_policy_inference"
+    },
+    {
+      "wall_monotonic_s": 1424.102745379,
+      "window_wall_s": 5.01109689000009,
+      "simulation_time_s": 2.0916667757555842,
+      "simulation_dt_s": 0.5333333611488342,
+      "app_update_events": 32,
+      "app_updates_per_wall_s": 6.385827435078675,
+      "simulation_s_per_wall_s": 0.10643046280209215,
+      "reset_detected": false,
+      "mode": "human_stream_no_policy_inference"
+    },
+    {
+      "wall_monotonic_s": 1429.126294266,
+      "window_wall_s": 5.023548887000061,
+      "simulation_time_s": 2.6250001369044185,
+      "simulation_dt_s": 0.5333333611488342,
+      "app_update_events": 32,
+      "app_updates_per_wall_s": 6.369998723971731,
+      "simulation_s_per_wall_s": 0.1061666509365509,
+      "reset_detected": false,
+      "mode": "human_stream_no_policy_inference"
+    },
+    {
+      "wall_monotonic_s": 1434.220187987,
+      "window_wall_s": 5.0938937209998585,
+      "simulation_time_s": 3.1750001655891538,
+      "simulation_dt_s": 0.5500000286847353,
+      "app_update_events": 33,
+      "app_updates_per_wall_s": 6.478344819789953,
+      "simulation_s_per_wall_s": 0.10797241929436607,
+      "reset_detected": false,
+      "mode": "human_stream_no_policy_inference"
+    },
+    {
+      "wall_monotonic_s": 1439.302568187,
+      "window_wall_s": 5.082380199999989,
+      "simulation_time_s": 3.758333529345691,
+      "simulation_dt_s": 0.5833333637565374,
+      "app_update_events": 35,
+      "app_updates_per_wall_s": 6.88653713864226,
+      "simulation_s_per_wall_s": 0.114775624963386,
+      "reset_detected": false,
+      "mode": "human_stream_no_policy_inference"
+    },
+    {
+      "wall_monotonic_s": 1444.332555779,
+      "window_wall_s": 5.029987591999998,
+      "simulation_time_s": 4.3083335580304265,
+      "simulation_dt_s": 0.5500000286847353,
+      "app_update_events": 33,
+      "app_updates_per_wall_s": 6.560652366714629,
+      "simulation_s_per_wall_s": 0.10934421181465521,
+      "reset_detected": false,
+      "mode": "human_stream_no_policy_inference"
+    },
+    {
+      "wall_monotonic_s": 1449.386052578,
+      "window_wall_s": 5.053496799000186,
+      "simulation_time_s": 4.858333586715162,
+      "simulation_dt_s": 0.5500000286847353,
+      "app_update_events": 33,
+      "app_updates_per_wall_s": 6.530131770644223,
+      "simulation_s_per_wall_s": 0.10883553518695224,
+      "reset_detected": false,
+      "mode": "human_stream_no_policy_inference"
+    },
+    {
+      "wall_monotonic_s": 1454.484677712,
+      "window_wall_s": 5.098625133999803,
+      "simulation_time_s": 5.408333615399897,
+      "simulation_dt_s": 0.5500000286847353,
+      "app_update_events": 33,
+      "app_updates_per_wall_s": 6.47233305699255,
+      "simulation_s_per_wall_s": 0.10787222324251707,
+      "reset_detected": false,
+      "mode": "human_stream_no_policy_inference"
+    },
+    {
+      "wall_monotonic_s": 1459.505062058,
+      "window_wall_s": 5.020384346000128,
+      "simulation_time_s": 5.92500030901283,
+      "simulation_dt_s": 0.5166666936129332,
+      "app_update_events": 31,
+      "app_updates_per_wall_s": 6.174826041894285,
+      "simulation_s_per_wall_s": 0.10291377273227598,
+      "reset_detected": false,
+      "mode": "human_stream_no_policy_inference"
+    },
+    {
+      "wall_monotonic_s": 1464.618537315,
+      "window_wall_s": 5.113475256999891,
+      "simulation_time_s": 6.441667002625763,
+      "simulation_dt_s": 0.5166666936129332,
+      "app_update_events": 31,
+      "app_updates_per_wall_s": 6.0624132203561105,
+      "simulation_s_per_wall_s": 0.10104022560892664,
+      "reset_detected": false,
+      "mode": "human_stream_no_policy_inference"
+    },
+    {
+      "wall_monotonic_s": 1469.823400098,
+      "window_wall_s": 5.204862783000181,
+      "simulation_time_s": 6.975000363774598,
+      "simulation_dt_s": 0.5333333611488342,
+      "app_update_events": 32,
+      "app_updates_per_wall_s": 6.148096757616077,
+      "simulation_s_per_wall_s": 0.1024682846377385,
+      "reset_detected": false,
+      "mode": "human_stream_no_policy_inference"
+    },
+    {
+      "wall_monotonic_s": 1474.86858572,
+      "window_wall_s": 5.045185621999963,
+      "simulation_time_s": 7.491667057387531,
+      "simulation_dt_s": 0.5166666936129332,
+      "app_update_events": 31,
+      "app_updates_per_wall_s": 6.1444716453685775,
+      "simulation_s_per_wall_s": 0.1024078660971291,
+      "reset_detected": false,
+      "mode": "human_stream_no_policy_inference"
+    },
+    {
+      "wall_monotonic_s": 1479.990820749,
+      "window_wall_s": 5.122235028999967,
+      "simulation_time_s": 8.025000418536365,
+      "simulation_dt_s": 0.5333333611488342,
+      "app_update_events": 32,
+      "app_updates_per_wall_s": 6.247272883580955,
+      "simulation_s_per_wall_s": 0.10412122015669377,
+      "reset_detected": false,
+      "mode": "human_stream_no_policy_inference"
+    },
+    {
+      "wall_monotonic_s": 1485.158969998,
+      "window_wall_s": 5.168149248999953,
+      "simulation_time_s": 8.5583337796852,
+      "simulation_dt_s": 0.5333333611488342,
+      "app_update_events": 32,
+      "app_updates_per_wall_s": 6.191771649433705,
+      "simulation_s_per_wall_s": 0.10319619953932935,
+      "reset_detected": false,
+      "mode": "human_stream_no_policy_inference"
+    },
+    {
+      "wall_monotonic_s": 1490.168408023,
+      "window_wall_s": 5.009438025000009,
+      "simulation_time_s": 9.091667140834033,
+      "simulation_dt_s": 0.5333333611488342,
+      "app_update_events": 32,
+      "app_updates_per_wall_s": 6.387942088573887,
+      "simulation_s_per_wall_s": 0.10646570702885047,
+      "reset_detected": false,
+      "mode": "human_stream_no_policy_inference"
+    },
+    {
+      "wall_monotonic_s": 1495.224590433,
+      "window_wall_s": 5.0561824100000194,
+      "simulation_time_s": 9.641667169518769,
+      "simulation_dt_s": 0.5500000286847353,
+      "app_update_events": 33,
+      "app_updates_per_wall_s": 6.526663265694932,
+      "simulation_s_per_wall_s": 0.10877772676811578,
+      "reset_detected": false,
+      "mode": "human_stream_no_policy_inference"
+    }
+  ]
+}

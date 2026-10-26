@@ -6,6 +6,7 @@ This is a human-only free-viewport streaming path, never an AI observation tool.
 """
 import json
 import os
+from pathlib import Path
 import queue
 import runpy
 import sys
@@ -76,6 +77,17 @@ def main():
         original_acquire=carb.input.acquire_input_interface
         iface=original_acquire()
         callbacks=[]
+        # Passive performance reporting only; never changes dt, actions or physics.
+        metrics_path=os.environ.get('STRETCH4_PERF_LOG')
+        metrics_file=None
+        if metrics_path:
+            try:
+                path=Path(metrics_path)
+                path.parent.mkdir(parents=True,exist_ok=True)
+                metrics_file=path.open('x',buffering=1)
+            except OSError as error:
+                print(f'[Participant performance] logging unavailable: {error}',flush=True)
+        metrics={'wall':time.monotonic(),'sim':None,'events':0}
         class Proxy:
             def subscribe_to_keyboard_events(self,keyboard,callback):
                 if getattr(callback,'__name__','') != 'on_keyboard_event':
@@ -90,6 +102,23 @@ def main():
         carb.input.acquire_input_interface=lambda:Proxy()
         def update(event):
             global KEYS
+            if metrics_file:
+                metrics['events']+=1
+                now=time.monotonic()
+                if now-metrics['wall']>=5:
+                    from isaacsim.core.api import World
+                    world=World.instance()
+                    sim=float(world.current_time) if world else None
+                    wall_dt=now-metrics['wall']
+                    sim_dt=sim-metrics['sim'] if sim is not None and metrics['sim'] is not None else None
+                    row={'wall_monotonic_s':now,'window_wall_s':wall_dt,'simulation_time_s':sim,
+                         'simulation_dt_s':sim_dt,'app_update_events':metrics['events'],
+                         'app_updates_per_wall_s':metrics['events']/wall_dt,
+                         'simulation_s_per_wall_s':sim_dt/wall_dt if sim_dt is not None and sim_dt>=0 else None,
+                         'reset_detected':sim_dt is not None and sim_dt<0,
+                         'mode':'human_stream_no_policy_inference'}
+                    metrics_file.write(json.dumps(row)+'\n')
+                    metrics.update(wall=now,sim=sim,events=0)
             if not callbacks:return
             with LOCK:
                 if KEYS and time.monotonic()-LAST>.75:
