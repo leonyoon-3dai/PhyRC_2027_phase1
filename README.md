@@ -14,13 +14,15 @@ Leonard Yoon, Ph.D. · [공식 대회](https://emprise.cs.cornell.edu/phyrc/chal
 
 ### 시연 결과
 
-오늘 크롬 두 로봇 조작을 확인했습니다. 첫 녹화는 RAM 부족으로 중단되어 재시작·진단 중입니다. [성능·실패 그래프](docs/project/PERFORMANCE.ko.md)
+오늘 크롬 두 로봇 조작과 **원본 727개 전이 정상 보존**을 확인했습니다. RGB-D 변환·검수는 대기 중입니다. 첫 RAM 부족 실패도 보존했습니다. [성능·실패 그래프](docs/project/PERFORMANCE.ko.md)
+
+![직접 수집한 사람 조작 명령 활동](docs/project/assets/human-command-activity.svg)
 
 **착의 성공 시연은 아직 없습니다.** 검증된 영상과 데이터가 확보되면 이곳에 대표 장면·결과를 먼저 기록합니다. 성공과 실패를 구분해 보존합니다. [시연 기록 보기](docs/project/RESULTS.ko.md)
 
 ```mermaid
 flowchart LR
-    A[환경 복원 · 이전 검증 완료] --> B[크롬 조작 확인 · RAM 진단]
+    A[환경 복원 · 이전 검증 완료] --> B[크롬 조작 · 원본 보존 완료]
     B --> C[시연 저장 · 데이터 검사]
     C --> D[성공·실패 영상 기록]
     style A fill:#d9f0e5,stroke:#278363

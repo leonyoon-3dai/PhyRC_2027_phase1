@@ -47,3 +47,20 @@ participant/ops/bootstrap.sh --install
 ```
 
 GPU 작업은 하나씩 실행합니다. 오늘 사람 수집에는 과거 정책 모델이나 학습 상태를 먼저 복원할 필요가 없습니다. 과거 실험 재현이 필요할 때만 [복원 안내](RECOVERY.ko.md)를 따릅니다.
+
+## 연속 연습 후 변환을 모아서 실행
+
+`STRETCH4_DEFER_EXPORT=1 participant/streaming/start.sh`는 ESC 뒤 complete 원본과 export request를 저장하고 RGB-D 변환을 뒤로 미룹니다. 첫 기본값은 기존처럼 자동 변환입니다. `complete` 원본과 `READY` 학습 파일은 다릅니다. 다음 simulator와 exporter는 동시에 실행하지 않습니다.
+
+2026-10-26 정상 보존한 727전이 원본의 실제 대기 명령:
+
+```bash
+./run.sh python /scripts/export_policy_dataset.py \
+  --request /output/training_export_requests/20261026T060306Z-stream-28357.json
+```
+
+이 명령은 수집이 끝난 뒤 실행합니다. 이전 부분 HDF5가 있으면 덮어쓰지 않고 새 `--output` 경로를 사용합니다.
+
+## 사용자 요청의 옷 옆 연습 배치
+
+`STRETCH4_PRACTICE_LAYOUT=garment_side`와 `STRETCH4_RANDOMIZE=0`을 함께 지정하면 두 로봇을 원래 파란 옷 테이블 양옆에서 시작시킵니다. 네 테이블·옷·사람·물리·지정 카메라는 유지하며 초기 로봇 배치와 사람/옷 무작위 초기화만 연습용으로 고정합니다. 기본값에는 적용되지 않고 공식 평가에도 사용하지 않습니다. `STRETCH4_PRACTICE_LAYOUT_LOG`에 배치 JSON을 남깁니다. 데이터 출처·분할에서도 이 연습 배치를 구분합니다.

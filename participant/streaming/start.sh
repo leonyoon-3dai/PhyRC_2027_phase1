@@ -11,7 +11,12 @@ chmod g+rwx output/training_export_requests
 export STRETCH4_TRAINING_EXPORT_REQUEST="$request"
 ./run.sh python /scripts/stream_teleop.py
 if [[ -f "output/${request#/output/}" ]]; then
-    ./run.sh python /scripts/export_policy_dataset.py --request "$request"
+    if [[ "${STRETCH4_DEFER_EXPORT:-0}" == 1 ]]; then
+        printf 'Capture saved; RGBD export queued: %s\n' "$request"
+        printf 'After collection, run: ./run.sh python /scripts/export_policy_dataset.py --request %q\n' "$request"
+    else
+        ./run.sh python /scripts/export_policy_dataset.py --request "$request"
+    fi
 else
     printf 'No completed capture request; inspect teleop logs and capture status.\n' >&2
     exit 1

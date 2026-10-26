@@ -5,6 +5,7 @@ Host firewall must restrict 49100/TCP,47998/UDP,8210/TCP,8211/TCP before launch.
 This is a human-only free-viewport streaming path, never an AI observation tool.
 """
 import json
+import importlib
 import os
 from pathlib import Path
 import queue
@@ -148,6 +149,29 @@ def main():
         print('[Participant stream] WebRTC enabled; human viewport only',flush=True)
         return app
     isaacsim.SimulationApp=start
-    runpy.run_module('Env_StandAlone.Teleop_TShirt_Stretch4_Env',run_name='__main__',alter_sys=True)
+    if os.environ.get('STRETCH4_PRACTICE_LAYOUT')=='garment_side':
+        # Owner-requested training reset layout, never an evaluation setting.
+        # Keep the four tables, all geometry/physics and designated cameras.
+        if os.environ.get('STRETCH4_RANDOMIZE')!='0':
+            raise ValueError('garment_side practice requires fixed original garment placement')
+        module=importlib.import_module('Env_StandAlone.Teleop_TShirt_Stretch4_Env')
+        table_x=float(module.BOX_POS[0]+module.GARMENT_X_OFFSETS[2])
+        table_y=float(module.BOX_POS[1])
+        half_pitch=float(module._BOX_PITCH)/2
+        module.ROBOT1_SPAWN=(table_x-half_pitch,table_y,0.03)
+        module.ROBOT2_SPAWN=(table_x+half_pitch,table_y,0.03)
+        module.ROBOT1_YAW_DEG=0.0
+        module.ROBOT2_YAW_DEG=180.0
+        layout={'mode':'human_training_practice_only','randomization':False,
+                'robot_0_spawn':module.ROBOT1_SPAWN,'robot_1_spawn':module.ROBOT2_SPAWN,
+                'robot_yaw_deg':[0.0,180.0],'physics_and_designated_cameras_unchanged':True,
+                'not_default_evaluation_layout':True}
+        layout_path=os.environ.get('STRETCH4_PRACTICE_LAYOUT_LOG')
+        if layout_path:
+            Path(layout_path).write_text(json.dumps(layout,indent=2)+'\n')
+        print('[Participant practice layout] '+json.dumps(layout),flush=True)
+        module.main()
+    else:
+        runpy.run_module('Env_StandAlone.Teleop_TShirt_Stretch4_Env',run_name='__main__',alter_sys=True)
 
 if __name__=='__main__':main()

@@ -1,0 +1,22 @@
+{
+  "source": "20261026T060349_758865Z_8bb3da",
+  "archive_complete": true,
+  "committed_chunks": 592,
+  "raw_frames": 9462,
+  "frame_kinds": {
+    "initial": 1,
+    "policy_observation": 730,
+    "physics": 8724,
+    "before_reset": 3,
+    "after_reset": 3,
+    "final": 1
+  },
+  "episodes": 3,
+  "policy_action_events": 727,
+  "nonzero_policy_action_events": 110,
+  "committed_chunk_hashes_and_frame_tick_continuity_pass": true,
+  "rgbd_export_complete": false,
+  "review": "pending_export_qc_not_for_sft",
+  "purpose": "human_teleoperation_practice",
+  "not_dressing_success": true
+}

@@ -2,7 +2,7 @@
 
 ## 2026-10-26 · 사람 시연 수집 재개
 
-사용자 지시로 실제 착의 연습·사람 시연 수집을 재개했습니다. 최소 환경 점검과 크롬 접속을 먼저 준비하며, 학습·긴 정책 검사는 선행하지 않습니다. 공식 최신 upstream은 기존 `4dbbebcf93a06c1bfe12136eadc2e580f30125d6`와 같음을 확인했습니다. 새 서버 prerequisite와 viewer build는 통과했고 공식 build/prepare는 exit 0(169.02초/8.81초), smoke도 355.79초, exit 0·`PHYRC-SMOKE-PASS`로 통과했습니다. 사용자가 실제 Chrome 두 로봇 조작을 확인했습니다. 첫 수집은 RAM 급증에 따른 kernel OOM으로 중단되어 complete=false입니다. 넓은 조작 시점과 RAM guard를 적용해 재시작·진단 중입니다. [성능 기록](PERFORMANCE.ko.md)을 추가했으며 실제 정책 추론과 고정-step GPU 진단은 미실행입니다. 오늘 사람 조작·export·착의 성공은 아직 확인 전입니다. [오늘 기록](sessions/20261026-live.md) · [크롬 안내](LIVE.ko.md) · [시연 결과](RESULTS.ko.md)
+사용자 지시로 실제 착의 연습·사람 시연 수집을 재개했습니다. 최소 환경 점검과 크롬 접속을 먼저 준비하며, 학습·긴 정책 검사는 선행하지 않습니다. 공식 최신 upstream은 기존 `4dbbebcf93a06c1bfe12136eadc2e580f30125d6`와 같음을 확인했습니다. 새 서버 prerequisite와 viewer build는 통과했고 공식 build/prepare는 exit 0(169.02초/8.81초), smoke도 355.79초, exit 0·`PHYRC-SMOKE-PASS`로 통과했습니다. 사용자가 실제 Chrome 두 로봇 조작을 확인했습니다. 첫 수집은 RAM 급증에 따른 kernel OOM으로 중단되어 complete=false입니다. 넓은 시점 재시작은 약 8.35GiB RSS로 정상 종료했고 3 episodes·727전이·36.35초 원본을 complete=true로 보존했습니다. 592개 청크·9462 raw frames의 checksum/연속성 통과, 비영 action 110개. RGB-D 변환과 학습 적합성 검수는 아직입니다. 이후 사용자 요청의 옷 옆 로봇/정면 카메라 고정 연습 배치로 새 수집을 시작했습니다. 공식 평가 기본 배치와 구분합니다. [성능 기록](PERFORMANCE.ko.md)을 추가했으며 실제 정책 추론과 고정-step GPU 진단은 미실행입니다. 오늘 사람 조작·export·착의 성공은 아직 확인 전입니다. [오늘 기록](sessions/20261026-live.md) · [크롬 안내](LIVE.ko.md) · [시연 결과](RESULTS.ko.md)
 
 아래 10월 23일 중단 상태는 역사적 기록이며 오늘의 수집 재개 지시를 대체하지 않습니다.
 
