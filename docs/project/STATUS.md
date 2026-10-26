@@ -1,5 +1,14 @@
 # Project status
 
+## 최신: 사람의 양팔 파지·들기·운반과 조작 UI 개선
+
+사용자 시연 `20261026T061140_546693Z_ab9e06`을 complete=true로 보존했습니다. 2,225전이/111.25초 simulation, 1,168.119초 collection wall, 28,928 raw states. 원본 reader/hash 검사와 상태 재생을 마쳤고, 파지·들기·사람 쪽 운반을 실제 이미지에서 확인했습니다. [33초 편집 시연과 근거](DEMO_20261026.ko.md). 전체 착의와 공식 점수는 미확인입니다. RGB-D 학습 export와 원격 raw 업로드는 대기입니다.
+
+새 Chrome UI: 로봇 좌표 투영 방향 화살표, 클릭 이동, 로봇별 큰 조작 버튼, 정밀 모드, 짧은 탭 최소 3 update 보존, 수신/반영 구분, blur/watchdog 우선 해제. 입력 상태 5개 단위 검사와 mocked Chromium 상호작용 검사 통과. 실제 두 로봇 투영 좌표/8개 방향 생성 확인 후 `20261026-live-controls-v2`로 재실행했습니다. 사용자의 실제 UX 개선 확인은 다음 피드백에서 판단합니다.
+
+1280/기록 ON, 960/기록 ON, 1280/기록 OFF의 각 120-control-frame 진단은 모두 exit 0. 약 10초 warm 창의 RTF 0.1045/0.1067/0.1187. 단일 반복·동시 CPU 편집의 한계가 있으며 [성능 상세](PERFORMANCE.ko.md)에 구간별 수치를 기록했습니다. 진단 자료는 사람 시연 수량에 포함하지 않습니다. 실제 학습 정책 추론은 아직 미측정입니다.
+
+
 ## 2026-10-26 · 사람 시연 수집 재개
 
 사용자 지시로 실제 착의 연습·사람 시연 수집을 재개했습니다. 최소 환경 점검과 크롬 접속을 먼저 준비하며, 학습·긴 정책 검사는 선행하지 않습니다. 공식 최신 upstream은 기존 `4dbbebcf93a06c1bfe12136eadc2e580f30125d6`와 같음을 확인했습니다. 새 서버 prerequisite와 viewer build는 통과했고 공식 build/prepare는 exit 0(169.02초/8.81초), smoke도 355.79초, exit 0·`PHYRC-SMOKE-PASS`로 통과했습니다. 사용자가 실제 Chrome 두 로봇 조작을 확인했습니다. 첫 수집은 RAM 급증에 따른 kernel OOM으로 중단되어 complete=false입니다. 넓은 시점 재시작은 약 8.35GiB RSS로 정상 종료했고 3 episodes·727전이·36.35초 원본을 complete=true로 보존했습니다. 592개 청크·9462 raw frames의 checksum/연속성 통과, 비영 action 110개. RGB-D 변환과 학습 적합성 검수는 아직입니다. 이후 사용자 요청의 옷 옆 로봇/정면 카메라 고정 연습 배치로 새 수집을 시작했습니다. 공식 평가 기본 배치와 구분합니다. [성능 기록](PERFORMANCE.ko.md)을 추가했으며 실제 정책 추론과 고정-step GPU 진단은 미실행입니다. 오늘 사람 조작·export·착의 성공은 아직 확인 전입니다. [오늘 기록](sessions/20261026-live.md) · [크롬 안내](LIVE.ko.md) · [시연 결과](RESULTS.ko.md)

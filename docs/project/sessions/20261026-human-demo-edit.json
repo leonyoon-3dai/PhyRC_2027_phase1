@@ -1,0 +1,32 @@
+{
+  "source_run": "20261026T061140_546693Z_ab9e06",
+  "source_manifest_sha256": "4312c5c5d9d04128b319a8789bd87664b4e05897166aa862303126aa134ae8a5",
+  "video_duration_s": 33.08,
+  "source_simulation_s": 111.25,
+  "collection_wall_s": 1168.119,
+  "speed_segments": [
+    {
+      "start_s": 0,
+      "end_s": 71.15,
+      "simulation_speed": 12
+    },
+    {
+      "start_s": 71.15,
+      "end_s": 94,
+      "simulation_speed": 2
+    },
+    {
+      "start_s": 94,
+      "end_s": 111.20000579953194,
+      "simulation_speed": 1.5
+    }
+  ],
+  "physics_resimulated": false,
+  "presentation_only": true,
+  "full_dressing_success": false,
+  "notes": [
+    "Captioned edit; original archive preserved",
+    "5Hz recorded-state sampling; repeated frames on 25fps output; no generated in-between states",
+    "Intro/outro holds and stage-dependent playback speed; not real-time robot speed"
+  ]
+}

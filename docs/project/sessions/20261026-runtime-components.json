@@ -1,0 +1,158 @@
+{
+  "scope": "short matched neutral-command teleop diagnostics; no trained policy; no client video transport load controlled; one run per condition; 120 control frames each; only warm window after simulation time >0.5s",
+  "limitations": [
+    "10-second warm windows, not replicated confidence intervals",
+    "Physics event interval is host wall time between late pre and early post physics callbacks; not isolated GPU kernel time",
+    "Inclusive counters overlap; do not add app_update to contained callbacks",
+    "CPU video encoding ran concurrently; absolute speed can be affected"
+  ],
+  "conditions": [
+    {
+      "condition": "1280-recording",
+      "warm_window_wall_s": 10.208949533000123,
+      "warm_simulation_s": 1.0666667222976685,
+      "simulation_s_per_wall_s": 0.10448349449173985,
+      "wall_s_per_simulation_s": 9.57088968802682,
+      "ms_per_control_frame": 159.51482813378036,
+      "components_inclusive": {
+        "app_update": {
+          "wall_s": 9.550843465995058,
+          "calls": 64,
+          "wall_fraction": 0.9355363580868182,
+          "mean_call_ms": 149.23192915617278
+        },
+        "policy_boundary_capture": {
+          "wall_s": 0.3179752150008426,
+          "calls": 22,
+          "wall_fraction": 0.031146712399057048,
+          "mean_call_ms": 14.453418863674662
+        },
+        "drive_robot": {
+          "wall_s": 0.291744648000531,
+          "calls": 128,
+          "wall_fraction": 0.028577342561786127,
+          "mean_call_ms": 2.2792550625041486
+        },
+        "cloth_pre": {
+          "wall_s": 0.5074366189992361,
+          "calls": 256,
+          "wall_fraction": 0.04970507664465991,
+          "mean_call_ms": 1.982174292965766
+        },
+        "physics_event_interval": {
+          "wall_s": 6.115545757005748,
+          "calls": 256,
+          "wall_fraction": 0.5990377107103361,
+          "mean_call_ms": 23.888850613303703
+        },
+        "cloth_post": {
+          "wall_s": 0.23519730499447178,
+          "calls": 256,
+          "wall_fraction": 0.023038345349264737,
+          "mean_call_ms": 0.9187394726346554
+        },
+        "archive_physics_callback": {
+          "wall_s": 0.3959198090042264,
+          "calls": 256,
+          "wall_fraction": 0.03878164033668964,
+          "mean_call_ms": 1.5465617539227594
+        }
+      },
+      "rss_gib": 8.241447448730469
+    },
+    {
+      "condition": "960-recording",
+      "warm_window_wall_s": 10.155719214999408,
+      "warm_simulation_s": 1.0833333898335695,
+      "simulation_s_per_wall_s": 0.10667224712490564,
+      "wall_s_per_simulation_s": 9.374509555696065,
+      "ms_per_control_frame": 156.24182592826773,
+      "components_inclusive": {
+        "app_update": {
+          "wall_s": 9.428468103995328,
+          "calls": 65,
+          "wall_fraction": 0.9283899942871626,
+          "mean_call_ms": 145.05335544608198
+        },
+        "policy_boundary_capture": {
+          "wall_s": 0.3607757009986017,
+          "calls": 22,
+          "wall_fraction": 0.03552438713210551,
+          "mean_call_ms": 16.39889549993644
+        },
+        "drive_robot": {
+          "wall_s": 0.30915160000222386,
+          "calls": 130,
+          "wall_fraction": 0.030441133065753224,
+          "mean_call_ms": 2.3780892307863373
+        },
+        "cloth_pre": {
+          "wall_s": 0.5598133040011817,
+          "calls": 260,
+          "wall_fraction": 0.05512295999424343,
+          "mean_call_ms": 2.153128092312237
+        },
+        "physics_event_interval": {
+          "wall_s": 6.069969322008546,
+          "calls": 260,
+          "wall_fraction": 0.5976897542661039,
+          "mean_call_ms": 23.346035853879023
+        },
+        "cloth_post": {
+          "wall_s": 0.2680503669944301,
+          "calls": 260,
+          "wall_fraction": 0.02639403092186078,
+          "mean_call_ms": 1.0309629499785773
+        },
+        "archive_physics_callback": {
+          "wall_s": 0.43573747299524257,
+          "calls": 260,
+          "wall_fraction": 0.04290562428623308,
+          "mean_call_ms": 1.6759133576740097
+        }
+      },
+      "rss_gib": 8.254512786865234
+    },
+    {
+      "condition": "1280-no-recording",
+      "warm_window_wall_s": 10.112795237000682,
+      "warm_simulation_s": 1.200000062584877,
+      "simulation_s_per_wall_s": 0.11866156037594021,
+      "wall_s_per_simulation_s": 8.427328924647782,
+      "ms_per_control_frame": 140.45548207746302,
+      "components_inclusive": {
+        "app_update": {
+          "wall_s": 9.698008525997466,
+          "calls": 72,
+          "wall_fraction": 0.9589839701801145,
+          "mean_call_ms": 134.69456286107592
+        },
+        "drive_robot": {
+          "wall_s": 0.3680105740158979,
+          "calls": 144,
+          "wall_fraction": 0.036390588891726125,
+          "mean_call_ms": 2.5556289862215134
+        },
+        "cloth_pre": {
+          "wall_s": 0.5306031299987808,
+          "calls": 288,
+          "wall_fraction": 0.052468493385232476,
+          "mean_call_ms": 1.8423719791624331
+        },
+        "physics_event_interval": {
+          "wall_s": 6.707180276004692,
+          "calls": 288,
+          "wall_fraction": 0.6632370298040318,
+          "mean_call_ms": 23.28882040279407
+        },
+        "cloth_post": {
+          "wall_s": 0.26573689499036846,
+          "calls": 288,
+          "wall_fraction": 0.02627729413704439,
+          "mean_call_ms": 0.9226975520498905
+        }
+      },
+      "rss_gib": 8.30307388305664
+    }
+  ]
+}

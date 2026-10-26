@@ -15,3 +15,11 @@
 ![사람 시연 명령 활동](assets/human-command-activity.svg)
 
 명령 활동 도표이며 실제 착의 진행률·성공률이 아닙니다. 정상 보존한 원본은 초기 공식 배치에서의 조작 연습입니다. 이후 옷 옆 로봇·정면 카메라 연습 배치는 사용자 요청으로 별도 수집하며 공식 평가 결과로 해석하지 않습니다.
+
+## 2026-10-26 · 양팔 파지·들기·사람 쪽 운반
+
+[33초 자막 시연 영상](../videos/20261026-human-pickup-transport.mp4) · [과정과 편집 설명](DEMO_20261026.ko.md)
+
+![실제 파지·들기·운반 장면](assets/20261026-human-demo-stages.jpg)
+
+원본 run `20261026T061140_546693Z_ab9e06`: 2,225 transitions/111.25 simulation seconds, collection wall 1,168.119초, raw 28,928 states, complete=true. 원본 reader 전체 검사와 기록 상태 재생을 마쳤습니다. 실제 사람 조작의 부분 과제 성과이며 전체 착의·자율 정책·공식 점수 결과는 아닙니다. 이 run의 RGB-D 학습 파일 변환·검수와 큰 원본 원격 업로드는 아직입니다.
