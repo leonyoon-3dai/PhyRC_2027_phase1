@@ -1,6 +1,14 @@
 # Working in this participant fork
 
-## Current owner instruction — October 26
+## Latest owner handoff — October 26 session ended
+
+The owner ended today's work and requested stopping the demonstration, preserving artifacts, and updating the README/handoff. Simulator and viewer are stopped; GPU 0 MiB was verified. Do not restart this server's GPU work automatically. The owner will open a clean server, retry the current UI, and provide feedback. Their assessment is "UI slightly better, many improvements still needed"; do not claim usability completion.
+
+Next clean server: read `docs/project/END_20261026.ko.md` and the rewritten `START_HERE.ko.md`; perform minimal setup/smoke, then restore Chrome human practice with the existing controls before adding features. No new SFT, long evaluation or full prior RGB-D export as a prerequisite. New server/client IPs must be obtained. Preserve RAM guard, passive timers and deferred export. The owner requested a fixed garment-side human practice reset; this is explicitly distinct from default evaluation, and official physics/geometry/action limits/cameras remain unchanged.
+
+Today: 4 complete human-practice collections, 6 episodes, 5571 transitions; original pickup/transport demo is 2225 transitions with a published 33-second edit. Final UI retry is 1851 transitions. Full dressing, training RGB-D/QC, new policy training and policy-inference timing remain unverified. Initial OOM growth cause is unresolved. HF preservation/verification status is in END_20261026; do not assume local-only artifacts survive server replacement. No server power/deletion was performed.
+
+## Earlier October 26 start instruction (historical)
 
 The owner explicitly resumed genuine human task-demonstration collection on October 26. Prioritize minimal environment verification and live MacBook Chrome access, then human two-robot practice and capture. Update upstream, simplify the main page in Korean, and publish verified visual results as data becomes available. This supersedes the October 23 collection deferral below. New SFT, long policy evaluation and additional paid compute are not prerequisites for today's collection. Read `docs/project/LIVE.ko.md` and `docs/project/sessions/20261026-live.md`. Preserve historical evidence; do not claim success before actual collection/export/QC.
 

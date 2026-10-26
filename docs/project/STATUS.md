@@ -1,5 +1,14 @@
 # Project status
 
+## 2026-10-26 · owner-ended session / 오늘 종료
+
+시연과 viewer를 정상 종료했고 GPU 0MiB 및 streaming listener 종료를 확인했습니다. 서버 power/deletion은 수행하지 않았습니다. 사용자는 UI가 조금 나아졌으나 개선할 점이 많다고 평가했고, 다음 클린 서버에서 같은 UI로 재시도·피드백하기로 했습니다. 오늘 작업을 자동 재개하지 않습니다.
+
+4 complete human-practice collections / 6 episodes / 5571 transitions (278.55 simulation seconds); final retry 1851 transitions, complete raw archive. RGB-D training export/QC remains pending. The 2225-transition pickup/transport demo and 33-second edit are preserved; full dressing is unverified. HF upload, full immutable-revision re-download and SHA256 checks passed. [Final preservation and next commands](END_20261026.ko.md) · [Clean-server entry](START_HERE.ko.md).
+
+이하 기록은 진행 중 메모를 포함한 역사적 근거이며 종료 상태를 대체하지 않습니다.
+
+
 ## 최신: 사람의 양팔 파지·들기·운반과 조작 UI 개선
 
 사용자 시연 `20261026T061140_546693Z_ab9e06`을 complete=true로 보존했습니다. 2,225전이/111.25초 simulation, 1,168.119초 collection wall, 28,928 raw states. 원본 reader/hash 검사와 상태 재생을 마쳤고, 파지·들기·사람 쪽 운반을 실제 이미지에서 확인했습니다. [33초 편집 시연과 근거](DEMO_20261026.ko.md). 전체 착의와 공식 점수는 미확인입니다. RGB-D 학습 export와 원격 raw 업로드는 대기입니다.

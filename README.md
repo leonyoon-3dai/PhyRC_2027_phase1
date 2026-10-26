@@ -5,11 +5,15 @@ Leonard Yoon, Ph.D. · [공식 대회](https://emprise.cs.cornell.edu/phyrc/chal
 
 맥북 크롬에서 두 로봇을 직접 조작하고, 시연·데이터·실행 성능을 기록하는 참가 연구 프로젝트입니다.
 
+**2026-10-26 종료:** 시연·뷰어 정지, 원본 보존. UI는 추가 개선이 필요하며 다음 클린 서버에서 재시도·피드백합니다. [종료·복원 인계](docs/project/END_20261026.ko.md)
+
 ### 직접 수행한 시연 · 양팔 파지와 운반
 
 [![직접 수집한 옷 파지·들기·운반 시연 미리보기](docs/project/assets/20261026-human-demo-preview.gif)](docs/videos/20261026-human-pickup-transport.mp4)
 
 **옷 양옆 접근 → 두 로봇으로 파지·들기 → 사람 쪽으로 운반.**
+오늘 정상 원본은 **4개 수집·6개 episode·5,571전이**이며, 아래 영상은 그중 파지·운반 시연입니다.
+
 [자막 영상 · 33초](docs/videos/20261026-human-pickup-transport.mp4) · [과정·배속·원본 설명](docs/project/DEMO_20261026.ko.md)
 
 | 직접 수집한 근거 | 확인한 범위 |
@@ -24,8 +28,8 @@ Leonard Yoon, Ph.D. · [공식 대회](https://emprise.cs.cornell.edu/phyrc/chal
 
 ### 앞으로 할 작업
 
-1. 로봇 방향 화살표·화면 버튼·정밀 모드로 조작을 개선하고 반복 연습합니다.
-2. 옷 운반에서 **소매 진입·착의**로 이어지는 시연과 실패 사례를 모읍니다.
+1. **다음 클린 서버에서** 현재 방향 화살표·버튼·정밀 UI로 짧게 재시도하고 사용자 피드백을 받습니다.
+2. 피드백에 따라 조작·시야·반응을 개선한 뒤 **소매 진입·착의**와 실패 사례를 이어갑니다.
 3. 수집 후 RGB-D 변환·시간 정렬·데이터 검수를 마치고, 같은 조건에서 실행 속도를 계속 비교합니다.
 
 ### 그동안 한 작업 · 이 프로젝트의 구현
@@ -49,7 +53,7 @@ Leonard Yoon, Ph.D. · [공식 대회](https://emprise.cs.cornell.edu/phyrc/chal
 
 ### 클린 서버에서 이어가기
 
-[시작 안내](docs/project/START_HERE.ko.md) → [크롬 조작·변환 명령](docs/project/LIVE.ko.md) → [현재 상태](docs/project/STATUS.md). 소스는 이 저장소에, 큰 원본은 저장 위치·해시와 함께 별도로 보존합니다. 오늘 원본의 원격 업로드는 아직입니다.
+[시작 안내](docs/project/START_HERE.ko.md) → [크롬 조작·변환 명령](docs/project/LIVE.ko.md) → [현재 상태](docs/project/STATUS.md). 소스는 이 저장소에, 큰 원본은 저장 위치·해시와 함께 별도로 보존합니다. 오늘 자료는 [고정 HF 자료와 복원 인계](docs/project/END_20261026.ko.md)에 연결했습니다.
 
 <details>
 <summary>공식 데모·관측 예시·이전 기록</summary>
