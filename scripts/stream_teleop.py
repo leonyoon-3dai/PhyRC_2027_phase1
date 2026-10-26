@@ -9,6 +9,7 @@ import os
 from pathlib import Path
 import queue
 import runpy
+import signal
 import sys
 import threading
 import time
@@ -87,7 +88,8 @@ def main():
                 metrics_file=path.open('x',buffering=1)
             except OSError as error:
                 print(f'[Participant performance] logging unavailable: {error}',flush=True)
-        metrics={'wall':time.monotonic(),'sim':None,'events':0}
+        metrics={'wall':time.monotonic(),'sim':None,'events':0,'stop_requested':False}
+        max_rss_gib=float(os.environ.get('STRETCH4_MAX_RSS_GIB','0'))
         class Proxy:
             def subscribe_to_keyboard_events(self,keyboard,callback):
                 if getattr(callback,'__name__','') != 'on_keyboard_event':
@@ -111,14 +113,24 @@ def main():
                     sim=float(world.current_time) if world else None
                     wall_dt=now-metrics['wall']
                     sim_dt=sim-metrics['sim'] if sim is not None and metrics['sim'] is not None else None
+                    status=dict(line.split(':',1) for line in Path('/proc/self/status').read_text().splitlines() if ':' in line)
+                    meminfo=dict(line.split(':',1) for line in Path('/proc/meminfo').read_text().splitlines() if ':' in line)
+                    rss_gib=int(status['VmRSS'].split()[0])/1024**2
+                    available_gib=int(meminfo['MemAvailable'].split()[0])/1024**2
                     row={'wall_monotonic_s':now,'window_wall_s':wall_dt,'simulation_time_s':sim,
                          'simulation_dt_s':sim_dt,'app_update_events':metrics['events'],
                          'app_updates_per_wall_s':metrics['events']/wall_dt,
                          'simulation_s_per_wall_s':sim_dt/wall_dt if sim_dt is not None and sim_dt>=0 else None,
                          'reset_detected':sim_dt is not None and sim_dt<0,
+                         'process_rss_gib':rss_gib,'host_available_gib':available_gib,
                          'mode':'human_stream_no_policy_inference'}
                     metrics_file.write(json.dumps(row)+'\n')
                     metrics.update(wall=now,sim=sim,events=0)
+                    if max_rss_gib>0 and callbacks and not metrics['stop_requested'] and (rss_gib>=max_rss_gib or available_gib<16):
+                        metrics['stop_requested']=True
+                        metrics_file.write(json.dumps({'event':'memory_guard_graceful_stop','process_rss_gib':rss_gib,'host_available_gib':available_gib})+'\n')
+                        print('[Participant performance] RAM guard requested graceful capture stop',flush=True)
+                        os.kill(os.getpid(),signal.SIGTERM)
             if not callbacks:return
             with LOCK:
                 if KEYS and time.monotonic()-LAST>.75:

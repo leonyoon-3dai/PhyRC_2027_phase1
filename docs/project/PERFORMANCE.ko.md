@@ -10,6 +10,16 @@
 
 초기화 중 20Hz/10초 py-spy 표본 199개는 모두 Isaac Sim `SimulationApp.update()`에 있었습니다. Python 표본만으로 내부 물리·렌더링·shader 작업을 분리할 수 없습니다. native profiler는 심볼 처리 대기로 수집이 시작되지 않아 중단했으며, 추가적인 native 병목 결론은 없습니다. 프로파일링이 포함된 cold smoke 시간은 엄밀한 무계측 기준선이 아닙니다.
 
+## RAM 부족 종료 · 확인된 실패
+
+![호스트 RAM 급증과 OOM](assets/ram-growth.svg)
+
+사용자가 두 로봇 조작을 확인한 첫 스트림이 06:00:28 UTC에 커널 global OOM으로 강제 종료됐습니다. 시스템 사용 RAM이 약 7.4 → 21 → 43 → 66GiB로 증가했습니다. 커널이 기록한 해당 프로세스 anonymous RSS는 약 65.46GiB, 당시 GPU 메모리는 약 8.3GiB였습니다. 메모리 증가 원인은 아직 미확정입니다. [원본 수치 요약](sessions/20261026-oom-metrics.json)
+
+원본 archive는 184개 committed chunk·2,944개 raw frame이 남았지만 `complete=false`입니다. 정상 종료·전이 수·학습 데이터 완성을 주장하지 않습니다. 원본은 변경하지 않고 보존합니다.
+
+넓은 조작 시점으로 재시작하고 프로세스 RSS·가용 RAM을 추가 기록합니다. 이번 실행은 RSS 40GiB 이상 또는 가용 RAM 16GiB 미만이면 기존 SIGTERM handler로 정상 종료·저장을 요청합니다. 물리/제어 변경이 아니라 작업 종료 장치이며 실제 저장 완료는 별도 확인합니다.
+
 ## 수집을 방해하지 않는 관찰
 
 오늘 스트림은 CPU·RAM·GPU 사용량을 2초마다, 앱 update 수와 실제 `World.current_time` 진행을 약 5초 간격으로 기록합니다. 초기화·멈춤·리셋 구간은 구분하고 `simulation_s_per_wall_s`로 실제 진행 속도를 봅니다. 앱 update 수를 브라우저 영상 FPS나 물리 step 수로 부르지 않습니다. 사람 조작 세션에는 정책 추론이 없습니다.
