@@ -1,5 +1,12 @@
 # Project status
 
+## 2026-10-27 visual documentation update / 시각자료 갱신
+
+The English README now presents the October 26 human recordings with extracted stills, an English-captioned preview, a collection summary, participant workflow, data/action contract and measured runtime charts. [Visual provenance](assets/visual-20261027/provenance.json) records source video, snapshot, frame timestamps and asset hashes. No new collection, export, policy training or GPU evaluation was performed. Runtime counts and limits remain those in the October 26 handoff below. Korean status remains synchronized in README.ko.md.
+
+영문 README에 기존 시연 장면과 실측 수치 기반 시각자료를 추가했습니다. 새 수집·RGB-D 변환·학습·평가는 수행하지 않았고, 사람 시연 4개 수집/6개 episode/5571전이 및 미완료 범위는 아래 기록과 같습니다.
+
+
 ## 2026-10-26 · owner-ended session / 오늘 종료
 
 시연과 viewer를 정상 종료했고 GPU 0MiB 및 streaming listener 종료를 확인했습니다. 서버 power/deletion은 수행하지 않았습니다. 사용자는 UI가 조금 나아졌으나 개선할 점이 많다고 평가했고, 다음 클린 서버에서 같은 UI로 재시도·피드백하기로 했습니다. 오늘 작업을 자동 재개하지 않습니다.
@@ -115,4 +122,5 @@ The automatic-demonstration rules interpretation is documented in [TELEOP.ko.md]
 ## Update after each real session
 
 Link the session record and experiment run IDs, state what was actually verified, preserve failures, and list the next commands and expected checks. Move an item out of pending only when its evidence exists. Keep README status consistent.
+
 

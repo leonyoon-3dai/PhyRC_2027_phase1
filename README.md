@@ -1,69 +1,155 @@
-# PhyRC 2027 Challenge · Phase 1
+# PhyRC 2027 Phase 1
 
-**Cooperative Robot Dressing · Human Demonstration & Data Engineering**
-Leonard Yoon, Ph.D. · [공식 대회](https://emprise.cs.cornell.edu/phyrc/challenge-2027/) · [공식 시뮬레이터](https://github.com/rirolab/PhyRC_2027_Challenge)
+## Cooperative Robot Dressing
 
-맥북 크롬에서 두 로봇을 직접 조작하고, 시연·데이터·실행 성능을 기록하는 참가 연구 프로젝트입니다.
+**Human demonstrations, robot-learning data and simulation engineering**
 
-**2026-10-26 종료:** 시연·뷰어 정지, 원본 보존. UI는 추가 개선이 필요하며 다음 클린 서버에서 재시도·피드백합니다. [종료·복원 인계](docs/project/END_20261026.ko.md)
+Leonard Yoon, Ph.D.  
+[Challenge website](https://emprise.cs.cornell.edu/phyrc/challenge-2027/) · [Official simulator](https://github.com/rirolab/PhyRC_2027_Challenge) · [한국어](README.ko.md)
 
-### 직접 수행한 시연 · 양팔 파지와 운반
+Two Stretch 4 robots learn to put a T-shirt on a seated manikin in Isaac Sim. This participant project develops the browser teleoperation, recording, policy-adaptation and evaluation workflow around the official environment.
 
-[![직접 수집한 옷 파지·들기·운반 시연 미리보기](docs/project/assets/20261026-human-demo-preview.gif)](docs/videos/20261026-human-pickup-transport.mp4)
+### A human-recorded manipulation sequence
 
-**옷 양옆 접근 → 두 로봇으로 파지·들기 → 사람 쪽으로 운반.**
-오늘 정상 원본은 **4개 수집·6개 episode·5,571전이**이며, 아래 영상은 그중 파지·운반 시연입니다.
+[![Two robots approach, grasp, lift and carry a garment during Leonard Yoon's human-operated practice](docs/project/assets/visual-20261027/human-demo-en.gif)](docs/videos/20261026-human-pickup-transport.mp4)
 
-[자막 영상 · 33초](docs/videos/20261026-human-pickup-transport.mp4) · [과정·배속·원본 설명](docs/project/DEMO_20261026.ko.md)
+**Approach the garment. Coordinate the grasp. Lift and carry it toward the manikin.**
 
-| 직접 수집한 근거 | 확인한 범위 |
+The preview is an English-captioned excerpt from my October 26 recording. It shows **human teleoperation and partial manipulation**, not an autonomous policy or complete dressing. The practice starts with the robots beside the garment table; this is different from the default randomized evaluation layout.
+
+[Full 33-second edit](docs/videos/20261026-human-pickup-transport.mp4) · [Original recording and edit provenance](docs/project/DEMO_20261026.ko.md) · [Visual source manifest](docs/project/assets/visual-20261027/provenance.json)
+
+![Four complete human collections, six episodes and 5571 transitions](docs/project/assets/visual-20261027/human-collection-summary.png)
+
+**Latest runtime evidence: October 26, 2026.** The raw recordings are preserved and their remote copies passed SHA256 verification. Human RGB-D training export/QC, human-data SFT, full dressing and an official score remain pending. The simulator and viewer were stopped at the owner's request; the next session begins with a short clean-server UI retry.
+
+[Current status](docs/project/STATUS.md) · [Clean-server start](docs/project/START_HERE.ko.md) · [Capture and controls](docs/project/LIVE.ko.md) · [Preservation and recovery](docs/project/END_20261026.ko.md)
+
+## The demonstration, frame by frame
+
+![Six recorded stages from approach to transport toward the manikin](docs/project/assets/visual-20261027/human-storyboard.jpg)
+
+| Original source | Verified scope |
 |---|---|
-| 실제 조작 **19분 28초** → 원본 **2,225개 전이 / 111.25초** | 정상 저장·원본 해시 검사·기록 상태 영상 재생 |
-| 두 로봇의 옷 파지·들기·사람 쪽 이동 | **부분 과제 완료**. 전체 착의 성공·자율 정책 결과는 아직 없음 |
-| 시연 중 RAM 약 **8.4–8.7GiB** | 첫 OOM 실패도 보존. RGB-D 변환·학습 적합성 검수는 대기 |
+| Run `20261026T061140_546693Z_ab9e06` | Leonard Yoon directly operated both robots using MacBook Chrome |
+| 2,225 transitions at 20 Hz | 111.25 simulated seconds, collected over 1,168.119 wall-clock seconds |
+| Complete raw archive and recorded-state replay | Grasping on both sides, lifting from the table and transport toward the manikin |
+| 33.08-second presentation edit | Variable playback speed with title holds; no new physics or generated intermediate motion |
+| Remaining task | Sleeve entry, neck passage and full dressing are not established by this recording |
 
-![접근·정렬, 양팔 파지·들기, 사람 쪽 운반의 실제 기록 장면](docs/project/assets/20261026-human-demo-stages.jpg)
-
-[![바로 조작하기](docs/project/assets/nav-live.svg)](docs/project/LIVE.ko.md) [![시연 결과](docs/project/assets/nav-results.svg)](docs/project/RESULTS.ko.md) [![새 서버에서 시작](docs/project/assets/nav-recovery.svg)](docs/project/START_HERE.ko.md) [![지난 작업 기록](docs/project/assets/nav-history.svg)](docs/project/sessions/20261026-live.md) [![자료 복원](docs/project/assets/nav-data.svg)](docs/project/RECOVERY.ko.md) [![기술 근거](docs/project/assets/nav-details.svg)](docs/project/EVIDENCE_MAP.md)
-
-### 앞으로 할 작업
-
-1. **다음 클린 서버에서** 현재 방향 화살표·버튼·정밀 UI로 짧게 재시도하고 사용자 피드백을 받습니다.
-2. 피드백에 따라 조작·시야·반응을 개선한 뒤 **소매 진입·착의**와 실패 사례를 이어갑니다.
-3. 수집 후 RGB-D 변환·시간 정렬·데이터 검수를 마치고, 같은 조건에서 실행 속도를 계속 비교합니다.
-
-### 그동안 한 작업 · 이 프로젝트의 구현
-
-![직접 구현한 입력·수집·관측·증거 보존 구조](docs/project/assets/participant-workflow.svg)
-
-- **조작:** 크롬 스트리밍, 맥북 키 매핑, 로봇 방향에 붙는 화살표, 화면 조작 버튼·정밀 입력, 키 수신/적용 피드백.
-- **데이터:** 공식 기록기를 연결한 수집·무결성 검사·변환 대기열과 실제 사람 시연의 단계별 편집 영상.
-- **실행 진단:** RAM 감시·종료 보호, 제어·물리 주변·기록 비용 분리 계측, 해상도/기록 조건 비교.
-
-공식 시뮬레이터·물리·행동 규격·평가기는 재사용하며, 위 참가자 도구와 구분합니다. [구현과 결과 상세](docs/project/RESULTS.ko.md)
+The stills are extracted from the existing recorded-state video. Their timestamps refer to the **edited video**, not simulation time. Recorded grasp state was used only for retrospective analysis, never as a policy input or action generator.
 
 <details>
-<summary>왜 실제 조작이 약 10배 느린가 · 실측 그래프</summary>
+<summary>Open the individual recording frames</summary>
 
-![동일 물리 조건에서 해상도와 기록 유무에 따른 실측 속도](docs/project/assets/runtime-comparison.svg)
-
-짧은 동일 배치 검사에서 기록 ON은 약 **0.104배속**이었습니다. 물리 전후 이벤트 구간이 wall time의 약 60%를 차지했고, 해상도를 낮춰도 큰 변화는 없었습니다. 정책 추론은 실행하지 않았습니다. [구간별 수치·한계·다음 개선](docs/project/PERFORMANCE.ko.md)
+| Initial practice layout | Wrist alignment |
+|---|---|
+| ![Initial layout at edited-video 2 seconds](docs/project/assets/visual-20261027/human-demo-t02.jpg) | ![Wrist alignment at edited-video 8 seconds](docs/project/assets/visual-20261027/human-demo-t08.jpg) |
+| **Coordinating the grasp** | **Lifting the garment** |
+| ![Garment manipulation at edited-video 16 seconds](docs/project/assets/visual-20261027/human-demo-t16.jpg) | ![Garment lifted at edited-video 20 seconds](docs/project/assets/visual-20261027/human-demo-t20.jpg) |
+| **Carrying toward the manikin** | **End of the demonstrated segment** |
+| ![Transport at edited-video 25 seconds](docs/project/assets/visual-20261027/human-demo-t25.jpg) | ![Approach to the manikin at edited-video 29 seconds](docs/project/assets/visual-20261027/human-demo-t29.jpg) |
 
 </details>
 
-### 클린 서버에서 이어가기
+## What I implemented
 
-[시작 안내](docs/project/START_HERE.ko.md) → [크롬 조작·변환 명령](docs/project/LIVE.ko.md) → [현재 상태](docs/project/STATUS.md). 소스는 이 저장소에, 큰 원본은 저장 위치·해시와 함께 별도로 보존합니다. 오늘 자료는 [고정 HF 자료와 복원 인계](docs/project/END_20261026.ko.md)에 연결했습니다.
+![Browser teleoperation, input bridge, recording and diagnostic workflow around the official environment](docs/project/assets/visual-20261027/participant-workflow-en.png)
+
+- **Teleoperation interface:** Chrome streaming, MacBook key mapping, robot-relative directional arrows, on-screen controls, precision input and received/applied input feedback.
+- **Input handling:** short-tap preservation across slow simulation updates, key release on blur/watchdog and separate treatment of one-shot commands.
+- **Data engineering:** integration with the official recorder, complete/incomplete archive separation, hash checks, export queues and recorded-state video inspection.
+- **Runtime diagnostics:** passive timing counters, RAM monitoring and graceful-stop guards; comparisons of resolution and recording conditions.
+- **Policy integration:** public-observation preprocessing, action mapping, a small JAX π₀.₅ LoRA integration run and offline execution in the official image.
+
+The official robots, garment simulation, physics, action limits and evaluator come from the upstream project. The participant workflow is separate from those components. The UI still needs user-feedback-driven improvements.
+
+[Implementation and results](docs/project/RESULTS.ko.md) · [Streaming implementation](participant/streaming/) · [Collection code](participant/collection/) · [π₀.₅ adapter](participant/pi05/)
+
+## Observations, actions and learning
+
+![Public observations and the policy adapter with 32D state and 18D action, separating the earlier learning fixture from new human data](docs/project/assets/visual-20261027/data-policy-contract.png)
+
+| Interface | Meaning |
+|---|---|
+| Five designated RGB-D cameras | Overview, two wrists and two heads; public sensor contract |
+| 20 Hz action boundary | Observation, applied action and next observation must remain aligned |
+| `float32 (2, 9)` action | Two robots with base, lift, arm, wrist and gripper commands; normalized to `[-1, 1]` |
+| Gripper command | Below −0.5 opens, above 0.5 closes, otherwise retains the previous intent |
+| Current policy input | Three RGB views plus a constructed 32D robot state; depth is not consumed |
+| Simulation timing | 20 Hz policy, 60 Hz control, 240 Hz physics; wall time is measured separately |
+
+The 32D state is an input representation, not a degree-of-freedom count. Hidden cloth geometry, object poses, grasp attachments and audit camera matrices are excluded from policy inputs and automated action generation.
+
+[Official interface schema](config/policy_interface.json) · [Policy contract](docs/competition/POLICY.md) · [Competition rules](docs/competition/RULES.md)
+
+### Two different data stages
+
+| Stage | Completed evidence | Boundary |
+|---|---|---|
+| October 22 integration fixture | 3 scripted episodes, 63 transitions, schema/continuity checks and 30 JAX LoRA updates | This validates the learning/execution path. It is not human-data training or a successful dressing policy |
+| October 23 format sample | 3 short human-motion clips, 12 transitions; public dataset and restore/re-derivation checks | Format validation only, not approved task-learning data |
+| October 26 human practice | 4 complete collections, 6 episodes, 5,571 transitions; pickup/transport video and verified remote preservation | Human RGB-D training export and dataset QC are pending |
+| Next learning comparison | Review human data, define episode-level splits and normalization, train, then compare base/adapted policies | Planned, not a measured policy improvement |
+
+The historical policy package ran offline and through partial official checks. The full 900-second check was interrupted, so there is **no full-check pass, Codabench submission or organizer score** in the current record.
+
+## Measured runtime and preserved failures
+
+![Throughput and host-wall-time measurements from the participant's short matched diagnostics](docs/project/assets/visual-20261027/runtime-measurements.png)
+
+These measurements help separate slow robot movement from input transport:
+
+- With 1280×720 rendering and recording on, the short warm sample ran at **0.104× real time**.
+- The physics-event interval occupied about **59.9% of host wall time**. It includes synchronization and dispatch; it is not an isolated GPU-kernel measurement.
+- Each condition has one roughly 10-second warm window. Concurrent CPU video encoding and limited repetition prevent a causal speedup claim.
+- No learned policy ran in these teleoperation diagnostics. Policy inference latency is a separate measurement.
+
+[Raw timing JSON](docs/project/sessions/20261026-runtime-components.json) · [Measurement procedure and limitations](docs/project/PERFORMANCE.ko.md)
 
 <details>
-<summary>공식 데모·관측 예시·이전 기록</summary>
+<summary>Preserved OOM failure and the recovery boundary</summary>
 
-![공식 제공 착의 성공 데모 · 참가자 결과와 구분](docs/videos/Back_Front_32x.gif)
+![System RAM growth during the first OOM-interrupted capture](docs/project/assets/ram-growth.svg)
 
-공식 제공 데모이며 이 프로젝트의 성공 결과가 아닙니다.
+The first capture ended in a kernel OOM. System RAM rose toward 66 GiB while GPU memory was about 8.3 GiB. The growth cause is unresolved. Its original archive remains `complete=false` and is excluded from the complete-human-recording counts.
 
-![공식 다섯 카메라 RGB 예시](docs/examples/teleop/preview_rgb.png)
+A RAM guard and passive resource logging were added. Later long human collection held process RSS around 8.4–8.7 GiB, but this does not establish the OOM root cause or prove a general memory fix.
 
-[공식 참가 안내 원문](README.upstream.md) · [대회 규칙](docs/competition/RULES.md) · [이전 전체 설명](README.history.ko.md) · [출처·라이선스](THIRD_PARTY.md)
+[OOM measurements](docs/project/sessions/20261026-oom-metrics.json) · [Performance record](docs/project/PERFORMANCE.ko.md)
 
 </details>
+
+## Reproducibility and continuation
+
+Code, small reports and presentation media live in this repository. Large raw recordings and evidence are preserved on Hugging Face at an immutable revision:
+
+[October 26 artifact snapshot](https://huggingface.co/datasets/leonayoon/phyrc-2027-phase1-data/tree/a1ff58063799279af1a80226a77330063dc0d4d8/sessions/20261026-final)
+
+The roughly 12 GB snapshot includes four complete human collections, one incomplete human capture, two profiling fixtures, the code bundle, selected diagnostics and the video edit. Full re-download and SHA256 verification passed. This is artifact-recovery evidence, not a replay test on another clean server.
+
+[Preservation verification JSON](docs/project/sessions/20261026-final-preservation.json) · [Exact recovery commands](docs/project/END_20261026.ko.md) · [Earlier model/train-state recovery](docs/project/RECOVERY.ko.md)
+
+### Next experiments
+
+1. Restore the existing Chrome controls on a clean server and collect short, specific usability feedback.
+2. Improve approach and transport repeatability, then extend human practice to sleeve entry while preserving failures.
+3. Export synchronized RGB-D data, inspect depth validity and action alignment, and review episodes before training.
+4. Run human-data SFT and a matched base/adapted comparison with fixed observations, action mapping and evaluation budget.
+5. Complete the official self-check before any submission claim.
+
+These are next steps. No new GPU experiment was run for this visual documentation update.
+
+<details>
+<summary>Official examples and original documentation</summary>
+
+![Official successful dressing demonstration, separate from participant results](docs/videos/Back_Front_32x.gif)
+
+The animation above is supplied by the official project. It is **not this participant's result**.
+
+![Official five-camera RGB example, not the new human dataset export](docs/examples/teleop/preview_rgb.png)
+
+[Original upstream README](README.upstream.md) · [Setup guide](docs/competition/SETUP.md) · [Competition rules](docs/competition/RULES.md) · [Earlier project overview](README.history.ko.md) · [Sources and licenses](THIRD_PARTY.md)
+
+</details>
+

@@ -1,5 +1,9 @@
 # PhyRC 2027 Challenge · Phase 1
 
+[English visual overview](README.md) · [실제 시연 6장과 영어 시각자료](README.md#the-demonstration-frame-by-frame)
+
+2026-10-27 문서 갱신: 영문 첫 화면에 기존 사람 시연의 장면, 데이터 규모, 인터페이스와 실측 그래프를 추가했습니다. 새 GPU 실행은 없으며 아래 10월 26일 상태와 수량은 그대로입니다.
+
 **Cooperative Robot Dressing · Human Demonstration & Data Engineering**
 Leonard Yoon, Ph.D. · [공식 대회](https://emprise.cs.cornell.edu/phyrc/challenge-2027/) · [공식 시뮬레이터](https://github.com/rirolab/PhyRC_2027_Challenge)
 
@@ -67,3 +71,4 @@ Leonard Yoon, Ph.D. · [공식 대회](https://emprise.cs.cornell.edu/phyrc/chal
 [공식 참가 안내 원문](README.upstream.md) · [대회 규칙](docs/competition/RULES.md) · [이전 전체 설명](README.history.ko.md) · [출처·라이선스](THIRD_PARTY.md)
 
 </details>
+

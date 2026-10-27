@@ -1,0 +1,37 @@
+{
+  "snapshot_commit": "73077197f441abc837c209cd6f625a11e2b406a4",
+  "generated_at": "2026-10-27",
+  "source_run": "20261026T061140_546693Z_ab9e06",
+  "source_video": "docs/videos/20261026-human-pickup-transport.mp4",
+  "source_manifest_sha256": "4312c5c5d9d04128b319a8789bd87664b4e05897166aa862303126aa134ae8a5",
+  "frame_times_edited_video_seconds": [
+    2,
+    8,
+    16,
+    20,
+    25,
+    29
+  ],
+  "transform": "Extract frames and crop existing title/subtitle bands to the 960x540 viewport. No image generation, interpolation or new physics. GIF retains the existing edit speed, sampled at 0.5 fps for a lightweight preview.",
+  "full_dressing_success_verified": false,
+  "human_rgbd_training_export_qc_complete": false,
+  "human_data_sft_complete": false,
+  "human_complete_collections": 4,
+  "human_complete_episodes": 6,
+  "human_complete_transitions": 5571,
+  "human_complete_simulation_seconds": 278.55,
+  "files": {
+    "data-policy-contract.png": "5a66314389878d474473a4e6ece75668e826186592e018899b621c9667894187",
+    "human-collection-summary.png": "606554f0cb65056666f235371d228841f1d3b95c5659affad70ef60e36b177e4",
+    "human-demo-en.gif": "177aabac538f34533f8c4cfb88795b5c20fab6dcda5bd8eb9c4fef7953444ee0",
+    "human-demo-t02.jpg": "09381f7e8e22e2050b722b007b8b6aed84f3002c05a59455af84d896a770236b",
+    "human-demo-t08.jpg": "e67526153007cd1028f129c5509b9535e9be69a450f2fe3e1fd7e1e42447e36c",
+    "human-demo-t16.jpg": "7ce5986f313030edece6759ce83eaddc7c392b00197049e18d9586c24918b33a",
+    "human-demo-t20.jpg": "e3bcf1a7ffb8a7a6b2b6a4eb87105f2d068d2764538034a95e5fe0dabd04f9db",
+    "human-demo-t25.jpg": "ad0bbc319dd0bd5e29b536fc844d048a87a9e7aae99f169964dbf3d947db218e",
+    "human-demo-t29.jpg": "4c61be052b4d627aa974609962a829c09f9fcae1e5851ad849f48c272262b50e",
+    "human-storyboard.jpg": "ff191e5c2bc0bfaae718d2782b91d5861178231a06529fc0f77909e56ffdbe8a",
+    "participant-workflow-en.png": "4239e95f8427cd6fd9f127bbb9ef38afb90a220d962d6b04c907d8df715d9518",
+    "runtime-measurements.png": "00590b21cd3426d1984c917bba6a233a6738fe59fcb39af4bcdb814182ef61b3"
+  }
+}

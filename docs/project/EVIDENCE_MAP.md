@@ -1,5 +1,8 @@
 # Robot learning capability and evidence
 
+**October 26 runtime update (latest):** Genuine Chrome human teleoperation is now recorded: **4 complete collections, 6 episodes, 5,571 transitions**. The 2,225-transition run shows dual-robot pickup, lifting and transport toward the manikin. Raw archives passed immutable-revision re-download and checksum checks. **Human RGB-D training export/QC, human-data SFT, full dressing and official submission remain unverified.** Read the [October 26 handoff](END_20261026.ko.md) and [preservation JSON](sessions/20261026-final-preservation.json). The October 23/22 tables below are historical and do not supersede this update. The English [visual overview](../../README.md) was refreshed on October 27 without new GPU execution.
+
+
 **October 23 runtime update:** [latest session](sessions/20261023-clean-start.md) supersedes the pending statuses in the historical table below for clean restore, smoke, owner-confirmed Chrome movement and the 12-transition format-only human sample. Task demonstrations/SFT and full 900-second check remain incomplete; the latter was owner-interrupted at 1460 actions/73.0 simulated seconds. No submission or dressing success. Read both READMEs for current scope and handoff.
 
 Updated: **2026-10-23**. Review baseline: repository documentation at `ee7e891`. Individual runtime revisions and artifacts are recorded in the [first-session report](sessions/20261022-bootstrap.md) and [metrics](sessions/20261022-bootstrap-metrics.json).
@@ -85,3 +88,4 @@ A five-minute technical walkthrough should connect the following evidence rather
 For each claim, link its code commit, dataset/model revision, commands, hardware, score files, original video/stills, failure cases and recovery scope. Summarize the outcome in [STATUS](STATUS.md) and the [experiment register](../../experiments/README.md).
 
 Keep the public story technical: problem, implementation choice, evidence, limitation and next measurement. Preserve original results when revising an explanation. The record should remain useful when a planned experiment fails, a server is replaced, or a later model supersedes the baseline.
+
