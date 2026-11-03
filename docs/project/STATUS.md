@@ -1,5 +1,11 @@
 # Project status
 
+## 2026-11-04 · Stretch 4 research review (documentation only)
+
+Reviewed Hello Robot's real Stretch 4 LeRobot/π0.5 pipeline and Georgia Tech's Astra control study. [Technical findings, code map and application gates](research/STRETCH4_VLA_REVIEW.ko.md) are linked from both READMEs. This is a source review and future plan, not a new GPU experiment. Existing Chrome UI collection remains the next priority. Preserve the November 3 runtime/data status below; no new export, backup, training, autonomous dressing or submission is claimed.
+
+실기 위치 행동과 PhyRC 속도 행동, LeRobot/PyTorch와 기존 OpenPI/JAX를 구분했습니다. 공개 관측·전처리·검수 상태·재로드 검증을 먼저 보완하고, 모델 전환과 GPT 자동 수집은 별도 후속 실험으로 기록했습니다.
+
 ## 2026-11-03 · owner-ended UI test / 오늘 종료
 
 **Current direction:** existing buttons, direction arrows and keyboard UI; text input is excluded from the next test. The next owner-authorized session aims at a first verified 50-point attempt with stage-wise recording and tested restart/recovery. Previous data/model restoration is not a prerequisite. The owner will choose between L40S cost and the observed roughly 10% speed gain. No 50-point/full dressing result or reliable intermediate checkpoint resume is claimed.
