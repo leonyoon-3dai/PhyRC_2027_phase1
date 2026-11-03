@@ -1,3 +1,4 @@
+import {parseCommand} from './text_commands.mjs';
 // Human teleop only. Disable native stream keyboard at the Python subscription;
 // this channel supplies full key state and monotonically ordered heartbeats.
 const mapping = {
@@ -15,7 +16,8 @@ const mapping = {
 };
 const held = new Set();
 const session = globalThis.crypto?.randomUUID?.() ?? String(Math.random());
-const endpoint = `http://${location.hostname}:8211/keys`;
+const keyboardPort = new URLSearchParams(location.search).get('keyboardPort') || '8211';
+const endpoint = `http://${location.hostname}:${keyboardPort}/keys`;
 let seq = 0, lastAck = -1, lastAckAt = 0, latestSent = -1;
 let guidance = null, guidanceAt = 0, serverKeys = new Set(), arrowsVisible = true, preciseMode = false, appliedKeys = new Set();
 const directionOverlay = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -81,6 +83,27 @@ const controls=document.createElement('section');
 controls.style.cssText='position:fixed;top:12px;left:12px;z-index:99999;width:240px;border:1px solid #64748b;border-radius:12px;background:#0f1c2bf0;padding:10px;color:#eef5ff;font:13px/1.4 system-ui,sans-serif;box-shadow:0 4px 24px #0005';
 controls.innerHTML=`<div style="display:flex;gap:6px"><button data-robot-select="0">로봇 0</button><button data-robot-select="1">로봇 1</button><button data-controls-collapse style="margin-left:auto">접기</button></div><div data-controls-body><button data-precision style="width:100%;margin:8px 0">연속 이동 · 짧게 눌러 미세 이동</button><div data-control-buttons style="display:grid;grid-template-columns:1fr 1fr;gap:5px"></div><div style="font-size:11px;color:#b8c9dd;margin-top:7px">화살표·버튼을 누르거나 키보드로 조작<br>정밀 모드: 키마다 짧은 입력 한 번</div></div>`;
 document.body.append(controls);
+const textPanel=document.createElement('section');
+textPanel.style.cssText='position:fixed;left:12px;bottom:12px;z-index:99999;width:320px;max-width:calc(100vw - 24px);background:#0f1c2bf0;color:#eef5ff;border:1px solid #64748b;border-radius:10px;padding:10px;box-sizing:border-box;font:13px/1.4 system-ui,sans-serif';
+textPanel.innerHTML=`<form><label>텍스트 조작 <input data-command autocomplete="off" style="width:100%;box-sizing:border-box" placeholder="로봇 0 전진 0.3초"></label><button type="submit">실행</button> <button type="button" data-stop>정지</button> <button type="button" data-reset>초기화</button></form><div data-result role="status">한 번에 한 동작 · 0.1~0.8초 · 점수 자동 판단 없음</div><div style="font-size:11px">예: 로봇 1 리프트 올려 · 로봇 0 집게 토글</div>`;
+document.body.append(textPanel);
+let commandTimer=null;
+function cancelTextCommand() { if(commandTimer!==null) clearTimeout(commandTimer); commandTimer=null; held.clear(); }
+function executeText(input) {
+ const result=textPanel.querySelector('[data-result]');
+ try {
+  const command=parseCommand(input);
+  cancelTextCommand();
+  if(command.key) held.add(command.key);
+  result.textContent=command.kind==='stop'?'정지 요청':command.kind==='reset'?'초기화 요청 (영상 확인)':`입력 요청: ${command.key}, ${command.durationMs}ms (영상 확인)`;
+  notice='텍스트 조작 요청'; send(command.kind==='stop',{text:input, ...command});
+  if(command.key) commandTimer=setTimeout(()=>{commandTimer=null;held.delete(command.key);send(true);},command.durationMs);
+ } catch(error) { result.textContent=error.message; }
+}
+textPanel.querySelector('form').addEventListener('submit',e=>{e.preventDefault();executeText(textPanel.querySelector('[data-command]').value);});
+textPanel.querySelector('[data-stop]').addEventListener('click',()=>executeText('정지'));
+textPanel.querySelector('[data-reset]').addEventListener('click',()=>executeText('초기화'));
+
 let selectedRobot=0;
 const buttonSets=[[['U','회전 + U'],['O','회전 − O'],['W','리프트 ↑ W'],['S','리프트 ↓ S'],['D','팔 늘림 D'],['A','팔 줄임 A'],['SPACE','집게 열기·닫기 Space']],
  [['NUMPAD_DIVIDE','회전 + ['],['NUMPAD_MULTIPLY','회전 − ]'],['NUMPAD_8','리프트 ↑ 8'],['NUMPAD_2','리프트 ↓ 2'],['NUMPAD_6','팔 늘림 6'],['NUMPAD_4','팔 줄임 4'],['NUMPAD_0','집게 열기·닫기 0']]];
@@ -92,7 +115,7 @@ paintControls();
 controls.querySelectorAll('[data-robot-select]').forEach(button=>button.addEventListener('click',()=>{selectedRobot=+button.dataset.robotSelect;paintControls();button.blur();}));
 controls.querySelector('[data-controls-collapse]').addEventListener('click',e=>{const body=controls.querySelector('[data-controls-body]');body.hidden=!body.hidden;e.target.textContent=body.hidden?'펼치기':'접기';e.target.blur();});
 controls.querySelector('[data-precision]').addEventListener('click',e=>{preciseMode=!preciseMode;e.target.textContent=preciseMode?'정밀 모드 · 한 번에 짧게 이동':'연속 이동 · 짧게 눌러 미세 이동';e.target.style.background=preciseMode?'#b7f077':'';e.target.blur();});
-function pressControl(key){if(held.has(key))return;held.add(key);notice='화면 조작 입력';send();if(preciseMode)setTimeout(()=>{held.delete(key);send();},100);}
+function pressControl(key){if(commandTimer!==null){cancelTextCommand();send(true);}if(held.has(key))return;held.add(key);notice='화면 조작 입력';send();if(preciseMode)setTimeout(()=>{held.delete(key);send();},100);}
 function releaseControl(key){held.delete(key);send();}
 for(const surface of [directionOverlay,controls]){
  surface.addEventListener('pointerdown',e=>{const target=e.target.closest('[data-direction-key],[data-control-key]');if(!target)return;e.preventDefault();e.stopPropagation();const key=target.dataset.directionKey||target.dataset.controlKey;surface.dataset.pointerKey=key;surface.setPointerCapture(e.pointerId);pressControl(key);});
@@ -123,14 +146,14 @@ function render() {
  keysLabel.textContent = [...held].map(label).join(' + ') || '없음';
  noticeLabel.textContent = notice;
 }
-async function send(forceRelease=false) {
+async function send(forceRelease=false, textCommand=null) {
  const requestSeq = seq++;
  latestSent = requestSeq;
  const started = performance.now();
  render();
  try {
   const response = await fetch(endpoint, {method:'POST',headers:{'Content-Type':'application/json'},
-   body:JSON.stringify({session,seq:requestSeq,keys:[...held],force_release:forceRelease}),keepalive:true,signal:AbortSignal.timeout(2000)});
+   body:JSON.stringify({session,seq:requestSeq,keys:[...held],force_release:forceRelease,text_command:textCommand}),keepalive:true,signal:AbortSignal.timeout(2000)});
   if (!response.ok) throw Error(response.status);
   const payload=await response.json();
   if (requestSeq > lastAck) {
@@ -147,6 +170,8 @@ async function send(forceRelease=false) {
  render();
 }
 window.addEventListener('keydown', e => {
+ if (e.target.closest?.('input,textarea,[contenteditable="true"]')) return;
+ if (commandTimer !== null) { cancelTextCommand(); send(true); }
  const key = mapping[e.code];
  if (!key || e.metaKey || e.ctrlKey || e.altKey) return;
  e.preventDefault(); e.stopImmediatePropagation();
@@ -160,11 +185,12 @@ window.addEventListener('keydown', e => {
  }
 }, true);
 window.addEventListener('keyup', e => {
+ if (e.target.closest?.('input,textarea,[contenteditable="true"]')) return;
  const key = mapping[e.code]; if (!key) return;
  e.preventDefault(); e.stopImmediatePropagation(); held.delete(key); send();
 }, true);
 function release() {
- held.clear(); notice = '창 이탈 · 키 해제'; send(true);
+ cancelTextCommand(); notice = '창 이탈 · 키 해제'; send(true);
 }
 window.addEventListener('blur', release);
 window.addEventListener('pagehide', release);

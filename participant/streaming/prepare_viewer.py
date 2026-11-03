@@ -22,9 +22,13 @@ s=entry.read_text()
 if "import './phyrc-keyboard.js';" not in s:
     expected="signalingServer: '127.0.0.1',"
     if expected not in s:raise RuntimeError('unexpected viewer source; inspect scaffold revision')
-    s="import './phyrc-keyboard.js';\n"+s.replace(expected,"signalingServer: window.location.hostname,\n            signalingPort: 49100,\n            mediaServer: window.location.hostname,\n            mediaPort: 47998,\n            forceWSS: false,")
-    entry.write_text(s)
+    s="import './phyrc-keyboard.js';\n"+s.replace(expected,"signalingServer: window.location.hostname,\n            signalingPort: Number(new URLSearchParams(window.location.search).get('signalPort') || 49100),\n            mediaServer: window.location.hostname,\n            mediaPort: Number(new URLSearchParams(window.location.search).get('mediaPort') || 47998),\n            forceWSS: false,")
+# Apply the mapping to an existing previously generated viewer as well.
+s=s.replace('signalingPort: 49100,', 'signalingPort: Number(new URLSearchParams(window.location.search).get("signalPort") || 49100),')
+s=s.replace('mediaPort: 47998,', 'mediaPort: Number(new URLSearchParams(window.location.search).get("mediaPort") || 47998),')
+entry.write_text(s)
 shutil.copyfile(ROOT/'participant/streaming/keyboard.js',viewer/'src/phyrc-keyboard.js')
+shutil.copyfile(ROOT/'participant/streaming/text_commands.mjs',viewer/'src/text_commands.mjs')
 lock=ROOT/'participant/streaming/viewer-package-lock.json'
 if lock.exists():
     shutil.copyfile(lock,viewer/'package-lock.json')

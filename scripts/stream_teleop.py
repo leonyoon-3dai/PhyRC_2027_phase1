@@ -22,7 +22,7 @@ sys.path.insert(0,'/project')
 from participant.streaming.input_state import BufferedKeys
 from participant.streaming import profiling
 HOST=os.environ['STRETCH4_STREAM_HOST']
-ORIGIN='http://'+HOST+':8210'
+ORIGIN=os.environ.get('STRETCH4_VIEWER_ORIGIN','http://'+HOST+':8210')
 EVENTS=queue.Queue(maxsize=256)
 KEYS=set()
 LAST=0.0
@@ -66,6 +66,15 @@ class Handler(BaseHTTPRequestHandler):
                     for key in KEYS-keys: EVENTS.put_nowait(('release',key))
                     for key in keys-KEYS: EVENTS.put_nowait(('press',key))
                     KEYS=keys;SEQ=value['seq'];LAST=time.monotonic()
+                    command=value.get('text_command')
+                    if isinstance(command,dict) and isinstance(command.get('text'),str) and len(command['text'])<=120:
+                        try:
+                            path=Path(os.environ.get('STRETCH4_TEXT_LOG','/output/text-commands.jsonl'))
+                            path.parent.mkdir(parents=True,exist_ok=True)
+                            with path.open('a',encoding='utf-8') as trace:
+                                trace.write(json.dumps({'wall_time_s':time.time(),'session':SESSION,'seq':SEQ,'command':command,'keys':sorted(keys)},ensure_ascii=False)+'\n')
+                        except OSError as error:
+                            print(f'[Participant stream] text command log unavailable: {error}',flush=True)
             self.send_response(200)
             self.send_header('Access-Control-Allow-Origin',ORIGIN)
             self.end_headers()
