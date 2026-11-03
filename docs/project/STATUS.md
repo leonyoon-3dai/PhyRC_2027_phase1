@@ -1,5 +1,24 @@
 # Project status
 
+## 2026-11-03 · owner-ended UI test / 오늘 종료
+
+**Current direction:** existing buttons, direction arrows and keyboard UI; text input is excluded from the next test. The next owner-authorized session aims at a first verified 50-point attempt with stage-wise recording and tested restart/recovery. Previous data/model restoration is not a prerequisite. The owner will choose between L40S cost and the observed roughly 10% speed gain. No 50-point/full dressing result or reliable intermediate checkpoint resume is claimed.
+
+**현재 방향:** 기존 UI 사용, 텍스트 입력 미사용. 0점 시작 상태부터 50점 목표까지 단계 달성마다 저장하고 초기화·중간 상태 복원·계속 조작을 시험합니다. 실제 점수 기준을 사용하며 임의 단계별 점수는 만들지 않습니다. 데이터 저장과 물리 checkpoint는 별개입니다. 현재 브라우저 F1~F5 전달이 없어 slot UI 연결·검증은 다음 작업입니다.
+
+- Official pinned build / prepare / smoke passed (170.60 / 6.74 / 219.72 s). Host: L40S 46,068 MiB, RAM ~144 GiB, 4 cores / 8 vCPUs. Physics/actions unchanged.
+- Chrome video/controls confirmed by owner and robot input/motion logs after automatic Brev CLI source-restricted TCP/UDP mappings; egress-IP direct access failed.
+- Final live-session cumulative timing: 0.114919× vs historical 0.104483×, +9.99%; overlapping 60-second range +7.39–11.60%, two overlapping windows below +8%. Historical baseline limitations apply; see [numeric evidence](sessions/20261103-runtime-summary.json).
+- Owner rates $1.06/h vs $1.77/h imply ~52% higher cost per equal simulation duration at the observed live rate. RAM ~8.1 GiB; no extra-RAM speed benefit established.
+- Final UI-practice capture 966 transitions / 12,561 states, complete=true. All three session archives have verified chunk/event/scene SHA256; two are neutral diagnostic fixtures, not human demos. RGB-D export/QC and today's remote raw backup were not performed; local raw data retained.
+- Simulator, viewer and monitors stopped; GPU 0% / 1 MiB and no streaming listeners verified. Server power/deletion was not performed; this does not stop server billing.
+
+사용자 피드백은 텍스트보다 기존 UI 선호입니다. 내일은 동일 UI의 단계별 목표와 저장·재시작을 검증합니다. 오늘 원본은 로컬 보존이며 클린 서버 복원·정확한 되감기·학습 준비 완료를 주장하지 않습니다.
+
+[Latest handoff / 최신 인계](END_20261103.ko.md) · [Concrete setup commands / 재개 명령](START_HERE.ko.md)
+
+## Historical records / 아래는 이전 기록
+
 ## 2026-10-27 visual documentation update / 시각자료 갱신
 
 The English README now presents the October 26 human recordings with extracted stills, an English-captioned preview, a collection summary, participant workflow, data/action contract and measured runtime charts. [Visual provenance](assets/visual-20261027/provenance.json) records source video, snapshot, frame timestamps and asset hashes. No new collection, export, policy training or GPU evaluation was performed. Runtime counts and limits remain those in the October 26 handoff below. Korean status remains synchronized in README.ko.md.

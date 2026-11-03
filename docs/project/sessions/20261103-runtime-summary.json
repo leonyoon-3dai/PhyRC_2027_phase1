@@ -1,0 +1,136 @@
+{
+  "date_utc": "2026-11-03",
+  "source_commit": "e2b353e6ce1e6fd09472b8ea35a4b98e1569c1da",
+  "hardware": {
+    "gpu": "NVIDIA L40S",
+    "vram_mib": 46068,
+    "host_ram_gib_rounded": 144,
+    "cpu": "AMD EPYC 9254",
+    "physical_cores": 4,
+    "vcpus": 8
+  },
+  "settings": {
+    "viewport": [
+      1280,
+      720
+    ],
+    "recording": true,
+    "training_render": "deferred",
+    "practice_layout": "garment_side",
+    "randomization": false,
+    "rss_guard_gib": 40,
+    "physics_changed": false
+  },
+  "setup_wall_s": {
+    "build": 170.598323389,
+    "prepare": 6.735267934,
+    "smoke": 219.720827644
+  },
+  "historical_baseline_rtf": 0.10448349449173985,
+  "baseline_limitations": [
+    "Historical short single sample; concurrent CPU video encoding",
+    "Host CPU and driver not matched; not a controlled causal hardware comparison"
+  ],
+  "runs": [
+    {
+      "session": "20261103-speed-1280-recording",
+      "capture_id": "20261103T065309_070882Z_4fe12b",
+      "kind": "neutral_diagnostic",
+      "complete": true,
+      "raw_states": 522,
+      "raw_chunks": 33,
+      "raw_chunk_event_scene_sha256_verified": true,
+      "capture_summary": {
+        "status": "awaiting_export",
+        "complete": true,
+        "collection_wall_s": 17.740136908000068
+      },
+      "timing": {
+        "scope": "120 neutral control frames; 1280x720; recording ON; no connected browser; no policy inference; single short run",
+        "warm_wall_s": 10.15802407700005,
+        "warm_simulation_s": 1.1500000599771738,
+        "speed": 0.11321099962550996,
+        "baseline_speed": 0.10448349449173985,
+        "speed_ratio": 1.0835299888870014,
+        "previous_usd_per_hour": 1.06,
+        "current_usd_per_hour": 1.77,
+        "cost_ratio": 1.5410845457724174,
+        "max_rss_gib": 7.927276611328125,
+        "archive_frames_verified": 522,
+        "archive_complete": true,
+        "scene_hash_verified": true,
+        "limitations": [
+          "Single short run; no matched repetition",
+          "Prior run had concurrent CPU video encoding",
+          "Browser responsiveness and live transport not yet verified"
+        ]
+      },
+      "transitions": 40
+    },
+    {
+      "session": "20261103-human-chrome",
+      "capture_id": "20261103T065505_160834Z_be237a",
+      "kind": "neutral_no_browser_diagnostic",
+      "complete": true,
+      "raw_states": 11534,
+      "raw_chunks": 721,
+      "raw_chunk_event_scene_sha256_verified": true,
+      "capture_summary": {
+        "status": "awaiting_export",
+        "complete": true,
+        "collection_wall_s": 380.2703721900001
+      },
+      "timing": {
+        "cumulative_wall_s": 370.57129766599996,
+        "cumulative_speed": 0.11666671396416152,
+        "cumulative_gain_percent": 11.660424961556814,
+        "process_rss_gib": 7.882907867431641,
+        "rolling_60s_gain_min_percent": 9.14472467410623,
+        "rolling_60s_gain_max_percent": 13.99396294135984,
+        "overlapping_windows_below_8_percent": 0,
+        "overlapping_window_count": 62
+      },
+      "transitions": 887
+    },
+    {
+      "session": "20261103-human-relay",
+      "capture_id": "20261103T070202_509362Z_602912",
+      "kind": "human_UI_connection_practice",
+      "complete": true,
+      "raw_states": 12561,
+      "raw_chunks": 786,
+      "raw_chunk_event_scene_sha256_verified": true,
+      "capture_summary": {
+        "status": "awaiting_export",
+        "complete": true,
+        "collection_wall_s": 420.3694521970001
+      },
+      "timing": {
+        "cumulative_wall_s": 410.72562674799997,
+        "cumulative_speed": 0.1149185718831012,
+        "cumulative_gain_percent": 9.987297459874211,
+        "process_rss_gib": 8.079513549804688,
+        "rolling_60s_gain_min_percent": 7.385801473674691,
+        "rolling_60s_gain_max_percent": 11.595048137183529,
+        "overlapping_windows_below_8_percent": 2,
+        "overlapping_window_count": 70
+      },
+      "transitions": 966
+    }
+  ],
+  "shutdown": {
+    "simulator_stopped": true,
+    "viewer_stopped": true,
+    "monitor_stopped": true,
+    "stream_listeners_absent": true,
+    "gpu_memory_mib": 1,
+    "gpu_utilization_percent": 0,
+    "server_power_or_deletion_performed": false
+  },
+  "data_priority": "Existing and today recordings are not prerequisites for next session; raw data retained locally, no new remote backup or RGBD export claimed.",
+  "cost": {
+    "previous_usd_per_hour_owner_supplied": 1.06,
+    "current_usd_per_hour_owner_supplied": 1.77,
+    "live_cost_ratio_per_simulation_second": 1.518185608082516
+  }
+}

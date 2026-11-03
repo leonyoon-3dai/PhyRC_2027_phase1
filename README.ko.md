@@ -1,80 +1,49 @@
-# PhyRC 2027 Challenge · Phase 1
+# PhyRC 2027 · 두 로봇 협동 착의
 
-[English visual overview](README.md) · [실제 시연 6장과 영어 시각자료](README.md#the-demonstration-frame-by-frame)
+**Leonard Yoon, Ph.D.** · [English](README.md) · [공식 대회](https://emprise.cs.cornell.edu/phyrc/challenge-2027/) · [공식 시뮬레이터](https://github.com/rirolab/PhyRC_2027_Challenge)
 
-2026-10-27 문서 갱신: 영문 첫 화면에 기존 사람 시연의 장면, 데이터 규모, 인터페이스와 실측 그래프를 추가했습니다. 새 GPU 실행은 없으며 아래 10월 26일 상태와 수량은 그대로입니다.
+맥북 Chrome에서 Isaac Sim의 두 Stretch 4 로봇을 직접 조작하고, 시연과 실행 성능을 기록하는 프로젝트입니다.
 
-**Cooperative Robot Dressing · Human Demonstration & Data Engineering**
-Leonard Yoon, Ph.D. · [공식 대회](https://emprise.cs.cornell.edu/phyrc/challenge-2027/) · [공식 시뮬레이터](https://github.com/rirolab/PhyRC_2027_Challenge)
+**현재 목표:** 기존 버튼·방향 화살표·키보드 UI를 사용합니다. **텍스트 입력은 다음 테스트에서 사용하지 않습니다.** 0점 시작 상태부터 **첫 50점 달성**을 목표로 단계별로 진행하고, 목표 달성마다 데이터를 저장하며 재시작·복원을 시험합니다. **50점·전체 착의는 아직 달성 또는 검증하지 않았습니다.**
 
-맥북 크롬에서 두 로봇을 직접 조작하고, 시연·데이터·실행 성능을 기록하는 참가 연구 프로젝트입니다.
+[오늘 종료·내일 인계](docs/project/END_20261103.ko.md) · [새 서버 시작](docs/project/START_HERE.ko.md) · [현재 상태](docs/project/STATUS.md)
 
-**2026-10-26 종료:** 시연·뷰어 정지, 원본 보존. UI는 추가 개선이 필요하며 다음 클린 서버에서 재시도·피드백합니다. [종료·복원 인계](docs/project/END_20261026.ko.md)
+## 11월 3일 확인한 결과
 
-> **새 클린 서버 계획:** 자연어 텍스트로 두 로봇을 단계별로 조작하고, 모든 시도와 명령을 보존하며 첫 전체 착의와 공식 50점 달성을 시도합니다. 자연어 제어, 구간 북마크, 중간 상태 복원은 **구현·검증 예정**입니다. 실제 실험 결과는 아직 없습니다. [설계와 Codex 시작 지시문](README.md#next-interactive-text-guided-collection)
+- 공식 고정 버전 환경 build·prepare·GPU smoke 통과. 두 로봇 이동, 그리퍼 전환, 의복 유효값과 저장/불러오기 좌표 오차 0 확인.
+- Brev CLI로 TCP·UDP 포트를 자동 등록한 뒤 **맥북 Chrome 영상·조작 성공**. 이 서버에서는 외부 조회한 송신 IP만으로 접속할 수 없었습니다.
+- 사용자 평가: **텍스트 입력보다 기존 UI가 더 좋음**. 기존 UI의 사용성 테스트를 이어갑니다.
+- 마지막 수집 **966전이·12,561개 원본 상태**, 정상 종료·원본 chunk/event/scene 해시 확인. RGB-D 변환·학습 적합성 검수는 미실행. 과거 데이터 복원은 내일 테스트의 선행 조건이 아닙니다.
+- 사용자 요청으로 시뮬레이터·뷰어·속도 감시 종료. GPU 사용률 0%, 잔여 1MiB, 시연 listener 종료 확인. 서버 전원 종료·삭제는 수행하지 않았습니다.
 
-> 이전 10월 26일 인계의 “피드백 전 기능 추가 대기”는 현재 사용자의 새 요청으로 변경되었습니다. 기존 인계는 서버 준비와 데이터 보존의 근거로 계속 참고합니다. 유료 API 사용에는 별도 요청이 필요합니다.
+### 속도와 비용
 
-### 직접 수행한 시연 · 양팔 파지와 운반
+실제 사양: **L40S 48GB급, RAM 144GiB, 물리 4코어/8 vCPU**. 1280×720·기록 ON·고정 garment-side 연습 배치이며 공식 물리·행동 한계는 변경하지 않았습니다.
 
-[![직접 수집한 옷 파지·들기·운반 시연 미리보기](docs/project/assets/20261026-human-demo-preview.gif)](docs/videos/20261026-human-pickup-transport.mp4)
+| 측정 | simulation / wall | 시뮬레이션 1초에 필요한 실제 시간 |
+|---|---:|---:|
+| 이전 L40S 짧은 표본 | 0.10448배 | 9.57초 |
+| 현재 짧은 중립 진단 | 0.11321배 | 8.83초 |
+| 현재 라이브 세션 누적 표본 약 411초 | 0.11492배 | 8.70초 |
 
-**옷 양옆 접근 → 두 로봇으로 파지·들기 → 사람 쪽으로 운반.**
-오늘 정상 원본은 **4개 수집·6개 episode·5,571전이**이며, 아래 영상은 그중 파지·운반 시연입니다.
+라이브 세션 누적은 **약 10% 빠름**입니다. 초기 연결 전·유휴 구간도 포함하며, 겹치는 60초 이동 구간은 **7.4~11.6% 향상**으로 변동해 **항상 8% 이상 빠르지는 않았습니다.** RAM은 약 8.1GiB였습니다. 이전 표본이 짧고 당시 CPU 영상 편집이 병행되어 엄밀한 하드웨어 인과 비교는 아니며, 입력 지연을 측정한 수치도 아닙니다.
 
-[자막 영상 · 33초](docs/videos/20261026-human-pickup-transport.mp4) · [과정·배속·원본 설명](docs/project/DEMO_20261026.ko.md)
+사용자 제공 요금은 이전 **$1.06/시간**, 현재 **$1.77/시간**. 라이브 실측 속도 기준 같은 시뮬레이션 분량의 비용은 약 **52% 증가**합니다. 약 10%의 속도를 위해 더 높은 비용을 선택할지는 내일 결정합니다. [수치 근거](docs/project/sessions/20261103-runtime-summary.json)
 
-| 직접 수집한 근거 | 확인한 범위 |
-|---|---|
-| 실제 조작 **19분 28초** → 원본 **2,225개 전이 / 111.25초** | 정상 저장·원본 해시 검사·기록 상태 영상 재생 |
-| 두 로봇의 옷 파지·들기·사람 쪽 이동 | **부분 과제 완료**. 전체 착의 성공·자율 정책 결과는 아직 없음 |
-| 시연 중 RAM 약 **8.4–8.7GiB** | 첫 OOM 실패도 보존. RGB-D 변환·학습 적합성 검수는 대기 |
+## 내일: 현재 UI로 0 → 50점 단계별 테스트
 
-![접근·정렬, 양팔 파지·들기, 사람 쪽 운반의 실제 기록 장면](docs/project/assets/20261026-human-demo-stages.jpg)
+1. L40S 서버 선택 후 기존 UI를 복원하고 짧은 이동·정상 저장부터 확인합니다.
+2. 시작 상태와 실제 점수 확인 방법을 정합니다. 중간 동작에 임의로 10·20·30점 등을 붙이지 않고 **실제 확인한 점수**를 기록합니다.
+3. 접근·정렬 → 파지·들기 → 운반 → 착의 단계로 진행하며, 단계 달성마다 시도/구간 기록과 메모를 저장합니다.
+4. 먼저 초기 상태 재시작을 확인하고, 이후 중간 상태 저장·복원·계속 조작을 시험합니다. **데이터 저장과 시뮬레이터 복원은 다릅니다.** 현재 브라우저 브리지에는 F1~F5 전달이 없어 UI 중간 복원은 추가 연결·검증이 필요합니다.
+5. 의복·접촉·그리퍼·제어 상태와 점수 처리까지 확인한 뒤 단계 재개를 신뢰합니다. 정확한 되감기·충돌 후 복구·최종 50점은 아직 미검증입니다.
 
-[![바로 조작하기](docs/project/assets/nav-live.svg)](docs/project/LIVE.ko.md) [![시연 결과](docs/project/assets/nav-results.svg)](docs/project/RESULTS.ko.md) [![새 서버에서 시작](docs/project/assets/nav-recovery.svg)](docs/project/START_HERE.ko.md) [![지난 작업 기록](docs/project/assets/nav-history.svg)](docs/project/sessions/20261026-live.md) [![자료 복원](docs/project/assets/nav-data.svg)](docs/project/RECOVERY.ko.md) [![기술 근거](docs/project/assets/nav-details.svg)](docs/project/EVIDENCE_MAP.md)
+새 학습·긴 평가·과거 전체 자료 다운로드·텍스트 제어 개발은 선행하지 않습니다. 고정 연습 배치는 공식 무작위 평가 배치와 구분합니다. 자동 조작과 학습 입력은 [공개 관측·행동 규칙](docs/competition/RULES.md)을 따릅니다.
 
-### 앞으로 할 작업
+## 이전 부분 시연
 
-1. **Brev A10 클린 서버:** Lambda A10 24GB, 30 CPU, RAM 200GiB로 시작할 계획입니다. 실제 사양과 고정 TCP·UDP 포트의 브라우저 연결 가능 여부를 확인한 뒤 짧은 시연과 저장·복구를 검증합니다. 같은 기록·해상도 조건에서 속도와 조작 반응을 측정해 기존 L40S의 짧은 측정치와 비교합니다. 아직 A10 실측 결과는 없습니다.
-2. **텍스트 기반 상호작용:** 한 로봇의 제한된 동작과 중지부터 구현한 뒤 두 로봇 동시 제어, 상태 표시, 사용자 종료 조건으로 확장합니다.
-3. **단계별 데이터 보존:** 시도와 명령, 시점, 행동, 북마크를 기록하고 외부 백업과 해시를 확인합니다. 정확한 중간 상태 되돌리기와 다른 시연의 연결은 검증 전까지 보장하지 않습니다.
-4. **첫 착의 도전:** 허용된 카메라·상태로 접근, 파지, 운반, 착의를 시도하고 성공·실패를 모두 기록합니다. 대회 점수는 제어기 입력과 분리하고 애매한 사용은 주최 측에 확인합니다.
-5. **학습은 그다음:** 확인된 공개 관측과 행동을 검수해 모방학습과 평가를 연결합니다. [구체 설계와 시작 순서](README.md#next-interactive-text-guided-collection)
+[![직접 조작한 파지·운반 시연](docs/project/assets/demo-focus-20261027/human-demo-large.webp)](docs/videos/20261026-human-pickup-transport.mp4)
 
-### 그동안 한 작업 · 이 프로젝트의 구현
+[실제 파지·운반 33초 영상](docs/videos/20261026-human-pickup-transport.mp4) · [출처·원본 설명](docs/project/DEMO_20261026.ko.md). 이전의 부분 인간 시연이며 전체 착의나 자율 성공 결과가 아닙니다.
 
-![직접 구현한 입력·수집·관측·증거 보존 구조](docs/project/assets/participant-workflow.svg)
-
-- **조작:** 크롬 스트리밍, 맥북 키 매핑, 로봇 방향에 붙는 화살표, 화면 조작 버튼·정밀 입력, 키 수신/적용 피드백.
-- **데이터:** 공식 기록기를 연결한 수집·무결성 검사·변환 대기열과 실제 사람 시연의 단계별 편집 영상.
-- **실행 진단:** RAM 감시·종료 보호, 제어·물리 주변·기록 비용 분리 계측, 해상도/기록 조건 비교.
-
-공식 시뮬레이터·물리·행동 규격·평가기는 재사용하며, 위 참가자 도구와 구분합니다. [구현과 결과 상세](docs/project/RESULTS.ko.md)
-
-<details>
-<summary>왜 실제 조작이 약 10배 느린가 · 실측 그래프</summary>
-
-![동일 물리 조건에서 해상도와 기록 유무에 따른 실측 속도](docs/project/assets/runtime-comparison.svg)
-
-짧은 동일 배치 검사에서 기록 ON은 약 **0.104배속**이었습니다. 물리 전후 이벤트 구간이 wall time의 약 60%를 차지했고, 해상도를 낮춰도 큰 변화는 없었습니다. 정책 추론은 실행하지 않았습니다. [구간별 수치·한계·다음 개선](docs/project/PERFORMANCE.ko.md)
-
-</details>
-
-### 클린 서버에서 이어가기
-
-[시작 안내](docs/project/START_HERE.ko.md) → [크롬 조작·변환 명령](docs/project/LIVE.ko.md) → [현재 상태](docs/project/STATUS.md). 소스는 이 저장소에, 큰 원본은 저장 위치·해시와 함께 별도로 보존합니다. 오늘 자료는 [고정 HF 자료와 복원 인계](docs/project/END_20261026.ko.md)에 연결했습니다.
-
-<details>
-<summary>공식 데모·관측 예시·이전 기록</summary>
-
-![공식 제공 착의 성공 데모 · 참가자 결과와 구분](docs/videos/Back_Front_32x.gif)
-
-공식 제공 데모이며 이 프로젝트의 성공 결과가 아닙니다.
-
-![공식 다섯 카메라 RGB 예시](docs/examples/teleop/preview_rgb.png)
-
-[공식 참가 안내 원문](README.upstream.md) · [대회 규칙](docs/competition/RULES.md) · [이전 전체 설명](README.history.ko.md) · [출처·라이선스](THIRD_PARTY.md)
-
-</details>
-
+[UI 코드](participant/streaming/) · [데이터 형식](docs/competition/DATA.md) · [정책 규격](docs/competition/POLICY.md) · [기존 결과](docs/project/RESULTS.ko.md) · [기록](README.history.ko.md) · [공식 원본 README](README.upstream.md) · [출처·라이선스](THIRD_PARTY.md)

@@ -1,12 +1,10 @@
-# 다음 클린 서버에서 시연 다시 시작하기
+# 다음 서버에서 기존 UI 테스트 재개
 
-**2026-11-03 다음 서버 선택:** Brev에서 Lambda A10 1대(안내 사양: VRAM 24GB, CPU 30개, RAM 200GiB)로 시작합니다. 실제 할당 사양과 고정 포트의 TCP·UDP 연결을 확인하고, 기존 L40S와 가능한 한 같은 해상도·기록 조건에서 짧게 시연하며 속도와 조작 반응을 측정합니다. A10 실행과 성능은 아직 검증되지 않았습니다.
+**최신: 2026-11-03 종료.** [오늘 종료·측정·내일 목표](END_20261103.ko.md)를 먼저 읽습니다. 텍스트 입력은 사용하지 않고 기존 UI로 0 → 50점 단계별 목표, 데이터 저장, 초기화·중간 상태 복원 가능 여부를 테스트합니다. 과거 데이터·정책 모델은 선행 조건이 아닙니다. 사용자의 다음 재개 요청 전 GPU 작업을 시작하지 않습니다.
 
-**2026-10-26 종료 인계.** 오늘 시연·viewer를 종료했고 GPU 0MiB를 확인했습니다. 사용자는 UI가 조금 나아졌으나 개선할 점이 많다고 평가했고, 다음 클린 서버에서 다시 직접 시연한 뒤 피드백하기로 했습니다. [종료 요약](END_20261026.ko.md) · [실제 시연 영상](DEMO_20261026.ko.md) · [현재 상태](STATUS.md)
+## 1. 서버 선택과 최소 설치
 
-다음 목표는 **최소 준비 → 같은 UI로 짧은 시연 → 사용자 피드백**입니다. 이전 날짜 계획을 따라 새 학습·긴 정책 평가·자동 조작을 먼저 시작하지 않습니다. 공식 물리·행동 한계를 바꾸지 않습니다.
-
-## 1. 코드와 환경
+이전 $1.06/h L40S와 오늘 $1.77/h L40S 중 선택은 사용자가 합니다. 오늘 라이브 누적은 약 10% 빠르지만 모든 60초 구간에서 +8%를 유지하지는 않았습니다. 높은 RAM 자체의 속도 효과는 확인되지 않았습니다.
 
 ```bash
 git clone https://github.com/leonyoon-3dai/PhyRC_2027_phase1.git
@@ -14,33 +12,43 @@ cd PhyRC_2027_phase1
 git status --short
 git rev-parse HEAD
 participant/ops/bootstrap.sh --check
+# 결과와 docs/competition/SETUP.md 확인 후 필요할 때만:
 participant/ops/bootstrap.sh --install
 ```
 
-기존 checkout이면 먼저 변경 내용을 확인하고 덮어쓰지 않습니다. bootstrap은 Docker/NVIDIA/uv 등 host prerequisite를 전제로 공식 build/prepare/smoke를 실행합니다. `PHYRC-SMOKE-PASS`와 exit 0을 확인합니다. 다음 시연에는 과거 정책 모델을 먼저 복원할 필요가 없습니다.
+기존 checkout은 변경 사항을 확인하고 덮어쓰지 않습니다. build/prepare exit 0, smoke의 `PHYRC-SMOKE-PASS`를 확인합니다. 물리·형상·행동 한계를 변경하지 않습니다.
 
-## 2. 접속 준비
+## 2. 새 접속 경로: 직접 IP 또는 Brev 중계
 
-새 서버의 공인 IPv4와 사용자의 현재 맥북 공인 IPv4를 확인합니다. 이전 세션 주소를 재사용하거나 추측하지 않습니다. 접속 정보·토큰은 공개 문서에 쓰지 않습니다.
+실제 맥북 IPv4, 서버 주소와 포트 매핑을 확인합니다. `curl`로 얻은 외부 송신 IP를 접속 가능한 서버 IP로 단정하지 않습니다. 오늘 서버는 Brev CLI 자동 등록으로 해결했습니다.
 
 ```bash
-# 아래 값을 실제 새 주소로 바꿔 설정합니다.
-export PHYRC_CLIENT_IP="<맥북 공인 IPv4>"
-export STRETCH4_STREAM_HOST="<서버 공인 IPv4>"
-python3 participant/streaming/firewall.py --client-ip "$PHYRC_CLIENT_IP"
-python3 participant/streaming/firewall.py --client-ip "$PHYRC_CLIENT_IP" --check
+# 각 placeholder는 새 서버/클라이언트의 실제 값으로 교체합니다.
+brev ports ls <instance> --json
+# 로그아웃이면 사용자 브라우저 인증. 인증 정보를 문서/로그에 게시하지 않음.
+brev login --skip-browser
+brev ports open <instance> 8210-8211 --protocol tcp --allow <client-ip>/32 --json
+brev ports open <instance> 49100 --protocol tcp --allow <client-ip>/32 --json
+brev ports open <instance> 47998 --protocol udp --allow <client-ip>/32 --json
+python3 participant/streaming/firewall.py --client-ip <client-ip>
+python3 participant/streaming/firewall.py --client-ip <client-ip> --check
+```
+
+먼저 기존 등록을 확인해 중복 생성하지 않습니다. 중계는 외부 포트를 자동 배정합니다. 알려진 Brev gateway의 트래픽만 `wt0` 인터페이스에서 해당 streaming chain에 허용해야 할 수 있습니다. `netbird status -d`와 실제 패킷으로 peer를 확인하고, `sudo iptables -I PHYRC_STREAM 1 -i wt0 -s <verified-gateway-ip>/32 -j ACCEPT`를 적용합니다. 기존 세션의 gateway IP를 복사하지 않습니다. 외부 Brev 허용 출발지는 맥북 /32를 유지합니다. HTTPS HTTP 프록시만으로 WebRTC UDP가 해결됐다고 단정하지 않습니다.
+
+```bash
 python3 participant/streaming/prepare_viewer.py
 python3 -m http.server 8210 --bind 0.0.0.0 --directory output/webrtc/viewer/dist
 ```
 
-마지막 HTTP server는 별도 터미널에서 유지합니다. Node/npm이 필요합니다. 제한 포트는 viewer 8210/TCP, keyboard 8211/TCP, signaling 49100/TCP, media 47998/UDP입니다.
+별도 터미널에서 외부 viewer origin과 공개 주소를 설정합니다. viewer 접속 형식은 `http://<relay-ip>:<viewer-public-port>/?keyboardPort=<keyboard-public-port>&signalPort=<signal-public-port>&mediaPort=<media-public-port>`입니다. public IP는 실제 해당 Brev endpoint에서 확인한 IPv4를 씁니다. `STRETCH4_VIEWER_ORIGIN`은 query 없는 정확한 viewer origin입니다.
 
-## 3. 같은 연습 배치·RAM 감시로 시작
-
-다른 터미널에서도 새 `STRETCH4_STREAM_HOST`를 설정합니다. 로봇은 파란 옷 테이블 양옆, 사람은 무작위 회전 없는 고정 연습 배치입니다. 공식 평가 기본 배치와 다릅니다.
+## 3. 동일 연습 배치·기록·RAM guard로 실행
 
 ```bash
-run_id="$(date -u +%Y%m%dT%H%M%SZ)-human-feedback"
+export STRETCH4_STREAM_HOST="<verified-public-ipv4>"
+export STRETCH4_VIEWER_ORIGIN="http://<verified-public-ipv4>:<viewer-public-port>"
+run_id="$(date -u +%Y%m%dT%H%M%SZ)-human-ui"
 mkdir -p "output/sessions/$run_id"
 chmod g+rwx "output/sessions/$run_id"
 export STRETCH4_CAMERA_EYE="1.0,-5.0,3.3"
@@ -52,34 +60,10 @@ export STRETCH4_MAX_RSS_GIB=40 STRETCH4_DEFER_EXPORT=1
 .venv/bin/python participant/ops/run.py --id "$run_id" -- participant/streaming/start.sh
 ```
 
-run wrapper는 로그를 `output/runs/$run_id/command.log`에 남깁니다. WebRTC/keyboard ready와 초기 장면을 확인한 뒤 실제 주소를 사용자에게 전달합니다. IPv4/방화벽·단일 client 연결을 확인합니다. 처음에는 짧게 움직이고 ESC로 원본 정상 저장을 확인합니다. 수집과 exporter/GPU 진단을 동시에 실행하지 않습니다.
+これは固定練習配置であり公式評価配置ではありません。Chromeで実際の映像と短い動作を確認します。既存のボタン・方向・キーボードを使い、テキスト入力は使用しません。`P`は初期化、`Esc`は終了・保存。deferred export時は complete原本とRGB-D変換待ちを区別します。RGB-D exporterと収集を同時実行しません。
 
-## 4. 사용자 피드백으로 확인할 것
+## 4. 단계별 저장·재시작부터 검증
 
-- 카메라 시점과 로봇 주변 화살표가 실제 방향을 이해하는 데 도움이 되는가.
-- 키보드·화살표 클릭·큰 버튼 중 무엇이 편하고, 무엇이 혼란스러운가.
-- 정밀 모드의 이동량, 길게 누르기와 놓았을 때 정지가 적절한가.
-- 팔·손목·그리퍼 피드백과 UI 가림을 어떻게 개선할 것인가.
+[종료 인계](END_20261103.ko.md)의 단계별 테스트 순서를 따릅니다. 데이터 구간 저장, 초기 상태 재시작, 중간 상태 checkpoint 복원은 각각 별도로 확인합니다. 브라우저에는 F1~F5 전달이 없으며, slot UI 연결과 복원 후 계속 조작은 내일의 구현·검증 대상입니다. smoke 통과를 정확한 중간 되감기 검증으로 확대 해석하지 않습니다.
 
-이는 다음 확인 목록이며 오늘 모두 해결됐다는 뜻이 아닙니다. `✓`는 서버 수신, `●`는 키 callback 반영이고 실제 로봇 동작 완료 표시는 아닙니다. [전체 키·저장 안내](LIVE.ko.md)
-
-## 5. 오늘 자료가 필요할 때
-
-[오늘 종료/복원 정보](END_20261026.ko.md)의 고정 HF revision으로 내려받고 SHA256을 확인합니다. 정상 원본과 OOM 원본·profiling fixture를 구분합니다. RGB-D 학습 export와 적합성 검수는 아직입니다. **새 시연을 시작하기 위해 과거 전체 export를 먼저 실행할 필요는 없습니다.**
-
-[과거 10월 23일 시작 안내 보존본](START_HERE.20261023.ko.md)은 당시 인계이며 오늘의 우선순위를 대체하지 않습니다.
-
-## 다음 Codex에게 전달할 요청
-
-```text
-2026-10-26 종료 인계를 이어갑니다. AGENTS.md, README, STATUS,
-END_20261026.ko.md, START_HERE.ko.md를 먼저 읽으세요.
-사용자는 다음 클린 서버에서 시연을 다시 해보고 UI 피드백을 주려 합니다.
-최소 환경 점검 후 기존 방향 화살표/버튼/정밀 UI로 먼저 연결하세요.
-새 학습·긴 평가·과거 전체 RGB-D export를 먼저 시작하지 마세요.
-새 서버/맥북 IP를 확인하고 RAM guard·성능 로그·deferred export를 유지하세요.
-고정 연습 배치와 공식 평가 기본 배치를 구분하세요.
-오늘 원본과 33초 편집 영상, HF 고정 revision/checksum을 보존하세요.
-초기 OOM 원인은 미확정이며 UI 사용성도 추가 개선이 필요합니다.
-사용자 피드백과 실제 프로파일을 보고 다음 변경을 정하세요.
-```
+실제 점수는 공식 평가 절차로 확인하고 임의의 단계별 숫자를 부여하지 않습니다. 처음에는 초기화·짧은 저장을 검증한 뒤 접근/파지/운반/착의 단계마다 기록합니다. 50점 달성은 목표이며 기존 결과가 아닙니다. 복원이 검증되지 않으면 초기 상태 재시작과 사람 재실행을 사용합니다.

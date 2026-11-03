@@ -1,5 +1,17 @@
 # Working in this participant fork
 
+## Latest owner handoff — November 3 session ended
+
+The owner ended the November 3 session. Simulator, viewer and speed monitors are stopped; GPU 0% / 1 MiB and no stream listeners were verified. Do not automatically resume GPU work. No server power/deletion was performed.
+
+Read `docs/project/END_20261103.ko.md`, `START_HERE.ko.md` and `sessions/20261103-runtime-summary.json`. On the next owner-authorized session, use the existing buttons/direction arrows/keyboard UI; **do not use text commands** or prioritize text-controller development. Prior recordings/models are not prerequisites. The owner will choose whether the roughly 10% faster, more expensive L40S is worthwhile.
+
+Next goal: work from the starting score toward a first verified 50-point attempt, saving each achieved stage and testing restart/recovery. No 50-point or full dressing result is claimed. Capture/segment preservation, episode restart and simulator checkpoint restoration are distinct. The browser mapping/allowlist currently lacks F1–F5 forwarding; connect and verify checkpoint controls before promising stage resume. Test restore-and-continue including cloth/contact, grasp/controller and score handling; the smoke position error 0 is not exact solver rewind evidence. Use initial reset plus human re-execution when restoration is not verified. Do not invent intermediate score thresholds.
+
+Today: official build/prepare/smoke and actual MacBook Chrome video/controls passed. Brev CLI automatic source-restricted TCP/UDP mappings solved relay access; egress-IP discovery alone failed. Live-session cumulative sample 0.114919× versus historical 0.104483× (~10% faster), overlapping 60-second gain range 7.39–11.60%; +8% minimum was not sustained. Last UI-practice capture: 966 transitions / 12,561 raw states, complete=true, raw chunk/event/scene hashes verified; RGB-D export/QC and remote raw backup not performed. Raw data remains local. Preserve this distinction and keep addresses/auth data out of public records.
+
+This instruction supersedes the older text-guided collection plan and dated server choices below. Existing historical evidence remains intact.
+
 ## Latest owner handoff — October 26 session ended
 
 The owner ended today's work and requested stopping the demonstration, preserving artifacts, and updating the README/handoff. Simulator and viewer are stopped; GPU 0 MiB was verified. Do not restart this server's GPU work automatically. The owner will open a clean server, retry the current UI, and provide feedback. Their assessment is "UI slightly better, many improvements still needed"; do not claim usability completion.
