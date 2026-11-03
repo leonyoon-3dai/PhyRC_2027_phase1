@@ -40,6 +40,17 @@ Owner-supplied rates: previous **$1.06/h**, current **$1.77/h**. At the measured
 
 No new SFT, long evaluation, full historical-data download or text-controller work is a prerequisite. The fixed garment-side layout is for practice, not the official randomized evaluation layout. Automated operators and training inputs must respect the [public observation/action rules](docs/competition/RULES.md).
 
+## Research reference: Stretch 4 policies and Astra (November 4)
+
+[Detailed technical review and implementation plan (Korean)](docs/project/research/STRETCH4_VLA_REVIEW.ko.md)
+
+- **Verified source:** [Hello Robot's official integration](https://github.com/hello-robot/stretch4_lerobot) reports real Stretch 4 tests with **π0.5 LoRA, ACT and Diffusion**. Its documentation provides a training/deployment pipeline; a task-trained Stretch 4 checkpoint was not identified in the reviewed guides. This is not evidence of two-robot dressing success.
+- **Compatibility matters:** the real-robot adapter uses base velocities, arm/wrist positions and gripper opening. PhyRC uses normalized velocities and gripper intent, **`float32 (2,9)`**. Do not copy the real-robot relative-action transformation into our velocity labels. Our current training stack is **OpenPI/JAX**, while the reference uses **LeRobot/PyTorch**.
+- **Reuse first:** preserve camera/action schemas and preprocessing, check synchronization and normalization, verify trained weights after reloading, and compare short action-execution chunks. Human-demo SFT also needs an explicit review state in the current loader. Automatic held-joint processing must not erase rare dressing actions.
+- **Later option:** [Georgia Tech's Astra study](https://www.gt-rail.com/blog/astra-beyond-tabletop/) motivates a bounded automated collector using only public observations. It studies one real robot; its quantitative ablation is one household task with five trials per setting, not a PhyRC benchmark. The existing GPT code is a wiring-test scaffold, not a dressing policy.
+
+**Next sequence remains:** existing Chrome UI → raw preservation → public RGB-D export/QC → reviewed demonstrations → current baseline fine-tuning and short local comparisons. LeRobot migration and GPT control remain separate future experiments. This update is documentation-only; no new GPU run, training, autonomous success or submission is claimed.
+
 ## Earlier demonstration
 
 [![Human pickup and transport](docs/project/assets/demo-focus-20261027/human-demo-large.webp)](docs/videos/20261026-human-pickup-transport.mp4)
