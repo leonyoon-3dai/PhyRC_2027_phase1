@@ -40,6 +40,17 @@
 
 새 학습·긴 평가·과거 전체 자료 다운로드·텍스트 제어 개발은 선행하지 않습니다. 고정 연습 배치는 공식 무작위 평가 배치와 구분합니다. 자동 조작과 학습 입력은 [공개 관측·행동 규칙](docs/competition/RULES.md)을 따릅니다.
 
+## 11월 4일 연구 정리: Stretch 4 정책과 Astra
+
+[상세 분석 · 코드 위치 · 후속 구현 순서](docs/project/research/STRETCH4_VLA_REVIEW.ko.md)
+
+- **실기 적용 근거:** [Hello Robot 공식 구현](https://github.com/hello-robot/stretch4_lerobot)은 Stretch 4에서 **π0.5 LoRA·ACT·Diffusion**을 테스트했다고 보고합니다. 공개 학습·배포 경로는 확인했으나 검토한 문서에서 작업별 학습 가중치는 확인하지 못했습니다. 두 로봇 착의 성공 근거는 아닙니다.
+- **호환성 주의:** 실기는 base 속도·팔/손목 위치·그리퍼 간격을 사용합니다. PhyRC는 **`float32 (2,9)` 정규화 속도·그리퍼 의도**입니다. 실기의 relative-action 변환을 그대로 적용하지 않습니다. 현재 **OpenPI/JAX** 경로와 참고 자료의 **LeRobot/PyTorch** 경로도 구분합니다.
+- **먼저 가져올 것:** 카메라·행동 schema와 전처리 보존, 동기화·정규화 QC, 학습 가중치 재로드 확인, 짧은 행동 청크 비교입니다. 사람 시연용 검수 상태를 loader에 추가해야 하며, 자동 고정 관절 처리가 희귀한 착의 동작을 지우지 않도록 검토합니다.
+- **후속 옵션:** [Georgia Tech Astra 실험](https://www.gt-rail.com/blog/astra-beyond-tabletop/)의 공개 관측·제한된 명령·재관측 구조를 자동 수집에 참고합니다. 실기 한 대의 연구이며 정량 비교는 한 가정 과제의 설정별 5회입니다. 현재 GPT 코드는 작은 동작의 연결 시험용으로, 착의 정책은 아닙니다.
+
+**다음 순서:** 기존 Chrome UI → 원본 보존 → 공개 RGB-D export/QC → 검수한 시연 → 현재 baseline 미세조정·짧은 로컬 비교. LeRobot 전환과 GPT 조작은 별도 후속 실험으로 둡니다. **이번 변경은 문서 정리이며 새 GPU 실행·학습·자율 성공·제출을 수행하지 않았습니다.**
+
 ## 이전 부분 시연
 
 [![직접 조작한 파지·운반 시연](docs/project/assets/demo-focus-20261027/human-demo-large.webp)](docs/videos/20261026-human-pickup-transport.mp4)
