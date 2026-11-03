@@ -98,7 +98,9 @@ Recordings and checksums are preserved in an [immutable data snapshot](https://h
 <details>
 <summary><strong>Clean-server handoff: architecture, collection and recovery plan</strong></summary>
 
-### 1. Start on the new Brev L40S server
+### 1. Start on the new Brev A10 server
+
+**Next server selection (2026-11-03):** Begin on a Lambda A10 instance advertised with 24 GB VRAM, 30 CPUs and 200 GiB RAM. These are selection details, not verified runtime results. Before streaming, verify that the fixed-port setup supports viewer and keyboard TCP, signaling TCP and media UDP; check the actual addresses and accessible ports. Measure the short-run simulation rate and control responsiveness under comparable recording and resolution settings, then compare with the previous L40S observation (~0.104× in one short warm sample). Different GPUs and CPUs prevent attributing any difference to one component without further testing.
 
 The latest user request authorizes resuming interactive collection and implementing this plan. The October 26 handoff remains evidence of an earlier stopped session; its instruction to wait for feedback before adding features is superseded by this request. Read the current rules, `AGENTS.md`, [historical server setup](docs/project/START_HERE.ko.md), and [data guide](docs/competition/DATA.md) first. Check the checkout and dirty files before changes.
 
