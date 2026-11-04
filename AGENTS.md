@@ -1,93 +1,67 @@
-# Working in this participant fork
+# 이 저장소에서 작업하는 에이전트의 지침
 
-## Latest owner handoff — November 3 session ended
+## 현재 작업 방향
 
-The owner ended the November 3 session. Simulator, viewer and speed monitors are stopped; GPU 0% / 1 MiB and no stream listeners were verified. Do not automatically resume GPU work. No server power/deletion was performed.
+2026-11-04 사용자 요청에 따라 운영 문서를 한국어로 정리했습니다. 현재 목표는 **Codex CLI의 Astra를 공개 관측 기반 시연 생성기로 연결**하고, 검수한 데이터로 로컬 기본 정책을 학습하는 것입니다.
 
-Read `docs/project/END_20261103.ko.md`, `START_HERE.ko.md` and `sessions/20261103-runtime-summary.json`. On the next owner-authorized session, use the existing buttons/direction arrows/keyboard UI; **do not use text commands** or prioritize text-controller development. Prior recordings/models are not prerequisites. The owner will choose whether the roughly 10% faster, more expensive L40S is worthwhile.
+먼저 `README.md`, `docs/project/START_HERE.ko.md`, `docs/project/STATUS.md`를 읽습니다. 날짜가 붙은 종료 기록과 과거 계획은 당시 상황을 보존한 자료입니다. 그 안의 “기존 UI만 사용”, “GPT 수집은 나중”, 과거 면접·마감 일정은 현재 작업 우선순위를 덮어쓰지 않습니다. Chrome 조작은 사람 시연과 개입 수단으로 유지합니다.
 
-Next goal: work from the starting score toward a first verified 50-point attempt, saving each achieved stage and testing restart/recovery. No 50-point or full dressing result is claimed. Capture/segment preservation, episode restart and simulator checkpoint restoration are distinct. The browser mapping/allowlist currently lacks F1–F5 forwarding; connect and verify checkpoint controls before promising stage resume. Test restore-and-continue including cloth/contact, grasp/controller and score handling; the smoke position error 0 is not exact solver rewind evidence. Use initial reset plus human re-execution when restoration is not verified. Do not invent intermediate score thresholds.
+이번 변경은 문서 정리입니다. 사용자가 새 서버에서 재개하기 전에는 GPU 작업이나 모델 호출을 시작하지 않습니다. 재개를 요청하면 이미 승인된 범위의 환경 점검·구현·짧은 검증을 진행하며 같은 허락을 반복해서 묻지 않습니다. 추가 서버 생성·서버 삭제·새 유료 API 방식 전환은 별도 지시 없이 수행하지 않습니다.
 
-Today: official build/prepare/smoke and actual MacBook Chrome video/controls passed. Brev CLI automatic source-restricted TCP/UDP mappings solved relay access; egress-IP discovery alone failed. Live-session cumulative sample 0.114919× versus historical 0.104483× (~10% faster), overlapping 60-second gain range 7.39–11.60%; +8% minimum was not sustained. Last UI-practice capture: 966 transitions / 12,561 raw states, complete=true, raw chunk/event/scene hashes verified; RGB-D export/QC and remote raw backup not performed. Raw data remains local. Preserve this distinction and keep addresses/auth data out of public records.
+## 현재 구현과 계획을 구분
 
-This instruction supersedes the older text-guided collection plan and dated server choices below. Existing historical evidence remains intact.
+- `participant/collection/boundary.py`: 공개 관측과 제한된 행동 계약. 운영체제 격리가 아닙니다.
+- `scripts/collect_operator.py`: JSON Lines 수집기와 HDF5 기록. 원시 기록 없는 즉시 센서 저장 경로입니다.
+- `participant/collection/gpt_client.py`: Responses API를 이용한 작은 동작 시험입니다. Codex CLI 수집기나 착의 정책으로 설명하지 않습니다.
+- Codex CLI 연결, 에피소드 문맥, 사람 개입 전환, 별도 공식 점수 기록, 전수 검수·실제 시연 승인 상태는 구현할 항목입니다.
+- `participant/pi05/data.py`는 현재 `approved_pipeline_test`만 받습니다. 실제 시연의 승인 상태를 추가하고 시험 자료와 구분합니다.
+- `participant/ops/selfcheck.sh`는 과거 소스 커밋을 고정합니다. 최신 코드를 검사한다고 주장하기 전에 기준 버전을 검토합니다.
 
-## Latest owner handoff — October 26 session ended
+## 다음 서버에서의 순서
 
-The owner ended today's work and requested stopping the demonstration, preserving artifacts, and updating the README/handoff. Simulator and viewer are stopped; GPU 0 MiB was verified. Do not restart this server's GPU work automatically. The owner will open a clean server, retry the current UI, and provide feedback. Their assessment is "UI slightly better, many improvements still needed"; do not claim usability completion.
+1. 실제 하드웨어·드라이버·Docker·용량·작업 폴더 변경을 확인합니다.
+2. 공식 환경을 구성하고 smoke와 기존 CPU 검사를 실행합니다. 과거 전체 데이터·모델 복원은 먼저 하지 않습니다.
+3. CLI 버전·모델 접근·이미지 입력·구조화 출력·명시적 세션 재개를 확인합니다.
+4. 기존 실행기를 재사용하여 별도 Codex 클라이언트를 연결합니다. 처음에는 짧은 동작·정지·정상 종료만 시험합니다.
+5. 실제 기록과 정보 격리를 확인한 뒤 접근·파지·들기의 짧은 시도 10회를 진행할 수 있게 만듭니다.
+6. 품질과 수집 효율을 확인한 후 승인 시연으로 모방학습, 별도 시작 배치의 로컬 검증, 필요시 RL 순서로 확장합니다.
 
-Next clean server: read `docs/project/END_20261026.ko.md` and the rewritten `START_HERE.ko.md`; perform minimal setup/smoke, then restore Chrome human practice with the existing controls before adding features. No new SFT, long evaluation or full prior RGB-D export as a prerequisite. New server/client IPs must be obtained. Preserve RAM guard, passive timers and deferred export. The owner requested a fixed garment-side human practice reset; this is explicitly distinct from default evaluation, and official physics/geometry/action limits/cameras remain unchanged.
+학습·수집·GPU 평가는 한 서버에서 순차로 실행합니다. 긴 평가를 수집 재개의 필수 조건으로 만들지 않습니다. 현재 CLI 수집 명령이 없는 상태에서 가상의 명령을 실행 가능한 것으로 문서화하지 않습니다.
 
-Today: 4 complete human-practice collections, 6 episodes, 5571 transitions; original pickup/transport demo is 2225 transitions with a published 33-second edit. Final UI retry is 1851 transitions. Full dressing, training RGB-D/QC, new policy training and policy-inference timing remain unverified. Initial OOM growth cause is unresolved. HF preservation/verification status is in END_20261026; do not assume local-only artifacts survive server replacement. No server power/deletion was performed.
+## 공개 관측과 실행 경계
 
-## Earlier October 26 start instruction (historical)
+작업할 버전의 `docs/competition/RULES.md`, `POLICY.md`, `config/policy_interface.json`을 확인합니다.
 
-The owner explicitly resumed genuine human task-demonstration collection on October 26. Prioritize minimal environment verification and live MacBook Chrome access, then human two-robot practice and capture. Update upstream, simplify the main page in Korean, and publish verified visual results as data becomes available. This supersedes the October 23 collection deferral below. New SFT, long policy evaluation and additional paid compute are not prerequisites for today's collection. Read `docs/project/LIVE.ko.md` and `docs/project/sessions/20261026-live.md`. Preserve historical evidence; do not claim success before actual collection/export/QC.
+- 행동용 Astra와 모든 정책 모델은 지정 카메라와 공개 로봇 상태만 받습니다. 전체 환경 객체·Gym info·평가 JSON·audit·원시 상태·spawn seed·자유 시점 화면·내부 기하를 전달하지 않습니다.
+- 개발·디버깅 세션과 실제 행동 세션의 문맥·파일·도구 접근을 분리합니다. 읽기 전용 설정이나 프롬프트만으로 격리가 완료됐다고 주장하지 않습니다.
+- 공식 `float32 (2,9)` 명령을 사용합니다. gripper 0은 기존 의도 유지입니다. 실제 적용 행동과 관측·다음 관측을 20 Hz 경계에서 기록합니다.
+- 입력 JSON, 범위·유한값, 호출·시간 제한, timeout·중단·파일 종료를 검사합니다. 여러 제어원이 동시에 명령을 보내지 않게 합니다.
+- 점수·success는 시연 선택·분석·허용된 학습 보상에 사용합니다. 행동 세션의 다음 입력이나 특권적 행동 정답으로 사용하지 않습니다.
+- 내부 상태 기반 RL 보상·종료·리셋이 허용되더라도 actor·critic·추론 모델의 입력·행동 라벨·교사 정보로 넘기지 않습니다.
+- 자동 수집은 규칙에 맞추는 설계이지 이 구현에 대한 주최 측의 명시적 승인을 뜻하지 않습니다.
 
+## 데이터와 검증
 
-This is Leonard Yoon's public PhyRC 2027 Phase 1 project. Read `README.md`, `docs/project/STATUS.md`, `docs/project/START_HERE.ko.md`, `docs/project/ENGINEERING_SPRINT.ko.md`, and `docs/project/EVIDENCE_MAP.md` before working. The 2026-10-23 update is documentation-only. The owner will review the plan before starting the next clean server; D0 is the actual session start, not an assumed calendar date. No new GPU execution is claimed by this update. Inspect the actual server and checkout before resuming. Run collection, training and GPU evaluation sequentially. Do not provision additional paid compute or delete/stop a server without an explicit request. Do not use extra billed GPT APIs without a separate request.
+- 연결 시험, AI 시연, 사람 시연, 사람 수정 AI 시연을 구분하고 개입 구간을 기록합니다.
+- `complete`, `done`, 기본 reward 0을 착의 성공으로 해석하지 않습니다. 공식 점수와 `success`를 따로 확인합니다.
+- 자동 수집에 공식 평가기를 연결할 때 같은 시도의 결과를 검수 영역에만 저장합니다. 현재 원시 기록이 없는데 사후 원시 상태 평가가 가능하다고 주장하지 않습니다.
+- `inspect_policy_dataset.py`는 형식 확인이고 전수 QC가 아닙니다. `check_deferred_dataset.py`는 원시 기록이 있는 사람 수집 변환에 적용합니다.
+- 시연의 출처 그룹·에피소드 단위로 학습/검증을 나눕니다. 인접 프레임이나 같은 복원 출처를 서로 다른 split으로 나누지 않습니다.
+- 교사와 학생의 카메라·상태·시간 문맥 차이를 명시합니다. 관측 구성·행동 순서·정규화를 학습과 추론에서 일치시킵니다.
+- 모방학습 기본 정책을 보존하고 같은 조건에서 비교합니다. 실행 코드의 존재, 연결 시험, 실제 과제 성공, 제출 접수, 공식 채점은 별도 상태입니다.
 
-## Scope and truthfulness
+## 재현과 보존
 
-- Keep the official simulator, physics, geometry, action limits, reset rules, and evaluation unchanged for the initial experiment. Add participant code in clearly named paths when implementation begins.
-- Distinguish planned, implemented, runtime-verified, submitted/accepted, and organizer-scored. Do not mark a milestone complete without linked evidence.
-- Do not present upstream demos, generic base checkpoints, or other robots' results as this project's results.
-- Preserve `README.upstream.md` as the exact reviewed upstream README. Record any later refresh, upstream commit, and old snapshot history.
-- Preserve `LICENSE`, `NOTICE`, and `THIRD_PARTY.md`. New documentation describes the participant work and credits upstream material.
-- Keep the main README concise and accessible to external researchers and interviewers. Keep private recruiting logistics out of public project documents. Update English and Korean status together. Put operational detail under `docs/project/`.
+- 코드 커밋·변경 사항, 공식 소스 버전, 컨테이너 식별자, 자산 잠금, 의존성, CLI 버전, 모델명·추론 설정, 프롬프트 해시, 명령과 자료 출처를 기록합니다.
+- 실제 시간, 시뮬레이션 시간, 추론 시간, 공식 점수 분모를 구분합니다. 환경과 정책의 시간을 따로 측정합니다.
+- GitHub에는 코드와 작은 문서, 별도 자료 저장소에는 큰 데이터·영상·모델·학습 상태를 저장합니다. 고정 리비전과 SHA256을 남기고 필요한 자료의 재다운로드 검증 후 서버를 정리합니다.
+- 인증 파일·키·토큰·개인 접속 주소·검수하지 않은 로그를 공개하지 않습니다. 저장소 전체나 홈 디렉터리를 그대로 압축하지 않습니다.
+- 파일 저장, 에피소드 재시작, 실행 중 상태 복원을 구분합니다. 정확한 물리 되감기나 학습 데이터 순서 복원은 검증 없이 약속하지 않습니다.
+- 세션 종료 시 `docs/project/STATUS.md`와 날짜별 세션 기록에 확인한 것, 실패한 것, 자료 위치, 다음 한 가지 작업과 실제 명령을 한국어로 남깁니다.
 
-## Owner handoff after October 23 runtime
+## 변경 범위와 문서 기준
 
-- Tests were stopped by the owner for review before another clean server. Read the October 23 results in both READMEs and `docs/project/sessions/20261023-clean-start.md` first.
-- Current scope is data-format and existing-package/submission validation only. Do not automatically resume task-demonstration collection, human SFT, SAM/FK/IK or the earlier dated sprint.
-- Official smoke and Chrome movement passed; derived human format sample is 3 clips/12 transitions. Full raw export and 900-second check were intentionally interrupted. Full check stopped at 1460 actions/73.0 simulation seconds; no valid final score or submission.
-- Next server: restore pinned assets, short offline check, then a separate fixed-step warm timing diagnostic before budgeting another long run. Measure policy-call and environment wall time separately. Thread/NUMA/cache changes are untested candidates, not verified fixes.
-- Keep the original model and format-only human sample separate; no new training is authorized. Codabench access checking is deferred. Server power/deletion follows a separate explicit request after preservation.
-
-## Active engineering sprint
-
-- Follow `START_HERE.ko.md` for the current entry point and `ENGINEERING_SPRINT.ko.md` for the October 23–28 evidence sprint. Freeze evidence on October 28; if the server opens later, reduce scope without inventing completion. `RGBD_TWO_WEEK_PLAN.ko.md` and `PLAN.ko.md` are historical plans.
-- First obtain a valid human-recorded episode after restore/smoke and a short existing-policy rerun. The 3 scripted episodes / 63 transitions are integration fixtures, not human demonstrations.
-- Prioritize E0 clean-server recovery, E1 genuine human collection, E2 synchronized QC and small camera-local RGB-D diagnostics, and E3 human-data SFT with short matched three-seed evaluation. Keep SAM 2 and FK/IK optional. Counts and dates remain targets until evidence exists.
-- Before human SFT, define a genuine-human review state in the loader/manifest and a short-run LR schedule. Start from pi05_base with train-only normalization, preserving the old integration checkpoint. Do not relabel human demonstrations as approved_pipeline_test.
-- Record the source/base commit selected for each new self-check package. The historical helper pins 9d97807; do not silently describe it as testing current main. The full 900-second check follows the short evidence loop.
-- Reuse the official recorder and existing participant helpers. Inspect implementation before replacing tools described as pending runtime validation.
-- The current policy consumes three RGB views and a 32D robot state, returning 18D actions. Depth analysis is initially offline and does not by itself establish a policy-performance gain.
-- Keep SAM 2 analysis separate from the official simulator environment. Do not treat camera audit matrices or reference overview pose as permitted per-episode world calibration.
-- Historical recovery commits identify earlier experiments. Read the latest handoff first; use a separate worktree for an exact historical reproduction when needed.
-
-## Public observation and action boundary
-
-Read `docs/competition/RULES.md`, `POLICY.md`, and `config/policy_interface.json` at the selected revision before collection or training.
-
-- Every automated operator/controller and learned model uses only the designated cameras and public robot observations. A human may use the official teleop interface, while training images remain the designated cameras. Never pass a whole Gym `info` dictionary, environment handle, raw archive, audit file, spawn seed, ground-truth geometry, or freely moved viewport to a policy or AI operator.
-- Use the official normalized `float32 (2,9)` action. Gripper `0` means preserve intent. Record observations, applied actions, and next observations at the same 20 Hz simulation boundaries.
-- Scores and success labels are for selection, reporting, or permitted training rewards, not policy observations or privileged action-label generation.
-- GPT-driven collection from allowed observations is an interpretation of the rules; do not describe it as explicit organizer approval. Record controller source, model identifier, prompts, observation selection, action parameters, and corrections.
-- Separate implementation/debugging access from the collection-time AI operator. Its tools should expose only the permitted observation/action boundary.
-
-## Evidence and operations
-
-- Use the session and experiment templates. Assign a unique UTC run ID; include KST display times in human reports if useful.
-- Save code commit, dirty state, upstream revision, image digest, asset lock, dependency versions, dataset/model revisions, normalization, command, seeds, and hardware for each run.
-- Keep seeds and evaluation metadata outside model inputs. Split datasets by episode and collection layout/source groups, not adjacent frames.
-- Measure CPU, RAM, VRAM, storage I/O, simulation rate, inference latency, compile time, and warm training step time before scaling.
-- Keep the SFT-only baseline. Compare changes on matched evaluation settings and include failures in averages.
-- Separate wall time/cost, simulation time, official score time, and policy inference budget. Acceptance is not a performance result.
-- Finish export and verify remote artifact hashes before a disposable server is deleted. Save full inference params/assets and optimizer/train state for learning resume. Do not promise dataloader-cursor or bitwise physics restoration without an explicit mechanism and verification.
-- GitHub holds source and small reports; HF holds large artifacts with immutable revisions and checksums. No fabricated HF links or results. Preserve original evidence when revising reports.
-
-## Submission and validation
-
-- Use the official image. Participant Dockerfiles only add packages; do not replace existing torch/torchvision or other pinned packages.
-- Validate the actual π₀.₅ path early: local tokenizer/config/norm stats, no evaluation downloads, official adapter, policy memory within 12 GB, and the full official self-check.
-- Disable automatic JAX allocation as needed and measure actual residency; an L40S run is not proof of RTX 3090 compatibility.
-- If converting LoRA, explicitly merge all learned parameters as required and compare output parity; generic conversion success alone is insufficient.
-- Documentation-only changes need source/link/format checks, not invented GPU tests. Report precisely which checks ran.
-
-## Public repository hygiene
-
-Never commit credentials, `.env` files, SSH keys, auth caches, cloud access URLs, or unreviewed private logs. Public research outputs remain the default. Keep artifacts' source/license provenance; asset and pretrained-model terms are component-specific.
-
-At session end update `docs/project/STATUS.md` with evidence, blockers, and the next concrete commands. Do not replace a real command with a hypothetical script name. Participant bootstrap, artifact, collection, training, streaming, and packaging code exists. Check STATUS and the recorded session for its actual runtime-verified scope; Chrome human collection, separate-server recovery, and full submission validation remain pending at this documentation update.
-
+- 공식 물리·형상·행동 한계·평가 함수를 성능 개선 목적으로 바꾸지 않습니다. 참가자 연결 코드를 명확히 분리합니다.
+- `README.md`가 현재 계획의 기준입니다. `README.ko.md`는 같은 문서로 안내하며 영어본은 추후 요청 시 추가합니다.
+- 과거 기록은 재현 자료로 보존하고 최신 실행 지시로 사용하지 않습니다. `README.upstream.md`, `LICENSE`, `NOTICE`, `THIRD_PARTY.md`의 원문·출처를 보존합니다.
+- 문서만 변경했다면 링크·명령·파일 위치·내용 일치를 검사합니다. 서버나 GPU에서 실행하지 않은 검사를 통과했다고 쓰지 않습니다.
