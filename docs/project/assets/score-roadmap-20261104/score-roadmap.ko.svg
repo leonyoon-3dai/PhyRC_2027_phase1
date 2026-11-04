@@ -1,0 +1,211 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1120" viewBox="0 0 1440 1120" role="img" aria-labelledby="title desc">
+<title id="title">PhyRC 2027 0점에서 50점까지의 목표 지도</title>
+<desc id="desc">실제 성공 기록이 아닌 평가 항목 개념도. 준비 0, 픽업 5, 첫 소매 10, 반대 어깨 15, 두 번째 소매 20, 왼쪽 위팔 25, 오른쪽 위팔 30, 목 통과 40, 앞면 방향 50의 누적 예시. 실제 득점 순서는 달라질 수 있으며 누적 50점과 성공 판정은 다름.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#0F907D"/></marker></defs>
+<g font-family="Noto Sans CJK KR, Noto Sans KR, Apple SD Gothic Neo, Malgun Gothic, sans-serif">
+<rect x="0" y="0" width="1440" height="1120" rx="0" fill="#F2F6FC" stroke="none"/>
+<rect x="0" y="0" width="1440" height="9" rx="0" fill="#3159A7" stroke="none"/>
+<text x="40" y="66" font-size="42" fill="#17324D" font-weight="800">0 → 50점 목표 지도</text>
+<text x="40" y="105" font-size="22" fill="#526B85" font-weight="400">평가 항목을 설명하는 개념도 · 실제 수집 장면 아님 · 누적 점수는 아래 순서로 얻는 경우의 예시</text>
+<rect x="40" y="140" width="440" height="234" rx="16" fill="#FFFFFF" stroke="#D9E3F0"/>
+<rect x="40" y="140" width="440" height="52" rx="16" fill="#E8EEFA" stroke="none"/>
+<text x="58" y="175" font-size="25" fill="#17324D" font-weight="750">01  시작 준비</text>
+<g transform="translate(57 209)">
+<rect x="2" y="95" width="120" height="10" rx="3" fill="#A8B8C9" stroke="none"/>
+<line x1="19" y1="107" x2="19" y2="135" stroke="#A8B8C9" stroke-width="7" stroke-linecap="round" />
+<line x1="106" y1="107" x2="106" y2="135" stroke="#A8B8C9" stroke-width="7" stroke-linecap="round" />
+<g transform="translate(62 46) scale(0.65)">
+<path d="M -30 0 L -52 16 L -40 34 L -27 26 L -27 78 L 27 78 L 27 26 L 40 34 L 52 16 L 30 0 L 12 0 Q 0 19 -12 0 Z" fill="#7462E8" stroke="#5146B2" stroke-width="2" stroke-linejoin="round"/>
+</g>
+<line x1="0" y1="43" x2="25" y2="43" stroke="#3159A7" stroke-width="6" stroke-linecap="round" />
+<line x1="100" y1="43" x2="124" y2="43" stroke="#3159A7" stroke-width="6" stroke-linecap="round" />
+<line x1="25" y1="43" x2="25" y2="53" stroke="#3159A7" stroke-width="6" stroke-linecap="round" />
+<line x1="100" y1="43" x2="100" y2="53" stroke="#3159A7" stroke-width="6" stroke-linecap="round" />
+</g>
+<text x="203" y="247" font-size="32" fill="#3159A7" font-weight="800">누적 0점</text>
+<text x="203" y="280" font-size="20" fill="#526B85" font-weight="600">아직 득점 없음</text>
+<text x="203" y="319" font-size="21" fill="#344D66" font-weight="400">옷에 접근하고</text>
+<text x="203" y="348" font-size="21" fill="#344D66" font-weight="400">파지를 준비합니다.</text>
+<rect x="500" y="140" width="440" height="234" rx="16" fill="#FFFFFF" stroke="#D9E3F0"/>
+<rect x="500" y="140" width="440" height="52" rx="16" fill="#E8EEFA" stroke="none"/>
+<text x="518" y="175" font-size="25" fill="#17324D" font-weight="750">02  옷 들어 올리기</text>
+<g transform="translate(517 209)">
+<rect x="2" y="111" width="120" height="7" rx="3" fill="#D7E0E9" stroke="none"/>
+<g transform="translate(62 25) scale(0.64)">
+<path d="M -30 0 L -52 16 L -40 34 L -27 26 L -27 78 L 27 78 L 27 26 L 40 34 L 52 16 L 30 0 L 12 0 Q 0 19 -12 0 Z" fill="#7462E8" stroke="#5146B2" stroke-width="2" stroke-linejoin="round"/>
+</g>
+<line x1="10" y1="12" x2="34" y2="23" stroke="#3159A7" stroke-width="5" stroke-linecap="round" />
+<line x1="114" y1="12" x2="91" y2="23" stroke="#3159A7" stroke-width="5" stroke-linecap="round" />
+<line x1="62" y1="104" x2="62" y2="87" stroke="#0F907D" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow)"/>
+<text x="27" y="139" font-size="15" fill="#0F907D" font-weight="700">5 cm · 3초</text>
+</g>
+<text x="663" y="247" font-size="32" fill="#3159A7" font-weight="800">누적 5점</text>
+<text x="663" y="280" font-size="20" fill="#0F907D" font-weight="700">이 항목 +5점</text>
+<text x="663" y="319" font-size="21" fill="#344D66" font-weight="400">같은 그리퍼로 파지 부위를</text>
+<text x="663" y="348" font-size="21" fill="#344D66" font-weight="400">5 cm 이상 들어 3초 유지</text>
+<rect x="960" y="140" width="440" height="234" rx="16" fill="#FFFFFF" stroke="#D9E3F0"/>
+<rect x="960" y="140" width="440" height="52" rx="16" fill="#E8EEFA" stroke="none"/>
+<text x="978" y="175" font-size="25" fill="#17324D" font-weight="750">03  첫 소매 통과</text>
+<g transform="translate(977 209)">
+<circle cx="62" cy="20" r="15" fill="#D3DCE7" stroke="none" stroke-width="1"/>
+<rect x="39" y="39" width="46" height="60" rx="12" fill="#CBD5E1" stroke="none"/>
+<line x1="40" y1="47" x2="12" y2="68" stroke="#CBD5E1" stroke-width="14" stroke-linecap="round" />
+<line x1="84" y1="47" x2="112" y2="68" stroke="#CBD5E1" stroke-width="14" stroke-linecap="round" />
+<circle cx="9" cy="70" r="8" fill="#A8B8C9" stroke="none" stroke-width="1"/>
+<circle cx="115" cy="70" r="8" fill="#A8B8C9" stroke="none" stroke-width="1"/>
+<line x1="49" y1="103" x2="39" y2="137" stroke="#B1C1D2" stroke-width="10" stroke-linecap="round" />
+<line x1="75" y1="103" x2="85" y2="137" stroke="#B1C1D2" stroke-width="10" stroke-linecap="round" />
+<rect x="26" y="103" width="74" height="7" rx="3" fill="#94A3B8" stroke="none"/>
+<path d="M 15 52 L 45 48 L 64 85 L 43 106 L 26 78 L 8 75 Z" fill="#9588F0" stroke="#6955D4" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="9" cy="70" r="11" fill="none" stroke="#0F907D" stroke-width="4"/>
+<line x1="-3" y1="49" x2="-3" y2="78" stroke="#0F907D" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)"/>
+</g>
+<text x="1123" y="247" font-size="32" fill="#3159A7" font-weight="800">누적 10점</text>
+<text x="1123" y="280" font-size="20" fill="#0F907D" font-weight="700">이 항목 +5점</text>
+<text x="1123" y="319" font-size="21" fill="#344D66" font-weight="400">첫 손의 손목과 손끝이</text>
+<text x="1123" y="348" font-size="21" fill="#344D66" font-weight="400">소매 밖으로 나옵니다.</text>
+<rect x="40" y="396" width="440" height="234" rx="16" fill="#FFFFFF" stroke="#D9E3F0"/>
+<rect x="40" y="396" width="440" height="52" rx="16" fill="#E8EEFA" stroke="none"/>
+<text x="58" y="431" font-size="25" fill="#17324D" font-weight="750">04  반대 어깨 넘기기</text>
+<g transform="translate(57 465)">
+<circle cx="62" cy="20" r="15" fill="#D3DCE7" stroke="none" stroke-width="1"/>
+<rect x="39" y="39" width="46" height="60" rx="12" fill="#CBD5E1" stroke="none"/>
+<line x1="40" y1="47" x2="12" y2="68" stroke="#CBD5E1" stroke-width="14" stroke-linecap="round" />
+<line x1="84" y1="47" x2="112" y2="68" stroke="#CBD5E1" stroke-width="14" stroke-linecap="round" />
+<circle cx="9" cy="70" r="8" fill="#A8B8C9" stroke="none" stroke-width="1"/>
+<circle cx="115" cy="70" r="8" fill="#A8B8C9" stroke="none" stroke-width="1"/>
+<line x1="49" y1="103" x2="39" y2="137" stroke="#B1C1D2" stroke-width="10" stroke-linecap="round" />
+<line x1="75" y1="103" x2="85" y2="137" stroke="#B1C1D2" stroke-width="10" stroke-linecap="round" />
+<rect x="26" y="103" width="74" height="7" rx="3" fill="#94A3B8" stroke="none"/>
+<path d="M 13 53 Q 39 33 61 46 Q 79 24 100 44 L 102 63 L 86 60 L 84 107 L 36 107 L 34 62 Z" fill="#9588F0" stroke="#6955D4" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="85" cy="42" r="13" fill="none" stroke="#0F907D" stroke-width="4"/>
+</g>
+<text x="203" y="503" font-size="32" fill="#3159A7" font-weight="800">누적 15점</text>
+<text x="203" y="536" font-size="20" fill="#0F907D" font-weight="700">이 항목 +5점</text>
+<text x="203" y="575" font-size="21" fill="#344D66" font-weight="400">옷 일부가 반대쪽</text>
+<text x="203" y="604" font-size="21" fill="#344D66" font-weight="400">어깨를 넘어갑니다.</text>
+<rect x="500" y="396" width="440" height="234" rx="16" fill="#FFFFFF" stroke="#D9E3F0"/>
+<rect x="500" y="396" width="440" height="52" rx="16" fill="#E8EEFA" stroke="none"/>
+<text x="518" y="431" font-size="25" fill="#17324D" font-weight="750">05  두 번째 소매 통과</text>
+<g transform="translate(517 465)">
+<circle cx="62" cy="20" r="15" fill="#D3DCE7" stroke="none" stroke-width="1"/>
+<rect x="39" y="39" width="46" height="60" rx="12" fill="#CBD5E1" stroke="none"/>
+<line x1="40" y1="47" x2="12" y2="68" stroke="#CBD5E1" stroke-width="14" stroke-linecap="round" />
+<line x1="84" y1="47" x2="112" y2="68" stroke="#CBD5E1" stroke-width="14" stroke-linecap="round" />
+<circle cx="9" cy="70" r="8" fill="#A8B8C9" stroke="none" stroke-width="1"/>
+<circle cx="115" cy="70" r="8" fill="#A8B8C9" stroke="none" stroke-width="1"/>
+<line x1="49" y1="103" x2="39" y2="137" stroke="#B1C1D2" stroke-width="10" stroke-linecap="round" />
+<line x1="75" y1="103" x2="85" y2="137" stroke="#B1C1D2" stroke-width="10" stroke-linecap="round" />
+<rect x="26" y="103" width="74" height="7" rx="3" fill="#94A3B8" stroke="none"/>
+<g transform="translate(62 40) scale(0.85)">
+<path d="M -30 0 L -52 16 L -40 34 L -27 26 L -27 78 L 27 78 L 27 26 L 40 34 L 52 16 L 30 0 L 12 0 Q 0 19 -12 0 Z" fill="#7462E8" stroke="#5146B2" stroke-width="2" stroke-linejoin="round"/>
+</g>
+<circle cx="9" cy="70" r="10" fill="none" stroke="#A7CEC6" stroke-width="3"/>
+<circle cx="115" cy="70" r="11" fill="none" stroke="#0F907D" stroke-width="4"/>
+<line x1="126" y1="48" x2="126" y2="78" stroke="#0F907D" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)"/>
+</g>
+<text x="663" y="503" font-size="32" fill="#3159A7" font-weight="800">누적 20점</text>
+<text x="663" y="536" font-size="20" fill="#0F907D" font-weight="700">이 항목 +5점</text>
+<text x="663" y="575" font-size="21" fill="#344D66" font-weight="400">다른 손이 다른 소매</text>
+<text x="663" y="604" font-size="21" fill="#344D66" font-weight="400">밖으로 나옵니다.</text>
+<rect x="960" y="396" width="440" height="234" rx="16" fill="#FFFFFF" stroke="#D9E3F0"/>
+<rect x="960" y="396" width="440" height="52" rx="16" fill="#E8EEFA" stroke="none"/>
+<text x="978" y="431" font-size="25" fill="#17324D" font-weight="750">06  왼쪽 위팔 덮기</text>
+<g transform="translate(977 465)">
+<circle cx="62" cy="20" r="15" fill="#D3DCE7" stroke="none" stroke-width="1"/>
+<rect x="39" y="39" width="46" height="60" rx="12" fill="#CBD5E1" stroke="none"/>
+<line x1="40" y1="47" x2="12" y2="68" stroke="#CBD5E1" stroke-width="14" stroke-linecap="round" />
+<line x1="84" y1="47" x2="112" y2="68" stroke="#CBD5E1" stroke-width="14" stroke-linecap="round" />
+<circle cx="9" cy="70" r="8" fill="#A8B8C9" stroke="none" stroke-width="1"/>
+<circle cx="115" cy="70" r="8" fill="#A8B8C9" stroke="none" stroke-width="1"/>
+<line x1="49" y1="103" x2="39" y2="137" stroke="#B1C1D2" stroke-width="10" stroke-linecap="round" />
+<line x1="75" y1="103" x2="85" y2="137" stroke="#B1C1D2" stroke-width="10" stroke-linecap="round" />
+<rect x="26" y="103" width="74" height="7" rx="3" fill="#94A3B8" stroke="none"/>
+<g transform="translate(62 40) scale(0.85)">
+<path d="M -30 0 L -52 16 L -40 34 L -27 26 L -27 78 L 27 78 L 27 26 L 40 34 L 52 16 L 30 0 L 12 0 Q 0 19 -12 0 Z" fill="#7462E8" stroke="#5146B2" stroke-width="2" stroke-linejoin="round"/>
+</g>
+<line x1="85" y1="49" x2="101" y2="61" stroke="#0F907D" stroke-width="13" stroke-linecap="round" />
+<circle cx="95" cy="56" r="18" fill="none" stroke="#0F907D" stroke-width="3"/>
+</g>
+<text x="1123" y="503" font-size="32" fill="#3159A7" font-weight="800">누적 25점</text>
+<text x="1123" y="536" font-size="20" fill="#0F907D" font-weight="700">이 항목 +5점</text>
+<text x="1123" y="575" font-size="21" fill="#344D66" font-weight="400">왼쪽 소매가 위팔</text>
+<text x="1123" y="604" font-size="21" fill="#344D66" font-weight="400">일부를 덮습니다.</text>
+<rect x="40" y="652" width="440" height="234" rx="16" fill="#FFFFFF" stroke="#D9E3F0"/>
+<rect x="40" y="652" width="440" height="52" rx="16" fill="#E8EEFA" stroke="none"/>
+<text x="58" y="687" font-size="25" fill="#17324D" font-weight="750">07  오른쪽 위팔 덮기</text>
+<g transform="translate(57 721)">
+<circle cx="62" cy="20" r="15" fill="#D3DCE7" stroke="none" stroke-width="1"/>
+<rect x="39" y="39" width="46" height="60" rx="12" fill="#CBD5E1" stroke="none"/>
+<line x1="40" y1="47" x2="12" y2="68" stroke="#CBD5E1" stroke-width="14" stroke-linecap="round" />
+<line x1="84" y1="47" x2="112" y2="68" stroke="#CBD5E1" stroke-width="14" stroke-linecap="round" />
+<circle cx="9" cy="70" r="8" fill="#A8B8C9" stroke="none" stroke-width="1"/>
+<circle cx="115" cy="70" r="8" fill="#A8B8C9" stroke="none" stroke-width="1"/>
+<line x1="49" y1="103" x2="39" y2="137" stroke="#B1C1D2" stroke-width="10" stroke-linecap="round" />
+<line x1="75" y1="103" x2="85" y2="137" stroke="#B1C1D2" stroke-width="10" stroke-linecap="round" />
+<rect x="26" y="103" width="74" height="7" rx="3" fill="#94A3B8" stroke="none"/>
+<g transform="translate(62 40) scale(0.85)">
+<path d="M -30 0 L -52 16 L -40 34 L -27 26 L -27 78 L 27 78 L 27 26 L 40 34 L 52 16 L 30 0 L 12 0 Q 0 19 -12 0 Z" fill="#7462E8" stroke="#5146B2" stroke-width="2" stroke-linejoin="round"/>
+</g>
+<line x1="39" y1="49" x2="23" y2="61" stroke="#0F907D" stroke-width="13" stroke-linecap="round" />
+<circle cx="29" cy="56" r="18" fill="none" stroke="#0F907D" stroke-width="3"/>
+</g>
+<text x="203" y="759" font-size="32" fill="#3159A7" font-weight="800">누적 30점</text>
+<text x="203" y="792" font-size="20" fill="#0F907D" font-weight="700">이 항목 +5점</text>
+<text x="203" y="831" font-size="21" fill="#344D66" font-weight="400">오른쪽 소매가 위팔</text>
+<text x="203" y="860" font-size="21" fill="#344D66" font-weight="400">일부를 덮습니다.</text>
+<rect x="500" y="652" width="440" height="234" rx="16" fill="#FFFFFF" stroke="#D9E3F0"/>
+<rect x="500" y="652" width="440" height="52" rx="16" fill="#E8EEFA" stroke="none"/>
+<text x="518" y="687" font-size="25" fill="#17324D" font-weight="750">08  목 통과</text>
+<g transform="translate(517 721)">
+<circle cx="62" cy="20" r="15" fill="#D3DCE7" stroke="none" stroke-width="1"/>
+<rect x="39" y="39" width="46" height="60" rx="12" fill="#CBD5E1" stroke="none"/>
+<line x1="40" y1="47" x2="12" y2="68" stroke="#CBD5E1" stroke-width="14" stroke-linecap="round" />
+<line x1="84" y1="47" x2="112" y2="68" stroke="#CBD5E1" stroke-width="14" stroke-linecap="round" />
+<circle cx="9" cy="70" r="8" fill="#A8B8C9" stroke="none" stroke-width="1"/>
+<circle cx="115" cy="70" r="8" fill="#A8B8C9" stroke="none" stroke-width="1"/>
+<line x1="49" y1="103" x2="39" y2="137" stroke="#B1C1D2" stroke-width="10" stroke-linecap="round" />
+<line x1="75" y1="103" x2="85" y2="137" stroke="#B1C1D2" stroke-width="10" stroke-linecap="round" />
+<rect x="26" y="103" width="74" height="7" rx="3" fill="#94A3B8" stroke="none"/>
+<g transform="translate(62 40) scale(0.85)">
+<path d="M -30 0 L -52 16 L -40 34 L -27 26 L -27 78 L 27 78 L 27 26 L 40 34 L 52 16 L 30 0 L 12 0 Q 0 19 -12 0 Z" fill="#7462E8" stroke="#5146B2" stroke-width="2" stroke-linejoin="round"/>
+</g>
+<circle cx="62" cy="39" r="13" fill="none" stroke="#0F907D" stroke-width="4"/>
+<line x1="99" y1="40" x2="99" y2="8" stroke="#0F907D" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)"/>
+</g>
+<text x="663" y="759" font-size="32" fill="#3159A7" font-weight="800">누적 40점</text>
+<text x="663" y="792" font-size="20" fill="#0F907D" font-weight="700">이 항목 +10점</text>
+<text x="663" y="831" font-size="21" fill="#344D66" font-weight="400">가슴은 옷 안에,</text>
+<text x="663" y="860" font-size="21" fill="#344D66" font-weight="400">머리·목은 목구멍 밖에</text>
+<rect x="960" y="652" width="440" height="234" rx="16" fill="#FFFFFF" stroke="#D9E3F0"/>
+<rect x="960" y="652" width="440" height="52" rx="16" fill="#E8EEFA" stroke="none"/>
+<text x="978" y="687" font-size="25" fill="#17324D" font-weight="750">09  앞면 방향 맞추기</text>
+<g transform="translate(977 721)">
+<circle cx="62" cy="20" r="15" fill="#D3DCE7" stroke="none" stroke-width="1"/>
+<rect x="39" y="39" width="46" height="60" rx="12" fill="#CBD5E1" stroke="none"/>
+<line x1="40" y1="47" x2="12" y2="68" stroke="#CBD5E1" stroke-width="14" stroke-linecap="round" />
+<line x1="84" y1="47" x2="112" y2="68" stroke="#CBD5E1" stroke-width="14" stroke-linecap="round" />
+<circle cx="9" cy="70" r="8" fill="#A8B8C9" stroke="none" stroke-width="1"/>
+<circle cx="115" cy="70" r="8" fill="#A8B8C9" stroke="none" stroke-width="1"/>
+<line x1="49" y1="103" x2="39" y2="137" stroke="#B1C1D2" stroke-width="10" stroke-linecap="round" />
+<line x1="75" y1="103" x2="85" y2="137" stroke="#B1C1D2" stroke-width="10" stroke-linecap="round" />
+<rect x="26" y="103" width="74" height="7" rx="3" fill="#94A3B8" stroke="none"/>
+<g transform="translate(62 40) scale(0.85)">
+<path d="M -30 0 L -52 16 L -40 34 L -27 26 L -27 78 L 27 78 L 27 26 L 40 34 L 52 16 L 30 0 L 12 0 Q 0 19 -12 0 Z" fill="#7462E8" stroke="#5146B2" stroke-width="2" stroke-linejoin="round"/>
+</g>
+<path d="M 51 41 L 62 55 L 73 41" fill="none" stroke="#0F907D" stroke-width="5" stroke-linejoin="round"/>
+<circle cx="62" cy="46" r="23" fill="none" stroke="#0F907D" stroke-width="3"/>
+<circle cx="9" cy="70" r="10" fill="none" stroke="#0F907D" stroke-width="3"/>
+<circle cx="115" cy="70" r="10" fill="none" stroke="#0F907D" stroke-width="3"/>
+<text x="39" y="143" font-size="16" fill="#0F907D" font-weight="700">0.5초</text>
+</g>
+<text x="1123" y="759" font-size="32" fill="#3159A7" font-weight="800">누적 50점</text>
+<text x="1123" y="792" font-size="20" fill="#0F907D" font-weight="700">이 항목 +10점</text>
+<text x="1123" y="831" font-size="21" fill="#344D66" font-weight="400">머리가 나온 상태에서</text>
+<text x="1123" y="860" font-size="21" fill="#344D66" font-weight="400">V넥이 앞을 향해 0.5초</text>
+<rect x="40" y="930" width="1360" height="145" rx="16" fill="#17324D" stroke="none"/>
+<text x="64" y="967" font-size="25" fill="#FFFFFF" font-weight="750">점수와 성공은 별도입니다</text>
+<text x="64" y="1004" font-size="22" fill="#E1ECF7" font-weight="400">성공: 두 손이 서로 다른 소매 밖 + 머리·목이 밖 + 앞면 방향 정상, 모두 동시에 0.5초 유지</text>
+<text x="64" y="1040" font-size="22" fill="#B9D9F1" font-weight="400">순위: 픽업 제외 최대 45점 ÷ 첫 접촉부터 마지막 착의 득점까지의 시뮬레이션 시간</text>
+<text x="40" y="1103" font-size="19" fill="#526B85" font-weight="400">실제 득점 순서·동시 득점은 달라질 수 있음 · 좌우는 마네킹 기준 · 근거: 공식 EVALUATION.md</text>
+</g></svg>
