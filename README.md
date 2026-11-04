@@ -132,16 +132,20 @@ codex --model gpt-6-astra -c 'model_reasoning_effort="high"'
 
 이 절은 **앞으로 구현할 설계**입니다. 참고한 [Astra 실험](https://www.gt-rail.com/blog/astra-beyond-tabletop/)은 한 대의 실제 로봇에서 상대 이동량을 실행한 사례입니다. PhyRC의 두 로봇 착의 성공을 입증한 사례가 아니며, 실기의 cm·deg·그리퍼 벌림 명령을 그대로 복사하지 않습니다.
 
-```mermaid
-flowchart TD
-    A[공개 카메라와 로봇 상태] --> B[격리된 Astra 행동 세션]
-    B --> C[JSON 검사와 제한된 실행기]
-    C --> D[두 로봇의 짧은 동작]
-    D --> A
-    D --> E[관측과 실제 명령 기록]
-    E --> F[별도 평가와 품질 검수]
-    F --> G[승인 시연으로 로컬 정책 학습]
-```
+[![공개 관측으로 Astra가 행동을 결정하고, 제한된 실행 후 다시 관찰하며, 기록·별도 검수·승인 시연 학습으로 이어지는 흐름](docs/project/assets/collection-flow-20261104/collection-flow.ko.svg)](docs/project/assets/collection-flow-20261104/collection-flow.ko.svg)
+
+[그림 크게 보기](docs/project/assets/collection-flow-20261104/collection-flow.ko.svg) · [PNG로 보기](docs/project/assets/collection-flow-20261104/collection-flow.ko.png)
+
+<details>
+<summary>그림의 흐름을 텍스트로 보기</summary>
+
+1. **관측 → 판단:** 공개 카메라와 로봇 상태를 격리된 Astra 행동 세션에 전달합니다.
+2. **검사 → 실행 → 재관측:** 행동 JSON을 검사하고, 제한된 실행기가 두 로봇을 짧게 움직입니다. 새 관측을 받아 다음 행동을 판단합니다.
+3. **기록 → 검수 → 학습:** 관측과 실제 적용 명령을 20 Hz로 기록하고, 별도 평가·품질 검수를 거쳐 승인한 시연으로 로컬 정책을 학습합니다.
+
+점수·성공 여부는 별도 검수에 사용하며, 행동 세션으로 되돌려 보내지 않습니다.
+
+</details>
 
 ### 제어와 기록 계약
 

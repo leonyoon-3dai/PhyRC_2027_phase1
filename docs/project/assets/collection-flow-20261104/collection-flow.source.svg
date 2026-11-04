@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1170" viewBox="0 0 1200 1170" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="diagram-title diagram-desc">
+<title id="diagram-title">Codex CLI 시연 수집 설계</title>
+<desc id="diagram-desc">공개 관측을 Astra에 전달하고, JSON 검사와 제한된 실행기를 거쳐 두 로봇이 짧게 움직인다. 새 관측으로 반복한다. 관측과 실제 명령은 별도로 기록하여 평가·검수를 거친 승인 시연만 로컬 정책 학습에 사용한다.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#486581"/></marker></defs>
+<g font-family="Noto Sans CJK KR" font-size="32">
+<rect id="background" x="1" y="1" width="1198" height="1168" rx="24" fill="#f4f7fc" stroke="#dce5ef" stroke-width="2"/>
+<text id="heading" x="600" y="66" font-size="43" font-weight="800" text-anchor="middle" fill="#17324d">관측으로 행동하고, 기록으로 학습하기</text>
+<text id="subtitle" x="600" y="110" font-size="27" font-weight="500" text-anchor="middle" fill="#526b85">구현 예정 설계 · 행동 생성과 평가 결과를 분리</text>
+<rect id="observe" x="320" y="155" width="560" height="120" rx="20" fill="#fff" stroke="#cbd8e8" stroke-width="2"/>
+<text id="observe-text-0" x="600.0" y="204.5" font-size="34" font-weight="700" text-anchor="middle" fill="#17324d">공개 카메라</text>
+<text id="observe-text-1" x="600.0" y="249.5" font-size="34" font-weight="700" text-anchor="middle" fill="#17324d">로봇 상태</text>
+<rect id="astra" x="320" y="335" width="560" height="120" rx="20" fill="#eee9fb" stroke="#cbd8e8" stroke-width="2"/>
+<text id="astra-text-0" x="600.0" y="384.5" font-size="34" font-weight="700" text-anchor="middle" fill="#17324d">격리된 Astra</text>
+<text id="astra-text-1" x="600.0" y="429.5" font-size="34" font-weight="700" text-anchor="middle" fill="#17324d">행동 세션</text>
+<rect id="validate" x="320" y="515" width="560" height="120" rx="20" fill="#fff" stroke="#cbd8e8" stroke-width="2"/>
+<text id="validate-text-0" x="600.0" y="564.5" font-size="34" font-weight="700" text-anchor="middle" fill="#17324d">JSON 검사</text>
+<text id="validate-text-1" x="600.0" y="609.5" font-size="34" font-weight="700" text-anchor="middle" fill="#17324d">제한된 실행기</text>
+<rect id="act" x="320" y="695" width="560" height="120" rx="20" fill="#e5f4ef" stroke="#cbd8e8" stroke-width="2"/>
+<text id="act-text-0" x="600.0" y="744.5" font-size="34" font-weight="700" text-anchor="middle" fill="#17324d">두 로봇의</text>
+<text id="act-text-1" x="600.0" y="789.5" font-size="34" font-weight="700" text-anchor="middle" fill="#17324d">짧은 동작</text>
+<path id="observe-astra" d="M 600 279 V 328" fill="none" stroke="#486581" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path id="astra-validate" d="M 600 459 V 508" fill="none" stroke="#486581" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path id="validate-act" d="M 600 639 V 688" fill="none" stroke="#486581" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path id="loop" d="M 313 755 H 145 V 215 H 309" fill="none" stroke="#486581" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<text id="loop-label-1" x="145" y="470" font-size="29" font-weight="500" text-anchor="middle" fill="#526b85">새 관측</text>
+<text id="loop-label-2" x="145" y="512" font-size="29" font-weight="500" text-anchor="middle" fill="#526b85">다시 판단</text>
+<rect id="loop-label-bg" x="57" y="432" width="176" height="100" rx="12" fill="#f4f7fc" stroke="#f4f7fc" stroke-width="2"/>
+<text id="loop-label-final-1" x="145" y="470" font-size="29" font-weight="500" text-anchor="middle" fill="#526b85">새 관측</text>
+<text id="loop-label-final-2" x="145" y="512" font-size="29" font-weight="500" text-anchor="middle" fill="#526b85">다시 판단</text>
+<text id="right-note-1" x="1020" y="385" font-size="27" font-weight="500" text-anchor="middle" fill="#526b85">공개 관측만</text>
+<text id="right-note-2" x="1020" y="425" font-size="27" font-weight="500" text-anchor="middle" fill="#526b85">행동 입력으로</text>
+<text id="right-note-3" x="1020" y="675" font-size="27" font-weight="500" text-anchor="middle" fill="#526b85">점수·성공은</text>
+<text id="right-note-4" x="1020" y="715" font-size="27" font-weight="500" text-anchor="middle" fill="#526b85">별도 검수에</text>
+<path id="act-record" d="M 600 819 V 870 H 220 V 920" fill="none" stroke="#486581" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect id="record" x="40" y="930" width="350" height="135" rx="20" fill="#fff" stroke="#cbd8e8" stroke-width="2"/>
+<text id="record-text-0" x="215.0" y="987.0" font-size="30" font-weight="700" text-anchor="middle" fill="#17324d">관측·실제 명령</text>
+<text id="record-text-1" x="215.0" y="1032.0" font-size="30" font-weight="700" text-anchor="middle" fill="#17324d">20 Hz 기록</text>
+<rect id="review" x="425" y="930" width="350" height="135" rx="20" fill="#fff" stroke="#cbd8e8" stroke-width="2"/>
+<text id="review-text-0" x="600.0" y="987.0" font-size="32" font-weight="700" text-anchor="middle" fill="#17324d">별도 평가</text>
+<text id="review-text-1" x="600.0" y="1032.0" font-size="32" font-weight="700" text-anchor="middle" fill="#17324d">품질 검수</text>
+<rect id="learn" x="810" y="930" width="350" height="135" rx="20" fill="#e5f4ef" stroke="#cbd8e8" stroke-width="2"/>
+<text id="learn-text-0" x="985.0" y="987.0" font-size="30" font-weight="700" text-anchor="middle" fill="#17324d">승인 시연으로</text>
+<text id="learn-text-1" x="985.0" y="1032.0" font-size="30" font-weight="700" text-anchor="middle" fill="#17324d">로컬 정책 학습</text>
+<path id="record-review" d="M 396 997 H 418" fill="none" stroke="#486581" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path id="review-learn" d="M 781 997 H 803" fill="none" stroke="#486581" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<text id="footer" x="600" y="1120" font-size="28" font-weight="500" text-anchor="middle" fill="#526b85">평가 결과는 행동 세션으로 되돌려 보내지 않습니다.</text>
+</g></svg>
