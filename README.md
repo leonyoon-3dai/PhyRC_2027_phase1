@@ -133,6 +133,8 @@ GIF는 전체 253프레임을 4배 느리게 반복 재생합니다(약 4.08MB).
 
 [새 서버 준비](docs/project/START_HERE.ko.md)에 고정 CLI·actor 이미지, 공식 환경, WebRTC와 `--mode wiring` 실행·검사 명령을 정리했습니다. [현재 상태](docs/project/STATUS.md)에서 이어갈 한 가지 작업을 확인합니다. 실패 run ID와 완료 파일을 덮어쓰지 않습니다.
 
+**원본 11.78GB는 비공개 백업·재다운로드 해시·별도 폴더 복원을 검증했습니다.** [작업 정리와 보존 결과](docs/project/SESSION_WRAPUP_20261106.ko.md)
+
 현재는 **휴식 후 클린 서버에서 첫 소매 통과를 재시도할 수 있도록 인계하는 단계**입니다. 다음 재개 후보는 검사를 통과한 E07의 원본 행동 700전이입니다. E09 종료 응답 정합성 문제를 먼저 수정·검증한 뒤, 새 환경에서 행동을 재실행하고 현재 공개 관측으로 파지·옷 방향을 다시 확인합니다. 정확한 물리 상태 복원을 뜻하지 않으며, 같은 출처 그룹으로 묶어 재실행 구간을 독립 신규 데이터로 세지 않습니다. [재실행·분기 구조](docs/collection/guides/continuation-and-branches.ko.md) · [공식 참고 영상 분석](docs/collection/experiments/2026-11-06-official-demo-strategy.ko.md) · [관찰 송출 실측](docs/collection/experiments/2026-11-06-streaming-benchmark-result.ko.md). 기존 성공·실패·중단 기록은 유지하고, VLA·RL·world model 학습은 아직 실행하지 않았습니다.
 
 <details>

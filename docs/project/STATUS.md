@@ -53,7 +53,7 @@ E07의 협력 운반·E08 초기화 실패·E09 중지와 파일 미완료를 �
 | E05 한 로봇 픽업 부분 점수 5점 | 18호출·18결정, 공식 5점·success=false. 감시 경계 252전이 뒤 중립 정리 1전이, 총253전이 검사 통과. 협력 들기 성공 아님 |
 | E07 협력 들기·운반 시도 | 73호출·80결정·1,067전이 검사 통과. 공식 5점·success=false·no_dressing_points·최종 rate 0점/초. 학습 승인 unreviewed |
 
-HF CLI `huggingface_hub==2.2.0` 설치·실행을 확인했습니다. 현재 원본은 로컬에 보존하며 비공개 전송 묶음을 준비 중입니다. 기존 HF 데이터 저장소는 공개여서 오늘 원본의 비공개 백업 대상으로 사용하지 않았습니다. **원격 백업 목적지·고정 revision·재다운로드 해시 검증은 대기 상태**이며 서버 밖 복원이 가능하다고 아직 확정하지 않습니다. [보존 상태](SESSION_WRAPUP_20261106.ko.md)
+HF CLI `huggingface_hub==2.2.0`의 인증을 확인하고 사용자 승인으로 [비공개 백업 저장소](https://huggingface.co/datasets/leonayoon/phyrc-2027-phase1-private-backup)를 생성했습니다. **11.78GB 업로드·고정 revision `e1d32f9f9ea82438f90bc379452abf83a150999b`의 재다운로드 SHA256 검증을 06:37:37 UTC에 완료**했습니다. 로컬의 새 폴더 복원·전체 파일 해시·E07 prefix700 입력 검사도 통과했습니다. 기존 공개 HF 자료와 구분하며 기존 서버 원본은 유지합니다. 새 서버 GPU 실행은 아직입니다. [보존 상태](SESSION_WRAPUP_20261106.ko.md) · [검증 기록](sessions/20261106-remote-backup-verification.json)
 
 </details>
 

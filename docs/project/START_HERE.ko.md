@@ -11,7 +11,7 @@
 | 다음 원본 후보 | `20261106-astra-coordinated-fresh-001`의 완결 자료, 운반 경계 **700전이**. E09의 미완료 자료를 정상 재개 출처로 쓰지 않음 |
 | 다음 한 가지 과제 | 종료 처리 수정·CPU 회귀 검증, 환경·원본 복원 확인 후 운반 구간을 재실행하고 **소매 통과** 시도 |
 | 재개 방식의 한계 | 저장 행동을 다시 실행하며 천·접촉 상태를 새로 관측. 정확한 물리 checkpoint 복원이 아님 |
-| 보존 확인 | GitHub 공개 패키지와 큰 HDF5·원본 백업은 별개. 원격 revision·SHA·재다운로드 검증 전에는 복원 가능으로 확정하지 않음 |
+| 보존 확인 | GitHub 공개 패키지와 비공개 원본 백업은 별개. 로컬 새 경로 복원·전체 SHA·E07 prefix700 입력 검사 06:32:32 UTC 통과. 비공개 HF 고정 revision의 재다운로드·SHA 검증 06:37:37 UTC 완료 |
 
 [현재 종료 상태](STATUS.md) · [E07 종료 검토](../collection/reviews/20261106-astra-coordinated-fresh-001.ko.md) · [정확한 5점·700전이 원본 프레임](../collection/milestones/20261106-astra-coordinated-fresh-001/README.ko.md) · [당일 실패·중지 기록](../collection/sessions/2026-11-06.md) · [행동 재실행과 분기](../collection/guides/continuation-and-branches.ko.md)
 
@@ -283,7 +283,19 @@ http://<접속-가능한-IPv4>:<외부-viewer-포트>/?keyboardPort=<외부-keyb
 
 ### 6.1 자료와 인증을 구분해 인계
 
-GitHub에는 코드·공개 프롬프트·선별 관측·영상·검수 요약이 있습니다. 이것만으로 전체 RGB-D와 행동을 재실행할 수 없습니다. 큰 원본은 별도 저장소의 실제 고정 revision·파일 크기·SHA256과 재다운로드 검증 근거를 확인합니다. 현재 원본은 로컬에 보존하고 비공개 전송 묶음을 준비 중입니다. 기존 HF 데이터 저장소는 공개여서 이번 원본 백업 대상으로 사용하지 않았습니다. 원격 목적지·고정 revision·재다운로드 검증은 대기 상태이며, [세션 정리](SESSION_WRAPUP_20261106.ko.md)의 실제 검증 결과를 따릅니다. 아직 확인하지 않은 업로드나 과거 백업을 완료 상태로 표시하지 않습니다.
+GitHub에는 코드·공개 프롬프트·선별 관측·영상·검수 요약이 있습니다. 이것만으로 전체 RGB-D와 행동을 재실행할 수 없습니다. 사용자 승인으로 **비공개 HF dataset 저장소** `leonayoon/phyrc-2027-phase1-private-backup`을 만들고 `private=true`를 확인했습니다. 고정 revision에서 새 로컬 경로로 강제 재다운로드한 압축 파일의 크기·SHA와 부속 metadata 4개의 바이트 일치를 **2026-11-06 06:37:37.501918 UTC**에 확인했습니다. 기존 공개 HF 데이터 저장소에는 이번 신뢰된 원본을 올리지 않았습니다.
+
+| 비공개 전송 묶음 | 확인한 값 |
+|---|---|
+| 저장소 유형·ID | dataset · `leonayoon/phyrc-2027-phase1-private-backup` |
+| 저장소 안 파일 경로 | `sessions/20261106-session-close-v1/20261106-session-close-v1.tar.gz` |
+| 압축 파일 크기 | 11,779,782,360 bytes |
+| 압축 파일 SHA256 | `d087a7899f60fffd7e9541d13215585ef6b462f3e0d71c66e0649fd0172ed34b` |
+| 고정 revision | `e1d32f9f9ea82438f90bc379452abf83a150999b` |
+| 로컬 복원 검증 | 2026-11-06 06:32:32 UTC, 새 경로에 복원·전체 SHA 검사·E07 `load_replay_prefix(..., 700)` 통과. CPU만 사용 |
+| 원격 파일 검증 | 2026-11-06 06:37:37.501918 UTC, private=true·고정 revision·새 경로 재다운로드 압축 SHA·부속 4파일 바이트 일치. [세션 정리](SESSION_WRAPUP_20261106.ko.md) |
+
+로컬 전체 복원·입력 검사와 원격 파일 재다운로드 검증을 각각 확인했습니다. 새 서버의 설치·물리 재실행·소매 통과는 아직 수행하지 않았습니다. 압축 파일·staging·최종 복사본을 동시에 보관할 디스크 여유를 확보하고 아래 고정 revision을 사용합니다.
 
 | 복원 대상 | 사용 목적과 경계 |
 |---|---|
@@ -296,16 +308,111 @@ GitHub에는 코드·공개 프롬프트·선별 관측·영상·검수 요약�
 
 검수 자료의 배치 설정·평가·audit는 신뢰된 재실행 절차에서만 읽으며 actor에 연결하지 않습니다. 새 서버의 CLI/HF/클라우드 인증은 해당 서버에서 별도로 준비하고, 호스트 home·토큰·접속 설정·개발 로그 전체를 압축하지 않습니다. 원본 서버 전원 종료·삭제는 이 문서 정리와 별도 작업입니다.
 
-[산출물 도구](../../participant/ops/artifacts.py)는 **미리 검수한 전용 산출물 폴더**의 manifest 검증·압축·새 경로 복원을 지원합니다. 업로드·다운로드는 자동으로 하지 않습니다. 실제 인계 묶음이 이 도구의 `SHA256.json` 형식인 경우만 다음 예를 사용합니다.
+### 고정 revision에서 다운로드하고 새 경로에 복원
+
+HF CLI **2.2.0**의 `hf download --help`에서 `--type dataset`, `--revision`, `--local-dir` 지원을 확인했습니다. 인증은 새 서버에서 `hf auth login`으로 준비하며 토큰을 명령 인자나 공개 파일에 쓰지 않습니다. 아래는 원격 검증을 마친 commit SHA입니다. 계속 변하는 `main`을 재현 기준으로 사용하지 않습니다.
 
 ```bash
-# 아래는 이미 다운로드한 검증 대상 묶음과 새 staging 경로의 예입니다.
-python3 participant/ops/artifacts.py restore "/검증용/새-staging-폴더" \
-  --archive "/다운로드한/인계-묶음.tar.gz"
-python3 participant/ops/artifacts.py verify "/검증용/새-staging-폴더"
+# 사용자 재개 요청 이후, 새 서버의 저장소 루트에서 실행합니다.
+phyrc_backup_revision="e1d32f9f9ea82438f90bc379452abf83a150999b"
+phyrc_restore_id="$(date -u +%Y%m%dT%H%M%SZ)-phyrc-restore"
+export PHYRC_RESTORE_ROOT="$(realpath ..)/$phyrc_restore_id"
+mkdir -m 700 "$PHYRC_RESTORE_ROOT"
+hf download leonayoon/phyrc-2027-phase1-private-backup \
+  sessions/20261106-session-close-v1/20261106-session-close-v1.tar.gz \
+  --type dataset --revision "$phyrc_backup_revision" --force-download \
+  --local-dir "$PHYRC_RESTORE_ROOT/download"
+export PHYRC_RESTORE_ARCHIVE="$PHYRC_RESTORE_ROOT/download/sessions/20261106-session-close-v1/20261106-session-close-v1.tar.gz"
 ```
 
-먼저 별도로 기록한 archive SHA256과 대조하고 staging 안에서 manifest를 확인합니다. 목적 경로·파일 목록을 검토한 뒤 빈 작업 경로에 복원하며 기존 실행을 덮어쓰지 않습니다. 인계 묶음의 실제 경로·저장소 revision이 확인되지 않았으면 추측해 다운로드하지 않습니다.
+다음 명령은 11.78GB 압축 파일의 바이트 수·SHA256을 확인한 뒤, 존재하지 않는 새 staging 경로로만 복원합니다. [산출물 도구](../../participant/ops/artifacts.py)는 archive 내부의 경로·일반 파일 여부와 `SHA256.json`을 검사합니다. 검증 실패 시 원본 서버 자료를 지우거나 기존 경로에 덮어쓰지 않습니다.
+
+```bash
+export PHYRC_RESTORE_STAGE="$PHYRC_RESTORE_ROOT/unpacked"
+python3 - <<'PY_ARCHIVE'
+import hashlib
+import os
+from pathlib import Path
+import subprocess
+archive = Path(os.environ['PHYRC_RESTORE_ARCHIVE'])
+expected = 'd087a7899f60fffd7e9541d13215585ef6b462f3e0d71c66e0649fd0172ed34b'
+if archive.stat().st_size != 11779782360:
+    raise SystemExit('archive size mismatch')
+with archive.open('rb') as stream:
+    if hashlib.file_digest(stream, 'sha256').hexdigest() != expected:
+        raise SystemExit('archive SHA256 mismatch')
+print('archive size and SHA256 verified')
+stage = os.environ['PHYRC_RESTORE_STAGE']
+subprocess.run(['python3', 'participant/ops/artifacts.py', 'restore', stage,
+                '--archive', str(archive)], check=True)
+subprocess.run(['python3', 'participant/ops/artifacts.py', 'verify', stage],
+               check=True)
+PY_ARCHIVE
+```
+
+### 기존 파일을 보존하며 프로젝트에 병합
+
+압축 내부의 `assets/**`와 `output/**`를 저장소 루트의 같은 상대 경로에 복사합니다. `SHA256.json`과 인계 부속 기록은 staging에 남깁니다. 아래 코드는 **먼저 전체 목적 경로를 검사하고**, 기존 파일은 해시가 같을 때만 그대로 유지합니다. 서로 다른 기존 파일·symlink·일반 파일이 아닌 목적 경로가 있으면 쓰기 전에 멈춥니다. 누락 파일만 배타적으로 생성하므로 기존 파일을 덮어쓰거나 삭제하지 않습니다. 병합 중에는 다른 수집기·복원 작업을 실행하지 않습니다.
+
+```bash
+python3 - <<'PY_MERGE'
+import hashlib
+import json
+import os
+from pathlib import Path
+import shutil
+
+os.umask(0o077)
+source = Path(os.environ['PHYRC_RESTORE_STAGE']).resolve()
+target = Path.cwd().resolve()
+if not (target / 'config/assets.lock.json').is_file():
+    raise SystemExit('run from the repository root')
+manifest = json.loads((source / 'SHA256.json').read_text())
+
+def digest(path):
+    with path.open('rb') as stream:
+        return hashlib.file_digest(stream, 'sha256').hexdigest()
+
+selected = []
+for name, spec in manifest.items():
+    relative = Path(name)
+    if relative.is_absolute() or '..' in relative.parts:
+        raise SystemExit('unsafe manifest path')
+    if not relative.parts or relative.parts[0] not in ('assets', 'output'):
+        continue
+    src, dst = source / relative, target / relative
+    for base, candidate in ((source, src), (target, dst)):
+        for node in (candidate, *candidate.parents):
+            if node == base:
+                break
+            if node.is_symlink():
+                raise SystemExit(f'symlink rejected: {relative}')
+            if node != candidate and node.exists() and not node.is_dir():
+                raise SystemExit(f'parent is not a directory: {relative}')
+    if not src.is_file() or digest(src) != spec['sha256']:
+        raise SystemExit(f'source checksum mismatch: {relative}')
+    if dst.exists() and (not dst.is_file() or digest(dst) != spec['sha256']):
+        raise SystemExit(f'existing file differs; preserved: {relative}')
+    selected.append((src, dst, spec['sha256']))
+if not selected:
+    raise SystemExit('no asset or output files selected')
+
+copied = 0
+for src, dst, expected in selected:
+    if not dst.exists():
+        dst.parent.mkdir(parents=True, exist_ok=True)
+        with src.open('rb') as reader, dst.open('xb') as writer:
+            shutil.copyfileobj(reader, writer)
+        copied += 1
+    if digest(dst) != expected:
+        raise SystemExit('post-copy checksum mismatch; retain evidence')
+print({'verified_files': len(selected), 'new_files': copied,
+       'existing_files_preserved': len(selected) - copied})
+PY_MERGE
+python3 scripts/fetch_assets.py --check
+```
+
+이 병합 절차는 임시 합성 파일로 동일 파일 보존·새 파일 추가·충돌 거부·symlink 거부·손상 원본 거부를 확인했습니다. 전체 원본을 새 서버 프로젝트에 병합하거나 GPU로 재실행한 결과는 아직 없습니다. 실제 원본으로 확인한 것은 로컬 새 경로 복원·전체 SHA·E07 prefix 입력 검사와 원격 고정 revision의 재다운로드 파일 일치입니다. 신뢰된 평가·audit·배치 metadata가 포함된 복원 폴더는 공개 게시나 actor mount 대상으로 사용하지 않습니다. 원본 파일의 종료·품질 표시도 수정하지 않습니다.
 
 ### 6.2 E07 전체 원본을 재검사
 

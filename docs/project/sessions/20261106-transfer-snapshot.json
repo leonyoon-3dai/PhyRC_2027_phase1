@@ -25,7 +25,35 @@
   "archive_members": 5168,
   "every_archived_file_hash_verified": true,
   "verified_at_utc": "2026-11-06T06:28:53.297007+00:00",
-  "remote_uploaded": false,
-  "remote_download_verified": false,
-  "scope_note": "비공개 원본 전송 묶음. 로컬 archive 전수 해시 통과. 원격 업로드 목적지는 사용자 응답 대기."
+  "remote_uploaded": true,
+  "remote_download_verified": true,
+  "scope_note": "로컬 전수 해시·새 폴더 복원·E07 prefix700 입력 검사와 비공개 HF 고정 revision 재다운로드 해시 검증 완료. 새 서버 GPU 재실행은 아직 수행하지 않음.",
+  "local_restore_verification": {
+    "checked_at_utc": "2026-11-06T06:32:32.832091+00:00",
+    "archive_restore_to_new_directory": true,
+    "all_manifest_hashes_verified": true,
+    "E07_prefix_700_load_verified": true,
+    "source_steps": 1067,
+    "replay_steps": 700,
+    "source_policy_sha256": "60fe656f3147c488a8c9af36ee52b2745baa256da7eec910d6eb62dbea1b21c5",
+    "physical_replay_executed": false,
+    "GPU_used": false,
+    "remote_download_verified": false
+  },
+  "credential_exclusion_check": {
+    "scanned_text_files": 1027,
+    "credential_pattern_matches": 0,
+    "credential_like_paths_rejected_at_pack": true,
+    "raw_actor_reasoning_and_sessions_excluded": true,
+    "scope": "pattern_scan_not_universal_secret_detection"
+  },
+  "remote_destination": {
+    "repo_id": "leonayoon/phyrc-2027-phase1-private-backup",
+    "repo_type": "dataset",
+    "private_confirmed": true,
+    "user_approved": true,
+    "status": "uploaded_and_download_verified",
+    "revision": "e1d32f9f9ea82438f90bc379452abf83a150999b"
+  },
+  "remote_verification_record": "20261106-remote-backup-verification.json"
 }

@@ -28,6 +28,8 @@ E07의 수집 코드는 실행 중 변경하지 않았습니다. 별도 연구�
 
 먼저 `README.md`, `docs/project/STATUS.md`, `docs/collection/README.ko.md`를 읽고 복원 명령은 `docs/project/START_HERE.ko.md`를 참고합니다. [방법별 상태](docs/collection/experiments/2026-11-06-method-comparison.ko.md) · [피드백 014](docs/collection/feedback/2026-11-06.jsonl)
 
+비공개 원본 백업은 `leonayoon/phyrc-2027-phase1-private-backup`의 revision `e1d32f9f9ea82438f90bc379452abf83a150999b`에 보존했고 11.78GB 재다운로드 해시·로컬 새 폴더 복원·E07 prefix700 입력 검사를 통과했습니다. [검증 기록](docs/project/sessions/20261106-remote-backup-verification.json)과 [복원 명령](docs/project/START_HERE.ko.md)을 확인합니다. 새 서버 GPU 검증이나 종료 응답 오류 수정이 완료됐다는 뜻은 아닙니다.
+
 ## 공개 개발 기록 기준
 
 - 메인 `README.md`에는 현재 기술 상태와 문서 링크를 한국어로 요약합니다. 시연 수집 과정은 `docs/collection/README.ko.md`, 날짜별 일지와 시도별 페이지에 폴더·네이밍·실제 프롬프트·최종 행동·이미지·영상·획득 점수·실패·재시도·시간을 자세히 기록합니다. 사용자 피드백과 반영 내용을 수시로 연결합니다.
