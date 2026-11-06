@@ -8,10 +8,21 @@
 
 | 보기 | 제어 | 확인한 과정 | 평가 상태 |
 |---|---|---|---|
+| [Astra의 첫 공식 픽업 5점](20261106-astra-pickup-hold5-001.ko.md) | `gpt-6-astra` / `ultra` | 접근 → 파지 실패 → 재파지 → 들기·유지 → 리뷰 종료 | **공식 5/50점** · 착의 `success=false` |
 | [사람의 파지·들기·운반](20261026-human-pickup-transport.ko.md) | 사람이 두 로봇을 조작 | 고정 연습 배치의 접근 → 양쪽 파지 → 들기 → 운반 | 공식 점수·전체 착의 성공 미확인 |
 | [Astra의 접근·파지 시도](20261106-astra-dressing-001.ko.md) | `gpt-6-astra` / `ultra` | 접근 → 닫기 → 시험 들기 → 다시 접근 | 공식 0/50점 · `success=false` |
 | [Astra의 작은 움직임·정지](20261106-codex-robot-wiring-r5.ko.md) | `gpt-6-astra` / `ultra` | 작은 리프트 명령 → 정지 → 종료 | 연결 시험 · 공식 0/50점 · `success=false` |
 | [한 응답에 담은 세 행동](20261106-exec-plan3-wiring-001.ko.md) | `gpt-6-astra` / `ultra`, 모델 1호출 | 한 목록의 작은 리프트 명령 → 정지 → 종료 | 연결 시험 · 공식 0/50점 · `success=false` |
+
+## Astra의 첫 공식 픽업 5점
+
+<a href="20261106-astra-pickup-hold5-001.ko.md"><img src="assets/20261106-astra-pickup-hold5-001/preview.gif" width="720" alt="Astra의 첫 파지 실패부터 재파지·들기·유지와 공식픽업 5점까지 자동 반복"></a>
+
+자동 반복 · 전체 253프레임, 50.6초, 5fps · 약 4.08MB · **4배 느리게** · 원본 256×256 확대 표시
+
+**[▶ 원본 MP4](../collection/attempts/20261106-astra-pickup-hold5-001/overview.mp4)** · [짧은 행동 설명과 원본 관측](20261106-astra-pickup-hold5-001.ko.md) · [GIF 출처](assets/20261106-astra-pickup-hold5-001/provenance.json) · [최초 5점 순간·전이 246](../collection/milestones/20261106-astra-pickup-hold5-001/README.ko.md)
+
+옷자락을 잡아 올려 **공식 5/50점**을 얻고 리뷰를 위해 종료했습니다. 공식 유지 시간은 **3.35초**이며, 5초 행동 목표의 완료나 전체 착의 성공을 뜻하지 않습니다. 착의 `success=false`입니다.
 
 ## 사람의 파지·들기·운반
 

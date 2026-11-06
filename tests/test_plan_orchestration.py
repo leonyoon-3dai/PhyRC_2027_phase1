@@ -10,6 +10,9 @@ import sys
 import tempfile
 import unittest
 from unittest import mock
+from types import SimpleNamespace
+
+import numpy as np
 
 from participant.collection import codex_actor, codex_app_actor, codex_client
 
@@ -29,7 +32,7 @@ def three_segment_plan():
 
 class PlanOrchestrationTest(unittest.TestCase):
     def run_client(self, plan, *, backend='exec', mode='wiring', points_after_act=0,
-                   expected_error=None, end_on_act=False):
+                   expected_error=None, end_on_act=False, review_points=5, replay=False):
         calls, requests, observation_times, lifecycle = [], [], [], []
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -52,6 +55,12 @@ class PlanOrchestrationTest(unittest.TestCase):
                         stream.write(json.dumps({
                             'raw_points': points,
                             'private_marker': 'TRUSTED_SCORE_STREAM_ONLY',
+                        }) + '\n')
+                    with scores.with_name('score_events.jsonl').open('a') as stream:
+                        stream.write(json.dumps({
+                            'event': 'score_awarded' if points else 'evaluation_started',
+                            'physics_tick': self.step * 12, 'evaluation_time_s': self.step / 20,
+                            'raw_points': points, 'breakdown': {'pickup': points},
                         }) + '\n')
 
                 def observation(self):
@@ -128,7 +137,18 @@ class PlanOrchestrationTest(unittest.TestCase):
             other_class = 'Actor' if backend == 'app-server' else 'AppActor'
             argv = ['codex_client', '--run-id', run_id, '--mode', mode,
                     '--actor-backend', backend, '--plan-size', '3',
-                    '--plan-step-budget', '3', '--decisions', '3']
+                    '--plan-step-budget', '3', '--decisions', '3',
+                    '--review-points', str(review_points)]
+            prefix = SimpleNamespace(
+                actions=np.zeros((2, 2, 9), dtype=np.float32),
+                trusted_metadata={'reset_seed': 892321},
+                public_lineage={'source_group': 'synthetic-family', 'resume_kind': 'action_replay',
+                                'replay_steps': 2, 'bitwise_physics_restored': False},
+                initial_public_state={'simulation_time_s': np.asarray(0.)},
+                final_public_state={'simulation_time_s': np.asarray(.1)},
+            )
+            if replay:
+                argv += ['--replay-prefix-run', 'synthetic-parent']
             with mock.patch.object(codex_client, '__file__',
                                    str(root / 'participant/collection/client.py')), \
                  mock.patch.object(codex_client, 'Simulator', FakeSimulator), \
@@ -138,6 +158,8 @@ class PlanOrchestrationTest(unittest.TestCase):
                  mock.patch.object(codex_client, 'source_snapshot', return_value={}), \
                  mock.patch.object(codex_client, 'prepare_observation',
                                    side_effect=prepare_public_observation), \
+                 mock.patch('participant.collection.continuation.load_replay_prefix',
+                            return_value=prefix), \
                  mock.patch.object(codex_client.signal, 'signal'), \
                  mock.patch.object(sys, 'argv', argv), mock.patch('builtins.print'):
                 if expected_error is None:
@@ -278,7 +300,53 @@ class PlanOrchestrationTest(unittest.TestCase):
         self.assertFalse(any(e['type'] == 'supervisor_stop' for e in result['events']))
         discarded = [e for e in result['events'] if e['type'] == 'plan_suffix_discarded']
         self.assertEqual(len(discarded), 1)
+
         self.assertEqual([e['plan_segment_index'] for e in discarded[0]['segments']], [1, 2])
+
+    def test_fifty_point_threshold_continues_past_five_without_actor_feedback(self):
+        result = self.run_client(three_segment_plan(), mode='dressing',
+                                 points_after_act=5, review_points=50)
+        self.assert_one_accounted_call(result)
+        self.assertEqual(result['manifest']['review_threshold_raw_points'], 50)
+        self.assertEqual(result['manifest']['status'], 'completed')
+        self.assertEqual(result['manifest']['decisions_completed'], 3)
+        self.assertEqual(result['gate']['threshold_raw_points'], 50)
+        self.assertEqual(result['gate']['status'], 'collector_ended_before_gate')
+        self.assertEqual([r[0] for r in result['requests']], ['act', 'stop', 'finish_episode'])
+        for forbidden in ('TRUSTED_SCORE_STREAM_ONLY', 'raw_points', 'score_segments'):
+            self.assertNotIn(forbidden, json.dumps(result['calls']))
+
+    def test_replay_records_parent_steps_then_starts_fresh_actor_with_new_observation(self):
+        result = self.run_client(three_segment_plan(), mode='dressing', replay=True,
+                                 points_after_act=5, review_points=50)
+        self.assert_one_accounted_call(result)
+        manifest = result['manifest']
+        self.assertEqual(manifest['simulation_steps'], 5)
+        self.assertEqual(manifest['replay_steps_completed'], 2)
+        self.assertEqual(manifest['policy_suffix_start_step'], 2)
+        self.assertEqual(manifest['new_recorded_suffix_steps'], 3)
+        self.assertEqual(manifest['source_group'], 'synthetic-family')
+        self.assertEqual(result['observation_times'], [.1, .2, .25])
+        replayed = [e for e in result['events'] if e['type'] == 'replayed_segment']
+        self.assertEqual(len(replayed), 1)
+        self.assertFalse(replayed[0]['model_invoked'])
+        self.assertEqual(replayed[0]['actual_steps'], 2)
+        applied = [e for e in result['events'] if e['type'] == 'applied_segment']
+        self.assertEqual(applied[0]['start_step'], 2)
+        self.assertEqual(applied[0]['action_source'], 'model')
+        self.assertNotIn('892321', json.dumps(result))
+        self.assertNotIn('reset_seed', json.dumps(result))
+        self.assertNotIn('TRUSTED_SCORE_STREAM_ONLY', json.dumps(result['calls']))
+
+    def test_replay_score_gate_stops_without_creating_an_actor(self):
+        result = self.run_client(three_segment_plan(), mode='pickup', replay=True,
+                                 points_after_act=5, review_points=5)
+        self.assertEqual(result['calls'], [])
+        self.assertEqual(result['lifecycle'], ['simulator_closed'])
+        self.assertEqual(result['manifest']['status'], 'review_ready')
+        self.assertEqual(result['manifest']['actor_calls_attempted'], 0)
+        self.assertEqual(result['manifest']['replay_steps_completed'], 2)
+        self.assertEqual([r[0] for r in result['requests']], ['act', 'stop', 'finish_episode'])
 
 
 if __name__ == '__main__':

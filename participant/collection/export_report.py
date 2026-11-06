@@ -194,7 +194,19 @@ def public_attempt(value):
         'human_intervention': boolean, 'quality_status': identifier, 'input_profile': identifier,
         'actor_backend': identifier, 'plan_size': integer, 'plan_step_budget': integer,
         'plan_execution': identifier, 'review_threshold_raw_points': number,
+        'pickup_hold_target_simulation_s': number,
+        'replay_steps_completed': integer, 'policy_suffix_start_step': integer,
+        'new_recorded_suffix_steps': integer, 'activity': identifier,
     })
+    if isinstance(value.get('continuation'), dict):
+        result['continuation'] = select(value['continuation'], {
+            'resume_kind': identifier, 'parent_attempt': identifier, 'source_group': identifier,
+            'source_episode': identifier, 'source_policy_sha256': digest,
+            'source_capture_sha256': digest, 'source_validation_sha256': digest,
+            'source_steps': integer, 'replay_steps': integer, 'source_start_step': integer,
+            'source_end_step_exclusive': integer, 'bitwise_physics_restored': boolean,
+            'fresh_actor': boolean, 'replay_validation': identifier,
+        })
     result['error'] = safe_error(value.get('error'))
     result['actor_usage'] = token_counts(value.get('actor_usage', {}))
     result['actor_usage_scope'] = 'legacy_unverified'
@@ -249,7 +261,14 @@ def public_events(path):
                     'simulation_end_s': number, 'environment_dispatch_wall_s': number,
                     'stage_intent': identifier, 'visual_assessment': identifier, 'assessment_source': identifier,
                     'requested_steps': integer, 'applied_action': action, 'actual_steps': integer,
-                    'quality_status': identifier, **PLAN_FIELDS})
+                    'quality_status': identifier, 'action_source': identifier, **PLAN_FIELDS})
+            elif kind == 'replayed_segment':
+                row = select(value, {'type': identifier, 'action_source': identifier,
+                    'source_run_id': identifier, 'source_start_step': integer,
+                    'source_end_step_exclusive': integer, 'start_step': integer, 'end_step': integer,
+                    'requested_steps': integer, 'actual_steps': integer, 'applied_action': action,
+                    'simulation_start_s': number, 'simulation_end_s': number,
+                    'environment_dispatch_wall_s': number, 'model_invoked': boolean})
             elif kind == 'model_error':
                 row = select(value, {'type': identifier, 'decision_index': integer, 'input_sha256': digest,
                     'error_type': identifier, 'actor_call_wall_s': number, **PLAN_FIELDS,
@@ -560,6 +579,14 @@ def write_readme(output, manifest, events):
                  '20Hz 저장과 각 구간의 최신 관측 기록이 모델의 20Hz 피드백을 뜻하지 않습니다. '
                  '모델 입력 관측 시각과 구간 실행 직전 관측 시각을 따로 표시합니다.', '']
     segments = {e['decision_index']: e for e in events if e['type'] == 'applied_segment'}
+    replayed = [e for e in events if e['type'] == 'replayed_segment']
+    if replayed:
+        rows += ['### 기록된 행동의 재실행 구간', '',
+                 f"원본 `{markdown(replayed[0]['source_run_id'])}`의 행동 "
+                 f"{sum(e['actual_steps'] for e in replayed)}전이를 새 환경에서 다시 실행했습니다. "
+                 '이 구간에는 새 모델 호출이 없고 관측·평가를 새로 기록했습니다. '
+                 '정확한 물리 상태 복원이나 독립적인 새 시연으로 집계하지 않습니다. '
+                 '원본 step 대응과 실제 행동은 `decisions.jsonl`의 `replayed_segment`에 있습니다.', '']
     for event in events:
         kind = event['type']
         if kind == 'decision':

@@ -4,6 +4,23 @@
 
 두 대의 Stretch 4가 앉아 있는 마네킹에 티셔츠를 입히는 시뮬레이션 과제입니다. 이 저장소는 공식 시뮬레이터에 시연 수집, 브라우저 조작, 데이터 검수, π₀.₅ 학습 및 제출 도구를 추가한 참가자 저장소입니다.
 
+## 지금 볼 장면 · 첫 공식 픽업 5점
+
+<a href="docs/gallery/20261106-astra-pickup-hold5-001.ko.md"><img src="docs/gallery/assets/20261106-astra-pickup-hold5-001/preview.gif" width="720" alt="Astra의 재파지·들기·유지와 첫 공식 픽업 5점 자동 반복"></a>
+
+**확인한 최고 점수 5 / 50점 · 전체 착의 success=false · 50점 후속 시도 진행 중**
+
+| 물리 진행 | 실제 소요 시간 | 공식 유지 | 기록 검사 |
+|---|---|---|---|
+| 12.65초 | 13분 48.3초 | 3.35초 | 253/253 전이 통과 |
+
+GIF는 전체 253프레임을 4배 느리게 반복 재생합니다(약 4.08MB). 5초는 행동 목표였으며 실제 유지 완료 시간은 3.35초입니다.
+
+[**영상·짧은 과정**](docs/gallery/20261106-astra-pickup-hold5-001.ko.md) · [**점수·종료 검토**](docs/collection/reviews/20261106-astra-pickup-hold5-001.ko.md) · [**시간순 일지**](docs/collection/sessions/2026-11-06.md) · [**수집 구조·전체 자료**](docs/collection/README.ko.md)
+
+<details>
+<summary>직접 수집한 시연 화면</summary>
+
 ## 직접 수집한 시연 화면
 
 **[공개 시연 갤러리](docs/gallery/README.ko.md)**에서 사람 부분 시연, Astra의 접근·파지 시도, 작은 움직임 연결 시험의 영상·원본 화면·짧은 행동 응답을 볼 수 있습니다.
@@ -18,21 +35,31 @@
 
 고정 연습 배치에서 수집한 부분 시연입니다. **이 시연의 공식 점수, 소매·목 통과와 전체 착의 성공은 확인하지 않았습니다.** 화면의 각 단계에 임의의 점수를 붙이지 않습니다.
 
+</details>
+
+<details>
+<summary>후속 확장: 0점에서 50점까지</summary>
+
 ## 후속 확장: 0점에서 50점까지
 
-아래 그림은 첫 5점 검토 이후의 확장 목표와 공식 평가 항목을 연결한 **설명용 점수 지도**입니다. 현재 득점 검토 기준은 5점이며, 그림은 직접 달성한 점수 기록이나 성공 시뮬레이션 화면이 아닙니다.
+아래 그림은 현재 5점에서 50점으로 이어지는 확장 목표와 공식 평가 항목을 연결한 **설명용 점수 지도**입니다. 현재 확인한 점수는 5점이며, 그림은 전체 단계를 직접 달성한 기록이나 성공 시뮬레이션 화면이 아닙니다.
 
 [![0점 준비부터 픽업 5점, 첫 소매 10점, 반대 어깨 15점, 두 번째 소매 20점, 왼쪽 위팔 25점, 오른쪽 위팔 30점, 목 통과 40점, 앞면 방향 50점까지의 누적 예시](docs/project/assets/score-roadmap-20261104/score-roadmap.ko.svg)](docs/project/assets/score-roadmap-20261104/score-roadmap.ko.svg)
 
 **각 항목을 그림 순서로 획득할 때의 누적 예시**이며 실제로는 순서가 달라지거나 여러 항목이 함께 인정될 수 있습니다. 누적 점수는 유지되므로 **50점과 성공 판정은 별도**입니다. 성공은 두 손·머리·옷 앞면 조건을 동시에 0.5초 유지했는지 확인합니다. [공식 평가 정의](docs/competition/EVALUATION.md)
 
-다음 수집에서는 먼저 **접근·파지·들기의 반복 가능한 시연**을 확보하고, 실제 점수를 확인하면서 소매·어깨·목·방향 단계로 확장합니다.
+첫 픽업 5점을 확보했고, 사용자 승인에 따라 **50점까지 후속 시도를 계속하는 단계**입니다. 기존 5점 자료와 실패·재시도 경로를 함께 보존합니다.
 
-**오늘의 우선순위는 빠른 득점보다 안정적인 시연 데이터 수집 시스템과 다양한 방법의 과정 기록입니다.** Codex CLI의 Astra로 단계별 실험을 이어가며 첫 공식 누적 5점에서 과정을 리뷰합니다. 50점·다양한 완주 경로·검수한 시연을 이용한 로컬 정책 학습은 이후 목표입니다.
+**오늘의 우선순위는 안정적인 시연 데이터 수집 시스템과 다양한 방법의 과정 기록입니다.** Codex CLI의 Astra로 단계별 실험을 진행했고 현재 첫 공식 누적 5점을 확보하고 50점까지의 후속 시도를 진행합니다. 50점과 다양한 경로는 후속 수집 목표이며, 검수한 시연을 이용한 로컬 정책 학습은 별도 계획입니다.
+
+</details>
+
+<details>
+<summary>현재 기술 상태</summary>
 
 ## 현재 기술 상태
 
-**2026-11-06:** 기존 L40S에서 환경 복원과 WebRTC 연결을 확인하고, 격리된 Codex CLI `gpt-6-astra`/`ultra`의 실제 로봇 wiring을 완료했습니다. 첫 착의 시도는 SIGTERM으로 중단됐으며 167전이를 정상 보존·검사했습니다. **공식 평가는 0점·success=false로 현재 목표 5점에 도달하지 못했습니다.**
+**2026-11-06: Astra/ultra의 E05 픽업 시도에서 첫 공식 5점을 확보했습니다.** 내장 감시가 행동 응답 경계에서 종료했고 253전이·12.65 simulation초의 전수 검사를 통과했습니다. **착의 success는 false이며, 추가 피드백을 기다리지 않고 50점까지 계속 시도하도록 승인받았습니다.** [단계별 시도와 현재 결과](docs/collection/experiments/2026-11-06-method-comparison.ko.md)
 
 | 확인한 것 | 결과와 한계 |
 |---|---|
@@ -40,10 +67,16 @@
 | Codex CLI | 0.166.0, Astra `ultra`, 실제 이미지 2턴·JSON·동일 UUID 재개 통과 |
 | 실제 로봇 wiring | 3개 모델 결정·3전이·0.15 simulation초, 정상 종료·전체 전이 검사 통과 |
 | wiring 공식 평가 | 유효 평가 0점·success=false·no_contact. 성공 시연으로 집계하지 않음 |
-| 기술 검사 | 계측·계획 실행·공개 패키지 도구를 포함해 CPU 85개 통과. 과제 시연 승인과 구분 |
+| 기술 검사 | 계측·계획 실행·공개 패키지 도구를 포함해 CPU 110개 통과. 과제 시연 승인과 구분 |
 | 행동 입력·격리 | 공개 RGB 5장·전체 공개 로봇 상태·16×16 depth 요약. 저장소·평가·audit·원시 상태와 actor의 파일·네트워크 경계를 분리 |
 | 관찰·개입 | 자동 수집 WebRTC는 관찰 전용. 사람과 모델의 제어권 전환은 미구현 |
 | 실제 착의 시도 | `20261106-astra-dressing-001`: 15개 완료 결정·167전이·8.35 simulation초, SIGTERM 중단 후 정상 파일 마감. 점수0·success=false |
+| 첫 공식 픽업 5점 | [E05 영상·행동·점수 기록](docs/collection/attempts/20261106-astra-pickup-hold5-001/README.ko.md): 18개 결정, 253전이·12.65초 검사 통과, `review_ready`. 5점·success=false, 50점 후속 시도 승인 |
+
+</details>
+
+<details>
+<summary>수집 과정을 자세히 읽기</summary>
 
 ## 수집 과정을 자세히 읽기
 
@@ -57,9 +90,14 @@
 
 [첫 착의 시도의 속도·난도 분석](docs/collection/sessions/2026-11-06-initial-review.md)은 완료된 첫 10개 판단만 고정해 검토한 중간 기록입니다.
 
-**[5점 수집을 위한 호출 지연 개선 가이드](docs/collection/guides/call-latency-options.ko.md)**는 조건부 계획·로컬 피드백·상주 프로세스 등의 비교 근거입니다. 최신 피드백에 따라 계측 수정·상주 호출 pilot·짧은 다중 행동을 순차 실험하며 각 변경과 결과를 기록합니다.
+**[5점 수집을 위한 호출 지연 개선 가이드](docs/collection/guides/call-latency-options.ko.md)**는 조건부 계획·로컬 피드백·상주 프로세스 등의 비교 근거입니다. 계측 수정·상주 호출·다중 행동과 픽업 재시도의 실제 결과는 [방법별 비교](docs/collection/experiments/2026-11-06-method-comparison.ko.md)에 기록합니다.
 
 메인 README는 기술 상태와 문서 입구를 유지합니다. 상세 개발·수집 과정은 별도 페이지에 한국어로 기록하고, 인증·개인 접속 주소·내부 상태·숨겨진 모델 추론은 게시하지 않습니다.
+
+</details>
+
+<details>
+<summary>코드 길잡이</summary>
 
 ## 코드 길잡이
 
@@ -75,11 +113,16 @@
 
 기존 [`gpt_client.py`](participant/collection/gpt_client.py)는 별도 Responses API의 작은 시험 코드이며 현재 Codex CLI 경로를 대신하지 않습니다. API나 다른 모델로 자동 전환하지 않습니다.
 
+</details>
+
 ## 재현과 다음 작업
 
 [새 서버 준비](docs/project/START_HERE.ko.md)에 고정 CLI·actor 이미지, 공식 환경, WebRTC와 `--mode wiring` 실행·검사 명령을 정리했습니다. [현재 상태](docs/project/STATUS.md)에서 이어갈 한 가지 작업을 확인합니다. 실패 run ID와 완료 파일을 덮어쓰지 않습니다.
 
-현재는 **안정적인 수집 시스템·다양한 방법의 비교·자주 공유하는 과정 기록**을 우선합니다. Astra와 `ultra`를 유지하며 계측 수정 → 상주 호출 pilot → 짧은 다중 행동을 순차 검증합니다. 계획과 실행·통과를 구분하고 첫 5점 리뷰 조건은 유지합니다. 이후 50점과 다양한 경로 수집, 여러 VLA baseline의 공통 조건 비교, RL·world model 활용을 검토합니다. 이 후속 학습·평가는 아직 실행하지 않았습니다. [세부 데이터·실험 계획](docs/collection/README.ko.md)
+현재 E06에서 **E05의 실제 행동 253전이를 재실행한 뒤 새 actor로 50점까지 이어가는 시도**를 시작했습니다. 이전 5점 결과를 새 시도에 복사하지 않고 재실행 결과를 다시 평가합니다. [중립 스트리밍 4회 비교](docs/collection/experiments/2026-11-06-streaming-benchmark-result.ko.md)는 260/260전이 검사를 마쳤습니다. 이 비교에서는 실제 영상 수신을 확인하지 못했습니다. [행동 재실행과 분기](docs/collection/guides/continuation-and-branches.ko.md)는 정확한 물리 checkpoint 복원이 아니며, E06의 실제 재현 결과는 확인 중입니다. VLA·RL·world model 학습은 아직 실행하지 않았습니다. [세부 기록](docs/collection/README.ko.md) · [서버·수집 경로별 속도 비교](docs/collection/experiments/2026-11-06-server-comparison.ko.md)
+
+<details>
+<summary>참고 문서</summary>
 
 ## 참고 문서
 
@@ -87,3 +130,5 @@
 - [기술 배경과 후속 실험 검토](docs/project/CODEX_CONTEXT.ko.md), [Stretch 4·Astra 조사](docs/project/research/STRETCH4_VLA_REVIEW.ko.md): 과거 계획보다 현재 README·수집 일지의 실행 상태를 우선합니다.
 - [이전 세션 기록](docs/project/sessions/), [이전 결과](docs/project/RESULTS.ko.md), [이전 README](README.history.ko.md)
 - [공식 시뮬레이터](https://github.com/rirolab/PhyRC_2027_Challenge), [원본 안내](README.upstream.md), [출처와 라이선스](THIRD_PARTY.md)
+
+</details>

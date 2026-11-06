@@ -1,0 +1,995 @@
+{
+  "snapshot_cutoff_utc": "2026-11-06T03:32:11.924777Z",
+  "runs": [
+    {
+      "run_id": "20261106-astra-dressing-001",
+      "decisions": [
+        {
+          "decision_index": 0,
+          "decision": {
+            "tool": "act",
+            "action": [
+              [
+                0,
+                0,
+                0,
+                0.32,
+                0,
+                0,
+                0,
+                0,
+                -1
+              ],
+              [
+                0,
+                0,
+                0,
+                0.32,
+                0,
+                0,
+                0,
+                0,
+                -1
+              ]
+            ],
+            "steps": 20,
+            "stage": "preparation",
+            "visual_assessment": "uncertain",
+            "reason": "Robot 0 faces the shirt; robot 1 faces the empty table. Raise both open grippers toward tabletop approach height before repositioning."
+          },
+          "wall_s": 58.871808210999916,
+          "observation_simulation_time_s": 1.5250000795349479
+        },
+        {
+          "decision_index": 1,
+          "decision": {
+            "tool": "act",
+            "action": [
+              [
+                0.45,
+                -0.3,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                -1
+              ],
+              [
+                0.6,
+                -1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                -1
+              ]
+            ],
+            "steps": 20,
+            "stage": "approach",
+            "visual_assessment": "progressing",
+            "reason": "The shirt remains flat and both grippers are raised. Advance robot 0 toward one near corner while moving robot 1 diagonally toward the shirt table for cooperative support."
+          },
+          "wall_s": 47.44645201300045,
+          "observation_simulation_time_s": 2.525000131689012
+        },
+        {
+          "decision_index": 2,
+          "decision": {
+            "tool": "act",
+            "action": [
+              [
+                0.35,
+                0,
+                0,
+                0,
+                0.18,
+                0,
+                0,
+                0,
+                -1
+              ],
+              [
+                0.15,
+                -1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                -1
+              ]
+            ],
+            "steps": 20,
+            "stage": "approach",
+            "visual_assessment": "progressing",
+            "reason": "Robot 0 appears aligned with one near hem corner; advance and extend while keeping the gripper open. Move robot 1 across the aisle toward the opposite side of the shirt table."
+          },
+          "wall_s": 43.08665927200036,
+          "observation_simulation_time_s": 3.5250001838430762
+        },
+        {
+          "decision_index": 3,
+          "decision": {
+            "tool": "act",
+            "action": [
+              [
+                0,
+                0,
+                0,
+                -0.07,
+                0.08,
+                0,
+                0,
+                0,
+                -1
+              ],
+              [
+                0,
+                -1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                -1
+              ]
+            ],
+            "steps": 12,
+            "stage": "approach",
+            "visual_assessment": "progressing",
+            "reason": "Robot 0 is close to the visible hem corner; extend slowly and lower slightly without closing. Continue moving robot 1 toward the other corner while maintaining separation."
+          },
+          "wall_s": 52.30237346100057,
+          "observation_simulation_time_s": 4.52500023599714
+        },
+        {
+          "decision_index": 4,
+          "decision": {
+            "tool": "act",
+            "action": [
+              [
+                0,
+                0,
+                0,
+                -0.02,
+                0,
+                0,
+                0,
+                0,
+                -1
+              ],
+              [
+                0,
+                -0.75,
+                0,
+                0,
+                0.3,
+                0,
+                0,
+                0,
+                -1
+              ]
+            ],
+            "steps": 10,
+            "stage": "approach",
+            "visual_assessment": "progressing",
+            "reason": "Robot 0's open fingers appear close to the yellow hem; lower slightly while its extension settles. Shift robot 1 toward the opposite hem corner and extend its open gripper."
+          },
+          "wall_s": 51.75728972500019,
+          "observation_simulation_time_s": 5.125000267289579
+        },
+        {
+          "decision_index": 5,
+          "decision": {
+            "tool": "act",
+            "action": [
+              [
+                0,
+                0,
+                0,
+                0.24,
+                0,
+                0,
+                0.15,
+                0,
+                -1
+              ],
+              [
+                0,
+                -0.13,
+                0,
+                0.14,
+                0.15,
+                0,
+                0.15,
+                0,
+                -1
+              ]
+            ],
+            "steps": 8,
+            "stage": "recovery",
+            "visual_assessment": "recovering",
+            "reason": "Robot 0's wrist and base deflection suggest tabletop contact. Raise the wrists while beginning a downward grasp angle; bring robot 1 closer to the opposite hem corner with both grippers open."
+          },
+          "wall_s": 93.79345247000037,
+          "observation_simulation_time_s": 5.625000293366611
+        },
+        {
+          "decision_index": 6,
+          "decision": {
+            "tool": "act",
+            "action": [
+              [
+                0,
+                0,
+                0,
+                0.09,
+                0.16,
+                0,
+                0.17,
+                0,
+                -1
+              ],
+              [
+                0,
+                0,
+                0,
+                0.075,
+                0.25,
+                0,
+                0.17,
+                0,
+                -1
+              ]
+            ],
+            "steps": 10,
+            "stage": "approach",
+            "visual_assessment": "progressing",
+            "reason": "Both grippers now flank the hem and the bases appear level. Increase the downward wrist angle while adjusting lift and extension to bring the open fingers toward the two hem corners."
+          },
+          "wall_s": 53.52206263500011,
+          "observation_simulation_time_s": 6.025000314228237
+        },
+        {
+          "decision_index": 7,
+          "decision": {
+            "tool": "act",
+            "action": [
+              [
+                0,
+                0,
+                0,
+                -0.04,
+                0.04,
+                0,
+                0,
+                0,
+                -1
+              ],
+              [
+                0,
+                0,
+                0,
+                -0.06,
+                0.04,
+                0,
+                0,
+                0,
+                -1
+              ]
+            ],
+            "steps": 6,
+            "stage": "grasp",
+            "visual_assessment": "progressing",
+            "reason": "The open fingers appear to straddle the side edges near the hem. Make small downward and forward adjustments while the wrists settle before attempting the pinch."
+          },
+          "wall_s": 50.674411942000006,
+          "observation_simulation_time_s": 6.525000340305269
+        },
+        {
+          "decision_index": 8,
+          "decision": {
+            "tool": "act",
+            "action": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1
+              ]
+            ],
+            "steps": 8,
+            "stage": "grasp",
+            "visual_assessment": "uncertain",
+            "reason": "Both grippers appear positioned at opposite side edges near the hem. Close together while holding position; cloth motion during a subsequent small lift must confirm the grasps."
+          },
+          "wall_s": 36.74591599099949,
+          "observation_simulation_time_s": 6.825000355951488
+        },
+        {
+          "decision_index": 9,
+          "decision": {
+            "tool": "act",
+            "action": [
+              [
+                0,
+                0,
+                0,
+                0.08,
+                0,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                0,
+                0,
+                0,
+                0.08,
+                0,
+                0,
+                0,
+                0,
+                1
+              ]
+            ],
+            "steps": 8,
+            "stage": "lift",
+            "visual_assessment": "uncertain",
+            "reason": "Neither grasp is visually confirmed. Lift both grippers a few centimeters with bases fixed and closing intent maintained, then check whether the cloth follows."
+          },
+          "wall_s": 15.209183560000383,
+          "observation_simulation_time_s": 7.225000376813114
+        },
+        {
+          "decision_index": 10,
+          "decision": {
+            "tool": "act",
+            "action": [
+              [
+                0,
+                0,
+                0,
+                0.08,
+                0,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                0,
+                0,
+                0,
+                0.08,
+                0,
+                0,
+                0,
+                0,
+                1
+              ]
+            ],
+            "steps": 10,
+            "stage": "lift",
+            "visual_assessment": "uncertain",
+            "reason": "Small folds near both closing grippers suggest contact, but secure support remains uncertain. Continue a short vertical test lift and check that both cloth edges rise."
+          },
+          "wall_s": 32.58731558999989,
+          "observation_simulation_time_s": 7.625000397674739
+        },
+        {
+          "decision_index": 11,
+          "decision": {
+            "tool": "act",
+            "action": [
+              [
+                0.15,
+                0.07,
+                0,
+                -0.035,
+                0.22,
+                0,
+                0.22,
+                0,
+                -1
+              ],
+              [
+                0.15,
+                -0.07,
+                0,
+                -0.035,
+                0.22,
+                0,
+                0.22,
+                0,
+                -1
+              ]
+            ],
+            "steps": 10,
+            "stage": "recovery",
+            "visual_assessment": "recovering",
+            "reason": "The shirt remains flat despite the lift, indicating missed grasps. Reopen, shift slightly inward, and angle the fingers more vertically while compensating reach for another edge pinch."
+          },
+          "wall_s": 89.34653179900033,
+          "observation_simulation_time_s": 8.125000423751771
+        },
+        {
+          "decision_index": 12,
+          "decision": {
+            "tool": "act",
+            "action": [
+              [
+                0,
+                0,
+                0,
+                -0.08,
+                -0.05,
+                0,
+                0,
+                0,
+                -1
+              ],
+              [
+                0,
+                0,
+                0,
+                -0.08,
+                0,
+                0,
+                0,
+                0,
+                -1
+              ]
+            ],
+            "steps": 6,
+            "stage": "grasp",
+            "visual_assessment": "recovering",
+            "reason": "The repositioned fingers now appear aligned over the cloth edges. Stop the bases and lower a short increment, slightly retracting robot 0 to limit forward drift before retrying the pinch."
+          },
+          "wall_s": 43.8560895290002,
+          "observation_simulation_time_s": 8.625000449828804
+        },
+        {
+          "decision_index": 13,
+          "decision": {
+            "tool": "act",
+            "action": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1
+              ]
+            ],
+            "steps": 10,
+            "stage": "grasp",
+            "visual_assessment": "uncertain",
+            "reason": "Cloth edges now appear between the repositioned fingers. Close both grippers while holding the bases and wrists steady, allowing the final downward adjustment to settle."
+          },
+          "wall_s": 19.06578083000022,
+          "observation_simulation_time_s": 8.925000465475023
+        },
+        {
+          "decision_index": 14,
+          "decision": {
+            "tool": "act",
+            "action": [
+              [
+                0,
+                0,
+                0,
+                0.035,
+                0,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                0,
+                0,
+                0,
+                0.035,
+                0,
+                0,
+                0,
+                0,
+                1
+              ]
+            ],
+            "steps": 8,
+            "stage": "grasp",
+            "visual_assessment": "uncertain",
+            "reason": "The fingers remain spread and slight deflection suggests tabletop contact. Ease both grippers upward a small amount while maintaining closure, watching for cloth capture."
+          },
+          "wall_s": 29.132406093999634,
+          "observation_simulation_time_s": 9.425000491552055
+        }
+      ],
+      "observations": [
+        {
+          "observation_index": 8,
+          "simulation_time_s": 6.825000355951488,
+          "fingertip_origin_distance": [
+            [
+              0.18849921226501465
+            ],
+            [
+              0.18844278156757355
+            ]
+          ],
+          "gripper_close_command": [
+            [
+              false
+            ],
+            [
+              false
+            ]
+          ]
+        },
+        {
+          "observation_index": 9,
+          "simulation_time_s": 7.225000376813114,
+          "fingertip_origin_distance": [
+            [
+              0.1795104742050171
+            ],
+            [
+              0.1774810254573822
+            ]
+          ],
+          "gripper_close_command": [
+            [
+              true
+            ],
+            [
+              true
+            ]
+          ]
+        },
+        {
+          "observation_index": 10,
+          "simulation_time_s": 7.625000397674739,
+          "fingertip_origin_distance": [
+            [
+              0.07915788888931274
+            ],
+            [
+              0.08369814604520798
+            ]
+          ],
+          "gripper_close_command": [
+            [
+              true
+            ],
+            [
+              true
+            ]
+          ]
+        },
+        {
+          "observation_index": 11,
+          "simulation_time_s": 8.125000423751771,
+          "fingertip_origin_distance": [
+            [
+              0.043037332594394684
+            ],
+            [
+              0.043405696749687195
+            ]
+          ],
+          "gripper_close_command": [
+            [
+              true
+            ],
+            [
+              true
+            ]
+          ]
+        },
+        {
+          "observation_index": 13,
+          "simulation_time_s": 8.925000465475023,
+          "fingertip_origin_distance": [
+            [
+              0.18050192296504974
+            ],
+            [
+              0.18052123486995697
+            ]
+          ],
+          "gripper_close_command": [
+            [
+              false
+            ],
+            [
+              false
+            ]
+          ]
+        },
+        {
+          "observation_index": 14,
+          "simulation_time_s": 9.425000491552055,
+          "fingertip_origin_distance": [
+            [
+              0.17397311329841614
+            ],
+            [
+              0.1801619529724121
+            ]
+          ],
+          "gripper_close_command": [
+            [
+              true
+            ],
+            [
+              true
+            ]
+          ]
+        },
+        {
+          "observation_index": 15,
+          "simulation_time_s": 9.82500051241368,
+          "fingertip_origin_distance": [
+            [
+              0.13826081156730652
+            ],
+            [
+              0.15306469798088074
+            ]
+          ],
+          "gripper_close_command": [
+            [
+              true
+            ],
+            [
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "run_id": "20261106-astra-pickup-plan2-001",
+      "decisions": [
+        {
+          "decision_index": 0,
+          "decision": {
+            "tool": "act",
+            "action": [
+              [
+                0,
+                0,
+                0,
+                0.35,
+                0,
+                0,
+                0,
+                0,
+                -1
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "steps": 20,
+            "stage": "preparation",
+            "visual_assessment": "uncertain",
+            "reason": "Robot 0 sees the shirt; robot 1 faces an empty table. Raise robot 0's open gripper toward clearance above the estimated tabletop before approaching."
+          },
+          "wall_s": 46.372767806999036,
+          "observation_simulation_time_s": 1.5250000795349479
+        },
+        {
+          "decision_index": 1,
+          "decision": {
+            "tool": "act",
+            "action": [
+              [
+                0.45,
+                0,
+                0,
+                0.16,
+                0.25,
+                0,
+                0.25,
+                0,
+                -1
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "steps": 20,
+            "stage": "approach",
+            "visual_assessment": "progressing",
+            "reason": "Bring robot 0 closer to the visible hem while raising and pitching its open gripper downward for an overhead approach. Keep robot 1 stationary."
+          },
+          "wall_s": 63.68903036300071,
+          "observation_simulation_time_s": 2.525000131689012
+        },
+        {
+          "decision_index": 2,
+          "decision": {
+            "tool": "act",
+            "action": [
+              [
+                0.25,
+                0,
+                0,
+                0,
+                0.12,
+                0,
+                0,
+                0,
+                -1
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "steps": 16,
+            "stage": "approach",
+            "visual_assessment": "progressing",
+            "reason": "The yellow hem remains ahead of robot 0's open fingertips. Advance toward it while maintaining lift height, then inspect alignment before descending."
+          },
+          "wall_s": 58.63622290500098,
+          "observation_simulation_time_s": 3.5250001838430762
+        },
+        {
+          "decision_index": 3,
+          "decision": {
+            "tool": "act",
+            "action": [
+              [
+                0,
+                0,
+                0,
+                -0.1,
+                0.06,
+                0,
+                0,
+                0,
+                -1
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "steps": 10,
+            "stage": "approach",
+            "visual_assessment": "progressing",
+            "reason": "The hem is just ahead of the open fingertips. Stop base travel, extend slightly, and lower cautiously toward the cloth before attempting closure."
+          },
+          "wall_s": 34.30469280699981,
+          "observation_simulation_time_s": 4.325000225566328
+        },
+        {
+          "decision_index": 4,
+          "decision": {
+            "tool": "act",
+            "action": [
+              [
+                0,
+                0,
+                0,
+                -0.03,
+                0,
+                0,
+                0,
+                0,
+                -1
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "steps": 8,
+            "stage": "approach",
+            "visual_assessment": "progressing",
+            "reason": "The hem appears aligned between the open fingers, with depth still suggesting clearance. Lower slightly without further advance before closing."
+          },
+          "wall_s": 30.529033140999672,
+          "observation_simulation_time_s": 4.82500025164336
+        },
+        {
+          "decision_index": 5,
+          "decision": {
+            "tool": "act",
+            "action": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "steps": 8,
+            "stage": "grasp",
+            "visual_assessment": "uncertain",
+            "reason": "Attempt to pinch the aligned yellow hem while holding position. Closure alone will not confirm a grasp; inspect before a small lift test."
+          },
+          "wall_s": 12.142769739999494,
+          "observation_simulation_time_s": 5.225000272504985
+        }
+      ],
+      "observations": [
+        {
+          "observation_index": 0,
+          "simulation_time_s": 1.5250000795349479,
+          "fingertip_origin_distance": [
+            [
+              0.18866755068302155
+            ],
+            [
+              0.18866737186908722
+            ]
+          ],
+          "gripper_close_command": [
+            [
+              false
+            ],
+            [
+              false
+            ]
+          ]
+        },
+        {
+          "observation_index": 3,
+          "simulation_time_s": 4.325000225566328,
+          "fingertip_origin_distance": [
+            [
+              0.18791180849075317
+            ],
+            [
+              0.18875683844089508
+            ]
+          ],
+          "gripper_close_command": [
+            [
+              false
+            ],
+            [
+              false
+            ]
+          ]
+        },
+        {
+          "observation_index": 5,
+          "simulation_time_s": 5.225000272504985,
+          "fingertip_origin_distance": [
+            [
+              0.18790872395038605
+            ],
+            [
+              0.18875719606876373
+            ]
+          ],
+          "gripper_close_command": [
+            [
+              false
+            ],
+            [
+              false
+            ]
+          ]
+        },
+        {
+          "observation_index": 6,
+          "simulation_time_s": 5.625000293366611,
+          "fingertip_origin_distance": [
+            [
+              0.1096196174621582
+            ],
+            [
+              0.18875570595264435
+            ]
+          ],
+          "gripper_close_command": [
+            [
+              true
+            ],
+            [
+              false
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

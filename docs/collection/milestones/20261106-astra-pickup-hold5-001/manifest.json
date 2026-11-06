@@ -1,0 +1,92 @@
+{
+  "schema": "phyrc-public-milestone-frame-v1",
+  "run_id": "20261106-astra-pickup-hold5-001",
+  "source_group": "20261106-astra-pickup-methods",
+  "new_independent_demonstration": false,
+  "capture_complete": true,
+  "quality_passed": true,
+  "training_approval": "unreviewed",
+  "official": {
+    "wall_utc": "2026-11-06T03:56:15.847846+00:00",
+    "wall_elapsed_s": 761.7759820520005,
+    "physics_tick": 2952,
+    "evaluation_time_s": 12.3,
+    "raw_points": 5.0,
+    "success": false,
+    "score_status": "no_contact",
+    "final_score": null
+  },
+  "wall_elapsed_basis": "official score recorder monotonic elapsed; excludes pre-evaluation startup",
+  "total_attempt_wall_s": 828.299760545,
+  "public_simulation_time_s": 13.825000721029937,
+  "simulation_time_origin_s": 1.5250000795349479,
+  "transition_boundary_step": 246,
+  "phase": {
+    "decision_index": 17,
+    "model_call_index": 17,
+    "start_step": 232,
+    "end_step": 252,
+    "actual_steps": 20,
+    "stage_intent": "final_check",
+    "visual_assessment": "progressing",
+    "environment_dispatch_wall_s": 22.875889013001142
+  },
+  "actor_phase_wall_s": {
+    "staging_wall_s": 0.10504546599986497,
+    "process_wall_s": 9.682790464999925,
+    "result_parse_wall_s": 0.00031601599948771764,
+    "completed": true
+  },
+  "frame": {
+    "file": "images/pickup-5-step-000246-overview.png",
+    "camera": "overview",
+    "source_file": "policy.hdf5",
+    "source_episode": "demo_0",
+    "source_dataset": "next_obs/overview_rgb",
+    "source_index": 245,
+    "pixels_equal_to_source": true,
+    "width": 256,
+    "height": 256
+  },
+  "source_files": {
+    "policy.hdf5": {
+      "sha256": "f26756a867777353d99fe76a454b99c659c84886820ebdb04618f412b719d6e5",
+      "verification": "full policy bytes verified by continuation loader before E06; this export cross-checks capture/QC/published hashes and reads one frame"
+    },
+    "capture.json": {
+      "sha256": "2b96fc039733a3e3623443ed2b0a266c57c48e3fce258da130b47d79df776676"
+    },
+    "validation.json": {
+      "sha256": "941288c8f908c019571cd1cc2098dce0247c32177d7d73f2a016271ad122e288"
+    },
+    "score_segments.json": {
+      "sha256": "9a6afcf1bde8b337e761d7aaee8042cd940c03af9b89c585613a63dcc2b8ae25"
+    },
+    "public_source_score_events.jsonl": {
+      "sha256": "a131f85c2b04f3768014f1cadd1d95c2e4545140e62a003e4157a13063681259"
+    },
+    "public_source_decisions.jsonl": {
+      "sha256": "9ebb64101296e242d9e1a38b3d1a9aab7b0cd715007f8f853dc73cbac751a70c"
+    },
+    "milestones.py": {
+      "sha256": "2cd39ded7575a38009bcc0f7e1ae6cd5f29134b52881ce291943eb868e5aaca8"
+    }
+  },
+  "artifacts": {
+    "README.ko.md": {
+      "sha256": "5d9c4af7d5c61d1fa1f0c2f44e09265c04ec72a6bde22aa675dd6e2eabce3e1e",
+      "bytes": 2480
+    },
+    "images/pickup-5-step-000246-overview.png": {
+      "sha256": "9b38ea6c55c372eb33bfbdda8b795f357fecf6cb46af9944d0b6eb4402744a2b",
+      "bytes": 72138
+    }
+  },
+  "score_index": {
+    "relative_file": "../20261106-astra-pickup-hold5-001.json",
+    "sha256": "9a6afcf1bde8b337e761d7aaee8042cd940c03af9b89c585613a63dcc2b8ae25",
+    "identical_to_trusted_index": true
+  },
+  "created_at_utc": "2026-11-06T04:24:39.628639+00:00",
+  "raw_records_modified": false
+}

@@ -134,9 +134,13 @@ def parse_arguments(argv=None):
     p.add_argument('--preview', type=Path, help='Human observer HTML served by existing Jupyter')
     p.add_argument('--webrtc', action='store_true', help='Enable existing WebRTC viewer in observation-only mode')
     p.add_argument('--evaluate', action='store_true', help='Save official scoring only in trusted evaluation files')
+    p.add_argument('--reset-seed', type=int,
+                   help='Trusted reset seed for a recorded-action continuation; never public actor input')
     args = p.parse_args(argv)
     if args.max_steps < 1 or args.max_requests < 1 or not math.isfinite(args.input_timeout) or args.input_timeout <= 0:
         p.error('limits must be positive and finite')
+    if args.reset_seed is not None and not 0 <= args.reset_seed < 2**63:
+        p.error('reset seed must be in 0..2**63-1')
     if args.prompt_file is not None:
         try:
             with args.prompt_file.open('rb') as stream:
@@ -207,7 +211,7 @@ def main():
             def publish(obs):
                 if preview and preview.due():
                     preview.write_frame(obs['rgb'][0], simulation_time=float(obs['simulation_time_s']))
-            obs = operator.begin()
+            obs = operator.begin(seed=args.reset_seed)
             interface = public_interface(env, measured_env.reset_info)
             write_json(args.output / 'run_metadata.json', {
                 'schema': 'participant-collection-run-v1', 'source': args.source,

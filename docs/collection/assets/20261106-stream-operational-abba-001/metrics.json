@@ -1,0 +1,474 @@
+{
+  "schema": "phyrc-streaming-benchmark-public-v1",
+  "run_id": "20261106-stream-operational-abba-001",
+  "comparison": "operational_flag",
+  "sdk_only_isolated": false,
+  "model_calls": 0,
+  "gpu_execution_complete": true,
+  "measured_transitions": 240,
+  "warmup_transitions": 20,
+  "saved_transitions": 260,
+  "all_capture_qc_passed": true,
+  "viewer_connected_cost_verified": false,
+  "source_sha256": {
+    "scripts/benchmark_streaming.py": "bdfcd03fd4df008dd523685957108bd533639df27e74de8f0782628df5b9aa5d",
+    "scripts/collect_benchmark_viewport.py": "b219d839dfca51cd82bbcfd04969bad2151d01856952810f00c7cad12aa01aef",
+    "scripts/collect_operator.py": "38033f29738d3e9fb46755d64b03e9f58fd6f010c6ee782e0d6156add4097c44",
+    "participant/streaming/collector_stream.py": "562bac7c6d5fa330341ebe71e94baa257deaa879dbcdeea56d7d97023187ffc9",
+    "participant/collection/evaluation.py": "fa55f353f78704ba54774628e8f511fa035d8b4216d081c440dc5816a6922588",
+    "src/PhyRC_Sim/Policy/environment.py": "a99d5a9a8a8840923c052b01e05c49930ca9f5b154d66d43130c6f640bcf21e8",
+    "src/PhyRC_Sim/Policy/sensors.py": "963984a999103597f63f53d108bfc52f1bbf43ca1770f4a43aa2f8305205ff34",
+    "config/policy_interface.json": "0823b5a692621bc1effed308ac6427af7e97122de4db297ec14b5d751551a5dc"
+  },
+  "source_files_match_plan_at_review": false,
+  "conditions": [
+    {
+      "run_id": "20261106-stream-operational-abba-001-00-off",
+      "webrtc_enabled": false,
+      "comparison": "operational_flag",
+      "started_utc": "2026-11-06T04:08:11.635901+00:00",
+      "finished_utc": "2026-11-06T04:10:18.303020+00:00",
+      "startup_to_public_ready_wall_s": 47.16842070799976,
+      "warmup_dispatch_wall_s": 5.892741634999766,
+      "explicit_idle_window": {
+        "requested_wait_s": 10,
+        "actual_wait_s": 10.00008620600056,
+        "observe_dispatch_wall_s": 0.9747048339995672,
+        "simulation_clock_unchanged": true,
+        "simulation_time_s": 1.775000092573464
+      },
+      "chunks": [
+        {
+          "index": 0,
+          "steps": 20,
+          "simulation_delta_s": 1.0000000521540642,
+          "dispatch_wall_s": 19.70898045499962
+        },
+        {
+          "index": 1,
+          "steps": 20,
+          "simulation_delta_s": 1.0000000521540642,
+          "dispatch_wall_s": 20.473750041999665
+        },
+        {
+          "index": 2,
+          "steps": 20,
+          "simulation_delta_s": 1.0000000521540642,
+          "dispatch_wall_s": 20.120255005000217
+        }
+      ],
+      "measured_dispatch_wall_s": {
+        "count": 3,
+        "sum_s": 60.3029855019995,
+        "mean_s": 20.100995167333167,
+        "median_s": 20.120255005000217,
+        "min_s": 19.70898045499962,
+        "max_s": 20.473750041999665
+      },
+      "shutdown_wall_s": 2.068263986999227,
+      "whole_process_wall_s": 126.66690620599911,
+      "returncode": 0,
+      "public_interface_sha256": "a86f03f48f74d5029390ed03596a2108665d89da59b5584036cf61f03d6ca799",
+      "timings": {
+        "environment_step_wall_s": {
+          "count": 60,
+          "sum_s": 52.79470964299435,
+          "mean_s": 0.8799118273832391,
+          "median_s": 0.8709326204998433,
+          "min_s": 0.8440808589984954,
+          "max_s": 1.0096306180003012
+        },
+        "dataset_write_wall_s": {
+          "count": 60,
+          "sum_s": 4.193042632996367,
+          "mean_s": 0.06988404388327278,
+          "median_s": 0.0683521094997559,
+          "min_s": 0.06655776999832597,
+          "max_s": 0.08572796699991159
+        },
+        "reset_wall_s": 14.867374067998753,
+        "idle_render_calls_total": 0,
+        "idle_render_wall_s_total": 0,
+        "idle_render_scope": "all request-free intervals, not only the explicit idle window"
+      },
+      "capture_validation": {
+        "quality_passed": true,
+        "total_transitions": 65,
+        "validated_transitions": 65,
+        "training_approval": "unreviewed",
+        "checks": [
+          "manifest_sha256",
+          "file_episode_complete",
+          "public_observation_schema",
+          "all_transition_action_shape_dtype_range",
+          "actual_previous_action",
+          "0.05s_intervals",
+          "contiguous_12_physics_ticks",
+          "all_observation_continuity",
+          "finite_numeric_arrays",
+          "terminal_markers",
+          "evaluation_label_consistency"
+        ],
+        "sha256": {
+          "audit.hdf5": "94c879fd55b683b6dcfa778c9de0f6ad951c10a2a900f29e3637f7bb53d38037",
+          "policy.hdf5": "ce06e20f23fde90ddc69235448b768185c9f1f0736a1892386867061a67d8079"
+        }
+      },
+      "code_commit": "adf3f90783bcf82e09b4306c28ddb73a854c53ea",
+      "viewer": {
+        "classification": "unverified",
+        "samples": 45,
+        "sdk_connected_true_samples": 0,
+        "frame_progress_true_samples": 0,
+        "page_visible_true_samples": 0,
+        "join": "server_received_utc_within_whole_process_window",
+        "video_run_identity_verified": false,
+        "allowlisted_window_sha256": "e87e198911cf5107242f5e3ea5a410142f140e77987e150198f9b045dab6a0a8"
+      }
+    },
+    {
+      "run_id": "20261106-stream-operational-abba-001-01-on",
+      "webrtc_enabled": true,
+      "comparison": "operational_flag",
+      "started_utc": "2026-11-06T04:10:18.378981+00:00",
+      "finished_utc": "2026-11-06T04:12:39.635006+00:00",
+      "startup_to_public_ready_wall_s": 56.80606077000084,
+      "warmup_dispatch_wall_s": 6.1460580519997166,
+      "explicit_idle_window": {
+        "requested_wait_s": 10,
+        "actual_wait_s": 10.000093206999736,
+        "observe_dispatch_wall_s": 0.9575161110005865,
+        "simulation_clock_unchanged": true,
+        "simulation_time_s": 1.775000092573464
+      },
+      "chunks": [
+        {
+          "index": 0,
+          "steps": 20,
+          "simulation_delta_s": 1.0000000521540642,
+          "dispatch_wall_s": 21.434550840000156
+        },
+        {
+          "index": 1,
+          "steps": 20,
+          "simulation_delta_s": 1.0000000521540642,
+          "dispatch_wall_s": 21.648834535000788
+        },
+        {
+          "index": 2,
+          "steps": 20,
+          "simulation_delta_s": 1.0000000521540642,
+          "dispatch_wall_s": 21.717602816999715
+        }
+      ],
+      "measured_dispatch_wall_s": {
+        "count": 3,
+        "sum_s": 64.80098819200066,
+        "mean_s": 21.600329397333553,
+        "median_s": 21.648834535000788,
+        "min_s": 21.434550840000156,
+        "max_s": 21.717602816999715
+      },
+      "shutdown_wall_s": 2.4180928739988303,
+      "whole_process_wall_s": 141.25572689399996,
+      "returncode": 0,
+      "public_interface_sha256": "a86f03f48f74d5029390ed03596a2108665d89da59b5584036cf61f03d6ca799",
+      "timings": {
+        "environment_step_wall_s": {
+          "count": 60,
+          "sum_s": 57.47226326799682,
+          "mean_s": 0.9578710544666137,
+          "median_s": 0.9508762274999754,
+          "min_s": 0.9231098769996606,
+          "max_s": 1.0485698520005826
+        },
+        "dataset_write_wall_s": {
+          "count": 60,
+          "sum_s": 4.347579021006823,
+          "mean_s": 0.07245965035011372,
+          "median_s": 0.07055620400024054,
+          "min_s": 0.06667482999910135,
+          "max_s": 0.08848974399916187
+        },
+        "reset_wall_s": 15.9922523919995,
+        "idle_render_calls_total": 140,
+        "idle_render_wall_s_total": 4.765318988002036,
+        "idle_render_scope": "all request-free intervals, not only the explicit idle window"
+      },
+      "capture_validation": {
+        "quality_passed": true,
+        "total_transitions": 65,
+        "validated_transitions": 65,
+        "training_approval": "unreviewed",
+        "checks": [
+          "manifest_sha256",
+          "file_episode_complete",
+          "public_observation_schema",
+          "all_transition_action_shape_dtype_range",
+          "actual_previous_action",
+          "0.05s_intervals",
+          "contiguous_12_physics_ticks",
+          "all_observation_continuity",
+          "finite_numeric_arrays",
+          "terminal_markers",
+          "evaluation_label_consistency"
+        ],
+        "sha256": {
+          "audit.hdf5": "3bb76115c700cae2b4394987bff6ec95e9254464a306a927377ef9d04d379090",
+          "policy.hdf5": "28bb6b2ce412b069c008102e3fa00f9a8f02a613be2c6b88118bab2eb4b03bc3"
+        }
+      },
+      "code_commit": "adf3f90783bcf82e09b4306c28ddb73a854c53ea",
+      "viewer": {
+        "classification": "unverified",
+        "samples": 25,
+        "sdk_connected_true_samples": 0,
+        "frame_progress_true_samples": 0,
+        "page_visible_true_samples": 0,
+        "join": "server_received_utc_within_whole_process_window",
+        "video_run_identity_verified": false,
+        "allowlisted_window_sha256": "8301a70fe8fc2f0ae9a752d9615a91bab9dca762d58e5fc605549b935dd7b610"
+      }
+    },
+    {
+      "run_id": "20261106-stream-operational-abba-001-02-on",
+      "webrtc_enabled": true,
+      "comparison": "operational_flag",
+      "started_utc": "2026-11-06T04:12:39.724316+00:00",
+      "finished_utc": "2026-11-06T04:15:01.344623+00:00",
+      "startup_to_public_ready_wall_s": 55.97475836400008,
+      "warmup_dispatch_wall_s": 6.483575807998932,
+      "explicit_idle_window": {
+        "requested_wait_s": 10,
+        "actual_wait_s": 10.000088484999651,
+        "observe_dispatch_wall_s": 1.006623995001064,
+        "simulation_clock_unchanged": true,
+        "simulation_time_s": 1.775000092573464
+      },
+      "chunks": [
+        {
+          "index": 0,
+          "steps": 20,
+          "simulation_delta_s": 1.0000000521540642,
+          "dispatch_wall_s": 22.11998637599936
+        },
+        {
+          "index": 1,
+          "steps": 20,
+          "simulation_delta_s": 1.0000000521540642,
+          "dispatch_wall_s": 21.932386909000343
+        },
+        {
+          "index": 2,
+          "steps": 20,
+          "simulation_delta_s": 1.0000000521540642,
+          "dispatch_wall_s": 21.831339102998754
+        }
+      ],
+      "measured_dispatch_wall_s": {
+        "count": 3,
+        "sum_s": 65.88371238799846,
+        "mean_s": 21.96123746266615,
+        "median_s": 21.932386909000343,
+        "min_s": 21.831339102998754,
+        "max_s": 22.11998637599936
+      },
+      "shutdown_wall_s": 2.117627077999714,
+      "whole_process_wall_s": 141.61992476500018,
+      "returncode": 0,
+      "public_interface_sha256": "a86f03f48f74d5029390ed03596a2108665d89da59b5584036cf61f03d6ca799",
+      "timings": {
+        "environment_step_wall_s": {
+          "count": 60,
+          "sum_s": 58.294575274001545,
+          "mean_s": 0.9715762545666924,
+          "median_s": 0.9605324229996768,
+          "min_s": 0.9186764260011842,
+          "max_s": 1.058314978999988
+        },
+        "dataset_write_wall_s": {
+          "count": 60,
+          "sum_s": 4.374415033007608,
+          "mean_s": 0.07290691721679347,
+          "median_s": 0.07173617950047628,
+          "min_s": 0.06738980600130162,
+          "max_s": 0.09698474099968735
+        },
+        "reset_wall_s": 15.963977882000108,
+        "idle_render_calls_total": 143,
+        "idle_render_wall_s_total": 4.834046781004872,
+        "idle_render_scope": "all request-free intervals, not only the explicit idle window"
+      },
+      "capture_validation": {
+        "quality_passed": true,
+        "total_transitions": 65,
+        "validated_transitions": 65,
+        "training_approval": "unreviewed",
+        "checks": [
+          "manifest_sha256",
+          "file_episode_complete",
+          "public_observation_schema",
+          "all_transition_action_shape_dtype_range",
+          "actual_previous_action",
+          "0.05s_intervals",
+          "contiguous_12_physics_ticks",
+          "all_observation_continuity",
+          "finite_numeric_arrays",
+          "terminal_markers",
+          "evaluation_label_consistency"
+        ],
+        "sha256": {
+          "audit.hdf5": "c5d20cbdf8c8bd6ef316d487f865d9644e7c7d8240984906d4950b930171de2c",
+          "policy.hdf5": "1bfa4caf360b3679fe7a540d619c87ffc0b2e9d88e55e1174b33b8fccbd0ecf0"
+        }
+      },
+      "code_commit": "adf3f90783bcf82e09b4306c28ddb73a854c53ea",
+      "viewer": {
+        "classification": "unverified",
+        "samples": 26,
+        "sdk_connected_true_samples": 0,
+        "frame_progress_true_samples": 0,
+        "page_visible_true_samples": 0,
+        "join": "server_received_utc_within_whole_process_window",
+        "video_run_identity_verified": false,
+        "allowlisted_window_sha256": "6000b10741d8b134866439afd90795ba020c55195bfba874167ec15ad3df7883"
+      }
+    },
+    {
+      "run_id": "20261106-stream-operational-abba-001-03-off",
+      "webrtc_enabled": false,
+      "comparison": "operational_flag",
+      "started_utc": "2026-11-06T04:15:01.403144+00:00",
+      "finished_utc": "2026-11-06T04:17:14.499353+00:00",
+      "startup_to_public_ready_wall_s": 50.55723475800005,
+      "warmup_dispatch_wall_s": 6.175211963000038,
+      "explicit_idle_window": {
+        "requested_wait_s": 10,
+        "actual_wait_s": 10.00010209500033,
+        "observe_dispatch_wall_s": 1.0056553780013928,
+        "simulation_clock_unchanged": true,
+        "simulation_time_s": 1.775000092573464
+      },
+      "chunks": [
+        {
+          "index": 0,
+          "steps": 20,
+          "simulation_delta_s": 1.0000000521540642,
+          "dispatch_wall_s": 21.520108963000894
+        },
+        {
+          "index": 1,
+          "steps": 20,
+          "simulation_delta_s": 1.0000000521540642,
+          "dispatch_wall_s": 21.126771522000126
+        },
+        {
+          "index": 2,
+          "steps": 20,
+          "simulation_delta_s": 1.0000000521540642,
+          "dispatch_wall_s": 20.572013678000076
+        }
+      ],
+      "measured_dispatch_wall_s": {
+        "count": 3,
+        "sum_s": 63.218894163001096,
+        "mean_s": 21.072964721000364,
+        "median_s": 21.126771522000126,
+        "min_s": 20.572013678000076,
+        "max_s": 21.520108963000894
+      },
+      "shutdown_wall_s": 2.0178524969996943,
+      "whole_process_wall_s": 133.09595583499868,
+      "returncode": 0,
+      "public_interface_sha256": "a86f03f48f74d5029390ed03596a2108665d89da59b5584036cf61f03d6ca799",
+      "timings": {
+        "environment_step_wall_s": {
+          "count": 60,
+          "sum_s": 55.79774301100406,
+          "mean_s": 0.9299623835167343,
+          "median_s": 0.9202073630003724,
+          "min_s": 0.8633373529992241,
+          "max_s": 1.1329357949998666
+        },
+        "dataset_write_wall_s": {
+          "count": 60,
+          "sum_s": 4.43625241799964,
+          "mean_s": 0.073937540299994,
+          "median_s": 0.07109112600028311,
+          "min_s": 0.06617431999984547,
+          "max_s": 0.10146664500098268
+        },
+        "reset_wall_s": 16.00621274599871,
+        "idle_render_calls_total": 0,
+        "idle_render_wall_s_total": 0,
+        "idle_render_scope": "all request-free intervals, not only the explicit idle window"
+      },
+      "capture_validation": {
+        "quality_passed": true,
+        "total_transitions": 65,
+        "validated_transitions": 65,
+        "training_approval": "unreviewed",
+        "checks": [
+          "manifest_sha256",
+          "file_episode_complete",
+          "public_observation_schema",
+          "all_transition_action_shape_dtype_range",
+          "actual_previous_action",
+          "0.05s_intervals",
+          "contiguous_12_physics_ticks",
+          "all_observation_continuity",
+          "finite_numeric_arrays",
+          "terminal_markers",
+          "evaluation_label_consistency"
+        ],
+        "sha256": {
+          "audit.hdf5": "4068cc8513825035fee29471cb79c6510c43b75a7e2b63abf12c9c4e8f210049",
+          "policy.hdf5": "5643088fd6d1e3c5fd1f2f7b2eea1cafe86f1ea31d17fcbea83198558301efc2"
+        }
+      },
+      "code_commit": "adf3f90783bcf82e09b4306c28ddb73a854c53ea",
+      "viewer": {
+        "classification": "unverified",
+        "samples": 32,
+        "sdk_connected_true_samples": 0,
+        "frame_progress_true_samples": 0,
+        "page_visible_true_samples": 0,
+        "join": "server_received_utc_within_whole_process_window",
+        "video_run_identity_verified": false,
+        "allowlisted_window_sha256": "585f16336d7ece8945e07b7853cd6adbfb67732f1c6f591afe2a87e212e0d32f"
+      }
+    }
+  ],
+  "means": {
+    "off": {
+      "process_count": 2,
+      "startup_s": 48.862827732999904,
+      "dispatch_20step_s": 20.586979944166764,
+      "environment_step_s": 0.9049371054499867,
+      "whole_process_s": 129.8814310204989
+    },
+    "on": {
+      "process_count": 2,
+      "startup_s": 56.39040956700046,
+      "dispatch_20step_s": 21.78078342999985,
+      "environment_step_s": 0.9647236545166531,
+      "whole_process_s": 141.43782582950007
+    }
+  },
+  "on_vs_off_percent_difference": {
+    "startup_s": 15.40553869524981,
+    "dispatch_20step_s": 5.798827652578287,
+    "environment_step_s": 6.606707660300559,
+    "whole_process_s": 8.89764973961309
+  },
+  "source_snapshot_verified_against_plan": true,
+  "collector_source_review": {
+    "file": "scripts/collect_operator.py",
+    "later_edit_mtime_utc": "2026-11-06T04:15:12.135730+00:00",
+    "last_child_kit_log_started_utc": "2026-11-06T04:15:02+00:00",
+    "plan_source_recovered_from_commit": "adf3f90783bcf82e09b4306c28ddb73a854c53ea",
+    "change": "optional trusted reset seed; benchmark did not pass that option",
+    "inference": "Collector module is parsed before main starts Kit; last child had started Kit before the later source edit. No process reload was requested.",
+    "runtime_source_hash_directly_emitted": false
+  }
+}

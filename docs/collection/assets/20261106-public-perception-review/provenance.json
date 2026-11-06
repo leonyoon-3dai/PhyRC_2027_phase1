@@ -1,0 +1,61 @@
+{
+  "snapshot_cutoff_utc": "2026-11-06T03:32:11.924777Z",
+  "scope": "Public RGB, depth summaries, public robot state, final actor actions only. No evaluator or hidden geometry used. Images are unmodified source copies.",
+  "images": [
+    {
+      "run_id": "20261106-astra-dressing-001",
+      "observation_index": 8,
+      "simulation_time_s": 6.825000355951488,
+      "camera": "robot_0_wrist",
+      "source_relative_path": "output/actors/20261106-astra-dressing-001/observations/00008/robot_0_wrist.png",
+      "published_file": "20261106-astra-dressing-001-obs00008-robot_0_wrist.png",
+      "sha256": "ebb8611b3fe95dde57b8d293c8add326210c3ea71f70b6556b14cbb2f2718d48"
+    },
+    {
+      "run_id": "20261106-astra-dressing-001",
+      "observation_index": 11,
+      "simulation_time_s": 8.125000423751771,
+      "camera": "robot_0_head",
+      "source_relative_path": "output/actors/20261106-astra-dressing-001/observations/00011/robot_0_head.png",
+      "published_file": "20261106-astra-dressing-001-obs00011-robot_0_head.png",
+      "sha256": "5ff89cfad7fc4e78bdf9fbfa065f91aa1b5cc162c629cdb0e19f6233f5ae39e8"
+    },
+    {
+      "run_id": "20261106-astra-pickup-plan2-001",
+      "observation_index": 0,
+      "simulation_time_s": 1.5250000795349479,
+      "camera": "overview",
+      "source_relative_path": "output/actors/20261106-astra-pickup-plan2-001/observations/00000/overview.png",
+      "published_file": "20261106-astra-pickup-plan2-001-obs00000-overview.png",
+      "sha256": "0d3a44d7430d28963653753369b274e1bcc0c06f79241d040d37c36b3f6cee50"
+    },
+    {
+      "run_id": "20261106-astra-pickup-plan2-001",
+      "observation_index": 3,
+      "simulation_time_s": 4.325000225566328,
+      "camera": "robot_0_wrist",
+      "source_relative_path": "output/actors/20261106-astra-pickup-plan2-001/observations/00003/robot_0_wrist.png",
+      "published_file": "20261106-astra-pickup-plan2-001-obs00003-robot_0_wrist.png",
+      "sha256": "18d93fd496c9ae9461034eb013440c40d39540eb5b00459ef0f5cb60c79d60c2"
+    },
+    {
+      "run_id": "20261106-astra-pickup-plan2-001",
+      "observation_index": 5,
+      "simulation_time_s": 5.225000272504985,
+      "camera": "robot_0_wrist",
+      "source_relative_path": "output/actors/20261106-astra-pickup-plan2-001/observations/00005/robot_0_wrist.png",
+      "published_file": "20261106-astra-pickup-plan2-001-obs00005-robot_0_wrist.png",
+      "sha256": "46f1221939484b19ee461370d035e6c3810a542451859c2f4df8a051084bacd2"
+    },
+    {
+      "run_id": "20261106-astra-pickup-plan2-001",
+      "observation_index": 6,
+      "simulation_time_s": 5.625000293366611,
+      "camera": "robot_0_wrist",
+      "source_relative_path": "output/actors/20261106-astra-pickup-plan2-001/observations/00006/robot_0_wrist.png",
+      "published_file": "20261106-astra-pickup-plan2-001-obs00006-robot_0_wrist.png",
+      "sha256": "cb20670f333bcebcb0635aa57c46dd76bdc8ed5a6a84344826ebffb53aaabdbe"
+    }
+  ],
+  "public_snapshot_sha256": "8fa11099dbd33242991a6af4125ab0d8811d0050e200fd9a5c41f3db24bfdea8"
+}

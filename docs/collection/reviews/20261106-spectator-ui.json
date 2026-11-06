@@ -1,0 +1,36 @@
+{
+  "schema": "phyrc-spectator-api-review-v1",
+  "measured_at_utc": "2026-11-06T04:04:15.838607+00:00",
+  "measurement_scope": "uncached ProgressStore.snapshot selection, allowlisting and detached JSON copy; excludes HTTP transport",
+  "run_id": "20261106-astra-pickup-hold5-001",
+  "run_status": "review_ready",
+  "sample_count": 12,
+  "durations_ms": [
+    5.162442999790073,
+    4.413169001054484,
+    4.1562879996490665,
+    4.112491000341834,
+    4.137923000598676,
+    4.130048999286373,
+    4.2236079989379505,
+    4.128169999603415,
+    4.135275999942678,
+    4.074827000295045,
+    4.121227000723593,
+    4.114882000067155
+  ],
+  "median_ms": 4.132662499614526,
+  "maximum_ms": 5.162442999790073,
+  "response_json_bytes": 13846,
+  "new_network_ports": false,
+  "simulator_commands_sent": false,
+  "hdf5_contents_read": false,
+  "tests_passed": 6,
+  "static_browser_check": "local fixture with mocked fetch; no SDK import, no WebRTC connection, GPU disabled",
+  "source_sha256": {
+    "participant/streaming/viewer_server.py": "7ced87eae94702cf4b3311568e55cea7e0f956f7bc9f9e0bcd69f4d869f7e150",
+    "participant/streaming/spectator.js": "6805feb71737cc1bdf9387dcfbf3e3c0423bc99a53fea5e26e885c86fb9378a3",
+    "participant/streaming/prepare_viewer.py": "e57d2f9ab5bed3b461e2221bc3a527d1d590c7d83b78dfc4e35211ff7fc671ca",
+    "tests/test_streaming_viewer.py": "e17c3fa3cc28e13611ce12c3504ebb0d0f74a3403f382fe7b8393ff1a0053f62"
+  }
+}

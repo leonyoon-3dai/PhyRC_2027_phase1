@@ -1,0 +1,364 @@
+{
+  "schema": "phyrc-public-attempt-report-v1",
+  "attempt": {
+    "run_id": "20261106-astra-pickup-hold5-001",
+    "parent_attempt": "20261106-astra-pickup-plan2-001",
+    "retry_reason": "conservative_five_second_visible_hold_margin",
+    "source_group": "20261106-astra-pickup-methods",
+    "source": "gpt",
+    "mode": "pickup",
+    "model": "gpt-6-astra",
+    "reasoning_effort": "ultra",
+    "prompt_sha256": "464dd8e60cbd881bf99776a36f063f5e4d40ccdf1dd897fa73d3e73acce2aa0a",
+    "status": "review_ready",
+    "finished": true,
+    "started_at_utc": "2026-11-06T03:42:40Z",
+    "ended_at_utc": "2026-11-06T03:56:28Z",
+    "decisions_requested": 30,
+    "decisions_completed": 18,
+    "actor_calls_attempted": 18,
+    "actor_call_wall_s": 479.00927895700625,
+    "model_internal_inference_wall_s": null,
+    "actor_call_timing_scope": "public staging + Docker/CLI startup + request/response; internal model time unavailable",
+    "environment_dispatch_wall_s": 281.7236729719989,
+    "wall_s": 828.299760545,
+    "simulation_time_s": 12.65,
+    "simulation_steps": 253,
+    "acknowledged_simulation_steps": 253,
+    "recorded_simulation_steps": 253,
+    "capture_complete": true,
+    "capture_termination_reason": "operator_finished",
+    "human_intervention": false,
+    "quality_status": "unreviewed",
+    "input_profile": "five_public_RGB_images_all_public_state_and_16x16_depth_medians",
+    "actor_backend": "exec",
+    "plan_size": 2,
+    "plan_step_budget": 20,
+    "plan_execution": "open_loop_list",
+    "review_threshold_raw_points": 5,
+    "pickup_hold_target_simulation_s": 5.0,
+    "error": null,
+    "actor_usage": {
+      "input_tokens": 1554788,
+      "cached_input_tokens": 1399808,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 9141,
+      "reasoning_output_tokens": 7074
+    },
+    "actor_usage_scope": "sum_of_observed_thread_usage",
+    "actor_usage_accounting": {
+      "schema": "phyrc-token-accounting-v2",
+      "cli_usage_scope": "thread_cumulative",
+      "aggregate_scope": "sum_of_observed_thread_usage",
+      "fully_known": true,
+      "observed_usage": {
+        "input_tokens": 1554788,
+        "cached_input_tokens": 1399808,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 9141,
+        "reasoning_output_tokens": 7074
+      },
+      "calls_recorded": 18,
+      "unknown_call_indices": [],
+      "unknown_usage_is_zero": false,
+      "cached_input_is_subset_of_input": true,
+      "reasoning_output_is_subset_of_output": true,
+      "threads": [
+        {
+          "thread_index": 0,
+          "baseline": "fresh_attempt_thread_zero",
+          "last_observed_cumulative_usage": {
+            "input_tokens": 1554788,
+            "cached_input_tokens": 1399808,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 9141,
+            "reasoning_output_tokens": 7074
+          },
+          "last_accepted_cumulative_usage": {
+            "input_tokens": 1554788,
+            "cached_input_tokens": 1399808,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 9141,
+            "reasoning_output_tokens": 7074
+          }
+        }
+      ]
+    },
+    "code": {
+      "commit": "7e8f48f1f7e155c7e9bc463537ff68dd1c44edf1",
+      "working_tree_modified": true
+    }
+  },
+  "capture": {
+    "schema": "participant-live-capture-v2",
+    "complete": true,
+    "termination_reason": "operator_finished",
+    "raw_archive": false,
+    "wall_s": 824.3208975629987,
+    "requests": 20,
+    "steps": 253,
+    "idle_render_calls": 5863,
+    "idle_render_wall_s": 197.90566734102322,
+    "evaluation_enabled": true,
+    "evaluation_valid": true
+  },
+  "quality": {
+    "schema": "phyrc-capture-validation-v1",
+    "quality_passed": true,
+    "training_approval": "unreviewed",
+    "scope": "immediate_sensor_capture",
+    "total_transitions": 253,
+    "validated_transitions": 253,
+    "available": true,
+    "checks": [
+      "manifest_sha256",
+      "file_episode_complete",
+      "public_observation_schema",
+      "all_transition_action_shape_dtype_range",
+      "actual_previous_action",
+      "0.05s_intervals",
+      "contiguous_12_physics_ticks",
+      "all_observation_continuity",
+      "finite_numeric_arrays",
+      "terminal_markers",
+      "evaluation_label_consistency"
+    ],
+    "error_count": 0,
+    "episodes": [
+      {
+        "episode": "demo_0",
+        "transitions": 253,
+        "complete": true,
+        "simulation_seconds": 12.650000659748912,
+        "quality_passed": true
+      }
+    ]
+  },
+  "evaluation": {
+    "evaluated": true,
+    "valid": true,
+    "raw_points": 5.0,
+    "success": false,
+    "score_status": "no_contact",
+    "final_score": null,
+    "breakdown": {
+      "pickup": 5.0,
+      "first_sleeve": 0.0,
+      "opposite_shoulder": 0.0,
+      "second_sleeve": 0.0,
+      "left_upper_arm": 0,
+      "right_upper_arm": 0,
+      "neck": 0.0,
+      "front_orientation": 0.0
+    },
+    "milestone_times_s": {
+      "pickup": 12.3,
+      "first_sleeve": null,
+      "opposite_shoulder": null,
+      "second_sleeve": null,
+      "neck": null,
+      "front_orientation": null
+    },
+    "max_raw_points": 50.0,
+    "success_evaluated": true,
+    "rate_points": 0.0,
+    "max_rate_points": 45.0,
+    "task_time_s": 0.0,
+    "elapsed_episode_time_s": 12.65,
+    "first_contact_time_s": null,
+    "last_score_award_time_s": null,
+    "dressing_completed_at_s": null,
+    "rate_rule": "pickup-excluded-last-award-v9",
+    "scoring_revision": "pickup-excluded-last-award-v9",
+    "score_unit": "points/s"
+  },
+  "review_gate": {
+    "schema": "phyrc-review-gate-v2",
+    "run_id": "20261106-astra-pickup-hold5-001",
+    "threshold_raw_points": 5,
+    "policy_input_changed": false,
+    "status": "triggered",
+    "triggered_at_utc": "2026-11-06T03:56:23Z",
+    "last_observed_raw_points": 5.0,
+    "acknowledged_steps": 252,
+    "collector_status": "review_ready"
+  },
+  "source_files": {
+    "trace/attempt.json": {
+      "sha256": "44f2434d409b3d66336c39321957fdd79680adbedd05d1e0276a41c50a7da972",
+      "bytes": 4851
+    },
+    "trace/prompt.txt": {
+      "sha256": "464dd8e60cbd881bf99776a36f063f5e4d40ccdf1dd897fa73d3e73acce2aa0a",
+      "bytes": 4255
+    },
+    "trace/decisions.jsonl": {
+      "sha256": "ddd2cd7a426401c768dedbe586f25b82ef44ffb6e14e0b2e7a53764ecd5df3bc",
+      "bytes": 58886
+    },
+    "trace/review_gate.json": {
+      "sha256": "dd3ce5e671c075402f3508e136c48167eeaa350f909b285bb8cbefc01cfca562",
+      "bytes": 396
+    },
+    "capture/capture.json": {
+      "sha256": "2b96fc039733a3e3623443ed2b0a266c57c48e3fce258da130b47d79df776676",
+      "bytes": 555
+    },
+    "capture/policy.hdf5": {
+      "sha256": "f26756a867777353d99fe76a454b99c659c84886820ebdb04618f412b719d6e5",
+      "bytes": 669808021
+    },
+    "capture/audit.hdf5": {
+      "sha256": "18994fb6366acc8c4012d1c983990508a43b377c4198e763963300ed81b055ab",
+      "bytes": 66165
+    },
+    "capture/evaluation_summary.json": {
+      "sha256": "592fcd460d1a3f20be074bf9c4ee3790dd938090c51fe49f8ccf2e4f5c284d3f",
+      "bytes": 13611
+    },
+    "capture/validation.json": {
+      "sha256": "941288c8f908c019571cd1cc2098dce0247c32177d7d73f2a016271ad122e288",
+      "bytes": 1481
+    },
+    "capture/score_events.jsonl": {
+      "sha256": "5ede07651661f0599a28726bcc3e6295c09bff3bf1fb781e9159aa5ce1cf65b2",
+      "bytes": 1180
+    }
+  },
+  "unrecognized_events_omitted": 0,
+  "publication_review": "generated_allowlisted_subset_requires_repository_review",
+  "decision_reason_scope": "final_action_explanation_only",
+  "artifacts": {
+    "README.ko.md": {
+      "sha256": "7df5e25f80dd08ac461ca662aaee57a74cebcebaeb73296b509110922b3da1ea",
+      "bytes": 26931
+    },
+    "decisions.jsonl": {
+      "sha256": "9ebb64101296e242d9e1a38b3d1a9aab7b0cd715007f8f853dc73cbac751a70c",
+      "bytes": 48919
+    },
+    "images/final-overview.png": {
+      "sha256": "95a06dc128540fbbd962e4af7370ee830083d8ba5259a495b67e31753e675eeb",
+      "bytes": 71997
+    },
+    "images/final-robot_0_head.png": {
+      "sha256": "129b1344351a77e8d10df7b90724f772fed33a3c61fdee59afc6012719482c99",
+      "bytes": 67122
+    },
+    "images/final-robot_0_wrist.png": {
+      "sha256": "70bdd372d6062309c55b0f85390e76be9c7f3adf5e4a49f0927b4fce659b881f",
+      "bytes": 61066
+    },
+    "images/final-robot_1_head.png": {
+      "sha256": "786c6ae8bf94193fdec7ed227b0ed0a6f0c37030563aadb0af4d205916fd060e",
+      "bytes": 64625
+    },
+    "images/final-robot_1_wrist.png": {
+      "sha256": "e72bcee4c96acadf27c64caac731ddeaa7f956220d93bd9c6bbab456b13817fa",
+      "bytes": 30481
+    },
+    "images/initial-overview.png": {
+      "sha256": "797e11df7b98dfaaa0fe1c8b90c657864b203888d9ddc775604f1e0f6378d73d",
+      "bytes": 67603
+    },
+    "images/initial-robot_0_head.png": {
+      "sha256": "0b56eebe5922bed042782120243034180fb6a93765255e61f5abb534775912e0",
+      "bytes": 66523
+    },
+    "images/initial-robot_0_wrist.png": {
+      "sha256": "8b73c34d368fe391c93c62920db050926a7ee75f72d20d60879279a6b23d00b1",
+      "bytes": 55722
+    },
+    "images/initial-robot_1_head.png": {
+      "sha256": "cb0aa954e1510dad71dd175b2a1d901bd162885b189fecd0a45de0c9f3ce5710",
+      "bytes": 62411
+    },
+    "images/initial-robot_1_wrist.png": {
+      "sha256": "20eece0ed2d442447474a00a24df45826e6b47a62c245a171406dbc1bb793b6a",
+      "bytes": 55979
+    },
+    "overview.mp4": {
+      "sha256": "0113a661697953e0e0b4c4c7b424a7b1b4b3f0e73479a7fca34a15b5ff9e09e1",
+      "bytes": 239842
+    },
+    "prompt.txt": {
+      "sha256": "464dd8e60cbd881bf99776a36f063f5e4d40ccdf1dd897fa73d3e73acce2aa0a",
+      "bytes": 4255
+    },
+    "score-events.jsonl": {
+      "sha256": "a131f85c2b04f3768014f1cadd1d95c2e4545140e62a003e4157a13063681259",
+      "bytes": 1180
+    }
+  },
+  "media": {
+    "available": true,
+    "transitions": 253,
+    "images": [
+      "images/initial-overview.png",
+      "images/initial-robot_0_wrist.png",
+      "images/initial-robot_1_wrist.png",
+      "images/initial-robot_0_head.png",
+      "images/initial-robot_1_head.png",
+      "images/final-overview.png",
+      "images/final-robot_0_wrist.png",
+      "images/final-robot_1_wrist.png",
+      "images/final-robot_0_head.png",
+      "images/final-robot_1_head.png"
+    ],
+    "video": {
+      "created": true,
+      "requested": true,
+      "file": "overview.mp4",
+      "source": "obs/overview_rgb",
+      "source_policy_hz": 20,
+      "available_frames": 253,
+      "exported_frames": 253,
+      "maximum_frames": 2000,
+      "truncated": false,
+      "sampling": "contiguous_prefix_no_frame_skipping",
+      "slowdown_factor": 4.0,
+      "playback_fps": 5.0,
+      "playback_duration_s": 50.6,
+      "includes_wall_time_waits": false
+    },
+    "status": "recorded_public_frames",
+    "episode": "demo_0",
+    "file_complete": true,
+    "initial_simulation_time_s": 1.5250000795349479,
+    "final_simulation_time_s": 14.17500073928386
+  },
+  "milestone_path": {
+    "evaluation_valid": true,
+    "award_batches": [
+      {
+        "physics_tick": 2952,
+        "transition_boundary_step": 246,
+        "step_alignment_exact": true,
+        "evaluation_time_s": 12.3,
+        "public_simulation_time_s": 13.825000079534949,
+        "batch_index": 0,
+        "raw_points_before": 0.0,
+        "raw_points_after": 5.0,
+        "changes": [
+          {
+            "stage": "pickup",
+            "before": 0.0,
+            "after": 5.0
+          }
+        ],
+        "simultaneous": false,
+        "order_within_batch": "not_inferred"
+      }
+    ],
+    "success_events": [],
+    "time_origin_public_simulation_s": 1.5250000795349479,
+    "time_basis": "episode evaluation clock begins after reset; physics_tick/12 is transition boundary",
+    "order_rule": "different ticks chronological; same-tick awards unordered"
+  },
+  "review_annotation": {
+    "scope": "trusted_posthoc_evaluation",
+    "source": "../../reviews/20261106-astra-pickup-hold5-001.json",
+    "original_generated_readme_sha256": "120a3e1baa670eb065da0e1b5ebd9efe8bbea321229639e72a9a9b406f925486",
+    "raw_records_modified": false
+  }
+}

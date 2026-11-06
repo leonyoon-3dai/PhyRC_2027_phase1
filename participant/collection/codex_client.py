@@ -157,6 +157,19 @@ def dump(path, value):
     temp.replace(path)
 
 
+def compare_public_state(reference, actual):
+    """Numeric robot-state differences are diagnostics, not cloth equivalence."""
+    result = {}
+    for key, expected in reference.items():
+        expected, observed = np.asarray(expected), np.asarray(actual[key])
+        if observed.shape != expected.shape or not np.isfinite(observed).all():
+            raise ValueError('replayed public state shape or finiteness mismatch')
+        result[key] = {'max_absolute_difference': float(np.max(np.abs(
+            observed.astype(np.float64) - expected.astype(np.float64))))}
+    return {'fields': result, 'cloth_state_equivalence_checked': False,
+            'scope': 'public robot numeric state only; no physics checkpoint claim'}
+
+
 def source_snapshot(root, trace):
     paths = [root / 'run.sh', root / 'scripts/collect_operator.py',
              root / 'participant/streaming/collector_stream.py',
@@ -359,6 +372,14 @@ def main():
     parser.add_argument('--plan-size', type=int, default=1,
                         help='Maximum segments per model call; >1 is an open-loop list')
     parser.add_argument('--plan-step-budget', type=int, default=20)
+    parser.add_argument('--pickup-hold-seconds', type=float, default=5.0,
+                        help='Conservative visible pickup hold target; official scoring is unchanged')
+    parser.add_argument('--review-points', type=int, default=5,
+                        help='Trusted score termination threshold (5..50); never sent to the actor')
+    parser.add_argument('--replay-prefix-run',
+                        help='Replay verified recorded actions before a fresh actor; not physics restoration')
+    parser.add_argument('--replay-prefix-steps', type=int,
+                        help='Exclusive source transition boundary; defaults to the completed source length')
     parser.add_argument('--model', default='gpt-6-astra')
     parser.add_argument('--effort', default='ultra')
     parser.add_argument('--decisions', type=int, default=3)
@@ -372,6 +393,14 @@ def main():
         parser.error('decision/step budget out of range')
     if not 1 <= args.plan_size <= 3 or not 1 <= args.plan_step_budget <= 60:
         parser.error('plan size must be 1..3 and step budget 1..60')
+    if not math.isfinite(args.pickup_hold_seconds) or not 3 <= args.pickup_hold_seconds <= 10:
+        parser.error('pickup hold target must be finite, 3..10 simulation seconds')
+    if not 5 <= args.review_points <= 50:
+        parser.error('review-points must be 5..50')
+    if args.replay_prefix_steps is not None and (not args.replay_prefix_run or args.replay_prefix_steps < 1):
+        parser.error('positive replay-prefix-steps requires replay-prefix-run')
+    if args.replay_prefix_run and args.mode == 'wiring':
+        parser.error('replay prefixes are not wiring tests')
     if args.mode == 'wiring' and args.plan_size > 1 and (args.plan_size != 3 or args.decisions != 3):
         parser.error('grouped wiring requires plan-size=3 and decisions=3')
     if not math.isfinite(args.model_timeout) or not 10 <= args.model_timeout <= 1800:
@@ -379,6 +408,19 @@ def main():
     if bool(args.parent_attempt) != bool(args.retry_reason):
         parser.error('parent-attempt and retry-reason must be supplied together')
     root = Path(__file__).resolve().parents[2]
+    replay = None
+    if args.replay_prefix_run:
+        from participant.collection.continuation import load_replay_prefix
+        replay = load_replay_prefix(root, args.replay_prefix_run, args.replay_prefix_steps)
+        if args.parent_attempt not in (None, args.replay_prefix_run):
+            parser.error('replay prefix must be the immediate parent attempt')
+        if args.source_group not in (None, replay.public_lineage['source_group']):
+            parser.error('replay descendants must retain their source group')
+        if len(replay.actions) >= args.max_steps:
+            parser.error('max-steps must leave room after the replay prefix')
+        args.parent_attempt = args.replay_prefix_run
+        args.retry_reason = args.retry_reason or 'recorded_action_prefix_then_fresh_actor'
+        args.source_group = replay.public_lineage['source_group']
     trace = root / 'output/operator-traces' / args.run_id
     actor_root = root / 'output/actors' / args.run_id
     trace.mkdir(parents=True, exist_ok=False)
@@ -387,10 +429,22 @@ def main():
     task = TASK
     if args.plan_size > 1:
         task += '\n\n' + PLAN_TASK.format(max_segments=args.plan_size, max_total_steps=args.plan_step_budget)
+    if replay is not None:
+        task += ('\n\nA prefix of previously recorded permitted actions has already been executed '
+                 'in this fresh episode. You are a fresh actor. Inspect the CURRENT public observations '
+                 'and continue toward the full objective; do not assume any prior grasp or progress '
+                 'survived replay. Only the supplied public views and robot state establish your next action.')
     if args.mode == 'wiring':
         task += '\n\n' + (BATCH_WIRING_TASK if args.plan_size > 1 else WIRING_TASK)
     elif args.mode == 'pickup':
         task += '\n\n' + PICKUP_TASK
+        task += (f'\nFor this attempt, use a conservative target of at least '
+                 f'{args.pickup_hold_seconds:g} simulation seconds of stable visible holding. '
+                 'Start counting from a fresh observation that confirms the garment is visibly raised '
+                 'and stationary, not from the start of the lift command. This margin does not change '
+                 'the published 3-second criterion. A raised gripper pose alone does not prove cloth '
+                 'height or grasp. Continue preserving the grip and neutral motion until the hold '
+                 'target is met, unless observations require recovery or the controller ends the episode.')
     if args.actor_backend == 'app-server':
         from participant.collection.codex_app_actor import AppActor as Actor
     else:
@@ -404,6 +458,8 @@ def main():
                '--input-timeout', str(args.model_timeout + 120)]
     if args.webrtc:
         command += ['--webrtc']
+    if replay is not None:
+        command += ['--reset-seed', str(replay.trusted_metadata['reset_seed'])]
     started = time.monotonic()
     manifest = {
         'schema': 'phyrc-codex-attempt-v1', 'run_id': args.run_id,
@@ -415,7 +471,8 @@ def main():
         'actor_backend': args.actor_backend, 'plan_size': args.plan_size,
         'plan_step_budget': args.plan_step_budget,
         'plan_execution': 'open_loop_list' if args.plan_size > 1 else 'single_decision',
-        'review_threshold_raw_points': None if args.mode == 'wiring' else 5,
+        'review_threshold_raw_points': None if args.mode == 'wiring' else args.review_points,
+        'pickup_hold_target_simulation_s': args.pickup_hold_seconds if args.mode == 'pickup' else None,
         'actor_calls_attempted': 0, 'actor_usage': {},
         'finished': False, 'status': 'starting', 'error': None,
         'started_at_utc': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
@@ -426,23 +483,50 @@ def main():
         'input_profile': 'five_public_RGB_images_all_public_state_and_16x16_depth_medians',
         'simulation_steps': 0, 'human_intervention': False,
         'quality_status': 'unreviewed',
+        'replay_steps_completed': 0, 'activity': 'initializing',
     }
+    if replay is not None:
+        manifest['continuation'] = dict(replay.public_lineage)
     token_usage = TokenUsageAccounting()
     token_usage.update_manifest(manifest)
     manifest['source_snapshot'] = source_snapshot(root, trace)
     dump(trace / 'attempt.json', manifest)
     (trace / 'prompt.txt').write_text(task)
     sim, actor, finished, active = None, None, False, False
-    pending_plan, stop_reason = [], 'decision_budget'
+    pending_plan, stop_reason, simulation_origin = [], 'decision_budget', None
     gate = {'schema': 'phyrc-review-gate-v2', 'run_id': args.run_id,
-            'threshold_raw_points': 5, 'policy_input_changed': False,
+            'threshold_raw_points': args.review_points, 'policy_input_changed': False,
             'status': 'disabled_wiring' if args.mode == 'wiring' else 'watching',
-            'condition': 'official raw_points >= 5; stop after acknowledged action'}
+            'condition': f'official raw_points >= {args.review_points}; stop after acknowledged action'}
     dump(trace / 'review_gate.json', gate)
     with (trace / 'simulator.log').open('x') as log, (trace / 'decisions.jsonl').open('x') as events:
         def event(value):
             events.write(json.dumps(value, allow_nan=False) + '\n')
             events.flush()
+        def record_milestones():
+            if args.mode == 'wiring' or simulation_origin is None:
+                return
+            from participant.collection.milestones import write_index
+            write_index(trace / 'score_segments.json',
+                        collection=root / 'output/collections' / args.run_id,
+                        run_id=args.run_id, source_group=manifest['source_group'],
+                        acknowledged_steps=manifest['simulation_steps'],
+                        simulation_origin=simulation_origin,
+                        replay_prefix_steps=manifest['replay_steps_completed'],
+                        capture_complete=manifest.get('capture_complete', False))
+        def check_review_gate():
+            nonlocal stop_reason
+            if args.mode == 'wiring':
+                return
+            points = official_review_points(root / 'output/collections' / args.run_id)
+            gate['last_observed_raw_points'] = points
+            gate['acknowledged_steps'] = manifest['simulation_steps']
+            if points >= args.review_points:
+                gate['status'] = 'triggered'
+                gate['triggered_at_utc'] = time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())
+                stop_reason = 'review_points'
+            dump(trace / 'review_gate.json', gate)
+            record_milestones()
         try:
             sim = Simulator(command, root, log)
             manifest['simulator_pid'] = sim.process.pid
@@ -450,10 +534,55 @@ def main():
             if ready.get('ready') is not True:
                 raise ValueError('simulator did not become ready')
             obs, active = ready['observation'], True
+            simulation_origin = float(obs['simulation_time_s'])
             interface = public_interface(ready.get('public_interface', {}))
-            actor = Actor(actor_root / 'runtime', model=args.model, effort=args.effort, timeout_s=args.model_timeout)
+            if replay is not None:
+                from participant.collection.continuation import iter_action_chunks
+                manifest['status'] = 'replaying_prefix'
+                manifest['activity'] = 'replay_prefix'
+                manifest['continuation']['initial_public_state_comparison'] = compare_public_state(
+                    replay.initial_public_state, obs)
+                dump(trace / 'attempt.json', manifest)
+                for chunk in iter_action_chunks(replay.actions):
+                    before = float(obs['simulation_time_s'])
+                    t = time.monotonic()
+                    value = sim.dispatch('act', {'action': chunk.action.tolist(), 'steps': chunk.steps})
+                    elapsed = time.monotonic() - t
+                    manifest['environment_dispatch_wall_s'] += elapsed
+                    obs, active = value['observation'], value.get('active', True)
+                    finished = not active
+                    after = float(obs['simulation_time_s'])
+                    steps = round((after - before) * 20)
+                    manifest['simulation_steps'] += steps
+                    manifest['replay_steps_completed'] += steps
+                    event({'type': 'replayed_segment', 'action_source': 'replayed_parent',
+                           'source_run_id': args.replay_prefix_run,
+                           'source_start_step': chunk.start_step,
+                           'source_end_step_exclusive': chunk.start_step + steps,
+                           'start_step': manifest['simulation_steps'] - steps,
+                           'end_step': manifest['simulation_steps'],
+                           'requested_steps': chunk.steps, 'actual_steps': steps,
+                           'applied_action': chunk.action.tolist(),
+                           'simulation_start_s': before, 'simulation_end_s': after,
+                           'environment_dispatch_wall_s': elapsed, 'model_invoked': False})
+                    dump(trace / 'attempt.json', manifest)
+                    check_review_gate()
+                    if steps != chunk.steps or not active:
+                        raise RuntimeError('replay prefix ended before the requested branch boundary')
+                    if stop_reason == 'review_points':
+                        break
+                replay_complete = manifest['replay_steps_completed'] == len(replay.actions)
+                manifest['continuation']['replay_validation'] = (
+                    'actions_reexecuted_new_state_recorded' if replay_complete else 'stopped_at_review_boundary')
+                if replay_complete:
+                    manifest['continuation']['final_public_state_comparison'] = compare_public_state(
+                        replay.final_public_state, obs)
+                manifest['policy_suffix_start_step'] = manifest['simulation_steps']
+                record_milestones()
+            if stop_reason != 'review_points':
+                actor = Actor(actor_root / 'runtime', model=args.model, effort=args.effort, timeout_s=args.model_timeout)
             manifest['status'] = 'collecting'
-            for index in range(args.decisions):
+            for index in range(args.decisions if stop_reason != 'review_points' else 0):
                 payload, images = prepare_observation(obs, actor_root / 'observations' / f'{index:05d}')
                 prompt = (task if index == 0 else 'Continue the same episode using the latest public observation.\n')
                 prompt += '\nDecision index: ' + str(index) + '\n'
@@ -467,6 +596,8 @@ def main():
                     call_started = time.monotonic()
                     model_call_index = manifest['actor_calls_attempted']
                     manifest['actor_calls_attempted'] += 1
+                    manifest['activity'] = 'model_request'
+                    dump(trace / 'attempt.json', manifest)
                     result = None
                     try:
                         limit = min(args.plan_size, args.decisions - index)
@@ -523,6 +654,8 @@ def main():
                 t = time.monotonic()
                 tool = decision['tool']
                 before = float(obs['simulation_time_s'])
+                manifest['activity'] = 'executing_action'
+                dump(trace / 'attempt.json', manifest)
                 value = sim.dispatch(tool, {'action': action.tolist(), 'steps': decision['steps']} if tool == 'act' else None)
                 elapsed = time.monotonic() - t
                 manifest['environment_dispatch_wall_s'] += elapsed
@@ -545,21 +678,14 @@ def main():
                        'simulation_end_s': after, 'environment_dispatch_wall_s': elapsed,
                        'stage_intent': decision['stage'], 'visual_assessment': decision['visual_assessment'],
                        'assessment_source': 'actor_public_observations', 'official_score': None,
+                       'action_source': 'model',
                        'requested_steps': decision['steps'] if tool == 'act' else (1 if tool == 'stop' else 0),
                        'applied_action': action.tolist() if tool == 'act' else np.zeros((2, 9)).tolist(),
                        'actual_steps': steps, 'quality_status': 'unreviewed'})
                 dump(trace / 'attempt.json', manifest)
                 print(json.dumps({'run_id': args.run_id, 'decision': index, 'stage': decision['stage'],
                                   'tool': tool, 'sim_s': after, 'actor_call_wall_s': result['wall_s']}), flush=True)
-                if args.mode != 'wiring':
-                    points = official_review_points(root / 'output/collections' / args.run_id)
-                    gate['last_observed_raw_points'] = points
-                    gate['acknowledged_steps'] = manifest['simulation_steps']
-                    if points >= 5:
-                        gate['status'] = 'triggered'
-                        gate['triggered_at_utc'] = time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())
-                        stop_reason = 'review_points'
-                    dump(trace / 'review_gate.json', gate)
+                check_review_gate()
                 if finished or stop_reason == 'review_points':
                     break
             if pending_plan:
@@ -624,6 +750,13 @@ def main():
             manifest['wall_s'] = time.monotonic() - started
             manifest['simulation_time_s'] = manifest['simulation_steps'] / 20
             manifest['ended_at_utc'] = time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())
+            manifest['activity'] = 'closed'
+            manifest['new_recorded_suffix_steps'] = max(
+                0, manifest['simulation_steps'] - manifest['replay_steps_completed'])
+            try:
+                record_milestones()
+            except Exception as exc:
+                manifest['score_segment_index_error'] = type(exc).__name__
             if gate['status'] == 'watching':
                 gate['status'] = 'collector_ended_before_gate'
             gate['collector_status'] = manifest['status']

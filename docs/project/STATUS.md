@@ -1,16 +1,32 @@
 # 다음 작업 상태
 
-**정리일: 2026-11-06. 현재 우선순위: 안정적인 수집 시스템·다양한 방법의 순차 실험·빈번한 과정 기록. Astra/ultra와 첫 5점 리뷰 조건은 유지합니다.**
+**2026-11-06 · 현재 5/50점, 착의 success=false. E06에서 50점까지의 후속 시도를 시작했습니다. 첫 5점 리뷰 대기는 해제됐습니다.**
 
 [현재 기술문서](../../README.md) · [상세 수집 과정](../collection/README.ko.md) · [수집 일지](../collection/sessions/2026-11-06.md) · [서버 준비](START_HERE.ko.md) · [작업 지침](../../AGENTS.md)
 
 ## 다음에 할 일
 
-현재 E04 `20261106-astra-pickup-plan2-001`이 **CLI exec·픽업 목표·최대 2구간 계획**으로 진행 중입니다. 최종 결과는 미확인입니다. 먼저 E01 계측 wiring과 E03 한 호출의 3구간 wiring을 검증했고, E02 App Server는 실제 2턴 호환성 미통과로 보류했습니다. [방법별 현재 상태·측정·한계](../collection/experiments/2026-11-06-method-comparison.ko.md)
+| 항목 | 현재 상태 |
+|---|---|
+| 볼 자료 | [첫 5점 반복 영상](../gallery/20261106-astra-pickup-hold5-001.ko.md) · [종료·점수 검토](../collection/reviews/20261106-astra-pickup-hold5-001.ko.md) |
+| 다음 목표 | 50점까지 계속 시도 승인, 추가 피드백 대기 없음 |
+| 진행 작업 | E06 실제 시작 04:20:36 UTC. E05 행동 253전이 재실행 후 새 actor로 이어가는 경로 검증 |
+| 관찰·측정 | 관찰 패널 배포 완료. 스트리밍 4회·260전이 검사 완료, 실제 시청 비용은 미확인 |
+| 아직 계획 | E05 물리 checkpoint의 정확한 복원·재개, 후속 VLA·RL·world model 학습 |
+
+<details>
+<summary>확보한 5점과 이전 시도의 종료 경계</summary>
+
+E05 `20261106-astra-pickup-hold5-001`이 **공식 pickup 5점·누적 5점·success=false**로 끝났습니다. 내장 감시가 03:56:23 UTC 행동 응답 경계에서 발동했고 `review_ready`로 종료했습니다. 18개 결정·253전이·12.65 simulation초, 전체 828.2998초를 기록했고 전수 검사 253/253 전이·오류 없음입니다. 이 종료는 당시 첫 5점 감시 조건의 결과입니다. 이후 사용자가 추가 피드백 없이 50점까지 계속 시도하도록 승인했습니다. [방법별 현재 상태·측정·한계](../collection/experiments/2026-11-06-method-comparison.ko.md)
 
 첫 착의 시도 `20261106-astra-dressing-001`은 02:45:03 UTC에 SIGTERM으로 중단됐습니다. 완료 결정 15개·167전이·8.35 simulation초를 정상 보존·검사했습니다. 공식 평가는 유효한 0점·success=false이며 5점 도달 종료가 아닙니다. 이 원본은 후속 실험과 분리해 보존합니다.
 
-빠른 성공보다 수집 시스템과 과정의 신뢰도를 우선하며 첫 5점을 중간 리뷰 기준으로 유지합니다. 50점·착의 `success=true`와 다양한 완주 경로 수집은 이후 목표입니다. 실패·재시도·부분 성공도 구간 라벨과 시간·출처를 연결해 보존하고 최초 프롬프트를 소급 수정하지 않습니다. 메인 README에는 상태와 링크를 요약하고 상세 과정은 [수집 일지](../collection/sessions/2026-11-06.md)에 한국어로 갱신합니다.
+수집 시스템과 과정의 신뢰도를 유지하며 현재 후속 수집 목표는 50점입니다. 누적 50점과 착의 `success=true`는 따로 판정합니다. 실패·재시도·부분 성공도 구간 라벨과 시간·출처를 연결해 보존하고 최초 프롬프트를 소급 수정하지 않습니다. 메인 README에는 상태와 링크를 요약하고 상세 과정은 [수집 일지](../collection/sessions/2026-11-06.md)에 한국어로 갱신합니다.
+
+</details>
+
+<details>
+<summary>확인한 결과</summary>
 
 ## 확인한 결과
 
@@ -19,7 +35,7 @@
 | 환경 복원 | L40S, 드라이버 580.126.09, Docker 29.1.5. build 186.18초·prepare 8.41초·smoke 355.67초, 종료 코드 0과 `PHYRC-SMOKE-PASS` |
 | 초기 기록 연결 | 3개 에피소드·63전이·3.15 simulation초 저장·정합성 검사. 과제 성공 자료로 집계하지 않음 |
 | 화면 연결 | 맥북 Chrome에서 기존 WebRTC 실시간 영상 확인. 자동 수집 모드에서는 관찰 전용이며 사람 제어권 전환은 미구현 |
-| CPU 검사 | 계측·계획 실행·공개 패키지 도구를 포함해 85개 통과. 실제 GPU·과제 성공 검증과 구분 |
+| CPU 검사 | 계측·계획 실행·공개 패키지 도구를 포함해 110개 통과. 실제 GPU·과제 성공 검증과 구분 |
 | actor 격리 | 고정 digest Python 컨테이너, 공개 입력·전용 home만 연결. 직접 인터넷·호스트 서비스 차단, 허용 모델 origin 통신, repo·Docker socket·호스트 메타데이터 부재 확인 |
 | 실제 CLI | 0.166.0, `gpt-6-astra`/`ultra`. 합성 색상 이미지 2턴·JSON·명시적 동일 세션 재개 통과. 총 actor 호출 13.1566초는 준비·Docker/CLI·요청/응답 포함 |
 | 모델 없는 GPU wiring | 3전이·0.15 simulation초, 10초 관찰 대기 중 물리 시계 유지, 전체 전이 검사 통과. 공식 평가 0점·success=false·`no_contact` |
@@ -27,8 +43,15 @@
 | 첫 착의 시도 | `20261106-astra-dressing-001`, source=gpt. SIGTERM 중단, 전체 973.8618초, 167전이 기술 검사 통과. 유효 0점·success=false·no_contact |
 | E01·E03 실제 GPU | 각각 3/3전이·0.15초 검사 통과. 모델 호출 3회→1회, 공식 평가는 모두 0점·success=false. 단일 wiring 한 쌍으로 일반 성능 향상을 주장하지 않음 |
 | E02 상주 App Server | r1~r5, 모델 요청 시도 3회·승인 응답 0개. 실제 2턴 호환성 실패로 보류, 새 수집에 사용하지 않음 |
+| E04 픽업 시도 | 13호출·168전이·8.4초 검사 통과. 모델의 완료 판단과 별도로 공식 0점·success=false. 유효 유지 2.9초 |
+| E05 첫 픽업 5점 | 18호출·18결정, 공식 5점·success=false. 감시 경계 252전이 뒤 중립 정리 1전이, 총253전이 검사 통과·이후 50점 후속 시도 승인 |
 
 HF CLI `huggingface_hub==2.2.0` 설치·실행을 확인했으며 HF 로그인 완료 여부는 별도로 확인해야 합니다. 과거 자료의 원격 보존은 이번에 다시 검증하지 않았습니다.
+
+</details>
+
+<details>
+<summary>실패와 재시도 근거</summary>
 
 ## 실패와 재시도 근거
 
@@ -37,6 +60,11 @@ HF CLI `huggingface_hub==2.2.0` 설치·실행을 확인했으며 HF 로그인 �
 - 실제 로봇 모델 wiring r1~r4는 긴 inline prompt 조건에서 native 초기화 실패를 재현했습니다. `sys.argv` 정리·초기화 순서 변경만으로 해결되지 않았고, 제한된 `--prompt-file` 전달 후 r5가 완료됐습니다. native 내부 원인 확정과 재현 조건 회피를 구분하며 실패 원본을 보존합니다.
 
 로컬 근거는 `output/sessions/20261106-codex-cli-probe-r2/result.json`, `output/collections/20261106-auto-runtime-wiring-r2/validation.json`, `output/collections/20261106-codex-robot-wiring-r5/validation.json` 및 각 `output/operator-traces/<run-id>/attempt.json`입니다. 연결 주소·인증 정보·원본 로그는 공개 문서에 포함하지 않습니다.
+
+</details>
+
+<details>
+<summary>현재 구현과 남은 범위</summary>
 
 ## 현재 구현과 남은 범위
 
@@ -52,8 +80,12 @@ HF CLI `huggingface_hub==2.2.0` 설치·실행을 확인했으며 HF 로그인 �
 | 시연 승인·효율 분석 | 과제 시연의 시각적 검수, 승인 구간과 단계별 도달률·재시도 효율 집계는 남아 있음 |
 | 학습·제출 | π₀.₅ 학습·추론·포장 코드 있음. 실제 승인 자료로 학습·검증·제출한 결과는 아직 없음 |
 
-다음 산출물은 **E04의 실제 관측·행동·득점 과정과 종료 후 전수 검사**입니다. 첫 5점에서 리뷰하며 최종 결과 전에는 성공을 주장하지 않습니다. 세션 누적 usage의 과거 중복 합산은 정정 자료를 따르고 기존 합계를 비용 근거로 사용하지 않습니다. E04는 목표·프롬프트도 달라진 탐색 실험입니다. `complete`·기술 검사 통과·착의 성공은 별도이며 후속 VLA·RL·world model 학습은 미실행입니다.
+다음 산출물은 **스트리밍 비교 결과와 50점 목표 후속 시도의 관측·행동·단계 점수·시간 기록**입니다. E05의 과정 자료는 보존했습니다. 프롬프트의 5초 유지 목표를 달성했다는 뜻은 아니며, 실제로는 원래 공식 3초 유효 유지 조건에 도달해 먼저 종료했습니다. 과거 usage 중복 합산은 정정 자료를 따릅니다. `complete`·기술 검사·공식 5점·착의 성공·학습 승인은 별도이며 후속 VLA·RL·world model 학습은 미실행입니다.
+
+같은 관찰 페이지에서 프롬프트·최종 응답·기록·공식 점수를 확인하도록 화면을 배포했고 로봇 제어 버튼은 제거했습니다. 이번 변경의 Mac 원격 확인은 사용자 응답을 기다리며, 모델 입력에는 평가 표시를 전달하지 않습니다. 중립 스트리밍 4회 비교는 04:08:11–04:17:14 UTC에 실행을 마쳤으며 [별도 계획](../collection/experiments/2026-11-06-streaming-benchmark-plan.ko.md)을 따릅니다. [실측 결과](../collection/experiments/2026-11-06-streaming-benchmark-result.ko.md)는 260/260전이 검사 통과와 20 step 요청·응답 ON 평균 +5.80%를 기록했습니다. 조건당 2회이며 실제 영상 수신은 확인되지 않아 시청 중 비용이나 전체 AI 속도로 일반화하지 않습니다. [행동 재실행·분기 가이드](../collection/guides/continuation-and-branches.ko.md)에서 E06의 재개 방식과 한계를 확인합니다. [이전 서버와 오늘 실행 경로 비교](../collection/experiments/2026-11-06-server-comparison.ko.md)
 
 검토 자료를 생성했습니다: [첫 시도 이미지·영상·프롬프트·행동](../collection/attempts/20261106-astra-dressing-001/README.ko.md), [종료 검토](../collection/reviews/20261106-astra-dressing-001.ko.md), [사용량 정정](../collection/corrections/20261106-token-accounting.ko.md), [호출 지연 개선 가이드](../collection/guides/call-latency-options.ko.md). 원래 시도 기록을 보존하며 가이드의 제안과 실제 적용·검증 결과는 별도 기록합니다.
 
 과거 세션의 명령·자료·측정은 [세션 기록](sessions/), [11월 3일 종료 기록](END_20261103.ko.md), [이전 결과](RESULTS.ko.md)에 남아 있습니다. 당시 우선순위는 현재 README를 대체하지 않습니다.
+
+</details>

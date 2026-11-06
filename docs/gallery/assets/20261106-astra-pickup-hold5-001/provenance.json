@@ -1,0 +1,92 @@
+{
+  "schema": "phyrc-gallery-preview-v1",
+  "created_at_utc": "2026-11-06T04:20:31.377855+00:00",
+  "run_id": "20261106-astra-pickup-hold5-001",
+  "source": {
+    "file": "docs/collection/attempts/20261106-astra-pickup-hold5-001/overview.mp4",
+    "sha256": "0113a661697953e0e0b4c4c7b424a7b1b4b3f0e73479a7fca34a15b5ff9e09e1",
+    "bytes": 239842,
+    "stream": {
+      "width": 256,
+      "height": 256,
+      "avg_frame_rate": "5/1",
+      "duration": "50.600000",
+      "nb_frames": "253",
+      "nb_read_frames": "253"
+    }
+  },
+  "conversion": {
+    "tool": "ffmpeg version 4.4.2-0ubuntu0.22.04.1 Copyright (c) 2000-2021 the FFmpeg developers",
+    "working_directory": "repository_root",
+    "command_argv": [
+      "ffmpeg",
+      "-hide_banner",
+      "-loglevel",
+      "error",
+      "-nostdin",
+      "-y",
+      "-threads",
+      "2",
+      "-i",
+      "docs/collection/attempts/20261106-astra-pickup-hold5-001/overview.mp4",
+      "-filter_complex_threads",
+      "2",
+      "-filter_complex",
+      "[0:v]fps=5,scale=512:512:flags=neighbor,split[frames][palette_input];[palette_input]palettegen=max_colors=64:stats_mode=diff[palette];[frames][palette]paletteuse=dither=none:diff_mode=rectangle",
+      "-an",
+      "-threads",
+      "2",
+      "-loop",
+      "0",
+      "docs/gallery/assets/20261106-astra-pickup-hold5-001/preview.gif"
+    ],
+    "command_shell": "ffmpeg -hide_banner -loglevel error -nostdin -y -threads 2 -i docs/collection/attempts/20261106-astra-pickup-hold5-001/overview.mp4 -filter_complex_threads 2 -filter_complex '[0:v]fps=5,scale=512:512:flags=neighbor,split[frames][palette_input];[palette_input]palettegen=max_colors=64:stats_mode=diff[palette];[frames][palette]paletteuse=dither=none:diff_mode=rectangle' -an -threads 2 -loop 0 docs/gallery/assets/20261106-astra-pickup-hold5-001/preview.gif",
+    "threads": 2,
+    "filter_complex_threads": 2,
+    "palette_max_colors": 64,
+    "dither": "none",
+    "full_source_duration": true,
+    "trimmed": false,
+    "cropped": false,
+    "new_physics": false,
+    "generated_images_or_motion": false,
+    "temporal_interpolation": false,
+    "source_frame_sampling": "all existing video frames retained",
+    "resize_filter": "nearest_neighbor",
+    "display_width_px": 720,
+    "note_ko": "256×256 원본 MP4의 전체 253프레임을 512×512로 확대·색상 양자화했습니다. 중간 동작 합성은 없습니다. ABBA 성능 계측 종료 후 CPU 2스레드로 변환했습니다."
+  },
+  "playback": {
+    "basis": "기존 공개 관측 MP4의 속도와 전체 프레임 유지",
+    "source_manifest": "docs/collection/attempts/20261106-astra-pickup-hold5-001/manifest.json",
+    "source_policy_hz": 20,
+    "slowdown_factor": 4.0,
+    "includes_wall_time_waits": false,
+    "gif_speed_multiplier_relative_to_source_video": 1
+  },
+  "gif": {
+    "file": "preview.gif",
+    "sha256": "cafd32678b54fb8292ea909444d179cb2f8bb5d11688474334c3e5dd075a063f",
+    "bytes": 4075153,
+    "width": 512,
+    "height": 512,
+    "frame_count": 253,
+    "requested_fps": 5,
+    "duration_s": 50.6,
+    "frame_duration_ms_values": [
+      200
+    ],
+    "loop": 0,
+    "loop_meaning": "infinite",
+    "distinct_decoded_frame_count": 253,
+    "ffprobe": {
+      "width": 512,
+      "height": 512,
+      "avg_frame_rate": "5/1",
+      "duration": "50.600000",
+      "nb_frames": "253",
+      "nb_read_frames": "253"
+    },
+    "pil_decoded_all_frames": true
+  }
+}
