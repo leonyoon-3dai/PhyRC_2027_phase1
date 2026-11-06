@@ -63,6 +63,14 @@ For collection efficiency, use simultaneous two-robot commands and reasonably lo
 
 SLEEVE_TASK = '''Prioritize establishing one visible sleeve passage. Identify the same target hand across views and distinguish a hypothesized sleeve cuff from a hem, neck opening, fold, or color boundary; explicitly retain uncertainty when the topology is unclear. Near the hand, use one short action segment and compare the resulting hand-rim relationship with the previous observation. If two consecutive corrections do not reveal a clearer opening or new visible progress, stop advancing toward the arm. Preserve garment support and choose a small motion that improves the view or unfolds/reorients the opening, then reassess. Do not keep pushing into an occluded rim. Closed grippers alone do not prove support. Do not release both grips together. These are visual operational checks, not measured scoring conditions.'''
 
+HEM_ROUTE_TASK = '''Prioritize one sleeve passage by distinguishing entry through the shirt's body hem from exit through a sleeve. A hand may first enter the body opening before its sleeve cuff becomes visible. Do not require a visible cuff before every approach, and do not assume the currently held edge is the hem: infer garment topology from the supplied public views.
+
+Identify the same target hand and a plausible body-hem opening in CURRENT designated views. When their relationship and clearance are sufficiently visible, make one short controlled entry motion. Compare the resulting hand-rim relationship across views with the previous observation. Seek evidence that the hand crossed the opening's rim; a hand disappearing behind an exterior cloth panel does not establish entry.
+
+Once entry is supported visually, coordinate garment movement and reorientation toward that hand's corresponding sleeve, using observed garment topology. Seek eventual wrist and fingertips outside a distinct lateral cuff. Hem entry alone is intermediate visual progress, not sleeve passage or measured success.
+
+In each phase (hem entry and sleeve emergence), after two corrections without new visible progress, stop advancing. Preserve support and back off or reshape the opening before reassessing; do not continue through unexplained occlusion or assume passage from cloth overlap. Check support from cloth motion rather than closed grippers alone. Do not release both grips together. Finish when the current episode is unproductive. These are visual operational checks, not evaluator feedback.'''
+
 
 def official_review_points(collection):
     """Trusted termination only. Never include this value in actor observations."""
@@ -424,7 +432,7 @@ def main():
     parser.add_argument('--retry-reason')
     parser.add_argument('--source-group')
     parser.add_argument('--mode', choices=['wiring', 'dressing', 'pickup'], default='wiring')
-    parser.add_argument('--strategy', choices=['general', 'coordinated', 'coordinated-sleeve'], default='general')
+    parser.add_argument('--strategy', choices=['general', 'coordinated', 'coordinated-sleeve', 'coordinated-hem-route'], default='general')
     parser.add_argument('--actor-backend', choices=['exec', 'app-server'], default='exec')
     parser.add_argument('--plan-size', type=int, default=1,
                         help='Maximum segments per model call; >1 is an open-loop list')
@@ -467,7 +475,7 @@ def main():
             parser.error('replay-observe-steps must be strictly before the replay prefix end')
     if args.replay_prefix_run and args.mode == 'wiring':
         parser.error('replay prefixes are not wiring tests')
-    if args.strategy in ('coordinated', 'coordinated-sleeve') and args.mode != 'dressing':
+    if args.strategy in ('coordinated', 'coordinated-sleeve', 'coordinated-hem-route') and args.mode != 'dressing':
         parser.error('coordinated strategy requires the full dressing objective')
     if args.mode == 'wiring' and args.plan_size > 1 and (args.plan_size != 3 or args.decisions != 3):
         parser.error('grouped wiring requires plan-size=3 and decisions=3')
@@ -497,10 +505,12 @@ def main():
     actor_root.mkdir(parents=True, exist_ok=False, mode=0o700)
     from participant.collection.plans import plan_schema, validate_plan, PLAN_TASK, BATCH_WIRING_TASK
     task = TASK
-    if args.strategy in ('coordinated', 'coordinated-sleeve'):
+    if args.strategy in ('coordinated', 'coordinated-sleeve', 'coordinated-hem-route'):
         task += '\n\n' + COORDINATED_TASK
     if args.strategy == 'coordinated-sleeve':
         task += '\n\n' + SLEEVE_TASK
+    elif args.strategy == 'coordinated-hem-route':
+        task += '\n\n' + HEM_ROUTE_TASK
     if args.plan_size > 1:
         task += '\n\n' + PLAN_TASK.format(max_segments=args.plan_size, max_total_steps=args.plan_step_budget)
     if replay is not None:
