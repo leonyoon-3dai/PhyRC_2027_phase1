@@ -144,7 +144,7 @@ def _native_binary() -> Path:
         raise ActorError("Codex CLI is not installed")
     path = Path(executable).resolve()
     if path.suffix == ".js":
-        path = (path.parent.parent / "node_modules/@openai/codex-linux-x64/vendor"
+        path = (path.parent.parent.parent / "codex-linux-x64/vendor"
                 / "x86_64-unknown-linux-musl/bin/codex")
     if not path.is_file():
         raise ActorError("the Linux x64 native Codex executable was not found")

@@ -6,6 +6,7 @@ accounts usage, reads the separate score stream, and writes its attempt/events.
 from copy import deepcopy
 import json
 from pathlib import Path
+import signal
 import sys
 import tempfile
 import unittest
@@ -33,8 +34,12 @@ def three_segment_plan():
 class PlanOrchestrationTest(unittest.TestCase):
     def run_client(self, plan, *, backend='exec', mode='wiring', points_after_act=0,
                    expected_error=None, end_on_act=False, review_points=5, replay=False,
-                   strategy='general'):
+                   strategy='general', interrupt_at=None, interrupt_signal=signal.SIGTERM):
         calls, requests, observation_times, lifecycle = [], [], [], []
+        handlers = {}
+        def interrupt(boundary):
+            if interrupt_at == boundary:
+                handlers[interrupt_signal](interrupt_signal, None)
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             image = root / 'synthetic-camera.png'
@@ -74,6 +79,7 @@ class PlanOrchestrationTest(unittest.TestCase):
                     }))
 
                 def receive(self):
+                    interrupt('ready')
                     return {
                         'ready': True, 'observation': self.observation(),
                         'public_interface': {
@@ -87,6 +93,7 @@ class PlanOrchestrationTest(unittest.TestCase):
                     if tool == 'act':
                         self.step += arguments['steps']
                         self.write_score(points_after_act)
+                        interrupt('act')
                         if end_on_act:
                             self.finish_capture()
                             return {'active': False, 'observation': self.observation()}
@@ -114,6 +121,7 @@ class PlanOrchestrationTest(unittest.TestCase):
                                   'schema': deepcopy(schema)})
                     if len(calls) > 1:
                         raise AssertionError('An already supplied plan caused another model call')
+                    interrupt('model')
                     return {
                         'decision': deepcopy(plan), 'session_id': 'synthetic-thread',
                         'wall_s': 0.25, 'phase_wall_s': dict(self.last_call_timing),
@@ -161,7 +169,8 @@ class PlanOrchestrationTest(unittest.TestCase):
                                    side_effect=prepare_public_observation), \
                  mock.patch('participant.collection.continuation.load_replay_prefix',
                             return_value=prefix), \
-                 mock.patch.object(codex_client.signal, 'signal'), \
+                 mock.patch.object(codex_client.signal, 'signal',
+                                   side_effect=lambda sig, handler: handlers.__setitem__(sig, handler)), \
                  mock.patch.object(sys, 'argv', argv), mock.patch('builtins.print'):
                 if expected_error is None:
                     codex_client.main()
@@ -181,6 +190,67 @@ class PlanOrchestrationTest(unittest.TestCase):
             for call in calls:
                 call['images'] = [path.name for path in call['images']]
             return result
+
+    def test_signal_during_replay_accounts_ack_then_stops_and_closes(self):
+        for sig in (signal.SIGTERM, signal.SIGINT):
+            with self.subTest(signal=sig):
+                result = self.run_client(three_segment_plan(), mode='dressing', replay=True,
+                                         interrupt_at='act', interrupt_signal=sig,
+                                         expected_error=KeyboardInterrupt)
+                manifest = result['manifest']
+                self.assertEqual(manifest['status'], 'interrupted')
+                self.assertEqual(manifest['error']['message'], sig.name)
+                self.assertTrue(manifest['finished'])
+                self.assertTrue(manifest['capture_complete'])
+                self.assertNotIn('shutdown_error', manifest)
+                self.assertEqual(manifest['replay_steps_completed'], 2)
+                self.assertEqual(manifest['acknowledged_simulation_steps'], 3)
+                self.assertEqual(manifest['recorded_simulation_steps'], 3)
+                self.assertEqual(manifest['actor_calls_attempted'], 0)
+                self.assertEqual(result['calls'], [])
+                self.assertEqual([r[0] for r in result['requests']],
+                                 ['act', 'stop', 'finish_episode'])
+                replayed = [e for e in result['events'] if e['type'] == 'replayed_segment']
+                self.assertEqual(len(replayed), 1)
+                self.assertEqual(replayed[0]['source_end_step_exclusive'], 2)
+                self.assertFalse(any(e['type'] == 'applied_segment' for e in result['events']))
+
+    def test_signal_during_model_accounts_returned_usage_without_applying_plan(self):
+        result = self.run_client(three_segment_plan(), interrupt_at='model',
+                                 expected_error=KeyboardInterrupt)
+        manifest = result['manifest']
+        self.assertEqual(manifest['status'], 'interrupted')
+        self.assertTrue(manifest['finished'])
+        self.assertTrue(manifest['capture_complete'])
+        self.assertEqual(manifest['actor_usage']['input_tokens'], 100)
+        self.assertEqual(manifest['actor_call_wall_s'], .25)
+        self.assertEqual(manifest['decisions_completed'], 0)
+        self.assertEqual([r[0] for r in result['requests']], ['stop', 'finish_episode'])
+        discarded = [e for e in result['events'] if e['type'] == 'plan_suffix_discarded']
+        self.assertEqual(len(discarded[0]['segments']), 3)
+
+    def test_signal_during_model_action_records_it_and_discards_remaining_plan(self):
+        result = self.run_client(three_segment_plan(), interrupt_at='act',
+                                 expected_error=KeyboardInterrupt)
+        manifest = result['manifest']
+        self.assertEqual(manifest['status'], 'interrupted')
+        self.assertTrue(manifest['capture_complete'])
+        self.assertEqual(manifest['decisions_completed'], 1)
+        self.assertEqual(manifest['acknowledged_simulation_steps'], 3)
+        self.assertEqual([r[0] for r in result['requests']], ['act', 'stop', 'finish_episode'])
+        applied = [e for e in result['events'] if e['type'] == 'applied_segment']
+        self.assertEqual(len(applied), 1)
+        self.assertEqual(applied[0]['actual_steps'], 2)
+        discarded = [e for e in result['events'] if e['type'] == 'plan_suffix_discarded']
+        self.assertEqual(len(discarded[0]['segments']), 2)
+
+    def test_signal_during_startup_closes_without_constructing_actor(self):
+        result = self.run_client(three_segment_plan(), interrupt_at='ready',
+                                 expected_error=KeyboardInterrupt)
+        self.assertEqual(result['manifest']['status'], 'interrupted')
+        self.assertTrue(result['manifest']['capture_complete'])
+        self.assertEqual(result['calls'], [])
+        self.assertEqual([r[0] for r in result['requests']], ['stop', 'finish_episode'])
 
     def assert_one_accounted_call(self, result):
         manifest = result['manifest']
@@ -317,6 +387,18 @@ class PlanOrchestrationTest(unittest.TestCase):
         self.assertEqual([r[0] for r in result['requests']], ['act', 'stop', 'finish_episode'])
         for forbidden in ('TRUSTED_SCORE_STREAM_ONLY', 'raw_points', 'score_segments'):
             self.assertNotIn(forbidden, json.dumps(result['calls']))
+
+    def test_sleeve_strategy_ten_point_gate_keeps_score_out_of_actor(self):
+        for points, expected_decisions in ((5, 3), (10, 1)):
+            with self.subTest(points=points):
+                result = self.run_client(three_segment_plan(), mode='dressing',
+                    points_after_act=points, review_points=10, strategy='coordinated-sleeve')
+                self.assertEqual(result['manifest']['decisions_completed'], expected_decisions)
+                self.assertEqual(result['gate']['last_observed_raw_points'], points)
+                self.assertEqual(result['gate']['status'] == 'triggered', points == 10)
+                actor_input = json.dumps(result['calls'])
+                for forbidden in ('TRUSTED_SCORE_STREAM_ONLY', 'raw_points', 'score_segments'):
+                    self.assertNotIn(forbidden, actor_input)
 
     def test_replay_records_parent_steps_then_starts_fresh_actor_with_new_observation(self):
         result = self.run_client(three_segment_plan(), mode='dressing', replay=True,

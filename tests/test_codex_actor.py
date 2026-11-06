@@ -9,7 +9,7 @@ from unittest.mock import patch
 import uuid
 
 from participant.collection.codex_actor import (
-    Actor, ActorError, STARTUP_NOTICES, _json_loads, _proxy_destination, _read_result,
+    Actor, ActorError, STARTUP_NOTICES, _json_loads, _native_binary, _proxy_destination, _read_result,
 )
 
 
@@ -19,6 +19,22 @@ class ActorBoundaryTest(unittest.TestCase):
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
         self.session = str(uuid.uuid4())
+
+    def test_npm_launcher_resolves_sibling_native_package(self):
+        scope = self.root / 'node_modules/@openai'
+        launcher = scope / 'codex/bin/codex.js'
+        launcher.parent.mkdir(parents=True)
+        launcher.write_text('// npm launcher')
+        native = scope / 'codex-linux-x64/vendor/x86_64-unknown-linux-musl/bin/codex'
+        native.parent.mkdir(parents=True)
+        native.write_bytes(b'\x7fELFfixture')
+        link = self.root / 'codex'
+        link.symlink_to(launcher)
+        with patch('participant.collection.codex_actor.shutil.which', return_value=str(link)):
+            self.assertEqual(_native_binary(), native)
+            native.write_bytes(b'not an executable')
+            with self.assertRaises(ActorError):
+                _native_binary()
 
     def write_result(self, *, item=None, session=None, response=None, complete=True):
         events = [

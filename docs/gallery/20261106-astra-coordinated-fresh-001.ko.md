@@ -4,9 +4,9 @@
 
 **두 로봇이 옷을 함께 지지하며 들어 올리고, 회전한 뒤 마네킹 방향으로 운반한 부분 과정**입니다. 공식 픽업 원점수는 **5/50점**입니다. 이후 소매 진입은 확인하지 못했고, 80개 결정 예산으로 종료했습니다. 최종 착의 `success=false`, 최종 산식 점수 `0 points/s`, 학습 승인 `unreviewed`입니다.
 
-<a href="../collection/attempts/20261106-astra-coordinated-fresh-001/overview.mp4"><img src="assets/20261106-astra-coordinated-fresh-001/preview.gif" width="720" alt="E07 선택 구간 반복: 첫 픽업5점 경계356부터 양쪽 지지·회전·마네킹 접근 경계700까지, 소매 삽입 성공을 뜻하지 않음"></a>
+<img src="assets/20261106-astra-coordinated-fresh-001/preview.gif" width="960" alt="E07 선택 구간 반복: 첫 픽업5점 경계356부터 양쪽 지지·회전·마네킹 접근 경계700까지, 소매 삽입 성공을 뜻하지 않음">
 
-**자동 반복 · 선택한 345프레임·69.0초·5fps·4배 느리게.** 약 6.25MB입니다. 원본 256×256 MP4를 512×512 GIF로 확대하고 720px 너비로 표시합니다. 정사각형 비율은 유지했습니다. 전체 시도의 일부이며 선택 구간 안에서는 프레임을 생략하지 않았습니다. [변환 명령·시간·SHA](assets/20261106-astra-coordinated-fresh-001/provenance.json)
+**자동 반복 · 선택한 345프레임·69.0초·5fps·4배 느리게.** 약 6.25MB입니다. 원본 256×256 MP4를 512×512 GIF로 확대하고 960px 너비로 표시합니다. 정사각형 비율은 유지했습니다. 전체 시도의 일부이며 선택 구간 안에서는 프레임을 생략하지 않았습니다. [변환 명령·시간·SHA](assets/20261106-astra-coordinated-fresh-001/provenance.json)
 
 **[▶ 전체 213.4초 MP4](../collection/attempts/20261106-astra-coordinated-fresh-001/overview.mp4)** · [첫 5점·마네킹 접근의 원본 PNG](../collection/milestones/20261106-astra-coordinated-fresh-001/README.ko.md) · [종료 당시 소매 진입 미확인 검토](../collection/reviews/20261106-astra-coordinated-fresh-001.ko.md)
 

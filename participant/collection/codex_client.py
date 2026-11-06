@@ -59,6 +59,9 @@ Coordinate these prerequisites using only CURRENT designated views and public ro
 For collection efficiency, use simultaneous two-robot commands and reasonably long bounded segments for clearly unobstructed positioning. Group predictable segments only when no new contact observation is needed; near cloth/contact, use one short segment and inspect the result. Your brief reason should state the current role/readiness of robot 0 and robot 1, then the action purpose. These are visual hypotheses and intentions, not official success labels.'''
 
 
+SLEEVE_TASK = '''Prioritize establishing one visible sleeve passage. Identify the same target hand across views and distinguish a hypothesized sleeve cuff from a hem, neck opening, fold, or color boundary; explicitly retain uncertainty when the topology is unclear. Near the hand, use one short action segment and compare the resulting hand-rim relationship with the previous observation. If two consecutive corrections do not reveal a clearer opening or new visible progress, stop advancing toward the arm. Preserve garment support and choose a small motion that improves the view or unfolds/reorients the opening, then reassess. Do not keep pushing into an occluded rim. Closed grippers alone do not prove support. Do not release both grips together. These are visual operational checks, not measured scoring conditions.'''
+
+
 def official_review_points(collection):
     """Trusted termination only. Never include this value in actor observations."""
     paths = list((Path(collection) / 'evaluation').glob('*/score_samples.jsonl'))
@@ -294,6 +297,7 @@ class Simulator:
         self.log = log
         self.observation_step = 0
         self.request_sequence = 0
+        self.pending_request = None
         self.lines = queue.Queue(maxsize=2)
         self.closing = threading.Event()
         self.reader = threading.Thread(target=self._read, daemon=True)
@@ -341,8 +345,14 @@ class Simulator:
         return value
 
     def dispatch(self, tool, arguments=None):
+        # A timeout or protocol failure leaves delivery/acknowledgement uncertain.
+        # Never send another action with a stale observation step or consume the
+        # earlier response as the acknowledgement of a shutdown command.
+        if self.pending_request is not None:
+            raise RuntimeError('simulator request still pending; cannot dispatch another command')
         request_id = str(self.request_sequence)
         self.request_sequence += 1
+        self.pending_request = request_id
         self.process.stdin.write(json.dumps({'tool': tool, 'arguments': arguments or {},
                                             'request_id': request_id,
                                             'observation_step': self.observation_step}, allow_nan=False) + '\n')
@@ -350,6 +360,7 @@ class Simulator:
         response = self.receive()
         if response.get('request_id') != request_id:
             raise ValueError('simulator response does not match request')
+        self.pending_request = None
         return response.get('result', {})
 
     def close(self):
@@ -368,16 +379,25 @@ class Simulator:
 
 
 def main():
+    requested_interrupt = None
     def interrupted(signum, _frame):
-        raise KeyboardInterrupt(signal.Signals(signum).name)
+        # Complete and record an in-flight request before shutdown. Raising in
+        # receive() used to strand an act ACK and misread it as the stop ACK.
+        nonlocal requested_interrupt
+        if requested_interrupt is None:
+            requested_interrupt = signal.Signals(signum).name
+    def check_interrupt():
+        if requested_interrupt is not None:
+            raise KeyboardInterrupt(requested_interrupt)
     signal.signal(signal.SIGTERM, interrupted)
+    signal.signal(signal.SIGINT, interrupted)
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--run-id', required=True)
     parser.add_argument('--parent-attempt')
     parser.add_argument('--retry-reason')
     parser.add_argument('--source-group')
     parser.add_argument('--mode', choices=['wiring', 'dressing', 'pickup'], default='wiring')
-    parser.add_argument('--strategy', choices=['general', 'coordinated'], default='general')
+    parser.add_argument('--strategy', choices=['general', 'coordinated', 'coordinated-sleeve'], default='general')
     parser.add_argument('--actor-backend', choices=['exec', 'app-server'], default='exec')
     parser.add_argument('--plan-size', type=int, default=1,
                         help='Maximum segments per model call; >1 is an open-loop list')
@@ -411,7 +431,7 @@ def main():
         parser.error('positive replay-prefix-steps requires replay-prefix-run')
     if args.replay_prefix_run and args.mode == 'wiring':
         parser.error('replay prefixes are not wiring tests')
-    if args.strategy == 'coordinated' and args.mode != 'dressing':
+    if args.strategy in ('coordinated', 'coordinated-sleeve') and args.mode != 'dressing':
         parser.error('coordinated strategy requires the full dressing objective')
     if args.mode == 'wiring' and args.plan_size > 1 and (args.plan_size != 3 or args.decisions != 3):
         parser.error('grouped wiring requires plan-size=3 and decisions=3')
@@ -439,8 +459,10 @@ def main():
     actor_root.mkdir(parents=True, exist_ok=False, mode=0o700)
     from participant.collection.plans import plan_schema, validate_plan, PLAN_TASK, BATCH_WIRING_TASK
     task = TASK
-    if args.strategy == 'coordinated':
+    if args.strategy in ('coordinated', 'coordinated-sleeve'):
         task += '\n\n' + COORDINATED_TASK
+    if args.strategy == 'coordinated-sleeve':
+        task += '\n\n' + SLEEVE_TASK
     if args.plan_size > 1:
         task += '\n\n' + PLAN_TASK.format(max_segments=args.plan_size, max_total_steps=args.plan_step_budget)
     if replay is not None:
@@ -551,6 +573,7 @@ def main():
             obs, active = ready['observation'], True
             simulation_origin = float(obs['simulation_time_s'])
             interface = public_interface(ready.get('public_interface', {}))
+            check_interrupt()
             if replay is not None:
                 from participant.collection.continuation import iter_action_chunks
                 manifest['status'] = 'replaying_prefix'
@@ -559,6 +582,7 @@ def main():
                     replay.initial_public_state, obs)
                 dump(trace / 'attempt.json', manifest)
                 for chunk in iter_action_chunks(replay.actions):
+                    check_interrupt()
                     before = float(obs['simulation_time_s'])
                     t = time.monotonic()
                     value = sim.dispatch('act', {'action': chunk.action.tolist(), 'steps': chunk.steps})
@@ -581,6 +605,7 @@ def main():
                            'simulation_start_s': before, 'simulation_end_s': after,
                            'environment_dispatch_wall_s': elapsed, 'model_invoked': False})
                     dump(trace / 'attempt.json', manifest)
+                    check_interrupt()
                     check_review_gate()
                     if steps != chunk.steps or not active:
                         raise RuntimeError('replay prefix ended before the requested branch boundary')
@@ -595,9 +620,11 @@ def main():
                 manifest['policy_suffix_start_step'] = manifest['simulation_steps']
                 record_milestones()
             if stop_reason != 'review_points':
+                check_interrupt()
                 actor = Actor(actor_root / 'runtime', model=args.model, effort=args.effort, timeout_s=args.model_timeout)
             manifest['status'] = 'collecting'
             for index in range(args.decisions if stop_reason != 'review_points' else 0):
+                check_interrupt()
                 payload, images = prepare_observation(obs, actor_root / 'observations' / f'{index:05d}')
                 prompt = (task if index == 0 else 'Continue the same episode using the latest public observation.\n')
                 prompt += '\nDecision index: ' + str(index) + '\n'
@@ -640,6 +667,7 @@ def main():
                         raise
                     usage_record = token_usage.record(model_call_index, result)
                     token_usage.update_manifest(manifest)
+                    manifest['actor_call_wall_s'] += float(result['wall_s'])
                     for offset, (decision, action) in enumerate(zip(decisions, actions)):
                         projected = dict(result, decision=decision)
                         if offset:
@@ -660,12 +688,14 @@ def main():
                             'usage_accounting': usage_record if offset == 0 else None,
                         }
                         pending_plan.append((projected, action, metadata))
+                # Preserve returned usage and discard this unexecuted plan if a
+                # stop arrived during model latency. No further action is sent.
+                check_interrupt()
                 result, action, plan_meta = pending_plan.pop(0)
                 decision = result['decision']
                 plan_meta['latest_observation_simulation_time_s'] = float(obs['simulation_time_s'])
                 plan_meta['latest_input_sha256'] = latest_input_hash
                 event({'type': 'decision', 'decision_index': index, **result, **plan_meta})
-                manifest['actor_call_wall_s'] += float(result['wall_s'])
                 t = time.monotonic()
                 tool = decision['tool']
                 before = float(obs['simulation_time_s'])
@@ -700,6 +730,7 @@ def main():
                 dump(trace / 'attempt.json', manifest)
                 print(json.dumps({'run_id': args.run_id, 'decision': index, 'stage': decision['stage'],
                                   'tool': tool, 'sim_s': after, 'actor_call_wall_s': result['wall_s']}), flush=True)
+                check_interrupt()
                 check_review_gate()
                 if finished or stop_reason == 'review_points':
                     break
@@ -716,6 +747,7 @@ def main():
                     sim.dispatch('finish_episode')
                 event({'type': 'supervisor_stop', 'reason': stop_reason, 'neutral_steps': 1})
                 finished, active = True, False
+            check_interrupt()
             manifest['status'] = 'review_ready' if stop_reason == 'review_points' else 'completed'
         except BaseException as exc:
             manifest['status'] = 'interrupted' if isinstance(exc, (KeyboardInterrupt, SystemExit)) else 'failed'

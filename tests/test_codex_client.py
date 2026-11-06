@@ -23,6 +23,33 @@ def observation():
 
 
 class CodexClientTest(unittest.TestCase):
+    def test_transport_timeout_does_not_send_stop_over_pending_action(self):
+        command = [sys.executable, '-c', """
+import json, sys, time
+print(json.dumps({'ready': True, 'observation_step': 0}), flush=True)
+for line in sys.stdin:
+    request = json.loads(line)
+    with open('requests.jsonl', 'a') as stream:
+        stream.write(line)
+    time.sleep(.1)
+    print(json.dumps({'ok': True, 'request_id': request['request_id'],
+                      'observation_step': 20, 'result': {}}), flush=True)
+"""]
+        with tempfile.TemporaryDirectory() as tmp, open(Path(tmp)/'log', 'w') as log:
+            sim = Simulator(command, Path(tmp), log, timeout_s=5)
+            try:
+                sim.receive()
+                sim.timeout_s = .01
+                with self.assertRaises(TimeoutError):
+                    sim.dispatch('act', {'action': [[0.] * 9] * 2, 'steps': 20})
+                with self.assertRaisesRegex(RuntimeError, 'request still pending'):
+                    sim.dispatch('stop')
+            finally:
+                self.assertEqual(sim.close(), 0)
+            requests = [json.loads(line) for line in
+                        (Path(tmp)/'requests.jsonl').read_text().splitlines()]
+            self.assertEqual([r['tool'] for r in requests], ['act'])
+
     def test_transport_drains_after_invalid_initial_response(self):
         command = [sys.executable, '-c',
                    "import sys; print('native-not-json',flush=True); "
