@@ -115,8 +115,9 @@ class CollectionEvaluation:
 
 class RecordedEnvironment:
     """Measure adapter step cost and retain reset info on the trusted side."""
-    def __init__(self, env):
+    def __init__(self, env, *, profile_step_phases=False):
         self.env = env
+        self.profile_step_phases = profile_step_phases
         self.reset_info = None
         self.last_step = None
 
@@ -129,9 +130,17 @@ class RecordedEnvironment:
 
     def step(self, action):
         started = time.perf_counter()
-        result = self.env.step(action)
+        profile = None
+        if self.profile_step_phases:
+            from participant.collection.step_profile import StepProfiler
+            with StepProfiler(self.env) as profile:
+                result = self.env.step(action)
+        else:
+            result = self.env.step(action)
         self.last_step = {'environment_step_wall_s': time.perf_counter() - started,
                           'simulation_time_s': float(result[0]['simulation_time_s'])}
+        if profile is not None:
+            self.last_step.update(profile.metrics(self.last_step['environment_step_wall_s']))
         return result
 
 

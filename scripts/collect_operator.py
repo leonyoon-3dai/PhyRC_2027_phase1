@@ -134,6 +134,8 @@ def parse_arguments(argv=None):
     p.add_argument('--preview', type=Path, help='Human observer HTML served by existing Jupyter')
     p.add_argument('--webrtc', action='store_true', help='Enable existing WebRTC viewer in observation-only mode')
     p.add_argument('--evaluate', action='store_true', help='Save official scoring only in trusted evaluation files')
+    p.add_argument('--profile-step-phases', action='store_true',
+                   help='Trusted numeric step/observation/capture wall timings; default off')
     p.add_argument('--reset-seed', type=int,
                    help='Trusted reset seed for a recorded-action continuation; never public actor input')
     args = p.parse_args(argv)
@@ -199,7 +201,7 @@ def main():
                 'source_group': args.source_group, 'evaluation_enabled': args.evaluate,
                 'webrtc_mode': 'observer_only' if args.webrtc else 'disabled'})
             transcript = (args.output / 'operator.jsonl').open('x', encoding='utf-8')
-            measured_env = RecordedEnvironment(env)
+            measured_env = RecordedEnvironment(env, profile_step_phases=args.profile_step_phases)
             if args.evaluate:
                 evaluator = CollectionEvaluation(env, args.output / 'evaluation')
             writer = RecordedWriter(dataset, measured_env, evaluator)
@@ -225,6 +227,8 @@ def main():
                 'reset_wall_s': measured_env.reset_wall_s,
                 'simulation_time_at_ready_s': float(obs['simulation_time_s']),
                 'raw_archive': False})
+            if args.profile_step_phases:
+                trace({'event': 'step_phase_profiling_enabled', 'schema_version': 1})
             publish(obs)
             emit({'ready': True, 'observation': obs, 'public_interface': interface, 'observation_step': 0})
             inbox = queue.Queue(maxsize=8)

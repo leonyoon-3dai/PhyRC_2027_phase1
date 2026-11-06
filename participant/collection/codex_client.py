@@ -72,6 +72,14 @@ Once entry is supported visually, coordinate garment movement and reorientation 
 In each phase (hem entry and sleeve emergence), after two corrections without new visible progress, stop advancing. Preserve support and back off or reshape the opening before reassessing; do not continue through unexplained occlusion or assume passage from cloth overlap. Check support from cloth motion rather than closed grippers alone. Do not release both grips together. Finish when the current episode is unproductive. These are visual operational checks, not evaluator feedback.'''
 
 
+OPENING_FIRST_TASK = '''Before transport or hand entry, perform a bounded opening-readiness check using CURRENT views. Preserve existing useful grips for the initial support check; do not reopen both grippers to restart setup. If CURRENT views confirm useful existing grips, do NOT repeat the generic initial open-align-close setup; preserve those grips unless the bounded one-sided reset below is needed. Treat body hem, neck, sleeve and folded-edge interpretations as hypotheses. A cuff grasp is not required, and no currently held edge has a supplied identity.
+
+Use one short support check and inspect separately whether cloth follows EACH gripper. If both supports are useful but the opening remains difficult to read, try at most TWO short reshaping segments, observing after each. Keep the garment near table support when feasible. Progress requires a more traceable continuous edge and opening across views; closed grippers, a color boundary or a larger dark fold alone do not establish this.
+
+If a grip visibly fails or the opening remains unreadable after those bounded checks, first establish CURRENT table support and a useful partner anchor. You may then make ONE deliberate one-sided regrasp at an accessible edge chosen from the images, with at most TWO short corrections. Keep the partner supporting throughout; never release both grips together or repeat regrasp cycles. Recheck each support and opening with a short cooperative lift.
+
+Transport only when both held regions visibly follow their grippers and a plausible body opening remains trackable. Then follow the hem-entry and sleeve-emergence phases above toward full dressing. If support or opening remains unclear after the bounded attempt, stop advancing and finish with the visual reason; restore table support when feasible before releasing an uncertain grip. These are visual checks, not measured success or hidden garment labels.'''
+
 def official_review_points(collection):
     """Trusted termination only. Never include this value in actor observations."""
     paths = list((Path(collection) / 'evaluation').glob('*/score_samples.jsonl'))
@@ -432,7 +440,7 @@ def main():
     parser.add_argument('--retry-reason')
     parser.add_argument('--source-group')
     parser.add_argument('--mode', choices=['wiring', 'dressing', 'pickup'], default='wiring')
-    parser.add_argument('--strategy', choices=['general', 'coordinated', 'coordinated-sleeve', 'coordinated-hem-route'], default='general')
+    parser.add_argument('--strategy', choices=['general', 'coordinated', 'coordinated-sleeve', 'coordinated-hem-route', 'coordinated-opening-first'], default='general')
     parser.add_argument('--actor-backend', choices=['exec', 'app-server'], default='exec')
     parser.add_argument('--plan-size', type=int, default=1,
                         help='Maximum segments per model call; >1 is an open-loop list')
@@ -455,6 +463,8 @@ def main():
     parser.add_argument('--webrtc', action='store_true')
     parser.add_argument('--wrist-depth-panel', action='store_true',
                         help='Append one fixed-range CURRENT wrist depth image after all RGB; default off')
+    parser.add_argument('--profile-step-phases', action='store_true',
+                        help='Enable trusted numeric collector phase timings; default off')
     parser.add_argument('--post-action-settle-steps', type=int, default=0,
                         help='After a motion act, apply 0..20 neutral control steps before observing again')
     args = parser.parse_args()
@@ -483,7 +493,7 @@ def main():
             parser.error('replay-observe-steps must be strictly before the replay prefix end')
     if args.replay_prefix_run and args.mode == 'wiring':
         parser.error('replay prefixes are not wiring tests')
-    if args.strategy in ('coordinated', 'coordinated-sleeve', 'coordinated-hem-route') and args.mode != 'dressing':
+    if args.strategy in ('coordinated', 'coordinated-sleeve', 'coordinated-hem-route', 'coordinated-opening-first') and args.mode != 'dressing':
         parser.error('coordinated strategy requires the full dressing objective')
     if args.mode == 'wiring' and args.plan_size > 1 and (args.plan_size != 3 or args.decisions != 3):
         parser.error('grouped wiring requires plan-size=3 and decisions=3')
@@ -513,12 +523,14 @@ def main():
     actor_root.mkdir(parents=True, exist_ok=False, mode=0o700)
     from participant.collection.plans import plan_schema, validate_plan, PLAN_TASK, BATCH_WIRING_TASK
     task = TASK
-    if args.strategy in ('coordinated', 'coordinated-sleeve', 'coordinated-hem-route'):
+    if args.strategy in ('coordinated', 'coordinated-sleeve', 'coordinated-hem-route', 'coordinated-opening-first'):
         task += '\n\n' + COORDINATED_TASK
     if args.strategy == 'coordinated-sleeve':
         task += '\n\n' + SLEEVE_TASK
-    elif args.strategy == 'coordinated-hem-route':
+    elif args.strategy in ('coordinated-hem-route', 'coordinated-opening-first'):
         task += '\n\n' + HEM_ROUTE_TASK
+    if args.strategy == 'coordinated-opening-first':
+        task += '\n\n' + OPENING_FIRST_TASK
     if args.plan_size > 1:
         task += '\n\n' + PLAN_TASK.format(max_segments=args.plan_size, max_total_steps=args.plan_step_budget)
     if args.post_action_settle_steps:
@@ -569,6 +581,8 @@ def main():
                '--input-timeout', str(args.model_timeout + 120)]
     if args.webrtc:
         command += ['--webrtc']
+    if args.profile_step_phases:
+        command += ['--profile-step-phases']
     if replay is not None:
         command += ['--reset-seed', str(replay.trusted_metadata['reset_seed'])]
     started = time.monotonic()
@@ -621,6 +635,8 @@ def main():
         }
     token_usage = TokenUsageAccounting()
     token_usage.update_manifest(manifest)
+    if args.profile_step_phases:
+        manifest['step_phase_profile_version'] = 1
     manifest['source_snapshot'] = source_snapshot(root, trace)
     dump(trace / 'attempt.json', manifest)
     (trace / 'prompt.txt').write_text(task)

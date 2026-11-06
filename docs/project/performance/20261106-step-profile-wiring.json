@@ -1,0 +1,40 @@
+{
+  "run_id": "20261106-profile-wiring-001",
+  "model_calls": 0,
+  "source_snapshot": {
+    "commit": "43ebae6e179a0550cee93c1b32eb3f007b2171ce",
+    "working_tree_modified": true,
+    "files_sha256": {
+      "run.sh": "f1e8e2697a467b55ea873fdc8c154eec9a03a2155e3ae951a1b2997a76f78537",
+      "scripts/collect_operator.py": "8bbcc5efa4494476566ed76efad08f1118e44b23c6705d6a37e57d3d9d9b4fc2",
+      "participant/streaming/collector_stream.py": "562bac7c6d5fa330341ebe71e94baa257deaa879dbcdeea56d7d97023187ffc9",
+      "config/policy_interface.json": "0823b5a692621bc1effed308ac6427af7e97122de4db297ec14b5d751551a5dc",
+      "config/assets.lock.json": "ebbbaf6d2f2aea8237451d890d0e54458f83e2a503bcfa47228c7f61b60835cd",
+      "participant/collection/__init__.py": "4eb7c6dcac8aeba90948ee2a90768056a3df69ce02b116c497b53a28aa23151d",
+      "participant/collection/boundary.py": "8f90c98e92446d3ce81ed696d8b6810e212824d55dba8730ac2301bcd7f78927",
+      "participant/collection/codex_actor.py": "462c73601f744baa903668bd08e11b2af7f6cc26347482dd80bcade953827ba0",
+      "participant/collection/codex_app_actor.py": "12f30af4340ff3bacfaf03e96ef200a5964772e76b50605f2a23966bb045c82d",
+      "participant/collection/codex_client.py": "a61fa9b1a95b162ab51b859cdb27be1f6ac2123ba55b4c854ff6bfda57b31854",
+      "participant/collection/continuation.py": "fe40fa7512dd1f20f62553fe7b73173ae1d8711552d938c99876946972060922",
+      "participant/collection/evaluation.py": "0ab3c8d8509763f038309c630316fbfda92a4e1a5ffd46901c1a3ad275515733",
+      "participant/collection/export_report.py": "3464c4b38ff262de65d4f2ecb559463c9dfa1493c231376768be7f234eec6beb",
+      "participant/collection/gpt_client.py": "5b729eee25e1e6a2c5dc1f8f986d103cd19c5c87a9bf84261df8742417c43129",
+      "participant/collection/milestones.py": "2cd39ded7575a38009bcc0f7e1ae6cd5f29134b52881ce291943eb868e5aaca8",
+      "participant/collection/plans.py": "311900cece741d3f9d1609d1717321d4962651fea1e9caa4d186f9548861d769",
+      "participant/collection/step_profile.py": "7faf9890e6168e4b01d3345d6fe5a09c608fd169d984e9ac8235fea8fbb096ff",
+      "participant/collection/validate_capture.py": "d0c464345534c875b19a6c8d275d4589bec096da7b7b7164409366bb5429ba68",
+      "participant/collection/wrist_depth.py": "2652c4d27ed92f095e420f7e74ead7dae1d676a93830911c072c1447685adfde"
+    }
+  },
+  "validated_transitions": 6,
+  "phase_call_counts_verified": true,
+  "wall_s": 47.536330357001134,
+  "mean_wall_s": {
+    "environment_step_wall_s": 0.7786661046666268,
+    "step_capture_wall_s": 0.19822882266635133,
+    "step_observe_without_capture_wall_s": 0.01099097750072057,
+    "step_without_observe_wall_s": 0.5694463044995549,
+    "dataset_write_wall_s": 0.055131316499682725
+  },
+  "scope": "Six fresh-start integration transitions only; profile plumbing validation, not speedup or dressing benchmark."
+}

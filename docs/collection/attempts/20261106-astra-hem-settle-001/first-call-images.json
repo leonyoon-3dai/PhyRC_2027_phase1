@@ -1,0 +1,344 @@
+{
+  "schema": "phyrc-same-episode-replay-images-v1",
+  "capture_source": "new_episode_replay_acknowledgements",
+  "delivery": "first_model_call_only",
+  "input_sha256": "82d0def5622f47d5c9d635a191bd75e17e2e34b9a47df1b02f833987def2f33b",
+  "image_context": {
+    "schema": "phyrc-same-episode-replay-images-v1",
+    "groups": [
+      {
+        "kind": "current",
+        "image_indices": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "camera_order": [
+          "overview",
+          "robot_0_wrist",
+          "robot_1_wrist",
+          "robot_0_head",
+          "robot_1_head"
+        ],
+        "simulation_time_s": 36.525001904927194
+      },
+      {
+        "kind": "historical_same_episode",
+        "image_indices": [
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "camera_order": [
+          "overview",
+          "robot_0_wrist",
+          "robot_1_wrist",
+          "robot_0_head",
+          "robot_1_head"
+        ],
+        "replay_boundary": 264,
+        "simulation_time_s": 14.725000767968595
+      },
+      {
+        "kind": "historical_same_episode",
+        "image_indices": [
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "camera_order": [
+          "overview",
+          "robot_0_wrist",
+          "robot_1_wrist",
+          "robot_0_head",
+          "robot_1_head"
+        ],
+        "replay_boundary": 320,
+        "simulation_time_s": 17.525000913999975
+      }
+    ]
+  },
+  "ordered_images": [
+    {
+      "image_index": 0,
+      "file": "first-call/00-overview.png",
+      "sha256": "313f2e883e6402f0879c2ffb96d67559a5402f29597225a0061275fa7dfe6bb1"
+    },
+    {
+      "image_index": 1,
+      "file": "first-call/01-robot_0_wrist.png",
+      "sha256": "2383d6e1502d469a35003dc63bb12d4b468680bad0ea52c62a07b4972ae2e5c0"
+    },
+    {
+      "image_index": 2,
+      "file": "first-call/02-robot_1_wrist.png",
+      "sha256": "09946037ef59d82b6a33a3a2c7ca21dafaa77331e633916e2311158c5825131c"
+    },
+    {
+      "image_index": 3,
+      "file": "first-call/03-robot_0_head.png",
+      "sha256": "3bc8bb4991d9ce05539fc6f31028d850261ad8d24fd23ee9068a65e52bf319b3"
+    },
+    {
+      "image_index": 4,
+      "file": "first-call/04-robot_1_head.png",
+      "sha256": "561f301f21b51f28040acf85ad7b7163e06be9ccaa68575b170237fb9baf47f7"
+    },
+    {
+      "image_index": 5,
+      "file": "first-call/05-overview.png",
+      "sha256": "7edd3ec751666ceeae8bd15d78d8ed9d45463546bd324f65fb80892afc55517f"
+    },
+    {
+      "image_index": 6,
+      "file": "first-call/06-robot_0_wrist.png",
+      "sha256": "fab7e66c9529d16d9003b1eadb4bfa18f2f972b96faeaf6737ade0e649a41cc1"
+    },
+    {
+      "image_index": 7,
+      "file": "first-call/07-robot_1_wrist.png",
+      "sha256": "023a898a2a0a7c1cf043feef706ad5b8059fccea8dffd90f0a9bd2ffcd1d8943"
+    },
+    {
+      "image_index": 8,
+      "file": "first-call/08-robot_0_head.png",
+      "sha256": "9f37e87ba73aca5d6152f08e5ea19bf7bc9c9eed1b760965d66c1494b396a38c"
+    },
+    {
+      "image_index": 9,
+      "file": "first-call/09-robot_1_head.png",
+      "sha256": "0ea3c80048d0495e1c2c2c7a0b5a15909823c3ed374faf172d468897c3bdc11e"
+    },
+    {
+      "image_index": 10,
+      "file": "first-call/10-overview.png",
+      "sha256": "2e34db7278645fd9250ea78cd8742ed6796ffdee80cd888b28996a3a8cc024af"
+    },
+    {
+      "image_index": 11,
+      "file": "first-call/11-robot_0_wrist.png",
+      "sha256": "dc317ccfd6450f918a214c02b442d41cfda4ac612405b5bd9a6ac2f4354626f2"
+    },
+    {
+      "image_index": 12,
+      "file": "first-call/12-robot_1_wrist.png",
+      "sha256": "0224338495b8d0c81e036ca746fe79d76776573641a973a18b4692a884d8071c"
+    },
+    {
+      "image_index": 13,
+      "file": "first-call/13-robot_0_head.png",
+      "sha256": "d9e854ad8c36c5756cd04756afe4fdab0ecadd9dce05cfe61a44e9746ba672d4"
+    },
+    {
+      "image_index": 14,
+      "file": "first-call/14-robot_1_head.png",
+      "sha256": "d03f2222cbcf29f1b081646981bd74e2b49952d81324d8c46ee6733896d2de6d"
+    },
+    {
+      "image_index": 15,
+      "file": "first-call/15-current_wrist_depth.png",
+      "sha256": "cbfd3f791aa78dd84defbeefff3a130c999d886ad8a748c67482b59a1dd0a768"
+    }
+  ],
+  "scope": "Exact images supplied in the first model call after replay. Historical state/depth not delivered to actor. Export report initial images are episode start, not the first actor call.",
+  "current_wrist_depth_panel": {
+    "schema": "phyrc-current-wrist-depth-panel-v1",
+    "image_index": 15,
+    "kind": "current",
+    "simulation_time_s": 36.525001904927194,
+    "input_image_order": [
+      {
+        "image_index": 0,
+        "kind": "current",
+        "representation": "RGB",
+        "camera": "overview",
+        "simulation_time_s": 36.525001904927194
+      },
+      {
+        "image_index": 1,
+        "kind": "current",
+        "representation": "RGB",
+        "camera": "robot_0_wrist",
+        "simulation_time_s": 36.525001904927194
+      },
+      {
+        "image_index": 2,
+        "kind": "current",
+        "representation": "RGB",
+        "camera": "robot_1_wrist",
+        "simulation_time_s": 36.525001904927194
+      },
+      {
+        "image_index": 3,
+        "kind": "current",
+        "representation": "RGB",
+        "camera": "robot_0_head",
+        "simulation_time_s": 36.525001904927194
+      },
+      {
+        "image_index": 4,
+        "kind": "current",
+        "representation": "RGB",
+        "camera": "robot_1_head",
+        "simulation_time_s": 36.525001904927194
+      },
+      {
+        "image_index": 5,
+        "kind": "historical_same_episode",
+        "representation": "RGB",
+        "camera": "overview",
+        "simulation_time_s": 14.725000767968595
+      },
+      {
+        "image_index": 6,
+        "kind": "historical_same_episode",
+        "representation": "RGB",
+        "camera": "robot_0_wrist",
+        "simulation_time_s": 14.725000767968595
+      },
+      {
+        "image_index": 7,
+        "kind": "historical_same_episode",
+        "representation": "RGB",
+        "camera": "robot_1_wrist",
+        "simulation_time_s": 14.725000767968595
+      },
+      {
+        "image_index": 8,
+        "kind": "historical_same_episode",
+        "representation": "RGB",
+        "camera": "robot_0_head",
+        "simulation_time_s": 14.725000767968595
+      },
+      {
+        "image_index": 9,
+        "kind": "historical_same_episode",
+        "representation": "RGB",
+        "camera": "robot_1_head",
+        "simulation_time_s": 14.725000767968595
+      },
+      {
+        "image_index": 10,
+        "kind": "historical_same_episode",
+        "representation": "RGB",
+        "camera": "overview",
+        "simulation_time_s": 17.525000913999975
+      },
+      {
+        "image_index": 11,
+        "kind": "historical_same_episode",
+        "representation": "RGB",
+        "camera": "robot_0_wrist",
+        "simulation_time_s": 17.525000913999975
+      },
+      {
+        "image_index": 12,
+        "kind": "historical_same_episode",
+        "representation": "RGB",
+        "camera": "robot_1_wrist",
+        "simulation_time_s": 17.525000913999975
+      },
+      {
+        "image_index": 13,
+        "kind": "historical_same_episode",
+        "representation": "RGB",
+        "camera": "robot_0_head",
+        "simulation_time_s": 17.525000913999975
+      },
+      {
+        "image_index": 14,
+        "kind": "historical_same_episode",
+        "representation": "RGB",
+        "camera": "robot_1_head",
+        "simulation_time_s": 17.525000913999975
+      },
+      {
+        "image_index": 15,
+        "kind": "current",
+        "representation": "wrist_depth_panel",
+        "cameras": [
+          "robot_0_wrist",
+          "robot_1_wrist"
+        ],
+        "simulation_time_s": 36.525001904927194
+      }
+    ],
+    "depth_semantics": "optical_axis_Z_metres_not_ray_range",
+    "range_m": [
+      0.03,
+      1.2
+    ],
+    "inside_range": "q=rint(255*(Z-0.03)/(1.20-0.03)); gray=255-q",
+    "quantization_step_m": 0.0045882352941176464,
+    "maximum_rounding_error_m": 0.0022941176470588232,
+    "invalid_rule": "not depth_valid OR nonfinite OR Z<=0",
+    "invalid_rgb": [
+      255,
+      0,
+      255
+    ],
+    "below_range_rgb": [
+      0,
+      255,
+      255
+    ],
+    "above_range_rgb": [
+      255,
+      128,
+      0
+    ],
+    "spatial_interpolation": "none",
+    "auto_contrast": false,
+    "range_categories_not_exact_out_of_range_distance": true,
+    "source": "current_public_depth_and_depth_valid",
+    "panels": [
+      {
+        "camera": "robot_0_wrist",
+        "matching_current_rgb_image_index": 1,
+        "pixel_counts": {
+          "effective_valid": 32324,
+          "invalid": 33212,
+          "below_range": 0,
+          "within_range": 26295,
+          "above_range": 6029
+        },
+        "pixel_rectangle_xyxy_exclusive": [
+          0,
+          68,
+          256,
+          324
+        ],
+        "depth_float32_sha256": "2cc06c0eb3a574835e5d76ca9cf10fb09cfb6fa0ccabab3fb4979caf506dc2fc",
+        "depth_valid_bool_sha256": "09b5e611782fe4557278f37c89540e6b10ff6fc4c9f23707bb6d31972e9ae61c"
+      },
+      {
+        "camera": "robot_1_wrist",
+        "matching_current_rgb_image_index": 2,
+        "pixel_counts": {
+          "effective_valid": 32491,
+          "invalid": 33045,
+          "below_range": 0,
+          "within_range": 30468,
+          "above_range": 2023
+        },
+        "pixel_rectangle_xyxy_exclusive": [
+          256,
+          68,
+          512,
+          324
+        ],
+        "depth_float32_sha256": "20d674a33047ac17c6a8d56bdb828ace1d7f1eb50139821e97d40cf554ab0885",
+        "depth_valid_bool_sha256": "3004dc9b884e0fcaca0ff94e731e3e05ed93a93a70f3bf9838f24e2a207bfa55"
+      }
+    ],
+    "file": "current_wrist_depth.png",
+    "png_sha256": "cbfd3f791aa78dd84defbeefff3a130c999d886ad8a748c67482b59a1dd0a768",
+    "interpretation": "Depth validity/range only; not semantics, free space, contact, object pose, hidden surfaces, hand entry or sleeve passage."
+  }
+}
