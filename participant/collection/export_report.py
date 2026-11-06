@@ -125,6 +125,60 @@ def safe_error(value):
     return result
 
 
+def token_counts(value):
+    return select(value, dict.fromkeys(USAGE_FIELDS, integer))
+
+
+def integer_list(value):
+    if not isinstance(value, list):
+        raise ValueError('expected an integer list')
+    return [integer(item) for item in value]
+
+
+def public_usage_record(value):
+    return select(value, {'decision_index': integer, 'call_failed': boolean,
+        'scope': identifier, 'thread_index': integer, 'cumulative_usage': token_counts,
+        'incremental_usage': token_counts, 'usage_known': boolean, 'status': identifier})
+
+
+def public_usage_summary(value):
+    result = select(value, {'schema': identifier, 'cli_usage_scope': identifier,
+        'aggregate_scope': identifier, 'fully_known': boolean, 'observed_usage': token_counts,
+        'calls_recorded': integer, 'unknown_call_indices': integer_list,
+        'unknown_usage_is_zero': boolean, 'cached_input_is_subset_of_input': boolean,
+        'reasoning_output_is_subset_of_output': boolean})
+    if result.get('schema') != 'phyrc-token-accounting-v2':
+        raise ValueError('unsupported token accounting semantics')
+    if result.get('fully_known') is True and result.get('unknown_call_indices'):
+        raise ValueError('token accounting completeness disagrees with unknown calls')
+    if not isinstance(value.get('threads', []), list):
+        raise ValueError('expected accounting thread summaries')
+    result['threads'] = [select(thread, {'thread_index': integer, 'baseline': identifier,
+        'last_observed_cumulative_usage': token_counts, 'last_accepted_cumulative_usage': token_counts})
+        for thread in value.get('threads', [])]
+    return result
+
+
+def duration(value):
+    value = number(value)
+    if value < 0:
+        raise ValueError('negative timing duration')
+    return value
+
+
+PHASE_TIMING_FIELDS = dict.fromkeys(('staging_wall_s', 'process_wall_s', 'result_parse_wall_s',
+                                    'server_startup_wall_s', 'provision_wall_s'), duration)
+PLAN_FIELDS = {'model_call_index': integer, 'plan_id': identifier, 'plan_segment_index': integer,
+               'plan_segment_count': integer, 'model_invoked': boolean,
+               'latest_observation_simulation_time_s': number, 'latest_input_sha256': digest}
+
+
+def public_phase_timing(value):
+    # Free-form process descriptions may contain paths or endpoints. Only
+    # designated durations and the completion flag cross the public boundary.
+    return select(value, {**PHASE_TIMING_FIELDS, 'completed': boolean})
+
+
 def public_attempt(value):
     result = select(value, {
         'run_id': identifier, 'parent_attempt': identifier, 'retry_reason': text,
@@ -138,9 +192,18 @@ def public_attempt(value):
         'acknowledged_simulation_steps': integer, 'recorded_simulation_steps': integer,
         'capture_complete': boolean, 'capture_termination_reason': identifier,
         'human_intervention': boolean, 'quality_status': identifier, 'input_profile': identifier,
+        'actor_backend': identifier, 'plan_size': integer, 'plan_step_budget': integer,
+        'plan_execution': identifier, 'review_threshold_raw_points': number,
     })
     result['error'] = safe_error(value.get('error'))
-    result['actor_usage'] = select(value.get('actor_usage', {}), dict.fromkeys(USAGE_FIELDS, integer))
+    result['actor_usage'] = token_counts(value.get('actor_usage', {}))
+    result['actor_usage_scope'] = 'legacy_unverified'
+    if value.get('actor_usage_accounting') is not None:
+        accounting = public_usage_summary(value['actor_usage_accounting'])
+        if accounting.get('observed_usage') != result['actor_usage']:
+            raise ValueError('actor usage disagrees with accounting summary')
+        result['actor_usage_accounting'] = accounting
+        result['actor_usage_scope'] = accounting.get('aggregate_scope')
     snapshot = value.get('source_snapshot', {})
     if isinstance(snapshot, dict):
         result['code'] = select(snapshot, {'commit': identifier, 'working_tree_modified': boolean})
@@ -168,24 +231,40 @@ def public_events(path):
                 row = select(value, {'type': identifier, 'decision_index': integer,
                     'input_sha256': digest, 'observation_simulation_time_s': number,
                     'wall_s': number, 'model': identifier, 'effort': identifier,
-                    'cli_version': text, 'prompt_sha256': digest})
+                    'cli_version': text, 'prompt_sha256': digest, **PLAN_FIELDS,
+                    'usage_scope': identifier, 'phase_wall_s': public_phase_timing,
+                    **PHASE_TIMING_FIELDS})
                 row['decision'] = select(value['decision'], {'tool': identifier, 'action': action,
                     'steps': integer, 'stage': identifier, 'visual_assessment': identifier, 'reason': text})
-                row['usage'] = select(value.get('usage', {}), dict.fromkeys(USAGE_FIELDS, integer))
+                row['usage'] = token_counts(value.get('usage', {}))
+                row.setdefault('usage_scope', 'legacy_unverified')
+                if value.get('usage_accounting') is not None:
+                    row['usage_accounting'] = public_usage_record(value['usage_accounting'])
+                if row.get('model_invoked') is False and row['usage']:
+                    raise ValueError('plan continuation must not repeat model usage')
             elif kind == 'applied_segment':
                 row = select(value, {'type': identifier, 'segment_id': identifier, 'decision_index': integer,
                     'start_step': integer, 'end_step': integer, 'simulation_start_s': number,
+                    'observation_simulation_time_s': number,
                     'simulation_end_s': number, 'environment_dispatch_wall_s': number,
                     'stage_intent': identifier, 'visual_assessment': identifier, 'assessment_source': identifier,
                     'requested_steps': integer, 'applied_action': action, 'actual_steps': integer,
-                    'quality_status': identifier})
+                    'quality_status': identifier, **PLAN_FIELDS})
             elif kind == 'model_error':
                 row = select(value, {'type': identifier, 'decision_index': integer, 'input_sha256': digest,
-                    'error_type': identifier, 'actor_call_wall_s': number})
+                    'error_type': identifier, 'actor_call_wall_s': number, **PLAN_FIELDS,
+                    'usage_accounting': public_usage_record, 'actor_call_timing': public_phase_timing})
                 row['error'] = safe_error({'type': value.get('error_type', 'UnknownError'),
                                            'message': value.get('error', '')})
             elif kind == 'supervisor_stop':
                 row = select(value, {'type': identifier, 'reason': identifier, 'neutral_steps': integer})
+            elif kind == 'plan_suffix_discarded':
+                row = select(value, {'type': identifier, 'reason': identifier})
+                if not isinstance(value.get('segments'), list):
+                    raise ValueError('expected unexecuted plan segments')
+                row['segments'] = [select(segment, {'plan_id': identifier, 'plan_segment_index': integer})
+                                   for segment in value['segments']]
+                row['executed'] = False
             else:
                 skipped += 1
                 continue
@@ -309,6 +388,17 @@ def public_qc(value):
     return result
 
 
+def public_review_gate(value):
+    if value is None:
+        return None
+    return select(value, {'schema': identifier, 'run_id': identifier,
+        'threshold_raw_points': number, 'policy_input_changed': boolean, 'status': identifier,
+        'created_at_utc': text, 'triggered_at_utc': text, 'ended_at_utc': text,
+        'last_observed_raw_points': number, 'raw_points': number,
+        'evaluation_time_s': number, 'physics_tick': integer,
+        'acknowledged_steps': integer, 'collector_status': identifier})
+
+
 def load_optional(path):
     return load_json(path.read_text()) if path.is_file() else None
 
@@ -323,6 +413,44 @@ def fmt(value, digits=3):
     if type(value) is bool:
         return 'true' if value else 'false'
     return f'{value:.{digits}f}' if isinstance(value, (int, float)) else markdown(value)
+
+
+def usage_readme(attempt):
+    rows = ['## 토큰 사용량의 범위', '']
+    accounting = attempt.get('actor_usage_accounting')
+    if accounting is None:
+        return rows + ['이 원본에는 토큰 집계 의미를 검증하는 v2 메타데이터가 없습니다. '
+            '`actor_usage`와 결정별 `usage`는 원본 보존 값이며 정확한 총량·턴별 사용량으로 사용하지 않습니다. '
+            'CLI 누계가 반복 합산된 과거 기록은 별도 정정 자료를 함께 확인해야 합니다.', '']
+    rows += ['`actor_usage`는 thread별 관측 누계를 합친 값입니다. 결정의 `usage`는 원본 CLI 누계이며, '
+             '호출별 증가량은 `usage_accounting.incremental_usage`입니다. '
+             '캐시 입력은 입력의 부분집합이고 추론 출력은 출력의 부분집합이므로 열들을 다시 합산하지 않습니다.', '',
+             f"전체 호출 사용량 확정: **{fmt(accounting.get('fully_known'))}** · "
+             f"기록한 호출 수: {accounting.get('calls_recorded')}.", '']
+    if accounting.get('fully_known') is not True:
+        rows += ['일부 호출 사용량이 미확정입니다. 아래는 확인한 관측 누계이며, '
+                 '실패·중단 호출의 미확정 사용량을 0으로 채우지 않습니다.', '',
+                 '미확정 호출 인덱스: ' + ', '.join(str(v) for v in accounting.get('unknown_call_indices', [])) + '.', '']
+    rows += ['| 입력 | 캐시 입력 | 캐시 쓰기 입력 | 출력 | 추론 출력 |', '|---:|---:|---:|---:|---:|',
+             '| ' + ' | '.join(str(attempt['actor_usage'].get(k, '미확정')) for k in USAGE_FIELDS) + ' |', '',
+             '중복 누계는 추가 사용량 0으로 처리하고, 역행한 누계는 미확정으로 보존합니다. '
+             '새 thread는 별도로 집계합니다. 토큰 기록은 화폐 비용이나 청구서가 아닙니다.', '']
+    return rows
+
+
+def phase_readme(event):
+    timing = event.get('phase_wall_s') or event.get('actor_call_timing') or {
+        key: event[key] for key in PHASE_TIMING_FIELDS if key in event}
+    if not timing:
+        return []
+    rows = [f"공개 입력 저장 {fmt(timing.get('staging_wall_s'))}초 · "
+            f"요청 프로세스 {fmt(timing.get('process_wall_s'))}초 · "
+            f"결과 해석 {fmt(timing.get('result_parse_wall_s'))}초.", '']
+    if 'server_startup_wall_s' in timing or 'provision_wall_s' in timing:
+        rows += [f"상주 서버 시작 {fmt(timing.get('server_startup_wall_s'))}초 · "
+                 f"환경 준비 {fmt(timing.get('provision_wall_s'))}초. "
+                 '이 준비 시간은 여러 응답에 같은 값으로 기록될 수 있으므로 호출마다 합산하지 않습니다.', '']
+    return rows
 
 
 def write_readme(output, manifest, events):
@@ -344,14 +472,35 @@ def write_readme(output, manifest, events):
         ('환경 요청·응답 합계 (초)', attempt.get('environment_dispatch_wall_s')),
         ('시뮬레이션 시간 (초)', attempt.get('simulation_time_s')),
         ('저장 전이 수', media.get('transitions')), ('응답 확인 전이 수', attempt.get('acknowledged_simulation_steps')),
-        ('완료한 모델 결정 수', attempt.get('decisions_completed')),
+        ('모델 호출 시도 수', attempt.get('actor_calls_attempted')),
+        ('완료한 결정 구간 수', attempt.get('decisions_completed')),
         ('파일 완료 상태', manifest['capture'].get('complete')), ('데이터 정합성 검사', qc.get('quality_passed')),
         ('학습 데이터 승인', qc.get('training_approval', 'unreviewed')),
     ]
+    if 'actor_backend' in attempt:
+        facts.append(('Actor 호출 방식', attempt['actor_backend']))
+    if 'plan_size' in attempt:
+        facts.append(('한 호출의 최대 계획 구간 수', attempt['plan_size']))
+    if 'plan_step_budget' in attempt:
+        facts.append(('한 계획의 최대 제어 step 수', attempt['plan_step_budget']))
     rows.extend(f'| {key} | {fmt(value)} |' for key, value in facts)
-    rows += ['', 'Actor 호출 시간은 공개 입력 준비·Docker/CLI 시작·요청과 응답을 포함합니다. 내부 모델 추론 시간만 별도로 측정한 값은 아닙니다. '
-             '모델이 판단하는 동안 물리 시간은 멈추며 실제 경과 시간과 시뮬레이션 시간은 다릅니다.', '',
-             '## 공식 평가 결과', '',
+    rows += ['', 'Actor 호출 시간은 공개 입력 저장·요청 전송·응답 처리 등 호출 경로를 측정합니다. '
+             '방식에 따라 Docker/CLI 시작이 호출 안에 들어가거나 상주 서버 준비 시간으로 분리됩니다. '
+             '내부 모델 추론 시간만 별도로 측정한 값은 아닙니다. '
+             '모델이 판단하는 동안 물리 시간은 멈추며 실제 경과 시간과 시뮬레이션 시간은 다릅니다. '
+             '세부 요청 프로세스 시간에도 CLI 처리·네트워크·서버 대기·생성이 함께 포함됩니다.', '']
+    rows += usage_readme(attempt)
+    gate = manifest.get('review_gate')
+    if gate is not None:
+        rows += ['## 리뷰 정지 조건', '',
+                 f"목표 누적 점수 {fmt(gate.get('threshold_raw_points'))} · "
+                 f"감시 상태 `{markdown(gate.get('status'))}` · "
+                 f"수집기 상태 `{markdown(gate.get('collector_status', attempt.get('status')))}`.", '',
+                 f"마지막 관측 점수 {fmt(gate.get('last_observed_raw_points', gate.get('raw_points')))} · "
+                 f"응답 확인 step {fmt(gate.get('acknowledged_steps'), 0)}.", '',
+                 '`review_ready`는 정지 조건에 따라 실행을 마치고 리뷰할 준비가 된 상태입니다. '
+                 '50점·착의 성공이나 학습 데이터 승인을 뜻하지 않습니다. 공식 점수와 success는 아래 평가 결과로 확인합니다.', '']
+    rows += ['## 공식 평가 결과', '',
              f"평가 유효성 `{fmt(score.get('valid'))}` · 누적 점수 **{fmt(score.get('raw_points'))} / 50** · "
              f"착의 success **{fmt(score.get('success'))}** · rate 상태 `{fmt(score.get('score_status'))}` · "
              f"최종 rate {fmt(score.get('final_score'))} points/s.", '',
@@ -404,6 +553,12 @@ def write_readme(output, manifest, events):
              '그 행동의 실행 후 성공 라벨로 사용하지 않습니다. 공식 점수는 별도의 평가 결과입니다.', '',
              '행동의 각 행은 로봇 0·1 순서이며 열은 `전진, 왼쪽 이동, 반시계 회전, 리프트, 팔 신장, 손목 yaw, pitch, roll, gripper`입니다. '
              '앞 8개는 정규화 속도이고 gripper는 닫기 `+1`, 열기 `-1`, 의도 유지 `0`입니다.', '']
+    if ((attempt.get('plan_size') or 1) > 1
+            or any((e.get('plan_segment_count') or 1) > 1 for e in events)):
+        rows += ['이 시도는 **고정 행동 목록의 개방형 실행(open-loop)**을 사용할 수 있도록 구성했습니다. '
+                 '한 모델 응답의 여러 구간을 순서대로 실행하며 목록 중간에 새 모델 판단이나 관측 조건 분기를 수행하지 않습니다. '
+                 '20Hz 저장과 각 구간의 최신 관측 기록이 모델의 20Hz 피드백을 뜻하지 않습니다. '
+                 '모델 입력 관측 시각과 구간 실행 직전 관측 시각을 따로 표시합니다.', '']
     segments = {e['decision_index']: e for e in events if e['type'] == 'applied_segment'}
     for event in events:
         kind = event['type']
@@ -412,8 +567,21 @@ def write_readme(output, manifest, events):
             segment = segments.get(i)
             rows += [f"### 결정 {i} · {STAGES.get(decision.get('stage'), decision.get('stage'))} · `{decision.get('tool')}`", '',
                      f"입력 관측 {fmt(event.get('observation_simulation_time_s'))}초 · Actor 호출 {fmt(event.get('wall_s'))}초 · "
-                     f"시각적 판단 `{markdown(decision.get('visual_assessment'))}`.", '',
-                     f"최종 응답의 행동 설명: {markdown(decision.get('reason', ''))}", '',
+                     f"시각적 판단 `{markdown(decision.get('visual_assessment'))}`.", '']
+            if 'plan_id' in event:
+                rows += [f"계획 `{markdown(event['plan_id'])}` · 모델 호출 인덱스 {event.get('model_call_index')} · "
+                         f"계획 구간 {(event.get('plan_segment_index') or 0) + 1}/{event.get('plan_segment_count')} · "
+                         f"이 구간에서 모델 호출 `{fmt(event.get('model_invoked'))}`.", '',
+                         f"실행 직전 최신 관측 {fmt(event.get('latest_observation_simulation_time_s'))}초.", '']
+                if (event.get('plan_segment_count') or 1) > 1:
+                    rows += ['후속 구간의 호출 시간 0과 빈 usage는 추가 호출이 없었다는 뜻입니다.', '']
+            rows += phase_readme(event)
+            usage = event.get('usage_accounting')
+            if usage:
+                rows += [f"호출 사용량 상태 `{markdown(usage.get('status'))}` · "
+                         f"이번 증가량 입력 {(usage.get('incremental_usage') or {}).get('input_tokens', '미확정')} / "
+                         f"출력 {(usage.get('incremental_usage') or {}).get('output_tokens', '미확정')} 토큰.", '']
+            rows += [f"최종 응답의 행동 설명: {markdown(decision.get('reason', ''))}", '',
                      '요청 행동:', '', '```json', json.dumps(decision.get('action'), ensure_ascii=False), '```', '']
             if segment:
                 rows += [f"실행 구간 step **[{segment.get('start_step')}, {segment.get('end_step')})** · "
@@ -426,8 +594,17 @@ def write_readme(output, manifest, events):
             rows += [f"### 호출 실패 · 결정 {event.get('decision_index')}", '',
                      f"오류 종류 `{markdown(event.get('error_type'))}` · 사용 시간 {fmt(event.get('actor_call_wall_s'))}초.", '',
                      markdown((event.get('error') or {}).get('message', '')), '']
+            rows += phase_readme(event)
+            if (event.get('usage_accounting') or {}).get('usage_known') is False:
+                rows += ['이 실패 호출의 사용량은 미확정이며 0으로 기록하지 않습니다.', '']
         elif kind == 'supervisor_stop':
             rows += [f"수집기 정지: `{markdown(event.get('reason'))}` · 중립 명령 {event.get('neutral_steps')} step.", '']
+        elif kind == 'plan_suffix_discarded':
+            rows += [f"미실행 계획 후속 구간 폐기: `{markdown(event.get('reason'))}`. "
+                     '아래 구간은 실행된 행동으로 라벨링하지 않습니다.', '']
+            rows += [f"- 계획 `{markdown(item.get('plan_id'))}` · 구간 인덱스 {item.get('plan_segment_index')} · 실행 안 함"
+                     for item in event['segments']]
+            rows.append('')
     if not events:
         rows += ['모델 결정이나 실행 구간이 생성되기 전에 종료되었습니다.', '']
     if attempt.get('error'):
@@ -524,7 +701,7 @@ def export_report(trace, collection, output, *, video=False, max_video_frames=20
         raise ValueError('slowdown must be positive and finite')
     raw_attempt = load_json((trace / 'attempt.json').read_text())
     attempt = public_attempt(raw_attempt)
-    if attempt.get('status') not in ('completed', 'failed', 'interrupted'):
+    if attempt.get('status') not in ('completed', 'failed', 'interrupted', 'review_ready'):
         raise ValueError('wait until the attempt stops before exporting its report')
     prompt = text((trace / 'prompt.txt').read_text(), max_length=262144)
     if attempt.get('prompt_sha256') != sha256(trace / 'prompt.txt'):
@@ -540,8 +717,9 @@ def export_report(trace, collection, output, *, video=False, max_video_frames=20
     score_events, score_path = public_score_events(collection, evaluation)
     quality_raw = load_optional(collection / 'validation.json')
     quality = public_qc(quality_raw)
+    review_gate = public_review_gate(load_optional(trace / 'review_gate.json'))
     sources = {}
-    for prefix, parent, names in [('trace', trace, ['attempt.json', 'prompt.txt', 'decisions.jsonl']),
+    for prefix, parent, names in [('trace', trace, ['attempt.json', 'prompt.txt', 'decisions.jsonl', 'review_gate.json']),
                                   ('capture', collection, ['capture.json', 'policy.hdf5', 'audit.hdf5',
                                                           'evaluation_summary.json', 'validation.json'])]:
         for name in names:
@@ -559,7 +737,7 @@ def export_report(trace, collection, output, *, video=False, max_video_frames=20
         if qc_hash is not None and qc_hash != actual:
             raise ValueError('quality report refers to a different source file')
     manifest = {'schema': 'phyrc-public-attempt-report-v1', 'attempt': attempt, 'capture': capture,
-                'quality': quality, 'evaluation': score, 'source_files': sources,
+                'quality': quality, 'evaluation': score, 'review_gate': review_gate, 'source_files': sources,
                 'unrecognized_events_omitted': skipped,
                 'publication_review': 'generated_allowlisted_subset_requires_repository_review',
                 'decision_reason_scope': 'final_action_explanation_only',

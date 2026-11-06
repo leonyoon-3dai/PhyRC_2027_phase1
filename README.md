@@ -1,10 +1,12 @@
 # PhyRC 2027: 두 로봇의 협력 착의 챌린지
 
-[수집 과정·일지](docs/collection/README.ko.md) · [공식 원본 안내](README.upstream.md) · [새 서버 준비](docs/project/START_HERE.ko.md) · [다음 작업 상태](docs/project/STATUS.md) · [공식 대회](https://emprise.cs.cornell.edu/phyrc/challenge-2027/)
+[공개 시연 갤러리](docs/gallery/README.ko.md) · [수집 과정·일지](docs/collection/README.ko.md) · [공식 원본 안내](README.upstream.md) · [새 서버 준비](docs/project/START_HERE.ko.md) · [다음 작업 상태](docs/project/STATUS.md) · [공식 대회](https://emprise.cs.cornell.edu/phyrc/challenge-2027/)
 
 두 대의 Stretch 4가 앉아 있는 마네킹에 티셔츠를 입히는 시뮬레이션 과제입니다. 이 저장소는 공식 시뮬레이터에 시연 수집, 브라우저 조작, 데이터 검수, π₀.₅ 학습 및 제출 도구를 추가한 참가자 저장소입니다.
 
 ## 직접 수집한 시연 화면
+
+**[공개 시연 갤러리](docs/gallery/README.ko.md)**에서 사람 부분 시연, Astra의 접근·파지 시도, 작은 움직임 연결 시험의 영상·원본 화면·짧은 행동 응답을 볼 수 있습니다.
 
 맥북 Chrome에서 두 로봇을 직접 조작한 **접근 → 파지·들기 → 마네킹 쪽 운반** 장면입니다. 아래 화면은 실제 기록을 재생해 렌더링한 것으로, AI로 합성한 성공 장면이 아닙니다.
 
@@ -38,7 +40,7 @@
 | Codex CLI | 0.166.0, Astra `ultra`, 실제 이미지 2턴·JSON·동일 UUID 재개 통과 |
 | 실제 로봇 wiring | 3개 모델 결정·3전이·0.15 simulation초, 정상 종료·전체 전이 검사 통과 |
 | wiring 공식 평가 | 유효 평가 0점·success=false·no_contact. 성공 시연으로 집계하지 않음 |
-| 기술 검사 | 공개 패키지 도구를 포함해 CPU 56개 통과. 과제 시연 승인과 구분 |
+| 기술 검사 | 계측·계획 실행·공개 패키지 도구를 포함해 CPU 85개 통과. 과제 시연 승인과 구분 |
 | 행동 입력·격리 | 공개 RGB 5장·전체 공개 로봇 상태·16×16 depth 요약. 저장소·평가·audit·원시 상태와 actor의 파일·네트워크 경계를 분리 |
 | 관찰·개입 | 자동 수집 WebRTC는 관찰 전용. 사람과 모델의 제어권 전환은 미구현 |
 | 실제 착의 시도 | `20261106-astra-dressing-001`: 15개 완료 결정·167전이·8.35 simulation초, SIGTERM 중단 후 정상 파일 마감. 점수0·success=false |

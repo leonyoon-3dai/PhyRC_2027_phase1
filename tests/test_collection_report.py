@@ -13,6 +13,7 @@ import numpy as np
 from PIL import Image
 
 from participant.collection.boundary import CONTRACT
+from participant.collection.codex_client import TokenUsageAccounting
 from participant.collection.export_report import export_report, milestone_path
 from participant.collection.validate_capture import sha256, validate_capture
 from Policy.training_dataset import DatasetWriter
@@ -137,6 +138,141 @@ class CollectionReportTest(unittest.TestCase):
         self.assertEqual(manifest['media']['images'], [])
         self.assertFalse((self.output / 'images').exists())
         self.assertIn('startup failed', (self.output / 'README.ko.md').read_text())
+
+    def accounting(self, *, interrupted=False):
+        ledger = TokenUsageAccounting()
+        raw = {'session_id': 'session-canary', 'usage': {'input_tokens': 100,
+            'cached_input_tokens': 20, 'cache_write_input_tokens': 0,
+            'output_tokens': 10, 'reasoning_output_tokens': 2}}
+        record = ledger.record(0, raw)
+        missing = ledger.record(1, None, call_failed=True) if interrupted else None
+        return ledger, raw, record, missing
+
+    def test_corrected_usage_unknown_call_and_numeric_timing_are_public_safe(self):
+        self.make_trace(); self.make_capture()
+        ledger, raw, record, missing = self.accounting(interrupted=True)
+        attempt_path = self.trace / 'attempt.json'
+        attempt = json.loads(attempt_path.read_text())
+        ledger.update_manifest(attempt)
+        attempt['actor_usage_accounting']['session_id'] = 'session-canary'
+        attempt['actor_usage_accounting']['threads'][0]['reasoning'] = 'never-export-hidden-reasoning'
+        attempt_path.write_text(json.dumps(attempt))
+        events = [json.loads(line) for line in (self.trace / 'decisions.jsonl').read_text().splitlines()]
+        timing = {'staging_wall_s': .1, 'process_wall_s': .6, 'result_parse_wall_s': .01,
+                  'completed': True, 'process_scope': 'http://192.0.2.27/private',
+                  'raw_reasoning': 'never-export-hidden-reasoning'}
+        events[0].update(usage=raw['usage'], usage_scope='thread_cumulative', usage_accounting=record,
+                         phase_wall_s=timing, plan_response={'reasoning': 'never-export-hidden-reasoning'})
+        events += [{'type': 'model_error', 'decision_index': 1, 'error_type': 'KeyboardInterrupt',
+                    'error': 'SIGTERM', 'actor_call_wall_s': 3.2, 'usage_accounting': missing,
+                    'actor_call_timing': dict(timing, completed=False, result_parse_wall_s=None)}]
+        (self.trace / 'decisions.jsonl').write_text(''.join(json.dumps(e)+'\n' for e in events))
+        manifest = export_report(self.trace, self.capture, self.output)
+        public = [json.loads(line) for line in (self.output / 'decisions.jsonl').read_text().splitlines()]
+        summary = manifest['attempt']['actor_usage_accounting']
+        self.assertFalse(summary['fully_known'])
+        self.assertEqual(summary['unknown_call_indices'], [1])
+        self.assertEqual(manifest['attempt']['actor_usage']['input_tokens'], 100)
+        self.assertEqual(public[0]['usage_accounting']['incremental_usage']['input_tokens'], 100)
+        self.assertEqual(public[0]['phase_wall_s']['process_wall_s'], .6)
+        self.assertIsNone(public[-1]['usage_accounting']['incremental_usage'])
+        self.assertIsNone(public[-1]['actor_call_timing']['result_parse_wall_s'])
+        texts = '\n'.join(p.read_text() for p in self.output.iterdir()
+                          if p.suffix in ('.json', '.jsonl', '.md', '.txt'))
+        for secret in ('session-canary', 'session_id', 'never-export-hidden-reasoning', '192.0.2.27', 'plan_response'):
+            self.assertNotIn(secret, texts)
+        self.assertIn('미확정 사용량을 0으로 채우지 않습니다', texts)
+
+    def test_legacy_usage_is_preserved_without_claiming_verified_total(self):
+        self.make_trace()
+        manifest = export_report(self.trace, self.capture, self.output)
+        self.assertEqual(manifest['attempt']['actor_usage']['input_tokens'], 100)
+        self.assertEqual(manifest['attempt']['actor_usage_scope'], 'legacy_unverified')
+        self.assertIn('정확한 총량·턴별 사용량으로 사용하지 않습니다', (self.output/'README.ko.md').read_text())
+
+    def test_fixed_plan_keeps_input_and_execution_observations_and_discarded_suffix(self):
+        self.make_trace(); self.make_capture()
+        ledger, raw, record, _ = self.accounting()
+        attempt_path = self.trace / 'attempt.json'
+        attempt = json.loads(attempt_path.read_text())
+        ledger.update_manifest(attempt)
+        attempt.update(status='review_ready', actor_backend='app-server', plan_size=3,
+                       plan_step_budget=60, plan_execution='open_loop_list',
+                       actor_calls_attempted=1, decisions_completed=2, review_threshold_raw_points=5)
+        attempt_path.write_text(json.dumps(attempt))
+        events = [json.loads(line) for line in (self.trace / 'decisions.jsonl').read_text().splitlines()]
+        first, applied = events
+        common = {'model_call_index': 0, 'plan_id': 'test:call-00000', 'plan_segment_count': 3}
+        first.update(**common, plan_segment_index=0, model_invoked=True,
+                     latest_observation_simulation_time_s=1.5, latest_input_sha256='c'*64,
+                     usage=raw['usage'], usage_scope='thread_cumulative', usage_accounting=record,
+                     plan_response={'hidden_reasoning': 'never-export-hidden-reasoning'})
+        applied.update(**common, plan_segment_index=0, model_invoked=True,
+                       observation_simulation_time_s=1.5, latest_observation_simulation_time_s=1.5,
+                       end_step=1, actual_steps=1, requested_steps=1)
+        second = copy.deepcopy(first)
+        second.update(decision_index=1, plan_segment_index=1, model_invoked=False,
+                      latest_observation_simulation_time_s=1.55, latest_input_sha256='d'*64,
+                      wall_s=0, usage={}, usage_scope='not_invoked', usage_accounting=None)
+        second_applied = dict(applied, decision_index=1, segment_id='test-wiring:00001',
+            plan_segment_index=1, model_invoked=False, latest_observation_simulation_time_s=1.55,
+            start_step=1, end_step=3, actual_steps=2, requested_steps=2)
+        suffix = {'type': 'plan_suffix_discarded', 'reason': 'review_points',
+                  'segments': [{'plan_id': common['plan_id'], 'plan_segment_index': 2,
+                                'private': 'never-export-geometry'}]}
+        events += [second, second_applied, suffix]
+        (self.trace / 'decisions.jsonl').write_text(''.join(json.dumps(e)+'\n' for e in events))
+        (self.trace / 'review_gate.json').write_text(json.dumps({
+            'schema': 'phyrc-review-gate-v2', 'run_id': self.run_id, 'threshold_raw_points': 5,
+            'status': 'triggered', 'collector_status': 'review_ready', 'acknowledged_steps': 3,
+            'last_observed_raw_points': 5, 'policy_input_changed': False,
+            'private': 'http://192.0.2.27/private', 'pid': 999}))
+        score_path = self.capture / 'evaluation_summary.json'
+        score = json.loads(score_path.read_text())
+        score['report']['result']['raw_points'] = 5
+        score['report']['result']['breakdown']['pickup'] = 5
+        score_path.write_text(json.dumps(score))
+        manifest = export_report(self.trace, self.capture, self.output)
+        public = [json.loads(line) for line in (self.output / 'decisions.jsonl').read_text().splitlines()]
+        self.assertEqual(public[2]['observation_simulation_time_s'], 1.5)
+        self.assertEqual(public[2]['latest_observation_simulation_time_s'], 1.55)
+        self.assertFalse(public[2]['model_invoked'])
+        self.assertEqual(public[2]['usage'], {})
+        self.assertFalse(public[-1]['executed'])
+        self.assertEqual(public[-1]['segments'], [{'plan_id': 'test:call-00000', 'plan_segment_index': 2}])
+        self.assertEqual(manifest['review_gate']['collector_status'], 'review_ready')
+        self.assertNotIn('pid', manifest['review_gate'])
+        self.assertEqual(manifest['attempt']['actor_usage']['input_tokens'], 100)
+        readme = (self.output/'README.ko.md').read_text()
+        self.assertIn('고정 행동 목록의 개방형 실행(open-loop)', readme)
+        self.assertIn('실행 직전 최신 관측 1.550초', readme)
+        self.assertIn('실행된 행동으로 라벨링하지 않습니다', readme)
+        self.assertIn('학습 데이터 승인을 뜻하지 않습니다', readme)
+        # Repeating original usage on a continuation would silently double-label
+        # one call. Reject such a trace instead of exporting misleading evidence.
+        events[2]['usage'] = raw['usage']
+        (self.trace / 'decisions.jsonl').write_text(''.join(json.dumps(e)+'\n' for e in events))
+        with self.assertRaisesRegex(ValueError, 'must not repeat model usage'):
+            export_report(self.trace, self.capture, self.output.with_name('bad-plan'))
+
+    def test_usage_mismatch_and_private_phase_value_fail_before_output(self):
+        self.make_trace()
+        ledger, raw, record, _ = self.accounting()
+        path = self.trace / 'attempt.json'
+        attempt = json.loads(path.read_text()); ledger.update_manifest(attempt)
+        attempt['actor_usage']['input_tokens'] = 101
+        path.write_text(json.dumps(attempt))
+        with self.assertRaisesRegex(ValueError, 'disagrees'):
+            export_report(self.trace, self.capture, self.output)
+        self.assertFalse(self.output.exists())
+        attempt['actor_usage']['input_tokens'] = 100
+        path.write_text(json.dumps(attempt))
+        events = [json.loads(line) for line in (self.trace / 'decisions.jsonl').read_text().splitlines()]
+        events[0]['phase_wall_s'] = {'process_wall_s': 'http://192.0.2.27/private'}
+        (self.trace / 'decisions.jsonl').write_text(''.join(json.dumps(e)+'\n' for e in events))
+        with self.assertRaisesRegex(ValueError, 'finite number'):
+            export_report(self.trace, self.capture, self.output)
+        self.assertFalse(self.output.exists())
 
     def test_same_tick_awards_form_one_unordered_batch_and_success_stays_separate(self):
         initial = {'event': 'evaluation_started', 'physics_tick': 0, 'evaluation_time_s': 0,

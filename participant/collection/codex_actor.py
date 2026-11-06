@@ -306,6 +306,12 @@ class Actor:
         if not self._lock.acquire(blocking=False):
             raise ActorError("one actor may not execute concurrent decisions")
         started = time.perf_counter()
+        self.last_call_timing = {
+            "staging_wall_s": None, "process_wall_s": None,
+            "result_parse_wall_s": None, "completed": False,
+            "process_scope": "Docker/CLI startup, session load, network, service wait and generation combined",
+        }
+        process_started = parse_started = None
         try:
             if self._closed or self._failed:
                 raise ActorError("actor is closed or has a failed turn")
@@ -344,6 +350,8 @@ class Actor:
             self._active_container = name
             event_path = self.events / (turn + ".jsonl")
             error_path = self.events / (turn + ".stderr")
+            process_started = time.perf_counter()
+            self.last_call_timing["staging_wall_s"] = process_started - started
             with event_path.open("xb") as event_log, error_path.open("xb") as error_log:
                 process = subprocess.Popen(command, stdin=subprocess.PIPE,
                                            stdout=event_log, stderr=error_log,
@@ -372,18 +380,27 @@ class Actor:
                         process.kill()
                         process.wait(timeout=10)
                     raise
+            self.last_call_timing["process_wall_s"] = time.perf_counter() - process_started
             self._active_container = None
             if process.returncode:
                 raise ActorError("Codex CLI failed; inspect the private actor trace")
+            parse_started = time.perf_counter()
             decision, session, usage = _read_result(event_path, response, self.session_id)
+            self.last_call_timing["result_parse_wall_s"] = time.perf_counter() - parse_started
+            self.last_call_timing["completed"] = True
             self.session_id = session
             self.calls += 1
             return {"decision": decision, "session_id": session,
                     "wall_s": time.perf_counter() - started, "usage": usage,
+                    "phase_wall_s": dict(self.last_call_timing),
                     "model": self.model, "effort": self.effort,
                     "cli_version": self.cli_version,
                     "prompt_sha256": hashlib.sha256(prompt.encode()).hexdigest()}
         except BaseException:
+            if process_started is not None and self.last_call_timing["process_wall_s"] is None:
+                self.last_call_timing["process_wall_s"] = time.perf_counter() - process_started
+            if parse_started is not None and self.last_call_timing["result_parse_wall_s"] is None:
+                self.last_call_timing["result_parse_wall_s"] = time.perf_counter() - parse_started
             self._failed = True
             if self._active_container is not None:
                 try:

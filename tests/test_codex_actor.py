@@ -163,6 +163,13 @@ class ActorBoundaryTest(unittest.TestCase):
             Image.new("RGB", (4, 4), "blue").save(incoming, pnginfo=metadata)
             second = actor.invoke("public second observation", [incoming], {"type": "object"})
         self.assertEqual(first["session_id"], second["session_id"])
+        for result in (first, second):
+            phases = result["phase_wall_s"]
+            self.assertTrue(phases["completed"])
+            measured = [phases[key] for key in
+                        ("staging_wall_s", "process_wall_s", "result_parse_wall_s")]
+            self.assertTrue(all(value >= 0 for value in measured))
+            self.assertLessEqual(sum(measured), result["wall_s"])
         self.assertNotIn("resume", commands[0])
         self.assertIn("resume", commands[1])
         self.assertIn("/public/000000/camera-00.png", commands[0])

@@ -47,6 +47,107 @@ Return exactly one decision matching the schema. Each action has two rows in rob
 
 Use all designated camera views and public robot localization to identify which gripper is where. Do not treat fingertip_origin_distance as the inner contact gap. Do not assume a close command attached cloth; confirm motion in subsequent images. Coordinate support while approaching and threading sleeves; recover visibly failed grasps before transporting. Keep useful grips until the task is visually complete. Never request scene edits, hidden state, arbitrary simulator code, or evaluator feedback. You may plan using permitted observations and remember earlier observations and your decisions within this episode. Finish when visually complete or when continuing the current episode is unproductive; state the visual reason. Zero action and steps=1 are required for stop and finish_episode. Give a brief operational reason, not a claim of measured success.'''
 WIRING_TASK = '''This is a short collection wiring test, not a dressing demonstration. On decision 0 request a small lift velocity of +0.03 for both robots and gripper -1, for 2 steps. On decision 1 request stop. On decision 2 finish_episode. All other velocity values must be zero. Use the same action contract and schema. Do not attempt grasp or dressing; label stage preparation and visual_assessment uncertain.'''
+PICKUP_TASK = '''For THIS episode, limit the objective to a stable garment pickup. Do not proceed to dressing the mannequin. Approach and grasp using public observations, test whether the cloth follows the gripper, and when visually supported raise and hold it. The published pickup criterion requires the grasped region to rise at least 5 cm from its grasp location with the same gripper and remain raised for 3 simulation seconds. This is task guidance, not feedback that a grasp or score exists. Model waiting does not advance simulation time. Use the public simulation clock and observed cloth motion. Finish after a visually stable hold or when the episode is unproductive. Official evaluation remains outside your inputs.'''
+
+
+def official_review_points(collection):
+    """Trusted termination only. Never include this value in actor observations."""
+    paths = list((Path(collection) / 'evaluation').glob('*/score_samples.jsonl'))
+    if len(paths) != 1:
+        raise ValueError('expected one official score stream for review gate')
+    lines = paths[0].read_text().splitlines()
+    if not lines:
+        raise ValueError('official score stream is empty')
+    value = json.loads(lines[-1])['raw_points']
+    if type(value) not in (int, float) or not math.isfinite(value) or not 0 <= value <= 50:
+        raise ValueError('invalid official review points')
+    return value
+
+
+USAGE_FIELDS = ('input_tokens', 'cached_input_tokens', 'cache_write_input_tokens',
+                'output_tokens', 'reasoning_output_tokens')
+
+
+class TokenUsageAccounting:
+    """CLI 0.166.0 usage is cumulative within a thread, including exec resume.
+
+    This client creates a fresh per-attempt CODEX_HOME: each newly encountered
+    thread has a zero baseline. Importing a pre-existing thread would require
+    supplying its pre-attempt baseline instead. Only usage counters are read;
+    private session identifiers are used as in-memory keys, never in reports.
+    """
+    def __init__(self):
+        self.totals = {}
+        self._threads = {}
+        self._calls = {}
+
+    def record(self, decision_index, result, *, call_failed=False):
+        if decision_index in self._calls:
+            raise ValueError('usage already recorded for this decision')
+        record = {'decision_index': decision_index, 'call_failed': call_failed,
+                  'scope': 'thread_cumulative', 'thread_index': None,
+                  'cumulative_usage': None, 'incremental_usage': None,
+                  'usage_known': False, 'status': 'unavailable'}
+        self._calls[decision_index] = record
+        if not isinstance(result, dict):
+            return record
+        thread_id, raw = result.get('session_id'), result.get('usage')
+        if not isinstance(thread_id, str) or not thread_id:
+            record['status'] = 'missing_thread'
+            return record
+        thread = self._threads.setdefault(thread_id, {
+            'thread_index': len(self._threads), 'baseline': 'fresh_attempt_thread_zero',
+            'last_observed_cumulative_usage': None, 'last_accepted_cumulative_usage': None,
+        })
+        record['thread_index'] = thread['thread_index']
+        if (not isinstance(raw, dict) or any(
+                type(raw.get(key)) is not int or raw[key] < 0 for key in USAGE_FIELDS)):
+            record['status'] = 'invalid_usage'
+            return record
+        cumulative = {key: raw[key] for key in USAGE_FIELDS}
+        record['cumulative_usage'] = cumulative
+        thread['last_observed_cumulative_usage'] = cumulative
+        if (cumulative['cached_input_tokens'] > cumulative['input_tokens']
+                or cumulative['reasoning_output_tokens'] > cumulative['output_tokens']):
+            record['status'] = 'invalid_usage'
+            return record
+        previous = thread['last_accepted_cumulative_usage']
+        if previous is not None and any(cumulative[k] < previous[k] for k in USAGE_FIELDS):
+            # A lower counter is not a new thread or a negative token charge.
+            # Preserve the snapshot, retain the last accepted baseline, and
+            # leave this call unresolved even if a later snapshot recovers.
+            record['status'] = 'counter_regressed'
+            return record
+        delta = {key: cumulative[key] - (previous[key] if previous else 0)
+                 for key in USAGE_FIELDS}
+        for key in USAGE_FIELDS:
+            self.totals[key] = self.totals.get(key, 0) + delta[key]
+        thread['last_accepted_cumulative_usage'] = cumulative
+        record.update(incremental_usage=delta, usage_known=True,
+                      status='duplicate_snapshot' if previous == cumulative else 'observed')
+        return record
+
+    def summary(self):
+        unknown = [index for index, call in self._calls.items() if not call['usage_known']]
+        # Return detached metadata: subsequent calls must not mutate an earlier
+        # event or manifest snapshot. No raw thread identifier is serialized.
+        return json.loads(json.dumps({
+            'schema': 'phyrc-token-accounting-v2',
+            'cli_usage_scope': 'thread_cumulative',
+            'aggregate_scope': 'sum_of_observed_thread_usage',
+            'fully_known': not unknown, 'observed_usage': self.totals,
+            'calls_recorded': len(self._calls), 'unknown_call_indices': unknown,
+            'unknown_usage_is_zero': False,
+            'cached_input_is_subset_of_input': True,
+            'reasoning_output_is_subset_of_output': True,
+            'threads': list(self._threads.values()),
+        }))
+
+    def update_manifest(self, manifest):
+        # Retain the existing numeric actor_usage interface for readers, while
+        # explicitly recording whether these observed totals are exhaustive.
+        manifest['actor_usage'] = dict(self.totals)
+        manifest['actor_usage_accounting'] = self.summary()
 
 
 def dump(path, value):
@@ -253,7 +354,11 @@ def main():
     parser.add_argument('--parent-attempt')
     parser.add_argument('--retry-reason')
     parser.add_argument('--source-group')
-    parser.add_argument('--mode', choices=['wiring', 'dressing'], default='wiring')
+    parser.add_argument('--mode', choices=['wiring', 'dressing', 'pickup'], default='wiring')
+    parser.add_argument('--actor-backend', choices=['exec', 'app-server'], default='exec')
+    parser.add_argument('--plan-size', type=int, default=1,
+                        help='Maximum segments per model call; >1 is an open-loop list')
+    parser.add_argument('--plan-step-budget', type=int, default=20)
     parser.add_argument('--model', default='gpt-6-astra')
     parser.add_argument('--effort', default='ultra')
     parser.add_argument('--decisions', type=int, default=3)
@@ -265,6 +370,10 @@ def main():
         parser.error('run-id must be a safe unique name')
     if not 1 <= args.decisions <= 2000 or not 1 <= args.max_steps <= 18000:
         parser.error('decision/step budget out of range')
+    if not 1 <= args.plan_size <= 3 or not 1 <= args.plan_step_budget <= 60:
+        parser.error('plan size must be 1..3 and step budget 1..60')
+    if args.mode == 'wiring' and args.plan_size > 1 and (args.plan_size != 3 or args.decisions != 3):
+        parser.error('grouped wiring requires plan-size=3 and decisions=3')
     if not math.isfinite(args.model_timeout) or not 10 <= args.model_timeout <= 1800:
         parser.error('model timeout must be finite, 10..1800 seconds')
     if bool(args.parent_attempt) != bool(args.retry_reason):
@@ -274,8 +383,18 @@ def main():
     actor_root = root / 'output/actors' / args.run_id
     trace.mkdir(parents=True, exist_ok=False)
     actor_root.mkdir(parents=True, exist_ok=False, mode=0o700)
-    task = TASK + ('\n\n' + WIRING_TASK if args.mode == 'wiring' else '')
-    from participant.collection.codex_actor import Actor
+    from participant.collection.plans import plan_schema, validate_plan, PLAN_TASK, BATCH_WIRING_TASK
+    task = TASK
+    if args.plan_size > 1:
+        task += '\n\n' + PLAN_TASK.format(max_segments=args.plan_size, max_total_steps=args.plan_step_budget)
+    if args.mode == 'wiring':
+        task += '\n\n' + (BATCH_WIRING_TASK if args.plan_size > 1 else WIRING_TASK)
+    elif args.mode == 'pickup':
+        task += '\n\n' + PICKUP_TASK
+    if args.actor_backend == 'app-server':
+        from participant.collection.codex_app_actor import AppActor as Actor
+    else:
+        from participant.collection.codex_actor import Actor
     source = 'integration_test' if args.mode == 'wiring' else 'gpt'
     command = ['./run.sh', 'python', '-X', 'faulthandler', '/scripts/collect_operator.py', '--output',
                '/output/collections/' + args.run_id, '--source', source,
@@ -293,6 +412,10 @@ def main():
         'model': args.model, 'reasoning_effort': args.effort,
         'prompt_sha256': hashlib.sha256(task.encode()).hexdigest(),
         'mode': args.mode, 'decisions_requested': args.decisions, 'decisions_completed': 0,
+        'actor_backend': args.actor_backend, 'plan_size': args.plan_size,
+        'plan_step_budget': args.plan_step_budget,
+        'plan_execution': 'open_loop_list' if args.plan_size > 1 else 'single_decision',
+        'review_threshold_raw_points': None if args.mode == 'wiring' else 5,
         'actor_calls_attempted': 0, 'actor_usage': {},
         'finished': False, 'status': 'starting', 'error': None,
         'started_at_utc': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
@@ -304,10 +427,18 @@ def main():
         'simulation_steps': 0, 'human_intervention': False,
         'quality_status': 'unreviewed',
     }
+    token_usage = TokenUsageAccounting()
+    token_usage.update_manifest(manifest)
     manifest['source_snapshot'] = source_snapshot(root, trace)
     dump(trace / 'attempt.json', manifest)
     (trace / 'prompt.txt').write_text(task)
     sim, actor, finished, active = None, None, False, False
+    pending_plan, stop_reason = [], 'decision_budget'
+    gate = {'schema': 'phyrc-review-gate-v2', 'run_id': args.run_id,
+            'threshold_raw_points': 5, 'policy_input_changed': False,
+            'status': 'disabled_wiring' if args.mode == 'wiring' else 'watching',
+            'condition': 'official raw_points >= 5; stop after acknowledged action'}
+    dump(trace / 'review_gate.json', gate)
     with (trace / 'simulator.log').open('x') as log, (trace / 'decisions.jsonl').open('x') as events:
         def event(value):
             events.write(json.dumps(value, allow_nan=False) + '\n')
@@ -331,25 +462,64 @@ def main():
                 prompt += json.dumps(payload, allow_nan=False)
                 image_hashes = [hashlib.sha256(p.read_bytes()).hexdigest() for p in images]
                 input_hash = hashlib.sha256((prompt + json.dumps(image_hashes)).encode()).hexdigest()
-                call_started = time.monotonic()
-                manifest['actor_calls_attempted'] += 1
-                result = None
-                try:
-                    result = actor.invoke(prompt, images, SCHEMA)
-                    decision = result['decision']
-                    action = validate_decision(decision, wiring=args.mode == 'wiring')
-                except BaseException as exc:
-                    call_wall_s = time.monotonic() - call_started
-                    manifest['actor_call_wall_s'] += call_wall_s
-                    event({'type': 'model_error', 'decision_index': index, 'input_sha256': input_hash,
-                           'error_type': type(exc).__name__, 'error': str(exc),
-                           'actor_call_wall_s': call_wall_s, 'returned_result': result})
-                    raise
-                event({'type': 'decision', 'decision_index': index, 'input_sha256': input_hash,
-                       'observation_simulation_time_s': float(obs['simulation_time_s']), **result})
+                latest_input_hash = input_hash
+                if not pending_plan:
+                    call_started = time.monotonic()
+                    model_call_index = manifest['actor_calls_attempted']
+                    manifest['actor_calls_attempted'] += 1
+                    result = None
+                    try:
+                        limit = min(args.plan_size, args.decisions - index)
+                        schema = plan_schema(limit) if args.plan_size > 1 else SCHEMA
+                        result = actor.invoke(prompt, images, schema)
+                        if args.plan_size > 1:
+                            actions = validate_plan(result['decision'], max_segments=limit,
+                                                    max_total_steps=args.plan_step_budget,
+                                                    wiring=args.mode == 'wiring')
+                            decisions = result['decision']['decisions']
+                        else:
+                            decisions = [result['decision']]
+                            actions = [validate_decision(decisions[0], wiring=args.mode == 'wiring')]
+                    except BaseException as exc:
+                        call_wall_s = time.monotonic() - call_started
+                        manifest['actor_call_wall_s'] += call_wall_s
+                        usage_record = token_usage.record(model_call_index, result, call_failed=True)
+                        token_usage.update_manifest(manifest)
+                        event({'type': 'model_error', 'decision_index': index, 'input_sha256': input_hash,
+                               'model_call_index': model_call_index,
+                               'error_type': type(exc).__name__, 'error': str(exc),
+                               'actor_call_wall_s': call_wall_s, 'returned_result': result,
+                               'usage_accounting': usage_record,
+                               'actor_call_timing': getattr(actor, 'last_call_timing', None)})
+                        raise
+                    usage_record = token_usage.record(model_call_index, result)
+                    token_usage.update_manifest(manifest)
+                    for offset, (decision, action) in enumerate(zip(decisions, actions)):
+                        projected = dict(result, decision=decision)
+                        if offset:
+                            projected.update(wall_s=0.0, usage={}, phase_wall_s=None)
+                            for key in ('staging_wall_s', 'process_wall_s', 'result_parse_wall_s',
+                                        'turn_usage_delta', 'last_reported_usage'):
+                                projected.pop(key, None)
+                        elif args.plan_size > 1:
+                            projected['plan_response'] = result['decision']
+                        metadata = {
+                            'model_call_index': model_call_index,
+                            'plan_id': f'{args.run_id}:call-{model_call_index:05d}',
+                            'plan_segment_index': offset, 'plan_segment_count': len(decisions),
+                            'model_invoked': offset == 0,
+                            'input_sha256': input_hash,
+                            'observation_simulation_time_s': float(obs['simulation_time_s']),
+                            'usage_scope': 'thread_cumulative' if offset == 0 else 'not_invoked',
+                            'usage_accounting': usage_record if offset == 0 else None,
+                        }
+                        pending_plan.append((projected, action, metadata))
+                result, action, plan_meta = pending_plan.pop(0)
+                decision = result['decision']
+                plan_meta['latest_observation_simulation_time_s'] = float(obs['simulation_time_s'])
+                plan_meta['latest_input_sha256'] = latest_input_hash
+                event({'type': 'decision', 'decision_index': index, **result, **plan_meta})
                 manifest['actor_call_wall_s'] += float(result['wall_s'])
-                for key, count in result['usage'].items():
-                    manifest['actor_usage'][key] = manifest['actor_usage'].get(key, 0) + count
                 t = time.monotonic()
                 tool = decision['tool']
                 before = float(obs['simulation_time_s'])
@@ -367,6 +537,9 @@ def main():
                 manifest['simulation_steps'] += steps
                 manifest['decisions_completed'] += 1
                 event({'type': 'applied_segment', 'segment_id': f'{args.run_id}:{index:05d}',
+                       **{key: plan_meta[key] for key in ('model_call_index', 'plan_id',
+                          'plan_segment_index', 'plan_segment_count', 'model_invoked',
+                          'observation_simulation_time_s', 'latest_observation_simulation_time_s')},
                        'decision_index': index, 'start_step': manifest['simulation_steps'] - steps,
                        'end_step': manifest['simulation_steps'], 'simulation_start_s': before,
                        'simulation_end_s': after, 'environment_dispatch_wall_s': elapsed,
@@ -378,21 +551,41 @@ def main():
                 dump(trace / 'attempt.json', manifest)
                 print(json.dumps({'run_id': args.run_id, 'decision': index, 'stage': decision['stage'],
                                   'tool': tool, 'sim_s': after, 'actor_call_wall_s': result['wall_s']}), flush=True)
-                if finished:
+                if args.mode != 'wiring':
+                    points = official_review_points(root / 'output/collections' / args.run_id)
+                    gate['last_observed_raw_points'] = points
+                    gate['acknowledged_steps'] = manifest['simulation_steps']
+                    if points >= 5:
+                        gate['status'] = 'triggered'
+                        gate['triggered_at_utc'] = time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())
+                        stop_reason = 'review_points'
+                    dump(trace / 'review_gate.json', gate)
+                if finished or stop_reason == 'review_points':
                     break
+            if pending_plan:
+                event({'type': 'plan_suffix_discarded', 'reason': stop_reason if active else 'episode_ended',
+                       'segments': [{'plan_id': item[2]['plan_id'],
+                                     'plan_segment_index': item[2]['plan_segment_index']}
+                                    for item in pending_plan]})
+                pending_plan.clear()
             if active:
                 stopped = sim.dispatch('stop')
                 manifest['simulation_steps'] += 1
                 if stopped.get('active', True):
                     sim.dispatch('finish_episode')
-                event({'type': 'supervisor_stop', 'reason': 'decision_budget', 'neutral_steps': 1})
+                event({'type': 'supervisor_stop', 'reason': stop_reason, 'neutral_steps': 1})
                 finished, active = True, False
-            manifest['status'] = 'completed'
+            manifest['status'] = 'review_ready' if stop_reason == 'review_points' else 'completed'
         except BaseException as exc:
             manifest['status'] = 'interrupted' if isinstance(exc, (KeyboardInterrupt, SystemExit)) else 'failed'
             manifest['error'] = {'type': type(exc).__name__, 'message': str(exc)}
             raise
         finally:
+            if pending_plan:
+                event({'type': 'plan_suffix_discarded', 'reason': manifest['status'],
+                       'segments': [{'plan_id': item[2]['plan_id'],
+                                     'plan_segment_index': item[2]['plan_segment_index']}
+                                    for item in pending_plan]})
             if sim is not None:
                 if active and sim.process.poll() is None:
                     try:
@@ -431,6 +624,10 @@ def main():
             manifest['wall_s'] = time.monotonic() - started
             manifest['simulation_time_s'] = manifest['simulation_steps'] / 20
             manifest['ended_at_utc'] = time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())
+            if gate['status'] == 'watching':
+                gate['status'] = 'collector_ended_before_gate'
+            gate['collector_status'] = manifest['status']
+            dump(trace / 'review_gate.json', gate)
             dump(trace / 'attempt.json', manifest)
     if manifest.get('simulator_returncode') != 0:
         raise RuntimeError('collector did not exit successfully; inspect attempt record')
