@@ -1,0 +1,139 @@
+{
+  "schema": "phyrc-sanitized-continuation-startup-v1",
+  "snapshot_at_utc": "2026-11-06T06:19:01.083951+00:00",
+  "parent": {
+    "run_id": "20261106-astra-coordinated-fresh-001",
+    "closed_qc_transitions": 1067,
+    "review": "../../reviews/20261106-astra-coordinated-fresh-001.ko.md"
+  },
+  "failed_startup": {
+    "run_id": "20261106-astra-coordinated-branch700-001",
+    "launch_at_utc": "2026-11-06T06:09:21.545210+00:00",
+    "attempt_started_at_utc": "2026-11-06T06:09:24Z",
+    "status": "failed",
+    "activity": "closed",
+    "wall_s": 0.4657584640008281,
+    "simulator_returncode": 1,
+    "requested_replay_prefix_steps": 700,
+    "replay_steps_completed": 0,
+    "simulation_steps": 0,
+    "model_calls": 0,
+    "capture_created": false,
+    "environment_initialization_reached": false,
+    "evaluation_started": false,
+    "score": null,
+    "score_meaning": "평가 미실행으로 점수 없음; 유효한 0점 평가가 아님",
+    "controller_error": {
+      "type": "ValueError",
+      "message": "simulator rejected request: collector_error"
+    },
+    "root_cause": {
+      "exception": "KeyError",
+      "missing_environment_variable": "STRETCH4_STREAM_HOST",
+      "sanitized_stack": [
+        {
+          "file": "scripts/collect_operator.py",
+          "line": 187,
+          "operation": "CollectorStream.from_environment()"
+        },
+        {
+          "file": "participant/streaming/collector_stream.py",
+          "line": 78,
+          "operation": "required stream host environment lookup"
+        }
+      ]
+    }
+  },
+  "fix": {
+    "kind": "launch_environment_configuration_only",
+    "explicit_environment_names": [
+      "STRETCH4_STREAM_HOST",
+      "STRETCH4_VIEWER_ORIGIN"
+    ],
+    "values_published": false,
+    "official_physics_or_evaluation_changed": false,
+    "runtime_code_changed_by_diagnosis": false,
+    "automatic_preflight_implemented": false
+  },
+  "retry": {
+    "run_id": "20261106-astra-coordinated-branch700-002",
+    "retry_of": "20261106-astra-coordinated-branch700-001",
+    "source_parent_run_id": "20261106-astra-coordinated-fresh-001",
+    "launch_at_utc": "2026-11-06T06:15:34.491548+00:00",
+    "requested_replay_prefix_steps": 700,
+    "environment_names_presence_checked": true,
+    "initialization_passed": true,
+    "progress_snapshot": {
+      "at_utc": "2026-11-06T06:17:48.710766+00:00",
+      "status": "replaying_prefix",
+      "simulation_steps": 60,
+      "replay_steps_completed": 60,
+      "decisions_completed": 0,
+      "error": null
+    },
+    "user_pause_snapshot": {
+      "at_utc": "2026-11-06T06:19:01.083951+00:00",
+      "requested_action": "중단·보존; 재시도 없음",
+      "controller_status": "failed",
+      "activity": "closed",
+      "controller_error": {
+        "type": "KeyboardInterrupt",
+        "message": "SIGTERM"
+      },
+      "simulator_returncode": 0,
+      "simulation_steps": 141,
+      "replay_steps_completed": 120,
+      "decisions_completed": 0,
+      "capture_complete": false,
+      "capture_steps": 141,
+      "interpretation": "사용자 중단. 141 기록과 120 replay ACK 경계 및 incomplete 상태는 그대로 보존; 이 문서는 전수 QC나 나머지 700전이 재실행 성공을 주장하지 않음"
+    }
+  },
+  "evidence": [
+    {
+      "role": "failed_controller_log",
+      "filename": "controller.log",
+      "bytes": 678,
+      "sha256": "b7a4571bc2cb12155a4a3dbda52202a251c71662ff855ddd87881a95bc3bd6b2",
+      "raw_contents_published": false
+    },
+    {
+      "role": "failed_simulator_stderr",
+      "filename": "simulator.log",
+      "bytes": 450,
+      "sha256": "3f7d4ca5008fba4e7f806bd3175c15606e2f7c8352cae1fa0c01d921a261a86e",
+      "raw_contents_published": false
+    },
+    {
+      "role": "failed_attempt",
+      "filename": "attempt.json",
+      "bytes": 5040,
+      "sha256": "cb40af1005c34d6772e4e46b83c68d6ecc2c5d90553ed19deed9a3a995573c04",
+      "raw_contents_published": false
+    },
+    {
+      "role": "failed_launch",
+      "filename": "launch.json",
+      "bytes": 1393,
+      "sha256": "ebb7bf43a0b89858b58dd6a97f6c6696d53b3474c435cb093422452c10972235",
+      "raw_contents_published": false
+    }
+  ],
+  "private_data_published": false,
+  "active_hdf5_opened": false,
+  "post_close_review": {
+    "added_at_utc": "2026-11-06T06:27:56.721404+00:00",
+    "review": "../../reviews/20261106-astra-coordinated-branch700-002.ko.md",
+    "recorded_transitions": 141,
+    "exact_parent_action_replay_transitions": 140,
+    "neutral_cleanup_transitions": 1,
+    "new_actor_calls": 0,
+    "quality_passed": false,
+    "quality_errors": [
+      "capture manifest is incomplete",
+      "policy HDF5 file is incomplete",
+      "audit HDF5 file is incomplete"
+    ],
+    "source": "별도 담당자의 닫힌 파일 전수 검토; 초기 진행 스냅샷과 구분"
+  }
+}

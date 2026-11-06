@@ -1,0 +1,57 @@
+{
+  "schema": "phyrc-score-segment-index-v1",
+  "run_id": "20261106-astra-coordinated-fresh-001",
+  "source_group": "20261106-coordinated-demo-methods",
+  "actor_receives_index": false,
+  "capture_complete": true,
+  "training_approval": "unreviewed",
+  "acknowledged_steps": 1067,
+  "replayed_parent_steps": 0,
+  "new_recorded_suffix_steps": 1067,
+  "counting_rule": "parent replay is separately labeled, not a new independent demonstration",
+  "evaluation_valid": true,
+  "award_batches": [
+    {
+      "physics_tick": 4272,
+      "transition_boundary_step": 356,
+      "step_alignment_exact": true,
+      "evaluation_time_s": 17.8,
+      "public_simulation_time_s": 19.32500007953495,
+      "batch_index": 0,
+      "raw_points_before": 0.0,
+      "raw_points_after": 5.0,
+      "changes": [
+        {
+          "stage": "pickup",
+          "before": 0.0,
+          "after": 5.0
+        }
+      ],
+      "simultaneous": false,
+      "order_within_batch": "not_inferred",
+      "segment_start_step": 0,
+      "segment_end_step_exclusive": 356,
+      "segment_simulation_s": 17.8,
+      "transition_image_reference": {
+        "file": "policy.hdf5",
+        "episode": "demo_0",
+        "dataset": "next_obs/overview_rgb",
+        "index": 355,
+        "camera": "overview",
+        "available_after_capture_close": true
+      },
+      "continuation_recipe": {
+        "kind": "action_replay",
+        "source_run_id": "20261106-astra-coordinated-fresh-001",
+        "source_prefix_steps": 356,
+        "exact_physics_restore": false,
+        "requires": "completed_capture_and_full_quality_validation"
+      },
+      "action_source_at_boundary": "model_or_supervisor"
+    }
+  ],
+  "success_events": [],
+  "time_origin_public_simulation_s": 1.5250000795349479,
+  "time_basis": "episode evaluation clock begins after reset; physics_tick/12 is transition boundary",
+  "order_rule": "different ticks chronological; same-tick awards unordered"
+}

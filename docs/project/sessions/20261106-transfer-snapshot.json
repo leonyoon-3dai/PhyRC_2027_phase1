@@ -1,0 +1,31 @@
+{
+  "schema": "phyrc-private-transfer-bundle-v1",
+  "created_at_utc": "2026-11-06T06:25:43.305768+00:00",
+  "scope": "closed collection originals, trusted evaluation/audit and reset metadata, selected actor public inputs and final decisions, source snapshots, teleop archives and required assets",
+  "private_storage_required": true,
+  "contains_trusted_privileged_audit_not_actor_inputs": true,
+  "excluded": [
+    "credentials",
+    "actor raw reasoning/events",
+    "actor session databases",
+    "browser auth/signed delivery links",
+    "server home directory",
+    "Python virtualenvs and Docker cache"
+  ],
+  "originals_unchanged": true,
+  "new_training_approval": false,
+  "raw_incomplete_E09_preserved": true,
+  "source_git_head_at_pack": "0f25b663e8d4ffd76369335e86536909259dddf4",
+  "source_files": 5166,
+  "source_bytes": 12991515624,
+  "code_source": "Use final GitHub session-wrapup commit; per-attempt source snapshots are included.",
+  "archive_filename": "20261106-session-close-v1.tar.gz",
+  "archive_bytes": 11779782360,
+  "archive_sha256": "d087a7899f60fffd7e9541d13215585ef6b462f3e0d71c66e0649fd0172ed34b",
+  "archive_members": 5168,
+  "every_archived_file_hash_verified": true,
+  "verified_at_utc": "2026-11-06T06:28:53.297007+00:00",
+  "remote_uploaded": false,
+  "remote_download_verified": false,
+  "scope_note": "비공개 원본 전송 묶음. 로컬 archive 전수 해시 통과. 원격 업로드 목적지는 사용자 응답 대기."
+}

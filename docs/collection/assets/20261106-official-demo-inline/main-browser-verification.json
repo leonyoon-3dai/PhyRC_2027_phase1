@@ -1,0 +1,29 @@
+{
+  "checked_at_utc": "2026-11-06T06:16:48.237177+00:00",
+  "page_url": "https://github.com/leonyoon-3dai/PhyRC_2027_phase1",
+  "page_status": 200,
+  "main_commit": "0f25b663e8d4ffd76369335e86536909259dddf4",
+  "anonymous_chromium": true,
+  "browser_gpu_disabled": true,
+  "native_play_button_clicked": true,
+  "before": {
+    "controls": true,
+    "paused": true,
+    "currentTime": 0,
+    "duration": 35.8
+  },
+  "after": {
+    "controls": true,
+    "paused": false,
+    "currentTime": 1.0588,
+    "duration": 35.8,
+    "error": null,
+    "fullscreen": false
+  },
+  "stayed_on_same_page": true,
+  "media_download_status": 200,
+  "media_download_bytes": 2230083,
+  "media_download_sha256": "96ed735d0bca97eac758c534175133b1ea8dd01e11f59c376611c8a672b93c09",
+  "matches_official_source": true,
+  "signed_delivery_urls_published": false
+}

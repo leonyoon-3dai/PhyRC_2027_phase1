@@ -1,6 +1,6 @@
 # PhyRC 2027: 두 로봇의 협력 착의 챌린지
 
-[공개 시연 갤러리](docs/gallery/README.ko.md) · [수집 과정·일지](docs/collection/README.ko.md) · [공식 원본 안내](README.upstream.md) · [새 서버 준비](docs/project/START_HERE.ko.md) · [다음 작업 상태](docs/project/STATUS.md) · [공식 대회](https://emprise.cs.cornell.edu/phyrc/challenge-2027/)
+[오늘의 정리·다음 서버 인계](docs/project/SESSION_WRAPUP_20261106.ko.md) · [공개 시연 갤러리](docs/gallery/README.ko.md) · [수집 과정·일지](docs/collection/README.ko.md) · [공식 원본 안내](README.upstream.md) · [새 서버 준비](docs/project/START_HERE.ko.md) · [다음 작업 상태](docs/project/STATUS.md) · [공식 대회](https://emprise.cs.cornell.edu/phyrc/challenge-2027/)
 
 [![OpenWAM 사용 가능성 검토 · 아직 적용하지 않음](docs/collection/assets/openwam-review-button.svg)](docs/collection/research/openwam-feasibility.ko.md)
 
@@ -20,7 +20,7 @@ https://github.com/user-attachments/assets/d2f347fe-712b-42f3-bdee-69d3fee2a47c
 
 | 과정 | 추가 점수 | 누적 예시 | 현재 확인한 근거 |
 |---|---:|---:|---|
-| 두 로봇 접근·양쪽 파지 준비 | 0 | 0 | E07에서 새 에피소드로 시도 중 |
+| 두 로봇 접근·양쪽 파지 준비 | 0 | 0 | E07 새 시작·공동 접근 기록 보존 |
 | 잡은 부분을 5cm 이상 올려 3초 유지 | +5 | 5 | E05 한 로봇 픽업 5점 보존 · **E07 새 시도에서도 5점**, 공동 지지·이동 관측 |
 | 첫 손이 소매 밖으로 통과 | +5 | 10 | 미획득 |
 | 옷이 반대쪽 어깨를 넘어감 | +5 | 15 | 미획득 |
@@ -32,7 +32,7 @@ https://github.com/user-attachments/assets/d2f347fe-712b-42f3-bdee-69d3fee2a47c
 
 누적 예시는 그림 순서대로 얻을 때의 값입니다. 실제 순서는 달라지거나 여러 항목이 함께 인정될 수 있습니다. **50점과 착의 성공은 별도**이며 성공은 두 손·머리·앞면 조건의 동시 0.5초 유지를 확인합니다. [공식 평가 정의](docs/competition/EVALUATION.md)
 
-**현재 E07: 0점 새 시작 → 공식 부분 점수 5점 → 두 로봇의 공동 지지·회전·전진 관측.** 05:17 UTC에 530전이까지 수집했으며 50점 목표로 계속 진행 중입니다. [득점·복구·공동 운반 관측](docs/collection/experiments/2026-11-06-coordinated-first5-review.ko.md)에서 점수와 시각 검토를 구분합니다.
+**E07: 0점 → 원점수 5점 → 공동 운반·마네킹 접근. 첫 소매 통과는 아직 미획득입니다.** 1,067전이 수집·전수 검사를 마쳤고, 착의 `success=false`·최종 점수율 0입니다. **현재는 사용자 요청으로 수집을 중단하고 클린 서버 재개를 준비합니다.** E09는 중단 중 응답 정합성 오류가 발생해 불완전 기록으로 보존했습니다. [종료 결과·전체 영상](docs/collection/reviews/20261106-astra-coordinated-fresh-001.ko.md) · [356·700전이 정확 장면](docs/collection/milestones/20261106-astra-coordinated-fresh-001/README.ko.md) · [현재 진행](docs/project/STATUS.md)
 
 | E07 · 함께 이동한 뒤 로봇 0의 시점 | 같은 시각 · 로봇 1의 시점 |
 |:---:|:---:|
@@ -58,7 +58,7 @@ https://github.com/user-attachments/assets/d2f347fe-712b-42f3-bdee-69d3fee2a47c
 
 **E05는 로봇 0만 옷을 든 부분 점수 5/50점입니다. 두 로봇의 협력 들기 성공 시연이 아니며, 전체 착의 success=false입니다.**
 
-E06을 중단·보존한 뒤 **E07을 0점의 새 에피소드에서 시작했습니다(04:40:12 UTC).** E07에서도 별도의 공식 5점을 획득했고 두 로봇의 공동 지지·이동 장면을 기록 중입니다. 아래 GIF와 시간 표는 원래 E05의 한 로봇 픽업 기록입니다.
+E06을 중단·보존한 뒤 **E07을 0점의 새 에피소드에서 시작했습니다(04:40:12 UTC).** E07에서도 별도의 원점수 5점을 획득했고 두 로봇의 공동 지지·이동 장면을 보존했습니다. 아래 GIF와 시간 표는 원래 E05의 한 로봇 픽업 기록입니다.
 
 | 물리 진행 | 실제 소요 시간 | 공식 유지 | 기록 검사 |
 |---|---|---|---|
@@ -73,7 +73,7 @@ GIF는 전체 253프레임을 4배 느리게 반복 재생합니다(약 4.08MB).
 
 ## 현재 기술 상태
 
-**2026-11-06: E05는 한 로봇 픽업 5점·253전이 전수 검사를 통과했습니다. E07은 새 에피소드에서 공식 5점과 두 로봇의 공동 지지·이동 관측을 기록했습니다.** E07은 계속 수집 중이며 전체 착의 성공·종료 후 검수는 미완료입니다. [단계별 시도와 현재 결과](docs/collection/experiments/2026-11-06-method-comparison.ko.md)
+**2026-11-06: E05는 한 로봇 픽업 원점수 5점·253전이, E07은 협력 시도 원점수 5점·1,067전이 전수 검사를 통과했습니다.** E07은 결정 예산으로 종료됐고 첫 소매 통과·전체 착의 성공은 미획득입니다. E08 초기화 실패와 E09 중단 중 종료 오류를 별도로 보존했습니다. 현재 수집 실행은 없습니다. [단계별 시도와 현재 결과](docs/collection/experiments/2026-11-06-method-comparison.ko.md)
 
 | 확인한 것 | 결과와 한계 |
 |---|---|
@@ -85,7 +85,7 @@ GIF는 전체 253프레임을 4배 느리게 반복 재생합니다(약 4.08MB).
 | 행동 입력·격리 | 공개 RGB 5장·전체 공개 로봇 상태·16×16 depth 요약. 저장소·평가·audit·원시 상태와 actor의 파일·네트워크 경계를 분리 |
 | 관찰·개입 | 자동 수집 WebRTC는 관찰 전용. 사람과 모델의 제어권 전환은 미구현 |
 | 실제 착의 시도 | `20261106-astra-dressing-001`: 15개 완료 결정·167전이·8.35 simulation초, SIGTERM 중단 후 정상 파일 마감. 점수0·success=false |
-| 한 로봇 픽업 부분 점수 5점 | [E05 영상·행동·점수 기록](docs/collection/attempts/20261106-astra-pickup-hold5-001/README.ko.md): 18개 결정, 253전이·12.65초 검사 통과, `review_ready`. 5점·success=false. 협력 들기 성공이 아니며 E07은 새 에피소드로 실행 중, 협력 결과 미확인 |
+| 한 로봇 픽업 부분 점수 5점 | [E05 영상·행동·점수 기록](docs/collection/attempts/20261106-astra-pickup-hold5-001/README.ko.md): 18개 결정, 253전이·12.65초 검사 통과, `review_ready`. 5점·success=false. 협력 들기 성공 시연으로 분류하지 않음. E07 공동 운반은 별도 갤러리·검토에 보존 |
 
 </details>
 
@@ -133,7 +133,7 @@ GIF는 전체 253프레임을 4배 느리게 반복 재생합니다(약 4.08MB).
 
 [새 서버 준비](docs/project/START_HERE.ko.md)에 고정 CLI·actor 이미지, 공식 환경, WebRTC와 `--mode wiring` 실행·검사 명령을 정리했습니다. [현재 상태](docs/project/STATUS.md)에서 이어갈 한 가지 작업을 확인합니다. 실패 run ID와 완료 파일을 덮어쓰지 않습니다.
 
-현재는 [**E07의 새 협력 시도**](docs/collection/experiments/2026-11-06-coordinated-fresh.ko.md)를 진행합니다. 두 로봇이 옷 근처로 이동 → 공개 관측으로 양쪽 파지 확인 → 함께 들기를 우선하며, 강제 상태 설정이나 평가기 변경은 하지 않습니다. E06은 중단·보존했고 [고정 중간 기록](docs/collection/experiments/2026-11-06-dressing-continuation.ko.md)은 당시 진행을 그대로 남깁니다. [중립 스트리밍 실측](docs/collection/experiments/2026-11-06-streaming-benchmark-result.ko.md)과 기존 기록·영상도 유지합니다. E07의 협력 들기·착의 성공은 아직 미확인입니다. [공식 참고 영상 분석](docs/collection/experiments/2026-11-06-official-demo-strategy.ko.md)을 연결하고 스켈레톤·3D·모션 분석과 baseline 다양화는 별도 조사 중입니다. VLA·RL·world model 학습은 미실행입니다.
+현재는 **휴식 후 클린 서버에서 첫 소매 통과를 재시도할 수 있도록 인계하는 단계**입니다. 다음 재개 후보는 검사를 통과한 E07의 원본 행동 700전이입니다. E09 종료 응답 정합성 문제를 먼저 수정·검증한 뒤, 새 환경에서 행동을 재실행하고 현재 공개 관측으로 파지·옷 방향을 다시 확인합니다. 정확한 물리 상태 복원을 뜻하지 않으며, 같은 출처 그룹으로 묶어 재실행 구간을 독립 신규 데이터로 세지 않습니다. [재실행·분기 구조](docs/collection/guides/continuation-and-branches.ko.md) · [공식 참고 영상 분석](docs/collection/experiments/2026-11-06-official-demo-strategy.ko.md) · [관찰 송출 실측](docs/collection/experiments/2026-11-06-streaming-benchmark-result.ko.md). 기존 성공·실패·중단 기록은 유지하고, VLA·RL·world model 학습은 아직 실행하지 않았습니다.
 
 <details>
 <summary>참고 문서</summary>

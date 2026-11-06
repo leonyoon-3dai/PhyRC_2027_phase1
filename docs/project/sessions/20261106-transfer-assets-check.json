@@ -1,0 +1,173 @@
+{
+  "schema": "phyrc-transfer-static-assets-check-v1",
+  "checked_at_utc": "2026-11-06T06:30:51.901533+00:00",
+  "source_head_commit": "0f25b663e8d4ffd76369335e86536909259dddf4",
+  "scope": "원본 assets 8개 해시, USD 정적 asset 참조, 기존 prepare 산출물과 고정 Isaac 이미지의 재질 의존성",
+  "method": {
+    "cpu_only": true,
+    "simulation_app_started": false,
+    "gpu_requested": false,
+    "network_enabled": false,
+    "containers_auto_removed": true,
+    "inspection": "기존 Isaac 이미지의 pxr.Sdf.Layer를 읽고 USD asset 참조만 선별; scene 생성·물리 진행 없음"
+  },
+  "locked_assets": [
+    {
+      "path": "assets/custom/garments/N_PR_2000_TShirt001.usd",
+      "bytes": 1321701,
+      "locked_sha256": "9e8471f339b6dac45f7b6817fd4c823bef6c142710cfa6cc359db4a44c653d10",
+      "actual_sha256": "9e8471f339b6dac45f7b6817fd4c823bef6c142710cfa6cc359db4a44c653d10",
+      "sha256_matches": true
+    },
+    {
+      "path": "assets/custom/human/female2_c4-c5.usd",
+      "bytes": 1670303,
+      "locked_sha256": "4585c889e23e6218926d92d7d0cf1fdcd6feb9dbebe68f1e31398e8b6edc2c06",
+      "actual_sha256": "4585c889e23e6218926d92d7d0cf1fdcd6feb9dbebe68f1e31398e8b6edc2c06",
+      "sha256_matches": true
+    },
+    {
+      "path": "assets/custom/human/textures/c4-c5.jpg",
+      "bytes": 234701,
+      "locked_sha256": "32c553a9253dd14c37519567aa60a6965c7b2564deb6b456a737a31968e10623",
+      "actual_sha256": "32c553a9253dd14c37519567aa60a6965c7b2564deb6b456a737a31968e10623",
+      "sha256_matches": true
+    },
+    {
+      "path": "assets/custom/robots/stretch_4/stretch_4.usd",
+      "bytes": 12752918,
+      "locked_sha256": "a7a7be5bc14354caaeb4461c9b733e10d8f18a0d047dec58814904e8317deb37",
+      "actual_sha256": "a7a7be5bc14354caaeb4461c9b733e10d8f18a0d047dec58814904e8317deb37",
+      "sha256_matches": true
+    },
+    {
+      "path": "assets/downloads/2K-tiling_30_basecolor.jpg",
+      "bytes": 1335359,
+      "locked_sha256": "5e82c9839954fd25246ce9a9234b3bb2c05e175203ae80d09cf09693477768de",
+      "actual_sha256": "5e82c9839954fd25246ce9a9234b3bb2c05e175203ae80d09cf09693477768de",
+      "sha256_matches": true
+    },
+    {
+      "path": "assets/downloads/Material/Garment/linen_Pumpkin.usd",
+      "bytes": 1709,
+      "locked_sha256": "09ac1a4489f15455bce60d521826e6772f2a3e0f0ca69304bdb019bf45ca7876",
+      "actual_sha256": "09ac1a4489f15455bce60d521826e6772f2a3e0f0ca69304bdb019bf45ca7876",
+      "sha256_matches": true
+    },
+    {
+      "path": "assets/downloads/Material/Garment/Color_Texture/linen_Pumpkin/BaseColor.jpg",
+      "bytes": 1169172,
+      "locked_sha256": "cc601f778f13f87cd4a448c54a2634c97b9bb467a0c52e1fbe5cf90f0b8a0f61",
+      "actual_sha256": "cc601f778f13f87cd4a448c54a2634c97b9bb467a0c52e1fbe5cf90f0b8a0f61",
+      "sha256_matches": true
+    },
+    {
+      "path": "assets/downloads/Material/Garment/Color_Texture/linen_Pumpkin/Roughness.jpg",
+      "bytes": 623423,
+      "locked_sha256": "e47866f43664377cb2aeba6f271a6914335a86c6576fdb4cc08f863c27341684",
+      "actual_sha256": "e47866f43664377cb2aeba6f271a6914335a86c6576fdb4cc08f863c27341684",
+      "sha256_matches": true
+    }
+  ],
+  "asset_count": 8,
+  "asset_total_bytes": 19109286,
+  "all_locked_sha256_match": true,
+  "reference_checks": [
+    {
+      "asset": "assets/custom/garments/N_PR_2000_TShirt001.usd",
+      "source_authored_paths": [
+        "./Textures/T_PR_2000_TShirt001_BaseColor.png",
+        "./Textures/T_PR_2000_TShirt001_Metallic.png",
+        "./Textures/T_PR_2000_TShirt001_Normal.png",
+        "./Textures/T_PR_2000_TShirt001_Roughness.png",
+        "OmniPBR.mdl"
+      ],
+      "source_texture_files_present": false,
+      "interpretation": "원본의 4개 텍스처는 없음. 현재 생성기는 mesh 속성만 새 USD에 작성하므로 원본 재질 참조를 복사하지 않음. 원본 의상의 원래 시각적 재현을 검증한 것은 아님.",
+      "generator": "scripts/make_wearable_shirt.py",
+      "prepared_outputs": [
+        {
+          "path": ".runtime/PhyRC_Sim/Assets/Garment/Tops/Modelink/t_shirt.usd",
+          "authored_asset_paths": []
+        },
+        {
+          "path": ".runtime/PhyRC_Sim/Assets/Garment/Tops/Modelink/t_shirt_short.usd",
+          "authored_asset_paths": []
+        }
+      ],
+      "current_material": "Assets/Material/Garment/linen_Pumpkin.usd"
+    },
+    {
+      "asset": "assets/custom/human/female2_c4-c5.usd",
+      "authored_asset_paths": [
+        "./textures/c4-c5.jpg"
+      ],
+      "resolution": "USD와 같은 폴더의 textures/c4-c5.jpg; 원본 assets와 prepare 산출 위치에 존재",
+      "present": true
+    },
+    {
+      "asset": "assets/custom/robots/stretch_4/stretch_4.usd",
+      "authored_asset_paths": [
+        "OmniPBR.mdl"
+      ],
+      "external_file_references": [],
+      "interpretation": "빈 문자열의 내부 reference는 외부 파일 의존성으로 세지 않음. OmniPBR은 고정 Isaac 이미지 기본 재질."
+    },
+    {
+      "asset": "assets/downloads/Material/Garment/linen_Pumpkin.usd",
+      "authored_asset_paths": [
+        "Assets/Material/Garment/Color_Texture/linen_Pumpkin/BaseColor.jpg",
+        "Assets/Material/Garment/Color_Texture/linen_Pumpkin/Roughness.jpg"
+      ],
+      "resolution": "run.sh prepare가 Assets/Material에 복사하며 시뮬레이터 작업 디렉터리 기준 두 경로가 존재; USD 파일 폴더 기준 상대 경로는 아님",
+      "both_prepared_paths_present_from_runtime_cwd": true
+    },
+    {
+      "builtin": "OmniPBR.mdl",
+      "path_in_isaac_image": "kit/mdl/core/Base/OmniPBR.mdl",
+      "present": true,
+      "base_image_digest": "sha256:783444c706538aa76cf5126e911ddc5e618779e6105305ad4af4260362a30aa9",
+      "image_source": "Dockerfile"
+    }
+  ],
+  "preservation_requirements": [
+    "assets/** 8개 파일 원본 bytes",
+    "config/assets.lock.json 및 현재 geometry/execution/policy interface 설정",
+    "현재 prepare/생성 코드와 공식 소스",
+    "Dockerfile의 고정 Isaac 기반 이미지 또는 같은 digest로 복원 가능한 접근"
+  ],
+  "source_files": [
+    {
+      "path": "config/assets.lock.json",
+      "sha256": "ebbbaf6d2f2aea8237451d890d0e54458f83e2a503bcfa47228c7f61b60835cd"
+    },
+    {
+      "path": "Dockerfile",
+      "sha256": "fa01252b7afb64614e2cde90c0055f93c37f00aac3790f31b6c6c5ab78c9d20e"
+    },
+    {
+      "path": "run.sh",
+      "sha256": "f1e8e2697a467b55ea873fdc8c154eec9a03a2155e3ae951a1b2997a76f78537"
+    },
+    {
+      "path": "scripts/prepare_assets.py",
+      "sha256": "61c1d19a4ff7145f0620946b794266eb3ebdf0947b71abab83d6a57395faf56c"
+    },
+    {
+      "path": "scripts/make_wearable_shirt.py",
+      "sha256": "b6ec6c0434779914f925e76984bf35b62df5025debdbe15c814010b9c21261d1"
+    },
+    {
+      "path": "src/PhyRC_Sim/Env_StandAlone/Teleop_TShirt_Stretch4_Env.py",
+      "sha256": "98a16d55a071046b1efb07d387abefe531ec684277b05b309b9758d9f6adb5f0"
+    }
+  ],
+  "limitations": [
+    "클린 서버 smoke나 GPU 렌더링 성공 인증이 아님. 복원 후 prepare와 smoke를 별도 실행해야 함.",
+    "소스 USD의 모든 원래 텍스처를 보존했다는 주장이 아니며 현재 생성·재질 경로만 검사함.",
+    "정적 자산 검사로 임의 외부 네트워크·드라이버·확장 모듈 전체의 재현 가능성을 보장하지 않음.",
+    "custom 자산의 공개 재배포 라이선스를 확인하거나 허용한다고 해석하지 않음. 원본 보존 대상은 별도 비공개 전송 자료."
+  ],
+  "private_addresses_or_credentials_included": false,
+  "clean_server_certified": false
+}

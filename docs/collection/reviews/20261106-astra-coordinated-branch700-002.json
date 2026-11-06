@@ -1,0 +1,167 @@
+{
+  "schema": "phyrc-incomplete-attempt-review-v1",
+  "run_id": "20261106-astra-coordinated-branch700-002",
+  "source_group": "20261106-coordinated-demo-methods",
+  "parent_attempt": "20261106-astra-coordinated-fresh-001",
+  "created_at_utc": "2026-11-06T06:26:01.494166+00:00",
+  "data_origin": "parent_action_replay_plus_supervisor_neutral_no_new_actor",
+  "training_approval": "unreviewed",
+  "training_eligible": false,
+  "termination": {
+    "requested_by": "user_session_wrap_up",
+    "signal_sent_by": "trusted_controller",
+    "signal": "SIGTERM",
+    "controller_error": {
+      "type": "KeyboardInterrupt",
+      "message": "SIGTERM"
+    },
+    "shutdown_error": "simulator response does not match request",
+    "status": "failed",
+    "activity": "closed",
+    "finished": false,
+    "capture_complete": false,
+    "capture_termination_reason": "input_closed",
+    "simulator_returncode": 0,
+    "collector_and_controller_exit_confirmed_before_hdf5_read": true,
+    "new_actor_failure": false,
+    "original_incomplete_attributes_preserved": true
+  },
+  "replay_accounting": {
+    "intended_parent_prefix_steps": 700,
+    "acknowledged_replayed_steps": 120,
+    "recorded_parent_action_steps": 140,
+    "unacknowledged_parent_action_steps": 20,
+    "neutral_stop_steps": 1,
+    "total_recorded_steps": 141,
+    "new_model_action_steps": 0,
+    "source_prefix_actions_equal": true,
+    "verified_parent_step_range_exclusive": [
+      0,
+      140
+    ],
+    "float32_shape": [
+      140,
+      18
+    ],
+    "matched_action_array_sha256": "7909141e62d305c5fd9ab8f7c72be5ea61ff18bb7b76ef78c601f4a1027228d0",
+    "bitwise_physics_state_restoration_claimed": false,
+    "target_boundary_reached": false
+  },
+  "interpretation_corrections": {
+    "original_new_recorded_suffix_steps": 21,
+    "original_formula": "recorded_steps minus acknowledged replay_steps_completed",
+    "corrected_meaning": "20 unacknowledged parent replay transitions plus one neutral stop; zero newly generated actor transitions",
+    "original_raw_manifest_modified": false,
+    "generated_token_table_note": "Missing numeric usage fields display as unknown in the generic exporter; actual actor invocation count is zero and there is no unknown failed actor call."
+  },
+  "model_usage": {
+    "attempted_calls": 0,
+    "completed_decisions": 0,
+    "recorded_usage": {},
+    "fully_known": true,
+    "unknown_call_indices": [],
+    "prompt_file_role": "planned continuation prompt; no model invocation occurred"
+  },
+  "timing": {
+    "started_at_utc": "2026-11-06T06:15:37Z",
+    "ended_at_utc": "2026-11-06T06:18:57Z",
+    "wall_s": 200.42355007999868,
+    "recorded_simulation_s": 7.05,
+    "acknowledged_replay_simulation_s": 6.0,
+    "recorded_parent_replay_simulation_s": 7.0,
+    "actor_call_wall_s": 0,
+    "environment_dispatch_wall_s_for_acknowledged_prefix": 123.09070259700457,
+    "pending_replay_and_shutdown_wall_s": null,
+    "initialization_wall_s": null
+  },
+  "quality": {
+    "quality_passed": false,
+    "validated_transitions": 141,
+    "errors": [
+      "capture manifest is incomplete",
+      "policy HDF5 file is incomplete",
+      "audit HDF5 file is incomplete"
+    ],
+    "capture_complete": false,
+    "policy_file_complete": false,
+    "audit_file_complete": false,
+    "episode_complete": true,
+    "last_done_marker": true,
+    "episode_checks_do_not_override_file_incomplete": true
+  },
+  "evaluation": {
+    "evaluated": true,
+    "valid": true,
+    "raw_points": 0.0,
+    "success": false,
+    "score_status": "no_contact",
+    "final_score": null,
+    "breakdown": {
+      "pickup": 0.0,
+      "first_sleeve": 0.0,
+      "opposite_shoulder": 0.0,
+      "second_sleeve": 0.0,
+      "left_upper_arm": 0,
+      "right_upper_arm": 0,
+      "neck": 0.0,
+      "front_orientation": 0.0
+    },
+    "milestone_times_s": {
+      "pickup": null,
+      "first_sleeve": null,
+      "opposite_shoulder": null,
+      "second_sleeve": null,
+      "neck": null,
+      "front_orientation": null
+    },
+    "max_raw_points": 50.0,
+    "success_evaluated": true,
+    "rate_points": 0.0,
+    "max_rate_points": 45.0,
+    "task_time_s": 0.0,
+    "elapsed_episode_time_s": 7.05,
+    "first_contact_time_s": null,
+    "last_score_award_time_s": null,
+    "dressing_completed_at_s": null,
+    "rate_rule": "pickup-excluded-last-award-v9",
+    "scoring_revision": "pickup-excluded-last-award-v9",
+    "score_unit": "points/s"
+  },
+  "media": {
+    "created": true,
+    "requested": true,
+    "file": "overview.mp4",
+    "source": "obs/overview_rgb",
+    "source_policy_hz": 20,
+    "available_frames": 141,
+    "exported_frames": 141,
+    "maximum_frames": 2000,
+    "truncated": false,
+    "sampling": "contiguous_prefix_no_frame_skipping",
+    "slowdown_factor": 4.0,
+    "playback_fps": 5.0,
+    "playback_duration_s": 28.2,
+    "includes_wall_time_waits": false
+  },
+  "source_sha256": {
+    "policy_hdf5": "53fe4e9e0f84d0f595a38cda900e6278061332f5b8adb6d0e5ed5778da63a7f6",
+    "audit_hdf5": "5fd7025aa8b802eab4c803512ed3797be34ee22da7463eff17fb185d82048bc5",
+    "parent_policy_hdf5": "60fe656f3147c488a8c9af36ee52b2745baa256da7eec910d6eb62dbea1b21c5",
+    "public_manifest": "9a9f5a6ac46715bdf02b58e43f9dde79891ae616380d4bc1db223a68c6618e19",
+    "validation": "011b9f807ada6ca2ad4d545bb2af745e0ccf130b11fc28d4add712066dcc6d89",
+    "overview_mp4": "f80afb8236b962218476f351b4b9660db9542eb1e8d960958ce8bcad76f846fc"
+  },
+  "verification": {
+    "public_artifact_sha256_checked": 15,
+    "initial_final_png_pixels_equal_source": 10,
+    "parent_prefix_action_values_equal": 140,
+    "neutral_action_count": 1,
+    "acknowledged_replay_events_contiguous": 6,
+    "no_new_decision_events": true,
+    "no_original_or_runtime_modifications": true,
+    "video_frames": 141,
+    "video_duration_s": 28.2,
+    "video_fps": 5,
+    "public_allowlist_checked": true
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "schema": "phyrc-gallery-preview-v2",
+  "created_at_utc": "2026-11-06T06:17:00.464484+00:00",
+  "run_id": "20261106-astra-coordinated-fresh-001",
+  "source": {
+    "file": "docs/collection/attempts/20261106-astra-coordinated-fresh-001/overview.mp4",
+    "sha256": "dcdbc12e0afeca4c756a4a7ab2f1742f8afe78435285b8db441d26d9fe5adcb3",
+    "bytes": 1189480,
+    "stream": {
+      "width": 256,
+      "height": 256,
+      "avg_frame_rate": "5/1",
+      "duration": "213.400000",
+      "nb_frames": "1067",
+      "nb_read_frames": "1067"
+    },
+    "manifest": "docs/collection/attempts/20261106-astra-coordinated-fresh-001/manifest.json",
+    "manifest_sha256": "e5b76c830e6a2abd9e166ea8c09db812490678fc6b843faedb092d00d1adb00b",
+    "recorded_dataset": "data/demo_0/obs/overview_rgb",
+    "policy_sha256": "60fe656f3147c488a8c9af36ee52b2745baa256da7eec910d6eb62dbea1b21c5",
+    "capture_closed": true
+  },
+  "selection": {
+    "full_source_duration": false,
+    "trimmed": true,
+    "source_video_frames_zero_based_inclusive": [
+      356,
+      700
+    ],
+    "source_video_frame_start_inclusive": 356,
+    "source_video_frame_end_exclusive": 701,
+    "source_video_time_start_s": 71.2,
+    "source_video_time_end_exclusive_s": 140.2,
+    "selected_frame_count": 345,
+    "excluded_before_frames": 356,
+    "excluded_after_frames": 366,
+    "frames_omitted_within_selected_interval": 0,
+    "transition_boundaries_inclusive": [
+      356,
+      700
+    ],
+    "first_observation_evaluation_time_s": 17.8,
+    "last_observation_evaluation_time_s": 35.0,
+    "sample_endpoint_time_span_s": 17.2,
+    "nominal_frame_duration_sum_policy_s": 17.25,
+    "scope": "first pickup 5-point boundary through mannequin approach; sleeve attempts and episode end are outside this GIF",
+    "source_mapping": "video uses obs[i], so frame356 equals next_obs[355] by verified observation continuity; this is not a next_obs-indexed movie",
+    "endpoint_mapping_checks": [
+      {
+        "transition_boundary": 356,
+        "video_frame_index": 356,
+        "source_obs_index": 356,
+        "matching_next_obs_index": 355,
+        "pixel_exact_continuity": true,
+        "public_simulation_time_s": 19.32500100787729
+      },
+      {
+        "transition_boundary": 700,
+        "video_frame_index": 700,
+        "source_obs_index": 700,
+        "matching_next_obs_index": 699,
+        "pixel_exact_continuity": true,
+        "public_simulation_time_s": 36.525001904927194
+      }
+    ]
+  },
+  "conversion": {
+    "tool": "ffmpeg version 4.4.2-0ubuntu0.22.04.1 Copyright (c) 2000-2021 the FFmpeg developers",
+    "working_directory": "repository_root",
+    "command_argv": [
+      "ffmpeg",
+      "-hide_banner",
+      "-loglevel",
+      "error",
+      "-nostdin",
+      "-n",
+      "-threads",
+      "2",
+      "-i",
+      "docs/collection/attempts/20261106-astra-coordinated-fresh-001/overview.mp4",
+      "-filter_complex_threads",
+      "2",
+      "-filter_complex",
+      "[0:v]trim=start_frame=356:end_frame=701,setpts=PTS-STARTPTS,scale=512:512:flags=neighbor,split[frames][palette_input];[palette_input]palettegen=max_colors=64:stats_mode=diff[palette];[frames][palette]paletteuse=dither=none:diff_mode=rectangle",
+      "-an",
+      "-threads",
+      "2",
+      "-loop",
+      "0",
+      "docs/gallery/assets/20261106-astra-coordinated-fresh-001/preview.gif"
+    ],
+    "command_shell": "ffmpeg -hide_banner -loglevel error -nostdin -n -threads 2 -i docs/collection/attempts/20261106-astra-coordinated-fresh-001/overview.mp4 -filter_complex_threads 2 -filter_complex '[0:v]trim=start_frame=356:end_frame=701,setpts=PTS-STARTPTS,scale=512:512:flags=neighbor,split[frames][palette_input];[palette_input]palettegen=max_colors=64:stats_mode=diff[palette];[frames][palette]paletteuse=dither=none:diff_mode=rectangle' -an -threads 2 -loop 0 docs/gallery/assets/20261106-astra-coordinated-fresh-001/preview.gif",
+    "threads": 2,
+    "filter_complex_threads": 2,
+    "palette_max_colors": 64,
+    "dither": "none",
+    "cropped": false,
+    "new_physics": false,
+    "generated_images_or_motion": false,
+    "temporal_interpolation": false,
+    "source_frame_sampling": "all selected source video frames retained in order",
+    "resize_filter": "nearest_neighbor",
+    "display_width_px": 720,
+    "note_ko": "기존 E07 MP4의 obs 경계356~700만 선택했습니다. 선택345프레임의 생략·보간 없이512×512확대·64색양자화했습니다. 전체1067프레임영상은별도링크로제공합니다."
+  },
+  "playback": {
+    "basis": "selected interval at unchanged source MP4 speed",
+    "source_policy_hz": 20,
+    "slowdown_factor": 4,
+    "includes_wall_time_waits": false,
+    "gif_speed_multiplier_relative_to_source_video": 1
+  },
+  "gif": {
+    "file": "preview.gif",
+    "sha256": "f283b8d56f6726a9fc3f0d115000a577f155d1f406bdb1e554c37de110620a43",
+    "bytes": 6253204,
+    "width": 512,
+    "height": 512,
+    "aspect_ratio": "1:1",
+    "frame_count": 345,
+    "requested_fps": 5,
+    "duration_s": 69.0,
+    "frame_duration_ms_values": [
+      200
+    ],
+    "loop": 0,
+    "loop_meaning": "infinite",
+    "distinct_decoded_frame_count": 345,
+    "ffprobe": {
+      "width": 512,
+      "height": 512,
+      "avg_frame_rate": "5/1",
+      "duration": "69.000000",
+      "nb_frames": "345",
+      "nb_read_frames": "345"
+    },
+    "pil_decoded_all_frames": true
+  },
+  "evaluation": {
+    "raw_points": 5,
+    "max_raw_points": 50,
+    "success": false,
+    "score_status": "no_dressing_points",
+    "final_score": 0,
+    "final_score_unit": "points/s",
+    "scope": "final E07 result, not inferred from GIF",
+    "training_approval": "unreviewed"
+  }
+}

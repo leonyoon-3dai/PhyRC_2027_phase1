@@ -1,0 +1,237 @@
+{
+  "schema": "phyrc-completed-attempt-review-v1",
+  "run_id": "20261106-astra-coordinated-fresh-001",
+  "source_group": "20261106-coordinated-demo-methods",
+  "created_at_utc": "2026-11-06T06:13:16.238720+00:00",
+  "review_status": "technical_validation_passed_task_partial",
+  "training_approval": "unreviewed",
+  "source": "ai_demonstration",
+  "termination": {
+    "status": "completed",
+    "reason": "decision_budget",
+    "requested_decisions": 80,
+    "completed_decisions": 80,
+    "supervisor_neutral_steps": 1,
+    "finished": true,
+    "capture_complete": true,
+    "simulator_returncode": 0,
+    "collector_process_exit_verified_before_hdf5": true,
+    "error": null,
+    "review_gate_status": "collector_ended_before_gate",
+    "review_gate_threshold_raw_points": 50,
+    "last_action_ack_steps": 1066,
+    "final_ack_and_recorded_steps": 1067,
+    "model_declared_success": false
+  },
+  "time": {
+    "started_at_utc": "2026-11-06T04:40:12Z",
+    "ended_at_utc": "2026-11-06T06:04:06Z",
+    "wall_s": 5034.037544063998,
+    "actor_call_wall_s": 3737.8939609799945,
+    "environment_dispatch_wall_s": 1202.3137579790055,
+    "simulation_time_s": 53.35,
+    "unallocated_initialization_shutdown_and_other_wall_s": 93.82982510499824
+  },
+  "data": {
+    "model_action_segments": 80,
+    "model_action_transitions": 1066,
+    "neutral_cleanup_transitions": 1,
+    "recorded_transitions": 1067,
+    "replayed_parent_transitions": 0,
+    "quality_validated_transitions": 1067,
+    "quality_errors": []
+  },
+  "evaluation": {
+    "evaluated": true,
+    "valid": true,
+    "raw_points": 5.0,
+    "success": false,
+    "score_status": "no_dressing_points",
+    "final_score": 0.0,
+    "breakdown": {
+      "pickup": 5.0,
+      "first_sleeve": 0.0,
+      "opposite_shoulder": 0.0,
+      "second_sleeve": 0.0,
+      "left_upper_arm": 0,
+      "right_upper_arm": 0,
+      "neck": 0.0,
+      "front_orientation": 0.0
+    },
+    "milestone_times_s": {
+      "pickup": 17.8,
+      "first_sleeve": null,
+      "opposite_shoulder": null,
+      "second_sleeve": null,
+      "neck": null,
+      "front_orientation": null
+    },
+    "max_raw_points": 50.0,
+    "success_evaluated": true,
+    "rate_points": 0.0,
+    "max_rate_points": 45.0,
+    "task_time_s": 0.0,
+    "elapsed_episode_time_s": 53.35,
+    "first_contact_time_s": 36.49583333333333,
+    "last_score_award_time_s": null,
+    "dressing_completed_at_s": null,
+    "rate_rule": "pickup-excluded-last-award-v9",
+    "scoring_revision": "pickup-excluded-last-award-v9",
+    "score_unit": "points/s"
+  },
+  "first_pickup_score": {
+    "event": "score_awarded",
+    "wall_utc": "2026-11-06T05:08:02.507629+00:00",
+    "wall_elapsed_s": 1616.582782591,
+    "physics_tick": 4272,
+    "evaluation_time_s": 17.8,
+    "raw_points": 5.0,
+    "stage": "pickup",
+    "previous_points": 0.0,
+    "points": 5.0
+  },
+  "model_usage": {
+    "attempted_calls": 73,
+    "completed_calls": 73,
+    "two_segment_plan_calls": 7,
+    "additional_uninvoked_segments": 7,
+    "fully_known": true,
+    "unknown_call_indices": [],
+    "usage": {
+      "input_tokens": 10523634,
+      "cached_input_tokens": 9603200,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 79930,
+      "reasoning_output_tokens": 70422
+    },
+    "aggregate_scope": "sum_of_thread_cumulative_usage_deltas",
+    "cached_input_is_subset_of_input": true,
+    "reasoning_output_is_subset_of_output": true,
+    "raw_reasoning_published": false
+  },
+  "stage_intent_counts": {
+    "approach": {
+      "segments": 17,
+      "actual_steps": 302,
+      "simulation_s": 15.1
+    },
+    "grasp": {
+      "segments": 4,
+      "actual_steps": 30,
+      "simulation_s": 1.5
+    },
+    "lift": {
+      "segments": 6,
+      "actual_steps": 62,
+      "simulation_s": 3.1
+    },
+    "recovery": {
+      "segments": 11,
+      "actual_steps": 116,
+      "simulation_s": 5.8
+    },
+    "transport": {
+      "segments": 14,
+      "actual_steps": 258,
+      "simulation_s": 12.9
+    },
+    "first_sleeve": {
+      "segments": 24,
+      "actual_steps": 254,
+      "simulation_s": 12.7
+    },
+    "orientation": {
+      "segments": 4,
+      "actual_steps": 44,
+      "simulation_s": 2.2
+    }
+  },
+  "first_sleeve_attempt": {
+    "first_decision_index": 51,
+    "start_step": 756,
+    "segments": 24,
+    "steps": 254,
+    "all_visual_assessments": "uncertain",
+    "official_first_sleeve_points": 0,
+    "independent_failure_count": null
+  },
+  "last_completed_decision": {
+    "decision_index": 79,
+    "start_step": 1054,
+    "end_step": 1066,
+    "decision": {
+      "tool": "act",
+      "action": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0.08,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "steps": 12,
+      "stage": "orientation",
+      "visual_assessment": "uncertain",
+      "reason": "Cuff engagement remains unverified and the garment is skewed between the grips. Raise robot 1's lower edge to reduce the height difference and diagonal fold while robot 0 holds steady."
+    }
+  },
+  "media": {
+    "created": true,
+    "requested": true,
+    "file": "overview.mp4",
+    "source": "obs/overview_rgb",
+    "source_policy_hz": 20,
+    "available_frames": 1067,
+    "exported_frames": 1067,
+    "maximum_frames": 2000,
+    "truncated": false,
+    "sampling": "contiguous_prefix_no_frame_skipping",
+    "slowdown_factor": 4.0,
+    "playback_fps": 5.0,
+    "playback_duration_s": 213.4,
+    "includes_wall_time_waits": false
+  },
+  "source_public_package": {
+    "manifest_path": "../attempts/20261106-astra-coordinated-fresh-001/manifest.json",
+    "manifest_sha256": "e5b76c830e6a2abd9e166ea8c09db812490678fc6b843faedb092d00d1adb00b",
+    "source_policy_sha256": "60fe656f3147c488a8c9af36ee52b2745baa256da7eec910d6eb62dbea1b21c5",
+    "source_validation_sha256": "14846c3b5d42ad10e661d6ce1b53c9fa3879445bdb26a5e5db91d3c5ca38c674",
+    "video_sha256": "dcdbc12e0afeca4c756a4a7ab2f1742f8afe78435285b8db441d26d9fe5adcb3",
+    "video_bytes": 1189480
+  },
+  "preservation": {
+    "original_capture_attempt_and_actions_unchanged": true,
+    "earlier_fixed_reviews_unchanged": true,
+    "new_independent_demonstration_count": 0,
+    "new_runtime_or_actor_input_changes": false
+  },
+  "verification": {
+    "artifact_sha256_checked": 15,
+    "initial_final_png_pixel_matches": 10,
+    "milestone_png_pixel_matches": 4,
+    "model_usage_incremental_sum_matches_manifest": true,
+    "model_call_count_and_noninvoked_zero_time_checked": true,
+    "actor_and_dispatch_sums_match_manifest": true,
+    "action_segment_boundaries_contiguous": true,
+    "public_allowlist_scan_passed": true,
+    "video_ffprobe_frames": 1067,
+    "video_ffprobe_fps": 5,
+    "video_ffprobe_duration_s": 213.4
+  }
+}
