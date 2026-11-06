@@ -1,0 +1,877 @@
+{
+  "schema": "phyrc-offline-depth-sanity-v1",
+  "baseline": "B1",
+  "run_id": "20261106-astra-dressing-continue-001",
+  "created_at_utc": "2026-11-06T04:47:51.815416+00:00",
+  "observation_indices": [
+    0,
+    2
+  ],
+  "samples": [
+    {
+      "pixel_uv": [
+        128,
+        128
+      ],
+      "pixel_coordinate_convention": "zero_based_column_row_no_half_pixel_offset",
+      "rgb_uint8": [
+        70,
+        66,
+        70
+      ],
+      "depth_semantics": "optical_axis_Z_metres_not_ray_range",
+      "depth_sample_m": 2.5653138160705566,
+      "center_valid": true,
+      "camera_xyz_m": [
+        0.0,
+        0.0,
+        2.5653138160705566
+      ],
+      "camera_axes": "X_right_Y_down_Z_forward",
+      "world_xyz_m": null,
+      "reprojection_roundtrip_error_px": 0.0,
+      "roundtrip_is_accuracy_validation": false,
+      "status": "valid_depth_sample",
+      "uncertainty": {
+        "kind": "local_depth_heuristics_not_probability",
+        "flags": [],
+        "patch_radius_px": 2,
+        "patch_bounds_xyxy_exclusive": [
+          126,
+          126,
+          131,
+          131
+        ],
+        "patch_pixels": 25,
+        "valid_pixels": 25,
+        "valid_fraction": 1.0,
+        "mask_numeric_inconsistency_count": 0,
+        "median_depth_m": 2.5674502849578857,
+        "median_absolute_deviation_m": 0.007428646087646484,
+        "minimum_depth_m": 2.553431749343872,
+        "maximum_depth_m": 2.5891971588134766,
+        "depth_range_m": 0.03576540946960449,
+        "center_minus_patch_median_abs_m": 0.0021364688873291016,
+        "applied_depth_jump_threshold_m": 0.12837251424789428,
+        "parameters": {
+          "min_valid_fraction": 0.8,
+          "depth_jump_m": 0.05,
+          "depth_jump_fraction": 0.05
+        }
+      },
+      "neighbor_depth_substituted": false,
+      "semantic_keypoint_detected": false,
+      "observation_index": 0,
+      "public_simulation_time_s": 14.17500073928386,
+      "camera": "overview",
+      "selection": "image_center_calibration_probe_not_keypoint",
+      "resolution_wh": [
+        256,
+        256
+      ],
+      "intrinsics": [
+        [
+          221.7025033688163,
+          0.0,
+          128.0
+        ],
+        [
+          0.0,
+          221.7025033688163,
+          128.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "intrinsics_source": "saved run_metadata.json public_interface.camera_intrinsics.overview"
+    },
+    {
+      "pixel_uv": [
+        128,
+        128
+      ],
+      "pixel_coordinate_convention": "zero_based_column_row_no_half_pixel_offset",
+      "rgb_uint8": [
+        240,
+        236,
+        98
+      ],
+      "depth_semantics": "optical_axis_Z_metres_not_ray_range",
+      "depth_sample_m": 0.2011672854423523,
+      "center_valid": true,
+      "camera_xyz_m": [
+        0.0,
+        0.0,
+        0.2011672854423523
+      ],
+      "camera_axes": "X_right_Y_down_Z_forward",
+      "world_xyz_m": null,
+      "reprojection_roundtrip_error_px": 0.0,
+      "roundtrip_is_accuracy_validation": false,
+      "status": "valid_depth_sample",
+      "uncertainty": {
+        "kind": "local_depth_heuristics_not_probability",
+        "flags": [],
+        "patch_radius_px": 2,
+        "patch_bounds_xyxy_exclusive": [
+          126,
+          126,
+          131,
+          131
+        ],
+        "patch_pixels": 25,
+        "valid_pixels": 25,
+        "valid_fraction": 1.0,
+        "mask_numeric_inconsistency_count": 0,
+        "median_depth_m": 0.2011672854423523,
+        "median_absolute_deviation_m": 0.00037348270416259766,
+        "minimum_depth_m": 0.2006334662437439,
+        "maximum_depth_m": 0.20211774110794067,
+        "depth_range_m": 0.0014842748641967773,
+        "center_minus_patch_median_abs_m": 0.0,
+        "applied_depth_jump_threshold_m": 0.05,
+        "parameters": {
+          "min_valid_fraction": 0.8,
+          "depth_jump_m": 0.05,
+          "depth_jump_fraction": 0.05
+        }
+      },
+      "neighbor_depth_substituted": false,
+      "semantic_keypoint_detected": false,
+      "observation_index": 0,
+      "public_simulation_time_s": 14.17500073928386,
+      "camera": "robot_0_wrist",
+      "selection": "image_center_calibration_probe_not_keypoint",
+      "resolution_wh": [
+        256,
+        256
+      ],
+      "intrinsics": [
+        [
+          182.80294486299067,
+          0.0,
+          128.0
+        ],
+        [
+          0.0,
+          182.80294486299067,
+          128.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "intrinsics_source": "saved run_metadata.json public_interface.camera_intrinsics.robot_0_wrist"
+    },
+    {
+      "pixel_uv": [
+        128,
+        128
+      ],
+      "pixel_coordinate_convention": "zero_based_column_row_no_half_pixel_offset",
+      "rgb_uint8": [
+        244,
+        243,
+        244
+      ],
+      "depth_semantics": "optical_axis_Z_metres_not_ray_range",
+      "depth_sample_m": 0.0,
+      "center_valid": false,
+      "camera_xyz_m": null,
+      "camera_axes": "X_right_Y_down_Z_forward",
+      "world_xyz_m": null,
+      "reprojection_roundtrip_error_px": null,
+      "roundtrip_is_accuracy_validation": false,
+      "status": "invalid",
+      "uncertainty": {
+        "kind": "local_depth_heuristics_not_probability",
+        "flags": [
+          "center_mask_invalid",
+          "center_nonpositive",
+          "low_patch_valid_fraction",
+          "no_valid_patch_depth"
+        ],
+        "patch_radius_px": 2,
+        "patch_bounds_xyxy_exclusive": [
+          126,
+          126,
+          131,
+          131
+        ],
+        "patch_pixels": 25,
+        "valid_pixels": 0,
+        "valid_fraction": 0.0,
+        "mask_numeric_inconsistency_count": 0,
+        "median_depth_m": null,
+        "median_absolute_deviation_m": null,
+        "minimum_depth_m": null,
+        "maximum_depth_m": null,
+        "depth_range_m": null,
+        "center_minus_patch_median_abs_m": null,
+        "applied_depth_jump_threshold_m": null,
+        "parameters": {
+          "min_valid_fraction": 0.8,
+          "depth_jump_m": 0.05,
+          "depth_jump_fraction": 0.05
+        }
+      },
+      "neighbor_depth_substituted": false,
+      "semantic_keypoint_detected": false,
+      "observation_index": 0,
+      "public_simulation_time_s": 14.17500073928386,
+      "camera": "robot_1_wrist",
+      "selection": "image_center_calibration_probe_not_keypoint",
+      "resolution_wh": [
+        256,
+        256
+      ],
+      "intrinsics": [
+        [
+          182.80294486299067,
+          0.0,
+          128.0
+        ],
+        [
+          0.0,
+          182.80294486299067,
+          128.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "intrinsics_source": "saved run_metadata.json public_interface.camera_intrinsics.robot_1_wrist"
+    },
+    {
+      "pixel_uv": [
+        128,
+        128
+      ],
+      "pixel_coordinate_convention": "zero_based_column_row_no_half_pixel_offset",
+      "rgb_uint8": [
+        187,
+        184,
+        188
+      ],
+      "depth_semantics": "optical_axis_Z_metres_not_ray_range",
+      "depth_sample_m": 2.730727195739746,
+      "center_valid": true,
+      "camera_xyz_m": [
+        0.0,
+        0.0,
+        2.730727195739746
+      ],
+      "camera_axes": "X_right_Y_down_Z_forward",
+      "world_xyz_m": null,
+      "reprojection_roundtrip_error_px": 0.0,
+      "roundtrip_is_accuracy_validation": false,
+      "status": "valid_depth_sample",
+      "uncertainty": {
+        "kind": "local_depth_heuristics_not_probability",
+        "flags": [],
+        "patch_radius_px": 2,
+        "patch_bounds_xyxy_exclusive": [
+          126,
+          126,
+          131,
+          131
+        ],
+        "patch_pixels": 25,
+        "valid_pixels": 25,
+        "valid_fraction": 1.0,
+        "mask_numeric_inconsistency_count": 0,
+        "median_depth_m": 2.730727195739746,
+        "median_absolute_deviation_m": 0.021694660186767578,
+        "minimum_depth_m": 2.688173770904541,
+        "maximum_depth_m": 2.7746503353118896,
+        "depth_range_m": 0.08647656440734863,
+        "center_minus_patch_median_abs_m": 0.0,
+        "applied_depth_jump_threshold_m": 0.1365363597869873,
+        "parameters": {
+          "min_valid_fraction": 0.8,
+          "depth_jump_m": 0.05,
+          "depth_jump_fraction": 0.05
+        }
+      },
+      "neighbor_depth_substituted": false,
+      "semantic_keypoint_detected": false,
+      "observation_index": 0,
+      "public_simulation_time_s": 14.17500073928386,
+      "camera": "robot_0_head",
+      "selection": "image_center_calibration_probe_not_keypoint",
+      "resolution_wh": [
+        256,
+        256
+      ],
+      "intrinsics": [
+        [
+          182.80294486299067,
+          0.0,
+          128.0
+        ],
+        [
+          0.0,
+          182.80294486299067,
+          128.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "intrinsics_source": "saved run_metadata.json public_interface.camera_intrinsics.robot_0_head"
+    },
+    {
+      "pixel_uv": [
+        128,
+        128
+      ],
+      "pixel_coordinate_convention": "zero_based_column_row_no_half_pixel_offset",
+      "rgb_uint8": [
+        232,
+        230,
+        231
+      ],
+      "depth_semantics": "optical_axis_Z_metres_not_ray_range",
+      "depth_sample_m": 1.7322956323623657,
+      "center_valid": true,
+      "camera_xyz_m": [
+        0.0,
+        0.0,
+        1.7322956323623657
+      ],
+      "camera_axes": "X_right_Y_down_Z_forward",
+      "world_xyz_m": null,
+      "reprojection_roundtrip_error_px": 0.0,
+      "roundtrip_is_accuracy_validation": false,
+      "status": "valid_depth_sample",
+      "uncertainty": {
+        "kind": "local_depth_heuristics_not_probability",
+        "flags": [],
+        "patch_radius_px": 2,
+        "patch_bounds_xyxy_exclusive": [
+          126,
+          126,
+          131,
+          131
+        ],
+        "patch_pixels": 25,
+        "valid_pixels": 25,
+        "valid_fraction": 1.0,
+        "mask_numeric_inconsistency_count": 0,
+        "median_depth_m": 1.7322956323623657,
+        "median_absolute_deviation_m": 0.013762116432189941,
+        "minimum_depth_m": 1.7053008079528809,
+        "maximum_depth_m": 1.7601590156555176,
+        "depth_range_m": 0.05485820770263672,
+        "center_minus_patch_median_abs_m": 0.0,
+        "applied_depth_jump_threshold_m": 0.0866147816181183,
+        "parameters": {
+          "min_valid_fraction": 0.8,
+          "depth_jump_m": 0.05,
+          "depth_jump_fraction": 0.05
+        }
+      },
+      "neighbor_depth_substituted": false,
+      "semantic_keypoint_detected": false,
+      "observation_index": 0,
+      "public_simulation_time_s": 14.17500073928386,
+      "camera": "robot_1_head",
+      "selection": "image_center_calibration_probe_not_keypoint",
+      "resolution_wh": [
+        256,
+        256
+      ],
+      "intrinsics": [
+        [
+          182.80294486299067,
+          0.0,
+          128.0
+        ],
+        [
+          0.0,
+          182.80294486299067,
+          128.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "intrinsics_source": "saved run_metadata.json public_interface.camera_intrinsics.robot_1_head"
+    },
+    {
+      "pixel_uv": [
+        128,
+        128
+      ],
+      "pixel_coordinate_convention": "zero_based_column_row_no_half_pixel_offset",
+      "rgb_uint8": [
+        61,
+        57,
+        61
+      ],
+      "depth_semantics": "optical_axis_Z_metres_not_ray_range",
+      "depth_sample_m": 2.5653140544891357,
+      "center_valid": true,
+      "camera_xyz_m": [
+        0.0,
+        0.0,
+        2.5653140544891357
+      ],
+      "camera_axes": "X_right_Y_down_Z_forward",
+      "world_xyz_m": null,
+      "reprojection_roundtrip_error_px": 0.0,
+      "roundtrip_is_accuracy_validation": false,
+      "status": "valid_depth_sample",
+      "uncertainty": {
+        "kind": "local_depth_heuristics_not_probability",
+        "flags": [],
+        "patch_radius_px": 2,
+        "patch_bounds_xyxy_exclusive": [
+          126,
+          126,
+          131,
+          131
+        ],
+        "patch_pixels": 25,
+        "valid_pixels": 25,
+        "valid_fraction": 1.0,
+        "mask_numeric_inconsistency_count": 0,
+        "median_depth_m": 2.567450523376465,
+        "median_absolute_deviation_m": 0.007428884506225586,
+        "minimum_depth_m": 2.553431749343872,
+        "maximum_depth_m": 2.5891966819763184,
+        "depth_range_m": 0.03576493263244629,
+        "center_minus_patch_median_abs_m": 0.0021364688873291016,
+        "applied_depth_jump_threshold_m": 0.12837252616882325,
+        "parameters": {
+          "min_valid_fraction": 0.8,
+          "depth_jump_m": 0.05,
+          "depth_jump_fraction": 0.05
+        }
+      },
+      "neighbor_depth_substituted": false,
+      "semantic_keypoint_detected": false,
+      "observation_index": 2,
+      "public_simulation_time_s": 14.675000765360892,
+      "camera": "overview",
+      "selection": "image_center_calibration_probe_not_keypoint",
+      "resolution_wh": [
+        256,
+        256
+      ],
+      "intrinsics": [
+        [
+          221.7025033688163,
+          0.0,
+          128.0
+        ],
+        [
+          0.0,
+          221.7025033688163,
+          128.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "intrinsics_source": "saved run_metadata.json public_interface.camera_intrinsics.overview"
+    },
+    {
+      "pixel_uv": [
+        128,
+        128
+      ],
+      "pixel_coordinate_convention": "zero_based_column_row_no_half_pixel_offset",
+      "rgb_uint8": [
+        240,
+        237,
+        100
+      ],
+      "depth_semantics": "optical_axis_Z_metres_not_ray_range",
+      "depth_sample_m": 0.20161372423171997,
+      "center_valid": true,
+      "camera_xyz_m": [
+        0.0,
+        0.0,
+        0.20161372423171997
+      ],
+      "camera_axes": "X_right_Y_down_Z_forward",
+      "world_xyz_m": null,
+      "reprojection_roundtrip_error_px": 0.0,
+      "roundtrip_is_accuracy_validation": false,
+      "status": "valid_depth_sample",
+      "uncertainty": {
+        "kind": "local_depth_heuristics_not_probability",
+        "flags": [],
+        "patch_radius_px": 2,
+        "patch_bounds_xyxy_exclusive": [
+          126,
+          126,
+          131,
+          131
+        ],
+        "patch_pixels": 25,
+        "valid_pixels": 25,
+        "valid_fraction": 1.0,
+        "mask_numeric_inconsistency_count": 0,
+        "median_depth_m": 0.2017480731010437,
+        "median_absolute_deviation_m": 0.0002751350402832031,
+        "minimum_depth_m": 0.2010555863380432,
+        "maximum_depth_m": 0.20252782106399536,
+        "depth_range_m": 0.0014722347259521484,
+        "center_minus_patch_median_abs_m": 0.00013434886932373047,
+        "applied_depth_jump_threshold_m": 0.05,
+        "parameters": {
+          "min_valid_fraction": 0.8,
+          "depth_jump_m": 0.05,
+          "depth_jump_fraction": 0.05
+        }
+      },
+      "neighbor_depth_substituted": false,
+      "semantic_keypoint_detected": false,
+      "observation_index": 2,
+      "public_simulation_time_s": 14.675000765360892,
+      "camera": "robot_0_wrist",
+      "selection": "image_center_calibration_probe_not_keypoint",
+      "resolution_wh": [
+        256,
+        256
+      ],
+      "intrinsics": [
+        [
+          182.80294486299067,
+          0.0,
+          128.0
+        ],
+        [
+          0.0,
+          182.80294486299067,
+          128.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "intrinsics_source": "saved run_metadata.json public_interface.camera_intrinsics.robot_0_wrist"
+    },
+    {
+      "pixel_uv": [
+        128,
+        128
+      ],
+      "pixel_coordinate_convention": "zero_based_column_row_no_half_pixel_offset",
+      "rgb_uint8": [
+        244,
+        243,
+        244
+      ],
+      "depth_semantics": "optical_axis_Z_metres_not_ray_range",
+      "depth_sample_m": 0.0,
+      "center_valid": false,
+      "camera_xyz_m": null,
+      "camera_axes": "X_right_Y_down_Z_forward",
+      "world_xyz_m": null,
+      "reprojection_roundtrip_error_px": null,
+      "roundtrip_is_accuracy_validation": false,
+      "status": "invalid",
+      "uncertainty": {
+        "kind": "local_depth_heuristics_not_probability",
+        "flags": [
+          "center_mask_invalid",
+          "center_nonpositive",
+          "low_patch_valid_fraction",
+          "no_valid_patch_depth"
+        ],
+        "patch_radius_px": 2,
+        "patch_bounds_xyxy_exclusive": [
+          126,
+          126,
+          131,
+          131
+        ],
+        "patch_pixels": 25,
+        "valid_pixels": 0,
+        "valid_fraction": 0.0,
+        "mask_numeric_inconsistency_count": 0,
+        "median_depth_m": null,
+        "median_absolute_deviation_m": null,
+        "minimum_depth_m": null,
+        "maximum_depth_m": null,
+        "depth_range_m": null,
+        "center_minus_patch_median_abs_m": null,
+        "applied_depth_jump_threshold_m": null,
+        "parameters": {
+          "min_valid_fraction": 0.8,
+          "depth_jump_m": 0.05,
+          "depth_jump_fraction": 0.05
+        }
+      },
+      "neighbor_depth_substituted": false,
+      "semantic_keypoint_detected": false,
+      "observation_index": 2,
+      "public_simulation_time_s": 14.675000765360892,
+      "camera": "robot_1_wrist",
+      "selection": "image_center_calibration_probe_not_keypoint",
+      "resolution_wh": [
+        256,
+        256
+      ],
+      "intrinsics": [
+        [
+          182.80294486299067,
+          0.0,
+          128.0
+        ],
+        [
+          0.0,
+          182.80294486299067,
+          128.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "intrinsics_source": "saved run_metadata.json public_interface.camera_intrinsics.robot_1_wrist"
+    },
+    {
+      "pixel_uv": [
+        128,
+        128
+      ],
+      "pixel_coordinate_convention": "zero_based_column_row_no_half_pixel_offset",
+      "rgb_uint8": [
+        187,
+        184,
+        188
+      ],
+      "depth_semantics": "optical_axis_Z_metres_not_ray_range",
+      "depth_sample_m": 2.7307345867156982,
+      "center_valid": true,
+      "camera_xyz_m": [
+        0.0,
+        0.0,
+        2.7307345867156982
+      ],
+      "camera_axes": "X_right_Y_down_Z_forward",
+      "world_xyz_m": null,
+      "reprojection_roundtrip_error_px": 0.0,
+      "roundtrip_is_accuracy_validation": false,
+      "status": "valid_depth_sample",
+      "uncertainty": {
+        "kind": "local_depth_heuristics_not_probability",
+        "flags": [],
+        "patch_radius_px": 2,
+        "patch_bounds_xyxy_exclusive": [
+          126,
+          126,
+          131,
+          131
+        ],
+        "patch_pixels": 25,
+        "valid_pixels": 25,
+        "valid_fraction": 1.0,
+        "mask_numeric_inconsistency_count": 0,
+        "median_depth_m": 2.7307345867156982,
+        "median_absolute_deviation_m": 0.021693944931030273,
+        "minimum_depth_m": 2.688180685043335,
+        "maximum_depth_m": 2.774658203125,
+        "depth_range_m": 0.08647751808166504,
+        "center_minus_patch_median_abs_m": 0.0,
+        "applied_depth_jump_threshold_m": 0.13653672933578492,
+        "parameters": {
+          "min_valid_fraction": 0.8,
+          "depth_jump_m": 0.05,
+          "depth_jump_fraction": 0.05
+        }
+      },
+      "neighbor_depth_substituted": false,
+      "semantic_keypoint_detected": false,
+      "observation_index": 2,
+      "public_simulation_time_s": 14.675000765360892,
+      "camera": "robot_0_head",
+      "selection": "image_center_calibration_probe_not_keypoint",
+      "resolution_wh": [
+        256,
+        256
+      ],
+      "intrinsics": [
+        [
+          182.80294486299067,
+          0.0,
+          128.0
+        ],
+        [
+          0.0,
+          182.80294486299067,
+          128.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "intrinsics_source": "saved run_metadata.json public_interface.camera_intrinsics.robot_0_head"
+    },
+    {
+      "pixel_uv": [
+        128,
+        128
+      ],
+      "pixel_coordinate_convention": "zero_based_column_row_no_half_pixel_offset",
+      "rgb_uint8": [
+        232,
+        230,
+        231
+      ],
+      "depth_semantics": "optical_axis_Z_metres_not_ray_range",
+      "depth_sample_m": 1.7322993278503418,
+      "center_valid": true,
+      "camera_xyz_m": [
+        0.0,
+        0.0,
+        1.7322993278503418
+      ],
+      "camera_axes": "X_right_Y_down_Z_forward",
+      "world_xyz_m": null,
+      "reprojection_roundtrip_error_px": 0.0,
+      "roundtrip_is_accuracy_validation": false,
+      "status": "valid_depth_sample",
+      "uncertainty": {
+        "kind": "local_depth_heuristics_not_probability",
+        "flags": [],
+        "patch_radius_px": 2,
+        "patch_bounds_xyxy_exclusive": [
+          126,
+          126,
+          131,
+          131
+        ],
+        "patch_pixels": 25,
+        "valid_pixels": 25,
+        "valid_fraction": 1.0,
+        "mask_numeric_inconsistency_count": 0,
+        "median_depth_m": 1.7322993278503418,
+        "median_absolute_deviation_m": 0.013762831687927246,
+        "minimum_depth_m": 1.7053043842315674,
+        "maximum_depth_m": 1.7601630687713623,
+        "depth_range_m": 0.05485868453979492,
+        "center_minus_patch_median_abs_m": 0.0,
+        "applied_depth_jump_threshold_m": 0.08661496639251709,
+        "parameters": {
+          "min_valid_fraction": 0.8,
+          "depth_jump_m": 0.05,
+          "depth_jump_fraction": 0.05
+        }
+      },
+      "neighbor_depth_substituted": false,
+      "semantic_keypoint_detected": false,
+      "observation_index": 2,
+      "public_simulation_time_s": 14.675000765360892,
+      "camera": "robot_1_head",
+      "selection": "image_center_calibration_probe_not_keypoint",
+      "resolution_wh": [
+        256,
+        256
+      ],
+      "intrinsics": [
+        [
+          182.80294486299067,
+          0.0,
+          128.0
+        ],
+        [
+          0.0,
+          182.80294486299067,
+          128.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "intrinsics_source": "saved run_metadata.json public_interface.camera_intrinsics.robot_1_head"
+    }
+  ],
+  "source_files": {
+    "run_metadata.json": {
+      "sha256": "1fbed0b2d108c303075062158d4977fa01c2875226e8b0e3d03fb0d7b284033d",
+      "fields_used": [
+        "public_interface.camera_intrinsics",
+        "public_interface.camera_calibration.id",
+        "public_interface.camera_calibration.resolution_wh",
+        "public_interface.camera_calibration.intrinsics"
+      ]
+    },
+    "observations/00000/observation.json": {
+      "sha256": "a6ce8457fad4e4411a85e6055e5cda9a0ad0805a17da825d02680125a3a9b77a"
+    },
+    "observations/00000/public_depth.npz": {
+      "sha256": "69aec74c3b7e4f72d6d3d1995da3b99e02315431606768343d84f4d815a8bdb3"
+    },
+    "observations/00000/overview.png": {
+      "sha256": "3b0ffcb7e5a8d6f7067cec0ba5cc1033b97b2debad61f0a5118d6a6ca94d8994"
+    },
+    "observations/00000/robot_0_wrist.png": {
+      "sha256": "9fc7f5ee65162cfa276bf4125ce0c5ec572f8e71a7616e6eb2cb05e2d4d4e430"
+    },
+    "observations/00000/robot_1_wrist.png": {
+      "sha256": "55b0ff689c25cbd5db8a51fbf38d5cc57fdfa984edc8d57db63c9aef1716604b"
+    },
+    "observations/00000/robot_0_head.png": {
+      "sha256": "cc23cd197b29a136cabcf272e7579faa758e99789e7591d93fe42f5078c23c86"
+    },
+    "observations/00000/robot_1_head.png": {
+      "sha256": "70f08d970c690257ba50e74da11fa1e3feaf40ca1c4165d792ab66d0366dfbbe"
+    },
+    "observations/00002/observation.json": {
+      "sha256": "84c3444458739c343af5362004d2c66ad968233a1b7a48ef30338f4a7b5bee62"
+    },
+    "observations/00002/public_depth.npz": {
+      "sha256": "5c07806bc937c65f6e609f990130149588c2bcc1374d10292c1a17fe2e4f1370"
+    },
+    "observations/00002/overview.png": {
+      "sha256": "4ecb4a4deacf2df4348ce1368e4dbd162d8717c284285aafab72061dc220744e"
+    },
+    "observations/00002/robot_0_wrist.png": {
+      "sha256": "c4b2ee073390ec5f8d785bad3a38134f85b8bc8416858b3942e5d5db0a46e2bb"
+    },
+    "observations/00002/robot_1_wrist.png": {
+      "sha256": "ba92f8acf8d77e452027f8e500df1e2ce85bef01a4f944d9250c4f896365fa98"
+    },
+    "observations/00002/robot_0_head.png": {
+      "sha256": "5da1a706e800ed51653073cfdbe3cba16c843fa8a9da29ef5c3fa82464971019"
+    },
+    "observations/00002/robot_1_head.png": {
+      "sha256": "60579751b45f6450a293a9d8d3dcb355e2bde01d2dff0dce3fb20aa8969576ce"
+    }
+  },
+  "module_sha256": "623917e7d0af29ed891a028f4d86d52048035217c10cd185a13604b99573684a",
+  "cpu_wall_s": 0.06479985300029512,
+  "scope": "public optical-Z to camera-XYZ connection and local depth heuristics only",
+  "pose_detector_used": false,
+  "keypoint_accuracy_evaluated": false,
+  "world_extrinsics_used": false,
+  "simulation_ground_truth_used": false,
+  "hdf5_read": false,
+  "live_runtime_modified": false,
+  "sent_to_actor": false
+}

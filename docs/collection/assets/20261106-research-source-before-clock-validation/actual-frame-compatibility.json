@@ -1,0 +1,26 @@
+[
+  {
+    "baseline": "B1b",
+    "frames": 3,
+    "frames_equal": true,
+    "source_hashes_equal": true,
+    "artifact_hashes_equal": true,
+    "prior_files_unchanged": true,
+    "emitted_pairs": null,
+    "original_result_sha256": "8427cb8fbb9057adc923045cb44f86709794f728e6689bad28d544305aeda110"
+  },
+  {
+    "baseline": "B1c",
+    "frames": 5,
+    "frames_equal": true,
+    "source_hashes_equal": true,
+    "artifact_hashes_equal": true,
+    "prior_files_unchanged": true,
+    "emitted_pairs": {
+      "A": 5,
+      "B": 5,
+      "C": 2
+    },
+    "original_result_sha256": "2ace6b343a0a9b2586b228800167182cf79eb331c46287a8d5ebd97fedbedefc"
+  }
+]

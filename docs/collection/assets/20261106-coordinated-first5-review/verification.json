@@ -1,0 +1,14 @@
+{
+  "schema": "phyrc-public-review-checks-v1",
+  "verified_at_utc": "2026-11-06T05:22:01.184209+00:00",
+  "snapshot_sha256": "b9fd0e5b441cce7c2007bdd998dd66ef57ee03223f65c7723fb3edd86e6d7068",
+  "source_sha256_checked": 31,
+  "original_png_byte_matches": 14,
+  "completed_jsonl_prefix_matches": true,
+  "selected_decision_applied_pairs_checked": 14,
+  "step_and_float32_action_alignment": true,
+  "public_allowlist_scan": true,
+  "local_document_links_checked": 57,
+  "live_hdf5_read": false,
+  "final_capture_qc": "pending_capture_close"
+}

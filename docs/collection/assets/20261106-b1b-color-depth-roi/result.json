@@ -1,0 +1,677 @@
+{
+  "schema": "phyrc-offline-color-depth-roi-v1",
+  "baseline": "B1b",
+  "run_id": "20261106-astra-dressing-continue-001",
+  "created_at_utc": "2026-11-06T04:58:24.574418+00:00",
+  "frames": [
+    {
+      "rules": {
+        "blue_min_b": 120,
+        "blue_min_b_minus_r": 40,
+        "blue_min_b_minus_g": 40,
+        "yellow_min_r": 150,
+        "yellow_min_g": 130,
+        "yellow_max_b": 120,
+        "yellow_min_r_minus_b": 70,
+        "yellow_min_g_minus_b": 60,
+        "minimum_blue_pixels": 64,
+        "minimum_component_pixels": 128,
+        "minimum_yellow_pixels": 8,
+        "minimum_yellow_horizontal_span_px": 4,
+        "component_link_radius_px": 1
+      },
+      "selection_input": "RGB_only_depth_not_used_for_selection",
+      "connected_components": 1,
+      "eligible_components": 1,
+      "selected_component": {
+        "original_color_pixels": 4687,
+        "blue_pixels": 3783,
+        "yellow_pixels": 904,
+        "bbox_xyxy_exclusive": [
+          75,
+          151,
+          181,
+          229
+        ],
+        "linking": "dilated union for connectivity; candidates remain ORIGINAL yellow pixels"
+      },
+      "candidates": [
+        {
+          "candidate_id": "image_left",
+          "pixel_uv": [
+            94,
+            222
+          ],
+          "yellow_3x3_support_pixels": 9,
+          "target_u_quantile": 0.1,
+          "selection": "yellow u quantile +/-2px; maximize 3x3 color support; deterministic ties",
+          "semantic_label": "colored_band_edge_candidate_unverified",
+          "grasp_point_validated": false,
+          "depth_probe": {
+            "pixel_uv": [
+              94,
+              222
+            ],
+            "pixel_coordinate_convention": "zero_based_column_row_no_half_pixel_offset",
+            "rgb_uint8": [
+              239,
+              237,
+              109
+            ],
+            "depth_semantics": "optical_axis_Z_metres_not_ray_range",
+            "depth_sample_m": 0.9402120113372803,
+            "center_valid": true,
+            "camera_xyz_m": [
+              -0.17487250224238288,
+              0.48347103561129384,
+              0.9402120113372803
+            ],
+            "camera_axes": "X_right_Y_down_Z_forward",
+            "world_xyz_m": null,
+            "reprojection_roundtrip_error_px": 0.0,
+            "roundtrip_is_accuracy_validation": false,
+            "status": "valid_depth_sample",
+            "uncertainty": {
+              "kind": "local_depth_heuristics_not_probability",
+              "flags": [],
+              "patch_radius_px": 2,
+              "patch_bounds_xyxy_exclusive": [
+                92,
+                220,
+                97,
+                225
+              ],
+              "patch_pixels": 25,
+              "valid_pixels": 25,
+              "valid_fraction": 1.0,
+              "mask_numeric_inconsistency_count": 0,
+              "median_depth_m": 0.949225664138794,
+              "median_absolute_deviation_m": 0.009013652801513672,
+              "minimum_depth_m": 0.9358004331588745,
+              "maximum_depth_m": 0.9849704504013062,
+              "depth_range_m": 0.04917001724243164,
+              "center_minus_patch_median_abs_m": 0.009013652801513672,
+              "applied_depth_jump_threshold_m": 0.05,
+              "parameters": {
+                "min_valid_fraction": 0.8,
+                "depth_jump_m": 0.05,
+                "depth_jump_fraction": 0.05
+              }
+            },
+            "neighbor_depth_substituted": false,
+            "semantic_keypoint_detected": false
+          }
+        },
+        {
+          "candidate_id": "image_right",
+          "pixel_uv": [
+            162,
+            219
+          ],
+          "yellow_3x3_support_pixels": 9,
+          "target_u_quantile": 0.9,
+          "selection": "yellow u quantile +/-2px; maximize 3x3 color support; deterministic ties",
+          "semantic_label": "colored_band_edge_candidate_unverified",
+          "grasp_point_validated": false,
+          "depth_probe": {
+            "pixel_uv": [
+              162,
+              219
+            ],
+            "pixel_coordinate_convention": "zero_based_column_row_no_half_pixel_offset",
+            "rgb_uint8": [
+              230,
+              227,
+              86
+            ],
+            "depth_semantics": "optical_axis_Z_metres_not_ray_range",
+            "depth_sample_m": 0.9467569589614868,
+            "center_valid": true,
+            "camera_xyz_m": [
+              0.17608981424679182,
+              0.47129920871935455,
+              0.9467569589614868
+            ],
+            "camera_axes": "X_right_Y_down_Z_forward",
+            "world_xyz_m": null,
+            "reprojection_roundtrip_error_px": 0.0,
+            "roundtrip_is_accuracy_validation": false,
+            "status": "review_required",
+            "uncertainty": {
+              "kind": "local_depth_heuristics_not_probability",
+              "flags": [
+                "patch_depth_range_exceeds_threshold"
+              ],
+              "patch_radius_px": 2,
+              "patch_bounds_xyxy_exclusive": [
+                160,
+                217,
+                165,
+                222
+              ],
+              "patch_pixels": 25,
+              "valid_pixels": 25,
+              "valid_fraction": 1.0,
+              "mask_numeric_inconsistency_count": 0,
+              "median_depth_m": 0.9551076889038086,
+              "median_absolute_deviation_m": 0.010515093803405762,
+              "minimum_depth_m": 0.9445925951004028,
+              "maximum_depth_m": 1.0089303255081177,
+              "depth_range_m": 0.06433773040771484,
+              "center_minus_patch_median_abs_m": 0.008350729942321777,
+              "applied_depth_jump_threshold_m": 0.05,
+              "parameters": {
+                "min_valid_fraction": 0.8,
+                "depth_jump_m": 0.05,
+                "depth_jump_fraction": 0.05
+              }
+            },
+            "neighbor_depth_substituted": false,
+            "semantic_keypoint_detected": false
+          }
+        }
+      ],
+      "status": "two_color_candidates",
+      "semantic_segmentation_validated": false,
+      "physical_edge_validated": false,
+      "two_gripper_grasp_success_evaluated": false,
+      "cross_frame_correspondence_established": false,
+      "observation_index": 0,
+      "camera": "robot_0_head",
+      "public_simulation_time_s": 14.17500073928386,
+      "intrinsics": [
+        [
+          182.80294486299067,
+          0.0,
+          128.0
+        ],
+        [
+          0.0,
+          182.80294486299067,
+          128.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "intrinsics_source": "saved run_metadata.json public_interface.camera_intrinsics.robot_0_head",
+      "artifacts": {
+        "original_rgb": "obs00000-robot_0_head.png",
+        "annotation_svg": "obs00000-robot_0_head-annotation.svg"
+      }
+    },
+    {
+      "rules": {
+        "blue_min_b": 120,
+        "blue_min_b_minus_r": 40,
+        "blue_min_b_minus_g": 40,
+        "yellow_min_r": 150,
+        "yellow_min_g": 130,
+        "yellow_max_b": 120,
+        "yellow_min_r_minus_b": 70,
+        "yellow_min_g_minus_b": 60,
+        "minimum_blue_pixels": 64,
+        "minimum_component_pixels": 128,
+        "minimum_yellow_pixels": 8,
+        "minimum_yellow_horizontal_span_px": 4,
+        "component_link_radius_px": 1
+      },
+      "selection_input": "RGB_only_depth_not_used_for_selection",
+      "connected_components": 3,
+      "eligible_components": 2,
+      "selected_component": {
+        "original_color_pixels": 2358,
+        "blue_pixels": 1950,
+        "yellow_pixels": 408,
+        "bbox_xyxy_exclusive": [
+          75,
+          153,
+          122,
+          230
+        ],
+        "linking": "dilated union for connectivity; candidates remain ORIGINAL yellow pixels"
+      },
+      "candidates": [
+        {
+          "candidate_id": "image_left",
+          "pixel_uv": [
+            92,
+            222
+          ],
+          "yellow_3x3_support_pixels": 9,
+          "target_u_quantile": 0.1,
+          "selection": "yellow u quantile +/-2px; maximize 3x3 color support; deterministic ties",
+          "semantic_label": "colored_band_edge_candidate_unverified",
+          "grasp_point_validated": false,
+          "depth_probe": {
+            "pixel_uv": [
+              92,
+              222
+            ],
+            "pixel_coordinate_convention": "zero_based_column_row_no_half_pixel_offset",
+            "rgb_uint8": [
+              238,
+              236,
+              109
+            ],
+            "depth_semantics": "optical_axis_Z_metres_not_ray_range",
+            "depth_sample_m": 0.9272428750991821,
+            "center_valid": true,
+            "camera_xyz_m": [
+              -0.18260506431441328,
+              0.4768021123765236,
+              0.9272428750991821
+            ],
+            "camera_axes": "X_right_Y_down_Z_forward",
+            "world_xyz_m": null,
+            "reprojection_roundtrip_error_px": 0.0,
+            "roundtrip_is_accuracy_validation": false,
+            "status": "review_required",
+            "uncertainty": {
+              "kind": "local_depth_heuristics_not_probability",
+              "flags": [
+                "patch_depth_range_exceeds_threshold"
+              ],
+              "patch_radius_px": 2,
+              "patch_bounds_xyxy_exclusive": [
+                90,
+                220,
+                95,
+                225
+              ],
+              "patch_pixels": 25,
+              "valid_pixels": 25,
+              "valid_fraction": 1.0,
+              "mask_numeric_inconsistency_count": 0,
+              "median_depth_m": 0.9339243173599243,
+              "median_absolute_deviation_m": 0.0072928667068481445,
+              "minimum_depth_m": 0.9212039709091187,
+              "maximum_depth_m": 0.9842008352279663,
+              "depth_range_m": 0.06299686431884766,
+              "center_minus_patch_median_abs_m": 0.0066814422607421875,
+              "applied_depth_jump_threshold_m": 0.05,
+              "parameters": {
+                "min_valid_fraction": 0.8,
+                "depth_jump_m": 0.05,
+                "depth_jump_fraction": 0.05
+              }
+            },
+            "neighbor_depth_substituted": false,
+            "semantic_keypoint_detected": false
+          }
+        },
+        {
+          "candidate_id": "image_right",
+          "pixel_uv": [
+            113,
+            223
+          ],
+          "yellow_3x3_support_pixels": 9,
+          "target_u_quantile": 0.9,
+          "selection": "yellow u quantile +/-2px; maximize 3x3 color support; deterministic ties",
+          "semantic_label": "colored_band_edge_candidate_unverified",
+          "grasp_point_validated": false,
+          "depth_probe": {
+            "pixel_uv": [
+              113,
+              223
+            ],
+            "pixel_coordinate_convention": "zero_based_column_row_no_half_pixel_offset",
+            "rgb_uint8": [
+              210,
+              205,
+              51
+            ],
+            "depth_semantics": "optical_axis_Z_metres_not_ray_range",
+            "depth_sample_m": 0.985288143157959,
+            "center_valid": true,
+            "camera_xyz_m": [
+              -0.08084838107201373,
+              0.5120397467894203,
+              0.985288143157959
+            ],
+            "camera_axes": "X_right_Y_down_Z_forward",
+            "world_xyz_m": null,
+            "reprojection_roundtrip_error_px": 0.0,
+            "roundtrip_is_accuracy_validation": false,
+            "status": "valid_depth_sample",
+            "uncertainty": {
+              "kind": "local_depth_heuristics_not_probability",
+              "flags": [],
+              "patch_radius_px": 2,
+              "patch_bounds_xyxy_exclusive": [
+                111,
+                221,
+                116,
+                226
+              ],
+              "patch_pixels": 25,
+              "valid_pixels": 25,
+              "valid_fraction": 1.0,
+              "mask_numeric_inconsistency_count": 0,
+              "median_depth_m": 0.985288143157959,
+              "median_absolute_deviation_m": 0.004459500312805176,
+              "minimum_depth_m": 0.9764517545700073,
+              "maximum_depth_m": 0.9942859411239624,
+              "depth_range_m": 0.017834186553955078,
+              "center_minus_patch_median_abs_m": 0.0,
+              "applied_depth_jump_threshold_m": 0.05,
+              "parameters": {
+                "min_valid_fraction": 0.8,
+                "depth_jump_m": 0.05,
+                "depth_jump_fraction": 0.05
+              }
+            },
+            "neighbor_depth_substituted": false,
+            "semantic_keypoint_detected": false
+          }
+        }
+      ],
+      "status": "two_color_candidates",
+      "semantic_segmentation_validated": false,
+      "physical_edge_validated": false,
+      "two_gripper_grasp_success_evaluated": false,
+      "cross_frame_correspondence_established": false,
+      "observation_index": 2,
+      "camera": "robot_0_head",
+      "public_simulation_time_s": 14.675000765360892,
+      "intrinsics": [
+        [
+          182.80294486299067,
+          0.0,
+          128.0
+        ],
+        [
+          0.0,
+          182.80294486299067,
+          128.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "intrinsics_source": "saved run_metadata.json public_interface.camera_intrinsics.robot_0_head",
+      "artifacts": {
+        "original_rgb": "obs00002-robot_0_head.png",
+        "annotation_svg": "obs00002-robot_0_head-annotation.svg"
+      }
+    },
+    {
+      "rules": {
+        "blue_min_b": 120,
+        "blue_min_b_minus_r": 40,
+        "blue_min_b_minus_g": 40,
+        "yellow_min_r": 150,
+        "yellow_min_g": 130,
+        "yellow_max_b": 120,
+        "yellow_min_r_minus_b": 70,
+        "yellow_min_g_minus_b": 60,
+        "minimum_blue_pixels": 64,
+        "minimum_component_pixels": 128,
+        "minimum_yellow_pixels": 8,
+        "minimum_yellow_horizontal_span_px": 4,
+        "component_link_radius_px": 1
+      },
+      "selection_input": "RGB_only_depth_not_used_for_selection",
+      "connected_components": 1,
+      "eligible_components": 1,
+      "selected_component": {
+        "original_color_pixels": 5784,
+        "blue_pixels": 5255,
+        "yellow_pixels": 529,
+        "bbox_xyxy_exclusive": [
+          63,
+          148,
+          171,
+          249
+        ],
+        "linking": "dilated union for connectivity; candidates remain ORIGINAL yellow pixels"
+      },
+      "candidates": [
+        {
+          "candidate_id": "image_left",
+          "pixel_uv": [
+            82,
+            179
+          ],
+          "yellow_3x3_support_pixels": 9,
+          "target_u_quantile": 0.1,
+          "selection": "yellow u quantile +/-2px; maximize 3x3 color support; deterministic ties",
+          "semantic_label": "colored_band_edge_candidate_unverified",
+          "grasp_point_validated": false,
+          "depth_probe": {
+            "pixel_uv": [
+              82,
+              179
+            ],
+            "pixel_coordinate_convention": "zero_based_column_row_no_half_pixel_offset",
+            "rgb_uint8": [
+              240,
+              239,
+              106
+            ],
+            "depth_semantics": "optical_axis_Z_metres_not_ray_range",
+            "depth_sample_m": 1.2103990316390991,
+            "center_valid": true,
+            "camera_xyz_m": [
+              -0.3045812828514827,
+              0.33768794403099167,
+              1.2103990316390991
+            ],
+            "camera_axes": "X_right_Y_down_Z_forward",
+            "world_xyz_m": null,
+            "reprojection_roundtrip_error_px": 0.0,
+            "roundtrip_is_accuracy_validation": false,
+            "status": "valid_depth_sample",
+            "uncertainty": {
+              "kind": "local_depth_heuristics_not_probability",
+              "flags": [],
+              "patch_radius_px": 2,
+              "patch_bounds_xyxy_exclusive": [
+                80,
+                177,
+                85,
+                182
+              ],
+              "patch_pixels": 25,
+              "valid_pixels": 25,
+              "valid_fraction": 1.0,
+              "mask_numeric_inconsistency_count": 0,
+              "median_depth_m": 1.2122790813446045,
+              "median_absolute_deviation_m": 0.006238341331481934,
+              "minimum_depth_m": 1.1932331323623657,
+              "maximum_depth_m": 1.2258491516113281,
+              "depth_range_m": 0.0326160192489624,
+              "center_minus_patch_median_abs_m": 0.001880049705505371,
+              "applied_depth_jump_threshold_m": 0.060613954067230226,
+              "parameters": {
+                "min_valid_fraction": 0.8,
+                "depth_jump_m": 0.05,
+                "depth_jump_fraction": 0.05
+              }
+            },
+            "neighbor_depth_substituted": false,
+            "semantic_keypoint_detected": false
+          }
+        },
+        {
+          "candidate_id": "image_right",
+          "pixel_uv": [
+            165,
+            192
+          ],
+          "yellow_3x3_support_pixels": 9,
+          "target_u_quantile": 0.9,
+          "selection": "yellow u quantile +/-2px; maximize 3x3 color support; deterministic ties",
+          "semantic_label": "colored_band_edge_candidate_unverified",
+          "grasp_point_validated": false,
+          "depth_probe": {
+            "pixel_uv": [
+              165,
+              192
+            ],
+            "pixel_coordinate_convention": "zero_based_column_row_no_half_pixel_offset",
+            "rgb_uint8": [
+              238,
+              236,
+              105
+            ],
+            "depth_semantics": "optical_axis_Z_metres_not_ray_range",
+            "depth_sample_m": 1.0232456922531128,
+            "center_valid": true,
+            "camera_xyz_m": [
+              0.2071087565998513,
+              0.35824217357812116,
+              1.0232456922531128
+            ],
+            "camera_axes": "X_right_Y_down_Z_forward",
+            "world_xyz_m": null,
+            "reprojection_roundtrip_error_px": 0.0,
+            "roundtrip_is_accuracy_validation": false,
+            "status": "valid_depth_sample",
+            "uncertainty": {
+              "kind": "local_depth_heuristics_not_probability",
+              "flags": [],
+              "patch_radius_px": 2,
+              "patch_bounds_xyxy_exclusive": [
+                163,
+                190,
+                168,
+                195
+              ],
+              "patch_pixels": 25,
+              "valid_pixels": 25,
+              "valid_fraction": 1.0,
+              "mask_numeric_inconsistency_count": 0,
+              "median_depth_m": 1.0232456922531128,
+              "median_absolute_deviation_m": 0.009826302528381348,
+              "minimum_depth_m": 1.008361577987671,
+              "maximum_depth_m": 1.0433635711669922,
+              "depth_range_m": 0.03500199317932129,
+              "center_minus_patch_median_abs_m": 0.0,
+              "applied_depth_jump_threshold_m": 0.051162284612655644,
+              "parameters": {
+                "min_valid_fraction": 0.8,
+                "depth_jump_m": 0.05,
+                "depth_jump_fraction": 0.05
+              }
+            },
+            "neighbor_depth_substituted": false,
+            "semantic_keypoint_detected": false
+          }
+        }
+      ],
+      "status": "two_color_candidates",
+      "semantic_segmentation_validated": false,
+      "physical_edge_validated": false,
+      "two_gripper_grasp_success_evaluated": false,
+      "cross_frame_correspondence_established": false,
+      "observation_index": 12,
+      "camera": "robot_1_head",
+      "public_simulation_time_s": 20.775001083500683,
+      "intrinsics": [
+        [
+          182.80294486299067,
+          0.0,
+          128.0
+        ],
+        [
+          0.0,
+          182.80294486299067,
+          128.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "intrinsics_source": "saved run_metadata.json public_interface.camera_intrinsics.robot_1_head",
+      "artifacts": {
+        "original_rgb": "obs00012-robot_1_head.png",
+        "annotation_svg": "obs00012-robot_1_head-annotation.svg"
+      }
+    }
+  ],
+  "source_files": {
+    "run_metadata.json": {
+      "sha256": "1fbed0b2d108c303075062158d4977fa01c2875226e8b0e3d03fb0d7b284033d",
+      "fields_used": [
+        "public_interface.camera_intrinsics",
+        "public_interface.camera_calibration.id",
+        "public_interface.camera_calibration.intrinsics",
+        "public_interface.camera_calibration.resolution_wh"
+      ]
+    },
+    "observations/00000/robot_0_head.png": {
+      "sha256": "cc23cd197b29a136cabcf272e7579faa758e99789e7591d93fe42f5078c23c86"
+    },
+    "observations/00000/public_depth.npz": {
+      "sha256": "69aec74c3b7e4f72d6d3d1995da3b99e02315431606768343d84f4d815a8bdb3"
+    },
+    "observations/00000/observation.json": {
+      "sha256": "a6ce8457fad4e4411a85e6055e5cda9a0ad0805a17da825d02680125a3a9b77a"
+    },
+    "observations/00002/robot_0_head.png": {
+      "sha256": "5da1a706e800ed51653073cfdbe3cba16c843fa8a9da29ef5c3fa82464971019"
+    },
+    "observations/00002/public_depth.npz": {
+      "sha256": "5c07806bc937c65f6e609f990130149588c2bcc1374d10292c1a17fe2e4f1370"
+    },
+    "observations/00002/observation.json": {
+      "sha256": "84c3444458739c343af5362004d2c66ad968233a1b7a48ef30338f4a7b5bee62"
+    },
+    "observations/00012/robot_1_head.png": {
+      "sha256": "04cee94c7a4be6c1e23bce8ebff1c7ccf586401e8d34d4093069759a843b48cd"
+    },
+    "observations/00012/public_depth.npz": {
+      "sha256": "983148461fc169d5d0221a6829623f47b46899f1f6a875d3a1240d500910efec"
+    },
+    "observations/00012/observation.json": {
+      "sha256": "d76065c02682f363f21dbe28d5a1965e6a85a4a9d3971be181f5313f208a4e1d"
+    }
+  },
+  "artifacts": {
+    "obs00000-robot_0_head.png": {
+      "sha256": "cc23cd197b29a136cabcf272e7579faa758e99789e7591d93fe42f5078c23c86",
+      "bytes": 66699
+    },
+    "obs00000-robot_0_head-annotation.svg": {
+      "sha256": "27c5b80c9616bede4257c6b1dec2b141a5374498a66948e5031e28b74c64b213",
+      "bytes": 89990
+    },
+    "obs00002-robot_0_head.png": {
+      "sha256": "5da1a706e800ed51653073cfdbe3cba16c843fa8a9da29ef5c3fa82464971019",
+      "bytes": 66224
+    },
+    "obs00002-robot_0_head-annotation.svg": {
+      "sha256": "1d60c08101ef6c884c5a40a1da4d511b9cf2942c63ed72f2cacafd0844b1ca52",
+      "bytes": 89357
+    },
+    "obs00012-robot_1_head.png": {
+      "sha256": "04cee94c7a4be6c1e23bce8ebff1c7ccf586401e8d34d4093069759a843b48cd",
+      "bytes": 62485
+    },
+    "obs00012-robot_1_head-annotation.svg": {
+      "sha256": "b28e33c720856b7527e6136c764eea1e73c85fceea18d6b1faca6bab1800ba3e",
+      "bytes": 84375
+    }
+  },
+  "module_sha256": "a9ffaa4c793cfb223689db8d5f41a3b8328035ca0418d9e4b62df845441c485d",
+  "B1_dependency_sha256": "623917e7d0af29ed891a028f4d86d52048035217c10cd185a13604b99573684a",
+  "cpu_wall_s": 0.09944655700019212,
+  "scope": "scene-specific color-component and public RGB-D connection pilot",
+  "official_demo_frames_used": false,
+  "material_ground_truth_used": false,
+  "simulation_geometry_used": false,
+  "hdf5_read": false,
+  "evaluation_used": false,
+  "pose_accuracy_evaluated": false,
+  "model_calls": 0,
+  "live_runtime_modified": false,
+  "sent_to_actor": false
+}

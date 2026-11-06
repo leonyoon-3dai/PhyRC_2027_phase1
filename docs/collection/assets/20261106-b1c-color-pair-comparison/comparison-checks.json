@@ -1,0 +1,32 @@
+{
+  "schema": "phyrc-offline-comparison-checks-v1",
+  "baseline": "B1c",
+  "result_sha256": "2ace6b343a0a9b2586b228800167182cf79eb331c46287a8d5ebd97fedbedefc",
+  "preserved_B1b_result_sha256": "8427cb8fbb9057adc923045cb44f86709794f728e6689bad28d544305aeda110",
+  "A_matches_original_B1b_exactly_on": [
+    {
+      "observation_index": 0,
+      "camera": "robot_0_head"
+    },
+    {
+      "observation_index": 2,
+      "camera": "robot_0_head"
+    },
+    {
+      "observation_index": 12,
+      "camera": "robot_1_head"
+    }
+  ],
+  "input_hashes_verified": 16,
+  "artifact_hashes_verified": 10,
+  "embedded_original_png_and_svg_coordinates_verified": true,
+  "B1_and_B1b_module_hashes_unchanged": true,
+  "known_obs2_regression": {
+    "A_same_fragment_preserved": true,
+    "B_candidates_on_different_visible_components": true,
+    "C_emitted_pair_is_empty": true,
+    "semantic_or_grasp_success_claimed": false
+  },
+  "CPU_tests_passed": 8,
+  "held_out_accuracy_evaluated": false
+}

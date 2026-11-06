@@ -1,0 +1,5818 @@
+{
+  "schema": "phyrc-public-gripper-settling-review-v1",
+  "created_at_utc": "2026-11-06T05:04:08.125386+00:00",
+  "analysis_scope": "closed E05/E06 public HDF5 scalar observations/actions only; no grasp determination",
+  "fields_not_read": [
+    "RGB/depth image arrays",
+    "audit",
+    "evaluation",
+    "seed",
+    "internal geometry"
+  ],
+  "joint_indices": [
+    11,
+    12
+  ],
+  "joint_names": [
+    "gripper_finger_left_joint",
+    "gripper_finger_right_joint"
+  ],
+  "thresholds": {
+    "max_abs_finger_velocity_rad_s": 0.1,
+    "max_per_transition_distance_change_m": 0.0005,
+    "consecutive_transition_counts": [
+      3,
+      8
+    ],
+    "status": "posthoc illustrative thresholds; not validated controller parameters"
+  },
+  "sources": [
+    {
+      "run_id": "20261106-astra-pickup-hold5-001",
+      "local_relative_file": "output/collections/20261106-astra-pickup-hold5-001/policy.hdf5",
+      "file_size_bytes": 669808021,
+      "complete": true,
+      "demo": "data/demo_0",
+      "transition_count": 253,
+      "read_public_fields": [
+        "simulation_time_s",
+        "joint_position",
+        "joint_velocity",
+        "fingertip_origin_distance",
+        "gripper_close_command",
+        "controller_target"
+      ],
+      "arrays": {
+        "obs/simulation_time_s": {
+          "shape": [
+            253,
+            1
+          ],
+          "dtype": "float64",
+          "array_bytes_sha256": "d87c728f538bc45b616fd3378026612deb872958d1b502ef527621855025787d"
+        },
+        "obs/joint_position": {
+          "shape": [
+            253,
+            26
+          ],
+          "dtype": "float32",
+          "array_bytes_sha256": "259eadc10b3fa78c9a5531f64f08cca00923d3c417c5e8103d58c2828dcb25f1"
+        },
+        "obs/joint_velocity": {
+          "shape": [
+            253,
+            26
+          ],
+          "dtype": "float32",
+          "array_bytes_sha256": "d25c00e3e106139ef93697c37cb0d134cb443b97bb949f74028a371530c04ea4"
+        },
+        "obs/fingertip_origin_distance": {
+          "shape": [
+            253,
+            2
+          ],
+          "dtype": "float32",
+          "array_bytes_sha256": "bbad6fe6167fbe54136cc2acb0440d9ad16154fd9502cddebc58d4f1fe74907c"
+        },
+        "obs/gripper_close_command": {
+          "shape": [
+            253,
+            2
+          ],
+          "dtype": "bool",
+          "array_bytes_sha256": "8069cc6d0fa45c0780c9b386aff1cfae9597d76498a611db3282754d96fb1255"
+        },
+        "obs/controller_target": {
+          "shape": [
+            253,
+            18
+          ],
+          "dtype": "float32",
+          "array_bytes_sha256": "38c18c22a2adbbafb5733bdf735bff15a14f33b71357136e3002301aa555d59a"
+        },
+        "next_obs/simulation_time_s": {
+          "shape": [
+            253,
+            1
+          ],
+          "dtype": "float64",
+          "array_bytes_sha256": "4903a03e713df99d2caa959651365f416735a2e279e5ab99182036707bc970d2"
+        },
+        "next_obs/joint_position": {
+          "shape": [
+            253,
+            26
+          ],
+          "dtype": "float32",
+          "array_bytes_sha256": "678bba40f05d2cb0884eff3a07544e04f1d647d1b6fd8176ff976e50ceb955b4"
+        },
+        "next_obs/joint_velocity": {
+          "shape": [
+            253,
+            26
+          ],
+          "dtype": "float32",
+          "array_bytes_sha256": "cf49c374ccef20d774918426a5a1ceb4bbe2f8a2615b7ee9cb243ce622a48878"
+        },
+        "next_obs/fingertip_origin_distance": {
+          "shape": [
+            253,
+            2
+          ],
+          "dtype": "float32",
+          "array_bytes_sha256": "b8eeb35f8e1f2ba0cb04416f0cc7ec61e2a4614ff6468b149db1e00b02e7daf8"
+        },
+        "next_obs/gripper_close_command": {
+          "shape": [
+            253,
+            2
+          ],
+          "dtype": "bool",
+          "array_bytes_sha256": "3d3329ec96b100a1df94843b588ede1cd8778e4e7647b87d6c6e79afb729513a"
+        },
+        "next_obs/controller_target": {
+          "shape": [
+            253,
+            18
+          ],
+          "dtype": "float32",
+          "array_bytes_sha256": "4872918f7b29cec542fb3a2c440ac5ad27a6bab52d9584a77db2e052c59460dc"
+        },
+        "actions": {
+          "shape": [
+            253,
+            2,
+            9
+          ],
+          "dtype": "float32",
+          "array_bytes_sha256": "f11d0505df2e21fa2cb1a0bda0f43a7c640fd1bc191f5f704e42de817c89a768"
+        }
+      },
+      "full_hdf5_sha256_computed": false
+    },
+    {
+      "run_id": "20261106-astra-dressing-continue-001",
+      "local_relative_file": "output/collections/20261106-astra-dressing-continue-001/policy.hdf5",
+      "file_size_bytes": 1056102181,
+      "complete": true,
+      "demo": "data/demo_0",
+      "transition_count": 386,
+      "read_public_fields": [
+        "simulation_time_s",
+        "joint_position",
+        "joint_velocity",
+        "fingertip_origin_distance",
+        "gripper_close_command",
+        "controller_target"
+      ],
+      "arrays": {
+        "obs/simulation_time_s": {
+          "shape": [
+            386,
+            1
+          ],
+          "dtype": "float64",
+          "array_bytes_sha256": "7e99cdac0599111420dd41e94a04653462910850a3366237f07aa3843c229423"
+        },
+        "obs/joint_position": {
+          "shape": [
+            386,
+            26
+          ],
+          "dtype": "float32",
+          "array_bytes_sha256": "ee85597747ba72e836cab349871adbc1ce7cfe250c285060e58f137ce0139471"
+        },
+        "obs/joint_velocity": {
+          "shape": [
+            386,
+            26
+          ],
+          "dtype": "float32",
+          "array_bytes_sha256": "9ac05e84c30c69f9ae2bb18b5c5304b8fc08d08693a21a788fe56818b718d2d4"
+        },
+        "obs/fingertip_origin_distance": {
+          "shape": [
+            386,
+            2
+          ],
+          "dtype": "float32",
+          "array_bytes_sha256": "837872cd835de0c855926c6d8fd5612edcc90c2fe3447ba58b9ce235ff1d7ce7"
+        },
+        "obs/gripper_close_command": {
+          "shape": [
+            386,
+            2
+          ],
+          "dtype": "bool",
+          "array_bytes_sha256": "a27d936c92952ee0f4139e4654bfd559f26acc7522651679186d229c350f3622"
+        },
+        "obs/controller_target": {
+          "shape": [
+            386,
+            18
+          ],
+          "dtype": "float32",
+          "array_bytes_sha256": "265fafe24bfaf7d3aaa5a7874383c334510289e11adf2f0b456565883db945fa"
+        },
+        "next_obs/simulation_time_s": {
+          "shape": [
+            386,
+            1
+          ],
+          "dtype": "float64",
+          "array_bytes_sha256": "988fb59dd159f55ef8713338527e5776a73b5d7a5f4ace36a602ce01e0c65e2d"
+        },
+        "next_obs/joint_position": {
+          "shape": [
+            386,
+            26
+          ],
+          "dtype": "float32",
+          "array_bytes_sha256": "7a6fd6ac0b7e0ee1d59cab66b9b01c88531d54fec261c2c26834cdbb92346b29"
+        },
+        "next_obs/joint_velocity": {
+          "shape": [
+            386,
+            26
+          ],
+          "dtype": "float32",
+          "array_bytes_sha256": "598d6e30f116e478a143d815986fd5c624e45683b9274acf5e42d6159031249c"
+        },
+        "next_obs/fingertip_origin_distance": {
+          "shape": [
+            386,
+            2
+          ],
+          "dtype": "float32",
+          "array_bytes_sha256": "a2a456f16dbe766677e9d6545dfa4ab394adcba638b884425fa509788dae9e24"
+        },
+        "next_obs/gripper_close_command": {
+          "shape": [
+            386,
+            2
+          ],
+          "dtype": "bool",
+          "array_bytes_sha256": "88e0f560bd8495f4a94b3909362964b56e9a7687c21c45b5208e596e955e1620"
+        },
+        "next_obs/controller_target": {
+          "shape": [
+            386,
+            18
+          ],
+          "dtype": "float32",
+          "array_bytes_sha256": "f3c7f4afa04c30e4137fbf79f125a7185c9676c68c32dbf5d881e453810669e7"
+        },
+        "actions": {
+          "shape": [
+            386,
+            2,
+            9
+          ],
+          "dtype": "float32",
+          "array_bytes_sha256": "8b4e1fb629c8c97a7256ff31e36f1b3a2895afde9635854c5f4e451b6adcbf5e"
+        }
+      },
+      "full_hdf5_sha256_computed": false
+    }
+  ],
+  "segments": [
+    {
+      "run_id": "20261106-astra-pickup-hold5-001",
+      "robot_index": 0,
+      "start_transition": 82,
+      "close_interval_end_exclusive": 114,
+      "end_reason": "next_open_action",
+      "observed_duration_s": 1.6000000834465027,
+      "start_simulation_time_s": 5.625000293366611,
+      "initial_distance_m": 0.18880096077919006,
+      "final_distance_m": 0.041749849915504456,
+      "first_quiet_windows": {
+        "3": {
+          "transition_index": 84,
+          "observed_at_simulation_s": 5.775000301189721,
+          "elapsed_from_close_s": 0.15000000782310963,
+          "fingertip_origin_distance_m": 0.18831948935985565,
+          "finger_max_abs_velocity_rad_s": 0.06011839210987091,
+          "max_later_distance_change_m": 0.1465696394443512
+        },
+        "8": null
+      },
+      "non_gripper_action_transition_count": 24,
+      "selected_rows_end_exclusive": 114,
+      "selected_rows": [
+        {
+          "transition_index": 82,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 5.625000293366611,
+            "close_intent": false,
+            "finger_joint_positions_rad": [
+              0.5001953840255737,
+              0.5000280737876892
+            ],
+            "finger_joint_velocities_rad_s": [
+              0.03370628133416176,
+              0.062397219240665436
+            ],
+            "fingertip_origin_distance_m": 0.18880096077919006,
+            "controller_grip_target_rad": 0.5
+          },
+          "next_obs": {
+            "simulation_time_s": 5.675000295974314,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.5001407861709595,
+              0.5000222325325012
+            ],
+            "finger_joint_velocities_rad_s": [
+              0.01173302810639143,
+              0.0599883571267128
+            ],
+            "fingertip_origin_distance_m": 0.1887902170419693,
+            "controller_grip_target_rad": 0.4503749907016754
+          }
+        },
+        {
+          "transition_index": 83,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 5.675000295974314,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.5001407861709595,
+              0.5000222325325012
+            ],
+            "finger_joint_velocities_rad_s": [
+              0.01173302810639143,
+              0.0599883571267128
+            ],
+            "fingertip_origin_distance_m": 0.1887902170419693,
+            "controller_grip_target_rad": 0.4503749907016754
+          },
+          "next_obs": {
+            "simulation_time_s": 5.725000298582017,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.5001354813575745,
+              0.4987559914588928
+            ],
+            "finger_joint_velocities_rad_s": [
+              0.0021711348090320826,
+              0.07475282996892929
+            ],
+            "fingertip_origin_distance_m": 0.18856345117092133,
+            "controller_grip_target_rad": 0.4007500112056732
+          }
+        },
+        {
+          "transition_index": 84,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 5.725000298582017,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.5001354813575745,
+              0.4987559914588928
+            ],
+            "finger_joint_velocities_rad_s": [
+              0.0021711348090320826,
+              0.07475282996892929
+            ],
+            "fingertip_origin_distance_m": 0.18856345117092133,
+            "controller_grip_target_rad": 0.4007500112056732
+          },
+          "next_obs": {
+            "simulation_time_s": 5.775000301189721,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.5000268816947937,
+              0.49749696254730225
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.06011839210987091,
+              -0.029902979731559753
+            ],
+            "fingertip_origin_distance_m": 0.18831948935985565,
+            "controller_grip_target_rad": 0.35112500190734863
+          }
+        },
+        {
+          "transition_index": 85,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 5.775000301189721,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.5000268816947937,
+              0.49749696254730225
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.06011839210987091,
+              -0.029902979731559753
+            ],
+            "fingertip_origin_distance_m": 0.18831948935985565,
+            "controller_grip_target_rad": 0.35112500190734863
+          },
+          "next_obs": {
+            "simulation_time_s": 5.825000303797424,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.4999954402446747,
+              0.49763232469558716
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.015308914706110954,
+              0.030946355313062668
+            ],
+            "fingertip_origin_distance_m": 0.1883382648229599,
+            "controller_grip_target_rad": 0.30149999260902405
+          }
+        },
+        {
+          "transition_index": 86,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 5.825000303797424,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.4999954402446747,
+              0.49763232469558716
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.015308914706110954,
+              0.030946355313062668
+            ],
+            "fingertip_origin_distance_m": 0.1883382648229599,
+            "controller_grip_target_rad": 0.30149999260902405
+          },
+          "next_obs": {
+            "simulation_time_s": 5.875000306405127,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.5000214576721191,
+              0.49765732884407043
+            ],
+            "finger_joint_velocities_rad_s": [
+              0.1678524762392044,
+              0.052308350801467896
+            ],
+            "fingertip_origin_distance_m": 0.1883472204208374,
+            "controller_grip_target_rad": 0.25187501311302185
+          }
+        },
+        {
+          "transition_index": 87,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 5.875000306405127,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.5000214576721191,
+              0.49765732884407043
+            ],
+            "finger_joint_velocities_rad_s": [
+              0.1678524762392044,
+              0.052308350801467896
+            ],
+            "fingertip_origin_distance_m": 0.1883472204208374,
+            "controller_grip_target_rad": 0.25187501311302185
+          },
+          "next_obs": {
+            "simulation_time_s": 5.92500030901283,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.5000295042991638,
+              0.49761003255844116
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.01788656786084175,
+              0.05945277586579323
+            ],
+            "fingertip_origin_distance_m": 0.18834024667739868,
+            "controller_grip_target_rad": 0.20225000381469727
+          }
+        },
+        {
+          "transition_index": 88,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 5.92500030901283,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.5000295042991638,
+              0.49761003255844116
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.01788656786084175,
+              0.05945277586579323
+            ],
+            "fingertip_origin_distance_m": 0.18834024667739868,
+            "controller_grip_target_rad": 0.20225000381469727
+          },
+          "next_obs": {
+            "simulation_time_s": 5.9750003116205335,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.5000311732292175,
+              0.49761322140693665
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.00032263388857245445,
+              0.0705709457397461
+            ],
+            "fingertip_origin_distance_m": 0.18834125995635986,
+            "controller_grip_target_rad": 0.15262499451637268
+          }
+        },
+        {
+          "transition_index": 89,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 5.9750003116205335,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.5000311732292175,
+              0.49761322140693665
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.00032263388857245445,
+              0.0705709457397461
+            ],
+            "fingertip_origin_distance_m": 0.18834125995635986,
+            "controller_grip_target_rad": 0.15262499451637268
+          },
+          "next_obs": {
+            "simulation_time_s": 6.025000314228237,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.500043511390686,
+              0.4975690245628357
+            ],
+            "finger_joint_velocities_rad_s": [
+              0.0006501693278551102,
+              0.08805663138628006
+            ],
+            "fingertip_origin_distance_m": 0.18833541870117188,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 90,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.10000000149011612,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 6.025000314228237,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.500043511390686,
+              0.4975690245628357
+            ],
+            "finger_joint_velocities_rad_s": [
+              0.0006501693278551102,
+              0.08805663138628006
+            ],
+            "fingertip_origin_distance_m": 0.18833541870117188,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 6.07500031683594,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.500106692314148,
+              0.49666160345077515
+            ],
+            "finger_joint_velocities_rad_s": [
+              0.002584119327366352,
+              -0.5027257204055786
+            ],
+            "fingertip_origin_distance_m": 0.18818476796150208,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 91,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.10000000149011612,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 6.07500031683594,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.500106692314148,
+              0.49666160345077515
+            ],
+            "finger_joint_velocities_rad_s": [
+              0.002584119327366352,
+              -0.5027257204055786
+            ],
+            "fingertip_origin_distance_m": 0.18818476796150208,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 6.125000319443643,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.4985743463039398,
+              0.48706716299057007
+            ],
+            "finger_joint_velocities_rad_s": [
+              0.05552447587251663,
+              -0.22166168689727783
+            ],
+            "fingertip_origin_distance_m": 0.18619732558727264,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 92,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.10000000149011612,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 6.125000319443643,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.4985743463039398,
+              0.48706716299057007
+            ],
+            "finger_joint_velocities_rad_s": [
+              0.05552447587251663,
+              -0.22166168689727783
+            ],
+            "fingertip_origin_distance_m": 0.18619732558727264,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 6.175000322051346,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.49912402033805847,
+              0.4755588471889496
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.04052310436964035,
+              -2.755708932876587
+            ],
+            "fingertip_origin_distance_m": 0.1842343956232071,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 93,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.10000000149011612,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 6.175000322051346,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.49912402033805847,
+              0.4755588471889496
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.04052310436964035,
+              -2.755708932876587
+            ],
+            "fingertip_origin_distance_m": 0.1842343956232071,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 6.2250003246590495,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.47548484802246094,
+              0.44525542855262756
+            ],
+            "finger_joint_velocities_rad_s": [
+              -1.3857731819152832,
+              -0.8042412996292114
+            ],
+            "fingertip_origin_distance_m": 0.17451927065849304,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 94,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.10000000149011612,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 6.2250003246590495,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.47548484802246094,
+              0.44525542855262756
+            ],
+            "finger_joint_velocities_rad_s": [
+              -1.3857731819152832,
+              -0.8042412996292114
+            ],
+            "fingertip_origin_distance_m": 0.17451927065849304,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 6.275000327266753,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.4189474284648895,
+              0.3936937749385834
+            ],
+            "finger_joint_velocities_rad_s": [
+              -1.0892915725708008,
+              -1.023053526878357
+            ],
+            "fingertip_origin_distance_m": 0.15477755665779114,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 95,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.10000000149011612,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 6.275000327266753,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.4189474284648895,
+              0.3936937749385834
+            ],
+            "finger_joint_velocities_rad_s": [
+              -1.0892915725708008,
+              -1.023053526878357
+            ],
+            "fingertip_origin_distance_m": 0.15477755665779114,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 6.325000329874456,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.36912375688552856,
+              0.34402352571487427
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.840053379535675,
+              -0.916000247001648
+            ],
+            "fingertip_origin_distance_m": 0.13632027804851532,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 96,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.10000000149011612,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 6.325000329874456,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.36912375688552856,
+              0.34402352571487427
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.840053379535675,
+              -0.916000247001648
+            ],
+            "fingertip_origin_distance_m": 0.13632027804851532,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 6.375000332482159,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.3279150426387787,
+              0.30297306180000305
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.7475678324699402,
+              -0.7377657890319824
+            ],
+            "fingertip_origin_distance_m": 0.12088681012392044,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 97,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.10000000149011612,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 6.375000332482159,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.3279150426387787,
+              0.30297306180000305
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.7475678324699402,
+              -0.7377657890319824
+            ],
+            "fingertip_origin_distance_m": 0.12088681012392044,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 6.425000335089862,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.2918550372123718,
+              0.26875364780426025
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.6578740477561951,
+              -0.6136633157730103
+            ],
+            "fingertip_origin_distance_m": 0.10759790986776352,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 98,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.10000000149011612,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 6.425000335089862,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.2918550372123718,
+              0.26875364780426025
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.6578740477561951,
+              -0.6136633157730103
+            ],
+            "fingertip_origin_distance_m": 0.10759790986776352,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 6.4750003376975656,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.2604571580886841,
+              0.24095068871974945
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.5930981040000916,
+              -0.514988362789154
+            ],
+            "fingertip_origin_distance_m": 0.0963427796959877,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 99,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.10000000149011612,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 6.4750003376975656,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.2604571580886841,
+              0.24095068871974945
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.5930981040000916,
+              -0.514988362789154
+            ],
+            "fingertip_origin_distance_m": 0.0963427796959877,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 6.525000340305269,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.230381578207016,
+              0.21525420248508453
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.5812293887138367,
+              -0.48259496688842773
+            ],
+            "fingertip_origin_distance_m": 0.08569803088903427,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 100,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.10000000149011612,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 6.525000340305269,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.230381578207016,
+              0.21525420248508453
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.5812293887138367,
+              -0.48259496688842773
+            ],
+            "fingertip_origin_distance_m": 0.08569803088903427,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 6.575000342912972,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.20585936307907104,
+              0.1943354457616806
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.41010186076164246,
+              -0.3464931547641754
+            ],
+            "fingertip_origin_distance_m": 0.0770009234547615,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 101,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.10000000149011612,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 6.575000342912972,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.20585936307907104,
+              0.1943354457616806
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.41010186076164246,
+              -0.3464931547641754
+            ],
+            "fingertip_origin_distance_m": 0.0770009234547615,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 6.625000345520675,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.1877310872077942,
+              0.17900459468364716
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.2993157207965851,
+              -0.2681833803653717
+            ],
+            "fingertip_origin_distance_m": 0.07058600336313248,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 102,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.10000000149011612,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 6.625000345520675,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.1877310872077942,
+              0.17900459468364716
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.2993157207965851,
+              -0.2681833803653717
+            ],
+            "fingertip_origin_distance_m": 0.07058600336313248,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 6.675000348128378,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.17518064379692078,
+              0.16803793609142303
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.2019185572862625,
+              -0.18338754773139954
+            ],
+            "fingertip_origin_distance_m": 0.06607262790203094,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 103,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.10000000149011612,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 6.675000348128378,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.17518064379692078,
+              0.16803793609142303
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.2019185572862625,
+              -0.18338754773139954
+            ],
+            "fingertip_origin_distance_m": 0.06607262790203094,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 6.725000350736082,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.16576071083545685,
+              0.1599864959716797
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.18172186613082886,
+              -0.16357916593551636
+            ],
+            "fingertip_origin_distance_m": 0.06271786242723465,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 104,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.10000000149011612,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 6.725000350736082,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.16576071083545685,
+              0.1599864959716797
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.18172186613082886,
+              -0.16357916593551636
+            ],
+            "fingertip_origin_distance_m": 0.06271786242723465,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 6.775000353343785,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.1532667726278305,
+              0.14879438281059265
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.2476091831922531,
+              -0.23430445790290833
+            ],
+            "fingertip_origin_distance_m": 0.05816683918237686,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 105,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.10000000149011612,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 6.775000353343785,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.1532667726278305,
+              0.14879438281059265
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.2476091831922531,
+              -0.23430445790290833
+            ],
+            "fingertip_origin_distance_m": 0.05816683918237686,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 6.825000355951488,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.14214642345905304,
+              0.13866230845451355
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.1968226581811905,
+              -0.17812292277812958
+            ],
+            "fingertip_origin_distance_m": 0.05408215522766113,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 106,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.10000000149011612,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 6.825000355951488,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.14214642345905304,
+              0.13866230845451355
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.1968226581811905,
+              -0.17812292277812958
+            ],
+            "fingertip_origin_distance_m": 0.05408215522766113,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 6.875000358559191,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.1335092931985855,
+              0.13079170882701874
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.15306511521339417,
+              -0.13896693289279938
+            ],
+            "fingertip_origin_distance_m": 0.05090845748782158,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 107,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.10000000149011612,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 6.875000358559191,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.1335092931985855,
+              0.13079170882701874
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.15306511521339417,
+              -0.13896693289279938
+            ],
+            "fingertip_origin_distance_m": 0.05090845748782158,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 6.925000361166894,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.1268000304698944,
+              0.12467936426401138
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.11861509829759598,
+              -0.10916808992624283
+            ],
+            "fingertip_origin_distance_m": 0.04844333603978157,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 108,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.10000000149011612,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 6.925000361166894,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.1268000304698944,
+              0.12467936426401138
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.11861509829759598,
+              -0.10916808992624283
+            ],
+            "fingertip_origin_distance_m": 0.04844333603978157,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 6.975000363774598,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.12158926576375961,
+              0.11993121355772018
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.09116389602422714,
+              -0.08679036796092987
+            ],
+            "fingertip_origin_distance_m": 0.04652848094701767,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 109,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.10000000149011612,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 6.975000363774598,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.12158926576375961,
+              0.11993121355772018
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.09116389602422714,
+              -0.08679036796092987
+            ],
+            "fingertip_origin_distance_m": 0.04652848094701767,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 7.025000366382301,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.11754023283720016,
+              0.11624481528997421
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.0724390521645546,
+              -0.06643681973218918
+            ],
+            "fingertip_origin_distance_m": 0.04504098743200302,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 110,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.10000000149011612,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 7.025000366382301,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.11754023283720016,
+              0.11624481528997421
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.0724390521645546,
+              -0.06643681973218918
+            ],
+            "fingertip_origin_distance_m": 0.04504098743200302,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 7.075000368990004,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.11439736187458038,
+              0.11337915807962418
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.056370750069618225,
+              -0.05238153785467148
+            ],
+            "fingertip_origin_distance_m": 0.04388560727238655,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 111,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.10000000149011612,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 7.075000368990004,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.11439736187458038,
+              0.11337915807962418
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.056370750069618225,
+              -0.05238153785467148
+            ],
+            "fingertip_origin_distance_m": 0.04388560727238655,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 7.125000371597707,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.11195559054613113,
+              0.11115401238203049
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.04532187059521675,
+              -0.039627380669116974
+            ],
+            "fingertip_origin_distance_m": 0.04298831894993782,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 112,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.10000000149011612,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 7.125000371597707,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.11195559054613113,
+              0.11115401238203049
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.04532187059521675,
+              -0.039627380669116974
+            ],
+            "fingertip_origin_distance_m": 0.04298831894993782,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 7.1750003742054105,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.1100592389702797,
+              0.109425388276577
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.030238144099712372,
+              -0.03712628781795502
+            ],
+            "fingertip_origin_distance_m": 0.04229118302464485,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 113,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.10000000149011612,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 7.1750003742054105,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.1100592389702797,
+              0.109425388276577
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.030238144099712372,
+              -0.03712628781795502
+            ],
+            "fingertip_origin_distance_m": 0.04229118302464485,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 7.225000376813114,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.10858597606420517,
+              0.1080828309059143
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.028306670486927032,
+              -0.024273358285427094
+            ],
+            "fingertip_origin_distance_m": 0.041749849915504456,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        }
+      ],
+      "selected_rows_sha256": "9235ce9ede4342f219bdf9844be07556bafa6c08d4e5936cccc298e24ff78d0b"
+    },
+    {
+      "run_id": "20261106-astra-pickup-hold5-001",
+      "robot_index": 0,
+      "start_transition": 136,
+      "close_interval_end_exclusive": 253,
+      "end_reason": "closed_episode_end",
+      "observed_duration_s": 5.850000305101275,
+      "start_simulation_time_s": 8.325000434182584,
+      "initial_distance_m": 0.1862490475177765,
+      "final_distance_m": 0.07356281578540802,
+      "first_quiet_windows": {
+        "3": {
+          "transition_index": 147,
+          "observed_at_simulation_s": 8.925000465475023,
+          "elapsed_from_close_s": 0.6000000312924385,
+          "fingertip_origin_distance_m": 0.13467192649841309,
+          "finger_max_abs_velocity_rad_s": 0.003858080832287669,
+          "max_later_distance_change_m": 0.06478864699602127
+        },
+        "8": {
+          "transition_index": 179,
+          "observed_at_simulation_s": 10.525000548921525,
+          "elapsed_from_close_s": 2.200000114738941,
+          "fingertip_origin_distance_m": 0.07032166421413422,
+          "finger_max_abs_velocity_rad_s": 0.01406373642385006,
+          "max_later_distance_change_m": 0.0032586753368377686
+        }
+      },
+      "non_gripper_action_transition_count": 34,
+      "selected_rows_end_exclusive": 186,
+      "selected_rows": [
+        {
+          "transition_index": 136,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 8.325000434182584,
+            "close_intent": false,
+            "finger_joint_positions_rad": [
+              0.49293777346611023,
+              0.4929909110069275
+            ],
+            "finger_joint_velocities_rad_s": [
+              0.031010879203677177,
+              0.034922271966934204
+            ],
+            "fingertip_origin_distance_m": 0.1862490475177765,
+            "controller_grip_target_rad": 0.5
+          },
+          "next_obs": {
+            "simulation_time_s": 8.375000436790287,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.4865579605102539,
+              0.486842542886734
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.18576227128505707,
+              -0.1777636706829071
+            ],
+            "fingertip_origin_distance_m": 0.18400700390338898,
+            "controller_grip_target_rad": 0.4503749907016754
+          }
+        },
+        {
+          "transition_index": 137,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 8.375000436790287,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.4865579605102539,
+              0.486842542886734
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.18576227128505707,
+              -0.1777636706829071
+            ],
+            "fingertip_origin_distance_m": 0.18400700390338898,
+            "controller_grip_target_rad": 0.4503749907016754
+          },
+          "next_obs": {
+            "simulation_time_s": 8.42500043939799,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.4739454388618469,
+              0.4727039933204651
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.19194231927394867,
+              -0.19456925988197327
+            ],
+            "fingertip_origin_distance_m": 0.1792009174823761,
+            "controller_grip_target_rad": 0.4007500112056732
+          }
+        },
+        {
+          "transition_index": 138,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 8.42500043939799,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.4739454388618469,
+              0.4727039933204651
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.19194231927394867,
+              -0.19456925988197327
+            ],
+            "fingertip_origin_distance_m": 0.1792009174823761,
+            "controller_grip_target_rad": 0.4007500112056732
+          },
+          "next_obs": {
+            "simulation_time_s": 8.475000442005694,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.46093061566352844,
+              0.4590590298175812
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.24886320531368256,
+              -0.29714468121528625
+            ],
+            "fingertip_origin_distance_m": 0.17438745498657227,
+            "controller_grip_target_rad": 0.35112500190734863
+          }
+        },
+        {
+          "transition_index": 139,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 8.475000442005694,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.46093061566352844,
+              0.4590590298175812
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.24886320531368256,
+              -0.29714468121528625
+            ],
+            "fingertip_origin_distance_m": 0.17438745498657227,
+            "controller_grip_target_rad": 0.35112500190734863
+          },
+          "next_obs": {
+            "simulation_time_s": 8.525000444613397,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.4418831765651703,
+              0.43905600905418396
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.29763010144233704,
+              -0.3418651223182678
+            ],
+            "fingertip_origin_distance_m": 0.16729503870010376,
+            "controller_grip_target_rad": 0.30149999260902405
+          }
+        },
+        {
+          "transition_index": 140,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 8.525000444613397,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.4418831765651703,
+              0.43905600905418396
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.29763010144233704,
+              -0.3418651223182678
+            ],
+            "fingertip_origin_distance_m": 0.16729503870010376,
+            "controller_grip_target_rad": 0.30149999260902405
+          },
+          "next_obs": {
+            "simulation_time_s": 8.5750004472211,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.4216361939907074,
+              0.4178469479084015
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.3203803300857544,
+              -0.2881772518157959
+            ],
+            "fingertip_origin_distance_m": 0.15971483290195465,
+            "controller_grip_target_rad": 0.25187501311302185
+          }
+        },
+        {
+          "transition_index": 141,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 8.5750004472211,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.4216361939907074,
+              0.4178469479084015
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.3203803300857544,
+              -0.2881772518157959
+            ],
+            "fingertip_origin_distance_m": 0.15971483290195465,
+            "controller_grip_target_rad": 0.25187501311302185
+          },
+          "next_obs": {
+            "simulation_time_s": 8.625000449828804,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.4025798738002777,
+              0.3965214192867279
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.3603380024433136,
+              -0.42429637908935547
+            ],
+            "fingertip_origin_distance_m": 0.15228311717510223,
+            "controller_grip_target_rad": 0.20225000381469727
+          }
+        },
+        {
+          "transition_index": 142,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 8.625000449828804,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.4025798738002777,
+              0.3965214192867279
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.3603380024433136,
+              -0.42429637908935547
+            ],
+            "fingertip_origin_distance_m": 0.15228311717510223,
+            "controller_grip_target_rad": 0.20225000381469727
+          },
+          "next_obs": {
+            "simulation_time_s": 8.675000452436507,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.4012061059474945,
+              0.3692759871482849
+            ],
+            "finger_joint_velocities_rad_s": [
+              0.1446249634027481,
+              -0.5127807259559631
+            ],
+            "fingertip_origin_distance_m": 0.14698578417301178,
+            "controller_grip_target_rad": 0.15262499451637268
+          }
+        },
+        {
+          "transition_index": 143,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 8.675000452436507,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.4012061059474945,
+              0.3692759871482849
+            ],
+            "finger_joint_velocities_rad_s": [
+              0.1446249634027481,
+              -0.5127807259559631
+            ],
+            "fingertip_origin_distance_m": 0.14698578417301178,
+            "controller_grip_target_rad": 0.15262499451637268
+          },
+          "next_obs": {
+            "simulation_time_s": 8.72500045504421,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.39733806252479553,
+              0.34269148111343384
+            ],
+            "finger_joint_velocities_rad_s": [
+              -1.0735971927642822,
+              -0.7358668446540833
+            ],
+            "fingertip_origin_distance_m": 0.14132244884967804,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 144,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 8.72500045504421,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.39733806252479553,
+              0.34269148111343384
+            ],
+            "finger_joint_velocities_rad_s": [
+              -1.0735971927642822,
+              -0.7358668446540833
+            ],
+            "fingertip_origin_distance_m": 0.14132244884967804,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 8.775000457651913,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.36128750443458557,
+              0.3432476222515106
+            ],
+            "finger_joint_velocities_rad_s": [
+              0.06449172645807266,
+              0.13514824211597443
+            ],
+            "fingertip_origin_distance_m": 0.13471238315105438,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 145,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 8.775000457651913,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.36128750443458557,
+              0.3432476222515106
+            ],
+            "finger_joint_velocities_rad_s": [
+              0.06449172645807266,
+              0.13514824211597443
+            ],
+            "fingertip_origin_distance_m": 0.13471238315105438,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 8.825000460259616,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.3609519302845001,
+              0.34336021542549133
+            ],
+            "finger_joint_velocities_rad_s": [
+              0.030271636322140694,
+              -0.09512923657894135
+            ],
+            "fingertip_origin_distance_m": 0.13467079401016235,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 146,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.019999999552965164,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 8.825000460259616,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.3609519302845001,
+              0.34336021542549133
+            ],
+            "finger_joint_velocities_rad_s": [
+              0.030271636322140694,
+              -0.09512923657894135
+            ],
+            "fingertip_origin_distance_m": 0.13467079401016235,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 8.87500046286732,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.3612861931324005,
+              0.3431135416030884
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.027695029973983765,
+              0.01921643689274788
+            ],
+            "fingertip_origin_distance_m": 0.1346871256828308,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 147,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.019999999552965164,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 8.87500046286732,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.3612861931324005,
+              0.3431135416030884
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.027695029973983765,
+              0.01921643689274788
+            ],
+            "fingertip_origin_distance_m": 0.1346871256828308,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 8.925000465475023,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.36197429895401,
+              0.3423457145690918
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.003858080832287669,
+              0.002818307839334011
+            ],
+            "fingertip_origin_distance_m": 0.13467192649841309,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 148,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.019999999552965164,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 8.925000465475023,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.36197429895401,
+              0.3423457145690918
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.003858080832287669,
+              0.002818307839334011
+            ],
+            "fingertip_origin_distance_m": 0.13467192649841309,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 8.975000468082726,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.3629782795906067,
+              0.3413011133670807
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.002824470866471529,
+              -0.002997306175529957
+            ],
+            "fingertip_origin_distance_m": 0.13466405868530273,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 149,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.019999999552965164,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 8.975000468082726,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.3629782795906067,
+              0.3413011133670807
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.002824470866471529,
+              -0.002997306175529957
+            ],
+            "fingertip_origin_distance_m": 0.13466405868530273,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 9.02500047069043,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.36389732360839844,
+              0.34013673663139343
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.5714676380157471,
+              0.013099882751703262
+            ],
+            "fingertip_origin_distance_m": 0.13461777567863464,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 150,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.019999999552965164,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 9.02500047069043,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.36389732360839844,
+              0.34013673663139343
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.5714676380157471,
+              0.013099882751703262
+            ],
+            "fingertip_origin_distance_m": 0.13461777567863464,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 9.075000473298132,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.3595692813396454,
+              0.33849143981933594
+            ],
+            "finger_joint_velocities_rad_s": [
+              -5.035768985748291,
+              -0.6971845626831055
+            ],
+            "fingertip_origin_distance_m": 0.13350115716457367,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 151,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.019999999552965164,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 9.075000473298132,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.3595692813396454,
+              0.33849143981933594
+            ],
+            "finger_joint_velocities_rad_s": [
+              -5.035768985748291,
+              -0.6971845626831055
+            ],
+            "fingertip_origin_distance_m": 0.13350115716457367,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 9.125000475905836,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.34985533356666565,
+              0.33020254969596863
+            ],
+            "finger_joint_velocities_rad_s": [
+              1.286865234375,
+              -0.8590474128723145
+            ],
+            "fingertip_origin_distance_m": 0.13013030588626862,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 152,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.019999999552965164,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 9.125000475905836,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.34985533356666565,
+              0.33020254969596863
+            ],
+            "finger_joint_velocities_rad_s": [
+              1.286865234375,
+              -0.8590474128723145
+            ],
+            "fingertip_origin_distance_m": 0.13013030588626862,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 9.175000478513539,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.3319927752017975,
+              0.31514832377433777
+            ],
+            "finger_joint_velocities_rad_s": [
+              -1.067639946937561,
+              -1.3609026670455933
+            ],
+            "fingertip_origin_distance_m": 0.12394864857196808,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 153,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.019999999552965164,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 9.175000478513539,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.3319927752017975,
+              0.31514832377433777
+            ],
+            "finger_joint_velocities_rad_s": [
+              -1.067639946937561,
+              -1.3609026670455933
+            ],
+            "fingertip_origin_distance_m": 0.12394864857196808,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 9.225000481121242,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.3076665699481964,
+              0.2913029193878174
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.4877132475376129,
+              -1.0014293193817139
+            ],
+            "fingertip_origin_distance_m": 0.114863321185112,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 154,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 9.225000481121242,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.3076665699481964,
+              0.2913029193878174
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.4877132475376129,
+              -1.0014293193817139
+            ],
+            "fingertip_origin_distance_m": 0.114863321185112,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 9.275000483728945,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.28331491351127625,
+              0.26539909839630127
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.4446251690387726,
+              -0.8529305458068848
+            ],
+            "fingertip_origin_distance_m": 0.10534117370843887,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 155,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 9.275000483728945,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.28331491351127625,
+              0.26539909839630127
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.4446251690387726,
+              -0.8529305458068848
+            ],
+            "fingertip_origin_distance_m": 0.10534117370843887,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 9.325000486336648,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.2639092803001404,
+              0.24328280985355377
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.29043248295783997,
+              -0.3874664306640625
+            ],
+            "fingertip_origin_distance_m": 0.0974448099732399,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 156,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 9.325000486336648,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.2639092803001404,
+              0.24328280985355377
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.29043248295783997,
+              -0.3874664306640625
+            ],
+            "fingertip_origin_distance_m": 0.0974448099732399,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 9.375000488944352,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.2514561116695404,
+              0.2283739447593689
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.24086913466453552,
+              -0.2401396632194519
+            ],
+            "fingertip_origin_distance_m": 0.09222814440727234,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 157,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 9.375000488944352,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.2514561116695404,
+              0.2283739447593689
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.24086913466453552,
+              -0.2401396632194519
+            ],
+            "fingertip_origin_distance_m": 0.09222814440727234,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 9.425000491552055,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.2414902001619339,
+              0.2174905240535736
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.241255521774292,
+              -0.2000853270292282
+            ],
+            "fingertip_origin_distance_m": 0.08824755251407623,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 158,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 9.425000491552055,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.2414902001619339,
+              0.2174905240535736
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.241255521774292,
+              -0.2000853270292282
+            ],
+            "fingertip_origin_distance_m": 0.08824755251407623,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 9.475000494159758,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.23247811198234558,
+              0.20605652034282684
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.11805272847414017,
+              -0.20163439214229584
+            ],
+            "fingertip_origin_distance_m": 0.08433886617422104,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 159,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 9.475000494159758,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.23247811198234558,
+              0.20605652034282684
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.11805272847414017,
+              -0.20163439214229584
+            ],
+            "fingertip_origin_distance_m": 0.08433886617422104,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 9.525000496767461,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.227980837225914,
+              0.19918595254421234
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.05968897044658661,
+              -0.10170730948448181
+            ],
+            "fingertip_origin_distance_m": 0.0821637436747551,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 160,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 9.525000496767461,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.227980837225914,
+              0.19918595254421234
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.05968897044658661,
+              -0.10170730948448181
+            ],
+            "fingertip_origin_distance_m": 0.0821637436747551,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 9.575000499375165,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.22528202831745148,
+              0.194359689950943
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.04264447093009949,
+              -0.08585043996572495
+            ],
+            "fingertip_origin_distance_m": 0.08072324842214584,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 161,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 9.575000499375165,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.22528202831745148,
+              0.194359689950943
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.04264447093009949,
+              -0.08585043996572495
+            ],
+            "fingertip_origin_distance_m": 0.08072324842214584,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 9.625000501982868,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.22316117584705353,
+              0.19025486707687378
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.03681261092424393,
+              -0.06582730263471603
+            ],
+            "fingertip_origin_distance_m": 0.07953108102083206,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 162,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 9.625000501982868,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.22316117584705353,
+              0.19025486707687378
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.03681261092424393,
+              -0.06582730263471603
+            ],
+            "fingertip_origin_distance_m": 0.07953108102083206,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 9.675000504590571,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.22064308822155,
+              0.18643853068351746
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.049481090158224106,
+              -0.06415433436632156
+            ],
+            "fingertip_origin_distance_m": 0.07831763476133347,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 163,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 9.675000504590571,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.22064308822155,
+              0.18643853068351746
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.049481090158224106,
+              -0.06415433436632156
+            ],
+            "fingertip_origin_distance_m": 0.07831763476133347,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 9.725000507198274,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.21754299104213715,
+              0.18298554420471191
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.030034644529223442,
+              -0.04197775945067406
+            ],
+            "fingertip_origin_distance_m": 0.07706238329410553,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 164,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 9.725000507198274,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.21754299104213715,
+              0.18298554420471191
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.030034644529223442,
+              -0.04197775945067406
+            ],
+            "fingertip_origin_distance_m": 0.07706238329410553,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 9.775000509805977,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.21630188822746277,
+              0.18074952065944672
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.010247878730297089,
+              -0.04204331710934639
+            ],
+            "fingertip_origin_distance_m": 0.07639610022306442,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 165,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 9.775000509805977,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.21630188822746277,
+              0.18074952065944672
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.010247878730297089,
+              -0.04204331710934639
+            ],
+            "fingertip_origin_distance_m": 0.07639610022306442,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 9.82500051241368,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.21517795324325562,
+              0.17873375117778778
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.021465234458446503,
+              -0.031176745891571045
+            ],
+            "fingertip_origin_distance_m": 0.07579395920038223,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 166,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.03999999910593033,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 9.82500051241368,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.21517795324325562,
+              0.17873375117778778
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.021465234458446503,
+              -0.031176745891571045
+            ],
+            "fingertip_origin_distance_m": 0.07579395920038223,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 9.875000515021384,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.2141522616147995,
+              0.1770252138376236
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.009466564282774925,
+              -0.032972369343042374
+            ],
+            "fingertip_origin_distance_m": 0.07527011632919312,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 167,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.03999999910593033,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 9.875000515021384,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.2141522616147995,
+              0.1770252138376236
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.009466564282774925,
+              -0.032972369343042374
+            ],
+            "fingertip_origin_distance_m": 0.07527011632919312,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 9.925000517629087,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.21323080360889435,
+              0.17518948018550873
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.027493756264448166,
+              -0.06612104922533035
+            ],
+            "fingertip_origin_distance_m": 0.0747414156794548,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 168,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.03999999910593033,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 9.925000517629087,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.21323080360889435,
+              0.17518948018550873
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.027493756264448166,
+              -0.06612104922533035
+            ],
+            "fingertip_origin_distance_m": 0.0747414156794548,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 9.97500052023679,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.2111315280199051,
+              0.17206117510795593
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.03687805309891701,
+              -0.0707574114203453
+            ],
+            "fingertip_origin_distance_m": 0.07373906672000885,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 169,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.03999999910593033,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 9.97500052023679,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.2111315280199051,
+              0.17206117510795593
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.03687805309891701,
+              -0.0707574114203453
+            ],
+            "fingertip_origin_distance_m": 0.07373906672000885,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 10.025000522844493,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.20833291113376617,
+              0.16787837445735931
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.04337574914097786,
+              -0.0720236748456955
+            ],
+            "fingertip_origin_distance_m": 0.07240018248558044,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 170,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.03999999910593033,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 10.025000522844493,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.20833291113376617,
+              0.16787837445735931
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.04337574914097786,
+              -0.0720236748456955
+            ],
+            "fingertip_origin_distance_m": 0.07240018248558044,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 10.075000525452197,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.20665208995342255,
+              0.16485106945037842
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.00817687064409256,
+              -0.061052143573760986
+            ],
+            "fingertip_origin_distance_m": 0.07149680703878403,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 171,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.03999999910593033,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 10.075000525452197,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.20665208995342255,
+              0.16485106945037842
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.00817687064409256,
+              -0.061052143573760986
+            ],
+            "fingertip_origin_distance_m": 0.07149680703878403,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 10.1250005280599,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.20537680387496948,
+              0.16279083490371704
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.004109273664653301,
+              -0.047692544758319855
+            ],
+            "fingertip_origin_distance_m": 0.0708572119474411,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 172,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.03999999910593033,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 10.1250005280599,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.20537680387496948,
+              0.16279083490371704
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.004109273664653301,
+              -0.047692544758319855
+            ],
+            "fingertip_origin_distance_m": 0.0708572119474411,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 10.175000530667603,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.2047821432352066,
+              0.1615132838487625
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.00801686942577362,
+              -0.015373783186078072
+            ],
+            "fingertip_origin_distance_m": 0.07049791514873505,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 173,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.03999999910593033,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 10.175000530667603,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.2047821432352066,
+              0.1615132838487625
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.00801686942577362,
+              -0.015373783186078072
+            ],
+            "fingertip_origin_distance_m": 0.07049791514873505,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 10.225000533275306,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.20408643782138824,
+              0.16087250411510468
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.013037389144301414,
+              -0.00717864790931344
+            ],
+            "fingertip_origin_distance_m": 0.07024131715297699,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 174,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.03999999910593033,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 10.225000533275306,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.20408643782138824,
+              0.16087250411510468
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.013037389144301414,
+              -0.00717864790931344
+            ],
+            "fingertip_origin_distance_m": 0.07024131715297699,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 10.27500053588301,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.20346155762672424,
+              0.1605737805366516
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.005018978845328093,
+              -0.006301815155893564
+            ],
+            "fingertip_origin_distance_m": 0.07006446272134781,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 175,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.03999999910593033,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 10.27500053588301,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.20346155762672424,
+              0.1605737805366516
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.005018978845328093,
+              -0.006301815155893564
+            ],
+            "fingertip_origin_distance_m": 0.07006446272134781,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 10.325000538490713,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.20305286347866058,
+              0.1603417843580246
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.0027987579815089703,
+              -0.0034898926969617605
+            ],
+            "fingertip_origin_distance_m": 0.06994150578975677,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 176,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.05000000074505806,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 10.325000538490713,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.20305286347866058,
+              0.1603417843580246
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.0027987579815089703,
+              -0.0034898926969617605
+            ],
+            "fingertip_origin_distance_m": 0.06994150578975677,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 10.375000541098416,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.2027416080236435,
+              0.16034917533397675
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.005324445199221373,
+              0.0019169622100889683
+            ],
+            "fingertip_origin_distance_m": 0.06988327950239182,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 177,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.05000000074505806,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 10.375000541098416,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.2027416080236435,
+              0.16034917533397675
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.005324445199221373,
+              0.0019169622100889683
+            ],
+            "fingertip_origin_distance_m": 0.06988327950239182,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 10.425000543706119,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.2026713490486145,
+              0.16052711009979248
+            ],
+            "finger_joint_velocities_rad_s": [
+              0.0027468185871839523,
+              -0.0006336530204862356
+            ],
+            "fingertip_origin_distance_m": 0.06990398466587067,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 178,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.05000000074505806,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 10.425000543706119,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.2026713490486145,
+              0.16052711009979248
+            ],
+            "finger_joint_velocities_rad_s": [
+              0.0027468185871839523,
+              -0.0006336530204862356
+            ],
+            "fingertip_origin_distance_m": 0.06990398466587067,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 10.475000546313822,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.20341351628303528,
+              0.16113227605819702
+            ],
+            "finger_joint_velocities_rad_s": [
+              0.027309978380799294,
+              0.009725815616548061
+            ],
+            "fingertip_origin_distance_m": 0.0701625645160675,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 179,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.05000000074505806,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 10.475000546313822,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.20341351628303528,
+              0.16113227605819702
+            ],
+            "finger_joint_velocities_rad_s": [
+              0.027309978380799294,
+              0.009725815616548061
+            ],
+            "fingertip_origin_distance_m": 0.0701625645160675,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 10.525000548921525,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.20348775386810303,
+              0.16188746690750122
+            ],
+            "finger_joint_velocities_rad_s": [
+              0.01406373642385006,
+              -0.0016898603644222021
+            ],
+            "fingertip_origin_distance_m": 0.07032166421413422,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 180,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.05000000074505806,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 10.525000548921525,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.20348775386810303,
+              0.16188746690750122
+            ],
+            "finger_joint_velocities_rad_s": [
+              0.01406373642385006,
+              -0.0016898603644222021
+            ],
+            "fingertip_origin_distance_m": 0.07032166421413422,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 10.575000551529229,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.2034061700105667,
+              0.16238467395305634
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.0004491289146244526,
+              0.007142874412238598
+            ],
+            "fingertip_origin_distance_m": 0.07040137052536011,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 181,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.05000000074505806,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 10.575000551529229,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.2034061700105667,
+              0.16238467395305634
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.0004491289146244526,
+              0.007142874412238598
+            ],
+            "fingertip_origin_distance_m": 0.07040137052536011,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 10.625000554136932,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.20335784554481506,
+              0.16307729482650757
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.0021331803873181343,
+              0.027358395978808403
+            ],
+            "fingertip_origin_distance_m": 0.07052517682313919,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 182,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.05000000074505806,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 10.625000554136932,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.20335784554481506,
+              0.16307729482650757
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.0021331803873181343,
+              0.027358395978808403
+            ],
+            "fingertip_origin_distance_m": 0.07052517682313919,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 10.675000556744635,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.2031349390745163,
+              0.1670806109905243
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.005263840314000845,
+              0.08204980194568634
+            ],
+            "fingertip_origin_distance_m": 0.07125106453895569,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 183,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.05000000074505806,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 10.675000556744635,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.2031349390745163,
+              0.1670806109905243
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.005263840314000845,
+              0.08204980194568634
+            ],
+            "fingertip_origin_distance_m": 0.07125106453895569,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 10.725000559352338,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.20293328166007996,
+              0.1711011528968811
+            ],
+            "finger_joint_velocities_rad_s": [
+              0.0016931695863604546,
+              0.06958683580160141
+            ],
+            "fingertip_origin_distance_m": 0.07198412716388702,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 184,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.05000000074505806,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 10.725000559352338,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.20293328166007996,
+              0.1711011528968811
+            ],
+            "finger_joint_velocities_rad_s": [
+              0.0016931695863604546,
+              0.06958683580160141
+            ],
+            "fingertip_origin_distance_m": 0.07198412716388702,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 10.775000561960042,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.20272834599018097,
+              0.17480187118053436
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.005728729534894228,
+              0.06076856330037117
+            ],
+            "fingertip_origin_distance_m": 0.07265488058328629,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 185,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.05000000074505806,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 10.775000561960042,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.20272834599018097,
+              0.17480187118053436
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.005728729534894228,
+              0.06076856330037117
+            ],
+            "fingertip_origin_distance_m": 0.07265488058328629,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 10.825000564567745,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.20234516263008118,
+              0.17714270949363708
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.0032904206309467554,
+              0.033712755888700485
+            ],
+            "fingertip_origin_distance_m": 0.07303065061569214,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        }
+      ],
+      "selected_rows_sha256": "825cda5a46a61795fe5c96264f7ce40fd0d109badff501b989ff1ca46696264b"
+    },
+    {
+      "run_id": "20261106-astra-dressing-continue-001",
+      "robot_index": 1,
+      "start_transition": 369,
+      "close_interval_end_exclusive": 386,
+      "end_reason": "closed_episode_end",
+      "observed_duration_s": 0.8500000443309546,
+      "start_simulation_time_s": 19.975001041777432,
+      "initial_distance_m": 0.18819426000118256,
+      "final_distance_m": 0.05217549577355385,
+      "first_quiet_windows": {
+        "3": null,
+        "8": null
+      },
+      "non_gripper_action_transition_count": 6,
+      "selected_rows_end_exclusive": 386,
+      "selected_rows": [
+        {
+          "transition_index": 369,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 19.975001041777432,
+            "close_intent": false,
+            "finger_joint_positions_rad": [
+              0.49927401542663574,
+              0.49754780530929565
+            ],
+            "finger_joint_velocities_rad_s": [
+              0.010373610071837902,
+              0.009623943828046322
+            ],
+            "fingertip_origin_distance_m": 0.18819426000118256,
+            "controller_grip_target_rad": 0.5
+          },
+          "next_obs": {
+            "simulation_time_s": 20.025001044385135,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.49235090613365173,
+              0.4904283881187439
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.18228159844875336,
+              -0.1955288052558899
+            ],
+            "fingertip_origin_distance_m": 0.18568606674671173,
+            "controller_grip_target_rad": 0.4503749907016754
+          }
+        },
+        {
+          "transition_index": 370,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 20.025001044385135,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.49235090613365173,
+              0.4904283881187439
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.18228159844875336,
+              -0.1955288052558899
+            ],
+            "fingertip_origin_distance_m": 0.18568606674671173,
+            "controller_grip_target_rad": 0.4503749907016754
+          },
+          "next_obs": {
+            "simulation_time_s": 20.07500104699284,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.47688329219818115,
+              0.4742608666419983
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.30956313014030457,
+              -0.35632431507110596
+            ],
+            "fingertip_origin_distance_m": 0.1800101399421692,
+            "controller_grip_target_rad": 0.4007500112056732
+          }
+        },
+        {
+          "transition_index": 371,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 20.07500104699284,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.47688329219818115,
+              0.4742608666419983
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.30956313014030457,
+              -0.35632431507110596
+            ],
+            "fingertip_origin_distance_m": 0.1800101399421692,
+            "controller_grip_target_rad": 0.4007500112056732
+          },
+          "next_obs": {
+            "simulation_time_s": 20.12500104960054,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.4561372995376587,
+              0.45079734921455383
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.4289727807044983,
+              -0.48401501774787903
+            ],
+            "fingertip_origin_distance_m": 0.17202143371105194,
+            "controller_grip_target_rad": 0.35112500190734863
+          }
+        },
+        {
+          "transition_index": 372,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 20.12500104960054,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.4561372995376587,
+              0.45079734921455383
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.4289727807044983,
+              -0.48401501774787903
+            ],
+            "fingertip_origin_distance_m": 0.17202143371105194,
+            "controller_grip_target_rad": 0.35112500190734863
+          },
+          "next_obs": {
+            "simulation_time_s": 20.175001052208245,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.4288570284843445,
+              0.42160797119140625
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.5457117557525635,
+              -0.5886703729629517
+            ],
+            "fingertip_origin_distance_m": 0.16172751784324646,
+            "controller_grip_target_rad": 0.30149999260902405
+          }
+        },
+        {
+          "transition_index": 373,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 20.175001052208245,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.4288570284843445,
+              0.42160797119140625
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.5457117557525635,
+              -0.5886703729629517
+            ],
+            "fingertip_origin_distance_m": 0.16172751784324646,
+            "controller_grip_target_rad": 0.30149999260902405
+          },
+          "next_obs": {
+            "simulation_time_s": 20.225001054815948,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.3948196768760681,
+              0.3877003788948059
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.6401331424713135,
+              -0.6854918003082275
+            ],
+            "fingertip_origin_distance_m": 0.1492186039686203,
+            "controller_grip_target_rad": 0.25187501311302185
+          }
+        },
+        {
+          "transition_index": 374,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 20.225001054815948,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.3948196768760681,
+              0.3877003788948059
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.6401331424713135,
+              -0.6854918003082275
+            ],
+            "fingertip_origin_distance_m": 0.1492186039686203,
+            "controller_grip_target_rad": 0.25187501311302185
+          },
+          "next_obs": {
+            "simulation_time_s": 20.27500105742365,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.3599258363246918,
+              0.3502129018306732
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.6808025240898132,
+              -0.7320622801780701
+            ],
+            "fingertip_origin_distance_m": 0.13576050102710724,
+            "controller_grip_target_rad": 0.20225000381469727
+          }
+        },
+        {
+          "transition_index": 375,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 20.27500105742365,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.3599258363246918,
+              0.3502129018306732
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.6808025240898132,
+              -0.7320622801780701
+            ],
+            "fingertip_origin_distance_m": 0.13576050102710724,
+            "controller_grip_target_rad": 0.20225000381469727
+          },
+          "next_obs": {
+            "simulation_time_s": 20.325001060031354,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.3222755789756775,
+              0.31014055013656616
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.7466381788253784,
+              -0.7808192372322083
+            ],
+            "fingertip_origin_distance_m": 0.12117654830217361,
+            "controller_grip_target_rad": 0.15262499451637268
+          }
+        },
+        {
+          "transition_index": 376,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 20.325001060031354,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.3222755789756775,
+              0.31014055013656616
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.7466381788253784,
+              -0.7808192372322083
+            ],
+            "fingertip_origin_distance_m": 0.12117654830217361,
+            "controller_grip_target_rad": 0.15262499451637268
+          },
+          "next_obs": {
+            "simulation_time_s": 20.375001062639058,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.2816898822784424,
+              0.2678489685058594
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.7938901782035828,
+              -0.821285605430603
+            ],
+            "fingertip_origin_distance_m": 0.10549832135438919,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 377,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 20.375001062639058,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.2816898822784424,
+              0.2678489685058594
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.7938901782035828,
+              -0.821285605430603
+            ],
+            "fingertip_origin_distance_m": 0.10549832135438919,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 20.42500106524676,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.24662019312381744,
+              0.23133037984371185
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.6163687109947205,
+              -0.6387708187103271
+            ],
+            "fingertip_origin_distance_m": 0.09187043458223343,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 378,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 20.42500106524676,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.24662019312381744,
+              0.23133037984371185
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.6163687109947205,
+              -0.6387708187103271
+            ],
+            "fingertip_origin_distance_m": 0.09187043458223343,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 20.475001067854464,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.2289237082004547,
+              0.21744593977928162
+            ],
+            "finger_joint_velocities_rad_s": [
+              0.07196779549121857,
+              0.1014220118522644
+            ],
+            "fingertip_origin_distance_m": 0.08583863824605942,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 379,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.11999999731779099,
+              -0.05000000074505806,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 20.475001067854464,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.2289237082004547,
+              0.21744593977928162
+            ],
+            "finger_joint_velocities_rad_s": [
+              0.07196779549121857,
+              0.1014220118522644
+            ],
+            "fingertip_origin_distance_m": 0.08583863824605942,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 20.525001070462167,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.2067948579788208,
+              0.1929566115140915
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.3879358768463135,
+              -0.42946502566337585
+            ],
+            "fingertip_origin_distance_m": 0.07691577821969986,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 380,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.11999999731779099,
+              -0.05000000074505806,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 20.525001070462167,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.2067948579788208,
+              0.1929566115140915
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.3879358768463135,
+              -0.42946502566337585
+            ],
+            "fingertip_origin_distance_m": 0.07691577821969986,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 20.57500107306987,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.19004683196544647,
+              0.17515034973621368
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.3040831685066223,
+              -0.3023729920387268
+            ],
+            "fingertip_origin_distance_m": 0.07029065489768982,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 381,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.11999999731779099,
+              -0.05000000074505806,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 20.57500107306987,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.19004683196544647,
+              0.17515034973621368
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.3040831685066223,
+              -0.3023729920387268
+            ],
+            "fingertip_origin_distance_m": 0.07029065489768982,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 20.625001075677574,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.1760483980178833,
+              0.16128294169902802
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.23426002264022827,
+              -0.24832265079021454
+            ],
+            "fingertip_origin_distance_m": 0.06494207680225372,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 382,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.11999999731779099,
+              -0.05000000074505806,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 20.625001075677574,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.1760483980178833,
+              0.16128294169902802
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.23426002264022827,
+              -0.24832265079021454
+            ],
+            "fingertip_origin_distance_m": 0.06494207680225372,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 20.675001078285277,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.1647600531578064,
+              0.15041618049144745
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.1938236653804779,
+              -0.18918374180793762
+            ],
+            "fingertip_origin_distance_m": 0.060686737298965454,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 383,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.11999999731779099,
+              -0.05000000074505806,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 20.675001078285277,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.1647600531578064,
+              0.15041618049144745
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.1938236653804779,
+              -0.18918374180793762
+            ],
+            "fingertip_origin_distance_m": 0.060686737298965454,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 20.72500108089298,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.1560009866952896,
+              0.14098046720027924
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.1591932326555252,
+              -0.1737789511680603
+            ],
+            "fingertip_origin_distance_m": 0.057190511375665665,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 384,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.11999999731779099,
+              -0.05000000074505806,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 20.72500108089298,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.1560009866952896,
+              0.14098046720027924
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.1591932326555252,
+              -0.1737789511680603
+            ],
+            "fingertip_origin_distance_m": 0.057190511375665665,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 20.775001083500683,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.1484602987766266,
+              0.13309083878993988
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.12384334951639175,
+              -0.12229187041521072
+            ],
+            "fingertip_origin_distance_m": 0.05422468110918999,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        },
+        {
+          "transition_index": 385,
+          "action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "obs": {
+            "simulation_time_s": 20.775001083500683,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.1484602987766266,
+              0.13309083878993988
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.12384334951639175,
+              -0.12229187041521072
+            ],
+            "fingertip_origin_distance_m": 0.05422468110918999,
+            "controller_grip_target_rad": 0.10300000011920929
+          },
+          "next_obs": {
+            "simulation_time_s": 20.825001086108387,
+            "close_intent": true,
+            "finger_joint_positions_rad": [
+              0.14316275715827942,
+              0.12772758305072784
+            ],
+            "finger_joint_velocities_rad_s": [
+              -0.07294226437807083,
+              -0.10211803764104843
+            ],
+            "fingertip_origin_distance_m": 0.05217549577355385,
+            "controller_grip_target_rad": 0.10300000011920929
+          }
+        }
+      ],
+      "selected_rows_sha256": "5ec960ac45edaa3318125b3bd16e597f69a41a9012706f7f16483e8b5331a40d"
+    }
+  ],
+  "limitations": [
+    "E06 shares E05 action prefix; not independent repeated trials",
+    "Non-gripper motion co-occurs in all three intervals",
+    "Fingertip-origin distance is not contact-surface gap",
+    "Quiet public state does not establish cloth hold",
+    "Model call counts and wall-time savings are not measured",
+    "Rows show up to first 50 transitions per interval; summary and source-array hashes cover the full close interval"
+  ],
+  "runtime_changed": false,
+  "model_calls": 0,
+  "gpu_execution": false
+}

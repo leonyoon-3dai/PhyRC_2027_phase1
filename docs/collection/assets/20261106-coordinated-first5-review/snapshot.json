@@ -1,0 +1,2381 @@
+{
+  "schema": "phyrc-fixed-public-visual-review-v1",
+  "run_id": "20261106-astra-coordinated-fresh-001",
+  "source_group": "20261106-coordinated-demo-methods",
+  "review_inputs_frozen_at_utc": "2026-11-06T05:18:51.347310+00:00",
+  "status": "partial_snapshot_not_final_capture",
+  "cutoff": {
+    "observation_indices": [
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39
+    ],
+    "decision_indices": [
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38
+    ],
+    "last_image_step_boundary": 530,
+    "last_completed_selected_segment": 38,
+    "last_completed_selected_step": 530,
+    "evaluation_time_s": 26.5,
+    "public_simulation_time_s": 28.02500146161765
+  },
+  "scope": {
+    "actor_input_changed": false,
+    "runtime_changed": false,
+    "live_hdf5_read": false,
+    "images_are_original": true,
+    "hidden_reasoning_read_or_exported": false,
+    "geometry_seed_audit_used_for_visual_judgement": false,
+    "score_is_separate_trusted_metadata": true,
+    "training_approval": "unreviewed",
+    "full_capture_quality_validation": "pending_capture_close"
+  },
+  "public_contract": {
+    "action_field_names": [
+      "base_forward_velocity",
+      "base_left_velocity",
+      "base_yaw_velocity",
+      "lift_velocity",
+      "arm_extension_velocity",
+      "wrist_yaw_velocity",
+      "wrist_pitch_velocity",
+      "wrist_roll_velocity",
+      "gripper_command"
+    ],
+    "controller_target_columns": [
+      "lift",
+      "arm",
+      "yaw",
+      "pitch",
+      "roll",
+      "grip_pos",
+      "base_fwd",
+      "base_strafe",
+      "base_turn"
+    ],
+    "joint_names": [
+      [
+        "wheel_0_joint",
+        "wheel_1_joint",
+        "wheel_2_joint",
+        "lift_joint",
+        "arm_l1_joint",
+        "arm_l2_joint",
+        "arm_l3_joint",
+        "arm_l4_joint",
+        "wrist_yaw_joint",
+        "wrist_pitch_joint",
+        "wrist_roll_joint",
+        "gripper_finger_left_joint",
+        "gripper_finger_right_joint"
+      ],
+      [
+        "wheel_0_joint",
+        "wheel_1_joint",
+        "wheel_2_joint",
+        "lift_joint",
+        "arm_l1_joint",
+        "arm_l2_joint",
+        "arm_l3_joint",
+        "arm_l4_joint",
+        "wrist_yaw_joint",
+        "wrist_pitch_joint",
+        "wrist_roll_joint",
+        "gripper_finger_left_joint",
+        "gripper_finger_right_joint"
+      ]
+    ],
+    "pose_layout": [
+      "x",
+      "y",
+      "z",
+      "qw",
+      "qx",
+      "qy",
+      "qz"
+    ],
+    "simulation_interval_s": 0.05
+  },
+  "first_score_batch": {
+    "physics_tick": 4272,
+    "transition_boundary_step": 356,
+    "evaluation_time_s": 17.8,
+    "public_simulation_time_s": 19.32500007953495,
+    "raw_points_before": 0.0,
+    "raw_points_after": 5.0,
+    "changes": [
+      {
+        "stage": "pickup",
+        "before": 0.0,
+        "after": 5.0
+      }
+    ],
+    "simultaneous": false,
+    "transition_image_reference": {
+      "file": "policy.hdf5",
+      "episode": "demo_0",
+      "dataset": "next_obs/overview_rgb",
+      "index": 355,
+      "camera": "overview",
+      "available_after_capture_close": true
+    },
+    "observed_award_first_verified_at_utc": "2026-11-06T05:12:07.889970+00:00",
+    "award_wall_utc": null,
+    "final_evaluation_valid": null,
+    "final_dressing_success": null,
+    "scope": "first live score batch only; not final evaluation or two-grasp certification",
+    "actor_receives_score": false
+  },
+  "observations": [
+    {
+      "observation_index": 25,
+      "recorded_step_boundary": 304,
+      "public_simulation_time_s": 16.725000872276723,
+      "evaluation_time_s": 15.200000000000001,
+      "base_pose_world": [
+        [
+          3.037626028060913,
+          -0.7026209831237793,
+          -0.003629225306212902,
+          -0.707136332988739,
+          0.003341471077874303,
+          0.0008949277107603848,
+          0.7070687413215637
+        ],
+        [
+          3.491168975830078,
+          -0.70354163646698,
+          -0.0036291482392698526,
+          -0.7073374390602112,
+          0.0033394736237823963,
+          0.0008963352884165943,
+          0.7068675756454468
+        ]
+      ],
+      "lift_joint_position_m": [
+        0.8450170159339905,
+        0.8450101017951965
+      ],
+      "wrist_roll_joint_position_rad": [
+        0.0006427865591831505,
+        -0.0011717529268935323
+      ],
+      "wrist_roll_controller_target_rad": [
+        0.0,
+        0.0
+      ],
+      "gripper_close_command": [
+        [
+          true
+        ],
+        [
+          true
+        ]
+      ],
+      "gripper_command_is_contact_evidence": false,
+      "latest_execution_observation": true,
+      "fresh_model_input": true
+    },
+    {
+      "observation_index": 26,
+      "recorded_step_boundary": 320,
+      "public_simulation_time_s": 17.525000913999975,
+      "evaluation_time_s": 16.0,
+      "base_pose_world": [
+        [
+          3.0372931957244873,
+          -0.7028605341911316,
+          -0.003629530081525445,
+          -0.7071873545646667,
+          0.0033404978457838297,
+          0.0008952834759838879,
+          0.707017719745636
+        ],
+        [
+          3.491351842880249,
+          -0.7035435438156128,
+          -0.003629405051469803,
+          -0.7071434855461121,
+          0.0033405846916139126,
+          0.0008958143298514187,
+          0.7070615887641907
+        ]
+      ],
+      "lift_joint_position_m": [
+        1.08421790599823,
+        1.084220051765442
+      ],
+      "wrist_roll_joint_position_rad": [
+        0.00046684182598255575,
+        -0.00038017603219486773
+      ],
+      "wrist_roll_controller_target_rad": [
+        0.0,
+        0.0
+      ],
+      "gripper_close_command": [
+        [
+          true
+        ],
+        [
+          true
+        ]
+      ],
+      "gripper_command_is_contact_evidence": false,
+      "latest_execution_observation": true,
+      "fresh_model_input": true
+    },
+    {
+      "observation_index": 27,
+      "recorded_step_boundary": 332,
+      "public_simulation_time_s": 18.125000945292413,
+      "evaluation_time_s": 16.6,
+      "base_pose_world": [
+        [
+          3.037470817565918,
+          -0.7025905847549438,
+          -0.003629307961091399,
+          -0.707169234752655,
+          0.003340671770274639,
+          0.0008948465692810714,
+          0.7070358395576477
+        ],
+        [
+          3.4913899898529053,
+          -0.7031298875808716,
+          -0.003629423677921295,
+          -0.7070611119270325,
+          0.0033397271763533354,
+          0.0008960232953540981,
+          0.7071439623832703
+        ]
+      ],
+      "lift_joint_position_m": [
+        1.1402826309204102,
+        1.1402877569198608
+      ],
+      "wrist_roll_joint_position_rad": [
+        0.0007571683963760734,
+        -0.0007281129364855587
+      ],
+      "wrist_roll_controller_target_rad": [
+        0.0,
+        0.0
+      ],
+      "gripper_close_command": [
+        [
+          true
+        ],
+        [
+          true
+        ]
+      ],
+      "gripper_command_is_contact_evidence": false,
+      "latest_execution_observation": true,
+      "fresh_model_input": true
+    },
+    {
+      "observation_index": 28,
+      "recorded_step_boundary": 352,
+      "public_simulation_time_s": 19.125000997446477,
+      "evaluation_time_s": 17.6,
+      "base_pose_world": [
+        [
+          3.0388026237487793,
+          -0.37341374158859253,
+          -0.003628868144005537,
+          -0.7086717486381531,
+          0.0033381858374923468,
+          0.0009022909798659384,
+          0.7055298089981079
+        ],
+        [
+          3.489502429962158,
+          -0.373960018157959,
+          -0.0036291079595685005,
+          -0.7055572271347046,
+          0.003342869458720088,
+          0.0008876436622813344,
+          0.708644449710846
+        ]
+      ],
+      "lift_joint_position_m": [
+        1.1431962251663208,
+        1.143202781677246
+      ],
+      "wrist_roll_joint_position_rad": [
+        0.0038893320597708225,
+        3.935065984725952
+      ],
+      "wrist_roll_controller_target_rad": [
+        0.0,
+        4.275999546051025
+      ],
+      "gripper_close_command": [
+        [
+          true
+        ],
+        [
+          true
+        ]
+      ],
+      "gripper_command_is_contact_evidence": false,
+      "latest_execution_observation": true,
+      "fresh_model_input": false
+    },
+    {
+      "observation_index": 29,
+      "recorded_step_boundary": 360,
+      "public_simulation_time_s": 19.525001018308103,
+      "evaluation_time_s": 18.0,
+      "base_pose_world": [
+        [
+          3.0400924682617188,
+          -0.3014821708202362,
+          -0.0036291128490120173,
+          -0.7086982131004333,
+          0.003338811919093132,
+          0.0009035476832650602,
+          0.7055032253265381
+        ],
+        [
+          3.488340139389038,
+          -0.3022172451019287,
+          -0.00362923345528543,
+          -0.7047118544578552,
+          0.0033422312699258327,
+          0.0008828893187455833,
+          0.7094851732254028
+        ]
+      ],
+      "lift_joint_position_m": [
+        1.1432069540023804,
+        1.143165111541748
+      ],
+      "wrist_roll_joint_position_rad": [
+        0.00461198715493083,
+        4.217646598815918
+      ],
+      "wrist_roll_controller_target_rad": [
+        0.0,
+        4.275999546051025
+      ],
+      "gripper_close_command": [
+        [
+          true
+        ],
+        [
+          true
+        ]
+      ],
+      "gripper_command_is_contact_evidence": false,
+      "latest_execution_observation": true,
+      "fresh_model_input": true
+    },
+    {
+      "observation_index": 30,
+      "recorded_step_boundary": 372,
+      "public_simulation_time_s": 20.12500104960054,
+      "evaluation_time_s": 18.6,
+      "base_pose_world": [
+        [
+          3.0424673557281494,
+          -0.3010120689868927,
+          -0.003629380837082863,
+          -0.7089429497718811,
+          0.003338259644806385,
+          0.00090383569477126,
+          0.7052572965621948
+        ],
+        [
+          3.4863061904907227,
+          -0.30182307958602905,
+          -0.003629168961197138,
+          -0.7051590085029602,
+          0.0033437565434724092,
+          0.0008861217647790909,
+          0.7090407013893127
+        ]
+      ],
+      "lift_joint_position_m": [
+        1.1432156562805176,
+        1.143212080001831
+      ],
+      "wrist_roll_joint_position_rad": [
+        0.004014949314296246,
+        3.690034866333008
+      ],
+      "wrist_roll_controller_target_rad": [
+        0.0,
+        3.4509994983673096
+      ],
+      "gripper_close_command": [
+        [
+          true
+        ],
+        [
+          true
+        ]
+      ],
+      "gripper_command_is_contact_evidence": false,
+      "latest_execution_observation": true,
+      "fresh_model_input": true
+    },
+    {
+      "observation_index": 31,
+      "recorded_step_boundary": 392,
+      "public_simulation_time_s": 21.125001101754606,
+      "evaluation_time_s": 19.6,
+      "base_pose_world": [
+        [
+          3.0448362827301025,
+          -0.3000471293926239,
+          -0.003629011334851384,
+          -0.7083799839019775,
+          0.0033387369476258755,
+          0.0009011970250867307,
+          0.7058227062225342
+        ],
+        [
+          3.484243154525757,
+          -0.3012934923171997,
+          -0.0036294388119131327,
+          -0.7058433890342712,
+          0.0033414976205676794,
+          0.0008894734783098102,
+          0.7083593606948853
+        ]
+      ],
+      "lift_joint_position_m": [
+        1.1432243585586548,
+        1.1432350873947144
+      ],
+      "wrist_roll_joint_position_rad": [
+        0.002634551376104355,
+        2.3460426330566406
+      ],
+      "wrist_roll_controller_target_rad": [
+        0.0,
+        2.0759994983673096
+      ],
+      "gripper_close_command": [
+        [
+          true
+        ],
+        [
+          true
+        ]
+      ],
+      "gripper_command_is_contact_evidence": false,
+      "latest_execution_observation": true,
+      "fresh_model_input": true
+    },
+    {
+      "observation_index": 32,
+      "recorded_step_boundary": 412,
+      "public_simulation_time_s": 22.12500115390867,
+      "evaluation_time_s": 20.6,
+      "base_pose_world": [
+        [
+          3.0461483001708984,
+          -0.2991248071193695,
+          -0.0036289957351982594,
+          -0.7078758478164673,
+          0.0033386065624654293,
+          0.000898566679097712,
+          0.7063283920288086
+        ],
+        [
+          3.482771873474121,
+          -0.3008294701576233,
+          -0.003629051148891449,
+          -0.7062296271324158,
+          0.003341048490256071,
+          0.0008912871708162129,
+          0.707974374294281
+        ]
+      ],
+      "lift_joint_position_m": [
+        1.14323091506958,
+        1.1430708169937134
+      ],
+      "wrist_roll_joint_position_rad": [
+        0.0014902756083756685,
+        0.9788423776626587
+      ],
+      "wrist_roll_controller_target_rad": [
+        0.0,
+        0.7009995579719543
+      ],
+      "gripper_close_command": [
+        [
+          true
+        ],
+        [
+          true
+        ]
+      ],
+      "gripper_command_is_contact_evidence": false,
+      "latest_execution_observation": true,
+      "fresh_model_input": true
+    },
+    {
+      "observation_index": 33,
+      "recorded_step_boundary": 422,
+      "public_simulation_time_s": 22.625001179985702,
+      "evaluation_time_s": 21.1,
+      "base_pose_world": [
+        [
+          3.046529531478882,
+          -0.29888084530830383,
+          -0.0036291282158344984,
+          -0.7076871991157532,
+          0.003339361399412155,
+          0.0008980700513347983,
+          0.7065173387527466
+        ],
+        [
+          3.482422113418579,
+          -0.3007206320762634,
+          -0.0036290131974965334,
+          -0.7064609527587891,
+          0.0033412124030292034,
+          0.0008919524261727929,
+          0.7077434659004211
+        ]
+      ],
+      "lift_joint_position_m": [
+        1.14322829246521,
+        1.1431810855865479
+      ],
+      "wrist_roll_joint_position_rad": [
+        0.0010062496876344085,
+        0.2741006910800934
+      ],
+      "wrist_roll_controller_target_rad": [
+        0.0,
+        -0.00025044084759429097
+      ],
+      "gripper_close_command": [
+        [
+          true
+        ],
+        [
+          true
+        ]
+      ],
+      "gripper_command_is_contact_evidence": false,
+      "latest_execution_observation": true,
+      "fresh_model_input": false
+    },
+    {
+      "observation_index": 34,
+      "recorded_step_boundary": 430,
+      "public_simulation_time_s": 23.025001200847328,
+      "evaluation_time_s": 21.5,
+      "base_pose_world": [
+        [
+          3.046821355819702,
+          -0.298689067363739,
+          -0.003629020880907774,
+          -0.7075768709182739,
+          0.0033390577882528305,
+          0.0008972421055659652,
+          0.7066278457641602
+        ],
+        [
+          3.4823338985443115,
+          -0.30062973499298096,
+          -0.0036290260031819344,
+          -0.706601083278656,
+          0.003340482711791992,
+          0.0008926767040975392,
+          0.7076035737991333
+        ]
+      ],
+      "lift_joint_position_m": [
+        1.143229365348816,
+        1.1432212591171265
+      ],
+      "wrist_roll_joint_position_rad": [
+        0.0008774182642810047,
+        0.03655693307518959
+      ],
+      "wrist_roll_controller_target_rad": [
+        0.0,
+        -0.00025044084759429097
+      ],
+      "gripper_close_command": [
+        [
+          true
+        ],
+        [
+          true
+        ]
+      ],
+      "gripper_command_is_contact_evidence": false,
+      "latest_execution_observation": true,
+      "fresh_model_input": true
+    },
+    {
+      "observation_index": 35,
+      "recorded_step_boundary": 450,
+      "public_simulation_time_s": 24.025001253001392,
+      "evaluation_time_s": 22.5,
+      "base_pose_world": [
+        [
+          3.074868679046631,
+          -0.18835122883319855,
+          -0.0036292653530836105,
+          -0.4994058310985565,
+          0.003457958810031414,
+          -2.524969204387162e-06,
+          0.8663613200187683
+        ],
+        [
+          3.453958511352539,
+          -0.4102393090724945,
+          -0.0036291552241891623,
+          -0.49330249428749084,
+          0.0034579618368297815,
+          -2.673508060979657e-05,
+          0.8698509335517883
+        ]
+      ],
+      "lift_joint_position_m": [
+        1.143227219581604,
+        1.1432455778121948
+      ],
+      "wrist_roll_joint_position_rad": [
+        0.0012529395753517747,
+        -0.0010543380631133914
+      ],
+      "wrist_roll_controller_target_rad": [
+        0.0,
+        -0.00025044084759429097
+      ],
+      "gripper_close_command": [
+        [
+          true
+        ],
+        [
+          true
+        ]
+      ],
+      "gripper_command_is_contact_evidence": false,
+      "latest_execution_observation": true,
+      "fresh_model_input": true
+    },
+    {
+      "observation_index": 36,
+      "recorded_step_boundary": 470,
+      "public_simulation_time_s": 25.025001305155456,
+      "evaluation_time_s": 23.5,
+      "base_pose_world": [
+        [
+          3.162296772003174,
+          -0.10141965746879578,
+          -0.0036289505660533905,
+          -0.23810367286205292,
+          0.0033206958323717117,
+          -0.0009667551494203508,
+          0.9712335467338562
+        ],
+        [
+          3.366041660308838,
+          -0.4945227801799774,
+          -0.0036292406730353832,
+          -0.2267621010541916,
+          0.003308556042611599,
+          -0.0010044430382549763,
+          0.9739439487457275
+        ]
+      ],
+      "lift_joint_position_m": [
+        1.143226981163025,
+        1.1432465314865112
+      ],
+      "wrist_roll_joint_position_rad": [
+        0.0012167757377028465,
+        -0.0011891768081113696
+      ],
+      "wrist_roll_controller_target_rad": [
+        0.0,
+        -0.00025044084759429097
+      ],
+      "gripper_close_command": [
+        [
+          true
+        ],
+        [
+          true
+        ]
+      ],
+      "gripper_command_is_contact_evidence": false,
+      "latest_execution_observation": true,
+      "fresh_model_input": true
+    },
+    {
+      "observation_index": 37,
+      "recorded_step_boundary": 490,
+      "public_simulation_time_s": 26.02500135730952,
+      "evaluation_time_s": 24.5,
+      "base_pose_world": [
+        [
+          3.2827181816101074,
+          -0.07477143406867981,
+          -0.00362933031283319,
+          0.04228070750832558,
+          0.0029189945198595524,
+          -0.0018536108545958996,
+          0.9990997314453125
+        ],
+        [
+          3.246488094329834,
+          -0.5176523327827454,
+          -0.003629067214205861,
+          0.05801716446876526,
+          0.002888986375182867,
+          -0.001900144969113171,
+          0.9983094930648804
+        ]
+      ],
+      "lift_joint_position_m": [
+        1.1432262659072876,
+        1.1432464122772217
+      ],
+      "wrist_roll_joint_position_rad": [
+        0.0010851328261196613,
+        -0.0010645178845152259
+      ],
+      "wrist_roll_controller_target_rad": [
+        0.0,
+        -0.00025044084759429097
+      ],
+      "gripper_close_command": [
+        [
+          true
+        ],
+        [
+          true
+        ]
+      ],
+      "gripper_command_is_contact_evidence": false,
+      "latest_execution_observation": true,
+      "fresh_model_input": true
+    },
+    {
+      "observation_index": 38,
+      "recorded_step_boundary": 510,
+      "public_simulation_time_s": 27.025001409463584,
+      "evaluation_time_s": 25.5,
+      "base_pose_world": [
+        [
+          3.0266995429992676,
+          -0.15848328173160553,
+          -0.003629306796938181,
+          0.06019091233611107,
+          0.0028858722653239965,
+          -0.0019061410566791892,
+          0.9981808066368103
+        ],
+        [
+          2.9183483123779297,
+          -0.5823280811309814,
+          -0.0036289584822952747,
+          0.0767311081290245,
+          0.002853043144568801,
+          -0.0019530414137989283,
+          0.9970458149909973
+        ]
+      ],
+      "lift_joint_position_m": [
+        1.1432383060455322,
+        1.1432323455810547
+      ],
+      "wrist_roll_joint_position_rad": [
+        0.0005479459068737924,
+        -0.0011733673745766282
+      ],
+      "wrist_roll_controller_target_rad": [
+        0.0,
+        -0.00025044084759429097
+      ],
+      "gripper_close_command": [
+        [
+          true
+        ],
+        [
+          true
+        ]
+      ],
+      "gripper_command_is_contact_evidence": false,
+      "latest_execution_observation": true,
+      "fresh_model_input": true
+    },
+    {
+      "observation_index": 39,
+      "recorded_step_boundary": 530,
+      "public_simulation_time_s": 28.02500146161765,
+      "evaluation_time_s": 26.5,
+      "base_pose_world": [
+        [
+          2.65800404548645,
+          -0.23648317158222198,
+          -0.003629013430327177,
+          0.0665409043431282,
+          0.002872285433113575,
+          -0.0019234602805227041,
+          0.9977777004241943
+        ],
+        [
+          2.5833911895751953,
+          -0.6566823720932007,
+          -0.0036293058656156063,
+          0.07111108303070068,
+          0.0028639882802963257,
+          -0.0019368153298273683,
+          0.9974623322486877
+        ]
+      ],
+      "lift_joint_position_m": [
+        1.143236517906189,
+        1.1432334184646606
+      ],
+      "wrist_roll_joint_position_rad": [
+        0.0005472455522976816,
+        -0.0013390821404755116
+      ],
+      "wrist_roll_controller_target_rad": [
+        0.0,
+        -0.00025044084759429097
+      ],
+      "gripper_close_command": [
+        [
+          true
+        ],
+        [
+          true
+        ]
+      ],
+      "gripper_command_is_contact_evidence": false,
+      "latest_execution_observation": true,
+      "fresh_model_input": null,
+      "model_input_provenance_note": "Cutoff image only; following decision is outside selected event range."
+    }
+  ],
+  "decisions_and_applied_segments": [
+    {
+      "type": "decision",
+      "decision_index": 25,
+      "model_call_index": 22,
+      "plan_id": "20261106-astra-coordinated-fresh-001:call-00022",
+      "plan_segment_index": 0,
+      "plan_segment_count": 1,
+      "model_invoked": true,
+      "observation_simulation_time_s": 16.725000872276723,
+      "latest_observation_simulation_time_s": 16.725000872276723,
+      "decision": {
+        "tool": "act",
+        "action": [
+          [
+            0,
+            0,
+            0,
+            0.2,
+            0,
+            0,
+            -0.12,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0.2,
+            0,
+            0,
+            -0.12,
+            0,
+            1
+          ]
+        ],
+        "steps": 16,
+        "stage": "lift",
+        "visual_assessment": "progressing",
+        "reason": "Robot 0 and robot 1 each visibly carry a hem corner, with the yellow rim hanging between them. Lift together and gradually level both wrists to peel more of the shirt from the table while preserving both grips."
+      }
+    },
+    {
+      "type": "applied_segment",
+      "decision_index": 25,
+      "model_call_index": 22,
+      "plan_id": "20261106-astra-coordinated-fresh-001:call-00022",
+      "plan_segment_index": 0,
+      "plan_segment_count": 1,
+      "model_invoked": true,
+      "observation_simulation_time_s": 16.725000872276723,
+      "latest_observation_simulation_time_s": 16.725000872276723,
+      "start_step": 304,
+      "end_step": 320,
+      "simulation_start_s": 16.725000872276723,
+      "simulation_end_s": 17.525000913999975,
+      "actual_steps": 16,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.20000000298023224,
+          0.0,
+          0.0,
+          -0.11999999731779099,
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.20000000298023224,
+          0.0,
+          0.0,
+          -0.11999999731779099,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "type": "decision",
+      "decision_index": 26,
+      "model_call_index": 23,
+      "plan_id": "20261106-astra-coordinated-fresh-001:call-00023",
+      "plan_segment_index": 0,
+      "plan_segment_count": 1,
+      "model_invoked": true,
+      "observation_simulation_time_s": 17.525000913999975,
+      "latest_observation_simulation_time_s": 17.525000913999975,
+      "decision": {
+        "tool": "act",
+        "action": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            -0.06,
+            -0.15,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0.06,
+            -0.15,
+            0,
+            1
+          ]
+        ],
+        "steps": 12,
+        "stage": "lift",
+        "visual_assessment": "progressing",
+        "reason": "Both hem grips remain visibly engaged, while the hanging shirt is still near the tabletop. Level and straighten both wrists as the lift settles, increasing clearance and keeping the opening spread before transport."
+      }
+    },
+    {
+      "type": "applied_segment",
+      "decision_index": 26,
+      "model_call_index": 23,
+      "plan_id": "20261106-astra-coordinated-fresh-001:call-00023",
+      "plan_segment_index": 0,
+      "plan_segment_count": 1,
+      "model_invoked": true,
+      "observation_simulation_time_s": 17.525000913999975,
+      "latest_observation_simulation_time_s": 17.525000913999975,
+      "start_step": 320,
+      "end_step": 332,
+      "simulation_start_s": 17.525000913999975,
+      "simulation_end_s": 18.125000945292413,
+      "actual_steps": 12,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -0.05999999865889549,
+          -0.15000000596046448,
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.05999999865889549,
+          -0.15000000596046448,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "type": "decision",
+      "decision_index": 27,
+      "model_call_index": 24,
+      "plan_id": "20261106-astra-coordinated-fresh-001:call-00024",
+      "plan_segment_index": 0,
+      "plan_segment_count": 2,
+      "model_invoked": true,
+      "observation_simulation_time_s": 18.125000945292413,
+      "latest_observation_simulation_time_s": 18.125000945292413,
+      "decision": {
+        "tool": "act",
+        "action": [
+          [
+            -0.65,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            -0.65,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ]
+        ],
+        "steps": 20,
+        "stage": "transport",
+        "visual_assessment": "progressing",
+        "reason": "Both robots visibly support separate hem corners, and the shirt appears clear of the tabletop. Back away together into the clear floor lane while preserving height and both grips."
+      }
+    },
+    {
+      "type": "applied_segment",
+      "decision_index": 27,
+      "model_call_index": 24,
+      "plan_id": "20261106-astra-coordinated-fresh-001:call-00024",
+      "plan_segment_index": 0,
+      "plan_segment_count": 2,
+      "model_invoked": true,
+      "observation_simulation_time_s": 18.125000945292413,
+      "latest_observation_simulation_time_s": 18.125000945292413,
+      "start_step": 332,
+      "end_step": 352,
+      "simulation_start_s": 18.125000945292413,
+      "simulation_end_s": 19.125000997446477,
+      "actual_steps": 20,
+      "applied_action": [
+        [
+          -0.6499999761581421,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          -0.6499999761581421,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "type": "decision",
+      "decision_index": 28,
+      "model_call_index": 24,
+      "plan_id": "20261106-astra-coordinated-fresh-001:call-00024",
+      "plan_segment_index": 1,
+      "plan_segment_count": 2,
+      "model_invoked": false,
+      "observation_simulation_time_s": 18.125000945292413,
+      "latest_observation_simulation_time_s": 19.125000997446477,
+      "decision": {
+        "tool": "act",
+        "action": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        "steps": 8,
+        "stage": "transport",
+        "visual_assessment": "progressing",
+        "reason": "Robot 0 and robot 1 retain their shared load. Stop base motion briefly and let the hanging garment settle before coordinating the turn toward the mannequin."
+      }
+    },
+    {
+      "type": "applied_segment",
+      "decision_index": 28,
+      "model_call_index": 24,
+      "plan_id": "20261106-astra-coordinated-fresh-001:call-00024",
+      "plan_segment_index": 1,
+      "plan_segment_count": 2,
+      "model_invoked": false,
+      "observation_simulation_time_s": 18.125000945292413,
+      "latest_observation_simulation_time_s": 19.125000997446477,
+      "start_step": 352,
+      "end_step": 360,
+      "simulation_start_s": 19.125000997446477,
+      "simulation_end_s": 19.525001018308103,
+      "actual_steps": 8,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "type": "decision",
+      "decision_index": 29,
+      "model_call_index": 25,
+      "plan_id": "20261106-astra-coordinated-fresh-001:call-00025",
+      "plan_segment_index": 0,
+      "plan_segment_count": 1,
+      "model_invoked": true,
+      "observation_simulation_time_s": 19.525001018308103,
+      "latest_observation_simulation_time_s": 19.525001018308103,
+      "decision": {
+        "tool": "act",
+        "action": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -0.25,
+            1
+          ]
+        ],
+        "steps": 12,
+        "stage": "recovery",
+        "visual_assessment": "recovering",
+        "reason": "Robot 0 maintains its hem grip; robot 1’s hem is visibly wrapped around its rolled wrist. Pause transport and gently reverse robot 1’s roll while retaining both grips to unwind the cloth."
+      }
+    },
+    {
+      "type": "applied_segment",
+      "decision_index": 29,
+      "model_call_index": 25,
+      "plan_id": "20261106-astra-coordinated-fresh-001:call-00025",
+      "plan_segment_index": 0,
+      "plan_segment_count": 1,
+      "model_invoked": true,
+      "observation_simulation_time_s": 19.525001018308103,
+      "latest_observation_simulation_time_s": 19.525001018308103,
+      "start_step": 360,
+      "end_step": 372,
+      "simulation_start_s": 19.525001018308103,
+      "simulation_end_s": 20.12500104960054,
+      "actual_steps": 12,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -0.25,
+          1.0
+        ]
+      ]
+    },
+    {
+      "type": "decision",
+      "decision_index": 30,
+      "model_call_index": 26,
+      "plan_id": "20261106-astra-coordinated-fresh-001:call-00026",
+      "plan_segment_index": 0,
+      "plan_segment_count": 1,
+      "model_invoked": true,
+      "observation_simulation_time_s": 20.12500104960054,
+      "latest_observation_simulation_time_s": 20.12500104960054,
+      "decision": {
+        "tool": "act",
+        "action": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -0.25,
+            1
+          ]
+        ],
+        "steps": 20,
+        "stage": "recovery",
+        "visual_assessment": "recovering",
+        "reason": "Robot 0 keeps its hem corner supported; robot 1 still has cloth wrapped around its wrist. Continue reversing robot 1’s roll at a steady rate, with both bases fixed and both grips retained."
+      }
+    },
+    {
+      "type": "applied_segment",
+      "decision_index": 30,
+      "model_call_index": 26,
+      "plan_id": "20261106-astra-coordinated-fresh-001:call-00026",
+      "plan_segment_index": 0,
+      "plan_segment_count": 1,
+      "model_invoked": true,
+      "observation_simulation_time_s": 20.12500104960054,
+      "latest_observation_simulation_time_s": 20.12500104960054,
+      "start_step": 372,
+      "end_step": 392,
+      "simulation_start_s": 20.12500104960054,
+      "simulation_end_s": 21.125001101754606,
+      "actual_steps": 20,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -0.25,
+          1.0
+        ]
+      ]
+    },
+    {
+      "type": "decision",
+      "decision_index": 31,
+      "model_call_index": 27,
+      "plan_id": "20261106-astra-coordinated-fresh-001:call-00027",
+      "plan_segment_index": 0,
+      "plan_segment_count": 1,
+      "model_invoked": true,
+      "observation_simulation_time_s": 21.125001101754606,
+      "latest_observation_simulation_time_s": 21.125001101754606,
+      "decision": {
+        "tool": "act",
+        "action": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -0.25,
+            1
+          ]
+        ],
+        "steps": 20,
+        "stage": "recovery",
+        "visual_assessment": "recovering",
+        "reason": "Both hem corners appear retained. Hold robot 0 steady and continue unwinding robot 1’s wrist, keeping both bases fixed and grippers closed."
+      }
+    },
+    {
+      "type": "applied_segment",
+      "decision_index": 31,
+      "model_call_index": 27,
+      "plan_id": "20261106-astra-coordinated-fresh-001:call-00027",
+      "plan_segment_index": 0,
+      "plan_segment_count": 1,
+      "model_invoked": true,
+      "observation_simulation_time_s": 21.125001101754606,
+      "latest_observation_simulation_time_s": 21.125001101754606,
+      "start_step": 392,
+      "end_step": 412,
+      "simulation_start_s": 21.125001101754606,
+      "simulation_end_s": 22.12500115390867,
+      "actual_steps": 20,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -0.25,
+          1.0
+        ]
+      ]
+    },
+    {
+      "type": "decision",
+      "decision_index": 32,
+      "model_call_index": 28,
+      "plan_id": "20261106-astra-coordinated-fresh-001:call-00028",
+      "plan_segment_index": 0,
+      "plan_segment_count": 2,
+      "model_invoked": true,
+      "observation_simulation_time_s": 22.12500115390867,
+      "latest_observation_simulation_time_s": 22.12500115390867,
+      "decision": {
+        "tool": "act",
+        "action": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -0.255,
+            1
+          ]
+        ],
+        "steps": 10,
+        "stage": "recovery",
+        "visual_assessment": "recovering",
+        "reason": "Both corners appear retained. Reverse robot 1’s remaining wrist roll toward neutral while robot 0 supports the opposite corner."
+      }
+    },
+    {
+      "type": "applied_segment",
+      "decision_index": 32,
+      "model_call_index": 28,
+      "plan_id": "20261106-astra-coordinated-fresh-001:call-00028",
+      "plan_segment_index": 0,
+      "plan_segment_count": 2,
+      "model_invoked": true,
+      "observation_simulation_time_s": 22.12500115390867,
+      "latest_observation_simulation_time_s": 22.12500115390867,
+      "start_step": 412,
+      "end_step": 422,
+      "simulation_start_s": 22.12500115390867,
+      "simulation_end_s": 22.625001179985702,
+      "actual_steps": 10,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -0.2549999952316284,
+          1.0
+        ]
+      ]
+    },
+    {
+      "type": "decision",
+      "decision_index": 33,
+      "model_call_index": 28,
+      "plan_id": "20261106-astra-coordinated-fresh-001:call-00028",
+      "plan_segment_index": 1,
+      "plan_segment_count": 2,
+      "model_invoked": false,
+      "observation_simulation_time_s": 22.12500115390867,
+      "latest_observation_simulation_time_s": 22.625001179985702,
+      "decision": {
+        "tool": "act",
+        "action": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        "steps": 8,
+        "stage": "recovery",
+        "visual_assessment": "uncertain",
+        "reason": "Hold both grips and let the wrist and suspended fabric settle before checking for residual twisting."
+      }
+    },
+    {
+      "type": "applied_segment",
+      "decision_index": 33,
+      "model_call_index": 28,
+      "plan_id": "20261106-astra-coordinated-fresh-001:call-00028",
+      "plan_segment_index": 1,
+      "plan_segment_count": 2,
+      "model_invoked": false,
+      "observation_simulation_time_s": 22.12500115390867,
+      "latest_observation_simulation_time_s": 22.625001179985702,
+      "start_step": 422,
+      "end_step": 430,
+      "simulation_start_s": 22.625001179985702,
+      "simulation_end_s": 23.025001200847328,
+      "actual_steps": 8,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "type": "decision",
+      "decision_index": 34,
+      "model_call_index": 29,
+      "plan_id": "20261106-astra-coordinated-fresh-001:call-00029",
+      "plan_segment_index": 0,
+      "plan_segment_count": 1,
+      "model_invoked": true,
+      "observation_simulation_time_s": 23.025001200847328,
+      "latest_observation_simulation_time_s": 23.025001200847328,
+      "decision": {
+        "tool": "act",
+        "action": [
+          [
+            -0.202,
+            0,
+            -0.2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0.202,
+            0,
+            -0.2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        "steps": 20,
+        "stage": "transport",
+        "visual_assessment": "progressing",
+        "reason": "The wrist twist appears cleared and both hem corners remain supported. Begin a coordinated clockwise turn toward the mannequin while maintaining grip, height, and spacing."
+      }
+    },
+    {
+      "type": "applied_segment",
+      "decision_index": 34,
+      "model_call_index": 29,
+      "plan_id": "20261106-astra-coordinated-fresh-001:call-00029",
+      "plan_segment_index": 0,
+      "plan_segment_count": 1,
+      "model_invoked": true,
+      "observation_simulation_time_s": 23.025001200847328,
+      "latest_observation_simulation_time_s": 23.025001200847328,
+      "start_step": 430,
+      "end_step": 450,
+      "simulation_start_s": 23.025001200847328,
+      "simulation_end_s": 24.025001253001392,
+      "actual_steps": 20,
+      "applied_action": [
+        [
+          -0.20200000703334808,
+          0.0,
+          -0.20000000298023224,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.20200000703334808,
+          0.0,
+          -0.20000000298023224,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "type": "decision",
+      "decision_index": 35,
+      "model_call_index": 30,
+      "plan_id": "20261106-astra-coordinated-fresh-001:call-00030",
+      "plan_segment_index": 0,
+      "plan_segment_count": 1,
+      "model_invoked": true,
+      "observation_simulation_time_s": 24.025001253001392,
+      "latest_observation_simulation_time_s": 24.025001253001392,
+      "decision": {
+        "tool": "act",
+        "action": [
+          [
+            -0.202,
+            0,
+            -0.2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0.202,
+            0,
+            -0.2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        "steps": 20,
+        "stage": "transport",
+        "visual_assessment": "progressing",
+        "reason": "Both hem corners remain supported during the turn. Continue rotating the pair clockwise with matched spacing, fixed arm height, and closed grips."
+      }
+    },
+    {
+      "type": "applied_segment",
+      "decision_index": 35,
+      "model_call_index": 30,
+      "plan_id": "20261106-astra-coordinated-fresh-001:call-00030",
+      "plan_segment_index": 0,
+      "plan_segment_count": 1,
+      "model_invoked": true,
+      "observation_simulation_time_s": 24.025001253001392,
+      "latest_observation_simulation_time_s": 24.025001253001392,
+      "start_step": 450,
+      "end_step": 470,
+      "simulation_start_s": 24.025001253001392,
+      "simulation_end_s": 25.025001305155456,
+      "actual_steps": 20,
+      "applied_action": [
+        [
+          -0.20200000703334808,
+          0.0,
+          -0.20000000298023224,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.20200000703334808,
+          0.0,
+          -0.20000000298023224,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "type": "decision",
+      "decision_index": 36,
+      "model_call_index": 31,
+      "plan_id": "20261106-astra-coordinated-fresh-001:call-00031",
+      "plan_segment_index": 0,
+      "plan_segment_count": 1,
+      "model_invoked": true,
+      "observation_simulation_time_s": 25.025001305155456,
+      "latest_observation_simulation_time_s": 25.025001305155456,
+      "decision": {
+        "tool": "act",
+        "action": [
+          [
+            -0.202,
+            0,
+            -0.2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0.202,
+            0,
+            -0.2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        "steps": 20,
+        "stage": "transport",
+        "visual_assessment": "progressing",
+        "reason": "Both grips appear stable, and the mannequin is entering the right side of robot 0’s view. Continue the coordinated clockwise turn to bring it toward the center."
+      }
+    },
+    {
+      "type": "applied_segment",
+      "decision_index": 36,
+      "model_call_index": 31,
+      "plan_id": "20261106-astra-coordinated-fresh-001:call-00031",
+      "plan_segment_index": 0,
+      "plan_segment_count": 1,
+      "model_invoked": true,
+      "observation_simulation_time_s": 25.025001305155456,
+      "latest_observation_simulation_time_s": 25.025001305155456,
+      "start_step": 470,
+      "end_step": 490,
+      "simulation_start_s": 25.025001305155456,
+      "simulation_end_s": 26.02500135730952,
+      "actual_steps": 20,
+      "applied_action": [
+        [
+          -0.20200000703334808,
+          0.0,
+          -0.20000000298023224,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.20200000703334808,
+          0.0,
+          -0.20000000298023224,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "type": "decision",
+      "decision_index": 37,
+      "model_call_index": 32,
+      "plan_id": "20261106-astra-coordinated-fresh-001:call-00032",
+      "plan_segment_index": 0,
+      "plan_segment_count": 1,
+      "model_invoked": true,
+      "observation_simulation_time_s": 26.02500135730952,
+      "latest_observation_simulation_time_s": 26.02500135730952,
+      "decision": {
+        "tool": "act",
+        "action": [
+          [
+            0.55,
+            0.2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0.55,
+            0.2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        "steps": 20,
+        "stage": "transport",
+        "visual_assessment": "progressing",
+        "reason": "Both corners remain held and the mannequin is ahead. Stop turning and move the pair forward with a small leftward shift toward its front, keeping the garment raised."
+      }
+    },
+    {
+      "type": "applied_segment",
+      "decision_index": 37,
+      "model_call_index": 32,
+      "plan_id": "20261106-astra-coordinated-fresh-001:call-00032",
+      "plan_segment_index": 0,
+      "plan_segment_count": 1,
+      "model_invoked": true,
+      "observation_simulation_time_s": 26.02500135730952,
+      "latest_observation_simulation_time_s": 26.02500135730952,
+      "start_step": 490,
+      "end_step": 510,
+      "simulation_start_s": 26.02500135730952,
+      "simulation_end_s": 27.025001409463584,
+      "actual_steps": 20,
+      "applied_action": [
+        [
+          0.550000011920929,
+          0.20000000298023224,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.550000011920929,
+          0.20000000298023224,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "type": "decision",
+      "decision_index": 38,
+      "model_call_index": 33,
+      "plan_id": "20261106-astra-coordinated-fresh-001:call-00033",
+      "plan_segment_index": 0,
+      "plan_segment_count": 1,
+      "model_invoked": true,
+      "observation_simulation_time_s": 27.025001409463584,
+      "latest_observation_simulation_time_s": 27.025001409463584,
+      "decision": {
+        "tool": "act",
+        "action": [
+          [
+            0.58,
+            0.2,
+            -0.006,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0.52,
+            0.2,
+            0.006,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        "steps": 20,
+        "stage": "transport",
+        "visual_assessment": "progressing",
+        "reason": "Both corners appear retained and the garment remains suspended. Continue toward the front approach area while gently aligning the bases’ headings and reducing their stagger."
+      }
+    },
+    {
+      "type": "applied_segment",
+      "decision_index": 38,
+      "model_call_index": 33,
+      "plan_id": "20261106-astra-coordinated-fresh-001:call-00033",
+      "plan_segment_index": 0,
+      "plan_segment_count": 1,
+      "model_invoked": true,
+      "observation_simulation_time_s": 27.025001409463584,
+      "latest_observation_simulation_time_s": 27.025001409463584,
+      "start_step": 510,
+      "end_step": 530,
+      "simulation_start_s": 27.025001409463584,
+      "simulation_end_s": 28.02500146161765,
+      "actual_steps": 20,
+      "applied_action": [
+        [
+          0.5799999833106995,
+          0.20000000298023224,
+          -0.006000000052154064,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.5199999809265137,
+          0.20000000298023224,
+          0.006000000052154064,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    }
+  ],
+  "measured_forward_segment_displacements": [
+    {
+      "robot_index": 0,
+      "from_observation": 37,
+      "to_observation": 39,
+      "delta_world_xy_m": [
+        -0.6247141361236572,
+        -0.16171173751354218
+      ],
+      "endpoint_horizontal_displacement_m": 0.6453049185636013,
+      "distance_to_mannequin_m": null
+    },
+    {
+      "robot_index": 1,
+      "from_observation": 37,
+      "to_observation": 39,
+      "delta_world_xy_m": [
+        -0.6630969047546387,
+        -0.13903003931045532
+      ],
+      "endpoint_horizontal_displacement_m": 0.677515207892671,
+      "distance_to_mannequin_m": null
+    }
+  ],
+  "independent_visual_review": {
+    "cooperative_lift_visual_support": "Cloth remains near both separate grippers and rises above the table in selected public cameras. This is visual evidence, not contact-force or stable-grasp certification.",
+    "cooperative_turn_and_translation_visual_support": "Both head cameras retain cloth between grippers while the pair turns; observations 37 to39 and public base states show subsequent translation toward the visible mannequin. Arrival or dressing completion is not established.",
+    "roll_action_description_discrepancy": {
+      "decision_index": 27,
+      "robot_index": 1,
+      "action_index_7_wrist_roll": 1,
+      "action_index_8_gripper": 0,
+      "gripper_zero_meaning": "retain previous intent",
+      "subsequent_negative_roll_recovery_decisions": [
+        29,
+        30,
+        31,
+        32
+      ],
+      "causal_status": "command, measured rotation, visual wrapping and later recovery are observed; sole cause or unintended intent is not established"
+    },
+    "model_reason_is_actor_claim_not_ground_truth": true
+  },
+  "source_files": [
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00025/observation.json",
+      "sha256": "57ab7a628ecf08435fbefcb1d02065838dae94cd07847d126d9673c936bfce5f",
+      "bytes": 25412
+    },
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00026/observation.json",
+      "sha256": "a1ecb75d7e92d866e1698ba4cc06d1a060dd2d1852c97505a4b76d7fc72f557c",
+      "bytes": 25414
+    },
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00027/observation.json",
+      "sha256": "2a1d93e85220f65b685a3725b6f6f26c8407a32599116f71e9fc59fa654c4d52",
+      "bytes": 25220
+    },
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00028/observation.json",
+      "sha256": "44a017954c5df3454cd266ef26ff6005d9a51229067212f355d0717884a65e27",
+      "bytes": 25272
+    },
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00029/observation.json",
+      "sha256": "84d9a222fd1eec3322d10642c6ee10ac815d3c4a35751905450daafa038a1442",
+      "bytes": 25187
+    },
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00030/observation.json",
+      "sha256": "b9c1bea3410129880df7bfa35f156d773c000825b2b4d495901eae749da14b04",
+      "bytes": 25217
+    },
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00031/observation.json",
+      "sha256": "ecb2308bdbc3151f9f0705987eceb2461f485ae8c6f6e8b3174e4fd6d2644c45",
+      "bytes": 25222
+    },
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00032/observation.json",
+      "sha256": "4e1dc6a0ed74573544b22d8411247789681c883f04c88adb77e55b661463ee47",
+      "bytes": 25204
+    },
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00033/observation.json",
+      "sha256": "6928741e4a148b314dfffa96da87b580ecf39f8ebf8753dabb5de2bc8b3f6f85",
+      "bytes": 25225
+    },
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00034/observation.json",
+      "sha256": "bad519104aa104279ebbd160262b7dfb5608a300f664119cc5b35211fc7a67d8",
+      "bytes": 25217
+    },
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00035/observation.json",
+      "sha256": "d79d2ff634fe270efddf0de33d6b7087c77cac3d499186d482a7af042056a71f",
+      "bytes": 25323
+    },
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00036/observation.json",
+      "sha256": "15dc5769b5c3f20cbb9d1a518be8856bc8cc091b7d5641c48a415ce0f212b6e2",
+      "bytes": 25354
+    },
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00037/observation.json",
+      "sha256": "f5d6f18cc5bb8bd0df736c24b819a6e0a8c13d946a3e62e3a87f36e3f8b7d196",
+      "bytes": 25348
+    },
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00038/observation.json",
+      "sha256": "78a268199acec7e5bbaf436f5b2d50de6ee691f5c45cfb26b3c8a4ca6a359783",
+      "bytes": 25370
+    },
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00039/observation.json",
+      "sha256": "c822502650d0fb8c0e84622f3361bfc77fcc6c89d488a52192c8dfaf6c054e7c",
+      "bytes": 25425
+    },
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00025/overview.png",
+      "sha256": "64b858236634679da5113a8a0b78bb6f606c5ad0b6263f71c5d4f97e843d3af1",
+      "bytes": 74347
+    },
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00027/overview.png",
+      "sha256": "4a7a52cb4c69d959160a408afe4a2c4f3e301de2f5f3c3bfc32a8c61979017eb",
+      "bytes": 73749
+    },
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00027/robot_0_wrist.png",
+      "sha256": "0e55212c03cd0cc22b1210de7e2e67709e87921f4c8b894e37dc1ae92ba2061f",
+      "bytes": 41738
+    },
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00027/robot_1_wrist.png",
+      "sha256": "85727c078e7e8bb829bbc1e154a68046d528afd7ab6a7bf28fe73af853db0867",
+      "bytes": 43330
+    },
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00028/robot_1_wrist.png",
+      "sha256": "20c2c61d0f3ab19e7a870d74fd8c94b1d9b3b52c971b5bad5870dc4c2588766b",
+      "bytes": 47318
+    },
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00031/robot_1_wrist.png",
+      "sha256": "a665167828b7526ce536a12b5ec4c3c6666f310670c91591082ba96f7e6451ee",
+      "bytes": 48728
+    },
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00034/robot_0_head.png",
+      "sha256": "71e39274132ffabf182b83311e7a36d1b44abd637b50fd14211fb21532bb5323",
+      "bytes": 63906
+    },
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00034/robot_1_head.png",
+      "sha256": "25d40974eb7b712ce742b0750cabde10952f465739e9636c819dd4db3ea85e84",
+      "bytes": 60832
+    },
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00037/overview.png",
+      "sha256": "8efe0187f469094ee430ae6b73cbdd5c2ee6e740683f3048c443332083d555d6",
+      "bytes": 73186
+    },
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00037/robot_0_head.png",
+      "sha256": "06a44a35b0178772504f2bc33787178cd3d51c936e3e738d58c9a1705a0db2cf",
+      "bytes": 64866
+    },
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00037/robot_1_head.png",
+      "sha256": "50898ff79f8ff167764bc09db1127c615941199dc7db894b0425d31817ea8a6c",
+      "bytes": 61370
+    },
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00039/overview.png",
+      "sha256": "d59e6a979bf288f0880b154650b1f596c6e72c008a15951be6f06cc1ac25b0e6",
+      "bytes": 74345
+    },
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00039/robot_0_head.png",
+      "sha256": "593df347bb82ded510b77b5c0c85dc0d7021de2104b0f4a9d9c8d8a45ca7c916",
+      "bytes": 63717
+    },
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00039/robot_1_head.png",
+      "sha256": "a8b44a5aefe41b87fc90dfca7aa0185dfb05ef704ba1ae4276b5c28326086355",
+      "bytes": 56277
+    },
+    {
+      "path": "config/policy_interface.json",
+      "sha256": "0823b5a692621bc1effed308ac6427af7e97122de4db297ec14b5d751551a5dc",
+      "bytes": 12778
+    },
+    {
+      "path": "output/collections/20261106-astra-coordinated-fresh-001/run_metadata.json",
+      "sha256": "7ff40d25c6ef929be942d923d8886ac7296bf0a08465eb20350a2611e9b6c1d1",
+      "bytes": 8686,
+      "fields_used": [
+        "public_interface.joint_names"
+      ],
+      "other_fields_exported": false
+    }
+  ],
+  "completed_jsonl_prefix": {
+    "path": "output/operator-traces/20261106-astra-coordinated-fresh-001/decisions.jsonl",
+    "through_applied_segment_decision_index": 38,
+    "sha256": "e4e7b75db066ccd16ca87230a7ca554a3bfdd8bb84985aedb6252b8bd74cb3eb",
+    "bytes": 127627,
+    "raw_lines_exported": false
+  },
+  "artifacts": [
+    {
+      "file": "observation-00025-overview.png",
+      "observation_index": 25,
+      "camera": "overview",
+      "source_path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00025/overview.png",
+      "sha256": "64b858236634679da5113a8a0b78bb6f606c5ad0b6263f71c5d4f97e843d3af1",
+      "bytes": 74347,
+      "transform": "none_original_png"
+    },
+    {
+      "file": "observation-00027-overview.png",
+      "observation_index": 27,
+      "camera": "overview",
+      "source_path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00027/overview.png",
+      "sha256": "4a7a52cb4c69d959160a408afe4a2c4f3e301de2f5f3c3bfc32a8c61979017eb",
+      "bytes": 73749,
+      "transform": "none_original_png"
+    },
+    {
+      "file": "observation-00027-robot_0_wrist.png",
+      "observation_index": 27,
+      "camera": "robot_0_wrist",
+      "source_path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00027/robot_0_wrist.png",
+      "sha256": "0e55212c03cd0cc22b1210de7e2e67709e87921f4c8b894e37dc1ae92ba2061f",
+      "bytes": 41738,
+      "transform": "none_original_png"
+    },
+    {
+      "file": "observation-00027-robot_1_wrist.png",
+      "observation_index": 27,
+      "camera": "robot_1_wrist",
+      "source_path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00027/robot_1_wrist.png",
+      "sha256": "85727c078e7e8bb829bbc1e154a68046d528afd7ab6a7bf28fe73af853db0867",
+      "bytes": 43330,
+      "transform": "none_original_png"
+    },
+    {
+      "file": "observation-00028-robot_1_wrist.png",
+      "observation_index": 28,
+      "camera": "robot_1_wrist",
+      "source_path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00028/robot_1_wrist.png",
+      "sha256": "20c2c61d0f3ab19e7a870d74fd8c94b1d9b3b52c971b5bad5870dc4c2588766b",
+      "bytes": 47318,
+      "transform": "none_original_png"
+    },
+    {
+      "file": "observation-00031-robot_1_wrist.png",
+      "observation_index": 31,
+      "camera": "robot_1_wrist",
+      "source_path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00031/robot_1_wrist.png",
+      "sha256": "a665167828b7526ce536a12b5ec4c3c6666f310670c91591082ba96f7e6451ee",
+      "bytes": 48728,
+      "transform": "none_original_png"
+    },
+    {
+      "file": "observation-00034-robot_0_head.png",
+      "observation_index": 34,
+      "camera": "robot_0_head",
+      "source_path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00034/robot_0_head.png",
+      "sha256": "71e39274132ffabf182b83311e7a36d1b44abd637b50fd14211fb21532bb5323",
+      "bytes": 63906,
+      "transform": "none_original_png"
+    },
+    {
+      "file": "observation-00034-robot_1_head.png",
+      "observation_index": 34,
+      "camera": "robot_1_head",
+      "source_path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00034/robot_1_head.png",
+      "sha256": "25d40974eb7b712ce742b0750cabde10952f465739e9636c819dd4db3ea85e84",
+      "bytes": 60832,
+      "transform": "none_original_png"
+    },
+    {
+      "file": "observation-00037-overview.png",
+      "observation_index": 37,
+      "camera": "overview",
+      "source_path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00037/overview.png",
+      "sha256": "8efe0187f469094ee430ae6b73cbdd5c2ee6e740683f3048c443332083d555d6",
+      "bytes": 73186,
+      "transform": "none_original_png"
+    },
+    {
+      "file": "observation-00037-robot_0_head.png",
+      "observation_index": 37,
+      "camera": "robot_0_head",
+      "source_path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00037/robot_0_head.png",
+      "sha256": "06a44a35b0178772504f2bc33787178cd3d51c936e3e738d58c9a1705a0db2cf",
+      "bytes": 64866,
+      "transform": "none_original_png"
+    },
+    {
+      "file": "observation-00037-robot_1_head.png",
+      "observation_index": 37,
+      "camera": "robot_1_head",
+      "source_path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00037/robot_1_head.png",
+      "sha256": "50898ff79f8ff167764bc09db1127c615941199dc7db894b0425d31817ea8a6c",
+      "bytes": 61370,
+      "transform": "none_original_png"
+    },
+    {
+      "file": "observation-00039-overview.png",
+      "observation_index": 39,
+      "camera": "overview",
+      "source_path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00039/overview.png",
+      "sha256": "d59e6a979bf288f0880b154650b1f596c6e72c008a15951be6f06cc1ac25b0e6",
+      "bytes": 74345,
+      "transform": "none_original_png"
+    },
+    {
+      "file": "observation-00039-robot_0_head.png",
+      "observation_index": 39,
+      "camera": "robot_0_head",
+      "source_path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00039/robot_0_head.png",
+      "sha256": "593df347bb82ded510b77b5c0c85dc0d7021de2104b0f4a9d9c8d8a45ca7c916",
+      "bytes": 63717,
+      "transform": "none_original_png"
+    },
+    {
+      "file": "observation-00039-robot_1_head.png",
+      "observation_index": 39,
+      "camera": "robot_1_head",
+      "source_path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00039/robot_1_head.png",
+      "sha256": "a8b44a5aefe41b87fc90dfca7aa0185dfb05ef704ba1ae4276b5c28326086355",
+      "bytes": 56277,
+      "transform": "none_original_png"
+    }
+  ]
+}

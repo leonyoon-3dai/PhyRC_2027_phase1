@@ -1,0 +1,47 @@
+{
+  "source_run_id": "20261106-astra-coordinated-fresh-001",
+  "decision_index": 27,
+  "source_action": [
+    [
+      -0.65,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    [
+      -0.65,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  ],
+  "source_action_compact_sha256": "424dd9dbd060b0e33bde11529cee29c4698109e22f642ee297afd8ae2018c620",
+  "comparison_numeric_representation": "Both encodings use identical Python float scalar values before float32 action conversion; zeros serialize as 0.0",
+  "serialization": "json.dumps ensure_ascii=False separators=(comma,colon) allow_nan=False",
+  "representations": {
+    "array": {
+      "json": "[[-0.65,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0],[-0.65,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0]]",
+      "unicode_characters": 81,
+      "utf8_bytes": 81
+    },
+    "named": {
+      "json": "{\"robots\":[{\"robot_id\":\"robot_0\",\"action\":{\"base_forward\":-0.65,\"base_left\":0.0,\"base_CCW_yaw\":0.0,\"lift\":0.0,\"arm_extension\":0.0,\"wrist_yaw\":0.0,\"wrist_pitch\":0.0,\"wrist_roll\":0.0,\"gripper\":1.0}},{\"robot_id\":\"robot_1\",\"action\":{\"base_forward\":-0.65,\"base_left\":0.0,\"base_CCW_yaw\":0.0,\"lift\":0.0,\"arm_extension\":0.0,\"wrist_yaw\":0.0,\"wrist_pitch\":0.0,\"wrist_roll\":1.0,\"gripper\":0.0}}]}",
+      "unicode_characters": 384,
+      "utf8_bytes": 384
+    }
+  },
+  "token_count_measured": false,
+  "model_latency_measured": false,
+  "additional_utf8_bytes": 303,
+  "named_to_array_bytes_ratio": 4.7407407407407405
+}
