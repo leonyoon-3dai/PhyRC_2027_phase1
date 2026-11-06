@@ -21,9 +21,11 @@
 | 전체 실효 처리량 | **0.395 제어 프레임/초** ·실시간 비율0.0198× (모델 대기 포함) |
 | 1전이 내부 계측 | 환경 adapter 평균764.95ms ·데이터 기록 평균51.93ms |
 
-여기서 제어 프레임은20Hz로 기록하는 RGB5장·depth·로봇 상태 묶음의 전이입니다. **그래픽 렌더 FPS는 별도 미계측**이며 영상 재생5fps와도 다릅니다. 물리240Hz·제어20Hz는 simulation 시간 기준입니다. 모델 호출 경로에는 CLI·네트워크·서비스 대기·생성이 포함되며 내부 추론시간만 분리한 수치가 아닙니다. 모델 대기 중에는 물리가 정지합니다. 자원 표본은 E13, 전체 시간·처리량은 완료된 E12로 구분합니다.
+여기서 제어 프레임은20Hz로 기록하는 RGB5장·depth·로봇 상태 묶음의 전이입니다. **그래픽 렌더 FPS는 별도 미계측**이며 영상 재생5fps와도 다릅니다. 물리240Hz·내부 로봇 제어60Hz·정책/관측20Hz는 simulation 시간 기준입니다. 모델 호출 경로에는 CLI·네트워크·서비스 대기·생성이 포함되며 내부 추론시간만 분리한 수치가 아닙니다. 모델 대기 중에는 물리가 정지합니다. 자원 표본은 E13, 전체 시간·처리량은 완료된 E12로 구분합니다.
 
 [측정 방법·한계와 해석](docs/project/performance/20261106-performance-review.ko.md) · [구간별 사용률](docs/project/performance/20261106-resource-summary.json) · [121개 표본 CSV](docs/project/performance/20261106-resource-samples.csv) · [처리량 계산 근거](docs/project/performance/20261106-timing-summary.json) · [최신 E13 영상](docs/gallery/20261106-astra-hem-depth-001.ko.md)
+
+**기술적 속도 개선 조사:** E13 입력 준비는 호출 경로의0.13%, 입력 캐시 비율90.1%였습니다. E14에서 단순 정착의 별도 모델 호출을 줄이는 구조를 비교하고, 카메라/물리 세부 계측과 RGB-D 전송 비용 분리를 준비합니다. [근거·우선순위·한계](docs/project/performance/20261106-speedup-plan.ko.md).
 
 <!-- TEMP_PERFORMANCE_END -->
 
