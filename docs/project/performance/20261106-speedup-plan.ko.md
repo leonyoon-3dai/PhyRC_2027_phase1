@@ -1,6 +1,6 @@
 # 호출·시뮬레이션 속도 개선 후보
 
-2026-11-06 조사. **현재 E14의 Astra/ultra·물리·카메라·속도 등급은 그대로 유지합니다.** 아래는 완료된 E12/E13 계측과 소스·공식 문서에 근거한 후보이며, 새 가속 효과는 아직 측정하지 않았습니다. [기존 성능 실측](20261106-performance-review.ko.md) · [E14 비교](../../collection/experiments/2026-11-06-move-settle.ko.md)
+2026-11-06 조사. **E15까지 마감·수집 일시 중지. Astra/ultra·공식 물리·카메라·속도 등급은 유지했습니다.** 아래는 완료된 E12/E13 계측과 소스·공식 문서에 근거한 후보이며, 새 가속 효과는 아직 측정하지 않았습니다. [기존 성능 실측](20261106-performance-review.ko.md) · [E14 비교](../../collection/experiments/2026-11-06-move-settle.ko.md)
 
 ## 어디에 시간이 쓰였나
 
@@ -27,9 +27,9 @@ E14의 고정 정착은 추가 관측 판단 없이 정해진 중립만 수행�
 
 ## 2. 시뮬레이터의 카메라와 물리 비용을 나누기
 
-현재 [sensor capture](../../../src/PhyRC_Sim/Policy/sensors.py)는 `world.render()`와 Replicator의`rt_subframes=4,delta_time=0,wait_for_render=True`를 사용합니다. 소스는 오래된 카메라 프레임을 피하기 위한 대기를 명시합니다. 이 코드가 무거울 가능성은 있지만 아직 capture 내부 시간을 분리하지 않았으므로 불필요한 중복이라고 결론내리지 않습니다.
+현재 [sensor capture](../../../src/PhyRC_Sim/Policy/sensors.py)는 `world.render()`와 Replicator의`rt_subframes=4,delta_time=0,wait_for_render=True`를 사용합니다. 소스는 오래된 카메라 프레임을 피하기 위한 대기를 명시합니다. E15에서 capture 전체 시간을 측정했으나 내부의 render·Replicator·readback은 아직 분리하지 않았으므로 불필요한 중복이라고 결론내리지 않습니다.
 
-다음 최소 계측 후보는 기존 [RecordedEnvironment](../../../participant/collection/evaluation.py)에 기본OFF의 수치 타이머만 두어 **capture,그 외 observe,그 외 step** 시간을 구분하는 것입니다. 추가 렌더·GPU 동기화·물리 진행 없이 기존 호출을 감싸고, 결과는 신뢰된 계측 기록에만 남깁니다. 이후 카메라가 지배적일 때 render·Replicator 대기·readback을 더 나눕니다. 물리240Hz·내부 로봇 제어60Hz·정책/관측20Hz·5개 RGB-D 관측·평가 정의는 유지합니다.
+기본OFF인 v1 수치 타이머를 [step_profile.py](../../../participant/collection/step_profile.py)에 구현해 **capture,그 외 observe,그 외 step**을 구분했고 E15에 적용했습니다. 추가 렌더·GPU 동기화·물리 진행 없이 기존 호출을 감싸고, 결과는 신뢰된 계측 기록에만 남깁니다. 이후 카메라가 지배적일 때 render·Replicator 대기·readback을 더 나눕니다. 물리240Hz·내부 로봇 제어60Hz·정책/관측20Hz·5개 RGB-D 관측·평가 정의는 유지합니다.
 
 작은 후보로는 같은 정지된 capture 내부에서 로봇별 link transform 읽기를 재사용하는 방법이 있습니다. 현재 wrist/head를 각각 읽어 두 로봇에4회 전체 transform을 요청합니다. 효과는 측정 전이며 다른 시각의 데이터를 재사용하지 않습니다.
 
@@ -42,6 +42,21 @@ Writer는 전이마다 양쪽 관측 저장·LZF 압축·flush를 수행합니�
 
 ## 추가 확인 · 모델 없는6전이 연결 검사
 
-E14 마감 뒤 기본OFF 계측을 적용하고 전체208개 CPU 검사·실제6/6전이 검사를 통과했습니다. 모델 호출은0회입니다. 새 시작의6전이 평균은 전체 env778.666ms, capture198.229ms, 그 외 observe10.991ms, 그 외 step569.446ms, writer55.131ms였습니다. 이 작은 구간에서는 카메라보다 observe 바깥 비용이 컸습니다. 마지막 항목에는 제어·물리·callback·평가 등이 들어가므로 순수 physics 비용으로 단정하지 않습니다. E15의 긴 실제 구간에서 재확인합니다. [실측·소스 해시](20261106-step-profile-wiring.json).
+E14 마감 뒤 기본OFF 계측을 적용하고 전체208개 CPU 검사·실제6/6전이 검사를 통과했습니다. 모델 호출은0회입니다. 새 시작의6전이 평균은 전체 env778.666ms, capture198.229ms, 그 외 observe10.991ms, 그 외 step569.446ms, writer55.131ms였습니다. 이 작은 구간에서는 카메라보다 observe 바깥 비용이 컸습니다. 마지막 항목에는 제어·물리·callback·평가 등이 들어가므로 순수 physics 비용으로 단정하지 않습니다. 아래 E15 종료 계측에서611전이 전체를 재확인했습니다. [실측·소스 해시](20261106-step-profile-wiring.json).
 
 각 전이의 observe/capture 호출이1회임과 분해 시간 합을 확인했습니다. 기준OFF와의 GPU A/B 실행은 하지 않았으므로 계측 오버헤드가0이라거나 가속됐다고 주장하지 않습니다. 검증 시 소스는 공개 커밋 전 작업 트리였으며 JSON에 실제 파일 SHA를 보존했습니다.
+
+
+## E15 종료 계측 · 611전이
+
+[수치 원본 요약](20261106-e15-step-profile.json). 추가 실행 없이 닫힌 `step_timings.jsonl` 전체611행을 집계했습니다.
+
+| 전이당 평균 | 시간 |
+|---|---:|
+| 전체 environment step | 766.474ms |
+| 카메라 capture | 174.220ms |
+| 그 외 observe | 11.190ms |
+| observe 바깥 step | 581.064ms |
+| 별도 dataset writer | 54.017ms |
+
+각 전이 observe/capture는1회,observe밖capture는0회였습니다. observe 바깥 비용이 컸지만 여기에는 제어·physics·평가·대기가 섞입니다. 2단계 계측 패치는 CPU 후보로 보존하며 실제GPU검증·적용은 하지 않았습니다. 사용자 마감 지시에 따라 오늘 추가 성능 실험은 실행하지 않습니다. 다음 서버에서는 기존 관측·평가를 유지한 계측부터 검토합니다.

@@ -1,4 +1,24 @@
-# 시연 데이터 수집 과정
+# 시연 수집 자료 · E15까지 마감
+
+**5/50점 · 첫 소매 0 · 수집 일시 중지. E16·E17은 미실행입니다.**
+
+| 원하는 정보 | 바로가기 |
+|---|---|
+| 영상으로 비교 | **[큰 화면 갤러리](../gallery/README.ko.md)** · [E15 세 단계](../gallery/20261106-astra-opening264-001.ko.md) |
+| 원인·다음 방향 | **[오늘 결론](../project/SESSION_WRAPUP_20261106.ko.md)** · [E15 최종 검토](reviews/20261106-astra-opening264-001.ko.md) |
+| 내일 재개 | **[클린 서버 안내](../project/START_HERE.ko.md)** · [현재 상태](../project/STATUS.md) |
+| E15 원문 | [프롬프트·행동·점수·전체 영상](attempts/20261106-astra-opening264-001/README.ko.md) |
+| 실행 이력 | [E10~E15](../project/sessions/20261106-resume10.ko.md) · [이전 일지](sessions/2026-11-06.md) |
+| 연구 | [Stretch4·Georgia Tech Astra](research/2026-11-06-stretch4-astra-directions.ko.md) · [픽셀 깊이 후보](research/2026-11-06-pixel-depth-query.ko.md) |
+
+Chrome·WebRTC를 사용하지 않습니다. 기술 검사 통과·부분 점수·착의 성공·학습 승인을 구분합니다. 상세 원본과 과거 실패 기록은 아래에 보존합니다.
+
+<details>
+<summary>E00~E09 상세 목차·데이터 형식·과거 실험 기록 펼치기</summary>
+
+아래의 실행 상태·다음 작업 문구는 **이전 시점의 기록**입니다. 현재 지시는 위의 E15 마감·클린 서버 안내를 따릅니다.
+
+# 이전 수집 자료 목차 · 당시 기록
 
 [세션 정리·다음 목표](../project/SESSION_WRAPUP_20261106.ko.md) · [공개 시연 갤러리](../gallery/README.ko.md) · [저장소 소개](../../README.md) · [2026-11-06 수집 일지](sessions/2026-11-06.md) · [서버 복원·실행 명령](../project/START_HERE.ko.md) · [현재 상태](../project/STATUS.md)
 
@@ -315,5 +335,8 @@ docs/collection/attempts/<run-id>/
 모델 대기 중 렌더링은 물리 전이가 아닙니다. `stop`은 실제 중립 전이를 만들고 `finish_episode`는 추가 전이 없이 끝납니다. reset 전후 관측을 일반적인 0.05초 전이로 연결하거나 누락 프레임을 정상 관측으로 채우지 않습니다. 현재 별도 누락 이벤트·경로 집계가 필요한 부분은 추가 구현으로 구분합니다.
 
 공개 관측의 simulation clock과 reset 이후 시작하는 평가 clock은 원점이 다를 수 있습니다. r5에서는 평가 0초가 공개 관측 약 1.525초에 대응합니다. 공개 패키지의 `time_origin_public_simulation_s`를 사용해 같은 물리 시점으로 맞추며, 서로 다른 시계를 같은 절대 시각으로 취급하지 않습니다.
+
+</details>
+
 
 </details>

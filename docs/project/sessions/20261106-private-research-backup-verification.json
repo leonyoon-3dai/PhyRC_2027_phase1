@@ -1,0 +1,18 @@
+{
+  "schema": "private-research-handoff-backup-v1",
+  "archive_bytes": 4600121,
+  "archive_sha256": "e28b961d54e8138a929ae09a4a23be36e00526405ac9d2827a1af4c8f24df6fb",
+  "manifest_entries": 173,
+  "scope": "Explicitly reviewed private research and candidate patches for clean-server handoff: public-observation cause analyses, neutral-transition proof, public support geometry, depth representation review, sanitized resource measurements, and applied historical versus unapplied candidate validation. E15 ended today; no E16/E17 run is authorized by this archive. Excludes credentials, home directories, raw model reasoning/events, session databases, simulator logs, dependency installs and unreviewed runtime.",
+  "restore_policy": "Extract in a separate review directory; consult handoff.md and scope.json. Historical candidates may already be applied or superseded. Unapplied perception and phase2 timing candidates require review and missing validation before any later explicit resume. Do not apply the archive wholesale to a live collector.",
+  "repo_id": "leonayoon/phyrc-2027-phase1-private-backup",
+  "repo_type": "dataset",
+  "private": true,
+  "revision": "3349b6a73bf266cfba015654613e58ae490290b5",
+  "path": "sessions/20261106-private-research-handoff-v1/archive.tar.gz",
+  "manifest_path": "sessions/20261106-private-research-handoff-v1/SHA256.json",
+  "manifest_sha256": "46b045b327102a5002d3ea87e12208b430f77514322a4361d6feb0a928024498",
+  "remote_download_verified": true,
+  "manifest_remote_download_verified": true,
+  "verified_at_utc": "2026-11-06T12:38:32.547958+00:00"
+}

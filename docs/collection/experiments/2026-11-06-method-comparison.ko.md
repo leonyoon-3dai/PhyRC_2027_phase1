@@ -2,6 +2,8 @@
 
 [수집 과정 목차](../README.ko.md) · [당일 일지](../sessions/2026-11-06.md) · [호출 지연 검토 가이드](../guides/call-latency-options.ko.md) · [사용자 피드백](../feedback/2026-11-06.jsonl)
 
+**최종 업데이트: E15까지 마감, 수집 일시 중지.** E16·E17은 미실행입니다. [시각적 비교·E10~E15](../../gallery/README.ko.md),[최종 원인 구분·다음 후보](../../project/SESSION_WRAPUP_20261106.ko.md),[클린 서버 재개](../../project/START_HERE.ko.md)를 우선합니다. 아래 E00~E09 표와 “다음” 문구는 당시 이력이며, E09 종료 오류는 이후 수정·검증했습니다.
+
 사용자의 발전 방향은 **빠른 득점보다 안정적인 수집 시스템, 다양한 방법의 시도와 과정 기록**입니다. 현재는 사용자가 쉬었다가 클린 서버에서 이어가도록 요청해 **수집을 일시 중지**합니다. `gpt-6-astra`·`ultra`와 기존 기록을 유지하고 새 모델·GPU 실행은 하지 않습니다. 다음 재개는 [서버 인계 안내](../../project/START_HERE.ko.md)를 따릅니다.
 
 **E07은 06:04:06 UTC에 80개 결정 예산으로 정상 종료했고 1,067/1,067전이 검사를 통과했습니다.** [종료 검토](../reviews/20261106-astra-coordinated-fresh-001.ko.md)와 [전체 패키지](../attempts/20261106-astra-coordinated-fresh-001/README.ko.md)의 공식 결과는 **5/50·success=false·no_dressing_points·rate 0점/초**입니다. E08은 설정 누락으로 시작 전에 실패했고, E09는 재실행 도중 사용자 중지 후 종료 응답 순서 오류·파일 미완료를 보존했습니다. E09의 141전이 전수 검사는 미완료 오류 3개로 실패했으며 새 모델 호출은 0입니다. 기본 경로는 CLI `exec/resume`, E02는 호환성 보류입니다.
