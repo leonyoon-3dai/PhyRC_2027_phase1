@@ -162,7 +162,7 @@ RGB-D는 우선 **오프라인 진단**입니다. 현재 정책은 RGB 3개와 �
 |---|---|
 | [START_HERE](docs/project/START_HERE.ko.md) | 현재 클린 서버 진입점과 Codex 인계문 |
 | [실행 스프린트](docs/project/ENGINEERING_SPRINT.ko.md) | 현재 우선순위, 일별 기준, 범위 제한과 평가 |
-| [기술 증거](docs/project/EVIDENCE_MAP.md) | 엔지니어링 역량, 검증한 주장, 포트폴리오 갱신 |
+| [기술 증거](docs/project/EVIDENCE_MAP.md) | 구현·검증 근거와 기술 기록 갱신 |
 | [이전 2주 계획](docs/project/RGBD_TWO_WEEK_PLAN.ko.md) | 새 스프린트로 대체된 과거 일정 보존 |
 | [STATUS](docs/project/STATUS.md) | 실제 검증과 미해결 항목 |
 | [RECOVERY](docs/project/RECOVERY.ko.md) / [TODO](docs/project/TODO.ko.md) | 고정 HF revision, 실제 명령, 남은 작업 |

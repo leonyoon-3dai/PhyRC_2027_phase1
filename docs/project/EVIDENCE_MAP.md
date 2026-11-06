@@ -44,7 +44,7 @@ E2 initially analyzes depth offline. E3 initially uses the existing RGB/state po
 
 ## Claims that can grow with the evidence
 
-These are conditional CV/project-description examples. Add numerical fields only from linked completed experiments; keep any negative result and its denominator. They do not amend a CV automatically.
+These are conditional technical documentation examples. Add numerical fields only from linked completed experiments; keep any negative result and its denominator.
 
 **Current measured scope — usable now**
 
@@ -83,7 +83,7 @@ The current learning path is JAX π₀.₅ LoRA. Adding a new PyTorch model only
 
 ## Publishing the result
 
-A five-minute technical walkthrough should connect the following evidence rather than list tools: the dressing/data problem and official constraints; synchronized collection and QC; one frame/geometry example; the actual SFT setting and matched comparison; a failure, a deployment limitation and the next test. Use only completed evidence in the present tense. Keep the same links and numbers in the README, experiment report and CV statement.
+A five-minute technical walkthrough should connect the following evidence rather than list tools: the dressing/data problem and official constraints; synchronized collection and QC; one frame/geometry example; the actual SFT setting and matched comparison; a failure, a deployment limitation and the next test. Use only completed evidence in the present tense. Keep the same links and numbers in the README, experiment report and technical summary.
 
 For each claim, link its code commit, dataset/model revision, commands, hardware, score files, original video/stills, failure cases and recovery scope. Summarize the outcome in [STATUS](STATUS.md) and the [experiment register](../../experiments/README.md).
 

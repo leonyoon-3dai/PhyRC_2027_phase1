@@ -160,13 +160,13 @@ pickup raw milestone과 공식 dressing points/s는 다르다. 집기에 성공�
 - Codabench가 열리지 않으면 검증된 ZIP, checksum, 로컬 결과를 보존하고 제출 상태를 미완료로 둔다.
 - 양수 점수나 개선이 없으면 그 결과를 보고한다. 구현과 재현성이 확인된 범위는 별도 성과로 정리한다.
 
-## 9. 세션 종료와 지원 자료
+## 9. 세션 종료와 기술 자료
 
 [SESSION](templates/SESSION.md), [EXPERIMENT](templates/EXPERIMENT.md) 형식으로 code commit, dirty state, image/asset revision, dataset/model revision, 명령, seed, hardware, 결과와 다음 명령을 연결한다. 실행 후 STATUS와 한국어/영어 README의 검증 범위를 함께 갱신한다.
 
-90초 영상은 과제/관측 20초, RGB-D/mask 25초, 정책 비교 25초, 결과와 한계 20초로 구성한다. 포트폴리오 2장은 실제 데이터 처리 화면과 평가/복원 근거를 담는다. CV에는 완료한 구현만 추가하며, 공식 recorder와 공개 모델을 활용한 통합 기여를 원천 개발과 구분한다.
+90초 영상은 과제/관측 20초, RGB-D/mask 25초, 정책 비교 25초, 결과와 한계 20초로 구성한다. 기술 요약에는 실제 데이터 처리 화면과 평가/복원 근거를 담는다. 완료한 구현만 결과로 기록하며, 공식 recorder와 공개 모델을 활용한 통합 기여를 원천 개발과 구분한다.
 
-면접 준비 질문: optical-Z와 invalid depth, 공개 관측으로 가능한 좌표 변환, observation-action 시간 정합, 32D state와 18D action, 학습 loss와 task score의 차이, 새 서버에서의 복원 방법.
+기술 검토 항목: optical-Z와 invalid depth, 공개 관측으로 가능한 좌표 변환, observation-action 시간 정합, 32D state와 18D action, 학습 loss와 task score의 차이, 새 서버에서의 복원 방법.
 
 ## 10. 참고 주소
 

@@ -160,7 +160,7 @@ After this evidence sprint, continue the same data and experiment workflow towar
 |---|---|
 | [START_HERE](docs/project/START_HERE.ko.md) | Current clean-server entry point and Codex prompt |
 | [Engineering sprint](docs/project/ENGINEERING_SPRINT.ko.md) | Active priorities, daily gates, scope limits and evaluation |
-| [Evidence map](docs/project/EVIDENCE_MAP.md) | Engineering competencies, verified claims and portfolio updates |
+| [Evidence map](docs/project/EVIDENCE_MAP.md) | Implementation evidence, verified claims and technical documentation |
 | [Previous two-week plan](docs/project/RGBD_TWO_WEEK_PLAN.ko.md) | Archived schedule; superseded by the active sprint |
 | [STATUS](docs/project/STATUS.md) | Measured state and unresolved items |
 | [RECOVERY](docs/project/RECOVERY.ko.md) / [TODO](docs/project/TODO.ko.md) | Pinned HF revisions, actual commands, remaining work |
