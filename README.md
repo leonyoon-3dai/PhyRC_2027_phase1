@@ -1,14 +1,16 @@
 <!-- TEMP_PERFORMANCE_BEGIN: user requested temporary top-of-README note; move/remove after review -->
 ## 임시 성능 메모 · 확인 후 이동/삭제 예정
 
-**2026-11-06 10:58 UTC 1차 실측.** E13 수집을 유지하면서 읽기 전용으로 측정 중입니다. 아래 자원 값은 **물리 동작 실행 중 1초 표본**이며 전체 평균이 아닙니다. 모델 대기/실행 구간별 약4분 측정이 끝나면 갱신합니다. Chrome·WebRTC OFF.
+**2026-11-06 10:57:41–11:01:41 UTC, E13 실행 중4분 실측.** 2초 간격121표본. 모델 대기104개·동작 실행8개를 비교하며 초기1개·단계 전환8개는 분리했습니다. 수집 중단·GPU 부하 시험 없이 측정했습니다. Chrome·WebRTC OFF.
 
-| 자원 | 현재 실측 |
-|---|---|
-| CPU | 노출 vCPU12개 · 전체 **18.9%** · 가장 바쁜 코어33.7% |
-| RAM | **11.35 /70.76 GiB (16.0%)** · available59.40 GiB; 사용량은 total−available |
-| GPU | NVIDIA L40S · 동작 실행 표본 **62%** ·39°C·125.36W; 앞선 모델 대기 표본은0% |
-| VRAM | **9,274 /46,068 MiB (20.1%)** |
+| 자원 | 모델 요청·응답 대기 | 물리 동작 실행 |
+|---|---:|---:|
+| CPU 전체 평균 / 최대 | **2.08% /4.9%** | **19.14% /20.4%** |
+| 표본별 최다사용 코어 평균 / 최대 | 8.41% /11.1% | 34.60% /58.3% |
+| GPU 사용률 평균 / 최대 | **0% /0%** | **49.63% /67%** |
+| GPU 전력 평균 | 81.01W | 131.91W |
+
+**자원 여유:** Xeon Platinum8462Y+의 노출 vCPU12개(VM) · RAM70.76GiB 중 available59.25–59.41GiB(사용 약16.0–16.3%, total−available) · L40S VRAM **9,274 /46,068MiB (20.1%)** 고정 · GPU36–40°C · swap 약1MiB 고정 · 디스크 여유 약486GiB. 현재 표본에서 메모리 부족·지속적인 전체 CPU/GPU 포화 증거는 없습니다. 짧은 병목이나 코어 사이를 이동하는 단일 스레드 병목까지 배제하지는 않습니다.
 
 | 처리 속도·시간 | 완료된 E12 전체 실측 |
 |---|---|
@@ -19,9 +21,9 @@
 | 전체 실효 처리량 | **0.395 제어 프레임/초** ·실시간 비율0.0198× (모델 대기 포함) |
 | 1전이 내부 계측 | 환경 adapter 평균764.95ms ·데이터 기록 평균51.93ms |
 
-여기서 제어 프레임은20Hz로 기록하는 RGB5장·depth·로봇 상태 묶음의 전이입니다. **그래픽 렌더 FPS는 별도 미계측**이며 영상 재생5fps와도 다릅니다. 물리 설정240Hz·제어20Hz는 simulation 시간 기준입니다. 모델 호출 경로에는 CLI·네트워크·서비스 대기·생성이 포함되며 모델 내부 추론시간만을 분리한 수치는 아닙니다. 모델 대기 중에는 물리가 정지합니다. 현재 수치만으로 CPU/GPU 중 특정 자원이 병목이라고 단정하지 않습니다.
+여기서 제어 프레임은20Hz로 기록하는 RGB5장·depth·로봇 상태 묶음의 전이입니다. **그래픽 렌더 FPS는 별도 미계측**이며 영상 재생5fps와도 다릅니다. 물리240Hz·제어20Hz는 simulation 시간 기준입니다. 모델 호출 경로에는 CLI·네트워크·서비스 대기·생성이 포함되며 내부 추론시간만 분리한 수치가 아닙니다. 모델 대기 중에는 물리가 정지합니다. 자원 표본은 E13, 전체 시간·처리량은 완료된 E12로 구분합니다.
 
-[자원 표본·시각](docs/project/performance/20261106-resource-snapshot.json) · [처리량 계산 근거](docs/project/performance/20261106-timing-summary.json) · [최신 E12 영상](docs/gallery/20261106-astra-hem-route-001.ko.md)
+[측정 방법·한계와 해석](docs/project/performance/20261106-performance-review.ko.md) · [구간별 사용률](docs/project/performance/20261106-resource-summary.json) · [121개 표본 CSV](docs/project/performance/20261106-resource-samples.csv) · [처리량 계산 근거](docs/project/performance/20261106-timing-summary.json) · [최신 E12 영상](docs/gallery/20261106-astra-hem-route-001.ko.md)
 
 <!-- TEMP_PERFORMANCE_END -->
 
