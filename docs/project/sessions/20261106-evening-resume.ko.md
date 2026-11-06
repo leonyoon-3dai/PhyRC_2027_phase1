@@ -39,7 +39,7 @@
 ## 전략 구현과 적용 상태
 
 - `coordinated-support-diagnostic`: 각 그리퍼 순차 지지 확인. E16 실제 적용 완료.
-- `coordinated-regrasp-hem`: 좁은 입구가 포화되면 다른 가시적 경계·층으로 한쪽 재파지. E17 A 경로가23:37:50 UTC에 시작됐으며 종료 결과는 아직 없음.
+- `coordinated-regrasp-hem`: 좁은 입구가 포화되면 다른 가시적 경계·층으로 한쪽 재파지. E17 A 경로가23:37:50–23:51:35 UTC에 실행됐고5/50·452/452검사 통과로 종료.
 - `coordinated-support-guide`: 한쪽 몸통 지지·다른 쪽 소매 방향 가이드로 배치 변경. 구현·CPU 검증 단계이며 과제 미실행.
 
 세 전략은 단일 행동 뒤 관측을 요구한다. 기존 파지/입구가 유용할 때 재파지를 강제하지 않으며, 실제 행동이 바뀌었는지는 기록을 보고 판단한다. 기존6전략 프롬프트는 보존했다. 세 전략 구현 당시 전체 CPU 검사 **222개 통과**(6.489초). 이후 질의·보존 기능 통합본은 **251개 통과**(7.369초). 코드 존재/CPU 검사와 과제 성능 검증을 구분한다.
@@ -100,7 +100,7 @@ E16 원본은 비공개 HF `leonayoon/phyrc-2027-phase1-private-backup`의 **rev
 
 원본 보고서는 `output/sessions/20261106-evening/depth-query-wiring-001.json`(SHA256 `d63546030c3952ae0f6aba1cd2121301adf9e4430eb0fd4cc65c3f818570a565`), 전수검사는 `output/collections/20261106-depth-query-wiring-001/validation.json`(SHA256 `089e4c5009a0c6c9d080ec2dc75839e5841464a3f2fcb9ea79e0d651e8f15b85`)이다. [기능·각 검증 범위·재현 명령](../../collection/research/2026-11-06-pixel-depth-query-candidate.ko.md)
 
-## E17 A 경로 ·23:37:50 UTC 실제 시작
+## E17 A 경로 ·23:37:50–23:51:35 UTC 실제 실행
 
 다른 가시 입구 경계·층에서 실제 한쪽 재파지를 비교한다. E16의 같은 오른쪽 가장자리 회복과 구분한다. E16 prefix352를 새 환경에서 재실행하고264·346경계의 관측도 새로 얻는다. 현재 지지는 다시 판단하며 과거의 국소 지지를 그대로 보장하지 않는다. 픽셀 질의는 끈다.
 
@@ -118,7 +118,7 @@ PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.codex_clie
   --profile-step-phases
 ```
 
-main 게시 확인 후 위 명령을 새 run ID로 시작했다. 종료 결과는 아직 없다. 지지·입구·손 통과·평가 점수·학습 승인은 계속 분리해 기록한다.
+main 게시 확인 후 위 명령을 새 run ID로 실행했고 아래 결과로 종료했다. 지지·입구·손 통과·평가 점수·학습 승인은 계속 분리해 기록한다.
 
 ## main 통합·E17 실행 출처
 
@@ -129,3 +129,18 @@ E17 시작 당시 source_snapshot commit은98bb41f, working_tree_modified=false�
 시작 이후 현재 문서만 갱신하며 실행 코드는 바꾸지 않는다. E17 log는 `output/sessions/20261106-evening/e17-layer352-001.log`다. 직접 부모 E16·source group `20261106-coordinated-demo-methods`를 보존하며, 이 재실행을 독립 시연으로 세지 않는다.
 
 모델 없는 질의 연결 시험의 [공개 수치 보고서](../../collection/assets/20261106-pixel-depth-query-candidate/model-free-gpu-wiring.json)와 [비공개 원본 재다운로드 검증](20261106-depth-query-wiring-backup-verification.json)도 보존했다. revision `639f3b434ad853a7690bab56d637bf50144ed89d`,9,574,896 bytes, SHA256 `45225bc9af7f4b84cd362e414645bbe42ca65ed64993bdf3d92b40d650991190`,23:35:34 UTC 검증이다.
+
+## E17 종료 결과
+
+- 원점수 **5/50(픽업5·첫 소매0·나머지0)**, success=false·no_contact/점수율null. 기존 최고5와 동일하며10점 미달성이다.
+- **452/452기록 전수검사 통과**:352재실행+52모델행동+48제어기중립, 시뮬레이션22.6초.12호출/12판단=행동11+finish1.
+- 실제824.157841227초(13분44초), 모델 호출 경로378.758640188초·환경400.041776980초. 내부 추론시간은 미제공이다.
+- D0–3은 현재 지지·시야/형태 조정, D4 robot0개방, D5–6 다른 lower-rim 후보로 하강·손목방향·팔 배치 보정, D7닫기8기록, D8중립6, D9양측들기, D10지지미확인으로낮춤, D11자율종료다. 다른 후보 경계를 겨냥한 재파지 자체는 실제 수행했으나 **반대 입구 층이나 양측 독립 지지 확인을 뜻하지 않는다**.
+- [공개 분석](../../collection/reviews/20261106-astra-layer352-001.ko.md) · [선별 공개 패키지](../../collection/attempts/20261106-astra-layer352-001/README.ko.md) · [영상](../../gallery/assets/20261106-e17-regrasp/event.mp4). 영상은392–452의61프레임/12.2초,4배 느리게이며 모델 대기 시간은 제외한다.
+- 종료 원본 보존과 원격 백업 검증을 완료했다. 결과값5만으로 새파지성공을 판단하거나 한 번의 제한 시도로 A전체가 소진됐다고 결론내리지 않는다.
+
+다음 E18 계획은 STATUS의 B 명령이다. E16의470경계·같은 새 replay의430/464경계 사진을 사용해 몸통 지지+소매 방향 가이드 파지를 비교하고, 선택형 공개 픽셀 depth 조회를 제공한다. 동시에 다른 역할과 입력 기능이 달라져 단일 변수 비교가 아님을 기록한다. 목 우선 착의는 별도 격리 후보 코드에서 준비 중이며 아직 실행하지 않았다. [공개 근거·기존 방법과의 구분](../../collection/research/2026-11-06-post-support-methods.ko.md)
+
+E17 비공개 원본은 고정 HF revision `d5ba6c645232c7674d3861fdf65da3a26e9e1ea9`에서1,027,542,010 bytes를 재다운로드해 SHA256 `51acf732e6744dc979fe35ae61a9c04120b247606cd24138791135d0581cbcfb` 일치를23:55:15 UTC에 확인했다. [receipt](20261106-e17-backup-verification.json). 허용목록163개 archive member의 SHA도 모두 검증했고 인증·runtime·원시 추론·CLI 이벤트·simulator 로그는 제외했다.
+
+E17 종료 후 목 우선 후보 커밋 `e2d9d3d84b17d0418e3cd902cd9472cd9212ca49`를 병합했다. 기존8전략 프롬프트를 유지한 별도목표 경로이며 실제 모델/GPU 적용은 아직 없다. 최초 후보검사의1실패는 A 지지 문구 승인후 예전05152fa 회귀문구가 남은 것이어서, 실행 oracle은유지하고 A문구만 고정공개75492d7 기준으로수정했다. 통합본 전체 **257개검사7.529초통과**, 로그`output/sessions/20261106-evening/cpu-neckline-integrated.log`, SHA256 `dc4a022373d51224482b6d661e04859db236f2b5b83f630cb6086b0368538d83`. [후보·검증범위](../../collection/research/2026-11-06-neckline-first-candidate.ko.md)

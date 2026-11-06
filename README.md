@@ -1,16 +1,16 @@
 # PhyRC 2027 · 두 로봇의 협력 착의
 
-**최신 시연 E16 · 재파지 뒤 국소 천 동행, 입구 미확인으로 종료**
+**최신 E17 · 다른 입구 경계를 겨냥해 재파지했지만 지지·입구 미확인**
 
-<a href="docs/gallery/assets/20261106-e16-regrasp/event.mp4"><img src="docs/gallery/assets/20261106-e16-regrasp/preview.gif" width="960" alt="E16 실제 공개 관측 네 카메라. 352~440경계의 한쪽 재파지 시도"></a>
+<a href="docs/gallery/assets/20261106-e17-regrasp/event.mp4"><img src="docs/gallery/assets/20261106-e17-regrasp/preview.gif" width="960" alt="E17 실제 공개 관측 네 카메라. 392~452경계의 다른 lower-rim 후보 재파지와 재시험"></a>
 
-[**MP4 크게 보기**](docs/gallery/assets/20261106-e16-regrasp/event.mp4) · [**전체 갤러리**](docs/gallery/README.ko.md) · [**E16 분석**](docs/collection/reviews/20261106-astra-support264-002.ko.md) · [**영상 피드백 남기기**](https://github.com/leonyoon-3dai/PhyRC_2027_phase1/issues/new?title=%5BE16+%ED%94%BC%EB%93%9C%EB%B0%B1%5D+%EC%98%81%EC%83%81+%EA%B5%AC%EA%B0%84%EA%B3%BC+%EA%B4%80%EC%B8%A1&body=%EC%8B%9C%EB%8F%84%3A+E16+%2F+20261106-astra-support264-002%0A%EC%98%81%EC%83%81+%EC%8B%9C%EA%B0%81+%EB%98%90%EB%8A%94+%EA%B2%BD%EA%B3%84%3A+%0A%EC%B9%B4%EB%A9%94%EB%9D%BC%3A+%EB%A1%9C%EB%B4%870+%EB%A8%B8%EB%A6%AC+%2F+%EB%A1%9C%EB%B4%871+%EB%A8%B8%EB%A6%AC+%2F+%EB%A1%9C%EB%B4%870+%EC%86%90%EB%AA%A9+%2F+%EB%A1%9C%EB%B4%871+%EC%86%90%EB%AA%A9%0A%0A%EA%B4%80%EC%B8%A1%ED%95%9C+%EC%9E%A5%EB%A9%B4%3A%0A%0A%EC%A0%9C+%ED%95%B4%EC%84%9D+%EB%98%90%EB%8A%94+%EC%A7%88%EB%AC%B8%3A%0A%0A%EB%8B%A4%EC%9D%8C%EC%97%90+%EB%B9%84%EA%B5%90%ED%95%98%EB%A9%B4+%EC%A2%8B%EC%9D%84+%EB%8F%99%EC%9E%91%3A%0A%0A%EA%B0%A4%EB%9F%AC%EB%A6%AC%3A+https%3A%2F%2Fgithub.com%2Fleonyoon-3dai%2FPhyRC_2027_phase1%2Fblob%2Fmain%2Fdocs%2Fgallery%2FREADME.ko.md%0A)
+[**MP4 크게 보기**](docs/gallery/assets/20261106-e17-regrasp/event.mp4) · [**전체 갤러리**](docs/gallery/README.ko.md) · [**E17 분석**](docs/collection/reviews/20261106-astra-layer352-001.ko.md) · [**영상 피드백 남기기**](https://github.com/leonyoon-3dai/PhyRC_2027_phase1/issues/new?title=%5BE17+%ED%94%BC%EB%93%9C%EB%B0%B1%5D+%EC%98%81%EC%83%81+%EA%B5%AC%EA%B0%84%EA%B3%BC+%EA%B4%80%EC%B8%A1&body=%EC%8B%9C%EB%8F%84%3A+E17+%2F+20261106-astra-layer352-001%0A%EC%98%81%EC%83%81+%EC%8B%9C%EA%B0%81+%EB%98%90%EB%8A%94+%EA%B2%BD%EA%B3%84%3A+%0A%EC%B9%B4%EB%A9%94%EB%9D%BC%3A+%EB%A1%9C%EB%B4%870+%EB%A8%B8%EB%A6%AC+%2F+%EB%A1%9C%EB%B4%871+%EB%A8%B8%EB%A6%AC+%2F+%EB%A1%9C%EB%B4%870+%EC%86%90%EB%AA%A9+%2F+%EB%A1%9C%EB%B4%871+%EC%86%90%EB%AA%A9%0A%0A%EA%B4%80%EC%B8%A1%ED%95%9C+%EC%9E%A5%EB%A9%B4%3A%0A%0A%EC%A0%9C+%ED%95%B4%EC%84%9D+%EB%98%90%EB%8A%94+%EC%A7%88%EB%AC%B8%3A%0A%0A%EB%8B%A4%EC%9D%8C%EC%97%90+%EB%B9%84%EA%B5%90%ED%95%98%EB%A9%B4+%EC%A2%8B%EC%9D%84+%EB%8F%99%EC%9E%91%3A%0A%0A%EA%B0%A4%EB%9F%AC%EB%A6%AC%3A+https%3A%2F%2Fgithub.com%2Fleonyoon-3dai%2FPhyRC_2027_phase1%2Fblob%2Fmain%2Fdocs%2Fgallery%2FREADME.ko.md%0A)
 
-**공식 원점수 0/50 · 첫 소매 0 · `success=false`.** 관측: 352~440경계의 로봇0 재파지와 재시험입니다. 국소 천 접힘이 따라왔지만 통과 가능한 입구는 확인하지 못해 운반 없이 종료했습니다.
+**공식 원점수5/50 · 픽업5 · 첫 소매0 · `success=false`.** 로봇0을 열고 별도로 보이는 아래쪽 입구 경계 후보에 맞춰 다시 닫는 동작은 실행했습니다. 실제 반대층 파지와 양측 지지는 확인하지 못했고, 운반 없이 종료했습니다. 한 번의 제한된 재파지로 이 방법 전체가 실패했다고 단정하지 않습니다.
 
-352~440경계 · 89프레임 · 17.8초 재생 · 4배 느리게 · 모델 응답 대기 제외. 위는 로봇0·1 머리, 아래는 로봇0·1 손목입니다. 피드백에는 **영상 시각 또는 경계와 카메라**를 적어 주세요. [영상 출처](docs/gallery/assets/20261106-e16-regrasp/provenance.json) · [현재 상태](docs/project/STATUS.md)
+392~452경계 · 61프레임 · 12.2초 재생 · 4배 느리게 · 모델 응답 대기 제외. 위는 로봇0·1 머리, 아래는 로봇0·1 손목입니다. 피드백에는 **영상 시각 또는 경계와 카메라**를 적어 주세요. [영상 출처](docs/gallery/assets/20261106-e17-regrasp/provenance.json) · [현재 상태](docs/project/STATUS.md)
 
-전이1개는 **관측 → 행동 → 다음 관측**을 묶은0.05초 기록입니다. E16의516개 기록은 **시뮬레이션25.8초**이며,34번의 모델 판단·실제32분40초 실행과 구분합니다. 정지·기다림 명령도 기록에 포함됩니다.
+전이1개는 **관측 → 행동 → 다음 관측**을 묶은0.05초 기록입니다. E17의452개 기록은 **시뮬레이션22.6초**이며,12번의 모델 판단·실제 약13분44초 실행과 구분합니다. 모델 판단 한 번이 여러 전이에 적용될 수 있고, 정지·기다림 명령도 기록에 포함됩니다.
 
 ## 무엇을 만드는가
 
@@ -23,7 +23,7 @@
 | 반대 어깨 / 두 번째 소매 / 왼쪽 위팔 / 오른쪽 위팔 | 각각5 |
 | 목 / 앞면 방향 | 각각10 |
 
-현재 목표는 **공식 원점수10점 이상과 반복 가능한 첫 소매 통과**입니다. 최고 기록은5/50이며10점은 아직 달성하지 못했습니다. 점수율은 픽업을 제외한 착의 점수를 첫 접촉부터 마지막 착의 득점까지의 시뮬레이션 시간으로 나눕니다. 픽업5점만으로는 양의 순위 점수가 생기지 않으며, 원점수10점도 전체 착의 성공과 다릅니다.
+목표는 **공식 원점수10점 이상과 반복 가능한 실제 착의 진전**입니다. 첫 소매 통과는 현재 비교하는 경로이며, 목부터 접근하는 대안도 준비 중입니다. 어떤 경로든 실행·관측·공식 평가로 확인하며 모든 방법의 첫 단계를 소매로 고정하지 않습니다. 점수율은 픽업을 제외한 착의 점수를 첫 접촉부터 마지막 착의 득점까지의 시뮬레이션 시간으로 나눕니다. 픽업5점만으로는 양의 순위 점수가 생기지 않으며, 원점수10점도 전체 착의 성공과 다릅니다.
 
 [점수 지도와 과제 설명](docs/project/CHALLENGE_GUIDE.ko.md) · [공식 평가 정의](docs/competition/EVALUATION.md) · [공식 대회](https://emprise.cs.cornell.edu/phyrc/challenge-2027/) · [원본 README](README.upstream.md)
 
@@ -46,16 +46,17 @@
 
 | 구분 | 확인된 상태 |
 |---|---|
-| 최신 과제 시도 | E16 `20261106-astra-support264-002` · 모델 자율 종료 · 516/516전이 통과 |
+| 최신 과제 시도 | E17 `20261106-astra-layer352-001` · 모델 자율 종료 · 452/452전이 통과 |
 | 모델·환경 | Astra/ultra · Codex CLI0.166.0/exec · 고정 Isaac Sim6.0.1 · Chrome/WebRTC OFF |
-| 이번에 바꾼 접근 | 각 파지의 순차 지지 진단. E07의264전이 재실행 뒤156개 모델 전이와96개 중립 전이를 새로 기록했습니다. |
-| 다음 판단 | E17이23:37:50 UTC에 시작됐습니다. E16의352경계까지 재실행한 뒤 다른 가시 입구 경계·층의 한쪽 재파지를 비교합니다. 종료 결과는 아직 없습니다. |
-| 후보 기능 | 픽셀 depth 질의는 CPU·합성 이미지 실제 CLI 2턴 검증을 통과했습니다. 모델 없는 GPU 수집 연결은3/3전이 통과했으며 그 시험은 실모델 호출0·질의1회·질의 중 물리 진행0입니다. 실제 과제 질의 적용은 아직 없고 E16에도 사용하지 않았습니다. |
-| 소스·원본 | main98bb41f에 통합 완료. E16 실행 소스는05152fa · [고정 HF 원본·재다운로드 SHA 검증 완료](docs/project/sessions/20261106-e16-backup-verification.json) |
+| 이번에 바꾼 접근 | E16의352전이 재실행 뒤 다른 lower-rim 후보를 겨냥한 재파지. 새52개 모델 전이와48개 제어기 중립 전이를 기록했습니다. |
+| 다음 비교 | **E18 B: 지지/가이드 역할을 나눠 소매 쪽 가시 가장자리로 재파지**를 준비합니다. E16의470경계에서 분기하며 픽셀 depth 질의를 켤 계획입니다. 아직 실행하지 않았습니다. |
+| 다른 경로 | 목 우선 전략 코드를 통합하고 CPU 검사를 마쳤으며 실제 과제는 아직 실행하지 않았습니다. |
+| 후보 기능 | 픽셀 depth 질의는 CPU·합성 이미지 실제 CLI2턴 및 모델 없는 GPU3전이 연결 검사를 통과했습니다. GPU 연결 시험은 실제 모델0회·fixture 질의1회였습니다. **E16·E17에는 사용하지 않았으며 실제 과제 적용 효과는 미검증**입니다. |
+| 소스·원본 | E17 실행 소스는98bb41f(작업 트리 clean). 공개 기록과 [E17 고정 HF 백업·재다운로드 SHA 검증](docs/project/sessions/20261106-e17-backup-verification.json)을 완료했습니다. [E16 고정 백업](docs/project/sessions/20261106-e16-backup-verification.json)도 보존했습니다. |
 
 [현재 상태·다음 명령](docs/project/STATUS.md) · [이번 세션 원문](docs/project/sessions/20261106-evening-resume.ko.md) · [방법 전환 기준](docs/project/sessions/20261106-method-switch-matrix.ko.md)
 
-E15까지는 손·천 입구·그리퍼의 관계를 확신하지 못한 채 보정과 복구가 반복됐습니다. E16에서는 순차 진단과 로봇0 재파지 뒤 국소 천 동행을 관측했지만, 두 지지점 사이의 통과 가능한 입구는 확인하지 못했습니다. 원점수0만으로 파지 실패를 단정하지 않습니다. 아직 확인되지 않은 파지·접촉·입구 통과를 점수나 닫기 명령만으로 단정하지 않습니다.
+E16에서는 순차 진단과 로봇0 재파지 뒤 국소 천 동행을 관측했고, E17은 다른 가시 경계를 목표로 재파지했지만 반대층·양측 지지를 확인하지 못했습니다. 실제 동작 변화, 시각적 근거, 공식 점수를 따로 기록합니다. 픽업5점에서 어느 파지가 성공했는지나 입구가 열렸는지를 역추론하지 않습니다.
 
 [5점에서10점으로 가는 진단](docs/project/FIVE_TO_TEN.ko.md) · [시각적 가이드 PDF](docs/guide/PhyRC_2027_Repository_Guide_KR.pdf) · [연구 로드맵](docs/project/RESEARCH_ROADMAP.ko.md)
 

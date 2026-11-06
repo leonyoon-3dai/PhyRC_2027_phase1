@@ -1,5 +1,6 @@
 """CPU optional-depth orchestration tests; no real model/Docker/simulator."""
 from copy import deepcopy
+import ast
 import hashlib
 import json
 from pathlib import Path
@@ -26,6 +27,14 @@ baseline = ModuleType('pixel_query_baseline_client')
 baseline.__file__ = str(ROOT / 'participant/collection/codex_client.py')
 exec(compile(subprocess.check_output(['git', 'show', BASE_COMMIT + ':participant/collection/codex_client.py'],
     cwd=ROOT, text=True), baseline.__file__, 'exec'), baseline.__dict__)
+# The approved E17 table-support alternative changed only A's prompt after the
+# pre-query baseline. Keep the old execution oracle and import that one approved
+# string from a fixed publication, rather than from the code under test.
+PUBLIC_A_SOURCE = subprocess.check_output(
+    ['git', 'show', '75492d7:participant/collection/codex_client.py'], cwd=ROOT, text=True)
+PUBLIC_A_TASK = next(ast.literal_eval(node.value) for node in ast.parse(PUBLIC_A_SOURCE).body
+    if isinstance(node, ast.Assign) and len(node.targets) == 1
+    and isinstance(node.targets[0], ast.Name) and node.targets[0].id == 'REGRASP_HEM_TASK')
 
 
 def action():
@@ -291,7 +300,8 @@ class QueryTests(unittest.TestCase):
                          'coordinated-support-guide'):
             with self.subTest(strategy=strategy):
                 flags=dict(enabled=False,scenario='direct',strategy=strategy,history=True,depth_panel=True)
-                old=self.run_client(module=baseline,**flags)
+                with mock.patch.object(baseline, 'REGRASP_HEM_TASK', PUBLIC_A_TASK):
+                    old=self.run_client(module=baseline,**flags)
                 new=self.run_client(**flags)
                 self.assertIsNone(old['error']);self.assertIsNone(new['error'])
                 for key in ('calls','requests','order','commands'):
