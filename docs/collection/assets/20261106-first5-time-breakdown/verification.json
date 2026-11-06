@@ -1,0 +1,45 @@
+{
+  "schema": "phyrc-first-score-stage-timing-checks-v1",
+  "verified_at_utc": "2026-11-06T05:31:19.247871+00:00",
+  "report_sha256": "dc1a6782f6b54c5263bd95fe608f2ec61358bb16cf4ab06deaa2b7c348f67b20",
+  "checks": [
+    {
+      "run_id": "20261106-astra-coordinated-fresh-001",
+      "contiguous_step_range": [
+        0,
+        360
+      ],
+      "decision_segment_pairs": 29,
+      "model_call_ids_unique": true,
+      "complete_plans_no_double_count": true,
+      "noninvoked_segments_zero_wall_and_empty_usage": true,
+      "phase_subtotals_within_actor_wall": true,
+      "stage_subtotals_match_totals": true,
+      "simulation_interval_s": 0.05,
+      "public_clock_interval_tolerance_s": 1e-06,
+      "score_boundary_derived_from_official_tick": true,
+      "raw_prefix_sha256": "e4403122eee69ca0d7398bc478673761e89f417acf20458e6bfd41a865f6fb92"
+    },
+    {
+      "run_id": "20261106-astra-pickup-hold5-001",
+      "contiguous_step_range": [
+        0,
+        252
+      ],
+      "decision_segment_pairs": 18,
+      "model_call_ids_unique": true,
+      "complete_plans_no_double_count": true,
+      "noninvoked_segments_zero_wall_and_empty_usage": true,
+      "phase_subtotals_within_actor_wall": true,
+      "stage_subtotals_match_totals": true,
+      "simulation_interval_s": 0.05,
+      "public_clock_interval_tolerance_s": 1e-06,
+      "score_boundary_derived_from_official_tick": true,
+      "raw_prefix_sha256": "01204e17a699e5a5a6bcc0ae911d396db3210f46a9e46a55c8770cee574a98b3"
+    }
+  ],
+  "public_allowlist_review": "selected timing, stage, run configuration and score fields only; no response text, session identifiers, raw CLI events or private geometry",
+  "public_allowlist_scan_passed": true,
+  "linked_files_checked": 3,
+  "official_score_tick_step_alignment_checked": true
+}

@@ -1,5 +1,7 @@
 # 명명된 행동 채널과 공식 배열의 변환 시험
 
+**후속 연결 검사:** [실제 Astra ABBA 4호출](2026-11-06-action-encoding-cli-probe.ko.md)에서 명시한 단순 명령의 형식 연결을 확인했습니다. 아래 prototype과 별도 시험이며 현재 수집 정책에는 적용하지 않았습니다.
+
 **E07 decision 27의 robot 1 행동에는 7번 열 `wrist_roll=+1`이 들어 있습니다.** 이를 이름으로 분명하게 표시하는 별도 offline prototype을 만들었습니다. 기존 원본 행동을 수정하거나 현재 actor의 출력 형식·runtime을 바꾸지 않았습니다. 설명과 행동의 의미가 일치하는지 자동 판정한 것도 아닙니다.
 
 [순수 변환 모듈](../../../participant/research/action_encoding.py) · [회귀 테스트](../../../tests/test_action_encoding.py) · [실제 decision 27과 표현 길이 비교 JSON](../assets/20261106-action-encoding/representation-comparison.json)

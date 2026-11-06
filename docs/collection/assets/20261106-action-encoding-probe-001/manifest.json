@@ -1,0 +1,49 @@
+{
+  "schema": "phyrc-selected-probe-artifacts-v1",
+  "files": {
+    "constant-gray.png": {
+      "sha256": "e9f113b419d009258408812ca3c8592243df68dfd59f1787ef3140e777d501b3",
+      "bytes": 82
+    },
+    "prompt-array.txt": {
+      "sha256": "8a8785b29ba022435a154d7810cd7fa5289e9ebb16393ea5b1e5a8cce97150b5",
+      "bytes": 820
+    },
+    "schema-array.json": {
+      "sha256": "97e1576aef8584b6ac8a5ece5daabc2c5de2073e73a83ca4fcd3c593960eef83",
+      "bytes": 264
+    },
+    "response-00-array.json": {
+      "sha256": "08158625c640897b6b111cb3f0abc7f8f6a3a425c54b564b2994447f5433eadd",
+      "bytes": 60
+    },
+    "prompt-named.txt": {
+      "sha256": "13d4fe76a1b51be20d8cd4fd261a285cb1210b42c1db072783e75ee6fa320e5f",
+      "bytes": 782
+    },
+    "schema-named.json": {
+      "sha256": "919ad1454c509c8e2704eab1f35de3007cfe5d1a41d7807bbc3cf386dba4a5b1",
+      "bytes": 1102
+    },
+    "response-01-named.json": {
+      "sha256": "e694ca3ca9e0c43a023604197a4d76ded8fb48afe64f64453f4607253d3922e3",
+      "bytes": 352
+    },
+    "response-02-named.json": {
+      "sha256": "e694ca3ca9e0c43a023604197a4d76ded8fb48afe64f64453f4607253d3922e3",
+      "bytes": 352
+    },
+    "response-03-array.json": {
+      "sha256": "08158625c640897b6b111cb3f0abc7f8f6a3a425c54b564b2994447f5433eadd",
+      "bytes": 60
+    },
+    "summary.json": {
+      "sha256": "07e99cd24c537b5974de7c8ed9a5c0051b7c00e08349b778da8c45fb816c994d",
+      "bytes": 14371
+    },
+    "cleanup-and-input-checks.json": {
+      "sha256": "5c146e306077f89a17f38158d4cfa2f7304c6c10c89d5e330ca4c113a39424f8",
+      "bytes": 460
+    }
+  }
+}

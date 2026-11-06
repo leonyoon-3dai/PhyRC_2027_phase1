@@ -1,0 +1,466 @@
+{
+  "schema": "phyrc-action-encoding-cli-probe-v1",
+  "started_at_utc": "2026-11-06T05:32:22.483945+00:00",
+  "model": "gpt-6-astra",
+  "effort": "ultra",
+  "timeout_s": 90,
+  "order": [
+    "array",
+    "named",
+    "named",
+    "array"
+  ],
+  "image": {
+    "role": "information_free_transport_fixture_not_observation",
+    "size_wh": [
+      16,
+      16
+    ],
+    "rgb": [
+      128,
+      128,
+      128
+    ],
+    "sha256": "e9f113b419d009258408812ca3c8592243df68dfd59f1787ef3140e777d501b3"
+  },
+  "concurrent_E07_workload": "May overlap; model-service load is not isolated or measured",
+  "usage_scope": "One completed turn per fresh thread; no cross-thread cumulative subtraction",
+  "simulation_executed": false,
+  "actions_dispatched": 0,
+  "gpu_requested": false,
+  "interpretation": "Encoding-only CLI connection check, not robot demonstrations or a performance comparison",
+  "calls": [
+    {
+      "index": 0,
+      "encoding": "array",
+      "started_at_utc": "2026-11-06T05:32:22.484964+00:00",
+      "prompt_sha256": "8a8785b29ba022435a154d7810cd7fa5289e9ebb16393ea5b1e5a8cce97150b5",
+      "schema_sha256": "ee43211e24db45425f7d6a724dda833e1315f10fa03be475079888d312e52844",
+      "image_sha256": "e9f113b419d009258408812ca3c8592243df68dfd59f1787ef3140e777d501b3",
+      "invoke_attempted": true,
+      "response_valid": true,
+      "exact_expected_action": true,
+      "error_code": null,
+      "cleanup_ok": true,
+      "setup_wall_s": 0.6015128899998672,
+      "actor_wall_s": 4.525797596001212,
+      "phase_wall_s": {
+        "staging_wall_s": 0.0015727919999335427,
+        "process_wall_s": 4.523889316002169,
+        "result_parse_wall_s": 0.0003289880005468149,
+        "completed": true,
+        "process_scope": "Docker/CLI startup, session load, network, service wait and generation combined"
+      },
+      "cli_version": "codex-cli 0.166.0",
+      "usage": {
+        "input_tokens": 7410,
+        "cached_input_tokens": 0,
+        "output_tokens": 56,
+        "reasoning_output_tokens": 0
+      },
+      "response": {
+        "action": [
+          [
+            -0.65,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            -0.65,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "normalized_action_float32": [
+        [
+          -0.6499999761581421,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          -0.6499999761581421,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "cleanup_wall_s": 0.3179400760018325,
+      "slot_wall_s": 5.445773701998405,
+      "finished_at_utc": "2026-11-06T05:32:27.930804+00:00",
+      "events": {
+        "available": true,
+        "thread_started": 1,
+        "turn_completed": 1,
+        "tool_or_unsupported_items": 0,
+        "malformed_lines": 0,
+        "sha256": "f1924b2a36da6e2080862f51a1bb01030a53dd6b4f1a4a58154eb6a80677a66a"
+      },
+      "response_file_sha256": "08158625c640897b6b111cb3f0abc7f8f6a3a425c54b564b2994447f5433eadd",
+      "private_error_present": false,
+      "published_inputs": {
+        "prompt": "prompt-array.txt",
+        "actual_staged_schema": "schema-array.json",
+        "response": "response-00-array.json"
+      },
+      "actual_staged_schema_sha256": "97e1576aef8584b6ac8a5ece5daabc2c5de2073e73a83ca4fcd3c593960eef83",
+      "schema_hash_note": "schema_sha256 hashes the declared indented schema; actual_staged_schema_sha256 hashes equivalent bytes sent by Actor"
+    },
+    {
+      "index": 1,
+      "encoding": "named",
+      "started_at_utc": "2026-11-06T05:32:27.931660+00:00",
+      "prompt_sha256": "13d4fe76a1b51be20d8cd4fd261a285cb1210b42c1db072783e75ee6fa320e5f",
+      "schema_sha256": "005979801e542ffbd6215fd7ad7528d3f083cf5cb3c51508981197c1f395bc99",
+      "image_sha256": "e9f113b419d009258408812ca3c8592243df68dfd59f1787ef3140e777d501b3",
+      "invoke_attempted": true,
+      "response_valid": true,
+      "exact_expected_action": true,
+      "error_code": null,
+      "cleanup_ok": true,
+      "setup_wall_s": 0.6755833720017108,
+      "actor_wall_s": 6.227495335999265,
+      "phase_wall_s": {
+        "staging_wall_s": 0.001089143999706721,
+        "process_wall_s": 6.226121575000434,
+        "result_parse_wall_s": 0.00027754999973694794,
+        "completed": true,
+        "process_scope": "Docker/CLI startup, session load, network, service wait and generation combined"
+      },
+      "cli_version": "codex-cli 0.166.0",
+      "usage": {
+        "input_tokens": 7498,
+        "cached_input_tokens": 0,
+        "output_tokens": 142,
+        "reasoning_output_tokens": 0
+      },
+      "response": {
+        "robots": [
+          {
+            "robot_id": "robot_0",
+            "action": {
+              "base_forward": -0.65,
+              "base_left": 0,
+              "base_CCW_yaw": 0,
+              "lift": 0,
+              "arm_extension": 0,
+              "wrist_yaw": 0,
+              "wrist_pitch": 0,
+              "wrist_roll": 0,
+              "gripper": 1
+            }
+          },
+          {
+            "robot_id": "robot_1",
+            "action": {
+              "base_forward": -0.65,
+              "base_left": 0,
+              "base_CCW_yaw": 0,
+              "lift": 0,
+              "arm_extension": 0,
+              "wrist_yaw": 0,
+              "wrist_pitch": 0,
+              "wrist_roll": 0,
+              "gripper": 1
+            }
+          }
+        ]
+      },
+      "normalized_action_float32": [
+        [
+          -0.6499999761581421,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          -0.6499999761581421,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "cleanup_wall_s": 0.35667580800145515,
+      "slot_wall_s": 7.260206104001554,
+      "finished_at_utc": "2026-11-06T05:32:35.191942+00:00",
+      "events": {
+        "available": true,
+        "thread_started": 1,
+        "turn_completed": 1,
+        "tool_or_unsupported_items": 0,
+        "malformed_lines": 0,
+        "sha256": "df8ac93eac6f304cda3e389d0de82395a10e72f34b69bac71e8b844477d244a5"
+      },
+      "response_file_sha256": "e694ca3ca9e0c43a023604197a4d76ded8fb48afe64f64453f4607253d3922e3",
+      "private_error_present": false,
+      "published_inputs": {
+        "prompt": "prompt-named.txt",
+        "actual_staged_schema": "schema-named.json",
+        "response": "response-01-named.json"
+      },
+      "actual_staged_schema_sha256": "919ad1454c509c8e2704eab1f35de3007cfe5d1a41d7807bbc3cf386dba4a5b1",
+      "schema_hash_note": "schema_sha256 hashes the declared indented schema; actual_staged_schema_sha256 hashes equivalent bytes sent by Actor"
+    },
+    {
+      "index": 2,
+      "encoding": "named",
+      "started_at_utc": "2026-11-06T05:32:35.193149+00:00",
+      "prompt_sha256": "13d4fe76a1b51be20d8cd4fd261a285cb1210b42c1db072783e75ee6fa320e5f",
+      "schema_sha256": "005979801e542ffbd6215fd7ad7528d3f083cf5cb3c51508981197c1f395bc99",
+      "image_sha256": "e9f113b419d009258408812ca3c8592243df68dfd59f1787ef3140e777d501b3",
+      "invoke_attempted": true,
+      "response_valid": true,
+      "exact_expected_action": true,
+      "error_code": null,
+      "cleanup_ok": true,
+      "setup_wall_s": 0.5526889679968008,
+      "actor_wall_s": 6.5272445310001785,
+      "phase_wall_s": {
+        "staging_wall_s": 0.000930825000978075,
+        "process_wall_s": 6.526036985000246,
+        "result_parse_wall_s": 0.0002736690003075637,
+        "completed": true,
+        "process_scope": "Docker/CLI startup, session load, network, service wait and generation combined"
+      },
+      "cli_version": "codex-cli 0.166.0",
+      "usage": {
+        "input_tokens": 7498,
+        "cached_input_tokens": 0,
+        "output_tokens": 142,
+        "reasoning_output_tokens": 0
+      },
+      "response": {
+        "robots": [
+          {
+            "robot_id": "robot_0",
+            "action": {
+              "base_forward": -0.65,
+              "base_left": 0,
+              "base_CCW_yaw": 0,
+              "lift": 0,
+              "arm_extension": 0,
+              "wrist_yaw": 0,
+              "wrist_pitch": 0,
+              "wrist_roll": 0,
+              "gripper": 1
+            }
+          },
+          {
+            "robot_id": "robot_1",
+            "action": {
+              "base_forward": -0.65,
+              "base_left": 0,
+              "base_CCW_yaw": 0,
+              "lift": 0,
+              "arm_extension": 0,
+              "wrist_yaw": 0,
+              "wrist_pitch": 0,
+              "wrist_roll": 0,
+              "gripper": 1
+            }
+          }
+        ]
+      },
+      "normalized_action_float32": [
+        [
+          -0.6499999761581421,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          -0.6499999761581421,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "cleanup_wall_s": 0.35778623900114326,
+      "slot_wall_s": 7.438164870996843,
+      "finished_at_utc": "2026-11-06T05:32:42.631395+00:00",
+      "events": {
+        "available": true,
+        "thread_started": 1,
+        "turn_completed": 1,
+        "tool_or_unsupported_items": 0,
+        "malformed_lines": 0,
+        "sha256": "22f0d32926898c8b75327bac4a0a8835030230127db56a3b4b865fef29e0a208"
+      },
+      "response_file_sha256": "e694ca3ca9e0c43a023604197a4d76ded8fb48afe64f64453f4607253d3922e3",
+      "private_error_present": false,
+      "published_inputs": {
+        "prompt": "prompt-named.txt",
+        "actual_staged_schema": "schema-named.json",
+        "response": "response-02-named.json"
+      },
+      "actual_staged_schema_sha256": "919ad1454c509c8e2704eab1f35de3007cfe5d1a41d7807bbc3cf386dba4a5b1",
+      "schema_hash_note": "schema_sha256 hashes the declared indented schema; actual_staged_schema_sha256 hashes equivalent bytes sent by Actor"
+    },
+    {
+      "index": 3,
+      "encoding": "array",
+      "started_at_utc": "2026-11-06T05:32:42.632601+00:00",
+      "prompt_sha256": "8a8785b29ba022435a154d7810cd7fa5289e9ebb16393ea5b1e5a8cce97150b5",
+      "schema_sha256": "ee43211e24db45425f7d6a724dda833e1315f10fa03be475079888d312e52844",
+      "image_sha256": "e9f113b419d009258408812ca3c8592243df68dfd59f1787ef3140e777d501b3",
+      "invoke_attempted": true,
+      "response_valid": true,
+      "exact_expected_action": true,
+      "error_code": null,
+      "cleanup_ok": true,
+      "setup_wall_s": 0.5698657270004333,
+      "actor_wall_s": 5.3249153069991735,
+      "phase_wall_s": {
+        "staging_wall_s": 0.0008663339976919815,
+        "process_wall_s": 5.323726482001803,
+        "result_parse_wall_s": 0.0003191920004610438,
+        "completed": true,
+        "process_scope": "Docker/CLI startup, session load, network, service wait and generation combined"
+      },
+      "cli_version": "codex-cli 0.166.0",
+      "usage": {
+        "input_tokens": 7410,
+        "cached_input_tokens": 0,
+        "output_tokens": 56,
+        "reasoning_output_tokens": 0
+      },
+      "response": {
+        "action": [
+          [
+            -0.65,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            -0.65,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "normalized_action_float32": [
+        [
+          -0.6499999761581421,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          -0.6499999761581421,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "cleanup_wall_s": 0.29248201999871526,
+      "slot_wall_s": 6.1877100290003,
+      "finished_at_utc": "2026-11-06T05:32:48.820393+00:00",
+      "events": {
+        "available": true,
+        "thread_started": 1,
+        "turn_completed": 1,
+        "tool_or_unsupported_items": 0,
+        "malformed_lines": 0,
+        "sha256": "f2c85f2bfa081dd2d74e3fc3fc4dac412503170914e48d6c64e19a379b8b744c"
+      },
+      "response_file_sha256": "08158625c640897b6b111cb3f0abc7f8f6a3a425c54b564b2994447f5433eadd",
+      "private_error_present": false,
+      "published_inputs": {
+        "prompt": "prompt-array.txt",
+        "actual_staged_schema": "schema-array.json",
+        "response": "response-03-array.json"
+      },
+      "actual_staged_schema_sha256": "97e1576aef8584b6ac8a5ece5daabc2c5de2073e73a83ca4fcd3c593960eef83",
+      "schema_hash_note": "schema_sha256 hashes the declared indented schema; actual_staged_schema_sha256 hashes equivalent bytes sent by Actor"
+    }
+  ],
+  "source_sha256": {
+    "scripts/probe_action_encoding.py": "56a92528851fed36225ae3657a780669b8e1525931efcd801307bfe10fc13870",
+    "participant/collection/codex_actor.py": "88720b32860ab6475fe79261686795950d3b500302e450302fb961a45a7df94b",
+    "participant/collection/boundary.py": "8f90c98e92446d3ce81ed696d8b6810e212824d55dba8730ac2301bcd7f78927",
+    "participant/research/action_encoding.py": "2b3e917c4b2b6238de5229a95f8cf84fa6f16f7ff3597c6ec179d07ec3c47c00",
+    "config/policy_interface.json": "0823b5a692621bc1effed308ac6427af7e97122de4db297ec14b5d751551a5dc"
+  },
+  "finished_at_utc": "2026-11-06T05:32:48.821412+00:00",
+  "invoke_attempts": 4,
+  "accepted_responses": 4,
+  "exact_matches": 4,
+  "completed_thread_count": 4,
+  "distinct_completed_threads": true,
+  "all_four_slots_recorded": true,
+  "cleanup_all_ok": true,
+  "public_export": {
+    "raw_reasoning_included": false,
+    "session_ids_included": false,
+    "auth_included": false,
+    "host_paths_included": false,
+    "actual_staged_schema_bytes_included": true,
+    "model_calls": 4,
+    "extra_retries": 0
+  }
+}

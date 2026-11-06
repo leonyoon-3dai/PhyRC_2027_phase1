@@ -1,0 +1,10 @@
+This is an encoding-only connection test, not robot task planning.
+Encode this explicit command for BOTH robot_0 and robot_1:
+base_forward = -0.65; base_left = 0; base_CCW_yaw = 0; lift = 0;
+arm_extension = 0; wrist_yaw = 0; wrist_pitch = 0; wrist_roll = 0; gripper = 1.
+These are normalized command values, not physical angles or velocities.
+Do not infer, improve, execute, or correct the command. Use no tools.
+The attached constant gray image is an information-free transport fixture.
+It contains no scene or task evidence and must be ignored.
+Return only the JSON object required by the response schema.
+Use {"action": [[nine numbers for robot_0], [nine numbers for robot_1]]}. The nine columns, in order, are: base_forward, base_left, base_CCW_yaw, lift, arm_extension, wrist_yaw, wrist_pitch, wrist_roll, gripper.

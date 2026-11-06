@@ -1,0 +1,154 @@
+{
+  "schema": "phyrc-public-transport-waypoint-review-v1",
+  "run_id": "20261106-astra-coordinated-fresh-001",
+  "source_group": "20261106-coordinated-demo-methods",
+  "reviewed_at_utc": "2026-11-06T05:31:10.852343+00:00",
+  "timestamp_meaning": "actual_documentation_review_time_not_observation_capture_utc",
+  "observation_index": 48,
+  "transition_boundary": 700,
+  "episode_simulation_time_s": 35.0,
+  "public_simulation_time_s": 36.525001904927194,
+  "observed_capture_utc": null,
+  "last_completed_segment": {
+    "decision_index": 47,
+    "model_call_index": 40,
+    "plan_segment_index": 0,
+    "model_invoked": true,
+    "observation_simulation_time_s": 35.52500185277313,
+    "latest_observation_simulation_time_s": 35.52500185277313,
+    "start_step": 680,
+    "end_step": 700,
+    "simulation_start_s": 35.52500185277313,
+    "simulation_end_s": 36.525001904927194,
+    "requested_steps": 20,
+    "actual_steps": 20,
+    "stage_intent": "approach",
+    "visual_assessment": "progressing",
+    "quality_status": "unreviewed",
+    "applied_action": [
+      [
+        0.0,
+        0.4000000059604645,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      [
+        0.0,
+        0.4000000059604645,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "boundary_validation": {
+    "segment47_end_matches_observation48_public_clock_exactly": true,
+    "completed_applied_segments": 48,
+    "contiguous_action_prefix_steps": 700,
+    "observations_are_model_execution_boundaries_not_20hz_series": true
+  },
+  "source_observation": {
+    "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00048/observation.json",
+    "sha256": "0a8c4869d4b5583565fe4e74f72664867fd6c3c7518bd3c86e0760e7553fb2d3"
+  },
+  "completed_jsonl_prefix": {
+    "source_path": "output/operator-traces/20261106-astra-coordinated-fresh-001/decisions.jsonl",
+    "ending_row": {
+      "type": "applied_segment",
+      "decision_index": 47,
+      "end_step": 700
+    },
+    "bytes": 155966,
+    "complete_lines": 96,
+    "sha256": "2a0deae82d37fdcc6256053f4d6b0182c8d814fe8b1cc896d0393d2bd059df07",
+    "later_rows_excluded": true,
+    "raw_prefix_republished": false
+  },
+  "images": [
+    {
+      "camera": "overview",
+      "source_path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00048/overview.png",
+      "public_path": "docs/collection/assets/20261106-transport-waypoint/observation-00048-overview.png",
+      "sha256": "8b81bdd86a36ed16985ed399bacd8354f7253c9204484db8663a0fceb18c051d",
+      "bytes": 72548,
+      "copied_without_modification": true
+    },
+    {
+      "camera": "robot_0_head",
+      "source_path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00048/robot_0_head.png",
+      "public_path": "docs/collection/assets/20261106-transport-waypoint/observation-00048-robot_0_head.png",
+      "sha256": "cb4a14d815307af90add7d607d6cc25cc7bb23ecddbb7947807715bb74ce30f5",
+      "bytes": 68166,
+      "copied_without_modification": true
+    },
+    {
+      "camera": "robot_1_head",
+      "source_path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00048/robot_1_head.png",
+      "public_path": "docs/collection/assets/20261106-transport-waypoint/observation-00048-robot_1_head.png",
+      "sha256": "1a8a99049767faf3addabe02048d08acd931852932bb21e7e0a7bb8ee45477be",
+      "bytes": 66711,
+      "copied_without_modification": true
+    }
+  ],
+  "visual_review": {
+    "method": "direct_review_of_three_original_public_rgb_pngs",
+    "finding": "두 손끝 사이에 옷을 유지한 채 마네킹 손 근처까지 운반한 모습",
+    "not_established": [
+      "소매 통과",
+      "최종 정렬 완료",
+      "이후까지 유지되는 파지 안정성",
+      "정확한 접촉 상태",
+      "전체 착의 성공"
+    ]
+  },
+  "score_review_separate_from_observation": {
+    "source_path": "output/operator-traces/20261106-astra-coordinated-fresh-001/review_gate.json",
+    "source_bytes_sha256_at_read": "f8b7c67eeccf3179b5dac4bea7e814cf3752378d34053ee2f92267ccd7d0e3bc",
+    "read_at_utc": "2026-11-06T05:31:10.851354+00:00",
+    "observed_raw_points": 5.0,
+    "acknowledged_steps_at_read": 740,
+    "gate_status_at_read": "watching",
+    "same_instant_as_observation48": false,
+    "final_evaluation": false,
+    "sent_to_actor": false
+  },
+  "continuation_recipe": {
+    "method": "action_replay",
+    "source_run_id": "20261106-astra-coordinated-fresh-001",
+    "source_group": "20261106-coordinated-demo-methods",
+    "prefix_steps": 700,
+    "new_actor_from_replayed_public_observation": true,
+    "exact_physics_restore": false,
+    "requires_completed_capture_and_full_quality_validation": true,
+    "additional_preconditions": [
+      "원본 종료와 파일 닫힘 확인",
+      "원본 전체 전이 검사 및 해시 검증",
+      "trusted 초기 배치·실제 공개 행동의 재실행",
+      "재실행 후 공개 관측과 별도 공식 평가 재확인"
+    ],
+    "status": "future_branch_candidate_not_executed",
+    "checkpoint_file_created": false,
+    "restorable_now_claimed": false,
+    "source_score_copied": false,
+    "source_prefix_counted_as_new_demonstration": false
+  },
+  "preservation_scope": {
+    "public_observations_and_completed_action_rows_only": true,
+    "hdf5_read": false,
+    "hidden_geometry_or_seed_read": false,
+    "actor_hidden_reasoning_used": false,
+    "runtime_or_source_capture_modified": false,
+    "continuation_executed": false,
+    "finished_capture_validated": false,
+    "full_quality_validation_performed": false
+  }
+}

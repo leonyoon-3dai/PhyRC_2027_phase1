@@ -1,0 +1,12 @@
+{
+  "completed_threads": 4,
+  "threads_distinct": true,
+  "auth_copies_remaining": 0,
+  "all_staged_image_bytes_match_original": true,
+  "probe_mounted_actor_containers_remaining": 0,
+  "empty_actor_networks_seen_postcheck": 0,
+  "network_scope": "per-call Actor.close successfully removed its network; postcheck counts empty actor networks without exposing IDs",
+  "model_calls_completed": 4,
+  "tool_or_unsupported_events": 0,
+  "malformed_event_lines": 0
+}

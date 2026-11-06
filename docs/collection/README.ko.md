@@ -17,13 +17,16 @@
 | 영상·짧은 과정 | [공개 갤러리](../gallery/README.ko.md) · [한 로봇 픽업 부분 점수 5점](../gallery/20261106-astra-pickup-hold5-001.ko.md) |
 | 점수·종료 | [E07 새 5점·공동 운반 중간 검토](experiments/2026-11-06-coordinated-first5-review.ko.md) · [E05 한 로봇 5점 종료 검토](reviews/20261106-astra-pickup-hold5-001.ko.md) · [앞선 0점 검토](reviews/20261106-astra-pickup-plan2-001.ko.md) |
 | 시간·실험 순서 | [당일 일지](sessions/2026-11-06.md) · [방법 비교](experiments/2026-11-06-method-comparison.ko.md) · [서버 비교](experiments/2026-11-06-server-comparison.ko.md) |
+| 첫 5점의 시간 분해 | [접근·파지·복구·들기의 호출·전이·실측 시간](experiments/2026-11-06-first5-time-breakdown.ko.md). 득점 경계와 행동 완료 응답 경계를 구분 |
 | 현재 협력 시도 | [E07 함께 들기·회전·전진 관측](experiments/2026-11-06-coordinated-first5-review.ko.md) · [고정 시작 기록](experiments/2026-11-06-coordinated-fresh.ko.md) · [공식 참고 영상 분석](experiments/2026-11-06-official-demo-strategy.ko.md) |
+| 운반 이후 분기 후보 | [700전이·마네킹 손 근처 운반](experiments/2026-11-06-transport-waypoint.ko.md). 원본 마감·전수 검사 뒤 행동 재실행을 검토 |
 | 병행 연구 | [지각 기준선과 실제 진행 상태](research/2026-11-06-perception-baselines.ko.md) · [OpenWAM 분석 전용 검토](research/openwam-feasibility.ko.md). 모델 설치·실행은 하지 않음 |
 | 후속 시도·분기 | [행동 재실행과 구간별 분기](guides/continuation-and-branches.ko.md). 원본 점수를 복사하지 않고 새 실행을 평가 |
 | 화면·운영 | [관찰 화면 안내](guides/live-monitor.ko.md) · [현재 상태](../project/STATUS.md) |
 | 완료한 CPU 비교 | [B1 좌표 연결](experiments/2026-11-06-b1-depth-sanity.ko.md) → [B1b 색 후보 실패](experiments/2026-11-06-b1b-color-depth-roi.ko.md) → [B1c 배치·보류 비교](experiments/2026-11-06-b1c-color-pair-comparison.ko.md). actor 미적용 |
 | 옷 가장자리 검수 | [원본 3장의 독립 시각 검토](experiments/2026-11-06-cloth-edge-visual-review.ko.md). 색 무늬·천 외곽·유효 파지점을 구분 |
 | 기존 행동 개선 | [명명 채널 변환 시험](experiments/2026-11-06-named-action-encoding.ko.md) · [그리퍼 정착 판단 검토](experiments/2026-11-06-gripper-settling-review.ko.md). 현재 수집에는 미적용 |
+| 명명 형식 실제 연결 | [Astra 배열·명명 ABBA 4호출](experiments/2026-11-06-action-encoding-cli-probe.ko.md). 명시 명령 4/4 일치, 시뮬레이터 실행 없음 |
 | 파일·라벨·보존 | 아래 폴더 구조·네이밍·라벨 절을 펼쳐 확인 |
 
 **E07 실행 집계는 05:17:25 UTC에 고정했습니다: 완료 행동 구간 39개·530전이·모델 호출 시도 35회 중 1회 진행 중·공식 중간 점수 5/50.** 공개 관측은 함께 들기와 회전·전진을 뒷받침하지만 이후 파지 안정성·소매 삽입·전체 착의는 미확인입니다. 실행은 계속되며 파일 닫힘과 최종 전수 검사는 아직 확인하지 않았습니다. E07은 04:40:12 UTC에 새 환경에서 시작했고 이전 5점 상태를 재실행하거나 공식 물리·평가를 변경하지 않았습니다. [E06 고정 중간 기록](experiments/2026-11-06-dressing-continuation.ko.md)과 원본·실패·프롬프트·영상도 모두 유지합니다.
