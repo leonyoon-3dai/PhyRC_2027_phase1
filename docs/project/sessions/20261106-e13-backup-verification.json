@@ -1,0 +1,47 @@
+{
+  "run_id": "20261106-astra-hem-depth-001",
+  "archive_bytes": 1710410120,
+  "archive_sha256": "e2a46fa6b4481d65a21b5608cf2ebd7f8b24b7af4f13152f118efa137017529c",
+  "source_commit": "376d933d5775546fd42e48ad52723493549f5449",
+  "scope": "Complete closed E13 collection including trusted evaluation/audit; public actor observations; final prompt/actions/segments/gate/attempt/source snapshot; new-episode replay observations at264 and320. Same reviewed path allowlist as E10 plus replay observations, current_wrist_depth.png/json for every actor observation, and source_snapshot participant/collection/wrist_depth.py. Excludes credentials, actor runtime/raw reasoning/events/session DB and simulator logs. Not actor input or training approval.",
+  "allowlist_audit": {
+    "basis": "E10 reviewed SHA256 path allowlist, plus E11 replay history, plus explicit E13 additions",
+    "added_observation_names": [
+      "current_wrist_depth.json",
+      "current_wrist_depth.png"
+    ],
+    "added_source_snapshot": [
+      "participant/collection/wrist_depth.py"
+    ],
+    "counts": {
+      "collection_root": 8,
+      "collection_evaluation": 4,
+      "trace_root": 5,
+      "source_snapshot": 18,
+      "actor_observation_directories": 18,
+      "actor_observation_files": 162,
+      "replay_observation_files": 14
+    },
+    "symlinks_rejected": true,
+    "snapshot_manifest_exact_match": true,
+    "excluded": [
+      "credentials",
+      "actor runtime",
+      "raw reasoning/events/session DB",
+      "simulator logs"
+    ]
+  },
+  "manifest_entries": 212,
+  "capture_steps": 810,
+  "validated_transitions": 810,
+  "repo_id": "leonayoon/phyrc-2027-phase1-private-backup",
+  "repo_type": "dataset",
+  "private": true,
+  "revision": "20a9602acb82ac860ebbf2d039ad593085d5a622",
+  "path": "sessions/20261106-e13-v1/archive.tar.gz",
+  "manifest_path": "sessions/20261106-e13-v1/SHA256.json",
+  "manifest_sha256": "cdac148709c5981374eb21322f0993c6fb52289bd9265044a2259e030f916331",
+  "remote_download_verified": true,
+  "manifest_remote_download_verified": true,
+  "verified_at_utc": "2026-11-06T11:18:27.910817+00:00"
+}

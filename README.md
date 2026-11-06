@@ -23,7 +23,7 @@
 
 여기서 제어 프레임은20Hz로 기록하는 RGB5장·depth·로봇 상태 묶음의 전이입니다. **그래픽 렌더 FPS는 별도 미계측**이며 영상 재생5fps와도 다릅니다. 물리240Hz·제어20Hz는 simulation 시간 기준입니다. 모델 호출 경로에는 CLI·네트워크·서비스 대기·생성이 포함되며 내부 추론시간만 분리한 수치가 아닙니다. 모델 대기 중에는 물리가 정지합니다. 자원 표본은 E13, 전체 시간·처리량은 완료된 E12로 구분합니다.
 
-[측정 방법·한계와 해석](docs/project/performance/20261106-performance-review.ko.md) · [구간별 사용률](docs/project/performance/20261106-resource-summary.json) · [121개 표본 CSV](docs/project/performance/20261106-resource-samples.csv) · [처리량 계산 근거](docs/project/performance/20261106-timing-summary.json) · [최신 E12 영상](docs/gallery/20261106-astra-hem-route-001.ko.md)
+[측정 방법·한계와 해석](docs/project/performance/20261106-performance-review.ko.md) · [구간별 사용률](docs/project/performance/20261106-resource-summary.json) · [121개 표본 CSV](docs/project/performance/20261106-resource-samples.csv) · [처리량 계산 근거](docs/project/performance/20261106-timing-summary.json) · [최신 E13 영상](docs/gallery/20261106-astra-hem-depth-001.ko.md)
 
 <!-- TEMP_PERFORMANCE_END -->
 
@@ -39,7 +39,7 @@
 
 두 대의 Stretch 4가 앉아 있는 마네킹에 티셔츠를 입히는 시뮬레이션 과제입니다. 이 저장소는 공식 시뮬레이터에 시연 수집, 브라우저 조작, 데이터 검수, π₀.₅ 학습 및 제출 도구를 추가한 참가자 저장소입니다.
 
-**2026-11-06 재개:** 사용자 요청으로 새 L40S 서버에서 **5→10점·첫 소매 통과**를 목표로 작업을 이어갑니다. 종료 오류 수정·원본 복원·새 서버 검증을 마쳤고 E10은 소매 식별 실패로 **5/50**에서 종료했습니다. 과거 공개 관측을 추가한 E11도 **5/50·777/777전이 검증**으로 마감했습니다. 몸통 입구 경로를 시험한 E12도5점·781/781전이로 마감했습니다. [최신 E12 영상](docs/gallery/20261106-astra-hem-route-001.ko.md)을 보존하고, 현재 손목 depth 패널을 추가하는 E13을 준비합니다. [이번 재개 상태와 명령](docs/project/sessions/20261106-resume10.ko.md)이 아래 이전 중지·인계 기록의 실행 상태를 대체합니다.
+**2026-11-06 재개 · 최고 5/50, 목표 10점:** 새 서버 복원과 종료 오류 수정을 마치고 E10~E13을 비교했습니다. 과거 RGB, 몸통 입구 경로, 현재 손목 depth를 차례로 시험했으나 첫 소매는 아직 통과하지 못했습니다. **최신 E13은 모델 자율 종료·810/810전이 검사·원본 원격 백업 검증 완료**입니다. [E13 새 구간 전체·E12 비교 영상](docs/gallery/20261106-astra-hem-depth-001.ko.md)을 공개합니다. 다음에는 짧은 이동 뒤 중립 시간을 두어 관절 목표 추종 지연을 비교하고, Stretch 4·Georgia Tech Astra 연구에서 깊이 조회·미세 제어·초기 파지 개선을 병행 검토합니다. Chrome·WebRTC는 사용하지 않습니다. [이번 재개 기록](docs/project/sessions/20261106-resume10.ko.md)이 이전 인계의 중지 상태를 대체합니다.
 
 ## 챌린지 한눈에 보기 · 0 → 50점
 
@@ -65,7 +65,7 @@ https://github.com/user-attachments/assets/d2f347fe-712b-42f3-bdee-69d3fee2a47c
 
 누적 예시는 그림 순서대로 얻을 때의 값입니다. 실제 순서는 달라지거나 여러 항목이 함께 인정될 수 있습니다. **50점과 착의 성공은 별도**이며 성공은 두 손·머리·앞면 조건의 동시 0.5초 유지를 확인합니다. [공식 평가 정의](docs/competition/EVALUATION.md)
 
-**E07: 0점 → 원점수 5점 → 공동 운반·마네킹 접근. 첫 소매 통과는 아직 미획득입니다.** 1,067전이 수집·전수 검사를 마쳤고, 착의 `success=false`·최종 점수율 0입니다. **현재는 사용자 요청으로 수집을 중단하고 클린 서버 재개를 준비합니다.** E09는 중단 중 응답 정합성 오류가 발생해 불완전 기록으로 보존했습니다. [종료 결과·전체 영상](docs/collection/reviews/20261106-astra-coordinated-fresh-001.ko.md) · [356·700전이 정확 장면](docs/collection/milestones/20261106-astra-coordinated-fresh-001/README.ko.md) · [현재 진행](docs/project/STATUS.md)
+**E07: 0점 → 원점수 5점 → 공동 운반·마네킹 접근. 첫 소매 통과는 아직 미획득입니다.** 1,067전이 수집·전수 검사를 마쳤고, 착의 `success=false`·최종 점수율 0입니다. **아래 E07은 재개 전 기준 기록이며, 현재 후속 시도는 상단 E10~E13 기록을 따릅니다.** E09는 중단 중 응답 정합성 오류가 발생해 불완전 기록으로 보존했습니다. [종료 결과·전체 영상](docs/collection/reviews/20261106-astra-coordinated-fresh-001.ko.md) · [356·700전이 정확 장면](docs/collection/milestones/20261106-astra-coordinated-fresh-001/README.ko.md) · [현재 진행](docs/project/STATUS.md)
 
 | E07 · 함께 이동한 뒤 로봇 0의 시점 | 같은 시각 · 로봇 1의 시점 |
 |:---:|:---:|
@@ -106,7 +106,7 @@ GIF는 전체 253프레임을 4배 느리게 반복 재생합니다(약 4.08MB).
 
 ## 현재 기술 상태
 
-**2026-11-06: E05는 한 로봇 픽업 원점수 5점·253전이, E07은 협력 시도 원점수 5점·1,067전이 전수 검사를 통과했습니다.** E07은 결정 예산으로 종료됐고 첫 소매 통과·전체 착의 성공은 미획득입니다. E08 초기화 실패와 E09 중단 중 종료 오류를 별도로 보존했습니다. 현재 수집 실행은 없습니다. [단계별 시도와 현재 결과](docs/collection/experiments/2026-11-06-method-comparison.ko.md)
+**2026-11-06: E05는 한 로봇 픽업 원점수 5점·253전이, E07은 협력 시도 원점수 5점·1,067전이 전수 검사를 통과했습니다.** E07은 결정 예산으로 종료됐고 첫 소매 통과·전체 착의 성공은 미획득입니다. E08 초기화 실패와 E09 중단 중 종료 오류를 별도로 보존했습니다. 현재 재개 상태는 상단과 [최신 실행 기록](docs/project/sessions/20261106-resume10.ko.md)을 따릅니다. [이전 시도와 결과](docs/collection/experiments/2026-11-06-method-comparison.ko.md)
 
 | 확인한 것 | 결과와 한계 |
 |---|---|
