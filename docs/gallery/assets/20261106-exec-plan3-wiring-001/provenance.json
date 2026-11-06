@@ -1,0 +1,90 @@
+{
+  "schema": "phyrc-gallery-preview-v1",
+  "created_at_utc": "2026-11-06T03:41:37.776548+00:00",
+  "run_id": "20261106-exec-plan3-wiring-001",
+  "source": {
+    "file": "docs/collection/attempts/20261106-exec-plan3-wiring-001/overview.mp4",
+    "sha256": "354e15aa4594f3955009d9f9b08ffda3dabd83b981e7d51417d185bcea8724bf",
+    "bytes": 23819,
+    "stream": {
+      "width": 256,
+      "height": 256,
+      "avg_frame_rate": "1/1",
+      "duration": "3.000000",
+      "nb_frames": "3"
+    }
+  },
+  "conversion": {
+    "tool": "ffmpeg version 4.4.2-0ubuntu0.22.04.1 Copyright (c) 2000-2021 the FFmpeg developers",
+    "working_directory": "repository_root",
+    "command_argv": [
+      "ffmpeg",
+      "-hide_banner",
+      "-loglevel",
+      "error",
+      "-nostdin",
+      "-y",
+      "-threads",
+      "2",
+      "-i",
+      "docs/collection/attempts/20261106-exec-plan3-wiring-001/overview.mp4",
+      "-filter_complex_threads",
+      "2",
+      "-filter_complex",
+      "[0:v]fps=1,scale=512:512:flags=neighbor,split[frames][palette_input];[palette_input]palettegen=max_colors=128:stats_mode=diff[palette];[frames][palette]paletteuse=dither=none:diff_mode=rectangle",
+      "-an",
+      "-threads",
+      "2",
+      "-loop",
+      "0",
+      "docs/gallery/assets/20261106-exec-plan3-wiring-001/preview.gif"
+    ],
+    "command_shell": "ffmpeg -hide_banner -loglevel error -nostdin -y -threads 2 -i docs/collection/attempts/20261106-exec-plan3-wiring-001/overview.mp4 -filter_complex_threads 2 -filter_complex '[0:v]fps=1,scale=512:512:flags=neighbor,split[frames][palette_input];[palette_input]palettegen=max_colors=128:stats_mode=diff[palette];[frames][palette]paletteuse=dither=none:diff_mode=rectangle' -an -threads 2 -loop 0 docs/gallery/assets/20261106-exec-plan3-wiring-001/preview.gif",
+    "threads": 2,
+    "filter_complex_threads": 2,
+    "palette_max_colors": 128,
+    "dither": "none",
+    "full_source_duration": true,
+    "trimmed": false,
+    "cropped": false,
+    "new_physics": false,
+    "generated_images_or_motion": false,
+    "temporal_interpolation": false,
+    "source_frame_sampling": "all existing video frames retained",
+    "resize_filter": "nearest_neighbor",
+    "display_width_px": 720,
+    "note_ko": "256×256 원본 MP4 전체 프레임을 512×512로 확대·색상 양자화. 중간 동작 합성 없음."
+  },
+  "playback": {
+    "basis": "기존 공개 관측 MP4의 속도와 전체 프레임 유지",
+    "source_manifest": "docs/collection/attempts/20261106-exec-plan3-wiring-001/manifest.json",
+    "source_policy_hz": 20,
+    "slowdown_factor": 20,
+    "includes_wall_time_waits": false,
+    "gif_speed_multiplier_relative_to_source_video": 1
+  },
+  "gif": {
+    "file": "preview.gif",
+    "sha256": "f7f43d1d553b719e71fe48b39d8a524d90ab2896f06b7ff9474da2bae43ef312",
+    "bytes": 181895,
+    "width": 512,
+    "height": 512,
+    "frame_count": 3,
+    "requested_fps": 1,
+    "duration_s": 3.0,
+    "frame_duration_ms_values": [
+      1000
+    ],
+    "loop": 0,
+    "loop_meaning": "infinite",
+    "distinct_decoded_frame_count": 3,
+    "ffprobe": {
+      "width": 512,
+      "height": 512,
+      "avg_frame_rate": "1/1",
+      "duration": "3.000000",
+      "nb_read_frames": "3"
+    },
+    "pil_decoded_all_frames": true
+  }
+}

@@ -2,6 +2,10 @@
 
 [갤러리](README.ko.md) · [다음: Astra의 접근·파지 시도](20261106-astra-dressing-001.ko.md)
 
+<img src="assets/20261026-human-pickup-transport/preview.gif" width="800" alt="사람의 접근·양쪽 파지·들기·운반 전체 구간 자동 반복">
+
+**자동 반복 GIF** · 640×453, 4fps, 33.0초, 약 4.82MB. 표시 너비는 800px입니다. 원본 MP4 전체 구간을 표본화했으며 프레임 시간 단위 때문에 원본 33.08초와 0.08초 차이가 있습니다. [변환 출처·용량 비교](assets/20261026-human-pickup-transport/provenance.json)
+
 **[▶ 33.08초 시연 영상 보기](../videos/20261026-human-pickup-transport.mp4)**
 
 맥북 Chrome에서 사람이 두 로봇을 조작했습니다. 옷 테이블 양옆의 고정 연습 배치에서 **접근 → 양쪽 파지 → 들기 → 마네킹 쪽 운반**을 기록했습니다. 공식 점수와 소매·목 통과, 전체 착의 성공은 확인하지 않았습니다.

@@ -4,6 +4,8 @@
 
 두 로봇이 옷에 접근하고, 잡고, 옮기는 실제 기록을 영상과 장면으로 살펴봅니다. 사람의 부분 시연, Astra의 과제 시도, 짧은 연결 시험을 각각 표시했습니다. 이 갤러리는 참가자 저장소의 공개 기록입니다.
 
+아래 큰 GIF는 페이지에서 자동으로 반복 재생됩니다. 기존 MP4의 전체 구간을 사용했으며 원본 영상도 함께 열 수 있습니다. AI 장면은 **원본 256×256 화면을 확대 표시**한 것입니다.
+
 | 보기 | 제어 | 확인한 과정 | 평가 상태 |
 |---|---|---|---|
 | [사람의 파지·들기·운반](20261026-human-pickup-transport.ko.md) | 사람이 두 로봇을 조작 | 고정 연습 배치의 접근 → 양쪽 파지 → 들기 → 운반 | 공식 점수·전체 착의 성공 미확인 |
@@ -13,7 +15,9 @@
 
 ## 사람의 파지·들기·운반
 
-[![사람이 조작한 두 로봇이 옷을 들어 올리는 실제 기록](../project/assets/visual-20261027/human-demo-t20.jpg)](20261026-human-pickup-transport.ko.md)
+<a href="20261026-human-pickup-transport.ko.md"><img src="assets/20261026-human-pickup-transport/preview.gif" width="800" alt="사람의 접근·파지·들기·운반 전체 구간 자동 반복"></a>
+
+자동 반복 · 33.0초 · 640×453, 4fps · 약 4.82MB · [GIF 변환 출처](assets/20261026-human-pickup-transport/provenance.json)
 
 **[▶ 33.08초 영상](../videos/20261026-human-pickup-transport.mp4)** · [장면과 과정 보기](20261026-human-pickup-transport.ko.md)
 
@@ -21,7 +25,9 @@
 
 ## Astra의 접근·파지 시도
 
-[![Astra 시도 마지막 공개 전체 화면](../collection/attempts/20261106-astra-dressing-001/images/final-overview.png)](20261106-astra-dressing-001.ko.md)
+<a href="20261106-astra-dressing-001.ko.md"><img src="assets/20261106-astra-dressing-001/preview.gif" width="720" alt="Astra 접근·파지 시도 전체 167프레임 자동 반복, 4배 느리게"></a>
+
+자동 반복 · 33.4초, 5fps · 원본 256×256을 512×512 GIF로 확대, 표시 너비 720px · [GIF 변환 출처](assets/20261106-astra-dressing-001/provenance.json)
 
 **[▶ 33.4초 영상](../collection/attempts/20261106-astra-dressing-001/overview.mp4)** · [원본 관측과 짧은 행동 응답 보기](20261106-astra-dressing-001.ko.md)
 
@@ -29,7 +35,9 @@
 
 ## Astra의 작은 움직임·정지
 
-[![Astra 연결 시험의 시작 공개 전체 화면](../collection/attempts/20261106-codex-robot-wiring-r5/images/initial-overview.png)](20261106-codex-robot-wiring-r5.ko.md)
+<a href="20261106-codex-robot-wiring-r5.ko.md"><img src="assets/20261106-codex-robot-wiring-r5/preview.gif" width="720" alt="Astra 작은 움직임·정지 시험 전체 3프레임 자동 반복, 20배 느리게"></a>
+
+자동 반복 · 3초, 1fps · 원본 256×256 확대 표시 · [GIF 변환 출처](assets/20261106-codex-robot-wiring-r5/provenance.json)
 
 **[▶ 3초 영상](../collection/attempts/20261106-codex-robot-wiring-r5/overview.mp4)** · [세 응답과 시작·종료 화면 보기](20261106-codex-robot-wiring-r5.ko.md)
 
@@ -37,7 +45,9 @@
 
 ## 한 응답에 담은 세 행동
 
-[![한 응답 세 행동 연결 시험의 종료 공개 화면](../collection/attempts/20261106-exec-plan3-wiring-001/images/final-overview.png)](20261106-exec-plan3-wiring-001.ko.md)
+<a href="20261106-exec-plan3-wiring-001.ko.md"><img src="assets/20261106-exec-plan3-wiring-001/preview.gif" width="720" alt="한 응답 세 행동 연결 시험 전체 3프레임 자동 반복, 20배 느리게"></a>
+
+자동 반복 · 3초, 1fps · 원본 256×256 확대 표시 · [GIF 변환 출처](assets/20261106-exec-plan3-wiring-001/provenance.json)
 
 **[▶ 3초 영상](../collection/attempts/20261106-exec-plan3-wiring-001/overview.mp4)** · [한 번에 받은 행동 목록 보기](20261106-exec-plan3-wiring-001.ko.md)
 

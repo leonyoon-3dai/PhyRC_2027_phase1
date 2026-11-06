@@ -2,6 +2,10 @@
 
 [갤러리](README.ko.md) · [사람 부분 시연](20261026-human-pickup-transport.ko.md) · [작은 움직임 연결 시험](20261106-codex-robot-wiring-r5.ko.md)
 
+<img src="assets/20261106-astra-dressing-001/preview.gif" width="720" alt="Astra 접근·닫기·시험 들기·재정렬의 전체 관측 자동 반복">
+
+**자동 반복 GIF** · 전체 167프레임, 5fps, 33.4초, **4배 느리게**. 원본 256×256을 512×512 GIF로 확대하고 너비 720px로 표시합니다. [변환 출처](assets/20261106-astra-dressing-001/provenance.json)
+
 **[▶ 33.4초 관측 영상 보기](../collection/attempts/20261106-astra-dressing-001/overview.mp4)**
 
 `gpt-6-astra`·`ultra`가 공개 카메라와 로봇 상태를 보고 접근·닫기·시험 들기·재정렬을 시도한 기록입니다. **공식 결과는 0/50점·success=false**이며 파지 성공을 확인하지 못했습니다. 15개 모델 판단을 완료한 중단 시도입니다.

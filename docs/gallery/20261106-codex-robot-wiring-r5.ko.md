@@ -2,6 +2,10 @@
 
 [갤러리](README.ko.md) · [Astra의 접근·파지 시도](20261106-astra-dressing-001.ko.md)
 
+<img src="assets/20261106-codex-robot-wiring-r5/preview.gif" width="720" alt="작은 리프트 명령·정지 연결 시험 전체 관측 자동 반복">
+
+**자동 반복 GIF** · 전체 3프레임, 1fps, 3초, **20배 느리게**. 원본 256×256을 512×512 GIF로 확대하고 너비 720px로 표시합니다. 실제 움직임이 매우 작은 연결 시험입니다. [변환 출처](assets/20261106-codex-robot-wiring-r5/provenance.json)
+
 **[▶ 3초 관측 영상 보기](../collection/attempts/20261106-codex-robot-wiring-r5/overview.mp4)**
 
 `gpt-6-astra`·`ultra`의 세 응답을 **작은 리프트 명령 → 정지 → 종료** 순서로 적용한 연결 시험입니다. 총 3전이·0.15 simulation초입니다. 공식 결과는 **0/50점·success=false**이며 파지·착의를 시도한 자료가 아닙니다.

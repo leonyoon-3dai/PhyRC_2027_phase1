@@ -2,6 +2,10 @@
 
 [갤러리](README.ko.md) · [세 번 호출한 연결 시험](20261106-codex-robot-wiring-r5.ko.md)
 
+<img src="assets/20261106-exec-plan3-wiring-001/preview.gif" width="720" alt="한 응답의 작은 움직임·정지·종료 연결 시험 전체 관측 자동 반복">
+
+**자동 반복 GIF** · 전체 3프레임, 1fps, 3초, **20배 느리게**. 원본 256×256을 512×512 GIF로 확대하고 너비 720px로 표시합니다. 실제 움직임이 매우 작은 연결 시험입니다. [변환 출처](assets/20261106-exec-plan3-wiring-001/provenance.json)
+
 **[▶ 3초 관측 영상 보기](../collection/attempts/20261106-exec-plan3-wiring-001/overview.mp4)**
 
 `gpt-6-astra`·`ultra`가 한 응답에 **작은 리프트 명령 → 정지 → 종료**의 세 구간을 담았습니다. 실행기는 전체 목록을 검사한 뒤 순서대로 적용했습니다. 실제 모델 호출은 1회, 행동 구간은 3개, 물리 전이는 3개입니다.
