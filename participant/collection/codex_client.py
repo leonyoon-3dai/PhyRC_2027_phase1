@@ -48,6 +48,15 @@ Return exactly one decision matching the schema. Each action has two rows in rob
 Use all designated camera views and public robot localization to identify which gripper is where. Do not treat fingertip_origin_distance as the inner contact gap. Do not assume a close command attached cloth; confirm motion in subsequent images. Coordinate support while approaching and threading sleeves; recover visibly failed grasps before transporting. Keep useful grips until the task is visually complete. Never request scene edits, hidden state, arbitrary simulator code, or evaluator feedback. You may plan using permitted observations and remember earlier observations and your decisions within this episode. Finish when visually complete or when continuing the current episode is unproductive; state the visual reason. Zero action and steps=1 are required for stop and finish_episode. Give a brief operational reason, not a claim of measured success.'''
 WIRING_TASK = '''This is a short collection wiring test, not a dressing demonstration. On decision 0 request a small lift velocity of +0.03 for both robots and gripper -1, for 2 steps. On decision 1 request stop. On decision 2 finish_episode. All other velocity values must be zero. Use the same action contract and schema. Do not attempt grasp or dressing; label stage preparation and visual_assessment uncertain.'''
 PICKUP_TASK = '''For THIS episode, limit the objective to a stable garment pickup. Do not proceed to dressing the mannequin. Approach and grasp using public observations, test whether the cloth follows the gripper, and when visually supported raise and hold it. The published pickup criterion requires the grasped region to rise at least 5 cm from its grasp location with the same gripper and remain raised for 3 simulation seconds. This is task guidance, not feedback that a grasp or score exists. Model waiting does not advance simulation time. Use the public simulation clock and observed cloth motion. Finish after a visually stable hold or when the episode is unproductive. Official evaluation remains outside your inputs.'''
+COORDINATED_TASK = '''This episode prioritizes a TWO-ROBOT cooperative dressing demonstration. The operator specifically requires both robots to approach the garment before lifting it; a one-robot pickup while the other robot stays behind is not the intended demonstration.
+
+Coordinate these prerequisites using only CURRENT designated views and public robot state:
+1. Bring BOTH robots to useful, noninterfering positions near the garment. Identify safe routes and reachable edges from the images. Move both robots in the same action when their routes are visibly clear; do not leave one idle while the other completes the pickup. One may wait briefly when collision avoidance or alignment requires it. Adjusting an empty gripper's height is allowed.
+2. Keep the garment supported on the table while aligning both open grippers at separated accessible edge regions. Both robots must be near the garment and ready before starting to lift the cloth. Do not move an unsupported one-hand-held garment away while the partner is still approaching.
+3. Close and settle both grasps, then use a SHORT coordinated lift test. In subsequent current views, check separately whether cloth follows EACH gripper. A close command or raised gripper alone is not grasp evidence. If either side is uncertain or slips, lower/support the cloth and recover the missing grasp before transport. Do not substitute a long one-robot hold for this cooperative test.
+4. Once both sides are visibly supported, lift together, preserve a useful opening without excessive stretch, and coordinate transport and dressing. Infer all targets and geometry from current observations, never from a memorized scene layout. Continue toward full dressing, not just pickup.
+
+For collection efficiency, use simultaneous two-robot commands and reasonably long bounded segments for clearly unobstructed positioning. Group predictable segments only when no new contact observation is needed; near cloth/contact, use one short segment and inspect the result. Your brief reason should state the current role/readiness of robot 0 and robot 1, then the action purpose. These are visual hypotheses and intentions, not official success labels.'''
 
 
 def official_review_points(collection):
@@ -368,6 +377,7 @@ def main():
     parser.add_argument('--retry-reason')
     parser.add_argument('--source-group')
     parser.add_argument('--mode', choices=['wiring', 'dressing', 'pickup'], default='wiring')
+    parser.add_argument('--strategy', choices=['general', 'coordinated'], default='general')
     parser.add_argument('--actor-backend', choices=['exec', 'app-server'], default='exec')
     parser.add_argument('--plan-size', type=int, default=1,
                         help='Maximum segments per model call; >1 is an open-loop list')
@@ -401,6 +411,8 @@ def main():
         parser.error('positive replay-prefix-steps requires replay-prefix-run')
     if args.replay_prefix_run and args.mode == 'wiring':
         parser.error('replay prefixes are not wiring tests')
+    if args.strategy == 'coordinated' and args.mode != 'dressing':
+        parser.error('coordinated strategy requires the full dressing objective')
     if args.mode == 'wiring' and args.plan_size > 1 and (args.plan_size != 3 or args.decisions != 3):
         parser.error('grouped wiring requires plan-size=3 and decisions=3')
     if not math.isfinite(args.model_timeout) or not 10 <= args.model_timeout <= 1800:
@@ -427,6 +439,8 @@ def main():
     actor_root.mkdir(parents=True, exist_ok=False, mode=0o700)
     from participant.collection.plans import plan_schema, validate_plan, PLAN_TASK, BATCH_WIRING_TASK
     task = TASK
+    if args.strategy == 'coordinated':
+        task += '\n\n' + COORDINATED_TASK
     if args.plan_size > 1:
         task += '\n\n' + PLAN_TASK.format(max_segments=args.plan_size, max_total_steps=args.plan_step_budget)
     if replay is not None:
@@ -468,6 +482,7 @@ def main():
         'model': args.model, 'reasoning_effort': args.effort,
         'prompt_sha256': hashlib.sha256(task.encode()).hexdigest(),
         'mode': args.mode, 'decisions_requested': args.decisions, 'decisions_completed': 0,
+        'strategy': args.strategy,
         'actor_backend': args.actor_backend, 'plan_size': args.plan_size,
         'plan_step_budget': args.plan_step_budget,
         'plan_execution': 'open_loop_list' if args.plan_size > 1 else 'single_decision',

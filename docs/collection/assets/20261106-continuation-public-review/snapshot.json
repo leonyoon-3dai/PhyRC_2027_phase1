@@ -1,0 +1,530 @@
+{
+  "schema": "phyrc-public-continuation-review-v1",
+  "run_id": "20261106-astra-dressing-continue-001",
+  "parent_attempt": "20261106-astra-pickup-hold5-001",
+  "snapshot_asof_utc": "2026-11-06T04:29:02.700703+00:00",
+  "created_at_utc": "2026-11-06T04:31:25.484790+00:00",
+  "included_decision_indices": [
+    0,
+    1,
+    2
+  ],
+  "included_observation_indices": [
+    0,
+    1,
+    2
+  ],
+  "policy_feedback_injected": false,
+  "hdf5_read": false,
+  "evaluation_used_for_visual_analysis": false,
+  "scope": "fixed public observations and final action records; observations are inputs BEFORE each corresponding decision",
+  "observations": [
+    {
+      "decision_index": 0,
+      "state": {
+        "simulation_time_s": 14.17500073928386,
+        "joint_position": [
+          [
+            -0.24275240302085876,
+            -0.514238715171814,
+            0.24275662004947662,
+            0.7705267667770386,
+            0.08781729638576508,
+            0.08787661045789719,
+            0.08789028227329254,
+            0.08786454796791077,
+            -0.00030875441734679043,
+            1.1350003480911255,
+            0.0003814182709902525,
+            0.19921018183231354,
+            0.18477673828601837
+          ],
+          [
+            -0.24275095760822296,
+            -0.5142387747764587,
+            0.2427559345960617,
+            0.6905187964439392,
+            4.4223833128853585e-07,
+            3.860913864173199e-07,
+            3.996742350409477e-07,
+            2.658034077285265e-07,
+            0.0005899349926039577,
+            0.004141413606703281,
+            -5.309516564011574e-05,
+            0.4999987781047821,
+            0.49997541308403015
+          ]
+        ],
+        "base_pose_world": [
+          [
+            -1.0765348672866821,
+            -0.6411452889442444,
+            -0.0036288234405219555,
+            -0.7072288990020752,
+            0.003339807502925396,
+            0.0008955930825322866,
+            0.706976056098938
+          ],
+          [
+            1.0363547801971436,
+            -0.1419093757867813,
+            -0.0036291179712861776,
+            -0.7072893381118774,
+            0.0033399539534002542,
+            0.0008951952331699431,
+            0.7069156169891357
+          ]
+        ],
+        "gripper_close_command": [
+          [
+            true
+          ],
+          [
+            false
+          ]
+        ]
+      }
+    },
+    {
+      "decision_index": 1,
+      "state": {
+        "simulation_time_s": 14.375000749714673,
+        "joint_position": [
+          [
+            -0.24275225400924683,
+            -0.5142390131950378,
+            0.24275709688663483,
+            0.7886142134666443,
+            0.08784554153680801,
+            0.08791934698820114,
+            0.08793578296899796,
+            0.08790271729230881,
+            -0.00029022779199294746,
+            1.1350001096725464,
+            0.00040788023034110665,
+            0.1994253545999527,
+            0.18468645215034485
+          ],
+          [
+            -0.242750883102417,
+            -0.514238715171814,
+            0.24275611340999603,
+            0.6905196309089661,
+            -1.3994582559462287e-07,
+            -7.539253488175746e-08,
+            -1.4941150539016235e-08,
+            1.8400096735149418e-07,
+            0.0005931889172643423,
+            0.004139620810747147,
+            -5.360325667425059e-05,
+            0.4999998211860657,
+            0.4999712407588959
+          ]
+        ],
+        "base_pose_world": [
+          [
+            -1.0766535997390747,
+            -0.6413114070892334,
+            -0.003628973150625825,
+            -0.7072321772575378,
+            0.0033404387068003416,
+            0.0008955622906796634,
+            0.7069727778434753
+          ],
+          [
+            1.035902500152588,
+            -0.1420096755027771,
+            -0.0036289861891418695,
+            -0.707290768623352,
+            0.0033396899234503508,
+            0.000895681616384536,
+            0.7069143056869507
+          ]
+        ],
+        "gripper_close_command": [
+          [
+            true
+          ],
+          [
+            false
+          ]
+        ]
+      }
+    },
+    {
+      "decision_index": 2,
+      "state": {
+        "simulation_time_s": 14.675000765360892,
+        "joint_position": [
+          [
+            -0.2427516132593155,
+            -0.514238178730011,
+            0.24275635182857513,
+            0.8336959481239319,
+            0.08798525482416153,
+            0.08812909573316574,
+            0.08815184980630875,
+            0.08807885646820068,
+            -9.443290764465928e-05,
+            1.1350001096725464,
+            0.0005033141351304948,
+            0.19907881319522858,
+            0.18310056626796722
+          ],
+          [
+            -0.24275192618370056,
+            -0.5142396092414856,
+            0.24275706708431244,
+            0.6905197501182556,
+            5.542489134313655e-07,
+            4.781192046721117e-07,
+            4.876354751104373e-07,
+            2.949516328953905e-07,
+            0.001758079626597464,
+            0.004093054682016373,
+            -0.0011071570916101336,
+            0.49999988079071045,
+            0.499086856842041
+          ]
+        ],
+        "base_pose_world": [
+          [
+            -1.0766711235046387,
+            -0.641556441783905,
+            -0.003629090264439583,
+            -0.707227885723114,
+            0.0033413409255445004,
+            0.0008954287623055279,
+            0.7069770693778992
+          ],
+          [
+            0.9856783747673035,
+            -0.14207211136817932,
+            -0.003629118436947465,
+            -0.7069988250732422,
+            0.003340569557622075,
+            0.0008945277659222484,
+            0.7072062492370605
+          ]
+        ],
+        "gripper_close_command": [
+          [
+            true
+          ],
+          [
+            false
+          ]
+        ]
+      }
+    }
+  ],
+  "events": [
+    {
+      "type": "decision",
+      "decision_index": 0,
+      "model_call_index": 0,
+      "observation_simulation_time_s": 14.17500073928386,
+      "latest_observation_simulation_time_s": 14.17500073928386,
+      "wall_s": 16.706960600000457,
+      "decision": {
+        "tool": "act",
+        "action": [
+          [
+            0,
+            0,
+            0,
+            0.15,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "steps": 4,
+        "stage": "lift",
+        "visual_assessment": "uncertain",
+        "reason": "Robot 0 appears to pinch the yellow hem. Lift slightly while preserving grip to check whether cloth follows; robot 1 holds at the empty table."
+      },
+      "phase_wall_s": {
+        "staging_wall_s": 0.10855579400049464,
+        "process_wall_s": 16.597934351999356,
+        "result_parse_wall_s": 0.0004608549988915911
+      }
+    },
+    {
+      "type": "applied_segment",
+      "decision_index": 0,
+      "start_step": 253,
+      "end_step": 257,
+      "actual_steps": 4,
+      "simulation_start_s": 14.17500073928386,
+      "simulation_end_s": 14.375000749714673,
+      "environment_dispatch_wall_s": 5.117966324000008
+    },
+    {
+      "type": "decision",
+      "decision_index": 1,
+      "model_call_index": 1,
+      "observation_simulation_time_s": 14.375000749714673,
+      "latest_observation_simulation_time_s": 14.375000749714673,
+      "wall_s": 36.948374166000576,
+      "decision": {
+        "tool": "act",
+        "action": [
+          [
+            0,
+            0,
+            0,
+            0.1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            -0.8,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "steps": 6,
+        "stage": "lift",
+        "visual_assessment": "progressing",
+        "reason": "The hem appears to follow robot 0’s rising fingertips. Continue a small lift while robot 1 begins moving laterally toward the shirt table for a supporting grasp."
+      },
+      "phase_wall_s": {
+        "staging_wall_s": 0.10606444800032477,
+        "process_wall_s": 36.841830456000025,
+        "result_parse_wall_s": 0.00047122800060606096
+      }
+    },
+    {
+      "type": "applied_segment",
+      "decision_index": 1,
+      "start_step": 257,
+      "end_step": 263,
+      "actual_steps": 6,
+      "simulation_start_s": 14.375000749714673,
+      "simulation_end_s": 14.675000765360892,
+      "environment_dispatch_wall_s": 7.256248413001231
+    },
+    {
+      "type": "decision",
+      "decision_index": 2,
+      "model_call_index": 2,
+      "observation_simulation_time_s": 14.675000765360892,
+      "latest_observation_simulation_time_s": 14.675000765360892,
+      "wall_s": 30.639976553999077,
+      "decision": {
+        "tool": "act",
+        "action": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0.2,
+            -0.8,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "steps": 20,
+        "stage": "approach",
+        "visual_assessment": "progressing",
+        "reason": "The hem remains near robot 0’s fingertips while the surrounding cloth rises. Hold that grip and move robot 1 diagonally toward the space between the tables for supporting access."
+      },
+      "phase_wall_s": {
+        "staging_wall_s": 0.11167198899966024,
+        "process_wall_s": 30.5279371659999,
+        "result_parse_wall_s": 0.0003637099998741178
+      }
+    },
+    {
+      "type": "applied_segment",
+      "decision_index": 2,
+      "start_step": 263,
+      "end_step": 283,
+      "actual_steps": 20,
+      "simulation_start_s": 14.675000765360892,
+      "simulation_end_s": 15.675000817514956,
+      "environment_dispatch_wall_s": 21.390673523999794
+    }
+  ],
+  "source_files": {
+    "observations/00000/observation.json": {
+      "sha256": "a6ce8457fad4e4411a85e6055e5cda9a0ad0805a17da825d02680125a3a9b77a"
+    },
+    "observations/00000/overview.png": {
+      "sha256": "3b0ffcb7e5a8d6f7067cec0ba5cc1033b97b2debad61f0a5118d6a6ca94d8994"
+    },
+    "observations/00000/robot_0_wrist.png": {
+      "sha256": "9fc7f5ee65162cfa276bf4125ce0c5ec572f8e71a7616e6eb2cb05e2d4d4e430"
+    },
+    "observations/00000/robot_1_wrist.png": {
+      "sha256": "55b0ff689c25cbd5db8a51fbf38d5cc57fdfa984edc8d57db63c9aef1716604b"
+    },
+    "observations/00000/robot_0_head.png": {
+      "sha256": "cc23cd197b29a136cabcf272e7579faa758e99789e7591d93fe42f5078c23c86"
+    },
+    "observations/00000/robot_1_head.png": {
+      "sha256": "70f08d970c690257ba50e74da11fa1e3feaf40ca1c4165d792ab66d0366dfbbe"
+    },
+    "observations/00001/observation.json": {
+      "sha256": "9a5492168a3ba229ec74f9c33334dec8d2a8bf97a809bcbecf622fc28b670104"
+    },
+    "observations/00001/overview.png": {
+      "sha256": "d66a85f5651e1ec61bd177c02e2fdefa6e0d48b3bc19e3170a4a5f6fe0eb139e"
+    },
+    "observations/00001/robot_0_wrist.png": {
+      "sha256": "23815c36ec0c06a3685825b7bf4766dadb814468eb1eaf0a0b60c45277b7e4db"
+    },
+    "observations/00001/robot_1_wrist.png": {
+      "sha256": "e60a69264512ec1428016db167099419d2c8d0fd135ef833c5dd39bc7d1c75e0"
+    },
+    "observations/00001/robot_0_head.png": {
+      "sha256": "d3b0f597fa2878b3e3f1f8a8c72d022c77049a0df1b393d300601b4707abb3da"
+    },
+    "observations/00001/robot_1_head.png": {
+      "sha256": "fe4cff9646c8469504c6c83e0ba08588fea510bf6fea9264391325c04440e155"
+    },
+    "observations/00002/observation.json": {
+      "sha256": "84c3444458739c343af5362004d2c66ad968233a1b7a48ef30338f4a7b5bee62"
+    },
+    "observations/00002/overview.png": {
+      "sha256": "4ecb4a4deacf2df4348ce1368e4dbd162d8717c284285aafab72061dc220744e"
+    },
+    "observations/00002/robot_0_wrist.png": {
+      "sha256": "c4b2ee073390ec5f8d785bad3a38134f85b8bc8416858b3942e5d5db0a46e2bb"
+    },
+    "observations/00002/robot_1_wrist.png": {
+      "sha256": "ba92f8acf8d77e452027f8e500df1e2ce85bef01a4f944d9250c4f896365fa98"
+    },
+    "observations/00002/robot_0_head.png": {
+      "sha256": "5da1a706e800ed51653073cfdbe3cba16c843fa8a9da29ef5c3fa82464971019"
+    },
+    "observations/00002/robot_1_head.png": {
+      "sha256": "60579751b45f6450a293a9d8d3dcb355e2bde01d2dff0dce3fb20aa8969576ce"
+    },
+    "E05-final/overview.png": {
+      "sha256": "95a06dc128540fbbd962e4af7370ee830083d8ba5259a495b67e31753e675eeb"
+    },
+    "E05-final/robot_0_wrist.png": {
+      "sha256": "70bdd372d6062309c55b0f85390e76be9c7f3adf5e4a49f0927b4fce659b881f"
+    },
+    "E05-final/robot_1_wrist.png": {
+      "sha256": "e72bcee4c96acadf27c64caac731ddeaa7f956220d93bd9c6bbab456b13817fa"
+    },
+    "E05-final/robot_0_head.png": {
+      "sha256": "129b1344351a77e8d10df7b90724f772fed33a3c61fdee59afc6012719482c99"
+    },
+    "E05-final/robot_1_head.png": {
+      "sha256": "786c6ae8bf94193fdec7ed227b0ed0a6f0c37030563aadb0af4d205916fd060e"
+    },
+    "decisions.jsonl complete prefix through applied_segment 2": {
+      "prefix_bytes": 20121,
+      "prefix_sha256": "e45e52cb90743d096c52475fb21893c85a67266f947e3c13b60b1d6fe1cdd966",
+      "hash_scope": "immutable completed prefix, not the still-growing full log"
+    }
+  },
+  "E05_final_vs_E06_initial_public_image_comparison": [
+    {
+      "camera": "overview",
+      "pixels_exactly_equal": false,
+      "mean_absolute_channel_difference_0_255": 0.9076334635416666,
+      "max_absolute_channel_difference_0_255": 43
+    },
+    {
+      "camera": "robot_0_wrist",
+      "pixels_exactly_equal": false,
+      "mean_absolute_channel_difference_0_255": 1.9870554606119792,
+      "max_absolute_channel_difference_0_255": 163
+    },
+    {
+      "camera": "robot_1_wrist",
+      "pixels_exactly_equal": false,
+      "mean_absolute_channel_difference_0_255": 0.6127166748046875,
+      "max_absolute_channel_difference_0_255": 41
+    },
+    {
+      "camera": "robot_0_head",
+      "pixels_exactly_equal": false,
+      "mean_absolute_channel_difference_0_255": 0.8651580810546875,
+      "max_absolute_channel_difference_0_255": 62
+    },
+    {
+      "camera": "robot_1_head",
+      "pixels_exactly_equal": false,
+      "mean_absolute_channel_difference_0_255": 0.80194091796875,
+      "max_absolute_channel_difference_0_255": 35
+    }
+  ],
+  "image_comparison_limit": "pixel distance does not establish cloth attachment, contact state, or physics equivalence",
+  "public_state_change_obs0_to_obs2": {
+    "elapsed_simulation_s": 0.5000000260770321,
+    "robot0_lift_joint_delta_m": 0.06316918134689331,
+    "robot1_base_world_x_delta_m": -0.05067640542984009,
+    "gripper_close_command_initial": [
+      [
+        true
+      ],
+      [
+        false
+      ]
+    ],
+    "gripper_close_command_latest": [
+      [
+        true
+      ],
+      [
+        false
+      ]
+    ]
+  },
+  "actor_wall_s_first_three": 84.29531132000011,
+  "environment_dispatch_wall_s_first_three": 33.76488826100103,
+  "new_applied_steps_first_three": 30,
+  "latest_image_covers_new_applied_steps": 10,
+  "decision2_execution_image_included": false,
+  "artifacts": {
+    "decision-00002-robot_0_wrist.png": {
+      "sha256": "c4b2ee073390ec5f8d785bad3a38134f85b8bc8416858b3942e5d5db0a46e2bb",
+      "bytes": 59292
+    },
+    "decision-00002-overview.png": {
+      "sha256": "4ecb4a4deacf2df4348ce1368e4dbd162d8717c284285aafab72061dc220744e",
+      "bytes": 72899
+    }
+  }
+}

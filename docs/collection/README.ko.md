@@ -2,23 +2,28 @@
 
 [공개 시연 갤러리](../gallery/README.ko.md) · [저장소 소개](../../README.md) · [2026-11-06 수집 일지](sessions/2026-11-06.md) · [서버 복원·실행 명령](../project/START_HERE.ko.md) · [현재 상태](../project/STATUS.md)
 
-**확인한 최고 점수 5/50점 · 전체 착의 success=false · E06 후속 시도 진행 중.** 영상에서 과정을 보고, 시간·행동·점수·원본 자료로 이동하는 입구입니다. 성공·실패·중단·재시도와 기존 상세 기록을 모두 보존합니다.
+**기록된 5/50점은 한 로봇 픽업 부분 점수이며 협력 들기 성공이 아닙니다. 현재 E07은 0점의 새 에피소드에서 협력 들기를 시도 중입니다.** 영상에서 과정을 보고, 시간·행동·점수·원본 자료로 이동하는 입구입니다. 성공·실패·중단·재시도와 기존 상세 기록을 모두 보존합니다.
 
-<a href="../gallery/20261106-astra-pickup-hold5-001.ko.md"><img src="../gallery/assets/20261106-astra-pickup-hold5-001/preview.gif" width="640" alt="첫 공식 픽업 5점의 실제 관측 자동 반복"></a>
+<a href="../gallery/20261106-astra-pickup-hold5-001.ko.md"><img src="../gallery/assets/20261106-astra-pickup-hold5-001/preview.gif" width="640" alt="한 로봇 픽업 부분 점수 5점의 실제 관측 자동 반복"></a>
 
 | 빠르게 찾기 | 바로 볼 기록 |
 |---|---|
-| 영상·짧은 과정 | [공개 갤러리](../gallery/README.ko.md) · [첫 5점](../gallery/20261106-astra-pickup-hold5-001.ko.md) |
+| 영상·짧은 과정 | [공개 갤러리](../gallery/README.ko.md) · [한 로봇 픽업 부분 점수 5점](../gallery/20261106-astra-pickup-hold5-001.ko.md) |
 | 점수·종료 | [E05 공식 5점 검토](reviews/20261106-astra-pickup-hold5-001.ko.md) · [앞선0점 검토](reviews/20261106-astra-pickup-plan2-001.ko.md) |
 | 시간·실험 순서 | [당일 일지](sessions/2026-11-06.md) · [방법 비교](experiments/2026-11-06-method-comparison.ko.md) · [서버 비교](experiments/2026-11-06-server-comparison.ko.md) |
+| 현재 협력 시도 | [E07 시작 기록](experiments/2026-11-06-coordinated-fresh.ko.md) · [공식 참고 영상 분석](experiments/2026-11-06-official-demo-strategy.ko.md) |
+| 병행 조사 | 스켈레톤·3D·모션 분석과 baseline 다양화. 연구 문서 작성 중, 실제 구현·성능 검증과 구분 |
 | 후속 시도·분기 | [행동 재실행과 구간별 분기](guides/continuation-and-branches.ko.md). 원본 점수를 복사하지 않고 새 실행을 평가 |
 | 화면·운영 | [관찰 화면 안내](guides/live-monitor.ko.md) · [현재 상태](../project/STATUS.md) |
+| 지각 연구·기준선 | [RGB-D·3D·스켈레톤·추적 비교](research/2026-11-06-perception-baselines.ko.md). 현재 수집과 연구 후보·실제 적용을 구분 |
 | 파일·라벨·보존 | 아래 폴더 구조·네이밍·라벨 절을 펼쳐 확인 |
 
-**E06은 04:20:36 UTC에 시작했습니다.** E05 행동 253전이를 재실행한 뒤 새 actor를 시작하며, 정확한 물리 checkpoint 복원이나 이전 점수의 자동 승계를 의미하지 않습니다. 원본·실패·프롬프트·전체 상세 기록은 계속 보존합니다.
+**다음 순서: 두 로봇 모두 옷 근처로 접근 → 공개 관측으로 양쪽 파지 확인 → 함께 들기.** E06은 중단·보존했고 [E07](experiments/2026-11-06-coordinated-fresh.ko.md)은 04:40:12 UTC에 실제 시작했습니다. 협력 들기·착의 성공은 아직 미확인입니다. 이전 5점 상태를 재실행하지 않으며 로봇·옷의 강제 상태 설정이나 평가기 변경을 하지 않습니다. [E06 고정 중간 기록](experiments/2026-11-06-dressing-continuation.ko.md)과 원본·실패·프롬프트·영상은 모두 유지합니다.
 
 <details>
-<summary>수집 방향과 피드백 이력</summary>
+<summary>이전 수집 방향과 피드백 이력</summary>
+
+아래는 E07의 새 시작 요청 이전 이력입니다. 현재 방향은 상단과 피드백 014를 따릅니다.
 
 이 페이지는 결과뿐 아니라 **무엇을 관찰하고, 어떤 프롬프트와 행동을 사용했으며, 어디에서 실패하고 무엇을 바꾸어 재시도했는지**를 추적하는 수집 기록의 입구입니다. 성공·부분 성공·실패·중단을 모두 남깁니다. 메인 README에는 기술 상태만 요약하고 상세 과정·사용자 피드백·이미지·영상·획득 점수는 이 문서 묶음에서 관리합니다.
 
@@ -40,10 +45,10 @@
 | [공개 시연 갤러리](../gallery/README.ko.md) | 실제 영상·대표 장면·원본 관측·짧은 행동 응답을 중심으로 보기 | 사람 부분 시연, Astra 과제 시도, 연결 시험을 구분 |
 | [라이브 관찰 화면 안내](guides/live-monitor.ko.md) | 기존 WebRTC 영상·관찰 전용 진행 패널, 표시 범위·실행·검증 | 같은 포트에 배포 완료. 새 화면의 맥북 실수신 확인은 대기 |
 | [방법별 수집 실험 비교](experiments/2026-11-06-method-comparison.ko.md) | 기존 방식, 사용량·구간 계측, 상주 호출, 한 호출의 여러 행동 | 실측·실패·보류·진행 중 상태를 구분 |
-| [E05 첫 공식 픽업 5점](attempts/20261106-astra-pickup-hold5-001/README.ko.md) | 18개 결정·공개 관측·최초 득점·행동 경계 종료 | 253전이 검사 통과, 5점·success=false. 이후 50점 후속 시도 승인 |
+| [E05 한 로봇 픽업 부분 점수 5점](attempts/20261106-astra-pickup-hold5-001/README.ko.md) | 18개 결정·공개 관측·최초 득점·행동 경계 종료 | 253전이 검사 통과, 5점·success=false. 두 로봇 협력 들기는 미확인 |
 | [서버·수집 경로별 속도 비교](experiments/2026-11-06-server-comparison.ko.md) | 이전·현재 L40S의 라이브 RTF, AI 즉시 저장·모델 대기 구분 | 원본 SHA와 182·101개 선별 창 공개. 가격 비교는 포함하지 않음 |
 | [공개 관측의 지각·접촉 검토](experiments/2026-11-06-public-perception-review.ko.md) | E04 결정 0~5의 고정 스냅샷과 원본 이미지 | 실행 중 시점의 분석이며 최종 점수와 구분 |
-| [행동 재실행과 분기](guides/continuation-and-branches.ko.md) | 원본 검사·동일 초기 배치의 행동 재실행·점수 구간 색인 | CPU 검증 완료, E06에서 실제 재현 확인 중 |
+| [행동 재실행과 분기](guides/continuation-and-branches.ko.md) | 원본 검사·동일 초기 배치의 행동 재실행·점수 구간 색인 | CPU 검증 및 E06 새 평가 5점 확인. E07의 새 시작에는 미적용 |
 | [스트리밍 ON/OFF 실측](experiments/2026-11-06-streaming-benchmark-result.ko.md) · [계획](experiments/2026-11-06-streaming-benchmark-plan.ko.md) | 중립 4회·260전이 전수 검사, 요청·응답 ON +5.80% | 조건당 2회. 실제 영상 수신 미확인으로 시청 비용과 구분 |
 | [2026-11-06 수집 일지](sessions/2026-11-06.md) | 환경 복원, 화면 연결, actor 격리, 실제 모델 시험, 실패와 재시도, 피드백 반영 | 실제 실행 근거를 계속 갱신 |
 | [실제 Astra 로봇 wiring r5](attempts/20261106-codex-robot-wiring-r5/README.ko.md) | 5개 카메라 초기·최종 이미지, 느린 관측 영상, 입력 프롬프트·최종 행동·평가 이벤트·해시 | 실제 생성 완료. 3전이, 공식 0점·success=false |
@@ -275,7 +280,7 @@ docs/collection/attempts/<run-id>/
 
 ## 10. 5점 검토 이후의 다양한 점수 경로와 모델 실험
 
-후속 목표는 최종 50점뿐 아니라 **어떤 부분 점수와 복구를 거쳐 도달했는지 다른 경로들의 과정 데이터**를 확보하는 것입니다. E05에서는 첫 5점에서 리뷰했고 현재는 사용자 승인에 따라 50점까지 후속 시도를 계속합니다. 안정적인 수집과 비교 가능한 실험 기록을 우선합니다. 항목별 `score_awarded`와 같은 시점의 `raw_points`, `physics_tick`, 적용 구간·공개 영상을 연결합니다. 같은 tick에 획득한 여러 항목은 하나의 동시 batch이며 파일의 행 순서로 물리적인 선후관계를 만들어내지 않습니다. 누적 50점과 착의 성공 유지 조건은 별개입니다.
+후속 목표는 최종 50점뿐 아니라 **어떤 부분 점수와 복구를 거쳐 도달했는지 다른 경로들의 과정 데이터**를 확보하는 것입니다. E05에서는 한 로봇 부분 점수 5점을 얻었고 E06의 재실행을 보존했습니다. 현재는 두 로봇이 협력하는 0점 새 에피소드를 실행하며 50점은 후속 목표로 둡니다. 안정적인 수집과 비교 가능한 실험 기록을 우선합니다. 항목별 `score_awarded`와 같은 시점의 `raw_points`, `physics_tick`, 적용 구간·공개 영상을 연결합니다. 같은 tick에 획득한 여러 항목은 하나의 동시 batch이며 파일의 행 순서로 물리적인 선후관계를 만들어내지 않습니다. 누적 50점과 착의 성공 유지 조건은 별개입니다.
 
 현재 항목별 점수 이벤트, 부모 재시도·이유, source group과 단계 구간 기록은 구현했습니다. 여러 시도의 경로를 정규화하고 `path_id`로 비교하는 집계, 단계별 도달률·복구 성공률·최종 50점 경로 다양성 분석은 **추가할 작업**입니다. 한 에피소드 안의 복구와 새 에피소드 재시작을 구분하며, 실패·무득점·중단·평가 무효도 목록에 남깁니다.
 

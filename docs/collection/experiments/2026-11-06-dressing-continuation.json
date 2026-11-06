@@ -1,0 +1,1314 @@
+{
+  "schema": "phyrc-public-continuation-snapshot-v1",
+  "snapshot_started_at_utc": "2026-11-06T04:29:23.936450+00:00",
+  "snapshot_finished_at_utc": "2026-11-06T04:29:23.937128+00:00",
+  "snapshot_scope": "fixed mid-run snapshot; complete JSONL lines and explicit JSON field allowlists only",
+  "snapshot_is_atomic_across_files": false,
+  "acknowledged_boundary_consistency_checked": true,
+  "run_id": "20261106-astra-dressing-continue-001",
+  "source_group": "20261106-astra-pickup-methods",
+  "source_files": {
+    "attempt.json": {
+      "local_reference": "output/operator-traces/20261106-astra-dressing-continue-001/attempt.json",
+      "sha256": "d736e9c78af54a331e2b0287ffb42cccbc019e38cc8abf59458f92a4353f07a7",
+      "bytes": 7057,
+      "read_at_utc": "2026-11-06T04:29:23.936861+00:00"
+    },
+    "review_gate.json": {
+      "local_reference": "output/operator-traces/20261106-astra-dressing-continue-001/review_gate.json",
+      "sha256": "d22ebbd9f8a0b64fe944784836221ac6752c269a360ebdab9f2f6bf8e375939b",
+      "bytes": 318,
+      "read_at_utc": "2026-11-06T04:29:23.936940+00:00"
+    },
+    "score_segments.json": {
+      "local_reference": "output/operator-traces/20261106-astra-dressing-continue-001/score_segments.json",
+      "sha256": "91315596abebe2c753a08df1709fe79b77214d6c79e95b86764536bd71913032",
+      "bytes": 1934,
+      "read_at_utc": "2026-11-06T04:29:23.936993+00:00"
+    },
+    "decisions.jsonl": {
+      "local_reference": "output/operator-traces/20261106-astra-dressing-continue-001/decisions.jsonl",
+      "sha256": "4a9f7d83ffb4e4f67612fc92fa6a43bb565d54f2f75315a4a01fd987822b7f58",
+      "bytes": 25807,
+      "read_at_utc": "2026-11-06T04:29:23.937121+00:00"
+    }
+  },
+  "input_exclusions": [
+    "HDF5 not opened",
+    "raw actor events and hidden reasoning not read",
+    "credentials, network endpoints, spawn seed, internal geometry not exported"
+  ],
+  "attempt": {
+    "parent_attempt": "20261106-astra-pickup-hold5-001",
+    "mode": "dressing",
+    "model": "gpt-6-astra",
+    "reasoning_effort": "ultra",
+    "actor_backend": "exec",
+    "status": "collecting",
+    "finished": false,
+    "activity": "executing_action",
+    "started_at_utc": "2026-11-06T04:20:36Z",
+    "decisions_completed": 4,
+    "actor_calls_attempted": 5,
+    "decisions_requested": 80,
+    "plan_size": 2,
+    "plan_step_budget": 20,
+    "review_threshold_raw_points": 50,
+    "simulation_steps": 303,
+    "replay_steps_completed": 253,
+    "policy_suffix_start_step": 253,
+    "quality_status": "unreviewed",
+    "human_intervention": false
+  },
+  "continuation": {
+    "resume_kind": "action_replay",
+    "parent_attempt": "20261106-astra-pickup-hold5-001",
+    "source_group": "20261106-astra-pickup-methods",
+    "source_episode": "demo_0",
+    "source_policy_sha256": "f26756a867777353d99fe76a454b99c659c84886820ebdb04618f412b719d6e5",
+    "source_capture_sha256": "2b96fc039733a3e3623443ed2b0a266c57c48e3fce258da130b47d79df776676",
+    "source_validation_sha256": "941288c8f908c019571cd1cc2098dce0247c32177d7d73f2a016271ad122e288",
+    "source_steps": 253,
+    "replay_steps": 253,
+    "source_start_step": 0,
+    "source_end_step_exclusive": 253,
+    "bitwise_physics_restored": false,
+    "fresh_actor": true,
+    "replay_validation": "actions_reexecuted_new_state_recorded",
+    "initial_public_state_comparison": {
+      "fields": {
+        "joint_position": {
+          "max_absolute_difference": 0.0
+        },
+        "base_pose_world": {
+          "max_absolute_difference": 0.0
+        },
+        "controller_target": {
+          "max_absolute_difference": 0.0
+        },
+        "gripper_close_command": {
+          "max_absolute_difference": 0.0
+        },
+        "previous_action": {
+          "max_absolute_difference": 0.0
+        },
+        "simulation_time_s": {
+          "max_absolute_difference": 0.0
+        }
+      },
+      "cloth_state_equivalence_checked": false,
+      "scope": "public robot numeric state only; no physics checkpoint claim"
+    },
+    "final_public_state_comparison": {
+      "fields": {
+        "joint_position": {
+          "max_absolute_difference": 0.0041283369064331055
+        },
+        "base_pose_world": {
+          "max_absolute_difference": 0.0005469322204589844
+        },
+        "controller_target": {
+          "max_absolute_difference": 0.0
+        },
+        "gripper_close_command": {
+          "max_absolute_difference": 0.0
+        },
+        "previous_action": {
+          "max_absolute_difference": 0.0
+        },
+        "simulation_time_s": {
+          "max_absolute_difference": 0.0
+        }
+      },
+      "cloth_state_equivalence_checked": false,
+      "scope": "public robot numeric state only; no physics checkpoint claim"
+    }
+  },
+  "progress": {
+    "replayed_parent_chunks": 19,
+    "replayed_parent_steps": 253,
+    "replayed_parent_simulation_s": 12.65,
+    "fresh_model_responses_received": 5,
+    "fresh_applied_segments": 4,
+    "fresh_acknowledged_steps": 50,
+    "fresh_acknowledged_simulation_s": 2.5,
+    "total_acknowledged_steps": 303,
+    "total_acknowledged_simulation_s": 15.15,
+    "returned_but_unacknowledged_decision_indices": [
+      4
+    ],
+    "source_prefix_counted_as_new_independent_demonstration": false
+  },
+  "evaluation": {
+    "source_parent_final_raw_points": 5,
+    "source_parent_success": false,
+    "parent_public_manifest": "docs/collection/attempts/20261106-astra-pickup-hold5-001/manifest.json",
+    "current_run_last_observed_raw_points": 5.0,
+    "current_run_score_copied_from_parent": false,
+    "new_suffix_awarded_points": 0,
+    "current_run_final_evaluation_valid": null,
+    "capture_complete": false,
+    "training_approval": "unreviewed",
+    "award_batches": [
+      {
+        "physics_tick": 2952,
+        "transition_boundary_step": 246,
+        "step_alignment_exact": true,
+        "evaluation_time_s": 12.3,
+        "public_simulation_time_s": 13.825000079534949,
+        "batch_index": 0,
+        "raw_points_before": 0.0,
+        "raw_points_after": 5.0,
+        "simultaneous": false,
+        "order_within_batch": "not_inferred",
+        "action_source_at_boundary": "replayed_parent",
+        "changes": [
+          {
+            "stage": "pickup",
+            "before": 0.0,
+            "after": 5.0
+          }
+        ]
+      }
+    ],
+    "success_event_count": 0,
+    "actor_receives_index": false
+  },
+  "review_gate": {
+    "threshold_raw_points": 50,
+    "policy_input_changed": false,
+    "status": "watching",
+    "last_observed_raw_points": 5.0,
+    "acknowledged_steps": 303
+  },
+  "timing": {
+    "actor_received_responses_wall_s": 130.07638720499926,
+    "replayed_parent_environment_dispatch_wall_s": 278.5136011090017,
+    "fresh_acknowledged_environment_dispatch_wall_s": 55.37829848800175,
+    "total_acknowledged_environment_dispatch_wall_s": 333.89189959700343,
+    "model_internal_inference_time_available": false,
+    "scope_ko": "actor는 완료 응답 5개를 포함하고 환경 시간은 완료된 재실행 19구간과 새 행동 4구간까지만 포함한다. 서로 같은 완료 경계의 지연 비교가 아니며 실행 전체 종료 시간도 아니다."
+  },
+  "replayed_segments": [
+    {
+      "action_source": "replayed_parent",
+      "source_run_id": "20261106-astra-pickup-hold5-001",
+      "source_start_step": 0,
+      "source_end_step_exclusive": 20,
+      "start_step": 0,
+      "end_step": 20,
+      "requested_steps": 20,
+      "actual_steps": 20,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.44999998807907104,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -1.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.44999998807907104,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -1.0
+        ]
+      ],
+      "simulation_start_s": 1.5250000795349479,
+      "simulation_end_s": 2.525000131689012,
+      "environment_dispatch_wall_s": 21.114657111998895,
+      "model_invoked": false
+    },
+    {
+      "action_source": "replayed_parent",
+      "source_run_id": "20261106-astra-pickup-hold5-001",
+      "source_start_step": 20,
+      "source_end_step_exclusive": 40,
+      "start_step": 20,
+      "end_step": 40,
+      "requested_steps": 20,
+      "actual_steps": 20,
+      "applied_action": [
+        [
+          0.6000000238418579,
+          0.0,
+          0.0,
+          0.10000000149011612,
+          0.10000000149011612,
+          0.0,
+          0.18000000715255737,
+          0.0,
+          -1.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "simulation_start_s": 2.525000131689012,
+      "simulation_end_s": 3.5250001838430762,
+      "environment_dispatch_wall_s": 21.40571489099966,
+      "model_invoked": false
+    },
+    {
+      "action_source": "replayed_parent",
+      "source_run_id": "20261106-astra-pickup-hold5-001",
+      "source_start_step": 40,
+      "source_end_step_exclusive": 60,
+      "start_step": 40,
+      "end_step": 60,
+      "requested_steps": 20,
+      "actual_steps": 20,
+      "applied_action": [
+        [
+          0.25,
+          0.0,
+          0.0,
+          0.0,
+          0.2800000011920929,
+          0.0,
+          0.10499999672174454,
+          0.0,
+          -1.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "simulation_start_s": 3.5250001838430762,
+      "simulation_end_s": 4.52500023599714,
+      "environment_dispatch_wall_s": 21.10871432500062,
+      "model_invoked": false
+    },
+    {
+      "action_source": "replayed_parent",
+      "source_run_id": "20261106-astra-pickup-hold5-001",
+      "source_start_step": 60,
+      "source_end_step_exclusive": 76,
+      "start_step": 60,
+      "end_step": 76,
+      "requested_steps": 16,
+      "actual_steps": 16,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          -0.15000000596046448,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -1.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "simulation_start_s": 4.52500023599714,
+      "simulation_end_s": 5.325000277720392,
+      "environment_dispatch_wall_s": 17.315796310000223,
+      "model_invoked": false
+    },
+    {
+      "action_source": "replayed_parent",
+      "source_run_id": "20261106-astra-pickup-hold5-001",
+      "source_start_step": 76,
+      "source_end_step_exclusive": 82,
+      "start_step": 76,
+      "end_step": 82,
+      "requested_steps": 6,
+      "actual_steps": 6,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          -0.019999999552965164,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -1.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "simulation_start_s": 5.325000277720392,
+      "simulation_end_s": 5.625000293366611,
+      "environment_dispatch_wall_s": 7.358283530000335,
+      "model_invoked": false
+    },
+    {
+      "action_source": "replayed_parent",
+      "source_run_id": "20261106-astra-pickup-hold5-001",
+      "source_start_step": 82,
+      "source_end_step_exclusive": 90,
+      "start_step": 82,
+      "end_step": 90,
+      "requested_steps": 8,
+      "actual_steps": 8,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "simulation_start_s": 5.625000293366611,
+      "simulation_end_s": 6.025000314228237,
+      "environment_dispatch_wall_s": 9.400994285000706,
+      "model_invoked": false
+    },
+    {
+      "action_source": "replayed_parent",
+      "source_run_id": "20261106-astra-pickup-hold5-001",
+      "source_start_step": 90,
+      "source_end_step_exclusive": 110,
+      "start_step": 90,
+      "end_step": 110,
+      "requested_steps": 20,
+      "actual_steps": 20,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.10000000149011612,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "simulation_start_s": 6.025000314228237,
+      "simulation_end_s": 7.025000366382301,
+      "environment_dispatch_wall_s": 21.188482821000434,
+      "model_invoked": false
+    },
+    {
+      "action_source": "replayed_parent",
+      "source_run_id": "20261106-astra-pickup-hold5-001",
+      "source_start_step": 110,
+      "source_end_step_exclusive": 114,
+      "start_step": 110,
+      "end_step": 114,
+      "requested_steps": 4,
+      "actual_steps": 4,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.10000000149011612,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "simulation_start_s": 7.025000366382301,
+      "simulation_end_s": 7.225000376813114,
+      "environment_dispatch_wall_s": 4.938146455000606,
+      "model_invoked": false
+    },
+    {
+      "action_source": "replayed_parent",
+      "source_run_id": "20261106-astra-pickup-hold5-001",
+      "source_start_step": 114,
+      "source_end_step_exclusive": 126,
+      "start_step": 114,
+      "end_step": 126,
+      "requested_steps": 12,
+      "actual_steps": 12,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          -0.10000000149011612,
+          -0.15000000596046448,
+          0.0,
+          0.0,
+          0.0,
+          -1.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "simulation_start_s": 7.225000376813114,
+      "simulation_end_s": 7.825000408105552,
+      "environment_dispatch_wall_s": 13.080607882999175,
+      "model_invoked": false
+    },
+    {
+      "action_source": "replayed_parent",
+      "source_run_id": "20261106-astra-pickup-hold5-001",
+      "source_start_step": 126,
+      "source_end_step_exclusive": 136,
+      "start_step": 126,
+      "end_step": 136,
+      "requested_steps": 10,
+      "actual_steps": 10,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          -0.10000000149011612,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -1.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "simulation_start_s": 7.825000408105552,
+      "simulation_end_s": 8.325000434182584,
+      "environment_dispatch_wall_s": 11.163666700998874,
+      "model_invoked": false
+    },
+    {
+      "action_source": "replayed_parent",
+      "source_run_id": "20261106-astra-pickup-hold5-001",
+      "source_start_step": 136,
+      "source_end_step_exclusive": 146,
+      "start_step": 136,
+      "end_step": 146,
+      "requested_steps": 10,
+      "actual_steps": 10,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "simulation_start_s": 8.325000434182584,
+      "simulation_end_s": 8.825000460259616,
+      "environment_dispatch_wall_s": 11.075099609000972,
+      "model_invoked": false
+    },
+    {
+      "action_source": "replayed_parent",
+      "source_run_id": "20261106-astra-pickup-hold5-001",
+      "source_start_step": 146,
+      "source_end_step_exclusive": 154,
+      "start_step": 146,
+      "end_step": 154,
+      "requested_steps": 8,
+      "actual_steps": 8,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.019999999552965164,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "simulation_start_s": 8.825000460259616,
+      "simulation_end_s": 9.225000481121242,
+      "environment_dispatch_wall_s": 9.01945952800088,
+      "model_invoked": false
+    },
+    {
+      "action_source": "replayed_parent",
+      "source_run_id": "20261106-astra-pickup-hold5-001",
+      "source_start_step": 154,
+      "source_end_step_exclusive": 166,
+      "start_step": 154,
+      "end_step": 166,
+      "requested_steps": 12,
+      "actual_steps": 12,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "simulation_start_s": 9.225000481121242,
+      "simulation_end_s": 9.82500051241368,
+      "environment_dispatch_wall_s": 13.72989974200027,
+      "model_invoked": false
+    },
+    {
+      "action_source": "replayed_parent",
+      "source_run_id": "20261106-astra-pickup-hold5-001",
+      "source_start_step": 166,
+      "source_end_step_exclusive": 176,
+      "start_step": 166,
+      "end_step": 176,
+      "requested_steps": 10,
+      "actual_steps": 10,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.03999999910593033,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "simulation_start_s": 9.82500051241368,
+      "simulation_end_s": 10.325000538490713,
+      "environment_dispatch_wall_s": 11.551037799999904,
+      "model_invoked": false
+    },
+    {
+      "action_source": "replayed_parent",
+      "source_run_id": "20261106-astra-pickup-hold5-001",
+      "source_start_step": 176,
+      "source_end_step_exclusive": 192,
+      "start_step": 176,
+      "end_step": 192,
+      "requested_steps": 16,
+      "actual_steps": 16,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.05000000074505806,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "simulation_start_s": 10.325000538490713,
+      "simulation_end_s": 11.125000580213964,
+      "environment_dispatch_wall_s": 17.655376314000023,
+      "model_invoked": false
+    },
+    {
+      "action_source": "replayed_parent",
+      "source_run_id": "20261106-astra-pickup-hold5-001",
+      "source_start_step": 192,
+      "source_end_step_exclusive": 212,
+      "start_step": 192,
+      "end_step": 212,
+      "requested_steps": 20,
+      "actual_steps": 20,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "simulation_start_s": 11.125000580213964,
+      "simulation_end_s": 12.125000632368028,
+      "environment_dispatch_wall_s": 21.546550118000596,
+      "model_invoked": false
+    },
+    {
+      "action_source": "replayed_parent",
+      "source_run_id": "20261106-astra-pickup-hold5-001",
+      "source_start_step": 212,
+      "source_end_step_exclusive": 232,
+      "start_step": 212,
+      "end_step": 232,
+      "requested_steps": 20,
+      "actual_steps": 20,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "simulation_start_s": 12.125000632368028,
+      "simulation_end_s": 13.125000684522092,
+      "environment_dispatch_wall_s": 21.82677816099931,
+      "model_invoked": false
+    },
+    {
+      "action_source": "replayed_parent",
+      "source_run_id": "20261106-astra-pickup-hold5-001",
+      "source_start_step": 232,
+      "source_end_step_exclusive": 252,
+      "start_step": 232,
+      "end_step": 252,
+      "requested_steps": 20,
+      "actual_steps": 20,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "simulation_start_s": 13.125000684522092,
+      "simulation_end_s": 14.125000736676157,
+      "environment_dispatch_wall_s": 22.09243610500016,
+      "model_invoked": false
+    },
+    {
+      "action_source": "replayed_parent",
+      "source_run_id": "20261106-astra-pickup-hold5-001",
+      "source_start_step": 252,
+      "source_end_step_exclusive": 253,
+      "start_step": 252,
+      "end_step": 253,
+      "requested_steps": 1,
+      "actual_steps": 1,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "simulation_start_s": 14.125000736676157,
+      "simulation_end_s": 14.17500073928386,
+      "environment_dispatch_wall_s": 1.9418994190000376,
+      "model_invoked": false
+    }
+  ],
+  "fresh_final_responses": [
+    {
+      "decision_index": 0,
+      "model_call_index": 0,
+      "model_invoked": true,
+      "model": "gpt-6-astra",
+      "effort": "ultra",
+      "wall_s": 16.706960600000457,
+      "observation_simulation_time_s": 14.17500073928386,
+      "latest_observation_simulation_time_s": 14.17500073928386,
+      "final_response": {
+        "tool": "act",
+        "action": [
+          [
+            0,
+            0,
+            0,
+            0.15,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "steps": 4,
+        "stage": "lift",
+        "visual_assessment": "uncertain",
+        "reason": "Robot 0 appears to pinch the yellow hem. Lift slightly while preserving grip to check whether cloth follows; robot 1 holds at the empty table."
+      },
+      "applied_acknowledgement_recorded": true
+    },
+    {
+      "decision_index": 1,
+      "model_call_index": 1,
+      "model_invoked": true,
+      "model": "gpt-6-astra",
+      "effort": "ultra",
+      "wall_s": 36.948374166000576,
+      "observation_simulation_time_s": 14.375000749714673,
+      "latest_observation_simulation_time_s": 14.375000749714673,
+      "final_response": {
+        "tool": "act",
+        "action": [
+          [
+            0,
+            0,
+            0,
+            0.1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            -0.8,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "steps": 6,
+        "stage": "lift",
+        "visual_assessment": "progressing",
+        "reason": "The hem appears to follow robot 0’s rising fingertips. Continue a small lift while robot 1 begins moving laterally toward the shirt table for a supporting grasp."
+      },
+      "applied_acknowledgement_recorded": true
+    },
+    {
+      "decision_index": 2,
+      "model_call_index": 2,
+      "model_invoked": true,
+      "model": "gpt-6-astra",
+      "effort": "ultra",
+      "wall_s": 30.639976553999077,
+      "observation_simulation_time_s": 14.675000765360892,
+      "latest_observation_simulation_time_s": 14.675000765360892,
+      "final_response": {
+        "tool": "act",
+        "action": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0.2,
+            -0.8,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "steps": 20,
+        "stage": "approach",
+        "visual_assessment": "progressing",
+        "reason": "The hem remains near robot 0’s fingertips while the surrounding cloth rises. Hold that grip and move robot 1 diagonally toward the space between the tables for supporting access."
+      },
+      "applied_acknowledgement_recorded": true
+    },
+    {
+      "decision_index": 3,
+      "model_call_index": 3,
+      "model_invoked": true,
+      "model": "gpt-6-astra",
+      "effort": "ultra",
+      "wall_s": 18.60617850900053,
+      "observation_simulation_time_s": 15.675000817514956,
+      "latest_observation_simulation_time_s": 15.675000817514956,
+      "final_response": {
+        "tool": "act",
+        "action": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0.8,
+            -0.6,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "steps": 20,
+        "stage": "approach",
+        "visual_assessment": "progressing",
+        "reason": "Robot 1’s head view shows an open aisle between the tables. Advance diagonally through it toward the shirt while robot 0 holds the raised hem steady."
+      },
+      "applied_acknowledgement_recorded": true
+    },
+    {
+      "decision_index": 4,
+      "model_call_index": 4,
+      "model_invoked": true,
+      "model": "gpt-6-astra",
+      "effort": "ultra",
+      "wall_s": 27.174897375998626,
+      "observation_simulation_time_s": 16.67500086966902,
+      "latest_observation_simulation_time_s": 16.67500086966902,
+      "final_response": {
+        "tool": "act",
+        "action": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0.8,
+            -0.5,
+            0,
+            0,
+            0,
+            0,
+            0.2,
+            0,
+            0
+          ]
+        ],
+        "steps": 20,
+        "stage": "approach",
+        "visual_assessment": "progressing",
+        "reason": "Move robot 1 farther along the clear aisle toward the shirt’s side and pitch its open gripper downward for pickup. Robot 0 maintains the visible hem grip."
+      },
+      "applied_acknowledgement_recorded": false
+    }
+  ],
+  "fresh_applied_segments": [
+    {
+      "decision_index": 0,
+      "model_call_index": 0,
+      "plan_id": "20261106-astra-dressing-continue-001:call-00000",
+      "plan_segment_index": 0,
+      "plan_segment_count": 1,
+      "model_invoked": true,
+      "observation_simulation_time_s": 14.17500073928386,
+      "latest_observation_simulation_time_s": 14.17500073928386,
+      "start_step": 253,
+      "end_step": 257,
+      "simulation_start_s": 14.17500073928386,
+      "simulation_end_s": 14.375000749714673,
+      "environment_dispatch_wall_s": 5.117966324000008,
+      "stage_intent": "lift",
+      "visual_assessment": "uncertain",
+      "assessment_source": "actor_public_observations",
+      "action_source": "model",
+      "requested_steps": 4,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.15000000596046448,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "actual_steps": 4,
+      "quality_status": "unreviewed"
+    },
+    {
+      "decision_index": 1,
+      "model_call_index": 1,
+      "plan_id": "20261106-astra-dressing-continue-001:call-00001",
+      "plan_segment_index": 0,
+      "plan_segment_count": 1,
+      "model_invoked": true,
+      "observation_simulation_time_s": 14.375000749714673,
+      "latest_observation_simulation_time_s": 14.375000749714673,
+      "start_step": 257,
+      "end_step": 263,
+      "simulation_start_s": 14.375000749714673,
+      "simulation_end_s": 14.675000765360892,
+      "environment_dispatch_wall_s": 7.256248413001231,
+      "stage_intent": "lift",
+      "visual_assessment": "progressing",
+      "assessment_source": "actor_public_observations",
+      "action_source": "model",
+      "requested_steps": 6,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.10000000149011612,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.800000011920929,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "actual_steps": 6,
+      "quality_status": "unreviewed"
+    },
+    {
+      "decision_index": 2,
+      "model_call_index": 2,
+      "plan_id": "20261106-astra-dressing-continue-001:call-00002",
+      "plan_segment_index": 0,
+      "plan_segment_count": 1,
+      "model_invoked": true,
+      "observation_simulation_time_s": 14.675000765360892,
+      "latest_observation_simulation_time_s": 14.675000765360892,
+      "start_step": 263,
+      "end_step": 283,
+      "simulation_start_s": 14.675000765360892,
+      "simulation_end_s": 15.675000817514956,
+      "environment_dispatch_wall_s": 21.390673523999794,
+      "stage_intent": "approach",
+      "visual_assessment": "progressing",
+      "assessment_source": "actor_public_observations",
+      "action_source": "model",
+      "requested_steps": 20,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.20000000298023224,
+          -0.800000011920929,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "actual_steps": 20,
+      "quality_status": "unreviewed"
+    },
+    {
+      "decision_index": 3,
+      "model_call_index": 3,
+      "plan_id": "20261106-astra-dressing-continue-001:call-00003",
+      "plan_segment_index": 0,
+      "plan_segment_count": 1,
+      "model_invoked": true,
+      "observation_simulation_time_s": 15.675000817514956,
+      "latest_observation_simulation_time_s": 15.675000817514956,
+      "start_step": 283,
+      "end_step": 303,
+      "simulation_start_s": 15.675000817514956,
+      "simulation_end_s": 16.67500086966902,
+      "environment_dispatch_wall_s": 21.613410227000713,
+      "stage_intent": "approach",
+      "visual_assessment": "progressing",
+      "assessment_source": "actor_public_observations",
+      "action_source": "model",
+      "requested_steps": 20,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.800000011920929,
+          -0.6000000238418579,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "actual_steps": 20,
+      "quality_status": "unreviewed"
+    }
+  ]
+}

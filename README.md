@@ -4,11 +4,49 @@
 
 두 대의 Stretch 4가 앉아 있는 마네킹에 티셔츠를 입히는 시뮬레이션 과제입니다. 이 저장소는 공식 시뮬레이터에 시연 수집, 브라우저 조작, 데이터 검수, π₀.₅ 학습 및 제출 도구를 추가한 참가자 저장소입니다.
 
-## 지금 볼 장면 · 첫 공식 픽업 5점
+## 챌린지 한눈에 보기 · 0 → 50점
 
-<a href="docs/gallery/20261106-astra-pickup-hold5-001.ko.md"><img src="docs/gallery/assets/20261106-astra-pickup-hold5-001/preview.gif" width="720" alt="Astra의 재파지·들기·유지와 첫 공식 픽업 5점 자동 반복"></a>
+두 로봇이 옷을 함께 잡아 들어 올리고, 마네킹의 두 손·머리를 서로 맞는 옷 구멍으로 통과시켜 앞뒤 방향까지 맞추는 과제입니다. 아래는 **평가 항목을 설명하는 지도**이며 실제 완주 기록이 아닙니다.
 
-**확인한 최고 점수 5 / 50점 · 전체 착의 success=false · 50점 후속 시도 진행 중**
+[![0점 준비부터 픽업 5점, 첫 소매 10점, 반대 어깨 15점, 두 번째 소매 20점, 왼쪽 위팔 25점, 오른쪽 위팔 30점, 목 통과 40점, 앞면 방향 50점까지의 누적 예시](docs/project/assets/score-roadmap-20261104/score-roadmap.ko.svg)](docs/project/assets/score-roadmap-20261104/score-roadmap.ko.svg)
+
+| 과정 | 추가 점수 | 누적 예시 | 현재 확인한 근거 |
+|---|---:|---:|---|
+| 두 로봇 접근·양쪽 파지 준비 | 0 | 0 | E07에서 새 에피소드로 시도 중 |
+| 잡은 부분을 5cm 이상 올려 3초 유지 | +5 | 5 | E05는 **한 로봇 픽업 부분 점수**. 협력 들기 미확인 |
+| 첫 손이 소매 밖으로 통과 | +5 | 10 | 미획득 |
+| 옷이 반대쪽 어깨를 넘어감 | +5 | 15 | 미획득 |
+| 다른 손이 나머지 소매 밖으로 통과 | +5 | 20 | 미획득 |
+| 왼쪽 위팔 일부를 소매가 덮음 | +5 | 25 | 미획득 |
+| 오른쪽 위팔 일부를 소매가 덮음 | +5 | 30 | 미획득 |
+| 머리·목이 목 구멍으로 제대로 통과 | +10 | 40 | 미획득 |
+| 머리가 나온 상태에서 옷 앞면 방향을 0.5초 유지 | +10 | 50 | 미획득 |
+
+누적 예시는 그림 순서대로 얻을 때의 값입니다. 실제 순서는 달라지거나 여러 항목이 함께 인정될 수 있습니다. **50점과 착의 성공은 별도**이며 성공은 두 손·머리·앞면 조건의 동시 0.5초 유지를 확인합니다. [공식 평가 정의](docs/competition/EVALUATION.md)
+
+**현재: 한 로봇 픽업 부분 점수 5점 보존 · 현재 E07: 0점부터 두 로봇 접근 → 양쪽 파지 확인 → 함께 들기 시도 중.** 강제 상태 설정이나 평가기 변경 없이 과정을 기록합니다.
+
+## 두 로봇의 접근·들기·운반 · 기존 사람 부분 시연
+
+[공개 시연 갤러리](docs/gallery/README.ko.md)에서 영상과 원본 장면을 볼 수 있습니다.
+
+사람이 두 로봇을 직접 조작한 **접근 → 파지·들기 → 마네킹 쪽 운반** 장면입니다. 실제 기록을 재생해 렌더링한 부분 시연입니다.
+
+| ① 옷에 접근·정렬 | ② 양쪽 파지 후 들어 올리기 | ③ 마네킹 쪽으로 운반 |
+|:---:|:---:|:---:|
+| [![옷 양옆에서 두 로봇을 정렬하는 직접 시연](docs/project/assets/visual-20261027/human-demo-t08.jpg)](docs/project/assets/visual-20261027/human-demo-t08.jpg) | [![두 로봇이 옷을 잡아 들어 올린 직접 시연](docs/project/assets/visual-20261027/human-demo-t20.jpg)](docs/project/assets/visual-20261027/human-demo-t20.jpg) | [![옷을 유지하며 마네킹 쪽으로 운반하는 직접 시연](docs/project/assets/visual-20261027/human-demo-t29.jpg)](docs/project/assets/visual-20261027/human-demo-t29.jpg) |
+
+**[▶ 33초 편집 시연 영상 보기](docs/videos/20261026-human-pickup-transport.mp4)** · [기록과 화면의 출처](docs/project/DEMO_20261026.ko.md)
+
+고정 연습 배치에서 수집한 부분 시연입니다. **이 시연의 공식 점수, 소매·목 통과와 전체 착의 성공은 확인하지 않았습니다.** 화면의 각 단계에 임의의 점수를 붙이지 않습니다.
+
+## 기록된 장면 · 한 로봇 픽업 부분 점수 5점
+
+<a href="docs/gallery/20261106-astra-pickup-hold5-001.ko.md"><img src="docs/gallery/assets/20261106-astra-pickup-hold5-001/preview.gif" width="720" alt="Astra 로봇 0의 재파지·들기·유지와 부분 점수 5점 자동 반복"></a>
+
+**E05는 로봇 0만 옷을 든 부분 점수 5/50점입니다. 두 로봇의 협력 들기 성공 시연이 아니며, 전체 착의 success=false입니다.**
+
+현재는 E06을 중단·보존하고 **E07을 0점의 새 에피소드에서 시작했습니다(04:40:12 UTC).** 두 로봇이 모두 옷 근처로 접근하고, 공개 관측으로 양쪽 파지를 확인한 뒤 함께 드는 과정을 우선합니다.
 
 | 물리 진행 | 실제 소요 시간 | 공식 유지 | 기록 검사 |
 |---|---|---|---|
@@ -19,47 +57,11 @@ GIF는 전체 253프레임을 4배 느리게 반복 재생합니다(약 4.08MB).
 [**영상·짧은 과정**](docs/gallery/20261106-astra-pickup-hold5-001.ko.md) · [**점수·종료 검토**](docs/collection/reviews/20261106-astra-pickup-hold5-001.ko.md) · [**시간순 일지**](docs/collection/sessions/2026-11-06.md) · [**수집 구조·전체 자료**](docs/collection/README.ko.md)
 
 <details>
-<summary>직접 수집한 시연 화면</summary>
-
-## 직접 수집한 시연 화면
-
-**[공개 시연 갤러리](docs/gallery/README.ko.md)**에서 사람 부분 시연, Astra의 접근·파지 시도, 작은 움직임 연결 시험의 영상·원본 화면·짧은 행동 응답을 볼 수 있습니다.
-
-맥북 Chrome에서 두 로봇을 직접 조작한 **접근 → 파지·들기 → 마네킹 쪽 운반** 장면입니다. 아래 화면은 실제 기록을 재생해 렌더링한 것으로, AI로 합성한 성공 장면이 아닙니다.
-
-| ① 옷에 접근·정렬 | ② 양쪽 파지 후 들어 올리기 | ③ 마네킹 쪽으로 운반 |
-|:---:|:---:|:---:|
-| [![옷 양옆에서 두 로봇을 정렬하는 직접 시연](docs/project/assets/visual-20261027/human-demo-t08.jpg)](docs/project/assets/visual-20261027/human-demo-t08.jpg) | [![두 로봇이 옷을 잡아 들어 올린 직접 시연](docs/project/assets/visual-20261027/human-demo-t20.jpg)](docs/project/assets/visual-20261027/human-demo-t20.jpg) | [![옷을 유지하며 마네킹 쪽으로 운반하는 직접 시연](docs/project/assets/visual-20261027/human-demo-t29.jpg)](docs/project/assets/visual-20261027/human-demo-t29.jpg) |
-
-**[▶ 33초 편집 시연 영상 보기](docs/videos/20261026-human-pickup-transport.mp4)** · [기록과 화면의 출처](docs/project/DEMO_20261026.ko.md)
-
-고정 연습 배치에서 수집한 부분 시연입니다. **이 시연의 공식 점수, 소매·목 통과와 전체 착의 성공은 확인하지 않았습니다.** 화면의 각 단계에 임의의 점수를 붙이지 않습니다.
-
-</details>
-
-<details>
-<summary>후속 확장: 0점에서 50점까지</summary>
-
-## 후속 확장: 0점에서 50점까지
-
-아래 그림은 현재 5점에서 50점으로 이어지는 확장 목표와 공식 평가 항목을 연결한 **설명용 점수 지도**입니다. 현재 확인한 점수는 5점이며, 그림은 전체 단계를 직접 달성한 기록이나 성공 시뮬레이션 화면이 아닙니다.
-
-[![0점 준비부터 픽업 5점, 첫 소매 10점, 반대 어깨 15점, 두 번째 소매 20점, 왼쪽 위팔 25점, 오른쪽 위팔 30점, 목 통과 40점, 앞면 방향 50점까지의 누적 예시](docs/project/assets/score-roadmap-20261104/score-roadmap.ko.svg)](docs/project/assets/score-roadmap-20261104/score-roadmap.ko.svg)
-
-**각 항목을 그림 순서로 획득할 때의 누적 예시**이며 실제로는 순서가 달라지거나 여러 항목이 함께 인정될 수 있습니다. 누적 점수는 유지되므로 **50점과 성공 판정은 별도**입니다. 성공은 두 손·머리·옷 앞면 조건을 동시에 0.5초 유지했는지 확인합니다. [공식 평가 정의](docs/competition/EVALUATION.md)
-
-첫 픽업 5점을 확보했고, 사용자 승인에 따라 **50점까지 후속 시도를 계속하는 단계**입니다. 기존 5점 자료와 실패·재시도 경로를 함께 보존합니다.
-
-**오늘의 우선순위는 안정적인 시연 데이터 수집 시스템과 다양한 방법의 과정 기록입니다.** Codex CLI의 Astra로 단계별 실험을 진행했고 현재 첫 공식 누적 5점을 확보하고 50점까지의 후속 시도를 진행합니다. 50점과 다양한 경로는 후속 수집 목표이며, 검수한 시연을 이용한 로컬 정책 학습은 별도 계획입니다.
-
-</details>
-
-<details>
 <summary>현재 기술 상태</summary>
 
 ## 현재 기술 상태
 
-**2026-11-06: Astra/ultra의 E05 픽업 시도에서 첫 공식 5점을 확보했습니다.** 내장 감시가 행동 응답 경계에서 종료했고 253전이·12.65 simulation초의 전수 검사를 통과했습니다. **착의 success는 false이며, 추가 피드백을 기다리지 않고 50점까지 계속 시도하도록 승인받았습니다.** [단계별 시도와 현재 결과](docs/collection/experiments/2026-11-06-method-comparison.ko.md)
+**2026-11-06: E05에서 한 로봇 픽업의 부분 점수 5점을 확보했습니다.** 내장 감시가 행동 응답 경계에서 종료했고 253전이·12.65 simulation초의 전수 검사를 통과했습니다. **협력 들기와 착의 성공은 미확인입니다. 최신 우선순위는 두 로봇을 사용하는 E07의 새 시작입니다.** [단계별 시도와 현재 결과](docs/collection/experiments/2026-11-06-method-comparison.ko.md)
 
 | 확인한 것 | 결과와 한계 |
 |---|---|
@@ -71,7 +73,7 @@ GIF는 전체 253프레임을 4배 느리게 반복 재생합니다(약 4.08MB).
 | 행동 입력·격리 | 공개 RGB 5장·전체 공개 로봇 상태·16×16 depth 요약. 저장소·평가·audit·원시 상태와 actor의 파일·네트워크 경계를 분리 |
 | 관찰·개입 | 자동 수집 WebRTC는 관찰 전용. 사람과 모델의 제어권 전환은 미구현 |
 | 실제 착의 시도 | `20261106-astra-dressing-001`: 15개 완료 결정·167전이·8.35 simulation초, SIGTERM 중단 후 정상 파일 마감. 점수0·success=false |
-| 첫 공식 픽업 5점 | [E05 영상·행동·점수 기록](docs/collection/attempts/20261106-astra-pickup-hold5-001/README.ko.md): 18개 결정, 253전이·12.65초 검사 통과, `review_ready`. 5점·success=false, 50점 후속 시도 승인 |
+| 한 로봇 픽업 부분 점수 5점 | [E05 영상·행동·점수 기록](docs/collection/attempts/20261106-astra-pickup-hold5-001/README.ko.md): 18개 결정, 253전이·12.65초 검사 통과, `review_ready`. 5점·success=false. 협력 들기 성공이 아니며 E07은 새 에피소드로 실행 중, 협력 결과 미확인 |
 
 </details>
 
@@ -119,7 +121,7 @@ GIF는 전체 253프레임을 4배 느리게 반복 재생합니다(약 4.08MB).
 
 [새 서버 준비](docs/project/START_HERE.ko.md)에 고정 CLI·actor 이미지, 공식 환경, WebRTC와 `--mode wiring` 실행·검사 명령을 정리했습니다. [현재 상태](docs/project/STATUS.md)에서 이어갈 한 가지 작업을 확인합니다. 실패 run ID와 완료 파일을 덮어쓰지 않습니다.
 
-현재 E06에서 **E05의 실제 행동 253전이를 재실행한 뒤 새 actor로 50점까지 이어가는 시도**를 시작했습니다. 이전 5점 결과를 새 시도에 복사하지 않고 재실행 결과를 다시 평가합니다. [중립 스트리밍 4회 비교](docs/collection/experiments/2026-11-06-streaming-benchmark-result.ko.md)는 260/260전이 검사를 마쳤습니다. 이 비교에서는 실제 영상 수신을 확인하지 못했습니다. [행동 재실행과 분기](docs/collection/guides/continuation-and-branches.ko.md)는 정확한 물리 checkpoint 복원이 아니며, E06의 실제 재현 결과는 확인 중입니다. VLA·RL·world model 학습은 아직 실행하지 않았습니다. [세부 기록](docs/collection/README.ko.md) · [서버·수집 경로별 속도 비교](docs/collection/experiments/2026-11-06-server-comparison.ko.md)
+현재는 [**E07의 새 협력 시도**](docs/collection/experiments/2026-11-06-coordinated-fresh.ko.md)를 진행합니다. 두 로봇이 옷 근처로 이동 → 공개 관측으로 양쪽 파지 확인 → 함께 들기를 우선하며, 강제 상태 설정이나 평가기 변경은 하지 않습니다. E06은 중단·보존했고 [고정 중간 기록](docs/collection/experiments/2026-11-06-dressing-continuation.ko.md)은 당시 진행을 그대로 남깁니다. [중립 스트리밍 실측](docs/collection/experiments/2026-11-06-streaming-benchmark-result.ko.md)과 기존 기록·영상도 유지합니다. E07의 협력 들기·착의 성공은 아직 미확인입니다. [공식 참고 영상 분석](docs/collection/experiments/2026-11-06-official-demo-strategy.ko.md)을 연결하고 스켈레톤·3D·모션 분석과 baseline 다양화는 별도 조사 중입니다. VLA·RL·world model 학습은 미실행입니다.
 
 <details>
 <summary>참고 문서</summary>

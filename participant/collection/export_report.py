@@ -183,6 +183,7 @@ def public_attempt(value):
     result = select(value, {
         'run_id': identifier, 'parent_attempt': identifier, 'retry_reason': text,
         'source_group': identifier, 'source': identifier, 'mode': identifier,
+        'strategy': identifier,
         'model': identifier, 'reasoning_effort': identifier, 'prompt_sha256': digest,
         'status': identifier, 'finished': boolean, 'started_at_utc': text, 'ended_at_utc': text,
         'decisions_requested': integer, 'decisions_completed': integer, 'actor_calls_attempted': integer,

@@ -1,0 +1,40 @@
+{
+  "schema": "phyrc-coordinated-fresh-initial-v1",
+  "snapshot_at_utc": "2026-11-06T04:44:26.911051+00:00",
+  "source_file": "output/operator-traces/20261106-astra-coordinated-fresh-001/attempt.json",
+  "source_sha256": "192b341ce3c847a54adbcf3c36e6ac8bc48696d232e09f96ae208d8ba3216c76",
+  "attempt": {
+    "run_id": "20261106-astra-coordinated-fresh-001",
+    "parent_attempt": "20261106-astra-dressing-continue-001",
+    "retry_reason": "user_requested_two_robot_cooperation_from_fresh_zero",
+    "source_group": "20261106-coordinated-demo-methods",
+    "source": "gpt",
+    "model": "gpt-6-astra",
+    "reasoning_effort": "ultra",
+    "mode": "dressing",
+    "strategy": "coordinated",
+    "plan_size": 2,
+    "plan_step_budget": 40,
+    "review_threshold_raw_points": 50,
+    "decisions_requested": 80,
+    "decisions_completed": 2,
+    "actor_backend": "exec",
+    "actor_calls_attempted": 3,
+    "finished": false,
+    "status": "collecting",
+    "started_at_utc": "2026-11-06T04:40:12Z",
+    "simulation_steps": 40,
+    "replay_steps_completed": 0,
+    "activity": "executing_action",
+    "quality_status": "unreviewed"
+  },
+  "continuation_present": false,
+  "launch_parameters_confirmed_by_controller": {
+    "max_steps": 2400,
+    "max_individual_action_steps": 20,
+    "model_timeout_s": 180,
+    "seed_explicitly_requested": false,
+    "replay_parent_actions": false
+  },
+  "result_scope": "running, incomplete; no cooperative lift or dressing success verified in this initial note"
+}

@@ -32,7 +32,8 @@ def three_segment_plan():
 
 class PlanOrchestrationTest(unittest.TestCase):
     def run_client(self, plan, *, backend='exec', mode='wiring', points_after_act=0,
-                   expected_error=None, end_on_act=False, review_points=5, replay=False):
+                   expected_error=None, end_on_act=False, review_points=5, replay=False,
+                   strategy='general'):
         calls, requests, observation_times, lifecycle = [], [], [], []
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -138,7 +139,7 @@ class PlanOrchestrationTest(unittest.TestCase):
             argv = ['codex_client', '--run-id', run_id, '--mode', mode,
                     '--actor-backend', backend, '--plan-size', '3',
                     '--plan-step-budget', '3', '--decisions', '3',
-                    '--review-points', str(review_points)]
+                    '--review-points', str(review_points), '--strategy', strategy]
             prefix = SimpleNamespace(
                 actions=np.zeros((2, 2, 9), dtype=np.float32),
                 trusted_metadata={'reset_seed': 892321},
@@ -305,9 +306,10 @@ class PlanOrchestrationTest(unittest.TestCase):
 
     def test_fifty_point_threshold_continues_past_five_without_actor_feedback(self):
         result = self.run_client(three_segment_plan(), mode='dressing',
-                                 points_after_act=5, review_points=50)
+                                 points_after_act=5, review_points=50, strategy='coordinated')
         self.assert_one_accounted_call(result)
         self.assertEqual(result['manifest']['review_threshold_raw_points'], 50)
+        self.assertEqual(result['manifest']['strategy'], 'coordinated')
         self.assertEqual(result['manifest']['status'], 'completed')
         self.assertEqual(result['manifest']['decisions_completed'], 3)
         self.assertEqual(result['gate']['threshold_raw_points'], 50)

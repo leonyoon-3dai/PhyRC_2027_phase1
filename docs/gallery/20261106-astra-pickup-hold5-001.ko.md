@@ -1,16 +1,16 @@
-# Astra의 첫 공식 픽업 5점
+# Astra의 한 로봇 픽업 부분 점수 5점
 
 [갤러리](README.ko.md) · [앞선 접근·파지 시도](20261106-astra-dressing-001.ko.md)
 
-**공식 5/50점 · pickup 5점 · 전체 착의 success=false**
+**한 로봇 픽업 부분 점수 5/50점 · 두 로봇 협력 들기 미확인 · 전체 착의 success=false**
 
-<img src="assets/20261106-astra-pickup-hold5-001/preview.gif" width="720" alt="Astra의 접근·첫 파지 실패·재파지·들기·유지와 첫 공식 픽업 5점까지 자동 반복">
+<img src="assets/20261106-astra-pickup-hold5-001/preview.gif" width="720" alt="Astra 로봇 0의 접근·재파지·들기·유지와 부분 점수 5점 자동 반복">
 
 자동 반복 · 전체 253프레임 · 5fps · 50.6초 · 약 4.08MB · **4배 느리게**. 원본 256×256을 512×512 GIF로 확대하고 너비 720px로 표시합니다. [GIF 변환 출처](assets/20261106-astra-pickup-hold5-001/provenance.json)
 
 **[▶ 원본 50.6초 MP4](../collection/attempts/20261106-astra-pickup-hold5-001/overview.mp4)** · [최초 5점 순간의 원본 프레임·전이 246](../collection/milestones/20261106-astra-pickup-hold5-001/README.ko.md)
 
-`gpt-6-astra`·`ultra`가 로봇 0으로 옷자락을 잡아 올리고 유지해 첫 공식 픽업 5점을 얻었습니다. 첫 파지가 풀린 뒤 다시 접근해 잡는 과정도 함께 남겼습니다. 이 시도는 득점 확인 후 당시 행동의 응답 경계에서 종료했습니다. 이후 사용자 승인으로 50점까지의 후속 시도를 시작했으며, 이 영상은 첫 5점을 얻은 E05의 고정 기록입니다.
+`gpt-6-astra`·`ultra`가 **로봇 0만으로** 옷자락을 잡아 올리고 유지해 공식 픽업 항목의 부분 점수 5점을 얻었습니다. **두 로봇이 양쪽을 잡고 함께 드는 협력 성공 시연은 아닙니다.** 첫 파지가 풀린 뒤 다시 접근해 잡는 과정도 함께 남겼습니다. 이 시도는 득점 확인 후 당시 행동의 응답 경계에서 종료했습니다. 이후 E06의 재실행을 중단·보존했고, 현재 [E07](../collection/experiments/2026-11-06-coordinated-fresh.ko.md)은 0점의 새 에피소드에서 두 로봇 협력을 시도 중이며 결과는 아직 미확인입니다. 이 영상은 E05의 고정 기록으로 유지합니다.
 
 ## 반복 영상에서 볼 과정
 

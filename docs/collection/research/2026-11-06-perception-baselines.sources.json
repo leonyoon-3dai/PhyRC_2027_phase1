@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "checked_at_utc": "2026-11-06T04:45:46Z",
+  "purpose": "공개 RGB-D 기반 지각 기준선의 문헌 조사",
+  "execution_status": "문헌 조회만 수행. 이 조사에서 모델 설치·추론·GPU 실행 없음",
+  "baseline_ids": {
+    "B0": "추가 추정 특징 없는 E07 공개 5 RGB-D/Astra 기준 수집",
+    "B1": "공개 depth의 카메라 XYZ 역투영 연결 검사",
+    "B2": "2D pose 후보와 공개 depth",
+    "B3": "CoTracker3 점 추적",
+    "B4": "SAM 2 영역 추정",
+    "B5": "SMPL-X 인체 prior"
+  },
+  "sources": [
+    {
+      "id": "rules",
+      "title": "PhyRC 2027 Rules: allowed information and actions",
+      "kind": "공식 규칙",
+      "url": "https://github.com/rirolab/PhyRC_2027_Challenge/blob/main/docs/competition/RULES.md",
+      "verified_claims": ["지정 공개 관측에서 물체 특징을 추정하는 모델을 허용", "내부 기하와 자유 viewport 등의 학습·추론 입력 사용 금지"],
+      "scope_limit": "이 문서는 개별 구현이나 공식 영상의 전략 참고에 대한 별도 승인을 제공하지 않음"
+    },
+    {
+      "id": "public_data",
+      "title": "PhyRC 2027 Data guide",
+      "kind": "공식 데이터 명세",
+      "url": "https://github.com/rirolab/PhyRC_2027_Challenge/blob/main/docs/competition/DATA.md",
+      "verified_claims": ["공개 depth는 optical Z", "지정 5카메라와 depth_valid", "카메라 optical frame은 X right, Y down, Z forward"],
+      "access": "저장소의 공식 원문 docs/competition/DATA.md 확인"
+    },
+    {
+      "id": "open3d",
+      "baseline": "B1",
+      "title": "Open3D 0.19.0 PointCloud.create_from_depth_image",
+      "kind": "공식 API 문서",
+      "url": "https://www.open3d.org/docs/release/python_api/open3d.geometry.PointCloud.html",
+      "verified_claims": ["픽셀·depth·intrinsic으로 카메라 좌표를 계산하는 역투영 식", "depth_scale와 유효 depth 처리 인자"],
+      "scope_limit": "역투영 수식은 표적 인식·해부학적 관절 위치를 보장하지 않음"
+    },
+    {
+      "id": "mediapipe",
+      "baseline": "B2",
+      "title": "MediaPipe Pose Landmarker",
+      "kind": "공식 모델·출력 문서",
+      "url": "https://developers.google.com/edge/mediapipe/solutions/vision/pose_landmarker",
+      "verified_claims": ["33개 관절 후보와 visibility/presence", "worldLandmarks는 미터 단위이며 골반 중심이 원점"],
+      "scope_limit": "PhyRC 마네킹의 검출 정확도와 처리 시간 미측정"
+    },
+    {
+      "id": "cotracker3",
+      "baseline": "B3",
+      "title": "CoTracker3: Simpler and Better Point Tracking by Pseudo-Labelling Real Videos",
+      "kind": "저자 공식 구현",
+      "url": "https://github.com/facebookresearch/co-tracker",
+      "read_url": "https://raw.githubusercontent.com/facebookresearch/co-tracker/main/README.md",
+      "verified_claims": ["점 궤적과 visibility 출력", "offline 및 영상 조각을 처리하는 online API", "GPU 권장, 작은 작업의 CPU 실행 가능 안내"],
+      "scope_limit": "가려진 천의 동일한 물리 재질점 유지와 현재 서버 실시간성은 검증하지 않음"
+    },
+    {
+      "id": "sam2",
+      "baseline": "B4",
+      "title": "SAM 2: Segment Anything in Images and Videos",
+      "kind": "저자 공식 구현",
+      "url": "https://github.com/facebookresearch/sam2",
+      "read_url": "https://raw.githubusercontent.com/facebookresearch/sam2/main/README.md",
+      "verified_claims": ["점/box prompt에 대한 mask 예측", "영상 mask 전파와 여러 대상 처리", "SAM 2.1 checkpoint와 영상 API 제공"],
+      "scope_limit": "mask는 옷 구멍 의미·파지·접촉의 정답이 아니며 현재 서버 비용 미측정"
+    },
+    {
+      "id": "smplx_paper",
+      "baseline": "B5",
+      "title": "Expressive Body Capture: 3D Hands, Face, and Body from a Single Image",
+      "kind": "저자 원 논문, CVPR 2019",
+      "url": "https://arxiv.org/abs/1904.05866",
+      "verified_claims": ["SMPL-X는 몸·손·얼굴을 포함하는 인체 모델", "SMPLify-X는 2D 특징과 pose prior로 형상 매개변수를 최적화"],
+      "scope_limit": "PhyRC용 공개 depth 적합과 마네킹 적용은 별도 제안이며 원 논문의 검증 결과가 아님"
+    },
+    {
+      "id": "smplifyx_code",
+      "baseline": "B5",
+      "title": "SMPLify-X fitting implementation",
+      "kind": "저자 공식 구현",
+      "url": "https://github.com/vchoutas/smplify-x",
+      "read_url": "https://raw.githubusercontent.com/vchoutas/smplify-x/master/README.md",
+      "verified_claims": ["이미지와 2D keypoints를 이용하는 fitting 경로", "모델·코드 사용 조건 확인 필요"],
+      "scope_limit": "다운로드·설치·추론을 실행하지 않음"
+    }
+  ],
+  "unmeasured": ["PhyRC 정확도", "추가 지연", "CPU/GPU 메모리", "수집 성공률 변화"],
+  "reference_video_policy": "공식 자유 시점 영상 또는 파생 skeleton/mesh/trajectory/embedding은 actor·teacher·행동 정답·학습 데이터로 사용하지 않음",
+  "version_note": "조회한 공개 문서는 변경될 수 있음. 실제 실험 전에 선택 코드 revision·checkpoint SHA·의존성을 별도 고정해야 함"
+}
