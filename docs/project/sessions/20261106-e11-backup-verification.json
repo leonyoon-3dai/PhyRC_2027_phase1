@@ -1,0 +1,20 @@
+{
+  "run_id": "20261106-astra-sleeve-history-001",
+  "archive_bytes": 1630291251,
+  "archive_sha256": "21fe5dc57c308ae221a54005fae7e2353d1e6e93aab28758f3c45d3cd3a44160",
+  "source_commit": "da21b480b8b1a9c4d820ec2fa96527728584f90f",
+  "scope": "Complete closed E11 collection including trusted evaluation/audit; public actor observations; final prompt/actions/segments/gate/attempt/source snapshot; new-episode replay observations at264 and320. Same reviewed path allowlist as E10 plus replay observations. Excludes credentials, actor runtime/raw reasoning/events/session DB and simulator logs. Not actor input or training approval.",
+  "manifest_entries": 133,
+  "capture_steps": 777,
+  "validated_transitions": 777,
+  "repo_id": "leonayoon/phyrc-2027-phase1-private-backup",
+  "repo_type": "dataset",
+  "private": true,
+  "revision": "40a98682caca21222335293cc0947d98537cca66",
+  "path": "sessions/20261106-e11-v1/archive.tar.gz",
+  "manifest_path": "sessions/20261106-e11-v1/SHA256.json",
+  "manifest_sha256": "647a64aa6cfd59413697c40f37cb34a1453c7cd597edced9f508914afcfb9d7c",
+  "remote_download_verified": true,
+  "manifest_remote_download_verified": true,
+  "verified_at_utc": "2026-11-06T09:52:11.517512+00:00"
+}
