@@ -1,0 +1,370 @@
+{
+  "schema": "phyrc-public-wrist-depth-evidence-v1",
+  "scope": "Closed E10/E11 public RGB-D representation review only. No policy/task performance claim; E12 input unchanged.",
+  "selection_basis": "E10 late orientation; E11 initial transport boundary and later wrist/lift orientation, chosen from closed public RGB",
+  "transform": {
+    "depth_semantics": "optical_axis_Z_metres_not_ray_range",
+    "range_m": [
+      0.03,
+      1.2
+    ],
+    "inside_range": "q=rint(255*(Z-0.03)/(1.20-0.03)); gray=255-q; same range for every frame/camera",
+    "invalid_rgb": [
+      255,
+      0,
+      255
+    ],
+    "below_range_rgb": [
+      0,
+      255,
+      255
+    ],
+    "above_range_rgb": [
+      255,
+      128,
+      0
+    ],
+    "quantization_step_m": 0.0045882352941176464,
+    "maximum_rounding_error_m": 0.0022941176470588232,
+    "invalid_rule": "not depth_valid OR nonfinite OR Z<=0; no interpolation or inpainting",
+    "coarse_display": "saved actor16x16 medians (rounded0.001m), expanded16x16 by exact nearest replication",
+    "range_selection_basis": "Public wrist depth distributions inspected first; upper bound1.20m includes the RGB-selected boundary surface sample up to0.934m while retaining a fixed near-field display. No frame-specific range.",
+    "spatial_interpolation": "none",
+    "auto_contrast": false,
+    "below_above_distinct_from_invalid": true
+  },
+  "source_frames": [
+    {
+      "label": "E10",
+      "run_id": "20261106-astra-sleeve-branch700-003",
+      "observation_index": "00008",
+      "public_simulation_time_s": 39.025002035312355,
+      "camera_order": [
+        "overview",
+        "robot_0_wrist",
+        "robot_1_wrist",
+        "robot_0_head",
+        "robot_1_head"
+      ],
+      "sources": {
+        "output/actors/20261106-astra-sleeve-branch700-003/observations/00008/observation.json": "b689741ebf6627ebedc40ad116b787d1ddf59e5c833d6241dada7442ac1bbf9d",
+        "output/actors/20261106-astra-sleeve-branch700-003/observations/00008/public_depth.npz": "b8ee8672eade593f85945bb04eafa663acfdd2038b059903804cd53a63b3cb20",
+        "output/actors/20261106-astra-sleeve-branch700-003/observations/00008/robot_0_wrist.png": "f3920232eeed93b58d2e5df1098ef49374a19866ac634ea3c47b8cdb38bf7bed",
+        "output/actors/20261106-astra-sleeve-branch700-003/observations/00008/robot_1_wrist.png": "4d7087d436639db32e2dc4b37ff90fa9cbf8f9f22fcf0e27fad2d4029369e1fa"
+      }
+    },
+    {
+      "label": "E11",
+      "run_id": "20261106-astra-sleeve-history-001",
+      "observation_index": "00000",
+      "public_simulation_time_s": 36.525001904927194,
+      "camera_order": [
+        "overview",
+        "robot_0_wrist",
+        "robot_1_wrist",
+        "robot_0_head",
+        "robot_1_head"
+      ],
+      "sources": {
+        "output/actors/20261106-astra-sleeve-history-001/observations/00000/observation.json": "1992435b182f0eaced2dde2bfce773f83aed8e45f068a30c9547792a6a320c05",
+        "output/actors/20261106-astra-sleeve-history-001/observations/00000/public_depth.npz": "8a8f7aeda53fb0fee19d554333181ca6b1098196eff7471790468316efac6574",
+        "output/actors/20261106-astra-sleeve-history-001/observations/00000/robot_0_wrist.png": "d073e380bbcbfcd6b18dabdd79dda205754920f6956fc24b3b0d71164ffc2cb5",
+        "output/actors/20261106-astra-sleeve-history-001/observations/00000/robot_1_wrist.png": "08abb99310f470add885e7d14ffb62707bea0215c2ef3768cc454a5e82b988ff"
+      }
+    },
+    {
+      "label": "E11",
+      "run_id": "20261106-astra-sleeve-history-001",
+      "observation_index": "00008",
+      "public_simulation_time_s": 38.92500203009695,
+      "camera_order": [
+        "overview",
+        "robot_0_wrist",
+        "robot_1_wrist",
+        "robot_0_head",
+        "robot_1_head"
+      ],
+      "sources": {
+        "output/actors/20261106-astra-sleeve-history-001/observations/00008/observation.json": "d20cc4e2756ec90b024088fde44df16b4c20fbc6b6db1a13a7058c2a9b3be024",
+        "output/actors/20261106-astra-sleeve-history-001/observations/00008/public_depth.npz": "334a3e5893eb0bb7c58fdc0e3ead634378647d7c54472b5c757a679f06e331d9",
+        "output/actors/20261106-astra-sleeve-history-001/observations/00008/robot_0_wrist.png": "d3c209c8e78a226ce73896c6258ca6a914de4636cef0752ea76cbcd8eb554e2f",
+        "output/actors/20261106-astra-sleeve-history-001/observations/00008/robot_1_wrist.png": "08a1dbfe92aedcc9f9fc99d000aa104ce1909db86d285544d95746ab6f3ab5cb"
+      }
+    }
+  ],
+  "camera_statistics": [
+    {
+      "label": "E10",
+      "run_id": "20261106-astra-sleeve-branch700-003",
+      "observation_index": "00008",
+      "camera": "robot_0_wrist",
+      "public_simulation_time_s": 39.025002035312355,
+      "valid_pixels": 30666,
+      "invalid_pixels": 34870,
+      "valid_below_range": 0,
+      "valid_above_range": 4051,
+      "above_range_fraction_of_valid": 0.13210069784125741,
+      "valid_quantiles_m": {
+        "0": 0.03398752212524414,
+        "0.01": 0.03531726151704788,
+        "0.05": 0.03846696764230728,
+        "0.25": 0.05655492842197418,
+        "0.5": 0.22306674718856812,
+        "0.75": 0.33077356219291687,
+        "0.95": 2.3660977482795715,
+        "0.99": 2.8596124649047847,
+        "1": 2.9998624324798584
+      },
+      "partly_invalid_tiles": 25,
+      "valid_tiles": 130,
+      "tiles_with_at_least16valid_and_p90_minus_p10_above0_05m": 39
+    },
+    {
+      "label": "E10",
+      "run_id": "20261106-astra-sleeve-branch700-003",
+      "observation_index": "00008",
+      "camera": "robot_1_wrist",
+      "public_simulation_time_s": 39.025002035312355,
+      "valid_pixels": 27064,
+      "invalid_pixels": 38472,
+      "valid_below_range": 0,
+      "valid_above_range": 1842,
+      "above_range_fraction_of_valid": 0.06806089269878805,
+      "valid_quantiles_m": {
+        "0": 0.03398764133453369,
+        "0.01": 0.0351919749379158,
+        "0.05": 0.03804392665624619,
+        "0.25": 0.052717894315719604,
+        "0.5": 0.19377228617668152,
+        "0.75": 0.3431553691625595,
+        "0.95": 1.956402921676635,
+        "0.99": 2.870423812866211,
+        "1": 2.9998037815093994
+      },
+      "partly_invalid_tiles": 26,
+      "valid_tiles": 119,
+      "tiles_with_at_least16valid_and_p90_minus_p10_above0_05m": 44
+    },
+    {
+      "label": "E11",
+      "run_id": "20261106-astra-sleeve-history-001",
+      "observation_index": "00000",
+      "camera": "robot_0_wrist",
+      "public_simulation_time_s": 36.525001904927194,
+      "valid_pixels": 32406,
+      "invalid_pixels": 33130,
+      "valid_below_range": 0,
+      "valid_above_range": 6068,
+      "above_range_fraction_of_valid": 0.18724927482564957,
+      "valid_quantiles_m": {
+        "0": 0.033987611532211304,
+        "0.01": 0.03536610752344131,
+        "0.05": 0.03866150230169296,
+        "0.25": 0.05883941799402237,
+        "0.5": 0.22795501351356506,
+        "0.75": 0.4432872235774994,
+        "0.95": 2.4625419974327087,
+        "0.99": 2.8700499176979064,
+        "1": 2.9999942779541016
+      },
+      "partly_invalid_tiles": 20,
+      "valid_tiles": 137,
+      "tiles_with_at_least16valid_and_p90_minus_p10_above0_05m": 56
+    },
+    {
+      "label": "E11",
+      "run_id": "20261106-astra-sleeve-history-001",
+      "observation_index": "00000",
+      "camera": "robot_1_wrist",
+      "public_simulation_time_s": 36.525001904927194,
+      "valid_pixels": 32548,
+      "invalid_pixels": 32988,
+      "valid_below_range": 0,
+      "valid_above_range": 2031,
+      "above_range_fraction_of_valid": 0.0624001474744992,
+      "valid_quantiles_m": {
+        "0": 0.03398752212524414,
+        "0.01": 0.035371906757354736,
+        "0.05": 0.038683566451072696,
+        "0.25": 0.059008896350860596,
+        "0.5": 0.21074506640434265,
+        "0.75": 0.38375501334667206,
+        "0.95": 1.5533718466758728,
+        "0.99": 2.164752993583679,
+        "1": 2.9999964237213135
+      },
+      "partly_invalid_tiles": 23,
+      "valid_tiles": 140,
+      "tiles_with_at_least16valid_and_p90_minus_p10_above0_05m": 54
+    },
+    {
+      "label": "E11",
+      "run_id": "20261106-astra-sleeve-history-001",
+      "observation_index": "00008",
+      "camera": "robot_0_wrist",
+      "public_simulation_time_s": 38.92500203009695,
+      "valid_pixels": 26275,
+      "invalid_pixels": 39261,
+      "valid_below_range": 0,
+      "valid_above_range": 2950,
+      "above_range_fraction_of_valid": 0.11227402473834443,
+      "valid_quantiles_m": {
+        "0": 0.03398770093917847,
+        "0.01": 0.0351682323217392,
+        "0.05": 0.03794608116149902,
+        "0.25": 0.051961109042167664,
+        "0.5": 0.15458086133003235,
+        "0.75": 0.2532750368118286,
+        "0.95": 2.3964392662048337,
+        "0.99": 2.866693096160888,
+        "1": 2.9994819164276123
+      },
+      "partly_invalid_tiles": 28,
+      "valid_tiles": 116,
+      "tiles_with_at_least16valid_and_p90_minus_p10_above0_05m": 44
+    },
+    {
+      "label": "E11",
+      "run_id": "20261106-astra-sleeve-history-001",
+      "observation_index": "00008",
+      "camera": "robot_1_wrist",
+      "public_simulation_time_s": 38.92500203009695,
+      "valid_pixels": 25839,
+      "invalid_pixels": 39697,
+      "valid_below_range": 0,
+      "valid_above_range": 215,
+      "above_range_fraction_of_valid": 0.008320755447192229,
+      "valid_quantiles_m": {
+        "0": 0.03398743271827698,
+        "0.01": 0.035147032141685484,
+        "0.05": 0.03789359033107757,
+        "0.25": 0.051572173833847046,
+        "0.5": 0.15665099024772644,
+        "0.75": 0.23216328024864197,
+        "0.95": 0.3892336070537567,
+        "0.99": 0.863551363945007,
+        "1": 2.996023654937744
+      },
+      "partly_invalid_tiles": 29,
+      "valid_tiles": 116,
+      "tiles_with_at_least16valid_and_p90_minus_p10_above0_05m": 27
+    }
+  ],
+  "rgb_selected_boundary_tiles": [
+    {
+      "tile_xy": [
+        5,
+        9
+      ],
+      "bounds_uv_exclusive": [
+        80,
+        144,
+        96,
+        160
+      ],
+      "valid_pixels": 181,
+      "valid_fraction": 0.70703125,
+      "actor_median_m": 0.161,
+      "minimum_m": 0.13226842880249023,
+      "maximum_m": 0.9337164759635925,
+      "p10_p90_m": [
+        0.14454662799835205,
+        0.8435861468315125
+      ],
+      "p90_minus_p10_m": 0.6990395188331604,
+      "label": "E11",
+      "observation_index": "00000",
+      "camera": "robot_1_wrist",
+      "public_simulation_time_s": 36.525001904927194,
+      "selection_basis": "Independent RGB-only visible-boundary selection before depth query",
+      "visual_description_uncertain": "Pale robot structure beside striped visible surface; mixed boundary, contact unconfirmed."
+    },
+    {
+      "tile_xy": [
+        3,
+        8
+      ],
+      "bounds_uv_exclusive": [
+        48,
+        128,
+        64,
+        144
+      ],
+      "valid_pixels": 95,
+      "valid_fraction": 0.37109375,
+      "actor_median_m": 0.232,
+      "minimum_m": 0.226103276014328,
+      "maximum_m": 0.2461729347705841,
+      "p10_p90_m": [
+        0.22710867524147033,
+        0.23978890776634215
+      ],
+      "p90_minus_p10_m": 0.012680232524871826,
+      "label": "E11",
+      "observation_index": "00008",
+      "camera": "robot_0_wrist",
+      "public_simulation_time_s": 38.92500203009695,
+      "selection_basis": "Independent RGB-only visible-boundary selection before depth query",
+      "visual_description_uncertain": "Sloped blue/yellow textile silhouette against pale background; partly crosses tile."
+    },
+    {
+      "tile_xy": [
+        10,
+        8
+      ],
+      "bounds_uv_exclusive": [
+        160,
+        128,
+        176,
+        144
+      ],
+      "valid_pixels": 199,
+      "valid_fraction": 0.77734375,
+      "actor_median_m": 0.26,
+      "minimum_m": 0.25050485134124756,
+      "maximum_m": 0.27784526348114014,
+      "p10_p90_m": [
+        0.2539811611175537,
+        0.26991662979125974
+      ],
+      "p90_minus_p10_m": 0.015935468673706044,
+      "label": "E10",
+      "observation_index": "00008",
+      "camera": "robot_1_wrist",
+      "public_simulation_time_s": 39.025002035312355,
+      "selection_basis": "Independent RGB-only visible-boundary selection before depth query",
+      "visual_description_uncertain": "Yellow textile upper silhouette against pale background; mixed validity expected."
+    }
+  ],
+  "findings": {
+    "observed_information_loss": "The16x16 median hides sub-tile surface mixtures and partial invalidity. RGB-selected E11 initial wrist1 tile spans0.132..0.934m while its actor median is0.161m.",
+    "visible_silhouette_example": "E11obs8 wrist0 tile has95/256valid pixels but is represented by a full cell at0.232m. Original depth retains the invalid boundary shape.",
+    "interpretation_limit": "Depth shows first visible surfaces; visible gap depth may be background, not an opening center. Large within-cell range alone does not establish different objects or contact.",
+    "next_trial_assessment": "Worth one bounded future actor-input-only comparison with a paired current wrist-depth panel; evidence is representation preservation, not measured policy or task accuracy improvement.",
+    "unchanged": "E12 input and source, active capture data, existing B1/B1b/B1c baselines."
+  },
+  "published_panels": {
+    "boundary-tiles.png": {
+      "sha256": "6e3ee2342e8c0e3eaf7c1563d44a7ed9a55cdca553dd4b42318089d39f879a0c",
+      "bytes": 57416
+    },
+    "e11-00000-wrists.png": {
+      "sha256": "0037113a7dccc782f593f3529f6a6fd5889814846ba6191a8f2f99748646ba61",
+      "bytes": 130698
+    }
+  },
+  "reproduction_source": {
+    "relative_file": "review.py",
+    "sha256": "8f8aaf9ffe997bc2e707fba0928402b4913d0d77490c30ca5b4919ccab55e6a1",
+    "adaptation": "Same rendering/calculation as the offline script; root/output arguments added and output must be a new directory."
+  },
+  "verification": {
+    "deterministic_rerun_byte_identical": true,
+    "all_selected_public_source_hashes_unchanged": true,
+    "RGB_depth_alignment_and_all1536_saved_actor_medians_checked": true,
+    "model_calls": 0,
+    "gpu_calls": 0,
+    "running_episode_modified": false,
+    "included_source_reproduced_both_published_panel_hashes": true
+  }
+}
