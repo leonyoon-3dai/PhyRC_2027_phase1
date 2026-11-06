@@ -1,0 +1,22 @@
+{
+  "closed_run": "20261106-astra-hem-route-001",
+  "transitions": 781,
+  "simulation_seconds": 39.050000000000004,
+  "total_wall_seconds": 1975.677727415,
+  "actor_seconds": 1244.4811346140023,
+  "actor_percent_of_wall": 62.990087773186374,
+  "environment_dispatch_seconds": 679.7516595829957,
+  "environment_dispatch_percent_of_wall": 34.405999022542545,
+  "other_wall_seconds": 51.44493321800201,
+  "actor_calls": 12,
+  "actor_mean_seconds": 103.70676121783352,
+  "active_dispatch_control_frames_per_wall_s": 1.14894901540824,
+  "active_dispatch_real_time_factor": 0.05744745077041201,
+  "overall_control_frames_per_wall_s": 0.39530738701087126,
+  "overall_real_time_factor": 0.019765369350543564,
+  "adapter_step_sum_s": 597.4243530439971,
+  "dataset_write_sum_s": 40.559791631017106,
+  "mean_adapter_step_ms": 764.9479552419938,
+  "mean_dataset_write_ms": 51.933151896308715,
+  "fps_definition": "recorded20Hz control transitions per wallsecond; not graphics renderer/video playback FPS"
+}

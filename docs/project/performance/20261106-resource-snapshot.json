@@ -1,0 +1,22 @@
+{
+  "sample_utc": "2026-11-06T10:58:16.512057+00:00",
+  "run": "20261106-astra-hem-depth-001",
+  "activity_start": "executing_action",
+  "activity_end": "executing_action",
+  "control_steps": 746,
+  "cpu_logical_count": 12,
+  "cpu_overall_percent": 18.9,
+  "cpu_busiest_core_percent": 33.7,
+  "ram_total_gib": 70.75929260253906,
+  "ram_available_gib": 59.40461349487305,
+  "ram_pressure_used_gib": 11.354679107666016,
+  "ram_used_percent": 16.0,
+  "swap_used_mib": 1.01171875,
+  "gpu_name": "NVIDIA L40S",
+  "vram_total_mib": 46068.0,
+  "vram_used_mib": 9274.0,
+  "gpu_util_percent": 62.0,
+  "gpu_memory_controller_util_percent": 0.0,
+  "gpu_temp_c": 39.0,
+  "gpu_power_w": 125.36
+}
