@@ -10,9 +10,9 @@
 
 ## 챌린지 한눈에 보기 · 0 → 50점
 
-<a href="https://emprise.cs.cornell.edu/phyrc/assets/c27/media/teleop-overhead.mp4"><img src="https://emprise.cs.cornell.edu/phyrc/assets/c27/media/teleop-overhead.jpg" width="800" alt="공식 착의 시연 영상 재생 · 두 로봇의 접근부터 착의까지"></a>
+https://github.com/user-attachments/assets/d2f347fe-712b-42f3-bdee-69d3fee2a47c
 
-**[▶ 공식 시연 영상 보기 · 35.8초](https://emprise.cs.cornell.edu/phyrc/assets/c27/media/teleop-overhead.mp4)** — 이미지를 클릭하면 원본 영상이 열립니다. [공식 대회](https://emprise.cs.cornell.edu/phyrc/challenge-2027/)가 제공하는 전체 원격 조작 시연으로, 사이트의 재생 설명은 8배속입니다.
+**공식 착의 시연 · 35.8초 · 사이트 표기 8배속** — 위 플레이어에서 바로 재생할 수 있습니다. [공식 원본 영상](https://emprise.cs.cornell.edu/phyrc/assets/c27/media/teleop-overhead.mp4) · [공식 대회](https://emprise.cs.cornell.edu/phyrc/challenge-2027/)
 
 두 로봇이 옷을 함께 잡아 들어 올리고, 마네킹의 두 손·머리를 서로 맞는 옷 구멍으로 통과시켜 앞뒤 방향까지 맞추는 과제입니다. 아래는 **평가 항목을 설명하는 지도**이며 실제 완주 기록이 아닙니다.
 
