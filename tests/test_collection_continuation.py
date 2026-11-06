@@ -183,6 +183,46 @@ class ContinuationTest(unittest.TestCase):
         a[0, 0, 0] = np.nan
         with self.assertRaises(ValueError): list(iter_action_chunks(a))
 
+    def test_observation_cuts_preserve_700_actions_and_exact_source_indices(self):
+        actions = np.zeros((700, 2, 9), np.float32)
+        actions[280:600, 0, 3] = .125
+        actions[600:, 1, 8] = -1
+        chunks = list(iter_action_chunks(actions, cut_boundaries=(264, 320)))
+        self.assertTrue({264, 320}.issubset({c.end_step for c in chunks}))
+        self.assertEqual(chunks[0].start_step, 0)
+        self.assertEqual(chunks[-1].end_step, 700)
+        for previous, current in zip(chunks, chunks[1:]):
+            self.assertEqual(previous.end_step, current.start_step)
+        for chunk in chunks:
+            self.assertEqual(chunk.steps, chunk.end_step - chunk.start_step)
+            self.assertTrue(1 <= chunk.steps <= 20)
+            expected = actions[chunk.start_step:chunk.end_step]
+            actual = np.repeat(chunk.action[None], chunk.steps, axis=0)
+            self.assertEqual(actual.tobytes(), expected.tobytes())
+        rebuilt = np.concatenate([np.repeat(c.action[None], c.steps, axis=0) for c in chunks])
+        self.assertEqual(rebuilt.tobytes(), actions.tobytes())
+
+    def test_cuts_at_action_changes_and_chunk_limits_do_not_duplicate_steps(self):
+        actions = np.zeros((45, 2, 9), np.float32)
+        actions[22:44, 0, 3] = .125
+        actions[44, 1, 8] = -1
+        chunks = list(iter_action_chunks(actions, cut_boundaries=iter([1, 20, 22, 23, 43, 44])))
+        self.assertEqual([(c.start_step, c.end_step) for c in chunks],
+                         [(0, 1), (1, 20), (20, 22), (22, 23), (23, 43), (43, 44), (44, 45)])
+        rebuilt = np.concatenate([np.repeat(c.action[None], c.steps, axis=0) for c in chunks])
+        self.assertEqual(rebuilt.tobytes(), actions.tobytes())
+        empty_cuts = list(iter_action_chunks(actions, cut_boundaries=[]))
+        default = list(iter_action_chunks(actions))
+        self.assertEqual([(c.start_step, c.end_step) for c in empty_cuts],
+                         [(c.start_step, c.end_step) for c in default])
+
+    def test_invalid_cuts_are_rejected_before_first_chunk(self):
+        actions = np.zeros((45, 2, 9), np.float32)
+        for cuts in (None, 3, [0], [-1], [45], [46], [True], [1.0], ['1'],
+                     [20, 20], [21, 20], [1, 45]):
+            with self.subTest(cuts=cuts), self.assertRaises(ValueError):
+                next(iter_action_chunks(actions, cut_boundaries=cuts))
+
 
 if __name__ == '__main__':
     unittest.main()

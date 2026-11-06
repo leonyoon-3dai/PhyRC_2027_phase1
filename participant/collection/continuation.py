@@ -210,17 +210,30 @@ def load_replay_prefix(root, source_run_id, steps=None):
     return ReplayPrefix(actions, trusted, initial, final, lineage)
 
 
-def iter_action_chunks(actions, max_steps=20):
-    """Group only identical consecutive actions, never average or skip a step."""
+def iter_action_chunks(actions, max_steps=20, *, cut_boundaries=()):
+    """Group identical actions, ending at optional exclusive observation cuts.
+
+    Cuts change request grouping only: every original action and source index is
+    preserved. They must be distinct ascending interior transition boundaries.
+    """
     _require(type(max_steps) is int and 1 <= max_steps <= 20, 'Chunk size must be 1..20')
     values = np.asarray(actions)
     _require(values.ndim == 3 and values.shape[1:] == (2, 9) and values.dtype == np.float32
              and np.isfinite(values).all() and np.all(np.abs(values) <= 1),
              'Replay actions must be finite bounded float32 (T,2,9)')
+    try:
+        cuts = tuple(cut_boundaries)
+    except TypeError:
+        raise ValueError('Cut boundaries must be an iterable of ascending interior integers') from None
+    _require(all(type(cut) is int and 0 < cut < len(values) for cut in cuts)
+             and all(left < right for left, right in zip(cuts, cuts[1:])),
+             'Cut boundaries must be distinct ascending positive integers below action count')
+    cut_set = set(cuts)
     start = 0
     while start < len(values):
         end = start + 1
-        while end < len(values) and end - start < max_steps and values[end].tobytes() == values[start].tobytes():
+        while (end < len(values) and end - start < max_steps and end not in cut_set
+               and values[end].tobytes() == values[start].tobytes()):
             end += 1
         value = values[start].copy()
         value.flags.writeable = False

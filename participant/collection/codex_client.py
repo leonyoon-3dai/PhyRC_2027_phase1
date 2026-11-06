@@ -27,6 +27,8 @@ from participant.collection.boundary import CONTRACT, PUBLIC, validate_action
 STAGES = ['preparation', 'approach', 'grasp', 'lift', 'transport', 'first_sleeve',
           'shoulder', 'second_sleeve', 'neck', 'orientation', 'recovery', 'final_check']
 ASSESSMENTS = ['uncertain', 'progressing', 'blocked', 'recovering', 'visually_complete']
+REPLAY_IMAGE_SCHEMA = 'phyrc-same-episode-replay-images-v1'
+REPLAY_IMAGE_TASK = '''The first model input includes CURRENT camera images at indices 0..4, followed by explicitly labeled HISTORICAL camera groups recorded earlier in this same new episode. Trace held garment edges across these views. Compare hem, neck-opening and sleeve-opening hypotheses from visible shape and continuity; do not assume any of these labels. Historical images do not establish the current grasp, clearance or contact. Use the latest CURRENT views and current robot state/depth for action and contact decisions.'''
 SCHEMA = {
     'type': 'object', 'additionalProperties': False,
     'required': ['tool', 'action', 'steps', 'stage', 'visual_assessment', 'reason'],
@@ -285,6 +287,31 @@ def prepare_observation(obs, directory):
     return payload, images
 
 
+def replay_image_context(current_images, current_time, history):
+    """Order current cameras first and allowlist temporal labels, never old state.
+
+    History contains only observations captured during this new replay. Private
+    provenance fields are deliberately not copied into the actor's context.
+    """
+    cameras = list(CONTRACT['competition_access']['allowed_cameras'])
+    if len(current_images) != 5 or not 1 <= len(history) <= 2:
+        raise ValueError('replay visual context requires five current and one or two historical camera groups')
+    images = list(current_images)
+    groups = [{'kind': 'current', 'image_indices': list(range(5)),
+               'camera_order': cameras, 'simulation_time_s': float(current_time)}]
+    for record in history:
+        if len(record['images']) != 5:
+            raise ValueError('historical replay observation must contain five cameras')
+        offset = len(images)
+        images.extend(record['images'])
+        groups.append({'kind': 'historical_same_episode',
+                       'image_indices': list(range(offset, offset + 5)),
+                       'camera_order': cameras,
+                       'replay_boundary': record['replay_boundary'],
+                       'simulation_time_s': record['simulation_time_s']})
+    return images, {'schema': REPLAY_IMAGE_SCHEMA, 'groups': groups}
+
+
 class Simulator:
     """Timeout-bounded transport; stdout contains public JSON, logs stay private."""
     def __init__(self, command, root, log, *, timeout_s=600):
@@ -410,6 +437,8 @@ def main():
                         help='Replay verified recorded actions before a fresh actor; not physics restoration')
     parser.add_argument('--replay-prefix-steps', type=int,
                         help='Exclusive source transition boundary; defaults to the completed source length')
+    parser.add_argument('--replay-observe-steps', type=int, nargs='+',
+                        help='One or two ascending replay boundaries to capture as first-call visual history')
     parser.add_argument('--model', default='gpt-6-astra')
     parser.add_argument('--effort', default='ultra')
     parser.add_argument('--decisions', type=int, default=3)
@@ -429,6 +458,13 @@ def main():
         parser.error('review-points must be 5..50')
     if args.replay_prefix_steps is not None and (not args.replay_prefix_run or args.replay_prefix_steps < 1):
         parser.error('positive replay-prefix-steps requires replay-prefix-run')
+    if args.replay_observe_steps is not None:
+        cuts = args.replay_observe_steps
+        if (not args.replay_prefix_run or not 1 <= len(cuts) <= 2
+                or any(v <= 0 for v in cuts) or any(a >= b for a, b in zip(cuts, cuts[1:]))):
+            parser.error('replay-observe-steps requires replay and one or two distinct ascending positive boundaries')
+        if args.replay_prefix_steps is not None and cuts[-1] >= args.replay_prefix_steps:
+            parser.error('replay-observe-steps must be strictly before the replay prefix end')
     if args.replay_prefix_run and args.mode == 'wiring':
         parser.error('replay prefixes are not wiring tests')
     if args.strategy in ('coordinated', 'coordinated-sleeve') and args.mode != 'dressing':
@@ -444,6 +480,8 @@ def main():
     if args.replay_prefix_run:
         from participant.collection.continuation import load_replay_prefix
         replay = load_replay_prefix(root, args.replay_prefix_run, args.replay_prefix_steps)
+        if args.replay_observe_steps and args.replay_observe_steps[-1] >= len(replay.actions):
+            parser.error('replay-observe-steps must be strictly before the replay prefix end')
         if args.parent_attempt not in (None, args.replay_prefix_run):
             parser.error('replay prefix must be the immediate parent attempt')
         if args.source_group not in (None, replay.public_lineage['source_group']):
@@ -470,6 +508,8 @@ def main():
                  'in this fresh episode. You are a fresh actor. Inspect the CURRENT public observations '
                  'and continue toward the full objective; do not assume any prior grasp or progress '
                  'survived replay. Only the supplied public views and robot state establish your next action.')
+    if args.replay_observe_steps:
+        task += '\n\n' + REPLAY_IMAGE_TASK
     if args.mode == 'wiring':
         task += '\n\n' + (BATCH_WIRING_TASK if args.plan_size > 1 else WIRING_TASK)
     elif args.mode == 'pickup':
@@ -524,6 +564,15 @@ def main():
     }
     if replay is not None:
         manifest['continuation'] = dict(replay.public_lineage)
+    replay_history = []
+    if args.replay_observe_steps:
+        (trace / 'replay_observations').mkdir(mode=0o700)
+        manifest['input_profile'] += '_with_first_call_same_episode_replay_RGB_history'
+        manifest['replay_visual_history'] = {
+            'schema': REPLAY_IMAGE_SCHEMA, 'requested_boundaries': args.replay_observe_steps,
+            'capture_source': 'new_episode_replay_acknowledgements',
+            'delivery': 'first_model_call_only', 'captured': [], 'first_model_input': None,
+        }
     token_usage = TokenUsageAccounting()
     token_usage.update_manifest(manifest)
     manifest['source_snapshot'] = source_snapshot(root, trace)
@@ -581,7 +630,8 @@ def main():
                 manifest['continuation']['initial_public_state_comparison'] = compare_public_state(
                     replay.initial_public_state, obs)
                 dump(trace / 'attempt.json', manifest)
-                for chunk in iter_action_chunks(replay.actions):
+                for chunk in iter_action_chunks(replay.actions,
+                                                cut_boundaries=args.replay_observe_steps or ()):
                     check_interrupt()
                     before = float(obs['simulation_time_s'])
                     t = time.monotonic()
@@ -604,6 +654,24 @@ def main():
                            'applied_action': chunk.action.tolist(),
                            'simulation_start_s': before, 'simulation_end_s': after,
                            'environment_dispatch_wall_s': elapsed, 'model_invoked': False})
+                    boundary = manifest['replay_steps_completed']
+                    if args.replay_observe_steps and boundary in args.replay_observe_steps:
+                        if steps != chunk.steps or boundary != chunk.end_step:
+                            raise RuntimeError('historical observation did not reach its exact replay boundary')
+                        folder = trace / 'replay_observations' / f'{boundary:05d}'
+                        _, history_images = prepare_observation(obs, folder)
+                        replay_history.append({'replay_boundary': boundary,
+                                               'simulation_time_s': after, 'images': history_images})
+                        provenance = {
+                            'replay_boundary': boundary, 'simulation_time_s': after,
+                            'camera_order': list(CONTRACT['competition_access']['allowed_cameras']),
+                            'files': [{'relative_file': str(p.relative_to(trace)),
+                                       'sha256': hashlib.sha256(p.read_bytes()).hexdigest()}
+                                      for p in [*history_images, folder / 'observation.json',
+                                                folder / 'public_depth.npz']],
+                        }
+                        manifest['replay_visual_history']['captured'].append(provenance)
+                        event({'type': 'replay_observation_captured', **provenance})
                     dump(trace / 'attempt.json', manifest)
                     check_interrupt()
                     check_review_gate()
@@ -615,6 +683,8 @@ def main():
                 manifest['continuation']['replay_validation'] = (
                     'actions_reexecuted_new_state_recorded' if replay_complete else 'stopped_at_review_boundary')
                 if replay_complete:
+                    if args.replay_observe_steps and len(replay_history) != len(args.replay_observe_steps):
+                        raise RuntimeError('replay visual history is incomplete')
                     manifest['continuation']['final_public_state_comparison'] = compare_public_state(
                         replay.final_public_state, obs)
                 manifest['policy_suffix_start_step'] = manifest['simulation_steps']
@@ -631,6 +701,12 @@ def main():
                 if index == 0:
                     prompt += 'Public static interpretation metadata: ' + json.dumps(interface, allow_nan=False) + '\n'
                 prompt += json.dumps(payload, allow_nan=False)
+                image_context = None
+                if replay_history and not pending_plan and manifest['actor_calls_attempted'] == 0:
+                    images, image_context = replay_image_context(images, float(obs['simulation_time_s']),
+                                                                 replay_history)
+                    prompt += '\nImage temporal context (zero-based image indices): ' + json.dumps(
+                        image_context, allow_nan=False)
                 image_hashes = [hashlib.sha256(p.read_bytes()).hexdigest() for p in images]
                 input_hash = hashlib.sha256((prompt + json.dumps(image_hashes)).encode()).hexdigest()
                 latest_input_hash = input_hash
@@ -638,6 +714,13 @@ def main():
                     call_started = time.monotonic()
                     model_call_index = manifest['actor_calls_attempted']
                     manifest['actor_calls_attempted'] += 1
+                    if image_context is not None:
+                        manifest['replay_visual_history']['first_model_input'] = {
+                            'input_sha256': input_hash, 'image_context': image_context,
+                            'ordered_images': [{'image_index': i, 'relative_file': str(p.relative_to(root)),
+                                                'sha256': digest}
+                                               for i, (p, digest) in enumerate(zip(images, image_hashes))],
+                        }
                     manifest['activity'] = 'model_request'
                     dump(trace / 'attempt.json', manifest)
                     result = None

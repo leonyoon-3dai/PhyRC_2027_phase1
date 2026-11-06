@@ -1,0 +1,13 @@
+{
+  "run_id": "20261106-astra-sleeve-branch700-003",
+  "archive_bytes": 1571698277,
+  "archive_sha256": "8dd6b650be899b476c8606fcc29a368643f08677bbf36a95818c3e72bdfca199",
+  "source_public_commit": "dbd7800e5c66f4342f16284aa5744336119b95f3",
+  "scope": "E10 complete collection, public observations, final actions, source snapshot. No credentials, actor runtime, raw reasoning, or session DB. Trusted evaluation/audit not actor inputs.",
+  "repo_id": "leonayoon/phyrc-2027-phase1-private-backup",
+  "repo_type": "dataset",
+  "private": true,
+  "revision": "3d474bb724adbb42ac44beaf82de7d216930dc5c",
+  "path": "sessions/20261106-e10-v1/archive.tar.gz",
+  "remote_download_verified": true
+}
