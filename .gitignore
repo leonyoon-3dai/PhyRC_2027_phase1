@@ -29,3 +29,5 @@ __pycache__/
 *.ckpt
 *.pt
 *.pth
+# Reviewed public continuous observation videos from completed attempts.
+!docs/collection/attempts/*/overview.mp4

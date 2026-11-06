@@ -1,0 +1,102 @@
+{
+  "schema": "phyrc-gallery-event-v1",
+  "created_at_utc": "2026-11-06T09:01:47.010757+00:00",
+  "run_id": "20261106-astra-sleeve-branch700-003",
+  "source_episode": "demo_0",
+  "source": {
+    "policy_sha256": "85a1517bea951da760b1fd09823585bd0cba65a79cba676cbbfd5b14544b3460",
+    "capture_sha256": "9cb93ad7d6d632c61f660e6f0363b9910cb9bb4f1e5530b1a04842a99420d5f7",
+    "validation_sha256": "bc5eebf75b350965d85710a5fad1c4932f25aba9c25b651557648f001c920f95"
+  },
+  "exporter_sha256": "8db63a1beff5fa6e7b07bc99261740dfffb9d10276a13adfada91660061447ee",
+  "validation": {
+    "quality_passed": true,
+    "validated_episode_transitions": 750,
+    "scope": "preexisting full capture report, matched policy SHA; RGB continuity rechecked"
+  },
+  "selection": {
+    "boundary_start_inclusive": 700,
+    "boundary_end_inclusive": 750,
+    "frame_count": 51,
+    "episode_time_start_s": 35.0,
+    "episode_time_end_s": 37.5,
+    "sample_endpoint_span_s": 2.5,
+    "mapping": "boundary 0 = obs[0]; boundary k > 0 = next_obs[k-1]; for k < N also checked equal to obs[k]",
+    "contains_final_boundary": true,
+    "frames_omitted_within_interval": 0
+  },
+  "layout": {
+    "columns": 2,
+    "rows": 2,
+    "cameras_row_major": [
+      "robot_0_head",
+      "robot_1_head",
+      "robot_0_wrist",
+      "robot_1_wrist"
+    ],
+    "source_height_width": {
+      "robot_0_head": [
+        256,
+        256
+      ],
+      "robot_1_head": [
+        256,
+        256
+      ],
+      "robot_0_wrist": [
+        256,
+        256
+      ],
+      "robot_1_wrist": [
+        256,
+        256
+      ]
+    },
+    "tile_size_px": 256,
+    "labels": "camera names and derived episode-relative boundary/time only",
+    "resize": "nearest_neighbor with aspect-preserving letterbox",
+    "cropped": false
+  },
+  "playback": {
+    "source_policy_hz": 20,
+    "fps": 5,
+    "slowdown_factor": 4.0,
+    "duration_s": 10.2,
+    "includes_wall_time_waits": false,
+    "temporal_interpolation": false
+  },
+  "encoding": {
+    "ffmpeg_threads": 2,
+    "filter_complex_threads": 2,
+    "gif_palette_colors": 64,
+    "gif_dither": "none",
+    "mp4_codec": "libx264",
+    "mp4_crf": 20,
+    "mp4_pixel_format": "yuv420p"
+  },
+  "gif": {
+    "file": "preview.gif",
+    "bytes": 2542829,
+    "sha256": "692a9c537b548b988d3ded94dfb007127aa74382a781efd79e236533072812c7",
+    "size_px": [
+      512,
+      588
+    ],
+    "frame_count": 51,
+    "loop": 0,
+    "frame_duration_ms": 200
+  },
+  "mp4": {
+    "file": "event.mp4",
+    "bytes": 492436,
+    "sha256": "2df0fd6dbd605555e06899066cec0ba1f1fc8d66d4f39ce31936f2c0acf59e3b",
+    "stream": {
+      "width": 512,
+      "height": 588,
+      "duration": "10.200000",
+      "nb_read_frames": "51"
+    }
+  },
+  "privacy": "Only selected designated camera RGB and fixed labels exported; no source filesystem paths, actor text, audit, geometry, seeds or evaluation copied.",
+  "evaluation": "Not inferred from video; consult separately reviewed run results."
+}
