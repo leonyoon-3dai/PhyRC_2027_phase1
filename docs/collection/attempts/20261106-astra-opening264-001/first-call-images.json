@@ -1,0 +1,185 @@
+{
+  "schema": "phyrc-current-model-input-v1",
+  "capture_source": "fresh_episode_public_observation_after_action_replay",
+  "delivery": "current_only_first_model_input",
+  "input_sha256": "c96883db13355390aef78a9f2bf1ee3b07ab670427825838caefbe843cc98429",
+  "image_context": {
+    "groups": [
+      {
+        "kind": "current",
+        "image_indices": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "camera_order": [
+          "overview",
+          "robot_0_wrist",
+          "robot_1_wrist",
+          "robot_0_head",
+          "robot_1_head"
+        ],
+        "simulation_time_s": 14.725000767968595
+      }
+    ]
+  },
+  "current_wrist_depth_panel": {
+    "schema": "phyrc-current-wrist-depth-panel-v1",
+    "image_index": 5,
+    "kind": "current",
+    "simulation_time_s": 14.725000767968595,
+    "input_image_order": [
+      {
+        "image_index": 0,
+        "kind": "current",
+        "representation": "RGB",
+        "camera": "overview",
+        "simulation_time_s": 14.725000767968595
+      },
+      {
+        "image_index": 1,
+        "kind": "current",
+        "representation": "RGB",
+        "camera": "robot_0_wrist",
+        "simulation_time_s": 14.725000767968595
+      },
+      {
+        "image_index": 2,
+        "kind": "current",
+        "representation": "RGB",
+        "camera": "robot_1_wrist",
+        "simulation_time_s": 14.725000767968595
+      },
+      {
+        "image_index": 3,
+        "kind": "current",
+        "representation": "RGB",
+        "camera": "robot_0_head",
+        "simulation_time_s": 14.725000767968595
+      },
+      {
+        "image_index": 4,
+        "kind": "current",
+        "representation": "RGB",
+        "camera": "robot_1_head",
+        "simulation_time_s": 14.725000767968595
+      },
+      {
+        "image_index": 5,
+        "kind": "current",
+        "representation": "wrist_depth_panel",
+        "cameras": [
+          "robot_0_wrist",
+          "robot_1_wrist"
+        ],
+        "simulation_time_s": 14.725000767968595
+      }
+    ],
+    "depth_semantics": "optical_axis_Z_metres_not_ray_range",
+    "range_m": [
+      0.03,
+      1.2
+    ],
+    "inside_range": "q=rint(255*(Z-0.03)/(1.20-0.03)); gray=255-q",
+    "quantization_step_m": 0.0045882352941176464,
+    "maximum_rounding_error_m": 0.0022941176470588232,
+    "invalid_rule": "not depth_valid OR nonfinite OR Z<=0",
+    "invalid_rgb": [
+      255,
+      0,
+      255
+    ],
+    "below_range_rgb": [
+      0,
+      255,
+      255
+    ],
+    "above_range_rgb": [
+      255,
+      128,
+      0
+    ],
+    "spatial_interpolation": "none",
+    "auto_contrast": false,
+    "range_categories_not_exact_out_of_range_distance": true,
+    "source": "current_public_depth_and_depth_valid",
+    "panels": [
+      {
+        "camera": "robot_0_wrist",
+        "matching_current_rgb_image_index": 1,
+        "pixel_counts": {
+          "effective_valid": 65536,
+          "invalid": 0,
+          "below_range": 0,
+          "within_range": 65536,
+          "above_range": 0
+        },
+        "pixel_rectangle_xyxy_exclusive": [
+          0,
+          68,
+          256,
+          324
+        ],
+        "depth_float32_sha256": "156ac220c27c5be391253919f73354352608de263a1737813953fb275a5c715a",
+        "depth_valid_bool_sha256": "916b144867c340614f515c7b0e5415c74832d899c05264ded2a277a6e81d81ff"
+      },
+      {
+        "camera": "robot_1_wrist",
+        "matching_current_rgb_image_index": 2,
+        "pixel_counts": {
+          "effective_valid": 65536,
+          "invalid": 0,
+          "below_range": 0,
+          "within_range": 65536,
+          "above_range": 0
+        },
+        "pixel_rectangle_xyxy_exclusive": [
+          256,
+          68,
+          512,
+          324
+        ],
+        "depth_float32_sha256": "911c7ab895f4e0f3189e1d3257b97038b0e671acf5b86e6018a9220ecb3d86e7",
+        "depth_valid_bool_sha256": "916b144867c340614f515c7b0e5415c74832d899c05264ded2a277a6e81d81ff"
+      }
+    ],
+    "file": "current_wrist_depth.png",
+    "png_sha256": "8f0e1303ba68800243621937fa97de98a0c5cb2f8becac97f974de81dbbd7ab7",
+    "interpretation": "Depth validity/range only; not semantics, free space, contact, object pose, hidden surfaces, hand entry or sleeve passage."
+  },
+  "ordered_images": [
+    {
+      "image_index": 0,
+      "file": "first-call/00-overview.png",
+      "sha256": "460535d4be3306048bd853242f44f9fcaa5e21335ef086e92b67a0e15a08a290"
+    },
+    {
+      "image_index": 1,
+      "file": "first-call/01-robot_0_wrist.png",
+      "sha256": "a58e81104f8ec26a4f9ccbad13e0bd96b6ac1f693f22b1daef5f4252d4b45a80"
+    },
+    {
+      "image_index": 2,
+      "file": "first-call/02-robot_1_wrist.png",
+      "sha256": "1b859dd33650c209068e1429b74b3f9ce972c3923469dbf54b2793a93cd493ef"
+    },
+    {
+      "image_index": 3,
+      "file": "first-call/03-robot_0_head.png",
+      "sha256": "ca3cf286382e03b98088095591397b0d1fb550669901ed244bc35a8391641c5f"
+    },
+    {
+      "image_index": 4,
+      "file": "first-call/04-robot_1_head.png",
+      "sha256": "ec37b0580af1fb2283ab5a2c5c74a2265a5d48d910828710678f30c95fa30338"
+    },
+    {
+      "image_index": 5,
+      "file": "first-call/05-current_wrist_depth.png",
+      "sha256": "8f0e1303ba68800243621937fa97de98a0c5cb2f8becac97f974de81dbbd7ab7"
+    }
+  ],
+  "scope": "Exact six prepared current images for first actor request after prefix264. No historical images. Report initial images are episode start, not first actor input."
+}

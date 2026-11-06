@@ -1,0 +1,1990 @@
+{
+  "schema": "public-e15-final-review-evidence-v1",
+  "run_id": "20261106-astra-opening264-001",
+  "scope": "Selected designated public RGB hashes, public robot numeric metrics, final operational decisions and applied boundaries only. Official outcome is reported separately in the review; no evaluator geometry, seed, contact labels, raw reasoning, credentials or private runtime.",
+  "residual_convention": "target minus measured; targetfinger is intent not contactproof; fingertip-origin distance is not contactgap.",
+  "images": [
+    {
+      "file": "obs00018-robot_0_wrist.png",
+      "source": "output/actors/20261106-astra-opening264-001/observations/00018/robot_0_wrist.png",
+      "sha256": "3016317cd75ade64a64d75c7e13d4461da2d5f51215d1ce55dc8fadcb3de9dab",
+      "transform": "none; original public 256x256 PNG"
+    },
+    {
+      "file": "obs00020-robot_0_wrist.png",
+      "source": "output/actors/20261106-astra-opening264-001/observations/00020/robot_0_wrist.png",
+      "sha256": "54551b592405ee944520e85ea810c4fab9e687a1f5743de81ed88a711d78fc86",
+      "transform": "none; original public 256x256 PNG"
+    },
+    {
+      "file": "obs00023-robot_0_wrist.png",
+      "source": "output/actors/20261106-astra-opening264-001/observations/00023/robot_0_wrist.png",
+      "sha256": "bcacda82e52645570bdde06d7de643a275a56180f60cec1aadf4ff0fa7d5430b",
+      "transform": "none; original public 256x256 PNG"
+    }
+  ],
+  "observations": [
+    {
+      "observation_index": 0,
+      "simulation_time_s": 14.725000767968595,
+      "source": "output/actors/20261106-astra-opening264-001/observations/00000/observation.json",
+      "observation_sha256": "cc5d4b8913003c784f15766b86a6605292ac6d55653104f3e637015aae5a48f2",
+      "rgb_sha256": {
+        "overview": "460535d4be3306048bd853242f44f9fcaa5e21335ef086e92b67a0e15a08a290",
+        "robot_0_wrist": "a58e81104f8ec26a4f9ccbad13e0bd96b6ac1f693f22b1daef5f4252d4b45a80",
+        "robot_1_wrist": "1b859dd33650c209068e1429b74b3f9ce972c3923469dbf54b2793a93cd493ef",
+        "robot_0_head": "ca3cf286382e03b98088095591397b0d1fb550669901ed244bc35a8391641c5f",
+        "robot_1_head": "ec37b0580af1fb2283ab5a2c5c74a2265a5d48d910828710678f30c95fa30338"
+      },
+      "public_metrics": {
+        "base_xy_world_m": [
+          [
+            3.0442686080932617,
+            -0.7044716477394104
+          ],
+          [
+            3.4895825386047363,
+            -0.7024016380310059
+          ]
+        ],
+        "lift_mm": [
+          650.134265422821,
+          651.0869860649109
+        ],
+        "lift_target_residual_mm": [
+          -1.794278621673584,
+          -2.7469992637634277
+        ],
+        "lift_velocity_mm_s": [
+          6.297007668763399,
+          -0.049645823310129344
+        ],
+        "arm_total_mm": [
+          280.53492307662964,
+          276.82507038116455
+        ],
+        "arm_target_residual_mm": [
+          -4.654914140701294,
+          -0.945061445236206
+        ],
+        "grasp_base_height_mm": [
+          565.6399726867676,
+          568.1354999542236
+        ],
+        "wrist_pitch_deg": [
+          62.807749003471784,
+          62.16002167391196
+        ],
+        "wrist_pitch_target_residual_deg": [
+          2.22296019746152,
+          2.8706875270213392
+        ],
+        "base_xy_speed_mm_s": [
+          19.876620409209565,
+          7.31314636082478
+        ],
+        "fingertip_origin_distance_mm": [
+          148.38550984859467,
+          103.43935340642929
+        ],
+        "finger_position_rad": [
+          [
+            0.3568224608898163,
+            0.42128270864486694
+          ],
+          [
+            0.29183295369148254,
+            0.24689549207687378
+          ]
+        ],
+        "finger_target_rad": [
+          0.20225000381469727,
+          0.20225000381469727
+        ],
+        "gripper_close_command": [
+          [
+            true
+          ],
+          [
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "observation_index": 3,
+      "simulation_time_s": 16.275000848807395,
+      "source": "output/actors/20261106-astra-opening264-001/observations/00003/observation.json",
+      "observation_sha256": "10f9b918132b67784763496a11f93be744edc4e46c5493919f1003c783079eea",
+      "rgb_sha256": {
+        "overview": "a9008db7cacd5a52c8f39d997cb898c652368426b390cc0e61f7e1e7365f94a6",
+        "robot_0_wrist": "c19aa2bafccce0e9ed88a146dd21a2fdcd153bef4f428a558a3dd011d05de4e3",
+        "robot_1_wrist": "47c9f4b7ef9b052f8a6a2441cff1f960cd02c9fd9f896fd96c5e7c41437a2b8c",
+        "robot_0_head": "71005d9ae8b395dcd74b3017270649779ecb54f06da56f12bff7b8b3f810c6ce",
+        "robot_1_head": "fb5121e4322be55af2b8d755d2241c57d2b350165ffdaeb4dc34fe09aa57c08a"
+      },
+      "public_metrics": {
+        "base_xy_world_m": [
+          [
+            3.0415947437286377,
+            -0.7046879529953003
+          ],
+          [
+            3.486971378326416,
+            -0.7019343972206116
+          ]
+        ],
+        "lift_mm": [
+          748.3474016189575,
+          728.0546426773071
+        ],
+        "lift_target_residual_mm": [
+          9.332597255706787,
+          6.525397300720215
+        ],
+        "lift_velocity_mm_s": [
+          44.665928930044174,
+          30.686046928167343
+        ],
+        "arm_total_mm": [
+          274.43550527095795,
+          273.74041080474854
+        ],
+        "arm_target_residual_mm": [
+          1.444503664970398,
+          2.1395981311798096
+        ],
+        "grasp_base_height_mm": [
+          715.8317565917969,
+          695.5307126045227
+        ],
+        "wrist_pitch_deg": [
+          45.51981621411749,
+          45.52212823315154
+        ],
+        "wrist_pitch_target_residual_deg": [
+          -1.760167069868966,
+          -1.7624790889030153
+        ],
+        "base_xy_speed_mm_s": [
+          2.0363675497598077,
+          1.7278630964423765
+        ],
+        "fingertip_origin_distance_mm": [
+          60.5120062828064,
+          40.22819176316261
+        ],
+        "finger_position_rad": [
+          [
+            0.196489617228508,
+            0.11782471090555191
+          ],
+          [
+            0.10459212958812714,
+            0.10416240990161896
+          ]
+        ],
+        "finger_target_rad": [
+          0.10300000011920929,
+          0.10300000011920929
+        ],
+        "gripper_close_command": [
+          [
+            true
+          ],
+          [
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "observation_index": 5,
+      "simulation_time_s": 17.77500092703849,
+      "source": "output/actors/20261106-astra-opening264-001/observations/00005/observation.json",
+      "observation_sha256": "5c78f0c6facfa6e6d7e13e3d42e3d1ae5d66205f7e56cdc68ff44e368aa4beb5",
+      "rgb_sha256": {
+        "overview": "4ddf3ab5d3f4a62ad1329e82cc549c21c8057a1838d854fabab1410b48d02e02",
+        "robot_0_wrist": "49961169d82595d26c25cbca16e668b9b8c6817b7fc057a38b15ccdd0125116e",
+        "robot_1_wrist": "395eefe618190590059db8de8d3f651b15367ff5fcedc2bb80d6a1e0408a4af5",
+        "robot_0_head": "81cd5d9dc414b13601acadc4a67df320655fb693be27ea560eb37003f0f98ae8",
+        "robot_1_head": "9bc6f3caff7edfa6fc946642aadbc43c8a12cc2c4f15f060f8822973b0cecc4f"
+      },
+      "public_metrics": {
+        "base_xy_world_m": [
+          [
+            3.0411787033081055,
+            -0.7053056359291077
+          ],
+          [
+            3.4862356185913086,
+            -0.7024268507957458
+          ]
+        ],
+        "lift_mm": [
+          1089.1698598861694,
+          1066.074013710022
+        ],
+        "lift_target_residual_mm": [
+          19.63019371032715,
+          19.62602138519287
+        ],
+        "lift_velocity_mm_s": [
+          95.45756876468658,
+          96.42854332923889
+        ],
+        "arm_total_mm": [
+          275.81774443387985,
+          275.73900669813156
+        ],
+        "arm_target_residual_mm": [
+          0.06226450204849243,
+          0.14100223779678345
+        ],
+        "grasp_base_height_mm": [
+          1062.221884727478,
+          1039.1316413879395
+        ],
+        "wrist_pitch_deg": [
+          43.99867161425312,
+          43.99719287829781
+        ],
+        "wrist_pitch_target_residual_deg": [
+          -0.23902247000459623,
+          -0.23754373404928847
+        ],
+        "base_xy_speed_mm_s": [
+          1.299780578679878,
+          0.97801423574365
+        ],
+        "fingertip_origin_distance_mm": [
+          60.439035296440125,
+          39.83147442340851
+        ],
+        "finger_position_rad": [
+          [
+            0.19605137407779694,
+            0.11788078397512436
+          ],
+          [
+            0.10361887514591217,
+            0.1030733659863472
+          ]
+        ],
+        "finger_target_rad": [
+          0.10300000011920929,
+          0.10300000011920929
+        ],
+        "gripper_close_command": [
+          [
+            true
+          ],
+          [
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "observation_index": 10,
+      "simulation_time_s": 23.775001239962876,
+      "source": "output/actors/20261106-astra-opening264-001/observations/00010/observation.json",
+      "observation_sha256": "49bb806e65978f9d2a4eaa429080c7e64d8b5ed7fff9fce114a479abffbeda65",
+      "rgb_sha256": {
+        "overview": "553286fd088abd2500f28bd9c70f2ef7e70cd5a67ab8bf598f8dfa67fb72ea01",
+        "robot_0_wrist": "55d323956b1527b11e6f4d5de7c1a6f0984c3c2bd63af00adaf6237339f96d24",
+        "robot_1_wrist": "49a176e6d132228b17658c34f1452303f59d83ea395c239f74be747a6d67709e",
+        "robot_0_head": "fcc42330dc929300fe067557a2a73f425b46223a48827eea352c1cf6f73c5b4a",
+        "robot_1_head": "985647836fb3bb829aad5e1172bdc917c2e8cb5e2d53948c31fdb56e3f04c32f"
+      },
+      "public_metrics": {
+        "base_xy_world_m": [
+          [
+            1.2414236068725586,
+            -0.029221050441265106
+          ],
+          [
+            1.6855653524398804,
+            -0.025400158017873764
+          ]
+        ],
+        "lift_mm": [
+          1197.348952293396,
+          1175.4530668258667
+        ],
+        "lift_target_residual_mm": [
+          2.651095390319824,
+          2.646923065185547
+        ],
+        "lift_velocity_mm_s": [
+          10.949047282338142,
+          10.938890278339386
+        ],
+        "arm_total_mm": [
+          265.4080018401146,
+          265.144482254982
+        ],
+        "arm_target_residual_mm": [
+          10.472007095813751,
+          10.73552668094635
+        ],
+        "grasp_base_height_mm": [
+          1170.35973072052,
+          1148.4730243682861
+        ],
+        "wrist_pitch_deg": [
+          44.00981165278941,
+          44.007311803553186
+        ],
+        "wrist_pitch_target_residual_deg": [
+          -0.250162508540887,
+          -0.24766265930466236
+        ],
+        "base_xy_speed_mm_s": [
+          80.50943911813891,
+          80.61733267194654
+        ],
+        "fingertip_origin_distance_mm": [
+          60.582004487514496,
+          39.826273918151855
+        ],
+        "finger_position_rad": [
+          [
+            0.19669537246227264,
+            0.1179824098944664
+          ],
+          [
+            0.10266407579183578,
+            0.10400141775608063
+          ]
+        ],
+        "finger_target_rad": [
+          0.10300000011920929,
+          0.10300000011920929
+        ],
+        "gripper_close_command": [
+          [
+            true
+          ],
+          [
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "observation_index": 13,
+      "simulation_time_s": 26.97500140685588,
+      "source": "output/actors/20261106-astra-opening264-001/observations/00013/observation.json",
+      "observation_sha256": "406b696bc2b0c5e4012a8e0fce495275ed673252e72b9fa98864cb4ee2a40b81",
+      "rgb_sha256": {
+        "overview": "4f1597a2d6d8bce2926486081a0414bb95c93b33269735d1a63efe70f4994b2e",
+        "robot_0_wrist": "f0fa710c8f0931e84c1f8b440eadcd54f7b7001242b5b32c3bbb0c7beffd0677",
+        "robot_1_wrist": "0558d6319cefa8ae30888ca588f661c14f62009a44980d80a3443e965e598e4c",
+        "robot_0_head": "8fb5bae7238842b909645942211c63d08ddebf7b74d046d4f205e5e7ba9d1be8",
+        "robot_1_head": "da4627fa1f4a4f6b117419dd107f990fce55c00efab76042ea23f13eb9171a88"
+      },
+      "public_metrics": {
+        "base_xy_world_m": [
+          [
+            0.5781153440475464,
+            0.7615945339202881
+          ],
+          [
+            1.0220059156417847,
+            0.7660476565361023
+          ]
+        ],
+        "lift_mm": [
+          1197.3894834518433,
+          1175.4947900772095
+        ],
+        "lift_target_residual_mm": [
+          2.6105642318725586,
+          2.6051998138427734
+        ],
+        "lift_velocity_mm_s": [
+          10.902795940637589,
+          10.879206471145153
+        ],
+        "arm_total_mm": [
+          264.6768018603325,
+          264.4105926156044
+        ],
+        "arm_target_residual_mm": [
+          11.203207075595856,
+          11.469416320323944
+        ],
+        "grasp_base_height_mm": [
+          1250.320553779602,
+          1228.430151939392
+        ],
+        "wrist_pitch_deg": [
+          25.099623558192462,
+          25.09869465246534
+        ],
+        "wrist_pitch_target_residual_deg": [
+          -0.2475806970346222,
+          -0.24665179130750045
+        ],
+        "base_xy_speed_mm_s": [
+          49.62270811330759,
+          49.704436587797396
+        ],
+        "fingertip_origin_distance_mm": [
+          60.780901461839676,
+          39.76815193891525
+        ],
+        "finger_position_rad": [
+          [
+            0.19756032526493073,
+            0.11815377324819565
+          ],
+          [
+            0.10275477170944214,
+            0.10360792279243469
+          ]
+        ],
+        "finger_target_rad": [
+          0.10300000011920929,
+          0.10300000011920929
+        ],
+        "gripper_close_command": [
+          [
+            true
+          ],
+          [
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "observation_index": 14,
+      "simulation_time_s": 27.525001435540617,
+      "source": "output/actors/20261106-astra-opening264-001/observations/00014/observation.json",
+      "observation_sha256": "0c4ffe470c69002634bec00a95462b733318a12dd4fa7058ea5b251e740a88a9",
+      "rgb_sha256": {
+        "overview": "cff1aac95ff274c7ebf5844dd0cfb56298883b3c545457fc8dd1d57a89152295",
+        "robot_0_wrist": "e4ef65eb5490a5b78ded3be8010d79e171204ee46064c7dca3385b49fb097849",
+        "robot_1_wrist": "b41c3745c4c3ddafdd64e42b4f68ff5f775ec4f8e49424c0fee5a9a01baab66e",
+        "robot_0_head": "a2f8e39f4918d471cbc5daa44281a54634137b3fa230be4138e457f73e2785ee",
+        "robot_1_head": "9d428c9b12ad8cd626dabccefb6a566c7991b9c6f733d8844e3c8b485583be79"
+      },
+      "public_metrics": {
+        "base_xy_world_m": [
+          [
+            0.5319935083389282,
+            0.7634656429290771
+          ],
+          [
+            0.9758574962615967,
+            0.7678819894790649
+          ]
+        ],
+        "lift_mm": [
+          1197.4080801010132,
+          1175.5129098892212
+        ],
+        "lift_target_residual_mm": [
+          2.5919675827026367,
+          2.5870800018310547
+        ],
+        "lift_velocity_mm_s": [
+          10.880479589104652,
+          11.339868418872356
+        ],
+        "arm_total_mm": [
+          274.7262194752693,
+          274.7492045164108
+        ],
+        "arm_target_residual_mm": [
+          1.153789460659027,
+          1.130804419517517
+        ],
+        "grasp_base_height_mm": [
+          1250.2883672714233,
+          1228.4239530563354
+        ],
+        "wrist_pitch_deg": [
+          25.110575766526576,
+          25.10397438869376
+        ],
+        "wrist_pitch_target_residual_deg": [
+          -0.25853290536873763,
+          -0.2519315275359203
+        ],
+        "base_xy_speed_mm_s": [
+          0.18164982665314547,
+          1.5327530856326606
+        ],
+        "fingertip_origin_distance_mm": [
+          60.69600582122803,
+          39.78777676820755
+        ],
+        "finger_position_rad": [
+          [
+            0.19739428162574768,
+            0.11787810921669006
+          ],
+          [
+            0.10312623530626297,
+            0.10333899408578873
+          ]
+        ],
+        "finger_target_rad": [
+          0.10300000011920929,
+          0.10300000011920929
+        ],
+        "gripper_close_command": [
+          [
+            true
+          ],
+          [
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "observation_index": 15,
+      "simulation_time_s": 28.02500146161765,
+      "source": "output/actors/20261106-astra-opening264-001/observations/00015/observation.json",
+      "observation_sha256": "e2714a18f54e72e6c0ba27bb6f6be10b677987df8e1dfc00472abfffbbf06eec",
+      "rgb_sha256": {
+        "overview": "bd6f6cbef79cab8ab7f19696d4f5fb62b13e70cebf751c83bf1794014e9c4898",
+        "robot_0_wrist": "509d2184bdc2f006447ff6d2322aaf8d7548d1a058307d2734e1cdbdeb1cdcaa",
+        "robot_1_wrist": "bb8170ee813860ffe3965edad2c963ab353d8844f126a37bde52bf85f07a9a2a",
+        "robot_0_head": "085c927afca785bf373328623495d694df610852a9d822f937e2706e1938ee9d",
+        "robot_1_head": "755ec0c418ea95d0a197b217ad8e68086cdd45551224db43abf6f245f69e2e26"
+      },
+      "public_metrics": {
+        "base_xy_world_m": [
+          [
+            0.5319380760192871,
+            0.7759929299354553
+          ],
+          [
+            0.97580885887146,
+            0.7806275486946106
+          ]
+        ],
+        "lift_mm": [
+          1170.7488298416138,
+          1148.8537788391113
+        ],
+        "lift_target_residual_mm": [
+          -1.54876708984375,
+          -1.5537738800048828
+        ],
+        "lift_velocity_mm_s": [
+          -10.503643192350864,
+          -9.971980936825275
+        ],
+        "arm_total_mm": [
+          273.9812880754471,
+          274.12300556898117
+        ],
+        "arm_target_residual_mm": [
+          1.8987208604812622,
+          1.757003366947174
+        ],
+        "grasp_base_height_mm": [
+          1223.6428260803223,
+          1201.7654180526733
+        ],
+        "wrist_pitch_deg": [
+          25.107532917251337,
+          25.103882181139966
+        ],
+        "wrist_pitch_target_residual_deg": [
+          -0.25549005609349695,
+          -0.25183931998212516
+        ],
+        "base_xy_speed_mm_s": [
+          1.6215797903284435,
+          0.3896071541436852
+        ],
+        "fingertip_origin_distance_mm": [
+          60.67254766821861,
+          39.78852927684784
+        ],
+        "finger_position_rad": [
+          [
+            0.19722475111484528,
+            0.1179252341389656
+          ],
+          [
+            0.10338619351387024,
+            0.10308241844177246
+          ]
+        ],
+        "finger_target_rad": [
+          0.10300000011920929,
+          0.10300000011920929
+        ],
+        "gripper_close_command": [
+          [
+            true
+          ],
+          [
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "observation_index": 16,
+      "simulation_time_s": 28.575001490302384,
+      "source": "output/actors/20261106-astra-opening264-001/observations/00016/observation.json",
+      "observation_sha256": "8c3977471340bf7dea5c2342501352c764ceebbae08a2d9af08d667d3b033874",
+      "rgb_sha256": {
+        "overview": "30f776c4143b42e553570c8847510dbcdc1f9c6b19d36434cbdb6d4d0728a073",
+        "robot_0_wrist": "6af7c476c9737f692f4c1172f071b170af07f8e7d368c5ec5861997dab5788f1",
+        "robot_1_wrist": "56b6e9826f21e72352157388d9417f3dd55d36b6a3af14bfd112dffd1c252a33",
+        "robot_0_head": "4fa72986079e93938617af20204f822d5f06252a460ca7019629bda068267f1e",
+        "robot_1_head": "78d0b49d4b2ffdfb3682bb14de265fde31df4d2902ccafcb7464cc254525dc33"
+      },
+      "public_metrics": {
+        "base_xy_world_m": [
+          [
+            0.4934026300907135,
+            0.7763282656669617
+          ],
+          [
+            0.9372069239616394,
+            0.7808743119239807
+          ]
+        ],
+        "lift_mm": [
+          1166.8596267700195,
+          1144.966721534729
+        ],
+        "lift_target_residual_mm": [
+          2.3404359817504883,
+          2.3332834243774414
+        ],
+        "lift_velocity_mm_s": [
+          9.43728443235159,
+          9.416446089744568
+        ],
+        "arm_total_mm": [
+          275.3503918647766,
+          275.3060758113861
+        ],
+        "arm_target_residual_mm": [
+          0.5296170711517334,
+          0.5739331245422363
+        ],
+        "grasp_base_height_mm": [
+          1194.5593357086182,
+          1172.6937294006348
+        ],
+        "wrist_pitch_deg": [
+          30.63849374862802,
+          30.632367068942518
+        ],
+        "wrist_pitch_target_residual_deg": [
+          0.5160856785915785,
+          0.5222123582770799
+        ],
+        "base_xy_speed_mm_s": [
+          0.8346869941953925,
+          1.3301011557295355
+        ],
+        "fingertip_origin_distance_mm": [
+          60.65623462200165,
+          39.80135917663574
+        ],
+        "finger_position_rad": [
+          [
+            0.1971052587032318,
+            0.11795933544635773
+          ],
+          [
+            0.10322175174951553,
+            0.10331353545188904
+          ]
+        ],
+        "finger_target_rad": [
+          0.10300000011920929,
+          0.10300000011920929
+        ],
+        "gripper_close_command": [
+          [
+            true
+          ],
+          [
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "observation_index": 17,
+      "simulation_time_s": 29.175001521594822,
+      "source": "output/actors/20261106-astra-opening264-001/observations/00017/observation.json",
+      "observation_sha256": "a5b768f82319fdbdbb6b26260adf590c2de6cee57d3f3083cdb5c230b2aae6af",
+      "rgb_sha256": {
+        "overview": "c5e447759d22971992585265abe1f6427a0a38045d186dd82e42f167ba5771fd",
+        "robot_0_wrist": "59b7f322327f23b520834486daa660a3c862dc4fbab3d4404610119974917f2a",
+        "robot_1_wrist": "9a9b26b928fb82a4ceb2f84d969fb6ccbc6f674924a91bbceaf6a2fdf3bdafba",
+        "robot_0_head": "6c7a5119c1a9acb896e4f52684e5ad465e0b1e3d55dc046d23f779ec7f779732",
+        "robot_1_head": "36fe50bc741869500c5092813e7d2bab92a08d8e0f389b325d4dbff76961ad47"
+      },
+      "public_metrics": {
+        "base_xy_world_m": [
+          [
+            0.4935554265975952,
+            0.8228596448898315
+          ],
+          [
+            0.9371460676193237,
+            0.8273765444755554
+          ]
+        ],
+        "lift_mm": [
+          1125.58913230896,
+          1103.607177734375
+        ],
+        "lift_target_residual_mm": [
+          -2.589106559753418,
+          -2.5072097778320312
+        ],
+        "lift_velocity_mm_s": [
+          -14.262385666370392,
+          -14.027093537151814
+        ],
+        "arm_total_mm": [
+          271.51549607515335,
+          271.13503962755203
+        ],
+        "arm_target_residual_mm": [
+          4.364512860774994,
+          4.744969308376312
+        ],
+        "grasp_base_height_mm": [
+          1150.4935026168823,
+          1128.1083822250366
+        ],
+        "wrist_pitch_deg": [
+          31.270890718595744,
+          31.362432328946838
+        ],
+        "wrist_pitch_target_residual_deg": [
+          -0.11631129137614714,
+          -0.20785290172724302
+        ],
+        "base_xy_speed_mm_s": [
+          2.5016514127730387,
+          3.265483699253859
+        ],
+        "fingertip_origin_distance_mm": [
+          59.8076656460762,
+          39.80313241481781
+        ],
+        "finger_position_rad": [
+          [
+            0.19944024085998535,
+            0.11121730506420135
+          ],
+          [
+            0.1033625602722168,
+            0.10318224877119064
+          ]
+        ],
+        "finger_target_rad": [
+          0.10300000011920929,
+          0.10300000011920929
+        ],
+        "gripper_close_command": [
+          [
+            true
+          ],
+          [
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "observation_index": 18,
+      "simulation_time_s": 29.77500155288726,
+      "source": "output/actors/20261106-astra-opening264-001/observations/00018/observation.json",
+      "observation_sha256": "e57b02277415cc9f9b881f60f83f2afde426261f578c7ccf2f820ea2448f6189",
+      "rgb_sha256": {
+        "overview": "086067eb3ff763cebf3c2a131f0427f08d4c19529032d4cf44578f66dc84fc00",
+        "robot_0_wrist": "3016317cd75ade64a64d75c7e13d4461da2d5f51215d1ce55dc8fadcb3de9dab",
+        "robot_1_wrist": "12ff554e88a3a6939ffa89b553f57a3948b7a0ac89e3b60252cb93ee77bcf978",
+        "robot_0_head": "1aede60cc74051dcd4dbc809c2032fdd0924d2eed7138b7273d57182a3065e2e",
+        "robot_1_head": "a05d13cdd2c74a4a58075debd4bc2afc6d72548f946f38648fa41056a948e63d"
+      },
+      "public_metrics": {
+        "base_xy_world_m": [
+          [
+            0.4397318363189697,
+            0.8239158391952515
+          ],
+          [
+            0.8817136287689209,
+            0.8276248574256897
+          ]
+        ],
+        "lift_mm": [
+          1133.1071853637695,
+          1111.0937595367432
+        ],
+        "lift_target_residual_mm": [
+          3.7528276443481445,
+          3.8661956787109375
+        ],
+        "lift_velocity_mm_s": [
+          16.836825758218765,
+          17.14346557855606
+        ],
+        "arm_total_mm": [
+          269.6070373058319,
+          274.6538296341896
+        ],
+        "arm_target_residual_mm": [
+          6.2729716300964355,
+          1.226179301738739
+        ],
+        "grasp_base_height_mm": [
+          1157.8723192214966,
+          1135.445237159729
+        ],
+        "wrist_pitch_deg": [
+          31.302476928412467,
+          31.396484237053937
+        ],
+        "wrist_pitch_target_residual_deg": [
+          -0.1478975011928711,
+          -0.2419048098343416
+        ],
+        "base_xy_speed_mm_s": [
+          1.4518767076639036,
+          0.6175338981887006
+        ],
+        "fingertip_origin_distance_mm": [
+          61.49168685078621,
+          39.806973189115524
+        ],
+        "finger_position_rad": [
+          [
+            0.20116554200649261,
+            0.1182543933391571
+          ],
+          [
+            0.10296814143657684,
+            0.10359683632850647
+          ]
+        ],
+        "finger_target_rad": [
+          0.10300000011920929,
+          0.10300000011920929
+        ],
+        "gripper_close_command": [
+          [
+            true
+          ],
+          [
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "observation_index": 19,
+      "simulation_time_s": 30.3750015841797,
+      "source": "output/actors/20261106-astra-opening264-001/observations/00019/observation.json",
+      "observation_sha256": "a75522c8a60d47ccdc59ce6fe70a9bcae3db23c131616bc4ea82a1429de92d83",
+      "rgb_sha256": {
+        "overview": "05ebafed2b64a981548080f6b33ccfc82a4f1dc5d710b70e2457b9a239e33464",
+        "robot_0_wrist": "8f8baa89536ecc6bd42fa4dbccbf4d5ac2e4bd23486dfd8a4661ae6f09b5a474",
+        "robot_1_wrist": "f1be9508d0c43bf812c37ea16e39594f21d1b5f60e17ab2b3feec5891615af65",
+        "robot_0_head": "8e4465fa846089f02feb68385ac397d02d771db0df64b8c58fc613c350811bcf",
+        "robot_1_head": "d3ebebb9010e00532bed2b21d11ca7522637ff4679630b662bc574707731d692"
+      },
+      "public_metrics": {
+        "base_xy_world_m": [
+          [
+            0.4948940873146057,
+            0.8249126076698303
+          ],
+          [
+            0.9369924068450928,
+            0.8277574777603149
+          ]
+        ],
+        "lift_mm": [
+          1123.0292320251465,
+          1099.967360496521
+        ],
+        "lift_target_residual_mm": [
+          -0.029206275939941406,
+          1.1326074600219727
+        ],
+        "lift_velocity_mm_s": [
+          2.801931696012616,
+          3.395321313291788
+        ],
+        "arm_total_mm": [
+          269.4079354405403,
+          275.171235203743
+        ],
+        "arm_target_residual_mm": [
+          6.472073495388031,
+          0.7087737321853638
+        ],
+        "grasp_base_height_mm": [
+          1153.102993965149,
+          1124.2843866348267
+        ],
+        "wrist_pitch_deg": [
+          30.104782766883222,
+          31.40429797346443
+        ],
+        "wrist_pitch_target_residual_deg": [
+          1.0497966603363749,
+          -0.2497185462448362
+        ],
+        "base_xy_speed_mm_s": [
+          2.3311350382455407,
+          1.1776107531940125
+        ],
+        "fingertip_origin_distance_mm": [
+          91.00676327943802,
+          39.8104302585125
+        ],
+        "finger_position_rad": [
+          [
+            0.19801414012908936,
+            0.2754969894886017
+          ],
+          [
+            0.10371521860361099,
+            0.10286762565374374
+          ]
+        ],
+        "finger_target_rad": [
+          0.10300000011920929,
+          0.10300000011920929
+        ],
+        "gripper_close_command": [
+          [
+            true
+          ],
+          [
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "observation_index": 20,
+      "simulation_time_s": 30.975001615472138,
+      "source": "output/actors/20261106-astra-opening264-001/observations/00020/observation.json",
+      "observation_sha256": "ed4c566312241d573f9dfc92cac323bc9425cb358f4ebe28456a6c7529c2a224",
+      "rgb_sha256": {
+        "overview": "83b701b3ca454cabfa01c23f524b9f5829e6b4ce3225ae75f81bcdaed13e7ca8",
+        "robot_0_wrist": "54551b592405ee944520e85ea810c4fab9e687a1f5743de81ed88a711d78fc86",
+        "robot_1_wrist": "412601e5bf668c52ba3e9dd9ce4df2c825e505fb91986110efaf17be309ee068",
+        "robot_0_head": "3c7c9ceac38c450dc353417543bdcf7f86e8a7e669fb1bc4d753b59b445ebbc2",
+        "robot_1_head": "979a7d5d639eaa4f1c237c458ba0b1b65a8e6c400596e573ae56536b941da112"
+      },
+      "public_metrics": {
+        "base_xy_world_m": [
+          [
+            0.5494667887687683,
+            0.8256127834320068
+          ],
+          [
+            0.9923703670501709,
+            0.8279733061790466
+          ]
+        ],
+        "lift_mm": [
+          1105.9420108795166,
+          1082.129955291748
+        ],
+        "lift_target_residual_mm": [
+          -1.4219284057617188,
+          0.4900693893432617
+        ],
+        "lift_velocity_mm_s": [
+          -3.4288971219211817,
+          0.5115676904097199
+        ],
+        "arm_total_mm": [
+          273.0030193924904,
+          275.2131000161171
+        ],
+        "arm_target_residual_mm": [
+          2.8769895434379578,
+          0.6669089198112488
+        ],
+        "grasp_base_height_mm": [
+          1140.0208473205566,
+          1106.4467430114746
+        ],
+        "wrist_pitch_deg": [
+          29.210693929055626,
+          31.40439359611281
+        ],
+        "wrist_pitch_target_residual_deg": [
+          1.943885498163969,
+          -0.24981416889321637
+        ],
+        "base_xy_speed_mm_s": [
+          1.9384437561536332,
+          2.540511461855827
+        ],
+        "fingertip_origin_distance_mm": [
+          133.40334594249725,
+          39.81095924973488
+        ],
+        "finger_position_rad": [
+          [
+            0.1992267370223999,
+            0.5000969767570496
+          ],
+          [
+            0.10392331331968307,
+            0.10266229510307312
+          ]
+        ],
+        "finger_target_rad": [
+          0.10300000011920929,
+          0.10300000011920929
+        ],
+        "gripper_close_command": [
+          [
+            true
+          ],
+          [
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "observation_index": 21,
+      "simulation_time_s": 31.17500162590295,
+      "source": "output/actors/20261106-astra-opening264-001/observations/00021/observation.json",
+      "observation_sha256": "b78404d29920e0ca0fbad7215e1a910b5cfed7155965aa19cfc53d08ae8a2f88",
+      "rgb_sha256": {
+        "overview": "4ec41c451876a0f6eb93f862bb9f13ea4e1c6c84b89a1b65469a2272985b0c4a",
+        "robot_0_wrist": "7a29c21d3c8013c3b2cd127c39ed42cfbf2dac34d41f5820a99b7b26c7f9c82b",
+        "robot_1_wrist": "17a6ab27b32f071cc900a7a0e6eb321d207ca8120eb80e2ccb18d0d1706b967c",
+        "robot_0_head": "f6dff0fc8e0b66d0bc08b5776bbd3afa29920de7374d2e5368ad19f6e7693d92",
+        "robot_1_head": "a98048311a5fddc0ece45558a0a2c424d802c09d79502d1a3c13350b88f6cb66"
+      },
+      "public_metrics": {
+        "base_xy_world_m": [
+          [
+            0.5492173433303833,
+            0.8258582949638367
+          ],
+          [
+            0.9924024343490601,
+            0.8280900716781616
+          ]
+        ],
+        "lift_mm": [
+          1104.70449924469,
+          1080.7868242263794
+        ],
+        "lift_target_residual_mm": [
+          -0.1844167709350586,
+          1.833200454711914
+        ],
+        "lift_velocity_mm_s": [
+          3.1022520270198584,
+          6.9924164563417435
+        ],
+        "arm_total_mm": [
+          272.318534553051,
+          275.3170505166054
+        ],
+        "arm_target_residual_mm": [
+          3.56147438287735,
+          0.5629584193229675
+        ],
+        "grasp_base_height_mm": [
+          1139.3526792526245,
+          1105.0788164138794
+        ],
+        "wrist_pitch_deg": [
+          29.084246636951182,
+          31.410011426705147
+        ],
+        "wrist_pitch_target_residual_deg": [
+          2.070332790268415,
+          -0.25543199948555184
+        ],
+        "base_xy_speed_mm_s": [
+          1.5406695010977156,
+          0.6446934807725541
+        ],
+        "fingertip_origin_distance_mm": [
+          137.80386745929718,
+          39.81012850999832
+        ],
+        "finger_position_rad": [
+          [
+            0.22254231572151184,
+            0.5000974535942078
+          ],
+          [
+            0.10380800813436508,
+            0.10277260094881058
+          ]
+        ],
+        "finger_target_rad": [
+          0.30149999260902405,
+          0.10300000011920929
+        ],
+        "gripper_close_command": [
+          [
+            false
+          ],
+          [
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "observation_index": 22,
+      "simulation_time_s": 31.47500164154917,
+      "source": "output/actors/20261106-astra-opening264-001/observations/00022/observation.json",
+      "observation_sha256": "c70b6745c46f64851bd8b342e0151a452325c4730348561f19b1df704168cb6e",
+      "rgb_sha256": {
+        "overview": "9dc8f9e05efe403a728e841c88566beee8238c29cfb95fbe6e34874870b4a1b2",
+        "robot_0_wrist": "e9d2340f06965b0d2f366f2d50f92f3f8f303ac53130c206701ae6c152251dbc",
+        "robot_1_wrist": "eb71327d17d1808facfb53f2cc4bb3d8ac4c5c3434b6805d713bb8f55db77785",
+        "robot_0_head": "72f7201e8bb627c44504b4a517c9e5134a25a33442d684d64fcebb0e6217ee2c",
+        "robot_1_head": "201071ac8e32d636b58b3a53a59ff9d710ad30bce7ad5b05d56be5e619218bae"
+      },
+      "public_metrics": {
+        "base_xy_world_m": [
+          [
+            0.5488495230674744,
+            0.8262126445770264
+          ],
+          [
+            0.9924420714378357,
+            0.8282207250595093
+          ]
+        ],
+        "lift_mm": [
+          1104.1399240493774,
+          1080.176591873169
+        ],
+        "lift_target_residual_mm": [
+          0.3801584243774414,
+          2.4434328079223633
+        ],
+        "lift_velocity_mm_s": [
+          7.449137046933174,
+          11.665791273117065
+        ],
+        "arm_total_mm": [
+          271.9063460826874,
+          275.2816379070282
+        ],
+        "arm_target_residual_mm": [
+          3.973662853240967,
+          0.5983710289001465
+        ],
+        "grasp_base_height_mm": [
+          1139.0498876571655,
+          1104.4039726257324
+        ],
+        "wrist_pitch_deg": [
+          29.026063670506428,
+          31.424614371150636
+        ],
+        "wrist_pitch_target_residual_deg": [
+          2.1285157567131687,
+          -0.2700349439310391
+        ],
+        "base_xy_speed_mm_s": [
+          1.6504363490752867,
+          6.010125546833283
+        ],
+        "fingertip_origin_distance_mm": [
+          172.4729984998703,
+          39.80973735451698
+        ],
+        "finger_position_rad": [
+          [
+            0.40953487157821655,
+            0.5000745058059692
+          ],
+          [
+            0.10373114794492722,
+            0.10284814238548279
+          ]
+        ],
+        "finger_target_rad": [
+          0.5,
+          0.10300000011920929
+        ],
+        "gripper_close_command": [
+          [
+            false
+          ],
+          [
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "observation_index": 23,
+      "simulation_time_s": 32.07500167284161,
+      "source": "output/actors/20261106-astra-opening264-001/observations/00023/observation.json",
+      "observation_sha256": "c87824a124df40323a2b055783a92d3204a854bdd2185e8e2196a935d38f106c",
+      "rgb_sha256": {
+        "overview": "a89383da42bbf1a9eedabba3913da183058ea0a8c158e9d703cf8b0b835a7513",
+        "robot_0_wrist": "bcacda82e52645570bdde06d7de643a275a56180f60cec1aadf4ff0fa7d5430b",
+        "robot_1_wrist": "c3c1285b21875e6bd17c9c8c7b705f7e9957b955539eff361275a165a406d7bb",
+        "robot_0_head": "264c9d4f1169c4c46f885701b6885bd60b56da9a042afd1090ed5709a91a7137",
+        "robot_1_head": "ee50732da48957182ae0f7b0eb2f096eccd9d78cd1c66d67fe9dffa2605914c3"
+      },
+      "public_metrics": {
+        "base_xy_world_m": [
+          [
+            0.548227846622467,
+            0.8270500898361206
+          ],
+          [
+            0.992539644241333,
+            0.8283795714378357
+          ]
+        ],
+        "lift_mm": [
+          1062.150239944458,
+          1080.0105333328247
+        ],
+        "lift_target_residual_mm": [
+          -3.8301944732666016,
+          2.6094913482666016
+        ],
+        "lift_velocity_mm_s": [
+          -22.816099226474762,
+          10.12398861348629
+        ],
+        "arm_total_mm": [
+          226.4784760773182,
+          275.14468878507614
+        ],
+        "arm_target_residual_mm": [
+          -5.048472434282303,
+          0.7353201508522034
+        ],
+        "grasp_base_height_mm": [
+          1094.7036743164062,
+          1104.174256324768
+        ],
+        "wrist_pitch_deg": [
+          29.55034557610202,
+          31.439145598609837
+        ],
+        "wrist_pitch_target_residual_deg": [
+          1.6042338511175749,
+          -0.28456617139024126
+        ],
+        "base_xy_speed_mm_s": [
+          31.930291776517258,
+          2.04445756953362
+        ],
+        "fingertip_origin_distance_mm": [
+          187.70265579223633,
+          39.80938717722893
+        ],
+        "finger_position_rad": [
+          [
+            0.4954339861869812,
+            0.4986323118209839
+          ],
+          [
+            0.10343882441520691,
+            0.10313840210437775
+          ]
+        ],
+        "finger_target_rad": [
+          0.5,
+          0.10300000011920929
+        ],
+        "gripper_close_command": [
+          [
+            false
+          ],
+          [
+            true
+          ]
+        ]
+      }
+    }
+  ],
+  "operational_events": [
+    {
+      "type": "decision",
+      "decision_index": 17,
+      "decision": {
+        "tool": "act",
+        "action": [
+          [
+            0,
+            -0.3,
+            0,
+            0.03,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            -0.3,
+            0,
+            0.03,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "steps": 6,
+        "stage": "first_sleeve",
+        "visual_assessment": "uncertain",
+        "reason": "Robot 0 now clearly sees the target fingertips above and outside the right end of the rim; robot 1 maintains the opposite support. Shift the opening about 5.5 cm right beneath the hand with a 1.4 cm rise, then inspect whether the fingertips approach or cross the rim."
+      },
+      "input_sha256": "87ea7dd09255831a09bc8bb2d8f46f4256a5928ae9423e532f03f38a0bc309d0",
+      "observation_simulation_time_s": 29.175001521594822
+    },
+    {
+      "type": "applied_segment",
+      "decision_index": 17,
+      "observation_simulation_time_s": 29.175001521594822,
+      "segment_id": "20261106-astra-opening264-001:00017",
+      "action_source": "model",
+      "start_step": 553,
+      "end_step": 559,
+      "simulation_start_s": 29.175001521594822,
+      "simulation_end_s": 29.47500153724104,
+      "applied_action": [
+        [
+          0.0,
+          -0.30000001192092896,
+          0.0,
+          0.029999999329447746,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.30000001192092896,
+          0.0,
+          0.029999999329447746,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "actual_steps": 6
+    },
+    {
+      "type": "applied_segment",
+      "decision_index": 17,
+      "observation_simulation_time_s": 29.47500153724104,
+      "segment_id": "20261106-astra-opening264-001:settle-00017",
+      "action_source": "controller_settle",
+      "start_step": 559,
+      "end_step": 565,
+      "simulation_start_s": 29.47500153724104,
+      "simulation_end_s": 29.77500155288726,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "actual_steps": 6
+    },
+    {
+      "type": "decision",
+      "decision_index": 18,
+      "decision": {
+        "tool": "act",
+        "action": [
+          [
+            0,
+            0.3,
+            0,
+            -0.03,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0.3,
+            0,
+            -0.03,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "steps": 6,
+        "stage": "recovery",
+        "visual_assessment": "recovering",
+        "reason": "Robot 0\u2019s target hand disappeared behind the blue exterior panel without a visible rim crossing; robot 1 retains the opposite support. Stop advancing and reverse the last lateral-and-lift motion to uncover the hand before reassessing the opening."
+      },
+      "input_sha256": "7d850b54950373ad79785bbe0844eff31350a238f679c469ed1b8358c83d9381",
+      "observation_simulation_time_s": 29.77500155288726
+    },
+    {
+      "type": "applied_segment",
+      "decision_index": 18,
+      "observation_simulation_time_s": 29.77500155288726,
+      "segment_id": "20261106-astra-opening264-001:00018",
+      "action_source": "model",
+      "start_step": 565,
+      "end_step": 571,
+      "simulation_start_s": 29.77500155288726,
+      "simulation_end_s": 30.07500156853348,
+      "applied_action": [
+        [
+          0.0,
+          0.30000001192092896,
+          0.0,
+          -0.029999999329447746,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.30000001192092896,
+          0.0,
+          -0.029999999329447746,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "actual_steps": 6
+    },
+    {
+      "type": "applied_segment",
+      "decision_index": 18,
+      "observation_simulation_time_s": 30.07500156853348,
+      "segment_id": "20261106-astra-opening264-001:settle-00018",
+      "action_source": "controller_settle",
+      "start_step": 571,
+      "end_step": 577,
+      "simulation_start_s": 30.07500156853348,
+      "simulation_end_s": 30.3750015841797,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "actual_steps": 6
+    },
+    {
+      "type": "decision",
+      "decision_index": 19,
+      "decision": {
+        "tool": "act",
+        "action": [
+          [
+            0,
+            0.3,
+            0,
+            -0.04,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0.3,
+            0,
+            -0.04,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "steps": 6,
+        "stage": "recovery",
+        "visual_assessment": "recovering",
+        "reason": "Robot 0\u2019s target hand is visible beside the exterior panel and appears close against its right jaw; robot 1 retains the opposite support. No hem entry is established. Suspend entry attempts and withdraw both grips laterally away from the hand with a slight lowering for clearance."
+      },
+      "input_sha256": "7e9a952b76b9c34084b3b479b95d97a782595a2f572b4153cf8350233a4f48b5",
+      "observation_simulation_time_s": 30.3750015841797
+    },
+    {
+      "type": "applied_segment",
+      "decision_index": 19,
+      "observation_simulation_time_s": 30.3750015841797,
+      "segment_id": "20261106-astra-opening264-001:00019",
+      "action_source": "model",
+      "start_step": 577,
+      "end_step": 583,
+      "simulation_start_s": 30.3750015841797,
+      "simulation_end_s": 30.67500159982592,
+      "applied_action": [
+        [
+          0.0,
+          0.30000001192092896,
+          0.0,
+          -0.03999999910593033,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.30000001192092896,
+          0.0,
+          -0.03999999910593033,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "actual_steps": 6
+    },
+    {
+      "type": "applied_segment",
+      "decision_index": 19,
+      "observation_simulation_time_s": 30.67500159982592,
+      "segment_id": "20261106-astra-opening264-001:settle-00019",
+      "action_source": "controller_settle",
+      "start_step": 583,
+      "end_step": 589,
+      "simulation_start_s": 30.67500159982592,
+      "simulation_end_s": 30.975001615472138,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "actual_steps": 6
+    },
+    {
+      "type": "decision",
+      "decision_index": 20,
+      "decision": {
+        "tool": "act",
+        "action": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "steps": 4,
+        "stage": "recovery",
+        "visual_assessment": "blocked",
+        "reason": "Robot 0\u2019s outer jaw appears caught against the mannequin\u2019s wrist and is increasingly deflected; robot 1 retains the opposite cloth support. Hold both robots stationary and open only robot 0 to relieve that contact. Further entry attempts are unproductive without visible rim crossing."
+      },
+      "input_sha256": "c58fa2d3a6b8b0310593924e5cdb6c3ddd42f45a176a89bfc57fb3d9c09809cd",
+      "observation_simulation_time_s": 30.975001615472138
+    },
+    {
+      "type": "applied_segment",
+      "decision_index": 20,
+      "observation_simulation_time_s": 30.975001615472138,
+      "segment_id": "20261106-astra-opening264-001:00020",
+      "action_source": "model",
+      "start_step": 589,
+      "end_step": 593,
+      "simulation_start_s": 30.975001615472138,
+      "simulation_end_s": 31.17500162590295,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -1.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "actual_steps": 4
+    },
+    {
+      "type": "decision",
+      "decision_index": 21,
+      "decision": {
+        "tool": "act",
+        "action": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "steps": 6,
+        "stage": "recovery",
+        "visual_assessment": "recovering",
+        "reason": "Robot 0 has released the cloth, but its opening fingers remain close to the mannequin\u2019s wrist; robot 1 supports the hanging garment. Complete robot 0\u2019s opening while holding both poses before withdrawing from the contact."
+      },
+      "input_sha256": "999186621498d8906bf32df0ca4e273d04a414dd0c4d6facb7ebf914ffbf906a",
+      "observation_simulation_time_s": 31.17500162590295
+    },
+    {
+      "type": "applied_segment",
+      "decision_index": 21,
+      "observation_simulation_time_s": 31.17500162590295,
+      "segment_id": "20261106-astra-opening264-001:00021",
+      "action_source": "model",
+      "start_step": 593,
+      "end_step": 599,
+      "simulation_start_s": 31.17500162590295,
+      "simulation_end_s": 31.47500164154917,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -1.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "actual_steps": 6
+    },
+    {
+      "type": "decision",
+      "decision_index": 22,
+      "decision": {
+        "tool": "act",
+        "action": [
+          [
+            0,
+            0,
+            0,
+            -0.1,
+            -0.15,
+            0,
+            0,
+            0,
+            -1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "steps": 6,
+        "stage": "recovery",
+        "visual_assessment": "recovering",
+        "reason": "Robot 0 is open and no longer supports cloth; robot 1 retains the hanging garment. Retract and lower robot 0\u2019s empty gripper slightly to clear the mannequin\u2019s wrist, keeping robot 1 stationary and closed."
+      },
+      "input_sha256": "c2b2fe40881fae02dba30cd2cc910e3a21b26e492e16e26ad8de22c36e0a06c5",
+      "observation_simulation_time_s": 31.47500164154917
+    },
+    {
+      "type": "applied_segment",
+      "decision_index": 22,
+      "observation_simulation_time_s": 31.47500164154917,
+      "segment_id": "20261106-astra-opening264-001:00022",
+      "action_source": "model",
+      "start_step": 599,
+      "end_step": 605,
+      "simulation_start_s": 31.47500164154917,
+      "simulation_end_s": 31.77500165719539,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          -0.10000000149011612,
+          -0.15000000596046448,
+          0.0,
+          0.0,
+          0.0,
+          -1.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "actual_steps": 6
+    },
+    {
+      "type": "applied_segment",
+      "decision_index": 22,
+      "observation_simulation_time_s": 31.77500165719539,
+      "segment_id": "20261106-astra-opening264-001:settle-00022",
+      "action_source": "controller_settle",
+      "start_step": 605,
+      "end_step": 611,
+      "simulation_start_s": 31.77500165719539,
+      "simulation_end_s": 32.07500167284161,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "actual_steps": 6
+    },
+    {
+      "type": "decision",
+      "decision_index": 23,
+      "decision": {
+        "tool": "finish_episode",
+        "action": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "steps": 1,
+        "stage": "final_check",
+        "visual_assessment": "blocked",
+        "reason": "Robot 0 is open and withdrawn; robot 1 retains the hanging shirt. Bounded entry attempts produced exterior-panel overlap and jaw contact without visible hem crossing or sleeve emergence. End this unproductive attempt with dressing incomplete."
+      },
+      "input_sha256": "b3419b408368fa107247468652d7c675fc748d089737838fb57d71d2d132ff27",
+      "observation_simulation_time_s": 32.07500167284161
+    },
+    {
+      "type": "applied_segment",
+      "decision_index": 23,
+      "observation_simulation_time_s": 32.07500167284161,
+      "segment_id": "20261106-astra-opening264-001:00023",
+      "action_source": "model",
+      "start_step": 611,
+      "end_step": 611,
+      "simulation_start_s": 32.07500167284161,
+      "simulation_end_s": 32.07500167284161,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "actual_steps": 0
+    }
+  ]
+}

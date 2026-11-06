@@ -1,0 +1,59 @@
+{
+  "run_id": "20261106-astra-opening264-001",
+  "archive_bytes": 1417350617,
+  "archive_sha256": "7c950323fdf15ac58a45330d383dbf3bd65a07b01143d4a730a6c37990574fad",
+  "source_commit": "fa3fb85a25b35228d5456fd3e70fca3259098e6b",
+  "scope": "Closed E15 naturally finished opening-first trial,611/611 validated transitions; complete capture including trusted evaluation/audit,24 prepared public actor observations with current wrist-depth PNG/JSON, final prompt/actions/segments/gate/attempt and19-file source snapshot including step_profile.py. Fresh-episode264-action prefix; no historical replay images delivered. Numeric step_timings.jsonl included under the existing reviewed collection allowlist. Excludes credentials, actor runtime/raw reasoning/events/session DB and simulator logs. Trusted evaluation remains private, not actor input or training approval.",
+  "allowlist_audit": {
+    "basis": "E10 reviewed SHA256 path allowlist, E13 public wrist-depth additions, E15 source profiler; no replay-image history in E15",
+    "added_observation_names": [
+      "current_wrist_depth.json",
+      "current_wrist_depth.png"
+    ],
+    "added_source_snapshot": [
+      "participant/collection/wrist_depth.py",
+      "participant/collection/step_profile.py"
+    ],
+    "counts": {
+      "collection_root": 8,
+      "collection_evaluation": 4,
+      "trace_root": 5,
+      "source_snapshot": 19,
+      "actor_observation_directories": 24,
+      "actor_observation_files": 216,
+      "replay_observation_files": 0
+    },
+    "symlinks_rejected": true,
+    "snapshot_manifest_exact_match": true,
+    "excluded": [
+      "credentials",
+      "actor runtime",
+      "raw reasoning/events/session DB",
+      "simulator logs"
+    ]
+  },
+  "manifest_entries": 253,
+  "capture_steps": 611,
+  "validated_transitions": 611,
+  "attempt_status": "completed",
+  "post_action_settle": {
+    "enabled": true,
+    "requested_steps": 6,
+    "trigger": "nonzero_motion_act",
+    "segments_completed": 21,
+    "simulation_steps": 126,
+    "environment_dispatch_wall_s": 118.67864736799856,
+    "budget_capped_segments": 0,
+    "budget_skipped_segments": 0
+  },
+  "repo_id": "leonayoon/phyrc-2027-phase1-private-backup",
+  "repo_type": "dataset",
+  "private": true,
+  "revision": "ba753c41cf64c361ae91aae9e31f9236106bc4ad",
+  "path": "sessions/20261106-e15-v1/archive.tar.gz",
+  "manifest_path": "sessions/20261106-e15-v1/SHA256.json",
+  "manifest_sha256": "9d7242b68bd31c7c0056bbb7a2ca10ba787a90ff8894958a410311b15301ec39",
+  "remote_download_verified": true,
+  "manifest_remote_download_verified": true,
+  "verified_at_utc": "2026-11-06T12:35:08.669555+00:00"
+}
