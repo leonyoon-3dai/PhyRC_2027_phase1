@@ -1,10 +1,12 @@
 # 클린 서버에서 시연 수집 준비하기
 
-[현재 목표와 코드 구조](../../README.md) · [공식 설치 문서](../competition/SETUP.md) · [데이터 규격](../competition/DATA.md) · [관측·행동 규칙](../competition/RULES.md)
+[현재 목표와 코드 구조](../../README.md) · [상세 수집 과정](../collection/README.ko.md) · [공식 설치 문서](../competition/SETUP.md) · [데이터 규격](../competition/DATA.md) · [관측·행동 규칙](../competition/RULES.md)
 
-이 문서는 새 L40S 서버에서 환경을 구성하고, Codex CLI를 이용한 시연 수집기를 구현·검증하기 위한 실행 순서입니다. **명령을 문서화한 것이며 이번 문서 변경으로 새 서버를 실행하거나 수집에 성공한 것은 아닙니다.** 과거의 날짜별 인계보다 현재 README의 목표를 우선합니다.
+이 문서는 새 L40S 서버에서 환경과 구현된 Codex CLI 수집 경로를 복원·검증하는 순서입니다. 명령과 실제 검증 상태를 구분하며, 가장 최근 결과는 [현재 상태](STATUS.md)와 README를 따릅니다. 이전 실행의 통과가 새 서버의 정상 동작을 보장하지 않습니다.
 
-기존 브라우저 사람 조작 경로는 사용할 수 있습니다. **Astra의 Codex CLI 세션과 공개 관측·행동 실행기를 연결하는 자동 수집 경로는 추가 구현 대상**입니다. 환경 준비 완료와 자동 시연 수집기 완성을 구분합니다. 기존 모델·과거 데이터 전체 다운로드, 새 학습, 900초 평가는 이번 시작의 선행 조건이 아닙니다.
+현재 세션은 안정적인 데이터 수집 시스템과 다양한 방법의 과정 기록을 우선합니다. 최신 사용자 피드백에 따라 계측 수정·상주 호출 pilot·짧은 다중 행동을 순차 검증하며, 모델·`ultra` 설정과 첫 5점 리뷰 조건은 유지합니다. 아래 준비 명령을 실행 중인 환경에 무조건 다시 적용하지 않습니다.
+
+기존 브라우저 사람 조작과 별도로 **Astra 자동 수집의 WebRTC는 관찰 전용**입니다. 사람·모델의 제어권 전환은 미구현이며 두 실행기를 동시에 시작하지 않습니다. 기존 모델·과거 데이터 전체 다운로드, 새 학습, 900초 평가는 수집 재개의 선행 조건이 아닙니다.
 
 ## 1. 서버와 소스 확인
 
@@ -55,28 +57,45 @@ tail -f "output/runs/<실제-smoke-실행-ID>/command.log"
 
 `tail`만 종료하려면 그 터미널에서 Ctrl+C를 누릅니다. 장면이 보이거나 초기화 문구가 나왔다는 이유로 smoke 통과로 기록하지 않습니다. 첫 다운로드와 셰이더 준비 시간은 서버마다 다르며, 과거 준비 시간을 보장 시간으로 사용하지 않습니다. 소스 변경 후에는 필요한 `prepare`를 다시 수행합니다.
 
-## 3. Codex CLI 수집기를 준비할 순서
+## 3. Codex CLI 수집 경로 준비
 
-Codex CLI 설치·로그인과 사용할 모델의 실제 접근 가능 여부를 먼저 확인합니다. 블로그에서 사용한 모델 ID는 `gpt-6-astra`이지만, 새 서버에서 해당 모델이 선택 가능한지는 직접 확인해야 합니다. 별도 유료 API나 다른 모델로 자동 대체하지 않습니다.
+검증한 조합은 Linux x86-64, Codex CLI **0.166.0**, `gpt-6-astra`/`ultra`, Docker 29.1.5입니다. 설치·로그인과 모델 접근은 새 서버에서 다시 확인합니다. 별도 API나 다른 모델로 자동 대체하지 않습니다. Node/npm과 전역 설치 권한을 먼저 준비합니다.
 
 ```bash
+npm install --global @openai/codex@0.166.0
 codex --version
-codex --help
+codex login --device-auth
+codex login status
+codex exec --help
+docker pull python:3.12-slim@sha256:4840d514c583a4d3d8cad3940e68dee6f0f6f3635c12fcd0a3d74c21a5b93a54
+PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m unittest discover -s tests -v
 ```
 
-위 명령은 CLI 존재와 사용법 확인용이며 시뮬레이터를 제어하지 않습니다. 현재 저장소에는 **Codex CLI 자동 수집을 바로 시작하는 완성된 명령이 없습니다.** 다음 구현 순서와 완료 기준은 README를 따릅니다.
+`codex_actor.py`는 native CLI 실행 파일, 공개 입력 디렉터리, 새 Codex home만 별도 컨테이너에 연결합니다. 인증 사본은 0600으로 만들고 종료 시 제거하며 호스트 설정·개발 저장소·평가·audit·원시 상태는 연결하지 않습니다. 내부 Docker망에서 허용한 모델·인증 origin의 HTTPS만 프록시로 중계하고 직접 인터넷·호스트 서비스 접근을 차단합니다. 별도 host 포트나 GPU를 actor에 제공하지 않습니다.
 
-1. 개발용 Codex 세션이 공개 관측 수집·행동 검증·실행·기록을 연결하는 경계를 구현합니다.
-2. 행동 생성용 Astra 세션은 그 제한된 도구만 받습니다. 자유 viewport, 원본 상태 로그, 평가 JSON, 환경 객체, 점수는 읽지 않습니다.
-3. 모델 호출 없이 0 명령과 짧은 유효 명령으로 `(2,9)` 형식, 시간 정렬, 정상 종료를 검증합니다.
-4. Astra를 연결해 두 로봇의 짧은 명령을 실행하고 새 관측을 받는 순환을 확인합니다. 실제 적용 명령을 20 Hz 경계에서 저장합니다.
-5. 접근·파지·들어 올리기의 짧은 시도부터 수집하고, 별도 검수 과정에서 공식 평가와 데이터 검사를 수행합니다.
+모델에 전달하는 것은 RGB 5장, 전체 공개 로봇 상태와 16×16 depth 중앙값 격자입니다. 전체 depth·유효 마스크는 별도 저장하며, 전체 해상도 depth를 모델 영상 입력으로 전달했다고 설명하지 않습니다. 이미지 경로는 턴별로 고정하고 같은 에피소드의 명시적 UUID를 재개합니다. 새 시도는 새 actor 세션을 사용합니다.
+
+아래는 작은 lift·그리퍼 명령 → 정지 → 종료를 확인하는 **연결 시험**입니다. 4.1~4.2절에서 접속 환경과 뷰어를 준비하고 `STRETCH4_STREAM_HOST`, `STRETCH4_VIEWER_ORIGIN`을 현재 값으로 설정합니다. 별도 사람 조작 시뮬레이터가 실행 중이면 먼저 정상 종료합니다.
+
+```bash
+unset STRETCH4_PRACTICE_LAYOUT STRETCH4_RANDOMIZE
+run_id="$(date -u +%Y%m%dT%H%M%SZ)-codex-wiring"
+PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.codex_client \
+  --run-id "$run_id" --mode wiring --model gpt-6-astra --effort ultra \
+  --decisions 3 --max-steps 20 --webrtc
+PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.validate_capture \
+  "output/collections/$run_id" --output "output/collections/$run_id/validation.json"
+```
+
+`output/operator-traces/<run-id>/attempt.json`의 종료 상태, 정상 종료 HDF5, `validation.json`과 별도 평가를 함께 확인합니다. 2026-11-06 r5에서 이 wiring 경로의 3개 모델 결정·3전이·정상 종료·전수 검사를 확인했습니다. `--mode wiring`은 `integration_test` 출처이며 성공 시연으로 집계하지 않습니다. 재시도는 새 `--run-id`와 함께 `--parent-attempt`, `--retry-reason`을 지정합니다. 기존 파일을 덮어쓰지 않습니다. `--mode dressing`은 착의 시도용 경로이지만 아직 50점·착의 성공을 검증한 명령은 아닙니다.
+
+기능 설정으로 shell·browser·앱·플러그인 등의 도구를 줄이고, JSONL에 실행 이벤트가 있으면 행동을 거부합니다. 도구 레지스트리가 완전히 비었다고 가정하지 않습니다. 알려진 시작 전 비실행 안내만 예외로 구분하고 일반 오류는 실패로 남깁니다.
 
 자동 수집의 첫 비교는 공식 기본 배치·랜덤화 설정에서 시작합니다. 이전 사람 연습의 `STRETCH4_PRACTICE_LAYOUT=garment_side`, `STRETCH4_RANDOMIZE=0`를 자동 수집이나 공식 평가에 그대로 복사하지 않습니다. 훈련용 별도 시작 상태를 사용하면 그 목적과 설정을 데이터에 기록하고, 기본 배치 평가와 구분합니다. GPU 수집·렌더링·학습·평가는 순차 실행합니다.
 
 ## 4. 선택 사항: Chrome으로 사람이 관찰·개입하기
 
-이 절은 이미 존재하는 **사람 조작용** WebRTC 경로입니다. 화면 연결이나 키보드 조작이 필요할 때 사용합니다. 자유 이동 viewport와 화면 위 안내 정보를 Astra의 관측 입력으로 넘기지 않습니다. 자동 수집기와 사람 조작기의 동시 명령 충돌을 막는 제어권 전환은 별도 구현·검증 대상입니다.
+4.1~4.2절의 접속·뷰어 준비는 사람 조작과 자동 수집에서 공유합니다. 4.3절은 별도의 **사람 조작용** 실행입니다. 자동 수집은 3절의 `--webrtc`를 사용하며 키보드·버튼 로봇 입력이 적용되지 않습니다. 자유 이동 viewport와 안내 정보는 Astra 관측으로 전달하지 않습니다. 제어권 전환은 별도 구현·검증 대상입니다.
 
 ### 4.1 접속 주소와 포트
 
@@ -154,6 +173,14 @@ http://<접속-가능한-IPv4>:<외부-viewer-포트>/?keyboardPort=<외부-keyb
 
 ## 5. 수집 종료와 학습용 데이터 생성
 
+### 5.1 Codex 자동 수집
+
+자동 수집은 센서를 읽는 즉시 `output/collections/<run-id>/policy.hdf5`에 5개 공개 카메라 RGB-D와 실제 적용된 20 Hz 전이를 저장합니다. `audit.hdf5`, 단계별 시간, 점수·success·획득 이벤트는 별도 검수 자료입니다. 원시 상태 재생을 통한 지연 변환 경로가 아니므로 `check_deferred_dataset.py` 대신 3절의 `validate_capture`를 사용합니다.
+
+해시·완료 상태·전체 전이·0.05초/12 ticks·관측 연속성·평가 라벨 정합성을 통과해도 `training_approval=unreviewed`입니다. 시각적 과제 품질과 승인 구간은 별도로 검수합니다. `attempt.json`의 actor 호출 시간은 준비·Docker/CLI·요청/응답을 포함하며 모델 내부 추론시간은 미제공입니다. 모델을 기다리는 동안 물리는 멈추고 관찰용 렌더링만 수행합니다.
+
+### 5.2 기존 사람 조작 자료
+
 `STRETCH4_DEFER_EXPORT=1`이면 `Esc` 후 원본을 저장하고 RGB-D 변환을 대기시킵니다. **원본 저장 완료는 학습용 HDF5 생성 완료가 아닙니다.** 명령 로그에 출력된 실제 export request를 사용하고, 수집 프로세스가 끝난 뒤 별도로 변환합니다.
 
 ```bash
@@ -161,7 +188,7 @@ http://<접속-가능한-IPv4>:<외부-viewer-포트>/?keyboardPort=<외부-keyb
   --request "/output/training_export_requests/<실제-request-파일>.json"
 ```
 
-이 명령은 기존 사람 수집 경로가 만든 request용입니다. 신규 Astra 수집기는 같은 형식으로 연결됐는지 먼저 검증해야 하며, 기존 exporter와 자동 호환된다고 가정하지 않습니다. `[Dataset export] READY`, `capture.json`의 `status=ready`, `complete=true`, 실제 `policy.hdf5`를 확인합니다.
+이 명령은 기존 사람 수집 경로가 만든 request용이며 즉시 센서 저장을 사용하는 Astra 경로에는 적용하지 않습니다. `[Dataset export] READY`, `capture.json`의 `status=ready`, `complete=true`, 실제 `policy.hdf5`를 확인합니다.
 
 ```bash
 ./run.sh cpu /scripts/inspect_policy_dataset.py \
@@ -176,4 +203,4 @@ http://<접속-가능한-IPv4>:<외부-viewer-포트>/?keyboardPort=<외부-keyb
 
 GitHub에는 코드·실행 명령·공개 검수 요약을 저장하고, 큰 원본·데이터·모델은 선택한 HF 저장소에 보존합니다. `participant/ops/artifacts.py`는 검토한 산출물 디렉터리의 manifest·검사·압축·복원을 돕지만 업로드는 별도입니다. 원격 revision과 checksum을 확인하기 전에는 백업 완료로 기록하지 않습니다.
 
-필수 인계는 실행 commit, 이미지 ID, 에셋 잠금, 모델·프롬프트 버전, 공개 관측 선택, 실행 명령, 원본 및 변환 상태, 검수 결과, 다음 명령입니다. 인증 정보와 서버 접속 주소는 공개 로그에서 제외합니다. 이전 원본이 서버에만 있었다면 새 서버에 남아 있다고 가정하지 않습니다. 프로세스 종료와 클라우드 서버 전원 종료·삭제는 서로 다르며, 서버 종료는 사용자의 실제 요청 범위에 따라 진행합니다.
+필수 인계는 실행 commit, 이미지 ID, 에셋 잠금, 모델·프롬프트 버전, 공개 관측 선택, 실행 명령, 원본 및 변환 상태, 검수 결과, 다음 명령입니다. 상세 폴더·네이밍·피드백·공개 이미지와 영상 규약은 [수집 과정 문서](../collection/README.ko.md)를 따릅니다. 인증 정보와 서버 접속 주소는 공개 로그에서 제외합니다. 이전 원본이 서버에만 있었다면 새 서버에 남아 있다고 가정하지 않습니다. 프로세스 종료와 클라우드 서버 전원 종료·삭제는 서로 다르며, 서버 종료는 사용자의 실제 요청 범위에 따라 진행합니다.

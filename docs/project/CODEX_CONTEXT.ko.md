@@ -1,5 +1,7 @@
 # PhyRC 개발 컨텍스트: 수집에서 정책 검증까지
 
+> 아래는 명시된 소스 기준의 기술 검토 기록입니다. 원문은 보존하며 이후 구현·실행 상태와 상세 과정은 [현재 수집 목차](../collection/README.ko.md)와 [수집 일지](../collection/sessions/2026-11-06.md)를 따릅니다.
+
 [README](../../README.md) | [새 서버 준비](START_HERE.ko.md) | [현재 작업 상태](STATUS.md)
 
 **정리일: 2026-11-06. 코드 확인 기준: `f79f61bccab5ad171b86598ac48dcfd03aef6a4a`.**

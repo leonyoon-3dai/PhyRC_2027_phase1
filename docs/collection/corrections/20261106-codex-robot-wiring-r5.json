@@ -1,0 +1,122 @@
+{
+  "schema": "phyrc-token-accounting-correction-v1",
+  "run_id": "20261106-codex-robot-wiring-r5",
+  "created_at_utc": "2026-11-06T02:59:39.623304+00:00",
+  "correction_kind": "analysis_metadata_only_no_runtime_change",
+  "originals_preserved": true,
+  "supersedes_interpretation_of": [
+    "attempt.json:actor_usage",
+    "public manifest.json:attempt.actor_usage"
+  ],
+  "cli_version": "codex-cli 0.166.0",
+  "official_semantics_source": "https://github.com/openai/codex/blob/rust-v0.166.0/codex-rs/exec/src/event_processor_with_jsonl_output.rs",
+  "semantics": "turn.completed.usage is a cumulative thread snapshot; successive snapshots must not be summed",
+  "cached_input_is_subset_of_input": true,
+  "reasoning_output_is_subset_of_output": true,
+  "raw_incorrect_sum_of_cumulative_usage": {
+    "input_tokens": 133146,
+    "cached_input_tokens": 58240,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 719,
+    "reasoning_output_tokens": 159
+  },
+  "corrected_completed_turn_usage": {
+    "input_tokens": 74558,
+    "cached_input_tokens": 41472,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 330,
+    "reasoning_output_tokens": 53
+  },
+  "completed_turn_count": 3,
+  "attempt_usage_fully_known": true,
+  "unfinished_calls": [],
+  "private_session_last_observed_cumulative_usage": {
+    "input_tokens": 74558,
+    "cached_input_tokens": 41472,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 330,
+    "reasoning_output_tokens": 53
+  },
+  "session_identifier_published": false,
+  "scope_note": "All recorded completed calls in this fresh thread.",
+  "cost_money": null,
+  "cost_note": "Token evidence is not a monetary billing statement.",
+  "per_completed_turn": [
+    {
+      "decision_index": 0,
+      "cumulative_usage": {
+        "input_tokens": 16858,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 151,
+        "reasoning_output_tokens": 53
+      },
+      "incremental_usage": {
+        "input_tokens": 16858,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 151,
+        "reasoning_output_tokens": 53
+      }
+    },
+    {
+      "decision_index": 1,
+      "cumulative_usage": {
+        "input_tokens": 41730,
+        "cached_input_tokens": 16768,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 238,
+        "reasoning_output_tokens": 53
+      },
+      "incremental_usage": {
+        "input_tokens": 24872,
+        "cached_input_tokens": 16768,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 87,
+        "reasoning_output_tokens": 0
+      }
+    },
+    {
+      "decision_index": 2,
+      "cumulative_usage": {
+        "input_tokens": 74558,
+        "cached_input_tokens": 41472,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 330,
+        "reasoning_output_tokens": 53
+      },
+      "incremental_usage": {
+        "input_tokens": 32828,
+        "cached_input_tokens": 24704,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 92,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ],
+  "source_files": [
+    {
+      "role": "private_original_attempt",
+      "sha256": "cd14662e94eaf0b77fa4558fa50e1254b936e3b9520578b8ba08305cc541e238"
+    },
+    {
+      "role": "actor_exec_events",
+      "decision_index": 0,
+      "sha256": "cc57bc4cbcf5984c3706a7e82a304e56dac72f002643bc3a745f94ab801a281f"
+    },
+    {
+      "role": "actor_exec_events",
+      "decision_index": 1,
+      "sha256": "a5be9ff1b17d84f6ecba4802a949f6464ed7af26acf359c335268d3968a0ba75"
+    },
+    {
+      "role": "actor_exec_events",
+      "decision_index": 2,
+      "sha256": "b74362290c426d258fede5429478ee00791426607a7c0610a98f8a69ea801aab"
+    },
+    {
+      "role": "private_actor_session_rollout",
+      "sha256": "97653ba6d0925d0e42d7f5cb216a4ec5aca0c07fe7828d73b035ea646bd33dc3"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "cutoff_utc": "2026-11-06T02:41:09Z",
+  "review_status": "visual_review_only; no grasp or task success claim",
+  "images": [
+    {
+      "run_id": "20261106-astra-dressing-001",
+      "observation_index": 0,
+      "next_decision_index": 0,
+      "completed_decision_index": null,
+      "public_simulation_time_s": 1.5250000795349479,
+      "camera": "overview",
+      "source_path": "output/actors/20261106-astra-dressing-001/observations/00000/overview.png",
+      "published_path": "docs/collection/assets/20261106-initial-review/observation-00000-overview.png",
+      "sha256": "b7131fbb89a47994540657dad32c0fe751b5a620a37a53f82708ef9d8dba3f3a",
+      "transform": "none; byte-identical copy"
+    },
+    {
+      "run_id": "20261106-astra-dressing-001",
+      "observation_index": 10,
+      "next_decision_index": 10,
+      "completed_decision_index": 9,
+      "public_simulation_time_s": 7.625000397674739,
+      "camera": "robot_0_wrist",
+      "source_path": "output/actors/20261106-astra-dressing-001/observations/00010/robot_0_wrist.png",
+      "published_path": "docs/collection/assets/20261106-initial-review/observation-00010-robot_0_wrist.png",
+      "sha256": "95e8dfda7ecaff369548e4fab8b2743f96f3c8bec8c81ca341367076eb5213ca",
+      "transform": "none; byte-identical copy"
+    }
+  ]
+}

@@ -1,0 +1,278 @@
+{
+  "schema": "phyrc-public-attempt-report-v1",
+  "attempt": {
+    "run_id": "20261106-codex-robot-wiring-r5",
+    "parent_attempt": "20261106-codex-robot-wiring-r4",
+    "retry_reason": "bounded_prompt_file_instead_of_inline_process_argument",
+    "source_group": "20261106-codex-robot-wiring-r5",
+    "source": "integration_test",
+    "mode": "wiring",
+    "model": "gpt-6-astra",
+    "reasoning_effort": "ultra",
+    "prompt_sha256": "1ed99bf5c7a5864b0c0ee184f932f872dc6291937fd636a967fb6d70c2219af4",
+    "status": "completed",
+    "finished": true,
+    "started_at_utc": "2026-11-06T02:23:14Z",
+    "ended_at_utc": "2026-11-06T02:24:39Z",
+    "decisions_requested": 3,
+    "decisions_completed": 3,
+    "actor_calls_attempted": 3,
+    "actor_call_wall_s": 24.045207525000478,
+    "model_internal_inference_wall_s": null,
+    "actor_call_timing_scope": "public staging + Docker/CLI startup + request/response; internal model time unavailable",
+    "environment_dispatch_wall_s": 4.817544038000051,
+    "wall_s": 85.70077124,
+    "simulation_time_s": 0.15,
+    "simulation_steps": 3,
+    "acknowledged_simulation_steps": 3,
+    "recorded_simulation_steps": 3,
+    "capture_complete": true,
+    "capture_termination_reason": "operator_finished",
+    "human_intervention": false,
+    "quality_status": "unreviewed",
+    "input_profile": "five_public_RGB_images_all_public_state_and_16x16_depth_medians",
+    "error": null,
+    "actor_usage": {
+      "input_tokens": 133146,
+      "cached_input_tokens": 58240,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 719,
+      "reasoning_output_tokens": 159
+    },
+    "code": {
+      "commit": "2782a5fd14b89bfa649d1764f19e1028322f406b",
+      "working_tree_modified": true
+    }
+  },
+  "capture": {
+    "schema": "participant-live-capture-v2",
+    "complete": true,
+    "termination_reason": "operator_finished",
+    "raw_archive": false,
+    "wall_s": 83.11870886700035,
+    "requests": 3,
+    "steps": 3,
+    "idle_render_calls": 332,
+    "idle_render_wall_s": 10.008179731001292,
+    "evaluation_enabled": true,
+    "evaluation_valid": true
+  },
+  "quality": {
+    "schema": "phyrc-capture-validation-v1",
+    "quality_passed": true,
+    "training_approval": "unreviewed",
+    "scope": "immediate_sensor_capture",
+    "total_transitions": 3,
+    "validated_transitions": 3,
+    "available": true,
+    "checks": [
+      "manifest_sha256",
+      "file_episode_complete",
+      "public_observation_schema",
+      "all_transition_action_shape_dtype_range",
+      "actual_previous_action",
+      "0.05s_intervals",
+      "contiguous_12_physics_ticks",
+      "all_observation_continuity",
+      "finite_numeric_arrays",
+      "terminal_markers",
+      "evaluation_label_consistency"
+    ],
+    "error_count": 0,
+    "episodes": [
+      {
+        "episode": "demo_0",
+        "transitions": 3,
+        "complete": true,
+        "simulation_seconds": 0.15000000782310963,
+        "quality_passed": true
+      }
+    ]
+  },
+  "evaluation": {
+    "evaluated": true,
+    "valid": true,
+    "raw_points": 0.0,
+    "success": false,
+    "score_status": "no_contact",
+    "final_score": null,
+    "breakdown": {
+      "pickup": 0.0,
+      "first_sleeve": 0.0,
+      "opposite_shoulder": 0.0,
+      "second_sleeve": 0.0,
+      "left_upper_arm": 0,
+      "right_upper_arm": 0,
+      "neck": 0.0,
+      "front_orientation": 0.0
+    },
+    "milestone_times_s": {
+      "pickup": null,
+      "first_sleeve": null,
+      "opposite_shoulder": null,
+      "second_sleeve": null,
+      "neck": null,
+      "front_orientation": null
+    },
+    "max_raw_points": 50.0,
+    "success_evaluated": true,
+    "rate_points": 0.0,
+    "max_rate_points": 45.0,
+    "task_time_s": 0.0,
+    "elapsed_episode_time_s": 0.15,
+    "first_contact_time_s": null,
+    "last_score_award_time_s": null,
+    "dressing_completed_at_s": null,
+    "rate_rule": "pickup-excluded-last-award-v9",
+    "scoring_revision": "pickup-excluded-last-award-v9",
+    "score_unit": "points/s"
+  },
+  "source_files": {
+    "trace/attempt.json": {
+      "sha256": "cd14662e94eaf0b77fa4558fa50e1254b936e3b9520578b8ba08305cc541e238",
+      "bytes": 3116
+    },
+    "trace/prompt.txt": {
+      "sha256": "1ed99bf5c7a5864b0c0ee184f932f872dc6291937fd636a967fb6d70c2219af4",
+      "bytes": 2704
+    },
+    "trace/decisions.jsonl": {
+      "sha256": "dbf57e22db4a611e243f5271bb402b62d87dec41a72f5c9c334d0189ef37f4b5",
+      "bytes": 4350
+    },
+    "capture/capture.json": {
+      "sha256": "cb86d75a84e1b2433dc5119f7043a05a07751006fc45b3afc6a514d74dbac371",
+      "bytes": 551
+    },
+    "capture/policy.hdf5": {
+      "sha256": "7348309ad0e71b12b7e9c4eb82d437fde1ce02527565c2de81a4d7d38f6cd134",
+      "bytes": 8974363
+    },
+    "capture/audit.hdf5": {
+      "sha256": "6c9cc57af6b8158f891b135ee45a7a9a502ce3107782d1b941acbe62a93c70ae",
+      "bytes": 26104
+    },
+    "capture/evaluation_summary.json": {
+      "sha256": "7816adcbbaf99d7f498b6f012d017604e5a5c48b8afa62255cd39afcfb3f239b",
+      "bytes": 12060
+    },
+    "capture/validation.json": {
+      "sha256": "620512b79124c28e83f8128bf432dc65c493c4ebdc04251f370ac5dfdd7a8220",
+      "bytes": 1490
+    },
+    "capture/score_events.jsonl": {
+      "sha256": "91fc7e404dec6abe4d5f966dde8273eecafbd07338e29a63f14e822c19186a4b",
+      "bytes": 564
+    }
+  },
+  "unrecognized_events_omitted": 0,
+  "publication_review": "generated_allowlisted_subset_requires_repository_review",
+  "decision_reason_scope": "final_action_explanation_only",
+  "artifacts": {
+    "README.ko.md": {
+      "sha256": "2239f7cf53d04e28fd099172893e795c2da87a0ec8d8ed8e2588f2edd875cf59",
+      "bytes": 7543
+    },
+    "decisions.jsonl": {
+      "sha256": "1243272473465580dc3d7f98e247396854bdad597e9180f8fbe493b678aa3046",
+      "bytes": 4116
+    },
+    "images/final-overview.png": {
+      "sha256": "bab0d574320877a07caed3ca063f03f7572ec814a7894b40dceb6a7d3b438736",
+      "bytes": 71257
+    },
+    "images/final-robot_0_head.png": {
+      "sha256": "1e4aa229251274236fa751e0e2ccdf091345fa044cfc3e465f192c6ed52bb5e2",
+      "bytes": 64282
+    },
+    "images/final-robot_0_wrist.png": {
+      "sha256": "c5642a06716970a047d692ec09d97fc1e1b30d67d9ad26570cbc4a8fe0027373",
+      "bytes": 55545
+    },
+    "images/final-robot_1_head.png": {
+      "sha256": "b0fb368c09b6756f5c65145debaa956ead2a5b4eca3be6124dc9897afc3926fb",
+      "bytes": 64408
+    },
+    "images/final-robot_1_wrist.png": {
+      "sha256": "c2e4eef608cc8675a2993e5791b2652d183420d720975418c98d8223254409db",
+      "bytes": 54655
+    },
+    "images/initial-overview.png": {
+      "sha256": "27dab514066d6f779eba3fdb465ac9674b6c29eb92c37f34d2c501233aa80b34",
+      "bytes": 67859
+    },
+    "images/initial-robot_0_head.png": {
+      "sha256": "6206025284db14e9a2cebfd860b28919a1bdb27da22ddf752b4ecfb410a39ee6",
+      "bytes": 61996
+    },
+    "images/initial-robot_0_wrist.png": {
+      "sha256": "07293746b979d3aca73c28626d7bd729fa49c5dd0e2a38dbfe32a588ffb91e12",
+      "bytes": 55255
+    },
+    "images/initial-robot_1_head.png": {
+      "sha256": "abe43ad27e7cbe1e3832ea4459c22d302fb03f74b8eaec9d280382712047d2e4",
+      "bytes": 62504
+    },
+    "images/initial-robot_1_wrist.png": {
+      "sha256": "207edad4a52bd43da20ba612b8578f5e0b195c21283238a071bead41fac5fcb1",
+      "bytes": 55915
+    },
+    "overview.mp4": {
+      "sha256": "f4c52484307643bfc22d63665951dd05e0bde0f902cd673b32ddbca296de7f0d",
+      "bytes": 23757
+    },
+    "prompt.txt": {
+      "sha256": "1ed99bf5c7a5864b0c0ee184f932f872dc6291937fd636a967fb6d70c2219af4",
+      "bytes": 2704
+    },
+    "score-events.jsonl": {
+      "sha256": "361f34536c7bcaecd979cc8678b4ea718e1d46915e0397da2ffb39822f53458a",
+      "bytes": 564
+    }
+  },
+  "media": {
+    "available": true,
+    "transitions": 3,
+    "images": [
+      "images/initial-overview.png",
+      "images/initial-robot_0_wrist.png",
+      "images/initial-robot_1_wrist.png",
+      "images/initial-robot_0_head.png",
+      "images/initial-robot_1_head.png",
+      "images/final-overview.png",
+      "images/final-robot_0_wrist.png",
+      "images/final-robot_1_wrist.png",
+      "images/final-robot_0_head.png",
+      "images/final-robot_1_head.png"
+    ],
+    "video": {
+      "created": true,
+      "requested": true,
+      "file": "overview.mp4",
+      "source": "obs/overview_rgb",
+      "source_policy_hz": 20,
+      "available_frames": 3,
+      "exported_frames": 3,
+      "maximum_frames": 2000,
+      "truncated": false,
+      "sampling": "contiguous_prefix_no_frame_skipping",
+      "slowdown_factor": 20,
+      "playback_fps": 1.0,
+      "playback_duration_s": 3.0,
+      "includes_wall_time_waits": false
+    },
+    "status": "recorded_public_frames",
+    "episode": "demo_0",
+    "file_complete": true,
+    "initial_simulation_time_s": 1.5250000795349479,
+    "final_simulation_time_s": 1.6750000873580575
+  },
+  "milestone_path": {
+    "evaluation_valid": true,
+    "award_batches": [],
+    "success_events": [],
+    "time_origin_public_simulation_s": 1.5250000795349479,
+    "time_basis": "episode evaluation clock begins after reset; physics_tick/12 is transition boundary",
+    "order_rule": "different ticks chronological; same-tick awards unordered"
+  }
+}
