@@ -190,6 +190,103 @@ class CollectionReportTest(unittest.TestCase):
         self.assertEqual(manifest['attempt']['actor_usage_scope'], 'legacy_unverified')
         self.assertIn('정확한 총량·턴별 사용량으로 사용하지 않습니다', (self.output/'README.ko.md').read_text())
 
+    def make_settle_trace(self):
+        self.make_trace()
+        path = self.trace / 'attempt.json'
+        attempt = json.loads(path.read_text())
+        attempt.update(actor_calls_attempted=1, decisions_completed=1,
+                       post_action_settle={'enabled': True, 'requested_steps': 6,
+                           'trigger': 'nonzero_motion_act', 'segments_completed': 1,
+                           'simulation_steps': 2, 'environment_dispatch_wall_s': .4,
+                           'budget_capped_segments': 1, 'budget_skipped_segments': 0,
+                           'private': 'never-export-geometry'})
+        path.write_text(json.dumps(attempt))
+        events = [json.loads(line) for line in (self.trace / 'decisions.jsonl').read_text().splitlines()]
+        events[0].update(model_call_index=0, model_invoked=True)
+        events[0]['decision']['steps'] = 1
+        events[1].update(model_call_index=0, model_invoked=True, end_step=1,
+                         simulation_end_s=1.55, requested_steps=1, actual_steps=1)
+        events.append({'type': 'applied_segment', 'segment_id': 'test-wiring:settle-00000',
+            'decision_index': 0, 'model_call_index': 0, 'action_source': 'controller_settle',
+            'model_invoked': False, 'start_step': 1, 'end_step': 3,
+            'simulation_start_s': 1.55, 'simulation_end_s': 1.65,
+            'observation_simulation_time_s': 1.55, 'environment_dispatch_wall_s': .4,
+            'stage_intent': 'preparation', 'visual_assessment': 'uncertain',
+            'assessment_source': 'supervisor_public_action_rule', 'quality_status': 'unreviewed',
+            'requested_steps': 2, 'actual_steps': 2, 'applied_action': [[0.] * 9 for _ in range(2)],
+            'official_score': None, 'reasoning': 'never-export-hidden-reasoning',
+            'private_path': '/home/private-auth.json'})
+        (self.trace / 'decisions.jsonl').write_text(''.join(json.dumps(e)+'\n' for e in events))
+        return events
+
+    def test_controller_settle_keeps_model_action_and_all_transitions_without_extra_call(self):
+        self.make_settle_trace(); self.make_capture()
+        manifest = export_report(self.trace, self.capture, self.output)
+        public = [json.loads(line) for line in (self.output / 'decisions.jsonl').read_text().splitlines()]
+        self.assertEqual([e['type'] for e in public], ['decision', 'applied_segment', 'applied_segment'])
+        movement, settle = public[1:]
+        self.assertEqual((movement['start_step'], movement['end_step']), (0, 1))
+        self.assertEqual((settle['start_step'], settle['end_step']), (1, 3))
+        self.assertEqual(sum(e['actual_steps'] for e in public[1:]), 3)
+        self.assertEqual(movement['applied_action'], public[0]['decision']['action'])
+        self.assertNotEqual(movement['applied_action'], settle['applied_action'])
+        self.assertEqual(settle['applied_action'], [[0.] * 9 for _ in range(2)])
+        self.assertFalse(settle['model_invoked'])
+        self.assertEqual(settle['decision_index'], movement['decision_index'])
+        self.assertEqual(settle['model_call_index'], 0)
+        self.assertNotIn('usage', settle)
+        self.assertEqual(manifest['attempt']['actor_calls_attempted'], 1)
+        self.assertEqual(manifest['attempt']['decisions_completed'], 1)
+        self.assertEqual(manifest['attempt']['actor_usage']['input_tokens'], 100)
+        self.assertEqual(manifest['attempt']['post_action_settle'], {
+            'enabled': True, 'requested_steps': 6, 'trigger': 'nonzero_motion_act',
+            'segments_completed': 1, 'simulation_steps': 2, 'environment_dispatch_wall_s': .4,
+            'budget_capped_segments': 1, 'budget_skipped_segments': 0})
+        readme = (self.output / 'README.ko.md').read_text()
+        self.assertEqual(readme.count('### 결정 '), 1)
+        self.assertEqual(readme.count('### 제어기 정착 대기'), 1)
+        self.assertLess(readme.index('step **[0, 1)**'), readme.index('### 제어기 정착 대기'))
+        self.assertIn('step **[1, 3)**', readme)
+        self.assertIn('연결 결정 0', readme)
+        self.assertIn('`test-wiring:settle-00000`', readme)
+        self.assertIn('`controller_settle`', readme)
+        self.assertIn('앞선 모델 호출 인덱스 0', readme)
+        self.assertIn('공개 simulation clock 1.550→1.650초', readme)
+        self.assertIn('| 모델 호출 시도 수 | 1.000 |', readme)
+        self.assertIn('| 완료한 결정 구간 수 | 1.000 |', readme)
+        self.assertIn('| 제어기 정착 전이 수 | 2.000 |', readme)
+        texts = '\n'.join(p.read_text() for p in self.output.iterdir()
+                          if p.suffix in ('.json', '.jsonl', '.md', '.txt'))
+        for private in ('never-export-geometry', 'never-export-hidden-reasoning', '/home/private-auth.json'):
+            self.assertNotIn(private, texts)
+
+    def test_controller_settle_rejects_model_invocation_or_nonneutral_action(self):
+        for field in ('model_invoked', 'applied_action'):
+            with self.subTest(field=field):
+                events = self.make_settle_trace()
+                if field == 'model_invoked':
+                    events[-1][field] = True
+                else:
+                    events[-1][field][0][-1] = 1.
+                (self.trace / 'decisions.jsonl').write_text(''.join(json.dumps(e)+'\n' for e in events))
+                with self.assertRaisesRegex(ValueError, 'controller settle must'):
+                    export_report(self.trace, self.capture, self.output)
+                self.assertFalse(self.output.exists())
+
+    def test_multiple_applied_segments_for_one_decision_are_not_overwritten(self):
+        self.make_trace()
+        path = self.trace / 'decisions.jsonl'
+        events = [json.loads(line) for line in path.read_text().splitlines()]
+        events[1].update(end_step=1, requested_steps=1, actual_steps=1)
+        events.append(dict(events[1], segment_id='test-wiring:00000-part2',
+                           start_step=1, end_step=3, requested_steps=2, actual_steps=2))
+        path.write_text(''.join(json.dumps(e)+'\n' for e in events))
+        manifest = export_report(self.trace, self.capture, self.output)
+        readme = (self.output / 'README.ko.md').read_text()
+        self.assertLess(readme.index('step **[0, 1)**'), readme.index('step **[1, 3)**'))
+        self.assertNotIn('제어기 정착', readme)
+        self.assertNotIn('post_action_settle', manifest['attempt'])
+
     def test_fixed_plan_keeps_input_and_execution_observations_and_discarded_suffix(self):
         self.make_trace(); self.make_capture()
         ledger, raw, record, _ = self.accounting()

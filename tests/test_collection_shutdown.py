@@ -12,6 +12,7 @@ from types import SimpleNamespace
 import unittest
 from unittest import mock
 
+import h5py
 import numpy as np
 
 from participant.collection import codex_actor, codex_client
@@ -49,6 +50,70 @@ raise SystemExit(collector.main())
 
 
 class CollectionShutdownTest(unittest.TestCase):
+    def test_sigterm_during_settle_ack_preserves_real_recorded_boundaries(self):
+        repository = Path(__file__).resolve().parents[1]
+        transport = codex_client.Simulator
+        previous_handlers = {sig: signal.getsignal(sig) for sig in (signal.SIGTERM, signal.SIGINT)}
+        # The first model act lasts two steps; interrupt inside the following neutral act.
+        collector = COLLECTOR.replace('if not self.sent:', 'if self.t >= .1 and not self.sent:')
+        collector = collector.replace('super().__init__()',
+            'super().__init__()\n        self.contract["default_dimensions"].update(height=256, width=256)')
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            run_id = 'cpu-settle-shutdown'
+            collection = root / 'output/collections' / run_id
+
+            class CPUSimulator(transport):
+                def __init__(self, command, root, log):
+                    super().__init__([sys.executable, '-c', collector, str(collection)],
+                                     repository, log, timeout_s=15)
+
+            action = np.zeros((2, 9), np.float32)
+            action[:, 3], action[:, 8] = .03, 1
+            result = {'decision': {'tool': 'act', 'action': action.tolist(), 'steps': 2,
+                                  'stage': 'preparation', 'visual_assessment': 'uncertain',
+                                  'reason': 'CPU synthetic movement before neutral wait.'},
+                      'wall_s': .01, 'usage': {}, 'session_id': 'test'}
+            argv = ['client', '--run-id', run_id, '--mode', 'dressing',
+                    '--post-action-settle-steps', '6', '--max-steps', '40']
+            try:
+                with mock.patch.object(codex_client, '__file__', str(root / 'participant/collection/client.py')), \
+                     mock.patch.object(codex_client, 'Simulator', CPUSimulator), \
+                     mock.patch.object(codex_client, 'source_snapshot', return_value={}), \
+                     mock.patch.object(codex_client, 'official_review_points', return_value=0), \
+                     mock.patch('participant.collection.milestones.write_index'), \
+                     mock.patch.object(codex_actor, 'Actor') as actor, \
+                     mock.patch.object(sys, 'argv', argv), mock.patch('builtins.print'):
+                    actor.return_value.invoke.return_value = result
+                    with self.assertRaisesRegex(KeyboardInterrupt, 'SIGTERM'):
+                        codex_client.main()
+                    actor.return_value.invoke.assert_called_once()
+            finally:
+                for sig, handler in previous_handlers.items():
+                    signal.signal(sig, handler)
+
+            trace = root / 'output/operator-traces' / run_id
+            attempt = json.loads((trace / 'attempt.json').read_text())
+            self.assertEqual(attempt['status'], 'interrupted')
+            self.assertTrue(attempt['finished'])
+            self.assertTrue(attempt['capture_complete'])
+            self.assertNotIn('shutdown_error', attempt)
+            self.assertEqual(attempt['post_action_settle']['simulation_steps'], 6)
+            self.assertEqual(attempt['acknowledged_simulation_steps'], 9)
+            self.assertEqual(attempt['recorded_simulation_steps'], 9)
+            protocol = [json.loads(line) for line in (collection / 'operator.jsonl').read_text().splitlines()]
+            accepted = [event['request'] for event in protocol if event['event'] == 'request_accepted']
+            self.assertEqual([r['tool'] for r in accepted], ['act', 'act', 'stop', 'finish_episode'])
+            self.assertEqual([r['observation_step'] for r in accepted], [0, 2, 8, 9])
+            self.assertEqual(len({r['request_id'] for r in accepted}), 4)
+            with h5py.File(collection / 'policy.hdf5') as stream:
+                recorded = stream['data/demo_0/actions'][:].reshape(-1, 2, 9)
+                np.testing.assert_array_equal(recorded[:2], np.repeat(action[None], 2, axis=0))
+                np.testing.assert_array_equal(recorded[2:], np.zeros((7, 2, 9), np.float32))
+            report = validate_capture(collection)
+            self.assertTrue(report['quality_passed'], report)
+            self.assertEqual(report['validated_transitions'], 9)
+
     def test_sigterm_while_waiting_for_replay_ack_finishes_real_files(self):
         repository = Path(__file__).resolve().parents[1]
         transport = codex_client.Simulator

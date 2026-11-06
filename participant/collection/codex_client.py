@@ -455,6 +455,8 @@ def main():
     parser.add_argument('--webrtc', action='store_true')
     parser.add_argument('--wrist-depth-panel', action='store_true',
                         help='Append one fixed-range CURRENT wrist depth image after all RGB; default off')
+    parser.add_argument('--post-action-settle-steps', type=int, default=0,
+                        help='After a motion act, apply 0..20 neutral control steps before observing again')
     args = parser.parse_args()
     if not re.fullmatch(r'[a-zA-Z0-9][a-zA-Z0-9_.-]{0,119}', args.run_id):
         parser.error('run-id must be a safe unique name')
@@ -462,6 +464,10 @@ def main():
         parser.error('decision/step budget out of range')
     if not 1 <= args.plan_size <= 3 or not 1 <= args.plan_step_budget <= 60:
         parser.error('plan size must be 1..3 and step budget 1..60')
+    if not 0 <= args.post_action_settle_steps <= 20:
+        parser.error('post-action-settle-steps must be 0..20')
+    if args.post_action_settle_steps and (args.mode == 'wiring' or args.plan_size != 1):
+        parser.error('post-action settling requires a non-wiring mode and plan-size=1')
     if not math.isfinite(args.pickup_hold_seconds) or not 3 <= args.pickup_hold_seconds <= 10:
         parser.error('pickup hold target must be finite, 3..10 simulation seconds')
     if not 5 <= args.review_points <= 50:
@@ -515,6 +521,20 @@ def main():
         task += '\n\n' + HEM_ROUTE_TASK
     if args.plan_size > 1:
         task += '\n\n' + PLAN_TASK.format(max_segments=args.plan_size, max_total_steps=args.plan_step_budget)
+    if args.post_action_settle_steps:
+        task += (f'\n\nAfter each act with any nonzero value in the first eight motion channels, '
+                 f'the supervisor applies up to {args.post_action_settle_steps} additional all-zero '
+                 f'control steps ({args.post_action_settle_steps / 20:g} simulation seconds), bounded '
+                 'by the remaining episode budget, before your next observation. These are separate '
+                 'supervisor actions, not extra model decisions. All nine channels are zero: motion '
+                 'target increments stop, base velocity commands become zero, and gripper zero '
+                 'preserves the previous grip intent. Existing joint position targets persist and '
+                 'the robot may continue moving toward them; this finite wait does not guarantee '
+                 'that joints or cloth have stopped or reached their targets. Assess the latest '
+                 'public measured state and views. No extra wait follows gripper-only or neutral '
+                 'acts, stop, finish_episode, or the replay prefix. Episode termination or a '
+                 'collector stop can omit or shorten the wait. Physics remains paused during '
+                 'model reasoning.')
     if replay is not None:
         task += ('\n\nA prefix of previously recorded permitted actions has already been executed '
                  'in this fresh episode. You are a fresh actor. Inspect the CURRENT public observations '
@@ -592,6 +612,13 @@ def main():
         manifest['input_profile'] += '_with_current_wrist_depth_panel'
         manifest['wrist_depth_panel'] = {'enabled': True, 'delivery': 'last_image_each_model_call',
                                          'model_inputs': []}
+    if args.post_action_settle_steps:
+        manifest['post_action_settle'] = {
+            'enabled': True, 'requested_steps': args.post_action_settle_steps,
+            'trigger': 'nonzero_motion_act', 'segments_completed': 0, 'simulation_steps': 0,
+            'environment_dispatch_wall_s': 0.0,
+            'budget_capped_segments': 0, 'budget_skipped_segments': 0,
+        }
     token_usage = TokenUsageAccounting()
     token_usage.update_manifest(manifest)
     manifest['source_snapshot'] = source_snapshot(root, trace)
@@ -851,6 +878,54 @@ def main():
                 check_review_gate()
                 if finished or stop_reason == 'review_points':
                     break
+                if args.post_action_settle_steps and tool == 'act' and np.any(action[:, :8] != 0):
+                    settle = manifest['post_action_settle']
+                    remaining = max(0, args.max_steps - manifest['simulation_steps'])
+                    requested_steps = min(args.post_action_settle_steps, remaining)
+                    if requested_steps == 0:
+                        settle['budget_skipped_segments'] += 1
+                        stop_reason = 'step_budget'
+                        dump(trace / 'attempt.json', manifest)
+                        break
+                    if requested_steps < args.post_action_settle_steps:
+                        settle['budget_capped_segments'] += 1
+                    check_interrupt()
+                    neutral = np.zeros((2, 9), dtype=np.float32)
+                    before = float(obs['simulation_time_s'])
+                    manifest['activity'] = 'controller_settle'
+                    dump(trace / 'attempt.json', manifest)
+                    t = time.monotonic()
+                    value = sim.dispatch('act', {'action': neutral.tolist(), 'steps': requested_steps})
+                    elapsed = time.monotonic() - t
+                    manifest['environment_dispatch_wall_s'] += elapsed
+                    settle['environment_dispatch_wall_s'] += elapsed
+                    obs, active = value['observation'], value.get('active', True)
+                    finished = not active
+                    after = float(obs['simulation_time_s'])
+                    steps = round((after - before) * 20)
+                    manifest['simulation_steps'] += steps
+                    settle['simulation_steps'] += steps
+                    settle['segments_completed'] += 1
+                    event({'type': 'applied_segment', 'segment_id': f'{args.run_id}:settle-{index:05d}',
+                           'decision_index': index, 'model_call_index': plan_meta['model_call_index'],
+                           'model_invoked': False, 'action_source': 'controller_settle',
+                           'start_step': manifest['simulation_steps'] - steps,
+                           'end_step': manifest['simulation_steps'],
+                           'simulation_start_s': before, 'simulation_end_s': after,
+                           'observation_simulation_time_s': before,
+                           'environment_dispatch_wall_s': elapsed,
+                           'stage_intent': decision['stage'], 'visual_assessment': 'uncertain',
+                           'assessment_source': 'supervisor_public_action_rule', 'official_score': None,
+                           'requested_steps': requested_steps, 'applied_action': neutral.tolist(),
+                           'actual_steps': steps, 'quality_status': 'unreviewed'})
+                    dump(trace / 'attempt.json', manifest)
+                    check_interrupt()
+                    check_review_gate()
+                    if finished or stop_reason == 'review_points':
+                        break
+                    if manifest['simulation_steps'] >= args.max_steps:
+                        stop_reason = 'step_budget'
+                        break
             if pending_plan:
                 event({'type': 'plan_suffix_discarded', 'reason': stop_reason if active else 'episode_ended',
                        'segments': [{'plan_id': item[2]['plan_id'],
@@ -858,11 +933,16 @@ def main():
                                     for item in pending_plan]})
                 pending_plan.clear()
             if active:
-                stopped = sim.dispatch('stop')
-                manifest['simulation_steps'] += 1
-                if stopped.get('active', True):
+                neutral_steps = 0
+                if args.post_action_settle_steps and manifest['simulation_steps'] >= args.max_steps:
                     sim.dispatch('finish_episode')
-                event({'type': 'supervisor_stop', 'reason': stop_reason, 'neutral_steps': 1})
+                else:
+                    stopped = sim.dispatch('stop')
+                    neutral_steps = 1
+                    manifest['simulation_steps'] += 1
+                    if stopped.get('active', True):
+                        sim.dispatch('finish_episode')
+                event({'type': 'supervisor_stop', 'reason': stop_reason, 'neutral_steps': neutral_steps})
                 finished, active = True, False
             check_interrupt()
             manifest['status'] = 'review_ready' if stop_reason == 'review_points' else 'completed'
@@ -879,11 +959,16 @@ def main():
             if sim is not None:
                 if active and sim.process.poll() is None:
                     try:
-                        stopped = sim.dispatch('stop')
-                        manifest['simulation_steps'] += 1
-                        if stopped.get('active', True):
+                        neutral_steps = 0
+                        if args.post_action_settle_steps and manifest['simulation_steps'] >= args.max_steps:
                             sim.dispatch('finish_episode')
-                        event({'type': 'supervisor_stop', 'reason': manifest['status'], 'neutral_steps': 1})
+                        else:
+                            stopped = sim.dispatch('stop')
+                            neutral_steps = 1
+                            manifest['simulation_steps'] += 1
+                            if stopped.get('active', True):
+                                sim.dispatch('finish_episode')
+                        event({'type': 'supervisor_stop', 'reason': manifest['status'], 'neutral_steps': neutral_steps})
                         finished, active = True, False
                     except Exception as exc:
                         manifest['shutdown_error'] = str(exc)

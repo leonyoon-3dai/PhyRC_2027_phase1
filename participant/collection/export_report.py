@@ -208,6 +208,13 @@ def public_attempt(value):
             'source_end_step_exclusive': integer, 'bitwise_physics_restored': boolean,
             'fresh_actor': boolean, 'replay_validation': identifier,
         })
+    if 'post_action_settle' in value:
+        result['post_action_settle'] = select(value['post_action_settle'], {
+            'enabled': boolean, 'requested_steps': integer, 'trigger': identifier,
+            'segments_completed': integer, 'simulation_steps': integer,
+            'environment_dispatch_wall_s': duration, 'budget_capped_segments': integer,
+            'budget_skipped_segments': integer,
+        })
     result['error'] = safe_error(value.get('error'))
     result['actor_usage'] = token_counts(value.get('actor_usage', {}))
     result['actor_usage_scope'] = 'legacy_unverified'
@@ -263,6 +270,12 @@ def public_events(path):
                     'stage_intent': identifier, 'visual_assessment': identifier, 'assessment_source': identifier,
                     'requested_steps': integer, 'applied_action': action, 'actual_steps': integer,
                     'quality_status': identifier, 'action_source': identifier, **PLAN_FIELDS})
+                if row.get('action_source') == 'controller_settle':
+                    if row.get('model_invoked') is not False:
+                        raise ValueError('controller settle must not invoke a model')
+                    if ('applied_action' not in row or row['applied_action'] is None
+                            or any(v != 0 for arm in row['applied_action'] for v in arm)):
+                        raise ValueError('controller settle must apply a neutral action')
             elif kind == 'replayed_segment':
                 row = select(value, {'type': identifier, 'action_source': identifier,
                     'source_run_id': identifier, 'source_start_step': integer,
@@ -503,6 +516,17 @@ def write_readme(output, manifest, events):
         facts.append(('한 호출의 최대 계획 구간 수', attempt['plan_size']))
     if 'plan_step_budget' in attempt:
         facts.append(('한 계획의 최대 제어 step 수', attempt['plan_step_budget']))
+    settle = attempt.get('post_action_settle')
+    if settle is not None:
+        facts.extend([
+            ('제어기 정착 대기 설정', settle.get('enabled')),
+            ('정착 대기 요청 step 수', settle.get('requested_steps')),
+            ('완료한 제어기 정착 구간 수', settle.get('segments_completed')),
+            ('제어기 정착 전이 수', settle.get('simulation_steps')),
+            ('제어기 정착 환경 요청·응답 (초)', settle.get('environment_dispatch_wall_s')),
+            ('전이 예산으로 단축한 정착 구간 수', settle.get('budget_capped_segments')),
+            ('전이 예산으로 건너뛴 정착 구간 수', settle.get('budget_skipped_segments')),
+        ])
     rows.extend(f'| {key} | {fmt(value)} |' for key, value in facts)
     rows += ['', 'Actor 호출 시간은 공개 입력 저장·요청 전송·응답 처리 등 호출 경로를 측정합니다. '
              '방식에 따라 Docker/CLI 시작이 호출 안에 들어가거나 상주 서버 준비 시간으로 분리됩니다. '
@@ -579,7 +603,18 @@ def write_readme(output, manifest, events):
                  '한 모델 응답의 여러 구간을 순서대로 실행하며 목록 중간에 새 모델 판단이나 관측 조건 분기를 수행하지 않습니다. '
                  '20Hz 저장과 각 구간의 최신 관측 기록이 모델의 20Hz 피드백을 뜻하지 않습니다. '
                  '모델 입력 관측 시각과 구간 실행 직전 관측 시각을 따로 표시합니다.', '']
-    segments = {e['decision_index']: e for e in events if e['type'] == 'applied_segment'}
+    # A controller settle shares its preceding decision's index, but is not
+    # that decision's requested action. Keep every acknowledged action segment
+    # and render controller-generated segments separately in event order.
+    segments = {}
+    for event in events:
+        if event['type'] == 'applied_segment' and event.get('action_source') != 'controller_settle':
+            segments.setdefault(event['decision_index'], []).append(event)
+    if any(e.get('action_source') == 'controller_settle' for e in events):
+        rows += ['제어기 정착 대기는 앞선 모델 결정에 연결된 별도 중립 행동입니다. '
+                 '추가 모델 호출이나 모델 결정으로 집계하지 않으며, 실제 전이와 환경 요청·응답 시간은 전체 합계에 포함됩니다. '
+                 '중립 행동은 두 로봇의 속도와 gripper 명령을 모두 0으로 보내 기존 gripper 의도를 유지합니다. '
+                 '대기를 실행했다는 기록이 옷의 정착이나 과제 개선을 확인했다는 뜻은 아닙니다.', '']
     replayed = [e for e in events if e['type'] == 'replayed_segment']
     if replayed:
         rows += ['### 기록된 행동의 재실행 구간', '',
@@ -592,7 +627,7 @@ def write_readme(output, manifest, events):
         kind = event['type']
         if kind == 'decision':
             decision, i = event['decision'], event['decision_index']
-            segment = segments.get(i)
+            applied = segments.get(i, [])
             rows += [f"### 결정 {i} · {STAGES.get(decision.get('stage'), decision.get('stage'))} · `{decision.get('tool')}`", '',
                      f"입력 관측 {fmt(event.get('observation_simulation_time_s'))}초 · Actor 호출 {fmt(event.get('wall_s'))}초 · "
                      f"시각적 판단 `{markdown(decision.get('visual_assessment'))}`.", '']
@@ -611,13 +646,27 @@ def write_readme(output, manifest, events):
                          f"출력 {(usage.get('incremental_usage') or {}).get('output_tokens', '미확정')} 토큰.", '']
             rows += [f"최종 응답의 행동 설명: {markdown(decision.get('reason', ''))}", '',
                      '요청 행동:', '', '```json', json.dumps(decision.get('action'), ensure_ascii=False), '```', '']
-            if segment:
+            for segment in applied:
                 rows += [f"실행 구간 step **[{segment.get('start_step')}, {segment.get('end_step')})** · "
                          f"요청 {segment.get('requested_steps')} step / 실제 {segment.get('actual_steps')} step · "
                          f"환경 요청·응답 {fmt(segment.get('environment_dispatch_wall_s'))}초.", '',
                          '실제 적용 행동:', '', '```json', json.dumps(segment.get('applied_action'), ensure_ascii=False), '```', '']
-            else:
+            if not applied:
                 rows += ['대응하는 실행 완료 응답이 없습니다. 행동이 적용되었다고 확정하지 않습니다.', '']
+        elif kind == 'applied_segment' and event.get('action_source') == 'controller_settle':
+            rows += [f"### 제어기 정착 대기 · 연결 결정 {event.get('decision_index')}", '',
+                     f"구간 `{markdown(event.get('segment_id'))}` · 출처 `{markdown(event.get('action_source'))}` · "
+                     f"이 구간에서 모델 호출 `{fmt(event.get('model_invoked'))}`.", '']
+            if 'model_call_index' in event:
+                rows += [f"앞선 모델 호출 인덱스 {event['model_call_index']}에 연결됩니다. 추가 호출은 없습니다.", '']
+            rows += [f"실행 구간 step **[{event.get('start_step')}, {event.get('end_step')})** · "
+                     f"요청 {event.get('requested_steps')} step / 실제 {event.get('actual_steps')} step · "
+                     f"환경 요청·응답 {fmt(event.get('environment_dispatch_wall_s'))}초.", '',
+                     f"공개 simulation clock {fmt(event.get('simulation_start_s'))}→"
+                     f"{fmt(event.get('simulation_end_s'))}초 · "
+                     f"실행 전 관측 {fmt(event.get('observation_simulation_time_s'))}초.", '',
+                     '실제 적용 중립 행동:', '', '```json',
+                     json.dumps(event.get('applied_action'), ensure_ascii=False), '```', '']
         elif kind == 'model_error':
             rows += [f"### 호출 실패 · 결정 {event.get('decision_index')}", '',
                      f"오류 종류 `{markdown(event.get('error_type'))}` · 사용 시간 {fmt(event.get('actor_call_wall_s'))}초.", '',
