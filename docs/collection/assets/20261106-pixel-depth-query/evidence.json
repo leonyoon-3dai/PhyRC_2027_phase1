@@ -1,0 +1,1107 @@
+{
+  "schema": "phyrc-public-pixel-depth-feasibility-v1",
+  "status": "offline_prototype_not_applied",
+  "source_run": "20261106-astra-hem-depth-001",
+  "source_closed": true,
+  "integration_applied": false,
+  "depth_semantics": "optical_Z_metres",
+  "camera_axes": "X_right_Y_down_Z_forward",
+  "camera_range_definition": "norm_XYZ",
+  "pixel_convention": "zero_based_u_column_v_row_no_half_pixel_offset",
+  "validation": {
+    "cpu_unit_tests_passed": 13,
+    "wrist_arrays": 6,
+    "exact_samples_checked": 48,
+    "valid_samples": 30,
+    "invalid_samples": 18,
+    "source_files_unchanged": true,
+    "cpu_wall_s": 0.05483586800073681,
+    "model_calls": 0,
+    "gpu_calls": 0,
+    "hdf5_read": false,
+    "audit_read": false,
+    "evaluation_used": false
+  },
+  "implementation_sha256": {
+    "prototype_sha256": "2689c72040223dadf75676c062f1597d11e2898af101831afbb8cc6fe2c42b88",
+    "reused_module_sha256": "623917e7d0af29ed891a028f4d86d52048035217c10cd185a13604b99573684a",
+    "request_schema_sha256": "0f45ce95e9f78fc4a8a2fa91951ccd5cf3b3a00b024a24057621a76406827041"
+  },
+  "source_evidence_sha256": {
+    "validation-summary.json": "9a92db09dcff7f83cf120c58fe7b5cc10e526f8764e4262673c460fe3eb1a149",
+    "closed-e13-exact-sample-checks.json": "1b6b0af85864f842004effe65f0663363106b370ad28402195d82089b62cd6fc",
+    "closed-e13-same-camera-candidates.json": "fe1ab984a115080d1d958430ac3a6a604b2048250cc510d8ebdf1cf00a924a80",
+    "test-results.txt": "51aa0fb0d37f594ada26de1415fa4d0ed53d94de6793ac85feea105160e3a27a"
+  },
+  "wrist_samples": [
+    {
+      "observation_index": 0,
+      "observation_id": "1e8e3df9d9b2e19f203363f6a06dad7ce22634f751c5e78489b133e2463ba9fe",
+      "camera": "robot_0_wrist",
+      "camera_index": 1,
+      "rgb_image_order": [
+        "overview",
+        "robot_0_wrist",
+        "robot_1_wrist",
+        "robot_0_head",
+        "robot_1_head"
+      ],
+      "simulation_time_s": 36.525001904927194,
+      "resolution_wh": [
+        256,
+        256
+      ],
+      "source_sha256": {
+        "observation_json": "c4386992f47ad6ccd5b73c1d4975581f9d7968abbc350b9e9ecb5bb9114a04b4",
+        "public_depth_npz": "16e4fb4d6d8561e668e5174f4326f0b1dd3a4afa1d5d63975a77d93cb99d7b7d",
+        "first_actor_public_prompt": "93a903a36b7385704abfcc2d49541152e06d828905ab17a2faac06d58c31c5b0",
+        "robot_0_wrist_rgb": "971be6683b79aa98e73d7fa2ea19c4a66850fb1b9c8e4932363af02ccf05dcc7"
+      },
+      "intrinsics_sha256": "3dd91a2df5cb0a47b6f5ceb86d60d41e1f5d6753d2a11a034ac0b52bc385cd23",
+      "request_sha256": "d32288fd0c03bbb250412ba010c187517aedb79096ed91fbded4665740cbf12f",
+      "samples": [
+        {
+          "pixel_uv": [
+            0,
+            0
+          ],
+          "status": "invalid",
+          "optical_z_m": null,
+          "invalid_reasons": [
+            "center_mask_invalid",
+            "center_nonpositive"
+          ],
+          "camera_xyz_m": null,
+          "camera_range_m": null
+        },
+        {
+          "pixel_uv": [
+            255,
+            0
+          ],
+          "status": "invalid",
+          "optical_z_m": null,
+          "invalid_reasons": [
+            "center_mask_invalid",
+            "center_nonpositive"
+          ],
+          "camera_xyz_m": null,
+          "camera_range_m": null
+        },
+        {
+          "pixel_uv": [
+            0,
+            255
+          ],
+          "status": "valid",
+          "optical_z_m": 0.40728387236595154,
+          "invalid_reasons": [],
+          "camera_xyz_m": [
+            -0.2851832376218805,
+            0.2829552435779596,
+            0.40728387236595154
+          ],
+          "camera_range_m": 0.5720780554943226
+        },
+        {
+          "pixel_uv": [
+            255,
+            255
+          ],
+          "status": "valid",
+          "optical_z_m": 1.4057214260101318,
+          "invalid_reasons": [],
+          "camera_xyz_m": [
+            0.9766069208408595,
+            0.9766069208408595,
+            1.4057214260101318
+          ],
+          "camera_range_m": 1.970678787426426
+        },
+        {
+          "pixel_uv": [
+            128,
+            128
+          ],
+          "status": "valid",
+          "optical_z_m": 0.22176077961921692,
+          "invalid_reasons": [],
+          "camera_xyz_m": [
+            0.0,
+            0.0,
+            0.22176077961921692
+          ],
+          "camera_range_m": 0.22176077961921692
+        },
+        {
+          "pixel_uv": [
+            64,
+            192
+          ],
+          "status": "valid",
+          "optical_z_m": 0.3832397162914276,
+          "invalid_reasons": [],
+          "camera_xyz_m": [
+            -0.13417366914430406,
+            0.13417366914430406,
+            0.3832397162914276
+          ],
+          "camera_range_m": 0.4276421718287665
+        },
+        {
+          "pixel_uv": [
+            192,
+            192
+          ],
+          "status": "valid",
+          "optical_z_m": 2.110511302947998,
+          "invalid_reasons": [],
+          "camera_xyz_m": [
+            0.7388979619004923,
+            0.7388979619004923,
+            2.110511302947998
+          ],
+          "camera_range_m": 2.355036805672612
+        },
+        {
+          "pixel_uv": [
+            128,
+            64
+          ],
+          "status": "invalid",
+          "optical_z_m": null,
+          "invalid_reasons": [
+            "center_mask_invalid",
+            "center_nonpositive"
+          ],
+          "camera_xyz_m": null,
+          "camera_range_m": null
+        }
+      ]
+    },
+    {
+      "observation_index": 0,
+      "observation_id": "1e8e3df9d9b2e19f203363f6a06dad7ce22634f751c5e78489b133e2463ba9fe",
+      "camera": "robot_1_wrist",
+      "camera_index": 2,
+      "rgb_image_order": [
+        "overview",
+        "robot_0_wrist",
+        "robot_1_wrist",
+        "robot_0_head",
+        "robot_1_head"
+      ],
+      "simulation_time_s": 36.525001904927194,
+      "resolution_wh": [
+        256,
+        256
+      ],
+      "source_sha256": {
+        "observation_json": "c4386992f47ad6ccd5b73c1d4975581f9d7968abbc350b9e9ecb5bb9114a04b4",
+        "public_depth_npz": "16e4fb4d6d8561e668e5174f4326f0b1dd3a4afa1d5d63975a77d93cb99d7b7d",
+        "first_actor_public_prompt": "93a903a36b7385704abfcc2d49541152e06d828905ab17a2faac06d58c31c5b0",
+        "robot_1_wrist_rgb": "e4f8517c52fa1eb8152e03929be3b6195ac818e6220ade4a1a24b9e9731f745e"
+      },
+      "intrinsics_sha256": "3dd91a2df5cb0a47b6f5ceb86d60d41e1f5d6753d2a11a034ac0b52bc385cd23",
+      "request_sha256": "e97cabb697e93fd4487fe49b02c5c6a68c214a011fb41d43e9729f7212a0fbc7",
+      "samples": [
+        {
+          "pixel_uv": [
+            0,
+            0
+          ],
+          "status": "invalid",
+          "optical_z_m": null,
+          "invalid_reasons": [
+            "center_mask_invalid",
+            "center_nonpositive"
+          ],
+          "camera_xyz_m": null,
+          "camera_range_m": null
+        },
+        {
+          "pixel_uv": [
+            255,
+            0
+          ],
+          "status": "invalid",
+          "optical_z_m": null,
+          "invalid_reasons": [
+            "center_mask_invalid",
+            "center_nonpositive"
+          ],
+          "camera_xyz_m": null,
+          "camera_range_m": null
+        },
+        {
+          "pixel_uv": [
+            0,
+            255
+          ],
+          "status": "valid",
+          "optical_z_m": 1.397092580795288,
+          "invalid_reasons": [],
+          "camera_xyz_m": [
+            -0.9782547566497186,
+            0.9706121413633927,
+            1.397092580795288
+          ],
+          "camera_range_m": 1.9623806911970647
+        },
+        {
+          "pixel_uv": [
+            255,
+            255
+          ],
+          "status": "valid",
+          "optical_z_m": 0.4057379364967346,
+          "invalid_reasons": [],
+          "camera_xyz_m": [
+            0.28188122447209835,
+            0.28188122447209835,
+            0.4057379364967346
+          ],
+          "camera_range_m": 0.5688034129050276
+        },
+        {
+          "pixel_uv": [
+            128,
+            128
+          ],
+          "status": "valid",
+          "optical_z_m": 0.2262689471244812,
+          "invalid_reasons": [],
+          "camera_xyz_m": [
+            0.0,
+            0.0,
+            0.2262689471244812
+          ],
+          "camera_range_m": 0.2262689471244812
+        },
+        {
+          "pixel_uv": [
+            64,
+            192
+          ],
+          "status": "valid",
+          "optical_z_m": 0.9597997069358826,
+          "invalid_reasons": [],
+          "camera_xyz_m": [
+            -0.3360294949839876,
+            0.3360294949839876,
+            0.9597997069358826
+          ],
+          "camera_range_m": 1.0710028573410033
+        },
+        {
+          "pixel_uv": [
+            192,
+            192
+          ],
+          "status": "valid",
+          "optical_z_m": 0.23871946334838867,
+          "invalid_reasons": [],
+          "camera_xyz_m": [
+            0.08357658387695913,
+            0.08357658387695913,
+            0.23871946334838867
+          ],
+          "camera_range_m": 0.26637768849216226
+        },
+        {
+          "pixel_uv": [
+            128,
+            64
+          ],
+          "status": "invalid",
+          "optical_z_m": null,
+          "invalid_reasons": [
+            "center_mask_invalid",
+            "center_nonpositive"
+          ],
+          "camera_xyz_m": null,
+          "camera_range_m": null
+        }
+      ]
+    },
+    {
+      "observation_index": 8,
+      "observation_id": "33a56a9208d1a2bd884397a09ac58957e3f8d304ae2d113e315652acd45aad78",
+      "camera": "robot_0_wrist",
+      "camera_index": 1,
+      "rgb_image_order": [
+        "overview",
+        "robot_0_wrist",
+        "robot_1_wrist",
+        "robot_0_head",
+        "robot_1_head"
+      ],
+      "simulation_time_s": 39.12500204052776,
+      "resolution_wh": [
+        256,
+        256
+      ],
+      "source_sha256": {
+        "observation_json": "9e652d8cf9ea7bca293e2557bbda62a6fc3efc6e40dc83e6d655cfc10b831ed5",
+        "public_depth_npz": "96974a53890120eb7ac408d22d35191d1c6fca2fe20af6b93c17fd20339a8bc2",
+        "first_actor_public_prompt": "93a903a36b7385704abfcc2d49541152e06d828905ab17a2faac06d58c31c5b0",
+        "robot_0_wrist_rgb": "f95dac6a7940986a31d419d81a860e32ddc1fc7b6a54d7f80c1118f094daf31d"
+      },
+      "intrinsics_sha256": "3dd91a2df5cb0a47b6f5ceb86d60d41e1f5d6753d2a11a034ac0b52bc385cd23",
+      "request_sha256": "520a887a5b75c96b6ba84e7cc90b07aebb36670380c3b77daab7581c19bf387a",
+      "samples": [
+        {
+          "pixel_uv": [
+            0,
+            0
+          ],
+          "status": "invalid",
+          "optical_z_m": null,
+          "invalid_reasons": [
+            "center_mask_invalid",
+            "center_nonpositive"
+          ],
+          "camera_xyz_m": null,
+          "camera_range_m": null
+        },
+        {
+          "pixel_uv": [
+            255,
+            0
+          ],
+          "status": "invalid",
+          "optical_z_m": null,
+          "invalid_reasons": [
+            "center_mask_invalid",
+            "center_nonpositive"
+          ],
+          "camera_xyz_m": null,
+          "camera_range_m": null
+        },
+        {
+          "pixel_uv": [
+            0,
+            255
+          ],
+          "status": "valid",
+          "optical_z_m": 0.4245641827583313,
+          "invalid_reasons": [],
+          "camera_xyz_m": [
+            -0.29728304122122845,
+            0.2949605174616876,
+            0.4245641827583313
+          ],
+          "camera_range_m": 0.5963502819151332
+        },
+        {
+          "pixel_uv": [
+            255,
+            255
+          ],
+          "status": "valid",
+          "optical_z_m": 1.3612021207809448,
+          "invalid_reasons": [],
+          "camera_xyz_m": [
+            0.945677704857253,
+            0.945677704857253,
+            1.3612021207809448
+          ],
+          "camera_range_m": 1.9082672392897977
+        },
+        {
+          "pixel_uv": [
+            128,
+            128
+          ],
+          "status": "valid",
+          "optical_z_m": 0.22146153450012207,
+          "invalid_reasons": [],
+          "camera_xyz_m": [
+            0.0,
+            0.0,
+            0.22146153450012207
+          ],
+          "camera_range_m": 0.22146153450012207
+        },
+        {
+          "pixel_uv": [
+            64,
+            192
+          ],
+          "status": "valid",
+          "optical_z_m": 0.38971251249313354,
+          "invalid_reasons": [],
+          "camera_xyz_m": [
+            -0.1364398194911689,
+            0.1364398194911689,
+            0.38971251249313354
+          ],
+          "camera_range_m": 0.43486491129921745
+        },
+        {
+          "pixel_uv": [
+            192,
+            192
+          ],
+          "status": "valid",
+          "optical_z_m": 2.043443202972412,
+          "invalid_reasons": [],
+          "camera_xyz_m": [
+            0.7154171673123384,
+            0.7154171673123384,
+            2.043443202972412
+          ],
+          "camera_range_m": 2.280198142781581
+        },
+        {
+          "pixel_uv": [
+            128,
+            64
+          ],
+          "status": "invalid",
+          "optical_z_m": null,
+          "invalid_reasons": [
+            "center_mask_invalid",
+            "center_nonpositive"
+          ],
+          "camera_xyz_m": null,
+          "camera_range_m": null
+        }
+      ]
+    },
+    {
+      "observation_index": 8,
+      "observation_id": "33a56a9208d1a2bd884397a09ac58957e3f8d304ae2d113e315652acd45aad78",
+      "camera": "robot_1_wrist",
+      "camera_index": 2,
+      "rgb_image_order": [
+        "overview",
+        "robot_0_wrist",
+        "robot_1_wrist",
+        "robot_0_head",
+        "robot_1_head"
+      ],
+      "simulation_time_s": 39.12500204052776,
+      "resolution_wh": [
+        256,
+        256
+      ],
+      "source_sha256": {
+        "observation_json": "9e652d8cf9ea7bca293e2557bbda62a6fc3efc6e40dc83e6d655cfc10b831ed5",
+        "public_depth_npz": "96974a53890120eb7ac408d22d35191d1c6fca2fe20af6b93c17fd20339a8bc2",
+        "first_actor_public_prompt": "93a903a36b7385704abfcc2d49541152e06d828905ab17a2faac06d58c31c5b0",
+        "robot_1_wrist_rgb": "eefbd8ede899746eda60b20c5999d19607933e97e40017eeef691f68342a40b4"
+      },
+      "intrinsics_sha256": "3dd91a2df5cb0a47b6f5ceb86d60d41e1f5d6753d2a11a034ac0b52bc385cd23",
+      "request_sha256": "9cf88c72d665319d601bc81b713252e48527544e379d94e429ef319b05b26a6f",
+      "samples": [
+        {
+          "pixel_uv": [
+            0,
+            0
+          ],
+          "status": "invalid",
+          "optical_z_m": null,
+          "invalid_reasons": [
+            "center_mask_invalid",
+            "center_nonpositive"
+          ],
+          "camera_xyz_m": null,
+          "camera_range_m": null
+        },
+        {
+          "pixel_uv": [
+            255,
+            0
+          ],
+          "status": "invalid",
+          "optical_z_m": null,
+          "invalid_reasons": [
+            "center_mask_invalid",
+            "center_nonpositive"
+          ],
+          "camera_xyz_m": null,
+          "camera_range_m": null
+        },
+        {
+          "pixel_uv": [
+            0,
+            255
+          ],
+          "status": "valid",
+          "optical_z_m": 1.3064650297164917,
+          "invalid_reasons": [],
+          "camera_xyz_m": [
+            -0.9147966622148599,
+            0.9076498132913063,
+            1.3064650297164917
+          ],
+          "camera_range_m": 1.8350836467690799
+        },
+        {
+          "pixel_uv": [
+            255,
+            255
+          ],
+          "status": "valid",
+          "optical_z_m": 0.3736502230167389,
+          "invalid_reasons": [],
+          "camera_xyz_m": [
+            0.25958869731935613,
+            0.25958869731935613,
+            0.3736502230167389
+          ],
+          "camera_range_m": 0.5238196948496489
+        },
+        {
+          "pixel_uv": [
+            128,
+            128
+          ],
+          "status": "valid",
+          "optical_z_m": 0.22630998492240906,
+          "invalid_reasons": [],
+          "camera_xyz_m": [
+            0.0,
+            0.0,
+            0.22630998492240906
+          ],
+          "camera_range_m": 0.22630998492240906
+        },
+        {
+          "pixel_uv": [
+            64,
+            192
+          ],
+          "status": "valid",
+          "optical_z_m": 0.7787618637084961,
+          "invalid_reasons": [],
+          "camera_xyz_m": [
+            -0.27264746371946574,
+            0.27264746371946574,
+            0.7787618637084961
+          ],
+          "camera_range_m": 0.8689898269324244
+        },
+        {
+          "pixel_uv": [
+            192,
+            192
+          ],
+          "status": "valid",
+          "optical_z_m": 0.22584667801856995,
+          "invalid_reasons": [],
+          "camera_xyz_m": [
+            0.0790697732141119,
+            0.0790697732141119,
+            0.22584667801856995
+          ],
+          "camera_range_m": 0.2520134521097749
+        },
+        {
+          "pixel_uv": [
+            128,
+            64
+          ],
+          "status": "invalid",
+          "optical_z_m": null,
+          "invalid_reasons": [
+            "center_mask_invalid",
+            "center_nonpositive"
+          ],
+          "camera_xyz_m": null,
+          "camera_range_m": null
+        }
+      ]
+    },
+    {
+      "observation_index": 9,
+      "observation_id": "ce8b3c0654b9efeef1a5a75ae6664f288b7ba22130921fcb52cbc82fcbaec1fe",
+      "camera": "robot_0_wrist",
+      "camera_index": 1,
+      "rgb_image_order": [
+        "overview",
+        "robot_0_wrist",
+        "robot_1_wrist",
+        "robot_0_head",
+        "robot_1_head"
+      ],
+      "simulation_time_s": 39.42500205617398,
+      "resolution_wh": [
+        256,
+        256
+      ],
+      "source_sha256": {
+        "observation_json": "5d7a34df87d8287749cf15ea93a2374b396a519d2a2af6b1f2db0009e05caf71",
+        "public_depth_npz": "c5b823b79268eb5dc92d87b5cb8d745ae714739a50a915cd082406eb3990bdac",
+        "first_actor_public_prompt": "93a903a36b7385704abfcc2d49541152e06d828905ab17a2faac06d58c31c5b0",
+        "robot_0_wrist_rgb": "f6868853616680c38fa6669e2e43c99e8476933bf55c330ecf01c26c7b9a224a"
+      },
+      "intrinsics_sha256": "3dd91a2df5cb0a47b6f5ceb86d60d41e1f5d6753d2a11a034ac0b52bc385cd23",
+      "request_sha256": "30eff51da19288d8e3d97e29354338b1b573cb4f125c21f55f5e52174c0d7732",
+      "samples": [
+        {
+          "pixel_uv": [
+            0,
+            0
+          ],
+          "status": "invalid",
+          "optical_z_m": null,
+          "invalid_reasons": [
+            "center_mask_invalid",
+            "center_nonpositive"
+          ],
+          "camera_xyz_m": null,
+          "camera_range_m": null
+        },
+        {
+          "pixel_uv": [
+            255,
+            0
+          ],
+          "status": "invalid",
+          "optical_z_m": null,
+          "invalid_reasons": [
+            "center_mask_invalid",
+            "center_nonpositive"
+          ],
+          "camera_xyz_m": null,
+          "camera_range_m": null
+        },
+        {
+          "pixel_uv": [
+            0,
+            255
+          ],
+          "status": "valid",
+          "optical_z_m": 0.44395583868026733,
+          "invalid_reasons": [],
+          "camera_xyz_m": [
+            -0.310861224876137,
+            0.3084326215567922,
+            0.44395583868026733
+          ],
+          "camera_range_m": 0.623588141219978
+        },
+        {
+          "pixel_uv": [
+            255,
+            255
+          ],
+          "status": "valid",
+          "optical_z_m": 1.3363473415374756,
+          "invalid_reasons": [],
+          "camera_xyz_m": [
+            0.9284101659437721,
+            0.9284101659437721,
+            1.3363473415374756
+          ],
+          "camera_range_m": 1.8734233610398272
+        },
+        {
+          "pixel_uv": [
+            128,
+            128
+          ],
+          "status": "valid",
+          "optical_z_m": 0.2214556336402893,
+          "invalid_reasons": [],
+          "camera_xyz_m": [
+            0.0,
+            0.0,
+            0.2214556336402893
+          ],
+          "camera_range_m": 0.2214556336402893
+        },
+        {
+          "pixel_uv": [
+            64,
+            192
+          ],
+          "status": "valid",
+          "optical_z_m": 0.38577669858932495,
+          "invalid_reasons": [],
+          "camera_xyz_m": [
+            -0.13506187620895022,
+            0.13506187620895022,
+            0.38577669858932495
+          ],
+          "camera_range_m": 0.43047309089493907
+        },
+        {
+          "pixel_uv": [
+            192,
+            192
+          ],
+          "status": "valid",
+          "optical_z_m": 2.005949020385742,
+          "invalid_reasons": [],
+          "camera_xyz_m": [
+            0.7022903126692397,
+            0.7022903126692397,
+            2.005949020385742
+          ],
+          "camera_range_m": 2.2383598546535444
+        },
+        {
+          "pixel_uv": [
+            128,
+            64
+          ],
+          "status": "invalid",
+          "optical_z_m": null,
+          "invalid_reasons": [
+            "center_mask_invalid",
+            "center_nonpositive"
+          ],
+          "camera_xyz_m": null,
+          "camera_range_m": null
+        }
+      ]
+    },
+    {
+      "observation_index": 9,
+      "observation_id": "ce8b3c0654b9efeef1a5a75ae6664f288b7ba22130921fcb52cbc82fcbaec1fe",
+      "camera": "robot_1_wrist",
+      "camera_index": 2,
+      "rgb_image_order": [
+        "overview",
+        "robot_0_wrist",
+        "robot_1_wrist",
+        "robot_0_head",
+        "robot_1_head"
+      ],
+      "simulation_time_s": 39.42500205617398,
+      "resolution_wh": [
+        256,
+        256
+      ],
+      "source_sha256": {
+        "observation_json": "5d7a34df87d8287749cf15ea93a2374b396a519d2a2af6b1f2db0009e05caf71",
+        "public_depth_npz": "c5b823b79268eb5dc92d87b5cb8d745ae714739a50a915cd082406eb3990bdac",
+        "first_actor_public_prompt": "93a903a36b7385704abfcc2d49541152e06d828905ab17a2faac06d58c31c5b0",
+        "robot_1_wrist_rgb": "5cef227430b1c2f4f0309cd15cd564204710ee26d8a374af03bc4c4446e97db8"
+      },
+      "intrinsics_sha256": "3dd91a2df5cb0a47b6f5ceb86d60d41e1f5d6753d2a11a034ac0b52bc385cd23",
+      "request_sha256": "e4dc2ae46b2788c1904d2ec0145f5d71765ef38d11ba5bfb47e4a406c6b654ef",
+      "samples": [
+        {
+          "pixel_uv": [
+            0,
+            0
+          ],
+          "status": "invalid",
+          "optical_z_m": null,
+          "invalid_reasons": [
+            "center_mask_invalid",
+            "center_nonpositive"
+          ],
+          "camera_xyz_m": null,
+          "camera_range_m": null
+        },
+        {
+          "pixel_uv": [
+            255,
+            0
+          ],
+          "status": "invalid",
+          "optical_z_m": null,
+          "invalid_reasons": [
+            "center_mask_invalid",
+            "center_nonpositive"
+          ],
+          "camera_xyz_m": null,
+          "camera_range_m": null
+        },
+        {
+          "pixel_uv": [
+            0,
+            255
+          ],
+          "status": "valid",
+          "optical_z_m": 1.2818822860717773,
+          "invalid_reasons": [],
+          "camera_xyz_m": [
+            -0.897583639804954,
+            0.8905712676189779,
+            1.2818822860717773
+          ],
+          "camera_range_m": 1.8005542947932973
+        },
+        {
+          "pixel_uv": [
+            255,
+            255
+          ],
+          "status": "valid",
+          "optical_z_m": 0.3840975761413574,
+          "invalid_reasons": [],
+          "camera_xyz_m": [
+            0.26684686182989503,
+            0.26684686182989503,
+            0.3840975761413574
+          ],
+          "camera_range_m": 0.5384658237386957
+        },
+        {
+          "pixel_uv": [
+            128,
+            128
+          ],
+          "status": "valid",
+          "optical_z_m": 0.22637033462524414,
+          "invalid_reasons": [],
+          "camera_xyz_m": [
+            0.0,
+            0.0,
+            0.22637033462524414
+          ],
+          "camera_range_m": 0.22637033462524414
+        },
+        {
+          "pixel_uv": [
+            64,
+            192
+          ],
+          "status": "valid",
+          "optical_z_m": 0.7854819297790527,
+          "invalid_reasons": [],
+          "camera_xyz_m": [
+            -0.2750001841794013,
+            0.2750001841794013,
+            0.7854819297790527
+          ],
+          "camera_range_m": 0.8764884851535895
+        },
+        {
+          "pixel_uv": [
+            192,
+            192
+          ],
+          "status": "valid",
+          "optical_z_m": 0.2280457615852356,
+          "invalid_reasons": [],
+          "camera_xyz_m": [
+            0.0798396806593781,
+            0.0798396806593781,
+            0.2280457615852356
+          ],
+          "camera_range_m": 0.25446732323143784
+        },
+        {
+          "pixel_uv": [
+            128,
+            64
+          ],
+          "status": "invalid",
+          "optical_z_m": null,
+          "invalid_reasons": [
+            "center_mask_invalid",
+            "center_nonpositive"
+          ],
+          "camera_xyz_m": null,
+          "camera_range_m": null
+        }
+      ]
+    }
+  ],
+  "same_camera_candidates": {
+    "observation_index": 17,
+    "observation_id": "0ee119ae9ab6db3bf2d94326d0283c57bf8f3e057847014ebc01bb3552cc7a4e",
+    "camera": "robot_1_head",
+    "camera_index": 4,
+    "rgb_image_order": [
+      "overview",
+      "robot_0_wrist",
+      "robot_1_wrist",
+      "robot_0_head",
+      "robot_1_head"
+    ],
+    "simulation_time_s": 42.02500219177455,
+    "resolution_wh": [
+      256,
+      256
+    ],
+    "source_sha256": {
+      "observation_json": "1731cec23a8515ac9d7b327d2f055ff5c2b56d413e8f97286f4f54d75012c868",
+      "public_depth_npz": "4f02c7dd3a841966b7fb6be50d6371ec5b70dd894fffaa068685f7fff3a8f69e",
+      "first_actor_public_prompt": "93a903a36b7385704abfcc2d49541152e06d828905ab17a2faac06d58c31c5b0",
+      "robot_1_head_rgb": "5072ed509fc2e0aa2468d46aa3f3d58d0b83bd1ac42640099e1a3fc9a580234d"
+    },
+    "intrinsics_sha256": "3dd91a2df5cb0a47b6f5ceb86d60d41e1f5d6753d2a11a034ac0b52bc385cd23",
+    "request_sha256": "1e386ce7f5c05ebedaf442986ccc093687d82459dcf0d9d0395d33840bdfb949",
+    "samples": [
+      {
+        "pixel_uv": [
+          83,
+          125
+        ],
+        "status": "valid",
+        "optical_z_m": 0.7464093565940857,
+        "invalid_reasons": [],
+        "camera_xyz_m": [
+          -0.18374113760534935,
+          -0.012249409173689958,
+          0.7464093565940857
+        ],
+        "camera_range_m": 0.7687898160647092
+      },
+      {
+        "pixel_uv": [
+          149,
+          104
+        ],
+        "status": "valid",
+        "optical_z_m": 0.6212121248245239,
+        "invalid_reasons": [],
+        "camera_xyz_m": [
+          0.07136348175951139,
+          -0.08155826486801303,
+          0.6212121248245239
+        ],
+        "camera_range_m": 0.6305941651538817
+      },
+      {
+        "pixel_uv": [
+          180,
+          120
+        ],
+        "status": "valid",
+        "optical_z_m": 0.8319177627563477,
+        "invalid_reasons": [],
+        "camera_xyz_m": [
+          0.23664675476509905,
+          -0.03640719304078447,
+          0.8319177627563477
+        ],
+        "camera_range_m": 0.8656872034606314
+      },
+      {
+        "pixel_uv": [
+          196,
+          96
+        ],
+        "status": "valid",
+        "optical_z_m": 0.9025403261184692,
+        "invalid_reasons": [],
+        "camera_xyz_m": [
+          0.33573169306465106,
+          -0.15799138497160048,
+          0.9025403261184692
+        ],
+        "camera_range_m": 0.9758360967515674
+      },
+      {
+        "pixel_uv": [
+          128,
+          20
+        ],
+        "status": "invalid",
+        "optical_z_m": null,
+        "invalid_reasons": [
+          "center_mask_invalid",
+          "center_nonpositive"
+        ],
+        "camera_xyz_m": null,
+        "camera_range_m": null
+      }
+    ],
+    "candidate_labels": [
+      {
+        "id": "hand_visible_surface_candidate",
+        "pixel_uv": [
+          83,
+          125
+        ],
+        "semantic_confidence": "candidate_same_raised_hand_not_independently_certified"
+      },
+      {
+        "id": "gripper_tip_surface_candidate",
+        "pixel_uv": [
+          149,
+          104
+        ],
+        "semantic_confidence": "gray_jaw_surface_visible_exact_fingertip_identity_unconfirmed"
+      },
+      {
+        "id": "rim_A_lower_visible_yellow_boundary",
+        "pixel_uv": [
+          180,
+          120
+        ],
+        "semantic_confidence": "hem_cuff_neck_fold_and_near_far_identity_unconfirmed"
+      },
+      {
+        "id": "rim_B_upper_visible_yellow_boundary",
+        "pixel_uv": [
+          196,
+          96
+        ],
+        "semantic_confidence": "hem_cuff_neck_fold_and_near_far_identity_unconfirmed"
+      },
+      {
+        "id": "invalid_background_probe",
+        "pixel_uv": [
+          128,
+          20
+        ],
+        "semantic_confidence": "nonsemantic_control_not_free_space"
+      }
+    ],
+    "relative_comparisons": [
+      {
+        "from": "hand_visible_surface_candidate",
+        "to": "gripper_tip_surface_candidate",
+        "same_camera": true,
+        "same_timestamp": true,
+        "status": "valid_surface_difference",
+        "delta_camera_xyz_m": [
+          0.25510461936486073,
+          -0.06930885569432307,
+          -0.12519723176956177
+        ],
+        "point_separation_m": 0.292500309643782
+      },
+      {
+        "from": "hand_visible_surface_candidate",
+        "to": "rim_A_lower_visible_yellow_boundary",
+        "same_camera": true,
+        "same_timestamp": true,
+        "status": "valid_surface_difference",
+        "delta_camera_xyz_m": [
+          0.4203878923704484,
+          -0.024157783867094513,
+          0.08550840616226196
+        ],
+        "point_separation_m": 0.4296757685714279
+      },
+      {
+        "from": "hand_visible_surface_candidate",
+        "to": "rim_B_upper_visible_yellow_boundary",
+        "same_camera": true,
+        "same_timestamp": true,
+        "status": "valid_surface_difference",
+        "delta_camera_xyz_m": [
+          0.5194728306700004,
+          -0.1457419757979105,
+          0.15613096952438354
+        ],
+        "point_separation_m": 0.5616668273615646
+      }
+    ],
+    "semantic_identity_verified": false,
+    "clearance_or_crossing_established": false,
+    "public_rgb": "../../attempts/20261106-astra-hem-depth-001/images/final-robot_1_head.png"
+  },
+  "limitations": {
+    "neighbor_depth_substituted": false,
+    "display_range_clipping_applied": false,
+    "world_extrinsic_used": false,
+    "hidden_surfaces_estimated": false,
+    "calibration_accuracy_measured": false,
+    "semantic_point_identity_verified": false,
+    "task_improvement_measured": false,
+    "latency_improvement_measured": false,
+    "actual_new_response_schema_model_call_tested": false
+  }
+}
