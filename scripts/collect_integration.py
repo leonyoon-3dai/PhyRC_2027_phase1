@@ -16,6 +16,7 @@ sys.path[:0]=[str(ROOT),str(ROOT/'src/PhyRC_Sim')]
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--output',type=Path,required=True)
+    p.add_argument('--preview',type=Path,help='Human observer HTML served by existing Jupyter /files')
     a=p.parse_args()
     from Policy.environment import DressingEnv
     from Policy.training_dataset import DatasetWriter
@@ -27,16 +28,26 @@ def main():
                          'tick_basis':'episode-relative','purpose':'recorder wiring; not GPT or successful dressing'})
     op=Operator(env,writer,source='integration_test',source_group=a.output.name,
                 model_id='scripted-recorder-check-v1',prompt='small lift and gripper wiring test only')
+    preview = None
+    if a.preview:
+        from participant.streaming.jupyter_observer import JupyterObserver
+        preview = JupyterObserver(a.preview, run_label='기록 연결 시험 · ' + a.output.name)
+    def publish(obs):
+        if preview and preview.due():
+            preview.write_frame(obs['rgb'][0], simulation_time=float(obs['simulation_time_s']))
     complete=False
     started=time.monotonic()
     try:
         for episode in range(3):
             obs=op.begin(seed=4200+episode)
+            publish(obs)
             Image.fromarray(obs['rgb'][0]).save(a.output/f'episode-{episode}-start.png')
             for lift,grip in ((.05,-1),(.0,1),(-.05,0),(.0,-1)):
                 action=np.zeros((2,9),np.float32);action[:,3]=lift;action[:,8]=grip
-                op.act(action,5)
-            op.stop()
+                result = op.act(action,5)
+                publish(result['observation'])
+            result = op.stop()
+            publish(result['observation'])
             result=op.finish_episode()
             Image.fromarray(op._obs['rgb'][0]).save(a.output/f'episode-{episode}-end.png')
             print('INTEGRATION_EPISODE',episode,result,flush=True)
@@ -48,6 +59,8 @@ def main():
                 'wall_s':time.monotonic()-started,'simulation_time_s':3*21*.05 if complete else None,
                 'checksums':{p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in a.output.glob('*.hdf5')}}
         (a.output/'capture.json').write_text(json.dumps(report,indent=2)+'\n')
+        if preview:
+            preview.finish(error=not complete)
         env.close()
 
 if __name__=='__main__':main()

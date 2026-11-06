@@ -28,7 +28,7 @@
 
 **현재 목표는 Codex CLI의 Astra를 시연 생성기로 연결하여, 사람이 두 로봇을 계속 직접 조작해야 하는 부담을 줄이는 것입니다.** 공개 영상과 로봇 상태로 짧게 행동하고 다시 관찰하며, 검수한 시연으로 로컬 정책을 학습합니다. Chrome 조작은 관찰·직접 시연·사람의 수정 수단으로 유지합니다.
 
-**2026-11-06 현재 상태:** 기존 L40S 구성에서 저장소 복제, 호스트 사전 점검과 Hugging Face CLI 설치를 완료하고 공식 환경 설치를 시작했습니다. 기존 수집 경계와 기록 코드는 있지만, **Codex CLI 자동 시연 연결은 아직 구현되지 않았습니다.** smoke 통과와 새 데이터 수집·학습·평가는 아직 확인 전입니다. 운영 문서는 한국어를 기준으로 관리합니다.
+**2026-11-06 현재 상태:** 기존 L40S 구성에서 공식 환경 복원과 smoke를 완료했습니다. 기존 수집 경계와 기록 코드는 있지만, **Codex CLI 자동 시연 연결은 아직 구현되지 않았습니다.** 짧은 기록 연결 시험은 완료했으며, 실제 과제 시연 수집·학습·평가는 아직 진행 전입니다. 운영 문서는 한국어를 기준으로 관리합니다.
 
 ## 현재 개발 목표와 진행 기록
 
@@ -56,9 +56,31 @@
 | 호스트 사전 점검 | `participant/ops/bootstrap.sh --check` 종료 코드 0, Docker `29.1.5` |
 | Hugging Face CLI | 저장소 지정 버전 `huggingface_hub==2.2.0` 설치, `hf version`과 로그인 도움말 확인 |
 | HF 인증 | 별도 터미널에서 진행할 단계. 로그인 완료 여부는 아직 확인하지 않음 |
-| 공식 실행 환경 | `participant/ops/bootstrap.sh --install` 시작. build·prepare·smoke 결과 확인 중 |
-| Astra 수집 | CLI 클라이언트 구현, 실제 모델 접근과 추론 설정 검증 전 |
-| 데이터·점수 | 이번 세션의 새 수집·채점 없음. 50점과 착의 성공은 목표 상태 |
+| 공식 실행 환경 | build 186.18초, prepare 8.41초, smoke 355.67초. 종료 코드 0과 `PHYRC-SMOKE-PASS` 확인 |
+| Astra 수집 | CLI `0.166.0`, 로컬 모델 목록의 `gpt-6-astra`·`ultra`·이미지 입력 지원 확인. 실제 호출과 실행기 연결은 검증 전 |
+| 데이터·점수 | 연결 시험 3개 에피소드·63전이 저장 및 정합성 검사 통과. 과제 채점 없음, 50점과 착의 성공은 목표 상태 |
+
+### 환경·기록·관찰 검증 결과
+
+[실행 시간과 검증 요약 JSON](docs/project/sessions/20261106-l40s-restore.json)
+
+- 공식 smoke: 37 control frames에서 두 로봇의 관절 이동, 그리퍼 전환과 유한한 의복 좌표를 확인했습니다. 저장·불러오기 위치 최대 오차는 0 m이며, 파지 유지나 전체 착의 성공을 검증한 결과는 아닙니다.
+- 기록 연결 시험: `integration_test` 출처로 3개 에피소드, 총 63전이·3.15 simulation초를 저장했습니다. 프로세스 전체 113.64초, 수집 루프 81.62초이며 초기화·종료와 재설정 비용을 포함하는 범위가 다릅니다. 기존 서버 속도 비교와 같은 조건의 벤치마크는 아닙니다.
+- 저장 검증: SHA256, 파일·에피소드 완료 상태, 모든 전이의 행동 형식·범위, `next_obs.previous_action`, 관측 연속성, 0.05초 간격과 12 physics ticks 검사를 통과했습니다. 공식 점수와 착의 성공은 평가하지 않았습니다. 원본은 `output/collections/20261106-jupyter-live-integration/`에 있으며 원격 보존은 아직 수행하지 않았습니다.
+- CPU 검사 15개 통과. Jupyter 관찰 경로는 Chromium에서 합성 3프레임 갱신, HTTP 200과 종료 후 갱신 중지를 확인했고, 맥북 Chrome에서도 실제 카메라 이미지 표시를 확인했습니다. `/files` HTML 자체 새로고침은 403으로 실패해, 기존 JupyterLab의 신뢰된 출력에서 이미지를 읽는 방식으로 검증했습니다.
+- 현재 연결 목표는 **기존 WebRTC의 실시간 영상과 조작 UI**입니다. 고정 버전 뷰어 빌드는 완료했습니다. Brev CLI 인증 후 현재 클라이언트 IPv4만 허용하여 TCP 8210·8211·49100, UDP 47998 포트를 등록했습니다. 실제 외부 매핑과 IPv4 HTTP 주소로 연결했으며 맥북 Chrome에서 실시간 영상 표시를 확인했습니다. 접속 주소·인증 정보는 공개 문서에 저장하지 않습니다. 서로 다른 중계 경로의 실제 패킷을 확인해 허용 주소를 보완했고, HTTPS 요청이 HTTP 뷰어에 도착하는 오류는 IPv4 HTTP 주소와 입력 origin을 일치시켜 해결했습니다. 첫 연결 진단의 1,101전이·14,316 raw states는 정상 저장했으며 성공 시연 수량에 포함하지 않습니다.
+
+실행한 연결 시험 명령:
+
+```bash
+participant/ops/bootstrap.sh --install
+PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m unittest discover -s tests -v
+.venv/bin/python participant/ops/run.py --id 20261106-jupyter-live-integration -- \
+  ./run.sh python /scripts/collect_integration.py \
+  --output /output/collections/20261106-jupyter-live-integration \
+  --preview /output/live/collection.html
+python3 participant/streaming/prepare_viewer.py
+```
 
 <details>
 <summary>실행한 준비·확인 명령</summary>
@@ -102,7 +124,7 @@ hf auth whoami
 
 단계별 도달률은 전체 시도 수와 해당 단계의 시도 수를 함께 제시합니다. 실패·중단·평가 무효 시도도 목록에 남기며, 누락된 평가를 성공이나 0점으로 임의 변환하지 않습니다. 공식 평가의 실패 집계는 [평가 정의](docs/competition/EVALUATION.md)를 따릅니다. 물리 상태 복원은 별도 검증하며, 재시작한 구간을 이어 붙여 하나의 연속 완주로 표시하지 않습니다. 평가 결과는 검수 영역에 보관하고 행동 세션의 다음 입력으로 전달하지 않습니다.
 
-**다음 작업:** 공식 환경의 build·prepare·smoke와 기존 CPU 검사를 확인한 뒤, 맥북 Chrome에서 수집 장면을 라이브로 관찰할 수 있도록 연결합니다. 임시 클라이언트 네트워크에서 Brev 포트를 새로 개방하지 않고 기존 접속 경로를 활용하는 방식을 확인합니다. 연결 성공은 실제 브라우저 영상으로 검증하며, 추가 기능은 사용 피드백 이후 진행합니다. 이후 격리된 Codex CLI 행동 세션과 기록·평가 경로를 연결합니다.
+**다음 작업:** 격리된 Codex CLI 행동 세션과 기존 실행기, 기록·공식 평가 경로를 연결합니다. 현재 WebRTC는 사람 조작용 세션이며 자동 정책 추론은 아직 실행하지 않았습니다. UI 추가 기능은 사용 피드백 이후 진행합니다.
 
 ## 1. 먼저 이해할 작업 흐름
 

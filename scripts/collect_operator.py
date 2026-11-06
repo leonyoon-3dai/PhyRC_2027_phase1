@@ -25,6 +25,7 @@ def main():
     p.add_argument('--model-id', required=True)
     p.add_argument('--prompt', required=True)
     p.add_argument('--max-steps', type=int, default=400)
+    p.add_argument('--preview', type=Path, help='Human observer HTML served by existing Jupyter /files')
     args = p.parse_args()
     protocol = sys.stdout
     with contextlib.redirect_stdout(sys.stderr):
@@ -40,12 +41,21 @@ def main():
         started = time.monotonic()
         transcript = (args.output/'operator.jsonl').open('x')
         complete = False
+        preview = None
+        if args.preview:
+            from participant.streaming.jupyter_observer import JupyterObserver
+            preview = JupyterObserver(args.preview, run_label=args.output.name)
+        def publish(obs):
+            if preview and preview.due():
+                preview.write_frame(obs['rgb'][0], simulation_time=float(obs['simulation_time_s']))
         def encode(value):
             return value.tolist() if hasattr(value, 'tolist') else value
         def emit(value):
             print(json.dumps(value, default=encode, allow_nan=False), file=protocol, flush=True)
         try:
-            emit({'ready':True, 'observation':operator.begin()})
+            obs = operator.begin()
+            publish(obs)
+            emit({'ready':True, 'observation':obs})
             for line in sys.stdin:
                 try:
                     request = json.loads(line)
@@ -56,6 +66,10 @@ def main():
                     if method != 'act' and arguments:
                         raise ValueError('this tool takes no arguments')
                     result = getattr(operator,method)(**arguments)
+                    if method == 'observe':
+                        publish(result)
+                    elif 'observation' in result:
+                        publish(result['observation'])
                     transcript.write(json.dumps({'request':request,'wall_s':time.monotonic()-started}, allow_nan=False)+'\n')
                     transcript.flush()
                     emit({'ok':True,'result':result})
@@ -76,6 +90,8 @@ def main():
             for path in sorted(args.output.glob('*.hdf5')):
                 manifest['files'][path.name] = hashlib.sha256(path.read_bytes()).hexdigest()
             (args.output/'capture.json').write_text(json.dumps(manifest, indent=2)+'\n')
+            if preview:
+                preview.finish(error=not complete)
             env.close()
 
 if __name__ == '__main__':

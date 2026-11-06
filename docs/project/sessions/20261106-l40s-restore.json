@@ -1,0 +1,229 @@
+{
+  "schema": "phyrc-session-summary-v1",
+  "date_utc": "2026-11-06",
+  "purpose": "L40S 환경 복원과 라이브 관찰 연결 검증",
+  "runs": [
+    {
+      "run_id": "20261106T011642Z-bootstrap-build",
+      "started_at_utc": "2026-11-06T01:16:42.701019+00:00",
+      "ended_at_utc": "2026-11-06T01:19:48.959868+00:00",
+      "command": [
+        "./run.sh",
+        "build"
+      ],
+      "returncode": 0,
+      "process_returncode": 0,
+      "wall_s": 186.18197033599995,
+      "success_marker": null,
+      "asset_lock_sha256": "ebbbaf6d2f2aea8237451d890d0e54458f83e2a503bcfa47228c7f61b60835cd",
+      "code_commit": "8537ccc7a21c017f107d8f52992c626af882c21b"
+    },
+    {
+      "run_id": "20261106T011642Z-bootstrap-prepare",
+      "started_at_utc": "2026-11-06T01:19:49.008821+00:00",
+      "ended_at_utc": "2026-11-06T01:19:57.490804+00:00",
+      "command": [
+        "./run.sh",
+        "prepare"
+      ],
+      "returncode": 0,
+      "process_returncode": 0,
+      "wall_s": 8.407971824000015,
+      "success_marker": null,
+      "asset_lock_sha256": "ebbbaf6d2f2aea8237451d890d0e54458f83e2a503bcfa47228c7f61b60835cd",
+      "code_commit": "8537ccc7a21c017f107d8f52992c626af882c21b"
+    },
+    {
+      "run_id": "20261106T011642Z-bootstrap-smoke",
+      "started_at_utc": "2026-11-06T01:19:57.541251+00:00",
+      "ended_at_utc": "2026-11-06T01:25:53.287976+00:00",
+      "command": [
+        "./run.sh",
+        "smoke"
+      ],
+      "returncode": 0,
+      "process_returncode": 0,
+      "wall_s": 355.67267221300017,
+      "success_marker": "PHYRC-SMOKE-PASS",
+      "asset_lock_sha256": "ebbbaf6d2f2aea8237451d890d0e54458f83e2a503bcfa47228c7f61b60835cd",
+      "code_commit": "8537ccc7a21c017f107d8f52992c626af882c21b"
+    }
+  ],
+  "smoke": {
+    "passed": true,
+    "scope": "real main-loop startup, unloaded robot motion, gripper toggle, save/load",
+    "simulated_control_frames": 37,
+    "max_joint_displacement": [
+      0.5142390131950378,
+      0.5142391324043274
+    ],
+    "finite_cloth": true,
+    "gripper_toggle": true,
+    "grasp_attached_in_initial_pose": false,
+    "save_load_max_position_error_m": 0.0
+  },
+  "notes": [
+    "smoke는 짧은 환경 검증이며 착의 성공·파지 유지 성능 검증이 아님",
+    "원본 로그와 전체 내부 장면 정보는 이 공개 요약에 포함하지 않음"
+  ],
+  "integration": {
+    "run_id": "20261106-jupyter-live-integration",
+    "started_at_utc": "2026-11-06T01:26:25.123043+00:00",
+    "ended_at_utc": "2026-11-06T01:28:18.838429+00:00",
+    "command": [
+      "./run.sh",
+      "python",
+      "/scripts/collect_integration.py",
+      "--output",
+      "/output/collections/20261106-jupyter-live-integration",
+      "--preview",
+      "/output/live/collection.html"
+    ],
+    "returncode": 0,
+    "wall_s": 113.63531294800009,
+    "base_code_commit": "2caed2f3de9ede65d724d20feda7a73ce4108f83",
+    "working_tree_modified": true,
+    "capture": {
+      "schema": "participant-live-capture-v1",
+      "complete": true,
+      "source": "integration_test",
+      "raw_archive": false,
+      "deferred_export_check": false,
+      "episodes": 3,
+      "wall_s": 81.6225186329998,
+      "simulation_time_s": 3.1500000000000004,
+      "checksums": {
+        "policy.hdf5": "df2816a41c54e61447b82c4518c232cfbc0b70b1c486e40244dcb8888f74cd10",
+        "audit.hdf5": "700c0794bf956742d754e3dd7b838d63e4b54e2525c736c3ed0d66295f9a7fe6"
+      }
+    },
+    "validation": {
+      "source": "integration_test",
+      "passed": true,
+      "episodes": [
+        {
+          "episode": "demo_0",
+          "transitions": 21,
+          "simulation_seconds": 1.0500000547617674,
+          "complete": true,
+          "official_success_known": false
+        },
+        {
+          "episode": "demo_1",
+          "transitions": 21,
+          "simulation_seconds": 1.0500000547617674,
+          "complete": true,
+          "official_success_known": false
+        },
+        {
+          "episode": "demo_2",
+          "transitions": 21,
+          "simulation_seconds": 1.0500000547617674,
+          "complete": true,
+          "official_success_known": false
+        }
+      ],
+      "score_evaluated": false,
+      "dressing_success": null,
+      "total_transitions": 63,
+      "checks": [
+        "SHA256",
+        "file_and_episode_complete",
+        "all_transition_action_shape_dtype_range",
+        "actual_previous_action",
+        "0.05s_intervals",
+        "12_physics_ticks",
+        "all_observation_continuity",
+        "finite_numeric_arrays"
+      ]
+    },
+    "remote_backup_verified": false
+  },
+  "browser_check": {
+    "synthetic": true,
+    "browser": "chromium",
+    "frames": [
+      {
+        "simulation_time": 0,
+        "dominant_channel": 0,
+        "rendered": true
+      },
+      {
+        "simulation_time": 1,
+        "dominant_channel": 1,
+        "rendered": true
+      },
+      {
+        "simulation_time": 2,
+        "dominant_channel": 2,
+        "rendered": true
+      }
+    ],
+    "lab_status": 200,
+    "finished_stopped_refresh": true,
+    "html_http_statuses": [
+      200,
+      200,
+      200,
+      200,
+      200,
+      200
+    ],
+    "page_error_count": 0,
+    "passed": true
+  },
+  "mac_chrome": {
+    "jupyter_access_confirmed": true,
+    "actual_camera_image_confirmed": true,
+    "webrtc_connection_verified": true
+  },
+  "cpu_tests_passed": 15,
+  "webrtc_start_attempts": [
+    {
+      "run_id": "20261106-webrtc-live",
+      "returncode": 1,
+      "wall_s": 0.05032403399991381,
+      "reason": "추가된 외부 네트워크 허용 규칙을 방화벽 검증에서 감지해 시뮬레이터 시작 전 중단"
+    },
+    {
+      "run_id": "20261106-webrtc-live-r2",
+      "returncode": 0,
+      "wall_s": 560.7641620079999,
+      "purpose": "streaming_connection_diagnostic",
+      "stop_reason": "접속 origin을 IPv4 HTTP로 변경하기 위한 정상 종료",
+      "human_control_confirmed": false,
+      "raw_run_id": "20261106T014001_516555Z_3ea4b7",
+      "transitions": 1101,
+      "raw_states": 14316,
+      "capture_complete": true,
+      "rgbd_export": "pending",
+      "score_evaluated": false,
+      "remote_backup_verified": false
+    }
+  ],
+  "webrtc_network": {
+    "tcp_destination_ports": [
+      8210,
+      8211,
+      49100
+    ],
+    "udp_destination_ports": [
+      47998
+    ],
+    "source_access": "current_client_ipv4_only",
+    "relay_access": "observed_brev_gateways_on_wt0",
+    "firewall": "dedicated_nft_prerouting_local_destinations",
+    "browser_transport": "http_ipv4",
+    "private_endpoints_omitted": true
+  },
+  "codex_cli": {
+    "version": "0.166.0",
+    "requested_model": "gpt-6-astra",
+    "catalog_highest_reasoning_effort": "ultra",
+    "catalog_input_modalities": [
+      "text",
+      "image"
+    ],
+    "live_model_call_verified": false
+  }
+}

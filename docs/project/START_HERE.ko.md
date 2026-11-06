@@ -89,12 +89,14 @@ codex --help
 | 49100 | TCP | WebRTC 연결 설정 |
 | 47998 | UDP | 영상 전송 |
 
-직접 접속 또는 클라우드 포트 등록을 준비한 뒤, 호스트의 해당 스트리밍 포트만 클라이언트 IPv4에 제한합니다. 스크립트는 `sudo -n iptables`를 사용하므로 필요한 권한을 먼저 확인합니다.
+직접 접속 또는 클라우드 포트 등록을 준비한 뒤, 호스트의 해당 스트리밍 포트만 클라이언트 IPv4에 제한합니다. 스크립트는 `sudo -n nft`로 전용 `inet phyrc_stream` 테이블을 구성합니다. 다른 서비스의 방화벽 테이블은 변경하지 않습니다. 적용 전 커널 문법 검사를 실행하며, 실제 주소·포트·인터페이스·종료 규칙을 함께 검증합니다.
 
 ```bash
 python3 participant/streaming/firewall.py --client-ip "<클라이언트-IPv4>"
 python3 participant/streaming/firewall.py --client-ip "<클라이언트-IPv4>" --check
 ```
+
+NetBird 중계가 확인된 경우 실제 gateway 주소를 `--relay-ip "<gateway-IPv4>"`로 함께 지정합니다. 이 주소는 `wt0` 인터페이스에서만 허용하며, 적용과 `--check`에 같은 인자를 사용합니다. `start.sh`는 `--check-installed`가 통과한 뒤 시작합니다. NetBird가 INPUT 체인에 자동 허용 규칙을 추가하는 환경에서는 로컬 목적지의 스트리밍 포트를 prerouting에서 제한합니다. 다른 INPUT 체인의 DROP을 무시하는 설정은 아니므로 실제 패킷 경로도 확인합니다.
 
 Brev 중계를 사용하는 경우 CLI 인증과 기존 매핑부터 확인합니다. 외부 포트는 내부 포트와 다를 수 있습니다.
 
