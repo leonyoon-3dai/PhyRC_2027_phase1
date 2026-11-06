@@ -1,5 +1,7 @@
 # PhyRC 2027 · 두 로봇의 협력 착의
 
+> **2026-11-06 저녁 재개:** 사용자 요청으로 E15 마감의 일시 중지를 해제하고 클린 L40S 복원·검사 및 10점 목표 실험을 진행합니다. 아래 E15 마감 상태는 이전 기준입니다. [실시간 작업 기록](docs/project/sessions/20261106-evening-resume.ko.md)
+
 [공식 원본 README](README.upstream.md) · [공식 대회](https://emprise.cs.cornell.edu/phyrc/challenge-2027/) · [5점→10점 가이드 PDF](docs/guide/PhyRC_2027_Repository_Guide_KR.pdf) · [전체 문서 지도](docs/README.ko.md)
 
 **두 대의 Stretch 4가 앉은 마네킹에 티셔츠를 입힙니다.** 공개 카메라와 로봇 상태로 행동하며, 더 많은 착의 점수를 더 짧은 로봇 시간에 획득하는 정책을 만드는 프로젝트입니다.

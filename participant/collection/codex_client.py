@@ -80,6 +80,34 @@ If a grip visibly fails or the opening remains unreadable after those bounded ch
 
 Transport only when both held regions visibly follow their grippers and a plausible body opening remains trackable. Then follow the hem-entry and sleeve-emergence phases above toward full dressing. If support or opening remains unclear after the bounded attempt, stop advancing and finish with the visual reason; restore table support when feasible before releasing an uncertain grip. These are visual checks, not measured success or hidden garment labels.'''
 
+SUPPORT_DIAGNOSTIC_TASK = '''For this attempt, replace the initial simultaneous lift test above with a sequential support diagnostic near visible table support. Both robots still approach and prepare before lifting; a temporarily stationary partner is intentional during this diagnostic. Do not assume any existing grip survived earlier actions.
+
+First inspect CURRENT finger positions, velocities, grip intent and controller targets. If closing or other joint motion is still progressing, preserve useful grips and request a short neutral action, then inspect the new public state and images. Neutral motion preserves existing targets and grip intent; neither model waiting nor a fixed settling interval proves completion. A close command, small fingertip-origin distance or low instantaneous velocity does not prove cloth support.
+
+With the garment near table support, make one short lift of ONLY one robot while the partner holds its motion targets and grip intent. Choose the robot and a small lift from CURRENT clearance, public action scales and measured state. Inspect the new views: distinguish actual gripper displacement, motion of the local held cloth region, and motion transmitted through cloth from the partner. Check the nominally stationary partner's actual measured motion too. Return the tested side toward its observed starting height with a short action when clearance permits, then inspect again. Repeat this lift-and-return diagnostic for the OTHER robot, observing after every action. Do not use a simultaneous lift as evidence that each side independently supports cloth. Keep the operational reason concise: identify the tested side, what local cloth motion was observed, and what remains uncertain.
+
+If a region does not follow its gripper or the two supports cannot be distinguished, keep the garment on or close to the visible table and establish a useful partner anchor before ONE deliberate one-sided regrasp. Choose its accessible edge from CURRENT images, with at most two short corrections; never release both grips together. Recheck the changed support. If the bounded diagnostic remains inconclusive, finish with that visual reason rather than transporting uncertain grips.
+
+Only after the separate checks support BOTH grasps, reshape a plausible body opening while retaining table support where feasible. Distinguish a continuous interior rim and free space from a dark fold or color boundary. Track the opening through small lift increments; if lifting hides it behind the robot arm or folds, restore a useful view before transporting. During the later hem-entry approach, keep the target hand aligned with visible free space inside the opening, with clearance from both grippers, rather than aligning it with a held corner or wrist housing. Then follow the hem-entry and sleeve-emergence phases above. All support and passage judgements remain visual hypotheses, not contact sensor readings or evaluator feedback.'''
+
+REGRASP_HEM_TASK = '''While the shirt remains supported near the table, investigate whether the current grips control distinct boundaries of a usable body opening or merely pull along the same folded edge. Do not infer layers from color alone. Useful existing support and a trackable opening do not require a regrasp: preserve them if CURRENT observations support continuing.
+
+If the opening remains a narrow slit despite observed robot motion and short local corrections, first establish CURRENT table support and a useful partner anchor. Preserve that support and change only the other grasp to a separately visible, accessible rim region. Aim to separate opposing visible lips of the opening rather than only increasing the distance between the same corners. Choose the edge and every release, approach and close motion from CURRENT designated views and public robot state. A prior close command is not a verified anchor. Do not release both grips together or assume a regrasp succeeded.
+
+Make at most ONE deliberate one-sided regrasp in this attempt, with at most TWO short placement corrections, observing after every action. Reconfirm each support from local cloth motion and check the aperture in current views before transport. If support or the opposing boundaries remain unreadable, restore table support when feasible and finish with the unresolved visual reason instead of cycling through blind regrasp attempts. If the new arrangement is useful, continue the hem-entry and sleeve-emergence route above, keeping grippers outside the hand's visible passage. Changing a grasp is an experiment, not proof that the selected edge is a particular garment layer.'''
+
+SUPPORT_GUIDE_TASK = '''Use a support-and-guide grasp arrangement when CURRENT views show the existing arrangement cannot expose or guide a plausible sleeve path. Useful existing grips with a visible, controllable opening may be preserved; do not regrasp merely to follow this strategy's name.
+
+With the garment supported by the visible table and a useful partner anchor, inspect the body opening and a candidate sleeve path. Consider moving one grasp from its current hem corner to an accessible visible edge nearer the intended sleeve while the partner supports the garment body. Choose which robot changes role from CURRENT views and public robot state. This is a change of grasp arrangement, not a blind push toward a presumed cuff. Preserve the intended topology: the hand should enter the body opening and emerge through the corresponding sleeve; do not treat pushing a hand into a cuff from outside as equivalent.
+
+Make at most ONE deliberate one-sided regrasp in this attempt, with at most TWO short placement corrections, observing after every action. Establish table support and the partner anchor before release, never release both grips together, and reassess the visible connection and local cloth support after closing. If the intended connection or the new support remains unreadable, restore table support when feasible and finish with that unresolved visual reason rather than repeat uncertain regrasp cycles.
+
+When the arrangement is useful, assign one robot to maintain body support and the other to guide the opening toward the same observed hand. Equal movements are not required. Keep both grippers outside the hand's free passage; do not align the hand with a held corner merely because it is easy to see. If a wrist housing repeatedly hides the hand, retreat to restore a useful hand-and-rim view, then change the approach direction or opening orientation before another entry attempt. Use only permitted robot actions for every viewpoint change and inspect the resulting CURRENT observations.'''
+
+METHOD_SATURATION_TASK = '''Distinguish a command that has not yet produced its intended measured robot motion from a manipulation method that is not working. Compare current positions with public controller targets and recent measured motion; allow short neutral settling observations when needed. Neutral actions preserve existing targets, and model waiting does not advance simulation time. Neither a low instantaneous velocity nor a fixed wait alone proves completion.
+
+For each local correction, briefly state the visible error being tested, then compare the next observation with that prediction. After two or three executed correction-and-observation cycles leave the same ambiguity or obstruction, do not continue changing only speed, duration, or a small offset. Preserve support and change the grasp arrangement within the one-sided regrasp bound, opening orientation, approach direction, or observable view. Two or three cycles are a saturation diagnostic, not a required number of pushes or an automatic success or termination rule: continue useful refinement when new relevant relationships are revealed, and back off earlier if occlusion or unexpected deformation worsens. Count renewed motion as progress only when it reveals a new relevant relationship; repeated disappearance of the hand is not entry evidence. Use only designated views and public robot state, never evaluation results or presumed hidden contact.'''
+
 def official_review_points(collection):
     """Trusted termination only. Never include this value in actor observations."""
     paths = list((Path(collection) / 'evaluation').glob('*/score_samples.jsonl'))
@@ -440,7 +468,10 @@ def main():
     parser.add_argument('--retry-reason')
     parser.add_argument('--source-group')
     parser.add_argument('--mode', choices=['wiring', 'dressing', 'pickup'], default='wiring')
-    parser.add_argument('--strategy', choices=['general', 'coordinated', 'coordinated-sleeve', 'coordinated-hem-route', 'coordinated-opening-first'], default='general')
+    parser.add_argument('--strategy', choices=['general', 'coordinated', 'coordinated-sleeve',
+                        'coordinated-hem-route', 'coordinated-opening-first',
+                        'coordinated-support-diagnostic', 'coordinated-regrasp-hem',
+                        'coordinated-support-guide'], default='general')
     parser.add_argument('--actor-backend', choices=['exec', 'app-server'], default='exec')
     parser.add_argument('--plan-size', type=int, default=1,
                         help='Maximum segments per model call; >1 is an open-loop list')
@@ -493,8 +524,14 @@ def main():
             parser.error('replay-observe-steps must be strictly before the replay prefix end')
     if args.replay_prefix_run and args.mode == 'wiring':
         parser.error('replay prefixes are not wiring tests')
-    if args.strategy in ('coordinated', 'coordinated-sleeve', 'coordinated-hem-route', 'coordinated-opening-first') and args.mode != 'dressing':
+    if args.strategy in ('coordinated', 'coordinated-sleeve', 'coordinated-hem-route',
+                         'coordinated-opening-first', 'coordinated-support-diagnostic',
+                         'coordinated-regrasp-hem', 'coordinated-support-guide') and args.mode != 'dressing':
         parser.error('coordinated strategy requires the full dressing objective')
+    if args.strategy == 'coordinated-support-diagnostic' and args.plan_size != 1:
+        parser.error('support diagnostic requires plan-size=1 to observe after each action')
+    if args.strategy in ('coordinated-regrasp-hem', 'coordinated-support-guide') and args.plan_size != 1:
+        parser.error('regrasp strategies require plan-size=1 to observe after each action')
     if args.mode == 'wiring' and args.plan_size > 1 and (args.plan_size != 3 or args.decisions != 3):
         parser.error('grouped wiring requires plan-size=3 and decisions=3')
     if not math.isfinite(args.model_timeout) or not 10 <= args.model_timeout <= 1800:
@@ -523,14 +560,24 @@ def main():
     actor_root.mkdir(parents=True, exist_ok=False, mode=0o700)
     from participant.collection.plans import plan_schema, validate_plan, PLAN_TASK, BATCH_WIRING_TASK
     task = TASK
-    if args.strategy in ('coordinated', 'coordinated-sleeve', 'coordinated-hem-route', 'coordinated-opening-first'):
+    if args.strategy in ('coordinated', 'coordinated-sleeve', 'coordinated-hem-route',
+                         'coordinated-opening-first', 'coordinated-support-diagnostic',
+                         'coordinated-regrasp-hem', 'coordinated-support-guide'):
         task += '\n\n' + COORDINATED_TASK
     if args.strategy == 'coordinated-sleeve':
         task += '\n\n' + SLEEVE_TASK
-    elif args.strategy in ('coordinated-hem-route', 'coordinated-opening-first'):
+    elif args.strategy in ('coordinated-hem-route', 'coordinated-opening-first',
+                           'coordinated-support-diagnostic', 'coordinated-regrasp-hem',
+                           'coordinated-support-guide'):
         task += '\n\n' + HEM_ROUTE_TASK
     if args.strategy == 'coordinated-opening-first':
         task += '\n\n' + OPENING_FIRST_TASK
+    elif args.strategy == 'coordinated-support-diagnostic':
+        task += '\n\n' + SUPPORT_DIAGNOSTIC_TASK
+    elif args.strategy == 'coordinated-regrasp-hem':
+        task += '\n\n' + REGRASP_HEM_TASK + '\n\n' + METHOD_SATURATION_TASK
+    elif args.strategy == 'coordinated-support-guide':
+        task += '\n\n' + SUPPORT_GUIDE_TASK + '\n\n' + METHOD_SATURATION_TASK
     if args.plan_size > 1:
         task += '\n\n' + PLAN_TASK.format(max_segments=args.plan_size, max_total_steps=args.plan_step_budget)
     if args.post_action_settle_steps:

@@ -1,0 +1,21 @@
+{
+  "repo_id": "leonayoon/phyrc-2027-phase1-private-backup",
+  "repo_type": "dataset",
+  "revision": "e1d32f9f9ea82438f90bc379452abf83a150999b",
+  "archive_path": "sessions/20261106-session-close-v1/20261106-session-close-v1.tar.gz",
+  "archive_bytes": 11779782360,
+  "archive_sha256": "d087a7899f60fffd7e9541d13215585ef6b462f3e0d71c66e0649fd0172ed34b",
+  "verified_at_utc": "2026-11-06T22:41:25.734359+00:00",
+  "archive_size_sha_verified": true,
+  "restore_manifest_verified": true,
+  "conflict_refusing_merge": true,
+  "asset_lock_check_passed": true,
+  "e07": {
+    "quality_passed": true,
+    "total_transitions": 1067,
+    "validated_transitions": 1067,
+    "errors": []
+  },
+  "gpu_smoke_passed": false,
+  "gpu_status": "in_progress"
+}
