@@ -10,6 +10,14 @@
 
 **[▶ 전체 213.4초 MP4](../collection/attempts/20261106-astra-coordinated-fresh-001/overview.mp4)** · [첫 5점·마네킹 접근의 원본 PNG](../collection/milestones/20261106-astra-coordinated-fresh-001/README.ko.md) · [종료 당시 소매 진입 미확인 검토](../collection/reviews/20261106-astra-coordinated-fresh-001.ko.md)
 
+## 손 근처 접근 · 같은 시각의 네 카메라
+
+<img src="assets/20261106-astra-coordinated-fresh-001-multiview/preview.gif" width="960" alt="E07 경계620~700 실제 양쪽 머리·손목 네 카메라, 손 근처 접근을 4배 느리게 자동 반복">
+
+위: 로봇 0·1 머리. 아래: 로봇 0·1 손목. **경계 620~700, 81프레임·16.2초·5fps·4배 느리게**, 약 4.58MB입니다. 같은 구간을 네 공개 카메라로 보며 카메라당 256×256 원본을 그대로 유지했습니다. 선택 구간 내 생략·보간·화면 자르기는 없습니다. 이 클립은 접근을 보여 주며 소매 진입 성공을 뜻하지 않습니다.
+
+[네 카메라 MP4](assets/20261106-astra-coordinated-fresh-001-multiview/event.mp4) · [SHA·경계 매핑·인코딩 기록](assets/20261106-astra-coordinated-fresh-001-multiview/provenance.json) · [재사용 가능한 내보내기 도구](EVENT_EXPORT.ko.md)
+
 ## 반복 구간의 정확한 범위
 
 | 항목 | 선택 범위 |

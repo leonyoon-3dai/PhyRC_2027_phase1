@@ -12,6 +12,7 @@ __pycache__/
 *.h5
 *.mp4
 !docs/videos/*.mp4
+!docs/gallery/assets/*/event.mp4
 *.log
 *.pem
 *.key
