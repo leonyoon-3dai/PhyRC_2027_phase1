@@ -19,6 +19,7 @@ const session = globalThis.crypto?.randomUUID?.() ?? String(Math.random());
 const keyboardPort = new URLSearchParams(location.search).get('keyboardPort') || '8211';
 const endpoint = `http://${location.hostname}:${keyboardPort}/keys`;
 let seq = 0, lastAck = -1, lastAckAt = 0, latestSent = -1;
+let observerOnly = false;
 let guidance = null, guidanceAt = 0, serverKeys = new Set(), arrowsVisible = true, preciseMode = false, appliedKeys = new Set();
 const directionOverlay = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
 directionOverlay.setAttribute('aria-label', '로봇 방향별 조작 키 · 현재 카메라와 로봇 회전 반영');
@@ -137,14 +138,14 @@ helpButton.addEventListener('click', () => {
 const label = key => key.replace('NUMPAD_', '숫자 ').replace('SPACE', 'Space').replace('ESCAPE', 'ESC');
 function render() {
  drawDirections();
- panel.querySelector('[data-applied]').textContent=appliedKeys.size?`제어 입력 반영: ${[...appliedKeys].map(displayKey).join(" + ")}`:"제어 입력: 중립";
+ panel.querySelector('[data-applied]').textContent=observerOnly?'자동 수집 관찰 전용 · 브라우저 로봇 입력 미적용':appliedKeys.size?`제어 입력 반영: ${[...appliedKeys].map(displayKey).join(" + ")}`:"제어 입력: 중립";
  const focused = document.hasFocus() && !document.hidden;
  const stale = lastAckAt > 0 && performance.now() - lastAckAt > 1500;
  const pending = latestSent > lastAck;
- connection.textContent = `${stale ? '응답 지연' : transport}${latency === null ? '' : ` · ${latency} ms`} · ${focused ? '조작 중' : '포커스 없음'}${pending ? ' · 대기' : ''}`;
+ connection.textContent = `${stale ? '응답 지연' : transport}${latency === null ? '' : ` · ${latency} ms`} · ${observerOnly ? '자동 수집 관찰' : focused ? '조작 중' : '포커스 없음'}${pending ? ' · 대기' : ''}`;
  connection.style.color = transport === '오류' || stale ? '#ff9a9a' : '#8fe0b0';
  keysLabel.textContent = [...held].map(label).join(' + ') || '없음';
- noticeLabel.textContent = notice;
+ noticeLabel.textContent = observerOnly ? '키·버튼·텍스트로 로봇을 조작하거나 종료할 수 없습니다.' : notice;
 }
 async function send(forceRelease=false, textCommand=null) {
  const requestSeq = seq++;
@@ -161,6 +162,7 @@ async function send(forceRelease=false, textCommand=null) {
    if(payload.guidance){guidance=payload.guidance;guidanceAt=performance.now();}
    serverKeys=new Set(payload.server_keys||[]);
    appliedKeys=new Set(payload.applied_keys||[]);
+   observerOnly=payload.control_mode==='observer_only';
   }
  } catch (_) {
   if (requestSeq > lastAck) {

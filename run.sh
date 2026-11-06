@@ -79,6 +79,11 @@ ARGS=(run --rm --network=host --user "1234:$(id -g)" --label phyrc.project=PhyRC
       -v "$ROOT/.runtime/RCareWorld-2.0:/workspace/RCareWorld-2.0:rw"
       -v "$ROOT/output:/output:rw" -v "$ROOT/scripts:/scripts:ro"
       -v "$ROOT:/project:ro" -w /workspace/PhyRC_Sim)
+# JSON-lines collectors require an open stdin; GUI/default scripts keep their
+# existing detached-input behavior. This changes transport, not simulation.
+if [[ "$COMMAND" == python && "${STRETCH4_OPERATOR_STDIN:-0}" == 1 ]]; then
+    ARGS+=(-i)
+fi
 for mapping in kit:kit/cache ov:.cache/ov pip:.cache/pip warp:.cache/warp glcache:.cache/nvidia/GLCache computecache:.nv/ComputeCache logs:.nvidia-omniverse/logs data:.local/share/ov/data documents:Documents mpl:.cache/matplotlib; do
     ARGS+=(-v "$ROOT/cache/${mapping%%:*}:/isaac-sim/${mapping#*:}:rw")
 done
