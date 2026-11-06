@@ -453,6 +453,8 @@ def main():
     parser.add_argument('--max-steps', type=int, default=2400)
     parser.add_argument('--model-timeout', type=float, default=600)
     parser.add_argument('--webrtc', action='store_true')
+    parser.add_argument('--wrist-depth-panel', action='store_true',
+                        help='Append one fixed-range CURRENT wrist depth image after all RGB; default off')
     args = parser.parse_args()
     if not re.fullmatch(r'[a-zA-Z0-9][a-zA-Z0-9_.-]{0,119}', args.run_id):
         parser.error('run-id must be a safe unique name')
@@ -520,6 +522,9 @@ def main():
                  'survived replay. Only the supplied public views and robot state establish your next action.')
     if args.replay_observe_steps:
         task += '\n\n' + REPLAY_IMAGE_TASK
+    if args.wrist_depth_panel:
+        from participant.collection.wrist_depth import TASK as WRIST_DEPTH_TASK
+        task += '\n\n' + WRIST_DEPTH_TASK
     if args.mode == 'wiring':
         task += '\n\n' + (BATCH_WIRING_TASK if args.plan_size > 1 else WIRING_TASK)
     elif args.mode == 'pickup':
@@ -583,6 +588,10 @@ def main():
             'capture_source': 'new_episode_replay_acknowledgements',
             'delivery': 'first_model_call_only', 'captured': [], 'first_model_input': None,
         }
+    if args.wrist_depth_panel:
+        manifest['input_profile'] += '_with_current_wrist_depth_panel'
+        manifest['wrist_depth_panel'] = {'enabled': True, 'delivery': 'last_image_each_model_call',
+                                         'model_inputs': []}
     token_usage = TokenUsageAccounting()
     token_usage.update_manifest(manifest)
     manifest['source_snapshot'] = source_snapshot(root, trace)
@@ -717,6 +726,13 @@ def main():
                                                                  replay_history)
                     prompt += '\nImage temporal context (zero-based image indices): ' + json.dumps(
                         image_context, allow_nan=False)
+                depth_panel = None
+                if args.wrist_depth_panel:
+                    from participant.collection.wrist_depth import append_wrist_depth_panel
+                    images, depth_panel = append_wrist_depth_panel(
+                        obs, images, actor_root / 'observations' / f'{index:05d}', image_context)
+                    prompt += '\ncurrent_wrist_depth_panel (appended last; zero-based indices): ' + json.dumps(
+                        depth_panel, allow_nan=False)
                 image_hashes = [hashlib.sha256(p.read_bytes()).hexdigest() for p in images]
                 input_hash = hashlib.sha256((prompt + json.dumps(image_hashes)).encode()).hexdigest()
                 latest_input_hash = input_hash
@@ -731,6 +747,14 @@ def main():
                                                 'sha256': digest}
                                                for i, (p, digest) in enumerate(zip(images, image_hashes))],
                         }
+                    if depth_panel is not None:
+                        manifest['wrist_depth_panel']['model_inputs'].append({
+                            'model_call_index': model_call_index, 'decision_index': index,
+                            'input_sha256': input_hash, 'panel': depth_panel,
+                            'ordered_images': [{'image_index': i, 'relative_file': str(p.relative_to(root)),
+                                                'sha256': digest}
+                                               for i, (p, digest) in enumerate(zip(images, image_hashes))],
+                        })
                     manifest['activity'] = 'model_request'
                     dump(trace / 'attempt.json', manifest)
                     result = None

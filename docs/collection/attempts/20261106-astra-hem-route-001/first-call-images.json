@@ -1,0 +1,145 @@
+{
+  "schema": "phyrc-same-episode-replay-images-v1",
+  "capture_source": "new_episode_replay_acknowledgements",
+  "delivery": "first_model_call_only",
+  "input_sha256": "44c68e99f8f22c6414ddcc827407ec20a36f36760b244ba5d14a8946a803a4b1",
+  "image_context": {
+    "schema": "phyrc-same-episode-replay-images-v1",
+    "groups": [
+      {
+        "kind": "current",
+        "image_indices": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "camera_order": [
+          "overview",
+          "robot_0_wrist",
+          "robot_1_wrist",
+          "robot_0_head",
+          "robot_1_head"
+        ],
+        "simulation_time_s": 36.525001904927194
+      },
+      {
+        "kind": "historical_same_episode",
+        "image_indices": [
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "camera_order": [
+          "overview",
+          "robot_0_wrist",
+          "robot_1_wrist",
+          "robot_0_head",
+          "robot_1_head"
+        ],
+        "replay_boundary": 264,
+        "simulation_time_s": 14.725000767968595
+      },
+      {
+        "kind": "historical_same_episode",
+        "image_indices": [
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "camera_order": [
+          "overview",
+          "robot_0_wrist",
+          "robot_1_wrist",
+          "robot_0_head",
+          "robot_1_head"
+        ],
+        "replay_boundary": 320,
+        "simulation_time_s": 17.525000913999975
+      }
+    ]
+  },
+  "ordered_images": [
+    {
+      "image_index": 0,
+      "file": "first-call/00-overview.png",
+      "sha256": "365de736c8ed4feaf4d90ea0ea67393d79e8a37e0cec658f6f04fac165d9fe40"
+    },
+    {
+      "image_index": 1,
+      "file": "first-call/01-robot_0_wrist.png",
+      "sha256": "280b45fe54d60b77006a688151fc505d7acc153d5186d45096ae5259c7d4b2d4"
+    },
+    {
+      "image_index": 2,
+      "file": "first-call/02-robot_1_wrist.png",
+      "sha256": "31943d3b55a30d45e956b80ece7d31a5cfa568a417e333aa12c1cf0306b30bff"
+    },
+    {
+      "image_index": 3,
+      "file": "first-call/03-robot_0_head.png",
+      "sha256": "9ea4f12463e825b8522d58949368bdd93ae92645b2e4a218d9168ad8968ef495"
+    },
+    {
+      "image_index": 4,
+      "file": "first-call/04-robot_1_head.png",
+      "sha256": "9c57c2db405ef958607c6aa68506b1cb5755dbcf57b9cef0ef97feac804abd13"
+    },
+    {
+      "image_index": 5,
+      "file": "first-call/05-overview.png",
+      "sha256": "507ad0f9824d6e1c74418e415d8a4b1ce651a364026eee14ee4d5bab470bafef"
+    },
+    {
+      "image_index": 6,
+      "file": "first-call/06-robot_0_wrist.png",
+      "sha256": "72118de36c86aab3d2f7f5d89471bb776a0f9069bbc2943a3d21a59a5aae398a"
+    },
+    {
+      "image_index": 7,
+      "file": "first-call/07-robot_1_wrist.png",
+      "sha256": "854ba641e117f8eeb69b8d0870457f9e11ac19c4a8d72b234c4bb6f86732cfe3"
+    },
+    {
+      "image_index": 8,
+      "file": "first-call/08-robot_0_head.png",
+      "sha256": "5c7b145b5122bcb41c6d51f7ddd580e563b5ff4c031b16a97ebc21d433f7fc5a"
+    },
+    {
+      "image_index": 9,
+      "file": "first-call/09-robot_1_head.png",
+      "sha256": "c89425ada2c3d389fd26328bdf3ca8e206fd37d84248d513c48aae4c46a9fd68"
+    },
+    {
+      "image_index": 10,
+      "file": "first-call/10-overview.png",
+      "sha256": "221892aa06f46673aaa7691d1fa286000088ff36a219b88720f617a828f57442"
+    },
+    {
+      "image_index": 11,
+      "file": "first-call/11-robot_0_wrist.png",
+      "sha256": "2398053f9b8341e731c5b0929a52ab3a99f6d527eb6042c392b11574ab22da60"
+    },
+    {
+      "image_index": 12,
+      "file": "first-call/12-robot_1_wrist.png",
+      "sha256": "4514cf9852062eef27f527c890111b77dcfb9e8242dbe7b41d5045ecd0737efb"
+    },
+    {
+      "image_index": 13,
+      "file": "first-call/13-robot_0_head.png",
+      "sha256": "b074a80a5673b3834b5f6a33349f4a67e1e6b341e4b3a8e87b9a7d0a534e8c41"
+    },
+    {
+      "image_index": 14,
+      "file": "first-call/14-robot_1_head.png",
+      "sha256": "b1251582a7fa5698d0bf3758e1a1d2b320e41745281cff6a011bfdf85069cae5"
+    }
+  ],
+  "scope": "Exact images supplied in the first model call after replay. Historical state/depth not delivered to actor. Export report initial images are episode start, not the first actor call."
+}

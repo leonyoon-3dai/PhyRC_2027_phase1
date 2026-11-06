@@ -1,0 +1,20 @@
+{
+  "run_id": "20261106-astra-hem-route-001",
+  "archive_bytes": 1645344734,
+  "archive_sha256": "7e37ae398e5a6c04492f4623d1cf02dfe0355218ce96fb407ecf3a383f6436a0",
+  "source_commit": "515dede917b579ba8623fead7267dd6b385a5e72",
+  "scope": "Complete closed E12 collection including trusted evaluation/audit; public actor observations; final prompt/actions/segments/gate/attempt/source snapshot; new-episode replay observations at264 and320. Same reviewed path allowlist as E10 plus replay observations. Excludes credentials, actor runtime/raw reasoning/events/session DB and simulator logs. Not actor input or training approval.",
+  "manifest_entries": 133,
+  "capture_steps": 781,
+  "validated_transitions": 781,
+  "repo_id": "leonayoon/phyrc-2027-phase1-private-backup",
+  "repo_type": "dataset",
+  "private": true,
+  "revision": "64659dd24e26b54efe5e3d6b0eac6aef206f1555",
+  "path": "sessions/20261106-e12-v1/archive.tar.gz",
+  "manifest_path": "sessions/20261106-e12-v1/SHA256.json",
+  "manifest_sha256": "f15c0ec17e441922fa41b6ee26c077c94be40f70d147244f02d99e9ce1ae72c0",
+  "remote_download_verified": true,
+  "manifest_remote_download_verified": true,
+  "verified_at_utc": "2026-11-06T10:30:21.913276+00:00"
+}

@@ -32,7 +32,7 @@ def observation(step):
 
 
 class ReplayVisualHistoryTest(unittest.TestCase):
-    def run_client(self, boundaries):
+    def run_client(self, boundaries, *, wrist_depth_panel=False):
         calls, requests = [], []
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -91,6 +91,8 @@ class ReplayVisualHistoryTest(unittest.TestCase):
                     '--review-points', '10']
             if boundaries is not None:
                 argv += ['--replay-observe-steps', *map(str, boundaries)]
+            if wrist_depth_panel:
+                argv += ['--wrist-depth-panel']
             with mock.patch.object(codex_client, '__file__', str(root / 'participant/collection/client.py')), \
                  mock.patch.object(codex_client, 'Simulator', Simulator), \
                  mock.patch.object(codex_actor, 'Actor', Actor), \
@@ -114,6 +116,44 @@ class ReplayVisualHistoryTest(unittest.TestCase):
                         self.assertEqual(hashlib.sha256((trace / record['relative_file']).read_bytes()).hexdigest(),
                                          record['sha256'])
             return attempt, calls, requests, current_payload, captured
+
+    def test_optional_depth_appends_after_history_then_after_current_only(self):
+        attempt, calls, _, _, _ = self.run_client([264, 320], wrist_depth_panel=True)
+        self.assertEqual([len(call['images']) for call in calls], [16, 6])
+        expected = [(step % 256, step // 256, camera)
+                    for step in (700, 264, 320) for camera in range(5)]
+        self.assertEqual(calls[0]['pixels'][:15], expected)
+        self.assertEqual(calls[1]['pixels'][:5], [(701 % 256, 701 // 256, c) for c in range(5)])
+        self.assertTrue(attempt['input_profile'].endswith('_with_current_wrist_depth_panel'))
+        records = attempt['wrist_depth_panel']['model_inputs']
+        self.assertEqual(len(records), 2)
+        for i, (record, index, clock) in enumerate(zip(records, (15, 5), (37.5, 37.55))):
+            meta = record['panel']
+            self.assertEqual(meta['image_index'], index)
+            self.assertEqual(meta['simulation_time_s'], clock)
+            self.assertEqual(meta['input_image_order'][-1]['kind'], 'current')
+            self.assertEqual(meta['input_image_order'][-1]['image_index'], index)
+            self.assertEqual(meta['input_image_order'][-1]['simulation_time_s'], clock)
+            self.assertEqual(meta['panels'][0]['matching_current_rgb_image_index'], 1)
+            self.assertEqual(meta['panels'][1]['matching_current_rgb_image_index'], 2)
+            self.assertEqual(record['ordered_images'][-1]['sha256'], meta['png_sha256'])
+            self.assertEqual([x['relative_file'] for x in record['ordered_images']], calls[i]['images'])
+            self.assertEqual([x['sha256'] for x in record['ordered_images']], calls[i]['hashes'])
+            for secret in ('PRIVATE_', '912345678', 'synthetic-parent', 'raw_points', 'source_group'):
+                self.assertNotIn(secret, calls[i]['prompt'])
+        self.assertIn('0.03m WHITE to 1.20m BLACK', calls[0]['prompt'])
+        self.assertEqual(attempt['replay_visual_history']['first_model_input']['ordered_images'][-1]['image_index'], 15)
+
+    def test_optional_depth_without_history_and_disabled_profile(self):
+        attempt, calls, _, _, _ = self.run_client(None, wrist_depth_panel=True)
+        self.assertEqual([len(call['images']) for call in calls], [6, 6])
+        self.assertNotIn('replay_visual_history', attempt)
+        self.assertEqual([r['panel']['image_index'] for r in attempt['wrist_depth_panel']['model_inputs']], [5, 5])
+        disabled, calls, _, _, _ = self.run_client(None)
+        self.assertNotIn('wrist_depth_panel', disabled)
+        self.assertNotIn('_with_current_wrist_depth_panel', disabled['input_profile'])
+        self.assertEqual([len(call['images']) for call in calls], [5, 5])
+        self.assertNotIn('current_wrist_depth_panel', calls[0]['prompt'])
 
     def test_exact_new_episode_frames_current_first_history_only_first_call(self):
         attempt, calls, requests, current, captured = self.run_client([264, 320])
