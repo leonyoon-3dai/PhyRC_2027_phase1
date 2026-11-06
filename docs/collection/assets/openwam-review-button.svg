@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="280" height="64" viewBox="0 0 280 64" role="img" aria-labelledby="title desc">
+  <title id="title">OpenWAM 사용 가능성 검토 페이지 열기</title>
+  <desc id="desc">공식 자료 분석 전용 페이지입니다. 현재 수집에는 적용하지 않았습니다.</desc>
+  <rect x="1" y="1" width="278" height="62" rx="14" fill="#132e30" stroke="#39716d" stroke-width="2"/>
+  <rect x="20" y="17" width="26" height="30" rx="4" fill="none" stroke="#5eead4" stroke-width="2"/>
+  <path d="M27 26h12M27 33h12M27 40h8" stroke="#5eead4" stroke-width="2" stroke-linecap="round"/>
+  <text x="63" y="40" font-family="sans-serif" font-size="25" font-weight="700" fill="#ffffff">OpenWAM</text>
+  <path d="M246 24l8 8-8 8" fill="none" stroke="#5eead4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

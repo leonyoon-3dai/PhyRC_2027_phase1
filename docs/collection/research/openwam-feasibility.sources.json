@@ -1,0 +1,407 @@
+{
+  "schema": "phyrc-openwam-feasibility-review-v1",
+  "reviewed_at_utc": "2026-11-06T05:02:18.203202+00:00",
+  "target": {
+    "name": "Stanford OpenWAM",
+    "official_repository": "OpenWAM/OpenWAM",
+    "commit": "030da766bbd882f2216606ec4c31a1dd224f82b3",
+    "paper": "2610.07922v1",
+    "other_projects_not_used_as_target": [
+      "OpenWAM-Official/OpenWAM / 2609.07398",
+      "World Labs Marble"
+    ]
+  },
+  "scope": {
+    "documentation_and_metadata_read_only": true,
+    "software_installed": false,
+    "weights_downloaded": false,
+    "model_inference_executed": false,
+    "training_executed": false,
+    "live_policy_modified": false,
+    "simulator_or_evaluator_modified": false,
+    "gpu_memory_benchmark_executed": false
+  },
+  "public_release": {
+    "repository": "OpenWAM-Stanford/OpenWAM-Pretraining",
+    "revision": "d04f1dae7e65f1f1dbe061947df87b99a63df286",
+    "private": false,
+    "gated": false,
+    "kind": "video_pretraining_weights_only",
+    "model_state_published_bytes": 20433187287,
+    "model_state_published_sha256": "3116958037211db705c16dc6aac1b28af60a8efba315605b19758399dea40c17",
+    "model_state_payload_hash_independently_verified": false,
+    "resolved_config_sha256_verified": true,
+    "action_horizon": 0,
+    "policy_and_idm_checkpoints_status": "pending per pinned official README",
+    "frontend_assets_included": false,
+    "optimizer_scheduler_included": false
+  },
+  "license_findings": {
+    "code_spdx": "AGPL-3.0-only",
+    "weight_license_confirmed": false,
+    "weight_license_fields_checked": [
+      "HF model card",
+      "HF API cardData",
+      "HF file tree",
+      "release_metadata.json"
+    ],
+    "separate_weight_license_file_found": false,
+    "third_party_conditions_separate": true,
+    "legal_compliance_determination_made": false
+  },
+  "compatibility": {
+    "phyrc_rgb_views": 5,
+    "phyrc_rgb_per_view_shape": [
+      256,
+      256,
+      3
+    ],
+    "phyrc_public_depth_preserved": true,
+    "phyrc_action_shape": [
+      2,
+      9
+    ],
+    "phyrc_control_hz": 20,
+    "reference_libero_rgb_views": 2,
+    "reference_libero_canvas": [
+      128,
+      256
+    ],
+    "reference_libero_action_dim": 7,
+    "reference_libero_state_dim": 8,
+    "reference_libero_action_horizon": 16,
+    "paper_real_robot_action_dim": 20,
+    "paper_real_robot_cameras": 3,
+    "paper_real_robot_record_hz": 30,
+    "rgb_sample_channels": 3,
+    "custom_camera_layout_api_exists": true,
+    "phyrc_five_view_rgbd_validated": false,
+    "depth_encoder_in_examined_sample_contract": false,
+    "depth_support_claim_scope": "No dedicated depth input observed in examined RGB sample/layout interfaces; not a proof that all extensions are impossible.",
+    "phyrc_adapter_implemented": false
+  },
+  "resource_evidence": {
+    "current_gpu_snapshot": {
+      "observed_at_utc": "2026-11-06T04:59:02.697737+00:00",
+      "query": "nvidia-smi --query-gpu=name,memory.total,memory.used,memory.free --format=csv,noheader,nounits",
+      "gpu_name": "NVIDIA L40S",
+      "memory_total_mib": 46068,
+      "memory_used_mib": 9231,
+      "memory_free_reported_mib": 36227,
+      "meaning": "one active Isaac collection snapshot; no OpenWAM memory benchmark"
+    },
+    "host_cpu_vcpu": 12,
+    "host_ram_approx_gib": 70,
+    "host_context_source": "docs/collection/experiments/2026-11-06-server-comparison.json",
+    "official_policy_training_reference_gpu_count": 4,
+    "official_policy_training_reference_each_gpu_gb": 48,
+    "paper_video_pretraining_gpu": "NVIDIA B200",
+    "paper_video_pretraining_gpu_count": 32,
+    "paper_video_pretraining_days": 14,
+    "official_minimum_single_gpu_inference_vram_confirmed": false,
+    "current_isaac_concurrent_openwam_verified": false,
+    "forecast_runtime_and_quality_measured": false
+  },
+  "recommended_future_order": [
+    "preserve live PhyRC collection",
+    "audit completed public data and source-group splits",
+    "review licenses and frontend asset dependencies",
+    "define RGB layout and temporal adapter contract",
+    "offline video forecasting with measured memory and baseline comparison",
+    "separately prepared action-conditioned dynamics or policy with 18-dimensional adapter",
+    "bounded official-simulator control evaluation after offline validation"
+  ],
+  "sources": [
+    {
+      "source_id": "github:docs/artifacts.md",
+      "kind": "official_repository_file",
+      "url": "https://github.com/OpenWAM/OpenWAM/blob/030da766bbd882f2216606ec4c31a1dd224f82b3/docs/artifacts.md",
+      "repository_commit": "030da766bbd882f2216606ec4c31a1dd224f82b3",
+      "git_blob_sha": "3951cec3f4c385d5ad596596eb89513ed65a52b7",
+      "read_coverage": "full_text",
+      "retrieved_text_sha256": "8df99f00e2f1a9e92518f5a49f84709c33ae4b6256e41a57f148d7c7fca4fef3",
+      "read_method": "GitHub plugin read-only",
+      "checked_at_utc": "2026-11-06T04:59:02.581Z"
+    },
+    {
+      "source_id": "github:configs/experiments/dual_expert_libero_joint.yaml",
+      "kind": "official_repository_file",
+      "url": "https://github.com/OpenWAM/OpenWAM/blob/030da766bbd882f2216606ec4c31a1dd224f82b3/configs/experiments/dual_expert_libero_joint.yaml",
+      "repository_commit": "030da766bbd882f2216606ec4c31a1dd224f82b3",
+      "git_blob_sha": "4f78efa25e882cf8c8bc27b11ac1c9a6437b1097",
+      "read_coverage": "full_text",
+      "retrieved_text_sha256": "23b60af74070ca1f2f97a77d815c10d528ef6cc3dedb73530bfe3d484a76030d",
+      "read_method": "GitHub plugin read-only",
+      "checked_at_utc": "2026-11-06T04:59:02.581Z"
+    },
+    {
+      "source_id": "github:docs/rollout_contracts.md",
+      "kind": "official_repository_file",
+      "url": "https://github.com/OpenWAM/OpenWAM/blob/030da766bbd882f2216606ec4c31a1dd224f82b3/docs/rollout_contracts.md",
+      "repository_commit": "030da766bbd882f2216606ec4c31a1dd224f82b3",
+      "git_blob_sha": "0bea823ebb30a6c7e292a4fb94f20dff9072e394",
+      "read_coverage": "full_text",
+      "retrieved_text_sha256": "dd287aeb3425b16d5d6efbd9804364ade906ee11cb398513d84f8918ae32a2de",
+      "read_method": "GitHub plugin read-only",
+      "checked_at_utc": "2026-11-06T04:59:02.581Z"
+    },
+    {
+      "source_id": "github:docs/extension_sdk.md",
+      "kind": "official_repository_file",
+      "url": "https://github.com/OpenWAM/OpenWAM/blob/030da766bbd882f2216606ec4c31a1dd224f82b3/docs/extension_sdk.md",
+      "repository_commit": "030da766bbd882f2216606ec4c31a1dd224f82b3",
+      "git_blob_sha": "0545f89df6b9c7b6af3e2d57890177a71febd2d9",
+      "read_coverage": "full_text",
+      "retrieved_text_sha256": "6f60c9677042ead8845d7327ed1caf482bc834e377b5f23e43e3315a20c41453",
+      "read_method": "GitHub plugin read-only",
+      "checked_at_utc": "2026-11-06T04:59:02.581Z"
+    },
+    {
+      "source_id": "github:docs/pretraining/multiview_training.md",
+      "kind": "official_repository_file",
+      "url": "https://github.com/OpenWAM/OpenWAM/blob/030da766bbd882f2216606ec4c31a1dd224f82b3/docs/pretraining/multiview_training.md",
+      "repository_commit": "030da766bbd882f2216606ec4c31a1dd224f82b3",
+      "git_blob_sha": "9412481218b50086acc75379ea99226ef2f26c8d",
+      "read_coverage": "full_text",
+      "retrieved_text_sha256": "5d4dedcdbab617b2b285f820a57870414ac9908fe6f5239403c50018826d8ad5",
+      "read_method": "GitHub plugin read-only",
+      "checked_at_utc": "2026-11-06T04:59:02.581Z"
+    },
+    {
+      "source_id": "github:docs/pretraining/training.md",
+      "kind": "official_repository_file",
+      "url": "https://github.com/OpenWAM/OpenWAM/blob/030da766bbd882f2216606ec4c31a1dd224f82b3/docs/pretraining/training.md",
+      "repository_commit": "030da766bbd882f2216606ec4c31a1dd224f82b3",
+      "git_blob_sha": "bf358d989e10fbabcdb0a0b2f4e01ffabe3ac2e5",
+      "read_coverage": "full_text",
+      "retrieved_text_sha256": "a30e2feaed8e5439ef6317c79b6804c43ec2edb49bb865566575d6b26a274d1c",
+      "read_method": "GitHub plugin read-only",
+      "checked_at_utc": "2026-11-06T04:59:02.581Z"
+    },
+    {
+      "source_id": "github:docs/running_experiments.md",
+      "kind": "official_repository_file",
+      "url": "https://github.com/OpenWAM/OpenWAM/blob/030da766bbd882f2216606ec4c31a1dd224f82b3/docs/running_experiments.md",
+      "repository_commit": "030da766bbd882f2216606ec4c31a1dd224f82b3",
+      "git_blob_sha": "1d6e5473a075c6131dad63c70e3ad4045df4a2c0",
+      "read_coverage": "full_text",
+      "retrieved_text_sha256": "5930841ce21017d1c54ccfbd790ae6c2eb1cc2b596126277e73701ef8015f6db",
+      "read_method": "GitHub plugin read-only",
+      "checked_at_utc": "2026-11-06T04:59:02.581Z"
+    },
+    {
+      "source_id": "github:LICENSE",
+      "kind": "official_repository_file",
+      "url": "https://github.com/OpenWAM/OpenWAM/blob/030da766bbd882f2216606ec4c31a1dd224f82b3/LICENSE",
+      "repository_commit": "030da766bbd882f2216606ec4c31a1dd224f82b3",
+      "git_blob_sha": "be3f7b28e564e7dd05eaf59d64adba1a4065ac0e",
+      "read_coverage": "lines_1_to_26",
+      "retrieved_text_sha256": "6d485ff84c926efd1803089adcfbae3a33dd03e77753da7601838ada717195ab",
+      "read_method": "GitHub plugin read-only",
+      "checked_at_utc": "2026-11-06T04:59:02.581Z"
+    },
+    {
+      "source_id": "github:pyproject.toml",
+      "kind": "official_repository_file",
+      "url": "https://github.com/OpenWAM/OpenWAM/blob/030da766bbd882f2216606ec4c31a1dd224f82b3/pyproject.toml",
+      "repository_commit": "030da766bbd882f2216606ec4c31a1dd224f82b3",
+      "git_blob_sha": "adbd5ecc1d340c233be210a9d0b2faeb39d21419",
+      "read_coverage": "full_text",
+      "retrieved_text_sha256": "fd44178448a72c170e872b1b71972f68e69428ab96a70950111ce8f3a461b4fe",
+      "read_method": "GitHub plugin read-only",
+      "checked_at_utc": "2026-11-06T04:59:02.581Z"
+    },
+    {
+      "source_id": "github:src/open_wam/data/contracts.py",
+      "kind": "official_repository_file",
+      "url": "https://github.com/OpenWAM/OpenWAM/blob/030da766bbd882f2216606ec4c31a1dd224f82b3/src/open_wam/data/contracts.py",
+      "repository_commit": "030da766bbd882f2216606ec4c31a1dd224f82b3",
+      "git_blob_sha": "99cd9088b39df650aca75990e23a7e1b00bf30f0",
+      "read_coverage": "full_text",
+      "retrieved_text_sha256": "afdfe8dfc6800dfc352f01716445fdf7d91c0201c892266f0ddf8047a07ac332",
+      "read_method": "GitHub plugin read-only",
+      "checked_at_utc": "2026-11-06T04:59:02.581Z"
+    },
+    {
+      "source_id": "github:src/open_wam/contracts/video.py",
+      "kind": "official_repository_file",
+      "url": "https://github.com/OpenWAM/OpenWAM/blob/030da766bbd882f2216606ec4c31a1dd224f82b3/src/open_wam/contracts/video.py",
+      "repository_commit": "030da766bbd882f2216606ec4c31a1dd224f82b3",
+      "git_blob_sha": "86088bdcc6105da5994f3967df48d607f077e015",
+      "read_coverage": "full_text",
+      "retrieved_text_sha256": "003bef6c3d535397e26521e1763b28396677feafa999ff086d2cc6f253295b8a",
+      "read_method": "GitHub plugin read-only",
+      "checked_at_utc": "2026-11-06T04:59:02.581Z"
+    },
+    {
+      "source_id": "github:configs/examples/lerobot_consortium_real_heterogeneous_multicam_as_slots_template.yaml",
+      "kind": "official_repository_file",
+      "url": "https://github.com/OpenWAM/OpenWAM/blob/030da766bbd882f2216606ec4c31a1dd224f82b3/configs/examples/lerobot_consortium_real_heterogeneous_multicam_as_slots_template.yaml",
+      "repository_commit": "030da766bbd882f2216606ec4c31a1dd224f82b3",
+      "git_blob_sha": "e8291d4ccf891f0527b453aa73f5bf136018dd61",
+      "read_coverage": "full_text",
+      "retrieved_text_sha256": "2bf9f72d1651de93e7b0e3d346a5ebcdeb1273d4d7ed0a1d851649c9ab26c899",
+      "read_method": "GitHub plugin read-only",
+      "checked_at_utc": "2026-11-06T04:59:02.581Z"
+    },
+    {
+      "source_id": "github:docs/benchmarks.md",
+      "kind": "official_repository_file",
+      "url": "https://github.com/OpenWAM/OpenWAM/blob/030da766bbd882f2216606ec4c31a1dd224f82b3/docs/benchmarks.md",
+      "repository_commit": "030da766bbd882f2216606ec4c31a1dd224f82b3",
+      "git_blob_sha": "00d426dbd492aca00bd3acdd7bffddaf8373c7bb",
+      "read_coverage": "full_text",
+      "retrieved_text_sha256": "4983d1ad98ada09974f9dff4898353cd042b0b3ddb9a1192d789957572f39b54",
+      "read_method": "GitHub plugin read-only",
+      "checked_at_utc": "2026-11-06T04:59:02.581Z"
+    },
+    {
+      "source_id": "github:THIRD_PARTY_NOTICES.md",
+      "kind": "official_repository_file",
+      "url": "https://github.com/OpenWAM/OpenWAM/blob/030da766bbd882f2216606ec4c31a1dd224f82b3/THIRD_PARTY_NOTICES.md",
+      "repository_commit": "030da766bbd882f2216606ec4c31a1dd224f82b3",
+      "git_blob_sha": "48b651e6d9481c754925b8209dd5270690eb1b66",
+      "read_coverage": "full_text",
+      "retrieved_text_sha256": "b86ce1c67e214be452a693885dbf259c6e117be444af196adab9c408fd87db51",
+      "read_method": "GitHub plugin read-only",
+      "checked_at_utc": "2026-11-06T04:59:02.581Z"
+    },
+    {
+      "source_id": "github:configs/artifacts.sample.yaml",
+      "kind": "official_repository_file",
+      "url": "https://github.com/OpenWAM/OpenWAM/blob/030da766bbd882f2216606ec4c31a1dd224f82b3/configs/artifacts.sample.yaml",
+      "repository_commit": "030da766bbd882f2216606ec4c31a1dd224f82b3",
+      "git_blob_sha": "ecd31ef63e9208a9ad42bc6996dd48dae6f65428",
+      "read_coverage": "full_text",
+      "retrieved_text_sha256": "782e7663f1edaf17e784242d2f5cf15963ac35abdc0343ea68e882353badeda3",
+      "read_method": "GitHub plugin read-only",
+      "checked_at_utc": "2026-11-06T04:59:02.581Z"
+    },
+    {
+      "source_id": "github:configs/local_paths.sample.yaml",
+      "kind": "official_repository_file",
+      "url": "https://github.com/OpenWAM/OpenWAM/blob/030da766bbd882f2216606ec4c31a1dd224f82b3/configs/local_paths.sample.yaml",
+      "repository_commit": "030da766bbd882f2216606ec4c31a1dd224f82b3",
+      "git_blob_sha": "5d2c0865b26422636d1203440146cc9310b13660",
+      "read_coverage": "full_text",
+      "retrieved_text_sha256": "675520adf03589d5453ae158daf403758af9f35cf713144cfce32aecaf716b8f",
+      "read_method": "GitHub plugin read-only",
+      "checked_at_utc": "2026-11-06T04:59:02.581Z"
+    },
+    {
+      "source_id": "github:src/open_wam/contracts/action_space.py",
+      "kind": "official_repository_file",
+      "url": "https://github.com/OpenWAM/OpenWAM/blob/030da766bbd882f2216606ec4c31a1dd224f82b3/src/open_wam/contracts/action_space.py",
+      "repository_commit": "030da766bbd882f2216606ec4c31a1dd224f82b3",
+      "git_blob_sha": "7b8fb553ff3fad538aa876f82f68ed835554b5f4",
+      "read_coverage": "full_text",
+      "retrieved_text_sha256": "46b01b9f2a03647e9010fa7924b993b0c16a21560197e2787ec78532fee227c4",
+      "read_method": "GitHub plugin read-only",
+      "checked_at_utc": "2026-11-06T04:59:02.581Z"
+    },
+    {
+      "source_id": "github:README.md",
+      "kind": "official_repository_file",
+      "url": "https://github.com/OpenWAM/OpenWAM/blob/030da766bbd882f2216606ec4c31a1dd224f82b3/README.md",
+      "repository_commit": "030da766bbd882f2216606ec4c31a1dd224f82b3",
+      "git_blob_sha": "ebf5f087a61cf2a4aa50c4ffbd4a50797ca3a7fb",
+      "read_coverage": "full_text",
+      "retrieved_text_sha256": "3a84839b3ac6894076c5b0821790e77aef30718c858d411c9fc95cadabf954aa",
+      "read_method": "GitHub plugin read-only",
+      "checked_at_utc": "2026-11-06T04:59:02.581Z"
+    },
+    {
+      "source_id": "project_site",
+      "kind": "official_project_site",
+      "url": "https://openwam.stanford.edu/",
+      "checked_sections": [
+        "identity",
+        "architecture",
+        "interaction programs",
+        "published data and real robot overview"
+      ],
+      "read_method": "web"
+    },
+    {
+      "source_id": "paper_abstract",
+      "kind": "primary_paper",
+      "url": "https://arxiv.org/abs/2610.07922",
+      "version": "v1",
+      "submitted_on": "2026-10-06",
+      "title": "OpenWAM: An Open Framework for Composable World-Action Models",
+      "author_identity_check": [
+        "Heng Yu",
+        "David D. Yuan",
+        "Juze Zhang",
+        "Li Fei-Fei"
+      ],
+      "read_method": "web"
+    },
+    {
+      "source_id": "paper_html",
+      "kind": "primary_paper",
+      "url": "https://arxiv.org/html/2610.07922v1",
+      "checked_sections": [
+        "3.1-3.4",
+        "Appendix A.5",
+        "Appendix B.3",
+        "Appendix C.3"
+      ],
+      "read_method": "web"
+    },
+    {
+      "source_id": "hf:hf_model.txt",
+      "kind": "official_release_text_or_metadata",
+      "url": "https://huggingface.co/api/models/OpenWAM-Stanford/OpenWAM-Pretraining",
+      "repository_revision": "d04f1dae7e65f1f1dbe061947df87b99a63df286",
+      "read_bytes": 824,
+      "retrieved_sha256": "4431727dcc61d178421ea0ffe27ab150a11b5369e7b687fa2786e597eac38c01",
+      "read_method": "HTTPS metadata/text only; no checkpoint payload fetched"
+    },
+    {
+      "source_id": "hf:hf_tree.txt",
+      "kind": "official_release_text_or_metadata",
+      "url": "https://huggingface.co/api/models/OpenWAM-Stanford/OpenWAM-Pretraining/tree/main?recursive=true&expand=false",
+      "repository_revision": "d04f1dae7e65f1f1dbe061947df87b99a63df286",
+      "read_bytes": 813,
+      "retrieved_sha256": "52c4287e3b8de8247e3c931cec7313daa29a9f25113015a43063da0056582176",
+      "read_method": "HTTPS metadata/text only; no checkpoint payload fetched"
+    },
+    {
+      "source_id": "hf:hf_card.txt",
+      "kind": "official_release_text_or_metadata",
+      "url": "https://huggingface.co/OpenWAM-Stanford/OpenWAM-Pretraining/blob/d04f1dae7e65f1f1dbe061947df87b99a63df286/README.md",
+      "repository_revision": "d04f1dae7e65f1f1dbe061947df87b99a63df286",
+      "read_bytes": 1952,
+      "retrieved_sha256": "ca56fbaa80b8c1628255f07a58a1bdfd56d80f914a9d6b352ee4ba539c94610b",
+      "read_method": "HTTPS metadata/text only; no checkpoint payload fetched"
+    },
+    {
+      "source_id": "hf:release_metadata.json",
+      "kind": "official_release_text_or_metadata",
+      "url": "https://huggingface.co/OpenWAM-Stanford/OpenWAM-Pretraining/blob/d04f1dae7e65f1f1dbe061947df87b99a63df286/release_metadata.json",
+      "repository_revision": "d04f1dae7e65f1f1dbe061947df87b99a63df286",
+      "read_bytes": 1225,
+      "retrieved_sha256": "a24f74f07d02edc390e36f01b4dfb24ce589be1e3a9b38cd7bb31b8e38bfe5f5",
+      "read_method": "HTTPS metadata/text only; no checkpoint payload fetched"
+    },
+    {
+      "source_id": "hf:resolved_config.yaml",
+      "kind": "official_release_text_or_metadata",
+      "url": "https://huggingface.co/OpenWAM-Stanford/OpenWAM-Pretraining/blob/d04f1dae7e65f1f1dbe061947df87b99a63df286/resolved_config.yaml",
+      "repository_revision": "d04f1dae7e65f1f1dbe061947df87b99a63df286",
+      "read_bytes": 13655,
+      "retrieved_sha256": "9e226b63572d77e664e3494f6d2867cda7745e0abb12509f52347ea586eb4fb2",
+      "read_method": "HTTPS metadata/text only; no checkpoint payload fetched"
+    },
+    {
+      "source_id": "hf:SHA256SUMS",
+      "kind": "official_release_text_or_metadata",
+      "url": "https://huggingface.co/OpenWAM-Stanford/OpenWAM-Pretraining/blob/d04f1dae7e65f1f1dbe061947df87b99a63df286/SHA256SUMS",
+      "repository_revision": "d04f1dae7e65f1f1dbe061947df87b99a63df286",
+      "read_bytes": 168,
+      "retrieved_sha256": "8e2cd35925464cd745bcb2de631317f0ed716a664201a2f0adc9ce58f4f99918",
+      "read_method": "HTTPS metadata/text only; no checkpoint payload fetched"
+    }
+  ]
+}

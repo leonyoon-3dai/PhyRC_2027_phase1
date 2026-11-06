@@ -2,9 +2,17 @@
 
 [공개 시연 갤러리](docs/gallery/README.ko.md) · [수집 과정·일지](docs/collection/README.ko.md) · [공식 원본 안내](README.upstream.md) · [새 서버 준비](docs/project/START_HERE.ko.md) · [다음 작업 상태](docs/project/STATUS.md) · [공식 대회](https://emprise.cs.cornell.edu/phyrc/challenge-2027/)
 
+[![OpenWAM 사용 가능성 검토 · 아직 적용하지 않음](docs/collection/assets/openwam-review-button.svg)](docs/collection/research/openwam-feasibility.ko.md)
+
+사용 가능성 분석 · 현재 수집에는 적용하지 않음
+
 두 대의 Stretch 4가 앉아 있는 마네킹에 티셔츠를 입히는 시뮬레이션 과제입니다. 이 저장소는 공식 시뮬레이터에 시연 수집, 브라우저 조작, 데이터 검수, π₀.₅ 학습 및 제출 도구를 추가한 참가자 저장소입니다.
 
 ## 챌린지 한눈에 보기 · 0 → 50점
+
+<a href="https://emprise.cs.cornell.edu/phyrc/assets/c27/media/teleop-overhead.mp4"><img src="https://emprise.cs.cornell.edu/phyrc/assets/c27/media/teleop-overhead.jpg" width="800" alt="공식 착의 시연 영상 재생 · 두 로봇의 접근부터 착의까지"></a>
+
+**[▶ 공식 시연 영상 보기 · 35.8초](https://emprise.cs.cornell.edu/phyrc/assets/c27/media/teleop-overhead.mp4)** — 이미지를 클릭하면 원본 영상이 열립니다. [공식 대회](https://emprise.cs.cornell.edu/phyrc/challenge-2027/)가 제공하는 전체 원격 조작 시연으로, 사이트의 재생 설명은 8배속입니다.
 
 두 로봇이 옷을 함께 잡아 들어 올리고, 마네킹의 두 손·머리를 서로 맞는 옷 구멍으로 통과시켜 앞뒤 방향까지 맞추는 과제입니다. 아래는 **평가 항목을 설명하는 지도**이며 실제 완주 기록이 아닙니다.
 
