@@ -4,6 +4,8 @@
 
 [최신 영상·피드백](../gallery/README.ko.md) · [E16 세 구간](../gallery/20261106-astra-support264-002.ko.md) · [원인 검토](../collection/reviews/20261106-astra-support264-002.ko.md) · [이번 세션 기록](sessions/20261106-evening-resume.ko.md) · [메인 README](../../README.md)
 
+**현재 실행:** E17 `20261106-astra-layer352-001`,23:37:50 UTC 시작. 공개 main `98bb41ff6e83327a468abe5129517b4739ae33a1`의 깨끗한 작업 트리에서 실행했습니다. 아래 E16은 최신 **종료** 결과이며 E17 최종 점수·검사는 아직 없습니다.
+
 ## 최신 확인 결과
 
 | 구분 | 확인한 내용 |
@@ -32,7 +34,7 @@ E16 첫 run ID `20261106-astra-support264-001`은 재실행 부모 인자 불일
 | 실제 수행 | 양쪽을 따로 시험하고 로봇0을 재파지한 뒤 국소 천 동행을 관측. 입구 준비 후 운반 없이 종료 |
 | 확인되지 않은 것 | 두 지지점 사이의 통과 가능한 연속 입구, 손 진입·첫 소매 통과. 국소 동행은 시각적 지지 근거이며 닫기 명령·목표 잔차만으로 판정한 것이 아님 |
 | 비교의 한계 | E15와 시작 이후 행동·시간이 달라 단일 요인 성능 비교가 아님. E16 원점수0과 과거 최고5를 혼동하지 않음 |
-| 다음 선택 | E16의352경계부터 다른 가시 입구 경계·층에서 한쪽 재파지를 비교하는 E17 A 경로 준비. 아직 실행하지 않음 |
+| 다음 선택 | E17 A 경로 실행 중. E16의352경계를 새 환경에서 재실행하고 다른 가시 입구 경계·층의 한쪽 재파지를 비교. 종료 결과 미확인 |
 
 같은 실패가 반복되는지, 실제로 파지 위치·층·로봇 역할이 달라졌는지는 최종 행동과 공개 관측으로 판단합니다. 프롬프트 문구 변경만으로 새로운 조작 방법을 실행했다고 기록하지 않습니다. [방법 전환 기준](sessions/20261106-method-switch-matrix.ko.md) · [E16 상세 검토](../collection/reviews/20261106-astra-support264-002.ko.md)
 
@@ -51,9 +53,9 @@ E16 첫 run ID `20261106-astra-support264-001`은 재실행 부모 인자 불일
 
 ## 다음 작업과 명령
 
-E16 정리·원본 보존을 기준으로 main 게시를 확인한 뒤 A 경로를 별도 새 run ID로 실행합니다. 사용자가 화면을 지켜볼 필요는 없습니다. GPU 수집·평가·학습은 순차 실행하며 종료 원본을 덮어쓰지 않습니다.
+E16 정리·원본 보존을 main98bb41f에 게시한 뒤 A 경로를 별도 새 run ID로 시작했습니다. 사용자가 화면을 지켜볼 필요는 없습니다. GPU 수집·평가·학습은 순차 실행하며 종료 원본을 덮어쓰지 않습니다.
 
-아래는 **main 통합 후 실행할 E17 계획 명령이며 아직 실행하지 않았습니다.** E16의352전이를 재실행하고,264·346경계의 사진도 새 재실행에서 다시 얻습니다. 과거 원본 이미지를 현재 상태로 간주하지 않고 현재 지지를 재판단합니다. 픽셀 depth 질의는 끕니다.
+아래는 **23:37:50 UTC에 실제 시작한 E17 명령**입니다. 종료 결과는 아직 없습니다. E16의352전이를 재실행하고,264·346경계의 사진도 새 재실행에서 다시 얻습니다. 과거 원본 이미지를 현재 상태로 간주하지 않고 현재 지지를 재판단합니다. 픽셀 depth 질의는 끕니다.
 
 ```bash
 export PATH="$PWD/.runtime/codex-0.166.0/node_modules/.bin:$PATH"
@@ -65,7 +67,8 @@ PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.codex_clie
   --parent-attempt 20261106-astra-support264-002 \
   --retry-reason different_visible_rim_layer_after_support_diagnostic \
   --replay-observe-steps 264 346 --wrist-depth-panel \
-  --post-action-settle-steps 6 --decisions 50 --max-steps 1800 --model-timeout 600
+  --post-action-settle-steps 6 --decisions 50 --max-steps 1800 --model-timeout 600 \
+  --profile-step-phases
 ```
 
 실제 실행 시 소스·명령·출처를 [세션 기록](sessions/20261106-evening-resume.ko.md)에 남깁니다. 기존 E16 원본에 이어 쓰지 않습니다.

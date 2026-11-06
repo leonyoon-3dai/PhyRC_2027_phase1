@@ -49,9 +49,9 @@
 | 최신 과제 시도 | E16 `20261106-astra-support264-002` · 모델 자율 종료 · 516/516전이 통과 |
 | 모델·환경 | Astra/ultra · Codex CLI0.166.0/exec · 고정 Isaac Sim6.0.1 · Chrome/WebRTC OFF |
 | 이번에 바꾼 접근 | 각 파지의 순차 지지 진단. E07의264전이 재실행 뒤156개 모델 전이와96개 중립 전이를 새로 기록했습니다. |
-| 다음 판단 | E16의352경계부터 다른 가시 입구 경계·층에서 한쪽 재파지를 비교하는 E17을 준비합니다. 아직 실행하지 않았습니다. |
+| 다음 판단 | E17이23:37:50 UTC에 시작됐습니다. E16의352경계까지 재실행한 뒤 다른 가시 입구 경계·층의 한쪽 재파지를 비교합니다. 종료 결과는 아직 없습니다. |
 | 후보 기능 | 픽셀 depth 질의는 CPU·합성 이미지 실제 CLI 2턴 검증을 통과했습니다. 모델 없는 GPU 수집 연결은3/3전이 통과했으며 그 시험은 실모델 호출0·질의1회·질의 중 물리 진행0입니다. 실제 과제 질의 적용은 아직 없고 E16에도 사용하지 않았습니다. |
-| 소스·원본 | main 통합본. E16 실행 소스는05152fa · [고정 HF 원본·재다운로드 SHA 검증 완료](docs/project/sessions/20261106-e16-backup-verification.json) |
+| 소스·원본 | main98bb41f에 통합 완료. E16 실행 소스는05152fa · [고정 HF 원본·재다운로드 SHA 검증 완료](docs/project/sessions/20261106-e16-backup-verification.json) |
 
 [현재 상태·다음 명령](docs/project/STATUS.md) · [이번 세션 원문](docs/project/sessions/20261106-evening-resume.ko.md) · [방법 전환 기준](docs/project/sessions/20261106-method-switch-matrix.ko.md)
 

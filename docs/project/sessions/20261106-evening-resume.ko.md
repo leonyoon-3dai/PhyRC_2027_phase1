@@ -39,7 +39,7 @@
 ## 전략 구현과 적용 상태
 
 - `coordinated-support-diagnostic`: 각 그리퍼 순차 지지 확인. E16 실제 적용 완료.
-- `coordinated-regrasp-hem`: 좁은 입구가 포화되면 다른 가시적 경계·층으로 한쪽 재파지. E17 A 경로로 준비 중이며 아직 과제 실행 전.
+- `coordinated-regrasp-hem`: 좁은 입구가 포화되면 다른 가시적 경계·층으로 한쪽 재파지. E17 A 경로가23:37:50 UTC에 시작됐으며 종료 결과는 아직 없음.
 - `coordinated-support-guide`: 한쪽 몸통 지지·다른 쪽 소매 방향 가이드로 배치 변경. 구현·CPU 검증 단계이며 과제 미실행.
 
 세 전략은 단일 행동 뒤 관측을 요구한다. 기존 파지/입구가 유용할 때 재파지를 강제하지 않으며, 실제 행동이 바뀌었는지는 기록을 보고 판단한다. 기존6전략 프롬프트는 보존했다. 세 전략 구현 당시 전체 CPU 검사 **222개 통과**(6.489초). 이후 질의·보존 기능 통합본은 **251개 통과**(7.369초). 코드 존재/CPU 검사와 과제 성능 검증을 구분한다.
@@ -100,7 +100,7 @@ E16 원본은 비공개 HF `leonayoon/phyrc-2027-phase1-private-backup`의 **rev
 
 원본 보고서는 `output/sessions/20261106-evening/depth-query-wiring-001.json`(SHA256 `d63546030c3952ae0f6aba1cd2121301adf9e4430eb0fd4cc65c3f818570a565`), 전수검사는 `output/collections/20261106-depth-query-wiring-001/validation.json`(SHA256 `089e4c5009a0c6c9d080ec2dc75839e5841464a3f2fcb9ea79e0d651e8f15b85`)이다. [기능·각 검증 범위·재현 명령](../../collection/research/2026-11-06-pixel-depth-query-candidate.ko.md)
 
-## 다음 E17 A 경로 · 계획이며 아직 실행하지 않음
+## E17 A 경로 ·23:37:50 UTC 실제 시작
 
 다른 가시 입구 경계·층에서 실제 한쪽 재파지를 비교한다. E16의 같은 오른쪽 가장자리 회복과 구분한다. E16 prefix352를 새 환경에서 재실행하고264·346경계의 관측도 새로 얻는다. 현재 지지는 다시 판단하며 과거의 국소 지지를 그대로 보장하지 않는다. 픽셀 질의는 끈다.
 
@@ -114,7 +114,18 @@ PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.codex_clie
   --parent-attempt 20261106-astra-support264-002 \
   --retry-reason different_visible_rim_layer_after_support_diagnostic \
   --replay-observe-steps 264 346 --wrist-depth-panel \
-  --post-action-settle-steps 6 --decisions 50 --max-steps 1800 --model-timeout 600
+  --post-action-settle-steps 6 --decisions 50 --max-steps 1800 --model-timeout 600 \
+  --profile-step-phases
 ```
 
-main 게시 확인 후 새 run ID로 진행할 계획이며, 현재 이 명령의 실행 결과는 없다. 지지·입구·손 통과·평가 점수·학습 승인은 계속 분리해 기록한다.
+main 게시 확인 후 위 명령을 새 run ID로 시작했다. 종료 결과는 아직 없다. 지지·입구·손 통과·평가 점수·학습 승인은 계속 분리해 기록한다.
+
+## main 통합·E17 실행 출처
+
+E16 공개 영상·분석·검증된 백업 receipt·선택형 픽셀 depth 조회를 main **98bb41ff6e83327a468abe5129517b4739ae33a1**에 통합했다. 원격 tree `ccdeeb65fc8327f93486bd42639f8f656602097b`와 검토한 로컬 tree가 일치하고 원격 README 첫15줄을 다시 읽어 상단 갤러리를 확인했다. 원래 로컬 병합 이력은 `local-prepublication-e16-20261106` 태그에 남겼다.
+
+E17 시작 당시 source_snapshot commit은98bb41f, working_tree_modified=false다. prompt SHA256은 `a28744202f80eb8100268a4c99c66f529cae87a75c823632c4cf6a2778be672b`. main 통합 직전 A의 지지 조건만 보강했고 관련12개 검사를 통과했다. 현재 관측에서 안정적인 테이블 지지 또는 유용한 partner anchor를 확인한 뒤 한쪽을 바꿀 수 있다. partner grip이 불확실하면 재파지 중 테이블 지지를 유지하고 운반 전 양측 지지를 다시 확인한다. 실제 효과는 E17 종료 기록으로 검토한다.
+
+시작 이후 현재 문서만 갱신하며 실행 코드는 바꾸지 않는다. E17 log는 `output/sessions/20261106-evening/e17-layer352-001.log`다. 직접 부모 E16·source group `20261106-coordinated-demo-methods`를 보존하며, 이 재실행을 독립 시연으로 세지 않는다.
+
+모델 없는 질의 연결 시험의 [공개 수치 보고서](../../collection/assets/20261106-pixel-depth-query-candidate/model-free-gpu-wiring.json)와 [비공개 원본 재다운로드 검증](20261106-depth-query-wiring-backup-verification.json)도 보존했다. revision `639f3b434ad853a7690bab56d637bf50144ed89d`,9,574,896 bytes, SHA256 `45225bc9af7f4b84cd362e414645bbe42ca65ed64993bdf3d92b40d650991190`,23:35:34 UTC 검증이다.

@@ -107,3 +107,5 @@ PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.validate_c
 | 공식 평가·승인 | 0/50·success=false·`no_contact / null`, 학습 승인 `unreviewed`. 과제 시연이 아님 |
 
 로컬 원본 보고서 `output/sessions/20261106-evening/depth-query-wiring-001.json`의 SHA256은 `d63546030c3952ae0f6aba1cd2121301adf9e4430eb0fd4cc65c3f818570a565`, 전수검사 `output/collections/20261106-depth-query-wiring-001/validation.json`의 SHA256은 `089e4c5009a0c6c9d080ec2dc75839e5841464a3f2fcb9ea79e0d651e8f15b85`다. 이 wiring은 실제 모델의 의복 표면 선택이나 득점 개선을 검증하지 않는다.
+
+[실제 GPU wiring 공개 보고서](../assets/20261106-pixel-depth-query-candidate/model-free-gpu-wiring.json) · [비공개 원본 고정 revision 재다운로드 검증](../../project/sessions/20261106-depth-query-wiring-backup-verification.json). 원격 revision `639f3b434ad853a7690bab56d637bf50144ed89d`에서9,574,896 bytes·SHA256 일치를 확인했다.
