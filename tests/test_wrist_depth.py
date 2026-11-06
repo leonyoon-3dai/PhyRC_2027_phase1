@@ -90,11 +90,15 @@ class WristDepthTest(unittest.TestCase):
             root=Path(tmp); trace=root/'trace'; trace.mkdir()
             for name in ('run.sh','scripts/collect_operator.py','participant/streaming/collector_stream.py',
                          'config/policy_interface.json','config/assets.lock.json',
-                         'participant/collection/wrist_depth.py'):
+                         'participant/collection/wrist_depth.py',
+                         'participant/collection/depth_query.py',
+                         'participant/research/depth_backprojection.py'):
                 p=root/name; p.parent.mkdir(parents=True, exist_ok=True); p.write_text('fixed-source')
             with patch.object(codex_client.subprocess, 'check_output', side_effect=['a'*40, '']):
                 snapshot=codex_client.source_snapshot(root,trace)
             self.assertIn('participant/collection/wrist_depth.py',snapshot['files_sha256'])
+            self.assertIn('participant/collection/depth_query.py',snapshot['files_sha256'])
+            self.assertIn('participant/research/depth_backprojection.py',snapshot['files_sha256'])
             copied=trace/'source_snapshot/participant/collection/wrist_depth.py'
             self.assertEqual(copied.read_text(),'fixed-source')
             self.assertEqual(hashlib.sha256(copied.read_bytes()).hexdigest(),

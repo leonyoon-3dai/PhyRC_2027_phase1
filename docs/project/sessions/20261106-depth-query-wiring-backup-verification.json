@@ -1,0 +1,14 @@
+{
+  "repo_id": "leonayoon/phyrc-2027-phase1-private-backup",
+  "repo_type": "dataset",
+  "private": true,
+  "revision": "639f3b434ad853a7690bab56d637bf50144ed89d",
+  "archive_path": "sessions/20261106-depth-query-wiring-v1/archive.tar.gz",
+  "archive_bytes": 9574896,
+  "archive_sha256": "45225bc9af7f4b84cd362e414645bbe42ca65ed64993bdf3d92b40d650991190",
+  "remote_download_verified": true,
+  "verified_at_utc": "2026-11-06T23:35:34.339439+00:00",
+  "run_id": "20261106-depth-query-wiring-001",
+  "validated_transitions": 3,
+  "source_commit": "8f9f30b555e5ac0d89275023994ac069d1d20af0"
+}

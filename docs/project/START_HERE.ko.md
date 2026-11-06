@@ -1,22 +1,22 @@
-# E15 마감 이후 클린 서버 재개 안내
+# 클린 서버 복원·검사·재개 안내
 
-> **2026-11-06 저녁 재개:** 사용자 요청으로 E15 마감의 일시 중지를 해제하고 클린 L40S 복원·검사 및 10점 목표 실험을 진행합니다. 아래 E15 마감 상태는 이전 기준입니다. [실시간 작업 기록](sessions/20261106-evening-resume.ko.md)
+> **최신 종료 결과: E16 0/50, 최고 기록5/50.** 사용자 요청으로 클린 L40S에서 복원·검사 후10점 목표 실험을 재개했습니다. [최신 작업 기록](sessions/20261106-evening-resume.ko.md)
 
-[최종 결론·다음 전략 후보](SESSION_WRAPUP_20261106.ko.md) · [현재 상태](STATUS.md) · [영상 비교](../gallery/README.ko.md) · [당일 실행 기록](sessions/20261106-resume10.ko.md)
+[E15 당시 마감 기록](SESSION_WRAPUP_20261106.ko.md) · [현재 상태](STATUS.md) · [영상 비교](../gallery/README.ko.md) · [E10~E15 실행 기록](sessions/20261106-resume10.ko.md)
 
-**오늘은 E15까지 종료했습니다. 최고5/50점, 첫 소매0점이며10점은 아직 달성하지 못했습니다. E16·E17은 실행하지 않았습니다. 아래 명령은 사용자가 새 서버에서 재개를 요청한 뒤 사용할 안내입니다. 지금 새 시뮬레이션·모델 호출·후보 적용·서버 삭제를 시작하지 않습니다.**
+**현재는 사용자 요청으로 수집을 재개한 상태입니다.** 최신 종료 시도 E16은0/50·516/516기록 검사 통과, 최고 기록은 기존5/50이며10점 미달성입니다. [최신 상태·다음 명령](STATUS.md)과 [저녁 실행 일지](sessions/20261106-evening-resume.ko.md)를 우선합니다. 아래는 새 서버에서 원본을 복원하고 다시 검사하는 절차입니다. [E15 당시 안내](history/START_HERE-E15-20261106.ko.txt)는 이력으로 보존했습니다.
 
 | 현재 기준 | 확인한 내용 |
 |---|---|
-| 마지막 시도 | E15 `20261106-astra-opening264-001`, 11:55:47–12:24:16 UTC, 모델 자율 종료·611/611전이 검사 통과·success=false |
-| 마지막 실행 소스 | `fa3fb85a25b35228d5456fd3e70fca3259098e6b`. E15의 source_snapshot과 현재 Git 소스는 각각의 출처를 보존 |
-| 종료 오류 | **E09의 진행 중 ACK/종료 응답 순서 오류 수정 완료.** 실제 신호·파이프·기록기를 포함한 CPU 회귀 확인. 이후 전체208개 CPU 검사 통과 |
+| 마지막 시도 | E16 `20261106-astra-support264-002`,22:46:26–23:19:06 UTC, 모델 자율 종료·516/516기록 검사 통과·0/50·success=false |
+| 마지막 과제 실행 소스 | `05152fa4bf250257481cae988b6f8f26c817084a`. E16 source_snapshot과 이후 main 통합 소스는 구분 |
+| 종료 오류 | **E09의 진행 중 ACK/종료 응답 순서 오류 수정 완료.** 실제 신호·파이프·기록기를 포함한 CPU 회귀 확인. 현재 통합본 전체251개 CPU 검사 통과 |
 | 모델·화면 | 로컬 고정 Codex CLI **0.166.0**, `gpt-6-astra` / `ultra`, `exec`. **WebRTC OFF·Chrome 불필요**, GitHub 이벤트 영상으로 검토 |
 | 적용된 기능 | 같은 새 에피소드 과거 RGB 선택, 손목 depth 패널, 모델 행동과 분리된 controller-settle, 단계 시간 계측v1. 선택 옵션은 기본OFF |
-| 아직 미적용 | 픽셀 depth 조회/통합, 단계 계측v2. 비공개 후보를 복원한다고 자동 적용하지 않음 |
-| 다음 전략 | 미정. 초기264경계에서 각 파지의 독립 지지를 짧게 확인하는 후보와 손 근처 가시 경계·거리 조회 후보를 검토. E15 설정을 자동 재실행하지 않음 |
+| 픽셀 depth 질의 | CPU·합성 실제 CLI2턴·실제 GPU wiring3기록(query0) 확인. 실제 착의 효과 미검증, E16 미적용. 기본OFF |
+| 다음 전략 | E16의352경계에서 다른 rim/layer를 잡는 A 비교. 정확한 실행 여부·명령은 STATUS를 확인 |
 
-E15는 E07 행동264전이를 새 환경에서 재실행한 뒤 모델221전이와 제어기 중립126전이를 저장했습니다. 정확한 천 상태 checkpoint 복원이 아니며, 파일 정상 마감·기술 검사와 착의 성공·학습 승인은 구분합니다. [최종 공개 검토](../collection/reviews/20261106-astra-opening264-001.ko.md)
+E16은 E07 행동264기록을 재실행하고 새 모델156+제어기 중립96기록을 저장했습니다. 새 구간은 시뮬레이션12.6초, 전체는25.8초입니다. 기술 검사와 학습 승인은 구분합니다. [E16 분석](../collection/reviews/20261106-astra-support264-002.ko.md)
 
 ## 보존 위치와 고정 revision
 
@@ -31,9 +31,10 @@ E15는 E07 행동264전이를 새 환경에서 재실행한 뒤 모델221전이�
 | [E13](sessions/20261106-e13-backup-verification.json) | `20a9602acb82ac860ebbf2d039ad593085d5a622` | 810전이·손목 depth |
 | [E14](sessions/20261106-e14-backup-verification.json) | `d30808911dba914a87eb3104750e5560e4c00cc5` | 짧은 진단721전이·중단 보존 |
 | [E15](sessions/20261106-e15-backup-verification.json) | `ba753c41cf64c361ae91aae9e31f9236106bc4ad` | 초기264 분기·611전이·종료·계측 |
+| [E16](sessions/20261106-e16-backup-verification.json) | `1ad0f8ba3cc71ab80962907c713357fbd4005e3f` | 순차 지지·한쪽 재파지516기록, 다음352분기의 직접 원본 |
 | [비공개 연구·후보](sessions/20261106-private-research-backup-verification.json) | `3349b6a73bf266cfba015654613e58ae490290b5` | 171개 선별 원본·적용 상태·CPU 근거, 4,600,121 bytes |
 
-연구 묶음은 `sessions/20261106-private-research-handoff-v1/` 아래에 있으며 `scope.json`·`handoff.md`가 적용/미적용과 정확한 허용 목록을 설명합니다. phase2 profiler·pixel query는 미적용입니다. 옛 후보 파일의 `not_applied`는 당시 상태일 수 있으므로 현재 상태표를 우선합니다. 인증·home·원시 추론·actor 이벤트·세션DB·시뮬레이터 로그는 백업에 넣지 않았습니다. 성능 자원121행은 정제된 수치 증거입니다. 실행 원본의 trusted 평가/audit는 비공개 검수용이고 actor에 연결하지 않습니다.
+연구 묶음은 `sessions/20261106-private-research-handoff-v1/` 아래에 있으며 `scope.json`·`handoff.md`가 적용/미적용과 정확한 허용 목록을 설명합니다. phase2 profiler는 미적용입니다. pixel query는 이후 main에 통합해 연결 검사를 마쳤지만 실제 착의 실험에는 아직 적용하지 않았습니다. 옛 후보 파일의 `not_applied`는 당시 상태일 수 있으므로 현재 상태표를 우선합니다. 인증·home·원시 추론·actor 이벤트·세션DB·시뮬레이터 로그는 백업에 넣지 않았습니다. 성능 자원121행은 정제된 수치 증거입니다. 실행 원본의 trusted 평가/audit는 비공개 검수용이고 actor에 연결하지 않습니다.
 
 ## 새 서버 준비와 원본 복원
 
@@ -47,11 +48,11 @@ git rev-parse HEAD
 participant/ops/bootstrap.sh --check
 uv venv --python 3.12 .venv
 uv pip install --python .venv/bin/python numpy==1.26.4 h5py==3.12.1 pillow==11.0.0 psutil==6.1.1
-uv tool install huggingface_hub==2.2.0
+command -v hf >/dev/null || uv tool install huggingface_hub==2.4.0
 hf auth login
 ```
 
-기존 checkout이나 `.venv`가 있으면 새로 덮어쓰지 않고 먼저 상태를 확인합니다. HF 인증은 새 서버에서 준비하며 토큰을 공개 명령·문서에 넣지 않습니다. 다음 코드는 **먼저 초기 전체 백업**을 새 staging에 복원합니다. 다른 묶음도 `receipt` 파일만 바꾸어 별도의 새 경로로 복원할 수 있습니다.
+기존 checkout이나 `.venv`가 있으면 새로 덮어쓰지 않고 먼저 상태를 확인합니다. HF 인증은 새 서버에서 준비하며 토큰을 공개 명령·문서에 넣지 않습니다. 다음 코드는 **먼저 초기 전체 백업**을 새 staging에 복원합니다. 다음 E17 계획에는 초기 백업 뒤 `receipt`를 `docs/project/sessions/20261106-e16-backup-verification.json`으로 바꿔 E16도 별도 새 경로에 복원하고 같은 충돌 거부 병합을 수행합니다. 다른 묶음도 필요할 때 같은 방법으로 복원합니다.
 
 ```bash
 .venv/bin/python - <<'PY_RESTORE'
@@ -89,10 +90,13 @@ E07 기준은1,067/1,067전이·`quality_passed=true`입니다. 새 서버에서
 
 ## 환경·고정 CLI·작은 연결 검사
 
-자산 복원 이후 `participant/ops/bootstrap.sh --install`은 고정 Isaac Sim6.0.1 기반 build→prepare→smoke를 수행합니다. 실제 종료 코드0·`PHYRC-SMOKE-PASS`를 확인합니다. 소스에 필요한 CPU 검사는 다음과 같습니다. **이 명령들을 오늘 다시 실행하지 않습니다.**
+자산 복원 이후 고정 Isaac Sim6.0.1의 build→prepare→smoke를 수행합니다. 기존 bootstrap --install은 HF2.2.0을 지정하므로 이미 설치된 CLI를 덮어쓰지 않도록 아래 명시적인 단계를 사용합니다. 실제 종료 코드0·`PHYRC-SMOKE-PASS`를 확인합니다. 소스에 필요한 CPU 검사는 다음과 같습니다. 현재 서버에서는 build/prepare/smoke·실제 모델 wiring을 검증했습니다. 새 서버에서는 같은 검사를 다시 수행합니다.
 
 ```bash
-participant/ops/bootstrap.sh --install
+./run.sh doctor
+./run.sh build
+./run.sh prepare
+./run.sh smoke
 npm install --prefix .runtime/codex-0.166.0 @openai/codex@0.166.0
 export PATH="$PWD/.runtime/codex-0.166.0/node_modules/.bin:$PATH"
 codex --version
@@ -128,4 +132,4 @@ PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.validate_c
 
 wiring은 연결 시험이며 성공 시연이 아닙니다. 종료 ACK·정상 파일 완료·전수 검사 이후에만 다음 전략을 선택합니다. 재실행 출처·중복 prefix·새 행동을 구분하고 같은 source group을 유지합니다. 점수 감시나 신뢰된 배치 설정을 actor 입력에 넣지 않습니다.
 
-[과거 시작 안내 전체](START_HERE.pre-E15-20261106.ko.md)는 재현 이력으로 보존했습니다. 그 문서의 “E09부터 수정”, “WebRTC/Chrome 필수”, “다음은700 분기”는 현재 지시가 아닙니다. 다음 하나의 과제는 **사용자와 원인 가설·진단 조건을 선택하는 것**이며, 첫 후보는 테이블 지지 가까운 초기264에서 양쪽 지지를 따로 확인하는 짧은 진단입니다. 픽셀 조회·계측v2·새 전략을 한 번에 자동 적용하지 않습니다.
+[과거 시작 안내 전체](START_HERE.pre-E15-20261106.ko.md)는 재현 이력으로 보존했습니다. 그 문서의 “E09부터 수정”, “WebRTC/Chrome 필수”, “다음은700 분기”는 현재 지시가 아닙니다. 다음 과제는 STATUS의 A 비교 계획을 확인하고 새 run ID로 수행하는 것입니다. 사용자에게 이미 받은 재개·main 통합 승인을 반복해서 묻지 않습니다. 독립 지지 진단과 한쪽 재파지는 E16에서 실제 시행했으며, 국소 지지의 시각적 근거와 연속 입구 미확인을 구분합니다. 픽셀 조회는 보이는 표면 간 거리 질의이며 가림·접촉·입구 위상을 알아내는 기능이 아닙니다.

@@ -1,0 +1,38 @@
+{
+  "schema": "phyrc-e16-command-time-summary-v1",
+  "run_id": "20261106-astra-support264-002",
+  "groups": {
+    "neutral_command": {
+      "calls": 15,
+      "requested_steps": 84,
+      "actor_call_wall_s": 682.3857003330002
+    },
+    "motion": {
+      "calls": 16,
+      "requested_steps": 64,
+      "actor_call_wall_s": 642.966428241999
+    },
+    "gripper_only": {
+      "calls": 2,
+      "requested_steps": 8,
+      "actor_call_wall_s": 93.18525231099966
+    },
+    "finish": {
+      "calls": 1,
+      "requested_steps": 0,
+      "actor_call_wall_s": 32.49780658899999
+    }
+  },
+  "replay_steps": 264,
+  "controller_neutral_steps": 96,
+  "total_recorded_steps": 516,
+  "wall_s": 1959.8205617859999,
+  "actor_call_wall_s": 1451.0351874749988,
+  "environment_dispatch_wall_s": 456.8095036290008,
+  "source_decisions_sha256": "d5bc7750964fdae85df2e772825d8cf421f23fe73c9ac14b8d6e051be106dce1",
+  "limitations": [
+    "neutral command may retain moving targets; not physical rest",
+    "actor call duration includes transport/startup/service/generation; not model internal reasoning time",
+    "not a controlled comparison of settling schemes"
+  ]
+}

@@ -16,6 +16,14 @@
     "validated_transitions": 1067,
     "errors": []
   },
-  "gpu_smoke_passed": false,
-  "gpu_status": "in_progress"
+  "gpu_smoke_passed": true,
+  "gpu_status": "passed",
+  "smoke_wall_s": 266.556610321,
+  "wiring": {
+    "run_id": "20261106-evening-wiring-001",
+    "actor_calls": 3,
+    "transitions": 3,
+    "quality_passed": true,
+    "task_success": false
+  }
 }

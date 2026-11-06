@@ -1,0 +1,14 @@
+{
+  "repo_id": "leonayoon/phyrc-2027-phase1-private-backup",
+  "repo_type": "dataset",
+  "private": true,
+  "revision": "d26917589b884df3f9bbd4bf7d3ce0861a96adde",
+  "archive_path": "sessions/20261106-evening-wiring-v1/archive.tar.gz",
+  "archive_bytes": 9564479,
+  "archive_sha256": "90f409dfefc2fe9bcec4a6eceb9074e5f49e65d7d54b6fa2f51a7080dcbf595c",
+  "remote_download_verified": true,
+  "verified_at_utc": "2026-11-06T22:50:17.671055+00:00",
+  "run_id": "20261106-evening-wiring-001",
+  "validated_transitions": 3,
+  "source_commit": "05152fa4bf250257481cae988b6f8f26c817084a"
+}

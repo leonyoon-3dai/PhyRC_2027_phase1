@@ -1,83 +1,65 @@
 # PhyRC 2027 · 두 로봇의 협력 착의
 
-> **2026-11-06 저녁 재개:** 사용자 요청으로 E15 마감의 일시 중지를 해제하고 클린 L40S 복원·검사 및 10점 목표 실험을 진행합니다. 아래 E15 마감 상태는 이전 기준입니다. [실시간 작업 기록](docs/project/sessions/20261106-evening-resume.ko.md)
+**최신 시연 E16 · 재파지 뒤 국소 천 동행, 입구 미확인으로 종료**
 
-[공식 원본 README](README.upstream.md) · [공식 대회](https://emprise.cs.cornell.edu/phyrc/challenge-2027/) · [5점→10점 가이드 PDF](docs/guide/PhyRC_2027_Repository_Guide_KR.pdf) · [전체 문서 지도](docs/README.ko.md)
+<a href="docs/gallery/assets/20261106-e16-regrasp/event.mp4"><img src="docs/gallery/assets/20261106-e16-regrasp/preview.gif" width="960" alt="E16 실제 공개 관측 네 카메라. 352~440경계의 한쪽 재파지 시도"></a>
 
-**두 대의 Stretch 4가 앉은 마네킹에 티셔츠를 입힙니다.** 공개 카메라와 로봇 상태로 행동하며, 더 많은 착의 점수를 더 짧은 로봇 시간에 획득하는 정책을 만드는 프로젝트입니다.
+[**MP4 크게 보기**](docs/gallery/assets/20261106-e16-regrasp/event.mp4) · [**전체 갤러리**](docs/gallery/README.ko.md) · [**E16 분석**](docs/collection/reviews/20261106-astra-support264-002.ko.md) · [**영상 피드백 남기기**](https://github.com/leonyoon-3dai/PhyRC_2027_phase1/issues/new?title=%5BE16+%ED%94%BC%EB%93%9C%EB%B0%B1%5D+%EC%98%81%EC%83%81+%EA%B5%AC%EA%B0%84%EA%B3%BC+%EA%B4%80%EC%B8%A1&body=%EC%8B%9C%EB%8F%84%3A+E16+%2F+20261106-astra-support264-002%0A%EC%98%81%EC%83%81+%EC%8B%9C%EA%B0%81+%EB%98%90%EB%8A%94+%EA%B2%BD%EA%B3%84%3A+%0A%EC%B9%B4%EB%A9%94%EB%9D%BC%3A+%EB%A1%9C%EB%B4%870+%EB%A8%B8%EB%A6%AC+%2F+%EB%A1%9C%EB%B4%871+%EB%A8%B8%EB%A6%AC+%2F+%EB%A1%9C%EB%B4%870+%EC%86%90%EB%AA%A9+%2F+%EB%A1%9C%EB%B4%871+%EC%86%90%EB%AA%A9%0A%0A%EA%B4%80%EC%B8%A1%ED%95%9C+%EC%9E%A5%EB%A9%B4%3A%0A%0A%EC%A0%9C+%ED%95%B4%EC%84%9D+%EB%98%90%EB%8A%94+%EC%A7%88%EB%AC%B8%3A%0A%0A%EB%8B%A4%EC%9D%8C%EC%97%90+%EB%B9%84%EA%B5%90%ED%95%98%EB%A9%B4+%EC%A2%8B%EC%9D%84+%EB%8F%99%EC%9E%91%3A%0A%0A%EA%B0%A4%EB%9F%AC%EB%A6%AC%3A+https%3A%2F%2Fgithub.com%2Fleonyoon-3dai%2FPhyRC_2027_phase1%2Fblob%2Fmain%2Fdocs%2Fgallery%2FREADME.ko.md%0A)
 
-| 읽을 순서 | 내용 |
-|---|---|
-| [1. 챌린지와 점수](#1-챌린지와-점수) | 무엇을 해야 점수를 얻는가 |
-| [2. 데이터 수집과 정리](#2-데이터-수집과-정리) | 어떤 자료를 만들고 어디에 보존하는가 |
-| [3. 현재 상태와 재개](#3-현재-상태와-재개) | 어디에서 멈췄고 다음에 무엇을 확인하는가 |
-| [4. 5점에서 10점으로](#4-5점에서-10점으로) | 실패 원인을 어떻게 좁히고 정책으로 연결하는가 |
-| [5. 코드와 이력](#5-코드와-이력) | 구현과 과거 실험의 근거를 찾는 곳 |
+**공식 원점수 0/50 · 첫 소매 0 · `success=false`.** 관측: 352~440경계의 로봇0 재파지와 재시험입니다. 국소 천 접힘이 따라왔지만 통과 가능한 입구는 확인하지 못해 운반 없이 종료했습니다.
 
-> **2026-11-06 · E15까지 마감:** 최고 **5/50**, 첫 소매 **0**, 착의 `success=false`. E09 종료 오류는 수정됐습니다. E16·E17은 실행하지 않았으며 수집은 일시 중지입니다. [최신 상태](docs/project/STATUS.md)
+352~440경계 · 89프레임 · 17.8초 재생 · 4배 느리게 · 모델 응답 대기 제외. 위는 로봇0·1 머리, 아래는 로봇0·1 손목입니다. 피드백에는 **영상 시각 또는 경계와 카메라**를 적어 주세요. [영상 출처](docs/gallery/assets/20261106-e16-regrasp/provenance.json) · [현재 상태](docs/project/STATUS.md)
 
-## 1. 챌린지와 점수
+전이1개는 **관측 → 행동 → 다음 관측**을 묶은0.05초 기록입니다. E16의516개 기록은 **시뮬레이션25.8초**이며,34번의 모델 판단·실제32분40초 실행과 구분합니다. 정지·기다림 명령도 기록에 포함됩니다.
 
-[![픽업부터 소매·어깨·위팔·목·앞면 방향까지의 설명용 점수 지도](docs/project/assets/score-roadmap-20261104/score-roadmap.ko.svg)](docs/project/CHALLENGE_GUIDE.ko.md)
+## 무엇을 만드는가
 
-| 평가 항목 | 점수 | 현재와 다음 목표 |
-|---|---:|---|
-| 픽업: 같은 그리퍼로 잡은 영역을 5cm 올려 시뮬레이션 3초 유지 | 5 | 획득 |
-| 첫 소매: 첫 손이 소매를 통과해 밖으로 나옴 | 5 | **다음 목표: 원점수 10점** |
-| 반대 어깨 / 두 번째 소매 / 왼쪽 위팔 / 오른쪽 위팔 | 각각 5 | 미획득 |
-| 목 / 앞면 방향 | 각각 10 | 미획득 |
+두 대의 Stretch 4가 공개 RGB-D 카메라와 로봇 상태를 이용해 앉은 마네킹에 티셔츠를 입히는 정책을 개발합니다. 라이브 화면 대신 실제 시도별 영상과 실패 분석을 보존하고, 조작 방법이 달라졌을 때 관측과 점수가 어떻게 달라지는지 비교합니다.
 
-그림의 순서는 설명용이며 실제 득점 순서가 고정된 것은 아닙니다. **점수율 = 픽업을 제외한 착의 점수 ÷ 첫 접촉부터 마지막 착의 득점까지의 시뮬레이션 시간**입니다. 따라서 픽업 5점만으로는 양의 순위 점수를 얻지 못합니다. 원점수 10점도 전체 착의 성공과 다릅니다.
+| 평가 항목 | 점수 |
+|---|---:|
+| 같은 그리퍼로 잡은 영역을5cm 올려 시뮬레이션3초 유지 | 5 |
+| 첫 손이 소매를 통과해 밖으로 나옴 | 5 |
+| 반대 어깨 / 두 번째 소매 / 왼쪽 위팔 / 오른쪽 위팔 | 각각5 |
+| 목 / 앞면 방향 | 각각10 |
 
-[점수·성공·시간 자세히 보기](docs/project/CHALLENGE_GUIDE.ko.md) · [공식 평가 정의](docs/competition/EVALUATION.md) · [주최 측 공식 시연 영상](https://emprise.cs.cornell.edu/phyrc/assets/c27/media/teleop-overhead.mp4)
+현재 목표는 **공식 원점수10점 이상과 반복 가능한 첫 소매 통과**입니다. 최고 기록은5/50이며10점은 아직 달성하지 못했습니다. 점수율은 픽업을 제외한 착의 점수를 첫 접촉부터 마지막 착의 득점까지의 시뮬레이션 시간으로 나눕니다. 픽업5점만으로는 양의 순위 점수가 생기지 않으며, 원점수10점도 전체 착의 성공과 다릅니다.
 
-## 2. 데이터 수집과 정리
+[점수 지도와 과제 설명](docs/project/CHALLENGE_GUIDE.ko.md) · [공식 평가 정의](docs/competition/EVALUATION.md) · [공식 대회](https://emprise.cs.cornell.edu/phyrc/challenge-2027/) · [원본 README](README.upstream.md)
 
-**공개 관측 → Astra의 짧은 행동 → 형식 검사·실행 → 새 관측·실제 행동 저장 → 기술 검사 → 시각 검수·학습 승인** 순서입니다. 사람의 키보드 부분 시연도 보존했습니다. 현재 자동 수집은 Astra/ultra·Codex CLI 0.166.0/exec를 사용하고 Chrome·WebRTC는 끕니다.
+## 시연 데이터와 검수
 
-| 자료 | 역할 | 찾아갈 곳 |
+공개 관측 → 모델의 짧은 행동 → 실행·다음 관측 저장 → 별도 공식 평가 → 전수 기술 검사 → 시각 검수 순서입니다. **기술 검사 통과, 과제 성공, 학습 승인은 별도**이며 시도별 승인 상태를 보존합니다.
+
+| 자료 | 내용 | 위치 |
 |---|---|---|
-| `policy.hdf5` | 20Hz 공개 관측·실제 행동·다음 관측의 학습 후보 | 원본 collection과 비공개 HF 고정 백업 |
-| audit·평가·검사 | 시간·점수·파일 정합성 확인. actor 입력과 분리 | 원본 검사 결과와 선별 공개 기록 |
-| operator trace | 모델 결정·실행 구간·출처·시간 추적 | [시도별 패키지](docs/collection/attempts/) |
-| 영상·이미지 | 사람이 과정과 실패를 검토 | [큰 화면 갤러리](docs/gallery/README.ko.md) |
+| `policy.hdf5` | 20Hz 공개 관측·실제 행동·다음 관측 | 원본 collection, 비공개 HF 백업 |
+| audit·평가·검사 | 전이·파일 정합성과 공식 점수 | actor 입력 밖의 비공개 검수 자료 |
+| 실행 기록 | 프롬프트·최종 행동·구간·시간·소스 | [시도별 패키지](docs/collection/attempts/) |
+| 영상·분석 | 실제 사건과 확인되지 않은 가설 | [갤러리](docs/gallery/README.ko.md) |
 
-**기술 검사 통과 ≠ 성공 시연 ≠ 학습 승인.** E15는 611/611전이를 검사했지만 학습 승인은 `unreviewed`입니다. 재실행 prefix와 새 행동·제어기 중립을 분리하고, 같은 원본의 분기를 독립 시연이나 별도 검증 출처로 세지 않습니다.
+재실행 prefix, 새 모델 행동, 제어기 중립을 구분하며 같은 원본의 분기를 독립 시연이나 별도 검증 출처로 세지 않습니다. E07 행동 재실행은 정확한 천 상태 checkpoint 복원이 아닙니다.
 
-[데이터 구조·검수](docs/collection/README.ko.md) · [고정 백업·해시·복원](docs/project/START_HERE.ko.md) · [기존 사람 시연](docs/gallery/20261026-human-pickup-transport.ko.md)
+[수집·검수 안내](docs/collection/README.ko.md) · [백업·복원 명령](docs/project/START_HERE.ko.md) · [재실행·분기](docs/collection/guides/continuation-and-branches.ko.md) · [사람 부분 시연](docs/gallery/20261026-human-pickup-transport.ko.md)
 
-## 3. 현재 상태와 재개
+## 현재 구현과 다음 비교
 
-<img src="docs/gallery/assets/20261106-e15-hand-recovery/preview.gif" width="960" alt="E15 손 근처 접근과 가림, 한쪽 열기·철수의 네 공개 카메라 기록">
-
-**E15 마지막 접근·복구 구간입니다.** 손의 입구 통과는 확인되지 않았고 한쪽을 열고 철수했습니다. 509–611경계, 20.6초 반복, 4배 느리게, 모델 응답 대기 제외. [준비·운반·복구 세 구간](docs/gallery/20261106-astra-opening264-001.ko.md)
-
-| 최신 결과 | 확인한 내용 |
+| 구분 | 확인된 상태 |
 |---|---|
-| 과제 | E10~E15 모두 원점수 5/50·첫 소매 0·착의 실패 |
-| E15 기록 | **611전이 = E07 재실행264 + 새 모델221 + 제어기 중립126** |
-| E15 비용 | **24호출·28분29.785초 실제 시간**, 30.55초 시뮬레이션 시간 |
-| 구현 | 종료 오류 수정, 과거 RGB·손목 depth·중립 대기·단계 계측 적용 이력 |
-| 보존 | E15 원본과 분석 후보까지 고정 백업·재다운로드 해시 확인 |
-| 다음 | 복원·검사·짧은 연결 시험 후 **각 파지의 독립 지지 진단**을 우선 검토 |
+| 최신 과제 시도 | E16 `20261106-astra-support264-002` · 모델 자율 종료 · 516/516전이 통과 |
+| 모델·환경 | Astra/ultra · Codex CLI0.166.0/exec · 고정 Isaac Sim6.0.1 · Chrome/WebRTC OFF |
+| 이번에 바꾼 접근 | 각 파지의 순차 지지 진단. E07의264전이 재실행 뒤156개 모델 전이와96개 중립 전이를 새로 기록했습니다. |
+| 다음 판단 | E16의352경계부터 다른 가시 입구 경계·층에서 한쪽 재파지를 비교하는 E17을 준비합니다. 아직 실행하지 않았습니다. |
+| 후보 기능 | 픽셀 depth 질의는 CPU·합성 이미지 실제 CLI 2턴 검증을 통과했습니다. 모델 없는 GPU 수집 연결은3/3전이 통과했으며 그 시험은 실모델 호출0·질의1회·질의 중 물리 진행0입니다. 실제 과제 질의 적용은 아직 없고 E16에도 사용하지 않았습니다. |
+| 소스·원본 | main 통합본. E16 실행 소스는05152fa · [고정 HF 원본·재다운로드 SHA 검증 완료](docs/project/sessions/20261106-e16-backup-verification.json) |
 
-E09 오류를 다시 미해결 과제로 취급하지 않습니다. 다음 접근은 아직 실행하지 않았습니다. [현재 상태](docs/project/STATUS.md) → [오늘 결론·다음 전략](docs/project/SESSION_WRAPUP_20261106.ko.md) → [클린 서버 시작 명령](docs/project/START_HERE.ko.md)
+[현재 상태·다음 명령](docs/project/STATUS.md) · [이번 세션 원문](docs/project/sessions/20261106-evening-resume.ko.md) · [방법 전환 기준](docs/project/sessions/20261106-method-switch-matrix.ko.md)
 
-## 4. 5점에서 10점으로
+E15까지는 손·천 입구·그리퍼의 관계를 확신하지 못한 채 보정과 복구가 반복됐습니다. E16에서는 순차 진단과 로봇0 재파지 뒤 국소 천 동행을 관측했지만, 두 지지점 사이의 통과 가능한 입구는 확인하지 못했습니다. 원점수0만으로 파지 실패를 단정하지 않습니다. 아직 확인되지 않은 파지·접촉·입구 통과를 점수나 닫기 명령만으로 단정하지 않습니다.
 
-**오늘 확인한 문제는 손–천 입구의 관계를 확신하지 못한 채 보정과 복구가 반복됐다는 점입니다.** E15의 양 베이스 이동 거리 차이는 분석한 운반 구간에서 최대0.260mm였습니다. “한 로봇이 움직이지 않아서”라는 설명은 이 기록으로 지지되지 않습니다. 초기 파지 실패나 특정 충돌을 단일 원인으로 확정하지도 않았습니다.
+[5점에서10점으로 가는 진단](docs/project/FIVE_TO_TEN.ko.md) · [시각적 가이드 PDF](docs/guide/PhyRC_2027_Repository_Guide_KR.pdf) · [연구 로드맵](docs/project/RESEARCH_ROADMAP.ko.md)
 
-| 순서 | 확인할 문제 | 통과한 뒤 할 일 |
-|---|---|---|
-| 1 | 테이블 근처에서 각 그리퍼가 천을 따로 지지하는가 | 지지되는 파지와 펼침 상태를 확보 |
-| 2 | 손·천의 입구 경계·그리퍼가 함께 보이는가 | 그리퍼와 입구 공간을 분리한 짧은 접근 |
-| 3 | 보이는 표면 사이의 거리만 불명확한가 | 픽셀 depth 질의 후보 검토. 가림 해결과 구분 |
-| 4 | 움직임 뒤 실제 관절이 목표에 도달했는가 | 고정 중립 대기와 완료 확인을 별도 비교 |
-| 5 | 손의 첫 소매 출구 통과가 실제로 일어나는가 | 별도 공식 평가로 추가5점 확인·유용한 구간 승인 |
-
-[**실패 원인·다음 짧은 실험 가이드**](docs/project/FIVE_TO_TEN.ko.md) · [**시각적 PDF**](docs/guide/PhyRC_2027_Repository_Guide_KR.pdf) · [원본 사실/가설 검토](docs/collection/reviews/20261106-astra-opening264-001.ko.md)
-
-π₀.₅·다른 VLA·RL은 유용한 데이터와 반복 가능한 평가에 연결합니다. π₀.₅의 과거63전이·30회 갱신은 학습 경로 시험이었고, E15까지의 자료로 새 정책을 학습한 결과는 없습니다. [방법별 적용 상태와 연구 순서](docs/project/RESEARCH_ROADMAP.ko.md)
+π₀.₅의 과거63전이·30회 갱신은 학습 경로 시험이었습니다. 이번 세션에서 새 정책 학습은 실행하지 않았습니다. VLA·RL 후속 비교는 승인된 자료와 공통 평가 조건을 갖춘 뒤 구분해서 기록합니다.
 
 <details>
 <summary>성능 메모 · 측정값과 속도 개선 근거 보존</summary>
@@ -90,10 +72,8 @@ E15 전체28분29.785초 중 모델 호출 경로18분25.822초, 환경9분08.94
 
 </details>
 
-## 5. 코드와 이력
+## 코드와 이전 기록
 
-[코드 길잡이](docs/project/CODE_MAP.ko.md) · [개발 이력](docs/project/HISTORY.ko.md) · [E10~E15 실제 실행 일지](docs/project/sessions/20261106-resume10.ko.md) · [실험 영상 비교](docs/gallery/README.ko.md)
+[코드 길잡이](docs/project/CODE_MAP.ko.md) · [전체 문서 지도](docs/README.ko.md) · [개발 이력](docs/project/HISTORY.ko.md) · [E10~E15 일지](docs/project/sessions/20261106-resume10.ko.md) · [E15 마감 분석](docs/project/SESSION_WRAPUP_20261106.ko.md)
 
-README는 짧은 입구, `STATUS`는 최신 인계, `START_HERE`는 실행 명령입니다. 수치·명령·이미지는 시도별 원문에 남기고, 조사·후보·실제 적용·성능 검증을 구분합니다. 과거 기록과 [개편 전 README](README.before-reorganization-20261106.ko.md)는 보존합니다.
-
-문서 기준: `fb288520bd1109c606e23ca0ced41aa9a38ab9e9`의 E15 마감 기록. 이번 정리는 새 수집·학습·GPU 검사를 실행하지 않았습니다. [LICENSE](LICENSE) · [NOTICE](NOTICE) · [THIRD_PARTY](THIRD_PARTY.md)
+이전 시점의 상태와 계획은 이력으로 남깁니다. 현재 실행 여부와 적용된 기능은 위 표 및 [STATUS](docs/project/STATUS.md)를 기준으로 확인합니다. [개편 전 README](README.before-reorganization-20261106.ko.md) · [LICENSE](LICENSE) · [NOTICE](NOTICE) · [THIRD_PARTY](THIRD_PARTY.md)

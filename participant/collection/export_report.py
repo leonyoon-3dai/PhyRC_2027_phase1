@@ -199,6 +199,11 @@ def public_attempt(value):
         'replay_steps_completed': integer, 'policy_suffix_start_step': integer,
         'new_recorded_suffix_steps': integer, 'activity': identifier,
     })
+    if isinstance(value.get('pixel_depth_query'), dict):
+        result['pixel_depth_query'] = select(value['pixel_depth_query'], {
+            'enabled': boolean, 'max_queries_per_observation': integer, 'max_points': integer,
+            'queries_completed': integer, 'followup_calls': integer,
+            'collector_idle_timeout_s': number, 'model_call_timeout_s': number})
     if isinstance(value.get('continuation'), dict):
         result['continuation'] = select(value['continuation'], {
             'resume_kind': identifier, 'parent_attempt': identifier, 'source_group': identifier,
@@ -239,6 +244,60 @@ def action(value):
     return value
 
 
+def pixel_uv(value):
+    if not isinstance(value, list) or len(value) != 2 or any(type(v) is not int or abs(v) > 4096 for v in value):
+        raise ValueError('invalid public pixel coordinates')
+    return value
+
+
+def pixel_list(value):
+    if not isinstance(value, list) or not 1 <= len(value) <= 8:
+        raise ValueError('invalid public query budget')
+    return [pixel_uv(v) for v in value]
+
+
+def number_vector(value):
+    if not isinstance(value, list) or len(value) != 3:
+        raise ValueError('expected camera XYZ')
+    return [number(v) for v in value]
+
+
+def digest_list(value):
+    if not isinstance(value, list) or not 1 <= len(value) <= 16:
+        raise ValueError('invalid image hash list')
+    return [digest(v) for v in value]
+
+
+def public_depth_request(value):
+    return select(value, {'kind': identifier, 'observation_id': digest, 'camera': identifier,
+                         'pixels_uv': pixel_list, 'include_camera_geometry': boolean})
+
+
+def public_depth_response(value):
+    result = select(value, {'kind': identifier, 'observation_id': digest, 'camera': identifier,
+        'camera_index': integer, 'simulation_time_s': number, 'intrinsics_sha256': digest,
+        'request_sha256': digest, 'depth_semantics': identifier, 'geometry_semantics': identifier,
+        'rgb_image_order': lambda v: [identifier(item) for item in v],
+        'resolution_wh': lambda v: [integer(item) for item in v],
+        'neighbor_depth_substituted': boolean, 'hidden_surfaces_estimated': boolean,
+        'object_pose_or_contact_inferred': boolean})
+    result['source_sha256'] = select(value.get('source_sha256', {}),
+        dict.fromkeys(('observation_json', 'public_depth_npz', *[c + '_rgb' for c in CAMERAS]), digest))
+    samples = value.get('results')
+    if not isinstance(samples, list) or not 1 <= len(samples) <= 8:
+        raise ValueError('invalid query results')
+    result['results'] = [select(sample, {'pixel_uv': pixel_uv, 'status': identifier,
+        'optical_z_m': number, 'camera_xyz_m': number_vector, 'camera_range_m': number,
+        'invalid_reasons': lambda v: [identifier(item) for item in v]}) for sample in samples]
+    return result
+
+
+QUERY_CALL_FIELDS = {'frozen_observation_id': digest, 'call_phase': identifier,
+    'schema_sha256': digest, 'ordered_image_sha256': digest_list,
+    'initial_cycle_input_sha256': digest, 'reused_initial_model_call_index': integer,
+    'physics_advanced_during_query': boolean}
+
+
 def public_events(path):
     output, skipped = [], 0
     if not path.is_file():
@@ -251,7 +310,7 @@ def public_events(path):
                 row = select(value, {'type': identifier, 'decision_index': integer,
                     'input_sha256': digest, 'observation_simulation_time_s': number,
                     'wall_s': number, 'model': identifier, 'effort': identifier,
-                    'cli_version': text, 'prompt_sha256': digest, **PLAN_FIELDS,
+                    'cli_version': text, 'prompt_sha256': digest, **PLAN_FIELDS, **QUERY_CALL_FIELDS,
                     'usage_scope': identifier, 'phase_wall_s': public_phase_timing,
                     **PHASE_TIMING_FIELDS})
                 row['decision'] = select(value['decision'], {'tool': identifier, 'action': action,
@@ -262,6 +321,28 @@ def public_events(path):
                     row['usage_accounting'] = public_usage_record(value['usage_accounting'])
                 if row.get('model_invoked') is False and row['usage']:
                     raise ValueError('plan continuation must not repeat model usage')
+            elif kind == 'model_call':
+                row = select(value, {'type': identifier, 'decision_index': integer,
+                    'model_call_index': integer, 'input_sha256': digest,
+                    'observation_simulation_time_s': number, 'wall_s': number,
+                    'model': identifier, 'effort': identifier, 'cli_version': text,
+                    'prompt_sha256': digest, 'usage_scope': identifier,
+                    'usage_accounting': public_usage_record, 'phase_wall_s': public_phase_timing,
+                    **QUERY_CALL_FIELDS})
+                row['usage'] = token_counts(value.get('usage', {}))
+            elif kind == 'depth_query_result':
+                row = select(value, {'type': identifier, 'decision_index': integer,
+                    'model_call_index': integer, 'input_sha256': digest,
+                    'observation_simulation_time_s': number, 'response_sha256': digest,
+                    'request': public_depth_request, 'response': public_depth_response, 'query_reason': text,
+                    'executed': boolean, **QUERY_CALL_FIELDS})
+                if row.get('executed') is not False:
+                    raise ValueError('pixel query must not execute an action')
+            elif kind == 'depth_query_cycle_stopped':
+                row = select(value, {'type': identifier, 'decision_index': integer,
+                    'frozen_observation_id': digest, 'error_type': identifier, 'executed': boolean})
+                row['error'] = safe_error({'type': value.get('error_type', 'UnknownError'),
+                                           'message': value.get('error', '')})
             elif kind == 'applied_segment':
                 row = select(value, {'type': identifier, 'segment_id': identifier, 'decision_index': integer,
                     'start_step': integer, 'end_step': integer, 'simulation_start_s': number,
@@ -285,7 +366,7 @@ def public_events(path):
                     'environment_dispatch_wall_s': number, 'model_invoked': boolean})
             elif kind == 'model_error':
                 row = select(value, {'type': identifier, 'decision_index': integer, 'input_sha256': digest,
-                    'error_type': identifier, 'actor_call_wall_s': number, **PLAN_FIELDS,
+                    'error_type': identifier, 'actor_call_wall_s': number, **PLAN_FIELDS, **QUERY_CALL_FIELDS,
                     'usage_accounting': public_usage_record, 'actor_call_timing': public_phase_timing})
                 row['error'] = safe_error({'type': value.get('error_type', 'UnknownError'),
                                            'message': value.get('error', '')})
@@ -674,6 +755,19 @@ def write_readme(output, manifest, events):
             rows += phase_readme(event)
             if (event.get('usage_accounting') or {}).get('usage_known') is False:
                 rows += ['이 실패 호출의 사용량은 미확정이며 0으로 기록하지 않습니다.', '']
+        elif kind == 'model_call':
+            rows += [f"### 별도 모델 호출 {event.get('model_call_index')} · `{markdown(event.get('call_phase'))}`", '',
+                     f"실행 결정 인덱스 {event.get('decision_index')}의 고정 관측을 사용했습니다. "
+                     f"호출 경과 {fmt(event.get('wall_s'))}초. 같은 call index의 행동 기록과 사용량을 중복 합산하지 않습니다.", '']
+            rows += phase_readme(event)
+        elif kind == 'depth_query_result':
+            rows += [f"### 공개 픽셀 depth 조회 · 결정 {event.get('decision_index')}", '',
+                     '물리 전이 없이 같은 카메라·시각의 원본 값을 조회했습니다. 무효 값은 null이며 접촉·입구 통과 판단이 아닙니다.', '',
+                     '```json', json.dumps({'request': event.get('request'), 'response': event.get('response')}, ensure_ascii=False, indent=2),
+                     '```', '']
+        elif kind == 'depth_query_cycle_stopped':
+            rows += [f"픽셀 질의 판단 중단 · 결정 {event.get('decision_index')} · `{markdown(event.get('error_type'))}`. "
+                     '이 사건은 실행 행동이 아니며 종료 정리는 별도로 기록합니다.', '']
         elif kind == 'supervisor_stop':
             rows += [f"수집기 정지: `{markdown(event.get('reason'))}` · 중립 명령 {event.get('neutral_steps')} step.", '']
         elif kind == 'plan_suffix_discarded':

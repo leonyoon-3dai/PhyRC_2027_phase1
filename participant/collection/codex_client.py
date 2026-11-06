@@ -92,7 +92,7 @@ Only after the separate checks support BOTH grasps, reshape a plausible body ope
 
 REGRASP_HEM_TASK = '''While the shirt remains supported near the table, investigate whether the current grips control distinct boundaries of a usable body opening or merely pull along the same folded edge. Do not infer layers from color alone. Useful existing support and a trackable opening do not require a regrasp: preserve them if CURRENT observations support continuing.
 
-If the opening remains a narrow slit despite observed robot motion and short local corrections, first establish CURRENT table support and a useful partner anchor. Preserve that support and change only the other grasp to a separately visible, accessible rim region. Aim to separate opposing visible lips of the opening rather than only increasing the distance between the same corners. Choose the edge and every release, approach and close motion from CURRENT designated views and public robot state. A prior close command is not a verified anchor. Do not release both grips together or assume a regrasp succeeded.
+If the opening remains a narrow slit despite observed robot motion and short local corrections, establish visibly stable table support for the garment body OR a useful partner anchor before releasing one gripper. When relying on table support because the partner grip remains uncertain, state that uncertainty and keep the garment table-supported throughout the one-sided repair. Preserve the available support and change only one grasp to a separately visible, accessible rim region. Reconfirm BOTH supports before transport. Aim to separate opposing visible lips of the opening rather than only increasing the distance between the same corners. Choose the edge and every release, approach and close motion from CURRENT designated views and public robot state. A prior close command is not a verified anchor. Do not release both grips together or assume a regrasp succeeded.
 
 Make at most ONE deliberate one-sided regrasp in this attempt, with at most TWO short placement corrections, observing after every action. Reconfirm each support from local cloth motion and check the aperture in current views before transport. If support or the opposing boundaries remain unreadable, restore table support when feasible and finish with the unresolved visual reason instead of cycling through blind regrasp attempts. If the new arrangement is useful, continue the hem-entry and sleeve-emergence route above, keeping grippers outside the hand's visible passage. Changing a grasp is an experiment, not proof that the selected edge is a particular garment layer.'''
 
@@ -231,7 +231,8 @@ def compare_public_state(reference, actual):
 def source_snapshot(root, trace):
     paths = [root / 'run.sh', root / 'scripts/collect_operator.py',
              root / 'participant/streaming/collector_stream.py',
-             root / 'config/policy_interface.json', root / 'config/assets.lock.json']
+             root / 'config/policy_interface.json', root / 'config/assets.lock.json',
+             root / 'participant/research/depth_backprojection.py']
     paths += sorted((root / 'participant/collection').glob('*.py'))
     hashes = {}
     for path in paths:
@@ -488,6 +489,8 @@ def main():
                         help='One or two ascending replay boundaries to capture as first-call visual history')
     parser.add_argument('--model', default='gpt-6-astra')
     parser.add_argument('--effort', default='ultra')
+    parser.add_argument('--pixel-depth-query', action='store_true',
+                        help='Allow one frozen-public pixel-depth query then one action-only follow-up; exec/plan-size1 only')
     parser.add_argument('--decisions', type=int, default=3)
     parser.add_argument('--max-steps', type=int, default=2400)
     parser.add_argument('--model-timeout', type=float, default=600)
@@ -499,6 +502,10 @@ def main():
     parser.add_argument('--post-action-settle-steps', type=int, default=0,
                         help='After a motion act, apply 0..20 neutral control steps before observing again')
     args = parser.parse_args()
+    if args.pixel_depth_query and (args.actor_backend != 'exec' or args.plan_size != 1):
+        parser.error('pixel-depth-query requires exec and plan-size=1')
+    if args.pixel_depth_query and args.model_timeout > 180:
+        parser.error('pixel-depth-query requires model-timeout <=180 seconds')
     if not re.fullmatch(r'[a-zA-Z0-9][a-zA-Z0-9_.-]{0,119}', args.run_id):
         parser.error('run-id must be a safe unique name')
     if not 1 <= args.decisions <= 2000 or not 1 <= args.max_steps <= 18000:
@@ -604,6 +611,9 @@ def main():
     if args.wrist_depth_panel:
         from participant.collection.wrist_depth import TASK as WRIST_DEPTH_TASK
         task += '\n\n' + WRIST_DEPTH_TASK
+    if args.pixel_depth_query:
+        from participant.collection.depth_query import TASK as PIXEL_DEPTH_TASK
+        task += '\n\n' + PIXEL_DEPTH_TASK
     if args.mode == 'wiring':
         task += '\n\n' + (BATCH_WIRING_TASK if args.plan_size > 1 else WIRING_TASK)
     elif args.mode == 'pickup':
@@ -625,7 +635,7 @@ def main():
                '--source-group', args.source_group or args.run_id, '--model-id', args.model,
                '--prompt-file', '/output/operator-traces/' + args.run_id + '/prompt.txt',
                '--max-steps', str(args.max_steps), '--evaluate',
-               '--input-timeout', str(args.model_timeout + 120)]
+               '--input-timeout', str((2 if args.pixel_depth_query else 1) * args.model_timeout + 120)]
     if args.webrtc:
         command += ['--webrtc']
     if args.profile_step_phases:
@@ -660,6 +670,13 @@ def main():
     }
     if replay is not None:
         manifest['continuation'] = dict(replay.public_lineage)
+    if args.pixel_depth_query:
+        manifest['pixel_depth_query'] = {
+            'enabled': True, 'max_queries_per_observation': 1, 'max_points': 8,
+            'queries_completed': 0, 'followup_calls': 0,
+            'collector_idle_timeout_s': 2 * args.model_timeout + 120,
+            'model_call_timeout_s': args.model_timeout,
+        }
     replay_history = []
     if args.replay_observe_steps:
         (trace / 'replay_observations').mkdir(mode=0o700)
@@ -667,7 +684,8 @@ def main():
         manifest['replay_visual_history'] = {
             'schema': REPLAY_IMAGE_SCHEMA, 'requested_boundaries': args.replay_observe_steps,
             'capture_source': 'new_episode_replay_acknowledgements',
-            'delivery': 'first_model_call_only', 'captured': [], 'first_model_input': None,
+            'delivery': ('first_observation_query_cycle' if args.pixel_depth_query else 'first_model_call_only'),
+            'captured': [], 'first_model_input': None,
         }
     if args.wrist_depth_panel:
         manifest['input_profile'] += '_with_current_wrist_depth_panel'
@@ -804,7 +822,8 @@ def main():
             manifest['status'] = 'collecting'
             for index in range(args.decisions if stop_reason != 'review_points' else 0):
                 check_interrupt()
-                payload, images = prepare_observation(obs, actor_root / 'observations' / f'{index:05d}')
+                observation_dir = actor_root / 'observations' / f'{index:05d}'
+                payload, images = prepare_observation(obs, observation_dir)
                 prompt = (task if index == 0 else 'Continue the same episode using the latest public observation.\n')
                 prompt += '\nDecision index: ' + str(index) + '\n'
                 if index == 0:
@@ -823,9 +842,116 @@ def main():
                         obs, images, actor_root / 'observations' / f'{index:05d}', image_context)
                     prompt += '\ncurrent_wrist_depth_panel (appended last; zero-based indices): ' + json.dumps(
                         depth_panel, allow_nan=False)
+                frozen_frame = None
+                if args.pixel_depth_query:
+                    from participant.collection.depth_query import (
+                        CAMERAS as QUERY_CAMERAS, freeze_public_frame, lookup,
+                        response_schema, route_initial, sha as query_sha)
+                    source_paths = {'observation_json': observation_dir / 'observation.json',
+                                    'public_depth_npz': observation_dir / 'public_depth.npz',
+                                    **{camera + '_rgb': observation_dir / (camera + '.png')
+                                       for camera in QUERY_CAMERAS}}
+                    frozen_frame = freeze_public_frame(
+                        obs, interface, {key: hashlib.sha256(path.read_bytes()).hexdigest()
+                                         for key, path in source_paths.items()}, args.run_id, index)
+                    prompt += '\nfrozen_public_depth_query_context: ' + json.dumps(
+                        frozen_frame.context(), allow_nan=False)
                 image_hashes = [hashlib.sha256(p.read_bytes()).hexdigest() for p in images]
                 input_hash = hashlib.sha256((prompt + json.dumps(image_hashes)).encode()).hexdigest()
                 latest_input_hash = input_hash
+                if args.pixel_depth_query and not pending_plan:
+                    first_query_call_index = manifest['actor_calls_attempted']
+                    cycle_input_hash = input_hash
+                    frozen_time = float(obs['simulation_time_s'])
+                    def invoke_query_call(call_prompt, call_schema, phase):
+                        nonlocal latest_input_hash
+                        check_interrupt()
+                        if float(obs['simulation_time_s']) != frozen_time or image_hashes != [
+                                hashlib.sha256(path.read_bytes()).hexdigest() for path in images]:
+                            raise ValueError('frozen query observation or image bytes changed')
+                        call_index = manifest['actor_calls_attempted']
+                        if call_index >= 2 * args.decisions:
+                            raise ValueError('optional depth model-call budget exhausted')
+                        call_input_hash = hashlib.sha256((call_prompt + json.dumps(image_hashes)).encode()).hexdigest()
+                        latest_input_hash = call_input_hash
+                        manifest['actor_calls_attempted'] += 1
+                        if phase == 'action_after_query':
+                            manifest['pixel_depth_query']['followup_calls'] += 1
+                        ordered = [{'image_index': i, 'relative_file': str(path.relative_to(root)),
+                                    'sha256': digest} for i, (path, digest) in enumerate(zip(images, image_hashes))]
+                        if image_context is not None and call_index == 0:
+                            manifest['replay_visual_history']['first_model_input'] = {
+                                'input_sha256': call_input_hash, 'image_context': image_context,
+                                'ordered_images': ordered}
+                        if depth_panel is not None:
+                            manifest['wrist_depth_panel']['model_inputs'].append({
+                                'model_call_index': call_index, 'decision_index': index,
+                                'input_sha256': call_input_hash, 'panel': depth_panel,
+                                'ordered_images': ordered})
+                        meta = {'model_call_index': call_index, 'decision_index': index,
+                                'call_phase': phase, 'input_sha256': call_input_hash,
+                                'schema_sha256': hashlib.sha256(json.dumps(call_schema, allow_nan=False).encode()).hexdigest(),
+                                'frozen_observation_id': frozen_frame.observation_id,
+                                'observation_simulation_time_s': frozen_time,
+                                'ordered_image_sha256': image_hashes,
+                                'initial_cycle_input_sha256': cycle_input_hash,
+                                'reused_initial_model_call_index': (first_query_call_index
+                                                                   if phase == 'action_after_query' else None),
+                                'physics_advanced_during_query': False}
+                        manifest['activity'] = 'model_request'
+                        dump(trace / 'attempt.json', manifest)
+                        call_started = time.monotonic()
+                        returned = None
+                        try:
+                            returned = actor.invoke(call_prompt, images, call_schema)
+                        except BaseException as exc:
+                            elapsed = time.monotonic() - call_started
+                            manifest['actor_call_wall_s'] += elapsed
+                            usage = token_usage.record(call_index, returned, call_failed=True)
+                            token_usage.update_manifest(manifest)
+                            event({'type': 'model_error', **meta, 'error_type': type(exc).__name__,
+                                   'error': str(exc), 'actor_call_wall_s': elapsed,
+                                   'usage_accounting': usage,
+                                   'actor_call_timing': getattr(actor, 'last_call_timing', None)})
+                            dump(trace / 'attempt.json', manifest)
+                            raise
+                        usage = token_usage.record(call_index, returned)
+                        token_usage.update_manifest(manifest)
+                        manifest['actor_call_wall_s'] += float(returned['wall_s'])
+                        event({'type': 'model_call', **returned, **meta,
+                               'usage_scope': 'thread_cumulative', 'usage_accounting': usage})
+                        dump(trace / 'attempt.json', manifest)
+                        check_interrupt()
+                        return returned, meta, usage
+                    try:
+                        result, query_meta, usage_record = invoke_query_call(
+                            prompt, response_schema(SCHEMA), 'initial')
+                        ordinary, request = route_initial(result['decision'], SCHEMA, validate_decision,
+                                                          wiring=args.mode == 'wiring')
+                        if request is not None:
+                            query_response = lookup(frozen_frame, request)
+                            manifest['pixel_depth_query']['queries_completed'] += 1
+                            event({'type': 'depth_query_result', **query_meta,
+                                   'request': request, 'response': query_response,
+                                   'query_reason': result['decision']['reason'],
+                                   'response_sha256': query_sha(query_response), 'executed': False})
+                            dump(trace / 'attempt.json', manifest)
+                            check_interrupt()
+                            followup = prompt + '\nFrozen-observation action-only follow-up. Same images and public time; query budget exhausted. Return the ORIGINAL action schema without depth_query.\n'
+                            followup += 'depth_query_result: ' + json.dumps(query_response, allow_nan=False)
+                            result, query_meta, usage_record = invoke_query_call(followup, SCHEMA, 'action_after_query')
+                            ordinary = result['decision']
+                        action = validate_decision(ordinary, wiring=args.mode == 'wiring')
+                    except BaseException as exc:
+                        event({'type': 'depth_query_cycle_stopped', 'decision_index': index,
+                               'frozen_observation_id': frozen_frame.observation_id,
+                               'error_type': type(exc).__name__, 'error': str(exc), 'executed': False})
+                        raise
+                    result = dict(result, decision=ordinary)
+                    query_meta.update(plan_id=f"{args.run_id}:call-{query_meta['model_call_index']:05d}",
+                                      plan_segment_index=0, plan_segment_count=1, model_invoked=True,
+                                      usage_scope='thread_cumulative', usage_accounting=usage_record)
+                    pending_plan.append((result, action, query_meta))
                 if not pending_plan:
                     call_started = time.monotonic()
                     model_call_index = manifest['actor_calls_attempted']

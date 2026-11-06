@@ -1,69 +1,94 @@
 # 현재 상태와 다음 작업
 
-> **2026-11-06 저녁 재개:** 사용자 요청으로 E15 마감의 일시 중지를 해제하고 클린 L40S 복원·검사 및 10점 목표 실험을 진행합니다. 아래 E15 마감 상태는 이전 기준입니다. [실시간 작업 기록](sessions/20261106-evening-resume.ko.md)
+**2026-11-06 저녁 · E16 종료:** 원점수 **0/50**, 첫 소매 **0**, `success=false`. 최고 기록은 **5/50**이며 **10점은 아직 달성하지 못했습니다.** 클린 L40S 복원 후 실험을 재개했습니다. E16 결과와 소스를 main 통합본에 정리했으며 원본의 고정 HF revision 재다운로드 SHA256 검증을 마쳤습니다.
 
-**2026-11-06 기준: E15까지 마감하고 사용자 요청으로 수집을 일시 중지했습니다. E16·E17은 실행하지 않았습니다.** 재개 요청 전에는 새 시뮬레이션·모델 호출·후보 적용을 시작하지 않습니다. 서버 종료·삭제는 사용자가 직접 합니다.
+[최신 영상·피드백](../gallery/README.ko.md) · [E16 세 구간](../gallery/20261106-astra-support264-002.ko.md) · [원인 검토](../collection/reviews/20261106-astra-support264-002.ko.md) · [이번 세션 기록](sessions/20261106-evening-resume.ko.md) · [메인 README](../../README.md)
 
-[메인 README](../../README.md) · [새 서버 명령](START_HERE.ko.md) · [수집 안내](../collection/README.ko.md) · [개발 이력](HISTORY.ko.md) · [영상 비교](../gallery/README.ko.md)
+## 최신 확인 결과
 
-## 지금 어디까지 왔는가
-
-| 구분 | 최신 확인 결과 |
+| 구분 | 확인한 내용 |
 |---|---|
-| 과제 성과 | 최고 원점수 **5/50**, 첫 소매 **0점**, 전체 착의 `success=false` |
-| 마지막 시도 | E15 `20261106-astra-opening264-001`, 초기 파지·입구 준비부터 재시도 |
-| E15 로컬 공식 평가기 결과 | 원점수 **5/50**, 착의 점수 **0/45**, `no_dressing_points`, 최종 `rate=0` |
-| 완결 데이터 | **611전이 / 30.55 simulation초**, 전수 검사 **611/611** 통과·오류 0 |
-| 전이 출처 | **E07 재실행 264 + 새 모델 행동 221 + 제어기 중립 126 = 611** |
-| 실행 비용 | **24호출 / 24판단 / 실제 1,709.785초(28분 29.785초)** |
-| 종료·승인 | 모델 자율 `finish_episode`로 정상 마감. 학습 승인은 **`unreviewed`** |
-| 적용·검증 | E09 종료 응답 오류 수정·회귀 검증 완료. E15 시작 전 전체 CPU 208개·모델 없는 GPU 계측 6/6전이 검사 통과 |
-| 관찰 방식 | **Chrome·WebRTC OFF**, GitHub 사건별 GIF/MP4로 검토 |
+| 마지막 과제 시도 | E16 `20261106-astra-support264-002`, 각 파지의 순차 지지 진단 |
+| 종료 | 운반 없이 모델 자율 종료. 34호출·34판단 |
+| 공식 평가 | **0/50 · 첫 소매0 · `success=false` · `no_contact / null`** |
+| 완결 데이터 | **516/516전이 전수 검사 통과** |
+| 전이 출처 | **E07 재실행264 + 새 모델156 + 제어기 중립96 = 516** |
+| 실제 시간 | **22:46:26–23:19:06 UTC · 1,959.821초** |
+| 시간 구분 | 모델 호출 경로1,451.035초 · 환경 요청456.810초 |
+| 입력 | 현재 RGB5장 + 손목 depth 패널1장 + 공개 로봇 상태·depth 요약. 픽셀 질의 미사용 |
+| 실행 소스 | `05152fa4bf250257481cae988b6f8f26c817084a` |
+| 현재 소스 정리 | 사용자 요청에 따른 main 통합본. E16 실행 소스05152fa와 이후 통합 소스를 구분 |
+| 학습 승인 | `unreviewed`; 기술 검사 통과가 성공 시연·학습 승인을 대신하지 않음 |
+| 관찰 방식 | Chrome·WebRTC OFF, README 상단과 갤러리의 실제 GIF/MP4 |
 
-24판단은 동작 결정 23회와 종료 결정 1회입니다. 제어기 중립 126전이는 21구간 × 6전이이며, 관절·천이 완전히 멈췄다는 보장은 아닙니다. E15는 현재 RGB 5장·손목 depth 패널 1장·공개 로봇 상태·depth 요약을 사용했고 **과거 이미지는 주입하지 않았습니다**. 모델은 Astra/ultra, CLI 0.166.0/exec입니다.
+모델 호출 경로에는 입력 준비·Docker/CLI·서비스 응답이 포함되며 순수 추론시간은 제공되지 않습니다. `no_contact / null`은 평가기의 점수율 상태이며0과 다릅니다. 위 결과는 로컬 공식 평가기 결과이며 Codabench 제출·공식 순위를 뜻하지 않습니다.
 
-E15 실행 소스는 `fa3fb85a25b35228d5456fd3e70fca3259098e6b`이며 실행 중 변경은 없었습니다. 모델 호출 경로는 1,105.822초, 환경 요청은 548.946초였습니다. 호출 경로 시간은 순수 모델 내부 추론 시간이 아닙니다. 위 수치는 **로컬 수집·평가 결과**이며 Codabench 공식 제출 성과를 뜻하지 않습니다.
+E16 첫 run ID `20261106-astra-support264-001`은 재실행 부모 인자 불일치로 시작 전에 차단됐습니다. 모델·GPU 호출과 capture가 없었습니다. 실제 E16은 부모를 E07로 수정한 `-002`이며 E15는 비교 대상입니다.
 
-[E15 종료 검토](../collection/reviews/20261106-astra-opening264-001.ko.md) · [E10~E15 실행 기록](sessions/20261106-resume10.ko.md) · [E15 시각 자료](../gallery/20261106-astra-opening264-001.ko.md)
+## 관측·해석·다음 방법
 
-## 무엇이 막혀 있는가
+| 구분 | 내용 |
+|---|---|
+| 실제 수행 | 양쪽을 따로 시험하고 로봇0을 재파지한 뒤 국소 천 동행을 관측. 입구 준비 후 운반 없이 종료 |
+| 확인되지 않은 것 | 두 지지점 사이의 통과 가능한 연속 입구, 손 진입·첫 소매 통과. 국소 동행은 시각적 지지 근거이며 닫기 명령·목표 잔차만으로 판정한 것이 아님 |
+| 비교의 한계 | E15와 시작 이후 행동·시간이 달라 단일 요인 성능 비교가 아님. E16 원점수0과 과거 최고5를 혼동하지 않음 |
+| 다음 선택 | E16의352경계부터 다른 가시 입구 경계·층에서 한쪽 재파지를 비교하는 E17 A 경로 준비. 아직 실행하지 않음 |
 
-초기 들기와 운반은 관측했지만 **천 입구·손·그리퍼의 관계를 계속 확인하며 첫 소매를 통과시키지 못했습니다**. E15 후반에는 닫기 목표를 유지한 robot0 손가락 원점 간격이 61.492→133.403mm로 벌어진 뒤, 모델이 명시적으로 열고 철수했습니다. 이 거리는 파지 센서가 아니므로 접촉 상대·슬립 원인을 확정하지 않습니다.
+같은 실패가 반복되는지, 실제로 파지 위치·층·로봇 역할이 달라졌는지는 최종 행동과 공개 관측으로 판단합니다. 프롬프트 문구 변경만으로 새로운 조작 방법을 실행했다고 기록하지 않습니다. [방법 전환 기준](sessions/20261106-method-switch-matrix.ko.md) · [E16 상세 검토](../collection/reviews/20261106-astra-support264-002.ko.md)
 
-운반 D5–D15에서 양 베이스 이동 거리 차이는 최대 0.260mm였습니다. 따라서 이 구간을 “두 베이스가 따로 움직여 실패했다”고 설명할 근거는 부족합니다. 동시에 움직인 장면만으로 두 파지의 독립적인 하중 지지가 확인된 것도 아닙니다. 시작 경계·전략·입력을 함께 바꾼 E15를 단일 요인 실험으로 해석하지 않습니다.
+## 구현·검증 단계
 
-## 사용자가 클린 서버 재개를 요청하면
-
-| 순서 | 작업 | 다음 단계 조건 |
+| 항목 | 구현·검증 상태 | 과제 성능과 구분 |
 |---|---|---|
-| 1 | 고정 소스·자산·필요 원본 복원 | 백업 revision·SHA256·보존 범위 확인, 기존 파일 충돌 방지 |
-| 2 | 서버·환경·CLI 검증 | GPU·드라이버·Docker·build·prepare·smoke·CPU 검사, CLI 0.166.0 확인 |
-| 3 | 짧은 wiring과 파일 마감 검사 | 이미지·JSON·작은 동작·정지·종료 ACK·전수 검사 통과 |
-| 4 | 사용자와 다음 전략 한 가지 선택 | 아래 후보의 가설·진행·중단 조건 확인. E15 또는 700분기를 자동 반복하지 않음 |
-| 5 | 짧은 진단 후 첫 소매 통과 시도 | 실제 파지·가시 경계·공식 착의 +5점·실패·복구·시간을 분리 기록 |
-| 6 | 시각 검수와 학습 승인 | 승인 목록과 episode/source-group별 검증 분할 마련 |
+| 복원·기본 연결 | 고정 자산·E07 원본 복원, prepare·smoke·Astra 실제 wiring 완료 | 환경 연결 확인이며 착의 성공 아님 |
+| 순차 지지 전략 | E16에 실제 적용 | 원점수0, 운반 없이 종료 |
+| 다른 입구 재파지·지지/가이드 전략 | 코드·CPU 검사, 후속 비교 준비 | 새 과제 결과 없음 |
+| 공개 관측 진단 | 한쪽/정지측 변위·그리퍼 상태·lift 목표 잔차 분석 가능 | 파지 성공을 자동 판정하지 않음 |
+| 픽셀 depth 질의 | CPU·합성 이미지 실제 CLI 2턴 통과. 모델 없는 GPU 수집 연결3/3전이 통과; 그 시험은 실모델 호출0·질의1회·질의 중 물리 진행0 | **E16 미사용**, 착의 개선 효과 미측정 |
+| 원본 보존 | 닫힌 capture·전수검사·SHA와 허용목록을 확인해 새 staging 생성. wiring 원격 검증 완료 | E16 고정 revision 재다운로드 SHA 검증 완료 |
 
-**첫 권고 후보는 테이블 지지 가까이에서 각 파지의 실제 지지를 따로 확인하는 짧은 진단입니다. 아직 선택·실행하지 않았습니다.** 한쪽씩 작게 움직일 때 천이 따라오는지와 반대 로봇의 실제 움직임을 함께 확인합니다. 이후 천 입구와 그리퍼 위치 분리, 같은 공개 관측의 픽셀 depth 조회, 목표 도달 후 관측을 비교 후보로 둡니다. 픽셀 조회는 가려진 입구나 접촉을 알아내는 기능이 아니며 실제 CLI 2턴·수집 통합은 미검증입니다.
+최신 전체 CPU 검사는 **251개 통과(7.369초)**입니다. 이 수치를 E16 실행 당시의 소스 검사 수로 소급하지 않습니다. E09 종료 프로토콜 수정은 이미 완료됐습니다. 새 기본 환경을 다시 만들거나 과거 오류 수정을 반복할 필요는 없습니다.
 
-명령·인증·권한·자산 병합은 [새 서버 준비](START_HERE.ko.md), 전략의 선택 기준은 [세션 결론](SESSION_WRAPUP_20261106.ko.md)과 [5점에서 10점으로 가는 진단 안내](FIVE_TO_TEN.ko.md)를 따릅니다. **E09 종료 프로토콜은 이미 수정됐으므로 과거 문서의 “먼저 수정” 지시를 반복하지 않습니다.**
+## 다음 작업과 명령
 
-## 무엇을 보존했고 어떻게 복원하는가
+E16 정리·원본 보존을 기준으로 main 게시를 확인한 뒤 A 경로를 별도 새 run ID로 실행합니다. 사용자가 화면을 지켜볼 필요는 없습니다. GPU 수집·평가·학습은 순차 실행하며 종료 원본을 덮어쓰지 않습니다.
 
-비공개 HF 저장소 `leonayoon/phyrc-2027-phase1-private-backup`에 초기 자산·E07, E10~E15 각 실행, 연구 후보를 **별도 묶음**으로 보존하고 고정 revision 재다운로드 SHA256을 확인했습니다.
+아래는 **main 통합 후 실행할 E17 계획 명령이며 아직 실행하지 않았습니다.** E16의352전이를 재실행하고,264·346경계의 사진도 새 재실행에서 다시 얻습니다. 과거 원본 이미지를 현재 상태로 간주하지 않고 현재 지지를 재판단합니다. 픽셀 depth 질의는 끕니다.
 
-| 묶음 | 보존·검증 상태 |
+```bash
+export PATH="$PWD/.runtime/codex-0.166.0/node_modules/.bin:$PATH"
+PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.codex_client \
+  --run-id 20261106-astra-layer352-001 --mode dressing \
+  --strategy coordinated-regrasp-hem --actor-backend exec \
+  --model gpt-6-astra --effort ultra --plan-size 1 --review-points 10 \
+  --replay-prefix-run 20261106-astra-support264-002 --replay-prefix-steps 352 \
+  --parent-attempt 20261106-astra-support264-002 \
+  --retry-reason different_visible_rim_layer_after_support_diagnostic \
+  --replay-observe-steps 264 346 --wrist-depth-panel \
+  --post-action-settle-steps 6 --decisions 50 --max-steps 1800 --model-timeout 600
+```
+
+실제 실행 시 소스·명령·출처를 [세션 기록](sessions/20261106-evening-resume.ko.md)에 남깁니다. 기존 E16 원본에 이어 쓰지 않습니다.
+
+## 보존·복원 근거
+
+비공개 HF 저장소 `leonayoon/phyrc-2027-phase1-private-backup`을 사용합니다. audit·평가·배치 metadata는 비공개 검수 자료이며 actor에 연결하지 않습니다.
+
+| 묶음 | 상태·근거 |
 |---|---|
-| [초기 전체 11.78GB](sessions/20261106-remote-backup-verification.json) | 실제 자산·E07 전체 원본. 재개 서버에서 자산 SHA·E07 1,067/1,067·prefix700 입력 검사를 통과하고 E10 이후 GPU 수집까지 수행 |
-| [E10~E14 원본](START_HERE.ko.md#보존-위치와-고정-revision) | 각 시도의 고정 revision·검증 JSON을 별도 유지 |
-| [E15 원본 1.42GB](sessions/20261106-e15-backup-verification.json) | 1,417,350,617 bytes, revision `ba753c41cf64c361ae91aae9e31f9236106bc4ad` |
-| [연구·후보 4.60MB](sessions/20261106-private-research-backup-verification.json) | 171개 선별 원본과 적용 상태. 별도 staging에서 검토하고 현재 소스에 일괄 적용하지 않음 |
+| 초기 자산·E07 | [초기 고정 백업](sessions/20261106-remote-backup-verification.json), [이번 서버 복원 검증](sessions/20261106-evening-restore-validation.json). 자산8개 일치·E07 1,067/1,067전이 검사 통과 |
+| E10~E14 | [고정 revision과 검증 목록](START_HERE.ko.md#보존-위치와-고정-revision) |
+| E15 | [원본 검증](sessions/20261106-e15-backup-verification.json), revision `ba753c41cf64c361ae91aae9e31f9236106bc4ad` |
+| 연구 후보 | [선별 원본 백업](sessions/20261106-private-research-backup-verification.json). 후보 복원과 실제 적용을 구분 |
+| 이번 wiring | [실제 모델 기본 연결 백업](sessions/20261106-evening-wiring-backup-verification.json) · [모델 없는 질의 연결 백업](sessions/20261106-depth-query-wiring-backup-verification.json), 각각 고정 revision 재다운로드 검증 |
+| E16 | [원격 백업·재다운로드 SHA 검증 완료](sessions/20261106-e16-backup-verification.json). revision `1ad0f8ba3cc71ab80962907c713357fbd4005e3f`, 1,181,871,453 bytes. 23:24:18 UTC 확인 |
 
-새 서버에서도 검증을 반복합니다. E07 행동 재실행은 **정확한 물리 checkpoint 복원과 다르며**, E10~E15는 같은 source group의 분기입니다. 중복 prefix를 새 독립 시연으로 세지 않습니다. E09 불완전 원본은 오류 근거로 그대로 보존하고 학습 사용에서 제외합니다. [재실행·분기 가이드](../collection/guides/continuation-and-branches.ko.md)
+E07 행동 재실행은 정확한 천 physics checkpoint 복원과 다릅니다. 같은 source group의 분기와 중복 prefix를 새 독립 시연으로 세지 않습니다. E09 불완전 기록은 오류 근거로 보존하며 정상 복원 출처로 사용하지 않습니다. [재실행·분기 가이드](../collection/guides/continuation-and-branches.ko.md) · [클린 서버 명령](START_HERE.ko.md)
 
-## 아직 하지 않은 일
+## 남은 일과 이전 기록
 
-이번 시연의 학습 승인, 승인 자료를 이용한 π₀.₅ 학습·성능 검증, RL, 다른 VLA·world model 적용은 완료하지 않았습니다. 픽셀 depth 질의 통합, 단계 성능 계측 v2, 독립 파지 진단, OpenWAM은 미적용입니다. 조사·코드 후보·실제 검증은 [연구 로드맵](RESEARCH_ROADMAP.ko.md)에서 구분합니다.
+E16 시각 검수·학습 승인, 승인 시연을 사용한 새 π₀.₅ 학습·성능 검증, RL·다른 VLA·world model 과제 실험은 완료하지 않았습니다. [연구 로드맵](RESEARCH_ROADMAP.ko.md)
 
-과제 목표는 **반복 가능한 첫 소매 득점**입니다. 그 다음 시연 품질과 정책을 검증하고, 동일 배치의 착의 시간·다른 배치 일반화를 개선합니다.
+[E15 종료 검토](../collection/reviews/20261106-astra-opening264-001.ko.md) · [E15 마감 결론](SESSION_WRAPUP_20261106.ko.md) · [E10~E15 실제 일지](sessions/20261106-resume10.ko.md) · [개편 전 상세 상태](STATUS.before-reorganization-20261106.ko.md) · [개발 이력](HISTORY.ko.md) · [수집 안내](../collection/README.ko.md)
 
-기준 소스 `fb288520bd1109c606e23ca0ced41aa9a38ab9e9`. 이번 문서 재구성 자체는 새 환경 실행이나 실험을 추가하지 않았으며 위 결과는 기존 실행 근거를 정리한 것입니다. [개편 전 상세 상태](STATUS.before-reorganization-20261106.ko.md)는 당시 스냅샷입니다.
+이전 문서의 일시 중지·미실행 문구는 당시 이력입니다. 현재 실행 상태는 이 문서와 이번 세션 기록을 기준으로 확인합니다.

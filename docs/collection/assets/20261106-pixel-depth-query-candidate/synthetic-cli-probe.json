@@ -1,0 +1,290 @@
+{
+  "schema": "phyrc-synthetic-depth-query-probe-v1",
+  "model": "gpt-6-astra",
+  "effort": "ultra",
+  "model_timeout_s": 180.0,
+  "max_model_calls": 2,
+  "model_calls_attempted": 2,
+  "calls_completed": 2,
+  "physics_transitions": 0,
+  "simulator_created": false,
+  "gpu_calls": 0,
+  "synthetic_only": true,
+  "dressing_or_semantic_selection_validated": false,
+  "image_count": 16,
+  "image_sha256": [
+    "070c044d7f4275089eca0dae7a1248fa05cb62d7968cedf317c71ee61d4c5a9f",
+    "edd32b11f6278288231fe999a9a57abfca71a4df4f371c4ab537df0fa2674d28",
+    "1f2acf1e91a34e8da29daf2fda2af18cf94386bfc73e084256536eec3b51f84a",
+    "2eaeb651a51a6103098712d87aabea61b27bd6a2b679f51708db9b0e72dac7d0",
+    "08ff3d2d642249434fbb0e5d71ff8d0dbb499294149c124523fcaa39566c0453",
+    "cc12101bf543b43c3a7587eb35de8ff9e37789971f4c77deb6f6e940cd311c37",
+    "ce3d0180e22a9f9205cc83bfcaaada1cdd136ce4119f62be3233e17864b13461",
+    "701388700ae50f3574b077a6b2360ee7113b96fe3c5775e4de46d6f38185debd",
+    "2375f7f7888919e084944015801ccd0b1b52429704754f72e9f08e5e90b1b775",
+    "39e865ba231269ff64c609f9ff7963c7472646a166ead2c6664cad2c0b00cd8d",
+    "74866c56c36f88bde667d8663d2ccd984d35a641e8721ea9709ac2dbc23e2e95",
+    "650fa59dc519e51725b84a5f1f1c5c157ad5b4e286bd60af9e813a3342f8a6d9",
+    "2bf1c06903f21301d0d3f774f5bbe3abee9e81347f65a74c2d52e3e734031668",
+    "7d539c0a024e81d29079f406bbe65cc9de964af712cf1f06228b01d91d9d0639",
+    "6a116a7310ce2a8239f1f47edf6da18c3c5356624922e4486404a591d5826e90",
+    "94797e810451e4ac5362ad37806918e8d7574e8791936945549f7a49630fa98b"
+  ],
+  "frozen_observation_id": "2342831cbdf408803f5ade4fa5550b4244e1b43d1b37b9a74a3aa9f998252abb",
+  "calls": [
+    {
+      "model_call_index": 0,
+      "schema_sha256": "726666a0cf2f96d680d803746f76a3aeede4b24e9ba63e0a4d63fe5b0699f103",
+      "prompt_sha256": "707592439300713a2040aa6a65762b527ecb84d5cf6dc0d28123e8fbfb74fc04",
+      "wall_s": 7.755786360999991,
+      "usage_accounting": {
+        "decision_index": 0,
+        "call_failed": false,
+        "scope": "thread_cumulative",
+        "thread_index": 0,
+        "cumulative_usage": {
+          "input_tokens": 18542,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 213,
+          "reasoning_output_tokens": 45
+        },
+        "incremental_usage": {
+          "input_tokens": 18542,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 213,
+          "reasoning_output_tokens": 45
+        },
+        "usage_known": true,
+        "status": "observed"
+      },
+      "image_count": 16,
+      "decision": {
+        "tool": "depth_query",
+        "action": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "steps": 1,
+        "stage": "preparation",
+        "visual_assessment": "uncertain",
+        "reason": "Synthetic fixture lookup at the current wrist image's yellow center and background corner.",
+        "depth_query": {
+          "kind": "depth_query",
+          "observation_id": "2342831cbdf408803f5ade4fa5550b4244e1b43d1b37b9a74a3aa9f998252abb",
+          "camera": "robot_0_wrist",
+          "pixels_uv": [
+            [
+              128,
+              128
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "include_camera_geometry": true
+        }
+      }
+    },
+    {
+      "model_call_index": 1,
+      "schema_sha256": "891e2b6afb29d56e6d7f4093a2863caae464dd792ecd5124fb64c4c4096dcaf6",
+      "prompt_sha256": "e0205704473a1b3377ee01f0bede31621981b5f04b7d4f7c17becc71123161ba",
+      "wall_s": 5.999476051000329,
+      "usage_accounting": {
+        "decision_index": 1,
+        "call_failed": false,
+        "scope": "thread_cumulative",
+        "thread_index": 0,
+        "cumulative_usage": {
+          "input_tokens": 39761,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 311,
+          "reasoning_output_tokens": 45
+        },
+        "incremental_usage": {
+          "input_tokens": 21219,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 98,
+          "reasoning_output_tokens": 0
+        },
+        "usage_known": true,
+        "status": "observed"
+      },
+      "image_count": 16,
+      "decision": {
+        "tool": "finish_episode",
+        "action": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "steps": 1,
+        "stage": "preparation",
+        "visual_assessment": "uncertain",
+        "reason": "Synthetic fixture validation complete; center depth is 0.75 m and corner depth is invalid. No physics ran."
+      }
+    }
+  ],
+  "passed": true,
+  "cleanup_ok": true,
+  "cli_version": "codex-cli 0.166.0",
+  "query_result": {
+    "kind": "depth_query_result",
+    "observation_id": "2342831cbdf408803f5ade4fa5550b4244e1b43d1b37b9a74a3aa9f998252abb",
+    "camera": "robot_0_wrist",
+    "camera_index": 1,
+    "rgb_image_order": [
+      "overview",
+      "robot_0_wrist",
+      "robot_1_wrist",
+      "robot_0_head",
+      "robot_1_head"
+    ],
+    "simulation_time_s": 1.0,
+    "resolution_wh": [
+      256,
+      256
+    ],
+    "depth_semantics": "optical_Z_metres_not_ray_range",
+    "geometry_semantics": "camera_X_right_Y_down_Z_forward",
+    "source_sha256": {
+      "observation_json": "bc768116befe4145e6687cc8bd0323f33298d7ad9b66467eb5d7f59bc9df8c7f",
+      "public_depth_npz": "27f630c61585d457bd59036aac0546e4fae09ba0ec7ee012f1bffd9afeab46d6",
+      "overview_rgb": "070c044d7f4275089eca0dae7a1248fa05cb62d7968cedf317c71ee61d4c5a9f",
+      "robot_0_wrist_rgb": "edd32b11f6278288231fe999a9a57abfca71a4df4f371c4ab537df0fa2674d28",
+      "robot_1_wrist_rgb": "1f2acf1e91a34e8da29daf2fda2af18cf94386bfc73e084256536eec3b51f84a",
+      "robot_0_head_rgb": "2eaeb651a51a6103098712d87aabea61b27bd6a2b679f51708db9b0e72dac7d0",
+      "robot_1_head_rgb": "08ff3d2d642249434fbb0e5d71ff8d0dbb499294149c124523fcaa39566c0453"
+    },
+    "intrinsics_sha256": "6c7f3f17fb0b6ec2e8b986631214db7c63af68b609171e2bf0ee7ed08f30620d",
+    "request_sha256": "aa92e97d2899dbf744069d5119d344643b5c11e16421cdc42befcfbec2872b9e",
+    "results": [
+      {
+        "pixel_uv": [
+          128,
+          128
+        ],
+        "status": "valid",
+        "optical_z_m": 0.75,
+        "invalid_reasons": [],
+        "camera_xyz_m": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "camera_range_m": 0.75
+      },
+      {
+        "pixel_uv": [
+          0,
+          0
+        ],
+        "status": "invalid",
+        "optical_z_m": null,
+        "invalid_reasons": [
+          "center_mask_invalid",
+          "center_nonpositive"
+        ],
+        "camera_xyz_m": null,
+        "camera_range_m": null
+      }
+    ],
+    "neighbor_depth_substituted": false,
+    "hidden_surfaces_estimated": false,
+    "object_pose_or_contact_inferred": false
+  },
+  "same_session_resumed": true,
+  "wall_s": 14.476772474999962,
+  "usage_accounting": {
+    "schema": "phyrc-token-accounting-v2",
+    "cli_usage_scope": "thread_cumulative",
+    "aggregate_scope": "sum_of_observed_thread_usage",
+    "fully_known": true,
+    "observed_usage": {
+      "input_tokens": 39761,
+      "cached_input_tokens": 0,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 311,
+      "reasoning_output_tokens": 45
+    },
+    "calls_recorded": 2,
+    "unknown_call_indices": [],
+    "unknown_usage_is_zero": false,
+    "cached_input_is_subset_of_input": true,
+    "reasoning_output_is_subset_of_output": true,
+    "threads": [
+      {
+        "thread_index": 0,
+        "baseline": "fresh_attempt_thread_zero",
+        "last_observed_cumulative_usage": {
+          "input_tokens": 39761,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 311,
+          "reasoning_output_tokens": 45
+        },
+        "last_accepted_cumulative_usage": {
+          "input_tokens": 39761,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 311,
+          "reasoning_output_tokens": 45
+        }
+      }
+    ]
+  },
+  "staged_public_images_identical_between_calls": true,
+  "staged_image_checks": 16,
+  "original_summary_sha256": "948fb255c434e78b5cb2d507fb60134dba73d11c20978085dc9bb7f48430ee16",
+  "source_files_sha256": {
+    "scripts/probe_depth_query_protocol.py": "39ad4354e079d2baac6491cd3ab8dbb4d53e618fc16262d934d30cd0ebf9a007",
+    "participant/collection/codex_actor.py": "462c73601f744baa903668bd08e11b2af7f6cc26347482dd80bcade953827ba0",
+    "participant/collection/codex_client.py": "9d369a22304f09d2bf76316fef93a7c4a5cb0e735005a00f561276e4968c1540",
+    "participant/collection/depth_query.py": "0d98e401d87cf06494498b8075da84c95ce599161195dfa67d4f4fd1ae7da62f",
+    "participant/research/depth_backprojection.py": "623917e7d0af29ed891a028f4d86d52048035217c10cd185a13604b99573684a"
+  }
+}
