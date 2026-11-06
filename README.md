@@ -1,4 +1,4 @@
-# PhyRC 2027: Codex CLI로 시연 데이터를 수집하고 정책 학습하기
+# PhyRC 2027: 두 로봇의 협력 착의 챌린지
 
 [공식 원본 안내](README.upstream.md) · [새 서버 준비](docs/project/START_HERE.ko.md) · [다음 작업 상태](docs/project/STATUS.md) · [공식 대회](https://emprise.cs.cornell.edu/phyrc/challenge-2027/)
 
