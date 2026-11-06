@@ -251,7 +251,19 @@ CLI 연결은 [비대화형 실행 문서](https://learn.chatgpt.com/docs/non-in
 
 아래 문장은 **사용자가 서버를 열고 작업을 재개할 때** 붙여 넣는 개발 지시입니다. 행동 모델의 시스템 프롬프트로 사용하지 않습니다.
 
-> 이 저장소의 README.md, AGENTS.md, docs/project/START_HERE.ko.md를 읽고 현재 코드와 계획을 구분해 작업을 이어가세요. 우선 서버와 공식 환경을 확인하고, 기존 boundary.py와 collect_operator.py를 재사용해 Codex CLI의 gpt-6-astra를 연결하는 짧은 자동 시연 수집 경로를 구현하세요. 개발용 세션과 행동용 세션을 분리하고 행동용 세션에는 공개 관측과 제한된 제어 도구만 제공하세요. 실제 적용된 20 Hz 행동을 저장하며, 공식 평가 결과와 품질 검수는 행동 문맥 밖에서 관리하세요. 작은 동작·정지·정상 저장을 먼저 검증한 뒤 접근·파지·들기 시험으로 진행하세요. API 방식으로 자동 전환하지 말고, 모델 접근이나 격리·기록 문제가 있으면 그 문제부터 보고하세요. 오늘 목표는 수집 연결과 유효한 시연 확인이며, 대규모 자료 복원·학습·RL·장시간 평가를 먼저 실행하지 마세요. 종료할 때 코드, 실행 명령, 자료 위치와 검증 상태, 다음 한 가지 작업을 한국어로 기록하세요.
+> 이 저장소의 README.md, AGENTS.md, docs/project/START_HERE.ko.md, docs/project/CODEX_CONTEXT.ko.md를 읽고 현재 코드와 계획을 구분해 작업을 이어가세요. 우선 서버와 공식 환경을 확인하고, 기존 boundary.py와 collect_operator.py를 재사용해 Codex CLI의 gpt-6-astra를 연결하는 짧은 자동 시연 수집 경로를 구현하세요. 개발용 세션과 행동용 세션을 분리하고 행동용 세션에는 공개 관측과 제한된 제어 도구만 제공하세요. 실제 적용된 20 Hz 행동을 저장하며, 공식 평가 결과와 품질 검수는 행동 문맥 밖에서 관리하세요. 작은 동작·정지·정상 저장을 먼저 검증한 뒤 접근·파지·들기 시험으로 진행하세요. API 방식으로 자동 전환하지 말고, 모델 접근이나 격리·기록 문제가 있으면 그 문제부터 보고하세요. 오늘 목표는 수집 연결과 유효한 시연 확인이며, 대규모 자료 복원·학습·RL·장시간 평가를 먼저 실행하지 마세요. 종료할 때 코드, 실행 명령, 자료 위치와 검증 상태, 다음 한 가지 작업을 한국어로 기록하세요.
+
+### 필요할 때 펼쳐 읽는 기술 컨텍스트
+
+[![개발 컨텍스트 열기 — 수집, VLA 학습, RGB-D와 정책 확장](docs/project/assets/codex-context-button.svg)](docs/project/CODEX_CONTEXT.ko.md)
+
+[문서로 바로 열기](docs/project/CODEX_CONTEXT.ko.md)
+
+최근 정리한 기술 내용을 별도 문서에 모았습니다. **현재 구현, 미검증 항목, 후속 실험**을 구분하며, 새 서버의 개발용 Codex는 위 시작 요청과 함께 읽습니다.
+
+- 자연어 시연 수집, 사람 개입, 단계 저장과 복원, 공개 관측 및 점수의 경계
+- 실제 데이터와 action 계약, π₀.₅의 flow matching, LoRA, 정규화와 실행 청크
+- 5 RGB와 depth 확장, 정책 비교, 비동기 실행 및 강화학습의 적용 조건
 
 ## 참고 문서
 
@@ -259,3 +271,4 @@ CLI 연결은 [비대화형 실행 문서](https://learn.chatgpt.com/docs/non-in
 - [Stretch 4 정책·Astra 기술 검토](docs/project/research/STRETCH4_VLA_REVIEW.ko.md): 조사 자료이며, 그 안의 과거 실행 우선순위보다 이 README의 현재 계획을 우선합니다.
 - [과거 세션 기록](docs/project/sessions/), [이전 결과](docs/project/RESULTS.ko.md), [이전 한글 README](README.history.ko.md): 문제 재현이 필요할 때 참고합니다.
 - [공식 시뮬레이터](https://github.com/rirolab/PhyRC_2027_Challenge), [출처와 라이선스](THIRD_PARTY.md). 공식 원본과 라이선스 문서는 원문으로 보존합니다.
+
