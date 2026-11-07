@@ -568,7 +568,7 @@
       "source_working_tree_modified": false,
       "parent_run_id": "20261107-astra-progress787-named-001",
       "replay_prefix_steps": 1179,
-      "replay_completed_steps": 853,
+      "replay_completed_steps": 1179,
       "recorded_transitions": null,
       "qc_status": "pending",
       "backup": {
@@ -1651,7 +1651,7 @@
         "review": null,
         "videos": []
       },
-      "notes": "Actual E24 started2026-11-07T04:11:53Z from clean published sourceb0513d43a87c813397c57d8a4fa6ec4e6ff6ba03. E23/1179 direct parent,history1077/1161,same task-progress30dec/max2000/timeout180/settle6/review10, fixed Astra/ultra exec plan1 named/query. Continuation of observed arm-garment relation, not a new grasp method. CPU source loader1179 and22unchanged runtime hashes passed; no new runtime code. Intended/completed replay separate; outcome/QC/backup pending. Same E07 lineage,not exact cloth checkpoint. Progress at2026-11-07 04:24:55 UTC:replay853/1179,0modelcalls,noerror; final outcome pending."
+      "notes": "Actual E24 started2026-11-07T04:11:53Z from clean published sourceb0513d43a87c813397c57d8a4fa6ec4e6ff6ba03. E23/1179 direct parent,history1077/1161,same task-progress30dec/max2000/timeout180/settle6/review10, fixed Astra/ultra exec plan1 named/query. Continuation of observed arm-garment relation, not a new grasp method. CPU source loader1179 and22unchanged runtime hashes passed; no new runtime code. Intended/completed replay separate; outcome/QC/backup pending. Same E07 lineage,not exact cloth checkpoint. Progress at2026-11-07 04:24:55 UTC:replay853/1179,0modelcalls,noerror; final outcome pending. Replay1179 completed; D0/D1 lateral torso-ward and lowering acts observed to1223, cloth lowering and maintained forearm exposure, opening/head relation still occluded. Not passage or final score confirmation."
     }
   ]
 }
