@@ -1,0 +1,400 @@
+{
+  "schema": "bounded_public_method_options.v1",
+  "created_at_utc": "2026-11-07T06:20:39.939477+00:00",
+  "run_id": "20261107-astra-hand-swap787-named-001",
+  "source_prefix_reported_by_root": "53a",
+  "analysis_cutoff": {
+    "observation": 6,
+    "decision_applied_through": 5,
+    "boundary": 903,
+    "later_observations_or_results_used": false
+  },
+  "status": "read_only_conditional_analysis_not_run_selection",
+  "main_finding": "Repeated forward/retreat occlusion does not identify exterior contact, remaining entry distance or passage. D5 already changed actual relative gripper placement, so the inspected E26 prefix is not merely repeated common forward motion. Do not declare this active method exhausted.",
+  "observed_sequence": [
+    {
+      "decision": 2,
+      "result_obs": 3,
+      "finding": "Forward plus upward wrist pitch accompanies loss of the tracked hand in close views and a narrower projected yellow-boundary slit."
+    },
+    {
+      "decision": 3,
+      "result_obs": 4,
+      "finding": "Retreat plus reverse pitch restores a visible hand/forearm above the near boundary and a wider projected slit."
+    },
+    {
+      "decision": 4,
+      "result_obs": 5,
+      "finding": "Forward with no new commanded pitch again obscures the tracked hand and narrows the projected boundary relation; measured small pitch settling remains."
+    },
+    {
+      "decision": 5,
+      "result_obs": 6,
+      "finding": "Opposing base motions and wrist yaw change relative support geometry and diagonal boundary presentation. The tracked hand remains obscured in the inspected close views. Overview retains the whole garment/person relation, but does not expose hidden layers."
+    }
+  ],
+  "public_motion_check": {
+    "formula": "Normalize public wxyz; world grasp reference = base_world.xyz + R(base_world.wxyz) @ grasp_pose_base.xyz. Compare endpoints and the line between the two robot grasp references.",
+    "records": [
+      {
+        "decision_index": 2,
+        "from_obs": 2,
+        "to_obs": 3,
+        "robots": [
+          {
+            "robot": 0,
+            "base_delta_in_start_robot_frame_mm": [
+              95.32871839785632,
+              0.12835950727048848,
+              -0.5708737743916015
+            ],
+            "actual_wrist_yaw_delta_rad": 0.0004688784247264266,
+            "actual_wrist_pitch_delta_rad": -0.15171805396676064
+          },
+          {
+            "robot": 1,
+            "base_delta_in_start_robot_frame_mm": [
+              95.26772028841114,
+              -0.4341929151259529,
+              -0.5722918769702887
+            ],
+            "actual_wrist_yaw_delta_rad": 0.0006346532609313726,
+            "actual_wrist_pitch_delta_rad": -0.15163608267903328
+          }
+        ],
+        "inter_grasp_reference_distance_mm_before": 457.2383179545728,
+        "inter_grasp_reference_distance_mm_after": 456.45337150674584,
+        "inter_grasp_reference_line_angle_change_deg": 0.26772211592675893
+      },
+      {
+        "decision_index": 3,
+        "from_obs": 3,
+        "to_obs": 4,
+        "robots": [
+          {
+            "robot": 0,
+            "base_delta_in_start_robot_frame_mm": [
+              -37.85813343059983,
+              0.29529818165369826,
+              0.22809554351547648
+            ],
+            "actual_wrist_yaw_delta_rad": -0.0008295498555526137,
+            "actual_wrist_pitch_delta_rad": 0.2518508918583393
+          },
+          {
+            "robot": 1,
+            "base_delta_in_start_robot_frame_mm": [
+              -37.945566632288944,
+              -0.27934949541916443,
+              0.22643675586765605
+            ],
+            "actual_wrist_yaw_delta_rad": -0.0004845291841775179,
+            "actual_wrist_pitch_delta_rad": 0.2516973502933979
+          }
+        ],
+        "inter_grasp_reference_distance_mm_before": 456.45337150674584,
+        "inter_grasp_reference_distance_mm_after": 456.4086011685938,
+        "inter_grasp_reference_line_angle_change_deg": 0.029607794220570555
+      },
+      {
+        "decision_index": 4,
+        "from_obs": 4,
+        "to_obs": 5,
+        "robots": [
+          {
+            "robot": 0,
+            "base_delta_in_start_robot_frame_mm": [
+              122.37824647574337,
+              0.3438725979382321,
+              -0.7323985975808418
+            ],
+            "actual_wrist_yaw_delta_rad": 0.0008290159748867154,
+            "actual_wrist_pitch_delta_rad": 0.019124001264572144
+          },
+          {
+            "robot": 1,
+            "base_delta_in_start_robot_frame_mm": [
+              122.31414980113146,
+              -0.35139631733567644,
+              -0.7339516122721026
+            ],
+            "actual_wrist_yaw_delta_rad": 0.0003742962726391852,
+            "actual_wrist_pitch_delta_rad": 0.019012808799743652
+          }
+        ],
+        "inter_grasp_reference_distance_mm_before": 456.4086011685938,
+        "inter_grasp_reference_distance_mm_after": 455.1860822595645,
+        "inter_grasp_reference_line_angle_change_deg": 0.18477397936928447
+      },
+      {
+        "decision_index": 5,
+        "from_obs": 5,
+        "to_obs": 6,
+        "robots": [
+          {
+            "robot": 0,
+            "base_delta_in_start_robot_frame_mm": [
+              -56.12623814067018,
+              22.593142185814575,
+              0.4148182160184951
+            ],
+            "actual_wrist_yaw_delta_rad": -0.246766745345667,
+            "actual_wrist_pitch_delta_rad": -0.00028973817825317383
+          },
+          {
+            "robot": 1,
+            "base_delta_in_start_robot_frame_mm": [
+              54.64997142548691,
+              -22.318570199352354,
+              -0.4046870598983673
+            ],
+            "actual_wrist_yaw_delta_rad": -0.24674765329109505,
+            "actual_wrist_pitch_delta_rad": -4.431605339050293e-05
+          }
+        ],
+        "inter_grasp_reference_distance_mm_before": 455.1860822595645,
+        "inter_grasp_reference_distance_mm_after": 459.5617940169673,
+        "inter_grasp_reference_line_angle_change_deg": 15.223100821029064
+      }
+    ],
+    "limits": "Public gripper references, not cloth material/contact points. A15.223deg reference-line turn does not establish an opening plane, lip identity, surface normal or cloth retention. All intervals include configured6-step settle. Measurements are offline evidence, not action targets for an actor.",
+    "calculation_convention": {
+      "pose_quaternion_order": "wxyz",
+      "quaternion_normalization": "q / sqrt(w*w+x*x+y*y+z*z) before forming R",
+      "point_formula": "p_r(k) = base_pose_world[r,0:3] + R(base_pose_world[r,3:7]) @ grasp_pose_base[r,0:3]",
+      "directed_line_formula": "v(k) = p_1(k) - p_0(k), with the same robot order at both endpoints",
+      "angle_formula": "degrees(acos(clip(dot(v(5),v(6))/(norm(v(5))*norm(v(6))), -1, 1)))",
+      "distance_formula": "norm(v(k))*1000 in mm",
+      "data_precision": "Convert recorded JSON numbers to float64 for arithmetic; no image coordinates, mesh geometry, inferred contacts or point tracking are used.",
+      "meaning": "Endpoint orientation of the line connecting two public robot grasp references in world frame. Not a surface normal, garment opening plane, material-point line or swept-path angle.",
+      "D5_interval": "obs5 at885 through obs6 at903, including12 model action records plus6 neutral settle records."
+    }
+  },
+  "hypotheses": [
+    {
+      "id": "H_surface_or_fold",
+      "claim": "The present grasp/approach may bring an exterior panel or folded boundary across the selected hand rather than guiding the usable body mouth over it.",
+      "support": "Projected narrowing and hand loss recur after two different common-forward moves; retreat/pitch partly reverses the visible relation.",
+      "limits": "The RGB record does not distinguish exterior panel from the rear panel visible through an opening, perspective narrowing, or a hidden partial-entry configuration. No contact label follows."
+    },
+    {
+      "id": "H_distance_or_projection",
+      "claim": "The selected hand may still be beyond or offset from the usable mouth; occlusion can occur as camera and cloth move before any passage.",
+      "support": "A hand was visible above/beyond a candidate boundary before approaches, while the overall scene shows the garment supported near the raised-arm region.",
+      "limits": "Optical Z differences in a final decision are not a matched three-dimensional entry distance. Without tracked corresponding boundaries/lateral alignment, these data do not justify a fixed further-advance distance or prove that the mouth is far away."
+    },
+    {
+      "id": "H_hidden_partial_progress",
+      "claim": "Some useful hand-to-garment relation could remain hidden and require a different garment-to-arm motion before emerging.",
+      "support": "Occlusion alone neither proves nor excludes that relation.",
+      "limits": "The reviewed prefix has no independent passage confirmation. Larger descent is not automatically new: E21 already included substantial observed lowering, and the direction of garment material cannot be inferred from world up/down."
+    }
+  ],
+  "one_concrete_distinct_conditional_test": {
+    "priority_if_current_run_later_closes_without_relevant_progress": "E25/698 existing task-progress continuation, not a new runtime strategy.",
+    "hypothesis": "The inherited changed R1 rim grasp may control the garment differently under paired lifting and transport than the long-used transported grasp in E18/787 descendants. Test whether the new local cloth-following relationship remains useful as table support is reduced and the garment is carried toward an observed hand.",
+    "why_distinct": "E25 performed release/reposition/reclose and a local changed-side test but did not transport or attempt body entry with that new grasp arrangement. Loading and carrying that inherited arrangement is materially different from another forward/retreat at the current hand.",
+    "procedure_scope": "Reobserve current supports after replay; use existing task-progress support-preserving paired lift and observation, then transport/entry only if useful current support remains. Full opposing-lip identification/background gap is not a prerequisite, but an unsupported or visibly failed grip is not upgraded. No new grasp, fixed coordinates or prescribed hidden route.",
+    "discriminating_observations": [
+      "Whether cloth follows both grippers as the body separates from visible table support, with actual robot movement separated from cloth motion.",
+      "Whether identifiable boundary segments retain a different relative form under loading and transport, rather than gathering into the same projected panel overlap.",
+      "Whether a new hand-to-body-opening/forearm relationship appears at approach; camera motion, role names and a new run are not enough."
+    ],
+    "limits": "Both support and opposing-lip identity remain uncertain; a later replay is not an exact cloth checkpoint. Initial grasp, posture, replay length and strategy differ from E26, so no isolated causal claim about grasp alone. E26 progress remains the priority.",
+    "existing_budget_note": {
+      "path": "output/reviews/e25-698-next-budget.json",
+      "sha256": "f9bd744834015ed6ca5f226c7aba26f7c4a0f205ff5322c1a85bb016c880eee1"
+    }
+  },
+  "why_not_new_plane_or_drape_prompt_now": {
+    "plane_change": "D5 has already executed an approximately15deg relative gripper-line turn with nearly maintained endpoint spacing. Its result merits current observation before inventing another orientation method; actual mouth-plane change remains a hypothesis.",
+    "drape": "A distinct supported garment-to-forearm/torso segment could be tested when current geometry supports a direction, but simply lowering more or copying official lift/lower order would repeat prior axes without identifying a new relationship. No fixed-distance or automatic-clearance prescription is supported.",
+    "official_reference": "The official review shows separated-edge support, transport, rising near head/arms and later lowering with shape changes. The initial hem interpretation and internal passage order are not established. Different grasp locations/folds can make the same gross motion produce a different garment-relative path. External video/images/coordinates are not actor input."
+  },
+  "novelty_caution": "E26 initial alternate-hand selection is a local comparison to an earlier target segment, not proof that E23/E24 never used that hand or robot1 guide. Actual target identity, guide/anchor exchange and entry-plane change must be classified separately.",
+  "provenance": {
+    "state_files": [
+      {
+        "path": "output/actors/20261107-astra-hand-swap787-named-001/observations/00000/observation.json",
+        "sha256": "ad4ca927d7d25fdf17eebc3efb69931927887f46308b05857872123e8c807b09"
+      },
+      {
+        "path": "output/actors/20261107-astra-hand-swap787-named-001/observations/00001/observation.json",
+        "sha256": "fd85d4ca3a6ec7ddf014cbbb8090e7d10f2c50b4e73152cb2ed6036a08f5b67e"
+      },
+      {
+        "path": "output/actors/20261107-astra-hand-swap787-named-001/observations/00002/observation.json",
+        "sha256": "4e335867704cbafd6334a5b9246602b2b7804295e8d1dcce43b12e5f4538199a"
+      },
+      {
+        "path": "output/actors/20261107-astra-hand-swap787-named-001/observations/00003/observation.json",
+        "sha256": "90ab10dd51858ecdb9238aa23be37760fa8e0dd140e57941c840567a59b8dbcd"
+      },
+      {
+        "path": "output/actors/20261107-astra-hand-swap787-named-001/observations/00004/observation.json",
+        "sha256": "a951bbaff7f9c8530e514d262f82f5c8d69abcb4129f2705efbe54239f115cd2"
+      },
+      {
+        "path": "output/actors/20261107-astra-hand-swap787-named-001/observations/00005/observation.json",
+        "sha256": "dba061ebc189e16abe1d2a4f613cd39402bba259e27b50175d8c8001e50edc5d"
+      },
+      {
+        "path": "output/actors/20261107-astra-hand-swap787-named-001/observations/00006/observation.json",
+        "sha256": "7e11d4c0428dd73b0f1c7de057ae8ba8e2bc1edec8981f530dc652f6417971a1"
+      }
+    ],
+    "image_directory": "output/actors/20261107-astra-hand-swap787-named-001/observations",
+    "directly_inspected_images": [
+      {
+        "observation": 6,
+        "camera": "overview",
+        "sha256": "5940447cc46f5677f86d46eabf4c143fa1450c0222456b81bbca97069d72a530"
+      },
+      {
+        "observation": 6,
+        "camera": "robot_0_head",
+        "sha256": "06cb75bdd528d7d873020b23be28e2c33d00a3941ff72e71b96bbdb877fd4fc1"
+      },
+      {
+        "observation": 6,
+        "camera": "robot_1_head",
+        "sha256": "fa67400757b35d142d3d9848314ef21e94c086933366ac439dcfa5bfbd223920"
+      },
+      {
+        "observation": 6,
+        "camera": "robot_0_wrist",
+        "sha256": "196db873fbea0989c8db91bc18443e65f499b6a61370527e1db9ed8089b313bc"
+      },
+      {
+        "observation": 6,
+        "camera": "robot_1_wrist",
+        "sha256": "99db55665a7384c3322fbe8edbeef9b9da251f9fd820bf1899ca2bf5ce97f27f"
+      },
+      {
+        "observation": 0,
+        "camera": "robot_0_wrist",
+        "sha256": "068a6d2db3b618fbfd5b562d914029409a98ee47246fff50652f63631f5c7aff"
+      },
+      {
+        "observation": 1,
+        "camera": "robot_0_wrist",
+        "sha256": "337635b3b7b34f84744d34cc83d07f4fb73e9c9852bf73d513ff56f802f31c36"
+      },
+      {
+        "observation": 2,
+        "camera": "robot_0_wrist",
+        "sha256": "7b0731b99d50c88406dd23cdfc284f624a4d06a321b28b0cf7679596e0928776"
+      },
+      {
+        "observation": 3,
+        "camera": "robot_0_wrist",
+        "sha256": "80d373355f65954d227f47b3b0c24249f891916e6c77ae8f73491658dcbcf77f"
+      },
+      {
+        "observation": 4,
+        "camera": "robot_0_wrist",
+        "sha256": "70bd7fbc19cfd458905a9960eb9fb208b10fc3cf32ae9dce4f2c8fe8cd6e5ca2"
+      },
+      {
+        "observation": 5,
+        "camera": "robot_0_wrist",
+        "sha256": "731663e9824a3aa610b28a51398c28a959c9aa902e01e485fe83336339434f6e"
+      },
+      {
+        "observation": 0,
+        "camera": "robot_1_head",
+        "sha256": "5a790432fffc1e066cfe5211a6968b6a51b99edfb2303ba061ecc7be9a9e174f"
+      },
+      {
+        "observation": 2,
+        "camera": "robot_1_head",
+        "sha256": "a95411d586661384aa8d02516d3b149d3f9316ad8f15df921c30b0bb189951e1"
+      },
+      {
+        "observation": 3,
+        "camera": "robot_1_head",
+        "sha256": "278f6a50b9d9606a343a5be66f9583bce011215fa0404cc798a4e76acb84595e"
+      },
+      {
+        "observation": 4,
+        "camera": "robot_1_head",
+        "sha256": "58cdc67248bec2e617e8477c372b8a3625aff7322e08ba8a3bb739e804e9b3d9"
+      },
+      {
+        "observation": 5,
+        "camera": "robot_1_head",
+        "sha256": "51df3571c9d216d91fd6e1e294419fcd0af818037f90601e5c8a95d3ebe2983c"
+      },
+      {
+        "observation": 0,
+        "camera": "overview",
+        "sha256": "2583413d6e42d270c56bf7559dffcc26a11d6510e1f4e9f851f1e2ca3a57a1d3"
+      },
+      {
+        "observation": 3,
+        "camera": "overview",
+        "sha256": "75ff0313a679ec59cd2e74de2a4e3829049a9ecf906be0ac672d59a0b8b60c9a"
+      },
+      {
+        "observation": 5,
+        "camera": "overview",
+        "sha256": "42851d3e5f102159b9b9a9a1ca420925189a3342fbfaf607058d992a8ff72e6d"
+      }
+    ],
+    "trace_prefix": {
+      "path": "output/operator-traces/20261107-astra-hand-swap787-named-001/decisions.jsonl",
+      "lines": 107,
+      "bytes": 107752,
+      "sha256": "10a7056f7644f3b1bee67ae122dc16b0f273578c3384eb8861ec6bc59b8da6d7",
+      "scope": "Bytes through D5 controller_settle ending903 only, not final active-file hash. Semantic reads restricted to public final decisions and applied boundaries."
+    },
+    "existing_reviews": [
+      {
+        "path": "docs/collection/research/2026-11-07-official-demo-route-review.ko.md",
+        "sha256": "df613ee4369e883f45e27bfe776de6c50d25bb6c5778fb088c76ac3e3dc9abb3"
+      },
+      {
+        "path": "docs/collection/research/2026-11-07-post-overhead-method-options.ko.md",
+        "sha256": "e346d312a9b92366bc7a92849ced45a48d969a584baba564e84444e6a3c790d6"
+      }
+    ],
+    "source_code": {
+      "root_reported_public_source_commit": "53a58bb4e9fa4ff5366b66485c8690b0784ad71f",
+      "captured_client": {
+        "path": "output/operator-traces/20261107-astra-hand-swap787-named-001/source_snapshot/participant/collection/codex_client.py",
+        "bytes": 118671,
+        "sha256": "fc5b2270810f3250a569e774c73ae88d2d03f6f01201f0923ee9800ce01e9f2f"
+      },
+      "client_equals_fixed_public_commit_bytes": true,
+      "public_policy_contract": {
+        "path": "output/operator-traces/20261107-astra-hand-swap787-named-001/source_snapshot/config/policy_interface.json",
+        "bytes": 12778,
+        "sha256": "0823b5a692621bc1effed308ac6427af7e97122de4db297ec14b5d751551a5dc"
+      },
+      "frames_used": {
+        "world": "right-handed, Z up; metres; fixed calibrated workspace frame",
+        "base": "base_footprint; X forward, Y left, Z up",
+        "camera_optical": "X right, Y down, Z forward; explicit conversion from USD required",
+        "pose_layout": [
+          "x",
+          "y",
+          "z",
+          "qw",
+          "qx",
+          "qy",
+          "qz"
+        ],
+        "joint_units": "read per-joint units from the live manifest; rad for revolute, m for prismatic"
+      },
+      "calculation_code": "Inline CPU reviewer arithmetic only; no source code file added or modified."
+    }
+  },
+  "boundaries": {
+    "root_documents_changed": false,
+    "runtime_or_active_settings_changed": false,
+    "gpu_or_real_model_calls": 0,
+    "hdf5_eval_audit_seed_raw_cli_accessed": false,
+    "supervisor_picked_action_coordinates_to_actor": false,
+    "candidate_selected": false
+  }
+}
