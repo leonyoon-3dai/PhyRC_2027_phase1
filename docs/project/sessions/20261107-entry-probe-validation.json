@@ -1,0 +1,12 @@
+{
+  "schema": "phyrc-entry-probe-integration-v1",
+  "verified_at_utc": "2026-11-07T02:58:57.462450+00:00",
+  "candidate_commit": "5559af6a5febb8aec3defab4e86ff985b29ec8bc",
+  "full_cpu_tests_passed": 295,
+  "elapsed_seconds": 18.451,
+  "command": "PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m unittest discover -s tests -v",
+  "log_sha256": "d8807ce66c25903226ad9a238b111037dd3a138f97c2cc14bd4985034fa82e5a",
+  "e18_prefix787_preflight": "full_source_hash_and_qc_verified_actions_787x2x9_float32",
+  "actual_model_or_gpu_candidate_test": false,
+  "physics_or_action_contract_changed": false
+}

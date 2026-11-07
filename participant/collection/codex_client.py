@@ -147,6 +147,18 @@ When the opening, body relation and clearance remain trackable, use one short co
 
 Continue useful corrections toward both hands outside different sleeves, head outside the neck opening with chest inside the garment, shoulders and upper arms seated, and correct front orientation. State which visible relationship actually changed, not just that the robots lifted or moved. Keep uncertain passage hypotheses explicit; no official success, score, hidden contact or garment labels are provided.'''
 
+ENTRY_PROBE_TASK = '''For this attempt, compare a bounded information-seeking body-entry probe under partial observation. Preserve useful CURRENT bilateral garment supports rather than repeating the initial open-align-close setup. Track the same candidate body-opening rim and the same target hand across current and recent designated views. The dressing direction remains hand into the body opening and outward through its corresponding sleeve; pushing a hand into a cuff from outside is not equivalent. This is not a neckline-regrasp task, and no overhead or horizontal route is mandatory.
+
+For this comparison, preserve the current grasp set: the one-sided regrasp bound is zero. If useful support is lost, restore a supported posture/view when feasible and finish with that limitation rather than initiate a new grasp arrangement.
+
+An opening need not show background or every boundary pixel. Partial occlusion alone is neither entry evidence nor an automatic stop/finish condition. Keep at least two explanations explicit: the hand may be crossing the rim, or an exterior panel may be folding over or covering it. Neither explanation establishes clearance, contact or passage.
+
+When current/recent views still identify the same hand-rim relation, local cloth following supports useful bilateral holds, and public measured state/recent motion support a bounded reachable direction, one small exploratory act is permitted even while part of the boundary is occluded. Briefly state the uncertainty and the visible relationship this action should distinguish. Select ONE probe direction from those observations; use 2-4 control steps and small velocity chosen from public action scales and measured response. Short duration alone does not justify a large displacement. Preserve the supports. Before adding lift/extension, compare targets with measured response; do not use repeated target accumulation to compensate for saturation or unaccounted residual motion. History alone cannot establish current support or clearance.
+
+Inspect the next observation after this single segment, including any separately configured neutral settling; request no second probe first. Separate executed robot motion and residual target-following from local cloth motion, rim relationships and possible hand passage. A disappearing hand or blue-filled region alone proves neither entry nor a closed opening. If the probe exposes a new relevant relationship, use it to choose the next small correction or, when supported visually, guide the hand toward its corresponding sleeve. A probe is an information test, not a passage or success declaration.
+
+Do not repeat blind probes or chain concealed advances/lowering. If support weakens, deformation/occlusion worsens, motion saturates, or the observation adds no distinguishing information, recover a supported view/posture or change the observable opening orientation/approach before considering another probe. A new probe needs a changed observable relationship and a new test, not merely another speed/duration offset. If current/recent evidence cannot support even this bounded test or useful recovery, preserve support and finish with the unresolved visual reason. All actions use the existing public observation/action contract; no evaluator feedback, hidden geometry or assumed occluded free space is supplied.'''
+
 
 def official_review_points(collection):
     """Trusted termination only. Never include this value in actor observations."""
@@ -513,7 +525,7 @@ def main():
                         'coordinated-hem-route', 'coordinated-opening-first',
                         'coordinated-support-diagnostic', 'coordinated-regrasp-hem',
                         'coordinated-support-guide', 'coordinated-neckline-first',
-                        'coordinated-overhead-drape'], default='general')
+                        'coordinated-overhead-drape', 'coordinated-entry-probe'], default='general')
     parser.add_argument('--actor-backend', choices=['exec', 'app-server'], default='exec')
     parser.add_argument('--plan-size', type=int, default=1,
                         help='Maximum segments per model call; >1 is an open-loop list')
@@ -579,7 +591,8 @@ def main():
     if args.strategy in ('coordinated', 'coordinated-sleeve', 'coordinated-hem-route',
                          'coordinated-opening-first', 'coordinated-support-diagnostic',
                          'coordinated-regrasp-hem', 'coordinated-support-guide',
-                         'coordinated-neckline-first', 'coordinated-overhead-drape') and args.mode != 'dressing':
+                         'coordinated-neckline-first', 'coordinated-overhead-drape',
+                         'coordinated-entry-probe') and args.mode != 'dressing':
         parser.error('coordinated strategy requires the full dressing objective')
     if args.strategy == 'coordinated-support-diagnostic' and args.plan_size != 1:
         parser.error('support diagnostic requires plan-size=1 to observe after each action')
@@ -589,6 +602,8 @@ def main():
         parser.error('neckline-first requires plan-size=1 to observe after each action')
     if args.strategy == 'coordinated-overhead-drape' and args.plan_size != 1:
         parser.error('overhead-drape requires plan-size=1 to observe after each action')
+    if args.strategy == 'coordinated-entry-probe' and args.plan_size != 1:
+        parser.error('entry-probe requires plan-size=1 to inspect each exploratory action')
     if args.mode == 'wiring' and args.plan_size > 1 and (args.plan_size != 3 or args.decisions != 3):
         parser.error('grouped wiring requires plan-size=3 and decisions=3')
     if not math.isfinite(args.model_timeout) or not 10 <= args.model_timeout <= 1800:
@@ -622,7 +637,8 @@ def main():
     if args.strategy in ('coordinated', 'coordinated-sleeve', 'coordinated-hem-route',
                          'coordinated-opening-first', 'coordinated-support-diagnostic',
                          'coordinated-regrasp-hem', 'coordinated-support-guide',
-                         'coordinated-neckline-first', 'coordinated-overhead-drape'):
+                         'coordinated-neckline-first', 'coordinated-overhead-drape',
+                         'coordinated-entry-probe'):
         task += '\n\n' + COORDINATED_TASK
     if args.strategy == 'coordinated-sleeve':
         task += '\n\n' + SLEEVE_TASK
@@ -642,6 +658,8 @@ def main():
         task += '\n\n' + NECKLINE_TASK + '\n\n' + METHOD_SATURATION_TASK
     elif args.strategy == 'coordinated-overhead-drape':
         task += '\n\n' + OVERHEAD_TASK + '\n\n' + METHOD_SATURATION_TASK
+    elif args.strategy == 'coordinated-entry-probe':
+        task += '\n\n' + ENTRY_PROBE_TASK + '\n\n' + METHOD_SATURATION_TASK
     if args.plan_size > 1:
         task += '\n\n' + PLAN_TASK.format(max_segments=args.plan_size, max_total_steps=args.plan_step_budget)
     if args.post_action_settle_steps:

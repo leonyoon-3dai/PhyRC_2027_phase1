@@ -2,6 +2,40 @@
 
 [저장소 소개](../../README.md) · [현재 상태](../project/STATUS.md) · [이번 세션 기록](../project/sessions/20261106-evening-resume.ko.md)
 
+**최신 E21 · 두 하강 접근 뒤 테이블로 복귀해 한쪽 재파지**
+
+<a href="assets/20261107-e21-overhead-entry/event.mp4"><img src="assets/20261107-e21-overhead-entry/preview.gif" width="960" alt="E21 실제 공개 네 카메라. 높은 위치에서 두 하강 접근, 손 가림과 시야 복구"></a>
+
+[**MP4 크게 보기**](assets/20261107-e21-overhead-entry/event.mp4) · [**테이블 재파지 영상**](assets/20261107-e21-table-regrasp/event.mp4) · [**구간별 갤러리**](20261107-astra-overhead470-named-001.ko.md) · [**분석**](../collection/reviews/20261107-astra-overhead470-named-001.ko.md) · [**피드백 남기기**](https://github.com/leonyoon-3dai/PhyRC_2027_phase1/issues/new?title=%5BE21+%ED%94%BC%EB%93%9C%EB%B0%B1%5D+%ED%95%98%EA%B0%95+%EC%A0%91%EA%B7%BC%EA%B3%BC+%ED%85%8C%EC%9D%B4%EB%B8%94+%EC%9E%AC%ED%8C%8C%EC%A7%80&body=%EC%8B%9C%EB%8F%84%3A+E21+%2F+20261107-astra-overhead470-named-001%0A%EC%98%81%EC%83%81+%EC%8B%9C%EA%B0%81+%EB%98%90%EB%8A%94+%EA%B2%BD%EA%B3%84%3A%0A%EC%B9%B4%EB%A9%94%EB%9D%BC%3A%0A%0A%EA%B4%80%EC%B8%A1%ED%95%9C+%EC%9E%A5%EB%A9%B4%3A%0A%0A%ED%95%B4%EC%84%9D%C2%B7%EC%A7%88%EB%AC%B8%3A%0A%0A%EB%8B%A4%EC%9D%8C+%EB%B9%84%EA%B5%90+%EB%8F%99%EC%9E%91%3A%0A)
+
+**공식 원점수 5/50 · 픽업5 · 착의0 · `success=false` · 1111/1111기록 검사 통과.** 높은 위치에서 두 차례 하강 접근과 시야·방향 보정을 했지만 손 통과·안착은 확인하지 못했습니다. 테이블로 돌아와 한쪽을 놓고 새 위치에 다시 닫았으며, 그 뒤 들기·유지 검사가 없어 마지막 파지는 검증된 지지로 분류하지 않습니다. 최고5점, 중간 목표10점은 아직 미달성입니다.
+
+위 영상은702–856경계·155프레임·31초·4배 느리게입니다. 별도 재파지 영상은1018–1111경계·94프레임·18.8초입니다. 위는 로봇0/1 머리, 아래는 로봇0/1 손목이며 모델 대기는 제외했습니다. [영상 출처](assets/20261107-e21-overhead-entry/provenance.json) · [학습 검토 구간](../collection/reviews/20261107-astra-overhead470-named-001-learning-segments.json) · [원본 백업 검증](../project/sessions/20261107-e21-backup-verification.json)
+
+전체 **1111전이·시뮬레이션55.55초**, 실제 **52분29초**입니다. 470재실행+412모델 행동+228정착+1예산 종료 중립이며, 40행동 판단·44모델 호출(추가질의4회)입니다. 전이1개는 관측→행동→다음 관측의0.05초 기록이고 질의 중 물리는 진행하지 않습니다.
+
+**다음 E22 준비:** 검수된 E18/787의5점 출발점에서 기존 양측 파지를 유지하고, 부분 가림의 두 해석을 구분할 짧은 진입 탐색을 비교합니다. Astra/ultra·18판단 예산이며 통합295CPU검사를 통과했습니다. 아직 실제 시작 전입니다. [후보 범위](../collection/research/2026-11-07-entry-probe-candidate.ko.md) · [현재 상태·명령](../project/STATUS.md)
+
+[**출발점·방법 조합 데이터베이스**](../collection/catalog/README.ko.md) · [**0→5→10 구간 조합 장기계획**](../collection/research/2026-11-07-composable-scoring-data-plan.ko.md)
+
+**10점은 중간 목표이며 공식 확인 후 다음 득점 항목으로 계속 진행합니다.** 합성 자료 확대는 장기 계획으로 보존하고, 현재는 실제5→10 구간의 지지·진입·실패 비교를 우선합니다.
+
+[공식 시연 검토](../collection/research/2026-11-07-official-demo-route-review.ko.md) · [BEHAVIOR 우승 자료 검토](../collection/research/2026-11-07-behavior-champion-visual-transfer.ko.md) · [지난 시도 전체 갤러리](README.ko.md)
+
+| 시도 | 실제 바꾼 접근 | 결과·한계 |
+|---|---|---|
+| [E21](20261107-astra-overhead470-named-001.ko.md) | 두 하강 접근·방향/시야 보정·테이블 복귀와 새 위치 재파지 | 5/50·통과 미확인·마지막 새 파지 유지 미검증 |
+| [E20](20261107-astra-neckline470-named-001.ko.md) | 목선 후보로 양쪽 순차 재파지 | 0/50·준비 종료 |
+| [E19](20261107-astra-entry801-named-001.ko.md) | 세 접근·관측 방향 변경 | 5/50·손 통과 미확인 |
+| [E18](20261106-astra-guide470-depth-001.ko.md) | 운반·접근 변경 | 5/50·추가 roll 오류와 복구 |
+| [E17](20261106-astra-layer352-001.ko.md) | 다른 lower-rim 후보 재파지 | 5/50·새 지지 미확인 |
+| [E16](20261106-astra-support264-002.ko.md) | 순차 지지 진단·복구 | 0/50·입구 미확인 |
+
+<details>
+<summary>E20 이전 갤러리·당시 계획 이력</summary>
+
+> 아래는 당시 기록입니다. 현재 상태는 위 내용을 따릅니다.
+
 ## 최신 E20 · 목선 후보 재파지와 입구 확인
 
 <a href="assets/20261107-e20-neckline-regrasp/event.mp4"><img src="assets/20261107-e20-neckline-regrasp/preview.gif" width="960" alt="E20 실제 공개 네 카메라. 목선 후보로 순차 재파지, 지지와 입구 확인, 테이블 쪽 낮춤"></a>
@@ -400,5 +434,7 @@ plan3는 중간 관측으로 다시 판단하는 조건부 계획이 아닙니�
 
 </details>
 
+
+</details>
 
 </details>

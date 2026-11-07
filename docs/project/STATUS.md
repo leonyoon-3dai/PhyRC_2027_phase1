@@ -1,5 +1,57 @@
 # 현재 상태와 다음 작업
 
+**최신 종료 E21은5/50·픽업5·착의0·success=false,1111/1111전이 검사 통과입니다. 최고5점으로 중간 목표10점은 아직 미달성입니다.** 두 하강 접근·시야와 방향 보정에도 손 통과는 미확인입니다. 테이블 복귀 뒤 한쪽 새 위치 재파지를 실행했으나 지지 유지 검사는 하지 못하고40판단 예산으로 종료됐습니다.
+
+[최신 영상](../gallery/20261107-astra-overhead470-named-001.ko.md) · [분석](../collection/reviews/20261107-astra-overhead470-named-001.ko.md) · [학습 검토 구간](../collection/reviews/20261107-astra-overhead470-named-001-learning-segments.json) · [전체 일지](sessions/20261106-evening-resume.ko.md)
+
+| 확인 항목 | E21 결과 |
+|---|---|
+| 실행 소스 | `d383063670085afccabfb51e6af530607d2efd44`·시작clean |
+| 직접 부모 | E18/470·history430/464·같은 E07 source group |
+| 호출·행동 | 40act/44모델 호출·질의4회29유효점·질의 중 물리0 |
+| 기록 | **470재실행+412모델+228정착+1예산 종료=1111**,55.55sim초. 새641전이32.05sim초 |
+| 실제 시간 | 2026-11-07 01:56:25–02:48:54 UTC,3149.109434초(52분29초) |
+| 호출 경로 | 모델2160.241971초·환경926.844498초. 내부 추론시간 미제공 |
+| 평가·종료 | raw5·착의0·success=false·no_dressing_points/0.0. decision_budget·client0·complete·QC오류0 |
+| 학습 승인 | unreviewed. 마지막 새 파지 지지·반대층 선택 미확인 |
+| 원본 보존 | 고정HF revision `45e6adf8586f935b3ca9f6d19ed3ec97371be44f` 재다운로드 및416member 검증 완료 |
+
+## 미세조정 뒤 다음 비교
+
+E21은 기존 파지로 운반한 뒤 실제 하강·전후/측면 방향 보정을 수행했습니다. 두 시점 변경과 복구 뒤에도 손 가림·천 외면 관계를 해소하지 못해 테이블 복귀·파지 변경으로 전환했습니다. 모든 경로가 소진됐다는 뜻은 아닙니다. 마지막 닫힘 뒤 지지 검사 없는 상태를 검증된 시작점으로 승격하지 않습니다.
+
+**E22는 아직 준비 단계입니다.** [검수 출발점](../collection/research/2026-11-07-support-startpoints-review.ko.md)의 **E18/787**에서 기존 양측 지지를 유지하고 부분 가림 아래 한 구간의 정보 획득용 진입 탐색을 비교합니다. [후보](../collection/research/2026-11-07-entry-probe-candidate.ko.md)는 같은 손–경계 관계·국소 천 동행·공개 실측이 뒷받침할 때2–4control-step probe 뒤 별도6정착을 포함한 다음 관측을 검사하게 합니다. 새 재파지는0회로 한정하고 유용한 관계 변화 없는 가려진 전진을 이어 붙이지 않습니다. 불확실성 아래 행동 선택 비교이며 새 파지 구조나 성공을 보장하지 않습니다.
+
+후보5559af6을 E21 종료 뒤 통합했고 **전체295CPU검사18.451초 통과**했습니다. 기존10전략·공식입력/행동/물리/모델 경로는 유지합니다. E18 전체원본 hash·QC를 다시 확인하고787개의float32(2,9) 행동 prefix를 로드했습니다. 이번 새 환경에서의 물리·파지 상태는 별도로 다시 확인해야 합니다.
+
+## 다음 실제 명령 · 아직 미실행
+
+```bash
+export PATH="$PWD/.runtime/codex-0.166.0/node_modules/.bin:$PATH"
+unset STRETCH4_PRACTICE_LAYOUT STRETCH4_RANDOMIZE
+PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.codex_client \
+  --run-id 20261107-astra-probe787-named-001 --mode dressing \
+  --strategy coordinated-entry-probe --actor-backend exec \
+  --model gpt-6-astra --effort ultra --plan-size 1 --review-points 10 \
+  --replay-prefix-run 20261106-astra-guide470-depth-001 --replay-prefix-steps 787 \
+  --parent-attempt 20261106-astra-guide470-depth-001 \
+  --retry-reason bounded_entry_probe_after_two_occluded_lowering_sequences \
+  --replay-observe-steps 719 771 --wrist-depth-panel --pixel-depth-query --named-actions \
+  --post-action-settle-steps 6 --decisions 18 --max-steps 1300 --model-timeout 180 \
+  --profile-step-phases
+```
+
+[출발점·방법 데이터베이스](../collection/catalog/README.ko.md)는29기존실행과다음계획을분리합니다. E18/787은5점·선택 관측의 양측지지 근거가 있는 경계이며 실제 물리 checkpoint가 아닙니다. 직접출처의 고정HF revision은44d01871f0099f8a537f1bdbfee06a404a95f38c입니다. [E21 백업 receipt](sessions/20261107-e21-backup-verification.json) · [복원 안내](START_HERE.ko.md)
+
+Astra/ultra를 유지하고 README를 갱신합니다. **공식10점 확인 후 보존·검증하고 다음 득점 항목으로 계속 진행합니다.** [0→5→10 구간 조합](../collection/research/2026-11-07-composable-scoring-data-plan.ko.md)은 장기 계획이며 현재 합성·학습을 실행하지 않습니다. [공식 영상](../collection/research/2026-11-07-official-demo-route-review.ko.md)·[BEHAVIOR 검토](../collection/research/2026-11-07-behavior-champion-visual-transfer.ko.md)는 후속 수집 참고이며 외부 영상·좌표·평가값은 actor에 전달하지 않습니다.
+
+<details>
+<summary>E20 종료·E21 실행 중 당시 상태 이력</summary>
+
+> 아래는 당시 기록이며 현재 지시는 위 내용을 따릅니다.
+
+# 현재 상태와 다음 작업
+
 **최신 종료 E20는 0/50점·착의0·success=false이며 726/726전이 검사를 통과했습니다. 최고5점으로 목표10점은 아직 미달성입니다.** 목선 후보 두 곳을 새로 잡았지만 연속 입구를 확인하지 못해 운반 전에 테이블 지지 쪽으로 낮추고 모델이 자율 종료했습니다.
 
 [최신 영상](../gallery/README.ko.md) · [공개 분석](../collection/reviews/20261107-astra-neckline470-named-001.ko.md) · [학습 구간](../collection/reviews/20261107-astra-neckline470-named-001-learning-segments.json) · [전체 일지](sessions/20261106-evening-resume.ko.md)
@@ -266,6 +318,8 @@ PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.codex_clie
 [클린 서버 복원](START_HERE.ko.md) · [초기 자산·E07 복원 검증](sessions/20261106-evening-restore-validation.json) · [E16 분석](../collection/reviews/20261106-astra-support264-002.ko.md) · [E15 마감 이력](SESSION_WRAPUP_20261106.ko.md) · [전체 개발 이력](HISTORY.ko.md)
 
 새 정책 학습·RL/VLA 성능 검증·학습 승인은 완료하지 않았습니다. 이전 문서의 일시 중지·미실행 문구는 당시 이력이며 현재 실행 상태는 이 문서와 최신 일지를 우선합니다.
+
+</details>
 
 </details>
 

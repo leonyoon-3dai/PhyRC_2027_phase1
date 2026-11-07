@@ -1,86 +1,24 @@
 # PhyRC 2027 · 두 로봇의 협력 착의
 
-**최신 E20 · 목선 후보로 양쪽 재파지, 입구 확인 미완료**
+**최신 E21 · 두 하강 접근 뒤 테이블로 복귀해 한쪽 재파지**
 
-<a href="docs/gallery/assets/20261107-e20-neckline-regrasp/event.mp4"><img src="docs/gallery/assets/20261107-e20-neckline-regrasp/preview.gif" width="960" alt="E20 실제 공개 네 카메라. 목선 후보로 순차 재파지, 지지와 입구 확인, 테이블 쪽 낮춤"></a>
+<a href="docs/gallery/assets/20261107-e21-overhead-entry/event.mp4"><img src="docs/gallery/assets/20261107-e21-overhead-entry/preview.gif" width="960" alt="E21 실제 공개 네 카메라. 높은 위치에서 두 하강 접근, 손 가림과 시야 복구"></a>
 
-[**MP4 크게 보기**](docs/gallery/assets/20261107-e20-neckline-regrasp/event.mp4) · [**전체 갤러리**](docs/gallery/README.ko.md) · [**E20 분석**](docs/collection/reviews/20261107-astra-neckline470-named-001.ko.md) · [**영상 피드백 남기기**](https://github.com/leonyoon-3dai/PhyRC_2027_phase1/issues/new?title=%5BE20+%ED%94%BC%EB%93%9C%EB%B0%B1%5D+%EB%AA%A9%EC%84%A0+%EC%9E%AC%ED%8C%8C%EC%A7%80%EC%99%80+%EC%9E%85%EA%B5%AC+%ED%99%95%EC%9D%B8&body=%EC%8B%9C%EB%8F%84%3A+E20+%2F+20261107-astra-neckline470-named-001%0A%EC%98%81%EC%83%81+%EC%8B%9C%EA%B0%81+%EB%98%90%EB%8A%94+%EA%B2%BD%EA%B3%84%3A%0A%EC%B9%B4%EB%A9%94%EB%9D%BC%3A+%EB%A1%9C%EB%B4%870+%EB%A8%B8%EB%A6%AC+%2F+%EB%A1%9C%EB%B4%871+%EB%A8%B8%EB%A6%AC+%2F+%EB%A1%9C%EB%B4%870+%EC%86%90%EB%AA%A9+%2F+%EB%A1%9C%EB%B4%871+%EC%86%90%EB%AA%A9%0A%0A%EA%B4%80%EC%B8%A1%ED%95%9C+%EC%9E%A5%EB%A9%B4%3A%0A%0A%ED%95%B4%EC%84%9D%C2%B7%EC%A7%88%EB%AC%B8%3A%0A%0A%EB%8B%A4%EC%9D%8C%EC%97%90+%EB%B9%84%EA%B5%90%ED%95%98%EB%A9%B4+%EC%A2%8B%EC%9D%84+%EB%8F%99%EC%9E%91%3A%0A)
+[**MP4 크게 보기**](docs/gallery/assets/20261107-e21-overhead-entry/event.mp4) · [**테이블 재파지 영상**](docs/gallery/assets/20261107-e21-table-regrasp/event.mp4) · [**구간별 갤러리**](docs/gallery/20261107-astra-overhead470-named-001.ko.md) · [**분석**](docs/collection/reviews/20261107-astra-overhead470-named-001.ko.md) · [**피드백 남기기**](https://github.com/leonyoon-3dai/PhyRC_2027_phase1/issues/new?title=%5BE21+%ED%94%BC%EB%93%9C%EB%B0%B1%5D+%ED%95%98%EA%B0%95+%EC%A0%91%EA%B7%BC%EA%B3%BC+%ED%85%8C%EC%9D%B4%EB%B8%94+%EC%9E%AC%ED%8C%8C%EC%A7%80&body=%EC%8B%9C%EB%8F%84%3A+E21+%2F+20261107-astra-overhead470-named-001%0A%EC%98%81%EC%83%81+%EC%8B%9C%EA%B0%81+%EB%98%90%EB%8A%94+%EA%B2%BD%EA%B3%84%3A%0A%EC%B9%B4%EB%A9%94%EB%9D%BC%3A%0A%0A%EA%B4%80%EC%B8%A1%ED%95%9C+%EC%9E%A5%EB%A9%B4%3A%0A%0A%ED%95%B4%EC%84%9D%C2%B7%EC%A7%88%EB%AC%B8%3A%0A%0A%EB%8B%A4%EC%9D%8C+%EB%B9%84%EA%B5%90+%EB%8F%99%EC%9E%91%3A%0A)
 
-**공식 원점수 0/50 · 착의 0 · `success=false` · 726/726기록 검사 통과.** 기존 밑단 파지를 한쪽씩 놓고 목선 후보 두 곳에 새로 닫았습니다. 국소 천 동행은 보였으나, 높이·간격·시점을 바꿔도 연속 목 입구가 불명확해 테이블 지지 쪽으로 낮추고 종료했습니다. 머리·소매 진입은 시도하지 못했습니다. 최고 기록은 5점으로 목표 10점은 아직 미달성입니다.
+**공식 원점수 5/50 · 픽업5 · 착의0 · `success=false` · 1111/1111기록 검사 통과.** 높은 위치에서 두 차례 하강 접근과 시야·방향 보정을 했지만 손 통과·안착은 확인하지 못했습니다. 테이블로 돌아와 한쪽을 놓고 새 위치에 다시 닫았으며, 그 뒤 들기·유지 검사가 없어 마지막 파지는 검증된 지지로 분류하지 않습니다. 최고5점, 중간 목표10점은 아직 미달성입니다.
 
-470~726경계 · 257프레임 · 51.4초 재생 · 4배 느리게 · 모델 응답 대기 제외. 위는 로봇0·1 머리, 아래는 로봇0·1 손목입니다. [구간별 설명](docs/gallery/20261107-astra-neckline470-named-001.ko.md) · [영상 출처](docs/gallery/assets/20261107-e20-neckline-regrasp/provenance.json) · [학습 검토 구간](docs/collection/reviews/20261107-astra-neckline470-named-001-learning-segments.json)
+위 영상은702–856경계·155프레임·31초·4배 느리게입니다. 별도 재파지 영상은1018–1111경계·94프레임·18.8초입니다. 위는 로봇0/1 머리, 아래는 로봇0/1 손목이며 모델 대기는 제외했습니다. [영상 출처](docs/gallery/assets/20261107-e21-overhead-entry/provenance.json) · [학습 검토 구간](docs/collection/reviews/20261107-astra-overhead470-named-001-learning-segments.json) · [원본 백업 검증](docs/project/sessions/20261107-e21-backup-verification.json)
 
-전체 **726전이·시뮬레이션 36.3초**, 실제 약 **29분 43초**입니다. 470재실행+154모델 행동+102제어기 정착이며, 25모델 호출은 행동23회·종료판단1회·추가질의1회입니다. 전이 1개는 관측→행동→다음 관측의 0.05초 기록이고, 질의 중 물리는 진행하지 않았습니다.
+전체 **1111전이·시뮬레이션55.55초**, 실제 **52분29초**입니다. 470재실행+412모델 행동+228정착+1예산 종료 중립이며, 40행동 판단·44모델 호출(추가질의4회)입니다. 전이1개는 관측→행동→다음 관측의0.05초 기록이고 질의 중 물리는 진행하지 않습니다.
 
-**E21은 2026-11-07 01:56:25 UTC에 시작**했고 공식 시연에 가까운 **몸통 입구의 상방 배치→하강·안착 경로**를 비교합니다. 후보 통합 후 전체277CPU검사를 통과했으며 실제 착의 효과는 아직 미검증입니다. [후보 범위](docs/collection/research/2026-11-07-overhead-drape-candidate.ko.md) · [현재 실행 상태](docs/project/STATUS.md)
+**다음 E22 준비:** 검수된 E18/787의5점 출발점에서 기존 양측 파지를 유지하고, 부분 가림의 두 해석을 구분할 짧은 진입 탐색을 비교합니다. Astra/ultra·18판단 예산이며 통합295CPU검사를 통과했습니다. 아직 실제 시작 전입니다. [후보 범위](docs/collection/research/2026-11-07-entry-probe-candidate.ko.md) · [현재 상태·명령](docs/project/STATUS.md)
 
 [**출발점·방법 조합 데이터베이스**](docs/collection/catalog/README.ko.md) · [**0→5→10 구간 조합 장기계획**](docs/collection/research/2026-11-07-composable-scoring-data-plan.ko.md)
 
-**진행 메모:** E21은 양쪽 가장자리 지지로 운반한 뒤 높은 위치에서 작은 하강을 실제 시험했습니다. 손끝 가림 뒤 두 시점 변경과 복구를 수행했고, 통과·안착과 최종 점수는 아직 미확인입니다. 다음 시도는 검수된5점 이후 출발점에서 방법을 나눠 비교합니다. **10점은 중간 목표이며 확인 후 다음 득점 항목으로 계속 진행합니다.**
+**10점은 중간 목표이며 공식 확인 후 다음 득점 항목으로 계속 진행합니다.** 합성 자료 확대는 장기 계획으로 보존하고, 현재는 실제5→10 구간의 지지·진입·실패 비교를 우선합니다.
 
-[**공식 시연의 실제 순서 검토**](docs/collection/research/2026-11-07-official-demo-route-review.ko.md) · [**BEHAVIOR 우승 자료: 그림·영상과 후속 수집 후보**](docs/collection/research/2026-11-07-behavior-champion-visual-transfer.ko.md) · [공식 집계·텍스트 근거](docs/collection/research/2026-11-07-behavior-champion-text-review.ko.md)
-
-<details>
-<summary>E19 당시 첫 화면과 다음 계획</summary>
-
-> 아래는 E19 종료 당시 기록입니다.
-
-**최신 E19 · 명령 축 오류 없이 세 번 접근했지만 손 통과는 미확인**
-
-<a href="docs/gallery/assets/20261107-e19-named-entry/event.mp4"><img src="docs/gallery/assets/20261107-e19-named-entry/preview.gif" width="960" alt="E19 실제 공개 네 카메라. 세 번의 입구 접근, 기울기와 시야 변경, 후퇴와 종료"></a>
-
-[**MP4 크게 보기**](docs/gallery/assets/20261107-e19-named-entry/event.mp4) · [**전체 갤러리**](docs/gallery/README.ko.md) · [**E19 분석**](docs/collection/reviews/20261107-astra-entry801-named-001.ko.md) · [**영상 피드백 남기기**](https://github.com/leonyoon-3dai/PhyRC_2027_phase1/issues/new?title=%5BE19+%ED%94%BC%EB%93%9C%EB%B0%B1%5D+%EC%98%81%EC%83%81+%EA%B5%AC%EA%B0%84%EA%B3%BC+%EA%B4%80%EC%B8%A1&body=%EC%8B%9C%EB%8F%84%3A+E19+%2F+20261107-astra-entry801-named-001%0A%EC%98%81%EC%83%81+%EC%8B%9C%EA%B0%81+%EB%98%90%EB%8A%94+%EA%B2%BD%EA%B3%84%3A%0A%EC%B9%B4%EB%A9%94%EB%9D%BC%3A+%EB%A1%9C%EB%B4%870+%EB%A8%B8%EB%A6%AC+%2F+%EB%A1%9C%EB%B4%871+%EB%A8%B8%EB%A6%AC+%2F+%EB%A1%9C%EB%B4%870+%EC%86%90%EB%AA%A9+%2F+%EB%A1%9C%EB%B4%871+%EC%86%90%EB%AA%A9%0A%0A%EA%B4%80%EC%B8%A1%ED%95%9C+%EC%9E%A5%EB%A9%B4%3A%0A%0A%ED%95%B4%EC%84%9D+%EB%98%90%EB%8A%94+%EC%A7%88%EB%AC%B8%3A%0A%0A%EB%8B%A4%EC%9D%8C%EC%97%90+%EB%B9%84%EA%B5%90%ED%95%98%EB%A9%B4+%EC%A2%8B%EC%9D%84+%EB%8F%99%EC%9E%91%3A%0A%0A%EA%B0%A4%EB%9F%AC%EB%A6%AC%3A+https%3A%2F%2Fgithub.com%2Fleonyoon-3dai%2FPhyRC_2027_phase1%2Fblob%2Fmain%2Fdocs%2Fgallery%2FREADME.ko.md%0A)
-
-**공식 원점수 5/50 · 픽업 5 · 착의 0 · `success=false`.** 이름으로 명령을 작성한 12개 행동에서 설명과 다른 축의 적용은 발견되지 않았습니다. 높이·기울기·상방/측면 시야를 바꾼 세 번의 접근에서도 손 통과를 확인하지 못해 후퇴 후 자율 종료했습니다. 최고 5점으로 목표 10점은 아직 미달성입니다.
-
-801~932경계 · 132프레임 · 26.4초 재생 · 4배 느리게 · 모델 응답 대기 제외. 위는 로봇0·1 머리, 아래는 로봇0·1 손목입니다. [구간별 설명](docs/gallery/20261107-astra-entry801-named-001.ko.md) · [영상 출처](docs/gallery/assets/20261107-e19-named-entry/provenance.json) · [학습 검토 구간](docs/collection/reviews/20261107-astra-entry801-named-001-learning-segments.json)
-
-전체 **932전이·시뮬레이션 46.6초**, 실제 약 **26분 18초**입니다. 모델 호출 14회는 행동 12회·종료 판단 1회·질의 추가 1회이며 질의의 물리 진행은 0입니다. 전이 1개는 관측→행동→다음 관측의 0.05초 기록입니다. [기록 분해와 검수](docs/collection/reviews/20261107-astra-entry801-named-001.ko.md)
-
-E20은 2026-11-07 01:18:21 UTC에 시작했고, 테이블에서 목선 후보를 제어해 **목부터 입히는 별도 경로**를 비교합니다. 현재는 목선 후보로 양쪽 파지를 순차 변경한 뒤 입구가 벌어지는지 확인 중입니다. 연속 목 입구·머리 통과는 아직 미확인입니다. 같은 파지의 미세조정을 마친 뒤 방법을 바꾸는 근거를 [여기](docs/collection/research/2026-11-07-post-named-route-choice.ko.md)에 남겼습니다.
-
-[**공식 시연의 실제 순서 검토**](docs/collection/research/2026-11-07-official-demo-route-review.ko.md) · [**BEHAVIOR 우승 자료: 그림·영상과 후속 수집 후보**](docs/collection/research/2026-11-07-behavior-champion-visual-transfer.ko.md) · [공식 집계·텍스트 근거](docs/collection/research/2026-11-07-behavior-champion-text-review.ko.md)
-
-
-</details>
-
-<details>
-<summary>E18 이전 첫 화면 · 명령 오류와 복구 이력</summary>
-
-> 아래는 E18 마감 당시 기록입니다.
-
-**최신 E18 · 손 근처 접근, 의도에 없던 손목 회전과 복구**
-
-<a href="docs/gallery/assets/20261107-e18-roll-recovery/event.mp4"><img src="docs/gallery/assets/20261107-e18-roll-recovery/preview.gif" width="960" alt="E18 실제 공개 네 카메라. 801~851경계의 robot1 추가 roll과 복구"></a>
-
-[**MP4 크게 보기**](docs/gallery/assets/20261107-e18-roll-recovery/event.mp4) · [**전체 갤러리**](docs/gallery/README.ko.md) · [**E18 분석**](docs/collection/reviews/20261106-astra-guide470-depth-001.ko.md) · [**영상 피드백 남기기**](https://github.com/leonyoon-3dai/PhyRC_2027_phase1/issues/new?title=%5BE18+%ED%94%BC%EB%93%9C%EB%B0%B1%5D+%EC%98%81%EC%83%81+%EA%B5%AC%EA%B0%84%EA%B3%BC+%EA%B4%80%EC%B8%A1&body=%EC%8B%9C%EB%8F%84%3A+E18+%2F+20261106-astra-guide470-depth-001%0A%EC%98%81%EC%83%81+%EC%8B%9C%EA%B0%81+%EB%98%90%EB%8A%94+%EA%B2%BD%EA%B3%84%3A+%0A%EC%B9%B4%EB%A9%94%EB%9D%BC%3A+%EB%A1%9C%EB%B4%870+%EB%A8%B8%EB%A6%AC+%2F+%EB%A1%9C%EB%B4%871+%EB%A8%B8%EB%A6%AC+%2F+%EB%A1%9C%EB%B4%870+%EC%86%90%EB%AA%A9+%2F+%EB%A1%9C%EB%B4%871+%EC%86%90%EB%AA%A9%0A%0A%EA%B4%80%EC%B8%A1%ED%95%9C+%EC%9E%A5%EB%A9%B4%3A%0A%0A%EC%A0%9C+%ED%95%B4%EC%84%9D+%EB%98%90%EB%8A%94+%EC%A7%88%EB%AC%B8%3A%0A%0A%EB%8B%A4%EC%9D%8C%EC%97%90+%EB%B9%84%EA%B5%90%ED%95%98%EB%A9%B4+%EC%A2%8B%EC%9D%84+%EB%8F%99%EC%9E%91%3A%0A%0A%EA%B0%A4%EB%9F%AC%EB%A6%AC%3A+https%3A%2F%2Fgithub.com%2Fleonyoon-3dai%2FPhyRC_2027_phase1%2Fblob%2Fmain%2Fdocs%2Fgallery%2FREADME.ko.md%0A)
-
-**공식 원점수5/50 · 픽업5 · 착의0 · `success=false`.** 기존 두 파지로 접근 방향을 바꾸고 공개 depth를3회 조회했습니다. 전진 설명에 없는 손목 roll이 두 번 적용돼 복구했고 감독자가 중단했습니다. 최고5점·목표10점 미달성입니다. 오류·복구도 원본과 함께 [학습 검토 자료](docs/collection/reviews/20261106-astra-guide470-depth-001-learning-segments.json)로 남겼습니다.
-
-801~851경계 · 51프레임 · 10.2초 재생 · 4배 느리게 · 모델 응답 대기 제외. 위는 로봇0·1 머리, 아래는 로봇0·1 손목입니다. [운반부터 종료까지](docs/gallery/20261106-astra-guide470-depth-001.ko.md) · [영상 출처](docs/gallery/assets/20261107-e18-roll-recovery/provenance.json)
-
-전이1개는 **관측 → 행동 → 다음 관측**의0.05초 기록입니다. E18은 **928전이·시뮬레이션46.4초**, 모델 호출30회 시도 중 실제 행동 판단26개, 실제 경과 약31분2초입니다. 질의3회는 물리를 진행하지 않았고 마지막 호출의 응답은 기록됐으나 행동으로 적용되지 않았습니다. [전체 기록 분해와 검수](docs/collection/reviews/20261106-astra-guide470-depth-001.ko.md)
-
-</details>
-
-<details>
-<summary>E17 이전 첫 화면 · 재파지 시도와 당시 상태 보존</summary>
-
-> 아래는 E17 정리 당시 기록입니다. 당시 다음 계획은 현재 실행 상태와 구분합니다.
-
-**최신 E17 · 다른 입구 경계를 겨냥해 재파지했지만 지지·입구 미확인**
-
-<a href="docs/gallery/assets/20261106-e17-regrasp/event.mp4"><img src="docs/gallery/assets/20261106-e17-regrasp/preview.gif" width="960" alt="E17 실제 공개 관측 네 카메라. 392~452경계의 다른 lower-rim 후보 재파지와 재시험"></a>
-
-[**MP4 크게 보기**](docs/gallery/assets/20261106-e17-regrasp/event.mp4) · [**전체 갤러리**](docs/gallery/README.ko.md) · [**E17 분석**](docs/collection/reviews/20261106-astra-layer352-001.ko.md) · [**영상 피드백 남기기**](https://github.com/leonyoon-3dai/PhyRC_2027_phase1/issues/new?title=%5BE17+%ED%94%BC%EB%93%9C%EB%B0%B1%5D+%EC%98%81%EC%83%81+%EA%B5%AC%EA%B0%84%EA%B3%BC+%EA%B4%80%EC%B8%A1&body=%EC%8B%9C%EB%8F%84%3A+E17+%2F+20261106-astra-layer352-001%0A%EC%98%81%EC%83%81+%EC%8B%9C%EA%B0%81+%EB%98%90%EB%8A%94+%EA%B2%BD%EA%B3%84%3A+%0A%EC%B9%B4%EB%A9%94%EB%9D%BC%3A+%EB%A1%9C%EB%B4%870+%EB%A8%B8%EB%A6%AC+%2F+%EB%A1%9C%EB%B4%871+%EB%A8%B8%EB%A6%AC+%2F+%EB%A1%9C%EB%B4%870+%EC%86%90%EB%AA%A9+%2F+%EB%A1%9C%EB%B4%871+%EC%86%90%EB%AA%A9%0A%0A%EA%B4%80%EC%B8%A1%ED%95%9C+%EC%9E%A5%EB%A9%B4%3A%0A%0A%EC%A0%9C+%ED%95%B4%EC%84%9D+%EB%98%90%EB%8A%94+%EC%A7%88%EB%AC%B8%3A%0A%0A%EB%8B%A4%EC%9D%8C%EC%97%90+%EB%B9%84%EA%B5%90%ED%95%98%EB%A9%B4+%EC%A2%8B%EC%9D%84+%EB%8F%99%EC%9E%91%3A%0A%0A%EA%B0%A4%EB%9F%AC%EB%A6%AC%3A+https%3A%2F%2Fgithub.com%2Fleonyoon-3dai%2FPhyRC_2027_phase1%2Fblob%2Fmain%2Fdocs%2Fgallery%2FREADME.ko.md%0A)
-
-**공식 원점수5/50 · 픽업5 · 첫 소매0 · `success=false`.** 로봇0을 열고 별도로 보이는 아래쪽 입구 경계 후보에 맞춰 다시 닫는 동작은 실행했습니다. 실제 반대층 파지와 양측 지지는 확인하지 못했고, 운반 없이 종료했습니다. 한 번의 제한된 재파지로 이 방법 전체가 실패했다고 단정하지 않습니다.
-
-392~452경계 · 61프레임 · 12.2초 재생 · 4배 느리게 · 모델 응답 대기 제외. 위는 로봇0·1 머리, 아래는 로봇0·1 손목입니다. 피드백에는 **영상 시각 또는 경계와 카메라**를 적어 주세요. [영상 출처](docs/gallery/assets/20261106-e17-regrasp/provenance.json) · [현재 상태](docs/project/STATUS.md)
-
-전이1개는 **관측 → 행동 → 다음 관측**을 묶은0.05초 기록입니다. E17의452개 기록은 **시뮬레이션22.6초**이며,12번의 모델 판단·실제 약13분44초 실행과 구분합니다. 모델 판단 한 번이 여러 전이에 적용될 수 있고, 정지·기다림 명령도 기록에 포함됩니다.
-
-</details>
+[공식 시연 검토](docs/collection/research/2026-11-07-official-demo-route-review.ko.md) · [BEHAVIOR 우승 자료 검토](docs/collection/research/2026-11-07-behavior-champion-visual-transfer.ko.md) · [지난 시도 전체 갤러리](docs/gallery/README.ko.md)
 
 ## 무엇을 만드는가
 
@@ -93,7 +31,7 @@ E20은 2026-11-07 01:18:21 UTC에 시작했고, 테이블에서 목선 후보를
 | 반대 어깨 / 두 번째 소매 / 왼쪽 위팔 / 오른쪽 위팔 | 각각5 |
 | 목 / 앞면 방향 | 각각10 |
 
-목표는 **공식 원점수10점 이상과 반복 가능한 실제 착의 진전**입니다. 첫 소매 통과는 현재 비교하는 경로이며, 목부터 접근하는 대안을 실제 비교 중입니다. 어떤 경로든 실행·관측·공식 평가로 확인하며 모든 방법의 첫 단계를 소매로 고정하지 않습니다. 점수율은 픽업을 제외한 착의 점수를 첫 접촉부터 마지막 착의 득점까지의 시뮬레이션 시간으로 나눕니다. 픽업5점만으로는 양의 순위 점수가 생기지 않으며, 원점수10점도 전체 착의 성공과 다릅니다.
+목표는 **공식 원점수10점을 거쳐 다음 득점 항목과 반복 가능한 착의 진전으로 나아가는 것**입니다. 목 우선 준비와 상방·하강을 비교했고, 다음에는 검수된5점 출발점에서 짧은 진입 탐색을 비교합니다. 어떤 경로든 실행·관측·공식 평가로 확인하며 모든 방법의 첫 단계를 소매로 고정하지 않습니다. 점수율은 픽업을 제외한 착의 점수를 첫 접촉부터 마지막 착의 득점까지의 시뮬레이션 시간으로 나눕니다. 픽업5점만으로는 양의 순위 점수가 생기지 않으며, 원점수10점도 전체 착의 성공과 다릅니다.
 
 [점수 지도와 과제 설명](docs/project/CHALLENGE_GUIDE.ko.md) · [공식 평가 정의](docs/competition/EVALUATION.md) · [공식 대회](https://emprise.cs.cornell.edu/phyrc/challenge-2027/) · [원본 README](README.upstream.md)
 
@@ -116,13 +54,13 @@ E20은 2026-11-07 01:18:21 UTC에 시작했고, 테이블에서 목선 후보를
 
 | 구분 | 확인된 상태 |
 |---|---|
-| 최신 과제 시도 | E20 `20261107-astra-neckline470-named-001` · 726/726기록 검사 통과 · 0/50 · 운반 전 자율 종료 |
+| 최신 과제 시도 | E21 `20261107-astra-overhead470-named-001` · 1111/1111검사 통과 · 5/50 · 40판단 예산 종료 |
 | 모델·환경 | Astra/ultra · Codex CLI0.166.0/exec · 고정 Isaac Sim6.0.1 · Chrome/WebRTC OFF |
-| 이번에 비교한 것 | 목선 후보 두 곳으로 순차 재파지. 국소 천 동행은 보였으나 연속 목 개구부·머리/소매 진입은 미확인 |
-| 미세조정 결과 | 새 파지 뒤 실제 높이·간격·손목 시점을 바꿨지만 층 분리가 불명확해 테이블 지지 쪽으로 낮추고 종료 |
-| E21 실행 중 | E18의470경계에서 몸통 입구 상방 배치→하강·안착 비교. 기존 유용한 지지를 보존할 수 있고 목선/첫소매 선행완료를 강제하지 않음. 01:56:25UTC·공개d383063의깨끗한소스에서시작. 현재높은위치에서하강·가림후시야복구까지실행 |
-| 검증 범위 | E20종료 뒤 후보 통합 전체277CPU검사 통과. 실제 상방·하강 과제 효과는 미검증 |
-| 소스·원본 | E20 실행 소스799fe80·시작clean. [비공개 원본 고정 백업·재다운로드 SHA 검증](docs/project/sessions/20261107-e20-backup-verification.json) 완료. 실패·재파지·질의·회복 구간 보존 |
+| 실제 비교 | 높은 위치에서 두 하강 접근·시야/방향 보정 뒤 테이블 복귀와 한쪽 새 위치 재파지 |
+| 미세조정 결과 | 반복 손 가림·통과 미확인으로 접근 변경 필요. 마지막 새 파지 유지 검사는 미실행 |
+| 다음 E22 준비 | E18/787·검수5점 출발점에서 같은 파지를 유지한 짧은 진입 탐색,18판단. 아직 미실행 |
+| 검증 범위 | entry-probe 통합295CPU검사18.451초 통과. 실제 전략 효과는 미검증 |
+| 소스·원본 | E21 source d383063·시작clean. [고정 백업·재다운로드 및416파일 검증](docs/project/sessions/20261107-e21-backup-verification.json) 완료 |
 
 [현재 상태·다음 명령](docs/project/STATUS.md) · [이번 세션 원문](docs/project/sessions/20261106-evening-resume.ko.md) · [방법 전환 기준](docs/project/sessions/20261106-method-switch-matrix.ko.md)
 

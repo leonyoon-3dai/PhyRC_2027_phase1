@@ -1,0 +1,979 @@
+{
+  "schema": "public-learning-segments-v1",
+  "run_id": "20261107-astra-overhead470-named-001",
+  "parent_attempt": "20261106-astra-guide470-depth-001",
+  "source_group": "20261106-coordinated-demo-methods",
+  "source_commit": "d383063670085afccabfb51e6af530607d2efd44",
+  "recording_status": "closed_decision_budget",
+  "training_approval": "unreviewed",
+  "label_provenance": [
+    "Public finalized decisions and concise final reasons",
+    "Designated public RGB and public robot observations inspected by reviewer",
+    "Sanitized public depth query requests/results",
+    "Root-confirmed technical count of final budget cleanup transition",
+    "Exported designated-camera final RGB at boundary1111 reviewed after capture closed"
+  ],
+  "evidence_decisions_path": "output/operator-traces/20261107-astra-overhead470-named-001/decisions.jsonl",
+  "raw_recordings_preserved": true,
+  "raw_records_rewritten": false,
+  "policy_teacher_hidden_evaluation_fields_included": false,
+  "split_constraints": [
+    "Group by source_group and replay lineage before train/validation split.",
+    "Replay prefix, adjacent frames and two descent subsegments are not independent successful demonstrations.",
+    "Failures/recoveries/unverified regrasp remain reviewable; not automatically approved for positive imitation.",
+    "Queries add zero physics transitions; budget cleanup is not an actor action label."
+  ],
+  "transition_boundary_semantics": "[start,end): count=end-start; inclusive video boundary images count+1.",
+  "counts": {
+    "recorded_transitions": 1111,
+    "replay_transitions": 470,
+    "new_transitions": 641,
+    "model_action_transitions": 412,
+    "controller_settle_transitions": 228,
+    "budget_cleanup_transitions": 1,
+    "model_call_count": 44,
+    "finalized_decisions": 40,
+    "executed_act_decisions": 40,
+    "finish_decisions": 0,
+    "completed_depth_query_cycles": 4,
+    "queried_points": 29
+  },
+  "segments": [
+    {
+      "id": "opening_preparation",
+      "kind": "preparation",
+      "decision_indices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "transition_start": 470,
+      "transition_end_exclusive": 522,
+      "transition_count": 52,
+      "observation_evidence": [
+        "output/actors/20261107-astra-overhead470-named-001/observations/00000",
+        "output/actors/20261107-astra-overhead470-named-001/observations/00001",
+        "output/actors/20261107-astra-overhead470-named-001/observations/00002",
+        "output/actors/20261107-astra-overhead470-named-001/observations/00003",
+        "output/actors/20261107-astra-overhead470-named-001/observations/00004"
+      ],
+      "public_label": "Inherited corner supports lifted/tilted; separated lower-lip candidate becomes visible. No new grasp.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "transport_from_table",
+      "kind": "transport",
+      "decision_indices": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "transition_start": 522,
+      "transition_end_exclusive": 644,
+      "transition_count": 122,
+      "observation_evidence": [
+        "output/actors/20261107-astra-overhead470-named-001/observations/00004",
+        "output/actors/20261107-astra-overhead470-named-001/observations/00005",
+        "output/actors/20261107-astra-overhead470-named-001/observations/00006",
+        "output/actors/20261107-astra-overhead470-named-001/observations/00008",
+        "output/actors/20261107-astra-overhead470-named-001/observations/00009"
+      ],
+      "public_label": "Coordinated transport to a high position lateral to mannequin. Lift target limit acknowledged and wrist pitch used; verified overhead alignment not established.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "hand_alignment",
+      "kind": "approach_alignment",
+      "decision_indices": [
+        9,
+        10,
+        11,
+        12
+      ],
+      "transition_start": 644,
+      "transition_end_exclusive": 702,
+      "transition_count": 58,
+      "observation_evidence": [
+        "output/actors/20261107-astra-overhead470-named-001/observations/00010",
+        "output/actors/20261107-astra-overhead470-named-001/observations/00011",
+        "output/actors/20261107-astra-overhead470-named-001/observations/00012",
+        "output/actors/20261107-astra-overhead470-named-001/observations/00013"
+      ],
+      "public_label": "Hands/forearms and rim candidate become co-visible in head cameras; depth comparison and asymmetric reach change alignment.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "descent_attempt_1",
+      "kind": "descent_attempt",
+      "decision_indices": [
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "transition_start": 702,
+      "transition_end_exclusive": 760,
+      "transition_count": 58,
+      "observation_evidence": [
+        "output/actors/20261107-astra-overhead470-named-001/observations/00013",
+        "output/actors/20261107-astra-overhead470-named-001/observations/00014",
+        "output/actors/20261107-astra-overhead470-named-001/observations/00015",
+        "output/actors/20261107-astra-overhead470-named-001/observations/00016",
+        "output/actors/20261107-astra-overhead470-named-001/observations/00017",
+        "output/actors/20261107-astra-overhead470-named-001/observations/00018"
+      ],
+      "public_label": "Short descending/fore-aft adjustments bring fingers near lower lip, then hide them. No observed continuous boundary passage.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "view_changes_after_occlusion",
+      "kind": "observation_adjustment",
+      "decision_indices": [
+        18,
+        19
+      ],
+      "transition_start": 760,
+      "transition_end_exclusive": 784,
+      "transition_count": 24,
+      "observation_evidence": [
+        "output/actors/20261107-astra-overhead470-named-001/observations/00018",
+        "output/actors/20261107-astra-overhead470-named-001/observations/00019",
+        "output/actors/20261107-astra-overhead470-named-001/observations/00020"
+      ],
+      "public_label": "Two compensated pitch/lift changes approximately preserve grasp-base height but do not resolve fingertip-entry relation.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "rim_raise_view_recovery",
+      "kind": "recovery",
+      "decision_indices": [
+        20
+      ],
+      "transition_start": 784,
+      "transition_end_exclusive": 796,
+      "transition_count": 12,
+      "observation_evidence": [
+        "output/actors/20261107-astra-overhead470-named-001/observations/00020",
+        "output/actors/20261107-astra-overhead470-named-001/observations/00021"
+      ],
+      "public_label": "Reverse wrist pitch raises rim and reveals a hand again; no passage inferred.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "alignment_change_after_query",
+      "kind": "approach_alignment",
+      "decision_indices": [
+        21
+      ],
+      "transition_start": 796,
+      "transition_end_exclusive": 810,
+      "transition_count": 14,
+      "observation_evidence": [
+        "output/actors/20261107-astra-overhead470-named-001/observations/00021",
+        "output/actors/20261107-astra-overhead470-named-001/observations/00022"
+      ],
+      "public_label": "Third depth query followed by paired extension changes fore-aft alignment while preserving grips.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "descent_attempt_2",
+      "kind": "descent_attempt",
+      "decision_indices": [
+        22,
+        23,
+        24
+      ],
+      "transition_start": 810,
+      "transition_end_exclusive": 844,
+      "transition_count": 34,
+      "observation_evidence": [
+        "output/actors/20261107-astra-overhead470-named-001/observations/00022",
+        "output/actors/20261107-astra-overhead470-named-001/observations/00023",
+        "output/actors/20261107-astra-overhead470-named-001/observations/00025"
+      ],
+      "public_label": "Further short descent/retraction from revised alignment; hand/lip relation remains unresolved.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "raise_before_return",
+      "kind": "recovery_and_method_switch_selection",
+      "decision_indices": [
+        25
+      ],
+      "transition_start": 844,
+      "transition_end_exclusive": 856,
+      "transition_count": 12,
+      "observation_evidence": [
+        "output/actors/20261107-astra-overhead470-named-001/observations/00025",
+        "output/actors/20261107-astra-overhead470-named-001/observations/00026"
+      ],
+      "public_label": "Actor acknowledges repeated occlusion and selects table-supported grasp rearrangement; executed action raises rim to clear hands.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "return_to_source_table",
+      "kind": "return_transport",
+      "decision_indices": [
+        26,
+        27,
+        28,
+        29,
+        30,
+        31
+      ],
+      "transition_start": 856,
+      "transition_end_exclusive": 1002,
+      "transition_count": 146,
+      "observation_evidence": [
+        "output/actors/20261107-astra-overhead470-named-001/observations/00027",
+        "output/actors/20261107-astra-overhead470-named-001/observations/00029",
+        "output/actors/20261107-astra-overhead470-named-001/observations/00032"
+      ],
+      "public_label": "Coordinated transport back with inherited supports. Return intent is not yet a new grasp.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "table_placement",
+      "kind": "placement",
+      "decision_indices": [
+        32,
+        33,
+        34,
+        35
+      ],
+      "transition_start": 1002,
+      "transition_end_exclusive": 1066,
+      "transition_count": 64,
+      "observation_evidence": [
+        "output/actors/20261107-astra-overhead470-named-001/observations/00034",
+        "output/actors/20261107-astra-overhead470-named-001/observations/00035",
+        "output/actors/20261107-astra-overhead470-named-001/observations/00036"
+      ],
+      "public_label": "Both lower/tilt with slight reach to spread garment body onto table before release.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "robot1_release",
+      "kind": "release_for_regrasp",
+      "decision_indices": [
+        36
+      ],
+      "transition_start": 1066,
+      "transition_end_exclusive": 1070,
+      "transition_count": 4,
+      "observation_evidence": [
+        "output/actors/20261107-astra-overhead470-named-001/observations/00036",
+        "output/actors/20261107-astra-overhead470-named-001/observations/00037"
+      ],
+      "public_label": "Robot1 opens while robot0 holds; body remains table-supported.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "robot1_regrasp_placement",
+      "kind": "new_grasp_location_approach",
+      "decision_indices": [
+        37,
+        38
+      ],
+      "transition_start": 1070,
+      "transition_end_exclusive": 1102,
+      "transition_count": 32,
+      "observation_evidence": [
+        "output/actors/20261107-astra-overhead470-named-001/observations/00037",
+        "output/actors/20261107-astra-overhead470-named-001/observations/00038",
+        "output/actors/20261107-astra-overhead470-named-001/observations/00039"
+      ],
+      "public_label": "Fourth depth query then robot1 yaw/extension and lower/retract reposition open jaws at another exposed front-rim location. Opposing layer identity unconfirmed.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "robot1_reclose",
+      "kind": "closure_unverified",
+      "decision_indices": [
+        39
+      ],
+      "transition_start": 1102,
+      "transition_end_exclusive": 1110,
+      "transition_count": 8,
+      "observation_evidence": [
+        "output/actors/20261107-astra-overhead470-named-001/observations/00039"
+      ],
+      "public_label": "Robot1 close command executes8 transitions. Final exported RGB at1111 shows fingers closer near exposed rim than obs39, with table support remaining; no subsequent lift/hold retention test.",
+      "training_approval": "unreviewed",
+      "post_segment_public_evidence": "docs/collection/attempts/20261107-astra-overhead470-named-001/images/final-robot_1_wrist.png"
+    },
+    {
+      "id": "decision_budget_cleanup",
+      "kind": "controller_budget_stop",
+      "decision_indices": [],
+      "transition_start": 1110,
+      "transition_end_exclusive": 1111,
+      "transition_count": 1,
+      "observation_evidence": [],
+      "public_label": "One supervisor neutral transition closes capture at40-decision budget. No actor finish or SIGINT.",
+      "training_approval": "unreviewed"
+    }
+  ],
+  "named_action_review": {
+    "mapping_sha256": "2772202314c637aca6c0e31d1148e80db233c3ca23e6cb59bd9871d9879568b4",
+    "axis_order": [
+      "base_forward",
+      "base_left",
+      "base_CCW_yaw",
+      "lift",
+      "arm_extension",
+      "wrist_yaw",
+      "wrist_pitch",
+      "wrist_roll",
+      "gripper"
+    ],
+    "checked_act_count": 40,
+    "all_named_to_array_equal": true,
+    "final_brief_reason_review": "No unexplained nonzero axes observed; mapping correctness does not establish correctness of manipulation intent or task success.",
+    "unexplained_roll_decisions": [],
+    "per_decision": [
+      {
+        "decision_index": 0,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "lift": 0.15
+          },
+          "robot_1": {
+            "lift": 0.15
+          }
+        }
+      },
+      {
+        "decision_index": 1,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "lift": 0.16,
+            "wrist_pitch": -0.1
+          },
+          "robot_1": {
+            "lift": 0.16,
+            "wrist_pitch": -0.1
+          }
+        }
+      },
+      {
+        "decision_index": 2,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "lift": 0.25,
+            "arm_extension": -0.08,
+            "wrist_pitch": -0.1
+          },
+          "robot_1": {
+            "lift": 0.25,
+            "arm_extension": -0.08,
+            "wrist_pitch": -0.1
+          }
+        }
+      },
+      {
+        "decision_index": 3,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "lift": 0.2,
+            "arm_extension": -0.1,
+            "wrist_pitch": -0.15
+          },
+          "robot_1": {
+            "lift": 0.2,
+            "arm_extension": -0.1,
+            "wrist_pitch": -0.15
+          }
+        }
+      },
+      {
+        "decision_index": 4,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "base_forward": -0.25,
+            "base_left": -0.5
+          },
+          "robot_1": {
+            "base_forward": -0.25,
+            "base_left": -0.5
+          }
+        }
+      },
+      {
+        "decision_index": 5,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "base_forward": -0.45,
+            "base_left": -0.9
+          },
+          "robot_1": {
+            "base_forward": -0.45,
+            "base_left": -0.9
+          }
+        }
+      },
+      {
+        "decision_index": 6,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "base_forward": -0.45,
+            "base_left": -0.9
+          },
+          "robot_1": {
+            "base_forward": -0.45,
+            "base_left": -0.9
+          }
+        }
+      },
+      {
+        "decision_index": 7,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "base_forward": -0.45,
+            "base_left": -0.9,
+            "lift": 0.1
+          },
+          "robot_1": {
+            "base_forward": -0.45,
+            "base_left": -0.9,
+            "lift": 0.1
+          }
+        }
+      },
+      {
+        "decision_index": 8,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "base_forward": -0.4,
+            "base_left": -0.65,
+            "wrist_pitch": -0.15
+          },
+          "robot_1": {
+            "base_forward": -0.4,
+            "base_left": -0.65,
+            "wrist_pitch": -0.15
+          }
+        }
+      },
+      {
+        "decision_index": 9,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "base_forward": -0.4,
+            "base_left": -0.55
+          },
+          "robot_1": {
+            "base_forward": -0.4,
+            "base_left": -0.55
+          }
+        }
+      },
+      {
+        "decision_index": 10,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "base_forward": -0.55,
+            "base_left": -0.55
+          },
+          "robot_1": {
+            "base_forward": -0.55,
+            "base_left": -0.55
+          }
+        }
+      },
+      {
+        "decision_index": 11,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "base_left": -0.5,
+            "arm_extension": 0.25
+          },
+          "robot_1": {
+            "base_left": -0.5,
+            "arm_extension": 0.25
+          }
+        }
+      },
+      {
+        "decision_index": 12,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "base_left": -0.6,
+            "arm_extension": 0.15
+          },
+          "robot_1": {
+            "base_left": -0.6,
+            "arm_extension": -0.075
+          }
+        }
+      },
+      {
+        "decision_index": 13,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "lift": -0.08,
+            "arm_extension": -0.17
+          },
+          "robot_1": {
+            "lift": -0.08,
+            "arm_extension": -0.25
+          }
+        }
+      },
+      {
+        "decision_index": 14,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "lift": -0.1,
+            "arm_extension": -0.11
+          },
+          "robot_1": {
+            "lift": -0.1,
+            "arm_extension": -0.11
+          }
+        }
+      },
+      {
+        "decision_index": 15,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "base_left": -0.18,
+            "lift": -0.12,
+            "arm_extension": 0.08
+          },
+          "robot_1": {
+            "lift": -0.06,
+            "arm_extension": -0.04
+          }
+        }
+      },
+      {
+        "decision_index": 16,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "lift": -0.09
+          },
+          "robot_1": {
+            "lift": -0.09
+          }
+        }
+      },
+      {
+        "decision_index": 17,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "lift": -0.08
+          },
+          "robot_1": {
+            "lift": -0.08
+          }
+        }
+      },
+      {
+        "decision_index": 18,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "lift": 0.18,
+            "wrist_pitch": 0.18
+          },
+          "robot_1": {
+            "lift": 0.18,
+            "wrist_pitch": 0.18
+          }
+        }
+      },
+      {
+        "decision_index": 19,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "lift": 0.2,
+            "wrist_pitch": 0.2
+          },
+          "robot_1": {
+            "lift": 0.2,
+            "wrist_pitch": 0.2
+          }
+        }
+      },
+      {
+        "decision_index": 20,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "wrist_pitch": -0.2
+          },
+          "robot_1": {
+            "wrist_pitch": -0.2
+          }
+        }
+      },
+      {
+        "decision_index": 21,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "arm_extension": 0.16
+          },
+          "robot_1": {
+            "arm_extension": 0.16
+          }
+        }
+      },
+      {
+        "decision_index": 22,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "lift": -0.12
+          },
+          "robot_1": {
+            "lift": -0.12
+          }
+        }
+      },
+      {
+        "decision_index": 23,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "lift": -0.08,
+            "arm_extension": -0.08
+          },
+          "robot_1": {
+            "lift": -0.08,
+            "arm_extension": -0.08
+          }
+        }
+      },
+      {
+        "decision_index": 24,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "lift": -0.06
+          },
+          "robot_1": {
+            "lift": -0.06
+          }
+        }
+      },
+      {
+        "decision_index": 25,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "lift": 0.16
+          },
+          "robot_1": {
+            "lift": 0.16
+          }
+        }
+      },
+      {
+        "decision_index": 26,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "base_forward": 0.25,
+            "base_left": 0.5
+          },
+          "robot_1": {
+            "base_forward": 0.25,
+            "base_left": 0.5
+          }
+        }
+      },
+      {
+        "decision_index": 27,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "base_forward": 0.45,
+            "base_left": 0.9
+          },
+          "robot_1": {
+            "base_forward": 0.45,
+            "base_left": 0.9
+          }
+        }
+      },
+      {
+        "decision_index": 28,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "base_forward": 0.45,
+            "base_left": 0.9
+          },
+          "robot_1": {
+            "base_forward": 0.45,
+            "base_left": 0.9
+          }
+        }
+      },
+      {
+        "decision_index": 29,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "base_forward": 0.45,
+            "base_left": 0.9
+          },
+          "robot_1": {
+            "base_forward": 0.45,
+            "base_left": 0.9
+          }
+        }
+      },
+      {
+        "decision_index": 30,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "base_forward": 0.4,
+            "base_left": 0.75
+          },
+          "robot_1": {
+            "base_forward": 0.4,
+            "base_left": 0.75
+          }
+        }
+      },
+      {
+        "decision_index": 31,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "base_forward": 0.4,
+            "base_left": 0.7
+          },
+          "robot_1": {
+            "base_forward": 0.4,
+            "base_left": 0.7
+          }
+        }
+      },
+      {
+        "decision_index": 32,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "lift": -0.1,
+            "wrist_pitch": 0.15
+          },
+          "robot_1": {
+            "lift": -0.1,
+            "wrist_pitch": 0.15
+          }
+        }
+      },
+      {
+        "decision_index": 33,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "lift": -0.16,
+            "wrist_pitch": 0.12
+          },
+          "robot_1": {
+            "lift": -0.16,
+            "wrist_pitch": 0.12
+          }
+        }
+      },
+      {
+        "decision_index": 34,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "lift": -0.14,
+            "arm_extension": 0.09,
+            "wrist_pitch": 0.08
+          },
+          "robot_1": {
+            "lift": -0.14,
+            "arm_extension": 0.09,
+            "wrist_pitch": 0.08
+          }
+        }
+      },
+      {
+        "decision_index": 35,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "lift": -0.12
+          },
+          "robot_1": {
+            "lift": -0.12
+          }
+        }
+      },
+      {
+        "decision_index": 36,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {},
+          "robot_1": {
+            "gripper": -1
+          }
+        }
+      },
+      {
+        "decision_index": 37,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {},
+          "robot_1": {
+            "base_CCW_yaw": -0.14,
+            "arm_extension": 0.05
+          }
+        }
+      },
+      {
+        "decision_index": 38,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {},
+          "robot_1": {
+            "lift": -0.075,
+            "arm_extension": -0.025
+          }
+        }
+      },
+      {
+        "decision_index": 39,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {},
+          "robot_1": {
+            "gripper": 1
+          }
+        }
+      }
+    ]
+  },
+  "query_events": [
+    {
+      "decision_index": 4,
+      "transition_boundary": 522,
+      "observation_evidence": "output/actors/20261107-astra-overhead470-named-001/observations/00004",
+      "camera": "overview",
+      "point_count": 6,
+      "valid_point_count": 6,
+      "physics_transition_count": 0,
+      "physics_advanced_during_query": false,
+      "public_label": "Visible surface optical-Z query from same current frozen observation. Hidden surfaces, passage, contact and attachment not inferred.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "decision_index": 11,
+      "transition_boundary": 674,
+      "observation_evidence": "output/actors/20261107-astra-overhead470-named-001/observations/00011",
+      "camera": "robot_0_head",
+      "point_count": 7,
+      "valid_point_count": 7,
+      "physics_transition_count": 0,
+      "physics_advanced_during_query": false,
+      "public_label": "Visible surface optical-Z query from same current frozen observation. Hidden surfaces, passage, contact and attachment not inferred.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "decision_index": 21,
+      "transition_boundary": 796,
+      "observation_evidence": "output/actors/20261107-astra-overhead470-named-001/observations/00021",
+      "camera": "robot_0_head",
+      "point_count": 8,
+      "valid_point_count": 8,
+      "physics_transition_count": 0,
+      "physics_advanced_during_query": false,
+      "public_label": "Visible surface optical-Z query from same current frozen observation. Hidden surfaces, passage, contact and attachment not inferred.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "decision_index": 37,
+      "transition_boundary": 1070,
+      "observation_evidence": "output/actors/20261107-astra-overhead470-named-001/observations/00037",
+      "camera": "robot_1_wrist",
+      "point_count": 8,
+      "valid_point_count": 8,
+      "physics_transition_count": 0,
+      "physics_advanced_during_query": false,
+      "public_label": "Visible surface optical-Z query from same current frozen observation. Hidden surfaces, passage, contact and attachment not inferred.",
+      "training_approval": "unreviewed"
+    }
+  ],
+  "termination_event": {
+    "reason": "decision_budget",
+    "transition_boundary_before_cleanup": 1110,
+    "transition_boundary_after_cleanup": 1111,
+    "actor_finish": false,
+    "supervisor_sigint": false,
+    "public_label": "Configured40-decision budget ends after final close action; no new-grasp retention test is performed.",
+    "training_approval": "unreviewed"
+  },
+  "strategy_execution": {
+    "high_transport_and_small_descent_executed": true,
+    "confirmed_head_and_both_arm_entry": false,
+    "descent_attempt_series": 2,
+    "table_return_executed": true,
+    "one_sided_release_reposition_reclose_executed": true,
+    "new_regrasp_retention_test_performed": false,
+    "opposing_layer_confirmed": false,
+    "last_actor_observation_boundary": 1102,
+    "post_close_rgb_review": "At boundary1111 robot1 fingers are visibly closer than at actor observation39/boundary1102, near exposed yellow rim; garment body remains on table. No lift/hold retention test or confirmed attachment.",
+    "promote_last_grasp_to_verified_startpoint": false,
+    "post_close_public_evidence": [
+      "docs/collection/attempts/20261107-astra-overhead470-named-001/images/final-robot_0_head.png",
+      "docs/collection/attempts/20261107-astra-overhead470-named-001/images/final-robot_1_head.png",
+      "docs/collection/attempts/20261107-astra-overhead470-named-001/images/final-robot_1_wrist.png",
+      "docs/collection/attempts/20261107-astra-overhead470-named-001/images/final-overview.png"
+    ]
+  },
+  "video_cut_suggestions": [
+    {
+      "id": "entry_and_recovery",
+      "start_boundary": 702,
+      "end_boundary": 856,
+      "inclusive_frame_count": 155,
+      "fps": 5,
+      "playback_duration_s": 31.0,
+      "export_status": "complete_provenance_and_media_hashes_checked",
+      "public_provenance": "docs/gallery/assets/20261107-e21-overhead-entry/provenance.json"
+    },
+    {
+      "id": "table_placement_regrasp",
+      "start_boundary": 1018,
+      "end_boundary": 1111,
+      "inclusive_frame_count": 94,
+      "fps": 5,
+      "playback_duration_s": 18.8,
+      "export_status": "complete_provenance_and_media_hashes_checked",
+      "public_provenance": "docs/gallery/assets/20261107-e21-table-regrasp/provenance.json"
+    }
+  ]
+}
