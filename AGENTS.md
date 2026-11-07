@@ -12,13 +12,13 @@
 
 ## 확인된 현재 상태
 
-- 최신E25 `20261107-astra-opposing563-named-001`은5/50·픽업5·착의0·successfalse·no_contact/null,QC698/698오류0으로종료. source68658c9d9bb7e47591fb330f08f4f996ec4fcbfb clean·05:18:00–05:38:26UTC·20분26초.
-- 698=563재실행+93모델+42정착.13act+finish1/15calls·1query6valid/물리0·마감물리0. host76977=0·shellPython0·sim0·attemptcompleted/capturecompleteoperator_finished. [고정 원본 백업 검증 완료](docs/project/sessions/20261107-e25-backup-verification.json)·trainingunreviewed.
-- R0anchor유지/R1release→다른낮은경계placement→보정1→reclose1실행. D9localfollowing잠정근거있음. D10차등/D11자세/D12중립뒤반대두lip관계미확인으로finish. 운반/진입0·남은예산16,감독중단/예산소진아님.
-- E26선택E18/787hist719771/coordinated-leading-hand-swap22decmax1400settle6. M2후보3d1bf2c를E25닫힘후통합. 다른leadinghand/역할교환/접근면변경은실제근거를따로분류하고미식별일반접근을M2수행으로세지않는다. 2026-11-07T05:51:36Z·source53a58bb4e9fa4ff5366b66485c8690b0784ad71f clean으로실제시작. 06:05UTC준비787완료·D0모델16+정착6/총809. 먼손H_B선택·R1guide/R0support배정·비스듬한이동,이전목표/역할불명확으로손교환완료는미확인. 후속STATUS/attempt우선.
-- 전체통합CPU결과는docs/project/sessions/20261107-leading-hand-validation.json참조. 새선택prompt외공식schema최대20step·물리·20Hz·고정Astraultra/CLI0.166.0exec유지. settle12후보는분석만,E26정착6유지.
-- E24는5점/1610QC/22act감독중단130,shell130/sim0. D21부분복구보존·백업1edca310c1b869a8f4c01b3eeb67b14f6699e12c검증완료. E23팔노출/1180QC, E22host143/clientnull/sim0불확실성, E21새파지후속검사없음/E20목선0/E19세접근/E18roll오류이력보존.
-- catalog.v1.jsoncanonical·SQLite재생성. 과거5점/관측지지/독립하중/현재지지/착의성공/학습승인은별도. 같은E07계보·정확checkpoint아님. 장기0→5→10합성계획은현재학습/미검증성공자료생성과구분한다.10점이후다음득점으로계속한다.
+- 최신E26 `20261107-astra-hand-swap787-named-001`은5/50·픽업5·착의0·successfalse·no_dressing_points/final_score0,QC1139/1139오류0으로 자율 종료했다. source53a58bb clean·05:51:36–06:42:28UTC·wall3051.140932266초.
+- 1139=787replay+232model+120settle,21act+finish1/25calls·3query22valid/물리0·마감0. 마지막22번째 판단이finish였으며 예산 강제중단/감독자신호아님. host78009=0·shellPython0·sim0·completed/errornull/capturecompleteoperator_finished. 백업receipt20261107-e26검증완료,trainingunreviewed.
+- 초기E23와 목표손차이·실제 상대배치/접근변경·D13자세보상·D17/D18관측보상은 보존한다. 역할교환/연속소매통과는미확인.953의유용한두손관계와 이후가림을분리한다.
+- 다음E27은E25/698 새 파지의coordinated-task-progress·history657667·22dec/max1300/settle6/timeout180/named-query-wristpanel로 선택,아직실행전. supportuncertain·table기여/운반하중미시험. source loaderfloat32(698,2,9)통과. 현재코드는E26이후변경없고전체CPU317검사가적용된다.
+- 카메라 방향 보조 후보는 별도worktree CPU준비 중이며E27에적용하지않는다. 기존query는이미cameraXYZ를제공한다. 정적공개기구학의방향계산은새센서/IK/착의성과와구분한다.
+- E25 새파지국소follow/QC698/백업79e74, E24부분복구/QC1610/백업1edca, E23팔노출/QC1180, E22host143불확실성, E21새파지후속미검사/E20목선0/E19세접근/E18roll오류 이력을보존한다. 최신명령·실제시작여부는STATUS/attempt우선.
+- catalog정본34실행/12출발점/19방법/37시도(계획3·진행0). 같은E07계보·정확checkpoint아님. 장기0→5→10조합과현재학습/성공자료생성을구분하며10점이후다음득점으로계속한다.
 
 ## 실행과 재현
 

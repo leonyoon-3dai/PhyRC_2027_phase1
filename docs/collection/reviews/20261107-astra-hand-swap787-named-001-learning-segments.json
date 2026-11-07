@@ -1,0 +1,561 @@
+{
+  "schema": "public-learning-segments-v1",
+  "run_id": "20261107-astra-hand-swap787-named-001",
+  "parent_attempt": "20261106-astra-guide470-depth-001",
+  "source_group": "20261106-coordinated-demo-methods",
+  "source_commit": "53a58bb4e9fa4ff5366b66485c8690b0784ad71f",
+  "recording_status": "closed_actor_finish_last_requested_decision",
+  "training_approval": "unreviewed",
+  "label_provenance": [
+    "Public finalized decisions and concise final reasons",
+    "Designated public RGB observations0–21 directly inspected; selected camera scope recorded in review",
+    "Exported final designated5-camera RGB at boundary1139 directly inspected",
+    "Public robot state; D13 and D17/D18 endpoint calculations independently cross-checked by root",
+    "Offline initial E23/E26 correspondence review limited to E26obs0/1 boundary809"
+  ],
+  "evidence_decisions_path": "output/operator-traces/20261107-astra-hand-swap787-named-001/decisions.jsonl",
+  "raw_recordings_preserved": true,
+  "raw_records_rewritten": false,
+  "policy_teacher_hidden_evaluation_fields_included": false,
+  "split_constraints": [
+    "Group by source_group and replay lineage before train/validation split.",
+    "Same replay prefix does not restore an exact cloth checkpoint.",
+    "Adjacent frames, overlapping clips and shared replay branches are not independent successful demonstrations.",
+    "Useful observed relations, camera recovery and measured gap closure are distinct from certified sleeve passage.",
+    "Initial E23 versus E26 hand-target contrast is not whole-history novelty or completed role exchange.",
+    "OpticalZ at changing camera poses is not itself a cross-frame hand-to-rim distance."
+  ],
+  "transition_boundary_semantics": "[start,end): count=end-start; inclusive video boundary images count+1. Episode elapsed time is count/20, separate from simulator absolute time.",
+  "counts": {
+    "recorded_transitions": 1139,
+    "replay_transitions": 787,
+    "new_transitions": 352,
+    "model_action_transitions": 232,
+    "model_neutral_transitions": 6,
+    "controller_settle_transitions": 120,
+    "cleanup_transitions": 0,
+    "model_call_attempts": 25,
+    "finalized_decisions": 22,
+    "executed_act_decisions": 21,
+    "finish_decisions": 1,
+    "depth_query_results": 3,
+    "queried_points": 22,
+    "valid_queried_points": 22,
+    "depth_query_physics_transitions": 0,
+    "depth_query_action_cycles_completed": 3,
+    "release_regrasp_decisions": 0,
+    "configured_decision_budget": 22,
+    "remaining_decision_slots_at_finish": 0
+  },
+  "segments": [
+    {
+      "id": "oblique_initial_H_B_approach",
+      "kind": "goal_directed_approach",
+      "decision_indices": [
+        0
+      ],
+      "transition_start": 787,
+      "transition_end_exclusive": 809,
+      "transition_count": 22,
+      "model_action_transitions": 16,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-hand-swap787-named-001/observations/00000",
+        "output/actors/20261107-astra-hand-swap787-named-001/observations/00001"
+      ],
+      "public_label": "Upper/far H_B selected; paired diagonal base movement with extra robot1 extension changes the held span. Bounded initial contrast with E23 H_A is supported offline; sustained whole-history hand or role swap is not established.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "pitched_hand_alignment",
+      "kind": "orientation_change",
+      "decision_indices": [
+        1
+      ],
+      "transition_start": 809,
+      "transition_end_exclusive": 827,
+      "transition_count": 18,
+      "model_action_transitions": 12,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-hand-swap787-named-001/observations/00001",
+        "output/actors/20261107-astra-hand-swap787-named-001/observations/00002"
+      ],
+      "public_label": "Paired pitch with extra robot1 extension raises the rim and changes wrist views; both-hand tracking becomes obscured. Visibility loss is not passage.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "queried_forward_approach",
+      "kind": "entry_approach",
+      "decision_indices": [
+        2
+      ],
+      "transition_start": 827,
+      "transition_end_exclusive": 845,
+      "transition_count": 18,
+      "model_action_transitions": 12,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-hand-swap787-named-001/observations/00002",
+        "output/actors/20261107-astra-hand-swap787-named-001/observations/00003"
+      ],
+      "public_label": "First query distinguishes hand candidates from nearer lip surface. Forward/pitch approach narrows the visible mouth and hides H_B; entry versus exterior folding unresolved.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "withdraw_pitch_view_recovery",
+      "kind": "partial_visual_recovery",
+      "decision_indices": [
+        3
+      ],
+      "transition_start": 845,
+      "transition_end_exclusive": 863,
+      "transition_count": 18,
+      "model_action_transitions": 12,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-hand-swap787-named-001/observations/00003",
+        "output/actors/20261107-astra-hand-swap787-named-001/observations/00004"
+      ],
+      "public_label": "Withdrawal/pitch recovery widens the dark candidate mouth and partly re-exposes H_B/striped forearm. Preserve this real information recovery.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "fixed_pitch_forward_retest",
+      "kind": "entry_approach",
+      "decision_indices": [
+        4
+      ],
+      "transition_start": 863,
+      "transition_end_exclusive": 885,
+      "transition_count": 22,
+      "model_action_transitions": 16,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-hand-swap787-named-001/observations/00004",
+        "output/actors/20261107-astra-hand-swap787-named-001/observations/00005"
+      ],
+      "public_label": "Forward-only approach after recovery again narrows the mouth and hides H_B. Prior tilt alone cannot explain both episodes; passage unconfirmed.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "relative_span_reorientation",
+      "kind": "approach_orientation_change",
+      "decision_indices": [
+        5
+      ],
+      "transition_start": 885,
+      "transition_end_exclusive": 903,
+      "transition_count": 18,
+      "model_action_transitions": 12,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-hand-swap787-named-001/observations/00005",
+        "output/actors/20261107-astra-hand-swap787-named-001/observations/00006"
+      ],
+      "public_label": "Opposite base movements plus paired wrist yaw actually change relative support placement/orientation. This is distinct from another common forward push, but R1guide/R0support roles remain.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "lateral_body_approach",
+      "kind": "lateral_entry_approach",
+      "decision_indices": [
+        6
+      ],
+      "transition_start": 903,
+      "transition_end_exclusive": 921,
+      "transition_count": 18,
+      "model_action_transitions": 12,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-hand-swap787-named-001/observations/00006",
+        "output/actors/20261107-astra-hand-swap787-named-001/observations/00007"
+      ],
+      "public_label": "Paired lateral/forward motion uses the changed span direction. H_B remains obscured and body-entry success is unverified.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "lower_hand_reveal",
+      "kind": "partial_visual_recovery",
+      "decision_indices": [
+        7
+      ],
+      "transition_start": 921,
+      "transition_end_exclusive": 937,
+      "transition_count": 16,
+      "model_action_transitions": 10,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-hand-swap787-named-001/observations/00007",
+        "output/actors/20261107-astra-hand-swap787-named-001/observations/00008"
+      ],
+      "public_label": "Paired lowering re-exposes the upper hand/striped forearm above the yellow edge in head and wrist views. New useful relation rather than unchanged occlusion.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "retained_two_hand_relation_953",
+      "kind": "useful_public_relation",
+      "decision_indices": [
+        8
+      ],
+      "transition_start": 937,
+      "transition_end_exclusive": 953,
+      "transition_count": 16,
+      "model_action_transitions": 10,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-hand-swap787-named-001/observations/00008",
+        "output/actors/20261107-astra-hand-swap787-named-001/observations/00009"
+      ],
+      "public_label": "Forward motion at the lower height preserves H_B visibility and reveals the nearer H_A beside/below robot0 fingers. Boundary953 is retained as a useful public relation, not a selected startpoint or certified passage.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "opposed_extension_microapproach",
+      "kind": "bounded_goal_approach",
+      "decision_indices": [
+        9
+      ],
+      "transition_start": 953,
+      "transition_end_exclusive": 967,
+      "transition_count": 14,
+      "model_action_transitions": 8,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-hand-swap787-named-001/observations/00009",
+        "output/actors/20261107-astra-hand-swap787-named-001/observations/00010"
+      ],
+      "public_label": "Robot0 retracts18.23mm and robot1 extends31.88mm. Both-hand visibility remains; H_A clearance and H_B entry unconfirmed. Microapproach is not automatically saturation.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "queried_guide_only_approach",
+      "kind": "bounded_goal_approach",
+      "decision_indices": [
+        10
+      ],
+      "transition_start": 967,
+      "transition_end_exclusive": 981,
+      "transition_count": 14,
+      "model_action_transitions": 8,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-hand-swap787-named-001/observations/00010",
+        "output/actors/20261107-astra-hand-swap787-named-001/observations/00011"
+      ],
+      "public_label": "Second depth query shows a visible hand/lip separation. Robot1 alone approaches while robot0 targets remain. Preserved visibility and valid gap closure can be progress without new topology; no continuous passage established.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "guide_base_approach",
+      "kind": "bounded_goal_approach",
+      "decision_indices": [
+        11
+      ],
+      "transition_start": 981,
+      "transition_end_exclusive": 995,
+      "transition_count": 14,
+      "model_action_transitions": 8,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-hand-swap787-named-001/observations/00011",
+        "output/actors/20261107-astra-hand-swap787-named-001/observations/00012"
+      ],
+      "public_label": "Robot1 base approaches with residual extension following. H_B becomes more covered while H_A remains visible. This is actual approach followed by reduced observability, not proof of no movement or unchanged gap.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "reduced_stagger_entry_trial",
+      "kind": "entry_attempt",
+      "decision_indices": [
+        12
+      ],
+      "transition_start": 995,
+      "transition_end_exclusive": 1009,
+      "transition_count": 14,
+      "model_action_transitions": 8,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-hand-swap787-named-001/observations/00012",
+        "output/actors/20261107-astra-hand-swap787-named-001/observations/00013"
+      ],
+      "public_label": "Robot0 advances more and raises while robot1 advances, reducing fore-aft skew. The useful953–995 hand relation is lost at1009. Preserve earlier progress and subsequent loss separately.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "compensated_upright_posture",
+      "kind": "controlled_posture_subskill",
+      "decision_indices": [
+        13
+      ],
+      "transition_start": 1009,
+      "transition_end_exclusive": 1027,
+      "transition_count": 18,
+      "model_action_transitions": 12,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-hand-swap787-named-001/observations/00013",
+        "output/actors/20261107-astra-hand-swap787-named-001/observations/00014"
+      ],
+      "public_label": "Large paired pitch changes with lift/retraction compensation keep base-frame gripper-reference endpoints within4.62/3.10mm. Nearer hand partly reappears in robot0 head; opening orientation and passage unverified. Not a fixed cloth material point.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "explicit_neutral_settling",
+      "kind": "neutral_diagnostic",
+      "decision_indices": [
+        14
+      ],
+      "transition_start": 1027,
+      "transition_end_exclusive": 1033,
+      "transition_count": 6,
+      "model_action_transitions": 6,
+      "controller_settle_transitions": 0,
+      "observation_evidence": [
+        "output/actors/20261107-astra-hand-swap787-named-001/observations/00014",
+        "output/actors/20261107-astra-hand-swap787-named-001/observations/00015"
+      ],
+      "public_label": "Six model-neutral transitions reduce lift target error from about−7.3mm to+0.25mm and pitch error from−.039to−.013rad; lift velocity falls from roughly−39to−.5mm/s. Cloth relation stays similar. Configuration remains auto settle6.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "upright_orientation_entry_trial",
+      "kind": "entry_attempt",
+      "decision_indices": [
+        15
+      ],
+      "transition_start": 1033,
+      "transition_end_exclusive": 1049,
+      "transition_count": 16,
+      "model_action_transitions": 10,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-hand-swap787-named-001/observations/00015",
+        "output/actors/20261107-astra-hand-swap787-named-001/observations/00016"
+      ],
+      "public_label": "Paired forward/raise tests entry after posture change. Cloth moves and folds, but H_B emergence or continuous forearm passage is not observed.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "lateral_raise_fragment",
+      "kind": "new_visual_evidence_candidate",
+      "decision_indices": [
+        16
+      ],
+      "transition_start": 1049,
+      "transition_end_exclusive": 1065,
+      "transition_count": 16,
+      "model_action_transitions": 10,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-hand-swap787-named-001/observations/00016",
+        "output/actors/20261107-astra-hand-swap787-named-001/observations/00017"
+      ],
+      "public_label": "Paired lateral shift/raise produces a cropped skin-colored hand-fragment candidate at robot1 head right edge. Do not ignore it or assign identity/passage from the crop.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "small_compensated_view_orbit",
+      "kind": "controlled_observation_subskill",
+      "decision_indices": [
+        17
+      ],
+      "transition_start": 1065,
+      "transition_end_exclusive": 1081,
+      "transition_count": 16,
+      "model_action_transitions": 10,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-hand-swap787-named-001/observations/00017",
+        "output/actors/20261107-astra-hand-swap787-named-001/observations/00018"
+      ],
+      "public_label": "Robot1 compensated base/wrist orbit exposes more of the fragment. World endpoint XY changes are about1.7mm but Zabout+6mm; neither exact position preservation nor cloth attachment is certified.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "larger_compensated_view_orbit",
+      "kind": "controlled_observation_subskill",
+      "decision_indices": [
+        18
+      ],
+      "transition_start": 1081,
+      "transition_end_exclusive": 1107,
+      "transition_count": 26,
+      "model_action_transitions": 20,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-hand-swap787-named-001/observations/00018",
+        "output/actors/20261107-astra-hand-swap787-named-001/observations/00019"
+      ],
+      "public_label": "Robot1 base yaw changes about20.46degrees with world gripper endpoint norm3.58mm. Hand/short wrist is more clearly visible outside the blue panel edge, but connected forearm and H_B identity remain hidden. New information is real; passage unverified.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "queried_lower_retract_recovery",
+      "kind": "recovery",
+      "decision_indices": [
+        19
+      ],
+      "transition_start": 1107,
+      "transition_end_exclusive": 1121,
+      "transition_count": 14,
+      "model_action_transitions": 8,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-hand-swap787-named-001/observations/00019",
+        "output/actors/20261107-astra-hand-swap787-named-001/observations/00020"
+      ],
+      "public_label": "Third query separates visible-hand and nearby-cloth depths. Robot1 lowers/retracts, changing span tilt; hand exposure remains without new connected-forearm identity.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "intentional_roll_recovery",
+      "kind": "recovery",
+      "decision_indices": [
+        20
+      ],
+      "transition_start": 1121,
+      "transition_end_exclusive": 1139,
+      "transition_count": 18,
+      "model_action_transitions": 12,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-hand-swap787-named-001/observations/00020",
+        "output/actors/20261107-astra-hand-swap787-named-001/observations/00021"
+      ],
+      "public_label": "Explicit robot1 roll changes wrist view and yellow-lip angle. Head-view panel/hand relation remains similar; no new identity or passage confirmation. Distinct from unintended-axis errors.",
+      "training_approval": "unreviewed"
+    }
+  ],
+  "zero_physics_events": [
+    {
+      "kind": "depth_query",
+      "decision_index": 2,
+      "model_call_index": 2,
+      "transition_boundary": 827,
+      "camera": "robot_0_wrist",
+      "point_count": 6,
+      "valid_points": 6,
+      "physics_transitions": 0,
+      "subsequent_action_executed": true,
+      "interpretation_limit": "Visible-surface optical depth does not establish hand identity, opening plane, contact or sleeve passage."
+    },
+    {
+      "kind": "depth_query",
+      "decision_index": 10,
+      "model_call_index": 11,
+      "transition_boundary": 967,
+      "camera": "robot_1_wrist",
+      "point_count": 8,
+      "valid_points": 8,
+      "physics_transitions": 0,
+      "subsequent_action_executed": true,
+      "interpretation_limit": "Visible-surface optical depth does not establish hand identity, opening plane, contact or sleeve passage."
+    },
+    {
+      "kind": "depth_query",
+      "decision_index": 19,
+      "model_call_index": 21,
+      "transition_boundary": 1107,
+      "camera": "robot_1_head",
+      "point_count": 8,
+      "valid_points": 8,
+      "physics_transitions": 0,
+      "subsequent_action_executed": true,
+      "interpretation_limit": "Visible-surface optical depth does not establish hand identity, opening plane, contact or sleeve passage."
+    },
+    {
+      "kind": "actor_finish",
+      "decision_index": 21,
+      "model_call_index": 24,
+      "transition_boundary": 1139,
+      "declared_steps": 1,
+      "actual_steps": 0,
+      "physics_transitions": 0,
+      "public_label": "Autonomous finish on the last22nd requested decision; not a controller budget stop or supervisor interruption."
+    }
+  ],
+  "method_axes": {
+    "initial_target_contrast": "Supported versus E23 initial H_A approach only; E26 selects upper H_B.",
+    "guide_anchor_exchange": "Not established; R1guide/R0support continues.",
+    "relative_approach_change": "Actual relative-span reorientation and lateral/body-entry hypothesis approaches performed; topology/passage unresolved.",
+    "full_method_success": "Not claimed."
+  },
+  "retained_public_relation": {
+    "transition_boundary": 953,
+    "observation_index": 9,
+    "status": "useful_visual_relation_not_selected_startpoint_in_this_review",
+    "preserved_to_boundary": 995,
+    "lost_at_boundary": 1009,
+    "meaning": "H_B visibility maintained with H_A newly exposed near robot0. Later loss must not erase this earlier information gain."
+  },
+  "controlled_subskill_limits": [
+    "D13 displacements are robot-base-frame gripper-reference endpoints, not cloth material points; bases also move about1mm in world.",
+    "D17 world XY endpoint differences about1.7mm coexist with about+6mm Z; D18 robot1 world normabout3.58mm accompanies20.46degree base yaw.",
+    "Endpoint comparisons do not bound maximum trajectory deviation or certify fixed cloth contact."
+  ],
+  "named_action_checks": {
+    "finalized_act_decisions_checked": 21,
+    "named_to_canonical_match": true,
+    "canonical_to_applied_float32_match": true,
+    "nonzero_roll_decisions": [
+      20
+    ],
+    "roll_intent": "Explicit recovery roll in final brief reason.",
+    "gripper_commands_all_zero": true
+  },
+  "termination": {
+    "kind": "actor_finish_on_last_requested_decision",
+    "controller_budget_stop": false,
+    "supervisor_interruptions": 0,
+    "host_exit_code": 0,
+    "python_exit_code": 0,
+    "simulator_returncode": 0
+  },
+  "technical_quality": {
+    "quality_passed": true,
+    "validated_transitions": 1139,
+    "source": "Public media provenance: full capture QC matched by policy SHA; separate from visual labels and training approval."
+  },
+  "preservation": {
+    "status": "verified_private_fixed_revision",
+    "receipt": "docs/project/sessions/20261107-e26-backup-verification.json",
+    "revision": "41c78439105eb3a6e1f5fd9c0943cee6039d041b",
+    "archive_sha256": "82f7f3fb3b0b255c7549499078ef86e90352257f12cb728ccbd88221e5127d44",
+    "archive_bytes": 2544928271,
+    "archive_members_verified": 254,
+    "verified_at_utc": "2026-11-07T06:49:13.774600+00:00"
+  },
+  "final_public_rgb": [
+    {
+      "path": "docs/collection/attempts/20261107-astra-hand-swap787-named-001/images/final-overview.png",
+      "sha256": "9ff6316f3ace9f060e49eadded931b1502c9c2969052818651afcdba0ed39985",
+      "directly_inspected": true
+    },
+    {
+      "path": "docs/collection/attempts/20261107-astra-hand-swap787-named-001/images/final-robot_0_head.png",
+      "sha256": "3fe6e73553456aaac9218dcd4d17b9b87fc056759838b41f8594a16e30c7dd63",
+      "directly_inspected": true
+    },
+    {
+      "path": "docs/collection/attempts/20261107-astra-hand-swap787-named-001/images/final-robot_1_head.png",
+      "sha256": "53a4182f4d0d29126ebe004729c9e9877c4dc64a8dd068ccd8a54017d7d64c09",
+      "directly_inspected": true
+    },
+    {
+      "path": "docs/collection/attempts/20261107-astra-hand-swap787-named-001/images/final-robot_0_wrist.png",
+      "sha256": "d3778c8b3fa69516a446ef171f1206295e6668672c9bda887d56f6ac36a48727",
+      "directly_inspected": true
+    },
+    {
+      "path": "docs/collection/attempts/20261107-astra-hand-swap787-named-001/images/final-robot_1_wrist.png",
+      "sha256": "591247e759dc8d9f4233cb9059365d392bf410198f5511cf594b29099a3d45b3",
+      "directly_inspected": true
+    }
+  ],
+  "public_media_provenance": [
+    "docs/gallery/assets/20261107-e26-view-orbit/provenance.json",
+    "docs/gallery/assets/20261107-e26-lower-approach/provenance.json",
+    "docs/gallery/assets/20261107-e26-compensated-posture/provenance.json"
+  ]
+}

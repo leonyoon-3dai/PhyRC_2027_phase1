@@ -371,3 +371,14 @@ D13의공개obs13→14선별재계산은grasp_base endpoint R0 4.623237645mm/R1 
 ## E26 보상 관측과 손 후보 재노출 (2026-11-07 06:38 UTC)
 
 D18까지19act·1107=787replay+212model+108settle이다. D16후R1head화면끝손조각→D17보상회전8.19°후일부추가노출→D18보상회전20.46°후손/짧은손목이화면안에들어왔다. 손정체·연결전완·소매경계통과는미확인이다. root도D17 world grasp끝점R0/R1 6.271510384/6.220621331mm(Z+6.040571684/+5.993158839),D18 .696430686/3.576384349mm(R1delta−3.496984,−.736136,−.140481mm)를독립quaternion-vector계산으로대조했다. D17수평몇mm와완전고정을구분하고endpoint만확인했으며경로/천재료점고정을주장하지않는다.
+
+
+## E26 마감과 E27 새 파지 후속 선택 (2026-11-07 06:42:28 UTC 종료)
+
+E26 공식raw5/pickup5/clothing0/successfalse/no_dressing_points/final_score0.0.1139=787replay+232model+120settle,새352전이17.6sim초·전체56.95초,21act+finish1/25calls/query3valid22물리0·마감0이다. D21은마지막22번째판단의자율finish로예산강제중단/감독신호와다르다. host78009exit0·shellPython0·sim0·completed/errornull/capturecompleteoperator_finished/QC1139오류0. wall3051.140932266·actor2022.295263391·env977.668086063초. source53a58bb4e9fa4ff5366b66485c8690b0784ad71fclean.
+
+D5상대배치변경,D7/D8하강뒤두손재노출953,D13기준점근사유지자세,D14추가중립,D17/D18보상관측손후보노출을부분기능긍정으로보존한다. 초기E23목표손차이와지속적손교환/역할교환을구분하고,후반손조각을소매통과라칭하지않는다. D19lower/retract·D20의도roll뒤에도관계미해결로finish했다.
+
+[고정백업](20261107-e26-backup-verification.json)은revision`41c78439105eb3a6e1f5fd9c0943cee6039d041b`·2,544,928,271bytes·SHA`82f7f3fb3b0b255c7549499078ef86e90352257f12cb728ccbd88221e5127d44`,2026-11-07T06:49:13.774600+00:00강제재다운로드/254member검증완료다. 공개full15artifact와3클립SHA를root도대조했다. hero1033–1139/107frames21.4s,lower885–981/97frames19.4s,posture1009–1033/25frames5s는같은실행이며모델대기를제외한4배느린영상이다.
+
+다음E27 `20261107-astra-regrasp698-progress-named-001`은 E25/698 새그립을 기존task-progress로 운반/진입에사용하는 비교를선택했다. freshhistory657667·22dec/max1300/settle6/timeout180·기존named/query/wristpanel/Astraultra,아직시작전이다. E26같은그립의후속시점회복과다른조작비교이며E25새파지의운반효과는미시험이었다. supportuncertain/table기여/하중미검증을유지한다.06:45:33UTC loaderfloat32(698,2,9)PASS,seed등trustedmetadata공개출력없음. 카메라방향보조후보는격리CPU준비로남기며이번설정에섞지않는다. 실행코드는53a이후불변이라기존317CPU검사범위가적용되며새검사를실행했다고쓰지않는다.

@@ -604,14 +604,14 @@
       "source_working_tree_modified": false,
       "parent_run_id": "20261106-astra-guide470-depth-001",
       "replay_prefix_steps": 787,
-      "replay_completed_steps": 0,
-      "recorded_transitions": null,
-      "qc_status": "pending",
+      "replay_completed_steps": 787,
+      "recorded_transitions": 1139,
+      "qc_status": "passed",
       "backup": {
-        "status": "unknown",
-        "receipt": null,
-        "revision": null,
-        "sha256": null
+        "status": "verified",
+        "receipt": "docs/project/sessions/20261107-e26-backup-verification.json",
+        "revision": "41c78439105eb3a6e1f5fd9c0943cee6039d041b",
+        "sha256": "82f7f3fb3b0b255c7549499078ef86e90352257f12cb728ccbd88221e5127d44"
       }
     }
   ],
@@ -1215,7 +1215,7 @@
     {
       "id": "coordinated-leading-hand-swap-named-query",
       "name": "coordinated-leading-hand-swap / named / query",
-      "status": "ready",
+      "status": "tested",
       "axes": {
         "grasp_arrangement": "retain existing useful bilateral grasps; no regrasp",
         "entry_target": "a currently distinguishable other leading hand, identity uncertainty explicit",
@@ -1224,7 +1224,7 @@
         "view": "designated RGB-D + optional pixel depth query",
         "action_encoding": "named"
       },
-      "description": "M2 selected after E25 closure; actual distinct-hand,role and approach changes classified separately. Unestablished swap does not force finish, but ordinary task progress is not M2 execution. Body-opening to same-hand sleeve direction preserved. Actual model performance not yet tested."
+      "description": "E26 tested at raw5/clothing0. Distinct initial target versus E23 initial approach supported; no established role exchange or sustained hand swap. Actual relative arrangement/entry trials and compensated observation occurred. Classify axes separately; ordinary task progress does not certify M2 completion. No regrasp."
     }
   ],
   "attempts": [
@@ -1774,17 +1774,21 @@
     },
     {
       "id": "20261107-astra-hand-swap787-named-001",
-      "status": "in_progress",
+      "status": "completed",
       "run_id": "20261107-astra-hand-swap787-named-001",
       "startpoint_id": "20261106-astra-guide470-depth-001-p787",
       "method_id": "coordinated-leading-hand-swap-named-query",
       "result": {
-        "raw_points": null,
-        "success": null,
-        "review": null,
-        "videos": []
+        "raw_points": 5.0,
+        "success": false,
+        "review": "docs/collection/reviews/20261107-astra-hand-swap787-named-001.ko.md",
+        "videos": [
+          "docs/gallery/assets/20261107-e26-view-orbit/event.mp4",
+          "docs/gallery/assets/20261107-e26-lower-approach/event.mp4",
+          "docs/gallery/assets/20261107-e26-compensated-posture/event.mp4"
+        ]
       },
-      "notes": "Actual E26 started2026-11-07T05:51:36Z from clean public source53a58bb4e9fa4ff5366b66485c8690b0784ad71f. E18 direct parent787/history719771,22dec/max1400/timeout180/settle6/review10, fixed Astraultra execplan1 namedquerywristpanel. At06:05UTC replay787 complete, D0 model16+settle6 to809; chose upper/far H_B and assigned R1guide/R0support, then bilateral oblique base motion plus R1extension. Prior target/roles uncertain, so actual hand swap and role exchange remain unestablished; current approach change requires follow-up public comparison. Full CPU317 passed before launch. Same E07 lineage,not exact cloth checkpoint; final outcome/QC/backup pending."
+      "notes": "E26 closed2026-11-07T06:42:28Z, clean53a58bb;1139=787replay+232model+120settle;21act+finish1/25calls/3query22valid physics0/cleanup0;last22ndslot autonomousfinish,not budgetforced/supervisorstop;host78009/Python/sim0. Raw5/pickup5/clothing0/successfalse/no_dressing_points/final_score0.0;QC1139/backupverified/trainingunreviewed. Initial E23 target contrast supported but sustained hand swap/guide-anchor exchange unestablished; actual relative arrangement/approach and compensated posture/viewing performed. Preserve953 two-hand relation and D13/D17/D18 control positives; exposed fragment is not sleeve-passage proof. Same E07 lineage,not exact cloth checkpoint."
     },
     {
       "id": "planned-e25-698-task-progress",
@@ -1798,7 +1802,7 @@
         "review": null,
         "videos": []
       },
-      "notes": "Conditional only, not selected or dispatched; active E26 M2 remains priority. Preserve E25 changed grips and test currently supported transport/entry under existing task-progress, without requiring fully identified opposing lips as an automatic gate. DirectE25/698; freshhistory657667; loader/preflight and budget chosen only if selected later. Local support uncertain/table-confounded, trainingunreviewed, sameE07lineage. Do not count unfinished M1 dressing utility as demonstrated failure."
+      "notes": "Selected for E27 after E26 closed at raw5, not yet dispatched. Preserve E25 changed grips and test currently observed support then transport/entry with existing coordinated-task-progress, named/query/wristpanel/plan1/Astraultra,22dec/max1300/settle6/timeout180. DirectE25/698, freshhistory657667; source loader passed2026-11-07T06:45:33Z actionsfloat32(698,2,9). Supportuncertain/table-confounded/transportloaduntested, trainingunreviewed/sameE07lineage. No new geometry aid applied; run_id/results remain null until actual start."
     }
   ]
 }

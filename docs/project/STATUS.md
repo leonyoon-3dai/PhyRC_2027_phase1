@@ -1,5 +1,45 @@
 # 현재 상태와 다음 작업
 
+**E26은5/50·착의0·success=false,1139/1139전이 검사 통과로 자율 종료했습니다.** 21act+finish1/25calls,3query22valid·물리0·마감0,1139=787replay+232model+120settle입니다. 최종 판단은 마지막22번째 슬롯의 모델finish이며 예산 강제중단이나 감독자 신호가 아닙니다. no_dressing_points/final_score0.0·host78009=0·shellPython0·sim0·capturecomplete/operator_finished입니다.
+
+[최신 영상](../gallery/20261107-astra-hand-swap787-named-001.ko.md) · [분석](../collection/reviews/20261107-astra-hand-swap787-named-001.ko.md) · [학습 구간](../collection/reviews/20261107-astra-hand-swap787-named-001-learning-segments.json) · [백업 검증](sessions/20261107-e26-backup-verification.json)
+
+E26은 상대 배치/접근을 바꿨고953에서 두 손 관계를 재노출했습니다. D13의 큰 자세 변화와 작은 gripper 기준점 변화, D17/D18의 보상 관측으로 손 후보를 드러낸 결과를 보존합니다. 초기E23와 목표 손이 달랐다는 근거를 전 이력 최초의 다른 손 접근이나 역할 교환 완료로 확대하지 않습니다. 공식 추가 득점은 없었습니다.
+
+## E27 선택 · 아직 실행 전
+
+E27은 E25/698의 새 파지에서 기존 `coordinated-task-progress`로 운반·진입을 시험하도록 선택했습니다. history657/667·22판단/max1300/settle6·Astra/ultra를 유지하며, 아직 실행 전입니다. 새 파지의 국소 동행과 운반 하중 검증은 다르므로 현재 지지를 다시 확인합니다. 카메라 방향 보조 후보는 별도 CPU 준비 중이며 이번 설정에 적용하지 않습니다.
+
+E25의 새 파지는 release→다른 경계 placement→보정1→reclose와 R1국소 동행까지 시험했고, 새 파지 뒤 운반/진입은 실행하지 않았습니다. 따라서 운반 효과가 실패한 것으로 단정하지 않습니다. support상태는uncertain이며 table기여·잔류운동·독립하중 미검증을 유지합니다. 직접부모E25/698·새과거관측657/667·같은E07source group,정확한천checkpoint아닙니다. loader는06:45:33UTC에float32(698,2,9)로 통과했고trusted seed등은 공개 출력하지 않았습니다.
+
+현재 실행 코드는E26source53a58bb 이후 바뀌지 않았고 통합CPU317검사 결과가 적용됩니다. 새 카메라 방향 보조 후보는 별도worktree의CPU준비 단계이며 E27에 섞지 않습니다. 과거 점수나 검수자가 고른 좌표를actor에 전달하지 않습니다.
+
+## E27 선택 명령 · 실제 시작 source/시간은 시작 후 갱신
+
+```bash
+export PATH="$PWD/.runtime/codex-0.166.0/node_modules/.bin:$PATH"
+unset STRETCH4_PRACTICE_LAYOUT STRETCH4_RANDOMIZE
+PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.codex_client \
+  --run-id 20261107-astra-regrasp698-progress-named-001 --mode dressing \
+  --strategy coordinated-task-progress --actor-backend exec \
+  --model gpt-6-astra --effort ultra --plan-size 1 --review-points 10 \
+  --replay-prefix-run 20261107-astra-opposing563-named-001 --replay-prefix-steps 698 \
+  --parent-attempt 20261107-astra-opposing563-named-001 \
+  --retry-reason transport_and_entry_with_e25_changed_grasp \
+  --replay-observe-steps 657 667 --wrist-depth-panel --pixel-depth-query --named-actions \
+  --post-action-settle-steps 6 --decisions 22 --max-steps 1300 --model-timeout 180 \
+  --profile-step-phases
+```
+
+원본 백업은revision`41c78439105eb3a6e1f5fd9c0943cee6039d041b`,2,544,928,271bytes,SHA`82f7f3fb3b0b255c7549499078ef86e90352257f12cb728ccbd88221e5127d44`이며2026-11-07T06:49:13.774600+00:00에재다운로드·254member검증했습니다. 학습 승인은unreviewed입니다. 공식10점을 확인하면 보존 후 다음 득점으로 계속합니다.
+
+<details>
+<summary>E25 마감·E26 실행 당시 진행 이력</summary>
+
+> 아래는 당시 기록이며 현재 상태는 위 내용을 따릅니다.
+
+# 현재 상태와 다음 작업
+
 **E25는5/50·픽업5·착의0·success=false,698/698전이 검사 통과로 종료했습니다.** 한쪽 재파지1cycle과새파지국소동행을확인했지만반대두입구경계의개방은미확인입니다. 운반/진입전에모델이자율종료했습니다. 최고5점·중간목표10점미달성입니다.
 
 [최신 영상](../gallery/20261107-astra-opposing563-named-001.ko.md) · [분석](../collection/reviews/20261107-astra-opposing563-named-001.ko.md) · [학습 검토 구간](../collection/reviews/20261107-astra-opposing563-named-001-learning-segments.json) · [전체 일지](sessions/20261106-evening-resume.ko.md)
@@ -540,6 +580,8 @@ PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.codex_clie
 [클린 서버 복원](START_HERE.ko.md) · [초기 자산·E07 복원 검증](sessions/20261106-evening-restore-validation.json) · [E16 분석](../collection/reviews/20261106-astra-support264-002.ko.md) · [E15 마감 이력](SESSION_WRAPUP_20261106.ko.md) · [전체 개발 이력](HISTORY.ko.md)
 
 새 정책 학습·RL/VLA 성능 검증·학습 승인은 완료하지 않았습니다. 이전 문서의 일시 중지·미실행 문구는 당시 이력이며 현재 실행 상태는 이 문서와 최신 일지를 우선합니다.
+
+</details>
 
 </details>
 
