@@ -144,3 +144,9 @@ E17 시작 당시 source_snapshot commit은98bb41f, working_tree_modified=false�
 E17 비공개 원본은 고정 HF revision `d5ba6c645232c7674d3861fdf65da3a26e9e1ea9`에서1,027,542,010 bytes를 재다운로드해 SHA256 `51acf732e6744dc979fe35ae61a9c04120b247606cd24138791135d0581cbcfb` 일치를23:55:15 UTC에 확인했다. [receipt](20261106-e17-backup-verification.json). 허용목록163개 archive member의 SHA도 모두 검증했고 인증·runtime·원시 추론·CLI 이벤트·simulator 로그는 제외했다.
 
 E17 종료 후 목 우선 후보 커밋 `e2d9d3d84b17d0418e3cd902cd9472cd9212ca49`를 병합했다. 기존8전략 프롬프트를 유지한 별도목표 경로이며 실제 모델/GPU 적용은 아직 없다. 최초 후보검사의1실패는 A 지지 문구 승인후 예전05152fa 회귀문구가 남은 것이어서, 실행 oracle은유지하고 A문구만 고정공개75492d7 기준으로수정했다. 통합본 전체 **257개검사7.529초통과**, 로그`output/sessions/20261106-evening/cpu-neckline-integrated.log`, SHA256 `dc4a022373d51224482b6d661e04859db236f2b5b83f630cb6086b0368538d83`. [후보·검증범위](../../collection/research/2026-11-06-neckline-first-candidate.ko.md)
+
+## E18 B 실제 시작
+
+E17 갤러리·백업·목 우선 후보·257CPU검사를 main `499b3b8cb29568e6d5530d7ce8bf039c73cd8f6a`에 게시했다. 원격/검토 로컬 tree `d8bd4f55270e5a493856204175a6eba0a42f35c4` 일치를 확인했고, **23:58:53 UTC**에 STATUS의 E18 B 명령을 실행했다. run ID `20261106-astra-guide470-depth-001`, 시작 source_snapshot은499b3b8·working_tree_modified=false다.
+
+실제 옵션은 `coordinated-support-guide`, E16직접부모/prefix470, 새재실행 과거430·464, 현재손목depth·pixel-depth-query ON, plan1·35판단·max1400·timeout180·settle6·review10·phase profile이다. 모델/CLI는 Astra/ultra·0.166.0/exec 그대로다. 첫공개 관측은현재5+과거10+depth패널1의16이미지이며 질의후속은같은현재관측·이미지를유지한다. **질의가능 설정과 실제질의 사용은 구분**하며 종료기록에서 실제사용·query물리0·판단/호출 수를 검토한다. 로그 `output/sessions/20261106-evening/e18-guide470-depth-001.log`. 아직 최종결과는없다.
