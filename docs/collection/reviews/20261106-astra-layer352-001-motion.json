@@ -1,0 +1,2855 @@
+{
+  "schema": "phyrc-public-support-diagnostic-v1",
+  "scope": "offline public robot kinematics; endpoint displacements, not path lengths",
+  "support_confirmed": null,
+  "cloth_motion_measured": false,
+  "limitations": [
+    "Robot motion, close intent and finger spacing do not establish cloth support or attachment.",
+    "Fingertip-origin distance is not the inner contact gap.",
+    "A stationary command may retain targets; measured motion can continue.",
+    "Sparse endpoint comparisons include explicitly listed controller-settle segments.",
+    "Residuals and low velocity alone do not establish arrival or successful grasp.",
+    "Lift residual is unavailable unless a joint name or explicit index maps measured lift.",
+    "No evaluation, audit, raw simulator state, or images are read; visual review is still required."
+  ],
+  "sources": {
+    "decisions": {
+      "file": "output/operator-traces/20261106-astra-layer352-001/decisions.jsonl",
+      "sha256": "facb370e1f5966355cd365624d248ee6f917bd07180e1866434162e984feff24"
+    },
+    "observations": [
+      {
+        "file": "output/actors/20261106-astra-layer352-001/observations/00000/observation.json",
+        "sha256": "6e05b802ee5f570a0d3b6d07f52893cbabcb60200ffd0b7c3f174cffd1f9cd29"
+      },
+      {
+        "file": "output/actors/20261106-astra-layer352-001/observations/00001/observation.json",
+        "sha256": "e5a7f4c03f05cb0395583a137438a06c18edf0a3c3d94f3cbe4b7175ffd11502"
+      },
+      {
+        "file": "output/actors/20261106-astra-layer352-001/observations/00002/observation.json",
+        "sha256": "967c3dd5fe578f10335a0bc943866b6be4268c9eaa9aa9c4f702ce55c95d2612"
+      },
+      {
+        "file": "output/actors/20261106-astra-layer352-001/observations/00003/observation.json",
+        "sha256": "24164beb1bd3ad38b8b79828d2d79619ed9c42073744c3a5087bce2a24b2c7b5"
+      },
+      {
+        "file": "output/actors/20261106-astra-layer352-001/observations/00004/observation.json",
+        "sha256": "c298fd24b0fbe1f0d02c23d88eb1ee6ead4158ef03376de4feafa091af53157f"
+      },
+      {
+        "file": "output/actors/20261106-astra-layer352-001/observations/00005/observation.json",
+        "sha256": "11385183a973c4d5e8a1afc9d8bf516404b6e2ec3c95810102efac3ef21e15e2"
+      },
+      {
+        "file": "output/actors/20261106-astra-layer352-001/observations/00006/observation.json",
+        "sha256": "a591cc3545b01cb099b716bbe0cb89a92c376b5756cae09ac26786ca2252f37c"
+      },
+      {
+        "file": "output/actors/20261106-astra-layer352-001/observations/00007/observation.json",
+        "sha256": "a8a7bf4874cb1cced55af9e19ff863d52e7212c1c52520c94e8a343a8cfa1058"
+      },
+      {
+        "file": "output/actors/20261106-astra-layer352-001/observations/00008/observation.json",
+        "sha256": "2163355640b1fb5b6bdf806892730d9f0cbbd3dfefd1c8a7d2efc0d3e4c1ac69"
+      },
+      {
+        "file": "output/actors/20261106-astra-layer352-001/observations/00009/observation.json",
+        "sha256": "f11f4bc80cdb39b60ad0385139f7f61c860eaf1d74065561459ab6d34f9d7393"
+      },
+      {
+        "file": "output/actors/20261106-astra-layer352-001/observations/00010/observation.json",
+        "sha256": "19ca11d4d69dd992d2f0e07c82e2f0b0f0f13f01c4e41b27fc06e57adfc9ef64"
+      },
+      {
+        "file": "output/actors/20261106-astra-layer352-001/observations/00011/observation.json",
+        "sha256": "abbace9de9b5b07e3910cdbf7514fcc9e9730f8299e41a75459c5a80692debc1"
+      }
+    ],
+    "public_interface": {
+      "file": "output/sessions/20261106-evening/e17-public-joint-interface.json",
+      "sha256": "6c80cfad512eb280f60abb376accca0dbd4653b5d553cfa9bc9cdbdc5f79d511",
+      "selection_from": "output/collections/20261106-astra-layer352-001/run_metadata.json:public_interface",
+      "selected_keys": [
+        "joint_names",
+        "joint_units"
+      ],
+      "selected_contents": {
+        "joint_names": [
+          [
+            "wheel_0_joint",
+            "wheel_1_joint",
+            "wheel_2_joint",
+            "lift_joint",
+            "arm_l1_joint",
+            "arm_l2_joint",
+            "arm_l3_joint",
+            "arm_l4_joint",
+            "wrist_yaw_joint",
+            "wrist_pitch_joint",
+            "wrist_roll_joint",
+            "gripper_finger_left_joint",
+            "gripper_finger_right_joint"
+          ],
+          [
+            "wheel_0_joint",
+            "wheel_1_joint",
+            "wheel_2_joint",
+            "lift_joint",
+            "arm_l1_joint",
+            "arm_l2_joint",
+            "arm_l3_joint",
+            "arm_l4_joint",
+            "wrist_yaw_joint",
+            "wrist_pitch_joint",
+            "wrist_roll_joint",
+            "gripper_finger_left_joint",
+            "gripper_finger_right_joint"
+          ]
+        ],
+        "joint_units": [
+          [
+            "rad",
+            "rad",
+            "rad",
+            "m",
+            "m",
+            "m",
+            "m",
+            "m",
+            "rad",
+            "rad",
+            "rad",
+            "rad",
+            "rad"
+          ],
+          [
+            "rad",
+            "rad",
+            "rad",
+            "m",
+            "m",
+            "m",
+            "m",
+            "m",
+            "rad",
+            "rad",
+            "rad",
+            "rad",
+            "rad"
+          ]
+        ]
+      }
+    }
+  },
+  "joint_mapping": [
+    {
+      "lift_index": 3,
+      "source": "public_joint_name",
+      "lift_name": "lift_joint",
+      "finger_indices": [
+        11,
+        12
+      ],
+      "finger_names": [
+        "gripper_finger_left_joint",
+        "gripper_finger_right_joint"
+      ]
+    },
+    {
+      "lift_index": 3,
+      "source": "public_joint_name",
+      "lift_name": "lift_joint",
+      "finger_indices": [
+        11,
+        12
+      ],
+      "finger_names": [
+        "gripper_finger_left_joint",
+        "gripper_finger_right_joint"
+      ]
+    }
+  ],
+  "summary": {
+    "model_action_intervals": 11,
+    "measured_intervals": 11,
+    "single_robot_motion_intervals": 2
+  },
+  "intervals": [
+    {
+      "decision_index": 0,
+      "stage_intent": "lift",
+      "model_segment": {
+        "decision_index": 0,
+        "action_source": "model",
+        "start_step": 352,
+        "end_step": 356,
+        "simulation_start_s": 19.125000997446477,
+        "simulation_end_s": 19.32500100787729,
+        "applied_action": [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.07999999821186066,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.07999999821186066,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "line": 36,
+        "stage_intent": "lift"
+      },
+      "commanded_motion_robots": [
+        0,
+        1
+      ],
+      "commanded_stationary_robots": [],
+      "single_robot_motion_command": false,
+      "gripper_action": [
+        0.0,
+        0.0
+      ],
+      "measurement_status": "measured",
+      "start_observation": {
+        "file": "output/actors/20261106-astra-layer352-001/observations/00000/observation.json",
+        "sha256": "6e05b802ee5f570a0d3b6d07f52893cbabcb60200ffd0b7c3f174cffd1f9cd29"
+      },
+      "end_observation": {
+        "file": "output/actors/20261106-astra-layer352-001/observations/00001/observation.json",
+        "sha256": "e5a7f4c03f05cb0395583a137438a06c18edf0a3c3d94f3cbe4b7175ffd11502"
+      },
+      "start_boundary": 352,
+      "end_boundary": 362,
+      "simulation_start_s": 19.125000997446477,
+      "simulation_end_s": 19.62500102352351,
+      "includes_controller_settle": true,
+      "covered_segments": [
+        {
+          "decision_index": 0,
+          "action_source": "model",
+          "start_step": 352,
+          "end_step": 356,
+          "simulation_start_s": 19.125000997446477,
+          "simulation_end_s": 19.32500100787729,
+          "applied_action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.07999999821186066,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.07999999821186066,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "line": 36,
+          "stage_intent": "lift"
+        },
+        {
+          "decision_index": 0,
+          "action_source": "controller_settle",
+          "start_step": 356,
+          "end_step": 362,
+          "simulation_start_s": 19.32500100787729,
+          "simulation_end_s": 19.62500102352351,
+          "applied_action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "line": 37,
+          "stage_intent": "lift"
+        }
+      ],
+      "robots": [
+        {
+          "robot": 0,
+          "motion_command_zero": false,
+          "grasp_world_delta_m": [
+            0.0072805932462221,
+            0.00013259663826836743,
+            0.0006960847735469899
+          ],
+          "grasp_world_displacement_m": 0.00731499513994226,
+          "base_world_delta_m": [
+            -0.00128173828125,
+            0.0007798671722412109,
+            -0.0028424984484445304
+          ],
+          "grasp_base_delta_m": [
+            -0.014953672885894775,
+            -0.0003746524453163147,
+            0.01807999610900879
+          ],
+          "before": {
+            "gripper_close_command": true,
+            "gripper_target": 0.10300000011920929,
+            "fingertip_origin_distance_m": 0.053405746817588806,
+            "finger_joint_positions": [
+              0.24512234330177307,
+              0.03238668292760849
+            ],
+            "finger_joint_velocities": [
+              -0.5574319362640381,
+              -0.1655329465866089
+            ],
+            "lift_target_m": 0.6483399868011475,
+            "lift_measured_m": 0.6500044465065002,
+            "lift_target_minus_measured_m": -0.0016644597053527832,
+            "lift_velocity_m_s": 0.0015366632724180818
+          },
+          "after": {
+            "gripper_close_command": true,
+            "gripper_target": 0.10300000011920929,
+            "fingertip_origin_distance_m": 0.055428940802812576,
+            "finger_joint_positions": [
+              0.21819435060024261,
+              0.06974557042121887
+            ],
+            "finger_joint_velocities": [
+              -0.08766312152147293,
+              -0.03070048987865448
+            ],
+            "lift_target_m": 0.672980010509491,
+            "lift_measured_m": 0.6702717542648315,
+            "lift_target_minus_measured_m": 0.002708256244659424,
+            "lift_velocity_m_s": 0.01870034821331501
+          }
+        },
+        {
+          "robot": 1,
+          "motion_command_zero": false,
+          "grasp_world_delta_m": [
+            -0.0009186253403701272,
+            6.744311417139492e-05,
+            0.02254030788120398
+          ],
+          "grasp_world_displacement_m": 0.022559120117351332,
+          "base_world_delta_m": [
+            -0.00098419189453125,
+            -0.0005993843078613281,
+            8.116476237773895e-07
+          ],
+          "grasp_base_delta_m": [
+            -0.0005311965942382812,
+            -1.0065734386444092e-05,
+            0.022542953491210938
+          ],
+          "before": {
+            "gripper_close_command": true,
+            "gripper_target": 0.10300000011920929,
+            "fingertip_origin_distance_m": 0.06363732367753983,
+            "finger_joint_positions": [
+              0.16888007521629333,
+              0.1616562157869339
+            ],
+            "finger_joint_velocities": [
+              0.009570938535034657,
+              -0.009046431630849838
+            ],
+            "lift_target_m": 0.6976200342178345,
+            "lift_measured_m": 0.6937553882598877,
+            "lift_target_minus_measured_m": 0.0038646459579467773,
+            "lift_velocity_m_s": 0.017552563920617104
+          },
+          "after": {
+            "gripper_close_command": true,
+            "gripper_target": 0.10300000011920929,
+            "fingertip_origin_distance_m": 0.06373602151870728,
+            "finger_joint_positions": [
+              0.16827236115932465,
+              0.16277556121349335
+            ],
+            "finger_joint_velocities": [
+              -0.0009531467803753912,
+              0.019335007295012474
+            ],
+            "lift_target_m": 0.7222599983215332,
+            "lift_measured_m": 0.7162981629371643,
+            "lift_target_minus_measured_m": 0.0059618353843688965,
+            "lift_velocity_m_s": 0.028034934774041176
+          }
+        }
+      ]
+    },
+    {
+      "decision_index": 1,
+      "stage_intent": "lift",
+      "model_segment": {
+        "decision_index": 1,
+        "action_source": "model",
+        "start_step": 362,
+        "end_step": 366,
+        "simulation_start_s": 19.62500102352351,
+        "simulation_end_s": 19.825001033954322,
+        "applied_action": [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.11999999731779099,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.03999999910593033,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "line": 39,
+        "stage_intent": "lift"
+      },
+      "commanded_motion_robots": [
+        0,
+        1
+      ],
+      "commanded_stationary_robots": [],
+      "single_robot_motion_command": false,
+      "gripper_action": [
+        0.0,
+        0.0
+      ],
+      "measurement_status": "measured",
+      "start_observation": {
+        "file": "output/actors/20261106-astra-layer352-001/observations/00001/observation.json",
+        "sha256": "e5a7f4c03f05cb0395583a137438a06c18edf0a3c3d94f3cbe4b7175ffd11502"
+      },
+      "end_observation": {
+        "file": "output/actors/20261106-astra-layer352-001/observations/00002/observation.json",
+        "sha256": "967c3dd5fe578f10335a0bc943866b6be4268c9eaa9aa9c4f702ce55c95d2612"
+      },
+      "start_boundary": 362,
+      "end_boundary": 372,
+      "simulation_start_s": 19.62500102352351,
+      "simulation_end_s": 20.12500104960054,
+      "includes_controller_settle": true,
+      "covered_segments": [
+        {
+          "decision_index": 1,
+          "action_source": "model",
+          "start_step": 362,
+          "end_step": 366,
+          "simulation_start_s": 19.62500102352351,
+          "simulation_end_s": 19.825001033954322,
+          "applied_action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.11999999731779099,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.03999999910593033,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "line": 39,
+          "stage_intent": "lift"
+        },
+        {
+          "decision_index": 1,
+          "action_source": "controller_settle",
+          "start_step": 366,
+          "end_step": 372,
+          "simulation_start_s": 19.825001033954322,
+          "simulation_end_s": 20.12500104960054,
+          "applied_action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "line": 40,
+          "stage_intent": "lift"
+        }
+      ],
+      "robots": [
+        {
+          "robot": 0,
+          "motion_command_zero": false,
+          "grasp_world_delta_m": [
+            0.0027022371088842867,
+            0.004515880531312355,
+            0.025006947355979525
+          ],
+          "grasp_world_displacement_m": 0.02555469973273896,
+          "base_world_delta_m": [
+            -0.0003924369812011719,
+            -0.0008791685104370117,
+            -0.0004666366148740053
+          ],
+          "grasp_base_delta_m": [
+            -0.008137047290802002,
+            -3.5449862480163574e-05,
+            0.02791076898574829
+          ],
+          "before": {
+            "gripper_close_command": true,
+            "gripper_target": 0.10300000011920929,
+            "fingertip_origin_distance_m": 0.055428940802812576,
+            "finger_joint_positions": [
+              0.21819435060024261,
+              0.06974557042121887
+            ],
+            "finger_joint_velocities": [
+              -0.08766312152147293,
+              -0.03070048987865448
+            ],
+            "lift_target_m": 0.672980010509491,
+            "lift_measured_m": 0.6702717542648315,
+            "lift_target_minus_measured_m": 0.002708256244659424,
+            "lift_velocity_m_s": 0.01870034821331501
+          },
+          "after": {
+            "gripper_close_command": true,
+            "gripper_target": 0.10300000011920929,
+            "fingertip_origin_distance_m": 0.06071532890200615,
+            "finger_joint_positions": [
+              0.21282058954238892,
+              0.10259521007537842
+            ],
+            "finger_joint_velocities": [
+              0.00630237115547061,
+              0.0023940294049680233
+            ],
+            "lift_target_m": 0.7099400162696838,
+            "lift_measured_m": 0.7024587392807007,
+            "lift_target_minus_measured_m": 0.007481276988983154,
+            "lift_velocity_m_s": 0.036409515887498856
+          }
+        },
+        {
+          "robot": 1,
+          "motion_command_zero": false,
+          "grasp_world_delta_m": [
+            -0.0008089570561864434,
+            -6.100619433713206e-05,
+            0.013795259765034373
+          ],
+          "grasp_world_displacement_m": 0.01381909277989252,
+          "base_world_delta_m": [
+            -0.0009088516235351562,
+            -0.0005819201469421387,
+            -7.667113095521927e-07
+          ],
+          "grasp_base_delta_m": [
+            -0.0004444718360900879,
+            1.7017126083374023e-05,
+            0.013799905776977539
+          ],
+          "before": {
+            "gripper_close_command": true,
+            "gripper_target": 0.10300000011920929,
+            "fingertip_origin_distance_m": 0.06373602151870728,
+            "finger_joint_positions": [
+              0.16827236115932465,
+              0.16277556121349335
+            ],
+            "finger_joint_velocities": [
+              -0.0009531467803753912,
+              0.019335007295012474
+            ],
+            "lift_target_m": 0.7222599983215332,
+            "lift_measured_m": 0.7162981629371643,
+            "lift_target_minus_measured_m": 0.0059618353843688965,
+            "lift_velocity_m_s": 0.028034934774041176
+          },
+          "after": {
+            "gripper_close_command": true,
+            "gripper_target": 0.10300000011920929,
+            "fingertip_origin_distance_m": 0.06422155350446701,
+            "finger_joint_positions": [
+              0.1676461398601532,
+              0.16593049466609955
+            ],
+            "finger_joint_velocities": [
+              -0.001780757331289351,
+              0.008067180402576923
+            ],
+            "lift_target_m": 0.7345800399780273,
+            "lift_measured_m": 0.730098307132721,
+            "lift_target_minus_measured_m": 0.0044817328453063965,
+            "lift_velocity_m_s": 0.02056894451379776
+          }
+        }
+      ]
+    },
+    {
+      "decision_index": 2,
+      "stage_intent": "orientation",
+      "model_segment": {
+        "decision_index": 2,
+        "action_source": "model",
+        "start_step": 372,
+        "end_step": 376,
+        "simulation_start_s": 20.12500104960054,
+        "simulation_end_s": 20.325001060031354,
+        "applied_action": [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            -0.20999999344348907,
+            0.0,
+            -0.20000000298023224,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            -0.20999999344348907,
+            0.0,
+            -0.20000000298023224,
+            0.0,
+            0.0
+          ]
+        ],
+        "line": 42,
+        "stage_intent": "orientation"
+      },
+      "commanded_motion_robots": [
+        0,
+        1
+      ],
+      "commanded_stationary_robots": [],
+      "single_robot_motion_command": false,
+      "gripper_action": [
+        0.0,
+        0.0
+      ],
+      "measurement_status": "measured",
+      "start_observation": {
+        "file": "output/actors/20261106-astra-layer352-001/observations/00002/observation.json",
+        "sha256": "967c3dd5fe578f10335a0bc943866b6be4268c9eaa9aa9c4f702ce55c95d2612"
+      },
+      "end_observation": {
+        "file": "output/actors/20261106-astra-layer352-001/observations/00003/observation.json",
+        "sha256": "24164beb1bd3ad38b8b79828d2d79619ed9c42073744c3a5087bce2a24b2c7b5"
+      },
+      "start_boundary": 372,
+      "end_boundary": 382,
+      "simulation_start_s": 20.12500104960054,
+      "simulation_end_s": 20.625001075677574,
+      "includes_controller_settle": true,
+      "covered_segments": [
+        {
+          "decision_index": 2,
+          "action_source": "model",
+          "start_step": 372,
+          "end_step": 376,
+          "simulation_start_s": 20.12500104960054,
+          "simulation_end_s": 20.325001060031354,
+          "applied_action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              -0.20999999344348907,
+              0.0,
+              -0.20000000298023224,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              -0.20999999344348907,
+              0.0,
+              -0.20000000298023224,
+              0.0,
+              0.0
+            ]
+          ],
+          "line": 42,
+          "stage_intent": "orientation"
+        },
+        {
+          "decision_index": 2,
+          "action_source": "controller_settle",
+          "start_step": 376,
+          "end_step": 382,
+          "simulation_start_s": 20.325001060031354,
+          "simulation_end_s": 20.625001075677574,
+          "applied_action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "line": 43,
+          "stage_intent": "orientation"
+        }
+      ],
+      "robots": [
+        {
+          "robot": 0,
+          "motion_command_zero": false,
+          "grasp_world_delta_m": [
+            -0.0001771513563735283,
+            -0.0014207345541215055,
+            0.03228736606290561
+          ],
+          "grasp_world_displacement_m": 0.032319094612263025,
+          "base_world_delta_m": [
+            -0.0007359981536865234,
+            -0.0003999471664428711,
+            -2.742744982242584e-07
+          ],
+          "grasp_base_delta_m": [
+            0.0011579394340515137,
+            6.64442777633667e-05,
+            0.03228104114532471
+          ],
+          "before": {
+            "gripper_close_command": true,
+            "gripper_target": 0.10300000011920929,
+            "fingertip_origin_distance_m": 0.06071532890200615,
+            "finger_joint_positions": [
+              0.21282058954238892,
+              0.10259521007537842
+            ],
+            "finger_joint_velocities": [
+              0.00630237115547061,
+              0.0023940294049680233
+            ],
+            "lift_target_m": 0.7099400162696838,
+            "lift_measured_m": 0.7024587392807007,
+            "lift_target_minus_measured_m": 0.007481276988983154,
+            "lift_velocity_m_s": 0.036409515887498856
+          },
+          "after": {
+            "gripper_close_command": true,
+            "gripper_target": 0.10300000011920929,
+            "fingertip_origin_distance_m": 0.062181033194065094,
+            "finger_joint_positions": [
+              0.2194298654794693,
+              0.10363379865884781
+            ],
+            "finger_joint_velocities": [
+              0.016968950629234314,
+              0.00023491472529713064
+            ],
+            "lift_target_m": 0.7099400162696838,
+            "lift_measured_m": 0.7069783210754395,
+            "lift_target_minus_measured_m": 0.0029616951942443848,
+            "lift_velocity_m_s": 0.013280521146953106
+          }
+        },
+        {
+          "robot": 1,
+          "motion_command_zero": false,
+          "grasp_world_delta_m": [
+            -0.0008749976446833507,
+            -0.0010549992307085088,
+            0.029524704537210122
+          ],
+          "grasp_world_displacement_m": 0.02955650219942395,
+          "base_world_delta_m": [
+            -0.0008339881896972656,
+            -0.0005481839179992676,
+            3.3760443329811096e-07
+          ],
+          "grasp_base_delta_m": [
+            0.0006849169731140137,
+            -0.00013400614261627197,
+            0.02952057123184204
+          ],
+          "before": {
+            "gripper_close_command": true,
+            "gripper_target": 0.10300000011920929,
+            "fingertip_origin_distance_m": 0.06422155350446701,
+            "finger_joint_positions": [
+              0.1676461398601532,
+              0.16593049466609955
+            ],
+            "finger_joint_velocities": [
+              -0.001780757331289351,
+              0.008067180402576923
+            ],
+            "lift_target_m": 0.7345800399780273,
+            "lift_measured_m": 0.730098307132721,
+            "lift_target_minus_measured_m": 0.0044817328453063965,
+            "lift_velocity_m_s": 0.02056894451379776
+          },
+          "after": {
+            "gripper_close_command": true,
+            "gripper_target": 0.10300000011920929,
+            "fingertip_origin_distance_m": 0.06608371436595917,
+            "finger_joint_positions": [
+              0.15997111797332764,
+              0.18330904841423035
+            ],
+            "finger_joint_velocities": [
+              -0.005377997178584337,
+              0.07237838208675385
+            ],
+            "lift_target_m": 0.7345800399780273,
+            "lift_measured_m": 0.7318561673164368,
+            "lift_target_minus_measured_m": 0.002723872661590576,
+            "lift_velocity_m_s": 0.011482943780720234
+          }
+        }
+      ]
+    },
+    {
+      "decision_index": 3,
+      "stage_intent": "orientation",
+      "model_segment": {
+        "decision_index": 3,
+        "action_source": "model",
+        "start_step": 382,
+        "end_step": 386,
+        "simulation_start_s": 20.625001075677574,
+        "simulation_end_s": 20.825001086108387,
+        "applied_action": [
+          [
+            0.0,
+            0.03999999910593033,
+            0.0,
+            0.10000000149011612,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            -0.03999999910593033,
+            0.0,
+            0.10000000149011612,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "line": 45,
+        "stage_intent": "orientation"
+      },
+      "commanded_motion_robots": [
+        0,
+        1
+      ],
+      "commanded_stationary_robots": [],
+      "single_robot_motion_command": false,
+      "gripper_action": [
+        0.0,
+        0.0
+      ],
+      "measurement_status": "measured",
+      "start_observation": {
+        "file": "output/actors/20261106-astra-layer352-001/observations/00003/observation.json",
+        "sha256": "24164beb1bd3ad38b8b79828d2d79619ed9c42073744c3a5087bce2a24b2c7b5"
+      },
+      "end_observation": {
+        "file": "output/actors/20261106-astra-layer352-001/observations/00004/observation.json",
+        "sha256": "c298fd24b0fbe1f0d02c23d88eb1ee6ead4158ef03376de4feafa091af53157f"
+      },
+      "start_boundary": 382,
+      "end_boundary": 392,
+      "simulation_start_s": 20.625001075677574,
+      "simulation_end_s": 21.125001101754606,
+      "includes_controller_settle": true,
+      "covered_segments": [
+        {
+          "decision_index": 3,
+          "action_source": "model",
+          "start_step": 382,
+          "end_step": 386,
+          "simulation_start_s": 20.625001075677574,
+          "simulation_end_s": 20.825001086108387,
+          "applied_action": [
+            [
+              0.0,
+              0.03999999910593033,
+              0.0,
+              0.10000000149011612,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              -0.03999999910593033,
+              0.0,
+              0.10000000149011612,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "line": 45,
+          "stage_intent": "orientation"
+        },
+        {
+          "decision_index": 3,
+          "action_source": "controller_settle",
+          "start_step": 386,
+          "end_step": 392,
+          "simulation_start_s": 20.825001086108387,
+          "simulation_end_s": 21.125001101754606,
+          "applied_action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "line": 46,
+          "stage_intent": "orientation"
+        }
+      ],
+      "robots": [
+        {
+          "robot": 0,
+          "motion_command_zero": false,
+          "grasp_world_delta_m": [
+            0.004429822604217648,
+            -0.001991195688221037,
+            0.031752360296140814
+          ],
+          "grasp_world_displacement_m": 0.03212165271198802,
+          "base_world_delta_m": [
+            0.004149913787841797,
+            -0.0003775954246520996,
+            2.2118911147117615e-07
+          ],
+          "grasp_base_delta_m": [
+            0.0017842650413513184,
+            5.287677049636841e-05,
+            0.03174436092376709
+          ],
+          "before": {
+            "gripper_close_command": true,
+            "gripper_target": 0.10300000011920929,
+            "fingertip_origin_distance_m": 0.062181033194065094,
+            "finger_joint_positions": [
+              0.2194298654794693,
+              0.10363379865884781
+            ],
+            "finger_joint_velocities": [
+              0.016968950629234314,
+              0.00023491472529713064
+            ],
+            "lift_target_m": 0.7099400162696838,
+            "lift_measured_m": 0.7069783210754395,
+            "lift_target_minus_measured_m": 0.0029616951942443848,
+            "lift_velocity_m_s": 0.013280521146953106
+          },
+          "after": {
+            "gripper_close_command": true,
+            "gripper_target": 0.10300000011920929,
+            "fingertip_origin_distance_m": 0.06335002928972244,
+            "finger_joint_positions": [
+              0.225528746843338,
+              0.10363956540822983
+            ],
+            "finger_joint_velocities": [
+              0.016725927591323853,
+              -0.0007075638277456164
+            ],
+            "lift_target_m": 0.7407400012016296,
+            "lift_measured_m": 0.733985424041748,
+            "lift_target_minus_measured_m": 0.006754577159881592,
+            "lift_velocity_m_s": 0.031735554337501526
+          }
+        },
+        {
+          "robot": 1,
+          "motion_command_zero": false,
+          "grasp_world_delta_m": [
+            -0.005743982111545254,
+            -0.0021414903733982804,
+            0.03153821573505422
+          ],
+          "grasp_world_displacement_m": 0.03212846655643451,
+          "base_world_delta_m": [
+            -0.005971193313598633,
+            -0.00047451257705688477,
+            -9.243376553058624e-08
+          ],
+          "grasp_base_delta_m": [
+            0.0018494725227355957,
+            7.852911949157715e-05,
+            0.031528592109680176
+          ],
+          "before": {
+            "gripper_close_command": true,
+            "gripper_target": 0.10300000011920929,
+            "fingertip_origin_distance_m": 0.06608371436595917,
+            "finger_joint_positions": [
+              0.15997111797332764,
+              0.18330904841423035
+            ],
+            "finger_joint_velocities": [
+              -0.005377997178584337,
+              0.07237838208675385
+            ],
+            "lift_target_m": 0.7345800399780273,
+            "lift_measured_m": 0.7318561673164368,
+            "lift_target_minus_measured_m": 0.002723872661590576,
+            "lift_velocity_m_s": 0.011482943780720234
+          },
+          "after": {
+            "gripper_close_command": true,
+            "gripper_target": 0.10300000011920929,
+            "fingertip_origin_distance_m": 0.06674646586179733,
+            "finger_joint_positions": [
+              0.1561497002840042,
+              0.19058871269226074
+            ],
+            "finger_joint_velocities": [
+              -0.007671006489545107,
+              0.0028739909175783396
+            ],
+            "lift_target_m": 0.7653800249099731,
+            "lift_measured_m": 0.7586416602134705,
+            "lift_target_minus_measured_m": 0.0067383646965026855,
+            "lift_velocity_m_s": 0.03163120523095131
+          }
+        }
+      ]
+    },
+    {
+      "decision_index": 4,
+      "stage_intent": "recovery",
+      "model_segment": {
+        "decision_index": 4,
+        "action_source": "model",
+        "start_step": 392,
+        "end_step": 398,
+        "simulation_start_s": 21.125001101754606,
+        "simulation_end_s": 21.425001117400825,
+        "applied_action": [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            -1.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "line": 48,
+        "stage_intent": "recovery"
+      },
+      "commanded_motion_robots": [],
+      "commanded_stationary_robots": [
+        0,
+        1
+      ],
+      "single_robot_motion_command": false,
+      "gripper_action": [
+        -1.0,
+        0.0
+      ],
+      "measurement_status": "measured",
+      "start_observation": {
+        "file": "output/actors/20261106-astra-layer352-001/observations/00004/observation.json",
+        "sha256": "c298fd24b0fbe1f0d02c23d88eb1ee6ead4158ef03376de4feafa091af53157f"
+      },
+      "end_observation": {
+        "file": "output/actors/20261106-astra-layer352-001/observations/00005/observation.json",
+        "sha256": "11385183a973c4d5e8a1afc9d8bf516404b6e2ec3c95810102efac3ef21e15e2"
+      },
+      "start_boundary": 392,
+      "end_boundary": 398,
+      "simulation_start_s": 21.125001101754606,
+      "simulation_end_s": 21.425001117400825,
+      "includes_controller_settle": false,
+      "covered_segments": [
+        {
+          "decision_index": 4,
+          "action_source": "model",
+          "start_step": 392,
+          "end_step": 398,
+          "simulation_start_s": 21.125001101754606,
+          "simulation_end_s": 21.425001117400825,
+          "applied_action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              -1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "line": 48,
+          "stage_intent": "recovery"
+        }
+      ],
+      "robots": [
+        {
+          "robot": 0,
+          "motion_command_zero": true,
+          "grasp_world_delta_m": [
+            -0.0006306194796041886,
+            0.0001232889360178735,
+            0.0036044352956905445
+          ],
+          "grasp_world_displacement_m": 0.0036612613797188066,
+          "base_world_delta_m": [
+            -0.0004744529724121094,
+            -0.00020819902420043945,
+            5.51808625459671e-08
+          ],
+          "grasp_base_delta_m": [
+            -0.0003044009208679199,
+            -0.0001309812068939209,
+            0.0036058425903320312
+          ],
+          "before": {
+            "gripper_close_command": true,
+            "gripper_target": 0.10300000011920929,
+            "fingertip_origin_distance_m": 0.06335002928972244,
+            "finger_joint_positions": [
+              0.225528746843338,
+              0.10363956540822983
+            ],
+            "finger_joint_velocities": [
+              0.016725927591323853,
+              -0.0007075638277456164
+            ],
+            "lift_target_m": 0.7407400012016296,
+            "lift_measured_m": 0.733985424041748,
+            "lift_target_minus_measured_m": 0.006754577159881592,
+            "lift_velocity_m_s": 0.031735554337501526
+          },
+          "after": {
+            "gripper_close_command": false,
+            "gripper_target": 0.4007500112056732,
+            "fingertip_origin_distance_m": 0.10236912220716476,
+            "finger_joint_positions": [
+              0.2803637981414795,
+              0.2527141571044922
+            ],
+            "finger_joint_velocities": [
+              0.6074689030647278,
+              0.7385793924331665
+            ],
+            "lift_target_m": 0.7407400012016296,
+            "lift_measured_m": 0.7372438907623291,
+            "lift_target_minus_measured_m": 0.003496110439300537,
+            "lift_velocity_m_s": 0.015507119707763195
+          }
+        },
+        {
+          "robot": 1,
+          "motion_command_zero": true,
+          "grasp_world_delta_m": [
+            -0.0003242437426167477,
+            -0.0005898551610874492,
+            0.003566744780108544
+          ],
+          "grasp_world_displacement_m": 0.003629701288276924,
+          "base_world_delta_m": [
+            -0.0004150867462158203,
+            -0.00027298927307128906,
+            -1.0011717677116394e-08
+          ],
+          "grasp_base_delta_m": [
+            0.0003362894058227539,
+            5.65946102142334e-05,
+            0.0035639405250549316
+          ],
+          "before": {
+            "gripper_close_command": true,
+            "gripper_target": 0.10300000011920929,
+            "fingertip_origin_distance_m": 0.06674646586179733,
+            "finger_joint_positions": [
+              0.1561497002840042,
+              0.19058871269226074
+            ],
+            "finger_joint_velocities": [
+              -0.007671006489545107,
+              0.0028739909175783396
+            ],
+            "lift_target_m": 0.7653800249099731,
+            "lift_measured_m": 0.7586416602134705,
+            "lift_target_minus_measured_m": 0.0067383646965026855,
+            "lift_velocity_m_s": 0.03163120523095131
+          },
+          "after": {
+            "gripper_close_command": true,
+            "gripper_target": 0.10300000011920929,
+            "fingertip_origin_distance_m": 0.06669876724481583,
+            "finger_joint_positions": [
+              0.15549159049987793,
+              0.19100037217140198
+            ],
+            "finger_joint_velocities": [
+              0.00018632665160112083,
+              0.00273603992536664
+            ],
+            "lift_target_m": 0.7653800249099731,
+            "lift_measured_m": 0.7618762850761414,
+            "lift_target_minus_measured_m": 0.003503739833831787,
+            "lift_velocity_m_s": 0.01595948450267315
+          }
+        }
+      ]
+    },
+    {
+      "decision_index": 5,
+      "stage_intent": "recovery",
+      "model_segment": {
+        "decision_index": 5,
+        "action_source": "model",
+        "start_step": 398,
+        "end_step": 402,
+        "simulation_start_s": 21.425001117400825,
+        "simulation_end_s": 21.625001127831638,
+        "applied_action": [
+          [
+            0.0,
+            0.0,
+            0.0,
+            -0.2199999988079071,
+            -0.07999999821186066,
+            0.3199999928474426,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "line": 50,
+        "stage_intent": "recovery"
+      },
+      "commanded_motion_robots": [
+        0
+      ],
+      "commanded_stationary_robots": [
+        1
+      ],
+      "single_robot_motion_command": true,
+      "gripper_action": [
+        0.0,
+        0.0
+      ],
+      "measurement_status": "measured",
+      "start_observation": {
+        "file": "output/actors/20261106-astra-layer352-001/observations/00005/observation.json",
+        "sha256": "11385183a973c4d5e8a1afc9d8bf516404b6e2ec3c95810102efac3ef21e15e2"
+      },
+      "end_observation": {
+        "file": "output/actors/20261106-astra-layer352-001/observations/00006/observation.json",
+        "sha256": "a591cc3545b01cb099b716bbe0cb89a92c376b5756cae09ac26786ca2252f37c"
+      },
+      "start_boundary": 398,
+      "end_boundary": 408,
+      "simulation_start_s": 21.425001117400825,
+      "simulation_end_s": 21.925001143477857,
+      "includes_controller_settle": true,
+      "covered_segments": [
+        {
+          "decision_index": 5,
+          "action_source": "model",
+          "start_step": 398,
+          "end_step": 402,
+          "simulation_start_s": 21.425001117400825,
+          "simulation_end_s": 21.625001127831638,
+          "applied_action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              -0.2199999988079071,
+              -0.07999999821186066,
+              0.3199999928474426,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "line": 50,
+          "stage_intent": "recovery"
+        },
+        {
+          "decision_index": 5,
+          "action_source": "controller_settle",
+          "start_step": 402,
+          "end_step": 408,
+          "simulation_start_s": 21.625001127831638,
+          "simulation_end_s": 21.925001143477857,
+          "applied_action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "line": 51,
+          "stage_intent": "recovery"
+        }
+      ],
+      "robots": [
+        {
+          "robot": 0,
+          "motion_command_zero": false,
+          "grasp_world_delta_m": [
+            0.0564568054876915,
+            -0.002075100165198851,
+            -0.05792609939724236
+          ],
+          "grasp_world_displacement_m": 0.08091421332466776,
+          "base_world_delta_m": [
+            -0.0010209083557128906,
+            -0.00036084651947021484,
+            -4.2724423110485077e-07
+          ],
+          "grasp_base_delta_m": [
+            0.001398324966430664,
+            0.057718776166439056,
+            -0.057735562324523926
+          ],
+          "before": {
+            "gripper_close_command": false,
+            "gripper_target": 0.4007500112056732,
+            "fingertip_origin_distance_m": 0.10236912220716476,
+            "finger_joint_positions": [
+              0.2803637981414795,
+              0.2527141571044922
+            ],
+            "finger_joint_velocities": [
+              0.6074689030647278,
+              0.7385793924331665
+            ],
+            "lift_target_m": 0.7407400012016296,
+            "lift_measured_m": 0.7372438907623291,
+            "lift_target_minus_measured_m": 0.003496110439300537,
+            "lift_velocity_m_s": 0.015507119707763195
+          },
+          "after": {
+            "gripper_close_command": false,
+            "gripper_target": 0.5,
+            "fingertip_origin_distance_m": 0.18058426678180695,
+            "finger_joint_positions": [
+              0.4784141778945923,
+              0.4759223163127899
+            ],
+            "finger_joint_velocities": [
+              0.09466945379972458,
+              0.12690027058124542
+            ],
+            "lift_target_m": 0.672980010509491,
+            "lift_measured_m": 0.6794388890266418,
+            "lift_target_minus_measured_m": -0.006458878517150879,
+            "lift_velocity_m_s": -0.0340283177793026
+          }
+        },
+        {
+          "robot": 1,
+          "motion_command_zero": true,
+          "grasp_world_delta_m": [
+            -0.0006618483425531174,
+            -0.0004651543961005089,
+            0.0009242231490266262
+          ],
+          "grasp_world_displacement_m": 0.0012282508986150309,
+          "base_world_delta_m": [
+            -0.0007259845733642578,
+            -0.0004558563232421875,
+            -3.748573362827301e-08
+          ],
+          "grasp_base_delta_m": [
+            9.715557098388672e-06,
+            2.2977590560913086e-05,
+            0.0009238719940185547
+          ],
+          "before": {
+            "gripper_close_command": true,
+            "gripper_target": 0.10300000011920929,
+            "fingertip_origin_distance_m": 0.06669876724481583,
+            "finger_joint_positions": [
+              0.15549159049987793,
+              0.19100037217140198
+            ],
+            "finger_joint_velocities": [
+              0.00018632665160112083,
+              0.00273603992536664
+            ],
+            "lift_target_m": 0.7653800249099731,
+            "lift_measured_m": 0.7618762850761414,
+            "lift_target_minus_measured_m": 0.003503739833831787,
+            "lift_velocity_m_s": 0.01595948450267315
+          },
+          "after": {
+            "gripper_close_command": true,
+            "gripper_target": 0.10300000011920929,
+            "fingertip_origin_distance_m": 0.06688462942838669,
+            "finger_joint_positions": [
+              0.15631286799907684,
+              0.1911453753709793
+            ],
+            "finger_joint_velocities": [
+              0.013214481994509697,
+              -0.0031072194688022137
+            ],
+            "lift_target_m": 0.7653800249099731,
+            "lift_measured_m": 0.7627190351486206,
+            "lift_target_minus_measured_m": 0.002660989761352539,
+            "lift_velocity_m_s": 0.011206492781639099
+          }
+        }
+      ]
+    },
+    {
+      "decision_index": 6,
+      "stage_intent": "recovery",
+      "model_segment": {
+        "decision_index": 6,
+        "action_source": "model",
+        "start_step": 408,
+        "end_step": 412,
+        "simulation_start_s": 21.925001143477857,
+        "simulation_end_s": 22.12500115390867,
+        "applied_action": [
+          [
+            0.0,
+            0.0,
+            0.0,
+            -0.04500000178813934,
+            -0.07999999821186066,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "line": 53,
+        "stage_intent": "recovery"
+      },
+      "commanded_motion_robots": [
+        0
+      ],
+      "commanded_stationary_robots": [
+        1
+      ],
+      "single_robot_motion_command": true,
+      "gripper_action": [
+        0.0,
+        0.0
+      ],
+      "measurement_status": "measured",
+      "start_observation": {
+        "file": "output/actors/20261106-astra-layer352-001/observations/00006/observation.json",
+        "sha256": "a591cc3545b01cb099b716bbe0cb89a92c376b5756cae09ac26786ca2252f37c"
+      },
+      "end_observation": {
+        "file": "output/actors/20261106-astra-layer352-001/observations/00007/observation.json",
+        "sha256": "a8a7bf4874cb1cced55af9e19ff863d52e7212c1c52520c94e8a343a8cfa1058"
+      },
+      "start_boundary": 408,
+      "end_boundary": 418,
+      "simulation_start_s": 21.925001143477857,
+      "simulation_end_s": 22.42500116955489,
+      "includes_controller_settle": true,
+      "covered_segments": [
+        {
+          "decision_index": 6,
+          "action_source": "model",
+          "start_step": 408,
+          "end_step": 412,
+          "simulation_start_s": 21.925001143477857,
+          "simulation_end_s": 22.12500115390867,
+          "applied_action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              -0.04500000178813934,
+              -0.07999999821186066,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "line": 53,
+          "stage_intent": "recovery"
+        },
+        {
+          "decision_index": 6,
+          "action_source": "controller_settle",
+          "start_step": 412,
+          "end_step": 418,
+          "simulation_start_s": 22.12500115390867,
+          "simulation_end_s": 22.42500116955489,
+          "applied_action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "line": 54,
+          "stage_intent": "recovery"
+        }
+      ],
+      "robots": [
+        {
+          "robot": 0,
+          "motion_command_zero": false,
+          "grasp_world_delta_m": [
+            0.0074255451318090415,
+            0.018610229917228605,
+            -0.02042956170906507
+          ],
+          "grasp_world_displacement_m": 0.028615491778076107,
+          "base_world_delta_m": [
+            -0.00113677978515625,
+            -0.000390470027923584,
+            6.419140845537186e-07
+          ],
+          "grasp_base_delta_m": [
+            -0.01912057399749756,
+            0.00860665738582611,
+            -0.02028602361679077
+          ],
+          "before": {
+            "gripper_close_command": false,
+            "gripper_target": 0.5,
+            "fingertip_origin_distance_m": 0.18058426678180695,
+            "finger_joint_positions": [
+              0.4784141778945923,
+              0.4759223163127899
+            ],
+            "finger_joint_velocities": [
+              0.09466945379972458,
+              0.12690027058124542
+            ],
+            "lift_target_m": 0.672980010509491,
+            "lift_measured_m": 0.6794388890266418,
+            "lift_target_minus_measured_m": -0.006458878517150879,
+            "lift_velocity_m_s": -0.0340283177793026
+          },
+          "after": {
+            "gripper_close_command": false,
+            "gripper_target": 0.5,
+            "fingertip_origin_distance_m": 0.18736907839775085,
+            "finger_joint_positions": [
+              0.496284544467926,
+              0.49591192603111267
+            ],
+            "finger_joint_velocities": [
+              -0.021695313975214958,
+              0.06307639926671982
+            ],
+            "lift_target_m": 0.6591200232505798,
+            "lift_measured_m": 0.6591371297836304,
+            "lift_target_minus_measured_m": -1.710653305053711e-05,
+            "lift_velocity_m_s": -0.002100034151226282
+          }
+        },
+        {
+          "robot": 1,
+          "motion_command_zero": true,
+          "grasp_world_delta_m": [
+            -0.0006709100678983226,
+            -0.0002443727809218199,
+            7.458519039182931e-05
+          ],
+          "grasp_world_displacement_m": 0.0007179145672631119,
+          "base_world_delta_m": [
+            -0.0006952285766601562,
+            -0.00035649538040161133,
+            -1.3597309589385986e-07
+          ],
+          "grasp_base_delta_m": [
+            -0.00011461973190307617,
+            9.372830390930176e-06,
+            7.605552673339844e-05
+          ],
+          "before": {
+            "gripper_close_command": true,
+            "gripper_target": 0.10300000011920929,
+            "fingertip_origin_distance_m": 0.06688462942838669,
+            "finger_joint_positions": [
+              0.15631286799907684,
+              0.1911453753709793
+            ],
+            "finger_joint_velocities": [
+              0.013214481994509697,
+              -0.0031072194688022137
+            ],
+            "lift_target_m": 0.7653800249099731,
+            "lift_measured_m": 0.7627190351486206,
+            "lift_target_minus_measured_m": 0.002660989761352539,
+            "lift_velocity_m_s": 0.011206492781639099
+          },
+          "after": {
+            "gripper_close_command": true,
+            "gripper_target": 0.10300000011920929,
+            "fingertip_origin_distance_m": 0.06695133447647095,
+            "finger_joint_positions": [
+              0.15667349100112915,
+              0.19113221764564514
+            ],
+            "finger_joint_velocities": [
+              0.002443784149363637,
+              0.0021111113019287586
+            ],
+            "lift_target_m": 0.7653800249099731,
+            "lift_measured_m": 0.7627913355827332,
+            "lift_target_minus_measured_m": 0.0025886893272399902,
+            "lift_velocity_m_s": 0.010761714540421963
+          }
+        }
+      ]
+    },
+    {
+      "decision_index": 7,
+      "stage_intent": "grasp",
+      "model_segment": {
+        "decision_index": 7,
+        "action_source": "model",
+        "start_step": 418,
+        "end_step": 426,
+        "simulation_start_s": 22.42500116955489,
+        "simulation_end_s": 22.825001190416515,
+        "applied_action": [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "line": 56,
+        "stage_intent": "grasp"
+      },
+      "commanded_motion_robots": [],
+      "commanded_stationary_robots": [
+        0,
+        1
+      ],
+      "single_robot_motion_command": false,
+      "gripper_action": [
+        1.0,
+        0.0
+      ],
+      "measurement_status": "measured",
+      "start_observation": {
+        "file": "output/actors/20261106-astra-layer352-001/observations/00007/observation.json",
+        "sha256": "a8a7bf4874cb1cced55af9e19ff863d52e7212c1c52520c94e8a343a8cfa1058"
+      },
+      "end_observation": {
+        "file": "output/actors/20261106-astra-layer352-001/observations/00008/observation.json",
+        "sha256": "2163355640b1fb5b6bdf806892730d9f0cbbd3dfefd1c8a7d2efc0d3e4c1ac69"
+      },
+      "start_boundary": 418,
+      "end_boundary": 426,
+      "simulation_start_s": 22.42500116955489,
+      "simulation_end_s": 22.825001190416515,
+      "includes_controller_settle": false,
+      "covered_segments": [
+        {
+          "decision_index": 7,
+          "action_source": "model",
+          "start_step": 418,
+          "end_step": 426,
+          "simulation_start_s": 22.42500116955489,
+          "simulation_end_s": 22.825001190416515,
+          "applied_action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "line": 56,
+          "stage_intent": "grasp"
+        }
+      ],
+      "robots": [
+        {
+          "robot": 0,
+          "motion_command_zero": true,
+          "grasp_world_delta_m": [
+            -0.0003137573753608791,
+            0.0016806547199752497,
+            -0.0021927853432722744
+          ],
+          "grasp_world_displacement_m": 0.002780530801850276,
+          "base_world_delta_m": [
+            -0.00090789794921875,
+            -0.00020366907119750977,
+            -1.1106021702289581e-07
+          ],
+          "grasp_base_delta_m": [
+            -0.001896679401397705,
+            0.0006308555603027344,
+            -0.0021787285804748535
+          ],
+          "before": {
+            "gripper_close_command": false,
+            "gripper_target": 0.5,
+            "fingertip_origin_distance_m": 0.18736907839775085,
+            "finger_joint_positions": [
+              0.496284544467926,
+              0.49591192603111267
+            ],
+            "finger_joint_velocities": [
+              -0.021695313975214958,
+              0.06307639926671982
+            ],
+            "lift_target_m": 0.6591200232505798,
+            "lift_measured_m": 0.6591371297836304,
+            "lift_target_minus_measured_m": -1.710653305053711e-05,
+            "lift_velocity_m_s": -0.002100034151226282
+          },
+          "after": {
+            "gripper_close_command": true,
+            "gripper_target": 0.10300000011920929,
+            "fingertip_origin_distance_m": 0.10913527011871338,
+            "finger_joint_positions": [
+              0.27898603677749634,
+              0.28972214460372925
+            ],
+            "finger_joint_velocities": [
+              -0.8701852560043335,
+              -0.4381234645843506
+            ],
+            "lift_target_m": 0.6591200232505798,
+            "lift_measured_m": 0.6569103598594666,
+            "lift_target_minus_measured_m": 0.0022096633911132812,
+            "lift_velocity_m_s": 0.010768775828182697
+          }
+        },
+        {
+          "robot": 1,
+          "motion_command_zero": true,
+          "grasp_world_delta_m": [
+            -0.0005819817946886019,
+            -0.00019011520328038323,
+            -1.3119862372068525e-06
+          ],
+          "grasp_world_displacement_m": 0.0006122485779282742,
+          "base_world_delta_m": [
+            -0.0005640983581542969,
+            -0.0003064870834350586,
+            2.437736839056015e-07
+          ],
+          "grasp_base_delta_m": [
+            -0.00011754035949707031,
+            -2.1412968635559082e-05,
+            -4.172325134277344e-07
+          ],
+          "before": {
+            "gripper_close_command": true,
+            "gripper_target": 0.10300000011920929,
+            "fingertip_origin_distance_m": 0.06695133447647095,
+            "finger_joint_positions": [
+              0.15667349100112915,
+              0.19113221764564514
+            ],
+            "finger_joint_velocities": [
+              0.002443784149363637,
+              0.0021111113019287586
+            ],
+            "lift_target_m": 0.7653800249099731,
+            "lift_measured_m": 0.7627913355827332,
+            "lift_target_minus_measured_m": 0.0025886893272399902,
+            "lift_velocity_m_s": 0.010761714540421963
+          },
+          "after": {
+            "gripper_close_command": true,
+            "gripper_target": 0.10300000011920929,
+            "fingertip_origin_distance_m": 0.0670248419046402,
+            "finger_joint_positions": [
+              0.15667805075645447,
+              0.19151152670383453
+            ],
+            "finger_joint_velocities": [
+              -0.00046178800403140485,
+              -0.012387328781187534
+            ],
+            "lift_target_m": 0.7653800249099731,
+            "lift_measured_m": 0.7627952098846436,
+            "lift_target_minus_measured_m": 0.00258481502532959,
+            "lift_velocity_m_s": 0.011193410493433475
+          }
+        }
+      ]
+    },
+    {
+      "decision_index": 8,
+      "stage_intent": "grasp",
+      "model_segment": {
+        "decision_index": 8,
+        "action_source": "model",
+        "start_step": 426,
+        "end_step": 432,
+        "simulation_start_s": 22.825001190416515,
+        "simulation_end_s": 23.125001206062734,
+        "applied_action": [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "line": 58,
+        "stage_intent": "grasp"
+      },
+      "commanded_motion_robots": [],
+      "commanded_stationary_robots": [
+        0,
+        1
+      ],
+      "single_robot_motion_command": false,
+      "gripper_action": [
+        0.0,
+        0.0
+      ],
+      "measurement_status": "measured",
+      "start_observation": {
+        "file": "output/actors/20261106-astra-layer352-001/observations/00008/observation.json",
+        "sha256": "2163355640b1fb5b6bdf806892730d9f0cbbd3dfefd1c8a7d2efc0d3e4c1ac69"
+      },
+      "end_observation": {
+        "file": "output/actors/20261106-astra-layer352-001/observations/00009/observation.json",
+        "sha256": "f11f4bc80cdb39b60ad0385139f7f61c860eaf1d74065561459ab6d34f9d7393"
+      },
+      "start_boundary": 426,
+      "end_boundary": 432,
+      "simulation_start_s": 22.825001190416515,
+      "simulation_end_s": 23.125001206062734,
+      "includes_controller_settle": false,
+      "covered_segments": [
+        {
+          "decision_index": 8,
+          "action_source": "model",
+          "start_step": 426,
+          "end_step": 432,
+          "simulation_start_s": 22.825001190416515,
+          "simulation_end_s": 23.125001206062734,
+          "applied_action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "line": 58,
+          "stage_intent": "grasp"
+        }
+      ],
+      "robots": [
+        {
+          "robot": 0,
+          "motion_command_zero": true,
+          "grasp_world_delta_m": [
+            -0.0014250295223887655,
+            -0.0006880631628232159,
+            -0.00011154764461995814
+          ],
+          "grasp_world_displacement_m": 0.001586374146515916,
+          "base_world_delta_m": [
+            -0.0009467601776123047,
+            -0.00012058019638061523,
+            -1.916196197271347e-07
+          ],
+          "grasp_base_delta_m": [
+            0.0005756020545959473,
+            -0.00021743029356002808,
+            -0.0001156926155090332
+          ],
+          "before": {
+            "gripper_close_command": true,
+            "gripper_target": 0.10300000011920929,
+            "fingertip_origin_distance_m": 0.10913527011871338,
+            "finger_joint_positions": [
+              0.27898603677749634,
+              0.28972214460372925
+            ],
+            "finger_joint_velocities": [
+              -0.8701852560043335,
+              -0.4381234645843506
+            ],
+            "lift_target_m": 0.6591200232505798,
+            "lift_measured_m": 0.6569103598594666,
+            "lift_target_minus_measured_m": 0.0022096633911132812,
+            "lift_velocity_m_s": 0.010768775828182697
+          },
+          "after": {
+            "gripper_close_command": true,
+            "gripper_target": 0.10300000011920929,
+            "fingertip_origin_distance_m": 0.07432788610458374,
+            "finger_joint_positions": [
+              0.1498640924692154,
+              0.23646867275238037
+            ],
+            "finger_joint_velocities": [
+              -0.1783192902803421,
+              -0.06231898441910744
+            ],
+            "lift_target_m": 0.6591200232505798,
+            "lift_measured_m": 0.656694769859314,
+            "lift_target_minus_measured_m": 0.002425253391265869,
+            "lift_velocity_m_s": 0.010263980366289616
+          }
+        },
+        {
+          "robot": 1,
+          "motion_command_zero": true,
+          "grasp_world_delta_m": [
+            -0.00033450492942588284,
+            -0.0003284622585058017,
+            1.2768178984878809e-05
+          ],
+          "grasp_world_displacement_m": 0.0004689819073989282,
+          "base_world_delta_m": [
+            -0.0004055500030517578,
+            -0.00023323297500610352,
+            7.776543498039246e-08
+          ],
+          "grasp_base_delta_m": [
+            9.232759475708008e-05,
+            4.728883504867554e-05,
+            1.1861324310302734e-05
+          ],
+          "before": {
+            "gripper_close_command": true,
+            "gripper_target": 0.10300000011920929,
+            "fingertip_origin_distance_m": 0.0670248419046402,
+            "finger_joint_positions": [
+              0.15667805075645447,
+              0.19151152670383453
+            ],
+            "finger_joint_velocities": [
+              -0.00046178800403140485,
+              -0.012387328781187534
+            ],
+            "lift_target_m": 0.7653800249099731,
+            "lift_measured_m": 0.7627952098846436,
+            "lift_target_minus_measured_m": 0.00258481502532959,
+            "lift_velocity_m_s": 0.011193410493433475
+          },
+          "after": {
+            "gripper_close_command": true,
+            "gripper_target": 0.10300000011920929,
+            "fingertip_origin_distance_m": 0.06670993566513062,
+            "finger_joint_positions": [
+              0.15613394975662231,
+              0.19041568040847778
+            ],
+            "finger_joint_velocities": [
+              -0.0008307930547744036,
+              0.013470565900206566
+            ],
+            "lift_target_m": 0.7653800249099731,
+            "lift_measured_m": 0.7627982497215271,
+            "lift_target_minus_measured_m": 0.002581775188446045,
+            "lift_velocity_m_s": 0.011369509622454643
+          }
+        }
+      ]
+    },
+    {
+      "decision_index": 9,
+      "stage_intent": "lift",
+      "model_segment": {
+        "decision_index": 9,
+        "action_source": "model",
+        "start_step": 432,
+        "end_step": 436,
+        "simulation_start_s": 23.125001206062734,
+        "simulation_end_s": 23.325001216493547,
+        "applied_action": [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.07999999821186066,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.07999999821186066,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "line": 60,
+        "stage_intent": "lift"
+      },
+      "commanded_motion_robots": [
+        0,
+        1
+      ],
+      "commanded_stationary_robots": [],
+      "single_robot_motion_command": false,
+      "gripper_action": [
+        0.0,
+        0.0
+      ],
+      "measurement_status": "measured",
+      "start_observation": {
+        "file": "output/actors/20261106-astra-layer352-001/observations/00009/observation.json",
+        "sha256": "f11f4bc80cdb39b60ad0385139f7f61c860eaf1d74065561459ab6d34f9d7393"
+      },
+      "end_observation": {
+        "file": "output/actors/20261106-astra-layer352-001/observations/00010/observation.json",
+        "sha256": "19ca11d4d69dd992d2f0e07c82e2f0b0f0f13f01c4e41b27fc06e57adfc9ef64"
+      },
+      "start_boundary": 432,
+      "end_boundary": 442,
+      "simulation_start_s": 23.125001206062734,
+      "simulation_end_s": 23.625001232139766,
+      "includes_controller_settle": true,
+      "covered_segments": [
+        {
+          "decision_index": 9,
+          "action_source": "model",
+          "start_step": 432,
+          "end_step": 436,
+          "simulation_start_s": 23.125001206062734,
+          "simulation_end_s": 23.325001216493547,
+          "applied_action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.07999999821186066,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.07999999821186066,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "line": 60,
+          "stage_intent": "lift"
+        },
+        {
+          "decision_index": 9,
+          "action_source": "controller_settle",
+          "start_step": 436,
+          "end_step": 442,
+          "simulation_start_s": 23.325001216493547,
+          "simulation_end_s": 23.625001232139766,
+          "applied_action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "line": 61,
+          "stage_intent": "lift"
+        }
+      ],
+      "robots": [
+        {
+          "robot": 0,
+          "motion_command_zero": false,
+          "grasp_world_delta_m": [
+            -0.0008285035930688522,
+            0.0006083888307113483,
+            0.021092982162739138
+          ],
+          "grasp_world_displacement_m": 0.021118012493856843,
+          "base_world_delta_m": [
+            -0.0012600421905517578,
+            -0.00021702051162719727,
+            1.4132820069789886e-07
+          ],
+          "grasp_base_delta_m": [
+            -0.000700831413269043,
+            0.0002905372530221939,
+            0.021098077297210693
+          ],
+          "before": {
+            "gripper_close_command": true,
+            "gripper_target": 0.10300000011920929,
+            "fingertip_origin_distance_m": 0.07432788610458374,
+            "finger_joint_positions": [
+              0.1498640924692154,
+              0.23646867275238037
+            ],
+            "finger_joint_velocities": [
+              -0.1783192902803421,
+              -0.06231898441910744
+            ],
+            "lift_target_m": 0.6591200232505798,
+            "lift_measured_m": 0.656694769859314,
+            "lift_target_minus_measured_m": 0.002425253391265869,
+            "lift_velocity_m_s": 0.010263980366289616
+          },
+          "after": {
+            "gripper_close_command": true,
+            "gripper_target": 0.10300000011920929,
+            "fingertip_origin_distance_m": 0.045358359813690186,
+            "finger_joint_positions": [
+              0.109236940741539,
+              0.12620073556900024
+            ],
+            "finger_joint_velocities": [
+              -0.04959194362163544,
+              -0.08716680854558945
+            ],
+            "lift_target_m": 0.6837599873542786,
+            "lift_measured_m": 0.6778982281684875,
+            "lift_target_minus_measured_m": 0.005861759185791016,
+            "lift_velocity_m_s": 0.027993744239211082
+          }
+        },
+        {
+          "robot": 1,
+          "motion_command_zero": false,
+          "grasp_world_delta_m": [
+            -0.000531674043269259,
+            -0.001267648858221726,
+            0.02133683899234562
+          ],
+          "grasp_world_displacement_m": 0.02138107361900514,
+          "base_world_delta_m": [
+            -0.0006959438323974609,
+            -0.0005548596382141113,
+            -3.9301812648773193e-07
+          ],
+          "grasp_base_delta_m": [
+            0.0008326172828674316,
+            3.834813833236694e-05,
+            0.02133309841156006
+          ],
+          "before": {
+            "gripper_close_command": true,
+            "gripper_target": 0.10300000011920929,
+            "fingertip_origin_distance_m": 0.06670993566513062,
+            "finger_joint_positions": [
+              0.15613394975662231,
+              0.19041568040847778
+            ],
+            "finger_joint_velocities": [
+              -0.0008307930547744036,
+              0.013470565900206566
+            ],
+            "lift_target_m": 0.7653800249099731,
+            "lift_measured_m": 0.7627982497215271,
+            "lift_target_minus_measured_m": 0.002581775188446045,
+            "lift_velocity_m_s": 0.011369509622454643
+          },
+          "after": {
+            "gripper_close_command": true,
+            "gripper_target": 0.10300000011920929,
+            "fingertip_origin_distance_m": 0.06671469658613205,
+            "finger_joint_positions": [
+              0.15576039254665375,
+              0.1908155381679535
+            ],
+            "finger_joint_velocities": [
+              -0.0013988391729071736,
+              0.002084332751110196
+            ],
+            "lift_target_m": 0.7900199890136719,
+            "lift_measured_m": 0.7841163873672485,
+            "lift_target_minus_measured_m": 0.00590360164642334,
+            "lift_velocity_m_s": 0.027401695027947426
+          }
+        }
+      ]
+    },
+    {
+      "decision_index": 10,
+      "stage_intent": "recovery",
+      "model_segment": {
+        "decision_index": 10,
+        "action_source": "model",
+        "start_step": 442,
+        "end_step": 446,
+        "simulation_start_s": 23.625001232139766,
+        "simulation_end_s": 23.82500124257058,
+        "applied_action": [
+          [
+            0.0,
+            0.0,
+            0.0,
+            -0.07999999821186066,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            -0.20000000298023224,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "line": 63,
+        "stage_intent": "recovery"
+      },
+      "commanded_motion_robots": [
+        0,
+        1
+      ],
+      "commanded_stationary_robots": [],
+      "single_robot_motion_command": false,
+      "gripper_action": [
+        0.0,
+        0.0
+      ],
+      "measurement_status": "measured",
+      "start_observation": {
+        "file": "output/actors/20261106-astra-layer352-001/observations/00010/observation.json",
+        "sha256": "19ca11d4d69dd992d2f0e07c82e2f0b0f0f13f01c4e41b27fc06e57adfc9ef64"
+      },
+      "end_observation": {
+        "file": "output/actors/20261106-astra-layer352-001/observations/00011/observation.json",
+        "sha256": "abbace9de9b5b07e3910cdbf7514fcc9e9730f8299e41a75459c5a80692debc1"
+      },
+      "start_boundary": 442,
+      "end_boundary": 452,
+      "simulation_start_s": 23.625001232139766,
+      "simulation_end_s": 24.1250012582168,
+      "includes_controller_settle": true,
+      "covered_segments": [
+        {
+          "decision_index": 10,
+          "action_source": "model",
+          "start_step": 442,
+          "end_step": 446,
+          "simulation_start_s": 23.625001232139766,
+          "simulation_end_s": 23.82500124257058,
+          "applied_action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              -0.07999999821186066,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              -0.20000000298023224,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "line": 63,
+          "stage_intent": "recovery"
+        },
+        {
+          "decision_index": 10,
+          "action_source": "controller_settle",
+          "start_step": 446,
+          "end_step": 452,
+          "simulation_start_s": 23.82500124257058,
+          "simulation_end_s": 24.1250012582168,
+          "applied_action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "line": 64,
+          "stage_intent": "recovery"
+        }
+      ],
+      "robots": [
+        {
+          "robot": 0,
+          "motion_command_zero": false,
+          "grasp_world_delta_m": [
+            -0.0011758797106811159,
+            0.0003345229856823728,
+            -0.01811349875953716
+          ],
+          "grasp_world_displacement_m": 0.01815470837093495,
+          "base_world_delta_m": [
+            -0.0011370182037353516,
+            -0.000202178955078125,
+            -1.1897645890712738e-07
+          ],
+          "grasp_base_delta_m": [
+            -0.0006459355354309082,
+            -1.2625008821487427e-05,
+            -0.01811039447784424
+          ],
+          "before": {
+            "gripper_close_command": true,
+            "gripper_target": 0.10300000011920929,
+            "fingertip_origin_distance_m": 0.045358359813690186,
+            "finger_joint_positions": [
+              0.109236940741539,
+              0.12620073556900024
+            ],
+            "finger_joint_velocities": [
+              -0.04959194362163544,
+              -0.08716680854558945
+            ],
+            "lift_target_m": 0.6837599873542786,
+            "lift_measured_m": 0.6778982281684875,
+            "lift_target_minus_measured_m": 0.005861759185791016,
+            "lift_velocity_m_s": 0.027993744239211082
+          },
+          "after": {
+            "gripper_close_command": true,
+            "gripper_target": 0.10300000011920929,
+            "fingertip_origin_distance_m": 0.040488842874765396,
+            "finger_joint_positions": [
+              0.10428784042596817,
+              0.10582272708415985
+            ],
+            "finger_joint_velocities": [
+              0.006028969306498766,
+              -0.01374581828713417
+            ],
+            "lift_target_m": 0.6591200232505798,
+            "lift_measured_m": 0.6596719026565552,
+            "lift_target_minus_measured_m": -0.0005518794059753418,
+            "lift_velocity_m_s": -0.0038355288561433554
+          }
+        },
+        {
+          "robot": 1,
+          "motion_command_zero": false,
+          "grasp_world_delta_m": [
+            -0.0007462436866343403,
+            0.0007552131571273435,
+            -0.05030473222633858
+          ],
+          "grasp_world_displacement_m": 0.05031593496017108,
+          "base_world_delta_m": [
+            -0.0005726814270019531,
+            -0.0004200935363769531,
+            3.8067810237407684e-07
+          ],
+          "grasp_base_delta_m": [
+            -0.001478433609008789,
+            -1.5027821063995361e-05,
+            -0.05029797554016113
+          ],
+          "before": {
+            "gripper_close_command": true,
+            "gripper_target": 0.10300000011920929,
+            "fingertip_origin_distance_m": 0.06671469658613205,
+            "finger_joint_positions": [
+              0.15576039254665375,
+              0.1908155381679535
+            ],
+            "finger_joint_velocities": [
+              -0.0013988391729071736,
+              0.002084332751110196
+            ],
+            "lift_target_m": 0.7900199890136719,
+            "lift_measured_m": 0.7841163873672485,
+            "lift_target_minus_measured_m": 0.00590360164642334,
+            "lift_velocity_m_s": 0.027401695027947426
+          },
+          "after": {
+            "gripper_close_command": true,
+            "gripper_target": 0.10300000011920929,
+            "fingertip_origin_distance_m": 0.0671544075012207,
+            "finger_joint_positions": [
+              0.15812140703201294,
+              0.19074292480945587
+            ],
+            "finger_joint_velocities": [
+              0.01040560007095337,
+              0.0026494041085243225
+            ],
+            "lift_target_m": 0.7284200191497803,
+            "lift_measured_m": 0.7338531017303467,
+            "lift_target_minus_measured_m": -0.005433082580566406,
+            "lift_velocity_m_s": -0.027441686019301414
+          }
+        }
+      ]
+    }
+  ],
+  "supplemental_public_kinematics": {
+    "scope": "derived from the same public endpoint JSON only; not intermediate trajectory maxima",
+    "base_tilt_formula": "degrees(acos(clip(R_base_to_world[2,2], -1, 1))) using normalized public wxyz quaternion",
+    "wrist_yaw_mapping": {
+      "controller_target_column": 2,
+      "joint_position_index": 8,
+      "joint_name": "wrist_yaw_joint",
+      "unit": "rad"
+    },
+    "intervals": [
+      {
+        "decision_index": 5,
+        "start_boundary": 398,
+        "end_boundary": 408,
+        "robots": [
+          {
+            "robot": 0,
+            "base_tilt_from_world_vertical_before_deg": 0.3962715415058366,
+            "base_tilt_from_world_vertical_after_deg": 0.39628317202879465,
+            "base_tilt_change_deg": 1.1630522958050449e-05,
+            "base_orientation_change_deg": 0.004275219340277549,
+            "wrist_yaw_target_minus_measured_before_rad": 0.00014367239782586694,
+            "wrist_yaw_target_minus_measured_after_rad": 0.04767507314682007
+          },
+          {
+            "robot": 1,
+            "base_tilt_from_world_vertical_before_deg": 0.39633827480461425,
+            "base_tilt_from_world_vertical_after_deg": 0.396397366170119,
+            "base_tilt_change_deg": 5.9091365504748694e-05,
+            "base_orientation_change_deg": 0.003738687568112448,
+            "wrist_yaw_target_minus_measured_before_rad": 0.0007148421136662364,
+            "wrist_yaw_target_minus_measured_after_rad": 0.0005829657311551273
+          }
+        ]
+      },
+      {
+        "decision_index": 6,
+        "start_boundary": 408,
+        "end_boundary": 418,
+        "robots": [
+          {
+            "robot": 0,
+            "base_tilt_from_world_vertical_before_deg": 0.39628317202879465,
+            "base_tilt_from_world_vertical_after_deg": 0.39610330561367413,
+            "base_tilt_change_deg": -0.00017986641512052204,
+            "base_orientation_change_deg": 0.003891640950046864,
+            "wrist_yaw_target_minus_measured_before_rad": 0.04767507314682007,
+            "wrist_yaw_target_minus_measured_after_rad": 0.004174321889877319
+          },
+          {
+            "robot": 1,
+            "base_tilt_from_world_vertical_before_deg": 0.396397366170119,
+            "base_tilt_from_world_vertical_after_deg": 0.39630573266991026,
+            "base_tilt_change_deg": -9.163350020874317e-05,
+            "base_orientation_change_deg": 0.0016076727787816812,
+            "wrist_yaw_target_minus_measured_before_rad": 0.0005829657311551273,
+            "wrist_yaw_target_minus_measured_after_rad": 0.0005349362618289888
+          }
+        ]
+      },
+      {
+        "decision_index": 9,
+        "start_boundary": 432,
+        "end_boundary": 442,
+        "robots": [
+          {
+            "robot": 0,
+            "base_tilt_from_world_vertical_before_deg": 0.3961135613669987,
+            "base_tilt_from_world_vertical_after_deg": 0.3962131560810908,
+            "base_tilt_change_deg": 9.959471409209941e-05,
+            "base_orientation_change_deg": 0.006941207787274249,
+            "wrist_yaw_target_minus_measured_before_rad": 0.0024240314960479736,
+            "wrist_yaw_target_minus_measured_after_rad": 0.0007222890853881836
+          },
+          {
+            "robot": 1,
+            "base_tilt_from_world_vertical_before_deg": 0.39627873168829436,
+            "base_tilt_from_world_vertical_after_deg": 0.3963150922046175,
+            "base_tilt_change_deg": 3.636051632316395e-05,
+            "base_orientation_change_deg": 0.005029543087532658,
+            "wrist_yaw_target_minus_measured_before_rad": 0.000388281507184729,
+            "wrist_yaw_target_minus_measured_after_rad": 0.00017387350089848042
+          }
+        ]
+      },
+      {
+        "decision_index": 10,
+        "start_boundary": 442,
+        "end_boundary": 452,
+        "robots": [
+          {
+            "robot": 0,
+            "base_tilt_from_world_vertical_before_deg": 0.3962131560810908,
+            "base_tilt_from_world_vertical_after_deg": 0.39621532208806054,
+            "base_tilt_change_deg": 2.1660069697282403e-06,
+            "base_orientation_change_deg": 0.0038746652412899427,
+            "wrist_yaw_target_minus_measured_before_rad": 0.0007222890853881836,
+            "wrist_yaw_target_minus_measured_after_rad": 0.0010457932949066162
+          },
+          {
+            "robot": 1,
+            "base_tilt_from_world_vertical_before_deg": 0.3963150922046175,
+            "base_tilt_from_world_vertical_after_deg": 0.3963369605761491,
+            "base_tilt_change_deg": 2.1868371531563735e-05,
+            "base_orientation_change_deg": 0.0016536112267154343,
+            "wrist_yaw_target_minus_measured_before_rad": 0.00017387350089848042,
+            "wrist_yaw_target_minus_measured_after_rad": 0.00025930997799150646
+          }
+        ]
+      }
+    ]
+  }
+}
