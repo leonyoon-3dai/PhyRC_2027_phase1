@@ -1,0 +1,641 @@
+{
+  "schema": "public-learning-segments-v1",
+  "run_id": "20261107-astra-progress787-named-001",
+  "parent_attempt": "20261106-astra-guide470-depth-001",
+  "source_group": "20261106-coordinated-demo-methods",
+  "source_commit": "952ec8da68cdc0ef635d0d45329712eee006fd1f",
+  "recording_status": "closed_decision_budget",
+  "training_approval": "unreviewed",
+  "label_provenance": [
+    "Public finalized decisions and concise final reasons",
+    "Designated public RGB observations0–17 directly inspected",
+    "Exported final designated5-camera RGB at boundary1180 directly inspected",
+    "Root-confirmed technical cleanup count and termination status"
+  ],
+  "evidence_decisions_path": "output/operator-traces/20261107-astra-progress787-named-001/decisions.jsonl",
+  "raw_recordings_preserved": true,
+  "raw_records_rewritten": false,
+  "policy_teacher_hidden_evaluation_fields_included": false,
+  "split_constraints": [
+    "Group by source_group and replay lineage before train/validation split.",
+    "Same prefix does not reproduce an exact cloth checkpoint; initial folds differ from E22.",
+    "Adjacent frames and branches are not independent successful demonstrations.",
+    "Apparent side-opening emergence is a public visual hypothesis, not an approved sleeve-success teacher label.",
+    "Budget cleanup is a controller event, not actor imitation action."
+  ],
+  "transition_boundary_semantics": "[start,end): count=end-start; inclusive video boundary images count+1.",
+  "counts": {
+    "recorded_transitions": 1180,
+    "replay_transitions": 787,
+    "new_transitions": 393,
+    "model_action_transitions": 284,
+    "controller_settle_transitions": 108,
+    "budget_cleanup_transitions": 1,
+    "model_call_count": 18,
+    "finalized_decisions": 18,
+    "executed_act_decisions": 18,
+    "finish_decisions": 0,
+    "completed_depth_query_cycles": 0,
+    "queried_points": 0
+  },
+  "segments": [
+    {
+      "id": "initial_goal_approach",
+      "kind": "goal_directed_approach",
+      "decision_indices": [
+        0,
+        1
+      ],
+      "transition_start": 787,
+      "transition_end_exclusive": 835,
+      "transition_count": 48,
+      "observation_evidence": [
+        "output/actors/20261107-astra-progress787-named-001/observations/00000",
+        "output/actors/20261107-astra-progress787-named-001/observations/00001",
+        "output/actors/20261107-astra-progress787-named-001/observations/00002"
+      ],
+      "public_label": "Larger paired advance brings the tracked lower hand into projected rim overlap, unlike the small E22 probe. No continuous crossing established.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "rim_raise",
+      "kind": "rim_manipulation",
+      "decision_indices": [
+        2
+      ],
+      "transition_start": 835,
+      "transition_end_exclusive": 853,
+      "transition_count": 18,
+      "observation_evidence": [
+        "output/actors/20261107-astra-progress787-named-001/observations/00002",
+        "output/actors/20261107-astra-progress787-named-001/observations/00003"
+      ],
+      "public_label": "Paired wrist pitch raises rim candidate around the same hand; cloth posture changes and hand occlusion increases.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "forward_descent",
+      "kind": "entry_attempt",
+      "decision_indices": [
+        3
+      ],
+      "transition_start": 853,
+      "transition_end_exclusive": 875,
+      "transition_count": 22,
+      "observation_evidence": [
+        "output/actors/20261107-astra-progress787-named-001/observations/00003",
+        "output/actors/20261107-astra-progress787-named-001/observations/00004"
+      ],
+      "public_label": "Paired forward/down movement toward torso increases rim folding and exterior-panel exposure; tracked hand stays hidden.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "compensated_pitch_recovery",
+      "kind": "recovery",
+      "decision_indices": [
+        4
+      ],
+      "transition_start": 875,
+      "transition_end_exclusive": 893,
+      "transition_count": 18,
+      "observation_evidence": [
+        "output/actors/20261107-astra-progress787-named-001/observations/00004",
+        "output/actors/20261107-astra-progress787-named-001/observations/00005"
+      ],
+      "public_label": "Pitch with lift/reach compensation partly restores the farther forearm view while tracked-hand relation remains unresolved.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "lateral_approach",
+      "kind": "approach_direction_change",
+      "decision_indices": [
+        5
+      ],
+      "transition_start": 893,
+      "transition_end_exclusive": 915,
+      "transition_count": 22,
+      "observation_evidence": [
+        "output/actors/20261107-astra-progress787-named-001/observations/00005",
+        "output/actors/20261107-astra-progress787-named-001/observations/00006"
+      ],
+      "public_label": "Paired right/forward/down movement changes lateral garment-body relation; grips unchanged and entry unresolved.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "asymmetric_lower",
+      "kind": "span_tilt",
+      "decision_indices": [
+        6
+      ],
+      "transition_start": 915,
+      "transition_end_exclusive": 937,
+      "transition_count": 22,
+      "observation_evidence": [
+        "output/actors/20261107-astra-progress787-named-001/observations/00006",
+        "output/actors/20261107-astra-progress787-named-001/observations/00007"
+      ],
+      "public_label": "Only robot0 lower command tilts held rim while robot1 has zero commands. Cloth follows locally; not an independent support certification.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "span_rotation",
+      "kind": "relative_support_reposition",
+      "decision_indices": [
+        7
+      ],
+      "transition_start": 937,
+      "transition_end_exclusive": 963,
+      "transition_count": 26,
+      "observation_evidence": [
+        "output/actors/20261107-astra-progress787-named-001/observations/00007",
+        "output/actors/20261107-astra-progress787-named-001/observations/00008"
+      ],
+      "public_label": "Opposite robot base movements rotate the held span; a dark gap becomes visible again. No release or regrasp.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "span_rotation_reversal",
+      "kind": "intentional_direction_correction",
+      "decision_indices": [
+        8
+      ],
+      "transition_start": 963,
+      "transition_end_exclusive": 989,
+      "transition_count": 26,
+      "observation_evidence": [
+        "output/actors/20261107-astra-progress787-named-001/observations/00008",
+        "output/actors/20261107-astra-progress787-named-001/observations/00009"
+      ],
+      "public_label": "Actor explicitly reverses fore-aft stagger after judging the prior angle opposite the target. Hand/forearm and small loop candidate become visible near rim.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "reoriented_forearm_approach",
+      "kind": "goal_directed_approach",
+      "decision_indices": [
+        9,
+        10
+      ],
+      "transition_start": 989,
+      "transition_end_exclusive": 1033,
+      "transition_count": 44,
+      "observation_evidence": [
+        "output/actors/20261107-astra-progress787-named-001/observations/00009",
+        "output/actors/20261107-astra-progress787-named-001/observations/00010",
+        "output/actors/20261107-astra-progress787-named-001/observations/00011"
+      ],
+      "public_label": "Diagonal advance with revised span brings rim projection nearer wrist/forearm; larger folds develop. Projected travel does not establish sleeve passage.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "robot1_lip_raise",
+      "kind": "side_opening_hypothesis_evidence",
+      "decision_indices": [
+        11
+      ],
+      "transition_start": 1033,
+      "transition_end_exclusive": 1055,
+      "transition_count": 22,
+      "observation_evidence": [
+        "output/actors/20261107-astra-progress787-named-001/observations/00011",
+        "output/actors/20261107-astra-progress787-named-001/observations/00012"
+      ],
+      "public_label": "Only robot1 lift command; next robot0 head view shows lower hand at yellow-bordered side-opening candidate outside blue cloth. Opening identity not certified.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "forearm_exposure",
+      "kind": "side_opening_hypothesis_evidence",
+      "decision_indices": [
+        12
+      ],
+      "transition_start": 1055,
+      "transition_end_exclusive": 1077,
+      "transition_count": 22,
+      "observation_evidence": [
+        "output/actors/20261107-astra-progress787-named-001/observations/00012",
+        "output/actors/20261107-astra-progress787-named-001/observations/00013"
+      ],
+      "public_label": "Diagonal motion exposes more of the same hand and striped forearm beyond a side-region candidate. Stronger visual relation than earlier occlusion, not a verified sleeve-success label.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "rim_leveling",
+      "kind": "rim_manipulation",
+      "decision_indices": [
+        13
+      ],
+      "transition_start": 1077,
+      "transition_end_exclusive": 1099,
+      "transition_count": 22,
+      "observation_evidence": [
+        "output/actors/20261107-astra-progress787-named-001/observations/00013",
+        "output/actors/20261107-astra-progress787-named-001/observations/00014"
+      ],
+      "public_label": "Robot0 raises its edge while robot1 receives zero command, leveling upper rim candidate; visible arm exposure persists.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "head_approach_raise",
+      "kind": "head_approach",
+      "decision_indices": [
+        14
+      ],
+      "transition_start": 1099,
+      "transition_end_exclusive": 1121,
+      "transition_count": 22,
+      "observation_evidence": [
+        "output/actors/20261107-astra-progress787-named-001/observations/00014",
+        "output/actors/20261107-astra-progress787-named-001/observations/00015"
+      ],
+      "public_label": "Paired lift/pitch raises garment above head level; overview shows head below and torso-side of panel, with opening-head relation unclear.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "head_alignment_translate",
+      "kind": "head_approach",
+      "decision_indices": [
+        15
+      ],
+      "transition_start": 1121,
+      "transition_end_exclusive": 1143,
+      "transition_count": 22,
+      "observation_evidence": [
+        "output/actors/20261107-astra-progress787-named-001/observations/00015",
+        "output/actors/20261107-astra-progress787-named-001/observations/00016"
+      ],
+      "public_label": "Paired lateral/forward translation targets crown alignment. Wrist views remain occluded; head passage unconfirmed.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "head_descent",
+      "kind": "head_entry_attempt",
+      "decision_indices": [
+        16
+      ],
+      "transition_start": 1143,
+      "transition_end_exclusive": 1161,
+      "transition_count": 18,
+      "observation_evidence": [
+        "output/actors/20261107-astra-progress787-named-001/observations/00016",
+        "output/actors/20261107-astra-progress787-named-001/observations/00017"
+      ],
+      "public_label": "Paired lift-down/pitch lowers rim candidate; head emergence remains unseen while visible arm exposure persists.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "final_pitch_recovery",
+      "kind": "recovery",
+      "decision_indices": [
+        17
+      ],
+      "transition_start": 1161,
+      "transition_end_exclusive": 1179,
+      "transition_count": 18,
+      "observation_evidence": [
+        "output/actors/20261107-astra-progress787-named-001/observations/00017"
+      ],
+      "public_label": "Paired pitch aims to tilt/withdraw rim and expose head relation. Final exported RGB still shows panel occlusion; no visible head emergence confirmed.",
+      "training_approval": "unreviewed",
+      "final_public_evidence": [
+        "docs/collection/attempts/20261107-astra-progress787-named-001/images/final-robot_0_head.png",
+        "docs/collection/attempts/20261107-astra-progress787-named-001/images/final-robot_1_head.png",
+        "docs/collection/attempts/20261107-astra-progress787-named-001/images/final-robot_0_wrist.png",
+        "docs/collection/attempts/20261107-astra-progress787-named-001/images/final-robot_1_wrist.png",
+        "docs/collection/attempts/20261107-astra-progress787-named-001/images/final-overview.png"
+      ]
+    },
+    {
+      "id": "decision_budget_cleanup",
+      "kind": "controller_budget_stop",
+      "decision_indices": [],
+      "transition_start": 1179,
+      "transition_end_exclusive": 1180,
+      "transition_count": 1,
+      "observation_evidence": [],
+      "public_label": "One neutral cleanup transition at configured18-act budget. No actor finish or human interrupt.",
+      "training_approval": "unreviewed",
+      "final_public_evidence": [
+        "docs/collection/attempts/20261107-astra-progress787-named-001/images/final-robot_0_head.png",
+        "docs/collection/attempts/20261107-astra-progress787-named-001/images/final-robot_1_head.png",
+        "docs/collection/attempts/20261107-astra-progress787-named-001/images/final-robot_0_wrist.png",
+        "docs/collection/attempts/20261107-astra-progress787-named-001/images/final-robot_1_wrist.png",
+        "docs/collection/attempts/20261107-astra-progress787-named-001/images/final-overview.png"
+      ]
+    }
+  ],
+  "named_action_review": {
+    "axis_order": [
+      "base_forward",
+      "base_left",
+      "base_CCW_yaw",
+      "lift",
+      "arm_extension",
+      "wrist_yaw",
+      "wrist_pitch",
+      "wrist_roll",
+      "gripper"
+    ],
+    "checked_act_count": 18,
+    "all_named_to_array_equal": true,
+    "unexplained_roll_decisions": [],
+    "per_decision": [
+      {
+        "decision_index": 0,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "base_forward": 0.25
+          },
+          "robot_1": {
+            "base_forward": 0.25
+          }
+        }
+      },
+      {
+        "decision_index": 1,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "base_forward": 0.18
+          },
+          "robot_1": {
+            "base_forward": 0.18
+          }
+        }
+      },
+      {
+        "decision_index": 2,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "wrist_pitch": -0.1
+          },
+          "robot_1": {
+            "wrist_pitch": -0.1
+          }
+        }
+      },
+      {
+        "decision_index": 3,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "base_forward": 0.15,
+            "lift": -0.05
+          },
+          "robot_1": {
+            "base_forward": 0.15,
+            "lift": -0.05
+          }
+        }
+      },
+      {
+        "decision_index": 4,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "lift": 0.06,
+            "arm_extension": 0.03,
+            "wrist_pitch": 0.06
+          },
+          "robot_1": {
+            "lift": 0.06,
+            "arm_extension": 0.03,
+            "wrist_pitch": 0.06
+          }
+        }
+      },
+      {
+        "decision_index": 5,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "base_forward": 0.04,
+            "base_left": -0.2,
+            "lift": -0.03
+          },
+          "robot_1": {
+            "base_forward": 0.04,
+            "base_left": -0.2,
+            "lift": -0.03
+          }
+        }
+      },
+      {
+        "decision_index": 6,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "lift": -0.08
+          },
+          "robot_1": {}
+        }
+      },
+      {
+        "decision_index": 7,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "base_forward": 0.18,
+            "base_left": 0.07
+          },
+          "robot_1": {
+            "base_forward": -0.18,
+            "base_left": -0.07
+          }
+        }
+      },
+      {
+        "decision_index": 8,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "base_forward": -0.35
+          },
+          "robot_1": {
+            "base_forward": 0.35
+          }
+        }
+      },
+      {
+        "decision_index": 9,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "base_forward": 0.07,
+            "base_left": -0.18,
+            "lift": -0.025
+          },
+          "robot_1": {
+            "base_forward": 0.07,
+            "base_left": -0.18,
+            "lift": -0.025
+          }
+        }
+      },
+      {
+        "decision_index": 10,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "base_forward": 0.2,
+            "base_left": -0.12,
+            "lift": -0.025
+          },
+          "robot_1": {
+            "base_forward": 0.2,
+            "base_left": -0.12,
+            "lift": -0.025
+          }
+        }
+      },
+      {
+        "decision_index": 11,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {},
+          "robot_1": {
+            "lift": 0.05
+          }
+        }
+      },
+      {
+        "decision_index": 12,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "base_forward": 0.04,
+            "base_left": -0.18,
+            "lift": -0.015
+          },
+          "robot_1": {
+            "base_forward": 0.04,
+            "base_left": -0.18,
+            "lift": -0.02
+          }
+        }
+      },
+      {
+        "decision_index": 13,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "lift": 0.1
+          },
+          "robot_1": {}
+        }
+      },
+      {
+        "decision_index": 14,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "lift": 0.06,
+            "wrist_pitch": -0.1
+          },
+          "robot_1": {
+            "lift": 0.04,
+            "wrist_pitch": -0.1
+          }
+        }
+      },
+      {
+        "decision_index": 15,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "base_forward": 0.06,
+            "base_left": -0.18
+          },
+          "robot_1": {
+            "base_forward": 0.06,
+            "base_left": -0.18
+          }
+        }
+      },
+      {
+        "decision_index": 16,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "lift": -0.03,
+            "wrist_pitch": 0.08
+          },
+          "robot_1": {
+            "lift": -0.03,
+            "wrist_pitch": 0.08
+          }
+        }
+      },
+      {
+        "decision_index": 17,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "wrist_pitch": 0.1
+          },
+          "robot_1": {
+            "wrist_pitch": 0.1
+          }
+        }
+      }
+    ],
+    "scope": "Named mapping and concise final action purpose reviewed; intended or actual task success not implied."
+  },
+  "query_events": [],
+  "pixel_depth_query": {
+    "enabled": true,
+    "requested_cycles": 0,
+    "physics_transitions": 0
+  },
+  "termination_event": {
+    "reason": "decision_budget",
+    "transition_boundary_before_cleanup": 1179,
+    "transition_boundary_after_cleanup": 1180,
+    "actor_finish": false,
+    "human_interrupt": false,
+    "public_label": "Configured18-act budget ends after final orientation recovery.",
+    "training_approval": "unreviewed"
+  },
+  "strategy_execution": {
+    "goal_directed_larger_advance_executed": true,
+    "initial_state_identical_to_e22": false,
+    "new_regrasp_count": 0,
+    "relative_support_stagger_and_reversal_executed": true,
+    "asymmetric_rim_height_changes_executed": true,
+    "hand_forearm_side_region_exposure_observed": true,
+    "side_opening_identity_confirmed": false,
+    "head_approach_raise_translate_lower_executed": true,
+    "head_emergence_confirmed": false,
+    "new_method_name_alone_treated_as_success": false
+  },
+  "public_media": [
+    {
+      "provenance": "docs/gallery/assets/20261107-e23-arm-head-progress/provenance.json",
+      "start_boundary": 1011,
+      "end_boundary": 1180,
+      "inclusive_frame_count": 170,
+      "fps": 5,
+      "playback_duration_s": 34.0,
+      "export_status": "complete_provenance_and_media_hashes_checked"
+    },
+    {
+      "provenance": "docs/gallery/assets/20261107-e23-direction-change/provenance.json",
+      "start_boundary": 937,
+      "end_boundary": 1011,
+      "inclusive_frame_count": 75,
+      "fps": 5,
+      "playback_duration_s": 15.0,
+      "export_status": "complete_provenance_and_media_hashes_checked"
+    }
+  ],
+  "preservation": {
+    "backup_receipt": "docs/project/sessions/20261107-e23-backup-verification.json",
+    "revision": "c1157513362e30d6a8306e7c8fd2ec0265e5db2c",
+    "archive_sha256": "a6a7850d6a510cf649795091b862d10f6c62043c2ea12edfa962059a40946072",
+    "remote_download_verified": true,
+    "remote_archive_member_hashes_verified": true,
+    "training_approval": "unreviewed"
+  }
+}

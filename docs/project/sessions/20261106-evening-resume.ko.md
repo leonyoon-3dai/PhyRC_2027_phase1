@@ -282,3 +282,15 @@ E23 후보3873f90을통합했고전체302CPU검사23.432초통과했다. [검증
 `20261107-astra-progress787-named-001`은공개source`952ec8da68cdc0ef635d0d45329712eee006fd1f`·working_tree_modified=false에서시작했다. E18/787직접부모·history719771·coordinated-task-progress·named+query·plan1·18dec/max1300/timeout180/settle6/review10·profile이며E22와같은출발점의비교다. 로그`output/sessions/20261106-evening/e23-progress787-named-001.log`. E22exec반환의발신불확실성을구분하기위해호스트shell은Python명령이반환하면그값을별도local텍스트에기록하도록했다(반환전에는값없음). 정책/시뮬레이터/공식물리변경은없다.
 
 E23 중간: 787재실행 뒤D0 base_forward+.25×20+6정착, D1+.18×16+6정착, D2양pitch−.1×12+6정착으로853경계까지 진행했다. 두전진과입구후보를손주위로올리는각도변경이실제수행됐고손–rim투영겹침이보이지만통과·최종평가는미확인이다. 0–2판단은깊이질의없이직접act였다. 이 진행은진전조건비교의관측근거이며시작천접힘차이를고려해야한다.
+
+## E23 예산 종료와 연속 분기 준비 (2026-11-07 04:02:40 UTC)
+
+공식5/50·픽업5·착의전항목0·success=false·no_dressing_points/final_score0.0이다.1180=787재실행+284모델+108정착+1예산마감,59sim초·새393전이19.65초,18act/18calls/query0/finish0이다. wall1906.180018124초·모델호출경로821.402335090초·환경1031.865205892초이며순수모델추론시간은미제공이다. QC1180/1180오류0,hostexec95905=0·shell관측Python0·simulator0·capturecomplete/operator_finished로닫혔다. source952ec8da68cdc0ef635d0d45329712eee006fd1f clean을보존한다.
+
+D7반대span기울기뒤D8반전, D9/D10측면·전방접근, D11한쪽경계상승과D12측면진행뒤손·전완이천옆으로더드러나는변화가있었다. D13경계수평보정뒤D14/D15머리높이상승·접근, D16하강/D17pitch복구를실행했지만머리통과미확인이다. 공식착의0과화면의구멍후보를구분한다. E22같은prefix와시작천접힘차이가있어결과차이의단일인과를확정하지않는다.
+
+Fullreport는첫생성이QC완료전시작되어qualitynull이었다. 미게시초안을output/reports/20261107-e23-before-qc-export에그대로보존하고,QC완료뒤새공식report를재생성해qualitytrue를확인했다. 전체1180frame/20fps/59s,hero1011–1180incl170frame/5fps/34s,방향937–1011incl75frame/5fps/15s다. 원본은변경하지않았다.
+
+E24는E23/1179·history1077/1161·동일task-progress·30판단/max2000/settle6/review10후보를검수한다. 새파지방법이아니라진전이생긴동일방법의연속분기다. M1은별도후보, E15/367은대안원본복원·loader검증까지만완료했다.10점확인후에도다음득점으로계속한다.
+
+E23[원본백업](20261107-e23-backup-verification.json)은고정revision`c1157513362e30d6a8306e7c8fd2ec0265e5db2c`·2,730,237,231bytes·SHA`a6a7850d6a510cf649795091b862d10f6c62043c2ea12edfa962059a40946072`이며04:09:08UTC강제재다운로드및218member전수해시검증을완료했다. E24/1179출발점은공개5뷰/잔류운동검수와공식loader/actionsfloat32(1179,2,9),E23실행소스22파일불변확인후채택했다. 아직새실행전이다.

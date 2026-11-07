@@ -1,5 +1,54 @@
 # 현재 상태와 다음 작업
 
+**E23은5/50·픽업5·착의0·success=false,1,180/1,180전이 검사 통과로 종료했습니다.** 방향 반전·측면 접근·한쪽 경계 들기 뒤 손과 전완이 천 옆으로 드러났지만 공식 소매 통과·착의 득점은 없습니다. 머리 쪽 상승·하강·시점 복구 뒤18판단 예산을 소진했습니다. 최고5점·중간목표10점미달성입니다.
+
+[최신 영상](../gallery/20261107-astra-progress787-named-001.ko.md) · [분석](../collection/reviews/20261107-astra-progress787-named-001.ko.md) · [학습 검토 구간](../collection/reviews/20261107-astra-progress787-named-001-learning-segments.json) · [전체 일지](sessions/20261106-evening-resume.ko.md)
+
+| 확인 항목 | E23 결과 |
+|---|---|
+| 실행 소스·부모 | `952ec8da68cdc0ef635d0d45329712eee006fd1f`·시작clean·직접E18/787·history719/771 |
+| 모델·전략 | 고정Astra/ultra·coordinated-task-progress·named/query·18판단18act/18calls·query0·finish0 |
+| 실제 구간 | 787재실행+284모델+108정착+1예산 마감=1180·59sim초. 새393전이19.65sim초 |
+| 실제 시간 | 03:30:54–04:02:40UTC·1906.180018초(31분46초) |
+| 호출 경로 | 모델821.402335초·환경1031.865206초. 순수 내부 추론시간은 미제공 |
+| 공식 결과 | raw5·픽업5·착의전항목0·success=false·no_dressing_points/final_score0.0 |
+| 마감·검사 | decision_budget·capture complete/operator_finished·QC1180/1180오류0·host exec95905=0·shell 관측 Python0·simulator0 |
+| 보존·학습 | [고정 원본 백업·재다운로드 검증 완료](sessions/20261107-e23-backup-verification.json)·training unreviewed |
+
+## 같은 방법을 이어갈 근거
+
+E22의 짧은 정보 탐색과 달리, E23에서는 실제 목표 방향 이동·천 변형·접근 방향 반전과 손/전완 재노출이 있었습니다. 마지막에도 팔 노출과 두 경계 부근 천 유지가 보입니다. 다만 공식 통과는 없고, 머리–입구 관계는 가려졌습니다. **새 관계를 보존해 미완료 목표를 확인하는 연속 분기**를 먼저 준비합니다. 실패 원인이 모두 해소됐거나 새 파지 방법이 검증됐다는 뜻은 아닙니다. 같은prefix라도 초기 천 접힘이 달라 E22/E23차이를 프롬프트 한 가지의 인과로 단정하지 않습니다.
+
+**E24 후보는 E23/1179·history1077/1161·30판단·max2000**이며 아직 미실행입니다.1179는 마지막 모델행동과6정착 후, 추가 예산마감1전이 전입니다. 최종 공개5뷰·잔류 운동과 source loader1179개행동 검수를 완료했고, 실행소스22파일이 E23와 같음을 확인했습니다. 기존task-progress/모델/코드/공식20Hz·물리·최대20step은 유지하고, 재실행에서 현재 지지를 다시 판단합니다. 18판단에서30판단으로 늘리는 것은 모델 요청 예산이며 행동 한계 변경이 아닙니다. [다른 조작 후보](../collection/research/2026-11-07-post-overhead-method-options.ko.md)의 M1은 별도 준비 상태입니다.
+
+[더 이른5점 후보](../collection/research/2026-11-07-earlier-support-startpoints.ko.md)의 E15/367은 원본 복원·loader 검증을 마쳤지만 아직 선택·실행하지 않았습니다. [의복 방향 가설](../collection/research/2026-11-07-garment-direction-hypotheses.ko.md)은 E23초기obs0–5만 검토한 시점별 기록이며 뒤의 팔 노출을 미리 주장하지 않습니다.
+
+## E24 예정 명령 · 검수·보존·공개 소스 확정 후, 아직 미실행
+
+```bash
+export PATH="$PWD/.runtime/codex-0.166.0/node_modules/.bin:$PATH"
+unset STRETCH4_PRACTICE_LAYOUT STRETCH4_RANDOMIZE
+PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.codex_client \
+  --run-id 20261107-astra-progress1179-named-001 --mode dressing \
+  --strategy coordinated-task-progress --actor-backend exec \
+  --model gpt-6-astra --effort ultra --plan-size 1 --review-points 10 \
+  --replay-prefix-run 20261107-astra-progress787-named-001 --replay-prefix-steps 1179 \
+  --parent-attempt 20261107-astra-progress787-named-001 \
+  --retry-reason continue_new_arm_garment_relation_after_decision_budget \
+  --replay-observe-steps 1077 1161 --wrist-depth-panel --pixel-depth-query --named-actions \
+  --post-action-settle-steps 6 --decisions 30 --max-steps 2000 --model-timeout 180 \
+  --profile-step-phases
+```
+
+실행 시 실제source·시작시간·상태를 갱신합니다. 직접 부모는E23이며 같은E07 source group입니다. action replay는 정확한 천 checkpoint가 아닙니다. 공식10점 확인 뒤 보존·검증하고 다음 득점으로 계속합니다. [장기 구간 조합](../collection/research/2026-11-07-composable-scoring-data-plan.ko.md)은 현재 합성·학습 실행과 구분합니다.
+
+<details>
+<summary>E22 종료·E23 실행 중 당시 상태 이력</summary>
+
+> 아래는 당시 기록입니다. 현재 상태는 위 내용을 따릅니다.
+
+# 현재 상태와 다음 작업
+
 **최신 E22는5/50·픽업5·착의0·success=false로 종료했고813/813전이 검사를 통과했습니다. 최고5점으로 중간 목표10점은 아직 미달성입니다.** 짧은 전진·시점 보정·잔류 대기 뒤 모델이 자율 종료했습니다. 실제 진입/안착 동작을 충분히 시험하지 못했고 공식 평가는no_contact/null입니다.
 
 [최신 영상](../gallery/20261107-astra-probe787-named-001.ko.md) · [분석](../collection/reviews/20261107-astra-probe787-named-001.ko.md) · [출발점 화면 비교](../gallery/20261107-support-startpoints.ko.md) · [전체 일지](sessions/20261106-evening-resume.ko.md)
@@ -371,6 +420,8 @@ PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.codex_clie
 [클린 서버 복원](START_HERE.ko.md) · [초기 자산·E07 복원 검증](sessions/20261106-evening-restore-validation.json) · [E16 분석](../collection/reviews/20261106-astra-support264-002.ko.md) · [E15 마감 이력](SESSION_WRAPUP_20261106.ko.md) · [전체 개발 이력](HISTORY.ko.md)
 
 새 정책 학습·RL/VLA 성능 검증·학습 승인은 완료하지 않았습니다. 이전 문서의 일시 중지·미실행 문구는 당시 이력이며 현재 실행 상태는 이 문서와 최신 일지를 우선합니다.
+
+</details>
 
 </details>
 

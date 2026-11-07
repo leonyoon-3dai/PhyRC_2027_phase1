@@ -2,6 +2,31 @@
 
 [저장소 소개](../../README.md) · [현재 상태](../project/STATUS.md) · [이번 세션 기록](../project/sessions/20261106-evening-resume.ko.md)
 
+**최신 E23 · 방향 반전 뒤 팔 노출, 머리 접근까지 진행**
+
+<a href="assets/20261107-e23-arm-head-progress/event.mp4"><img src="assets/20261107-e23-arm-head-progress/preview.gif" width="960" alt="E23 공개 네 카메라. 손과 전완이 드러나는 변화 뒤 머리 높이로 옷을 올리고 내려보는 과정"></a>
+
+[**MP4 크게 보기**](assets/20261107-e23-arm-head-progress/event.mp4) · [**방향 반전·전체 갤러리**](20261107-astra-progress787-named-001.ko.md) · [**분석**](../collection/reviews/20261107-astra-progress787-named-001.ko.md) · [**피드백 남기기**](https://github.com/leonyoon-3dai/PhyRC_2027_phase1/issues/new?title=%5BE23+%ED%94%BC%EB%93%9C%EB%B0%B1%5D+%ED%8C%94+%EB%85%B8%EC%B6%9C%EA%B3%BC+%EB%A8%B8%EB%A6%AC+%EC%A0%91%EA%B7%BC&body=%EC%8B%9C%EB%8F%84%3A+E23+%2F+20261107-astra-progress787-named-001%0A%EC%98%81%EC%83%81+%EC%8B%9C%EA%B0%81+%EB%98%90%EB%8A%94+%EA%B2%BD%EA%B3%84%3A%0A%EC%B9%B4%EB%A9%94%EB%9D%BC%3A%0A%0A%EB%B3%B4%EC%9D%B4%EB%8A%94+%EC%82%AC%EC%8B%A4%3A%0A%0A%ED%95%B4%EC%84%9D%C2%B7%EC%A7%88%EB%AC%B8%3A%0A%0A%EB%8B%A4%EC%9D%8C%EC%97%90+%EB%B9%84%EA%B5%90%ED%95%A0+%EB%B0%A9%EB%B2%95%3A%0A) · [이전 E22 짧은 탐색](20261107-astra-probe787-named-001.ko.md)
+
+**공식 원점수 5/50 · 픽업5 · 착의0 · `success=false` · 1,180/1,180기록 검사 통과.** 경계의 전후 방향을 바꾸고 측면으로 이동한 뒤, 한쪽 경계를 올리면서 손·전완이 천 옆으로 더 드러났습니다. 이어 머리 높이로 올렸다 내렸지만 머리 통과는 확인되지 않았습니다. **시각적 팔 노출은 공식 소매 통과와 다르며, 착의 득점은 아직 없습니다.** 18판단 예산을 모두 사용해 종료했습니다. 최고5점, 중간 목표10점은 아직 미달성입니다.
+
+1011–1180경계 · 170프레임 · 34초 · 4배 느리게입니다. 위는 로봇0/1 머리, 아래는 로봇0/1 손목이며 모델 대기는 제외했습니다. [영상 출처](assets/20261107-e23-arm-head-progress/provenance.json) · [학습 검토 구간](../collection/reviews/20261107-astra-progress787-named-001-learning-segments.json)
+
+전체 **1,180전이·시뮬레이션59초**, 새 구간은 **393전이·19.65초**입니다. 실제31분46초, 787재실행+284모델 행동+108정착+1예산 마감이며 18호출/18행동, 실제 depth 질의0회입니다. 전이1개는 관측→행동→다음 관측의0.05초 기록입니다.
+
+**다음 E24 준비:** 마지막 지지·팔 노출 관계가 유지된 E23/1179에서 같은 `coordinated-task-progress`를 이어가도록 출발점을 채택했습니다. 30판단으로 미완료 머리·몸판 관계를 더 확인하는 연속 분기이며, 새 파지 방법이나 성공으로 세지 않습니다. 아직 실행하지 않았습니다. [현재 상태·검증·명령](../project/STATUS.md)
+
+[**출발점 화면 5개 비교·피드백**](20261107-support-startpoints.ko.md) · [**출발점·방법 데이터베이스**](../collection/catalog/README.ko.md) · [**0→5→10 구간 조합 장기계획**](../collection/research/2026-11-07-composable-scoring-data-plan.ko.md)
+
+[더 이른5점 출발 후보](../collection/research/2026-11-07-earlier-support-startpoints.ko.md) · [의복 방향·경계의 경쟁 가설](../collection/research/2026-11-07-garment-direction-hypotheses.ko.md) · [다른 조작 대안](../collection/research/2026-11-07-post-overhead-method-options.ko.md) · [전체 갤러리](README.ko.md)
+
+**10점은 중간 목표이며 공식 확인 후 다음 득점 항목으로 계속 진행합니다.** 실패·복구와 원본을 보존하고, 합성 자료 확대는 장기 계획으로 구분합니다.
+
+<details>
+<summary>E22 이전 갤러리·당시 계획 이력</summary>
+
+> 아래는 당시 기록입니다. 현재 상태는 위 내용을 따릅니다.
+
 **최신 E22 · 짧은 전진·시점 보정 뒤 진입 전 자율 종료**
 
 <a href="assets/20261107-e22-entry-probe/event.mp4"><img src="assets/20261107-e22-entry-probe/preview.gif" width="960" alt="E22 실제 공개 네 카메라. 4단계 전진 탐색, 손목 시점 보정, 잔류 운동 대기 뒤 종료"></a>
@@ -459,6 +484,8 @@ plan3는 중간 관측으로 다시 판단하는 조건부 계획이 아닙니�
 
 </details>
 
+
+</details>
 
 </details>
 

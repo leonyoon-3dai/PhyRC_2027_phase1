@@ -12,15 +12,15 @@
 
 ## 확인된 현재 상태
 
-- 최신 종료 E22 `20261107-astra-probe787-named-001`:5/50·픽업5·착의0·success=false·no_contact/null,QC813/813오류0. 787재실행+14모델+12정착,3act+finish/5calls(query1·7valid). UTC03:01:21–03:18:34·17분13초·source11faab3797cacd0160a725578d4a9dc65c6b018f clean.
-- E22 실제는단일4step전진탐색→4step시점보정→6step중립대기→모델finish다. 충분한진입시험전정보부족으로종료했으며18판단예산소진아님. 정보조건/재파지금지가종료에기여했을가능성과물리실패를구분한다.
-- E22capture완료·simulator0·attemptcompleted,호스트exec61989의반환143은원인미확인별도기록이며client0으로쓰지않는다. 원본QC통과·비공개백업788a36ece3f606ca06dd0f20224910974dbe270e·강제재다운로드/92member검증완료,학습unreviewed. 최고5점·중간목표10미달성.
-- E23실행중·03:30:54UTC시작·source952ec8da68cdc0ef635d0d45329712eee006fd1f clean:coordinated-task-progress·E18/787/hist719771·named+query·18dec/max1300/timeout180/settle6/review10. 정보명료화만필수gate로삼지않고현재공개목표관계로유한act후실제옷진전을관찰한다. 실제시작/source는STATUS/attempt우선.
-- E22실행기준전체295CPU검사통과. 새후보통합302CPU검사23.432초통과·실제효과미검증이다. 공식schema최대20step·물리·20Hz·고정모델을변경하지않는다.
-- E21은5/50·1111QC,두하강접근/복구/테이블재파지뒤40판단예산마감. 마지막새파지유지검사없음. 백업45e6adf8586f935b3ca9f6d19ed3ec97371be44f 재다운로드/416member검증완료. 새파지를검증된출발점으로쓰지않는다.
-- 출발점/방법/실제/계획은docs/collection/catalog/catalog.v1.json이canonical,SQLite는재생성한다. E18/563·787·801/E19/801의5점·관측지지와E18/470의0점대조를구분하며공개출발점갤러리15원본이미지로비교할수있다. 모두같은E07계보,exactcheckpoint아님.
-- E20목선준비0/50·E19세접근5/50·E18roll오류/복구이력을보존한다. named이후설명없는축불일치재발을발견하지않았지만일반오류율개선증명은아니다. E09종료응답오류는수정됐으며불완전원본은재실행출처로쓰지않는다.
-- 공식시연/BEHAVIOR검토·관측절차카드·국소depth해석·실제방법전환후보·장기0→5→10조합계획을기록했다. 외부영상/좌표/평가정답을actor에전달하지않는다.
+- 최신 E23 `20261107-astra-progress787-named-001`은5/50·픽업5·착의0·success=false·no_dressing_points/0.0,QC1180/1180오류0으로 종료했다. source952ec8da68cdc0ef635d0d45329712eee006fd1f clean·03:30:54–04:02:40UTC·31분46초.
+- 1180=787재실행+284모델+108정착+1decision_budget.18act/18calls/query0/finish0,host95905=0·shell관측Python0·simulator0·capturecomplete/operator_finished. [고정 원본 백업 검증 완료](docs/project/sessions/20261107-e23-backup-verification.json)·trainingunreviewed.
+- 경계 방향반전·측면접근·한쪽들기 뒤 손/전완 노출이 새로 나타났지만 공식소매통과/착의득점은없다. 머리접근·하강뒤에도입구관계가림. 단순가림만반복한결과로축소하거나성공으로승격하지않는다.
+- E24후보는E23/1179·history1077/1161·동일coordinated-task-progress·30dec/max2000/timeout180/settle6/review10. 종단지지/잔류운동/loader검수완료·source공개후실행. 아직미실행이며실제상태는STATUS/attempt우선. M1재파지후보는미통합별도트리다.
+- 실행소스전체302CPU검사23.432초통과. E23뒤실행코드변경없음. 공식schema최대20step·물리·20Hz·고정Astra/ultra/CLI0.166.0exec 유지.
+- E22는5점·813QC·짧은정보탐색뒤자율finish이며host143원인미확인/clientnull/simulator0을구분보존했다. 백업788a36ece3f606ca06dd0f20224910974dbe270e 검증완료.
+- E21두하강·테이블재파지1111QC/5점,새파지후속검사없음. E20목선준비0점/E19세접근5점/E18roll오류복구이력보존.
+- catalog.v1.json이canonical·SQLite재생성. E18/E19출발점5개공개갤러리,더이른E07/430/450·E15/367후보검토를구분한다. E15필수원본/loader검증은실제재실행아님. 모두같은E07계보·정확checkpoint아님.
+- 공식시연/BEHAVIOR·관측절차·국소depth·의복방향가설·장기0→5→10조합계획기록. 외부영상·픽셀좌표·평가정답을actor에주지않는다.10점은중간목표이며확인후다음득점으로계속한다.
 
 ## 실행과 재현
 

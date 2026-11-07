@@ -1,18 +1,10 @@
 # 클린 서버 복원·검사·재개 안내
 
-**최신 종료 E22는5/50·착의0·success=false,813/813전이 검사 통과입니다.** 짧은4단계 접근·4단계 시점 보정·6단계 중립 대기 뒤 모델이 자율 종료했으며 공식no_contact/null입니다. 18판단예산중4판단/5모델호출,실제17분13초(03:01:21–03:18:34UTC)입니다. 최고5점·중간목표10점미달성입니다.
+**최신 E23은5/50·착의0·success=false,1,180/1,180전이 검사 통과입니다.** 방향 반전과 측면 이동 뒤 팔 노출은 나타났지만 공식 소매 통과는 없고, 머리 접근 후18판단 예산으로 종료했습니다. 03:30:54–04:02:40UTC·31분46초,source952ec8d clean·host0/Python0/simulator0입니다. 최고5점·중간목표10점미달성입니다.
 
-[현재 상태·다음 명령](STATUS.md) · [E22 영상](../gallery/20261107-astra-probe787-named-001.ko.md) · [출발점 화면 비교](../gallery/20261107-support-startpoints.ko.md) · [전체 일지](sessions/20261106-evening-resume.ko.md)
+[현재 상태·다음 명령](STATUS.md) · [E23 영상](../gallery/20261107-astra-progress787-named-001.ko.md) · [분석](../collection/reviews/20261107-astra-progress787-named-001.ko.md) · [전체 일지](sessions/20261106-evening-resume.ko.md)
 
-| 현재 기준 | 내용 |
-|---|---|
-| E22 소스·기록 | source11faab3797cacd0160a725578d4a9dc65c6b018f clean. 813=787재실행+14모델+12정착,40.65sim초 |
-| 마감·검사 | capture완료·attemptcompleted·simulator0·QC813/813오류0. host exec61989 반환143의원인은미확인별도보존 |
-| E23 실행 중 · 03:30:54UTC | coordinated-task-progress·E18/787·history719/771·named+query·plan1·18dec/max1300/timeout180/settle6/review10. source952ec8d clean 시작 |
-| 검증·모델 | E22기준295CPU통과. E23통합302CPU검사23.432초통과. 고정Astra/ultra·CLI0.166.0/exec·Chrome/WebRTC OFF |
-| 자료 승인 | 기술QC·관측지지·점수·학습승인별도,현재unreviewed |
-
-E22는정보탐색뒤실제진입전종료한결과입니다. 다음은같은검수5점출발점에서현재목표를향한유한이동을비교합니다. E21마지막새파지는후속지지검사가없어출발점으로확정하지않습니다. E23도E18직접부모/787이며현재지지는새재실행관측에서재확인합니다.
+E24는 마지막 모델/정착 뒤E23/1179·history1077/1161에서 같은task-progress를30판단 이어가는 후보입니다. 종단검수·원본보존을마쳤으며공개source확정후시작합니다. 아직미실행입니다. E15/367원본도대안으로검증복원했으나새실행이아닙니다. 현재소스전체302CPU통과,실행코드변경없음. 기술QC·관측지지·점수·학습승인별도이며자료는unreviewed입니다.
 
 ## 보존 위치와 고정 revision
 
@@ -33,6 +25,7 @@ E22는정보탐색뒤실제진입전종료한결과입니다. 다음은같은검
 | [E19 원본](sessions/20261107-e19-backup-verification.json) | `a5f9136d1479933b6c026465a8af0321bad1504c` | 명명 명령·세 접근·자율 종료932전이,2,130,731,675 bytes. E20의 직접 부모는 E18 |
 | [E20 원본](sessions/20261107-e20-backup-verification.json) | `ad7b94f4dd65115082ad53527a48efbf99a5947d` | 목선 후보 두 재파지·준비 미완료·726전이, 1,721,601,271bytes. E21 직접부모는 E18 |
 | [E21 최신 원본](sessions/20261107-e21-backup-verification.json) | `45e6adf8586f935b3ca9f6d19ed3ec97371be44f` | 상방 배치·하강·예산 종료1111전이,2,428,228,014 bytes. 마지막 새 파지는 후속 지지 미검증 |
+| [E23 최신 원본](sessions/20261107-e23-backup-verification.json) | `c1157513362e30d6a8306e7c8fd2ec0265e5db2c` | 방향반전·팔노출·머리접근,1180전이·2,730,237,231bytes. E24의직접부모 |
 | [E22 최신 원본](sessions/20261107-e22-backup-verification.json) | `788a36ece3f606ca06dd0f20224910974dbe270e` | 짧은 탐색·자율 종료813전이,1,854,271,559bytes·92member검증. host143/simulator0구분 보존 |
 | [이름 기반 행동·질의 연결 시험](sessions/20261107-named-depth-wiring-backup-verification.json) | `7817a63289250cb40e94a50a9b816eb45a567660` | 실제 GPU·모델 없는 fixture3전이. 실제 source commit과 dirty 작업 트리 상태는 receipt에 기록 |
 | [BEHAVIOR 참고 원본](sessions/20261107-champion-reference-backup-verification.json) | `427d3a150b48f2e522bbff30f9177d6a2722788d` | 검토한 제3자 원본19개와 출처/범위6파일,6,879,270bytes. 시연·actor·학습 입력과 분리한 참고자료 |

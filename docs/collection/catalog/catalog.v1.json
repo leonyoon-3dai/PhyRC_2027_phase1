@@ -551,13 +551,13 @@
       "parent_run_id": "20261106-astra-guide470-depth-001",
       "replay_prefix_steps": 787,
       "replay_completed_steps": 787,
-      "recorded_transitions": null,
-      "qc_status": "pending",
+      "recorded_transitions": 1180,
+      "qc_status": "passed",
       "backup": {
-        "status": "unknown",
-        "receipt": null,
-        "revision": null,
-        "sha256": null
+        "status": "verified",
+        "receipt": "docs/project/sessions/20261107-e23-backup-verification.json",
+        "revision": "c1157513362e30d6a8306e7c8fd2ec0265e5db2c",
+        "sha256": "a6a7850d6a510cf649795091b862d10f6c62043c2ea12edfa962059a40946072"
       }
     }
   ],
@@ -836,6 +836,38 @@
       },
       "exact_checkpoint": false,
       "training_approval": "unreviewed"
+    },
+    {
+      "id": "20261107-astra-progress787-named-001-p1179",
+      "source_run_id": "20261107-astra-progress787-named-001",
+      "boundary": 1179,
+      "history": [
+        1077,
+        1161
+      ],
+      "support": {
+        "status": "observed_bilateral",
+        "window_start": 1077,
+        "window_end": 1179,
+        "evidence": [
+          "docs/collection/research/2026-11-07-e23-continuation-startpoint.ko.md",
+          "docs/collection/research/2026-11-07-e23-continuation-startpoint.json",
+          "docs/collection/reviews/20261107-astra-progress787-named-001.ko.md",
+          "Selected public samples1077,1099,1121,1143,1161,1179; local cloth persists at both grippers with arm exposure. No release request in final-command coverage; not independent physical attachment proof."
+        ],
+        "uncertainty": [
+          "Local support and arm exposure are visual observations; official sleeve or neck passage not confirmed.",
+          "Pitch residual remains; not a stationary or exact cloth checkpoint.",
+          "Same E07 lineage; neighboring frames and replay branches are not independent demonstrations.",
+          "Fresh replay must reassess current cloth relation; selected observations do not exclude transient slip."
+        ]
+      },
+      "score_at_boundary": {
+        "raw_points": 5.0,
+        "evidence": "Root trusted offline selection: exact physics_tick14148/raw5 from closed score_samples.jsonl, output/reviews/e23-continuation-boundary/trusted-boundary-score-selection.json; never actor input."
+      },
+      "exact_checkpoint": false,
+      "training_approval": "unreviewed"
     }
   ],
   "methods": [
@@ -1066,7 +1098,7 @@
     {
       "id": "coordinated-task-progress-named-query",
       "name": "coordinated-task-progress / named / query",
-      "status": "ready",
+      "status": "tested",
       "axes": {
         "grasp_arrangement": "retain current useful bilateral supports; no new regrasp",
         "entry_target": "body-opening approach or garment motion along observed arm toward torso",
@@ -1075,7 +1107,7 @@
         "view": "designated RGB-D + optional pixel depth query",
         "action_encoding": "named"
       },
-      "description": "Candidate distinguishes task progress from information-only probing. No prescribed centimetre distance or changed official action limit. Actual new physical method requires observed execution; no performance established."
+      "description": "E23 executed purposeful approach, span-direction correction, lateral travel and unilateral lift with new hand/forearm exposure, then head approach. Official clothing points remained zero. Keep observed relation separate from passage success; continuation does not constitute a new grasp method."
     }
   ],
   "attempts": [
@@ -1574,9 +1606,26 @@
     },
     {
       "id": "20261107-astra-progress787-named-001",
-      "status": "in_progress",
+      "status": "completed",
       "run_id": "20261107-astra-progress787-named-001",
       "startpoint_id": "20261106-astra-guide470-depth-001-p787",
+      "method_id": "coordinated-task-progress-named-query",
+      "result": {
+        "raw_points": 5,
+        "success": false,
+        "review": "docs/collection/reviews/20261107-astra-progress787-named-001.ko.md",
+        "videos": [
+          "docs/gallery/assets/20261107-e23-arm-head-progress/event.mp4",
+          "docs/gallery/assets/20261107-e23-direction-change/event.mp4"
+        ]
+      },
+      "notes": "E23 completed:1180=787replay+284model+108settle+1decision-budget;18act/18calls/query0/finish0. Direction reversal, lateral approach and unilateral raise exposed hand/forearm near side-region, followed by head-height approach and lowering. Visual exposure is not official passage: pickup5,all clothing0,successfalse,no_dressing_points/0.0. host0,shell-observed Python0,simulator0. Same E07 lineage; trainingunreviewed."
+    },
+    {
+      "id": "planned-e23-1179-task-progress",
+      "status": "planned",
+      "run_id": null,
+      "startpoint_id": "20261107-astra-progress787-named-001-p1179",
       "method_id": "coordinated-task-progress-named-query",
       "result": {
         "raw_points": null,
@@ -1584,7 +1633,7 @@
         "review": null,
         "videos": []
       },
-      "notes": "Actual E23 started 2026-11-07T03:30:54Z from clean published source 952ec8da68cdc0ef635d0d45329712eee006fd1f. Same E18/787 history719771 as E22;18dec/max1300/timeout180/settle6/review10;fixed Astra/ultra exec plan1 named/query. Full302CPU tests passed. Replay completion is recorded separately from intended prefix787. Final outcome/QC/backup pending. Same E07 source group; not an exact cloth checkpoint. Replay787 confirmed complete. Early actual D0/D1 forward motions and D2 pitch adjustment observed; final score/QC still pending. Projected hand-rim overlap is not passage proof."
+      "notes": "Selected E24 continuation proposal after E23 decision-budget close. Same task-progress,history1077/1161,30dec/max2000/settle6/review10; not a new physical method, not yet dispatched. Preserve public local bilateral support and new arm-garment relation; current replay may differ."
     }
   ]
 }

@@ -1,0 +1,57 @@
+{
+  "repo_id": "leonayoon/phyrc-2027-phase1-private-backup",
+  "repo_type": "dataset",
+  "private": true,
+  "revision": "c1157513362e30d6a8306e7c8fd2ec0265e5db2c",
+  "archive_path": "sessions/20261107-e23-v1/archive.tar.gz",
+  "archive_bytes": 2730237231,
+  "archive_sha256": "a6a7850d6a510cf649795091b862d10f6c62043c2ea12edfa962059a40946072",
+  "archive_members_verified": 218,
+  "remote_download_verified": true,
+  "remote_archive_member_hashes_verified": true,
+  "verified_at_utc": "2026-11-07T04:09:08.845297+00:00",
+  "run_id": "20261107-astra-progress787-named-001",
+  "validated_transitions": 1180,
+  "source_commit": "952ec8da68cdc0ef635d0d45329712eee006fd1f",
+  "source_working_tree_modified": false,
+  "attempt_status": "completed",
+  "capture_complete": true,
+  "capture_termination_reason": "operator_finished",
+  "simulator_returncode": 0,
+  "execution_returncode_observation": {
+    "host_exec_tool_session_id": 95905,
+    "host_exec_reported_returncode": 0,
+    "host_returncode_evidence_source": "root agent supplied functions.write_stdin completion receipt",
+    "python_client_exit_status_recorded_by_shell": 0,
+    "python_client_exit_evidence_file": "output/sessions/20261106-evening/e23-shell-observed-python-exit.txt",
+    "python_client_exit_evidence_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "simulator_returncode_from_closed_attempt": 0,
+    "interpretation": "Keep host tool completion, shell-observed Python exit, and simulator exit as separate matching observations.",
+    "closed_attempt_error": null,
+    "closed_attempt_finished": true,
+    "closed_attempt_activity": "closed"
+  },
+  "completion_context": {
+    "root_reported_model_act_decisions": 18,
+    "root_reported_loop_stop": "decision_budget",
+    "capture_termination_reason": "operator_finished",
+    "note": "The capture operator_finished marker is distinct from a model finish decision."
+  },
+  "manifest_entries": 217,
+  "manifest_sha256": "98a9bcb3340f4e003bfc2fc3aea3a7b7d566e085dce3e61167384388100f0b39",
+  "source_snapshot_files": 22,
+  "privacy_scope": {
+    "strict_collection_trace_snapshot_public_observation_allowlist": true,
+    "trusted_audit_evaluation_archived_privately_without_geometry_review": true,
+    "not_actor_input_or_training_approval": true,
+    "excluded": [
+      "simulator.log",
+      "actor runtime",
+      "actor_events",
+      "credentials",
+      "session databases",
+      "raw CLI reasoning",
+      "unreviewed files"
+    ]
+  }
+}

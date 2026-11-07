@@ -1,0 +1,1625 @@
+{
+  "schema": "phyrc-earlier-support-startpoints-review-v1",
+  "created_at_utc": "2026-11-07T03:55:34.648550+00:00",
+  "scope": "Closed E07/E15 public RGB, robot state and final actions; selected trusted physics_tick/raw_points only. No active E23 data, HDF5 data, audit, hidden geometry, raw reasoning or runtime read. No new collection, actor change or adoption.",
+  "joint_mapping_provenance": {
+    "public_contract_source": "docs/collection/assets/20261106-coordinated-first5-review/snapshot.json",
+    "sha256": "b9fd0e5b441cce7c2007bdd998dd66ef57ee03223f65c7723fb3edd86e6d7068",
+    "joint_names": [
+      [
+        "wheel_0_joint",
+        "wheel_1_joint",
+        "wheel_2_joint",
+        "lift_joint",
+        "arm_l1_joint",
+        "arm_l2_joint",
+        "arm_l3_joint",
+        "arm_l4_joint",
+        "wrist_yaw_joint",
+        "wrist_pitch_joint",
+        "wrist_roll_joint",
+        "gripper_finger_left_joint",
+        "gripper_finger_right_joint"
+      ],
+      [
+        "wheel_0_joint",
+        "wheel_1_joint",
+        "wheel_2_joint",
+        "lift_joint",
+        "arm_l1_joint",
+        "arm_l2_joint",
+        "arm_l3_joint",
+        "arm_l4_joint",
+        "wrist_yaw_joint",
+        "wrist_pitch_joint",
+        "wrist_roll_joint",
+        "gripper_finger_left_joint",
+        "gripper_finger_right_joint"
+      ]
+    ],
+    "controller_target_columns": [
+      "lift",
+      "arm",
+      "yaw",
+      "pitch",
+      "roll",
+      "grip_pos",
+      "base_fwd",
+      "base_strafe",
+      "base_turn"
+    ],
+    "pose_layout": [
+      "x",
+      "y",
+      "z",
+      "qw",
+      "qx",
+      "qy",
+      "qz"
+    ],
+    "same_E07_E15_pinned_assets_lock_sha256": "ebbbaf6d2f2aea8237451d890d0e54458f83e2a503bcfa47228c7f61b60835cd",
+    "numeric_value_matching_used": false
+  },
+  "method": {
+    "world_grasp_reference": "base_position_world + R(normalized base quaternion wxyz) @ grasp_position_base",
+    "orientation_claim": "reference positions only; no cloth attachment inference",
+    "time": "prefix N executes [0,N); exact evaluator tick12*N; public actor clock retained separately",
+    "future_leakage": "post-boundary visual confirmation is retrospective evidence only; not selectable history for that candidate",
+    "support_score_separate": true
+  },
+  "runs": [
+    {
+      "run_id": "20261106-astra-coordinated-fresh-001",
+      "source_kind": "gpt",
+      "status": "completed",
+      "finished": true,
+      "capture_complete": true,
+      "source_group": "20261106-coordinated-demo-methods",
+      "source_commit": "ad84c0c327c377e2c3af665d73b4f65a2018a476",
+      "source_working_tree_modified": true,
+      "source_files_sha256": {
+        "run.sh": "f1e8e2697a467b55ea873fdc8c154eec9a03a2155e3ae951a1b2997a76f78537",
+        "scripts/collect_operator.py": "07a01239af5f5a484b191930d287e92420814e055114673ea6c3e9df4700c713",
+        "participant/streaming/collector_stream.py": "562bac7c6d5fa330341ebe71e94baa257deaa879dbcdeea56d7d97023187ffc9",
+        "config/policy_interface.json": "0823b5a692621bc1effed308ac6427af7e97122de4db297ec14b5d751551a5dc",
+        "config/assets.lock.json": "ebbbaf6d2f2aea8237451d890d0e54458f83e2a503bcfa47228c7f61b60835cd",
+        "participant/collection/__init__.py": "4eb7c6dcac8aeba90948ee2a90768056a3df69ce02b116c497b53a28aa23151d",
+        "participant/collection/boundary.py": "8f90c98e92446d3ce81ed696d8b6810e212824d55dba8730ac2301bcd7f78927",
+        "participant/collection/codex_actor.py": "88720b32860ab6475fe79261686795950d3b500302e450302fb961a45a7df94b",
+        "participant/collection/codex_app_actor.py": "12f30af4340ff3bacfaf03e96ef200a5964772e76b50605f2a23966bb045c82d",
+        "participant/collection/codex_client.py": "9f920b32d5bc91c50f809c294a97200783bc719aef41791d340cedac80ae5f9c",
+        "participant/collection/continuation.py": "8ed8bae155c084337843bfbe0d662f02a613270e3d81914292cffbf0be10eded",
+        "participant/collection/evaluation.py": "fa55f353f78704ba54774628e8f511fa035d8b4216d081c440dc5816a6922588",
+        "participant/collection/export_report.py": "92e7981ca5105e9e38d06f0d1e9bf48012874ed910d7a4b1699329f3a205bfb7",
+        "participant/collection/gpt_client.py": "5b729eee25e1e6a2c5dc1f8f986d103cd19c5c87a9bf84261df8742417c43129",
+        "participant/collection/milestones.py": "2cd39ded7575a38009bcc0f7e1ae6cd5f29134b52881ce291943eb868e5aaca8",
+        "participant/collection/plans.py": "311900cece741d3f9d1609d1717321d4962651fea1e9caa4d186f9548861d769",
+        "participant/collection/validate_capture.py": "d0c464345534c875b19a6c8d275d4589bec096da7b7b7164409366bb5429ba68"
+      },
+      "historical_parent_attempt": "20261106-astra-dressing-continue-001",
+      "replay_parent_run_id": null,
+      "replay_prefix_steps": 0,
+      "replay_completed_steps": 0,
+      "validated_transitions": 1067,
+      "quality_passed": true,
+      "training_approval": "unreviewed",
+      "backup_receipt": "docs/project/sessions/20261106-remote-backup-verification.json",
+      "backup_revision": "e1d32f9f9ea82438f90bc379452abf83a150999b",
+      "archive_sha256": "d087a7899f60fffd7e9541d13215585ef6b462f3e0d71c66e0649fd0172ed34b",
+      "archive_bytes": 11779782360
+    },
+    {
+      "run_id": "20261106-astra-opening264-001",
+      "source_kind": "gpt",
+      "status": "completed",
+      "finished": true,
+      "capture_complete": true,
+      "source_group": "20261106-coordinated-demo-methods",
+      "source_commit": "fa3fb85a25b35228d5456fd3e70fca3259098e6b",
+      "source_working_tree_modified": false,
+      "source_files_sha256": {
+        "run.sh": "f1e8e2697a467b55ea873fdc8c154eec9a03a2155e3ae951a1b2997a76f78537",
+        "scripts/collect_operator.py": "8bbcc5efa4494476566ed76efad08f1118e44b23c6705d6a37e57d3d9d9b4fc2",
+        "participant/streaming/collector_stream.py": "562bac7c6d5fa330341ebe71e94baa257deaa879dbcdeea56d7d97023187ffc9",
+        "config/policy_interface.json": "0823b5a692621bc1effed308ac6427af7e97122de4db297ec14b5d751551a5dc",
+        "config/assets.lock.json": "ebbbaf6d2f2aea8237451d890d0e54458f83e2a503bcfa47228c7f61b60835cd",
+        "participant/collection/__init__.py": "4eb7c6dcac8aeba90948ee2a90768056a3df69ce02b116c497b53a28aa23151d",
+        "participant/collection/boundary.py": "8f90c98e92446d3ce81ed696d8b6810e212824d55dba8730ac2301bcd7f78927",
+        "participant/collection/codex_actor.py": "462c73601f744baa903668bd08e11b2af7f6cc26347482dd80bcade953827ba0",
+        "participant/collection/codex_app_actor.py": "12f30af4340ff3bacfaf03e96ef200a5964772e76b50605f2a23966bb045c82d",
+        "participant/collection/codex_client.py": "a61fa9b1a95b162ab51b859cdb27be1f6ac2123ba55b4c854ff6bfda57b31854",
+        "participant/collection/continuation.py": "fe40fa7512dd1f20f62553fe7b73173ae1d8711552d938c99876946972060922",
+        "participant/collection/evaluation.py": "0ab3c8d8509763f038309c630316fbfda92a4e1a5ffd46901c1a3ad275515733",
+        "participant/collection/export_report.py": "3464c4b38ff262de65d4f2ecb559463c9dfa1493c231376768be7f234eec6beb",
+        "participant/collection/gpt_client.py": "5b729eee25e1e6a2c5dc1f8f986d103cd19c5c87a9bf84261df8742417c43129",
+        "participant/collection/milestones.py": "2cd39ded7575a38009bcc0f7e1ae6cd5f29134b52881ce291943eb868e5aaca8",
+        "participant/collection/plans.py": "311900cece741d3f9d1609d1717321d4962651fea1e9caa4d186f9548861d769",
+        "participant/collection/step_profile.py": "7faf9890e6168e4b01d3345d6fe5a09c608fd169d984e9ac8235fea8fbb096ff",
+        "participant/collection/validate_capture.py": "d0c464345534c875b19a6c8d275d4589bec096da7b7b7164409366bb5429ba68",
+        "participant/collection/wrist_depth.py": "2652c4d27ed92f095e420f7e74ead7dae1d676a93830911c072c1447685adfde"
+      },
+      "historical_parent_attempt": "20261106-astra-coordinated-fresh-001",
+      "replay_parent_run_id": "20261106-astra-coordinated-fresh-001",
+      "replay_prefix_steps": 264,
+      "replay_completed_steps": 264,
+      "validated_transitions": 611,
+      "quality_passed": true,
+      "training_approval": "unreviewed",
+      "backup_receipt": "docs/project/sessions/20261106-e15-backup-verification.json",
+      "backup_revision": "ba753c41cf64c361ae91aae9e31f9236106bc4ad",
+      "archive_sha256": "7c950323fdf15ac58a45330d383dbf3bd65a07b01143d4a730a6c37990574fad",
+      "archive_bytes": 1417350617
+    }
+  ],
+  "candidates": [
+    {
+      "id": "e07-recovered-430",
+      "run_id": "20261106-astra-coordinated-fresh-001",
+      "boundary": 430,
+      "observation_index": 34,
+      "decision_index": 34,
+      "physics_tick": 5160,
+      "raw_points": 5.0,
+      "support_window": [
+        422,
+        430
+      ],
+      "sampled_boundaries": [
+        422,
+        430
+      ],
+      "support_status": "sampled_visual_hypothesis_weak_preboundary_motion",
+      "after_boundary_evidence": [
+        450
+      ],
+      "recommended_history_max_boundary": 430,
+      "rank": "comparison_candidate",
+      "limitations": [
+        "right roll still recovering",
+        "table support contribution unknown",
+        "independent load and material identity unverified"
+      ],
+      "source_group": "20261106-coordinated-demo-methods",
+      "direct_parent_for_new_continuation": "20261106-astra-coordinated-fresh-001",
+      "all_frames_reviewed": false,
+      "exact_physics_checkpoint": false,
+      "independent_demonstration": false,
+      "actor_receives_evaluation": false,
+      "training_approval": "unreviewed",
+      "adopted": false,
+      "identified_material_rim": null,
+      "independent_bilateral_load": null
+    },
+    {
+      "id": "e07-turning-450",
+      "run_id": "20261106-astra-coordinated-fresh-001",
+      "boundary": 450,
+      "observation_index": 35,
+      "decision_index": 35,
+      "physics_tick": 5400,
+      "raw_points": 5.0,
+      "support_window": [
+        430,
+        450
+      ],
+      "sampled_boundaries": [
+        430,
+        450
+      ],
+      "support_status": "sampled_visual_hypothesis_during_paired_turn",
+      "after_boundary_evidence": [],
+      "recommended_history_max_boundary": 450,
+      "rank": "alternative_with_less_roll_residual_but_active_base_rotation",
+      "limitations": [
+        "base translation and yaw still active",
+        "both robots moved together",
+        "independent load and material identity unverified"
+      ],
+      "source_group": "20261106-coordinated-demo-methods",
+      "direct_parent_for_new_continuation": "20261106-astra-coordinated-fresh-001",
+      "all_frames_reviewed": false,
+      "exact_physics_checkpoint": false,
+      "independent_demonstration": false,
+      "actor_receives_evaluation": false,
+      "training_approval": "unreviewed",
+      "adopted": false,
+      "identified_material_rim": null,
+      "independent_bilateral_load": null
+    },
+    {
+      "id": "e15-transport-367",
+      "run_id": "20261106-astra-opening264-001",
+      "boundary": 367,
+      "observation_index": 7,
+      "decision_index": 7,
+      "physics_tick": 4404,
+      "raw_points": 5.0,
+      "support_window": [
+        325,
+        367
+      ],
+      "sampled_boundaries": [
+        325,
+        341,
+        367
+      ],
+      "support_status": "sampled_visual_hypothesis_during_paired_lift_and_translation",
+      "after_boundary_evidence": [
+        393
+      ],
+      "recommended_history_max_boundary": 367,
+      "rank": "shorter_alternative_for_review_not_adopted",
+      "limitations": [
+        "base residual speed after six settle transitions",
+        "earlier table support contribution",
+        "both robots moved together",
+        "independent load and material identity unverified"
+      ],
+      "source_group": "20261106-coordinated-demo-methods",
+      "direct_parent_for_new_continuation": "20261106-astra-opening264-001",
+      "all_frames_reviewed": false,
+      "exact_physics_checkpoint": false,
+      "independent_demonstration": false,
+      "actor_receives_evaluation": false,
+      "training_approval": "unreviewed",
+      "adopted": false,
+      "identified_material_rim": null,
+      "independent_bilateral_load": null
+    }
+  ],
+  "public_state_samples": [
+    {
+      "run_id": "20261106-astra-coordinated-fresh-001",
+      "boundary": 422,
+      "observation_index": 33,
+      "public_simulation_time_s": 22.625001179985702,
+      "observation_sha256": "6928741e4a148b314dfffa96da87b580ecf39f8ebf8753dabb5de2bc8b3f6f85",
+      "gripper_close_command": [
+        [
+          true
+        ],
+        [
+          true
+        ]
+      ],
+      "fingertip_origin_distance_mm": [
+        70.71051746606827,
+        35.127926617860794
+      ],
+      "lift_actual_m": [
+        1.14322829246521,
+        1.1431810855865479
+      ],
+      "wrist_pitch_actual_rad": [
+        0.11684072017669678,
+        0.12379898875951767
+      ],
+      "wrist_roll_actual_rad": [
+        0.0010062496876344085,
+        0.2741006910800934
+      ],
+      "roll_target_minus_actual_deg": [
+        -0.05765386023780903,
+        -15.719161964093352
+      ],
+      "roll_joint_velocity_rad_s": [
+        -0.001631957245990634,
+        -1.3819535970687866
+      ],
+      "lift_target_minus_actual_mm": [
+        2.531766891479492,
+        2.5789737701416016
+      ],
+      "base_planar_speed_m_s": [
+        0.0009623216739440045,
+        7.585074441468804e-05
+      ],
+      "base_world_yaw_rate_rad_s": [
+        -0.0020716681610792875,
+        0.002324876142665744
+      ],
+      "base_position_world_m": [
+        [
+          3.046529531478882,
+          -0.29888084530830383,
+          -0.0036291282158344984
+        ],
+        [
+          3.482422113418579,
+          -0.3007206320762634,
+          -0.0036290131974965334
+        ]
+      ],
+      "world_grasp_reference_m": [
+        [
+          2.9658160208000144,
+          -1.030767696705067,
+          1.2880848868959325
+        ],
+        [
+          3.397525785925752,
+          -1.0325953739798022,
+          1.2860051011446019
+        ]
+      ],
+      "grasp_reference_separation_mm": 431.7186435838873,
+      "visually_reviewed_views": [
+        "overview",
+        "robot_0_wrist",
+        "robot_1_wrist",
+        "robot_0_head"
+      ]
+    },
+    {
+      "run_id": "20261106-astra-coordinated-fresh-001",
+      "boundary": 430,
+      "observation_index": 34,
+      "public_simulation_time_s": 23.025001200847328,
+      "observation_sha256": "bad519104aa104279ebbd160262b7dfb5608a300f664119cc5b35211fc7a67d8",
+      "gripper_close_command": [
+        [
+          true
+        ],
+        [
+          true
+        ]
+      ],
+      "fingertip_origin_distance_mm": [
+        71.28871232271194,
+        35.8615480363369
+      ],
+      "lift_actual_m": [
+        1.143229365348816,
+        1.1432212591171265
+      ],
+      "wrist_pitch_actual_rad": [
+        0.11677847802639008,
+        0.11838777363300323
+      ],
+      "wrist_roll_actual_rad": [
+        0.0008774182642810047,
+        0.03655693307518959
+      ],
+      "roll_target_minus_actual_deg": [
+        -0.050272363410995835,
+        -2.108907180735401
+      ],
+      "roll_joint_velocity_rad_s": [
+        -0.0049309637397527695,
+        -0.1530284434556961
+      ],
+      "lift_target_minus_actual_mm": [
+        2.530694007873535,
+        2.5388002395629883
+      ],
+      "base_planar_speed_m_s": [
+        0.0007891887067347426,
+        0.0012329131220258879
+      ],
+      "base_world_yaw_rate_rad_s": [
+        -0.0006570696132257581,
+        0.0020454158075153828
+      ],
+      "base_position_world_m": [
+        [
+          3.046821355819702,
+          -0.298689067363739,
+          -0.003629020880907774
+        ],
+        [
+          3.4823338985443115,
+          -0.30062973499298096,
+          -0.0036290260031819344
+        ]
+      ],
+      "world_grasp_reference_m": [
+        [
+          2.965793846400368,
+          -1.0308599569849948,
+          1.2881055342828618
+        ],
+        [
+          3.397677422824578,
+          -1.0323522144718513,
+          1.2876308052498313
+        ]
+      ],
+      "grasp_reference_separation_mm": 431.8864153744918,
+      "visually_reviewed_views": [
+        "overview",
+        "robot_0_wrist",
+        "robot_1_wrist",
+        "robot_0_head",
+        "robot_1_head"
+      ]
+    },
+    {
+      "run_id": "20261106-astra-coordinated-fresh-001",
+      "boundary": 450,
+      "observation_index": 35,
+      "public_simulation_time_s": 24.025001253001392,
+      "observation_sha256": "d79d2ff634fe270efddf0de33d6b7087c77cac3d499186d482a7af042056a71f",
+      "gripper_close_command": [
+        [
+          true
+        ],
+        [
+          true
+        ]
+      ],
+      "fingertip_origin_distance_mm": [
+        75.39588212966919,
+        34.60080921649933
+      ],
+      "lift_actual_m": [
+        1.143227219581604,
+        1.1432455778121948
+      ],
+      "wrist_pitch_actual_rad": [
+        0.11679370701313019,
+        0.11668786406517029
+      ],
+      "wrist_roll_actual_rad": [
+        0.0012529395753517747,
+        -0.0010543380631133914
+      ],
+      "roll_target_minus_actual_deg": [
+        -0.07178814965257027,
+        0.0460599176115632
+      ],
+      "roll_joint_velocity_rad_s": [
+        0.0013857883168384433,
+        -0.0014201818266883492
+      ],
+      "lift_target_minus_actual_mm": [
+        2.532839775085449,
+        2.514481544494629
+      ],
+      "base_planar_speed_m_s": [
+        0.12528711352853225,
+        0.12299553054664097
+      ],
+      "base_world_yaw_rate_rad_s": [
+        -0.5669654011726379,
+        -0.5783013701438904
+      ],
+      "base_position_world_m": [
+        [
+          3.074868679046631,
+          -0.18835122883319855,
+          -0.0036292653530836105
+        ],
+        [
+          3.453958511352539,
+          -0.4102393090724945,
+          -0.0036291552241891623
+        ]
+      ],
+      "world_grasp_reference_m": [
+        [
+          2.636021850222582,
+          -0.782760328734638,
+          1.288112306545401
+        ],
+        [
+          3.005858669009524,
+          -0.9967208359188733,
+          1.2881622895525793
+        ]
+      ],
+      "grasp_reference_separation_mm": 427.26850300868387,
+      "visually_reviewed_views": [
+        "overview",
+        "robot_0_wrist",
+        "robot_1_wrist"
+      ]
+    },
+    {
+      "run_id": "20261106-astra-opening264-001",
+      "boundary": 325,
+      "observation_index": 5,
+      "public_simulation_time_s": 17.77500092703849,
+      "observation_sha256": "5c78f0c6facfa6e6d7e13e3d42e3d1ae5d66205f7e56cdc68ff44e368aa4beb5",
+      "gripper_close_command": [
+        [
+          true
+        ],
+        [
+          true
+        ]
+      ],
+      "fingertip_origin_distance_mm": [
+        60.439035296440125,
+        39.83147442340851
+      ],
+      "lift_actual_m": [
+        1.0891698598861694,
+        1.066074013710022
+      ],
+      "wrist_pitch_actual_rad": [
+        0.7679216861724854,
+        0.7678958773612976
+      ],
+      "wrist_roll_actual_rad": [
+        -1.6159176084329374e-05,
+        -0.000675379007589072
+      ],
+      "roll_target_minus_actual_deg": [
+        0.0009258525900408088,
+        0.03869636670658782
+      ],
+      "roll_joint_velocity_rad_s": [
+        0.02158200368285179,
+        -0.0009939399315044284
+      ],
+      "lift_target_minus_actual_mm": [
+        19.63019371032715,
+        19.62602138519287
+      ],
+      "base_planar_speed_m_s": [
+        0.001299780578679878,
+        0.00097801423574365
+      ],
+      "base_world_yaw_rate_rad_s": [
+        0.0006330561591312289,
+        0.0012206515530124307
+      ],
+      "base_position_world_m": [
+        [
+          3.0411787033081055,
+          -0.7053056359291077,
+          -0.003628873499110341
+        ],
+        [
+          3.4862356185913086,
+          -0.7024268507957458,
+          -0.0036290755961090326
+        ]
+      ],
+      "world_grasp_reference_m": [
+        [
+          2.9578080192409755,
+          -1.3581992458250673,
+          1.0628187089188996
+        ],
+        [
+          3.402179002059833,
+          -1.3552399800249768,
+          1.0397261357264749
+        ]
+      ],
+      "grasp_reference_separation_mm": 444.98044289847223,
+      "visually_reviewed_views": [
+        "overview",
+        "robot_0_wrist",
+        "robot_1_wrist"
+      ]
+    },
+    {
+      "run_id": "20261106-astra-opening264-001",
+      "boundary": 341,
+      "observation_index": 6,
+      "public_simulation_time_s": 18.575000968761742,
+      "observation_sha256": "ee4c8d0891620028b22672393703a256337958f2feea5c4e31396ad788ed4a10",
+      "gripper_close_command": [
+        [
+          true
+        ],
+        [
+          true
+        ]
+      ],
+      "fingertip_origin_distance_mm": [
+        60.54602563381195,
+        39.834506809711456
+      ],
+      "lift_actual_m": [
+        1.1901271343231201,
+        1.1679975986480713
+      ],
+      "wrist_pitch_actual_rad": [
+        0.7681475281715393,
+        0.7679851055145264
+      ],
+      "wrist_roll_actual_rad": [
+        0.0010576029308140278,
+        0.00043635876500047743
+      ],
+      "roll_target_minus_actual_deg": [
+        -0.06059618433631019,
+        -0.02500151558806826
+      ],
+      "roll_joint_velocity_rad_s": [
+        0.026064185425639153,
+        -0.007675645872950554
+      ],
+      "lift_target_minus_actual_mm": [
+        9.872913360595703,
+        10.102391242980957
+      ],
+      "base_planar_speed_m_s": [
+        0.002705785267611259,
+        0.0005547413142454416
+      ],
+      "base_world_yaw_rate_rad_s": [
+        0.0011307608801871538,
+        -0.0009918129071593285
+      ],
+      "base_position_world_m": [
+        [
+          2.9337046146392822,
+          -0.7050945162773132,
+          -0.0036291806027293205
+        ],
+        [
+          3.378512382507324,
+          -0.7019093036651611,
+          -0.00362893333658576
+        ]
+      ],
+      "world_grasp_reference_m": [
+        [
+          2.850583317677423,
+          -1.357178942020432,
+          1.1637249369180147
+        ],
+        [
+          3.2946794011944407,
+          -1.3534601873714955,
+          1.1416272985994367
+        ]
+      ],
+      "grasp_reference_separation_mm": 444.6610688496934,
+      "visually_reviewed_views": [
+        "overview",
+        "robot_0_wrist",
+        "robot_1_wrist"
+      ]
+    },
+    {
+      "run_id": "20261106-astra-opening264-001",
+      "boundary": 367,
+      "observation_index": 7,
+      "public_simulation_time_s": 19.875001036562026,
+      "observation_sha256": "42211ed0dba41599f96e1a929e210aed99fee76d411ce8333fc2986a5469315a",
+      "gripper_close_command": [
+        [
+          true
+        ],
+        [
+          true
+        ]
+      ],
+      "fingertip_origin_distance_mm": [
+        60.64096465706825,
+        39.83622416853905
+      ],
+      "lift_actual_m": [
+        1.197389841079712,
+        1.175498127937317
+      ],
+      "wrist_pitch_actual_rad": [
+        0.7681267261505127,
+        0.7679356336593628
+      ],
+      "wrist_roll_actual_rad": [
+        0.002031132811680436,
+        0.0019320412538945675
+      ],
+      "roll_target_minus_actual_deg": [
+        -0.11637533773982923,
+        -0.11069780969332224
+      ],
+      "roll_joint_velocity_rad_s": [
+        0.011084530502557755,
+        0.005748567171394825
+      ],
+      "lift_target_minus_actual_mm": [
+        2.6102066040039062,
+        2.6018619537353516
+      ],
+      "base_planar_speed_m_s": [
+        0.07536287452784145,
+        0.07592154046931046
+      ],
+      "base_world_yaw_rate_rad_s": [
+        -0.001946796546690166,
+        -0.0017907506553456187
+      ],
+      "base_position_world_m": [
+        [
+          2.5055439472198486,
+          -0.7044911980628967,
+          -0.003629242070019245
+        ],
+        [
+          2.95009183883667,
+          -0.7011622190475464,
+          -0.003629049053415656
+        ]
+      ],
+      "world_grasp_reference_m": [
+        [
+          2.4220147165323946,
+          -1.3559463007095591,
+          1.1709865994347672
+        ],
+        [
+          2.8661963913828443,
+          -1.3526208221602876,
+          1.1491368158443582
+        ]
+      ],
+      "grasp_reference_separation_mm": 444.7311908596922,
+      "visually_reviewed_views": [
+        "overview",
+        "robot_0_wrist",
+        "robot_1_wrist",
+        "robot_0_head",
+        "robot_1_head"
+      ]
+    },
+    {
+      "run_id": "20261106-astra-opening264-001",
+      "boundary": 393,
+      "observation_index": 8,
+      "public_simulation_time_s": 21.17500110436231,
+      "observation_sha256": "5b1c8f2ce7c968aeb3069c8b544a8e6aa0041874d30fb9692cd5ff1715ff5d94",
+      "gripper_close_command": [
+        [
+          true
+        ],
+        [
+          true
+        ]
+      ],
+      "fingertip_origin_distance_mm": [
+        60.611482709646225,
+        39.83646631240845
+      ],
+      "lift_actual_m": [
+        1.1974009275436401,
+        1.1755098104476929
+      ],
+      "wrist_pitch_actual_rad": [
+        0.7681360840797424,
+        0.7679334282875061
+      ],
+      "wrist_roll_actual_rad": [
+        0.002046804176643491,
+        0.0019315803656354547
+      ],
+      "roll_target_minus_actual_deg": [
+        -0.11727324081142144,
+        -0.11067140274124794
+      ],
+      "roll_joint_velocity_rad_s": [
+        -0.010903079062700272,
+        0.005110226105898619
+      ],
+      "lift_target_minus_actual_mm": [
+        2.5991201400756836,
+        2.590179443359375
+      ],
+      "base_planar_speed_m_s": [
+        0.07463829206922075,
+        0.0763426396841133
+      ],
+      "base_world_yaw_rate_rad_s": [
+        -0.00285315397195518,
+        -0.0021115022245794535
+      ],
+      "base_position_world_m": [
+        [
+          2.063971519470215,
+          -0.7038317918777466,
+          -0.003629164071753621
+        ],
+        [
+          2.508358955383301,
+          -0.7003286480903625,
+          -0.0036290218122303486
+        ]
+      ],
+      "world_grasp_reference_m": [
+        [
+          1.980420472996522,
+          -1.3552787269964646,
+          1.1709971523816083
+        ],
+        [
+          2.4244651779028046,
+          -1.3517358402957989,
+          1.1491491634627795
+        ]
+      ],
+      "grasp_reference_separation_mm": 444.595981337302,
+      "visually_reviewed_views": [
+        "overview",
+        "robot_0_wrist",
+        "robot_1_wrist"
+      ]
+    },
+    {
+      "run_id": "20261106-astra-guide470-depth-001",
+      "boundary": 563,
+      "observation_index": 6,
+      "public_simulation_time_s": 29.675001547671854,
+      "observation_sha256": "6443837faccda363fc276cbce0609804b1780ac01ec7f320c202551431f5ddc2",
+      "gripper_close_command": [
+        [
+          true
+        ],
+        [
+          true
+        ]
+      ],
+      "fingertip_origin_distance_mm": [
+        40.55815562605858,
+        51.5206977725029
+      ],
+      "lift_actual_m": [
+        1.1974031925201416,
+        1.1974008083343506
+      ],
+      "wrist_pitch_actual_rad": [
+        0.5896142721176147,
+        0.5896653532981873
+      ],
+      "wrist_roll_actual_rad": [
+        -1.088771296053892e-05,
+        -0.0002649083617143333
+      ],
+      "roll_target_minus_actual_deg": [
+        0.0006238200011887667,
+        0.0151781310839563
+      ],
+      "roll_joint_velocity_rad_s": [
+        -0.0050050378777086735,
+        0.019632207229733467
+      ],
+      "lift_target_minus_actual_mm": [
+        2.5968551635742188,
+        2.5992393493652344
+      ],
+      "base_planar_speed_m_s": [
+        0.003467575626053544,
+        0.002088718845489359
+      ],
+      "base_world_yaw_rate_rad_s": [
+        0.0005587516352534294,
+        0.002250098856166005
+      ],
+      "base_position_world_m": [
+        [
+          3.0381805896759033,
+          -0.5121592879295349,
+          -0.003628913778811693
+        ],
+        [
+          3.484356641769409,
+          -0.5083933472633362,
+          -0.0036289345007389784
+        ]
+      ],
+      "world_grasp_reference_m": [
+        [
+          2.9544346302262823,
+          -1.188987256463062,
+          1.2121344108879157
+        ],
+        [
+          3.4003062272031053,
+          -1.1852002137755404,
+          1.2121202917215712
+        ]
+      ],
+      "grasp_reference_separation_mm": 445.88767967093514,
+      "visually_reviewed_views": [
+        "robot_0_wrist",
+        "robot_1_wrist"
+      ]
+    }
+  ],
+  "motion_intervals": [
+    {
+      "run_id": "20261106-astra-coordinated-fresh-001",
+      "start": 422,
+      "end": 430,
+      "role": "available_before_430_selection_weak_motion",
+      "delta_world_grasp_reference_mm": [
+        [
+          -0.022174399646246457,
+          -0.09226027992781383,
+          0.020647386929306677
+        ],
+        [
+          0.15163689882591314,
+          0.24315950795084085,
+          1.6257041052294419
+        ]
+      ],
+      "norm_mm": [
+        0.09710807298591877,
+        1.650767740523268
+      ],
+      "interpretation": "robot reference frame motion, not cloth motion or a contact/independent-load measurement"
+    },
+    {
+      "run_id": "20261106-astra-coordinated-fresh-001",
+      "start": 430,
+      "end": 450,
+      "role": "after_430_selection_excluded_from_430_history; available_at_450",
+      "delta_world_grasp_reference_mm": [
+        [
+          -329.7719961777861,
+          248.0996282503568,
+          0.006772262539200824
+        ],
+        [
+          -391.8187538150537,
+          35.63137855297804,
+          0.5314843027479643
+        ]
+      ],
+      "norm_mm": [
+        412.6778344506893,
+        393.4359076829813
+      ],
+      "interpretation": "robot reference frame motion, not cloth motion or a contact/independent-load measurement"
+    },
+    {
+      "run_id": "20261106-astra-opening264-001",
+      "start": 325,
+      "end": 341,
+      "role": "available_before_367_selection",
+      "delta_world_grasp_reference_mm": [
+        [
+          -107.22470156355257,
+          1.0203038046352475,
+          100.90622799911509
+        ],
+        [
+          -107.49960086539234,
+          1.7797926534812714,
+          101.9011628729618
+        ]
+      ],
+      "norm_mm": [
+        147.24212880237798,
+        148.13230182161465
+      ],
+      "interpretation": "robot reference frame motion, not cloth motion or a contact/independent-load measurement"
+    },
+    {
+      "run_id": "20261106-astra-opening264-001",
+      "start": 341,
+      "end": 367,
+      "role": "available_before_367_selection",
+      "delta_world_grasp_reference_mm": [
+        [
+          -428.56860114502825,
+          1.2326413108729728,
+          7.261662516752532
+        ],
+        [
+          -428.4830098115964,
+          0.8393652112079764,
+          7.509517244921549
+        ]
+      ],
+      "norm_mm": [
+        428.63188989448133,
+        428.5496319919248
+      ],
+      "interpretation": "robot reference frame motion, not cloth motion or a contact/independent-load measurement"
+    },
+    {
+      "run_id": "20261106-astra-opening264-001",
+      "start": 367,
+      "end": 393,
+      "role": "after_367_selection_excluded_from_367_history",
+      "delta_world_grasp_reference_mm": [
+        [
+          -441.59424353587264,
+          0.6675737130945603,
+          0.010552946841047017
+        ],
+        [
+          -441.73121348003974,
+          0.8849818644887097,
+          0.012347618421282291
+        ]
+      ],
+      "norm_mm": [
+        441.5947482591326,
+        441.73210015564024
+      ],
+      "interpretation": "robot reference frame motion, not cloth motion or a contact/independent-load measurement"
+    }
+  ],
+  "score_projections": [
+    {
+      "run_id": "20261106-astra-coordinated-fresh-001",
+      "source_member": "output/collections/20261106-astra-coordinated-fresh-001/evaluation/20261106T044105_923451Z_d140eb/score_samples.jsonl",
+      "source_sha256": "b3233e82b1a9ca1508f28844fe598b416398bf42fca47a6cdcd2d98295d55d6e",
+      "fields_read": [
+        "physics_tick",
+        "raw_points"
+      ],
+      "samples": [
+        {
+          "physics_tick": 4272,
+          "raw_points": 5.0
+        },
+        {
+          "physics_tick": 5064,
+          "raw_points": 5.0
+        },
+        {
+          "physics_tick": 5160,
+          "raw_points": 5.0
+        },
+        {
+          "physics_tick": 5400,
+          "raw_points": 5.0
+        }
+      ]
+    },
+    {
+      "run_id": "20261106-astra-opening264-001",
+      "source_member": "output/collections/20261106-astra-opening264-001/evaluation/20261106T115624_607549Z_924268/score_samples.jsonl",
+      "source_sha256": "64417c7fa6b67f8e4994df1a8d2310cbe8403556dee3057e45056e0c18dfbb4d",
+      "fields_read": [
+        "physics_tick",
+        "raw_points"
+      ],
+      "samples": [
+        {
+          "physics_tick": 3900,
+          "raw_points": 0.0
+        },
+        {
+          "physics_tick": 4092,
+          "raw_points": 0.0
+        },
+        {
+          "physics_tick": 4212,
+          "raw_points": 5.0
+        },
+        {
+          "physics_tick": 4332,
+          "raw_points": 5.0
+        },
+        {
+          "physics_tick": 4404,
+          "raw_points": 5.0
+        },
+        {
+          "physics_tick": 4716,
+          "raw_points": 5.0
+        }
+      ]
+    }
+  ],
+  "E15_restore": {
+    "download_verification": {
+      "repo_id": "leonayoon/phyrc-2027-phase1-private-backup",
+      "revision": "ba753c41cf64c361ae91aae9e31f9236106bc4ad",
+      "private": true,
+      "forced_download": true,
+      "verified_at_utc": "2026-11-07T03:52:21.117668+00:00",
+      "files": {
+        "path": {
+          "path": "output/restoration/e15-support-review-20261107/download/sessions/20261106-e15-v1/archive.tar.gz",
+          "bytes": 1417350617,
+          "sha256": "7c950323fdf15ac58a45330d383dbf3bd65a07b01143d4a730a6c37990574fad"
+        },
+        "manifest_path": {
+          "path": "output/restoration/e15-support-review-20261107/download/sessions/20261106-e15-v1/SHA256.json",
+          "bytes": 49448,
+          "sha256": "9d7242b68bd31c7c0056bbb7a2ca10ba787a90ff8894958a410311b15301ec39"
+        }
+      }
+    },
+    "selective_restore_verification": {
+      "schema": "phyrc-selective-closed-reference-restore-v1",
+      "revision": "ba753c41cf64c361ae91aae9e31f9236106bc4ad",
+      "archive_sha256": "7c950323fdf15ac58a45330d383dbf3bd65a07b01143d4a730a6c37990574fad",
+      "allowlist_files": 28,
+      "score_projection_files": 1,
+      "archive_path_names_checked": 254,
+      "symlinks_and_duplicate_paths_rejected": true,
+      "existing_files_overwritten": false,
+      "selected_member_hashes_verified": [
+        {
+          "source_member": "output/actors/20261106-astra-opening264-001/observations/00005/observation.json",
+          "bytes": 25378,
+          "sha256": "5c78f0c6facfa6e6d7e13e3d42e3d1ae5d66205f7e56cdc68ff44e368aa4beb5",
+          "treatment": "unchanged_copy"
+        },
+        {
+          "source_member": "output/actors/20261106-astra-opening264-001/observations/00005/overview.png",
+          "bytes": 73948,
+          "sha256": "4ddf3ab5d3f4a62ad1329e82cc549c21c8057a1838d854fabab1410b48d02e02",
+          "treatment": "unchanged_copy"
+        },
+        {
+          "source_member": "output/actors/20261106-astra-opening264-001/observations/00005/robot_0_head.png",
+          "bytes": 62660,
+          "sha256": "81cd5d9dc414b13601acadc4a67df320655fb693be27ea560eb37003f0f98ae8",
+          "treatment": "unchanged_copy"
+        },
+        {
+          "source_member": "output/actors/20261106-astra-opening264-001/observations/00005/robot_0_wrist.png",
+          "bytes": 84604,
+          "sha256": "49961169d82595d26c25cbca16e668b9b8c6817b7fc057a38b15ccdd0125116e",
+          "treatment": "unchanged_copy"
+        },
+        {
+          "source_member": "output/actors/20261106-astra-opening264-001/observations/00005/robot_1_head.png",
+          "bytes": 63855,
+          "sha256": "9bc6f3caff7edfa6fc946642aadbc43c8a12cc2c4f15f060f8822973b0cecc4f",
+          "treatment": "unchanged_copy"
+        },
+        {
+          "source_member": "output/actors/20261106-astra-opening264-001/observations/00005/robot_1_wrist.png",
+          "bytes": 80611,
+          "sha256": "395eefe618190590059db8de8d3f651b15367ff5fcedc2bb80d6a1e0408a4af5",
+          "treatment": "unchanged_copy"
+        },
+        {
+          "source_member": "output/actors/20261106-astra-opening264-001/observations/00006/observation.json",
+          "bytes": 25373,
+          "sha256": "ee4c8d0891620028b22672393703a256337958f2feea5c4e31396ad788ed4a10",
+          "treatment": "unchanged_copy"
+        },
+        {
+          "source_member": "output/actors/20261106-astra-opening264-001/observations/00006/overview.png",
+          "bytes": 73530,
+          "sha256": "c0067b3c1ff72141be94cad1ff63d7a17333baaa4c6aebf26778827571e23763",
+          "treatment": "unchanged_copy"
+        },
+        {
+          "source_member": "output/actors/20261106-astra-opening264-001/observations/00006/robot_0_head.png",
+          "bytes": 57778,
+          "sha256": "db18c3c1f9f09a8df02d425aeb9a3ad53ab946eb4d106464f869e0a3fa6df485",
+          "treatment": "unchanged_copy"
+        },
+        {
+          "source_member": "output/actors/20261106-astra-opening264-001/observations/00006/robot_0_wrist.png",
+          "bytes": 84954,
+          "sha256": "06bc93b051577b7052644c3024f262a2f15ec856022122560f49f52be8342024",
+          "treatment": "unchanged_copy"
+        },
+        {
+          "source_member": "output/actors/20261106-astra-opening264-001/observations/00006/robot_1_head.png",
+          "bytes": 59618,
+          "sha256": "103fec4371374bc9078856a43cd8ef54c68d19b150e4bdba9e5f8c4ca5fbf7c1",
+          "treatment": "unchanged_copy"
+        },
+        {
+          "source_member": "output/actors/20261106-astra-opening264-001/observations/00006/robot_1_wrist.png",
+          "bytes": 81186,
+          "sha256": "71a7d112d77589685f9a4aa91319377072d81c223a78856535877c94b033bf4d",
+          "treatment": "unchanged_copy"
+        },
+        {
+          "source_member": "output/actors/20261106-astra-opening264-001/observations/00007/observation.json",
+          "bytes": 25390,
+          "sha256": "42211ed0dba41599f96e1a929e210aed99fee76d411ce8333fc2986a5469315a",
+          "treatment": "unchanged_copy"
+        },
+        {
+          "source_member": "output/actors/20261106-astra-opening264-001/observations/00007/overview.png",
+          "bytes": 73890,
+          "sha256": "fa97024391e28ac6dcca6e09f3fe5dd6534652d80495d4322ee5a87ee3a392c1",
+          "treatment": "unchanged_copy"
+        },
+        {
+          "source_member": "output/actors/20261106-astra-opening264-001/observations/00007/robot_0_head.png",
+          "bytes": 53517,
+          "sha256": "2103b62a0d66b1c2a9cdcac6a1e4e8525de5a46218de76bbe06c5dd8e5d64840",
+          "treatment": "unchanged_copy"
+        },
+        {
+          "source_member": "output/actors/20261106-astra-opening264-001/observations/00007/robot_0_wrist.png",
+          "bytes": 84150,
+          "sha256": "1a940c6b903faae9038cddc6acae5c54222f87ecc1293f85add784babeca6b12",
+          "treatment": "unchanged_copy"
+        },
+        {
+          "source_member": "output/actors/20261106-astra-opening264-001/observations/00007/robot_1_head.png",
+          "bytes": 53983,
+          "sha256": "4045fe89037e590b931636dca72481d8e227408cc6955cd95504d141afaf10bf",
+          "treatment": "unchanged_copy"
+        },
+        {
+          "source_member": "output/actors/20261106-astra-opening264-001/observations/00007/robot_1_wrist.png",
+          "bytes": 74574,
+          "sha256": "9521e82cc9af42e6e8c7987329262caf64651a4c5db52d3364ebfd3d5578fe4d",
+          "treatment": "unchanged_copy"
+        },
+        {
+          "source_member": "output/actors/20261106-astra-opening264-001/observations/00008/observation.json",
+          "bytes": 25394,
+          "sha256": "5b1c8f2ce7c968aeb3069c8b544a8e6aa0041874d30fb9692cd5ff1715ff5d94",
+          "treatment": "unchanged_copy"
+        },
+        {
+          "source_member": "output/actors/20261106-astra-opening264-001/observations/00008/overview.png",
+          "bytes": 73392,
+          "sha256": "f811d52f07b541a7088a0fc978e5c35dbb02d3da21297839a77c646aa5c742de",
+          "treatment": "unchanged_copy"
+        },
+        {
+          "source_member": "output/actors/20261106-astra-opening264-001/observations/00008/robot_0_head.png",
+          "bytes": 48071,
+          "sha256": "043ff1f19e24d06cfb6488cccc941527032bbff327a27ea364420c421209f7e1",
+          "treatment": "unchanged_copy"
+        },
+        {
+          "source_member": "output/actors/20261106-astra-opening264-001/observations/00008/robot_0_wrist.png",
+          "bytes": 78616,
+          "sha256": "a866d76145f76493879fd0f1ef020d9f1e89c83a7483a0d1366926debfa1292b",
+          "treatment": "unchanged_copy"
+        },
+        {
+          "source_member": "output/actors/20261106-astra-opening264-001/observations/00008/robot_1_head.png",
+          "bytes": 52432,
+          "sha256": "d7ba58b8e530a7e1888b1f99de937b27d5191fa19d721f09e5e84ac15b4d38a5",
+          "treatment": "unchanged_copy"
+        },
+        {
+          "source_member": "output/actors/20261106-astra-opening264-001/observations/00008/robot_1_wrist.png",
+          "bytes": 76804,
+          "sha256": "427b47dbbad1d79ef675e5b2839876c2c4ca086c5bbf0fe4dc82fdf8a3d255ef",
+          "treatment": "unchanged_copy"
+        },
+        {
+          "source_member": "output/collections/20261106-astra-opening264-001/capture.json",
+          "bytes": 532,
+          "sha256": "d6d571b8de867df699c046325a695c34a8e1ce107678257fd3343c4bff693162",
+          "treatment": "unchanged_copy"
+        },
+        {
+          "source_member": "output/collections/20261106-astra-opening264-001/evaluation/20261106T115624_607549Z_924268/score_samples.jsonl",
+          "bytes": 326828,
+          "sha256": "64417c7fa6b67f8e4994df1a8d2310cbe8403556dee3057e45056e0c18dfbb4d",
+          "treatment": "selected_fields_projection"
+        },
+        {
+          "source_member": "output/collections/20261106-astra-opening264-001/validation.json",
+          "bytes": 1491,
+          "sha256": "004c3ff95846955d3bd9264c1aca325b13c63a3dac104c649803e3c868f5e64d",
+          "treatment": "unchanged_copy"
+        },
+        {
+          "source_member": "output/operator-traces/20261106-astra-opening264-001/attempt.json",
+          "bytes": 153665,
+          "sha256": "f7cdd4e03f8bc88b7a21879c0e1a330c48c54f885180d57f5c6f77901d0bcb28",
+          "treatment": "unchanged_copy"
+        },
+        {
+          "source_member": "output/operator-traces/20261106-astra-opening264-001/decisions.jsonl",
+          "bytes": 100147,
+          "sha256": "bbc8c50bb0043aa692a928fdfef7559ac43fa11fe8765098fecdcd4626b365c7",
+          "treatment": "unchanged_copy"
+        }
+      ],
+      "excluded_content_not_extracted": [
+        "audit.hdf5",
+        "policy.hdf5",
+        "evaluation geometry and results",
+        "runtime",
+        "actor events",
+        "raw CLI reasoning",
+        "auth",
+        "simulator logs"
+      ],
+      "completed_at_utc": "2026-11-07T03:53:03.938006+00:00"
+    }
+  },
+  "source_files": [
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00033/observation.json",
+      "original_member": "output/actors/20261106-astra-coordinated-fresh-001/observations/00033/observation.json",
+      "bytes": 25225,
+      "sha256": "6928741e4a148b314dfffa96da87b580ecf39f8ebf8753dabb5de2bc8b3f6f85",
+      "use": "selected public robot state; depth grids not analyzed"
+    },
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00033/overview.png",
+      "original_member": "output/actors/20261106-astra-coordinated-fresh-001/observations/00033/overview.png",
+      "bytes": 72460,
+      "sha256": "66625262be3a79b37760458955a5bf71223b4313781a2d2b2227d43d252de420",
+      "use": "direct selected RGB visual review"
+    },
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00033/robot_0_wrist.png",
+      "original_member": "output/actors/20261106-astra-coordinated-fresh-001/observations/00033/robot_0_wrist.png",
+      "bytes": 38163,
+      "sha256": "ea159b986ae6c0f7298521b0a478e585a69b58438aa35f468a62286a710cc5c5",
+      "use": "direct selected RGB visual review"
+    },
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00033/robot_1_wrist.png",
+      "original_member": "output/actors/20261106-astra-coordinated-fresh-001/observations/00033/robot_1_wrist.png",
+      "bytes": 36456,
+      "sha256": "938512386905695b2bef29c821ad106fc8177d8cbf673d1f8db87f59e2fafe43",
+      "use": "direct selected RGB visual review"
+    },
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00033/robot_0_head.png",
+      "original_member": "output/actors/20261106-astra-coordinated-fresh-001/observations/00033/robot_0_head.png",
+      "bytes": 63790,
+      "sha256": "3bb91b9bf4ed6dd62bbdbe33b47c3a9cc269ce97e9e43b8f18b380ad602c811f",
+      "use": "direct selected RGB visual review"
+    },
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00034/observation.json",
+      "original_member": "output/actors/20261106-astra-coordinated-fresh-001/observations/00034/observation.json",
+      "bytes": 25217,
+      "sha256": "bad519104aa104279ebbd160262b7dfb5608a300f664119cc5b35211fc7a67d8",
+      "use": "selected public robot state; depth grids not analyzed"
+    },
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00034/overview.png",
+      "original_member": "output/actors/20261106-astra-coordinated-fresh-001/observations/00034/overview.png",
+      "bytes": 72733,
+      "sha256": "5e2724c22990e22971042e678db289e80f9bd4ce08ce5d37f1cd3942af204f91",
+      "use": "direct selected RGB visual review"
+    },
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00034/robot_0_wrist.png",
+      "original_member": "output/actors/20261106-astra-coordinated-fresh-001/observations/00034/robot_0_wrist.png",
+      "bytes": 37472,
+      "sha256": "43181add11e5965eec2089ae6586d7a19ef6be9820bfbf9412888a952e9d5931",
+      "use": "direct selected RGB visual review"
+    },
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00034/robot_1_wrist.png",
+      "original_member": "output/actors/20261106-astra-coordinated-fresh-001/observations/00034/robot_1_wrist.png",
+      "bytes": 36781,
+      "sha256": "37d0ea0168259d94bd2cf63a75d8c0afa1721bb1f69e8dd1467e8636dea909dd",
+      "use": "direct selected RGB visual review"
+    },
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00034/robot_0_head.png",
+      "original_member": "output/actors/20261106-astra-coordinated-fresh-001/observations/00034/robot_0_head.png",
+      "bytes": 63906,
+      "sha256": "71e39274132ffabf182b83311e7a36d1b44abd637b50fd14211fb21532bb5323",
+      "use": "direct selected RGB visual review"
+    },
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00034/robot_1_head.png",
+      "original_member": "output/actors/20261106-astra-coordinated-fresh-001/observations/00034/robot_1_head.png",
+      "bytes": 60832,
+      "sha256": "25d40974eb7b712ce742b0750cabde10952f465739e9636c819dd4db3ea85e84",
+      "use": "direct selected RGB visual review"
+    },
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00035/observation.json",
+      "original_member": "output/actors/20261106-astra-coordinated-fresh-001/observations/00035/observation.json",
+      "bytes": 25323,
+      "sha256": "d79d2ff634fe270efddf0de33d6b7087c77cac3d499186d482a7af042056a71f",
+      "use": "selected public robot state; depth grids not analyzed"
+    },
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00035/overview.png",
+      "original_member": "output/actors/20261106-astra-coordinated-fresh-001/observations/00035/overview.png",
+      "bytes": 72633,
+      "sha256": "f253698881a87102e01f417e8fc62aee532dacdee7612bf9b19365191f5ccb07",
+      "use": "direct selected RGB visual review"
+    },
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00035/robot_0_wrist.png",
+      "original_member": "output/actors/20261106-astra-coordinated-fresh-001/observations/00035/robot_0_wrist.png",
+      "bytes": 32108,
+      "sha256": "79d5deb0d4bb3ec3a5547df864d5a77b427bd8a7812e6dce1b73d834b15f2082",
+      "use": "direct selected RGB visual review"
+    },
+    {
+      "path": "output/actors/20261106-astra-coordinated-fresh-001/observations/00035/robot_1_wrist.png",
+      "original_member": "output/actors/20261106-astra-coordinated-fresh-001/observations/00035/robot_1_wrist.png",
+      "bytes": 35026,
+      "sha256": "e6fa88742e25515d3a8d85b977109ebb6d1812096d9e56e061b5d56874dc9b6c",
+      "use": "direct selected RGB visual review"
+    },
+    {
+      "path": "output/restoration/e15-support-review-20261107/selected/output/actors/20261106-astra-opening264-001/observations/00005/observation.json",
+      "original_member": "output/actors/20261106-astra-opening264-001/observations/00005/observation.json",
+      "bytes": 25378,
+      "sha256": "5c78f0c6facfa6e6d7e13e3d42e3d1ae5d66205f7e56cdc68ff44e368aa4beb5",
+      "use": "selected public robot state; depth grids not analyzed"
+    },
+    {
+      "path": "output/restoration/e15-support-review-20261107/selected/output/actors/20261106-astra-opening264-001/observations/00005/overview.png",
+      "original_member": "output/actors/20261106-astra-opening264-001/observations/00005/overview.png",
+      "bytes": 73948,
+      "sha256": "4ddf3ab5d3f4a62ad1329e82cc549c21c8057a1838d854fabab1410b48d02e02",
+      "use": "direct selected RGB visual review"
+    },
+    {
+      "path": "output/restoration/e15-support-review-20261107/selected/output/actors/20261106-astra-opening264-001/observations/00005/robot_0_wrist.png",
+      "original_member": "output/actors/20261106-astra-opening264-001/observations/00005/robot_0_wrist.png",
+      "bytes": 84604,
+      "sha256": "49961169d82595d26c25cbca16e668b9b8c6817b7fc057a38b15ccdd0125116e",
+      "use": "direct selected RGB visual review"
+    },
+    {
+      "path": "output/restoration/e15-support-review-20261107/selected/output/actors/20261106-astra-opening264-001/observations/00005/robot_1_wrist.png",
+      "original_member": "output/actors/20261106-astra-opening264-001/observations/00005/robot_1_wrist.png",
+      "bytes": 80611,
+      "sha256": "395eefe618190590059db8de8d3f651b15367ff5fcedc2bb80d6a1e0408a4af5",
+      "use": "direct selected RGB visual review"
+    },
+    {
+      "path": "output/restoration/e15-support-review-20261107/selected/output/actors/20261106-astra-opening264-001/observations/00006/observation.json",
+      "original_member": "output/actors/20261106-astra-opening264-001/observations/00006/observation.json",
+      "bytes": 25373,
+      "sha256": "ee4c8d0891620028b22672393703a256337958f2feea5c4e31396ad788ed4a10",
+      "use": "selected public robot state; depth grids not analyzed"
+    },
+    {
+      "path": "output/restoration/e15-support-review-20261107/selected/output/actors/20261106-astra-opening264-001/observations/00006/overview.png",
+      "original_member": "output/actors/20261106-astra-opening264-001/observations/00006/overview.png",
+      "bytes": 73530,
+      "sha256": "c0067b3c1ff72141be94cad1ff63d7a17333baaa4c6aebf26778827571e23763",
+      "use": "direct selected RGB visual review"
+    },
+    {
+      "path": "output/restoration/e15-support-review-20261107/selected/output/actors/20261106-astra-opening264-001/observations/00006/robot_0_wrist.png",
+      "original_member": "output/actors/20261106-astra-opening264-001/observations/00006/robot_0_wrist.png",
+      "bytes": 84954,
+      "sha256": "06bc93b051577b7052644c3024f262a2f15ec856022122560f49f52be8342024",
+      "use": "direct selected RGB visual review"
+    },
+    {
+      "path": "output/restoration/e15-support-review-20261107/selected/output/actors/20261106-astra-opening264-001/observations/00006/robot_1_wrist.png",
+      "original_member": "output/actors/20261106-astra-opening264-001/observations/00006/robot_1_wrist.png",
+      "bytes": 81186,
+      "sha256": "71a7d112d77589685f9a4aa91319377072d81c223a78856535877c94b033bf4d",
+      "use": "direct selected RGB visual review"
+    },
+    {
+      "path": "output/restoration/e15-support-review-20261107/selected/output/actors/20261106-astra-opening264-001/observations/00007/observation.json",
+      "original_member": "output/actors/20261106-astra-opening264-001/observations/00007/observation.json",
+      "bytes": 25390,
+      "sha256": "42211ed0dba41599f96e1a929e210aed99fee76d411ce8333fc2986a5469315a",
+      "use": "selected public robot state; depth grids not analyzed"
+    },
+    {
+      "path": "output/restoration/e15-support-review-20261107/selected/output/actors/20261106-astra-opening264-001/observations/00007/overview.png",
+      "original_member": "output/actors/20261106-astra-opening264-001/observations/00007/overview.png",
+      "bytes": 73890,
+      "sha256": "fa97024391e28ac6dcca6e09f3fe5dd6534652d80495d4322ee5a87ee3a392c1",
+      "use": "direct selected RGB visual review"
+    },
+    {
+      "path": "output/restoration/e15-support-review-20261107/selected/output/actors/20261106-astra-opening264-001/observations/00007/robot_0_wrist.png",
+      "original_member": "output/actors/20261106-astra-opening264-001/observations/00007/robot_0_wrist.png",
+      "bytes": 84150,
+      "sha256": "1a940c6b903faae9038cddc6acae5c54222f87ecc1293f85add784babeca6b12",
+      "use": "direct selected RGB visual review"
+    },
+    {
+      "path": "output/restoration/e15-support-review-20261107/selected/output/actors/20261106-astra-opening264-001/observations/00007/robot_1_wrist.png",
+      "original_member": "output/actors/20261106-astra-opening264-001/observations/00007/robot_1_wrist.png",
+      "bytes": 74574,
+      "sha256": "9521e82cc9af42e6e8c7987329262caf64651a4c5db52d3364ebfd3d5578fe4d",
+      "use": "direct selected RGB visual review"
+    },
+    {
+      "path": "output/restoration/e15-support-review-20261107/selected/output/actors/20261106-astra-opening264-001/observations/00007/robot_0_head.png",
+      "original_member": "output/actors/20261106-astra-opening264-001/observations/00007/robot_0_head.png",
+      "bytes": 53517,
+      "sha256": "2103b62a0d66b1c2a9cdcac6a1e4e8525de5a46218de76bbe06c5dd8e5d64840",
+      "use": "direct selected RGB visual review"
+    },
+    {
+      "path": "output/restoration/e15-support-review-20261107/selected/output/actors/20261106-astra-opening264-001/observations/00007/robot_1_head.png",
+      "original_member": "output/actors/20261106-astra-opening264-001/observations/00007/robot_1_head.png",
+      "bytes": 53983,
+      "sha256": "4045fe89037e590b931636dca72481d8e227408cc6955cd95504d141afaf10bf",
+      "use": "direct selected RGB visual review"
+    },
+    {
+      "path": "output/restoration/e15-support-review-20261107/selected/output/actors/20261106-astra-opening264-001/observations/00008/observation.json",
+      "original_member": "output/actors/20261106-astra-opening264-001/observations/00008/observation.json",
+      "bytes": 25394,
+      "sha256": "5b1c8f2ce7c968aeb3069c8b544a8e6aa0041874d30fb9692cd5ff1715ff5d94",
+      "use": "selected public robot state; depth grids not analyzed"
+    },
+    {
+      "path": "output/restoration/e15-support-review-20261107/selected/output/actors/20261106-astra-opening264-001/observations/00008/overview.png",
+      "original_member": "output/actors/20261106-astra-opening264-001/observations/00008/overview.png",
+      "bytes": 73392,
+      "sha256": "f811d52f07b541a7088a0fc978e5c35dbb02d3da21297839a77c646aa5c742de",
+      "use": "direct selected RGB visual review"
+    },
+    {
+      "path": "output/restoration/e15-support-review-20261107/selected/output/actors/20261106-astra-opening264-001/observations/00008/robot_0_wrist.png",
+      "original_member": "output/actors/20261106-astra-opening264-001/observations/00008/robot_0_wrist.png",
+      "bytes": 78616,
+      "sha256": "a866d76145f76493879fd0f1ef020d9f1e89c83a7483a0d1366926debfa1292b",
+      "use": "direct selected RGB visual review"
+    },
+    {
+      "path": "output/restoration/e15-support-review-20261107/selected/output/actors/20261106-astra-opening264-001/observations/00008/robot_1_wrist.png",
+      "original_member": "output/actors/20261106-astra-opening264-001/observations/00008/robot_1_wrist.png",
+      "bytes": 76804,
+      "sha256": "427b47dbbad1d79ef675e5b2839876c2c4ca086c5bbf0fe4dc82fdf8a3d255ef",
+      "use": "direct selected RGB visual review"
+    },
+    {
+      "path": "output/actors/20261106-astra-guide470-depth-001/observations/00006/observation.json",
+      "original_member": "output/actors/20261106-astra-guide470-depth-001/observations/00006/observation.json",
+      "bytes": 25265,
+      "sha256": "6443837faccda363fc276cbce0609804b1780ac01ec7f320c202551431f5ddc2",
+      "use": "selected public robot state; depth grids not analyzed"
+    },
+    {
+      "path": "output/actors/20261106-astra-guide470-depth-001/observations/00006/robot_0_wrist.png",
+      "original_member": "output/actors/20261106-astra-guide470-depth-001/observations/00006/robot_0_wrist.png",
+      "bytes": 64049,
+      "sha256": "80c56d378e4d922b07817731961882d935efc10ef2cb4df17e8abf7ab659f488",
+      "use": "direct selected RGB visual review"
+    },
+    {
+      "path": "output/actors/20261106-astra-guide470-depth-001/observations/00006/robot_1_wrist.png",
+      "original_member": "output/actors/20261106-astra-guide470-depth-001/observations/00006/robot_1_wrist.png",
+      "bytes": 64506,
+      "sha256": "7dafbed4e3d79993e4a053b94aa4438358ae91c81cb79d5d936509a96a28a820",
+      "use": "direct selected RGB visual review"
+    },
+    {
+      "path": "output/collections/20261106-astra-coordinated-fresh-001/validation.json",
+      "bytes": 1495,
+      "sha256": "14846c3b5d42ad10e661d6ce1b53c9fa3879445bdb26a5e5db91d3c5ca38c674",
+      "use": "source lineage, technical QC, backup receipt, or public final applied actions; not raw model reasoning"
+    },
+    {
+      "path": "docs/project/sessions/20261106-remote-backup-verification.json",
+      "bytes": 973,
+      "sha256": "90a6c43b6685bc2e507d50ef9591c9d729b21749034f44653884ef9ead5d02b6",
+      "use": "source lineage, technical QC, backup receipt, or public final applied actions; not raw model reasoning"
+    },
+    {
+      "path": "output/operator-traces/20261106-astra-coordinated-fresh-001/attempt.json",
+      "bytes": 5246,
+      "sha256": "e862040120d25d3d3e7ea746b5192fe411687ae174e11af055f241516dc741cd",
+      "use": "source lineage, technical QC, backup receipt, or public final applied actions; not raw model reasoning"
+    },
+    {
+      "path": "docs/collection/attempts/20261106-astra-coordinated-fresh-001/decisions.jsonl",
+      "bytes": 218658,
+      "sha256": "d2b781f6fe0c1fa498f23014bd6de9527c4d6fce0e2fa79521e132df6914df8c",
+      "use": "source lineage, technical QC, backup receipt, or public final applied actions; not raw model reasoning"
+    },
+    {
+      "path": "output/restoration/e15-support-review-20261107/selected/output/collections/20261106-astra-opening264-001/validation.json",
+      "bytes": 1491,
+      "sha256": "004c3ff95846955d3bd9264c1aca325b13c63a3dac104c649803e3c868f5e64d",
+      "use": "source lineage, technical QC, backup receipt, or public final applied actions; not raw model reasoning"
+    },
+    {
+      "path": "docs/project/sessions/20261106-e15-backup-verification.json",
+      "bytes": 2642,
+      "sha256": "96e14dc338189eb472721a86aed04abfa56927573ad095f7637c87da2bb16535",
+      "use": "source lineage, technical QC, backup receipt, or public final applied actions; not raw model reasoning"
+    },
+    {
+      "path": "output/restoration/e15-support-review-20261107/selected/output/operator-traces/20261106-astra-opening264-001/attempt.json",
+      "bytes": 153665,
+      "sha256": "f7cdd4e03f8bc88b7a21879c0e1a330c48c54f885180d57f5c6f77901d0bcb28",
+      "use": "source lineage, technical QC, backup receipt, or public final applied actions; not raw model reasoning"
+    },
+    {
+      "path": "output/restoration/e15-support-review-20261107/selected/output/operator-traces/20261106-astra-opening264-001/decisions.jsonl",
+      "bytes": 100147,
+      "sha256": "bbc8c50bb0043aa692a928fdfef7559ac43fa11fe8765098fecdcd4626b365c7",
+      "use": "source lineage, technical QC, backup receipt, or public final applied actions; not raw model reasoning"
+    }
+  ]
+}

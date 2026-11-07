@@ -1,0 +1,253 @@
+{
+  "schema": "phyrc-e23-continuation-startpoint-v1",
+  "run_id": "20261107-astra-progress787-named-001",
+  "execution_source_commit": "952ec8da68cdc0ef635d0d45329712eee006fd1f",
+  "analysis_scope": "Closed policy exact 1179/1180 public RGB and robot state; earlier public actor observations 11-17 and final decisions. No evaluator, audit, hidden geometry, raw reasoning, model or GPU.",
+  "recommendation": {
+    "source_run_id": "20261107-astra-progress787-named-001",
+    "boundary": 1179,
+    "history_boundaries": [
+      1077,
+      1161
+    ],
+    "strategy": "coordinated-task-progress",
+    "same_method_continuation": true,
+    "adopted": true,
+    "support_assessment": "Apparent local cloth retention at both grippers and maintained exposed-arm relationship in selected RGB; no clear support collapse seen. Not independent attachment/load proof.",
+    "head_passage": null,
+    "sleeve_passage_ground_truth": null,
+    "official_score": null,
+    "score_checked_in_this_review": false,
+    "exact_physics_checkpoint": false,
+    "training_approval": "unreviewed",
+    "adoption_status": "Root selected for E24; not started when this adoption note was added.",
+    "official_score_note": "Not independently evaluated here; root-projected offline boundary scores are separate below."
+  },
+  "technical_validation": {
+    "complete_attribute": true,
+    "num_samples_attribute": 1180,
+    "1179_obs1179_equals_next_obs1178": true,
+    "continuity_fields_checked": "Five RGB and eleven public robot-state arrays; no full-run revalidation performed here.",
+    "png_lossless_pixel_checks": 10,
+    "full_qc_status": "Root reported 1180/1180 PASS; not rerun in this extraction."
+  },
+  "extraction_provenance": {
+    "file": "output/reviews/e23-continuation-boundary/provenance.json",
+    "sha256": "abcb2273f2dcc7c60ab967d8662250add187b9bb4cfb0a577e7625fa4f883347",
+    "per_boundary_file": "output/reviews/e23-continuation-boundary/{1179,1180}/provenance.json",
+    "source_array_hashes_recorded": true,
+    "full_hdf5_sha256": null
+  },
+  "public_joint_mapping": {
+    "source": "Same published collection public joint order, also recorded in docs/collection/reviews/20261107-astra-entry801-named-001-motion.json",
+    "lift": 3,
+    "arm_extension_sum": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "wrist_pitch": 9,
+    "controller_target_columns": [
+      "lift",
+      "arm",
+      "yaw",
+      "pitch",
+      "roll",
+      "grip_pos",
+      "base_fwd",
+      "base_strafe",
+      "base_turn"
+    ]
+  },
+  "boundaries": [
+    {
+      "boundary": 1179,
+      "public_simulation_time_s": 60.47500315401703,
+      "state_json": "output/reviews/e23-continuation-boundary/1179/state.json",
+      "state_json_sha256": "e8e3994b4640e707741b829360f6c8f7f66692b3eadf6d13a036aafe0d03b2cc",
+      "lift_actual_m": [
+        1.145076036453247,
+        1.1512364149093628
+      ],
+      "lift_velocity_mm_s": [
+        9.847497567534447,
+        10.78663021326065
+      ],
+      "lift_target_minus_actual_mm": [
+        2.563953399658203,
+        2.563595771789551
+      ],
+      "pitch_actual_rad": [
+        0.5885409116744995,
+        0.5885124802589417
+      ],
+      "pitch_velocity_rad_s": [
+        0.08915837854146957,
+        0.1003364771604538
+      ],
+      "pitch_target_minus_actual_rad": [
+        0.018459081649780273,
+        0.018487513065338135
+      ],
+      "arm_target_minus_actual_mm": [
+        0.4545077681541443,
+        0.6720870733261108
+      ],
+      "base_planar_speed_mm_s": [
+        1.5953582309206358,
+        0.8426705425457628
+      ],
+      "gripper_close_command": [
+        [
+          true
+        ],
+        [
+          true
+        ]
+      ],
+      "fingertip_origin_distance_mm": [
+        40.45018181204796,
+        51.869384944438934
+      ],
+      "fingertip_note": "Public finger-frame origin separation, not true contact aperture or force."
+    },
+    {
+      "boundary": 1180,
+      "public_simulation_time_s": 60.525003156624734,
+      "state_json": "output/reviews/e23-continuation-boundary/1180/state.json",
+      "state_json_sha256": "74ca6b0154ed0c139698fedd9ba9fc36eb5a2c8c19628cd2f996186477ca3b15",
+      "lift_actual_m": [
+        1.145071029663086,
+        1.1512326002120972
+      ],
+      "lift_velocity_mm_s": [
+        10.642015375196934,
+        10.816865600645542
+      ],
+      "lift_target_minus_actual_mm": [
+        2.568960189819336,
+        2.567410469055176
+      ],
+      "pitch_actual_rad": [
+        0.5935224294662476,
+        0.5935002565383911
+      ],
+      "pitch_velocity_rad_s": [
+        0.0717410147190094,
+        0.07524450123310089
+      ],
+      "pitch_target_minus_actual_rad": [
+        0.013477563858032227,
+        0.013499736785888672
+      ],
+      "arm_target_minus_actual_mm": [
+        0.4528909921646118,
+        0.6991401314735413
+      ],
+      "base_planar_speed_mm_s": [
+        0.724407721136837,
+        1.1964720005087268
+      ],
+      "gripper_close_command": [
+        [
+          true
+        ],
+        [
+          true
+        ]
+      ],
+      "fingertip_origin_distance_mm": [
+        40.420569479465485,
+        51.85924097895622
+      ],
+      "fingertip_note": "Public finger-frame origin separation, not true contact aperture or force."
+    }
+  ],
+  "1179_to_1180": {
+    "elapsed_s": 0.05000000260770321,
+    "pitch_actual_delta_rad": [
+      0.004981517791748047,
+      0.004987776279449463
+    ],
+    "lift_actual_delta_mm": [
+      -0.0050067901611328125,
+      -0.003814697265625
+    ],
+    "grasp_base_delta_xyz_mm": [
+      [
+        -0.8189082145690918,
+        -0.0019147992134094238,
+        -1.2265443801879883
+      ],
+      [
+        -0.8521676063537598,
+        -0.012256205081939697,
+        -1.2271404266357422
+      ]
+    ],
+    "base_world_delta_xyz_mm": [
+      [
+        0.03451108932495117,
+        -0.012576580047607422,
+        -6.426125764846802e-05
+      ],
+      [
+        0.05125999450683594,
+        -0.018805265426635742,
+        0.00027101486921310425
+      ]
+    ],
+    "interpretation": "Neutral does not freeze persistent targets. Grasp is the public gripper reference, not a cloth material point; coordinates use the explicitly named frames."
+  },
+  "visual_review": {
+    "views_each": [
+      "overview",
+      "robot_0_head",
+      "robot_1_head",
+      "robot_0_wrist",
+      "robot_1_wrist"
+    ],
+    "observed": [
+      "Forearms/hands remain visible outside side regions in head views.",
+      "Yellow/blue fabric remains near both grippers in wrist views.",
+      "Head-to-opening relationship remains obscured.",
+      "No clear qualitative support collapse between1179and1180 in selected images."
+    ],
+    "not_established": [
+      "Exact grasped material rim or layer",
+      "Independent bilateral load bearing",
+      "Head or sleeve passage ground truth",
+      "Whole-cloth state equality or future replay identity"
+    ]
+  },
+  "protocol_boundary": "No runtime or actor input change; external frames/coordinates and offline evaluation not supplied to actor.",
+  "trusted_offline_selection": {
+    "review_owner": "root",
+    "selection_file": "output/reviews/e23-continuation-boundary/trusted-boundary-score-selection.json",
+    "selection_file_sha256": "52d2cc5588651dacb1cfc936bb3c0592fac35d6e8017fb2dce7105eabb0524c9",
+    "selection_file_bytes": 412,
+    "read_scope": "Only the root-created tick/raw projection was read; no additional evaluator source access or independent score recomputation.",
+    "samples": [
+      {
+        "boundary": 1099,
+        "physics_tick": 13188,
+        "raw_points": 5.0
+      },
+      {
+        "boundary": 1179,
+        "physics_tick": 14148,
+        "raw_points": 5.0
+      },
+      {
+        "boundary": 1180,
+        "physics_tick": 14160,
+        "raw_points": 5.0
+      }
+    ],
+    "selected_boundary": 1179,
+    "selected_boundary_raw_points": 5.0,
+    "actor_receives_evaluation": false,
+    "score_is_support_or_passage_label": false
+  }
+}
