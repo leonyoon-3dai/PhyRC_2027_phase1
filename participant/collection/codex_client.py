@@ -159,6 +159,22 @@ Inspect the next observation after this single segment, including any separately
 
 Do not repeat blind probes or chain concealed advances/lowering. If support weakens, deformation/occlusion worsens, motion saturates, or the observation adds no distinguishing information, recover a supported view/posture or change the observable opening orientation/approach before considering another probe. A new probe needs a changed observable relationship and a new test, not merely another speed/duration offset. If current/recent evidence cannot support even this bounded test or useful recovery, preserve support and finish with the unresolved visual reason. All actions use the existing public observation/action contract; no evaluator feedback, hidden geometry or assumed occluded free space is supplied.'''
 
+TASK_PROGRESS_TASK = '''For this attempt, prioritize meaningful progress toward dressing under partial observation, rather than making every opening boundary fully readable before acting. Preserve useful CURRENT bilateral garment supports. The one-sided regrasp bound is zero for this comparison, but this does not prohibit support-preserving positioning, opening reorientation, approach, lowering or recovery.
+
+Choose ONE current task-directed objective from the observed garment, hand, forearm and torso relationships. Depending on the current arrangement, this may be bringing the candidate body opening meaningfully toward the same tracked hand, or moving and lowering the supported garment along the observed arm direction toward the torso. Do not require both routes or a fixed passage order. Maintain the dressing direction: hand into the body opening and outward through its corresponding sleeve, not into a cuff from outside.
+
+Briefly state the intended task relationship and the bounded movement chosen to advance it. Select direction, velocity and duration from current public joint positions, controller targets, remaining permitted travel, action scales and recent measured response. Use one act of up to 20 steps (0.05 simulation seconds each) when appropriate to the objective; do not reduce every task movement to a 2-4-step information probe. There is no prescribed centimetre distance. Account for residual target-following motion, and do not accumulate commands against saturated or unresponsive motion.
+
+Complete lip identification, visible background through the opening, and an immediate gain in visual clarity are not prerequisites for this bounded task movement. One chosen segment may traverse a partially occluded relationship under an explicit hypothesis, such as body-opening entry versus exterior-panel folding. Contact or an unsuccessful trial within the unchanged simulator and action limits is a possible outcome. Do not describe uncertain space as clear, an occluded hand as inside, or the intended motion as successful passage. Use current and recent public evidence to choose the objective; history alone cannot establish current support or geometry.
+
+After this single segment, inspect the next observation, including any configured neutral settling. Separate actual robot displacement and residual motion from cloth following and progress toward the chosen task objective. Progress may include a reduced approach gap, a changed rim-to-arm relationship, or garment movement along the forearm even when opening identity remains uncertain. Robot movement alone does not prove cloth movement or entry, and improved image clarity is not the only possible form of progress.
+
+If the new observation supports meaningful progress and useful support remains, choose the next task-directed step toward sleeve passage and full dressing. Do not finish merely because the first finite movement did not resolve all ambiguity or because regrasp is prohibited. Conversely, one obscured trial does not authorize a chain of concealed repetitions. Reassess the current objective and remaining movement before each subsequent act.
+
+If support is visibly lost, deformation worsens, actual motion saturates, or executed movements repeatedly leave the same task relationship without meaningful progress, recover a supported posture/view or change the opening orientation or approach. The shared saturation rule concerns repeated ineffective corrections; it does not require every productive positioning action to produce a newly identified opening or immediate passage evidence. Do not substitute repeated tiny speed/duration offsets for a purposeful movement, or repeat a larger stroke without reassessing its result.
+
+Finish when visually complete or when no useful task-directed movement or recovery remains supported by current observations. Keep uncertainty explicit. Use only the existing public observation/action contract, with no evaluator feedback, hidden geometry, external trajectories or changes to physics and joint limits.'''
+
 
 def official_review_points(collection):
     """Trusted termination only. Never include this value in actor observations."""
@@ -525,7 +541,8 @@ def main():
                         'coordinated-hem-route', 'coordinated-opening-first',
                         'coordinated-support-diagnostic', 'coordinated-regrasp-hem',
                         'coordinated-support-guide', 'coordinated-neckline-first',
-                        'coordinated-overhead-drape', 'coordinated-entry-probe'], default='general')
+                        'coordinated-overhead-drape', 'coordinated-entry-probe',
+                        'coordinated-task-progress'], default='general')
     parser.add_argument('--actor-backend', choices=['exec', 'app-server'], default='exec')
     parser.add_argument('--plan-size', type=int, default=1,
                         help='Maximum segments per model call; >1 is an open-loop list')
@@ -592,7 +609,7 @@ def main():
                          'coordinated-opening-first', 'coordinated-support-diagnostic',
                          'coordinated-regrasp-hem', 'coordinated-support-guide',
                          'coordinated-neckline-first', 'coordinated-overhead-drape',
-                         'coordinated-entry-probe') and args.mode != 'dressing':
+                         'coordinated-entry-probe', 'coordinated-task-progress') and args.mode != 'dressing':
         parser.error('coordinated strategy requires the full dressing objective')
     if args.strategy == 'coordinated-support-diagnostic' and args.plan_size != 1:
         parser.error('support diagnostic requires plan-size=1 to observe after each action')
@@ -604,6 +621,8 @@ def main():
         parser.error('overhead-drape requires plan-size=1 to observe after each action')
     if args.strategy == 'coordinated-entry-probe' and args.plan_size != 1:
         parser.error('entry-probe requires plan-size=1 to inspect each exploratory action')
+    if args.strategy == 'coordinated-task-progress' and args.plan_size != 1:
+        parser.error('task-progress requires plan-size=1 to reassess each task-directed action')
     if args.mode == 'wiring' and args.plan_size > 1 and (args.plan_size != 3 or args.decisions != 3):
         parser.error('grouped wiring requires plan-size=3 and decisions=3')
     if not math.isfinite(args.model_timeout) or not 10 <= args.model_timeout <= 1800:
@@ -638,7 +657,7 @@ def main():
                          'coordinated-opening-first', 'coordinated-support-diagnostic',
                          'coordinated-regrasp-hem', 'coordinated-support-guide',
                          'coordinated-neckline-first', 'coordinated-overhead-drape',
-                         'coordinated-entry-probe'):
+                         'coordinated-entry-probe', 'coordinated-task-progress'):
         task += '\n\n' + COORDINATED_TASK
     if args.strategy == 'coordinated-sleeve':
         task += '\n\n' + SLEEVE_TASK
@@ -660,6 +679,8 @@ def main():
         task += '\n\n' + OVERHEAD_TASK + '\n\n' + METHOD_SATURATION_TASK
     elif args.strategy == 'coordinated-entry-probe':
         task += '\n\n' + ENTRY_PROBE_TASK + '\n\n' + METHOD_SATURATION_TASK
+    elif args.strategy == 'coordinated-task-progress':
+        task += '\n\n' + TASK_PROGRESS_TASK + '\n\n' + METHOD_SATURATION_TASK
     if args.plan_size > 1:
         task += '\n\n' + PLAN_TASK.format(max_segments=args.plan_size, max_total_steps=args.plan_step_budget)
     if args.post_action_settle_steps:

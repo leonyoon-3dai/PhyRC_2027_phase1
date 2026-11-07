@@ -2,6 +2,31 @@
 
 [저장소 소개](../../README.md) · [현재 상태](../project/STATUS.md) · [이번 세션 기록](../project/sessions/20261106-evening-resume.ko.md)
 
+**최신 E22 · 짧은 전진·시점 보정 뒤 진입 전 자율 종료**
+
+<a href="assets/20261107-e22-entry-probe/event.mp4"><img src="assets/20261107-e22-entry-probe/preview.gif" width="960" alt="E22 실제 공개 네 카메라. 4단계 전진 탐색, 손목 시점 보정, 잔류 운동 대기 뒤 종료"></a>
+
+[**MP4 크게 보기**](assets/20261107-e22-entry-probe/event.mp4) · [**구간별 갤러리**](20261107-astra-probe787-named-001.ko.md) · [**분석**](../collection/reviews/20261107-astra-probe787-named-001.ko.md) · [**피드백 남기기**](https://github.com/leonyoon-3dai/PhyRC_2027_phase1/issues/new?title=%5BE22+%ED%94%BC%EB%93%9C%EB%B0%B1%5D+%EC%A7%A7%EC%9D%80+%EC%A7%84%EC%9E%85+%ED%83%90%EC%83%89%EA%B3%BC+%EC%A1%B0%EA%B8%B0+%EC%A2%85%EB%A3%8C&body=%EC%8B%9C%EB%8F%84%3A+E22+%2F+20261107-astra-probe787-named-001%0A%EC%98%81%EC%83%81+%EC%8B%9C%EA%B0%81+%EB%98%90%EB%8A%94+%EA%B2%BD%EA%B3%84%3A%0A%EC%B9%B4%EB%A9%94%EB%9D%BC%3A%0A%0A%EB%B3%B4%EC%9D%B4%EB%8A%94+%EC%82%AC%EC%8B%A4%3A%0A%0A%ED%95%B4%EC%84%9D%C2%B7%EC%A7%88%EB%AC%B8%3A%0A%0A%EB%8B%A4%EC%9D%8C%EC%97%90+%EB%B9%84%EA%B5%90%ED%95%A0+%EB%B0%A9%EB%B2%95%3A%0A) · [이전 E21 하강·재파지 영상](20261107-astra-overhead470-named-001.ko.md)
+
+**공식 원점수 5/50 · 픽업5 · 착의0 · `success=false` · 813/813기록 검사 통과.** 검수된5점 출발점에서 단일4단계 전진 탐색, 손목 시점 보정, 중립 대기를 수행했습니다. 새 진입 관계를 얻지 못해 모델이 종료했고 공식 평가는 `no_contact`입니다. 18판단 예산 중4판단만 사용했으며, 충분한 진입 동작을 시험한 결과로 확대하지 않습니다. 최고5점, 중간 목표10점은 아직 미달성입니다.
+
+787–813경계 · 27프레임 · 5.4초 · 4배 느리게 · 새 구간 전체입니다. 위는 로봇0/1 머리, 아래는 로봇0/1 손목이며 모델 대기는 제외했습니다. [출처](assets/20261107-e22-entry-probe/provenance.json) · [학습 검토 구간](../collection/reviews/20261107-astra-probe787-named-001-learning-segments.json)
+
+전체 **813전이·시뮬레이션40.65초**, 새 구간은 **26전이·1.3초**입니다. 실제17분13초, 787재실행+14모델 행동+12정착이며 5호출/4판단(3act+finish), depth 질의1회는 물리 진행0입니다. 전이1개는 관측→행동→다음 관측의0.05초 기록입니다.
+
+**다음 E23 준비:** 같은 E18/787 출발점에서, 시야가 완전히 명료해지는 것만을 진행 조건으로 삼지 않고 현재 관측에 근거한 목적 있는 유한 이동을 비교합니다. 공식 최대20단계와 물리·관절 한계는 유지하고, 한 행동 뒤 실제 옷의 진전을 다시 평가합니다. Astra/ultra·18판단 후보이며 통합302CPU검사를 통과했습니다. 아직 미실행입니다. [현재 상태·검증·명령](../project/STATUS.md)
+
+[**출발점 화면 5개 비교·피드백**](20261107-support-startpoints.ko.md) · [**출발점·방법 데이터베이스**](../collection/catalog/README.ko.md) · [**0→5→10 구간 조합 장기계획**](../collection/research/2026-11-07-composable-scoring-data-plan.ko.md)
+
+[입구·손의 국소 깊이 검토](../collection/reviews/20261107-astra-overhead470-named-001-local-depth.ko.md) · [실제 조작 대안과 전환 기준](../collection/research/2026-11-07-post-overhead-method-options.ko.md) · [전체 갤러리](README.ko.md)
+
+**10점은 중간 목표이며 공식 확인 후 다음 득점 항목으로 계속 진행합니다.** 실패·복구와 원본을 보존하고, 합성 자료 확대는 장기 계획으로 구분합니다.
+
+<details>
+<summary>E21 이전 갤러리·당시 계획 이력</summary>
+
+> 아래는 당시 기록입니다. 현재 상태는 위 내용을 따릅니다.
+
 **최신 E21 · 두 하강 접근 뒤 테이블로 복귀해 한쪽 재파지**
 
 <a href="assets/20261107-e21-overhead-entry/event.mp4"><img src="assets/20261107-e21-overhead-entry/preview.gif" width="960" alt="E21 실제 공개 네 카메라. 높은 위치에서 두 하강 접근, 손 가림과 시야 복구"></a>
@@ -434,6 +459,8 @@ plan3는 중간 관측으로 다시 판단하는 조건부 계획이 아닙니�
 
 </details>
 
+
+</details>
 
 </details>
 

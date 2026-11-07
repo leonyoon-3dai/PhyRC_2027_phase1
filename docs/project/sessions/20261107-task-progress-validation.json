@@ -1,0 +1,14 @@
+{
+  "schema": "phyrc-task-progress-integration-v1",
+  "verified_at_utc": "2026-11-07T03:29:46.418493+00:00",
+  "candidate_commit": "3873f902c46b602bcbc3b8d78b5d85e76516303b",
+  "full_cpu_tests_passed": 302,
+  "elapsed_seconds": 23.432,
+  "command": "PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m unittest discover -s tests -v",
+  "log_sha256": "77067011d8019db02c5e5689aefaab0c71e96018cb403ed054445119f41c5096",
+  "runtime_client_sha256": "e31e216a324323298724b508e29dc36615f32abb72802950aee2c3541efb1d17",
+  "existing_strategy_count": 11,
+  "existing_named_query_combinations": 44,
+  "actual_model_or_gpu_candidate_test": false,
+  "physics_or_action_contract_changed": false
+}

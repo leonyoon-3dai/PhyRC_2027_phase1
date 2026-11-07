@@ -1,0 +1,204 @@
+{
+  "schema": "public-learning-segments-v1",
+  "run_id": "20261107-astra-probe787-named-001",
+  "parent_attempt": "20261106-astra-guide470-depth-001",
+  "source_group": "20261106-coordinated-demo-methods",
+  "source_commit": "11faab3797cacd0160a725578d4a9dc65c6b018f",
+  "recording_status": "closed_actor_finish",
+  "training_approval": "unreviewed",
+  "label_provenance": [
+    "Public finalized decisions and concise final reasons",
+    "Designated public RGB observations0–3 directly inspected by reviewer",
+    "Sanitized public depth query request/result"
+  ],
+  "evidence_decisions_path": "output/operator-traces/20261107-astra-probe787-named-001/decisions.jsonl",
+  "raw_recordings_preserved": true,
+  "raw_records_rewritten": false,
+  "policy_teacher_hidden_evaluation_fields_included": false,
+  "split_constraints": [
+    "Group by source_group and replay lineage before train/validation split.",
+    "Replay prefix and adjacent frames are not independent successful demonstrations.",
+    "Early finish and unresolved approach remain reviewable, not automatically positive imitation.",
+    "Query and actor finish add zero physics transitions."
+  ],
+  "transition_boundary_semantics": "[start,end): count=end-start; inclusive video boundary images count+1.",
+  "counts": {
+    "recorded_transitions": 813,
+    "replay_transitions": 787,
+    "new_transitions": 26,
+    "model_action_transitions": 14,
+    "controller_settle_transitions": 12,
+    "model_call_count": 5,
+    "finalized_decisions": 4,
+    "executed_act_decisions": 3,
+    "finish_decisions": 1,
+    "completed_depth_query_cycles": 1,
+    "queried_points": 7
+  },
+  "segments": [
+    {
+      "id": "single_forward_probe",
+      "kind": "bounded_information_probe",
+      "decision_indices": [
+        0
+      ],
+      "transition_start": 787,
+      "transition_end_exclusive": 797,
+      "transition_count": 10,
+      "observation_evidence": [
+        "output/actors/20261107-astra-probe787-named-001/observations/00000",
+        "output/actors/20261107-astra-probe787-named-001/observations/00001"
+      ],
+      "public_label": "One4-step paired base-forward probe plus6 controller-settle transitions. Pinch-adjacent cloth and rim candidate remain visible; no clear new hand-rim overlap or boundary crossing in next observation.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "orientation_observation",
+      "kind": "observation_adjustment",
+      "decision_indices": [
+        1
+      ],
+      "transition_start": 797,
+      "transition_end_exclusive": 807,
+      "transition_count": 10,
+      "observation_evidence": [
+        "output/actors/20261107-astra-probe787-named-001/observations/00001",
+        "output/actors/20261107-astra-probe787-named-001/observations/00002"
+      ],
+      "public_label": "One4-step paired wrist-pitch change plus6 controller-settle transitions. Hand/mannequin image location changes, but entry relation remains unresolved.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "residual_motion_wait",
+      "kind": "neutral_observation_wait",
+      "decision_indices": [
+        2
+      ],
+      "transition_start": 807,
+      "transition_end_exclusive": 813,
+      "transition_count": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-probe787-named-001/observations/00002",
+        "output/actors/20261107-astra-probe787-named-001/observations/00003"
+      ],
+      "public_label": "Six model-requested all-zero transitions, with no additional controller settle. Small image changes do not reveal a new entry relation; not an additional entry probe.",
+      "training_approval": "unreviewed"
+    }
+  ],
+  "query_events": [
+    {
+      "decision_index": 0,
+      "transition_boundary": 787,
+      "observation_evidence": "output/actors/20261107-astra-probe787-named-001/observations/00000",
+      "camera": "robot_0_wrist",
+      "point_count": 7,
+      "valid_point_count": 7,
+      "physics_transition_count": 0,
+      "physics_advanced_during_query": false,
+      "public_label": "Visible surface optical-Z query from current frozen observation. Depth ordering does not determine opening plane, interior/exterior membership, contact or attachment.",
+      "training_approval": "unreviewed"
+    }
+  ],
+  "termination_event": {
+    "reason": "actor_finish",
+    "decision_index": 3,
+    "transition_boundary": 813,
+    "physics_transition_count": 0,
+    "decision_budget": 18,
+    "finalized_decisions_used": 4,
+    "actor_finish": true,
+    "budget_exhausted": false,
+    "human_interrupt": false,
+    "public_label": "Actor ends incomplete after probe, orientation change and neutral wait reveal no clear entry relation; final brief reason cites unresolved geometry and no-regrasp constraint. Physical impossibility not established.",
+    "training_approval": "unreviewed"
+  },
+  "named_action_review": {
+    "checked_act_count": 3,
+    "checked_finish_count": 1,
+    "all_named_to_array_equal": true,
+    "unexplained_roll_decisions": [],
+    "per_decision": [
+      {
+        "decision_index": 0,
+        "tool": "act",
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "base_forward": 0.12
+          },
+          "robot_1": {
+            "base_forward": 0.12
+          }
+        }
+      },
+      {
+        "decision_index": 1,
+        "tool": "act",
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "wrist_pitch": -0.06
+          },
+          "robot_1": {
+            "wrist_pitch": -0.06
+          }
+        }
+      },
+      {
+        "decision_index": 2,
+        "tool": "act",
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {},
+          "robot_1": {}
+        }
+      },
+      {
+        "decision_index": 3,
+        "tool": "finish_episode",
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {},
+          "robot_1": {}
+        }
+      }
+    ],
+    "scope": "Expression mapping and brief final purpose reviewed; task success not implied."
+  },
+  "strategy_execution": {
+    "single_information_probe_count": 1,
+    "orientation_adjustment_count": 1,
+    "model_neutral_wait_count": 1,
+    "new_regrasp_count": 0,
+    "new_clear_hand_rim_overlap_observed": false,
+    "continuous_boundary_passage_confirmed": false,
+    "global_approach_saturation_established": false,
+    "physical_entry_impossibility_established": false,
+    "early_finish_gate_contribution": "Hypothesis supported by final brief reason citing absent new evidence and no-regrasp constraint; no counterfactual comparison."
+  },
+  "video_cut_suggestions": [
+    {
+      "id": "whole_new_probe",
+      "start_boundary": 787,
+      "end_boundary": 813,
+      "inclusive_frame_count": 27,
+      "fps": 5,
+      "playback_duration_s": 5.4,
+      "export_status": "complete_provenance_and_media_hashes_checked",
+      "public_provenance": "docs/gallery/assets/20261107-e22-entry-probe/provenance.json"
+    }
+  ],
+  "last_observation_export_check": {
+    "actor_observation_index": 3,
+    "transition_boundary": 813,
+    "all_five_designated_camera_png_bytes_equal": true
+  },
+  "preservation": {
+    "backup_receipt": "docs/project/sessions/20261107-e22-backup-verification.json",
+    "revision": "788a36ece3f606ca06dd0f20224910974dbe270e",
+    "archive_sha256": "ea7ec4943649e31407a247af5aa2a6bff3adfb86d7a5576e227331207a5fe80c",
+    "remote_download_verified": true,
+    "remote_archive_member_hashes_verified": true,
+    "training_approval": "unreviewed"
+  }
+}

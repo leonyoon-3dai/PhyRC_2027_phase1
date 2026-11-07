@@ -532,14 +532,14 @@
       "source_working_tree_modified": false,
       "parent_run_id": "20261106-astra-guide470-depth-001",
       "replay_prefix_steps": 787,
-      "replay_completed_steps": 0,
-      "recorded_transitions": null,
-      "qc_status": "pending",
+      "replay_completed_steps": 787,
+      "recorded_transitions": 813,
+      "qc_status": "passed",
       "backup": {
-        "status": "unknown",
-        "receipt": null,
-        "revision": null,
-        "sha256": null
+        "status": "verified",
+        "receipt": "docs/project/sessions/20261107-e22-backup-verification.json",
+        "revision": "788a36ece3f606ca06dd0f20224910974dbe270e",
+        "sha256": "ea7ec4943649e31407a247af5aa2a6bff3adfb86d7a5576e227331207a5fe80c"
       }
     }
   ],
@@ -665,7 +665,8 @@
           "docs/collection/research/2026-11-07-support-startpoints-review.ko.md — e18-pre-roll-801",
           "docs/collection/research/2026-11-07-support-startpoints-review.json — score/timing/source and selected image hashes",
           "output/actors/20261106-astra-guide470-depth-001/observations/00016/observation.json sha256:ed54f165ed6285e995ef906dea78191324787c5ade6505087485760eccc00dbc",
-          "Selected support window 563→801; observed samples 563,641,719,771,787,801; no open requests in complete final-command coverage (not physical grip proof)."
+          "Selected support window 563→801; observed samples 563,641,719,771,787,801; no open requests in complete final-command coverage (not physical grip proof).",
+          "docs/gallery/20261107-support-startpoints.ko.md"
         ],
         "uncertainty": [
           "Bilateral support is a visual hypothesis, not independently confirmed load-bearing attachment.",
@@ -698,7 +699,8 @@
           "docs/collection/research/2026-11-07-support-startpoints-review.ko.md — e18-table-470",
           "docs/collection/research/2026-11-07-support-startpoints-review.json — score/timing/source and selected image hashes",
           "output/actors/20261106-astra-guide470-depth-001/observations/00000/observation.json sha256:02ec1761906212e3793ab19301cff80d8b4021b3cd50f8ed65bb534a7bc4b328",
-          "Single reviewed boundary observation only; no support-duration claim."
+          "Single reviewed boundary observation only; no support-duration claim.",
+          "docs/gallery/20261107-support-startpoints.ko.md"
         ],
         "uncertainty": [
           "Bilateral support is a visual hypothesis, not independently confirmed load-bearing attachment.",
@@ -731,7 +733,8 @@
           "docs/collection/research/2026-11-07-support-startpoints-review.ko.md — e18-lifted-563",
           "docs/collection/research/2026-11-07-support-startpoints-review.json — score/timing/source and selected image hashes",
           "output/actors/20261106-astra-guide470-depth-001/observations/00006/observation.json sha256:6443837faccda363fc276cbce0609804b1780ac01ec7f320c202551431f5ddc2",
-          "Selected support window 510→563; observed samples 510,542,563; no open requests in complete final-command coverage (not physical grip proof)."
+          "Selected support window 510→563; observed samples 510,542,563; no open requests in complete final-command coverage (not physical grip proof).",
+          "docs/gallery/20261107-support-startpoints.ko.md"
         ],
         "uncertainty": [
           "Bilateral support is a visual hypothesis, not independently confirmed load-bearing attachment.",
@@ -764,7 +767,8 @@
           "docs/collection/research/2026-11-07-support-startpoints-review.ko.md — e18-hand-approach-787",
           "docs/collection/research/2026-11-07-support-startpoints-review.json — score/timing/source and selected image hashes",
           "output/actors/20261106-astra-guide470-depth-001/observations/00015/observation.json sha256:2f76ae40794d48883b0de7c4919fbf1d873817640ea16a8aa2ad2ae3e329b100",
-          "Selected support window 563→787; observed samples 563,641,719,771,787; no open requests in complete final-command coverage (not physical grip proof)."
+          "Selected support window 563→787; observed samples 563,641,719,771,787; no open requests in complete final-command coverage (not physical grip proof).",
+          "docs/gallery/20261107-support-startpoints.ko.md"
         ],
         "uncertainty": [
           "Bilateral support is a visual hypothesis, not independently confirmed load-bearing attachment.",
@@ -797,7 +801,8 @@
           "docs/collection/research/2026-11-07-support-startpoints-review.ko.md — e19-replayed-801",
           "docs/collection/research/2026-11-07-support-startpoints-review.json — score/timing/source and selected image hashes",
           "output/actors/20261107-astra-entry801-named-001/observations/00000/observation.json sha256:3fa1cf7233e0e755fe2853b731ce3a96c577d4e9402c573eaa1c5feaac27b9b6",
-          "Single reviewed boundary observation only; no support-duration claim."
+          "Single reviewed boundary observation only; no support-duration claim.",
+          "docs/gallery/20261107-support-startpoints.ko.md"
         ],
         "uncertainty": [
           "Bilateral support is a visual hypothesis, not independently confirmed load-bearing attachment.",
@@ -1029,7 +1034,7 @@
     {
       "id": "coordinated-entry-probe-named-query",
       "name": "coordinated-entry-probe / named / query",
-      "status": "ready",
+      "status": "tested",
       "axes": {
         "grasp_arrangement": "retain current useful bilateral supports; no new regrasp",
         "entry_target": "hand through body opening toward corresponding sleeve",
@@ -1039,6 +1044,20 @@
         "action_encoding": "named"
       },
       "description": "Prompt-only uncertainty/action-selection comparison; 295 integrated CPU tests passed. No actual garment performance established. A different prompt is not by itself a new physical method."
+    },
+    {
+      "id": "coordinated-task-progress-named-query",
+      "name": "coordinated-task-progress / named / query",
+      "status": "ready",
+      "axes": {
+        "grasp_arrangement": "retain current useful bilateral supports; no new regrasp",
+        "entry_target": "body-opening approach or garment motion along observed arm toward torso",
+        "approach": "finite task-directed action under partial observation",
+        "order": "choose one current task relation; inspect after one action; do not require immediate image clarity",
+        "view": "designated RGB-D + optional pixel depth query",
+        "action_encoding": "named"
+      },
+      "description": "Candidate distinguishes task progress from information-only probing. No prescribed centimetre distance or changed official action limit. Actual new physical method requires observed execution; no performance established."
     }
   ],
   "attempts": [
@@ -1521,17 +1540,33 @@
     },
     {
       "id": "20261107-astra-probe787-named-001",
-      "status": "in_progress",
+      "status": "completed",
       "run_id": "20261107-astra-probe787-named-001",
       "startpoint_id": "20261106-astra-guide470-depth-001-p787",
       "method_id": "coordinated-entry-probe-named-query",
+      "result": {
+        "raw_points": 5,
+        "success": false,
+        "review": "docs/collection/reviews/20261107-astra-probe787-named-001.ko.md",
+        "videos": [
+          "docs/gallery/assets/20261107-e22-entry-probe/event.mp4"
+        ]
+      },
+      "notes": "E22 completed: 787 replay+14 model+12 settle=813;4 decisions=3act+finish;5 calls including1query7valid. One4step forward information probe,4step wrist orientation,6step model neutral; no confirmed entry. no_contact/null. No supervisor interrupt. Capture complete/simulator0 but host exec receipt61989 returned143; cause unknown, not classified as Python client returncode. Same E07 source group,training unreviewed."
+    },
+    {
+      "id": "planned-e18-787-task-progress",
+      "status": "planned",
+      "run_id": null,
+      "startpoint_id": "20261106-astra-guide470-depth-001-p787",
+      "method_id": "coordinated-task-progress-named-query",
       "result": {
         "raw_points": null,
         "success": null,
         "review": null,
         "videos": []
       },
-      "notes": "Actual E22 started 2026-11-07T03:01:21Z from clean published source 11faab3797cacd0160a725578d4a9dc65c6b018f. 18 decisions/max1300/timeout180/settle6/review10; history719771; fixed Astra/ultra/exec/plan1. Intended prefix787; replay_completed_steps separately records observed progress, not assumed completion. Source boundary5 with curated observed bilateral support; fresh state needs current observation. Final outcome/QC/backup pending. Same E07 source group; no exact cloth checkpoint."
+      "notes": "Planned E23, not dispatched: same E18/787 history719771 as E22;18 decisions/max1300/timeout180/settle6/review10;fixed Astra/ultra exec/plan1/named/query. Candidate3873f90 integrated;302 full CPU tests passed23.432s. Preserve source-group split; replay is not exact cloth checkpoint."
     }
   ]
 }

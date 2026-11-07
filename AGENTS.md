@@ -12,14 +12,15 @@
 
 ## 확인된 현재 상태
 
-- 최신 종료 E21 `20261107-astra-overhead470-named-001`: **5/50·픽업5·착의0·success=false**,1111/1111QC. 470재실행+412모델+228정착+1예산 종료,40act/44calls(query4). UTC01:56:25–02:48:54·52분29초·source d383063 clean. 두 하강 접근/시야·방향 보정과 테이블 복귀·한쪽 새 위치 재파지. 마지막 새 파지는 유지 검사 없어 검증된 양측 출발점으로 쓰지 않는다.
-- E21 원본 고정HF revision45e6adf8586f935b3ca9f6d19ed3ec97371be44f 재다운로드·416member hash 검증 완료. 학습unreviewed. 최고5점·중간 목표10점 미달성.
-- E22 **실행 중·03:01:21UTC 시작·source11faab3797cacd0160a725578d4a9dc65c6b018f clean**: E18/787·hist719771·coordinated-entry-probe·named+query·18판단/max1300/timeout180/settle6/review10. 실제 시작·소스는STATUS/attempt 우선.
-- entry-probe 후보5559af6은E21종료뒤통합,전체295CPU검사18.451초통과. 부분가림 아래 공개 근거가 지지하는 단일2–4step 탐색 뒤 관측, 같은 grasp set 유지·새 재파지0회. 프롬프트 지침이며 공식schema/물리/20Hz변경없음. 실제성과미검증.
-- 출발점/방법/실제/계획은docs/collection/catalog/catalog.v1.json이canonical,SQLite는재생성한다. review_ready·관측양측지지·5점·착의·학습승인을혼동하지않는다. E18/787은5점후관측지지근거가있는경계이며새환경재실행을현재관측에서확인한다.
-- E20 목선후보재파지는0/50·준비종료,목우선우선순위낮춤. E19는5/50·세접근통과미확인. E18의두roll오류및복구는보존됐고named이후E19–E21에서축불일치재발을발견하지않았다. 일반오류율개선증명은아니다.
-- 공식시연/BEHAVIOR텍스트·그림·선택영상과자료한계,관측절차카드,장기구간조합계획을main에기록했다. 외부자료·좌표·평가를actor입력에전달하지않는다.
-- E18 직접출처44d01871f0099f8a537f1bdbfee06a404a95f38c 및E19/E20은고정원격검증완료. 각receipt가근거다. E09종료응답오류는수정완료이며불완전과거원본은재실행출처로사용하지않는다.
+- 최신 종료 E22 `20261107-astra-probe787-named-001`:5/50·픽업5·착의0·success=false·no_contact/null,QC813/813오류0. 787재실행+14모델+12정착,3act+finish/5calls(query1·7valid). UTC03:01:21–03:18:34·17분13초·source11faab3797cacd0160a725578d4a9dc65c6b018f clean.
+- E22 실제는단일4step전진탐색→4step시점보정→6step중립대기→모델finish다. 충분한진입시험전정보부족으로종료했으며18판단예산소진아님. 정보조건/재파지금지가종료에기여했을가능성과물리실패를구분한다.
+- E22capture완료·simulator0·attemptcompleted,호스트exec61989의반환143은원인미확인별도기록이며client0으로쓰지않는다. 원본QC통과·비공개백업788a36ece3f606ca06dd0f20224910974dbe270e·강제재다운로드/92member검증완료,학습unreviewed. 최고5점·중간목표10미달성.
+- E23는아직후보준비:coordinated-task-progress·E18/787/hist719771·named+query·18dec/max1300/timeout180/settle6/review10. 정보명료화만필수gate로삼지않고현재공개목표관계로유한act후실제옷진전을관찰한다. 실제시작/source는STATUS/attempt우선.
+- E22실행기준전체295CPU검사통과. 새후보통합302CPU검사23.432초통과·실제효과미검증이다. 공식schema최대20step·물리·20Hz·고정모델을변경하지않는다.
+- E21은5/50·1111QC,두하강접근/복구/테이블재파지뒤40판단예산마감. 마지막새파지유지검사없음. 백업45e6adf8586f935b3ca9f6d19ed3ec97371be44f 재다운로드/416member검증완료. 새파지를검증된출발점으로쓰지않는다.
+- 출발점/방법/실제/계획은docs/collection/catalog/catalog.v1.json이canonical,SQLite는재생성한다. E18/563·787·801/E19/801의5점·관측지지와E18/470의0점대조를구분하며공개출발점갤러리15원본이미지로비교할수있다. 모두같은E07계보,exactcheckpoint아님.
+- E20목선준비0/50·E19세접근5/50·E18roll오류/복구이력을보존한다. named이후설명없는축불일치재발을발견하지않았지만일반오류율개선증명은아니다. E09종료응답오류는수정됐으며불완전원본은재실행출처로쓰지않는다.
+- 공식시연/BEHAVIOR검토·관측절차카드·국소depth해석·실제방법전환후보·장기0→5→10조합계획을기록했다. 외부영상/좌표/평가정답을actor에전달하지않는다.
 
 ## 실행과 재현
 

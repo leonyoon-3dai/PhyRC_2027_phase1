@@ -262,3 +262,17 @@ E21은02:48:54UTC에40판단 예산으로마감했다. 원점수5/50(픽업5·�
 ## E22 실제 시작 (2026-11-07 03:01:21 UTC)
 
 `20261107-astra-probe787-named-001`을공개source`11faab3797cacd0160a725578d4a9dc65c6b018f`·working_tree_modified=false에서시작했다. E18직접부모/prefix787·history719771·coordinated-entry-probe·named+query·plan1·18판단/max1300/timeout180/settle6/review10·profile이다. 로그`output/sessions/20261106-evening/e22-probe787-named-001.log`,초기화·재실행중이며최종결과는없다. E21은종료·QC·백업·영상게시완료뒤GPU를순차시작했다.
+
+## E22 자율 종료와 정보 조건 재검토 (2026-11-07 03:18:34 UTC)
+
+공식5/50(픽업5·착의0),success=false·no_contact/null·QC813/813오류0이다. 787재실행+14모델(4전진/4pitch/6zero)+12정착=813전이40.65초,새26전이1.3초다. 18판단예산중4판단(3act+finish)/5호출(query1·7valid·물리0)이며마감추가전이0이다. 실제1032.883288초·모델호출경로294.325561초·환경694.749380초다.
+
+새손–경계관계를얻지못했고재파지금지범위에서같은탐색을반복하지않겠다는모델설명으로종료했다. 충분한진입/가려진안착을시험한결과가아니며,정보획득조건이목표진전을막았을가능성을비교할근거다. 다음coordinated-task-progress는현재목표관계로유한act를선택하고다음관측에서실제옷진전을평가하는후보로준비한다. 같은E18/787/hist719771·18판단으로비교하고물리/관절/20Hz/공식schema를바꾸지않는다.
+
+attemptcompleted·capturecomplete/operator_finished·simulator_returncode0이지만hostexec61989는143을반환했다. 발신/원인은현재기록에서특정할수없고Pythonclient반환코드로단정하지않는다. root직접SIGINT/SIGTERM요청은없다. closedsourcecleanup에hostkill경로를찾지못했고runlog4행은정상판단진행이다. QC통과원본과이차이를함께보존한다. 최초validate_capture호출은--output누락으로CLI오류2였으며,이후새validation.json을지정한실제전수검사가0으로통과했다. 원본검사실패와잘못된검사호출을구분한다.
+
+E21국소depth수치/표면해석한계와후속M1/M2/M3구분을추가기록했다. 검수출발점5개의공개원본15이미지·정확경계매핑·피드백동선도추가했다. 점수만으로구간을연결하거나층/접촉/성공라벨을생성하지않는다.
+
+E22 [고정 원본 백업](20261107-e22-backup-verification.json)은revision`788a36ece3f606ca06dd0f20224910974dbe270e`에서강제재다운로드와92member해시검증을03:24:59UTC에완료했다. 1,854,271,559bytes·SHA`ea7ec4943649e31407a247af5aa2a6bff3adfb86d7a5576e227331207a5fe80c`이며host143와simulator0을receipt에분리보존했다.
+
+E23 후보3873f90을통합했고전체302CPU검사23.432초통과했다. [검증기록](20261107-task-progress-validation.json). 기존11전략44조합의prompt/schema/images/dispatch불변·queryfrozen·20act/6settle/마감분리를확인했고실제모델·옷효과는아직미검증이다.

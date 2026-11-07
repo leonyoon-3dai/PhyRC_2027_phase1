@@ -1,0 +1,1753 @@
+{
+  "schema_version": "phyrc-local-public-depth-review-v1",
+  "run_id": "20261107-astra-overhead470-named-001",
+  "created_at_utc": "2026-11-07T03:13:41.713590+00:00",
+  "review_status": "diagnostic_unreviewed_not_training_approved",
+  "scope": {
+    "camera": "robot_0_head",
+    "actor_observations": [
+      21,
+      22,
+      25
+    ],
+    "record_boundaries": [
+      796,
+      810,
+      844
+    ],
+    "public_only": true,
+    "hdf5_dataset_data_read": false,
+    "hdf5_note": "공개키 경로의 존재/shape만 확인; 분석값은 actor 공개 RGB/NPZ/JSON과 run_metadata의 public_interface에서 읽음",
+    "active_run_accessed": false,
+    "evaluation_or_audit_read": false,
+    "camera_extrinsics_used": false,
+    "world_geometry_used": false,
+    "model_or_gpu_called": false,
+    "sources_modified": false
+  },
+  "sources": {
+    "public_contract": {
+      "path": "config/policy_interface.json",
+      "sha256": "0823b5a692621bc1effed308ac6427af7e97122de4db297ec14b5d751551a5dc",
+      "bytes": 12778,
+      "selected_fields": [
+        "competition_access.allowed_policy_observations",
+        "competition_access.allowed_cameras",
+        "controller_target_columns"
+      ]
+    },
+    "public_interface_source": {
+      "path": "output/collections/20261107-astra-overhead470-named-001/run_metadata.json",
+      "sha256": "69c746bf9f0507c76d97a8d78601148532ec269d1d6ad9e3ffcd25cc4d3af5aa",
+      "bytes": 8687,
+      "selected_fields": [
+        "public_interface.camera_intrinsics.robot_0_head",
+        "public_interface.joint_names"
+      ]
+    },
+    "final_decisions_and_query": {
+      "path": "output/operator-traces/20261107-astra-overhead470-named-001/decisions.jsonl",
+      "sha256": "4450e30713227c753390921d3ad789dcb9f5107fa69947165ed699ff11e76881",
+      "bytes": 392813,
+      "selected_fields": [
+        "depth_query_result where decision_index=21",
+        "decision/applied_segment where decision_index in [21,22,23,24]"
+      ]
+    }
+  },
+  "camera_geometry": {
+    "coordinate_frame": "camera_X_right_Y_down_Z_forward",
+    "depth_semantics": "optical_Z_metres_not_ray_range",
+    "intrinsics_source_field": "public_interface.camera_intrinsics.robot_0_head",
+    "intrinsics_matrix": [
+      [
+        182.80294486299067,
+        0.0,
+        128.0
+      ],
+      [
+        0.0,
+        182.80294486299067,
+        128.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "intrinsics_sha256": "3dd91a2df5cb0a47b6f5ceb86d60d41e1f5d6753d2a11a034ac0b52bc385cd23",
+    "matches_actual_D21_query_intrinsics_sha256": true,
+    "backprojection": "X=(u-cx)*Z/fx; Y=(v-cy)*Z/fy; Z=public depth[v,u]",
+    "camera_range": "sqrt(X^2+Y^2+Z^2)",
+    "pixel_origin": "top-left; zero-based integer (u,v)",
+    "estimated_intrinsics_used": false,
+    "neighbor_depth_substitution": false,
+    "cross_camera_or_cross_time_transform": false
+  },
+  "labels": {
+    "U": "screen-upper yellow-band candidate, not a verified far lip",
+    "L": "screen-lower yellow-band candidate, not a verified near lip",
+    "H1_H2": "visually selected exposed-hand candidates, no ground-truth segmentation",
+    "garment_opening_identity": null,
+    "which_lip_of_opening": null,
+    "same_material_point_across_observations": false,
+    "inside_outside": null,
+    "contact": null,
+    "passage": null
+  },
+  "observations": [
+    {
+      "actor_observation_index": 21,
+      "record_boundary": 796,
+      "simulation_time_s": 41.3250021552667,
+      "sources": {
+        "public_observation": {
+          "path": "output/actors/20261107-astra-overhead470-named-001/observations/00021/observation.json",
+          "sha256": "b98df8711cd1bc5e88cbf88cab6a8bb18ddb67720e48bf4227b1cbd399d9c7f0",
+          "bytes": 25155,
+          "selected_fields": [
+            "public_robot_observation"
+          ]
+        },
+        "rgb": {
+          "path": "output/actors/20261107-astra-overhead470-named-001/observations/00021/robot_0_head.png",
+          "sha256": "db98238b19b2fb6e98acb6965f4b41199d41ad9f6d9b8cfeef416e894e3c77d5",
+          "bytes": 60584
+        },
+        "depth": {
+          "path": "output/actors/20261107-astra-overhead470-named-001/observations/00021/public_depth.npz",
+          "sha256": "b513b02f04e4cd9b57f4a3e3bb51f9150e8b9c3dff33ce935d13cd06891fb82c",
+          "bytes": 556770,
+          "selected_fields": [
+            "depth[3,:,:,0]",
+            "depth_valid[3,:,:,0]"
+          ]
+        }
+      },
+      "samples": {
+        "U": {
+          "pixel_uv": [
+            52,
+            99
+          ],
+          "rgb_uint8": [
+            239,
+            237,
+            99
+          ],
+          "depth_valid": true,
+          "optical_z_m": 0.5823782682418823,
+          "camera_xyz_m": [
+            -0.24212273177303642,
+            -0.0923889371239218,
+            0.5823782682418823
+          ],
+          "camera_range_m": 0.6374351576941294,
+          "neighborhood_3x3": {
+            "valid_count": 9,
+            "pixel_count": 9,
+            "positive_finite_valid_count": 9,
+            "optical_z_min_m": 0.5805484652519226,
+            "optical_z_max_m": 0.5842701196670532,
+            "rgb_uint8_row_major": [
+              [
+                240,
+                238,
+                99
+              ],
+              [
+                239,
+                237,
+                100
+              ],
+              [
+                239,
+                237,
+                101
+              ],
+              [
+                239,
+                237,
+                98
+              ],
+              [
+                239,
+                237,
+                99
+              ],
+              [
+                239,
+                237,
+                101
+              ],
+              [
+                240,
+                238,
+                100
+              ],
+              [
+                240,
+                238,
+                102
+              ],
+              [
+                239,
+                238,
+                103
+              ]
+            ],
+            "used_to_replace_center_depth": false
+          },
+          "visual_description": "화면 상단 노란 띠 후보",
+          "selection_reason": "실제 D21 actor query의 동일 픽셀을 재현",
+          "semantic_identity_verified": false,
+          "opening_lip_role": null,
+          "contact_or_inside_outside": null
+        },
+        "L": {
+          "pixel_uv": [
+            52,
+            116
+          ],
+          "rgb_uint8": [
+            201,
+            195,
+            50
+          ],
+          "depth_valid": true,
+          "optical_z_m": 0.5514819025993347,
+          "camera_xyz_m": [
+            -0.22927762257310796,
+            -0.036201729879964416,
+            0.5514819025993347
+          ],
+          "camera_range_m": 0.5983402730500936,
+          "neighborhood_3x3": {
+            "valid_count": 9,
+            "pixel_count": 9,
+            "positive_finite_valid_count": 9,
+            "optical_z_min_m": 0.5423139929771423,
+            "optical_z_max_m": 0.5631750822067261,
+            "rgb_uint8_row_major": [
+              [
+                201,
+                194,
+                53
+              ],
+              [
+                196,
+                190,
+                51
+              ],
+              [
+                196,
+                190,
+                50
+              ],
+              [
+                203,
+                196,
+                53
+              ],
+              [
+                201,
+                195,
+                50
+              ],
+              [
+                202,
+                196,
+                51
+              ],
+              [
+                183,
+                174,
+                66
+              ],
+              [
+                191,
+                183,
+                56
+              ],
+              [
+                197,
+                191,
+                51
+              ]
+            ],
+            "used_to_replace_center_depth": false
+          },
+          "visual_description": "화면 하단 노란 띠 후보",
+          "selection_reason": "실제 D21 actor query의 동일 픽셀을 재현",
+          "semantic_identity_verified": false,
+          "opening_lip_role": null,
+          "contact_or_inside_outside": null
+        },
+        "H1": {
+          "pixel_uv": [
+            48,
+            132
+          ],
+          "rgb_uint8": [
+            190,
+            168,
+            176
+          ],
+          "depth_valid": true,
+          "optical_z_m": 0.6852124333381653,
+          "camera_xyz_m": [
+            -0.29986931943650097,
+            0.014993465971825048,
+            0.6852124333381653
+          ],
+          "camera_range_m": 0.7481059360560963,
+          "neighborhood_3x3": {
+            "valid_count": 9,
+            "pixel_count": 9,
+            "positive_finite_valid_count": 9,
+            "optical_z_min_m": 0.6818231344223022,
+            "optical_z_max_m": 0.6914068460464478,
+            "rgb_uint8_row_major": [
+              [
+                102,
+                85,
+                178
+              ],
+              [
+                140,
+                118,
+                146
+              ],
+              [
+                152,
+                128,
+                132
+              ],
+              [
+                203,
+                182,
+                190
+              ],
+              [
+                190,
+                168,
+                176
+              ],
+              [
+                176,
+                153,
+                159
+              ],
+              [
+                210,
+                191,
+                194
+              ],
+              [
+                204,
+                185,
+                189
+              ],
+              [
+                191,
+                170,
+                174
+              ]
+            ],
+            "used_to_replace_center_depth": false
+          },
+          "visual_description": "공개 RGB에서 손의 노출면으로 보이는 후보",
+          "selection_reason": "실제 D21 actor query의 동일 픽셀을 재현",
+          "semantic_identity_verified": false,
+          "opening_lip_role": null,
+          "contact_or_inside_outside": null
+        },
+        "H2": {
+          "pixel_uv": [
+            55,
+            139
+          ],
+          "rgb_uint8": [
+            210,
+            194,
+            200
+          ],
+          "depth_valid": true,
+          "optical_z_m": 0.6705190539360046,
+          "camera_xyz_m": [
+            -0.2677631422951878,
+            0.040347870756809116,
+            0.6705190539360046
+          ],
+          "camera_range_m": 0.7231326660700897,
+          "neighborhood_3x3": {
+            "valid_count": 9,
+            "pixel_count": 9,
+            "positive_finite_valid_count": 9,
+            "optical_z_min_m": 0.6680620908737183,
+            "optical_z_max_m": 0.6734305620193481,
+            "rgb_uint8_row_major": [
+              [
+                210,
+                194,
+                199
+              ],
+              [
+                211,
+                195,
+                200
+              ],
+              [
+                213,
+                198,
+                203
+              ],
+              [
+                213,
+                196,
+                201
+              ],
+              [
+                210,
+                194,
+                200
+              ],
+              [
+                207,
+                191,
+                199
+              ],
+              [
+                212,
+                196,
+                198
+              ],
+              [
+                203,
+                185,
+                191
+              ],
+              [
+                188,
+                168,
+                176
+              ]
+            ],
+            "used_to_replace_center_depth": false
+          },
+          "visual_description": "공개 RGB에서 손의 노출면으로 보이는 후보",
+          "selection_reason": "실제 D21 actor query의 동일 픽셀을 재현",
+          "semantic_identity_verified": false,
+          "opening_lip_role": null,
+          "contact_or_inside_outside": null
+        }
+      },
+      "hand_minus_band_vectors": [
+        {
+          "from_band": "U",
+          "to_hand_candidate": "H1",
+          "delta_camera_xyz_m": [
+            -0.05774658766346455,
+            0.10738240309574684,
+            0.10283416509628296
+          ],
+          "lateral_xy_distance_m": 0.12192476730095349,
+          "point_to_point_distance_m": 0.15950082881427682,
+          "ray_angle_deg": 9.540879282885843,
+          "interpretation": "유효한 표면점 차벡터이며 동일 입구 단면·lip 정체·진입 거리·inside/outside를 뜻하지 않음"
+        },
+        {
+          "from_band": "L",
+          "to_hand_candidate": "H1",
+          "delta_camera_xyz_m": [
+            -0.070591696863393,
+            0.051195195851789464,
+            0.13373053073883057
+          ],
+          "lateral_xy_distance_m": 0.0872016957653706,
+          "point_to_point_distance_m": 0.15964958689594394,
+          "ray_angle_deg": 4.737249165863317,
+          "interpretation": "유효한 표면점 차벡터이며 동일 입구 단면·lip 정체·진입 거리·inside/outside를 뜻하지 않음"
+        },
+        {
+          "from_band": "U",
+          "to_hand_candidate": "H2",
+          "delta_camera_xyz_m": [
+            -0.025640410522151352,
+            0.13273680788073092,
+            0.08814078569412231
+          ],
+          "lateral_xy_distance_m": 0.13519057222347466,
+          "point_to_point_distance_m": 0.16138552884595234,
+          "ray_angle_deg": 11.560259357501192,
+          "interpretation": "유효한 표면점 차벡터이며 동일 입구 단면·lip 정체·진입 거리·inside/outside를 뜻하지 않음"
+        },
+        {
+          "from_band": "L",
+          "to_hand_candidate": "H2",
+          "delta_camera_xyz_m": [
+            -0.03848551972207981,
+            0.07654960063677353,
+            0.11903715133666992
+          ],
+          "lateral_xy_distance_m": 0.08567949921613753,
+          "point_to_point_distance_m": 0.14666567418546633,
+          "ray_angle_deg": 6.715780735932481,
+          "interpretation": "유효한 표면점 차벡터이며 동일 입구 단면·lip 정체·진입 거리·inside/outside를 뜻하지 않음"
+        }
+      ],
+      "query_source_hashes_verified": {
+        "observation_json": true,
+        "robot_0_head_rgb": true,
+        "public_depth_npz": true
+      },
+      "query_physics_advanced": false,
+      "visual_observation": "노란 띠 두 개와 손 후보가 왼쪽 국소 화면에 보이나 서로 다른 광선과 표면 위치에 있음"
+    },
+    {
+      "actor_observation_index": 22,
+      "record_boundary": 810,
+      "simulation_time_s": 42.02500219177455,
+      "sources": {
+        "public_observation": {
+          "path": "output/actors/20261107-astra-overhead470-named-001/observations/00022/observation.json",
+          "sha256": "4174a10bbabd4eaca9dbd7201790b39d4de168f5190bcd0b274cebfec6ad4204",
+          "bytes": 25133,
+          "selected_fields": [
+            "public_robot_observation"
+          ]
+        },
+        "rgb": {
+          "path": "output/actors/20261107-astra-overhead470-named-001/observations/00022/robot_0_head.png",
+          "sha256": "f12aa9694ef2251d26a3eb15ba56d2bb809911d8920ae300ab3a7fd1f820364b",
+          "bytes": 61526
+        },
+        "depth": {
+          "path": "output/actors/20261107-astra-overhead470-named-001/observations/00022/public_depth.npz",
+          "sha256": "79f5b4fb13503e79d715c529eefbc739635e66c158892527682d7a9cec0f8235",
+          "bytes": 555048,
+          "selected_fields": [
+            "depth[3,:,:,0]",
+            "depth_valid[3,:,:,0]"
+          ]
+        }
+      },
+      "samples": {
+        "U": {
+          "pixel_uv": [
+            60,
+            87
+          ],
+          "rgb_uint8": [
+            240,
+            237,
+            96
+          ],
+          "depth_valid": true,
+          "optical_z_m": 0.6372207403182983,
+          "camera_xyz_m": [
+            -0.2370367193707986,
+            -0.14291919844415799,
+            0.6372207403182983
+          ],
+          "camera_range_m": 0.6947392140262356,
+          "neighborhood_3x3": {
+            "valid_count": 9,
+            "pixel_count": 9,
+            "positive_finite_valid_count": 9,
+            "optical_z_min_m": 0.6353693604469299,
+            "optical_z_max_m": 0.6391757130622864,
+            "rgb_uint8_row_major": [
+              [
+                240,
+                238,
+                99
+              ],
+              [
+                240,
+                238,
+                98
+              ],
+              [
+                240,
+                238,
+                98
+              ],
+              [
+                240,
+                238,
+                97
+              ],
+              [
+                240,
+                237,
+                96
+              ],
+              [
+                239,
+                237,
+                96
+              ],
+              [
+                239,
+                237,
+                96
+              ],
+              [
+                239,
+                237,
+                96
+              ],
+              [
+                239,
+                237,
+                96
+              ]
+            ],
+            "used_to_replace_center_depth": false
+          },
+          "visual_description": "화면 상단 노란 띠 후보",
+          "selection_reason": "현재 RGB의 후보 표면 안쪽 픽셀을 선택하고 3×3 RGB/유효 depth로 경계 혼합 여부 확인; 이전 시점과 같은 재료점이라는 가정 없음",
+          "semantic_identity_verified": false,
+          "opening_lip_role": null,
+          "contact_or_inside_outside": null
+        },
+        "L": {
+          "pixel_uv": [
+            60,
+            101
+          ],
+          "rgb_uint8": [
+            207,
+            201,
+            53
+          ],
+          "depth_valid": true,
+          "optical_z_m": 0.6008645296096802,
+          "camera_xyz_m": [
+            -0.223512745071375,
+            -0.08874770760186948,
+            0.6008645296096802
+          ],
+          "camera_range_m": 0.647203434599192,
+          "neighborhood_3x3": {
+            "valid_count": 9,
+            "pixel_count": 9,
+            "positive_finite_valid_count": 9,
+            "optical_z_min_m": 0.5927540063858032,
+            "optical_z_max_m": 0.609309732913971,
+            "rgb_uint8_row_major": [
+              [
+                204,
+                199,
+                52
+              ],
+              [
+                205,
+                199,
+                52
+              ],
+              [
+                206,
+                200,
+                52
+              ],
+              [
+                208,
+                202,
+                53
+              ],
+              [
+                207,
+                201,
+                53
+              ],
+              [
+                206,
+                201,
+                51
+              ],
+              [
+                208,
+                202,
+                57
+              ],
+              [
+                208,
+                203,
+                53
+              ],
+              [
+                207,
+                202,
+                51
+              ]
+            ],
+            "used_to_replace_center_depth": false
+          },
+          "visual_description": "화면 하단 노란 띠 후보",
+          "selection_reason": "현재 RGB의 후보 표면 안쪽 픽셀을 선택하고 3×3 RGB/유효 depth로 경계 혼합 여부 확인; 이전 시점과 같은 재료점이라는 가정 없음",
+          "semantic_identity_verified": false,
+          "opening_lip_role": null,
+          "contact_or_inside_outside": null
+        },
+        "H1": {
+          "pixel_uv": [
+            52,
+            136
+          ],
+          "rgb_uint8": [
+            229,
+            217,
+            219
+          ],
+          "depth_valid": true,
+          "optical_z_m": 0.676813542842865,
+          "camera_xyz_m": [
+            -0.28138402964246545,
+            0.02961937154131215,
+            0.676813542842865
+          ],
+          "camera_range_m": 0.7335740256332995,
+          "neighborhood_3x3": {
+            "valid_count": 9,
+            "pixel_count": 9,
+            "positive_finite_valid_count": 9,
+            "optical_z_min_m": 0.6745869517326355,
+            "optical_z_max_m": 0.6793930530548096,
+            "rgb_uint8_row_major": [
+              [
+                229,
+                218,
+                218
+              ],
+              [
+                228,
+                216,
+                217
+              ],
+              [
+                226,
+                214,
+                215
+              ],
+              [
+                229,
+                217,
+                218
+              ],
+              [
+                229,
+                217,
+                219
+              ],
+              [
+                227,
+                214,
+                216
+              ],
+              [
+                226,
+                211,
+                213
+              ],
+              [
+                227,
+                213,
+                215
+              ],
+              [
+                226,
+                212,
+                214
+              ]
+            ],
+            "used_to_replace_center_depth": false
+          },
+          "visual_description": "공개 RGB에서 손의 노출면으로 보이는 후보",
+          "selection_reason": "현재 RGB의 후보 표면 안쪽 픽셀을 선택하고 3×3 RGB/유효 depth로 경계 혼합 여부 확인; 이전 시점과 같은 재료점이라는 가정 없음",
+          "semantic_identity_verified": false,
+          "opening_lip_role": null,
+          "contact_or_inside_outside": null
+        },
+        "H2": {
+          "pixel_uv": [
+            55,
+            139
+          ],
+          "rgb_uint8": [
+            226,
+            214,
+            215
+          ],
+          "depth_valid": true,
+          "optical_z_m": 0.6709230542182922,
+          "camera_xyz_m": [
+            -0.2679244746010163,
+            0.04037218110426274,
+            0.6709230542182922
+          ],
+          "camera_range_m": 0.7235683670386286,
+          "neighborhood_3x3": {
+            "valid_count": 9,
+            "pixel_count": 9,
+            "positive_finite_valid_count": 9,
+            "optical_z_min_m": 0.6685115098953247,
+            "optical_z_max_m": 0.6737022995948792,
+            "rgb_uint8_row_major": [
+              [
+                228,
+                216,
+                217
+              ],
+              [
+                227,
+                215,
+                216
+              ],
+              [
+                226,
+                214,
+                215
+              ],
+              [
+                226,
+                214,
+                215
+              ],
+              [
+                226,
+                214,
+                215
+              ],
+              [
+                225,
+                212,
+                213
+              ],
+              [
+                225,
+                214,
+                214
+              ],
+              [
+                224,
+                212,
+                213
+              ],
+              [
+                211,
+                196,
+                193
+              ]
+            ],
+            "used_to_replace_center_depth": false
+          },
+          "visual_description": "공개 RGB에서 손의 노출면으로 보이는 후보",
+          "selection_reason": "현재 RGB의 후보 표면 안쪽 픽셀을 선택하고 3×3 RGB/유효 depth로 경계 혼합 여부 확인; 이전 시점과 같은 재료점이라는 가정 없음",
+          "semantic_identity_verified": false,
+          "opening_lip_role": null,
+          "contact_or_inside_outside": null
+        }
+      },
+      "hand_minus_band_vectors": [
+        {
+          "from_band": "U",
+          "to_hand_candidate": "H1",
+          "delta_camera_xyz_m": [
+            -0.04434731027166686,
+            0.17253856998547012,
+            0.03959280252456665
+          ],
+          "lateral_xy_distance_m": 0.1781466869210945,
+          "point_to_point_distance_m": 0.18249337542144314,
+          "ray_angle_deg": 14.348593806649623,
+          "interpretation": "유효한 표면점 차벡터이며 동일 입구 단면·lip 정체·진입 거리·inside/outside를 뜻하지 않음"
+        },
+        {
+          "from_band": "L",
+          "to_hand_candidate": "H1",
+          "delta_camera_xyz_m": [
+            -0.05787128457109045,
+            0.11836707914318163,
+            0.07594901323318481
+          ],
+          "lateral_xy_distance_m": 0.13175678731206358,
+          "point_to_point_distance_m": 0.15207926753469994,
+          "ray_angle_deg": 10.422913803858401,
+          "interpretation": "유효한 표면점 차벡터이며 동일 입구 단면·lip 정체·진입 거리·inside/outside를 뜻하지 않음"
+        },
+        {
+          "from_band": "U",
+          "to_hand_candidate": "H2",
+          "delta_camera_xyz_m": [
+            -0.030887755230217723,
+            0.18329137954842073,
+            0.033702313899993896
+          ],
+          "lateral_xy_distance_m": 0.18587571987735532,
+          "point_to_point_distance_m": 0.18890640328516867,
+          "ray_angle_deg": 15.130878714900657,
+          "interpretation": "유효한 표면점 차벡터이며 동일 입구 단면·lip 정체·진입 거리·inside/outside를 뜻하지 않음"
+        },
+        {
+          "from_band": "L",
+          "to_hand_candidate": "H2",
+          "delta_camera_xyz_m": [
+            -0.044411729529641314,
+            0.12911988870613222,
+            0.07005852460861206
+          ],
+          "lateral_xy_distance_m": 0.1365443055542705,
+          "point_to_point_distance_m": 0.15346838192159806,
+          "ray_angle_deg": 11.163309951547232,
+          "interpretation": "유효한 표면점 차벡터이며 동일 입구 단면·lip 정체·진입 거리·inside/outside를 뜻하지 않음"
+        }
+      ],
+      "excluded_boundary_candidate": {
+        "pixel_uv": [
+          52,
+          100
+        ],
+        "rgb_uint8": [
+          140,
+          132,
+          102
+        ],
+        "depth_valid": true,
+        "optical_z_m": 0.5991025567054749,
+        "camera_xyz_m": [
+          -0.24907582502974338,
+          -0.09176477764253703,
+          0.5991025567054749
+        ],
+        "camera_range_m": 0.6552735417221333,
+        "neighborhood_3x3": {
+          "valid_count": 9,
+          "pixel_count": 9,
+          "positive_finite_valid_count": 9,
+          "optical_z_min_m": 0.5827542543411255,
+          "optical_z_max_m": 0.6545312404632568,
+          "rgb_uint8_row_major": [
+            [
+              201,
+              195,
+              80
+            ],
+            [
+              181,
+              174,
+              77
+            ],
+            [
+              164,
+              156,
+              64
+            ],
+            [
+              93,
+              87,
+              143
+            ],
+            [
+              140,
+              132,
+              102
+            ],
+            [
+              180,
+              171,
+              77
+            ],
+            [
+              20,
+              20,
+              221
+            ],
+            [
+              26,
+              25,
+              209
+            ],
+            [
+              50,
+              47,
+              177
+            ]
+          ],
+          "used_to_replace_center_depth": false
+        },
+        "selection_status": "excluded from final U/L comparisons",
+        "reason": "노란 띠·파란 표면 경계 색이 섞이고 인접 3×3 깊이 범위가 큼; 대신 현재 노란 띠 내부 (60,101)을 선택"
+      },
+      "visual_observation": "같은 왼쪽 손 후보가 노출된 채 남으며 두 노란 띠는 화면 위쪽에 보임"
+    },
+    {
+      "actor_observation_index": 25,
+      "record_boundary": 844,
+      "simulation_time_s": 43.725002280436456,
+      "sources": {
+        "public_observation": {
+          "path": "output/actors/20261107-astra-overhead470-named-001/observations/00025/observation.json",
+          "sha256": "6062f5f44e3aa6d26ea345ae6e61d840116ea716095e9362a8bc9d51dc97c4c7",
+          "bytes": 25159,
+          "selected_fields": [
+            "public_robot_observation"
+          ]
+        },
+        "rgb": {
+          "path": "output/actors/20261107-astra-overhead470-named-001/observations/00025/robot_0_head.png",
+          "sha256": "e80f7b122823637ff181b2d55ab67c6c07192892ca2949d27313bce4ad94bc49",
+          "bytes": 68477
+        },
+        "depth": {
+          "path": "output/actors/20261107-astra-overhead470-named-001/observations/00025/public_depth.npz",
+          "sha256": "7ca5932b65aff91f73fb22a7c3231f1f97b1045170be684423b9aa936edcc660",
+          "bytes": 579769,
+          "selected_fields": [
+            "depth[3,:,:,0]",
+            "depth_valid[3,:,:,0]"
+          ]
+        }
+      },
+      "samples": {
+        "U": {
+          "pixel_uv": [
+            52,
+            118
+          ],
+          "rgb_uint8": [
+            239,
+            237,
+            94
+          ],
+          "depth_valid": true,
+          "optical_z_m": 0.6678988337516785,
+          "camera_xyz_m": [
+            -0.27767775515417437,
+            -0.03653654673081242,
+            0.6678988337516785
+          ],
+          "camera_range_m": 0.7242435412769151,
+          "neighborhood_3x3": {
+            "valid_count": 9,
+            "pixel_count": 9,
+            "positive_finite_valid_count": 9,
+            "optical_z_min_m": 0.6663632988929749,
+            "optical_z_max_m": 0.6695231199264526,
+            "rgb_uint8_row_major": [
+              [
+                239,
+                237,
+                95
+              ],
+              [
+                239,
+                237,
+                95
+              ],
+              [
+                239,
+                236,
+                95
+              ],
+              [
+                239,
+                236,
+                93
+              ],
+              [
+                239,
+                237,
+                94
+              ],
+              [
+                239,
+                236,
+                93
+              ],
+              [
+                239,
+                237,
+                98
+              ],
+              [
+                239,
+                237,
+                98
+              ],
+              [
+                238,
+                236,
+                95
+              ]
+            ],
+            "used_to_replace_center_depth": false
+          },
+          "visual_description": "화면 상단 노란 띠 후보",
+          "selection_reason": "현재 RGB의 후보 표면 안쪽 픽셀을 선택하고 3×3 RGB/유효 depth로 경계 혼합 여부 확인; 이전 시점과 같은 재료점이라는 가정 없음",
+          "semantic_identity_verified": false,
+          "opening_lip_role": null,
+          "contact_or_inside_outside": null
+        },
+        "L": {
+          "pixel_uv": [
+            52,
+            128
+          ],
+          "rgb_uint8": [
+            234,
+            231,
+            83
+          ],
+          "depth_valid": true,
+          "optical_z_m": 0.6607528924942017,
+          "camera_xyz_m": [
+            -0.27470684275462154,
+            0.0,
+            0.6607528924942017
+          ],
+          "camera_range_m": 0.7155824441639596,
+          "neighborhood_3x3": {
+            "valid_count": 9,
+            "pixel_count": 9,
+            "positive_finite_valid_count": 9,
+            "optical_z_min_m": 0.6543620228767395,
+            "optical_z_max_m": 0.6670210957527161,
+            "rgb_uint8_row_major": [
+              [
+                230,
+                227,
+                77
+              ],
+              [
+                230,
+                227,
+                77
+              ],
+              [
+                231,
+                228,
+                79
+              ],
+              [
+                234,
+                231,
+                84
+              ],
+              [
+                234,
+                231,
+                83
+              ],
+              [
+                233,
+                230,
+                79
+              ],
+              [
+                236,
+                233,
+                88
+              ],
+              [
+                235,
+                233,
+                87
+              ],
+              [
+                235,
+                233,
+                85
+              ]
+            ],
+            "used_to_replace_center_depth": false
+          },
+          "visual_description": "화면 하단 노란 띠 후보",
+          "selection_reason": "현재 RGB의 후보 표면 안쪽 픽셀을 선택하고 3×3 RGB/유효 depth로 경계 혼합 여부 확인; 이전 시점과 같은 재료점이라는 가정 없음",
+          "semantic_identity_verified": false,
+          "opening_lip_role": null,
+          "contact_or_inside_outside": null
+        },
+        "H1": {
+          "pixel_uv": [
+            52,
+            136
+          ],
+          "rgb_uint8": [
+            210,
+            191,
+            193
+          ],
+          "depth_valid": true,
+          "optical_z_m": 0.6775500178337097,
+          "camera_xyz_m": [
+            -0.28169021781326403,
+            0.029651601875080424,
+            0.6775500178337097
+          ],
+          "camera_range_m": 0.7343722645715202,
+          "neighborhood_3x3": {
+            "valid_count": 9,
+            "pixel_count": 9,
+            "positive_finite_valid_count": 9,
+            "optical_z_min_m": 0.6756603717803955,
+            "optical_z_max_m": 0.6800618767738342,
+            "rgb_uint8_row_major": [
+              [
+                207,
+                189,
+                189
+              ],
+              [
+                208,
+                189,
+                190
+              ],
+              [
+                206,
+                186,
+                187
+              ],
+              [
+                207,
+                187,
+                187
+              ],
+              [
+                210,
+                191,
+                193
+              ],
+              [
+                212,
+                193,
+                194
+              ],
+              [
+                207,
+                187,
+                188
+              ],
+              [
+                209,
+                188,
+                190
+              ],
+              [
+                211,
+                192,
+                193
+              ]
+            ],
+            "used_to_replace_center_depth": false
+          },
+          "visual_description": "공개 RGB에서 손의 노출면으로 보이는 후보",
+          "selection_reason": "현재 RGB의 후보 표면 안쪽 픽셀을 선택하고 3×3 RGB/유효 depth로 경계 혼합 여부 확인; 이전 시점과 같은 재료점이라는 가정 없음",
+          "semantic_identity_verified": false,
+          "opening_lip_role": null,
+          "contact_or_inside_outside": null
+        },
+        "H2": {
+          "pixel_uv": [
+            55,
+            138
+          ],
+          "rgb_uint8": [
+            214,
+            197,
+            197
+          ],
+          "depth_valid": true,
+          "optical_z_m": 0.6739156246185303,
+          "camera_xyz_m": [
+            -0.26911951902101244,
+            0.03686568753712499,
+            0.6739156246185303
+          ],
+          "camera_range_m": 0.7265993831133287,
+          "neighborhood_3x3": {
+            "valid_count": 9,
+            "pixel_count": 9,
+            "positive_finite_valid_count": 9,
+            "optical_z_min_m": 0.6714922785758972,
+            "optical_z_max_m": 0.6765555739402771,
+            "rgb_uint8_row_major": [
+              [
+                212,
+                193,
+                194
+              ],
+              [
+                212,
+                195,
+                195
+              ],
+              [
+                212,
+                195,
+                196
+              ],
+              [
+                213,
+                197,
+                197
+              ],
+              [
+                214,
+                197,
+                197
+              ],
+              [
+                210,
+                193,
+                193
+              ],
+              [
+                209,
+                194,
+                195
+              ],
+              [
+                214,
+                198,
+                198
+              ],
+              [
+                211,
+                194,
+                194
+              ]
+            ],
+            "used_to_replace_center_depth": false
+          },
+          "visual_description": "공개 RGB에서 손의 노출면으로 보이는 후보",
+          "selection_reason": "현재 RGB의 후보 표면 안쪽 픽셀을 선택하고 3×3 RGB/유효 depth로 경계 혼합 여부 확인; 이전 시점과 같은 재료점이라는 가정 없음",
+          "semantic_identity_verified": false,
+          "opening_lip_role": null,
+          "contact_or_inside_outside": null
+        }
+      },
+      "hand_minus_band_vectors": [
+        {
+          "from_band": "U",
+          "to_hand_candidate": "H1",
+          "delta_camera_xyz_m": [
+            -0.004012462659089666,
+            0.06618814860589284,
+            0.00965118408203125
+          ],
+          "lateral_xy_distance_m": 0.06630965896810466,
+          "point_to_point_distance_m": 0.06700832953186937,
+          "ray_angle_deg": 5.205726951510726,
+          "interpretation": "유효한 표면점 차벡터이며 동일 입구 단면·lip 정체·진입 거리·inside/outside를 뜻하지 않음"
+        },
+        {
+          "from_band": "L",
+          "to_hand_candidate": "H1",
+          "delta_camera_xyz_m": [
+            -0.006983375058642494,
+            0.029651601875080424,
+            0.016797125339508057
+          ],
+          "lateral_xy_distance_m": 0.030462846567055137,
+          "point_to_point_distance_m": 0.03478690041724164,
+          "ray_angle_deg": 2.3140492674438584,
+          "interpretation": "유효한 표면점 차벡터이며 동일 입구 단면·lip 정체·진입 거리·inside/outside를 뜻하지 않음"
+        },
+        {
+          "from_band": "U",
+          "to_hand_candidate": "H2",
+          "delta_camera_xyz_m": [
+            0.008558236133161923,
+            0.0734022342679374,
+            0.006016790866851807
+          ],
+          "lateral_xy_distance_m": 0.07389946820672069,
+          "point_to_point_distance_m": 0.07414400295082235,
+          "ray_angle_deg": 5.855696004447365,
+          "interpretation": "유효한 표면점 차벡터이며 동일 입구 단면·lip 정체·진입 거리·inside/outside를 뜻하지 않음"
+        },
+        {
+          "from_band": "L",
+          "to_hand_candidate": "H2",
+          "delta_camera_xyz_m": [
+            0.005587323733609095,
+            0.03686568753712499,
+            0.013162732124328613
+          ],
+          "lateral_xy_distance_m": 0.03728668802788851,
+          "point_to_point_distance_m": 0.039541808520424514,
+          "ray_angle_deg": 3.017904366413236,
+          "interpretation": "유효한 표면점 차벡터이며 동일 입구 단면·lip 정체·진입 거리·inside/outside를 뜻하지 않음"
+        }
+      ],
+      "visual_observation": "하단 노란 띠가 손 후보 윗부분에 겹치지만 손바닥으로 보이는 부분은 남음; 가려진 손끝/경계 위상은 미확인"
+    }
+  ],
+  "executed_segments": [
+    {
+      "decision_index": 21,
+      "action_source": "model",
+      "start_step": 796,
+      "end_step": 804,
+      "actual_steps": 8,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1599999964237213,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1599999964237213,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "decision_index": 21,
+      "action_source": "controller_settle",
+      "start_step": 804,
+      "end_step": 810,
+      "actual_steps": 6,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "decision_index": 22,
+      "action_source": "model",
+      "start_step": 810,
+      "end_step": 816,
+      "actual_steps": 6,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          -0.11999999731779099,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -0.11999999731779099,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "decision_index": 22,
+      "action_source": "controller_settle",
+      "start_step": 816,
+      "end_step": 822,
+      "actual_steps": 6,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "decision_index": 23,
+      "action_source": "model",
+      "start_step": 822,
+      "end_step": 828,
+      "actual_steps": 6,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          -0.07999999821186066,
+          -0.07999999821186066,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -0.07999999821186066,
+          -0.07999999821186066,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "decision_index": 23,
+      "action_source": "controller_settle",
+      "start_step": 828,
+      "end_step": 834,
+      "actual_steps": 6,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "decision_index": 24,
+      "action_source": "model",
+      "start_step": 834,
+      "end_step": 838,
+      "actual_steps": 4,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          -0.05999999865889549,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -0.05999999865889549,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "decision_index": 24,
+      "action_source": "controller_settle",
+      "start_step": 838,
+      "end_step": 844,
+      "actual_steps": 6,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    }
+  ],
+  "public_joint_names": [
+    [
+      "wheel_0_joint",
+      "wheel_1_joint",
+      "wheel_2_joint",
+      "lift_joint",
+      "arm_l1_joint",
+      "arm_l2_joint",
+      "arm_l3_joint",
+      "arm_l4_joint",
+      "wrist_yaw_joint",
+      "wrist_pitch_joint",
+      "wrist_roll_joint",
+      "gripper_finger_left_joint",
+      "gripper_finger_right_joint"
+    ],
+    [
+      "wheel_0_joint",
+      "wheel_1_joint",
+      "wheel_2_joint",
+      "lift_joint",
+      "arm_l1_joint",
+      "arm_l2_joint",
+      "arm_l3_joint",
+      "arm_l4_joint",
+      "wrist_yaw_joint",
+      "wrist_pitch_joint",
+      "wrist_roll_joint",
+      "gripper_finger_left_joint",
+      "gripper_finger_right_joint"
+    ]
+  ],
+  "public_motion": [
+    {
+      "start_observation": 21,
+      "end_observation": 22,
+      "record_start": 796,
+      "record_end": 810,
+      "scope": "D21: 8 model-action + 6 controller-settle records",
+      "elapsed_simulation_s": 0.7000000365078449,
+      "robots": [
+        {
+          "robot_index": 0,
+          "measured_arm_total_delta_m": 0.07316503673791885,
+          "measured_lift_delta_m": 0.0005249977111816406,
+          "controller_arm_target_delta_m": 0.07743999361991882,
+          "controller_lift_target_delta_m": 0.0,
+          "grasp_reference_base_frame_delta_m": [
+            0.07477784156799316,
+            3.8586556911468506e-05,
+            0.010334014892578125
+          ],
+          "grasp_reference_base_frame_delta_norm_m": 0.07548853517117872
+        },
+        {
+          "robot_index": 1,
+          "measured_arm_total_delta_m": 0.0726774949580431,
+          "measured_lift_delta_m": 0.0005348920822143555,
+          "controller_arm_target_delta_m": 0.07743999361991882,
+          "controller_lift_target_delta_m": 0.0,
+          "grasp_reference_base_frame_delta_m": [
+            0.07433491945266724,
+            0.00016264617443084717,
+            0.010344266891479492
+          ],
+          "grasp_reference_base_frame_delta_norm_m": 0.0750513861386633
+        }
+      ]
+    },
+    {
+      "start_observation": 22,
+      "end_observation": 25,
+      "record_start": 810,
+      "record_end": 844,
+      "scope": "D22–24: 16 model-action + 18 controller-settle records",
+      "elapsed_simulation_s": 1.700000088661909,
+      "robots": [
+        {
+          "robot_index": 0,
+          "measured_arm_total_delta_m": -0.02421506494283676,
+          "measured_lift_delta_m": -0.10801458358764648,
+          "controller_arm_target_delta_m": -0.029040008783340454,
+          "controller_lift_target_delta_m": -0.11087989807128906,
+          "grasp_reference_base_frame_delta_m": [
+            -0.024272024631500244,
+            -0.00039445608854293823,
+            -0.10761260986328125
+          ],
+          "grasp_reference_base_frame_delta_norm_m": 0.11031663780638314
+        },
+        {
+          "robot_index": 1,
+          "measured_arm_total_delta_m": -0.02475580945611,
+          "measured_lift_delta_m": -0.10802412033081055,
+          "controller_arm_target_delta_m": -0.02903999388217926,
+          "controller_lift_target_delta_m": -0.11088001728057861,
+          "grasp_reference_base_frame_delta_m": [
+            -0.0246889591217041,
+            5.4486095905303955e-05,
+            -0.10767889022827148
+          ],
+          "grasp_reference_base_frame_delta_norm_m": 0.11047303323454083
+        }
+      ]
+    }
+  ],
+  "conclusions": {
+    "hand_beyond_far_lip_hypothesis": "not ruled out; not established",
+    "valid_surface_vector_vs_semantics": "각 시점 표면점의 XYZ와 차벡터는 유효하지만 두 띠의 실제 lip 정체·동일 단면·숨은 층을 확인하지 못해 안/밖 판정이나 필요한 진입 거리가 아님",
+    "obs25_relation": "선택 표면점의 Z 차이는 약6–17mm로 가까워졌지만 XY는 약30–74mm이고 손 윗부분 가림이 남음; 이 차이만으로 입구 내부 여부 판정 불가",
+    "cloth_following_or_support": "공개 로봇 관절/기준점 이동을 천의 실제 이동·지지·손 통과로 치환하지 않음",
+    "depth_validity_limit": "valid 및 3×3 범위는 센서값/국소 변화 확인이며 의미 라벨 확률·오차구간·가려진 깊이 추정이 아님"
+  },
+  "earlier_wording_correction": "이전 메시지의 첫 문장 배제할 수 있지만은 오타. 배제할 수 없지만 확정할 수도 없다로 정정함"
+}
