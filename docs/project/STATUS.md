@@ -19,11 +19,11 @@
 
 E22의 짧은 정보 탐색과 달리, E23에서는 실제 목표 방향 이동·천 변형·접근 방향 반전과 손/전완 재노출이 있었습니다. 마지막에도 팔 노출과 두 경계 부근 천 유지가 보입니다. 다만 공식 통과는 없고, 머리–입구 관계는 가려졌습니다. **새 관계를 보존해 미완료 목표를 확인하는 연속 분기**를 먼저 준비합니다. 실패 원인이 모두 해소됐거나 새 파지 방법이 검증됐다는 뜻은 아닙니다. 같은prefix라도 초기 천 접힘이 달라 E22/E23차이를 프롬프트 한 가지의 인과로 단정하지 않습니다.
 
-**E24 후보는 E23/1179·history1077/1161·30판단·max2000**이며 아직 미실행입니다.1179는 마지막 모델행동과6정착 후, 추가 예산마감1전이 전입니다. 최종 공개5뷰·잔류 운동과 source loader1179개행동 검수를 완료했고, 실행소스22파일이 E23와 같음을 확인했습니다. 기존task-progress/모델/코드/공식20Hz·물리·최대20step은 유지하고, 재실행에서 현재 지지를 다시 판단합니다. 18판단에서30판단으로 늘리는 것은 모델 요청 예산이며 행동 한계 변경이 아닙니다. [다른 조작 후보](../collection/research/2026-11-07-post-overhead-method-options.ko.md)의 M1은 별도 준비 상태입니다.
+**E24는2026-11-07 04:11:53UTC에 실제 시작했습니다.** source`b0513d43a87c813397c57d8a4fa6ec4e6ff6ba03`·working_tree_modified=false입니다. E23/1179·history1077/1161·30판단·max2000이며 현재 초기화·행동 재실행 단계입니다.1179는 마지막 모델행동과6정착 후, 추가 예산마감1전이 전입니다. 최종 공개5뷰·잔류 운동과 source loader1179개행동 검수를 완료했고, 실행소스22파일이 E23와 같음을 확인했습니다. 기존task-progress/모델/코드/공식20Hz·물리·최대20step은 유지하고, 재실행에서 현재 지지를 다시 판단합니다. 18판단에서30판단으로 늘리는 것은 모델 요청 예산이며 행동 한계 변경이 아닙니다. [다른 조작 후보](../collection/research/2026-11-07-post-overhead-method-options.ko.md)의 M1은 별도 준비 상태입니다.
 
 [더 이른5점 후보](../collection/research/2026-11-07-earlier-support-startpoints.ko.md)의 E15/367은 원본 복원·loader 검증을 마쳤지만 아직 선택·실행하지 않았습니다. [의복 방향 가설](../collection/research/2026-11-07-garment-direction-hypotheses.ko.md)은 E23초기obs0–5만 검토한 시점별 기록이며 뒤의 팔 노출을 미리 주장하지 않습니다.
 
-## E24 예정 명령 · 검수·보존·공개 소스 확정 후, 아직 미실행
+## E24 실제 시작 명령 · 2026-11-07 04:11:53 UTC
 
 ```bash
 export PATH="$PWD/.runtime/codex-0.166.0/node_modules/.bin:$PATH"
@@ -40,7 +40,7 @@ PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.codex_clie
   --profile-step-phases
 ```
 
-실행 시 실제source·시작시간·상태를 갱신합니다. 직접 부모는E23이며 같은E07 source group입니다. action replay는 정확한 천 checkpoint가 아닙니다. 공식10점 확인 뒤 보존·검증하고 다음 득점으로 계속합니다. [장기 구간 조합](../collection/research/2026-11-07-composable-scoring-data-plan.ko.md)은 현재 합성·학습 실행과 구분합니다.
+실제실행source는b0513d4 clean,로그는output/sessions/20261106-evening/e24-progress1179-named-001.log입니다. 재실행완료·새판단·결과는별도갱신합니다. 직접 부모는E23이며 같은E07 source group입니다. action replay는 정확한 천 checkpoint가 아닙니다. 공식10점 확인 뒤 보존·검증하고 다음 득점으로 계속합니다. [장기 구간 조합](../collection/research/2026-11-07-composable-scoring-data-plan.ko.md)은 현재 합성·학습 실행과 구분합니다.
 
 <details>
 <summary>E22 종료·E23 실행 중 당시 상태 이력</summary>

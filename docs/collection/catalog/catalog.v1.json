@@ -559,6 +559,24 @@
         "revision": "c1157513362e30d6a8306e7c8fd2ec0265e5db2c",
         "sha256": "a6a7850d6a510cf649795091b862d10f6c62043c2ea12edfa962059a40946072"
       }
+    },
+    {
+      "id": "20261107-astra-progress1179-named-001",
+      "kind": "demonstration",
+      "source_group": "20261106-coordinated-demo-methods",
+      "source_commit": "b0513d43a87c813397c57d8a4fa6ec4e6ff6ba03",
+      "source_working_tree_modified": false,
+      "parent_run_id": "20261107-astra-progress787-named-001",
+      "replay_prefix_steps": 1179,
+      "replay_completed_steps": 60,
+      "recorded_transitions": null,
+      "qc_status": "pending",
+      "backup": {
+        "status": "unknown",
+        "receipt": null,
+        "revision": null,
+        "sha256": null
+      }
     }
   ],
   "startpoints": [
@@ -1622,9 +1640,9 @@
       "notes": "E23 completed:1180=787replay+284model+108settle+1decision-budget;18act/18calls/query0/finish0. Direction reversal, lateral approach and unilateral raise exposed hand/forearm near side-region, followed by head-height approach and lowering. Visual exposure is not official passage: pickup5,all clothing0,successfalse,no_dressing_points/0.0. host0,shell-observed Python0,simulator0. Same E07 lineage; trainingunreviewed."
     },
     {
-      "id": "planned-e23-1179-task-progress",
-      "status": "planned",
-      "run_id": null,
+      "id": "20261107-astra-progress1179-named-001",
+      "status": "in_progress",
+      "run_id": "20261107-astra-progress1179-named-001",
       "startpoint_id": "20261107-astra-progress787-named-001-p1179",
       "method_id": "coordinated-task-progress-named-query",
       "result": {
@@ -1633,7 +1651,7 @@
         "review": null,
         "videos": []
       },
-      "notes": "Selected E24 continuation proposal after E23 decision-budget close. Same task-progress,history1077/1161,30dec/max2000/settle6/review10; not a new physical method, not yet dispatched. Preserve public local bilateral support and new arm-garment relation; current replay may differ."
+      "notes": "Actual E24 started2026-11-07T04:11:53Z from clean published sourceb0513d43a87c813397c57d8a4fa6ec4e6ff6ba03. E23/1179 direct parent,history1077/1161,same task-progress30dec/max2000/timeout180/settle6/review10, fixed Astra/ultra exec plan1 named/query. Continuation of observed arm-garment relation, not a new grasp method. CPU source loader1179 and22unchanged runtime hashes passed; no new runtime code. Intended/completed replay separate; outcome/QC/backup pending. Same E07 lineage,not exact cloth checkpoint."
     }
   ]
 }

@@ -4,7 +4,7 @@
 
 [현재 상태·다음 명령](STATUS.md) · [E23 영상](../gallery/20261107-astra-progress787-named-001.ko.md) · [분석](../collection/reviews/20261107-astra-progress787-named-001.ko.md) · [전체 일지](sessions/20261106-evening-resume.ko.md)
 
-E24는 마지막 모델/정착 뒤E23/1179·history1077/1161에서 같은task-progress를30판단 이어가는 후보입니다. 종단검수·원본보존을마쳤으며공개source확정후시작합니다. 아직미실행입니다. E15/367원본도대안으로검증복원했으나새실행이아닙니다. 현재소스전체302CPU통과,실행코드변경없음. 기술QC·관측지지·점수·학습승인별도이며자료는unreviewed입니다.
+E24는04:11:53UTC에sourceb0513d4 clean으로실제시작했습니다. 마지막 모델/정착 뒤E23/1179·history1077/1161에서같은task-progress를30판단이어가며현재초기화·재실행중입니다. E15/367원본도대안으로검증복원했으나새실행이아닙니다. 현재소스전체302CPU통과,실행코드변경없음. 기술QC·관측지지·점수·학습승인별도이며자료는unreviewed입니다.
 
 ## 보존 위치와 고정 revision
 

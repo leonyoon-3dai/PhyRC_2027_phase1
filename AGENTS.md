@@ -15,7 +15,7 @@
 - 최신 E23 `20261107-astra-progress787-named-001`은5/50·픽업5·착의0·success=false·no_dressing_points/0.0,QC1180/1180오류0으로 종료했다. source952ec8da68cdc0ef635d0d45329712eee006fd1f clean·03:30:54–04:02:40UTC·31분46초.
 - 1180=787재실행+284모델+108정착+1decision_budget.18act/18calls/query0/finish0,host95905=0·shell관측Python0·simulator0·capturecomplete/operator_finished. [고정 원본 백업 검증 완료](docs/project/sessions/20261107-e23-backup-verification.json)·trainingunreviewed.
 - 경계 방향반전·측면접근·한쪽들기 뒤 손/전완 노출이 새로 나타났지만 공식소매통과/착의득점은없다. 머리접근·하강뒤에도입구관계가림. 단순가림만반복한결과로축소하거나성공으로승격하지않는다.
-- E24후보는E23/1179·history1077/1161·동일coordinated-task-progress·30dec/max2000/timeout180/settle6/review10. 종단지지/잔류운동/loader검수완료·source공개후실행. 아직미실행이며실제상태는STATUS/attempt우선. M1재파지후보는미통합별도트리다.
+- E24 `20261107-astra-progress1179-named-001`은04:11:53UTC·sourceb0513d43a87c813397c57d8a4fa6ec4e6ff6ba03 clean으로실제시작했다. E23/1179·history1077/1161·동일task-progress·30dec/max2000/timeout180/settle6/review10. 초기화/재실행중이며새결과미확인. M1은미통합별도후보,현재진전우선.
 - 실행소스전체302CPU검사23.432초통과. E23뒤실행코드변경없음. 공식schema최대20step·물리·20Hz·고정Astra/ultra/CLI0.166.0exec 유지.
 - E22는5점·813QC·짧은정보탐색뒤자율finish이며host143원인미확인/clientnull/simulator0을구분보존했다. 백업788a36ece3f606ca06dd0f20224910974dbe270e 검증완료.
 - E21두하강·테이블재파지1111QC/5점,새파지후속검사없음. E20목선준비0점/E19세접근5점/E18roll오류복구이력보존.

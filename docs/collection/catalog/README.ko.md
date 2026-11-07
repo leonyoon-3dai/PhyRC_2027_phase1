@@ -2,7 +2,7 @@
 
 **지지를 유지한 공개 관측 구간을 출발점으로 모으고, 그 뒤 바꾼 방법과 결과를 연결하는 연구용 목록입니다.** [정본 JSON](catalog.v1.json)을 Git에 보존하고, [조회 도구](../../../scripts/startpoint_catalog.py)로 SQLite 색인을 재생성합니다. 기록을 찾는 도구이며 시뮬레이터를 조작하거나 actor 입력을 만들지 않습니다.
 
-현재 목록은 **실제 실행31건, 출발점11개, 방법·입력 설정17종, 조합 시도34건(실제31건·계획3건)**을 연결합니다. 실제는 완료25건·실패6건이며 연결 시험·시작 실패도 포함합니다. 출발점 중 기존5개와 E23/1179를 공개 관측으로 검토했으며 나머지는 과거 분기를 찾기 위한 항목입니다. **최신E23은5/50·1180/1180검사통과·착의0**입니다. 손·전완의 새 노출 관계와 공식 소매 통과는 구분합니다. 같은 계보의 분기를 독립 성공 시연 수로 세지 않습니다.
+현재 목록은 **실제 실행32건, 출발점11개, 방법·입력 설정17종, 조합 시도34건(실제32건·계획2건)**을 연결합니다. 실제는 완료25건·실패6건·진행1건이며 연결 시험·시작 실패도 포함합니다. 출발점 중 기존5개와 E23/1179를 공개 관측으로 검토했으며 나머지는 과거 분기를 찾기 위한 항목입니다. **최신E23은5/50·1180/1180검사통과·착의0**입니다. 손·전완의 새 노출 관계와 공식 소매 통과는 구분합니다. 같은 계보의 분기를 독립 성공 시연 수로 세지 않습니다.
 
 [전체 갤러리](../../gallery/README.ko.md) · [현재 실행](../../project/STATUS.md) · [출발 경계·점수·출처 검토](../research/2026-11-07-support-startpoints-review.ko.md) · [정밀 근거 JSON](../research/2026-11-07-support-startpoints-review.json)
 
@@ -37,7 +37,7 @@ flowchart LR
   P787 --> E22["E22 진입 탐색 · 결과5점"]
   P787 --> E23["E23 목표 진전 · 결과5점"]
   E23 --> P1179["1179 · 5점 · 팔 노출 관계"]
-  P1179 -. "다음 계획" .-> E24["E24 동일 방법 연속 · 30판단"]
+  P1179 --> E24["E24 동일 방법 연속 · 실행 중"]
 ```
 
 - `runs`: 실행 종류·소스 커밋/수정 여부·계보·기록 수·QC·원본 백업. `replay_prefix_steps`는 의도한 길이, `replay_completed_steps`는 실제 재실행한 길이입니다.
@@ -70,12 +70,12 @@ python scripts/startpoint_catalog.py list attempts --result-score 5
 python scripts/startpoint_catalog.py show startpoints 20261106-astra-guide470-depth-001-p563
 ```
 
-`--boundary-score`와 `--result-score`는 서로 다릅니다. 미확인 점수는 `--boundary-score-unknown` 또는 `--result-score-unknown`으로 찾습니다. `--run-kind`, `--qc-status`, `--method-status` 필터로 연결 시험·실패·실제 비교 범위를 좁힐 수 있습니다. 목록에 없는 조합을 실행 완료로 생성하지 않으며, E18/563의 조건부 비교 두 건은 아직 dispatch하지 않았습니다. E18/787 진입 탐색은 E22로 완료했고, 같은 경계의 task-progress는 E23로 실행돼5점으로 마감했습니다. E23/1179연속 분기를 다음 계획으로 등록했습니다.
+`--boundary-score`와 `--result-score`는 서로 다릅니다. 미확인 점수는 `--boundary-score-unknown` 또는 `--result-score-unknown`으로 찾습니다. `--run-kind`, `--qc-status`, `--method-status` 필터로 연결 시험·실패·실제 비교 범위를 좁힐 수 있습니다. 목록에 없는 조합을 실행 완료로 생성하지 않으며, E18/563의 조건부 비교 두 건은 아직 dispatch하지 않았습니다. E18/787 진입 탐색은 E22로 완료했고, 같은 경계의 task-progress는 E23로 실행돼5점으로 마감했습니다. E23/1179연속 분기는E24로04:11:53UTC에 실제 시작했습니다.
 
 ## 다음 시행과 보존
 
-E23은5/50·착의0·1180QC로 마감했습니다. E24는 E23/1179·history1077/1161의 같은 task-progress를30판단 이어가는 **미실행 계획**입니다. 새 조작 방법이나 성공으로 세지 않습니다. [종단 공개 검토](../research/2026-11-07-e23-continuation-startpoint.ko.md), [더 이른5점 대안](../research/2026-11-07-earlier-support-startpoints.ko.md)을 구분해 남깁니다. E18/563의 두 조건부 계획도 유지합니다.
+E23은5/50·착의0·1180QC로 마감했습니다. E24는 E23/1179·history1077/1161의 같은 task-progress를30판단 이어가며 **04:11:53UTC·sourceb0513d4 clean으로 실행 중**입니다. 새 조작 방법이나 성공으로 세지 않습니다. [종단 공개 검토](../research/2026-11-07-e23-continuation-startpoint.ko.md), [더 이른5점 대안](../research/2026-11-07-earlier-support-startpoints.ko.md)을 구분해 남깁니다. E18/563의 두 조건부 계획도 유지합니다.
 
 실제 시작·재실행 완료·소스·조건·행동·결과·QC·영상·백업을 각각 갱신합니다. 새 관련 관계가 나타나면 다듬고, 충분한 동작에도 관계가 포화되면 파지·접근 구조 전환을 검토합니다. E21 마지막 새 파지는 후속 지지 검사가 없어 검증된 출발점으로 승격하지 않습니다.
 
-목록 도구8365f0d 통합 당시 전용CPU11검사와 정본/SQLite일치 검사를 통과했습니다. [당시 검증 기록](../../project/sessions/20261107-catalog-validation.json). 현재 정본31실행·11출발점·17방법·34시도(계획3)를 색인과 다시 대조합니다. 이는 새 과제 성과나 학습 승인이 아닙니다. 근거 없는 값은unknown/null로 남기며, training approval은unreviewed입니다.
+목록 도구8365f0d 통합 당시 전용CPU11검사와 정본/SQLite일치 검사를 통과했습니다. [당시 검증 기록](../../project/sessions/20261107-catalog-validation.json). 현재 정본32실행·11출발점·17방법·34시도(계획2·진행1)를 색인과 다시 대조합니다. 이는 새 과제 성과나 학습 승인이 아닙니다. 근거 없는 값은unknown/null로 남기며, training approval은unreviewed입니다.

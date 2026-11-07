@@ -52,6 +52,6 @@ E22와 같은 E18/787 행동 prefix를 사용했지만 시작 천의 접힘은 �
 
 [학습 검토 JSON](../collection/reviews/20261107-astra-progress787-named-001-learning-segments.json)은 새393전이를17개 연속 구간으로 보존합니다. 출구 후보 관측·접힘·복구·의도된 방향 반전·머리 접근·예산 종료를 구분하며 모두 `unreviewed`입니다. 시각적 가설을 검증된 소매 성공 교사 라벨로 만들지 않고, 같은 출처·인접 프레임을 독립 성공 표본으로 세지 않습니다.
 
-다음 E24는 **E23/1179·과거1077/1161경계·30판단/max2000 이어가기**로 채택했으며 아직 미실행입니다.1179전이 CPU loader와22개 실행파일 hash 불변 검사를 통과했습니다. 마지막 관측을 공식 소매·목 성공이나 독립 지지가 인증된 출발점으로 승격하지 않습니다.
+다음 E24는 **E23/1179·과거1077/1161경계·30판단/max2000 이어가기**로 채택했고04:11:53UTC에sourceb0513d43a87c813397c57d8a4fa6ec4e6ff6ba03 clean으로 실제 시작했습니다.1179전이 CPU loader와22개 실행파일 hash 불변 검사를 통과했습니다. 마지막 관측을 공식 소매·목 성공이나 독립 지지가 인증된 출발점으로 승격하지 않습니다.
 
 [전체 공개 기록](../collection/attempts/20261107-astra-progress787-named-001/README.ko.md) · [전체 overview로 초기 접근 보기](../collection/attempts/20261107-astra-progress787-named-001/overview.mp4) · [현재 상태](../project/STATUS.md) · [세션 기록](../project/sessions/20261106-evening-resume.ko.md)
