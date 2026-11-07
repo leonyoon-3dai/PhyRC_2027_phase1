@@ -1,0 +1,145 @@
+{
+  "schema": "phyrc-private-research-candidate-preservation-v1",
+  "bundle_id": "20261107-wrist-translation-candidate-v1",
+  "source_commit": "b1f30dd6962a8179070f8fe68a7448d8a7250acc",
+  "base_oracle_commit": "5ed549a7fe3b5b84a8ecc3201297e78f77ef7416",
+  "archive_bytes": 89000,
+  "archive_sha256": "1539d06f64302fd692d476eb76a7de80ef7fb2a11423f2032b25226a5b58963e",
+  "manifest_sha256": "e97dc1dfb0010bb668696a3c99ed2dfa6bbba4e7e0f69288d6c23483b948b5d5",
+  "archive_members_verified": 15,
+  "source_files": {
+    "docs/collection/research/2026-11-07-wrist-translation-aid-candidate.ko.md": {
+      "bytes": 9752,
+      "sha256": "14dca1ebe0354979aba9d1ecc648c452c0eef07bc3b9220ba01634962c9761bf",
+      "source_kind": "fixed_commit_blob"
+    },
+    "participant/collection/codex_client.py": {
+      "bytes": 119917,
+      "sha256": "9d3a97c28f501df19399b3845e19369c16a649c51c6e341cecd63de1b169bb75",
+      "source_kind": "fixed_commit_blob"
+    },
+    "participant/collection/export_report.py": {
+      "bytes": 62167,
+      "sha256": "d5883ba48f6906118aa8288a28cf1e1c7c74bdb0b3f6534fa680dbd7d0a764b0",
+      "source_kind": "fixed_commit_blob"
+    },
+    "participant/collection/wrist_translation_aid.py": {
+      "bytes": 15613,
+      "sha256": "ef7f8ad1dd3cf6ab05664c2339bbdbd3a6969d92d54ca675459deca32b50d8da",
+      "source_kind": "fixed_commit_blob"
+    },
+    "tests/fixtures/wrist_translation_public_pose.json": {
+      "bytes": 1940,
+      "sha256": "22e20b5330d7b53d273436d407b933fb8e05564d82f013b9757329ca7749e840",
+      "source_kind": "fixed_commit_blob"
+    },
+    "tests/test_wrist_translation_aid.py": {
+      "bytes": 20270,
+      "sha256": "a1bf58e516ab616e1e275a653675b7a1f4452deaf4ea45fce045f94e24395223",
+      "source_kind": "fixed_commit_blob"
+    },
+    "output/reviews/static-robot-calibration/inspect_static_robot_repro.py": {
+      "bytes": 2421,
+      "sha256": "79e34705f7a4c02bc3301d9f63810ad8aa83b12daefdbce900e1d29c39575056",
+      "source_kind": "closed_static_cpu_evidence"
+    },
+    "output/reviews/static-robot-calibration/derive_static_transforms_repro.py": {
+      "bytes": 7020,
+      "sha256": "3212047d09ff629173a443d3e002bfeaf0a19a8fd012794cd0eada5c2e9e2e59",
+      "source_kind": "closed_static_cpu_evidence"
+    },
+    "output/reviews/static-robot-calibration/static-robot-inspection-v5.json": {
+      "bytes": 42891,
+      "sha256": "e300dfdf4e7834775f8e5d523bcebcc896eaa87c24d9abbded7ef1f3fd1ea15e",
+      "source_kind": "closed_static_cpu_evidence"
+    },
+    "output/reviews/static-robot-calibration/static-robot-inspection-v6.json": {
+      "bytes": 42891,
+      "sha256": "e300dfdf4e7834775f8e5d523bcebcc896eaa87c24d9abbded7ef1f3fd1ea15e",
+      "source_kind": "closed_static_cpu_evidence"
+    },
+    "output/reviews/static-robot-calibration/static-camera-transforms-repro.json": {
+      "bytes": 14645,
+      "sha256": "f9e4d6b6d725ec0e6272cfa7ec252c1fcb77bc3d2d01b84f22217593fb833a76",
+      "source_kind": "closed_static_cpu_evidence"
+    },
+    "output/reviews/static-robot-calibration/verification.json": {
+      "bytes": 7223,
+      "sha256": "07e6f9defa137c45b04d7bed6285559dc0a3a3246d5a4bd1a253d2a2a43eea88",
+      "source_kind": "closed_static_cpu_evidence"
+    },
+    "output/reviews/public-depth-geometry-feasibility.json": {
+      "bytes": 18826,
+      "sha256": "6ddb619ebe931983512f16d1b05c502baaef23e070905648f0a24c2e12b9c6ad",
+      "source_kind": "closed_static_cpu_evidence"
+    }
+  },
+  "source_commit_file_count": 6,
+  "static_evidence_file_count": 7,
+  "scope_sha256": "775c13a717ccdbaa296d3279b22fd9317d620a70b4217b407155ba772a181d0f",
+  "private_storage_required": true,
+  "not_collection_or_training_data": true,
+  "originals_unchanged": true,
+  "repo_id": "leonayoon/phyrc-2027-phase1-private-backup",
+  "repo_type": "dataset",
+  "private": true,
+  "revision": "f1264b24386d5b993d9f313416bd416e7676c8e0",
+  "archive_path": "research/20261107-wrist-translation-candidate-v1/archive.tar.gz",
+  "manifest_path": "research/20261107-wrist-translation-candidate-v1/SHA256.json",
+  "preservation_receipt_path": "research/20261107-wrist-translation-candidate-v1/receipt.json",
+  "source_branch": "experiments/wrist-translation-aid",
+  "source_worktree": "/home/shadeform/workspace/phyrc-camera-aid-candidate",
+  "base_oracle_client_sha256": "fc5b2270810f3250a569e774c73ae88d2d03f6f01201f0923ee9800ce01e9f2f",
+  "remote_download_verified": true,
+  "forced_download": true,
+  "remote_archive_member_hashes_verified": true,
+  "remote_manifest_and_receipt_byte_equal": true,
+  "verified_at_utc": "2026-11-07T07:01:25.824095+00:00",
+  "status_at_request": {
+    "adopted": false,
+    "merged_into_main": false,
+    "active_baseline": "E27 started2026-11-07T06:58:14Z from clean1ff16b2; no geometry aid",
+    "basis": "root preservation task; active runtime not inspected or changed"
+  },
+  "reported_cpu_verification": {
+    "status": "reported_pass_in_fixed_candidate_document",
+    "tests": 82,
+    "unittest_elapsed_s": 9.072,
+    "reported_external_wall_s": 9.323,
+    "reported_utc_window": [
+      "2026-11-07T06:48:21Z",
+      "2026-11-07T06:48:30Z"
+    ],
+    "scope": "18 new tests plus focused query/named/client/public-report/preserve regressions;56 legacy configuration subcases are not56 extra unittest tests.",
+    "evidence_source": "docs/collection/research/2026-11-07-wrist-translation-aid-candidate.ko.md",
+    "reported_raw_log_sha256": "14ceb5eb385e40972dc86cf9c635390fdf748c4653dffcb1053e444faabe03d6",
+    "reported_raw_log_bytes": 14955,
+    "evidence_limit": "Fixed committed document only. Raw test logs not read or bundled; tests not rerun during preservation. Later full-suite results are outside this frozen bundle."
+  },
+  "static_cpu_verification": {
+    "source": "output/reviews/static-robot-calibration/verification.json",
+    "repeat_inspection_byte_identical": true,
+    "no_gpu_no_network_readonly_runc": true,
+    "fixed_joint_composition_not_live_sensor_validation": true,
+    "robot_asset_sha256": "a7a7be5bc14354caaeb4461c9b733e10d8f18a0d047dec58814904e8317deb37",
+    "robot_usd_bytes_included": false,
+    "prerequisites": "Recover pinned public robot USD from initial asset backup and base Git commit for referenced public config/source; container image is not bundled. Recipe/source hashes are preserved."
+  },
+  "candidate_gpu_model_calls_reported": 0,
+  "preservation_gpu_model_calls": 0,
+  "purpose": "Preserve isolated opt-in wrist translation direction candidate and completed static calibration evidence across server replacement. Research/code provenance, not current E27 runtime, a collection, demonstration or training dataset.",
+  "training_use_authorized": false,
+  "excluded": [
+    "whole worktree",
+    ".git",
+    "home/auth/credentials",
+    "raw CLI reasoning",
+    "actor sessions/events",
+    "runtime",
+    "raw test/simulator logs",
+    "collections/evaluation/audit",
+    "extra USD assets",
+    "unclosed or future full-suite receipts"
+  ],
+  "active_runtime_or_main_modified": false
+}

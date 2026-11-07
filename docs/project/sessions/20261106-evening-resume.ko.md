@@ -389,3 +389,8 @@ D5상대배치변경,D7/D8하강뒤두손재노출953,D13기준점근사유지�
 `20261107-astra-regrasp698-progress-named-001`은 공개source`1ff16b29e28bc9d43faf6bb0f4518e9a65868cb9`·working_tree_modified=false에서 실제 시작했다. 직접부모E25/698·freshhistory657/667·coordinated-task-progress/named/query/wristpanel/plan1/Astraultra·22dec/max1300/timeout180/settle6/review10/profile이다. 기존실행코드hash는E26source53a와같고기존317CPU검사범위에해당한다. source loader698/QC완료/E25고정백업확인을거쳤으며새geometryaid는적용하지않았다. 현재초기화/재실행중이며새양측lift/운반/진입·점수는미확인이다.
 
 host exec session25974,로그output/sessions/20261106-evening/e27-regrasp698-progress-named-001.log이며Python반환뒤별도shell exit파일을남긴다. 시작전GPU비어있음·새runID·전체workingtreeclean·clientSHA일치를확인했다. 계획된E25/698조합을actual행으로전환해catalog35runs/12startpoints/19methods/37attempts(계획2/진행1)이며중복계획을추가하지않았다.
+
+
+## E27 재실행 중 공개 좌표 보조의 격리 준비
+
+현재E27source1ff16b2/기존taskprogress는변경하지않았다. 기존query가이미cameraXYZ를제공함을확인하고,새센서가아닌publicpose+고정staticmount의손목방향/좌표계산만격리후보b1f30dd로준비했다. [검토·적용범위](../../collection/research/2026-11-07-public-wrist-motion-aid-review.ko.md)와[전체CPU335/40.913초](20261107-wrist-translation-full-suite.json)를보존한다. root는helper/client/export변경을읽고logSHA/168sourceSHA를대조했다. 실camera/physics/model/득점검증0·main통합0이다. [후보private백업](20261107-wrist-translation-candidate-backup-verification.json)의15member동결에는별도로완료된335전체CPU영수증이포함되지않았음을명시한다.
