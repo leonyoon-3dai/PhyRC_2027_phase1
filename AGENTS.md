@@ -15,7 +15,7 @@
 - 최신 종료 E22 `20261107-astra-probe787-named-001`:5/50·픽업5·착의0·success=false·no_contact/null,QC813/813오류0. 787재실행+14모델+12정착,3act+finish/5calls(query1·7valid). UTC03:01:21–03:18:34·17분13초·source11faab3797cacd0160a725578d4a9dc65c6b018f clean.
 - E22 실제는단일4step전진탐색→4step시점보정→6step중립대기→모델finish다. 충분한진입시험전정보부족으로종료했으며18판단예산소진아님. 정보조건/재파지금지가종료에기여했을가능성과물리실패를구분한다.
 - E22capture완료·simulator0·attemptcompleted,호스트exec61989의반환143은원인미확인별도기록이며client0으로쓰지않는다. 원본QC통과·비공개백업788a36ece3f606ca06dd0f20224910974dbe270e·강제재다운로드/92member검증완료,학습unreviewed. 최고5점·중간목표10미달성.
-- E23는아직후보준비:coordinated-task-progress·E18/787/hist719771·named+query·18dec/max1300/timeout180/settle6/review10. 정보명료화만필수gate로삼지않고현재공개목표관계로유한act후실제옷진전을관찰한다. 실제시작/source는STATUS/attempt우선.
+- E23실행중·03:30:54UTC시작·source952ec8da68cdc0ef635d0d45329712eee006fd1f clean:coordinated-task-progress·E18/787/hist719771·named+query·18dec/max1300/timeout180/settle6/review10. 정보명료화만필수gate로삼지않고현재공개목표관계로유한act후실제옷진전을관찰한다. 실제시작/source는STATUS/attempt우선.
 - E22실행기준전체295CPU검사통과. 새후보통합302CPU검사23.432초통과·실제효과미검증이다. 공식schema최대20step·물리·20Hz·고정모델을변경하지않는다.
 - E21은5/50·1111QC,두하강접근/복구/테이블재파지뒤40판단예산마감. 마지막새파지유지검사없음. 백업45e6adf8586f935b3ca9f6d19ed3ec97371be44f 재다운로드/416member검증완료. 새파지를검증된출발점으로쓰지않는다.
 - 출발점/방법/실제/계획은docs/collection/catalog/catalog.v1.json이canonical,SQLite는재생성한다. E18/563·787·801/E19/801의5점·관측지지와E18/470의0점대조를구분하며공개출발점갤러리15원본이미지로비교할수있다. 모두같은E07계보,exactcheckpoint아님.

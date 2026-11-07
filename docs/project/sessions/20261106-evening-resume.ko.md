@@ -276,3 +276,7 @@ E21국소depth수치/표면해석한계와후속M1/M2/M3구분을추가기록했
 E22 [고정 원본 백업](20261107-e22-backup-verification.json)은revision`788a36ece3f606ca06dd0f20224910974dbe270e`에서강제재다운로드와92member해시검증을03:24:59UTC에완료했다. 1,854,271,559bytes·SHA`ea7ec4943649e31407a247af5aa2a6bff3adfb86d7a5576e227331207a5fe80c`이며host143와simulator0을receipt에분리보존했다.
 
 E23 후보3873f90을통합했고전체302CPU검사23.432초통과했다. [검증기록](20261107-task-progress-validation.json). 기존11전략44조합의prompt/schema/images/dispatch불변·queryfrozen·20act/6settle/마감분리를확인했고실제모델·옷효과는아직미검증이다.
+
+## E23 실제 시작 (2026-11-07 03:30:54 UTC)
+
+`20261107-astra-progress787-named-001`은공개source`952ec8da68cdc0ef635d0d45329712eee006fd1f`·working_tree_modified=false에서시작했다. E18/787직접부모·history719771·coordinated-task-progress·named+query·plan1·18dec/max1300/timeout180/settle6/review10·profile이며E22와같은출발점의비교다. 로그`output/sessions/20261106-evening/e23-progress787-named-001.log`. E22exec반환의발신불확실성을구분하기위해호스트shell은Python명령이반환하면그값을별도local텍스트에기록하도록했다(반환전에는값없음). 정책/시뮬레이터/공식물리변경은없다.

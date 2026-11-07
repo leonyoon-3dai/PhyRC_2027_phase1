@@ -541,6 +541,24 @@
         "revision": "788a36ece3f606ca06dd0f20224910974dbe270e",
         "sha256": "ea7ec4943649e31407a247af5aa2a6bff3adfb86d7a5576e227331207a5fe80c"
       }
+    },
+    {
+      "id": "20261107-astra-progress787-named-001",
+      "kind": "demonstration",
+      "source_group": "20261106-coordinated-demo-methods",
+      "source_commit": "952ec8da68cdc0ef635d0d45329712eee006fd1f",
+      "source_working_tree_modified": false,
+      "parent_run_id": "20261106-astra-guide470-depth-001",
+      "replay_prefix_steps": 787,
+      "replay_completed_steps": 20,
+      "recorded_transitions": null,
+      "qc_status": "pending",
+      "backup": {
+        "status": "unknown",
+        "receipt": null,
+        "revision": null,
+        "sha256": null
+      }
     }
   ],
   "startpoints": [
@@ -1555,9 +1573,9 @@
       "notes": "E22 completed: 787 replay+14 model+12 settle=813;4 decisions=3act+finish;5 calls including1query7valid. One4step forward information probe,4step wrist orientation,6step model neutral; no confirmed entry. no_contact/null. No supervisor interrupt. Capture complete/simulator0 but host exec receipt61989 returned143; cause unknown, not classified as Python client returncode. Same E07 source group,training unreviewed."
     },
     {
-      "id": "planned-e18-787-task-progress",
-      "status": "planned",
-      "run_id": null,
+      "id": "20261107-astra-progress787-named-001",
+      "status": "in_progress",
+      "run_id": "20261107-astra-progress787-named-001",
       "startpoint_id": "20261106-astra-guide470-depth-001-p787",
       "method_id": "coordinated-task-progress-named-query",
       "result": {
@@ -1566,7 +1584,7 @@
         "review": null,
         "videos": []
       },
-      "notes": "Planned E23, not dispatched: same E18/787 history719771 as E22;18 decisions/max1300/timeout180/settle6/review10;fixed Astra/ultra exec/plan1/named/query. Candidate3873f90 integrated;302 full CPU tests passed23.432s. Preserve source-group split; replay is not exact cloth checkpoint."
+      "notes": "Actual E23 started 2026-11-07T03:30:54Z from clean published source 952ec8da68cdc0ef635d0d45329712eee006fd1f. Same E18/787 history719771 as E22;18dec/max1300/timeout180/settle6/review10;fixed Astra/ultra exec plan1 named/query. Full302CPU tests passed. Replay completion is recorded separately from intended prefix787. Final outcome/QC/backup pending. Same E07 source group; not an exact cloth checkpoint."
     }
   ]
 }
