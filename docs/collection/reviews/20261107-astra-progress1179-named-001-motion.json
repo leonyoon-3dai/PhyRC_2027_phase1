@@ -1,0 +1,1666 @@
+{
+  "schema": "phyrc-e24-public-partial-motion-v1",
+  "run_id": "20261107-astra-progress1179-named-001",
+  "analysis_cutoff": {
+    "latest_public_observation_index": 7,
+    "latest_boundary": 1317,
+    "decisions_in_scope": [
+      4,
+      5,
+      6
+    ],
+    "episode_active_when_analyzed": true,
+    "not_a_final_result": true
+  },
+  "created_at_utc": "2026-11-07T04:42:23.957759+00:00",
+  "scope": "Only public robot observations4-7, final decision/applied records4-6, recorded public-interface projection and source-snapshot public policy contract. No images, HDF5, evaluator/audit, hidden geometry, raw reasoning or GPU/model calls.",
+  "public_mapping": {
+    "joint_names": [
+      [
+        "wheel_0_joint",
+        "wheel_1_joint",
+        "wheel_2_joint",
+        "lift_joint",
+        "arm_l1_joint",
+        "arm_l2_joint",
+        "arm_l3_joint",
+        "arm_l4_joint",
+        "wrist_yaw_joint",
+        "wrist_pitch_joint",
+        "wrist_roll_joint",
+        "gripper_finger_left_joint",
+        "gripper_finger_right_joint"
+      ],
+      [
+        "wheel_0_joint",
+        "wheel_1_joint",
+        "wheel_2_joint",
+        "lift_joint",
+        "arm_l1_joint",
+        "arm_l2_joint",
+        "arm_l3_joint",
+        "arm_l4_joint",
+        "wrist_yaw_joint",
+        "wrist_pitch_joint",
+        "wrist_roll_joint",
+        "gripper_finger_left_joint",
+        "gripper_finger_right_joint"
+      ]
+    ],
+    "joint_units": [
+      [
+        "rad",
+        "rad",
+        "rad",
+        "m",
+        "m",
+        "m",
+        "m",
+        "m",
+        "rad",
+        "rad",
+        "rad",
+        "rad",
+        "rad"
+      ],
+      [
+        "rad",
+        "rad",
+        "rad",
+        "m",
+        "m",
+        "m",
+        "m",
+        "m",
+        "rad",
+        "rad",
+        "rad",
+        "rad",
+        "rad"
+      ]
+    ],
+    "action_scales": {
+      "BASE_LINEAR_RATE": 0.616,
+      "BASE_ANGULAR_RATE": 2.86,
+      "LIFT_RATE": 1.54,
+      "ARM_RATE": 1.21,
+      "WRIST_RATE": 5.5
+    },
+    "controller_target_columns": [
+      "lift",
+      "arm",
+      "yaw",
+      "pitch",
+      "roll",
+      "grip_pos",
+      "base_fwd",
+      "base_strafe",
+      "base_turn"
+    ]
+  },
+  "joint_indices": {
+    "arm": [
+      [
+        4,
+        5,
+        6,
+        7
+      ],
+      [
+        4,
+        5,
+        6,
+        7
+      ]
+    ],
+    "lift": [
+      3,
+      3
+    ],
+    "pitch": [
+      9,
+      9
+    ],
+    "controller_target_arm": 1
+  },
+  "mapping_provenance": {
+    "run_metadata_file": "output/collections/20261107-astra-progress1179-named-001/run_metadata.json",
+    "run_metadata_sha256_at_read": "3b34d2361511dca75938deb8e8009ea1a55c56641dd986ad647839d1ba4ca6e9",
+    "fields_selected": [
+      "public_interface.joint_names",
+      "public_interface.joint_units",
+      "public_interface.action_scales"
+    ],
+    "public_mapping_projection_sha256_canonical_json": "89d9dc0b235dd6fb3b390871167bc21a4aaba57d493e1ad90052f300de3b27e6",
+    "policy_contract_file": "output/operator-traces/20261107-astra-progress1179-named-001/source_snapshot/config/policy_interface.json",
+    "policy_contract_sha256": "0823b5a692621bc1effed308ac6427af7e97122de4db297ec14b5d751551a5dc",
+    "canonical_json_encoding": "UTF8, ensure_ascii=false, sort_keys=true, separators comma/colon, no trailing newline"
+  },
+  "trace_provenance": {
+    "file": "output/operator-traces/20261107-astra-progress1179-named-001/decisions.jsonl",
+    "complete_line_prefix_bytes": 149814,
+    "complete_line_prefix_sha256_at_read": "9efdbcb0302c05347f26b5fcb5602fcdd5ddf7d959aa3d35b7cf9271c4e261d7",
+    "prefix_not_final_file": true,
+    "selected_record_count": 8,
+    "selected_records": [
+      {
+        "line_number_1based": 135,
+        "line_sha256_including_newline": "ee85192987b77e6ad73ef10f01e27db6ad34eb01bc0e17e7d6aef8058435d705",
+        "type": "decision",
+        "decision_index": 4,
+        "public_projection": {
+          "decision": {
+            "tool": "act",
+            "action": [
+              [
+                0,
+                0.18,
+                0,
+                -0.05,
+                -0.04,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0.18,
+                0,
+                -0.05,
+                -0.04,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "steps": 16,
+            "stage": "first_sleeve",
+            "visual_assessment": "progressing",
+            "reason": "Robot 0 maintains apparent opposite-edge support; robot 1's supported rim is visibly closer to the tracked lower hand, and its extension has nearly reached target. The rim remains above and torso-side of that hand. Command both about 9 cm along local +Y, 6 cm downward and 4 cm arm retraction to bring the candidate body opening toward it. Entry remains unconfirmed."
+          },
+          "named_action": {
+            "schema": "phyrc-named-actions-v1",
+            "mapping_sha256": "2772202314c637aca6c0e31d1148e80db233c3ca23e6cb59bd9871d9879568b4",
+            "raw_action": {
+              "robot_0": {
+                "base_forward": 0,
+                "base_left": 0.18,
+                "base_CCW_yaw": 0,
+                "lift": -0.05,
+                "arm_extension": -0.04,
+                "wrist_yaw": 0,
+                "wrist_pitch": 0,
+                "wrist_roll": 0,
+                "gripper": 0
+              },
+              "robot_1": {
+                "base_forward": 0,
+                "base_left": 0.18,
+                "base_CCW_yaw": 0,
+                "lift": -0.05,
+                "arm_extension": -0.04,
+                "wrist_yaw": 0,
+                "wrist_pitch": 0,
+                "wrist_roll": 0,
+                "gripper": 0
+              }
+            }
+          }
+        }
+      },
+      {
+        "line_number_1based": 136,
+        "line_sha256_including_newline": "f2cf98da82bfcbd25453dde8865bfeb97ce34cbacbb0b0ed523e8ebfb83473bf",
+        "type": "applied_segment",
+        "decision_index": 4,
+        "public_projection": {
+          "action_source": "model",
+          "start_step": 1263,
+          "end_step": 1279,
+          "actual_steps": 16,
+          "applied_action": [
+            [
+              0.0,
+              0.18000000715255737,
+              0.0,
+              -0.05000000074505806,
+              -0.03999999910593033,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.18000000715255737,
+              0.0,
+              -0.05000000074505806,
+              -0.03999999910593033,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "simulation_start_s": 64.6750033730641,
+          "simulation_end_s": 65.47500341478735
+        }
+      },
+      {
+        "line_number_1based": 137,
+        "line_sha256_including_newline": "4c4f060f161bfbe3523df623a5ff28c9ae19e70601d1e8f7f7174996a8eb43e1",
+        "type": "applied_segment",
+        "decision_index": 4,
+        "public_projection": {
+          "action_source": "controller_settle",
+          "start_step": 1279,
+          "end_step": 1285,
+          "actual_steps": 6,
+          "applied_action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "simulation_start_s": 65.47500341478735,
+          "simulation_end_s": 65.77500343043357
+        }
+      },
+      {
+        "line_number_1based": 139,
+        "line_sha256_including_newline": "55b952c5bc4a7514b0fb9584ef5a90a59c26cfdb06ec24aa78467de2fdc9ff0e",
+        "type": "decision",
+        "decision_index": 5,
+        "public_projection": {
+          "decision": {
+            "tool": "act",
+            "action": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "steps": 10,
+            "stage": "recovery",
+            "visual_assessment": "uncertain",
+            "reason": "Both edges still appear supported. Robot 0 retracted as commanded, but robot 1 extended approximately 7 cm instead, leaving a 10 cm extension target error. Apply neutral commands for 0.5 seconds, preserving grips and existing targets, to distinguish continuing target-following from persistent obstruction before another approach. The exposed head does not establish passage."
+          },
+          "named_action": {
+            "schema": "phyrc-named-actions-v1",
+            "mapping_sha256": "2772202314c637aca6c0e31d1148e80db233c3ca23e6cb59bd9871d9879568b4",
+            "raw_action": {
+              "robot_0": {
+                "base_forward": 0,
+                "base_left": 0,
+                "base_CCW_yaw": 0,
+                "lift": 0,
+                "arm_extension": 0,
+                "wrist_yaw": 0,
+                "wrist_pitch": 0,
+                "wrist_roll": 0,
+                "gripper": 0
+              },
+              "robot_1": {
+                "base_forward": 0,
+                "base_left": 0,
+                "base_CCW_yaw": 0,
+                "lift": 0,
+                "arm_extension": 0,
+                "wrist_yaw": 0,
+                "wrist_pitch": 0,
+                "wrist_roll": 0,
+                "gripper": 0
+              }
+            }
+          }
+        }
+      },
+      {
+        "line_number_1based": 140,
+        "line_sha256_including_newline": "71ac1e9333d3de80c5c255bc839769a6bfa5fbfd7db5d3e0a6cb7356578c766f",
+        "type": "applied_segment",
+        "decision_index": 5,
+        "public_projection": {
+          "action_source": "model",
+          "start_step": 1285,
+          "end_step": 1295,
+          "actual_steps": 10,
+          "applied_action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "simulation_start_s": 65.77500343043357,
+          "simulation_end_s": 66.2750034565106
+        }
+      },
+      {
+        "line_number_1based": 142,
+        "line_sha256_including_newline": "1ae5d7cd8a400093dd8c21a8fc38217c184041e934f8a1527819c0f2fab3a64a",
+        "type": "decision",
+        "decision_index": 6,
+        "public_projection": {
+          "decision": {
+            "tool": "act",
+            "action": [
+              [
+                0,
+                0,
+                0,
+                0.045,
+                0.03,
+                0,
+                0.05,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0.045,
+                0.13,
+                0,
+                0.05,
+                0,
+                0
+              ]
+            ],
+            "steps": 16,
+            "stage": "recovery",
+            "visual_assessment": "recovering",
+            "reason": "Robot 0 retains apparent support; robot 1 retracted only 7 mm during settling, leaving about 10 cm target error and little cloth-to-hand change. Raise both lifts about 5.5 cm and pitch downward 0.22 rad, compensating extension to approximately preserve rim position. Robot 1's extension command chiefly cancels its accumulated retraction demand. Test whether this posture relieves suspected forearm interference while retaining both grips."
+          },
+          "named_action": {
+            "schema": "phyrc-named-actions-v1",
+            "mapping_sha256": "2772202314c637aca6c0e31d1148e80db233c3ca23e6cb59bd9871d9879568b4",
+            "raw_action": {
+              "robot_0": {
+                "base_forward": 0,
+                "base_left": 0,
+                "base_CCW_yaw": 0,
+                "lift": 0.045,
+                "arm_extension": 0.03,
+                "wrist_yaw": 0,
+                "wrist_pitch": 0.05,
+                "wrist_roll": 0,
+                "gripper": 0
+              },
+              "robot_1": {
+                "base_forward": 0,
+                "base_left": 0,
+                "base_CCW_yaw": 0,
+                "lift": 0.045,
+                "arm_extension": 0.13,
+                "wrist_yaw": 0,
+                "wrist_pitch": 0.05,
+                "wrist_roll": 0,
+                "gripper": 0
+              }
+            }
+          }
+        }
+      },
+      {
+        "line_number_1based": 143,
+        "line_sha256_including_newline": "fc9aae8116081b2b8f6a2dcec39c77bacc55c2bfd2263fd7d12dc244581dca34",
+        "type": "applied_segment",
+        "decision_index": 6,
+        "public_projection": {
+          "action_source": "model",
+          "start_step": 1295,
+          "end_step": 1311,
+          "actual_steps": 16,
+          "applied_action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.04500000178813934,
+              0.029999999329447746,
+              0.0,
+              0.05000000074505806,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.04500000178813934,
+              0.12999999523162842,
+              0.0,
+              0.05000000074505806,
+              0.0,
+              0.0
+            ]
+          ],
+          "simulation_start_s": 66.2750034565106,
+          "simulation_end_s": 67.07500349823385
+        }
+      },
+      {
+        "line_number_1based": 144,
+        "line_sha256_including_newline": "21ecfd9de7da7ee0d3aa04d67f936f8c5dfa3c4f5d867f22af56db3a2c6f13ea",
+        "type": "applied_segment",
+        "decision_index": 6,
+        "public_projection": {
+          "action_source": "controller_settle",
+          "start_step": 1311,
+          "end_step": 1317,
+          "actual_steps": 6,
+          "applied_action": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "simulation_start_s": 67.07500349823385,
+          "simulation_end_s": 67.37500351388007
+        }
+      }
+    ]
+  },
+  "units": "mm for explicitly suffixed spatial values; radians, seconds otherwise",
+  "methods": {
+    "arm_position": "sum of four public named prismatic joints; no observed value matching",
+    "arm_velocity": "sum of instantaneous velocities of same four joints; not interval-average velocity",
+    "arm_error": "controller_target[arm] - measured summed extension",
+    "target_increment": "canonical arm channel * public ARM_RATE1.21 * model_steps/20; configured settle is separate",
+    "grasp_world": "base_world.xyz + R(normalized base wxyz) @ grasp_base.xyz",
+    "displacement": "Endpoint difference including action plus configured settle, not path length/max excursion",
+    "grasp_reference": "Public robot reference frame; not true cloth attachment/contact position"
+  },
+  "samples": [
+    {
+      "observation_index": 4,
+      "boundary": 1263,
+      "source_file": "output/actors/20261107-astra-progress1179-named-001/observations/00004/observation.json",
+      "source_bytes": 25315,
+      "source_sha256": "ffa80ecde15ef7b9108426be046d655bb2b135d133cf99aeedaf17c473bd5a4b",
+      "public_simulation_time_s": 64.6750033730641,
+      "arm_actual_sum_mm": [
+        296.3583543896675,
+        267.61214435100555
+      ],
+      "arm_target_mm": [
+        297.6599931716919,
+        268.6200141906738
+      ],
+      "arm_target_minus_actual_mm": [
+        1.3016387820243835,
+        1.007869839668274
+      ],
+      "arm_sum_joint_velocity_mm_s": [
+        0.9190378623316064,
+        3.747259615920484
+      ],
+      "lift_target_minus_actual_mm": [
+        -1.2715458869934082,
+        -1.2816190719604492
+      ],
+      "pitch_target_minus_actual_rad": [
+        -0.004383176565170288,
+        -0.004097729921340942
+      ],
+      "previous_action_is_all_zero": true,
+      "grasp_position_world_m": [
+        [
+          0.19975539526482755,
+          0.6667624696056509,
+          1.039921331786261
+        ],
+        [
+          0.0561297735530758,
+          0.31098309392701373,
+          1.0459981531781053
+        ]
+      ],
+      "public_state_for_reproduction": {
+        "joint_position": [
+          [
+            -0.24275019764900208,
+            -0.5142382979393005,
+            0.24275502562522888,
+            0.9702715873718262,
+            0.0741521567106247,
+            0.0740363821387291,
+            0.07403595000505447,
+            0.07413386553525925,
+            -0.00016760328435339034,
+            0.380383163690567,
+            -0.00038778188172727823,
+            0.10546969622373581,
+            0.10273686796426773
+          ],
+          [
+            -0.2427508383989334,
+            -0.5142407417297363,
+            0.24275711178779602,
+            0.9764416813850403,
+            0.06695026904344559,
+            0.06686066091060638,
+            0.0668613389134407,
+            0.06693987548351288,
+            0.0006379498518072069,
+            0.38009771704673767,
+            -0.0005361965741030872,
+            0.08098185062408447,
+            -1.4233110960049089e-05
+          ]
+        ],
+        "joint_velocity": [
+          [
+            -0.0001574489870108664,
+            -0.0002645025961101055,
+            0.0002844701230060309,
+            -0.008621140383183956,
+            0.0003027459606528282,
+            0.00020995635713916272,
+            0.00020801395294256508,
+            0.00019832159159705043,
+            -0.002722392324358225,
+            -0.016020162031054497,
+            0.003627246944233775,
+            -0.0015538920415565372,
+            -0.000482132047181949
+          ],
+          [
+            -0.004023006651550531,
+            -0.0012861903524026275,
+            0.0030498667620122433,
+            -0.009567882865667343,
+            0.0012416408862918615,
+            0.0008778595365583897,
+            0.0005327647086232901,
+            0.0010949944844469428,
+            -0.01372850127518177,
+            -0.02882278710603714,
+            0.05140040069818497,
+            0.0004656558157876134,
+            2.886799563839304e-07
+          ]
+        ],
+        "base_pose_world": [
+          [
+            0.9376623630523682,
+            0.6108377575874329,
+            -0.003628768725320697,
+            -0.018963318318128586,
+            0.0030264239758253098,
+            -0.00167119933757931,
+            0.9998142123222351
+          ],
+          [
+            0.7651602625846863,
+            0.2517079710960388,
+            -0.0036293109878897667,
+            -0.017198290675878525,
+            0.0030242123175412416,
+            -0.0016760202124714851,
+            0.9998460412025452
+          ]
+        ],
+        "grasp_pose_base": [
+          [
+            0.7414906620979309,
+            -0.08746493607759476,
+            1.0388323068618774,
+            0.9819680452346802,
+            -0.000174462707946077,
+            0.18904681503772736,
+            -4.554005863610655e-05
+          ],
+          [
+            0.712846040725708,
+            -0.08724404871463776,
+            1.0450811386108398,
+            0.9819949269294739,
+            -0.00032346381340175867,
+            0.18890666961669922,
+            0.00036391575122252107
+          ]
+        ],
+        "controller_target": [
+          [
+            0.9690000414848328,
+            0.2976599931716919,
+            0.0,
+            0.37599998712539673,
+            0.0,
+            0.10300000011920929,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.9751600623130798,
+            0.26862001419067383,
+            0.0,
+            0.37599998712539673,
+            0.0,
+            0.10300000011920929,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "previous_action": [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      }
+    },
+    {
+      "observation_index": 5,
+      "boundary": 1285,
+      "source_file": "output/actors/20261107-astra-progress1179-named-001/observations/00005/observation.json",
+      "source_bytes": 25297,
+      "source_sha256": "51a98ad35758f586c0cbd768080a915a171f3e3824d716e7f3a0b93d27343888",
+      "public_simulation_time_s": 65.77500343043357,
+      "arm_actual_sum_mm": [
+        259.3337222933769,
+        334.68903601169586
+      ],
+      "arm_target_mm": [
+        258.9400112628937,
+        229.90000247955322
+      ],
+      "arm_target_minus_actual_mm": [
+        -0.39371103048324585,
+        -104.78903353214264
+      ],
+      "arm_sum_joint_velocity_mm_s": [
+        -8.44237336423248,
+        -14.34464124031365
+      ],
+      "lift_target_minus_actual_mm": [
+        -0.6632804870605469,
+        -2.128481864929199
+      ],
+      "pitch_target_minus_actual_rad": [
+        -0.003800332546234131,
+        -0.004611074924468994
+      ],
+      "previous_action_is_all_zero": true,
+      "grasp_position_world_m": [
+        [
+          0.23952741313438675,
+          0.5797541147937895,
+          0.977655120806805
+        ],
+        [
+          -0.023170766529110876,
+          0.23331095317742545,
+          0.9855057746924174
+        ]
+      ],
+      "public_state_for_reproduction": {
+        "joint_position": [
+          [
+            -0.242751806974411,
+            -0.514238715171814,
+            0.24275586009025574,
+            0.9080633521080017,
+            0.06491084396839142,
+            0.06476250290870667,
+            0.06476625055074692,
+            0.06489412486553192,
+            1.5321535101975314e-05,
+            0.37980031967163086,
+            0.0007729745702818036,
+            0.10722165554761887,
+            0.10315050929784775
+          ],
+          [
+            -0.24275082349777222,
+            -0.5142393112182617,
+            0.24275663495063782,
+            0.9156885147094727,
+            0.07753928750753403,
+            0.08730809390544891,
+            0.08825257420539856,
+            0.08158908039331436,
+            0.003200816223397851,
+            0.3806110620498657,
+            -0.001314803957939148,
+            0.07271535694599152,
+            0.002943889470770955
+          ]
+        ],
+        "joint_velocity": [
+          [
+            0.005076926667243242,
+            -0.0014751964481547475,
+            -0.0022175840567797422,
+            -0.004971113987267017,
+            -0.002733300905674696,
+            -0.0016721913125365973,
+            -0.001572187407873571,
+            -0.0024646937381476164,
+            0.02087736874818802,
+            -0.027241317555308342,
+            -0.04167557135224342,
+            -0.006236028391867876,
+            0.00916864350438118
+          ],
+          [
+            -6.923104228917509e-05,
+            -5.0570699386298656e-05,
+            8.39491913211532e-05,
+            -0.007821392267942429,
+            -0.0027356701903045177,
+            -0.002914933254942298,
+            -0.0038928440771996975,
+            -0.004801193717867136,
+            0.0046509322710335255,
+            -0.015304332599043846,
+            -0.004252925049513578,
+            -0.020019249990582466,
+            0.014960076659917831
+          ]
+        ],
+        "base_pose_world": [
+          [
+            0.9409007430076599,
+            0.522388219833374,
+            -0.003629020880907774,
+            -0.01903940923511982,
+            0.0030276537872850895,
+            -0.0016728416085243225,
+            0.9998127818107605
+          ],
+          [
+            0.7531846761703491,
+            0.17383430898189545,
+            -0.003629010869190097,
+            -0.015252788551151752,
+            0.003020558040589094,
+            -0.0016828286461532116,
+            0.9998776316642761
+          ]
+        ],
+        "grasp_pose_base": [
+          [
+            0.7045457363128662,
+            -0.0874149277806282,
+            0.9767844676971436,
+            0.9820230603218079,
+            0.0003778535174205899,
+            0.18876060843467712,
+            -6.547679367940873e-05
+          ],
+          [
+            0.780089259147644,
+            -0.0865408405661583,
+            0.984187126159668,
+            0.9819448590278625,
+            -0.0009482247987762094,
+            0.18915727734565735,
+            0.0016958799678832293
+          ]
+        ],
+        "controller_target": [
+          [
+            0.9074000716209412,
+            0.2589400112628937,
+            0.0,
+            0.37599998712539673,
+            0.0,
+            0.10300000011920929,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.9135600328445435,
+            0.22990000247955322,
+            0.0,
+            0.37599998712539673,
+            0.0,
+            0.10300000011920929,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "previous_action": [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      }
+    },
+    {
+      "observation_index": 6,
+      "boundary": 1295,
+      "source_file": "output/actors/20261107-astra-progress1179-named-001/observations/00006/observation.json",
+      "source_bytes": 25288,
+      "source_sha256": "d1a2180577213440e4744b76652473083de7a15ed6c4a15f566933f133d9c266",
+      "public_simulation_time_s": 66.2750034565106,
+      "arm_actual_sum_mm": [
+        258.91439616680145,
+        327.9826045036316
+      ],
+      "arm_target_mm": [
+        258.9400112628937,
+        229.90000247955322
+      ],
+      "arm_target_minus_actual_mm": [
+        0.02561509609222412,
+        -98.08260202407837
+      ],
+      "arm_sum_joint_velocity_mm_s": [
+        2.349526359466836,
+        -26.13545348867774
+      ],
+      "lift_target_minus_actual_mm": [
+        2.2873878479003906,
+        0.8906722068786621
+      ],
+      "pitch_target_minus_actual_rad": [
+        -0.003491044044494629,
+        -0.004308491945266724
+      ],
+      "previous_action_is_all_zero": true,
+      "grasp_position_world_m": [
+        [
+          0.2395159860237429,
+          0.5799759066048846,
+          0.9747859554058832
+        ],
+        [
+          -0.026451341059866573,
+          0.2320473671867599,
+          0.9825290961753559
+        ]
+      ],
+      "public_state_for_reproduction": {
+        "joint_position": [
+          [
+            -0.24275127053260803,
+            -0.514240026473999,
+            0.2427571713924408,
+            0.9051126837730408,
+            0.064725860953331,
+            0.06471403688192368,
+            0.06472409516572952,
+            0.06475040316581726,
+            0.0004765609628520906,
+            0.37949103116989136,
+            0.0015158677706494927,
+            0.10633320361375809,
+            0.1036405935883522
+          ],
+          [
+            -0.24274970591068268,
+            -0.5142382383346558,
+            0.2427549809217453,
+            0.9126693606376648,
+            0.07614216208457947,
+            0.08545289933681488,
+            0.08636416494846344,
+            0.0800233781337738,
+            0.002855221275240183,
+            0.38030847907066345,
+            -0.0024750346783548594,
+            0.05608632415533066,
+            0.00917566753923893
+          ]
+        ],
+        "joint_velocity": [
+          [
+            -0.0036277722101658583,
+            0.002341552870348096,
+            0.00013895152369514108,
+            0.008056854829192162,
+            -0.0004878945474047214,
+            0.0005870662280358374,
+            0.000736944901291281,
+            0.0015134097775444388,
+            -0.017004670575261116,
+            -0.04080246388912201,
+            0.03142619878053665,
+            -0.012856710702180862,
+            -0.0073823812417685986
+          ],
+          [
+            -0.0028372250963002443,
+            -0.005435651633888483,
+            0.004892110824584961,
+            0.007257997523993254,
+            -0.0018944302573800087,
+            -0.006407528650015593,
+            -0.0084840664640069,
+            -0.009349428117275238,
+            0.0029719483572989702,
+            0.007825333625078201,
+            0.015702901408076286,
+            -0.024027995765209198,
+            0.010047072544693947
+          ]
+        ],
+        "base_pose_world": [
+          [
+            0.9405717849731445,
+            0.5228855013847351,
+            -0.0036290034186095,
+            -0.019162926822900772,
+            0.0030275722965598106,
+            -0.001671520760282874,
+            0.9998103976249695
+          ],
+          [
+            0.7433733940124512,
+            0.17419663071632385,
+            -0.0036292094737291336,
+            -0.0165094006806612,
+            0.003022352233529091,
+            -0.0016790415393188596,
+            0.9998577237129211
+          ]
+        ],
+        "grasp_pose_base": [
+          [
+            0.7042005062103271,
+            -0.08728832006454468,
+            0.9739182591438293,
+            0.9820519685745239,
+            0.0006994083523750305,
+            0.18860910832881927,
+            9.106215293286368e-05
+          ],
+          [
+            0.7733860611915588,
+            -0.08663567900657654,
+            0.9812508821487427,
+            0.9819730520248413,
+            -0.0014849122380837798,
+            0.1890079826116562,
+            0.001635722815990448
+          ]
+        ],
+        "controller_target": [
+          [
+            0.9074000716209412,
+            0.2589400112628937,
+            0.0,
+            0.37599998712539673,
+            0.0,
+            0.10300000011920929,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.9135600328445435,
+            0.22990000247955322,
+            0.0,
+            0.37599998712539673,
+            0.0,
+            0.10300000011920929,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "previous_action": [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      }
+    },
+    {
+      "observation_index": 7,
+      "boundary": 1317,
+      "source_file": "output/actors/20261107-astra-progress1179-named-001/observations/00007/observation.json",
+      "source_bytes": 25325,
+      "source_sha256": "1ea4f0fe34023321bac899361844bca7586552675783d51763d9e58fb224146d",
+      "public_simulation_time_s": 67.37500351388007,
+      "arm_actual_sum_mm": [
+        287.2830331325531,
+        342.25552529096603
+      ],
+      "arm_target_mm": [
+        287.98002004623413,
+        355.7400107383728
+      ],
+      "arm_target_minus_actual_mm": [
+        0.6969869136810303,
+        13.484485447406769
+      ],
+      "arm_sum_joint_velocity_mm_s": [
+        9.350693202577531,
+        8.273676445242018
+      ],
+      "lift_target_minus_actual_mm": [
+        5.454123020172119,
+        5.402505397796631
+      ],
+      "pitch_target_minus_actual_rad": [
+        0.007988393306732178,
+        0.007244110107421875
+      ],
+      "previous_action_is_all_zero": true,
+      "grasp_position_world_m": [
+        [
+          0.23933317886120176,
+          0.5798751750307027,
+          0.9726352470232514
+        ],
+        [
+          -0.014662720211033431,
+          0.2356890261846904,
+          0.978994659603867
+        ]
+      ],
+      "public_state_for_reproduction": {
+        "joint_position": [
+          [
+            -0.24275214970111847,
+            -0.5142390727996826,
+            0.24275769293308258,
+            0.9573859572410583,
+            0.07176268845796585,
+            0.0718480795621872,
+            0.0718608945608139,
+            0.07181137055158615,
+            0.0006632149452343583,
+            0.5880115628242493,
+            0.001422368222847581,
+            0.09886227548122406,
+            0.10372541099786758
+          ],
+          [
+            -0.24275150895118713,
+            -0.5142397880554199,
+            0.24275775253772736,
+            0.9635975360870361,
+            0.08597934246063232,
+            0.08533326536417007,
+            0.0852624922990799,
+            0.08568042516708374,
+            -0.004452530760318041,
+            0.5887558460235596,
+            -0.0008882590336725116,
+            0.0673951581120491,
+            0.006734277121722698
+          ]
+        ],
+        "joint_velocity": [
+          [
+            -0.003917432390153408,
+            0.0010865641525015235,
+            0.0012543393531814218,
+            0.023966263979673386,
+            0.0018523462349548936,
+            0.0022972284350544214,
+            0.0022152636665850878,
+            0.0029858548659831285,
+            -0.019329925999045372,
+            0.019459810107946396,
+            0.03641115874052048,
+            0.004901304375380278,
+            -0.007427695672959089
+          ],
+          [
+            -0.002656457480043173,
+            0.0022238721139729023,
+            0.0002166662598028779,
+            0.024012582376599312,
+            0.0027394485659897327,
+            0.0012482107849791646,
+            0.0009736917563714087,
+            0.0033123253379017115,
+            -0.014393488876521587,
+            0.016882792115211487,
+            0.03839743509888649,
+            0.0016479210462421179,
+            -0.010347429662942886
+          ]
+        ],
+        "base_pose_world": [
+          [
+            0.9401977062225342,
+            0.5228601694107056,
+            -0.0036295494064688683,
+            -0.019204089418053627,
+            0.0030277082696557045,
+            -0.0016716399695724249,
+            0.9998095631599426
+          ],
+          [
+            0.7402364015579224,
+            0.1751892864704132,
+            -0.003629357786849141,
+            -0.016332808881998062,
+            0.0030236542224884033,
+            -0.0016792130190879107,
+            0.9998605847358704
+          ]
+        ],
+        "grasp_pose_base": [
+          [
+            0.7039926052093506,
+            -0.08725617825984955,
+            0.9717692732810974,
+            0.9570905566215515,
+            0.0005843629478476942,
+            0.2897884249687195,
+            0.00011129645281471312
+          ],
+          [
+            0.7583934664726257,
+            -0.08851192891597748,
+            0.9777974486351013,
+            0.9569805860519409,
+            0.00022092585277277976,
+            0.2901449203491211,
+            -0.0020016792695969343
+          ]
+        ],
+        "controller_target": [
+          [
+            0.9628400802612305,
+            0.28798002004623413,
+            0.0,
+            0.5959999561309814,
+            0.0,
+            0.10300000011920929,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.9690000414848328,
+            0.3557400107383728,
+            0.0,
+            0.5959999561309814,
+            0.0,
+            0.10300000011920929,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "previous_action": [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      }
+    }
+  ],
+  "intervals": [
+    {
+      "decision_index": 4,
+      "boundary_start": 1263,
+      "boundary_end": 1285,
+      "elapsed_public_s": 1.1000000573694706,
+      "arm_actual_delta_mm": [
+        -37.02463209629059,
+        67.07689166069031
+      ],
+      "arm_target_delta_mm": [
+        -38.71998190879822,
+        -38.720011711120605
+      ],
+      "expected_arm_target_delta_mm_from_action": [
+        -38.71999913454056,
+        -38.71999913454056
+      ],
+      "each_arm_joint_delta_mm": [
+        [
+          -9.241312742233276,
+          -9.27387923002243,
+          -9.269699454307556,
+          -9.239740669727325
+        ],
+        [
+          10.58901846408844,
+          20.44743299484253,
+          21.391235291957855,
+          14.649204909801483
+        ]
+      ],
+      "lift_actual_delta_mm": [
+        -62.20823526382446,
+        -60.75316667556763
+      ],
+      "lift_target_delta_mm": [
+        -61.5999698638916,
+        -61.60002946853638
+      ],
+      "pitch_actual_delta_rad": [
+        -0.0005828440189361572,
+        0.0005133450031280518
+      ],
+      "pitch_target_delta_rad": [
+        0.0,
+        0.0
+      ],
+      "grasp_base_delta_xyz_mm": [
+        [
+          -36.9449257850647,
+          0.050008296966552734,
+          -62.04783916473389
+        ],
+        [
+          67.24321842193604,
+          0.7032081484794617,
+          -60.894012451171875
+        ]
+      ],
+      "grasp_world_delta_xyz_mm": [
+        [
+          39.77201786955919,
+          -87.00835481186142,
+          -62.26621097945606
+        ],
+        [
+          -79.30054008218667,
+          -77.67214074958828,
+          -60.492378485687894
+        ]
+      ],
+      "grasp_world_endpoint_displacement_mm": [
+        114.14617051054073,
+        126.41544589489871
+      ],
+      "base_world_delta_xyz_mm": [
+        [
+          3.238379955291748,
+          -88.44953775405884,
+          -0.0002521555870771408
+        ],
+        [
+          -11.975586414337158,
+          -77.87366211414337,
+          0.00030011869966983795
+        ]
+      ],
+      "base_world_endpoint_displacement_mm": [
+        88.50880088276588,
+        78.78909773011172
+      ]
+    },
+    {
+      "decision_index": 5,
+      "boundary_start": 1285,
+      "boundary_end": 1295,
+      "elapsed_public_s": 0.5000000260770321,
+      "arm_actual_delta_mm": [
+        -0.41932612657546997,
+        -6.70643150806427
+      ],
+      "arm_target_delta_mm": [
+        0.0,
+        0.0
+      ],
+      "expected_arm_target_delta_mm_from_action": [
+        0.0,
+        0.0
+      ],
+      "each_arm_joint_delta_mm": [
+        [
+          -0.1849830150604248,
+          -0.0484660267829895,
+          -0.04215538501739502,
+          -0.14372169971466064
+        ],
+        [
+          -1.3971254229545593,
+          -1.8551945686340332,
+          -1.8884092569351196,
+          -1.5657022595405579
+        ]
+      ],
+      "lift_actual_delta_mm": [
+        -2.9506683349609375,
+        -3.0191540718078613
+      ],
+      "lift_target_delta_mm": [
+        0.0,
+        0.0
+      ],
+      "pitch_actual_delta_rad": [
+        -0.00030928850173950195,
+        -0.0003025829792022705
+      ],
+      "pitch_target_delta_rad": [
+        0.0,
+        0.0
+      ],
+      "grasp_base_delta_xyz_mm": [
+        [
+          -0.3452301025390625,
+          0.1266077160835266,
+          -2.866208553314209
+        ],
+        [
+          -6.703197956085205,
+          -0.09483844041824341,
+          -2.936244010925293
+        ]
+      ],
+      "grasp_world_delta_xyz_mm": [
+        [
+          -0.011427110643835725,
+          0.22179181109516222,
+          -2.869165400921747
+        ],
+        [
+          -3.2805745307556977,
+          -1.263585990665561,
+          -2.976678517061515
+        ]
+      ],
+      "grasp_world_endpoint_displacement_mm": [
+        2.877747779805066,
+        4.6064556658655444
+      ],
+      "base_world_delta_xyz_mm": [
+        [
+          -0.32895803451538086,
+          0.497281551361084,
+          1.7462298274040222e-05
+        ],
+        [
+          -9.81128215789795,
+          0.36232173442840576,
+          -0.0001986045390367508
+        ]
+      ],
+      "base_world_endpoint_displacement_mm": [
+        0.5962401614293026,
+        9.817969986742147
+      ]
+    },
+    {
+      "decision_index": 6,
+      "boundary_start": 1295,
+      "boundary_end": 1317,
+      "elapsed_public_s": 1.1000000573694706,
+      "arm_actual_delta_mm": [
+        28.368636965751648,
+        14.272920787334442
+      ],
+      "arm_target_delta_mm": [
+        29.040008783340454,
+        125.84000825881958
+      ],
+      "expected_arm_target_delta_mm_from_action": [
+        29.039999350905415,
+        125.83999538421631
+      ],
+      "each_arm_joint_delta_mm": [
+        [
+          7.036827504634857,
+          7.134042680263519,
+          7.136799395084381,
+          7.06096738576889
+        ],
+        [
+          9.837180376052856,
+          -0.11963397264480591,
+          -1.101672649383545,
+          5.6570470333099365
+        ]
+      ],
+      "lift_actual_delta_mm": [
+        52.27327346801758,
+        50.92817544937134
+      ],
+      "lift_target_delta_mm": [
+        55.44000864028931,
+        55.44000864028931
+      ],
+      "pitch_actual_delta_rad": [
+        0.2085205316543579,
+        0.20844736695289612
+      ],
+      "pitch_target_delta_rad": [
+        0.21999996900558472,
+        0.21999996900558472
+      ],
+      "grasp_base_delta_xyz_mm": [
+        [
+          -0.2079010009765625,
+          0.032141804695129395,
+          -2.1489858627319336
+        ],
+        [
+          -14.992594718933105,
+          -1.87624990940094,
+          -3.4534335136413574
+        ]
+      ],
+      "grasp_world_delta_xyz_mm": [
+        [
+          -0.18280716254115426,
+          -0.10073157418188927,
+          -2.150708382631761
+        ],
+        [
+          11.788620848833142,
+          3.641658997930508,
+          -3.534436571488886
+        ]
+      ],
+      "grasp_world_endpoint_displacement_mm": [
+        2.160812776673637,
+        12.834543375306726
+      ],
+      "base_world_delta_xyz_mm": [
+        [
+          -0.37407875061035156,
+          -0.025331974029541016,
+          -0.0005459878593683243
+        ],
+        [
+          -3.1369924545288086,
+          0.9926557540893555,
+          -0.00014831312000751495
+        ]
+      ],
+      "base_world_endpoint_displacement_mm": [
+        0.37493588607811007,
+        3.290301981261624
+      ]
+    }
+  ],
+  "action_checks": [
+    {
+      "decision_index": 4,
+      "named_to_canonical_to_applied_float32_equal": true,
+      "named_mapping_sha256": "2772202314c637aca6c0e31d1148e80db233c3ca23e6cb59bd9871d9879568b4",
+      "model_action_steps": 16,
+      "settle_steps": 6,
+      "previous_action_zero_is_last_transition_only": true
+    },
+    {
+      "decision_index": 5,
+      "named_to_canonical_to_applied_float32_equal": true,
+      "named_mapping_sha256": "2772202314c637aca6c0e31d1148e80db233c3ca23e6cb59bd9871d9879568b4",
+      "model_action_steps": 10,
+      "settle_steps": 0,
+      "previous_action_zero_is_last_transition_only": true
+    },
+    {
+      "decision_index": 6,
+      "named_to_canonical_to_applied_float32_equal": true,
+      "named_mapping_sha256": "2772202314c637aca6c0e31d1148e80db233c3ca23e6cb59bd9871d9879568b4",
+      "model_action_steps": 16,
+      "settle_steps": 6,
+      "previous_action_zero_is_last_transition_only": true
+    }
+  ],
+  "findings": {
+    "D4_r1_net_extension_increase_confirmed": true,
+    "D4_action_channel_mapping_mismatch_detected": false,
+    "D6_r1_error_reduction_mainly_due_to_target_raised": true,
+    "D6_r1_previous_retraction_target_reached": false,
+    "D6_true_cloth_grasp_position_preserved": null,
+    "physical_cause_or_contact_target_established": false,
+    "passage_or_success_assessed": false,
+    "training_approval": "unreviewed"
+  },
+  "changes": {
+    "runtime_or_prompt": false,
+    "simulation_or_model_calls": false,
+    "files_written": "Only this JSON and paired motion review Markdown."
+  }
+}

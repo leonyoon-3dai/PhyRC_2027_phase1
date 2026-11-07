@@ -12,7 +12,7 @@
 
 전체 **1,180전이·시뮬레이션59초**, 새 구간은 **393전이·19.65초**입니다. 실제31분46초, 787재실행+284모델 행동+108정착+1예산 마감이며 18호출/18행동, 실제 depth 질의0회입니다. 전이1개는 관측→행동→다음 관측의0.05초 기록입니다.
 
-**E24 실행 중 · 04:11:53 UTC 시작:** E23/1179까지 준비 행동을 재실행한 뒤 같은 `coordinated-task-progress`를 최대30판단 이어갑니다. history1077/1161·Astra/ultra·source`b0513d43a87c813397c57d8a4fa6ec4e6ff6ba03`·시작clean입니다. 1179개 준비 행동을 완료했고, 새 D0·D1에서 양측 파지를 유지한 몸통 방향 이동·하강을 두 차례 수행했습니다(1223경계까지 검토). 천은 낮아지고 팔 노출은 유지되지만 머리–입구 관계는 계속 가려져 있습니다. 최종 점수는 아직 미확인입니다. [현재 상태·설정](docs/project/STATUS.md)
+**E24 실행 중 · 04:11:53 UTC 시작:** E23/1179까지 준비 행동을 재실행한 뒤 같은 `coordinated-task-progress`를 최대30판단 이어갑니다. history1077/1161·Astra/ultra·source`b0513d43a87c813397c57d8a4fa6ec4e6ff6ba03`·시작clean입니다. 1179개 준비 행동 뒤 하강·방향 변경을 수행했습니다. 한쪽 팔의 목표와 실제 움직임 차이를 확인해 목표·자세를 조정했고, 공개 깊이6점 조회 후 뒤·옆 방향으로 이동했습니다. D8까지(1361경계) 얼굴·몸통과 손–경계 관계가 더 드러났지만 입구 통과·최종 점수는 아직 미확인입니다. [공개 관절 수치 대조](docs/collection/reviews/20261107-astra-progress1179-named-001-motion.ko.md) [현재 상태·설정](docs/project/STATUS.md)
 
 [**출발점 화면 5개 비교·피드백**](docs/gallery/20261107-support-startpoints.ko.md) · [**출발점·방법 데이터베이스**](docs/collection/catalog/README.ko.md) · [**0→5→10 구간 조합 장기계획**](docs/collection/research/2026-11-07-composable-scoring-data-plan.ko.md)
 
