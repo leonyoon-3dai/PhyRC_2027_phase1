@@ -280,3 +280,5 @@ E23 후보3873f90을통합했고전체302CPU검사23.432초통과했다. [검증
 ## E23 실제 시작 (2026-11-07 03:30:54 UTC)
 
 `20261107-astra-progress787-named-001`은공개source`952ec8da68cdc0ef635d0d45329712eee006fd1f`·working_tree_modified=false에서시작했다. E18/787직접부모·history719771·coordinated-task-progress·named+query·plan1·18dec/max1300/timeout180/settle6/review10·profile이며E22와같은출발점의비교다. 로그`output/sessions/20261106-evening/e23-progress787-named-001.log`. E22exec반환의발신불확실성을구분하기위해호스트shell은Python명령이반환하면그값을별도local텍스트에기록하도록했다(반환전에는값없음). 정책/시뮬레이터/공식물리변경은없다.
+
+E23 중간: 787재실행 뒤D0 base_forward+.25×20+6정착, D1+.18×16+6정착, D2양pitch−.1×12+6정착으로853경계까지 진행했다. 두전진과입구후보를손주위로올리는각도변경이실제수행됐고손–rim투영겹침이보이지만통과·최종평가는미확인이다. 0–2판단은깊이질의없이직접act였다. 이 진행은진전조건비교의관측근거이며시작천접힘차이를고려해야한다.

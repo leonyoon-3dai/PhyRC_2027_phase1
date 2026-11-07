@@ -550,7 +550,7 @@
       "source_working_tree_modified": false,
       "parent_run_id": "20261106-astra-guide470-depth-001",
       "replay_prefix_steps": 787,
-      "replay_completed_steps": 20,
+      "replay_completed_steps": 787,
       "recorded_transitions": null,
       "qc_status": "pending",
       "backup": {
@@ -1584,7 +1584,7 @@
         "review": null,
         "videos": []
       },
-      "notes": "Actual E23 started 2026-11-07T03:30:54Z from clean published source 952ec8da68cdc0ef635d0d45329712eee006fd1f. Same E18/787 history719771 as E22;18dec/max1300/timeout180/settle6/review10;fixed Astra/ultra exec plan1 named/query. Full302CPU tests passed. Replay completion is recorded separately from intended prefix787. Final outcome/QC/backup pending. Same E07 source group; not an exact cloth checkpoint."
+      "notes": "Actual E23 started 2026-11-07T03:30:54Z from clean published source 952ec8da68cdc0ef635d0d45329712eee006fd1f. Same E18/787 history719771 as E22;18dec/max1300/timeout180/settle6/review10;fixed Astra/ultra exec plan1 named/query. Full302CPU tests passed. Replay completion is recorded separately from intended prefix787. Final outcome/QC/backup pending. Same E07 source group; not an exact cloth checkpoint. Replay787 confirmed complete. Early actual D0/D1 forward motions and D2 pitch adjustment observed; final score/QC still pending. Projected hand-rim overlap is not passage proof."
     }
   ]
 }
