@@ -1,5 +1,56 @@
 # 현재 상태와 다음 작업
 
+**E24는5/50·픽업5·착의0·success=false,1,610/1,610전이 검사 통과로 종료했습니다.** 22회 실제 행동에서 손–경계 정렬과 진입 시도, 큰 면 가림과 마지막 부분 시야 복구를 확인했습니다. 공식 소매 통과는 없으며 최고5점·중간목표10점미달성입니다.
+
+[최신 영상](../gallery/20261107-astra-progress1179-named-001.ko.md) · [분석](../collection/reviews/20261107-astra-progress1179-named-001.ko.md) · [학습 검토 구간](../collection/reviews/20261107-astra-progress1179-named-001-learning-segments.json) · [전체 일지](sessions/20261106-evening-resume.ko.md)
+
+| 확인 항목 | E24 결과 |
+|---|---|
+| 실행 소스·부모 | `b0513d43a87c813397c57d8a4fa6ec4e6ff6ba03`·시작clean·직접E23/1179·history1077/1161 |
+| 모델·전략 | Astra/ultra·coordinated-task-progress·named/query·22act/26calls·3query/16유효점·finish0 |
+| 실제 구간 | 1179재실행+304모델+126정착+1감독 마감=1610·80.5sim초. 새431전이21.55sim초 |
+| 실제 시간 | 04:11:53–05:02:19UTC·3025.995557초(50분26초) |
+| 호출 경로 | 모델1443.976115초·환경1523.851616초. 순수 내부 추론시간은 미제공 |
+| 공식 결과 | raw5·픽업5·착의전항목0·success=false·no_dressing_points/final_score0.0 |
+| 마감·검사 | 감독SIGINT→attempt interrupted·capture complete/operator_finished·QC1610/1610오류0·host22076=130·shell Python130·simulator0 |
+| 보존·학습 | [고정 원본 백업·재다운로드 검증 완료](sessions/20261107-e24-backup-verification.json)·training unreviewed |
+
+05:01:38UTC에22행동을 마친1609경계에서 감독 종료를 요청했습니다. 세 번째 공개 깊이 질의는 실행됐지만 그 후 D22 행동 응답은 폐기됐고, 중립 마감1전이만 추가됐습니다. 모델 자율finish·30판단 예산 종료와 구분합니다. 원래 `human_intervention=false`는 수동 물리행동 주입이 없음을 뜻하며, 감독 종료 요청이 없었다는 뜻으로 읽지 않습니다.
+
+## E25에서 파지 배치를 바꾸는 이유
+
+E24 D15 높이 변경으로 손이 다시 보였고, D17 몸쪽 진입 뒤 큰 면이 손과 틈을 가렸습니다. D18의 base만 반전, D19 차등 높이, D20 자세 보정에서는 관계가 복구되지 않았습니다. D21 추가 후퇴·들기는 어두운 틈을 일부 다시 노출했습니다. **마지막까지 변화가 없었다거나 모든 진입 방향이 소진됐다는 결론은 아닙니다.** 유용한 부분 복구까지 보존하고, 동일 파지 조정22회 이후 실제 파지 변경을 비교하기로 했습니다.
+
+E25는 **E18/563·history510/542·coordinated-opposing-rim·30판단/max1400**으로 선택했습니다. 새 재실행 관측에서 양측 지지와 테이블 지지를 확인하고, 한쪽 anchor를 남기며 다른 접근 가능한 경계를 한 번 다시 잡습니다. 닫힘 뒤 국소 천 동행·anchor 유지·차등 경계 반응을 확인한 다음 유용하면 운반과 착의를 이어갑니다. E17의 미확인 반대 경계 가설을 더 나은 출발점·검사 순서로 재시험하며 첫 발명으로 세지 않습니다. [방법·제약](../collection/research/2026-11-07-opposing-rim-candidate.ko.md)
+
+후보a3d10a5를 E24 종료 후 main에 통합했습니다. source loader563개 float32(563,2,9) 검수를 완료했고, 전체 CPU 결과는 [검증 기록](sessions/20261107-opposing-rim-validation.json)에 남깁니다. 새 선택 지침 외 공식 물리·20Hz·최대20step·모델·관측 계약은 유지합니다. **아직 E25 실제 모델/GPU 실행 전이며 실제 파지 개선·점수 효과는 미검증입니다.** E18/563의 과거5점은 actor 입력이 아닙니다. E07/430·E15/367은 다른 자세·기존 파지·잔류 운동의 대안이어서 함께 바꾸지 않았습니다.
+
+## E25 예정 명령 · 공개 소스 확정 후, 아직 미실행
+
+```bash
+export PATH="$PWD/.runtime/codex-0.166.0/node_modules/.bin:$PATH"
+unset STRETCH4_PRACTICE_LAYOUT STRETCH4_RANDOMIZE
+PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.codex_client \
+  --run-id 20261107-astra-opposing563-named-001 --mode dressing \
+  --strategy coordinated-opposing-rim --actor-backend exec \
+  --model gpt-6-astra --effort ultra --plan-size 1 --review-points 10 \
+  --replay-prefix-run 20261106-astra-guide470-depth-001 --replay-prefix-steps 563 \
+  --parent-attempt 20261106-astra-guide470-depth-001 \
+  --retry-reason test_opposing_rim_grasp_after_current_grip_entry_comparisons \
+  --replay-observe-steps 510 542 --wrist-depth-panel --pixel-depth-query --named-actions \
+  --post-action-settle-steps 6 --decisions 30 --max-steps 1400 --model-timeout 180 \
+  --profile-step-phases
+```
+
+새 run ID·직접 부모E18·같은E07 source group을 보존합니다. 재실행은 정확한 천 checkpoint 복원이 아니며 새 지지를 다시 확인합니다. 공식10점 확인 뒤 보존·검증하고 다음 득점으로 계속합니다. [장기 구간 조합](../collection/research/2026-11-07-composable-scoring-data-plan.ko.md)은 현재 합성·학습 실행과 구분합니다.
+
+<details>
+<summary>E23 종료·E24 실행 중 당시 상태 이력</summary>
+
+> 아래는 당시 기록입니다. 현재 상태는 위 내용을 따릅니다.
+
+# 현재 상태와 다음 작업
+
 **E23은5/50·픽업5·착의0·success=false,1,180/1,180전이 검사 통과로 종료했습니다.** 방향 반전·측면 접근·한쪽 경계 들기 뒤 손과 전완이 천 옆으로 드러났지만 공식 소매 통과·착의 득점은 없습니다. 머리 쪽 상승·하강·시점 복구 뒤18판단 예산을 소진했습니다. 최고5점·중간목표10점미달성입니다.
 
 [최신 영상](../gallery/20261107-astra-progress787-named-001.ko.md) · [분석](../collection/reviews/20261107-astra-progress787-named-001.ko.md) · [학습 검토 구간](../collection/reviews/20261107-astra-progress787-named-001-learning-segments.json) · [전체 일지](sessions/20261106-evening-resume.ko.md)
@@ -420,6 +471,8 @@ PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.codex_clie
 [클린 서버 복원](START_HERE.ko.md) · [초기 자산·E07 복원 검증](sessions/20261106-evening-restore-validation.json) · [E16 분석](../collection/reviews/20261106-astra-support264-002.ko.md) · [E15 마감 이력](SESSION_WRAPUP_20261106.ko.md) · [전체 개발 이력](HISTORY.ko.md)
 
 새 정책 학습·RL/VLA 성능 검증·학습 승인은 완료하지 않았습니다. 이전 문서의 일시 중지·미실행 문구는 당시 이력이며 현재 실행 상태는 이 문서와 최신 일지를 우선합니다.
+
+</details>
 
 </details>
 

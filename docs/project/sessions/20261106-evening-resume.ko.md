@@ -304,3 +304,13 @@ E24 중간(2026-11-07 04:24:55 UTC): 준비행동853/1179·새모델판단0·오
 E24 새판단 시작: 04:30:11UTC에1179재실행완료·첫model_request를확인했다. 이번1077의overview/양head와현재obs0의5뷰에서팔의측면노출/양그리퍼부근천은대체로유지됐지만접힘차이가있어E23종단과같은천checkpoint로취급하지않는다. D0(1179–1201)양base_left−.12/lift−.06, D1(1201–1223)양base_left−.16/lift−.025를각16동작+6정착실행했다. 천이낮아지고head뷰의팔노출은유지되지만R1wristpanel가림은커지고머리–입구연결은미확인이다. progressing단계명과공식통과를분리한다. 새로운후속동작·최종점수는계속별도검수한다.
 
 E24 D4–D8 진행: [공개 운동 대조](../../collection/reviews/20261107-astra-progress1179-named-001-motion.ko.md)는obs4–7/1317까지만참조한다. D4R1target−38.720mm에actual+67.077mm, D5중립10뒤error−98.083mm다. D6target+125.840mm/actual+14.273mm로error+13.484mm가됐으며이는주로target재설정이다. 이전수축성공·접촉원인해소로해석하지않는다. D4/D6동시3축·named/canonical/applied일치,prevaction0은정착뒤값이다. 이후D7직전R1head6점query는6valid·물리0, D7/D8backward/+Y로얼굴·몸통이더드러나고손–rim관계가가까워졌다. 개구정체·통과·최종점수는미확인이다. D9의반대roll과D10차등lift는뒤의관측으로별도검수한다.
+
+## E24 감독 종료와 실제 파지 변경 선택 (2026-11-07 05:02:19 UTC)
+
+공식5/50·픽업5·착의전항목0·success=false·no_dressing_points/final_score0.0이다.1610=1179재실행+304모델+126정착+1감독마감,80.5sim초·새431전이21.55초,22act/26calls/3query16valid·질의물리0/finish0이다. wall3025.995557316초·모델호출경로1443.976114878초·환경1523.851616191초이며순수모델추론시간미제공이다. QC1610/1610오류0,host22076=130·shellPython130·simulator0·capturecomplete/operator_finished·attemptinterruptedSIGINT로닫혔다. sourceb0513d43a87c813397c57d8a4fa6ec4e6ff6ba03 clean이다.
+
+D15기저고정lift로손이새로보이고D16손–경계투영겹침뒤D17몸쪽진입에서큰면가림이생겼다. D18은base만반전해D17전체역동작이아니며D19차등lift/D20자세보정도관계복구미확인이다. D21추가후퇴/들기뒤R1head어두운틈이부분재노출됐다. 감독종료판단은이전obs18–21복구미확인에서시작했으며D21부분복구를뒤에확인해기록을보완했다. 05:01:38.460648UTC에22act/1609경계의pendingqueryfollowup중SIGINT를client에한번요청했다. 세번째query6점은실행됐고후속D22act는폐기됐다. 물리수동행동주입0이며추가중립마감1step만기록했다. 마지막변화없음/모든방법소진/진입불가능증명으로해석하지않는다.
+
+QC완료뒤fullreport1610frame/20fps/80.5s,hero1483–1610inclusive128frame/5fps/25.6s,보조1263–1317inclusive55frame/5fps/11s를생성했다. 새파지0인현branch22행동과부분복구를보존하며M1실제파지변경비교를선택했다. E18/563hist510542·30decmax1400·coordinated-opposing-rim후보a3d10a5를종료후통합했다. E17가설의재시험이며다른rim정체/새지지/점수효과를미리확정하지않는다. 출발점loaderfloat32(563,2,9)검수완료,공개source확정후새E25실행예정이다.
+
+E24[고정원본백업](20261107-e24-backup-verification.json)은revision`1edca310c1b869a8f4c01b3eeb67b14f6699e12c`·3,879,304,287bytes·SHA`0c5ac72698bc35ee138b0e0629773fb23a7bbeacd7cd9cc195110a6af76d6af2`이며05:14:53UTC강제재다운로드/263member전수해시검증을완료했다. M1통합전체CPU310검사28.898초PASS와runtime/source파일SHA일치를확인했다.

@@ -12,14 +12,13 @@
 
 ## 확인된 현재 상태
 
-- 최신 E23 `20261107-astra-progress787-named-001`은5/50·픽업5·착의0·success=false·no_dressing_points/0.0,QC1180/1180오류0으로 종료했다. source952ec8da68cdc0ef635d0d45329712eee006fd1f clean·03:30:54–04:02:40UTC·31분46초.
-- 1180=787재실행+284모델+108정착+1decision_budget.18act/18calls/query0/finish0,host95905=0·shell관측Python0·simulator0·capturecomplete/operator_finished. [고정 원본 백업 검증 완료](docs/project/sessions/20261107-e23-backup-verification.json)·trainingunreviewed.
-- 경계 방향반전·측면접근·한쪽들기 뒤 손/전완 노출이 새로 나타났지만 공식소매통과/착의득점은없다. 머리접근·하강뒤에도입구관계가림. 단순가림만반복한결과로축소하거나성공으로승격하지않는다.
-- E24 `20261107-astra-progress1179-named-001`은04:11:53UTC·sourceb0513d43a87c813397c57d8a4fa6ec4e6ff6ba03 clean으로실제시작했다. E23/1179·history1077/1161·동일task-progress·30dec/max2000/timeout180/settle6/review10. 초기화/재실행중이며새결과미확인. M1은미통합별도후보,현재진전우선.
-- 실행소스전체302CPU검사23.432초통과. E23뒤실행코드변경없음. 공식schema최대20step·물리·20Hz·고정Astra/ultra/CLI0.166.0exec 유지.
-- E22는5점·813QC·짧은정보탐색뒤자율finish이며host143원인미확인/clientnull/simulator0을구분보존했다. 백업788a36ece3f606ca06dd0f20224910974dbe270e 검증완료.
-- E21두하강·테이블재파지1111QC/5점,새파지후속검사없음. E20목선준비0점/E19세접근5점/E18roll오류복구이력보존.
-- catalog.v1.json이canonical·SQLite재생성. E18/E19출발점5개공개갤러리,더이른E07/430/450·E15/367후보검토를구분한다. E15필수원본/loader검증은실제재실행아님. 모두같은E07계보·정확checkpoint아님.
+- 최신 E24 `20261107-astra-progress1179-named-001`은5/50·픽업5·착의0·success=false·no_dressing_points/0.0,QC1610/1610오류0으로 종료했다. sourceb0513d43a87c813397c57d8a4fa6ec4e6ff6ba03 clean·04:11:53–05:02:19UTC·50분26초.
+- 1610=1179재실행+304모델+126정착+1감독 마감.22act/26calls·3query16valid/물리0·finish0. 감독SIGINT05:01:38요청,마지막D22query후act미실행. host22076=130·shellPython130·simulator0·capturecomplete/operator_finished·attemptinterrupted. [고정 원본 백업 검증 완료](docs/project/sessions/20261107-e24-backup-verification.json)·trainingunreviewed.
+- 손–경계 정렬뒤D17진입에서큰면가림,D18–20복구미확인,D21어두운틈부분재노출. 마지막변화없음/모든방향소진으로단정하지않고,실제파지변경을비교한다. 새파지0회·공식착의0.
+- E25선택은E18/563·history510/542·coordinated-opposing-rim·30dec/max1400/timeout180/settle6/review10. 후보a3d10a5를E24종료후통합. 한쪽anchor/테이블지지아래다른경계재파지1cycle·닫힘후국소동행/차등검사. 아직미실행,실제상태는STATUS/attempt우선.
+- 실행source의전체CPU검사는docs/project/sessions/20261107-opposing-rim-validation.json참조. 새prompt선택외공식schema최대20step·물리·20Hz·고정Astra/ultra/CLI0.166.0exec 유지.
+- E23은5점/QC1180/18행동예산종료이며원본백업c1157513362e30d6a8306e7c8fd2ec0265e5db2c검증완료. E22는host143/clientnull/sim0원인미확인보존. E21새파지후속검사없음/E20목선준비0점/E19세접근5점/E18roll오류이력보존.
+- catalog.v1.jsoncanonical·SQLite재생성. 과거5점/관측양측지지/독립하중/현재지지/착의성공/학습승인은별도. 모두같은E07계보·정확checkpoint아님.
 - 공식시연/BEHAVIOR·관측절차·국소depth·의복방향가설·장기0→5→10조합계획기록. 외부영상·픽셀좌표·평가정답을actor에주지않는다.10점은중간목표이며확인후다음득점으로계속한다.
 
 ## 실행과 재현

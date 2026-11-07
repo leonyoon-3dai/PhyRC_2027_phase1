@@ -1,0 +1,113 @@
+{
+  "repo_id": "leonayoon/phyrc-2027-phase1-private-backup",
+  "repo_type": "dataset",
+  "private": true,
+  "revision": "1edca310c1b869a8f4c01b3eeb67b14f6699e12c",
+  "archive_path": "sessions/20261107-e24-v1/archive.tar.gz",
+  "archive_bytes": 3879304287,
+  "archive_sha256": "0c5ac72698bc35ee138b0e0629773fb23a7bbeacd7cd9cc195110a6af76d6af2",
+  "archive_members_verified": 263,
+  "remote_download_verified": true,
+  "remote_archive_member_hashes_verified": true,
+  "verified_at_utc": "2026-11-07T05:14:53.476665+00:00",
+  "run_id": "20261107-astra-progress1179-named-001",
+  "validated_transitions": 1610,
+  "source_commit": "b0513d43a87c813397c57d8a4fa6ec4e6ff6ba03",
+  "source_working_tree_modified": false,
+  "attempt_status": "interrupted",
+  "capture_complete": true,
+  "capture_termination_reason": "operator_finished",
+  "simulator_returncode": 0,
+  "execution_returncode_observation": {
+    "host_exec_tool_session_id": 22076,
+    "host_exec_reported_returncode": 130,
+    "host_returncode_evidence_source": "root agent supplied functions.write_stdin completion receipt",
+    "python_client_exit_status_recorded_by_shell": 130,
+    "python_client_exit_evidence_file": "output/sessions/20261106-evening/e24-shell-observed-python-exit.txt",
+    "python_client_exit_evidence_sha256": "f5bde7eb9f6c71611dc5726e8aca3eb4eba3e386da49e0a4ed5c295a90a73a0d",
+    "simulator_returncode_from_closed_attempt": 0,
+    "interpretation": "Host and shell-observed Python130 reflect the requested supervisor SIGINT; simulator0 and complete capture are separate observations.",
+    "closed_attempt_error": {
+      "type": "KeyboardInterrupt",
+      "message": "SIGINT"
+    },
+    "closed_attempt_finished": true,
+    "closed_attempt_activity": "closed"
+  },
+  "supervisor_interruption": {
+    "source_file": "output/sessions/20261106-evening/e24-supervisor-stop.json",
+    "source_sha256": "bee59ad7e6465528e5ad3f521e09765e0aa0c815d3ab42ab593e1d38fcb7deb9",
+    "requested_at_utc": "2026-11-07T05:01:38.460648+00:00",
+    "signal": "SIGINT",
+    "requester": "root research supervisor",
+    "physical_actions_injected": 0,
+    "observed_activity_before_request": "model_request",
+    "observed_transitions": 1609,
+    "observed_completed_decisions": 22,
+    "observed_actor_calls_attempted": 26,
+    "closed_at_utc": "2026-11-07T05:02:19Z",
+    "pending_followup_recorded_but_not_dispatched": true,
+    "pending_followup_model_call_index": 25,
+    "pending_followup_decision_index": 22,
+    "interpretation": "Supervisor chose to close this branch; neither model finish nor decision-budget exhaustion, and no task impossibility conclusion."
+  },
+  "trace_verified_counts": {
+    "replay_transitions": 1179,
+    "model_action_transitions": 304,
+    "controller_settle_transitions": 126,
+    "supervisor_cleanup_transitions": 1,
+    "recorded_transitions": 1610,
+    "model_calls_recorded": 26,
+    "finalized_act_decisions": 22,
+    "finish_decisions": 0,
+    "query_results_computed": 3,
+    "valid_queried_points": 16,
+    "physics_transitions_during_queries": 0,
+    "query_results": [
+      {
+        "decision_index": 7,
+        "points": 6,
+        "valid_points": 6,
+        "physics_transitions": 0
+      },
+      {
+        "decision_index": 12,
+        "points": 4,
+        "valid_points": 4,
+        "physics_transitions": 0
+      },
+      {
+        "decision_index": 22,
+        "points": 6,
+        "valid_points": 6,
+        "physics_transitions": 0
+      }
+    ],
+    "query_followup_cycle_stopped": [
+      {
+        "decision_index": 22,
+        "error_type": "KeyboardInterrupt",
+        "error": "SIGINT",
+        "executed": false
+      }
+    ],
+    "action_ranges_contiguous_0_to_1609": true
+  },
+  "manifest_entries": 262,
+  "manifest_sha256": "ba0582a02fc313e5086ead52a047737f26610dfd4b14e96fb8aeb9cb74a5ce1a",
+  "source_snapshot_files": 22,
+  "privacy_scope": {
+    "strict_collection_trace_snapshot_public_observation_allowlist": true,
+    "trusted_audit_evaluation_archived_privately_without_geometry_review": true,
+    "not_actor_input_or_training_approval": true,
+    "excluded": [
+      "simulator.log",
+      "actor runtime",
+      "actor_events",
+      "credentials",
+      "session databases",
+      "raw CLI reasoning",
+      "unreviewed files"
+    ]
+  }
+}

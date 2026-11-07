@@ -569,13 +569,13 @@
       "parent_run_id": "20261107-astra-progress787-named-001",
       "replay_prefix_steps": 1179,
       "replay_completed_steps": 1179,
-      "recorded_transitions": null,
-      "qc_status": "pending",
+      "recorded_transitions": 1610,
+      "qc_status": "passed",
       "backup": {
-        "status": "unknown",
-        "receipt": null,
-        "revision": null,
-        "sha256": null
+        "status": "verified",
+        "receipt": "docs/project/sessions/20261107-e24-backup-verification.json",
+        "revision": "1edca310c1b869a8f4c01b3eeb67b14f6699e12c",
+        "sha256": "0c5ac72698bc35ee138b0e0629773fb23a7bbeacd7cd9cc195110a6af76d6af2"
       }
     }
   ],
@@ -1126,6 +1126,20 @@
         "action_encoding": "named"
       },
       "description": "E23 executed purposeful approach, span-direction correction, lateral travel and unilateral lift with new hand/forearm exposure, then head approach. Official clothing points remained zero. Keep observed relation separate from passage success; continuation does not constitute a new grasp method."
+    },
+    {
+      "id": "coordinated-opposing-rim-named-query",
+      "name": "coordinated-opposing-rim / named / query",
+      "status": "ready",
+      "axes": {
+        "grasp_arrangement": "one retained anchor and one visible opposing-rim candidate regrasp under table support",
+        "entry_target": "body opening, then corresponding sleeve route",
+        "approach": "one actual release-reposition-reclose cycle, at most two placement corrections",
+        "order": "support and table recovery; regrasp; post-close local cloth-following; differential rim response; useful transport/entry",
+        "view": "designated RGB-D + optional pixel depth query",
+        "action_encoding": "named"
+      },
+      "description": "Integrated M1 after E24 closure; re-test E17 opposing-boundary hypothesis at reviewed E18/563. Preserve anchor, confirm changed local following and relative edges; no color-only layer identity or automatic grasp certification. CPU validation is not actual model performance. Not yet dispatched."
     }
   ],
   "attempts": [
@@ -1641,17 +1655,34 @@
     },
     {
       "id": "20261107-astra-progress1179-named-001",
-      "status": "in_progress",
+      "status": "completed",
       "run_id": "20261107-astra-progress1179-named-001",
       "startpoint_id": "20261107-astra-progress787-named-001-p1179",
       "method_id": "coordinated-task-progress-named-query",
+      "result": {
+        "raw_points": 5,
+        "success": false,
+        "review": "docs/collection/reviews/20261107-astra-progress1179-named-001.ko.md",
+        "videos": [
+          "docs/gallery/assets/20261107-e24-entry-recovery/event.mp4",
+          "docs/gallery/assets/20261107-e24-target-motion/event.mp4"
+        ]
+      },
+      "notes": "Closed/QC-passed interrupted E24; catalog completed means archived actual attempt, not natural termination or task success. Original attempt interrupted/SIGINT; root supervisor requested stop after22acts at1609; pending D22 query follow-up not executed.1610=1179replay+304model+126settle+1cleanup;26calls3queries16validphysics0. D15hand visibility,D17entry panel occlusion,D18base-only reversal,D19/20unresolved,D21partial slit recovery. Do not call all directions exhausted or last action no change. raw5 all clothing0. host130,shellPython130,sim0. SameE07lineage;trainingunreviewed."
+    },
+    {
+      "id": "planned-e18-563-opposing-rim",
+      "status": "planned",
+      "run_id": null,
+      "startpoint_id": "20261106-astra-guide470-depth-001-p563",
+      "method_id": "coordinated-opposing-rim-named-query",
       "result": {
         "raw_points": null,
         "success": null,
         "review": null,
         "videos": []
       },
-      "notes": "Actual E24 started2026-11-07T04:11:53Z from clean published sourceb0513d43a87c813397c57d8a4fa6ec4e6ff6ba03. E23/1179 direct parent,history1077/1161,same task-progress30dec/max2000/timeout180/settle6/review10, fixed Astra/ultra exec plan1 named/query. Continuation of observed arm-garment relation, not a new grasp method. CPU source loader1179 and22unchanged runtime hashes passed; no new runtime code. Intended/completed replay separate; outcome/QC/backup pending. Same E07 lineage,not exact cloth checkpoint. Progress at2026-11-07 04:24:55 UTC:replay853/1179,0modelcalls,noerror; final outcome pending. Replay1179 completed; D0/D1 lateral torso-ward and lowering acts observed to1223, cloth lowering and maintained forearm exposure, opening/head relation still occluded. Not passage or final score confirmation."
+      "notes": "Selected E25 after E24 closed: E18 direct parent563/history510542,30dec/max1400/timeout180/settle6/review10, Astra/ultra exec plan1 named/query/wristpanel. Candidatea3d integrated; source loader563 validated. Not yet executed; actual source/time assigned at launch. Same E07 source group; fresh support recheck required, not exact cloth checkpoint."
     }
   ]
 }

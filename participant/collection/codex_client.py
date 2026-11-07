@@ -175,6 +175,24 @@ If support is visibly lost, deformation worsens, actual motion saturates, or exe
 
 Finish when visually complete or when no useful task-directed movement or recovery remains supported by current observations. Keep uncertainty explicit. Use only the existing public observation/action contract, with no evaluator feedback, hidden geometry, external trajectories or changes to physics and joint limits.'''
 
+OPPOSING_RIM_TASK = '''For this attempt, investigate whether changing ONE body-rim grasp gives better control of two distinct candidate opening boundaries. Preserve useful CURRENT bilateral supports instead of repeating the initial two-gripper open-align-close setup. Make the table-supported grasp change and its verification the initial work sequence before another long transport. Do not switch to a neckline grasp.
+
+Using CURRENT designated views and public robot state, return the garment body to visible table support while retaining both useful grips. Choose one robot to remain the anchor and the other to change grasp. Keep the anchor closed and useful throughout, with the garment body table-supported during release, placement and closing. Never release both grips together.
+
+Choose a separately visible, accessible rim region that could control the boundary opposing the anchored region. Use visible boundary continuity, folds and relative movement to form this hypothesis. Color alone does not identify a lip, and the candidate need not already be proven to be a different garment layer. Do not choose an unseen point or infer an opening merely from a dark region.
+
+Perform at most ONE deliberate release-reposition-reclose cycle, with at most TWO short placement corrections within that cycle. Inspect the result of each action. A second release/reclose is another grasp-change cycle, not a placement correction. If table support, a useful anchor or an accessible candidate cannot be established, preserve available support and report that the intended grasp-change test was not performed.
+
+Reserve time after closing to assess the new support; do not treat the close command as the end of this experiment. Compare finger positions, velocities and controller targets with the images. If closing or other target-following motion is still progressing, account for it and use a short neutral observation when needed. A fixed wait, close intent or small fingertip-origin distance does not establish attachment.
+
+Keep the garment near table support and make a small motion mainly with the changed gripper while the anchor retains its grip and motion targets. Check the anchor's actual measured motion too. Distinguish measured robot displacement, local following of the newly selected cloth region, and motion transmitted through the garment. Useful local following at the changed side together with maintained support at the anchor can support a provisional bilateral-support judgement; do not demand a complete independent load-bearing proof or repeated lift-and-return certification.
+
+Then use a small differential shape adjustment to inspect whether the two candidate boundaries now move differently, separate, or expose a more controllable body-opening relationship. A visible background gap is not required: a rear body panel may remain visible through an opening. Neither cloth color nor a larger fold proves that the new arrangement is correct.
+
+If the new support and boundary relationship are useful, coordinate transport and body-entry toward a currently observed hand. Preserve the direction of dressing: the hand enters through the body opening and emerges through its corresponding sleeve, rather than being pushed into a cuff from outside. Keep both grippers outside the intended hand passage, and continue toward full dressing using current observations.
+
+If the new grasp fails or short support/shape checks leave the same unresolved relationship, retain table support and recover a useful view or posture. Do not start another grasp-change cycle or repeat small corrections without new relevant information. Finish with the unresolved visual reason when useful verification cannot be obtained. All support, opening and passage statements remain visual hypotheses; use only the existing public observation/action contract, without evaluator feedback or hidden geometry.'''
+
 
 def official_review_points(collection):
     """Trusted termination only. Never include this value in actor observations."""
@@ -542,7 +560,7 @@ def main():
                         'coordinated-support-diagnostic', 'coordinated-regrasp-hem',
                         'coordinated-support-guide', 'coordinated-neckline-first',
                         'coordinated-overhead-drape', 'coordinated-entry-probe',
-                        'coordinated-task-progress'], default='general')
+                        'coordinated-task-progress', 'coordinated-opposing-rim'], default='general')
     parser.add_argument('--actor-backend', choices=['exec', 'app-server'], default='exec')
     parser.add_argument('--plan-size', type=int, default=1,
                         help='Maximum segments per model call; >1 is an open-loop list')
@@ -609,7 +627,8 @@ def main():
                          'coordinated-opening-first', 'coordinated-support-diagnostic',
                          'coordinated-regrasp-hem', 'coordinated-support-guide',
                          'coordinated-neckline-first', 'coordinated-overhead-drape',
-                         'coordinated-entry-probe', 'coordinated-task-progress') and args.mode != 'dressing':
+                         'coordinated-entry-probe', 'coordinated-task-progress',
+                         'coordinated-opposing-rim') and args.mode != 'dressing':
         parser.error('coordinated strategy requires the full dressing objective')
     if args.strategy == 'coordinated-support-diagnostic' and args.plan_size != 1:
         parser.error('support diagnostic requires plan-size=1 to observe after each action')
@@ -623,6 +642,8 @@ def main():
         parser.error('entry-probe requires plan-size=1 to inspect each exploratory action')
     if args.strategy == 'coordinated-task-progress' and args.plan_size != 1:
         parser.error('task-progress requires plan-size=1 to reassess each task-directed action')
+    if args.strategy == 'coordinated-opposing-rim' and args.plan_size != 1:
+        parser.error('opposing-rim requires plan-size=1 to inspect each placement and support check')
     if args.mode == 'wiring' and args.plan_size > 1 and (args.plan_size != 3 or args.decisions != 3):
         parser.error('grouped wiring requires plan-size=3 and decisions=3')
     if not math.isfinite(args.model_timeout) or not 10 <= args.model_timeout <= 1800:
@@ -657,7 +678,8 @@ def main():
                          'coordinated-opening-first', 'coordinated-support-diagnostic',
                          'coordinated-regrasp-hem', 'coordinated-support-guide',
                          'coordinated-neckline-first', 'coordinated-overhead-drape',
-                         'coordinated-entry-probe', 'coordinated-task-progress'):
+                         'coordinated-entry-probe', 'coordinated-task-progress',
+                         'coordinated-opposing-rim'):
         task += '\n\n' + COORDINATED_TASK
     if args.strategy == 'coordinated-sleeve':
         task += '\n\n' + SLEEVE_TASK
@@ -681,6 +703,8 @@ def main():
         task += '\n\n' + ENTRY_PROBE_TASK + '\n\n' + METHOD_SATURATION_TASK
     elif args.strategy == 'coordinated-task-progress':
         task += '\n\n' + TASK_PROGRESS_TASK + '\n\n' + METHOD_SATURATION_TASK
+    elif args.strategy == 'coordinated-opposing-rim':
+        task += '\n\n' + OPPOSING_RIM_TASK + '\n\n' + METHOD_SATURATION_TASK
     if args.plan_size > 1:
         task += '\n\n' + PLAN_TASK.format(max_segments=args.plan_size, max_total_steps=args.plan_step_budget)
     if args.post_action_settle_steps:

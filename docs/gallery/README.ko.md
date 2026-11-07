@@ -2,6 +2,31 @@
 
 [저장소 소개](../../README.md) · [현재 상태](../project/STATUS.md) · [이번 세션 기록](../project/sessions/20261106-evening-resume.ko.md)
 
+**최신 E24 · 손–가장자리 정렬 뒤 진입 시도, 부분 시야 복구**
+
+<a href="assets/20261107-e24-entry-recovery/event.mp4"><img src="assets/20261107-e24-entry-recovery/preview.gif" width="960" alt="E24 공개 네 카메라. 손 재노출과 옷 진입 시도 뒤 큰 면에 가려지고, 마지막 후퇴·들기에서 틈이 일부 다시 드러나는 과정"></a>
+
+[**MP4 크게 보기**](assets/20261107-e24-entry-recovery/event.mp4) · [**전체·보조 영상**](20261107-astra-progress1179-named-001.ko.md) · [**분석**](../collection/reviews/20261107-astra-progress1179-named-001.ko.md) · [**피드백 남기기**](https://github.com/leonyoon-3dai/PhyRC_2027_phase1/issues/new?title=%5BE24+%ED%94%BC%EB%93%9C%EB%B0%B1%5D+%EC%A7%84%EC%9E%85+%EC%8B%9C%EB%8F%84%EC%99%80+%EB%B6%80%EB%B6%84+%EB%B3%B5%EA%B5%AC&body=%EC%8B%9C%EB%8F%84%3A+E24+%2F+20261107-astra-progress1179-named-001%0A%EC%98%81%EC%83%81+%EC%8B%9C%EA%B0%81+%EB%98%90%EB%8A%94+%EA%B2%BD%EA%B3%84%3A%0A%EC%B9%B4%EB%A9%94%EB%9D%BC%3A%0A%0A%EB%B3%B4%EC%9D%B4%EB%8A%94+%EC%82%AC%EC%8B%A4%3A%0A%0A%ED%95%B4%EC%84%9D%C2%B7%EC%A7%88%EB%AC%B8%3A%0A%0A%EB%8B%A4%EC%9D%8C%EC%97%90+%EB%B9%84%EA%B5%90%ED%95%A0+%EB%B0%A9%EB%B2%95%3A%0A) · [이전 E23 팔 노출](20261107-astra-progress787-named-001.ko.md)
+
+**공식 원점수 5/50 · 픽업5 · 착의0 · `success=false` · 1,610/1,610기록 검사 통과.** 높이와 접근 방향을 바꾸면서 손과 옷 경계가 함께 보였지만, 몸쪽 진입 동작 뒤 큰 천 면이 손과 틈을 가렸습니다. 마지막 후퇴·들기에서는 어두운 틈이 일부 다시 드러났습니다. **부분 시야 복구는 있었고, 공식 소매 통과·착의 득점은 없었습니다.** 22회 행동 후 감독 종료했으며, 모델 자율 종료나30판단 예산 소진과 구분합니다. 최고5점, 중간 목표10점은 아직 미달성입니다.
+
+1483–1610경계 · 128프레임 · 25.6초 · 4배 느리게입니다. 위는 로봇0/1 머리, 아래는 로봇0/1 손목이며 모델 대기는 제외했습니다. [영상 출처](assets/20261107-e24-entry-recovery/provenance.json) · [학습 검토 구간](../collection/reviews/20261107-astra-progress1179-named-001-learning-segments.json) · [목표·실제 팔 운동 대조](../collection/reviews/20261107-astra-progress1179-named-001-motion.ko.md)
+
+전체 **1,610전이·시뮬레이션80.5초**, 새 구간은 **431전이·21.55초**입니다. 실제50분26초, 1179재실행+304모델 행동+126정착+1감독 마감이며 26호출/22행동, 깊이 질의3회16유효점·질의 중 물리0입니다. 마지막 질의 후 행동 응답은 실행하지 않았습니다. 전이1개는 관측→행동→다음 관측의0.05초 기록입니다.
+
+**다음 E25 준비:** E18/563의 양측 지지 관측 구간에서 한쪽 지지를 유지하며 다른 접근 가능한 가장자리를 실제로 다시 잡는 `coordinated-opposing-rim`을 비교합니다. 테이블 지지·한 번의 재파지·닫힘 뒤 국소 천 동행·두 경계 상대 변화 검사를 포함합니다. E17의 미확인 가설을 다른 출발점과 검사 순서로 재시험하며, 아직 실제 효과는 미확인입니다. [현재 상태·명령](../project/STATUS.md) · [방법 설명](../collection/research/2026-11-07-opposing-rim-candidate.ko.md)
+
+[**출발점 화면 5개 비교·피드백**](20261107-support-startpoints.ko.md) · [**출발점·방법 데이터베이스**](../collection/catalog/README.ko.md) · [**0→5→10 구간 조합 장기계획**](../collection/research/2026-11-07-composable-scoring-data-plan.ko.md)
+
+[더 이른5점 출발 후보](../collection/research/2026-11-07-earlier-support-startpoints.ko.md) · [의복 방향·경계의 경쟁 가설](../collection/research/2026-11-07-garment-direction-hypotheses.ko.md) · [다른 조작 대안](../collection/research/2026-11-07-post-overhead-method-options.ko.md) · [전체 갤러리](README.ko.md)
+
+**10점은 중간 목표이며 공식 확인 후 다음 득점 항목으로 계속 진행합니다.** 실패·복구와 원본을 보존하고, 합성 자료 확대는 장기 계획으로 구분합니다.
+
+<details>
+<summary>E23까지 갤러리·당시 계획 이력</summary>
+
+> 아래는 당시 기록입니다. 현재 상태는 위 내용을 따릅니다.
+
 **최신 E23 · 방향 반전 뒤 팔 노출, 머리 접근까지 진행**
 
 <a href="assets/20261107-e23-arm-head-progress/event.mp4"><img src="assets/20261107-e23-arm-head-progress/preview.gif" width="960" alt="E23 공개 네 카메라. 손과 전완이 드러나는 변화 뒤 머리 높이로 옷을 올리고 내려보는 과정"></a>
@@ -484,6 +509,8 @@ plan3는 중간 관측으로 다시 판단하는 조건부 계획이 아닙니�
 
 </details>
 
+
+</details>
 
 </details>
 

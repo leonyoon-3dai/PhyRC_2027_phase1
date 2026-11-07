@@ -1,0 +1,495 @@
+{
+  "schema": "public-learning-segments-v1",
+  "run_id": "20261107-astra-progress1179-named-001",
+  "parent_attempt": "20261107-astra-progress787-named-001",
+  "source_group": "20261106-coordinated-demo-methods",
+  "source_commit": "b0513d43a87c813397c57d8a4fa6ec4e6ff6ba03",
+  "recording_status": "closed_supervisor_interrupted_capture_complete",
+  "training_approval": "unreviewed",
+  "label_provenance": [
+    "Public finalized decisions and concise final reasons",
+    "Designated public RGB observations0–22 directly inspected; camera scope documented in review",
+    "Public robot state and independent D4–D6 motion review",
+    "Exported final designated5-camera RGB at boundary1610 directly inspected",
+    "Root-confirmed technical cleanup and supervisor termination status"
+  ],
+  "evidence_decisions_path": "output/operator-traces/20261107-astra-progress1179-named-001/decisions.jsonl",
+  "raw_recordings_preserved": true,
+  "raw_records_rewritten": false,
+  "policy_teacher_hidden_evaluation_fields_included": false,
+  "split_constraints": [
+    "Group by source_group and replay lineage before train/validation split.",
+    "Same action prefix is not an exact cloth checkpoint; initial E24 folds differ from E23.",
+    "Adjacent frames, shared replay prefixes and branches are not independent successful demonstrations.",
+    "Visual opening hypotheses, apparent local support and projected hand/rim overlap are not approved success teacher labels.",
+    "Supervisor cleanup and discarded model response are not actor imitation actions."
+  ],
+  "transition_boundary_semantics": "[start,end): count=end-start; inclusive video boundary images count+1. Episode-relative elapsed time is count/20; do not substitute simulator absolute timestamps.",
+  "counts": {
+    "recorded_transitions": 1610,
+    "replay_transitions": 1179,
+    "new_transitions": 431,
+    "model_action_transitions": 304,
+    "controller_settle_transitions": 126,
+    "supervisor_cleanup_transitions": 1,
+    "model_call_attempts": 26,
+    "finalized_decisions": 22,
+    "executed_act_decisions": 22,
+    "finish_decisions": 0,
+    "depth_query_results": 3,
+    "queried_points": 16,
+    "valid_queried_points": 16,
+    "depth_query_physics_transitions": 0,
+    "depth_query_action_cycles_completed": 2,
+    "interrupted_query_action_cycles": 1,
+    "unexecuted_followup_model_calls": 1,
+    "release_regrasp_decisions": 0
+  },
+  "segments": [
+    {
+      "id": "initial_torso_approach",
+      "kind": "goal_directed_approach",
+      "decision_indices": [
+        0,
+        1
+      ],
+      "transition_start": 1179,
+      "transition_end_exclusive": 1223,
+      "transition_count": 44,
+      "model_action_transitions": 32,
+      "controller_settle_transitions": 12,
+      "supervisor_cleanup_transitions": 0,
+      "observation_evidence": [
+        "output/actors/20261107-astra-progress1179-named-001/observations/00000",
+        "output/actors/20261107-astra-progress1179-named-001/observations/00001",
+        "output/actors/20261107-astra-progress1179-named-001/observations/00002"
+      ],
+      "public_label": "Paired lateral lowering shifts the supported garment toward the forearms. Arms remain exposed in head views while the head-opening connection stays occluded.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "pitch_target_recovery",
+      "kind": "posture_recovery",
+      "decision_indices": [
+        2
+      ],
+      "transition_start": 1223,
+      "transition_end_exclusive": 1241,
+      "transition_count": 18,
+      "model_action_transitions": 12,
+      "controller_settle_transitions": 6,
+      "supervisor_cleanup_transitions": 0,
+      "observation_evidence": [
+        "output/actors/20261107-astra-progress1179-named-001/observations/00002",
+        "output/actors/20261107-astra-progress1179-named-001/observations/00003"
+      ],
+      "public_label": "Paired pitch and robot1 retraction change the cloth fold but do not reveal a new head-opening relation.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "reversed_lateral_approach",
+      "kind": "approach_direction_change",
+      "decision_indices": [
+        3
+      ],
+      "transition_start": 1241,
+      "transition_end_exclusive": 1263,
+      "transition_count": 22,
+      "model_action_transitions": 16,
+      "controller_settle_transitions": 6,
+      "supervisor_cleanup_transitions": 0,
+      "observation_evidence": [
+        "output/actors/20261107-astra-progress1179-named-001/observations/00003",
+        "output/actors/20261107-astra-progress1179-named-001/observations/00004"
+      ],
+      "public_label": "Lateral direction reversal and lowering bring the lower hand nearer the projected rim candidate. No release or regrasp.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "extension_command_actual_mismatch",
+      "kind": "command_actual_divergence",
+      "decision_indices": [
+        4
+      ],
+      "transition_start": 1263,
+      "transition_end_exclusive": 1285,
+      "transition_count": 22,
+      "model_action_transitions": 16,
+      "controller_settle_transitions": 6,
+      "supervisor_cleanup_transitions": 0,
+      "observation_evidence": [
+        "output/actors/20261107-astra-progress1179-named-001/observations/00004",
+        "output/actors/20261107-astra-progress1179-named-001/observations/00005"
+      ],
+      "public_label": "Robot1 measured extension increases67.077mm while its target decreases38.720mm. Named/canonical/applied commands match. Simultaneous base/lift commands prevent treating this as an isolated arm test; physical cause unresolved.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "neutral_residual_wait",
+      "kind": "neutral_diagnostic",
+      "decision_indices": [
+        5
+      ],
+      "transition_start": 1285,
+      "transition_end_exclusive": 1295,
+      "transition_count": 10,
+      "model_action_transitions": 10,
+      "controller_settle_transitions": 0,
+      "supervisor_cleanup_transitions": 0,
+      "observation_evidence": [
+        "output/actors/20261107-astra-progress1179-named-001/observations/00005",
+        "output/actors/20261107-astra-progress1179-named-001/observations/00006"
+      ],
+      "public_label": "Ten model-neutral transitions reduce robot1 extension6.706mm but leave98.083mm negative target-minus-actual error. No extra controller settling and little visual change.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "extension_target_reset",
+      "kind": "target_reset_recovery",
+      "decision_indices": [
+        6
+      ],
+      "transition_start": 1295,
+      "transition_end_exclusive": 1317,
+      "transition_count": 22,
+      "model_action_transitions": 16,
+      "controller_settle_transitions": 6,
+      "supervisor_cleanup_transitions": 0,
+      "observation_evidence": [
+        "output/actors/20261107-astra-progress1179-named-001/observations/00006",
+        "output/actors/20261107-astra-progress1179-named-001/observations/00007"
+      ],
+      "public_label": "Robot1 target rises125.840mm while actual extension rises14.273mm. Smaller target error primarily reflects target reset, not restored tracking of the former retraction goal or proven contact relief. Compensated gripper-reference motion is approximate.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "queried_withdrawal",
+      "kind": "query_informed_realign",
+      "decision_indices": [
+        7,
+        8
+      ],
+      "transition_start": 1317,
+      "transition_end_exclusive": 1361,
+      "transition_count": 44,
+      "model_action_transitions": 32,
+      "controller_settle_transitions": 12,
+      "supervisor_cleanup_transitions": 0,
+      "observation_evidence": [
+        "output/actors/20261107-astra-progress1179-named-001/observations/00007",
+        "output/actors/20261107-astra-progress1179-named-001/observations/00008",
+        "output/actors/20261107-astra-progress1179-named-001/observations/00009"
+      ],
+      "public_label": "First depth query precedes paired withdrawal/lateral motion. Face, body and curved rim become more visible; withdrawal can move cloth away from the body, so visibility is not dressing progress.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "intentional_counterroll",
+      "kind": "intentional_orientation_change",
+      "decision_indices": [
+        9
+      ],
+      "transition_start": 1361,
+      "transition_end_exclusive": 1379,
+      "transition_count": 18,
+      "model_action_transitions": 12,
+      "controller_settle_transitions": 6,
+      "supervisor_cleanup_transitions": 0,
+      "observation_evidence": [
+        "output/actors/20261107-astra-progress1179-named-001/observations/00009",
+        "output/actors/20261107-astra-progress1179-named-001/observations/00010"
+      ],
+      "public_label": "Explicit opposite wrist rolls and extension target adjustment execute. Wrist views change while head-view hand/rim relation changes little. Distinct from E18 unintended roll commands.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "differential_tilt",
+      "kind": "relative_support_reposition",
+      "decision_indices": [
+        10
+      ],
+      "transition_start": 1379,
+      "transition_end_exclusive": 1397,
+      "transition_count": 18,
+      "model_action_transitions": 12,
+      "controller_settle_transitions": 6,
+      "supervisor_cleanup_transitions": 0,
+      "observation_evidence": [
+        "output/actors/20261107-astra-progress1179-named-001/observations/00010",
+        "output/actors/20261107-astra-progress1179-named-001/observations/00011"
+      ],
+      "public_label": "Opposite lift commands separate forearm-above and rim-below projections in robot1 wrist. New information without regrasp or confirmed passage.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "repeated_withdrawal_realign",
+      "kind": "same_grip_realign",
+      "decision_indices": [
+        11,
+        12,
+        13,
+        14
+      ],
+      "transition_start": 1397,
+      "transition_end_exclusive": 1483,
+      "transition_count": 86,
+      "model_action_transitions": 62,
+      "controller_settle_transitions": 24,
+      "supervisor_cleanup_transitions": 0,
+      "observation_evidence": [
+        "output/actors/20261107-astra-progress1179-named-001/observations/00011",
+        "output/actors/20261107-astra-progress1179-named-001/observations/00012",
+        "output/actors/20261107-astra-progress1179-named-001/observations/00013",
+        "output/actors/20261107-astra-progress1179-named-001/observations/00014",
+        "output/actors/20261107-astra-progress1179-named-001/observations/00015"
+      ],
+      "public_label": "Repeated withdrawal and one target adjustment expose a longer dark slit between yellow bands. Folded panel versus free opening lip remains unresolved; later retreat yields less new hand/rim information.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "lift_hand_reveal",
+      "kind": "approach_direction_change",
+      "decision_indices": [
+        15,
+        16
+      ],
+      "transition_start": 1483,
+      "transition_end_exclusive": 1517,
+      "transition_count": 34,
+      "model_action_transitions": 22,
+      "controller_settle_transitions": 12,
+      "supervisor_cleanup_transitions": 0,
+      "observation_evidence": [
+        "output/actors/20261107-astra-progress1179-named-001/observations/00015",
+        "output/actors/20261107-astra-progress1179-named-001/observations/00016",
+        "output/actors/20261107-astra-progress1179-named-001/observations/00017"
+      ],
+      "public_label": "Base-fixed lift followed by a small withdrawal/lift reveals the tracked hand in robot1 wrist and brings fingers into projected yellow-rim overlap. Continuous passage not established.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "torso_entry_trial",
+      "kind": "entry_attempt",
+      "decision_indices": [
+        17
+      ],
+      "transition_start": 1517,
+      "transition_end_exclusive": 1535,
+      "transition_count": 18,
+      "model_action_transitions": 12,
+      "controller_settle_transitions": 6,
+      "supervisor_cleanup_transitions": 0,
+      "observation_evidence": [
+        "output/actors/20261107-astra-progress1179-named-001/observations/00017",
+        "output/actors/20261107-astra-progress1179-named-001/observations/00018"
+      ],
+      "public_label": "Forward/lateral/lower motion tests body-opening entry. A large blue surface folds into both wrist views and hides the tracked hand/slit. Entry versus external folding and front/back surface identity remain unresolved.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "partial_base_reverse",
+      "kind": "recovery",
+      "decision_indices": [
+        18
+      ],
+      "transition_start": 1535,
+      "transition_end_exclusive": 1553,
+      "transition_count": 18,
+      "model_action_transitions": 12,
+      "controller_settle_transitions": 6,
+      "supervisor_cleanup_transitions": 0,
+      "observation_evidence": [
+        "output/actors/20261107-astra-progress1179-named-001/observations/00018",
+        "output/actors/20261107-astra-progress1179-named-001/observations/00019"
+      ],
+      "public_label": "Only the prior base directions reverse; prior lowering is not reversed. Selected views do not restore hand/slit visibility. This is not a full inverse-action test or proof of hysteresis.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "differential_height_recovery",
+      "kind": "recovery",
+      "decision_indices": [
+        19
+      ],
+      "transition_start": 1553,
+      "transition_end_exclusive": 1571,
+      "transition_count": 18,
+      "model_action_transitions": 12,
+      "controller_settle_transitions": 6,
+      "supervisor_cleanup_transitions": 0,
+      "observation_evidence": [
+        "output/actors/20261107-astra-progress1179-named-001/observations/00019",
+        "output/actors/20261107-astra-progress1179-named-001/observations/00020"
+      ],
+      "public_label": "Changing support height difference leaves the large-surface occlusion and hand/slit relation unresolved.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "unilateral_pitch_recovery",
+      "kind": "recovery",
+      "decision_indices": [
+        20
+      ],
+      "transition_start": 1571,
+      "transition_end_exclusive": 1587,
+      "transition_count": 16,
+      "model_action_transitions": 10,
+      "controller_settle_transitions": 6,
+      "supervisor_cleanup_transitions": 0,
+      "observation_evidence": [
+        "output/actors/20261107-astra-progress1179-named-001/observations/00020",
+        "output/actors/20261107-astra-progress1179-named-001/observations/00021"
+      ],
+      "public_label": "Robot1 compensated pitch/lower/retract changes its view while large-surface occlusion persists. Intended tip compensation is not a fixed-tip or fixed-cloth certification.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "partial_slit_reexposure",
+      "kind": "partial_visual_recovery",
+      "decision_indices": [
+        21
+      ],
+      "transition_start": 1587,
+      "transition_end_exclusive": 1609,
+      "transition_count": 22,
+      "model_action_transitions": 16,
+      "controller_settle_transitions": 6,
+      "supervisor_cleanup_transitions": 0,
+      "observation_evidence": [
+        "output/actors/20261107-astra-progress1179-named-001/observations/00021",
+        "output/actors/20261107-astra-progress1179-named-001/observations/00022"
+      ],
+      "public_label": "Withdrawal and asymmetric raising re-expose a dark slit between two yellow bands in robot1 head. Preserve this late information gain; the tracked lower-hand connection, passage and opening identity remain unresolved.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "supervisor_cleanup",
+      "kind": "controller_cleanup",
+      "decision_indices": [],
+      "transition_start": 1609,
+      "transition_end_exclusive": 1610,
+      "transition_count": 1,
+      "model_action_transitions": 0,
+      "controller_settle_transitions": 0,
+      "supervisor_cleanup_transitions": 1,
+      "observation_evidence": [
+        "docs/collection/attempts/20261107-astra-progress1179-named-001/images/final-overview.png",
+        "docs/collection/attempts/20261107-astra-progress1179-named-001/images/final-robot_0_head.png",
+        "docs/collection/attempts/20261107-astra-progress1179-named-001/images/final-robot_1_head.png",
+        "docs/collection/attempts/20261107-astra-progress1179-named-001/images/final-robot_0_wrist.png",
+        "docs/collection/attempts/20261107-astra-progress1179-named-001/images/final-robot_1_wrist.png"
+      ],
+      "public_label": "One supervisor cleanup neutral transition after interruption. Human direct manipulation0; not an actor decision, autonomous finish, user pause or budget exhaustion.",
+      "training_approval": "unreviewed"
+    }
+  ],
+  "zero_physics_query_events": [
+    {
+      "decision_slot": 7,
+      "model_call_index": 7,
+      "transition_boundary": 1317,
+      "camera": "robot_1_head",
+      "point_count": 6,
+      "valid_points": 6,
+      "physics_transitions": 0,
+      "subsequent_action_executed": true,
+      "interpretation_limit": "Visible-surface optical Z and optional camera-relative points do not identify opening topology, hidden surfaces or contact."
+    },
+    {
+      "decision_slot": 12,
+      "model_call_index": 13,
+      "transition_boundary": 1417,
+      "camera": "robot_1_head",
+      "point_count": 4,
+      "valid_points": 4,
+      "physics_transitions": 0,
+      "subsequent_action_executed": true,
+      "interpretation_limit": "Visible-surface optical Z and optional camera-relative points do not identify opening topology, hidden surfaces or contact."
+    },
+    {
+      "decision_slot": 22,
+      "model_call_index": 24,
+      "transition_boundary": 1609,
+      "camera": "robot_1_head",
+      "point_count": 6,
+      "valid_points": 6,
+      "physics_transitions": 0,
+      "subsequent_action_executed": false,
+      "interpretation_limit": "Visible-surface optical Z and optional camera-relative points do not identify opening topology, hidden surfaces or contact."
+    }
+  ],
+  "interrupted_followup": {
+    "decision_slot": 22,
+    "initial_query_model_call_index": 24,
+    "followup_model_call_index": 25,
+    "call_phase": "action_after_query",
+    "finalized_decision": false,
+    "executed": false,
+    "physics_transitions": 0,
+    "trace_event": "depth_query_cycle_stopped",
+    "error_type": "KeyboardInterrupt",
+    "training_label": "No applied action target; preserve as interrupted/discarded followup."
+  },
+  "termination": {
+    "kind": "supervisor_sigint",
+    "requested_at_utc": "2026-11-07T05:01:38.460648Z",
+    "actor_finish": false,
+    "decision_budget_exhausted": false,
+    "human_direct_manipulation_actions": 0,
+    "capture_status": "complete",
+    "capture_reason": "operator_finished",
+    "host_exit_code": 130,
+    "python_exit_code": 130,
+    "simulator_returncode": 0
+  },
+  "named_action_checks": {
+    "finalized_act_decisions_checked": 22,
+    "named_to_canonical_match": true,
+    "canonical_to_applied_float32_match": true,
+    "nonzero_roll_decisions": [
+      9
+    ],
+    "roll_intent": "Explicit counter-roll in final brief reason; not an unintended-axis label.",
+    "gripper_commands_all_zero": true
+  },
+  "final_public_rgb": [
+    {
+      "path": "docs/collection/attempts/20261107-astra-progress1179-named-001/images/final-overview.png",
+      "sha256": "661812554a41cea5cd7f3952996268cf750f0f97e53d61215436603d3d37bcfd",
+      "directly_inspected": true
+    },
+    {
+      "path": "docs/collection/attempts/20261107-astra-progress1179-named-001/images/final-robot_0_head.png",
+      "sha256": "0762391cff430d95b2271265a5c416484683d6e793995616fa47d12843a616a3",
+      "directly_inspected": true
+    },
+    {
+      "path": "docs/collection/attempts/20261107-astra-progress1179-named-001/images/final-robot_1_head.png",
+      "sha256": "c6a40bbfc2bb7c6adaaa94116da04ec195dcd7697a1693832037efc853091d17",
+      "directly_inspected": true
+    },
+    {
+      "path": "docs/collection/attempts/20261107-astra-progress1179-named-001/images/final-robot_0_wrist.png",
+      "sha256": "52826abecc2741c5149c30c6b1d4dce1ad67423905ba39b75e159906d2116d31",
+      "directly_inspected": true
+    },
+    {
+      "path": "docs/collection/attempts/20261107-astra-progress1179-named-001/images/final-robot_1_wrist.png",
+      "sha256": "5736f811f170037d4ba495f409e97dc0b6d9824e9de7cccfa616a6bf59440479",
+      "directly_inspected": true
+    }
+  ],
+  "technical_quality": {
+    "quality_passed": true,
+    "validated_transitions": 1610,
+    "errors": 0,
+    "source": "Root-confirmed full capture QC; separate from visual labels and training approval."
+  },
+  "preservation": {
+    "status": "verified",
+    "receipt_path": "docs/project/sessions/20261107-e24-backup-verification.json",
+    "revision": "1edca310c1b869a8f4c01b3eeb67b14f6699e12c",
+    "archive_sha256": "0c5ac72698bc35ee138b0e0629773fb23a7bbeacd7cd9cc195110a6af76d6af2",
+    "archive_members_verified": 263
+  }
+}

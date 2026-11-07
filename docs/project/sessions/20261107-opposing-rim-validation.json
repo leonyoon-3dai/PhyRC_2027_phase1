@@ -1,0 +1,65 @@
+{
+  "schema": "phyrc-opposing-rim-validation-v1",
+  "source_commit_at_start": "1e86599699ab8497c4227d8b43c30a7d1bcf7931",
+  "source_commit_at_end": "1e86599699ab8497c4227d8b43c30a7d1bcf7931",
+  "candidate_commit": "a3d10a5bed687469b2887cc28b7f4d01ed484548",
+  "integration_commit": "1e86599699ab8497c4227d8b43c30a7d1bcf7931",
+  "started_at_utc": "2026-11-07T05:08:21.058237+00:00",
+  "finished_at_utc": "2026-11-07T05:08:50.236864+00:00",
+  "command": "PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m unittest discover -s tests -v",
+  "working_directory": "/home/shadeform/workspace/PhyRC_2027_phase1",
+  "test_count": 310,
+  "unittest_reported_elapsed_s": 28.898,
+  "subprocess_wall_elapsed_s": 29.17861030199856,
+  "exit_code": 0,
+  "status": "passed",
+  "log_file": "output/verification/20261107-opposing-rim-full-suite.log",
+  "log_bytes": 54254,
+  "log_sha256": "5e2c0d0316a8b056eb09ef4f96204bbb6621d76c02e772593b78937b2f587e46",
+  "scope": "Full repository CPU unittest discovery after E24 closed and opposing-rim candidate integration. Existing test fixtures; no real actor/model, GPU or physics run.",
+  "source_file_sha256_before": {
+    "participant/collection/codex_client.py": "c567927658dfe3b713b10b04b5bc4ee82722fb98171cbd853d78c2237b12f943",
+    "tests/test_opposing_rim_strategy.py": "403d3604fa5e26f9344b227e9f1b2caa4aaefb5d56c2ff036790684f447f6437"
+  },
+  "source_file_sha256_after": {
+    "participant/collection/codex_client.py": "c567927658dfe3b713b10b04b5bc4ee82722fb98171cbd853d78c2237b12f943",
+    "tests/test_opposing_rim_strategy.py": "403d3604fa5e26f9344b227e9f1b2caa4aaefb5d56c2ff036790684f447f6437"
+  },
+  "checked_source_files_unchanged_during_test": true,
+  "new_strategy_test_class": "test_opposing_rim_strategy.OpposingRimStrategyTest",
+  "new_strategy_test_count": 8,
+  "new_strategy_legacy_prompt_oracle": "952ec8da68cdc0ef635d0d45329712eee006fd1f",
+  "legacy_strategy_configs_checked": 48,
+  "legacy_strategy_configs_definition": "12 existing strategies x named ON/OFF x depth-query ON/OFF; covered within the full suite, not added to test_count.",
+  "limitations": [
+    "CPU protocol/selection/default-regression results do not establish dressing performance.",
+    "Real model compliance with one regrasp cycle, placement bounds and support verification remains untested.",
+    "E25 is planned, not executed by this verification."
+  ],
+  "runtime_changed_by_verification": false,
+  "gpu_or_real_model_calls": 0,
+  "new_strategy_tests_passed_in_full_discovery": [
+    "test_opposing_rim_strategy.OpposingRimStrategyTest.test_gripper_close_does_not_invent_settle_or_the_subsequent_support_action",
+    "test_opposing_rim_strategy.OpposingRimStrategyTest.test_new_task_is_selected_without_other_regrasp_or_entry_gates",
+    "test_opposing_rim_strategy.OpposingRimStrategyTest.test_old_constants_and_nonrouting_functions_match_published_source",
+    "test_opposing_rim_strategy.OpposingRimStrategyTest.test_optional_features_default_off_with_original_action_schema",
+    "test_opposing_rim_strategy.OpposingRimStrategyTest.test_other_modes_and_grouped_plans_rejected_before_output_or_simulator",
+    "test_opposing_rim_strategy.OpposingRimStrategyTest.test_query_freezes_public_images_clock_and_normalizes_followup_before_act",
+    "test_opposing_rim_strategy.OpposingRimStrategyTest.test_trusted_threshold_parent_and_seed_do_not_enter_actor_prompt",
+    "test_opposing_rim_strategy.OpposingRimStrategyTest.test_twelve_old_routes_keep_prompt_schema_images_dispatch_in_48_configs"
+  ],
+  "planned_experiment_at_validation": {
+    "label": "E25",
+    "status": "planned_not_started",
+    "source_run_id": "20261106-astra-guide470-depth-001",
+    "replay_prefix_steps": 563,
+    "history_boundaries": [
+      510,
+      542
+    ],
+    "strategy": "coordinated-opposing-rim",
+    "decisions": 30,
+    "max_sim_steps": 1400,
+    "actual_dressing_performance_tested": false
+  }
+}

@@ -1,10 +1,10 @@
 # 클린 서버 복원·검사·재개 안내
 
-**최신 E23은5/50·착의0·success=false,1,180/1,180전이 검사 통과입니다.** 방향 반전과 측면 이동 뒤 팔 노출은 나타났지만 공식 소매 통과는 없고, 머리 접근 후18판단 예산으로 종료했습니다. 03:30:54–04:02:40UTC·31분46초,source952ec8d clean·host0/Python0/simulator0입니다. 최고5점·중간목표10점미달성입니다.
+**최신 E24는5/50·착의0·success=false,1,610/1,610전이 검사 통과입니다.** 손–경계 정렬과 진입 시도 뒤 큰 면에 가렸고, 마지막에 틈이 일부 다시 드러났습니다. 22행동 후 감독 종료했으며04:11:53–05:02:19UTC·50분26초,sourceb0513d4 clean·host130/Python130/simulator0입니다. 최고5점·중간목표10점미달성입니다.
 
-[현재 상태·다음 명령](STATUS.md) · [E23 영상](../gallery/20261107-astra-progress787-named-001.ko.md) · [분석](../collection/reviews/20261107-astra-progress787-named-001.ko.md) · [전체 일지](sessions/20261106-evening-resume.ko.md)
+[현재 상태·다음 명령](STATUS.md) · [E24 영상](../gallery/20261107-astra-progress1179-named-001.ko.md) · [분석](../collection/reviews/20261107-astra-progress1179-named-001.ko.md) · [전체 일지](sessions/20261106-evening-resume.ko.md)
 
-E24는04:11:53UTC에sourceb0513d4 clean으로실제시작했습니다. 마지막 모델/정착 뒤E23/1179·history1077/1161에서같은task-progress를30판단이어가며현재초기화·재실행중입니다. E15/367원본도대안으로검증복원했으나새실행이아닙니다. 현재소스전체302CPU통과,실행코드변경없음. 기술QC·관측지지·점수·학습승인별도이며자료는unreviewed입니다.
+E25는E18/563·history510/542에서한쪽anchor와테이블지지를유지하며다른경계재파지1cycle·닫힘후검사를비교합니다. M1후보는E24종료후통합했고아직실제시행전입니다. [전체CPU검증](sessions/20261107-opposing-rim-validation.json)과실제옷효과는별도입니다. 모든자료trainingunreviewed이며재실행은정확한천checkpoint가아닙니다.
 
 ## 보존 위치와 고정 revision
 
@@ -21,19 +21,20 @@ E24는04:11:53UTC에sourceb0513d4 clean으로실제시작했습니다. 마지막
 | [E15](sessions/20261106-e15-backup-verification.json) | `ba753c41cf64c361ae91aae9e31f9236106bc4ad` | 초기264 분기·611전이·종료·계측 |
 | [E16 이력](sessions/20261106-e16-backup-verification.json) | `1ad0f8ba3cc71ab80962907c713357fbd4005e3f` | 순차 지지·한쪽 재파지516전이. E17의352분기와 E18의470분기 원본 |
 | [E17 이력](sessions/20261106-e17-backup-verification.json) | `d5ba6c645232c7674d3861fdf65da3a26e9e1ea9` | 다른 lower-rim 후보 재파지452전이·픽업5 |
-| [E18 분기 원본](sessions/20261107-e18-backup-verification.json) | `44d01871f0099f8a537f1bdbfee06a404a95f38c` | 감독자 중단·928전이 정상 마감. E19의801분기·E20/E21의470분기 이력과 **다음 E23의787분기 직접 원본** |
+| [E18 분기 원본](sessions/20261107-e18-backup-verification.json) | `44d01871f0099f8a537f1bdbfee06a404a95f38c` | 감독자 중단·928전이 정상 마감. E19의801분기·E20/E21의470분기 이력과 E22/E23의787분기 및 **다음 E25의563분기 직접 원본** |
 | [E19 원본](sessions/20261107-e19-backup-verification.json) | `a5f9136d1479933b6c026465a8af0321bad1504c` | 명명 명령·세 접근·자율 종료932전이,2,130,731,675 bytes. E20의 직접 부모는 E18 |
 | [E20 원본](sessions/20261107-e20-backup-verification.json) | `ad7b94f4dd65115082ad53527a48efbf99a5947d` | 목선 후보 두 재파지·준비 미완료·726전이, 1,721,601,271bytes. E21 직접부모는 E18 |
-| [E21 최신 원본](sessions/20261107-e21-backup-verification.json) | `45e6adf8586f935b3ca9f6d19ed3ec97371be44f` | 상방 배치·하강·예산 종료1111전이,2,428,228,014 bytes. 마지막 새 파지는 후속 지지 미검증 |
-| [E23 최신 원본](sessions/20261107-e23-backup-verification.json) | `c1157513362e30d6a8306e7c8fd2ec0265e5db2c` | 방향반전·팔노출·머리접근,1180전이·2,730,237,231bytes. E24의직접부모 |
-| [E22 최신 원본](sessions/20261107-e22-backup-verification.json) | `788a36ece3f606ca06dd0f20224910974dbe270e` | 짧은 탐색·자율 종료813전이,1,854,271,559bytes·92member검증. host143/simulator0구분 보존 |
+| [E21 원본](sessions/20261107-e21-backup-verification.json) | `45e6adf8586f935b3ca9f6d19ed3ec97371be44f` | 상방 배치·하강·예산 종료1111전이,2,428,228,014 bytes. 마지막 새 파지는 후속 지지 미검증 |
+| [E24 최신 원본](sessions/20261107-e24-backup-verification.json) | `1edca310c1b869a8f4c01b3eeb67b14f6699e12c` | 진입 시도·부분 시야 복구·감독 종료1610전이,3,879,304,287bytes·263member검증. 다음E25직접부모는E18 |
+| [E23 원본](sessions/20261107-e23-backup-verification.json) | `c1157513362e30d6a8306e7c8fd2ec0265e5db2c` | 방향반전·팔노출·머리접근,1180전이·2,730,237,231bytes. E24의직접부모 |
+| [E22 원본](sessions/20261107-e22-backup-verification.json) | `788a36ece3f606ca06dd0f20224910974dbe270e` | 짧은 탐색·자율 종료813전이,1,854,271,559bytes·92member검증. host143/simulator0구분 보존 |
 | [이름 기반 행동·질의 연결 시험](sessions/20261107-named-depth-wiring-backup-verification.json) | `7817a63289250cb40e94a50a9b816eb45a567660` | 실제 GPU·모델 없는 fixture3전이. 실제 source commit과 dirty 작업 트리 상태는 receipt에 기록 |
 | [BEHAVIOR 참고 원본](sessions/20261107-champion-reference-backup-verification.json) | `427d3a150b48f2e522bbff30f9177d6a2722788d` | 검토한 제3자 원본19개와 출처/범위6파일,6,879,270bytes. 시연·actor·학습 입력과 분리한 참고자료 |
 | [비공개 연구·후보](sessions/20261106-private-research-backup-verification.json) | `3349b6a73bf266cfba015654613e58ae490290b5` | 171개 선별 원본·적용 상태·CPU 근거, 4,600,121 bytes |
 
-E22 원본은 [검증 receipt](sessions/20261107-e22-backup-verification.json)의 고정 revision에서 강제 재다운로드 SHA와 전체92개 archive 파일 해시 일치를03:24:59UTC에 확인했습니다. **다음 E23에는 초기 자산과 E18의787경계까지 재실행할 검증 원본이 필요합니다.** E21 마지막 새 파지는 지지가 미검증이므로 이번 분기의 직접 부모로 사용하지 않습니다.
+E22 원본은 [검증 receipt](sessions/20261107-e22-backup-verification.json)의 고정 revision에서 강제 재다운로드 SHA와 전체92개 archive 파일 해시 일치를03:24:59UTC에 확인했습니다. **다음 E25에는 초기 자산과 E18의563경계까지 재실행할 검증 원본이 필요합니다.** E21 마지막 새 파지는 지지가 미검증이므로 이번 분기의 직접 부모로 사용하지 않습니다.
 
-연구 묶음은 `sessions/20261106-private-research-handoff-v1/` 아래에 있으며 `scope.json`·`handoff.md`가 적용/미적용과 정확한 허용 목록을 설명합니다. phase2 profiler는 미적용입니다. pixel query는 이후 main에 통합돼 E18에서3회·E19에서1회 사용했습니다. 이름 기반 행동은 E19 실제 과제에 적용했고 의도 밖 roll 재발은 관측되지 않았으나 착의 득점은0입니다. 목 우선은 E20에서 실제 비교했고 입구 확인 준비에서 종료했습니다(raw0). 상방 배치·하강은 E21에서 실제 비교했고 raw5·착의0으로 예산 마감했습니다. E21에서는 pixel query를4회 사용했으며 질의 중 물리 진행은0입니다. E22의 `coordinated-entry-probe`는 실제 비교 후5점/no_contact로 종료했습니다. E23의 `coordinated-task-progress`는 통합302CPU검사 후03:30:54UTC에 실제 시작했고 최종 결과는 아직 없습니다. 옛 후보 파일의 `not_applied`는 당시 상태일 수 있으므로 현재 상태표를 우선합니다. 인증·home·원시 추론·actor 이벤트·세션DB·시뮬레이터 로그는 백업에 넣지 않았습니다. 성능 자원121행은 정제된 수치 증거입니다. 실행 원본의 trusted 평가/audit는 비공개 검수용이고 actor에 연결하지 않습니다.
+연구 묶음은 `sessions/20261106-private-research-handoff-v1/` 아래에 있으며 `scope.json`·`handoff.md`가 적용/미적용과 정확한 허용 목록을 설명합니다. phase2 profiler는 미적용입니다. pixel query는 이후 main에 통합돼 E18에서3회·E19에서1회 사용했습니다. 이름 기반 행동은 E19 실제 과제에 적용했고 의도 밖 roll 재발은 관측되지 않았으나 착의 득점은0입니다. 목 우선은 E20에서 실제 비교했고 입구 확인 준비에서 종료했습니다(raw0). 상방 배치·하강은 E21에서 실제 비교했고 raw5·착의0으로 예산 마감했습니다. E21에서는 pixel query를4회 사용했으며 질의 중 물리 진행은0입니다. E22의 `coordinated-entry-probe`는 실제 비교 후5점/no_contact로 종료했습니다. E23의 `coordinated-task-progress`는5점/1180QC로 종료했고, 후속E24도5점/1610QC로 감독 종료했습니다. E25용 `coordinated-opposing-rim`은 E24 종료 후 통합310CPU검사를 통과했으며 아직 실제 시행 전입니다. 옛 후보 파일의 `not_applied`는 당시 상태일 수 있으므로 현재 상태표를 우선합니다. 인증·home·원시 추론·actor 이벤트·세션DB·시뮬레이터 로그는 백업에 넣지 않았습니다. 성능 자원121행은 정제된 수치 증거입니다. 실행 원본의 trusted 평가/audit는 비공개 검수용이고 actor에 연결하지 않습니다.
 
 ## 새 서버 준비와 원본 복원
 
@@ -51,7 +52,7 @@ command -v hf >/dev/null || uv tool install huggingface_hub==2.4.0
 hf auth login
 ```
 
-기존 checkout이나 `.venv`가 있으면 새로 덮어쓰지 않고 먼저 상태를 확인합니다. HF 인증은 새 서버에서 준비하며 토큰을 공개 명령·문서에 넣지 않습니다. 다음 코드는 **먼저 초기 전체 백업**을 새 staging에 복원합니다. 다음 E23 계획에는 초기 자산·E07 백업 뒤 `receipt`를 `docs/project/sessions/20261107-e18-backup-verification.json`으로 바꿔 E18도 별도 새 경로에 복원하고 같은 충돌 거부 병합을 수행합니다. E18 고정 revision은 `44d01871f0099f8a537f1bdbfee06a404a95f38c`입니다. E23도 E18의787경계에서 분기하고 이번 재실행의719/771 관측을 history로 사용할 예정이므로, 다른 시도 원본을 직접 부모로 대신하지 않습니다. 다른 묶음도 필요할 때 같은 방법으로 복원합니다.
+기존 checkout이나 `.venv`가 있으면 새로 덮어쓰지 않고 먼저 상태를 확인합니다. HF 인증은 새 서버에서 준비하며 토큰을 공개 명령·문서에 넣지 않습니다. 다음 코드는 **먼저 초기 전체 백업**을 새 staging에 복원합니다. 다음 E25 계획에는 초기 자산·E07 백업 뒤 `receipt`를 `docs/project/sessions/20261107-e18-backup-verification.json`으로 바꿔 E18도 별도 새 경로에 복원하고 같은 충돌 거부 병합을 수행합니다. E18 고정 revision은 `44d01871f0099f8a537f1bdbfee06a404a95f38c`입니다. E25는 E18의563경계에서 분기하고 이번 재실행의510/542 관측을 history로 사용할 예정이므로, 다른 시도 원본을 직접 부모로 대신하지 않습니다. 다른 묶음도 필요할 때 같은 방법으로 복원합니다.
 
 ```bash
 .venv/bin/python - <<'PY_RESTORE'
