@@ -150,3 +150,19 @@ E17 종료 후 목 우선 후보 커밋 `e2d9d3d84b17d0418e3cd902cd9472cd9212ca4
 E17 갤러리·백업·목 우선 후보·257CPU검사를 main `499b3b8cb29568e6d5530d7ce8bf039c73cd8f6a`에 게시했다. 원격/검토 로컬 tree `d8bd4f55270e5a493856204175a6eba0a42f35c4` 일치를 확인했고, **23:58:53 UTC**에 STATUS의 E18 B 명령을 실행했다. run ID `20261106-astra-guide470-depth-001`, 시작 source_snapshot은499b3b8·working_tree_modified=false다.
 
 실제 옵션은 `coordinated-support-guide`, E16직접부모/prefix470, 새재실행 과거430·464, 현재손목depth·pixel-depth-query ON, plan1·35판단·max1400·timeout180·settle6·review10·phase profile이다. 모델/CLI는 Astra/ultra·0.166.0/exec 그대로다. 첫공개 관측은현재5+과거10+depth패널1의16이미지이며 질의후속은같은현재관측·이미지를유지한다. **질의가능 설정과 실제질의 사용은 구분**하며 종료기록에서 실제사용·query물리0·판단/호출 수를 검토한다. 로그 `output/sessions/20261106-evening/e18-guide470-depth-001.log`. 아직 최종결과는없다.
+
+## E18 마감·학습 검토 구간·명명 행동 비교
+
+E18은2026-11-07 00:29:56 UTC에 감독SIGINT로마감했다. 같은 전진 설명에 robot1 wrist_roll=+1이 포함된D16,D21두번의 실제명령과D17–19,D22–24복구를분리했다. 끝모델호출29(D26)는시도됐지만최종실행판단을추가하지않았다. client130은요청된중단이고simulator0·finished/capture_complete=true·QC928/928통과다. 물리/행동기록을수정하지않았다. 요청근거는`output/sessions/20261106-evening/e18-supervisor-interruption.json`이다.
+
+결과는픽업5/50·모든착의항목0·success=false·no_dressing_points/0.0points/s. 30호출시도/26실행act·질의3회(각물리0),470재실행+313모델+144제어기+1종료=928기록/46.4sim초다. 실제1862.365559초,모델호출경로1000.802692초·환경806.244306초다. 실제가이드재파지는0회였고,새로실행된것은공개depth조회·운반대형/접근시야변경이다.
+
+사용자는이러한오류·복구과정도향후학습자료로가치있다고확인했다. [구간주석](../../collection/reviews/20261106-astra-guide470-depth-001-learning-segments.json)은정상접근·두추가roll·복구·질의·감독중단을연결하며원본과source group을유지한다. training_approval=unreviewed이며숨은평가기하를행동라벨로사용하지않는다.
+
+E18종료후명명행동후보227186d를병합했다. 기본OFF이며정확한로봇2개×채널9개키를공식순서로값변경없이변환하고기존validator/dispatch를유지한다. raw named와mapping SHA및canonical action을보존한다. 전체269CPU검사9.569초통과후CLI합성2턴(16이미지동일·같은세션·물리0/GPU0)도17.881초에통과했다. 모델없는실제GPU named+query 연결`20261107-named-depth-wiring-001`은실모델0·fixture4호출·질의1회물리0·총3/3기록검사통과했다. 실제옷조작의오류감소는미검증이다.
+
+다음은STATUS의E19계획이다. E18의첫roll직전801경계와새재실행771/787사진을사용하고B+query에named만추가한다. 의복조작전략을바꾼비교로세지않으며재실행은정확한물리복원이아니다. 목우선후보는아직미실행으로남긴다.
+
+최신 전체검사는270개/10.077초통과,`output/sessions/20261106-evening/cpu-named-final.log`SHA256 `eef05f8da21a5f93da6882384a2a9917dce65232b9e929afd71bd0cf626d243e`. E18prefix801의닫힌전체928원본검사·출처·재실행입력검증도통과했다.
+
+E18원본재다운로드검증완료:revision`44d01871f0099f8a537f1bdbfee06a404a95f38c`,2,167,209,525bytes,SHA256`bfce450c5725e79ef7cf878f6412cfe08f64cf68ab91d1cc267433c079ccf470`,2026-11-07T00:36:13.693113UTC. [receipt](20261107-e18-backup-verification.json). namedwiring도revision`7817a63289250cb40e94a50a9b816eb45a567660`,9,576,993bytes,SHA256`93837540ab791ca2749def44d9ee73732a8b92e71057f6f58071fb3d473310bd`로00:38:23UTC재다운로드검증했다. [wiringreceipt](20261107-named-depth-wiring-backup-verification.json).

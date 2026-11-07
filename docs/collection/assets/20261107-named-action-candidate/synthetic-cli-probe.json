@@ -1,0 +1,435 @@
+{
+  "schema": "phyrc-synthetic-depth-query-probe-v1",
+  "model": "gpt-6-astra",
+  "effort": "ultra",
+  "model_timeout_s": 180.0,
+  "max_model_calls": 2,
+  "model_calls_attempted": 2,
+  "calls_completed": 2,
+  "physics_transitions": 0,
+  "simulator_created": false,
+  "gpu_calls": 0,
+  "synthetic_only": true,
+  "dressing_or_semantic_selection_validated": false,
+  "image_count": 16,
+  "image_sha256": [
+    "070c044d7f4275089eca0dae7a1248fa05cb62d7968cedf317c71ee61d4c5a9f",
+    "edd32b11f6278288231fe999a9a57abfca71a4df4f371c4ab537df0fa2674d28",
+    "1f2acf1e91a34e8da29daf2fda2af18cf94386bfc73e084256536eec3b51f84a",
+    "2eaeb651a51a6103098712d87aabea61b27bd6a2b679f51708db9b0e72dac7d0",
+    "08ff3d2d642249434fbb0e5d71ff8d0dbb499294149c124523fcaa39566c0453",
+    "cc12101bf543b43c3a7587eb35de8ff9e37789971f4c77deb6f6e940cd311c37",
+    "ce3d0180e22a9f9205cc83bfcaaada1cdd136ce4119f62be3233e17864b13461",
+    "701388700ae50f3574b077a6b2360ee7113b96fe3c5775e4de46d6f38185debd",
+    "2375f7f7888919e084944015801ccd0b1b52429704754f72e9f08e5e90b1b775",
+    "39e865ba231269ff64c609f9ff7963c7472646a166ead2c6664cad2c0b00cd8d",
+    "74866c56c36f88bde667d8663d2ccd984d35a641e8721ea9709ac2dbc23e2e95",
+    "650fa59dc519e51725b84a5f1f1c5c157ad5b4e286bd60af9e813a3342f8a6d9",
+    "2bf1c06903f21301d0d3f774f5bbe3abee9e81347f65a74c2d52e3e734031668",
+    "7d539c0a024e81d29079f406bbe65cc9de964af712cf1f06228b01d91d9d0639",
+    "6a116a7310ce2a8239f1f47edf6da18c3c5356624922e4486404a591d5826e90",
+    "94797e810451e4ac5362ad37806918e8d7574e8791936945549f7a49630fa98b"
+  ],
+  "frozen_observation_id": "2342831cbdf408803f5ade4fa5550b4244e1b43d1b37b9a74a3aa9f998252abb",
+  "passed": true,
+  "cleanup_ok": true,
+  "named_actions": {
+    "schema": "phyrc-named-actions-v1",
+    "robot_order": [
+      "robot_0",
+      "robot_1"
+    ],
+    "channel_order": [
+      "base_forward",
+      "base_left",
+      "base_CCW_yaw",
+      "lift",
+      "arm_extension",
+      "wrist_yaw",
+      "wrist_pitch",
+      "wrist_roll",
+      "gripper"
+    ],
+    "official_dtype": "float32",
+    "value_transform": "none",
+    "validation": "existing_official_action_validator"
+  },
+  "cli_version": "codex-cli 0.166.0",
+  "same_session_resumed": true,
+  "validated_float32_action": [
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.3499999940395355,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "staged_image_sha256": [
+    [
+      "070c044d7f4275089eca0dae7a1248fa05cb62d7968cedf317c71ee61d4c5a9f",
+      "edd32b11f6278288231fe999a9a57abfca71a4df4f371c4ab537df0fa2674d28",
+      "1f2acf1e91a34e8da29daf2fda2af18cf94386bfc73e084256536eec3b51f84a",
+      "2eaeb651a51a6103098712d87aabea61b27bd6a2b679f51708db9b0e72dac7d0",
+      "08ff3d2d642249434fbb0e5d71ff8d0dbb499294149c124523fcaa39566c0453",
+      "cc12101bf543b43c3a7587eb35de8ff9e37789971f4c77deb6f6e940cd311c37",
+      "ce3d0180e22a9f9205cc83bfcaaada1cdd136ce4119f62be3233e17864b13461",
+      "701388700ae50f3574b077a6b2360ee7113b96fe3c5775e4de46d6f38185debd",
+      "2375f7f7888919e084944015801ccd0b1b52429704754f72e9f08e5e90b1b775",
+      "39e865ba231269ff64c609f9ff7963c7472646a166ead2c6664cad2c0b00cd8d",
+      "74866c56c36f88bde667d8663d2ccd984d35a641e8721ea9709ac2dbc23e2e95",
+      "650fa59dc519e51725b84a5f1f1c5c157ad5b4e286bd60af9e813a3342f8a6d9",
+      "2bf1c06903f21301d0d3f774f5bbe3abee9e81347f65a74c2d52e3e734031668",
+      "7d539c0a024e81d29079f406bbe65cc9de964af712cf1f06228b01d91d9d0639",
+      "6a116a7310ce2a8239f1f47edf6da18c3c5356624922e4486404a591d5826e90",
+      "94797e810451e4ac5362ad37806918e8d7574e8791936945549f7a49630fa98b"
+    ],
+    [
+      "070c044d7f4275089eca0dae7a1248fa05cb62d7968cedf317c71ee61d4c5a9f",
+      "edd32b11f6278288231fe999a9a57abfca71a4df4f371c4ab537df0fa2674d28",
+      "1f2acf1e91a34e8da29daf2fda2af18cf94386bfc73e084256536eec3b51f84a",
+      "2eaeb651a51a6103098712d87aabea61b27bd6a2b679f51708db9b0e72dac7d0",
+      "08ff3d2d642249434fbb0e5d71ff8d0dbb499294149c124523fcaa39566c0453",
+      "cc12101bf543b43c3a7587eb35de8ff9e37789971f4c77deb6f6e940cd311c37",
+      "ce3d0180e22a9f9205cc83bfcaaada1cdd136ce4119f62be3233e17864b13461",
+      "701388700ae50f3574b077a6b2360ee7113b96fe3c5775e4de46d6f38185debd",
+      "2375f7f7888919e084944015801ccd0b1b52429704754f72e9f08e5e90b1b775",
+      "39e865ba231269ff64c609f9ff7963c7472646a166ead2c6664cad2c0b00cd8d",
+      "74866c56c36f88bde667d8663d2ccd984d35a641e8721ea9709ac2dbc23e2e95",
+      "650fa59dc519e51725b84a5f1f1c5c157ad5b4e286bd60af9e813a3342f8a6d9",
+      "2bf1c06903f21301d0d3f774f5bbe3abee9e81347f65a74c2d52e3e734031668",
+      "7d539c0a024e81d29079f406bbe65cc9de964af712cf1f06228b01d91d9d0639",
+      "6a116a7310ce2a8239f1f47edf6da18c3c5356624922e4486404a591d5826e90",
+      "94797e810451e4ac5362ad37806918e8d7574e8791936945549f7a49630fa98b"
+    ]
+  ],
+  "same_staged_image_bytes": true,
+  "wall_s": 17.88063249700008,
+  "usage_accounting": {
+    "schema": "phyrc-token-accounting-v2",
+    "cli_usage_scope": "thread_cumulative",
+    "aggregate_scope": "sum_of_observed_thread_usage",
+    "fully_known": true,
+    "observed_usage": {
+      "input_tokens": 40627,
+      "cached_input_tokens": 0,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 474,
+      "reasoning_output_tokens": 65
+    },
+    "calls_recorded": 2,
+    "unknown_call_indices": [],
+    "unknown_usage_is_zero": false,
+    "cached_input_is_subset_of_input": true,
+    "reasoning_output_is_subset_of_output": true,
+    "threads": [
+      {
+        "thread_index": 0,
+        "baseline": "fresh_attempt_thread_zero",
+        "last_observed_cumulative_usage": {
+          "input_tokens": 40627,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 474,
+          "reasoning_output_tokens": 65
+        },
+        "last_accepted_cumulative_usage": {
+          "input_tokens": 40627,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 474,
+          "reasoning_output_tokens": 65
+        }
+      }
+    ]
+  },
+  "query_result": {
+    "kind": "depth_query_result",
+    "observation_id": "2342831cbdf408803f5ade4fa5550b4244e1b43d1b37b9a74a3aa9f998252abb",
+    "camera": "robot_0_wrist",
+    "camera_index": 1,
+    "simulation_time_s": 1.0,
+    "intrinsics_sha256": "6c7f3f17fb0b6ec2e8b986631214db7c63af68b609171e2bf0ee7ed08f30620d",
+    "request_sha256": "aa92e97d2899dbf744069d5119d344643b5c11e16421cdc42befcfbec2872b9e",
+    "depth_semantics": "optical_Z_metres_not_ray_range",
+    "geometry_semantics": "camera_X_right_Y_down_Z_forward",
+    "rgb_image_order": [
+      "overview",
+      "robot_0_wrist",
+      "robot_1_wrist",
+      "robot_0_head",
+      "robot_1_head"
+    ],
+    "resolution_wh": [
+      256,
+      256
+    ],
+    "neighbor_depth_substituted": false,
+    "hidden_surfaces_estimated": false,
+    "object_pose_or_contact_inferred": false,
+    "source_sha256": {
+      "observation_json": "bc768116befe4145e6687cc8bd0323f33298d7ad9b66467eb5d7f59bc9df8c7f",
+      "public_depth_npz": "27f630c61585d457bd59036aac0546e4fae09ba0ec7ee012f1bffd9afeab46d6",
+      "overview_rgb": "070c044d7f4275089eca0dae7a1248fa05cb62d7968cedf317c71ee61d4c5a9f",
+      "robot_0_wrist_rgb": "edd32b11f6278288231fe999a9a57abfca71a4df4f371c4ab537df0fa2674d28",
+      "robot_1_wrist_rgb": "1f2acf1e91a34e8da29daf2fda2af18cf94386bfc73e084256536eec3b51f84a",
+      "robot_0_head_rgb": "2eaeb651a51a6103098712d87aabea61b27bd6a2b679f51708db9b0e72dac7d0",
+      "robot_1_head_rgb": "08ff3d2d642249434fbb0e5d71ff8d0dbb499294149c124523fcaa39566c0453"
+    },
+    "results": [
+      {
+        "pixel_uv": [
+          128,
+          128
+        ],
+        "status": "valid",
+        "optical_z_m": 0.75,
+        "camera_xyz_m": [
+          0.0,
+          0.0,
+          0.75
+        ],
+        "camera_range_m": 0.75,
+        "invalid_reasons": []
+      },
+      {
+        "pixel_uv": [
+          0,
+          0
+        ],
+        "status": "invalid",
+        "optical_z_m": null,
+        "camera_xyz_m": null,
+        "camera_range_m": null,
+        "invalid_reasons": [
+          "center_mask_invalid",
+          "center_nonpositive"
+        ]
+      }
+    ]
+  },
+  "calls": [
+    {
+      "model_call_index": 0,
+      "schema_sha256": "1d71bf93b84d155f51b516f0bbaf4a87c37e15cd51a2f2e09fb7c0b52d2ae0f0",
+      "prompt_sha256": "e6f07d9edc25f85dc49948d302727b07fa572c840832cfedef61132a2ad4ac28",
+      "wall_s": 9.458211115999802,
+      "usage_accounting": {
+        "decision_index": 0,
+        "call_failed": false,
+        "scope": "thread_cumulative",
+        "thread_index": 0,
+        "cumulative_usage": {
+          "input_tokens": 18844,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 311,
+          "reasoning_output_tokens": 65
+        },
+        "incremental_usage": {
+          "input_tokens": 18844,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 311,
+          "reasoning_output_tokens": 65
+        },
+        "usage_known": true,
+        "status": "observed"
+      },
+      "image_count": 16,
+      "frozen_observation_id": "2342831cbdf408803f5ade4fa5550b4244e1b43d1b37b9a74a3aa9f998252abb",
+      "observation_simulation_time_s": 1.0,
+      "decision": {
+        "tool": "depth_query",
+        "action": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "steps": 1,
+        "stage": "preparation",
+        "visual_assessment": "uncertain",
+        "reason": "Synthetic fixture: query the current wrist image's yellow center and upper-left background to test image ordering.",
+        "depth_query": {
+          "kind": "depth_query",
+          "observation_id": "2342831cbdf408803f5ade4fa5550b4244e1b43d1b37b9a74a3aa9f998252abb",
+          "camera": "robot_0_wrist",
+          "pixels_uv": [
+            [
+              128,
+              128
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "include_camera_geometry": true
+        }
+      },
+      "named_action": {
+        "schema": "phyrc-named-actions-v1",
+        "mapping_sha256": "2772202314c637aca6c0e31d1148e80db233c3ca23e6cb59bd9871d9879568b4",
+        "raw_action": {
+          "robot_0": {
+            "base_forward": 0,
+            "base_left": 0,
+            "base_CCW_yaw": 0,
+            "lift": 0,
+            "arm_extension": 0,
+            "wrist_yaw": 0,
+            "wrist_pitch": 0,
+            "wrist_roll": 0,
+            "gripper": 0
+          },
+          "robot_1": {
+            "base_forward": 0,
+            "base_left": 0,
+            "base_CCW_yaw": 0,
+            "lift": 0,
+            "arm_extension": 0,
+            "wrist_yaw": 0,
+            "wrist_pitch": 0,
+            "wrist_roll": 0,
+            "gripper": 0
+          }
+        }
+      }
+    },
+    {
+      "model_call_index": 1,
+      "schema_sha256": "333f824fbd53f55c82edcd697c2c0f7b4c455e060adf605f07cca4222dc5a72c",
+      "prompt_sha256": "195347ee49e300bb51e9452363107604b01c656ed6e6d36ab607e05807d210a4",
+      "wall_s": 7.5535479410000335,
+      "usage_accounting": {
+        "decision_index": 1,
+        "call_failed": false,
+        "scope": "thread_cumulative",
+        "thread_index": 0,
+        "cumulative_usage": {
+          "input_tokens": 40627,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 474,
+          "reasoning_output_tokens": 65
+        },
+        "incremental_usage": {
+          "input_tokens": 21783,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 163,
+          "reasoning_output_tokens": 0
+        },
+        "usage_known": true,
+        "status": "observed"
+      },
+      "image_count": 16,
+      "frozen_observation_id": "2342831cbdf408803f5ade4fa5550b4244e1b43d1b37b9a74a3aa9f998252abb",
+      "observation_simulation_time_s": 1.0,
+      "decision": {
+        "tool": "act",
+        "action": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0.35,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        "steps": 2,
+        "stage": "preparation",
+        "visual_assessment": "uncertain",
+        "reason": "Synthetic fixture validating named forward and gripper commands with zero wrist roll."
+      },
+      "named_action": {
+        "schema": "phyrc-named-actions-v1",
+        "mapping_sha256": "2772202314c637aca6c0e31d1148e80db233c3ca23e6cb59bd9871d9879568b4",
+        "raw_action": {
+          "robot_0": {
+            "base_forward": 0,
+            "base_left": 0,
+            "base_CCW_yaw": 0,
+            "lift": 0,
+            "arm_extension": 0,
+            "wrist_yaw": 0,
+            "wrist_pitch": 0,
+            "wrist_roll": 0,
+            "gripper": 0
+          },
+          "robot_1": {
+            "base_forward": 0.35,
+            "base_left": 0,
+            "base_CCW_yaw": 0,
+            "lift": 0,
+            "arm_extension": 0,
+            "wrist_yaw": 0,
+            "wrist_pitch": 0,
+            "wrist_roll": 0,
+            "gripper": 1
+          }
+        }
+      }
+    }
+  ],
+  "source_summary_sha256": "4929f43b97cad7d278ab43cc2faa8d94d24b8208d4917900f5b49d6508351682",
+  "source_files_sha256": {
+    "scripts/probe_depth_query_protocol.py": "9e6e150070d8fe646ab070681882d1b734693b10163f9d04c4f3181bf36739c9",
+    "participant/collection/named_actions.py": "5fab7ab259e0af8195a03df039d6423ccba54936baad75ddbfabeb2adae0a222",
+    "participant/collection/codex_client.py": "f56ad58bd130d6adb0a0f3e78c17e3bfe86f1d28b07cf34034b3b6ba4ae97163",
+    "participant/collection/depth_query.py": "0d98e401d87cf06494498b8075da84c95ce599161195dfa67d4f4fd1ae7da62f",
+    "participant/collection/codex_actor.py": "462c73601f744baa903668bd08e11b2af7f6cc26347482dd80bcade953827ba0"
+  },
+  "source_commit_at_report": "5bc0637fe41c057323f9e2c24e5973b015afcb2a",
+  "probe_script_uncommitted_during_execution": true,
+  "publication_scope": "Synthetic public observations, final named intent and canonical decisions, numeric accounting and hashes; no auth, raw CLI events, session identifiers or reasoning text."
+}

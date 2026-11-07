@@ -58,7 +58,7 @@ def observation():
 
 
 class QueryTests(unittest.TestCase):
-    def run_client(self, *, module=client, enabled=True, scenario='query', image_change=False, depth_panel=False, history=False, strategy='general'):
+    def run_client(self, *, module=client, enabled=True, scenario='query', image_change=False, depth_panel=False, history=False, strategy='general', extra_flags=(), response_transform=None):
         calls, requests, order, handlers, commands = [], [], [], {}, []
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -125,12 +125,15 @@ class QueryTests(unittest.TestCase):
                     if image_change and n==0:images[0].write_bytes(b'changed')
                     if scenario=='interrupt_first' and n==0:handlers[signal.SIGTERM](signal.SIGTERM,None)
                     if scenario=='interrupt_second' and n==1:handlers[signal.SIGTERM](signal.SIGTERM,None)
+                    if response_transform is not None:
+                        value=response_transform(value,n,schema)
                     usage={key:0 for key in module.USAGE_FIELDS}
                     usage.update(input_tokens=100+60*n, output_tokens=10*(n+1))
                     return {'decision':value,'session_id':'PRIVATE_SESSION_CANARY','usage':usage,
                             'wall_s':.25,'model':'gpt-6-astra','effort':'ultra','cli_version':'CPU-fixture'}
                 def close(self): pass
             argv=['client','--run-id','cpu-query','--decisions','2' if scenario=='two_queries' else '1','--model-timeout','180']
+            argv += list(extra_flags)
             if enabled:argv+=['--pixel-depth-query']
             if history or strategy != 'general':
                 argv += ['--mode', 'dressing', '--strategy', strategy]

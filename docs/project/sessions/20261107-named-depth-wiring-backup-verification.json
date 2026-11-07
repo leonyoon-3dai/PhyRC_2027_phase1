@@ -1,0 +1,18 @@
+{
+  "repo_id": "leonayoon/phyrc-2027-phase1-private-backup",
+  "repo_type": "dataset",
+  "private": true,
+  "revision": "7817a63289250cb40e94a50a9b816eb45a567660",
+  "archive_path": "sessions/20261107-named-depth-wiring-v1/archive.tar.gz",
+  "archive_bytes": 9576993,
+  "archive_sha256": "93837540ab791ca2749def44d9ee73732a8b92e71057f6f58071fb3d473310bd",
+  "archive_members_verified": 62,
+  "remote_download_verified": true,
+  "verified_at_utc": "2026-11-07T00:38:23.506945+00:00",
+  "run_id": "20261107-named-depth-wiring-001",
+  "validated_transitions": 3,
+  "source_commit": "5bc0637fe41c057323f9e2c24e5973b015afcb2a",
+  "source_working_tree_modified": true,
+  "source": "integration_test",
+  "model_id": "synthetic-depth-query-wiring-fixture"
+}

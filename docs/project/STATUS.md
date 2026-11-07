@@ -1,5 +1,65 @@
 # 현재 상태와 다음 작업
 
+**E18 마감: 픽업5/50·착의0·success=false,928/928기록 검사 통과. 최고5/50이며10점 미달성입니다.** 손 근처까지 운반·접근했지만 설명과 다른 robot1 손목 roll+1 명령이D16과D21에서 반복되어, 감독이 SIGINT 정상 종료 절차로 마감했습니다. 모델 자율 종료·사용자 작업 중지와 구분합니다.
+
+[최신 영상](../gallery/README.ko.md) · [E18 분석](../collection/reviews/20261106-astra-guide470-depth-001.ko.md) · [오류·복구·학습 검토 구간](../collection/reviews/20261106-astra-guide470-depth-001-learning-segments.json) · [전체 일지](sessions/20261106-evening-resume.ko.md)
+
+| 확인 항목 | E18 결과 |
+|---|---|
+| run ID·소스 | `20261106-astra-guide470-depth-001`, 공개499b3b8·시작 작업 트리 clean |
+| 실제 수행 | 기존 양 hem 파지로 들기·운반·대형 회전·손 접근. **소매 쪽 가이드 재파지는 실제0회** |
+| 실제 질의 | 현재 공개 depth 픽셀3회, 각 질의 물리 진행0. 운반 geometry1회·손/rim 거리2회 |
+| 반복 오류 | D16,D21은 전진 설명과 달리 robot1 wrist_roll=+1 포함. 각각복구D17–19,D22–24 |
+| 기록 | **470재실행 +313모델 +144제어기중립 +1감독종료 =928**, 시뮬레이션46.4초 |
+| 호출·판단 |30모델호출시도,26실행행동. 질의추가3회와 마지막 중단된호출1회를 포함하며30판단이아님 |
+| 시간 |2026-11-06 23:58:53–2026-11-07 00:29:56 UTC,1862.366초(약31분2초) |
+| 호출 경로 |모델1000.803초·환경806.244초, 내부 추론시간 미제공 |
+| 종료 정합성 |SIGINT로client130·simulator0,finished/capture_complete=true,전수QC928/928통과 |
+| 평가 |원점수5(픽업5·착의0),success=false,`no_dressing_points / 0.0 points/s` |
+| 학습 승인 |`unreviewed`. 오류·복구 구간과 정상 진행을 구분해 보존하며 자동 학습 승인하지 않음 |
+
+## 확인된 병목과 수정 범위
+
+고정9채널 숫자 배열에서 gripper와 wrist_roll이 함께1로 나온 두 구간을 원본 그대로 보존했습니다. 이후 모델이 오류를 인지해 복구한 과정도 남겼습니다. 이것이 B 파지 방법 자체의 실패라는 결론은 내리지 않습니다. 실제 B 재파지는 실행되지 않았고 명령 오류가 접근 결과에 섞였습니다.
+
+선택형 **`--named-actions`**는 각 로봇의9개 채널을 이름으로 지정한 뒤 값 변경 없이 기존 공식float32(2,9) 배열로 변환합니다. wrist_roll은 의도적으로 사용할 수 있으며 이유 문장을 추측해 행동을 고치지 않습니다. 원래 이름별 값·고정 매핑SHA·정규화 전 배열·실제 적용 배열을 보존합니다. 기본OFF이며 E18에는 사용하지 않았습니다.
+
+- 최신 전체 **270개 CPU 검사(10.077초)**와 실제CLI 합성2턴 검사를 통과했습니다. 같은16이미지·같은관측 질의→이름기반행동→기존validator 변환을 확인했습니다.
+- 모델 없는 실제GPU 연결도 query0→행동2→stop1→finish0으로 **3/3기록 검사 통과**, 실모델0회·fixture질의1회입니다.
+- 실제 옷 조작에서 오류 감소·점수 향상은 아직 미검증입니다. [명명 행동 근거·검증](../collection/research/2026-11-07-named-action-candidate.ko.md)
+
+## 다음 E19 · 계획이며 아직 미실행
+
+유용했던 손 접근을 유지해 **첫 roll 오류 직전801경계**에서 같은 B+depth 조건에 이름기반행동을 추가합니다. 옷을 다루는 전략은 유지하고 행동 표현을 비교합니다. 새 재실행 관측으로 현재 파지·손 위치를 다시 판단하며 정확한 천 checkpoint 복원을 주장하지 않습니다.
+
+```bash
+export PATH="$PWD/.runtime/codex-0.166.0/node_modules/.bin:$PATH"
+unset STRETCH4_PRACTICE_LAYOUT STRETCH4_RANDOMIZE
+PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.codex_client \
+  --run-id 20261107-astra-entry801-named-001 --mode dressing \
+  --strategy coordinated-support-guide --actor-backend exec \
+  --model gpt-6-astra --effort ultra --plan-size 1 --review-points 10 \
+  --replay-prefix-run 20261106-astra-guide470-depth-001 --replay-prefix-steps 801 \
+  --parent-attempt 20261106-astra-guide470-depth-001 \
+  --retry-reason named_channels_before_repeated_roll_error \
+  --replay-observe-steps 771 787 --wrist-depth-panel --pixel-depth-query --named-actions \
+  --post-action-settle-steps 6 --decisions 40 --max-steps 1600 --model-timeout 180 \
+  --profile-step-phases
+```
+
+목 우선 경로도 선택형 `coordinated-neckline-first`로 구현·CPU검증했지만 아직 실제미실행입니다. 현재는 E18의 유용한 접근을 이어 비교하고, 그 결과에 따라 목 우선 등 다른 순서를 선택합니다. [방법 전환 근거](../collection/research/2026-11-06-post-support-methods.ko.md)
+
+## 원본·기록
+
+E18 비공개 원본은 고정HF revision `44d01871f0099f8a537f1bdbfee06a404a95f38c`에서 재다운로드 SHA검증을 완료했습니다. [E18 receipt](sessions/20261107-e18-backup-verification.json),2,167,209,525 bytes·00:36:13 UTC 확인. [named 연결시험 원본](sessions/20261107-named-depth-wiring-backup-verification.json)도 고정 revision 재다운로드검증을 완료했습니다. 실제실행 source_snapshot은499b3b8이며 이후 named코드가 들어가지 않습니다. 공개 원본의 점수·QC는 별도검수 결과로만 사용하고 actor에 넣지 않습니다.
+
+[복원 안내](START_HERE.ko.md) · [E17 백업](sessions/20261106-e17-backup-verification.json) · [E16 백업](sessions/20261106-e16-backup-verification.json). 오류/복구/중단 구간은 동일 source group 안의 연속 기록이며 독립 성공·검증 표본으로 세지 않습니다. 원시 추론·CLI이벤트·인증·simulator로그는 공개/백업 묶음에 넣지 않습니다.
+
+<details>
+<summary>E17 마감과 E18 시작 당시 상태 이력</summary>
+
+# 현재 상태와 다음 작업
+
 **최신 종료 E17: 5/50(픽업5·첫 소매0), `success=false`.** 최고 기록은5/50이며 **10점은 아직 미달성**입니다. 다른 lower-rim 후보를 겨냥한 실제 재파지를 수행했지만, 반대 입구 층과 두 지지·연속 입구는 확인하지 못해 모델이 종료했습니다.
 
 [최신 영상·피드백](../gallery/README.ko.md) · [E17 상세](../gallery/20261106-astra-layer352-001.ko.md) · [공개 관측 분석](../collection/reviews/20261106-astra-layer352-001.ko.md) · [실행 일지](sessions/20261106-evening-resume.ko.md) · [README](../../README.md)
@@ -68,3 +128,5 @@ PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.codex_clie
 [클린 서버 복원](START_HERE.ko.md) · [초기 자산·E07 복원 검증](sessions/20261106-evening-restore-validation.json) · [E16 분석](../collection/reviews/20261106-astra-support264-002.ko.md) · [E15 마감 이력](SESSION_WRAPUP_20261106.ko.md) · [전체 개발 이력](HISTORY.ko.md)
 
 새 정책 학습·RL/VLA 성능 검증·학습 승인은 완료하지 않았습니다. 이전 문서의 일시 중지·미실행 문구는 당시 이력이며 현재 실행 상태는 이 문서와 최신 일지를 우선합니다.
+
+</details>

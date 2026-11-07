@@ -510,6 +510,8 @@ def main():
                         help='One or two ascending replay boundaries to capture as first-call visual history')
     parser.add_argument('--model', default='gpt-6-astra')
     parser.add_argument('--effort', default='ultra')
+    parser.add_argument('--named-actions', action='store_true',
+                        help='Use exact named actor channels, then pack into official arrays; exec/plan-size1 only')
     parser.add_argument('--pixel-depth-query', action='store_true',
                         help='Allow one frozen-public pixel-depth query then one action-only follow-up; exec/plan-size1 only')
     parser.add_argument('--decisions', type=int, default=3)
@@ -523,6 +525,8 @@ def main():
     parser.add_argument('--post-action-settle-steps', type=int, default=0,
                         help='After a motion act, apply 0..20 neutral control steps before observing again')
     args = parser.parse_args()
+    if args.named_actions and (args.actor_backend != 'exec' or args.plan_size != 1):
+        parser.error('named-actions requires exec and plan-size=1')
     if args.pixel_depth_query and (args.actor_backend != 'exec' or args.plan_size != 1):
         parser.error('pixel-depth-query requires exec and plan-size=1')
     if args.pixel_depth_query and args.model_timeout > 180:
@@ -652,6 +656,11 @@ def main():
                  'the published 3-second criterion. A raised gripper pose alone does not prove cloth '
                  'height or grasp. Continue preserving the grip and neutral motion until the hold '
                  'target is met, unless observations require recovery or the controller ends the episode.')
+    action_schema = SCHEMA
+    if args.named_actions:
+        from participant.collection import named_actions
+        task = named_actions.prompt(task)
+        action_schema = named_actions.response_schema(SCHEMA)
     if args.actor_backend == 'app-server':
         from participant.collection.codex_app_actor import AppActor as Actor
     else:
@@ -697,6 +706,8 @@ def main():
     }
     if replay is not None:
         manifest['continuation'] = dict(replay.public_lineage)
+    if args.named_actions:
+        manifest['named_actions'] = named_actions.public_mapping(named_actions.MAPPING)
     if args.pixel_depth_query:
         manifest['pixel_depth_query'] = {
             'enabled': True, 'max_queries_per_observation': 1, 'max_points': 8,
@@ -931,6 +942,8 @@ def main():
                         returned = None
                         try:
                             returned = actor.invoke(call_prompt, images, call_schema)
+                            if args.named_actions:
+                                returned = named_actions.normalize_result(returned)
                         except BaseException as exc:
                             elapsed = time.monotonic() - call_started
                             manifest['actor_call_wall_s'] += elapsed
@@ -952,7 +965,7 @@ def main():
                         return returned, meta, usage
                     try:
                         result, query_meta, usage_record = invoke_query_call(
-                            prompt, response_schema(SCHEMA), 'initial')
+                            prompt, response_schema(action_schema), 'initial')
                         ordinary, request = route_initial(result['decision'], SCHEMA, validate_decision,
                                                           wiring=args.mode == 'wiring')
                         if request is not None:
@@ -966,7 +979,7 @@ def main():
                             check_interrupt()
                             followup = prompt + '\nFrozen-observation action-only follow-up. Same images and public time; query budget exhausted. Return the ORIGINAL action schema without depth_query.\n'
                             followup += 'depth_query_result: ' + json.dumps(query_response, allow_nan=False)
-                            result, query_meta, usage_record = invoke_query_call(followup, SCHEMA, 'action_after_query')
+                            result, query_meta, usage_record = invoke_query_call(followup, action_schema, 'action_after_query')
                             ordinary = result['decision']
                         action = validate_decision(ordinary, wiring=args.mode == 'wiring')
                     except BaseException as exc:
@@ -1003,8 +1016,10 @@ def main():
                     result = None
                     try:
                         limit = min(args.plan_size, args.decisions - index)
-                        schema = plan_schema(limit) if args.plan_size > 1 else SCHEMA
+                        schema = plan_schema(limit) if args.plan_size > 1 else action_schema
                         result = actor.invoke(prompt, images, schema)
+                        if args.named_actions:
+                            result = named_actions.normalize_result(result)
                         if args.plan_size > 1:
                             actions = validate_plan(result['decision'], max_segments=limit,
                                                     max_total_steps=args.plan_step_budget,

@@ -65,6 +65,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--model-timeout', type=float, default=180)
+    parser.add_argument('--named-actions', action='store_true',
+                        help='Test named zero query then a named advance/close action, without dispatch')
     args = parser.parse_args()
     if not np.isfinite(args.model_timeout) or not 10 <= args.model_timeout <= 180:
         parser.error('model-timeout must be 10..180 seconds')
@@ -82,7 +84,13 @@ def main():
               + '\nImage temporal context: ' + json.dumps(context, allow_nan=False)
               + '\nCurrent wrist depth panel: ' + json.dumps(panel, allow_nan=False)
               + '\nfrozen_public_depth_query_context: ' + json.dumps(frame.context(), allow_nan=False))
-    first_schema = dq.response_schema(SCHEMA)
+    action_schema = SCHEMA
+    if args.named_actions:
+        from participant.collection import named_actions
+        prompt = prompt.replace('an all-zero 2x9 action', 'an all-zero named action object')
+        prompt += '\n' + named_actions.TASK
+        action_schema = named_actions.response_schema(SCHEMA)
+    first_schema = dq.response_schema(action_schema)
     usage = TokenUsageAccounting()
     report = {'schema': 'phyrc-synthetic-depth-query-probe-v1',
               'model': 'gpt-6-astra', 'effort': 'ultra', 'model_timeout_s': args.model_timeout,
@@ -92,6 +100,8 @@ def main():
               'image_count': len(images), 'image_sha256': image_hashes,
               'frozen_observation_id': frame.observation_id, 'calls': [],
               'passed': False, 'cleanup_ok': False}
+    if args.named_actions:
+        report['named_actions'] = named_actions.public_mapping(named_actions.MAPPING)
     actor = None
     started = time.monotonic()
     try:
@@ -100,16 +110,23 @@ def main():
         report['cli_version'] = actor.cli_version
         first_session = None
         for call_index in range(2):
-            schema = first_schema if call_index == 0 else SCHEMA
+            schema = first_schema if call_index == 0 else action_schema
             report['model_calls_attempted'] += 1
             dump(root / 'summary.json', report)
             result = actor.invoke(prompt, images, schema)
+            if args.named_actions:
+                result = named_actions.normalize_result(result)
             record = usage.record(call_index, result)
             report['calls_completed'] += 1
             report['calls'].append({'model_call_index': call_index,
                 'schema_sha256': dq.sha(schema), 'prompt_sha256': result['prompt_sha256'],
                 'wall_s': result['wall_s'], 'usage_accounting': record,
                 'image_count': len(images), 'decision': result['decision']})
+            if args.named_actions:
+                report['calls'][-1]['named_action'] = named_actions.public_provenance(
+                    result['named_action'], result['decision']['action'])
+                report['calls'][-1]['frozen_observation_id'] = frame.observation_id
+                report['calls'][-1]['observation_simulation_time_s'] = frame.timestamp_s
             if call_index == 0:
                 first_session = result['session_id']
                 ordinary, request = dq.route_initial(result['decision'], SCHEMA, validate_decision)
@@ -129,9 +146,32 @@ def main():
                           'stage=preparation, visual_assessment=uncertain, brief fixture reason. '
                           'Use no tools. This response is validated only and will not be dispatched.\n'
                           'depth_query_result: ' + json.dumps(response, allow_nan=False))
+                if args.named_actions:
+                    prompt = ('Same synthetic frozen observation and same 16 images; no physics has run. '
+                              'The query budget is exhausted. Return the named action-only schema without '
+                              'a depth_query field: tool=act, steps=2, stage=preparation, '
+                              'visual_assessment=uncertain. Set robot_1 base_forward=0.35 and gripper=1; '
+                              'every other named channel of both robots must be zero, including wrist_roll. '
+                              'Use a brief fixture reason and no tools. This response is validated only '
+                              'and will not be dispatched.\n' + named_actions.TASK + '\n'
+                              'depth_query_result: ' + json.dumps(response, allow_nan=False))
             else:
-                validate_decision(result['decision'])
-                if result['decision']['tool'] != 'finish_episode':
+                action = validate_decision(result['decision'])
+                if args.named_actions:
+                    expected = np.zeros((2, 9), np.float32)
+                    expected[1, 0], expected[1, 8] = .35, 1
+                    if (result['decision']['tool'] != 'act' or result['decision']['steps'] != 2
+                            or not np.array_equal(action, expected)):
+                        raise ValueError('expected named advance/close without roll')
+                    report['validated_float32_action'] = action.tolist()
+                    staged = [[hashlib.sha256((actor.public / f'{turn:06d}' /
+                               f'camera-{i:02d}.png').read_bytes()).hexdigest()
+                               for i in range(len(images))] for turn in range(2)]
+                    report['staged_image_sha256'] = staged
+                    report['same_staged_image_bytes'] = staged[0] == staged[1]
+                    if not report['same_staged_image_bytes']:
+                        raise ValueError('staged image mismatch')
+                elif result['decision']['tool'] != 'finish_episode':
                     raise ValueError('expected fixture finish')
                 report['same_session_resumed'] = result['session_id'] == first_session
                 if not report['same_session_resumed']:

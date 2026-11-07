@@ -204,6 +204,9 @@ def public_attempt(value):
             'enabled': boolean, 'max_queries_per_observation': integer, 'max_points': integer,
             'queries_completed': integer, 'followup_calls': integer,
             'collector_idle_timeout_s': number, 'model_call_timeout_s': number})
+    if 'named_actions' in value:
+        from participant.collection.named_actions import public_mapping
+        result['named_actions'] = public_mapping(value['named_actions'])
     if isinstance(value.get('continuation'), dict):
         result['continuation'] = select(value['continuation'], {
             'resume_kind': identifier, 'parent_attempt': identifier, 'source_group': identifier,
@@ -315,6 +318,9 @@ def public_events(path):
                     **PHASE_TIMING_FIELDS})
                 row['decision'] = select(value['decision'], {'tool': identifier, 'action': action,
                     'steps': integer, 'stage': identifier, 'visual_assessment': identifier, 'reason': text})
+                if 'named_action' in value:
+                    from participant.collection.named_actions import public_provenance
+                    row['named_action'] = public_provenance(value['named_action'], row['decision']['action'])
                 row['usage'] = token_counts(value.get('usage', {}))
                 row.setdefault('usage_scope', 'legacy_unverified')
                 if value.get('usage_accounting') is not None:
@@ -330,6 +336,10 @@ def public_events(path):
                     'usage_accounting': public_usage_record, 'phase_wall_s': public_phase_timing,
                     **QUERY_CALL_FIELDS})
                 row['usage'] = token_counts(value.get('usage', {}))
+                if 'named_action' in value:
+                    from participant.collection.named_actions import public_provenance
+                    row['named_action'] = public_provenance(value['named_action'],
+                                                           action(value['decision']['action']))
             elif kind == 'depth_query_result':
                 row = select(value, {'type': identifier, 'decision_index': integer,
                     'model_call_index': integer, 'input_sha256': digest,

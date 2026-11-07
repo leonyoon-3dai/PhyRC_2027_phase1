@@ -1,5 +1,22 @@
 # PhyRC 2027 · 두 로봇의 협력 착의
 
+**최신 E18 · 손 근처 접근, 의도에 없던 손목 회전과 복구**
+
+<a href="docs/gallery/assets/20261107-e18-roll-recovery/event.mp4"><img src="docs/gallery/assets/20261107-e18-roll-recovery/preview.gif" width="960" alt="E18 실제 공개 네 카메라. 801~851경계의 robot1 추가 roll과 복구"></a>
+
+[**MP4 크게 보기**](docs/gallery/assets/20261107-e18-roll-recovery/event.mp4) · [**전체 갤러리**](docs/gallery/README.ko.md) · [**E18 분석**](docs/collection/reviews/20261106-astra-guide470-depth-001.ko.md) · [**영상 피드백 남기기**](https://github.com/leonyoon-3dai/PhyRC_2027_phase1/issues/new?title=%5BE18+%ED%94%BC%EB%93%9C%EB%B0%B1%5D+%EC%98%81%EC%83%81+%EA%B5%AC%EA%B0%84%EA%B3%BC+%EA%B4%80%EC%B8%A1&body=%EC%8B%9C%EB%8F%84%3A+E18+%2F+20261106-astra-guide470-depth-001%0A%EC%98%81%EC%83%81+%EC%8B%9C%EA%B0%81+%EB%98%90%EB%8A%94+%EA%B2%BD%EA%B3%84%3A+%0A%EC%B9%B4%EB%A9%94%EB%9D%BC%3A+%EB%A1%9C%EB%B4%870+%EB%A8%B8%EB%A6%AC+%2F+%EB%A1%9C%EB%B4%871+%EB%A8%B8%EB%A6%AC+%2F+%EB%A1%9C%EB%B4%870+%EC%86%90%EB%AA%A9+%2F+%EB%A1%9C%EB%B4%871+%EC%86%90%EB%AA%A9%0A%0A%EA%B4%80%EC%B8%A1%ED%95%9C+%EC%9E%A5%EB%A9%B4%3A%0A%0A%EC%A0%9C+%ED%95%B4%EC%84%9D+%EB%98%90%EB%8A%94+%EC%A7%88%EB%AC%B8%3A%0A%0A%EB%8B%A4%EC%9D%8C%EC%97%90+%EB%B9%84%EA%B5%90%ED%95%98%EB%A9%B4+%EC%A2%8B%EC%9D%84+%EB%8F%99%EC%9E%91%3A%0A%0A%EA%B0%A4%EB%9F%AC%EB%A6%AC%3A+https%3A%2F%2Fgithub.com%2Fleonyoon-3dai%2FPhyRC_2027_phase1%2Fblob%2Fmain%2Fdocs%2Fgallery%2FREADME.ko.md%0A)
+
+**공식 원점수5/50 · 픽업5 · 착의0 · `success=false`.** 기존 두 파지로 접근 방향을 바꾸고 공개 depth를3회 조회했습니다. 전진 설명에 없는 손목 roll이 두 번 적용돼 복구했고 감독자가 중단했습니다. 최고5점·목표10점 미달성입니다. 오류·복구도 원본과 함께 [학습 검토 자료](docs/collection/reviews/20261106-astra-guide470-depth-001-learning-segments.json)로 남겼습니다.
+
+801~851경계 · 51프레임 · 10.2초 재생 · 4배 느리게 · 모델 응답 대기 제외. 위는 로봇0·1 머리, 아래는 로봇0·1 손목입니다. [운반부터 종료까지](docs/gallery/20261106-astra-guide470-depth-001.ko.md) · [영상 출처](docs/gallery/assets/20261107-e18-roll-recovery/provenance.json)
+
+전이1개는 **관측 → 행동 → 다음 관측**의0.05초 기록입니다. E18은 **928전이·시뮬레이션46.4초**, 모델 호출30회 시도 중 실제 행동 판단26개, 실제 경과 약31분2초입니다. 질의3회는 물리를 진행하지 않았고 마지막 호출은 행동 적용 전에 중단됐습니다. [전체 기록 분해와 검수](docs/collection/reviews/20261106-astra-guide470-depth-001.ko.md)
+
+<details>
+<summary>E17 이전 첫 화면 · 재파지 시도와 당시 상태 보존</summary>
+
+> 아래는 E17 정리 당시 기록입니다. 당시 다음 계획은 현재 실행 상태와 구분합니다.
+
 **최신 E17 · 다른 입구 경계를 겨냥해 재파지했지만 지지·입구 미확인**
 
 <a href="docs/gallery/assets/20261106-e17-regrasp/event.mp4"><img src="docs/gallery/assets/20261106-e17-regrasp/preview.gif" width="960" alt="E17 실제 공개 관측 네 카메라. 392~452경계의 다른 lower-rim 후보 재파지와 재시험"></a>
@@ -11,6 +28,8 @@
 392~452경계 · 61프레임 · 12.2초 재생 · 4배 느리게 · 모델 응답 대기 제외. 위는 로봇0·1 머리, 아래는 로봇0·1 손목입니다. 피드백에는 **영상 시각 또는 경계와 카메라**를 적어 주세요. [영상 출처](docs/gallery/assets/20261106-e17-regrasp/provenance.json) · [현재 상태](docs/project/STATUS.md)
 
 전이1개는 **관측 → 행동 → 다음 관측**을 묶은0.05초 기록입니다. E17의452개 기록은 **시뮬레이션22.6초**이며,12번의 모델 판단·실제 약13분44초 실행과 구분합니다. 모델 판단 한 번이 여러 전이에 적용될 수 있고, 정지·기다림 명령도 기록에 포함됩니다.
+
+</details>
 
 ## 무엇을 만드는가
 
@@ -46,17 +65,17 @@
 
 | 구분 | 확인된 상태 |
 |---|---|
-| 최신 과제 시도 | E17 `20261106-astra-layer352-001` · 모델 자율 종료 · 452/452전이 통과 |
+| 최신 과제 시도 | E18 `20261106-astra-guide470-depth-001` · 추가 roll 명령 반복으로 감독 중단 · 928/928전이 검사 통과 |
 | 모델·환경 | Astra/ultra · Codex CLI0.166.0/exec · 고정 Isaac Sim6.0.1 · Chrome/WebRTC OFF |
-| 이번에 바꾼 접근 | E16의352전이 재실행 뒤 다른 lower-rim 후보를 겨냥한 재파지. 새52개 모델 전이와48개 제어기 중립 전이를 기록했습니다. |
-| 다음 비교 | **E18 B 실행 중(23:58:53 UTC 시작): 지지/가이드 역할을 나눠 소매 쪽 가시 가장자리로 재파지**. E16의470경계를 재실행하고 픽셀 depth 질의를 제공합니다. 아직 종료 결과는 없습니다. |
-| 다른 경로 | 목 우선 전략 코드를 통합하고 CPU 검사를 마쳤으며 실제 과제는 아직 실행하지 않았습니다. |
-| 후보 기능 | 픽셀 depth 질의는 CPU·합성 이미지 실제 CLI2턴 및 모델 없는 GPU3전이 연결 검사를 통과했습니다. GPU 연결 시험은 실제 모델0회·fixture 질의1회였습니다. **E16·E17에는 사용하지 않았으며 실제 과제 적용 효과는 미검증**입니다. |
-| 소스·원본 | E17 실행 소스는98bb41f(작업 트리 clean). 공개 기록과 [E17 고정 HF 백업·재다운로드 SHA 검증](docs/project/sessions/20261106-e17-backup-verification.json)을 완료했습니다. [E16 고정 백업](docs/project/sessions/20261106-e16-backup-verification.json)도 보존했습니다. |
+| 이번에 바꾼 접근 | E16의470전이 재실행 뒤 기존 두 파지로 운반 대형·접근 방향 변경. 공개 depth를 실제3회 조회했으며 질의의 물리 진행은0입니다. 계획한 소매 쪽 가이드 재파지는 실행하지 않았습니다. |
+| 다음 비교 | **E19 계획·미시작:** E18의801경계(첫 추가 roll 직전)에서 같은 B 전략·depth 질의를 유지하고 축 이름으로 명령을 작성합니다. 이번 재실행771·787경계의 과거 RGB를 사용해 유용했던 손 근처 접근을 이어갈 계획입니다. |
+| 다른 경로 | 목 우선 전략 코드는 구현했으나 실제 과제에는 아직 사용하지 않았습니다. |
+| 명령 표현 후보 | 축 이름을 기존9채널로 변환하는 기능은 CPU269검사·동일16이미지 실제 CLI 합성2턴을 통과했습니다. [모델 없는 GPU 연결](docs/collection/assets/20261107-named-action-candidate/model-free-gpu-wiring.json)도3/3전이 전수 검사를 통과했습니다(실제 모델0회·fixture 질의1회·질의 물리0). **E18에는 적용하지 않았고 실제 착의 효과는 미검증**입니다. |
+| 소스·원본 | E18 실행 소스499b3b8(작업 트리 clean). 공개 영상·분석을 보존했고 [E18 비공개 원본 고정 HF 백업·재다운로드 SHA 검증](docs/project/sessions/20261107-e18-backup-verification.json)을 완료했습니다. [E17 고정 백업](docs/project/sessions/20261106-e17-backup-verification.json)과 [E16 고정 백업](docs/project/sessions/20261106-e16-backup-verification.json)은 완료했습니다. |
 
 [현재 상태·다음 명령](docs/project/STATUS.md) · [이번 세션 원문](docs/project/sessions/20261106-evening-resume.ko.md) · [방법 전환 기준](docs/project/sessions/20261106-method-switch-matrix.ko.md)
 
-E16에서는 순차 진단과 로봇0 재파지 뒤 국소 천 동행을 관측했고, E17은 다른 가시 경계를 목표로 재파지했지만 반대층·양측 지지를 확인하지 못했습니다. 실제 동작 변화, 시각적 근거, 공식 점수를 따로 기록합니다. 픽업5점에서 어느 파지가 성공했는지나 입구가 열렸는지를 역추론하지 않습니다.
+E16의 순차 지지 진단, E17의 다른 경계 재파지, E18의 운반·접근 변경을 실제 행동으로 구분합니다. E18의 추가 roll과 복구도 [학습 검토 구간](docs/collection/reviews/20261106-astra-guide470-depth-001-learning-segments.json)으로 보존했습니다. 실패·복구 자료의 가치와 좋은 행동 모방 승인 여부는 별개이며 현재 unreviewed입니다. 같은 재실행 출처를 독립 표본으로 세거나 점수에서 파지 정답을 만들지 않습니다.
 
 [5점에서10점으로 가는 진단](docs/project/FIVE_TO_TEN.ko.md) · [시각적 가이드 PDF](docs/guide/PhyRC_2027_Repository_Guide_KR.pdf) · [연구 로드맵](docs/project/RESEARCH_ROADMAP.ko.md)
 

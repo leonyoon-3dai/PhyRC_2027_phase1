@@ -12,7 +12,7 @@ from scripts.probe_depth_query_wiring import MODEL_ID, WiringFixtureActor, run_p
 
 
 class DepthQueryWiringProbeTest(unittest.TestCase):
-    def run_fixture(self, *, short_lift=False):
+    def run_fixture(self, *, short_lift=False, named_actions=False):
         requests, commands = [], []
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -59,7 +59,7 @@ class DepthQueryWiringProbeTest(unittest.TestCase):
                         run_probe('cpu-depth-wiring')
                     report=json.loads((root/'output/sessions/cpu-depth-wiring-probe.json').read_text())
                 else:
-                    report=run_probe('cpu-depth-wiring')
+                    report=run_probe('cpu-depth-wiring', named_actions=named_actions)
             attempt=json.loads((root/'output/operator-traces/cpu-depth-wiring/attempt.json').read_text())
             return report,requests,commands,attempt
 
@@ -86,6 +86,15 @@ class DepthQueryWiringProbeTest(unittest.TestCase):
         self.assertFalse(report['passed'])
         self.assertEqual(report['error_type'],'ValueError')
         self.assertEqual(attempt['recorded_simulation_steps'],2)
+
+    def test_named_query_maps_to_same_physical_channels_without_placeholder_step(self):
+        report,requests,_,attempt=self.run_fixture(named_actions=True)
+        self.assertTrue(report['passed'])
+        self.assertTrue(report['named_action_contract_checked'])
+        self.assertEqual([r[0] for r in requests],['act','stop','finish_episode'])
+        self.assertEqual(requests[0][1]['action'],[[0.,0.,0.,.029999999329447746,0.,0.,0.,0.,-1.]]*2)
+        self.assertEqual(report['query_physics_transitions'],0)
+        self.assertEqual(attempt['simulation_steps'],3)
 
     def test_fixture_rejects_advanced_clock_before_followup_action(self):
         actor=WiringFixtureActor(model=MODEL_ID,effort='none',timeout_s=180)

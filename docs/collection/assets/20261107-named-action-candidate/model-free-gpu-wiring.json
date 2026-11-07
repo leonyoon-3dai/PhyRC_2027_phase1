@@ -1,0 +1,51 @@
+{
+  "schema": "phyrc-model-free-depth-query-wiring-v1",
+  "run_id": "20261107-named-depth-wiring-001",
+  "source": "integration_test",
+  "source_group": "integration-depth-query-wiring-20261107-named-depth-wiring-001",
+  "model_id": "synthetic-depth-query-wiring-fixture",
+  "real_model_calls": 0,
+  "expected_physics_transitions": 3,
+  "expected_query_physics_transitions": 0,
+  "passed": true,
+  "gpu_execution": "requested_real_collector",
+  "driver_sha256": "873e5dd5e80ec17f02718e21e5da8dd865387087b54c58530f909b198814f6e3",
+  "quality_status": "pipeline_wiring_only_not_dressing_or_training_approval",
+  "named_actions": true,
+  "named_mapping_sha256": "2772202314c637aca6c0e31d1148e80db233c3ca23e6cb59bd9871d9879568b4",
+  "named_action_contract_checked": true,
+  "actual_physics_transitions": 3,
+  "query_physics_transitions": 0,
+  "client_actor_invocations": 4,
+  "fixture_calls": [
+    {
+      "call_index": 0,
+      "public_clock_s": 1.5250000795349479,
+      "tool": "depth_query",
+      "image_count": 5
+    },
+    {
+      "call_index": 1,
+      "public_clock_s": 1.5250000795349479,
+      "tool": "act",
+      "image_count": 5
+    },
+    {
+      "call_index": 2,
+      "public_clock_s": 1.6250000847503543,
+      "tool": "stop",
+      "image_count": 5
+    },
+    {
+      "call_index": 3,
+      "public_clock_s": 1.6750000873580575,
+      "tool": "finish_episode",
+      "image_count": 5
+    }
+  ],
+  "query_followup_same_clock": true,
+  "actor_cleanup_ok": true,
+  "attempt_sha256": "6ea0700283709ccd6d22f22fa080a6c1451729c1573997b2f6bf580ba6d20dd8",
+  "decisions_sha256": "0b4a4f6bf7ac712095978d850dd812303b46b44ba4ab72ef07701873d19bc3f0",
+  "wall_s": 43.31763526099985
+}

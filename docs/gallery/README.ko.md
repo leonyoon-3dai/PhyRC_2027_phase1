@@ -2,6 +2,59 @@
 
 [저장소 소개](../../README.md) · [현재 상태](../project/STATUS.md) · [이번 세션 기록](../project/sessions/20261106-evening-resume.ko.md)
 
+## 최신 E18 · 손 근처 접근과 손목 회전 오류·복구
+
+<a href="assets/20261107-e18-roll-recovery/event.mp4"><img src="assets/20261107-e18-roll-recovery/preview.gif" width="960" alt="E18 경계801~851의 의도에 없던 robot1 roll과 복구. 네 공개 카메라"></a>
+
+[**MP4 크게 열기**](assets/20261107-e18-roll-recovery/event.mp4) · [전체 구간·실행 조건](20261106-astra-guide470-depth-001.ko.md) · [공개 분석](../collection/reviews/20261106-astra-guide470-depth-001.ko.md) · [영상 출처](assets/20261107-e18-roll-recovery/provenance.json)
+
+**5/50 · 픽업5 · 착의0 · success=false · 전수 검사928/928 통과.** 기존 파지로 운반·접근 방향을 바꾸고 depth를3회 조회했습니다. 전진 설명에 없는 손목 roll이 D16·D21에 반복돼 복구 후 감독 중단했습니다. 계획했던 소매 쪽 가이드 재파지는 실제0회입니다. 최고5점·목표10점 미달성 상태입니다.
+
+801~851경계 · 51프레임 · 10.2초 · 5fps·4배 느리게. 위는 로봇0·1 머리, 아래는 로봇0·1 손목입니다. 모델 응답 대기는 제외했고 각 카메라 원본은256×256입니다.
+
+| 영상 | 범위·길이 | 확인할 내용 |
+|---|---|---|
+| [운반·대형 회전](assets/20261107-e18-transport/event.mp4) | 470~787 · 318프레임·63.6초 | 기존 파지로 들어 올리기, 횡이동·회전, 손 근처 접근 |
+| [손 접근·두 오류와 복구·종료](assets/20261107-e18-entry-recovery/event.mp4) | 787~928 · 142프레임·28.4초 | 추가 roll 두 번과 반대 회전 복구, 질의 후 접근, 마지막 감독 중립1전이 |
+| [첫 roll·복구 확대](assets/20261107-e18-roll-recovery/event.mp4) | 801~851 · 51프레임·10.2초 | 설명과 실제 명령의 불일치 및 시야 회복 |
+
+세 영상은 같은 시도의 겹치는 구간이며 독립 시연3개가 아닙니다. [오류·복구 학습 검토 JSON](../collection/reviews/20261106-astra-guide470-depth-001-learning-segments.json)은 접근·오류·복구·질의·중단을 분리합니다. 원본은 보존했고 학습 승인은 `unreviewed`입니다. [E18 비공개 원본 고정 HF 백업·재다운로드 SHA 검증](../project/sessions/20261107-e18-backup-verification.json)을 완료했습니다.
+
+[**이 영상에 피드백 남기기**](https://github.com/leonyoon-3dai/PhyRC_2027_phase1/issues/new?title=%5BE18+%ED%94%BC%EB%93%9C%EB%B0%B1%5D+%EC%98%81%EC%83%81+%EA%B5%AC%EA%B0%84%EA%B3%BC+%EA%B4%80%EC%B8%A1&body=%EC%8B%9C%EB%8F%84%3A+E18+%2F+20261106-astra-guide470-depth-001%0A%EC%98%81%EC%83%81+%EC%8B%9C%EA%B0%81+%EB%98%90%EB%8A%94+%EA%B2%BD%EA%B3%84%3A+%0A%EC%B9%B4%EB%A9%94%EB%9D%BC%3A+%EB%A1%9C%EB%B4%870+%EB%A8%B8%EB%A6%AC+%2F+%EB%A1%9C%EB%B4%871+%EB%A8%B8%EB%A6%AC+%2F+%EB%A1%9C%EB%B4%870+%EC%86%90%EB%AA%A9+%2F+%EB%A1%9C%EB%B4%871+%EC%86%90%EB%AA%A9%0A%0A%EA%B4%80%EC%B8%A1%ED%95%9C+%EC%9E%A5%EB%A9%B4%3A%0A%0A%EC%A0%9C+%ED%95%B4%EC%84%9D+%EB%98%90%EB%8A%94+%EC%A7%88%EB%AC%B8%3A%0A%0A%EB%8B%A4%EC%9D%8C%EC%97%90+%EB%B9%84%EA%B5%90%ED%95%98%EB%A9%B4+%EC%A2%8B%EC%9D%84+%EB%8F%99%EC%9E%91%3A%0A%0A%EA%B0%A4%EB%9F%AC%EB%A6%AC%3A+https%3A%2F%2Fgithub.com%2Fleonyoon-3dai%2FPhyRC_2027_phase1%2Fblob%2Fmain%2Fdocs%2Fgallery%2FREADME.ko.md%0A)
+
+영상의 **시각 또는 경계와 카메라**를 적어 주세요. 링크는 GitHub 작성 화면만 열며 제출은 사용자가 합니다. 이 대화에도 아래처럼 남길 수 있습니다.
+
+```text
+E18 / 영상 시각 또는 경계:
+카메라:
+관측한 장면:
+해석·질문 또는 다음에 바꿔볼 동작:
+```
+
+전이1개는 **관측 → 행동 → 다음 관측**의0.05초 기록입니다. E18은928전이·시뮬레이션46.4초, 실제 경과1862.366초(약31분2초)입니다. **모델 호출30회 시도 = 실행 행동26개 + 질의 초기 호출3개 + 중단된 호출1개**이며, 질의의 물리 진행은0입니다. 928전이는470재실행·313모델·144제어기 settle·1감독 중립으로 구성됩니다. 호출 수를 전이 수나 성공한 판단 수와 혼용하지 않습니다.
+
+## 다음 비교와 최근 이력
+
+**E19는 아직 시작하지 않았습니다.** 첫 roll 오류 직전 E18의801경계를 재실행하고 같은 B 전략·depth 질의를 유지하면서 명령을 축 이름으로 작성하는 기능을 비교할 계획입니다. 과거 입력은 이번 재실행771·787경계입니다. 이 기능은 CPU269검사·동일16이미지의 실제 CLI 합성2턴 및 [모델 없는 GPU3/3전이 전수 검사](../collection/assets/20261107-named-action-candidate/model-free-gpu-wiring.json)를 통과했습니다(실제 모델0회·fixture 질의1회·질의 물리0). E18에는 사용하지 않았고 실제 착의 효과는 미검증입니다. 목 우선 후보도 구현됐으나 실제로 실행하지 않았습니다.
+
+| 시도 | 실제 바꾼 접근 | 결과·한계 |
+|---|---|---|
+| [E18](20261106-astra-guide470-depth-001.ko.md) | 공개 depth3회·기존 파지 운반 대형과 접근 방향 변경 | 5/50. 추가 roll 반복으로 감독 중단, 가이드 재파지 미실행 |
+| [E17](20261106-astra-layer352-001.ko.md) | 다른 lower-rim 후보를 겨냥한 한쪽 재파지 | 5/50. 반대층·양측 지지 미확인 |
+| [E16](20261106-astra-support264-002.ko.md) | 순차 지지 진단·같은 오른쪽 가장자리 재파지 | 0/50. 국소 천 동행 근거, 입구 미확인 |
+| [E15](20261106-astra-opening264-001.ko.md) | 초기 입구 준비 후 운반 | 5/50. 손 근처 가림·입구 통과 미확인 |
+
+시작 경계·입력·행동·예산이 달라 통제된 성공률 비교는 아닙니다. 기술 검사·과제 성공·학습 승인은 별도입니다.
+
+<details>
+<summary>E17 및 이전 시도 전체 · 당시 상태와 영상 보존</summary>
+
+> 아래는 E17 정리 시점의 원문입니다. 당시 최신·다음 계획은 현재 실행 지시가 아닙니다.
+
+# 시연 갤러리
+
+[저장소 소개](../../README.md) · [현재 상태](../project/STATUS.md) · [이번 세션 기록](../project/sessions/20261106-evening-resume.ko.md)
+
 ## 최신 E17 · 다른 경계 재파지와 미확인으로 남은 입구
 
 **다른 lower-rim 후보를 겨냥한 재파지는 실행했지만 실제 반대층 파지와 양측 지지는 확인하지 못했습니다. E17은5/50이며 최고5/50·목표10점 미달성 상태입니다.**
@@ -278,5 +331,8 @@ plan3는 중간 관측으로 다시 판단하는 조건부 계획이 아닙니�
 </details>
 
 </details>
+
+</details>
+
 
 </details>

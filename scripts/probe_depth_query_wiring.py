@@ -19,6 +19,7 @@ import numpy as np
 
 from participant.collection import codex_actor, codex_client
 from participant.collection import depth_query as dq
+from participant.collection import named_actions as na
 
 
 MODEL_ID = 'synthetic-depth-query-wiring-fixture'
@@ -43,13 +44,14 @@ def prefixed_json(prompt, prefix):
 
 class WiringFixtureActor:
     """Four deterministic responses; only public prompt data enters decisions."""
-    def __init__(self, *_, model, effort, timeout_s):
+    def __init__(self, *_, model, effort, timeout_s, named_actions=False):
         if model != MODEL_ID or effort != 'none' or timeout_s != 180:
             raise ValueError('unexpected fixture configuration')
         self.calls = []
         self.query_id = None
         self.query_clock = None
         self.closed = False
+        self.named_actions = named_actions
 
     def invoke(self, prompt, images, schema):
         if self.closed or len(self.calls) >= 4:
@@ -57,7 +59,8 @@ class WiringFixtureActor:
         started = time.monotonic()
         index = len(self.calls)
         clock = public_clock(prompt)
-        expected_schema = codex_client.SCHEMA if index == 1 else dq.response_schema(codex_client.SCHEMA)
+        action_schema = na.response_schema(codex_client.SCHEMA) if self.named_actions else codex_client.SCHEMA
+        expected_schema = action_schema if index == 1 else dq.response_schema(action_schema)
         if schema != expected_schema:
             raise ValueError('unexpected fixture response schema')
         value = {'tool': 'finish_episode', 'action': [[0.] * 9 for _ in range(2)],
@@ -90,6 +93,9 @@ class WiringFixtureActor:
                 row[3], row[8] = .03, -1.
         elif index == 2:
             value['tool'] = 'stop'
+        if self.named_actions:
+            value['action'] = {robot: dict(zip(na.CHANNELS, row))
+                               for robot, row in zip(na.ROBOTS, value['action'])}
         self.calls.append({'call_index': index, 'public_clock_s': clock,
                            'tool': value['tool'], 'image_count': len(images)})
         # These are fixture invocation counters with known zero model usage.
@@ -102,7 +108,7 @@ class WiringFixtureActor:
         self.closed = True
 
 
-def run_probe(run_id, report_path=None):
+def run_probe(run_id, report_path=None, *, named_actions=False):
     if not re.fullmatch(r'[a-zA-Z0-9][a-zA-Z0-9_.-]{0,119}', run_id):
         raise ValueError('run-id must be a safe unique name')
     root = Path(codex_client.__file__).resolve().parents[2]
@@ -118,9 +124,11 @@ def run_probe(run_id, report_path=None):
               'driver_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
               'quality_status': 'pipeline_wiring_only_not_dressing_or_training_approval'}
     instances = []
+    if named_actions:
+        report.update(named_actions=True, named_mapping_sha256=na.MAPPING_SHA256)
 
     def factory(*args, **kwargs):
-        fixture = WiringFixtureActor(*args, **kwargs)
+        fixture = WiringFixtureActor(*args, named_actions=named_actions, **kwargs)
         instances.append(fixture)
         return fixture
 
@@ -128,6 +136,8 @@ def run_probe(run_id, report_path=None):
             '--source-group', report['source_group'], '--model', MODEL_ID, '--effort', 'none',
             '--pixel-depth-query', '--plan-size', '1', '--decisions', '3',
             '--max-steps', '4', '--model-timeout', '180']
+    if named_actions:
+        argv.append('--named-actions')
     # Four is a hard episode guard, leaving room for explicit finish after the
     # intended three transitions. No query placeholder is sent as a fourth step.
     started = time.monotonic()
@@ -161,6 +171,15 @@ def run_probe(run_id, report_path=None):
                 or attempt['source_group'] != report['source_group']
                 or attempt['actor_calls_attempted'] != 4 or not fixture.closed):
             raise ValueError('wiring transition/provenance check failed')
+        if named_actions:
+            na.public_mapping(attempt['named_actions'])
+            for row in calls:
+                na.public_provenance(row['named_action'], row['decision']['action'])
+            expected = np.zeros((2,9), dtype=np.float32)
+            expected[:,3], expected[:,8] = .03, -1.
+            if not np.array_equal(np.asarray(segments[0]['applied_action'], dtype=np.float32), expected):
+                raise ValueError('named channel mapping changed the actual action')
+            report['named_action_contract_checked'] = True
         report.update(passed=True, actual_physics_transitions=3, query_physics_transitions=0,
                       client_actor_invocations=4, fixture_calls=fixture.calls,
                       query_followup_same_clock=True, actor_cleanup_ok=fixture.closed,
@@ -182,8 +201,9 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--run-id', required=True)
     parser.add_argument('--report', type=Path)
+    parser.add_argument('--named-actions', action='store_true')
     args = parser.parse_args()
-    run_probe(args.run_id, args.report)
+    run_probe(args.run_id, args.report, named_actions=args.named_actions)
 
 
 if __name__ == '__main__':
