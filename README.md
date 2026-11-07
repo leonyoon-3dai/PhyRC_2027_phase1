@@ -12,7 +12,7 @@
 
 전체 **698전이·시뮬레이션34.9초**, 새 구간은 **135전이·6.75초**입니다. 실제20분26초, 563재실행+93모델 행동+42정착이며 15호출·13행동+자율종료1판단입니다. 깊이 질의1회6유효점·질의 중 물리0, 추가 마감 전이0입니다. 전이1개는 관측→행동→다음 관측의0.05초 기록입니다.
 
-**E26 실행 중 · 05:51:36 UTC 시작:** E18/787·history719/771에서 `coordinated-leading-hand-swap`을 실제 시작했습니다. Astra/ultra·22판단/max1400/settle6·source`53a58bb4e9fa4ff5366b66485c8690b0784ad71f`·시작clean입니다. 06:05 UTC 기준 준비787개 기록을 재실행한 뒤 첫 새 행동을 마쳤습니다(총809). 화면상 위쪽·먼 손을 목표로 선택해 양측을 비스듬히 옮기고 로봇1 팔을 더 뻗었습니다. 이전 목표·역할은 불명확하므로 손/역할 교환 완료는 미확인입니다. 새 접근 관계와 결과를 계속 확인합니다. [현재 상태·명령](docs/project/STATUS.md) · [방법 설명](docs/collection/research/2026-11-07-leading-hand-candidate.ko.md)
+**E26 실행 중 · 05:51:36 UTC 시작:** E18/787·history719/771에서 `coordinated-leading-hand-swap`을 실제 시작했습니다. Astra/ultra·22판단/max1400/settle6·source`53a58bb4e9fa4ff5366b66485c8690b0784ad71f`·시작clean입니다. 06:13 UTC 기준 새 행동5회·총885개 기록입니다(787재실행+68모델+30정착). 위쪽·먼 손을 목표로 비스듬히 접근한 뒤, 두 접근에서 가림·틈 좁아짐과 중간 복구에서 손 재노출을 관찰했습니다. E23 초기와 목표 손은 달랐지만 지속적 손/역할 교환 완료는 미확인입니다. 현재 후속 방법을 시험 중이며 새 점수는 아직 확인하지 않았습니다. [현재 상태·명령](docs/project/STATUS.md) · [방법 설명](docs/collection/research/2026-11-07-leading-hand-candidate.ko.md)
 
 [**출발점 화면 5개 비교·피드백**](docs/gallery/20261107-support-startpoints.ko.md) · [**출발점·방법 데이터베이스**](docs/collection/catalog/README.ko.md) · [**0→5→10 구간 조합 장기계획**](docs/collection/research/2026-11-07-composable-scoring-data-plan.ko.md)
 

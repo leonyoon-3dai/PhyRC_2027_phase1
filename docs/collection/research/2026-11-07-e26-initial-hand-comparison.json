@@ -1,0 +1,580 @@
+{
+  "schema": "phyrc-offline-hand-identity-comparison-v1",
+  "created_at_utc": "2026-11-07T06:12:04.752145+00:00",
+  "status": "partial_observation_comparison_not_actor_input",
+  "scope": {
+    "closed_runs": [
+      "20261107-astra-progress787-named-001",
+      "20261107-astra-progress1179-named-001"
+    ],
+    "active_run_allowed_saved_observations": {
+      "20261107-astra-hand-swap787-named-001": [
+        0,
+        1
+      ]
+    },
+    "active_boundary_limit": 809,
+    "hdf5_evaluation_audit_seed_raw_cli_accessed": false,
+    "runtime_or_control_modified": false,
+    "training_approval": "unreviewed"
+  },
+  "hand_labels": {
+    "reference": "E23 and E26 obs0 robot_0_wrist, both human hands visible simultaneously with distinct striped forearms connected toward the torso.",
+    "H_A": "Lower-screen hand and nearer-looking forearm in this reference view.",
+    "H_B": "Upper-screen hand and farther-looking forearm in this reference view.",
+    "approximate_reference_pixels_E26_obs0": {
+      "H_A": [
+        60,
+        77
+      ],
+      "H_B": [
+        44,
+        36
+      ]
+    },
+    "limits": [
+      "These are visual correspondence labels, not anatomical left/right or measured camera-depth classes.",
+      "Camera names do not assign physical hand identity. Image position changes with robot motion.",
+      "Close visual correspondence of the two forearms at the shared 787 replay boundary supports the initial cross-run comparison; replay is not an exact cloth checkpoint."
+    ]
+  },
+  "findings": [
+    {
+      "id": "E23_initial_target",
+      "decision_indices": [
+        0,
+        1,
+        2
+      ],
+      "observation_indices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "assessment": "E23 explicitly targeted the lower visible hand H_A. The separate H_B forearm stays above while H_A approaches and is occluded by the cloth. This is an actual initial approach, not a claim of entry.",
+      "evidence": "Public D0/D1 identify lower visible hand; D2 identifies the same lower hand in projected rim overlap. Corresponding R0 wrist views show two distinct forearms."
+    },
+    {
+      "id": "E26_initial_contrast",
+      "observation_indices": [
+        0,
+        1
+      ],
+      "assessment": "The two same-looking physical forearms are distinguishable in the designated R0 wrist views. Root-reported D0 target H_B is different from the visually tracked E23 initial H_A target.",
+      "e26_target_statement_provenance": "Root task/status supplies upper/far H_B and R1 guide/R0 support; this review did not open active E26 decision/runtime files.",
+      "limits": "Two observations establish a bounded initial-target contrast, not sustained leading, garment passage, or complete method execution."
+    },
+    {
+      "id": "E23_whole_branch_not_A_only",
+      "decision_indices": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "observation_indices": [
+        9,
+        12,
+        13
+      ],
+      "assessment": "After stagger reversal, E23 approached the hand/forearm beside R1 higher rim and performed an R1-only lift with R0 lower support. Later head views show both forearms. An exclusive H_A target throughout E23 is not supported.",
+      "identity_limit": "The later higher-rim relation is compatible with the other forearm being involved, but selected views and intervening occlusion do not certify a continuously tracked H_A-to-H_B switch. Do not count E26 as the first ever H_B approach on this evidence."
+    },
+    {
+      "id": "E24_target_and_roles",
+      "decision_indices": [
+        3,
+        4,
+        10,
+        11,
+        15,
+        16,
+        17
+      ],
+      "observation_indices": [
+        4,
+        9,
+        12,
+        16
+      ],
+      "assessment": "E24 repeatedly identifies the lower visible hand and R1 hand-side support, with R0 opposite/elevated anchor. Selected head views trace the lower forearm, while the upper forearm is also visible. This is consistent with H_A.",
+      "role_limit": "R1 guide/R0 anchor is therefore not itself a new role exchange relative to E24. E23 early near-hand support was R0, but later E23 also used R1 higher-rim approach."
+    }
+  ],
+  "overall_classification": {
+    "initial_E23_vs_reported_E26_target_contrast": "supported by selected public images plus explicit E23 final descriptions and root-provided E26 target",
+    "different_hand_throughout_prior_branch": "unestablished",
+    "sustained_actual_leading_hand_swap_E26": "unestablished_at_obs1",
+    "guide_anchor_exchange_vs_all_prior_execution": "unestablished",
+    "changed_relative_entry_approach_face": "not resolved from these two E26 observations",
+    "method_complete_or_success_claimed": false
+  },
+  "recommended_reporting": "E26 selected the upper H_B target at the common start, contrasting with E23 initial lower H_A approach. Prior E23 later forearm involvement and E24 R1 guide use prevent an entire-branch novelty or completed role-swap claim. Preserve actor uncertainty separately from this offline initial correspondence.",
+  "evidence_files": [
+    {
+      "path": "docs/collection/attempts/20261107-astra-progress787-named-001/decisions.jsonl",
+      "bytes": 180932,
+      "sha256": "e9b96c784221e21ebdfc64e0b121c7a489d785e0d9189b0f7f689b873b5372dd",
+      "read_scope": "Final public decision fields and applied-segment boundaries; no raw actor reasoning."
+    },
+    {
+      "path": "docs/collection/attempts/20261107-astra-progress1179-named-001/decisions.jsonl",
+      "bytes": 255018,
+      "sha256": "3d331c74e6112caf83e1dbde7db5ce19f266b628da8378aded33409e2e98ed43",
+      "read_scope": "Final public decision fields and applied-segment boundaries; no raw actor reasoning."
+    },
+    {
+      "path": "output/actors/20261107-astra-progress787-named-001/observations/00000/observation.json",
+      "bytes": 25316,
+      "sha256": "f034433b9b3a5b1d54be759a3a07c86b1eec0dbb95225fbcfef0b539d9d081a6",
+      "run_id": "20261107-astra-progress787-named-001",
+      "observation_index": 0,
+      "transition_boundary": 787,
+      "public_simulation_time_s": 40.87500213179737,
+      "read_scope": "Saved designated public robot observation; no HDF5."
+    },
+    {
+      "path": "output/actors/20261107-astra-progress787-named-001/observations/00000/robot_0_head.png",
+      "bytes": 58474,
+      "sha256": "39d6cbcea509aaa9e0dafcf67af2b28760257e815b5b8838dc527740ebda5396",
+      "run_id": "20261107-astra-progress787-named-001",
+      "observation_index": 0,
+      "transition_boundary": 787,
+      "view": "robot_0_head",
+      "review": "Direct visual inspection; no segmentation, anatomy, hidden geometry, or camera-name identity assignment."
+    },
+    {
+      "path": "output/actors/20261107-astra-progress787-named-001/observations/00000/robot_1_head.png",
+      "bytes": 56401,
+      "sha256": "78b364b4fd234fbc2ae77bc745373db3d8643121c5f3386590b9850889526a9f",
+      "run_id": "20261107-astra-progress787-named-001",
+      "observation_index": 0,
+      "transition_boundary": 787,
+      "view": "robot_1_head",
+      "review": "Direct visual inspection; no segmentation, anatomy, hidden geometry, or camera-name identity assignment."
+    },
+    {
+      "path": "output/actors/20261107-astra-progress787-named-001/observations/00000/robot_0_wrist.png",
+      "bytes": 77259,
+      "sha256": "2947b53f05aa990d93dfb8e3b0603fe2cdf8fc6cb123676de3e82f7665de2e3a",
+      "run_id": "20261107-astra-progress787-named-001",
+      "observation_index": 0,
+      "transition_boundary": 787,
+      "view": "robot_0_wrist",
+      "review": "Direct visual inspection; no segmentation, anatomy, hidden geometry, or camera-name identity assignment."
+    },
+    {
+      "path": "output/actors/20261107-astra-progress787-named-001/observations/00000/robot_1_wrist.png",
+      "bytes": 72740,
+      "sha256": "9fee922f270632ae69bcb6e416acacd5e4086b853eab28e181818b9287601e32",
+      "run_id": "20261107-astra-progress787-named-001",
+      "observation_index": 0,
+      "transition_boundary": 787,
+      "view": "robot_1_wrist",
+      "review": "Direct visual inspection; no segmentation, anatomy, hidden geometry, or camera-name identity assignment."
+    },
+    {
+      "path": "output/actors/20261107-astra-progress787-named-001/observations/00001/observation.json",
+      "bytes": 25287,
+      "sha256": "5f185846178186db6706b88df2452cdb8843295705c4fc1fd3e8337e103d85cb",
+      "run_id": "20261107-astra-progress787-named-001",
+      "observation_index": 1,
+      "transition_boundary": 813,
+      "public_simulation_time_s": 42.17500219959766,
+      "read_scope": "Saved designated public robot observation; no HDF5."
+    },
+    {
+      "path": "output/actors/20261107-astra-progress787-named-001/observations/00001/robot_1_head.png",
+      "bytes": 55724,
+      "sha256": "f26493e339a9b617eaad5fb893fcf35b1e6198334c6a591bbbb12a802f0422ed",
+      "run_id": "20261107-astra-progress787-named-001",
+      "observation_index": 1,
+      "transition_boundary": 813,
+      "view": "robot_1_head",
+      "review": "Direct visual inspection; no segmentation, anatomy, hidden geometry, or camera-name identity assignment."
+    },
+    {
+      "path": "output/actors/20261107-astra-progress787-named-001/observations/00002/observation.json",
+      "bytes": 25304,
+      "sha256": "5bd05d73cd735085b86e937bf23001d13199bad6f5ff3283c1ee194a69c9f7a1",
+      "run_id": "20261107-astra-progress787-named-001",
+      "observation_index": 2,
+      "transition_boundary": 835,
+      "public_simulation_time_s": 43.27500225696713,
+      "read_scope": "Saved designated public robot observation; no HDF5."
+    },
+    {
+      "path": "output/actors/20261107-astra-progress787-named-001/observations/00002/robot_1_head.png",
+      "bytes": 55753,
+      "sha256": "2276f7e60e54e144f44931683313529ac4d6c4acc9060c9317f07b23ea09a32f",
+      "run_id": "20261107-astra-progress787-named-001",
+      "observation_index": 2,
+      "transition_boundary": 835,
+      "view": "robot_1_head",
+      "review": "Direct visual inspection; no segmentation, anatomy, hidden geometry, or camera-name identity assignment."
+    },
+    {
+      "path": "output/actors/20261107-astra-progress787-named-001/observations/00002/robot_0_wrist.png",
+      "bytes": 74266,
+      "sha256": "64fb00e564a690c64275eca19cf7d28ab6f0ff07baada2ca8a70cd838ead5678",
+      "run_id": "20261107-astra-progress787-named-001",
+      "observation_index": 2,
+      "transition_boundary": 835,
+      "view": "robot_0_wrist",
+      "review": "Direct visual inspection; no segmentation, anatomy, hidden geometry, or camera-name identity assignment."
+    },
+    {
+      "path": "output/actors/20261107-astra-progress787-named-001/observations/00003/observation.json",
+      "bytes": 25182,
+      "sha256": "3dc744c4a5739d5d242c53943ea2858bca68aa6e92d700ad88b6806df181f12d",
+      "run_id": "20261107-astra-progress787-named-001",
+      "observation_index": 3,
+      "transition_boundary": 853,
+      "public_simulation_time_s": 44.175002303905785,
+      "read_scope": "Saved designated public robot observation; no HDF5."
+    },
+    {
+      "path": "output/actors/20261107-astra-progress787-named-001/observations/00003/robot_0_wrist.png",
+      "bytes": 43144,
+      "sha256": "a973ecfc1ddd4ad4bbcf94ea0897bb0b5d6a91fa07dbf2a71a315516b89184bc",
+      "run_id": "20261107-astra-progress787-named-001",
+      "observation_index": 3,
+      "transition_boundary": 853,
+      "view": "robot_0_wrist",
+      "review": "Direct visual inspection; no segmentation, anatomy, hidden geometry, or camera-name identity assignment."
+    },
+    {
+      "path": "output/actors/20261107-astra-progress787-named-001/observations/00009/observation.json",
+      "bytes": 25243,
+      "sha256": "d41c74c6ad2959d6f9cc3469899ad84b31e4c8ba1f1527bac904e2bc5f285203",
+      "run_id": "20261107-astra-progress787-named-001",
+      "observation_index": 9,
+      "transition_boundary": 989,
+      "public_simulation_time_s": 50.97500265855342,
+      "read_scope": "Saved designated public robot observation; no HDF5."
+    },
+    {
+      "path": "output/actors/20261107-astra-progress787-named-001/observations/00009/robot_0_head.png",
+      "bytes": 70265,
+      "sha256": "15164a269a6a6c236ad3e6e1d463376f248dfc83047da102efcdf2c17c14f433",
+      "run_id": "20261107-astra-progress787-named-001",
+      "observation_index": 9,
+      "transition_boundary": 989,
+      "view": "robot_0_head",
+      "review": "Direct visual inspection; no segmentation, anatomy, hidden geometry, or camera-name identity assignment."
+    },
+    {
+      "path": "output/actors/20261107-astra-progress787-named-001/observations/00009/robot_1_head.png",
+      "bytes": 60006,
+      "sha256": "09785e1ecb026a16e15c411338d084813067dde0d6117fc445d89382ef605495",
+      "run_id": "20261107-astra-progress787-named-001",
+      "observation_index": 9,
+      "transition_boundary": 989,
+      "view": "robot_1_head",
+      "review": "Direct visual inspection; no segmentation, anatomy, hidden geometry, or camera-name identity assignment."
+    },
+    {
+      "path": "output/actors/20261107-astra-progress787-named-001/observations/00012/observation.json",
+      "bytes": 25270,
+      "sha256": "f0d6005f803bda9d2ca1a1350c04e8b664a47843854e5312515bef09b7ec75d0",
+      "run_id": "20261107-astra-progress787-named-001",
+      "observation_index": 12,
+      "transition_boundary": 1055,
+      "public_simulation_time_s": 54.27500283066183,
+      "read_scope": "Saved designated public robot observation; no HDF5."
+    },
+    {
+      "path": "output/actors/20261107-astra-progress787-named-001/observations/00012/robot_0_head.png",
+      "bytes": 75983,
+      "sha256": "5701e6c7a23fe879f887aa15ac14c2a73f68dc58e2353d571d60661bb8d61ab8",
+      "run_id": "20261107-astra-progress787-named-001",
+      "observation_index": 12,
+      "transition_boundary": 1055,
+      "view": "robot_0_head",
+      "review": "Direct visual inspection; no segmentation, anatomy, hidden geometry, or camera-name identity assignment."
+    },
+    {
+      "path": "output/actors/20261107-astra-progress787-named-001/observations/00012/robot_1_head.png",
+      "bytes": 62546,
+      "sha256": "6e9c131a9652bcb63743255c8c46214d764a71be64c63e884fb24eb7a06e4350",
+      "run_id": "20261107-astra-progress787-named-001",
+      "observation_index": 12,
+      "transition_boundary": 1055,
+      "view": "robot_1_head",
+      "review": "Direct visual inspection; no segmentation, anatomy, hidden geometry, or camera-name identity assignment."
+    },
+    {
+      "path": "output/actors/20261107-astra-progress787-named-001/observations/00013/observation.json",
+      "bytes": 25267,
+      "sha256": "b1bd3a1d5486852d77b3010f179c405e042d8d51cfa33c7390442aff6c9c505e",
+      "run_id": "20261107-astra-progress787-named-001",
+      "observation_index": 13,
+      "transition_boundary": 1077,
+      "public_simulation_time_s": 55.375002888031304,
+      "read_scope": "Saved designated public robot observation; no HDF5."
+    },
+    {
+      "path": "output/actors/20261107-astra-progress787-named-001/observations/00013/robot_0_head.png",
+      "bytes": 76006,
+      "sha256": "fafe3f6bb380eec788c4d4193586cccfbd15d2d2b0fc051701b91ec29d779393",
+      "run_id": "20261107-astra-progress787-named-001",
+      "observation_index": 13,
+      "transition_boundary": 1077,
+      "view": "robot_0_head",
+      "review": "Direct visual inspection; no segmentation, anatomy, hidden geometry, or camera-name identity assignment."
+    },
+    {
+      "path": "output/actors/20261107-astra-progress787-named-001/observations/00013/robot_1_head.png",
+      "bytes": 65638,
+      "sha256": "dda0934a55b4a5289ebbe565a210775e4b3b2a64fd2480b102b6d0e10810b6ec",
+      "run_id": "20261107-astra-progress787-named-001",
+      "observation_index": 13,
+      "transition_boundary": 1077,
+      "view": "robot_1_head",
+      "review": "Direct visual inspection; no segmentation, anatomy, hidden geometry, or camera-name identity assignment."
+    },
+    {
+      "path": "output/actors/20261107-astra-progress1179-named-001/observations/00000/observation.json",
+      "bytes": 25314,
+      "sha256": "0ff532d4da1e2e928b83ac114c9258765cf17db19dd8f792113b1749259c3268",
+      "run_id": "20261107-astra-progress1179-named-001",
+      "observation_index": 0,
+      "transition_boundary": 1179,
+      "public_simulation_time_s": 60.47500315401703,
+      "read_scope": "Saved designated public robot observation; no HDF5."
+    },
+    {
+      "path": "output/actors/20261107-astra-progress1179-named-001/observations/00000/robot_0_head.png",
+      "bytes": 69763,
+      "sha256": "c6846d7e518e693d02c0ea8dae7924d06a9ec241311b10352f0b5e78f9a8755a",
+      "run_id": "20261107-astra-progress1179-named-001",
+      "observation_index": 0,
+      "transition_boundary": 1179,
+      "view": "robot_0_head",
+      "review": "Direct visual inspection; no segmentation, anatomy, hidden geometry, or camera-name identity assignment."
+    },
+    {
+      "path": "output/actors/20261107-astra-progress1179-named-001/observations/00000/robot_1_head.png",
+      "bytes": 63240,
+      "sha256": "31bf7589d8fe79a74cdd410ee1f3422ff8ddd277736df01ad88f0945bea3710b",
+      "run_id": "20261107-astra-progress1179-named-001",
+      "observation_index": 0,
+      "transition_boundary": 1179,
+      "view": "robot_1_head",
+      "review": "Direct visual inspection; no segmentation, anatomy, hidden geometry, or camera-name identity assignment."
+    },
+    {
+      "path": "output/actors/20261107-astra-progress1179-named-001/observations/00004/observation.json",
+      "bytes": 25315,
+      "sha256": "ffa80ecde15ef7b9108426be046d655bb2b135d133cf99aeedaf17c473bd5a4b",
+      "run_id": "20261107-astra-progress1179-named-001",
+      "observation_index": 4,
+      "transition_boundary": 1263,
+      "public_simulation_time_s": 64.6750033730641,
+      "read_scope": "Saved designated public robot observation; no HDF5."
+    },
+    {
+      "path": "output/actors/20261107-astra-progress1179-named-001/observations/00004/robot_0_head.png",
+      "bytes": 73834,
+      "sha256": "b199af8bf4b55459ecdff42c6a83b8c8e25756fd9180e069596b70570d64b7ae",
+      "run_id": "20261107-astra-progress1179-named-001",
+      "observation_index": 4,
+      "transition_boundary": 1263,
+      "view": "robot_0_head",
+      "review": "Direct visual inspection; no segmentation, anatomy, hidden geometry, or camera-name identity assignment."
+    },
+    {
+      "path": "output/actors/20261107-astra-progress1179-named-001/observations/00004/robot_1_head.png",
+      "bytes": 72264,
+      "sha256": "7a96cb06cce32e9e18286c0d31c57fe5b8702a9cc4e432107a9bf5ede93bd1b0",
+      "run_id": "20261107-astra-progress1179-named-001",
+      "observation_index": 4,
+      "transition_boundary": 1263,
+      "view": "robot_1_head",
+      "review": "Direct visual inspection; no segmentation, anatomy, hidden geometry, or camera-name identity assignment."
+    },
+    {
+      "path": "output/actors/20261107-astra-progress1179-named-001/observations/00009/observation.json",
+      "bytes": 25343,
+      "sha256": "44eb579fcc5693db6d452afb9511846b1e698e66ffad64f9196cdb17106df549",
+      "run_id": "20261107-astra-progress1179-named-001",
+      "observation_index": 9,
+      "transition_boundary": 1361,
+      "public_simulation_time_s": 69.57500362861902,
+      "read_scope": "Saved designated public robot observation; no HDF5."
+    },
+    {
+      "path": "output/actors/20261107-astra-progress1179-named-001/observations/00009/robot_0_head.png",
+      "bytes": 74069,
+      "sha256": "95f52d2471c5e6a03b88de43edbd20b61d0fe2ada62a2ad9f64dc4422059313f",
+      "run_id": "20261107-astra-progress1179-named-001",
+      "observation_index": 9,
+      "transition_boundary": 1361,
+      "view": "robot_0_head",
+      "review": "Direct visual inspection; no segmentation, anatomy, hidden geometry, or camera-name identity assignment."
+    },
+    {
+      "path": "output/actors/20261107-astra-progress1179-named-001/observations/00009/robot_1_head.png",
+      "bytes": 71614,
+      "sha256": "39fa1202e4ed0a4983c14c2b63e65ccca389be9acd5e166f1172e7a86803e023",
+      "run_id": "20261107-astra-progress1179-named-001",
+      "observation_index": 9,
+      "transition_boundary": 1361,
+      "view": "robot_1_head",
+      "review": "Direct visual inspection; no segmentation, anatomy, hidden geometry, or camera-name identity assignment."
+    },
+    {
+      "path": "output/actors/20261107-astra-progress1179-named-001/observations/00012/observation.json",
+      "bytes": 25359,
+      "sha256": "72420e5b79a166eb417c8a12a11167ae38219d04dc6b91aee28b299d0e0af67e",
+      "run_id": "20261107-astra-progress1179-named-001",
+      "observation_index": 12,
+      "transition_boundary": 1417,
+      "public_simulation_time_s": 72.3750037746504,
+      "read_scope": "Saved designated public robot observation; no HDF5."
+    },
+    {
+      "path": "output/actors/20261107-astra-progress1179-named-001/observations/00012/robot_1_head.png",
+      "bytes": 71517,
+      "sha256": "370006cbdff994b30c2304951c49258ffc496eecb9b49cbe1a0c16c4efb26dd0",
+      "run_id": "20261107-astra-progress1179-named-001",
+      "observation_index": 12,
+      "transition_boundary": 1417,
+      "view": "robot_1_head",
+      "review": "Direct visual inspection; no segmentation, anatomy, hidden geometry, or camera-name identity assignment."
+    },
+    {
+      "path": "output/actors/20261107-astra-progress1179-named-001/observations/00016/observation.json",
+      "bytes": 25357,
+      "sha256": "4f29adbedf38a9cf8cc5926301ca42e86fc3c156789d8b059d14a82ad761a409",
+      "run_id": "20261107-astra-progress1179-named-001",
+      "observation_index": 16,
+      "transition_boundary": 1501,
+      "public_simulation_time_s": 76.57500399369746,
+      "read_scope": "Saved designated public robot observation; no HDF5."
+    },
+    {
+      "path": "output/actors/20261107-astra-progress1179-named-001/observations/00016/robot_1_wrist.png",
+      "bytes": 96323,
+      "sha256": "71968357bd213bc76099e9040f9021f2e2cad396deec656600fd32a09807f9d1",
+      "run_id": "20261107-astra-progress1179-named-001",
+      "observation_index": 16,
+      "transition_boundary": 1501,
+      "view": "robot_1_wrist",
+      "review": "Direct visual inspection; no segmentation, anatomy, hidden geometry, or camera-name identity assignment."
+    },
+    {
+      "path": "output/actors/20261107-astra-hand-swap787-named-001/observations/00000/observation.json",
+      "bytes": 25309,
+      "sha256": "ad4ca927d7d25fdf17eebc3efb69931927887f46308b05857872123e8c807b09",
+      "run_id": "20261107-astra-hand-swap787-named-001",
+      "observation_index": 0,
+      "transition_boundary": 787,
+      "public_simulation_time_s": 40.87500213179737,
+      "read_scope": "Saved designated public robot observation; no HDF5."
+    },
+    {
+      "path": "output/actors/20261107-astra-hand-swap787-named-001/observations/00000/overview.png",
+      "bytes": 72817,
+      "sha256": "2583413d6e42d270c56bf7559dffcc26a11d6510e1f4e9f851f1e2ca3a57a1d3",
+      "run_id": "20261107-astra-hand-swap787-named-001",
+      "observation_index": 0,
+      "transition_boundary": 787,
+      "view": "overview",
+      "review": "Direct visual inspection; no segmentation, anatomy, hidden geometry, or camera-name identity assignment."
+    },
+    {
+      "path": "output/actors/20261107-astra-hand-swap787-named-001/observations/00000/robot_0_head.png",
+      "bytes": 57835,
+      "sha256": "6189d950296c5c9d3d1e6344245224527ba3611a1b43fe2c2fd8782b6ed54e9d",
+      "run_id": "20261107-astra-hand-swap787-named-001",
+      "observation_index": 0,
+      "transition_boundary": 787,
+      "view": "robot_0_head",
+      "review": "Direct visual inspection; no segmentation, anatomy, hidden geometry, or camera-name identity assignment."
+    },
+    {
+      "path": "output/actors/20261107-astra-hand-swap787-named-001/observations/00000/robot_1_head.png",
+      "bytes": 56450,
+      "sha256": "5a790432fffc1e066cfe5211a6968b6a51b99edfb2303ba061ecc7be9a9e174f",
+      "run_id": "20261107-astra-hand-swap787-named-001",
+      "observation_index": 0,
+      "transition_boundary": 787,
+      "view": "robot_1_head",
+      "review": "Direct visual inspection; no segmentation, anatomy, hidden geometry, or camera-name identity assignment."
+    },
+    {
+      "path": "output/actors/20261107-astra-hand-swap787-named-001/observations/00000/robot_0_wrist.png",
+      "bytes": 77278,
+      "sha256": "068a6d2db3b618fbfd5b562d914029409a98ee47246fff50652f63631f5c7aff",
+      "run_id": "20261107-astra-hand-swap787-named-001",
+      "observation_index": 0,
+      "transition_boundary": 787,
+      "view": "robot_0_wrist",
+      "review": "Direct visual inspection; no segmentation, anatomy, hidden geometry, or camera-name identity assignment."
+    },
+    {
+      "path": "output/actors/20261107-astra-hand-swap787-named-001/observations/00000/robot_1_wrist.png",
+      "bytes": 73543,
+      "sha256": "53969af9cc6e88173e0cf85755ccd56ac2c02a6de5e1dc5d3b1a43ec6b71f0b0",
+      "run_id": "20261107-astra-hand-swap787-named-001",
+      "observation_index": 0,
+      "transition_boundary": 787,
+      "view": "robot_1_wrist",
+      "review": "Direct visual inspection; no segmentation, anatomy, hidden geometry, or camera-name identity assignment."
+    },
+    {
+      "path": "output/actors/20261107-astra-hand-swap787-named-001/observations/00001/observation.json",
+      "bytes": 25300,
+      "sha256": "fd85d4ca3a6ec7ddf014cbbb8090e7d10f2c50b4e73152cb2ed6036a08f5b67e",
+      "run_id": "20261107-astra-hand-swap787-named-001",
+      "observation_index": 1,
+      "transition_boundary": 809,
+      "public_simulation_time_s": 41.975002189166844,
+      "read_scope": "Saved designated public robot observation; no HDF5."
+    },
+    {
+      "path": "output/actors/20261107-astra-hand-swap787-named-001/observations/00001/robot_0_head.png",
+      "bytes": 60681,
+      "sha256": "29fd81e415335949dea13768c7a25be9e37f43f293bba1ed6fd233d270380ef0",
+      "run_id": "20261107-astra-hand-swap787-named-001",
+      "observation_index": 1,
+      "transition_boundary": 809,
+      "view": "robot_0_head",
+      "review": "Direct visual inspection; no segmentation, anatomy, hidden geometry, or camera-name identity assignment."
+    },
+    {
+      "path": "output/actors/20261107-astra-hand-swap787-named-001/observations/00001/robot_1_head.png",
+      "bytes": 56500,
+      "sha256": "0a10683c684784eae6dd3d351cf3598bdd90705e3b765290e5edce532d76c837",
+      "run_id": "20261107-astra-hand-swap787-named-001",
+      "observation_index": 1,
+      "transition_boundary": 809,
+      "view": "robot_1_head",
+      "review": "Direct visual inspection; no segmentation, anatomy, hidden geometry, or camera-name identity assignment."
+    },
+    {
+      "path": "output/actors/20261107-astra-hand-swap787-named-001/observations/00001/robot_0_wrist.png",
+      "bytes": 78896,
+      "sha256": "337635b3b7b34f84744d34cc83d07f4fb73e9c9852bf73d513ff56f802f31c36",
+      "run_id": "20261107-astra-hand-swap787-named-001",
+      "observation_index": 1,
+      "transition_boundary": 809,
+      "view": "robot_0_wrist",
+      "review": "Direct visual inspection; no segmentation, anatomy, hidden geometry, or camera-name identity assignment."
+    },
+    {
+      "path": "output/actors/20261107-astra-hand-swap787-named-001/observations/00001/robot_1_wrist.png",
+      "bytes": 66165,
+      "sha256": "8d17bd44afc0b56245827377bb54e5dfc42d3bfb17faceaf73dc7e55b470b712",
+      "run_id": "20261107-astra-hand-swap787-named-001",
+      "observation_index": 1,
+      "transition_boundary": 809,
+      "view": "robot_1_wrist",
+      "review": "Direct visual inspection; no segmentation, anatomy, hidden geometry, or camera-name identity assignment."
+    }
+  ]
+}
