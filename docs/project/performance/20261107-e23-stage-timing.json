@@ -1,0 +1,434 @@
+{
+  "schema": "phyrc-closed-stage-timing-review-v1",
+  "run_id": "20261107-astra-progress787-named-001",
+  "source_commit": "952ec8da68cdc0ef635d0d45329712eee006fd1f",
+  "created_at_utc": "2026-11-07T04:21:35.664141+00:00",
+  "scope": "Closed E23 numeric step timings, replay/applied timing fields, supervisor count and attempt top wall fields. Source snapshot code inspected only to define timers. No HDF5, evaluation data, audit, raw simulator/actor logs, active E24, GPU/model calls or modifications.",
+  "field_definitions": {
+    "environment_step_wall_s": "RecordedEnvironment.step host wall around env.step plus profiler enter/exit; contains observe/capture. Does not contain dataset writer.",
+    "step_observe_wall_s": "Outermost env._observe host wall, inclusive of capture within observe; do not add to capture again.",
+    "step_capture_wall_s": "sensors.capture host wall, inclusive of render/Replicator/readback and waits; no internal rendering or GPU kernel split.",
+    "step_observe_without_capture_wall_s": "Outer observe wall minus capture-in-observe wall; other observation work, not proven pure public-state serialization.",
+    "step_without_observe_wall_s": "Environment step wall minus outer observe wall; control/physics/callback/evaluation/waits and wrapper overhead are not separated.",
+    "dataset_write_wall_s": "Host wall for underlying writer.append, separate from environment step; excludes writing/flushing the step_timings JSONL itself.",
+    "collection_wall_elapsed_s": "Cumulative wall since RecordedWriter initialization, not per-step duration; includes elapsed waits between steps/model calls; never summed.",
+    "environment_dispatch_wall_s": "External timed replay/model/settle dispatch request-response intervals; contains internal env+writer. Does not include supervisor stop/finish in this source.",
+    "actor_call_wall_s": "Attempt total public staging plus Docker/CLI/request-response/service/generation path; not internal model inference time.",
+    "wall_s": "Attempt wall after source replay loading/command preparation through final cleanup; pre-timer source loading/hash costs excluded."
+  },
+  "sources": [
+    {
+      "path": "output/collections/20261107-astra-progress787-named-001/step_timings.jsonl",
+      "sha256": "ebf69fcbfae1aaa6b12219006e5ff9108abd54385bdaeb2fdcefa3847081a82c",
+      "bytes": 759964
+    },
+    {
+      "path": "output/operator-traces/20261107-astra-progress787-named-001/decisions.jsonl",
+      "sha256": "1bb597c86624a5b2fc0adcac2c02d7114b4a34f60c5ff6c4a9635270447984f5",
+      "bytes": 199925
+    },
+    {
+      "path": "output/operator-traces/20261107-astra-progress787-named-001/attempt.json",
+      "sha256": "49d30d9a07f0f6d8074eecd6ec5fc5890d5dc047e2a667df98a822f4db790cc9",
+      "bytes": 133771
+    }
+  ],
+  "timer_definition_sources": [
+    {
+      "path": "output/operator-traces/20261107-astra-progress787-named-001/source_snapshot/participant/collection/step_profile.py",
+      "sha256": "7faf9890e6168e4b01d3345d6fe5a09c608fd169d984e9ac8235fea8fbb096ff",
+      "bytes": 3423
+    },
+    {
+      "path": "output/operator-traces/20261107-astra-progress787-named-001/source_snapshot/participant/collection/evaluation.py",
+      "sha256": "0ab3c8d8509763f038309c630316fbfda92a4e1a5ffd46901c1a3ad275515733",
+      "bytes": 9825
+    },
+    {
+      "path": "output/operator-traces/20261107-astra-progress787-named-001/source_snapshot/participant/collection/codex_client.py",
+      "sha256": "e31e216a324323298724b508e29dc36615f32abb72802950aee2c3541efb1d17",
+      "bytes": 108543
+    }
+  ],
+  "whole_attempt": {
+    "wall_s": 1906.1800181239996,
+    "actor_call_path_s": 821.4023350900025,
+    "environment_dispatch_s": 1031.8652058920088,
+    "unpartitioned_remainder_s": 52.91247714198835,
+    "actor_call_path_fraction": 0.43091540530280026,
+    "environment_dispatch_fraction": 0.5413262105787559,
+    "unpartitioned_remainder_fraction": 0.027758384118443905,
+    "model_internal_inference_wall_s": null,
+    "note": "No double counting of model_call and decision records; only attempt top-level call sum used. Remainder includes unmeasured startup/finalization and non-dispatch work; no pure attribution."
+  },
+  "all_steps": {
+    "count": 1180,
+    "statistics": {
+      "environment_step_wall_s": {
+        "count": 1180,
+        "sum_s": 905.7002064959379,
+        "mean_ms": 767.5425478779134,
+        "p50_ms": 744.5883469990804,
+        "p95_ms": 979.2722261989182,
+        "max_ms": 1215.9152100030042
+      },
+      "step_capture_wall_s": {
+        "count": 1180,
+        "sum_s": 191.2719811160532,
+        "mean_ms": 162.09489925089255,
+        "p50_ms": 143.60581450091559,
+        "p95_ms": 208.26547799897523,
+        "max_ms": 378.2492739992449
+      },
+      "step_observe_without_capture_wall_s": {
+        "count": 1180,
+        "sum_s": 10.934446016948641,
+        "mean_ms": 9.266479675380204,
+        "p50_ms": 8.914698499211227,
+        "p95_ms": 11.293681247298082,
+        "max_ms": 21.86668400099734
+      },
+      "step_without_observe_wall_s": {
+        "count": 1180,
+        "sum_s": 703.493779362936,
+        "mean_ms": 596.1811689516408,
+        "p50_ms": 562.6292525012104,
+        "p95_ms": 799.0351940041363,
+        "max_ms": 1045.2798000005714
+      },
+      "dataset_write_wall_s": {
+        "count": 1180,
+        "sum_s": 54.95732541491816,
+        "mean_ms": 46.574004588913695,
+        "p50_ms": 45.79916950024199,
+        "p95_ms": 52.97255720179237,
+        "max_ms": 74.79090400011046
+      }
+    },
+    "within_environment_fractions": {
+      "step_capture_wall_s": 0.21118685823873784,
+      "step_observe_without_capture_wall_s": 0.012072919867439252,
+      "step_without_observe_wall_s": 0.776740221893823
+    },
+    "writer_fraction_of_attempt_wall": 0.02883113079162658
+  },
+  "stages": [
+    {
+      "action_source": "replayed_parent",
+      "request_count": 79,
+      "transition_count": 787,
+      "dispatch_sum_s": 668.599333541013,
+      "per_step_statistics": {
+        "environment_step_wall_s": {
+          "count": 787,
+          "sum_s": 581.5945575529913,
+          "mean_ms": 739.0019791016408,
+          "p50_ms": 735.0545909976063,
+          "p95_ms": 815.7870994975383,
+          "max_ms": 1207.6254399980826
+        },
+        "step_capture_wall_s": {
+          "count": 787,
+          "sum_s": 127.98482842304657,
+          "mean_ms": 162.62367016905534,
+          "p50_ms": 143.54795799954445,
+          "p95_ms": 207.1539044009114,
+          "max_ms": 378.2492739992449
+        },
+        "step_observe_without_capture_wall_s": {
+          "count": 787,
+          "sum_s": 7.203954644995974,
+          "mean_ms": 9.153690781443423,
+          "p50_ms": 8.782960001553874,
+          "p95_ms": 11.058309100189945,
+          "max_ms": 21.86668400099734
+        },
+        "step_without_observe_wall_s": {
+          "count": 787,
+          "sum_s": 446.4057744849488,
+          "mean_ms": 567.224618151142,
+          "p50_ms": 557.5999410029908,
+          "p95_ms": 613.1801993997213,
+          "max_ms": 1045.2798000005714
+        },
+        "dataset_write_wall_s": {
+          "count": 787,
+          "sum_s": 36.766256967941445,
+          "mean_ms": 46.71697200500819,
+          "p50_ms": 46.054144000663655,
+          "p95_ms": 53.32014660089043,
+          "max_ms": 74.79090400011046
+        }
+      },
+      "dispatch_minus_env_plus_writer_s": 50.238519020080275
+    },
+    {
+      "action_source": "model",
+      "request_count": 18,
+      "transition_count": 284,
+      "dispatch_sum_s": 257.7833304989945,
+      "per_step_statistics": {
+        "environment_step_wall_s": {
+          "count": 284,
+          "sum_s": 233.22139914796935,
+          "mean_ms": 821.2021096759485,
+          "p50_ms": 794.5540474993322,
+          "p95_ms": 1024.1255782008009,
+          "max_ms": 1215.9152100030042
+        },
+        "step_capture_wall_s": {
+          "count": 284,
+          "sum_s": 45.58285844800048,
+          "mean_ms": 160.50302270422702,
+          "p50_ms": 143.54105050188082,
+          "p95_ms": 209.24113559849502,
+          "max_ms": 325.6210949984961
+        },
+        "step_observe_without_capture_wall_s": {
+          "count": 284,
+          "sum_s": 2.696816649971879,
+          "mean_ms": 9.49583327454887,
+          "p50_ms": 9.19269699988945,
+          "p95_ms": 11.378603446610214,
+          "max_ms": 13.317995999386767
+        },
+        "step_without_observe_wall_s": {
+          "count": 284,
+          "sum_s": 184.941724049997,
+          "mean_ms": 651.2032536971725,
+          "p50_ms": 610.6584230001317,
+          "p95_ms": 846.2412512548326,
+          "max_ms": 900.3892130021995
+        },
+        "dataset_write_wall_s": {
+          "count": 284,
+          "sum_s": 13.134818542985158,
+          "mean_ms": 46.24936106684915,
+          "p50_ms": 45.32948200176179,
+          "p95_ms": 52.50963174948992,
+          "max_ms": 57.63967200255138
+        }
+      },
+      "dispatch_minus_env_plus_writer_s": 11.427112808039965
+    },
+    {
+      "action_source": "controller_settle",
+      "request_count": 18,
+      "transition_count": 108,
+      "dispatch_sum_s": 105.4825418520013,
+      "per_step_statistics": {
+        "environment_step_wall_s": {
+          "count": 108,
+          "sum_s": 89.87770809897847,
+          "mean_ms": 832.2010009164674,
+          "p50_ms": 822.392187999867,
+          "p95_ms": 1028.4083012997144,
+          "max_ms": 1160.9571049993974
+        },
+        "step_capture_wall_s": {
+          "count": 108,
+          "sum_s": 17.562748712007306,
+          "mean_ms": 162.6180436296973,
+          "p50_ms": 144.45524050097447,
+          "p95_ms": 207.697664600164,
+          "max_ms": 301.27591799828224
+        },
+        "step_observe_without_capture_wall_s": {
+          "count": 108,
+          "sum_s": 1.024070651979855,
+          "mean_ms": 9.48213566648014,
+          "p50_ms": 9.1700455013779,
+          "p95_ms": 11.595905750255042,
+          "max_ms": 12.376280999887967
+        },
+        "step_without_observe_wall_s": {
+          "count": 108,
+          "sum_s": 71.29088873499131,
+          "mean_ms": 660.1008216202899,
+          "p50_ms": 633.4658694995596,
+          "p95_ms": 855.3631713997675,
+          "max_ms": 904.0656389988726
+        },
+        "dataset_write_wall_s": {
+          "count": 108,
+          "sum_s": 5.010728746990935,
+          "mean_ms": 46.395636546212366,
+          "p50_ms": 45.54614100015897,
+          "p95_ms": 52.33797590226458,
+          "max_ms": 57.079442998656305
+        }
+      },
+      "dispatch_minus_env_plus_writer_s": 10.594105006031896
+    },
+    {
+      "action_source": "budget_cleanup",
+      "request_count": null,
+      "transition_count": 1,
+      "dispatch_sum_s": null,
+      "per_step_statistics": {
+        "environment_step_wall_s": {
+          "count": 1,
+          "sum_s": 1.0065416959987488,
+          "mean_ms": 1006.5416959987488,
+          "p50_ms": 1006.5416959987488,
+          "p95_ms": 1006.5416959987488,
+          "max_ms": 1006.5416959987488
+        },
+        "step_capture_wall_s": {
+          "count": 1,
+          "sum_s": 0.14154553299886174,
+          "mean_ms": 141.54553299886174,
+          "p50_ms": 141.54553299886174,
+          "p95_ms": 141.54553299886174,
+          "max_ms": 141.54553299886174
+        },
+        "step_observe_without_capture_wall_s": {
+          "count": 1,
+          "sum_s": 0.009604070000932552,
+          "mean_ms": 9.604070000932552,
+          "p50_ms": 9.604070000932552,
+          "p95_ms": 9.604070000932552,
+          "max_ms": 9.604070000932552
+        },
+        "step_without_observe_wall_s": {
+          "count": 1,
+          "sum_s": 0.8553920929989545,
+          "mean_ms": 855.3920929989545,
+          "p50_ms": 855.3920929989545,
+          "p95_ms": 855.3920929989545,
+          "max_ms": 855.3920929989545
+        },
+        "dataset_write_wall_s": {
+          "count": 1,
+          "sum_s": 0.045521157000621315,
+          "mean_ms": 45.521157000621315,
+          "p50_ms": 45.521157000621315,
+          "p95_ms": 45.521157000621315,
+          "max_ms": 45.521157000621315
+        }
+      },
+      "note": "Supervisor stop/finish outer duration is not separately timed in this trace; no invented dispatch duration."
+    }
+  ],
+  "prefixes": [
+    {
+      "end_exclusive": 430,
+      "transition_count": 430,
+      "request_count": 43,
+      "all_request_boundaries_exact": true,
+      "measured_during_actual_replay": true,
+      "recorded_dispatch_sum_s": 367.3993873150175,
+      "per_step_sums_s": {
+        "environment_step_wall_s": 319.60314144599033,
+        "step_capture_wall_s": 70.77802427700954,
+        "step_observe_without_capture_wall_s": 4.002329021994228,
+        "step_without_observe_wall_s": 244.82278814698657,
+        "dataset_write_wall_s": 20.15691256196078
+      },
+      "env_plus_writer_s": 339.7600540079511,
+      "interpretation": "Observed E23 prefix time scopes only; 0..1179 mixes actual replay and later model/settle dispatch, with model wait excluded."
+    },
+    {
+      "end_exclusive": 563,
+      "transition_count": 563,
+      "request_count": 61,
+      "all_request_boundaries_exact": true,
+      "measured_during_actual_replay": true,
+      "recorded_dispatch_sum_s": 484.9369323120154,
+      "per_step_sums_s": {
+        "environment_step_wall_s": 419.4994562819993,
+        "step_capture_wall_s": 92.38126425302471,
+        "step_observe_without_capture_wall_s": 5.227384685000288,
+        "step_without_observe_wall_s": 321.8908073439743,
+        "dataset_write_wall_s": 26.528583015959157
+      },
+      "env_plus_writer_s": 446.02803929795846,
+      "interpretation": "Observed E23 prefix time scopes only; 0..1179 mixes actual replay and later model/settle dispatch, with model wait excluded."
+    },
+    {
+      "end_exclusive": 787,
+      "transition_count": 787,
+      "request_count": 79,
+      "all_request_boundaries_exact": true,
+      "measured_during_actual_replay": true,
+      "recorded_dispatch_sum_s": 668.599333541013,
+      "per_step_sums_s": {
+        "environment_step_wall_s": 581.5945575529913,
+        "step_capture_wall_s": 127.98482842304657,
+        "step_observe_without_capture_wall_s": 7.203954644995974,
+        "step_without_observe_wall_s": 446.4057744849488,
+        "dataset_write_wall_s": 36.766256967941445
+      },
+      "env_plus_writer_s": 618.3608145209328,
+      "interpretation": "Observed E23 prefix time scopes only; 0..1179 mixes actual replay and later model/settle dispatch, with model wait excluded."
+    },
+    {
+      "end_exclusive": 1179,
+      "transition_count": 1179,
+      "request_count": 115,
+      "all_request_boundaries_exact": true,
+      "measured_during_actual_replay": false,
+      "recorded_dispatch_sum_s": 1031.8652058920088,
+      "per_step_sums_s": {
+        "environment_step_wall_s": 904.6936647999391,
+        "step_capture_wall_s": 191.13043558305435,
+        "step_observe_without_capture_wall_s": 10.924841946947708,
+        "step_without_observe_wall_s": 702.6383872699371,
+        "dataset_write_wall_s": 54.91180425791754
+      },
+      "env_plus_writer_s": 959.6054690578567,
+      "interpretation": "Observed E23 prefix time scopes only; 0..1179 mixes actual replay and later model/settle dispatch, with model wait excluded."
+    }
+  ],
+  "prefix_cost_comparisons": [
+    {
+      "long_boundary": 1179,
+      "short_boundary": 563,
+      "omitted_transitions": 616,
+      "observed_E23_dispatch_difference_s": 546.9282735799934,
+      "observed_E23_env_plus_writer_difference_s": 513.5774297598982,
+      "prediction_status": "not a measured future replay speedup; two nested timer scopes, not a confidence interval",
+      "route_limit": "E18/563 shares the action-prefix lineage with E23; E07/430 diverges after264, so E23/430 is only a length/path proxy for E07/430."
+    },
+    {
+      "long_boundary": 1179,
+      "short_boundary": 430,
+      "omitted_transitions": 749,
+      "observed_E23_dispatch_difference_s": 664.4658185769913,
+      "observed_E23_env_plus_writer_difference_s": 619.8454150499056,
+      "prediction_status": "not a measured future replay speedup; two nested timer scopes, not a confidence interval",
+      "route_limit": "E18/563 shares the action-prefix lineage with E23; E07/430 diverges after264, so E23/430 is only a length/path proxy for E07/430."
+    }
+  ],
+  "consistency_checks": {
+    "indices_contiguous": true,
+    "tick_increment_all12": true,
+    "observe_calls_each1": true,
+    "capture_calls_each1": true,
+    "capture_outside_observe_each0": true,
+    "environment_decomposition_max_abs_error_s": 0.0,
+    "arithmetic_error_is_not_timer_accuracy": true,
+    "known_dispatch_ranges_cover": [
+      0,
+      1179
+    ],
+    "known_dispatch_count": 115,
+    "budget_cleanup_range": [
+      1179,
+      1180
+    ],
+    "dispatch_trace_minus_attempt_s": 0.0,
+    "percentile_method": "NumPy linear interpolation; mixed-scene samples from one run, not independent replications or confidence limits"
+  },
+  "limitations": [
+    "A recorded time difference is not a measured speedup from code changes.",
+    "Future replay has no model calls for its prefix but request grouping, state/scene/contact/render/wait costs may differ.",
+    "E23 pre-787 replay costs are measured; post-787 segment costs are observed environment work inside a model-driven suffix.",
+    "E07/430 is a different action route from E23 after264; exact E07 replay wall cost is unmeasured here.",
+    "Cannot split pure physics, render, Replicator, readback, evaluation or GPU time using v1 fields.",
+    "No benchmark with profiling disabled, no warmup exclusion, no uncertainty interval across runs.",
+    "Writer elimination hypothetical ceiling is an accounting fraction, not an authorized or validated durability change.",
+    "Total future shell runtime also includes replay source hash/load before attempt wall timer."
+  ],
+  "changes_or_new_experiments": false
+}

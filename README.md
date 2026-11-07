@@ -12,7 +12,7 @@
 
 전체 **1,180전이·시뮬레이션59초**, 새 구간은 **393전이·19.65초**입니다. 실제31분46초, 787재실행+284모델 행동+108정착+1예산 마감이며 18호출/18행동, 실제 depth 질의0회입니다. 전이1개는 관측→행동→다음 관측의0.05초 기록입니다.
 
-**E24 실행 중 · 04:11:53 UTC 시작:** E23/1179까지 준비 행동을 재실행한 뒤 같은 `coordinated-task-progress`를 최대30판단 이어갑니다. history1077/1161·Astra/ultra·source`b0513d43a87c813397c57d8a4fa6ec4e6ff6ba03`·시작clean입니다. 현재 초기화·재실행 단계이며 새 점수는 아직 없습니다. [현재 상태·설정](docs/project/STATUS.md)
+**E24 실행 중 · 04:11:53 UTC 시작:** E23/1179까지 준비 행동을 재실행한 뒤 같은 `coordinated-task-progress`를 최대30판단 이어갑니다. history1077/1161·Astra/ultra·source`b0513d43a87c813397c57d8a4fa6ec4e6ff6ba03`·시작clean입니다. 2026-11-07 04:24:55 UTC 기준 준비 행동 **853/1179개**, 새 모델 판단0회·오류없음입니다. 재실행 이후 결과는 아직 없습니다. [현재 상태·설정](docs/project/STATUS.md)
 
 [**출발점 화면 5개 비교·피드백**](docs/gallery/20261107-support-startpoints.ko.md) · [**출발점·방법 데이터베이스**](docs/collection/catalog/README.ko.md) · [**0→5→10 구간 조합 장기계획**](docs/collection/research/2026-11-07-composable-scoring-data-plan.ko.md)
 
@@ -76,6 +76,8 @@ E16의 순차 지지 진단, E17의 다른 경계 재파지, E18의 운반·접�
 E13의 4분·121표본에서 CPU 평균은 모델 대기2.08% / 동작19.14%, GPU 평균은0% /49.63%였습니다. RAM은70.76GiB 중 약16%, VRAM은9.06/44.99GiB입니다. E12의 모델 대기 포함 처리량은0.395전이/초, 동작 요청·기록 중에는1.15전이/초였습니다. 렌더 FPS와 다릅니다.
 
 E15 전체28분29.785초 중 모델 호출 경로18분25.822초, 환경9분08.946초였습니다. 순수 모델 추론시간은 제공되지 않습니다. 메모리 부족이나 지속적인 전체 자원 포화 증거는 없지만 짧은 병목을 배제하지는 않습니다.
+
+E23에서는 모델 호출 경로821.40초(43.09%)·환경 요청1031.87초(54.13%)가 들었습니다. 실제0→563 재실행 요청은484.94초였지만, 짧은 출발점의 이후 조작 비용까지 줄어든다는 뜻은 아닙니다. [E23 구간별 시간 분석](docs/project/performance/20261107-e23-stage-timing.ko.md)
 
 [원문·표본·측정 한계](docs/project/performance/20261106-performance-review.ko.md) · [단계 계측과 속도 후보](docs/project/performance/20261106-speedup-plan.ko.md) · [개편 전 성능 메모 전체](README.before-reorganization-20261106.ko.md)
 

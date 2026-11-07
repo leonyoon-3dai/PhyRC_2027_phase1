@@ -298,3 +298,5 @@ E23[원본백업](20261107-e23-backup-verification.json)은고정revision`c11575
 ## E24 실제 시작 (2026-11-07 04:11:53 UTC)
 
 `20261107-astra-progress1179-named-001`은공개source`b0513d43a87c813397c57d8a4fa6ec4e6ff6ba03`·working_tree_modified=false에서시작했다. 직접부모E23/1179·history1077/1161·동일coordinated-task-progress·named/query/wristpanel·Astra/ultra·30dec/max2000/timeout180/settle6/review10/profile이다. 새파지방법이아니라E23에서생긴팔–옷관계를보존한연속분기이며현재초기화·재실행중,새결과없다. 로그output/sessions/20261106-evening/e24-progress1179-named-001.log,exec22076. Python반환시shell이값을별도exit파일에기록하며반환전에는없다. 코드22파일은E23와같고새CPU검사통과를꾸며쓰지않는다.
+
+E24 중간(2026-11-07 04:24:55 UTC): 준비행동853/1179·새모델판단0·오류없음이다. 닫힌E23[시간분석](../performance/20261107-e23-stage-timing.ko.md)은1180행/115요청범위를검증했다. 전체1906.180초중모델호출경로821.402초·환경dispatch1031.865초,observe밖step77.67%는physics단독비용이아니다. E23경로의563까지재실행dispatch484.937초와1179까지기록dispatch합1031.865초를구분하며,후자는미래pure-replay실측이나속도개선검증이아니다. 현재E24설정변경은없다.

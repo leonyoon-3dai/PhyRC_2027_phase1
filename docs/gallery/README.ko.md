@@ -14,7 +14,7 @@
 
 전체 **1,180전이·시뮬레이션59초**, 새 구간은 **393전이·19.65초**입니다. 실제31분46초, 787재실행+284모델 행동+108정착+1예산 마감이며 18호출/18행동, 실제 depth 질의0회입니다. 전이1개는 관측→행동→다음 관측의0.05초 기록입니다.
 
-**E24 실행 중 · 04:11:53 UTC 시작:** E23/1179까지 준비 행동을 재실행한 뒤 같은 `coordinated-task-progress`를 최대30판단 이어갑니다. history1077/1161·Astra/ultra·source`b0513d43a87c813397c57d8a4fa6ec4e6ff6ba03`·시작clean입니다. 현재 초기화·재실행 단계이며 새 점수는 아직 없습니다. [현재 상태·설정](../project/STATUS.md)
+**E24 실행 중 · 04:11:53 UTC 시작:** E23/1179까지 준비 행동을 재실행한 뒤 같은 `coordinated-task-progress`를 최대30판단 이어갑니다. history1077/1161·Astra/ultra·source`b0513d43a87c813397c57d8a4fa6ec4e6ff6ba03`·시작clean입니다. 2026-11-07 04:24:55 UTC 기준 준비 행동 **853/1179개**, 새 모델 판단0회·오류없음입니다. 재실행 이후 결과는 아직 없습니다. [현재 상태·설정](../project/STATUS.md)
 
 [**출발점 화면 5개 비교·피드백**](20261107-support-startpoints.ko.md) · [**출발점·방법 데이터베이스**](../collection/catalog/README.ko.md) · [**0→5→10 구간 조합 장기계획**](../collection/research/2026-11-07-composable-scoring-data-plan.ko.md)
 
