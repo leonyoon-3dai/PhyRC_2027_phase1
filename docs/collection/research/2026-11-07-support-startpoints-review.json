@@ -1,0 +1,879 @@
+{
+  "schema": "phyrc-support-startpoint-source-review-v1",
+  "created_at_utc": "2026-11-07T02:18:05.812931+00:00",
+  "status": "source review proposals; not canonical database or training approval",
+  "score_fields_for": "offline starting-point selection only; never actor input or action-label generation",
+  "scope": "Closed E18/E19 public decisions and actor observations. Directly viewed overview and both wrists at E18 boundaries470,480,510,542,563,641,719,771,787,801 and E19 boundary801. Closed policy HDF5 public simulation-time field only for initial boundary verification. Trusted score samples restricted to physics_tick/raw_points. No audit/hidden geometry/E21 data/model/GPU/source mutation.",
+  "boundary_convention": "prefix N executes records [0,N); resulting public state is next_obs[N-1]. physics_tick=12*N and evaluation_time_s=N/20; public simulation clock has a reset offset and small floating point drift.",
+  "runs": {
+    "20261106-astra-guide470-depth-001": {
+      "source_commit": "499b3b8cb29568e6d5530d7ce8bf039c73cd8f6a",
+      "source_working_tree_modified": false,
+      "source_codex_client_sha256": "37e8f95fb238b38f358e118820a39b64ffbca332932470c7c402b822765d18e4",
+      "historical_parent_attempt": "20261106-astra-support264-002",
+      "historical_replay_prefix_steps": 470,
+      "source_group": "20261106-coordinated-demo-methods",
+      "closed_attempt_status": "interrupted",
+      "quality_passed": true,
+      "validated_transitions": 928,
+      "backup_revision": "44d01871f0099f8a537f1bdbfee06a404a95f38c",
+      "backup_archive_sha256": "bfce450c5725e79ef7cf878f6412cfe08f64cf68ab91d1cc267433c079ccf470",
+      "backup_archive_path": "sessions/20261107-e18-v1/archive.tar.gz",
+      "evidence": {
+        "attempt": {
+          "path": "output/operator-traces/20261106-astra-guide470-depth-001/attempt.json",
+          "sha256": "ae590636777170a02780d987a066d16aaa1952c6c0497f95fe59ed7bec59f717"
+        },
+        "decisions": {
+          "path": "docs/collection/attempts/20261106-astra-guide470-depth-001/decisions.jsonl",
+          "sha256": "e861a294c7c8430804c53d01ffd2aec7b757031cfcd8f9af1161530c79e11113"
+        },
+        "public_score_events": {
+          "path": "docs/collection/attempts/20261106-astra-guide470-depth-001/score-events.jsonl",
+          "sha256": "9cfffbd7bcaf75340e3d2cb977873f6f0f5ecc253299cb7b421754ed8b42dc5d"
+        },
+        "score_segments": {
+          "path": "output/operator-traces/20261106-astra-guide470-depth-001/score_segments.json",
+          "sha256": "7ba809e336d677313d9154658d69fa2385491c120ffb7515f01e133e8c791023"
+        },
+        "capture": {
+          "path": "output/collections/20261106-astra-guide470-depth-001/capture.json",
+          "sha256": "63fd03d5ddcb7fb33b020af93da4f5df46d1aaaab728b7ec3601dd70a8fd9f72"
+        },
+        "validation": {
+          "path": "output/collections/20261106-astra-guide470-depth-001/validation.json",
+          "sha256": "fff32e30df6f85fead1143bd74f8cc08e8abcad43ccc6693f2ce4146907f5592"
+        },
+        "backup_receipt": {
+          "path": "docs/project/sessions/20261107-e18-backup-verification.json",
+          "sha256": "51546294d5d2b1af86c6978be3d5964eb85a378316131c4da821185254047696"
+        },
+        "trusted_tick_raw_points_only": {
+          "path": "output/collections/20261106-astra-guide470-depth-001/evaluation/20261106T235928_483172Z_a6b999/score_samples.jsonl",
+          "sha256": "1b4e57336c48fff0ec5d5b35a423b1ed5a79f478f0f82d3ce67350b97c849e35"
+        }
+      },
+      "policy_hdf5_sha256": "db9e91b755dae43acf157f26639b7fa1b600d78d36ff26b3723f6572af290170",
+      "policy_hdf5_read_scope": "data/demo_0/next_obs/simulation_time_s at selected closed boundaries only; no attributes, audit, hidden geometry, or other evaluator fields",
+      "training_approval": "unreviewed",
+      "capture_complete": true
+    },
+    "20261107-astra-entry801-named-001": {
+      "source_commit": "9aad60138dc5cded2e0e5219fc12395d4c37ff0a",
+      "source_working_tree_modified": false,
+      "source_codex_client_sha256": "f56ad58bd130d6adb0a0f3e78c17e3bfe86f1d28b07cf34034b3b6ba4ae97163",
+      "historical_parent_attempt": "20261106-astra-guide470-depth-001",
+      "historical_replay_prefix_steps": 801,
+      "source_group": "20261106-coordinated-demo-methods",
+      "closed_attempt_status": "completed",
+      "quality_passed": true,
+      "validated_transitions": 932,
+      "backup_revision": "a5f9136d1479933b6c026465a8af0321bad1504c",
+      "backup_archive_sha256": "b2fabcdba6d83418561925176a8fe48e02f9596a2e391d7132cf4f269ef03ab6",
+      "backup_archive_path": "sessions/20261107-e19-v1/archive.tar.gz",
+      "evidence": {
+        "attempt": {
+          "path": "output/operator-traces/20261107-astra-entry801-named-001/attempt.json",
+          "sha256": "8f319311627140e2a5b26a6306b7364a9906e024aff276cdaa22e3133dc50412"
+        },
+        "decisions": {
+          "path": "docs/collection/attempts/20261107-astra-entry801-named-001/decisions.jsonl",
+          "sha256": "3a6965de6eda0e06dbf5867105033e80e5135c5e560d40bb225661527ab7bf97"
+        },
+        "public_score_events": {
+          "path": "docs/collection/attempts/20261107-astra-entry801-named-001/score-events.jsonl",
+          "sha256": "f2401aab7c37a73f6635b1aeb3e8f59f18dd3c2cdac983aa34a963d07d244e26"
+        },
+        "score_segments": {
+          "path": "output/operator-traces/20261107-astra-entry801-named-001/score_segments.json",
+          "sha256": "af9a7117fc6496311eea61990b70dc529f508ecc51ede5ddc43f7ca77c0e4b0f"
+        },
+        "capture": {
+          "path": "output/collections/20261107-astra-entry801-named-001/capture.json",
+          "sha256": "d9c9d51046fd15e155b385467b177ae5c20db0fad3c3441b01d9486d28cfa001"
+        },
+        "validation": {
+          "path": "output/collections/20261107-astra-entry801-named-001/validation.json",
+          "sha256": "2c283f59d30c2b3ea78d640adb3308fc5a2357d2c4dcb51f20b08c91a43bf2c5"
+        },
+        "backup_receipt": {
+          "path": "docs/project/sessions/20261107-e19-backup-verification.json",
+          "sha256": "7ae6da8c9e600a7f3f0cf3012128aa21a00b876288eee68ae34b297d21cf57db"
+        },
+        "trusted_tick_raw_points_only": {
+          "path": "output/collections/20261107-astra-entry801-named-001/evaluation/20261107T004554_129357Z_487099/score_samples.jsonl",
+          "sha256": "fb752866d113761b4c9269ce17e8ff893e52b26531e4811abe986d9c944d0d56"
+        }
+      },
+      "policy_hdf5_sha256": "b80ab51e4929a7a4739e6eaeeec843276cf5a69197ccbc075acdf09bb8533e5a",
+      "policy_hdf5_read_scope": "data/demo_0/next_obs/simulation_time_s at selected closed boundaries only; no attributes, audit, hidden geometry, or other evaluator fields",
+      "training_approval": "unreviewed",
+      "capture_complete": true
+    }
+  },
+  "candidates": [
+    {
+      "id": "e18-table-470",
+      "source_run_id": "20261106-astra-guide470-depth-001",
+      "continuation_parent_run_id": "20261106-astra-guide470-depth-001",
+      "prefix_steps": 470,
+      "prefix_action_range": "[0, prefix_steps)",
+      "next_obs_record_index": 469,
+      "decision_index_before_dispatch": 0,
+      "actor_observation_index": 0,
+      "public_simulation_time_s_actual": 25.025001305155456,
+      "evaluation_time_s": 23.5,
+      "physics_tick": 5640,
+      "raw_points_selection_only": 0.0,
+      "role": "zero_point_control",
+      "comparison_purpose": "table-supported edge hypotheses; not a 5-to-10 starting state",
+      "both_edge_support_visual_status": "tentative_table_supported_grip_hypotheses",
+      "independent_bilateral_load_support_confirmed": null,
+      "grasp_layer_identity": null,
+      "continuous_body_opening_confirmed": null,
+      "passage_confirmed": null,
+      "includes_E18_D16_or_D21_error": false,
+      "historical_query_result_reusable_as_current": false,
+      "new_episode_public_reobservation_required": true,
+      "exact_physics_checkpoint_restore": false,
+      "training_approval": "unreviewed",
+      "evidence": {
+        "public_observation": {
+          "path": "output/actors/20261106-astra-guide470-depth-001/observations/00000/observation.json",
+          "sha256": "02ec1761906212e3793ab19301cff80d8b4021b3cd50f8ed65bb534a7bc4b328"
+        },
+        "directly_viewed_images": [
+          {
+            "camera": "overview",
+            "path": "output/actors/20261106-astra-guide470-depth-001/observations/00000/overview.png",
+            "sha256": "edc898434744c0c784630d8f34d7f67051208f54e00489b1e5cd3cda7381dccc"
+          },
+          {
+            "camera": "robot_0_wrist",
+            "path": "output/actors/20261106-astra-guide470-depth-001/observations/00000/robot_0_wrist.png",
+            "sha256": "8c5fadc84c370d9a8062ccf1c8f17c788c620be9e873bfa4d64fc2c31577bb2c"
+          },
+          {
+            "camera": "robot_1_wrist",
+            "path": "output/actors/20261106-astra-guide470-depth-001/observations/00000/robot_1_wrist.png",
+            "sha256": "26d785a2b45a3de2b39630c84f763fec407da1bd2192504a30dad285e65a253b"
+          }
+        ]
+      },
+      "lineage_relation": "same E07-derived source group; E19 prefix801 replays E18 prefix801; all are correlated",
+      "support": {
+        "window_start": 470,
+        "window_end": 470,
+        "window_review_id": null,
+        "evidence_scope": "single_current_observation",
+        "sample_boundaries": [
+          470
+        ],
+        "all_frames_visually_reviewed": false
+      }
+    },
+    {
+      "id": "e18-lifted-563",
+      "source_run_id": "20261106-astra-guide470-depth-001",
+      "continuation_parent_run_id": "20261106-astra-guide470-depth-001",
+      "prefix_steps": 563,
+      "prefix_action_range": "[0, prefix_steps)",
+      "next_obs_record_index": 562,
+      "decision_index_before_dispatch": 6,
+      "actor_observation_index": 6,
+      "public_simulation_time_s_actual": 29.675001547671854,
+      "evaluation_time_s": 28.15,
+      "physics_tick": 6756,
+      "raw_points_selection_only": 5.0,
+      "role": "primary_5_to_10",
+      "comparison_purpose": "paired edge support hypothesis after table retreat; compare transport and opening routes",
+      "both_edge_support_visual_status": "paired_support_visual_hypothesis",
+      "independent_bilateral_load_support_confirmed": null,
+      "grasp_layer_identity": null,
+      "continuous_body_opening_confirmed": null,
+      "passage_confirmed": null,
+      "includes_E18_D16_or_D21_error": false,
+      "historical_query_result_reusable_as_current": false,
+      "new_episode_public_reobservation_required": true,
+      "exact_physics_checkpoint_restore": false,
+      "training_approval": "unreviewed",
+      "evidence": {
+        "public_observation": {
+          "path": "output/actors/20261106-astra-guide470-depth-001/observations/00006/observation.json",
+          "sha256": "6443837faccda363fc276cbce0609804b1780ac01ec7f320c202551431f5ddc2"
+        },
+        "directly_viewed_images": [
+          {
+            "camera": "overview",
+            "path": "output/actors/20261106-astra-guide470-depth-001/observations/00006/overview.png",
+            "sha256": "774b2e0cac4e86810cd2537bb56759fb870efc1f12b2ca4efaa7ad2d1bd2bfe0"
+          },
+          {
+            "camera": "robot_0_wrist",
+            "path": "output/actors/20261106-astra-guide470-depth-001/observations/00006/robot_0_wrist.png",
+            "sha256": "80c56d378e4d922b07817731961882d935efc10ef2cb4df17e8abf7ab659f488"
+          },
+          {
+            "camera": "robot_1_wrist",
+            "path": "output/actors/20261106-astra-guide470-depth-001/observations/00006/robot_1_wrist.png",
+            "sha256": "7dafbed4e3d79993e4a053b94aa4438358ae91c81cb79d5d936509a96a28a820"
+          }
+        ]
+      },
+      "lineage_relation": "same E07-derived source group; E19 prefix801 replays E18 prefix801; all are correlated",
+      "support": {
+        "window_start": 510,
+        "window_end": 563,
+        "window_review_id": "e18-lift-retreat-510-563",
+        "evidence_scope": "sampled_visual_continuity_hypothesis",
+        "sample_boundaries": [
+          510,
+          542,
+          563
+        ],
+        "all_frames_visually_reviewed": false
+      }
+    },
+    {
+      "id": "e18-hand-approach-787",
+      "source_run_id": "20261106-astra-guide470-depth-001",
+      "continuation_parent_run_id": "20261106-astra-guide470-depth-001",
+      "prefix_steps": 787,
+      "prefix_action_range": "[0, prefix_steps)",
+      "next_obs_record_index": 786,
+      "decision_index_before_dispatch": 15,
+      "actor_observation_index": 15,
+      "public_simulation_time_s_actual": 40.87500213179737,
+      "evaluation_time_s": 39.35,
+      "physics_tick": 9444,
+      "raw_points_selection_only": 5.0,
+      "role": "primary_5_to_10",
+      "comparison_purpose": "before depth query and final pre-error approach; compare opening orientation and hand approach",
+      "both_edge_support_visual_status": "paired_support_visual_hypothesis",
+      "independent_bilateral_load_support_confirmed": null,
+      "grasp_layer_identity": null,
+      "continuous_body_opening_confirmed": null,
+      "passage_confirmed": null,
+      "includes_E18_D16_or_D21_error": false,
+      "historical_query_result_reusable_as_current": false,
+      "new_episode_public_reobservation_required": true,
+      "exact_physics_checkpoint_restore": false,
+      "training_approval": "unreviewed",
+      "evidence": {
+        "public_observation": {
+          "path": "output/actors/20261106-astra-guide470-depth-001/observations/00015/observation.json",
+          "sha256": "2f76ae40794d48883b0de7c4919fbf1d873817640ea16a8aa2ad2ae3e329b100"
+        },
+        "directly_viewed_images": [
+          {
+            "camera": "overview",
+            "path": "output/actors/20261106-astra-guide470-depth-001/observations/00015/overview.png",
+            "sha256": "8433ca7b8cc1dabb1782551ffdfccdbd5725133371329ad7edaf94434ce497ea"
+          },
+          {
+            "camera": "robot_0_wrist",
+            "path": "output/actors/20261106-astra-guide470-depth-001/observations/00015/robot_0_wrist.png",
+            "sha256": "3a3e0b77159618da62da5790c651875d7e461b72df5f0d3664b613088cd3143b"
+          },
+          {
+            "camera": "robot_1_wrist",
+            "path": "output/actors/20261106-astra-guide470-depth-001/observations/00015/robot_1_wrist.png",
+            "sha256": "f1321f7ed9cdd5e45670343ad248002f9df8300dd20b68a038a8147102d6e5ca"
+          }
+        ]
+      },
+      "lineage_relation": "same E07-derived source group; E19 prefix801 replays E18 prefix801; all are correlated",
+      "support": {
+        "window_start": 563,
+        "window_end": 787,
+        "window_review_id": "e18-transport-563-787",
+        "evidence_scope": "sampled_visual_continuity_hypothesis",
+        "sample_boundaries": [
+          563,
+          641,
+          719,
+          771,
+          787
+        ],
+        "all_frames_visually_reviewed": false
+      }
+    },
+    {
+      "id": "e18-pre-roll-801",
+      "source_run_id": "20261106-astra-guide470-depth-001",
+      "continuation_parent_run_id": "20261106-astra-guide470-depth-001",
+      "prefix_steps": 801,
+      "prefix_action_range": "[0, prefix_steps)",
+      "next_obs_record_index": 800,
+      "decision_index_before_dispatch": 16,
+      "actor_observation_index": 16,
+      "public_simulation_time_s_actual": 41.57500216830522,
+      "evaluation_time_s": 40.05,
+      "physics_tick": 9612,
+      "raw_points_selection_only": 5.0,
+      "role": "primary_5_to_10",
+      "comparison_purpose": "immediately before D16 unexplained roll; prefix excludes the error",
+      "both_edge_support_visual_status": "paired_support_visual_hypothesis",
+      "independent_bilateral_load_support_confirmed": null,
+      "grasp_layer_identity": null,
+      "continuous_body_opening_confirmed": null,
+      "passage_confirmed": null,
+      "includes_E18_D16_or_D21_error": false,
+      "historical_query_result_reusable_as_current": false,
+      "new_episode_public_reobservation_required": true,
+      "exact_physics_checkpoint_restore": false,
+      "training_approval": "unreviewed",
+      "evidence": {
+        "public_observation": {
+          "path": "output/actors/20261106-astra-guide470-depth-001/observations/00016/observation.json",
+          "sha256": "ed54f165ed6285e995ef906dea78191324787c5ade6505087485760eccc00dbc"
+        },
+        "directly_viewed_images": [
+          {
+            "camera": "overview",
+            "path": "output/actors/20261106-astra-guide470-depth-001/observations/00016/overview.png",
+            "sha256": "0885e70f33b32a67a3df7484fed255f2cebc2850817c7b0bce4c196477c39a91"
+          },
+          {
+            "camera": "robot_0_wrist",
+            "path": "output/actors/20261106-astra-guide470-depth-001/observations/00016/robot_0_wrist.png",
+            "sha256": "283c7d3440ccce40b1f91e13245d62400f38d549bd57ead87fffb525177d5574"
+          },
+          {
+            "camera": "robot_1_wrist",
+            "path": "output/actors/20261106-astra-guide470-depth-001/observations/00016/robot_1_wrist.png",
+            "sha256": "613a7f24657e053945a4e928e0ee7be27c9e50e895bea4007fae4e69fde1ee98"
+          }
+        ]
+      },
+      "lineage_relation": "same E07-derived source group; E19 prefix801 replays E18 prefix801; all are correlated",
+      "support": {
+        "window_start": 563,
+        "window_end": 801,
+        "window_review_id": "e18-transport-563-801",
+        "evidence_scope": "sampled_visual_continuity_hypothesis",
+        "sample_boundaries": [
+          563,
+          641,
+          719,
+          771,
+          787,
+          801
+        ],
+        "all_frames_visually_reviewed": false
+      }
+    },
+    {
+      "id": "e19-replayed-801",
+      "source_run_id": "20261107-astra-entry801-named-001",
+      "continuation_parent_run_id": "20261107-astra-entry801-named-001",
+      "prefix_steps": 801,
+      "prefix_action_range": "[0, prefix_steps)",
+      "next_obs_record_index": 800,
+      "decision_index_before_dispatch": 0,
+      "actor_observation_index": 0,
+      "public_simulation_time_s_actual": 41.57500216830522,
+      "evaluation_time_s": 40.05,
+      "physics_tick": 9612,
+      "raw_points_selection_only": 5.0,
+      "role": "paired_replay_control",
+      "comparison_purpose": "fresh replay of E18 prefix801; lineage duplicate, not an independent success sample",
+      "both_edge_support_visual_status": "paired_support_visual_hypothesis",
+      "independent_bilateral_load_support_confirmed": null,
+      "grasp_layer_identity": null,
+      "continuous_body_opening_confirmed": null,
+      "passage_confirmed": null,
+      "includes_E18_D16_or_D21_error": false,
+      "historical_query_result_reusable_as_current": false,
+      "new_episode_public_reobservation_required": true,
+      "exact_physics_checkpoint_restore": false,
+      "training_approval": "unreviewed",
+      "evidence": {
+        "public_observation": {
+          "path": "output/actors/20261107-astra-entry801-named-001/observations/00000/observation.json",
+          "sha256": "3fa1cf7233e0e755fe2853b731ce3a96c577d4e9402c573eaa1c5feaac27b9b6"
+        },
+        "directly_viewed_images": [
+          {
+            "camera": "overview",
+            "path": "output/actors/20261107-astra-entry801-named-001/observations/00000/overview.png",
+            "sha256": "399bf1643d32b62b3229c70aa692411bdba3edd550116a6296f039e425347a8f"
+          },
+          {
+            "camera": "robot_0_wrist",
+            "path": "output/actors/20261107-astra-entry801-named-001/observations/00000/robot_0_wrist.png",
+            "sha256": "60c155ada575af9cc8e3d0a1c152116b5cbfa5c323e427430e75a9cbd3426972"
+          },
+          {
+            "camera": "robot_1_wrist",
+            "path": "output/actors/20261107-astra-entry801-named-001/observations/00000/robot_1_wrist.png",
+            "sha256": "fdd78c185d4b20cfe5a9fb7ad753aca978c4c561466b6890ab62a4b038303d5e"
+          }
+        ]
+      },
+      "lineage_relation": "same E07-derived source group; E19 prefix801 replays E18 prefix801; all are correlated",
+      "support": {
+        "window_start": 801,
+        "window_end": 801,
+        "window_review_id": null,
+        "evidence_scope": "single_current_observation",
+        "sample_boundaries": [
+          801
+        ],
+        "all_frames_visually_reviewed": false
+      }
+    }
+  ],
+  "first_pickup_event_anchor": {
+    "source_run_id": "20261106-astra-guide470-depth-001",
+    "physics_tick": 6516,
+    "transition_boundary": 543,
+    "completed_record_range": "[0,543)",
+    "last_completed_record_index": 542,
+    "raw_points_before": 0.0,
+    "raw_points_after": 5.0,
+    "stage": "pickup",
+    "evaluation_time_s": 27.15,
+    "public_simulation_time_s_actual": 28.67500149551779,
+    "nominal_public_time_from_score_segments": 28.675000079534946,
+    "actor_observation_index": null,
+    "inside_decision_index": 5,
+    "inside_model_action_range": [
+      542,
+      557
+    ],
+    "interpretation": "First scoring event is one transition into D5 (542..557), not an actor decision boundary. Prefer 563 for the first post-score reviewed decision boundary. Pickup award does not establish bilateral grasp, layer, opening or passage."
+  },
+  "auxiliary_boundary": {
+    "source_run_id": "20261106-astra-guide470-depth-001",
+    "prefix_steps": 771,
+    "actor_observation_index": 14,
+    "physics_tick": 9252,
+    "raw_points_selection_only": 5.0,
+    "public_simulation_time_s_actual": 40.07500209007412,
+    "role": "earlier_approach_alternative_not_one_of_five",
+    "direct_visual_review_in_this_audit": true,
+    "visual_review_note": "Observation14/771 overview and both wrists directly reviewed during support-window extension; included in transport sample windows."
+  },
+  "comparison_limit": "Candidate counts are not independent demonstrations. Replay executes actions in a new episode and must re-establish support, clearance and garment relationships from new public observations. 5 points is neither guaranteed on replay nor evidence of bilateral support.",
+  "support_windows": [
+    {
+      "id": "e18-lift-retreat-510-563",
+      "source_run_id": "20261106-astra-guide470-depth-001",
+      "window_start": 510,
+      "window_end": 563,
+      "recorded_transition_count": 53,
+      "nominal_duration_s": 2.65,
+      "evidence_scope": "selected actor observation samples plus complete final-command coverage; not all-frame visual verification",
+      "support_continuity_status": "sampled_visual_hypothesis",
+      "all_frames_visually_reviewed": false,
+      "independent_bilateral_load_support_confirmed": null,
+      "transient_slip_between_samples_excluded": false,
+      "same_grasp_layer_confirmed": null,
+      "sample_boundaries": [
+        510,
+        542,
+        563
+      ],
+      "final_command_audit": {
+        "applied_segment_count": 6,
+        "coverage_complete": true,
+        "open_gripper_command_count": 0,
+        "interpretation": "No open request in final commands is not proof of continuous physical grasp."
+      },
+      "kinematics": {
+        "kind": "public robot reference endpoint displacement; not cloth/contact displacement or path length",
+        "world_gripper_reference_displacement_mm": [
+          308.1506286459702,
+          296.2381363532398
+        ],
+        "base_displacement_mm": [
+          186.39619277873868,
+          186.37602292075155
+        ],
+        "coordinate_method": "base position + normalized wxyz base rotation times grasp_pose_base position"
+      },
+      "visual_interpretation": "At sampled boundaries, cloth boundary adjacent to each gripper persists while overview changes from partial table support to a lifted hanging garment. Contact load and intermediate continuity remain unknown.",
+      "score_interpretation": "Offline scalar selection is independent of support evidence; first pickup award is boundary543. No point score was used to label physical grasp continuity.",
+      "sample_refs": [
+        "e18-obs00003",
+        "e18-obs00005",
+        "e18-obs00006"
+      ]
+    },
+    {
+      "id": "e18-transport-563-787",
+      "source_run_id": "20261106-astra-guide470-depth-001",
+      "window_start": 563,
+      "window_end": 787,
+      "recorded_transition_count": 224,
+      "nominal_duration_s": 11.2,
+      "evidence_scope": "selected actor observation samples plus complete final-command coverage; not all-frame visual verification",
+      "support_continuity_status": "sampled_visual_hypothesis",
+      "all_frames_visually_reviewed": false,
+      "independent_bilateral_load_support_confirmed": null,
+      "transient_slip_between_samples_excluded": false,
+      "same_grasp_layer_confirmed": null,
+      "sample_boundaries": [
+        563,
+        641,
+        719,
+        771,
+        787
+      ],
+      "final_command_audit": {
+        "applied_segment_count": 18,
+        "coverage_complete": true,
+        "open_gripper_command_count": 0,
+        "interpretation": "No open request in final commands is not proof of continuous physical grasp."
+      },
+      "kinematics": {
+        "kind": "public robot reference endpoint displacement; not cloth/contact displacement or path length",
+        "world_gripper_reference_displacement_mm": [
+          2721.5400242881406,
+          2902.448037989967
+        ],
+        "base_displacement_mm": [
+          1835.7089116861368,
+          2127.2343191965006
+        ],
+        "coordinate_method": "base position + normalized wxyz base rotation times grasp_pose_base position"
+      },
+      "visual_interpretation": "At sampled boundaries, the near-gripper cloth edges persist during transport, formation rotation and approach; overview shows the garment carried between the two gripper regions.",
+      "score_interpretation": "Offline scalar selection is independent of support evidence; first pickup award is boundary543. No point score was used to label physical grasp continuity.",
+      "sample_refs": [
+        "e18-obs00006",
+        "e18-obs00009",
+        "e18-obs00012",
+        "e18-obs00014",
+        "e18-obs00015"
+      ]
+    },
+    {
+      "id": "e18-transport-563-801",
+      "source_run_id": "20261106-astra-guide470-depth-001",
+      "window_start": 563,
+      "window_end": 801,
+      "recorded_transition_count": 238,
+      "nominal_duration_s": 11.9,
+      "evidence_scope": "selected actor observation samples plus complete final-command coverage; not all-frame visual verification",
+      "support_continuity_status": "sampled_visual_hypothesis",
+      "all_frames_visually_reviewed": false,
+      "independent_bilateral_load_support_confirmed": null,
+      "transient_slip_between_samples_excluded": false,
+      "same_grasp_layer_confirmed": null,
+      "sample_boundaries": [
+        563,
+        641,
+        719,
+        771,
+        787,
+        801
+      ],
+      "final_command_audit": {
+        "applied_segment_count": 20,
+        "coverage_complete": true,
+        "open_gripper_command_count": 0,
+        "interpretation": "No open request in final commands is not proof of continuous physical grasp."
+      },
+      "kinematics": {
+        "kind": "public robot reference endpoint displacement; not cloth/contact displacement or path length",
+        "world_gripper_reference_displacement_mm": [
+          2780.805146377814,
+          2968.736718039057
+        ],
+        "base_displacement_mm": [
+          1902.2578888923395,
+          2199.792285209218
+        ],
+        "coordinate_method": "base position + normalized wxyz base rotation times grasp_pose_base position"
+      },
+      "visual_interpretation": "Same sampled transport sequence plus observation16 before the first unexplained roll. No inference that the intervening frames or cloth contact were continuously verified.",
+      "score_interpretation": "Offline scalar selection is independent of support evidence; first pickup award is boundary543. No point score was used to label physical grasp continuity.",
+      "sample_refs": [
+        "e18-obs00006",
+        "e18-obs00009",
+        "e18-obs00012",
+        "e18-obs00014",
+        "e18-obs00015",
+        "e18-obs00016"
+      ]
+    }
+  ],
+  "earlier_preparation_sample": {
+    "selection_note": "Boundary480 was also directly viewed. Since most cloth remained table-supported and local support evidence was weaker, recommend510 as start of the stronger sampled lift/retreat window rather than assert sustained independent grasp from480.",
+    "sample_ref": "e18-obs00001"
+  },
+  "support_window_samples": {
+    "e18-obs00003": {
+      "boundary": 510,
+      "actor_observation_index": 3,
+      "public_simulation_time_s_actual": 27.025001409463584,
+      "sampled_gripper_close_intent": [
+        true,
+        true
+      ],
+      "observation": {
+        "path": "output/actors/20261106-astra-guide470-depth-001/observations/00003/observation.json",
+        "sha256": "e7535794d97b3ba4b602e188a485ff61a8e4ec49130798bafc781703f92a1ee7"
+      },
+      "directly_viewed_images": [
+        {
+          "camera": "overview",
+          "path": "output/actors/20261106-astra-guide470-depth-001/observations/00003/overview.png",
+          "sha256": "138ce5c0368c5b217fa1399dcfa72d073089f1cf29d3de0c9df584d6f8423b5c"
+        },
+        {
+          "camera": "robot_0_wrist",
+          "path": "output/actors/20261106-astra-guide470-depth-001/observations/00003/robot_0_wrist.png",
+          "sha256": "315a6caf2440077ef12227fb01c17b914df599357f241549ad59f4e48c9bb1fc"
+        },
+        {
+          "camera": "robot_1_wrist",
+          "path": "output/actors/20261106-astra-guide470-depth-001/observations/00003/robot_1_wrist.png",
+          "sha256": "a1a69b7c18f60843c0afe7e054140922e0b3fb324f0f3798d644c0f8d60b88ba"
+        }
+      ]
+    },
+    "e18-obs00005": {
+      "boundary": 542,
+      "actor_observation_index": 5,
+      "public_simulation_time_s_actual": 28.625001492910087,
+      "sampled_gripper_close_intent": [
+        true,
+        true
+      ],
+      "observation": {
+        "path": "output/actors/20261106-astra-guide470-depth-001/observations/00005/observation.json",
+        "sha256": "c8b327751b4bd5986e99d248acd9b3a87bd22c4642763bf07e3cd55a69c59b61"
+      },
+      "directly_viewed_images": [
+        {
+          "camera": "overview",
+          "path": "output/actors/20261106-astra-guide470-depth-001/observations/00005/overview.png",
+          "sha256": "a62013124a43cd048e38ab785bcc6bf4c87dea41fc3bb93df327f4517edbf4a8"
+        },
+        {
+          "camera": "robot_0_wrist",
+          "path": "output/actors/20261106-astra-guide470-depth-001/observations/00005/robot_0_wrist.png",
+          "sha256": "bc3769502ea0888bc64e460114e7cdf2b672ff338643c9f2de0a511865be74ad"
+        },
+        {
+          "camera": "robot_1_wrist",
+          "path": "output/actors/20261106-astra-guide470-depth-001/observations/00005/robot_1_wrist.png",
+          "sha256": "cfbabdd19e4eacc0883be5249a405ef5c33d84f1fc18ba225b6a78cb0609fa3b"
+        }
+      ]
+    },
+    "e18-obs00006": {
+      "boundary": 563,
+      "actor_observation_index": 6,
+      "public_simulation_time_s_actual": 29.675001547671854,
+      "sampled_gripper_close_intent": [
+        true,
+        true
+      ],
+      "observation": {
+        "path": "output/actors/20261106-astra-guide470-depth-001/observations/00006/observation.json",
+        "sha256": "6443837faccda363fc276cbce0609804b1780ac01ec7f320c202551431f5ddc2"
+      },
+      "directly_viewed_images": [
+        {
+          "camera": "overview",
+          "path": "output/actors/20261106-astra-guide470-depth-001/observations/00006/overview.png",
+          "sha256": "774b2e0cac4e86810cd2537bb56759fb870efc1f12b2ca4efaa7ad2d1bd2bfe0"
+        },
+        {
+          "camera": "robot_0_wrist",
+          "path": "output/actors/20261106-astra-guide470-depth-001/observations/00006/robot_0_wrist.png",
+          "sha256": "80c56d378e4d922b07817731961882d935efc10ef2cb4df17e8abf7ab659f488"
+        },
+        {
+          "camera": "robot_1_wrist",
+          "path": "output/actors/20261106-astra-guide470-depth-001/observations/00006/robot_1_wrist.png",
+          "sha256": "7dafbed4e3d79993e4a053b94aa4438358ae91c81cb79d5d936509a96a28a820"
+        }
+      ]
+    },
+    "e18-obs00009": {
+      "boundary": 641,
+      "actor_observation_index": 9,
+      "public_simulation_time_s_actual": 33.575001751072705,
+      "sampled_gripper_close_intent": [
+        true,
+        true
+      ],
+      "observation": {
+        "path": "output/actors/20261106-astra-guide470-depth-001/observations/00009/observation.json",
+        "sha256": "cb74aea930f071c714c1f1340a33dfd15759ca5903f98ac539799071b963bf36"
+      },
+      "directly_viewed_images": [
+        {
+          "camera": "overview",
+          "path": "output/actors/20261106-astra-guide470-depth-001/observations/00009/overview.png",
+          "sha256": "97d6c3789312b9d51b5abfcba2c2c5bb2af433bf87224d780bf00b68f1940324"
+        },
+        {
+          "camera": "robot_0_wrist",
+          "path": "output/actors/20261106-astra-guide470-depth-001/observations/00009/robot_0_wrist.png",
+          "sha256": "2ef65d7a4f2af5c1efaa34537c7f5ac3bb27623703854c871914aa435ca4f210"
+        },
+        {
+          "camera": "robot_1_wrist",
+          "path": "output/actors/20261106-astra-guide470-depth-001/observations/00009/robot_1_wrist.png",
+          "sha256": "98c66bf1f7e1a029eab658ffc843d41b2d7fdb2e54d9e12421285324b8195d39"
+        }
+      ]
+    },
+    "e18-obs00012": {
+      "boundary": 719,
+      "actor_observation_index": 12,
+      "public_simulation_time_s_actual": 37.475001954473555,
+      "sampled_gripper_close_intent": [
+        true,
+        true
+      ],
+      "observation": {
+        "path": "output/actors/20261106-astra-guide470-depth-001/observations/00012/observation.json",
+        "sha256": "818ccb7bbf98c11b528230126fccada113b7b712a6daeb8485837d3662dc3454"
+      },
+      "directly_viewed_images": [
+        {
+          "camera": "overview",
+          "path": "output/actors/20261106-astra-guide470-depth-001/observations/00012/overview.png",
+          "sha256": "c080e62c77ad8a138529402acc0504ccffd05db9c1c5c78da00a026ab83ee4ef"
+        },
+        {
+          "camera": "robot_0_wrist",
+          "path": "output/actors/20261106-astra-guide470-depth-001/observations/00012/robot_0_wrist.png",
+          "sha256": "d9dcaf25bd12c703c7061efd26ac1a4db89a91ea90d05736a334d44bec059e1d"
+        },
+        {
+          "camera": "robot_1_wrist",
+          "path": "output/actors/20261106-astra-guide470-depth-001/observations/00012/robot_1_wrist.png",
+          "sha256": "cea2e716ec13c851aff9ed87fd661f10d566e91965098637d9102ebd23b98685"
+        }
+      ]
+    },
+    "e18-obs00014": {
+      "boundary": 771,
+      "actor_observation_index": 14,
+      "public_simulation_time_s_actual": 40.07500209007412,
+      "sampled_gripper_close_intent": [
+        true,
+        true
+      ],
+      "observation": {
+        "path": "output/actors/20261106-astra-guide470-depth-001/observations/00014/observation.json",
+        "sha256": "4fdc04a899c20384b45d8206e89647cf2556919a85af8ed6fadda8c291c6add6"
+      },
+      "directly_viewed_images": [
+        {
+          "camera": "overview",
+          "path": "output/actors/20261106-astra-guide470-depth-001/observations/00014/overview.png",
+          "sha256": "8e9cac403e3da6e42fb244259037949ad039c44f5a560f6bf724543ce8477d01"
+        },
+        {
+          "camera": "robot_0_wrist",
+          "path": "output/actors/20261106-astra-guide470-depth-001/observations/00014/robot_0_wrist.png",
+          "sha256": "f73620c3fe1385a2fa99d10d15debaaabf869ec9e210982d7a0e20afd84eb7e6"
+        },
+        {
+          "camera": "robot_1_wrist",
+          "path": "output/actors/20261106-astra-guide470-depth-001/observations/00014/robot_1_wrist.png",
+          "sha256": "6eefb65fbb9aebf73c2c7c49db9568bdc83deed8cf5f531332427f416a854444"
+        }
+      ]
+    },
+    "e18-obs00015": {
+      "boundary": 787,
+      "actor_observation_index": 15,
+      "public_simulation_time_s_actual": 40.87500213179737,
+      "sampled_gripper_close_intent": [
+        true,
+        true
+      ],
+      "observation": {
+        "path": "output/actors/20261106-astra-guide470-depth-001/observations/00015/observation.json",
+        "sha256": "2f76ae40794d48883b0de7c4919fbf1d873817640ea16a8aa2ad2ae3e329b100"
+      },
+      "directly_viewed_images": [
+        {
+          "camera": "overview",
+          "path": "output/actors/20261106-astra-guide470-depth-001/observations/00015/overview.png",
+          "sha256": "8433ca7b8cc1dabb1782551ffdfccdbd5725133371329ad7edaf94434ce497ea"
+        },
+        {
+          "camera": "robot_0_wrist",
+          "path": "output/actors/20261106-astra-guide470-depth-001/observations/00015/robot_0_wrist.png",
+          "sha256": "3a3e0b77159618da62da5790c651875d7e461b72df5f0d3664b613088cd3143b"
+        },
+        {
+          "camera": "robot_1_wrist",
+          "path": "output/actors/20261106-astra-guide470-depth-001/observations/00015/robot_1_wrist.png",
+          "sha256": "f1321f7ed9cdd5e45670343ad248002f9df8300dd20b68a038a8147102d6e5ca"
+        }
+      ]
+    },
+    "e18-obs00016": {
+      "boundary": 801,
+      "actor_observation_index": 16,
+      "public_simulation_time_s_actual": 41.57500216830522,
+      "sampled_gripper_close_intent": [
+        true,
+        true
+      ],
+      "observation": {
+        "path": "output/actors/20261106-astra-guide470-depth-001/observations/00016/observation.json",
+        "sha256": "ed54f165ed6285e995ef906dea78191324787c5ade6505087485760eccc00dbc"
+      },
+      "directly_viewed_images": [
+        {
+          "camera": "overview",
+          "path": "output/actors/20261106-astra-guide470-depth-001/observations/00016/overview.png",
+          "sha256": "0885e70f33b32a67a3df7484fed255f2cebc2850817c7b0bce4c196477c39a91"
+        },
+        {
+          "camera": "robot_0_wrist",
+          "path": "output/actors/20261106-astra-guide470-depth-001/observations/00016/robot_0_wrist.png",
+          "sha256": "283c7d3440ccce40b1f91e13245d62400f38d549bd57ead87fffb525177d5574"
+        },
+        {
+          "camera": "robot_1_wrist",
+          "path": "output/actors/20261106-astra-guide470-depth-001/observations/00016/robot_1_wrist.png",
+          "sha256": "613a7f24657e053945a4e928e0ee7be27c9e50e895bea4007fae4e69fde1ee98"
+        }
+      ]
+    },
+    "e18-obs00001": {
+      "boundary": 480,
+      "actor_observation_index": 1,
+      "public_simulation_time_s_actual": 25.525001331232488,
+      "sampled_gripper_close_intent": [
+        true,
+        true
+      ],
+      "observation": {
+        "path": "output/actors/20261106-astra-guide470-depth-001/observations/00001/observation.json",
+        "sha256": "8b722a3a548e86be9728f79943ba814d84ddfe1e6f2825ce5c5c4ec35b5f37c5"
+      },
+      "directly_viewed_images": [
+        {
+          "camera": "overview",
+          "path": "output/actors/20261106-astra-guide470-depth-001/observations/00001/overview.png",
+          "sha256": "b5a91b57c3ee5812719bef428c804736aa516a1dd4bf23859dfa4cc24575ab17"
+        },
+        {
+          "camera": "robot_0_wrist",
+          "path": "output/actors/20261106-astra-guide470-depth-001/observations/00001/robot_0_wrist.png",
+          "sha256": "e73c758a1455ec7579ca0c5516a76a6b044a0406b37b1057bc54d205ea3ab297"
+        },
+        {
+          "camera": "robot_1_wrist",
+          "path": "output/actors/20261106-astra-guide470-depth-001/observations/00001/robot_1_wrist.png",
+          "sha256": "72c923ac32ab1690b864386aaf4864dd4ce056b254ab2a65b64908d558198ad5"
+        }
+      ]
+    }
+  }
+}

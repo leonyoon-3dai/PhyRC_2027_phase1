@@ -1,0 +1,25 @@
+{
+  "schema": "phyrc-offline-catalog-validation-v1",
+  "verified_at_utc": "2026-11-07T02:32:43.322550+00:00",
+  "candidate_commit": "8365f0dc0e1e6ac65778018767f133d5d61869be",
+  "tool_sha256": "a1056c38fa9be6a9ff2ec0c1f8ef4e0210b9200afecd8498f17b61c50832fb92",
+  "canonical_path": "docs/collection/catalog/catalog.v1.json",
+  "canonical_sha256": "8856ea410c7867c08ea591d634a9d4637f3bec7f7813a6d380c45b15a0d44edb",
+  "counts": {
+    "runs": 29,
+    "startpoints": 10,
+    "methods": 15,
+    "attempts": 31,
+    "ready_bilateral_score5": 4,
+    "planned_combinations": 2
+  },
+  "cpu_tests_passed": 11,
+  "test_command": "PYTHONPATH=.:tests .venv/bin/python -m unittest test_startpoint_catalog -q",
+  "test_log_sha256": "c8696cea61647eaad549497c50f5349ff249baf3549b0d3c303b4c53c9b51cf6",
+  "root_index_built": true,
+  "index_matches_canonical": true,
+  "evidence_scope": "Schema/relations/queries independently checked; support and score evidence remains separate curated review, not inferred by catalog tool.",
+  "actor_connection": false,
+  "active_episode_modified": false,
+  "training_approval_changed": false
+}

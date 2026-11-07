@@ -14,6 +14,10 @@
 
 **E21은 2026-11-07 01:56:25 UTC에 시작**했고 공식 시연에 가까운 **몸통 입구의 상방 배치→하강·안착 경로**를 비교합니다. 후보 통합 후 전체277CPU검사를 통과했으며 실제 착의 효과는 아직 미검증입니다. [후보 범위](docs/collection/research/2026-11-07-overhead-drape-candidate.ko.md) · [현재 실행 상태](docs/project/STATUS.md)
 
+[**출발점·방법 조합 데이터베이스**](docs/collection/catalog/README.ko.md) · [**0→5→10 구간 조합 장기계획**](docs/collection/research/2026-11-07-composable-scoring-data-plan.ko.md)
+
+**진행 메모:** E21은 양쪽 가장자리 지지로 운반한 뒤 높은 위치에서 작은 하강을 실제 시험했습니다. 손끝 가림 뒤 두 시점 변경과 복구를 수행했고, 통과·안착과 최종 점수는 아직 미확인입니다. 다음 시도는 검수된5점 이후 출발점에서 방법을 나눠 비교합니다. **10점은 중간 목표이며 확인 후 다음 득점 항목으로 계속 진행합니다.**
+
 [**공식 시연의 실제 순서 검토**](docs/collection/research/2026-11-07-official-demo-route-review.ko.md) · [**BEHAVIOR 우승 자료: 그림·영상과 후속 수집 후보**](docs/collection/research/2026-11-07-behavior-champion-visual-transfer.ko.md) · [공식 집계·텍스트 근거](docs/collection/research/2026-11-07-behavior-champion-text-review.ko.md)
 
 <details>
@@ -116,7 +120,7 @@ E20은 2026-11-07 01:18:21 UTC에 시작했고, 테이블에서 목선 후보를
 | 모델·환경 | Astra/ultra · Codex CLI0.166.0/exec · 고정 Isaac Sim6.0.1 · Chrome/WebRTC OFF |
 | 이번에 비교한 것 | 목선 후보 두 곳으로 순차 재파지. 국소 천 동행은 보였으나 연속 목 개구부·머리/소매 진입은 미확인 |
 | 미세조정 결과 | 새 파지 뒤 실제 높이·간격·손목 시점을 바꿨지만 층 분리가 불명확해 테이블 지지 쪽으로 낮추고 종료 |
-| E21 실행 중 | E18의470경계에서 몸통 입구 상방 배치→하강·안착 비교. 기존 유용한 지지를 보존할 수 있고 목선/첫소매 선행완료를 강제하지 않음. 01:56:25UTC·공개d383063의깨끗한소스에서시작 |
+| E21 실행 중 | E18의470경계에서 몸통 입구 상방 배치→하강·안착 비교. 기존 유용한 지지를 보존할 수 있고 목선/첫소매 선행완료를 강제하지 않음. 01:56:25UTC·공개d383063의깨끗한소스에서시작. 현재높은위치에서하강·가림후시야복구까지실행 |
 | 검증 범위 | E20종료 뒤 후보 통합 전체277CPU검사 통과. 실제 상방·하강 과제 효과는 미검증 |
 | 소스·원본 | E20 실행 소스799fe80·시작clean. [비공개 원본 고정 백업·재다운로드 SHA 검증](docs/project/sessions/20261107-e20-backup-verification.json) 완료. 실패·재파지·질의·회복 구간 보존 |
 

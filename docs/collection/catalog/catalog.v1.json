@@ -1,0 +1,1488 @@
+{
+  "schema_version": 1,
+  "catalog_id": "phyrc-support-startpoints-20261107",
+  "runs": [
+    {
+      "id": "20261106-astra-coordinated-branch700-001",
+      "kind": "failed_start",
+      "source_group": "20261106-coordinated-demo-methods",
+      "source_commit": "c272d0b12f9b8d36b35b517b43ffe2269ba862c8",
+      "source_working_tree_modified": true,
+      "parent_run_id": "20261106-astra-coordinated-fresh-001",
+      "replay_prefix_steps": 700,
+      "replay_completed_steps": 0,
+      "recorded_transitions": null,
+      "qc_status": "unknown",
+      "backup": {
+        "status": "unknown",
+        "receipt": null,
+        "revision": null,
+        "sha256": null
+      }
+    },
+    {
+      "id": "20261106-astra-coordinated-branch700-002",
+      "kind": "demonstration",
+      "source_group": "20261106-coordinated-demo-methods",
+      "source_commit": "c272d0b12f9b8d36b35b517b43ffe2269ba862c8",
+      "source_working_tree_modified": true,
+      "parent_run_id": "20261106-astra-coordinated-fresh-001",
+      "replay_prefix_steps": 700,
+      "replay_completed_steps": 120,
+      "recorded_transitions": 141,
+      "qc_status": "failed",
+      "backup": {
+        "status": "unknown",
+        "receipt": null,
+        "revision": null,
+        "sha256": null
+      }
+    },
+    {
+      "id": "20261106-astra-coordinated-fresh-001",
+      "kind": "demonstration",
+      "source_group": "20261106-coordinated-demo-methods",
+      "source_commit": "ad84c0c327c377e2c3af665d73b4f65a2018a476",
+      "source_working_tree_modified": true,
+      "parent_run_id": "20261106-astra-dressing-continue-001",
+      "replay_prefix_steps": 0,
+      "replay_completed_steps": 0,
+      "recorded_transitions": 1067,
+      "qc_status": "passed",
+      "backup": {
+        "status": "verified",
+        "receipt": "docs/project/sessions/20261106-remote-backup-verification.json",
+        "revision": "e1d32f9f9ea82438f90bc379452abf83a150999b",
+        "sha256": "d087a7899f60fffd7e9541d13215585ef6b462f3e0d71c66e0649fd0172ed34b"
+      }
+    },
+    {
+      "id": "20261106-astra-dressing-001",
+      "kind": "demonstration",
+      "source_group": "20261106-astra-dressing-001",
+      "source_commit": "0981d2a686c89131447289f158281d997ac9d365",
+      "source_working_tree_modified": true,
+      "parent_run_id": null,
+      "replay_prefix_steps": 0,
+      "replay_completed_steps": null,
+      "recorded_transitions": 167,
+      "qc_status": "passed",
+      "backup": {
+        "status": "unknown",
+        "receipt": null,
+        "revision": null,
+        "sha256": null
+      }
+    },
+    {
+      "id": "20261106-astra-dressing-continue-001",
+      "kind": "demonstration",
+      "source_group": "20261106-astra-pickup-methods",
+      "source_commit": "adf3f90783bcf82e09b4306c28ddb73a854c53ea",
+      "source_working_tree_modified": true,
+      "parent_run_id": "20261106-astra-pickup-hold5-001",
+      "replay_prefix_steps": 253,
+      "replay_completed_steps": 253,
+      "recorded_transitions": 386,
+      "qc_status": "passed",
+      "backup": {
+        "status": "unknown",
+        "receipt": null,
+        "revision": null,
+        "sha256": null
+      }
+    },
+    {
+      "id": "20261106-astra-guide470-depth-001",
+      "kind": "demonstration",
+      "source_group": "20261106-coordinated-demo-methods",
+      "source_commit": "499b3b8cb29568e6d5530d7ce8bf039c73cd8f6a",
+      "source_working_tree_modified": false,
+      "parent_run_id": "20261106-astra-support264-002",
+      "replay_prefix_steps": 470,
+      "replay_completed_steps": 470,
+      "recorded_transitions": 928,
+      "qc_status": "passed",
+      "backup": {
+        "status": "verified",
+        "receipt": "docs/project/sessions/20261107-e18-backup-verification.json",
+        "revision": "44d01871f0099f8a537f1bdbfee06a404a95f38c",
+        "sha256": "bfce450c5725e79ef7cf878f6412cfe08f64cf68ab91d1cc267433c079ccf470"
+      }
+    },
+    {
+      "id": "20261106-astra-hem-depth-001",
+      "kind": "demonstration",
+      "source_group": "20261106-coordinated-demo-methods",
+      "source_commit": "376d933d5775546fd42e48ad52723493549f5449",
+      "source_working_tree_modified": false,
+      "parent_run_id": "20261106-astra-coordinated-fresh-001",
+      "replay_prefix_steps": 700,
+      "replay_completed_steps": 700,
+      "recorded_transitions": 810,
+      "qc_status": "passed",
+      "backup": {
+        "status": "verified",
+        "receipt": "docs/project/sessions/20261106-e13-backup-verification.json",
+        "revision": "20a9602acb82ac860ebbf2d039ad593085d5a622",
+        "sha256": "e2a46fa6b4481d65a21b5608cf2ebd7f8b24b7af4f13152f118efa137017529c"
+      }
+    },
+    {
+      "id": "20261106-astra-hem-route-001",
+      "kind": "demonstration",
+      "source_group": "20261106-coordinated-demo-methods",
+      "source_commit": "515dede917b579ba8623fead7267dd6b385a5e72",
+      "source_working_tree_modified": false,
+      "parent_run_id": "20261106-astra-coordinated-fresh-001",
+      "replay_prefix_steps": 700,
+      "replay_completed_steps": 700,
+      "recorded_transitions": 781,
+      "qc_status": "passed",
+      "backup": {
+        "status": "verified",
+        "receipt": "docs/project/sessions/20261106-e12-backup-verification.json",
+        "revision": "64659dd24e26b54efe5e3d6b0eac6aef206f1555",
+        "sha256": "7e37ae398e5a6c04492f4623d1cf02dfe0355218ce96fb407ecf3a383f6436a0"
+      }
+    },
+    {
+      "id": "20261106-astra-hem-settle-001",
+      "kind": "demonstration",
+      "source_group": "20261106-coordinated-demo-methods",
+      "source_commit": "015226a8e3d571971cfaa389856f9d4f7b7dcb3b",
+      "source_working_tree_modified": false,
+      "parent_run_id": "20261106-astra-coordinated-fresh-001",
+      "replay_prefix_steps": 700,
+      "replay_completed_steps": 700,
+      "recorded_transitions": 721,
+      "qc_status": "passed",
+      "backup": {
+        "status": "verified",
+        "receipt": "docs/project/sessions/20261106-e14-backup-verification.json",
+        "revision": "d30808911dba914a87eb3104750e5560e4c00cc5",
+        "sha256": "aa6b7e88c3766d3892c836e58c3f282d7b1b27d0d5221621c5f7434f1244d20f"
+      }
+    },
+    {
+      "id": "20261106-astra-layer352-001",
+      "kind": "demonstration",
+      "source_group": "20261106-coordinated-demo-methods",
+      "source_commit": "98bb41ff6e83327a468abe5129517b4739ae33a1",
+      "source_working_tree_modified": false,
+      "parent_run_id": "20261106-astra-support264-002",
+      "replay_prefix_steps": 352,
+      "replay_completed_steps": 352,
+      "recorded_transitions": 452,
+      "qc_status": "passed",
+      "backup": {
+        "status": "verified",
+        "receipt": "docs/project/sessions/20261106-e17-backup-verification.json",
+        "revision": "d5ba6c645232c7674d3861fdf65da3a26e9e1ea9",
+        "sha256": "51acf732e6744dc979fe35ae61a9c04120b247606cd24138791135d0581cbcfb"
+      }
+    },
+    {
+      "id": "20261106-astra-opening264-001",
+      "kind": "demonstration",
+      "source_group": "20261106-coordinated-demo-methods",
+      "source_commit": "fa3fb85a25b35228d5456fd3e70fca3259098e6b",
+      "source_working_tree_modified": false,
+      "parent_run_id": "20261106-astra-coordinated-fresh-001",
+      "replay_prefix_steps": 264,
+      "replay_completed_steps": 264,
+      "recorded_transitions": 611,
+      "qc_status": "passed",
+      "backup": {
+        "status": "verified",
+        "receipt": "docs/project/sessions/20261106-e15-backup-verification.json",
+        "revision": "ba753c41cf64c361ae91aae9e31f9236106bc4ad",
+        "sha256": "7c950323fdf15ac58a45330d383dbf3bd65a07b01143d4a730a6c37990574fad"
+      }
+    },
+    {
+      "id": "20261106-astra-pickup-hold5-001",
+      "kind": "demonstration",
+      "source_group": "20261106-astra-pickup-methods",
+      "source_commit": "7e8f48f1f7e155c7e9bc463537ff68dd1c44edf1",
+      "source_working_tree_modified": true,
+      "parent_run_id": "20261106-astra-pickup-plan2-001",
+      "replay_prefix_steps": 0,
+      "replay_completed_steps": null,
+      "recorded_transitions": 253,
+      "qc_status": "passed",
+      "backup": {
+        "status": "unknown",
+        "receipt": null,
+        "revision": null,
+        "sha256": null
+      }
+    },
+    {
+      "id": "20261106-astra-pickup-plan2-001",
+      "kind": "demonstration",
+      "source_group": "20261106-astra-pickup-methods",
+      "source_commit": "bb7c6afc30b7170d0053c70d74b3f3228facaedf",
+      "source_working_tree_modified": true,
+      "parent_run_id": "20261106-astra-dressing-001",
+      "replay_prefix_steps": 0,
+      "replay_completed_steps": null,
+      "recorded_transitions": 168,
+      "qc_status": "passed",
+      "backup": {
+        "status": "unknown",
+        "receipt": null,
+        "revision": null,
+        "sha256": null
+      }
+    },
+    {
+      "id": "20261106-astra-sleeve-branch700-003",
+      "kind": "demonstration",
+      "source_group": "20261106-coordinated-demo-methods",
+      "source_commit": "c9e3f62ea49d8e5357f66f0f7380563de592b7bc",
+      "source_working_tree_modified": true,
+      "parent_run_id": "20261106-astra-coordinated-fresh-001",
+      "replay_prefix_steps": 700,
+      "replay_completed_steps": 700,
+      "recorded_transitions": 750,
+      "qc_status": "passed",
+      "backup": {
+        "status": "verified",
+        "receipt": "docs/project/sessions/20261106-e10-backup-verification.json",
+        "revision": "3d474bb724adbb42ac44beaf82de7d216930dc5c",
+        "sha256": "8dd6b650be899b476c8606fcc29a368643f08677bbf36a95818c3e72bdfca199"
+      }
+    },
+    {
+      "id": "20261106-astra-sleeve-history-001",
+      "kind": "demonstration",
+      "source_group": "20261106-coordinated-demo-methods",
+      "source_commit": "da21b480b8b1a9c4d820ec2fa96527728584f90f",
+      "source_working_tree_modified": false,
+      "parent_run_id": "20261106-astra-coordinated-fresh-001",
+      "replay_prefix_steps": 700,
+      "replay_completed_steps": 700,
+      "recorded_transitions": 777,
+      "qc_status": "passed",
+      "backup": {
+        "status": "verified",
+        "receipt": "docs/project/sessions/20261106-e11-backup-verification.json",
+        "revision": "40a98682caca21222335293cc0947d98537cca66",
+        "sha256": "21fe5dc57c308ae221a54005fae7e2353d1e6e93aab28758f3c45d3cd3a44160"
+      }
+    },
+    {
+      "id": "20261106-astra-support264-002",
+      "kind": "demonstration",
+      "source_group": "20261106-coordinated-demo-methods",
+      "source_commit": "05152fa4bf250257481cae988b6f8f26c817084a",
+      "source_working_tree_modified": true,
+      "parent_run_id": "20261106-astra-coordinated-fresh-001",
+      "replay_prefix_steps": 264,
+      "replay_completed_steps": 264,
+      "recorded_transitions": 516,
+      "qc_status": "passed",
+      "backup": {
+        "status": "verified",
+        "receipt": "docs/project/sessions/20261106-e16-backup-verification.json",
+        "revision": "1ad0f8ba3cc71ab80962907c713357fbd4005e3f",
+        "sha256": "88926022d38c8e98c5e82f457c307205a357f5ab70be3f618854b51a16a39333"
+      }
+    },
+    {
+      "id": "20261106-codex-robot-wiring",
+      "kind": "integration_test",
+      "source_group": "20261106-codex-robot-wiring",
+      "source_commit": "2782a5fd14b89bfa649d1764f19e1028322f406b",
+      "source_working_tree_modified": true,
+      "parent_run_id": null,
+      "replay_prefix_steps": 0,
+      "replay_completed_steps": null,
+      "recorded_transitions": 0,
+      "qc_status": "unknown",
+      "backup": {
+        "status": "unknown",
+        "receipt": null,
+        "revision": null,
+        "sha256": null
+      }
+    },
+    {
+      "id": "20261106-codex-robot-wiring-r2",
+      "kind": "integration_test",
+      "source_group": "20261106-codex-robot-wiring-r2",
+      "source_commit": "2782a5fd14b89bfa649d1764f19e1028322f406b",
+      "source_working_tree_modified": true,
+      "parent_run_id": "20261106-codex-robot-wiring",
+      "replay_prefix_steps": 0,
+      "replay_completed_steps": null,
+      "recorded_transitions": 0,
+      "qc_status": "unknown",
+      "backup": {
+        "status": "unknown",
+        "receipt": null,
+        "revision": null,
+        "sha256": null
+      }
+    },
+    {
+      "id": "20261106-codex-robot-wiring-r3",
+      "kind": "integration_test",
+      "source_group": "20261106-codex-robot-wiring-r3",
+      "source_commit": "2782a5fd14b89bfa649d1764f19e1028322f406b",
+      "source_working_tree_modified": true,
+      "parent_run_id": "20261106-codex-robot-wiring-r2",
+      "replay_prefix_steps": 0,
+      "replay_completed_steps": null,
+      "recorded_transitions": 0,
+      "qc_status": "unknown",
+      "backup": {
+        "status": "unknown",
+        "receipt": null,
+        "revision": null,
+        "sha256": null
+      }
+    },
+    {
+      "id": "20261106-codex-robot-wiring-r4",
+      "kind": "integration_test",
+      "source_group": "20261106-codex-robot-wiring-r4",
+      "source_commit": "2782a5fd14b89bfa649d1764f19e1028322f406b",
+      "source_working_tree_modified": true,
+      "parent_run_id": "20261106-codex-robot-wiring-r3",
+      "replay_prefix_steps": 0,
+      "replay_completed_steps": null,
+      "recorded_transitions": null,
+      "qc_status": "unknown",
+      "backup": {
+        "status": "unknown",
+        "receipt": null,
+        "revision": null,
+        "sha256": null
+      }
+    },
+    {
+      "id": "20261106-codex-robot-wiring-r5",
+      "kind": "integration_test",
+      "source_group": "20261106-codex-robot-wiring-r5",
+      "source_commit": "2782a5fd14b89bfa649d1764f19e1028322f406b",
+      "source_working_tree_modified": true,
+      "parent_run_id": "20261106-codex-robot-wiring-r4",
+      "replay_prefix_steps": 0,
+      "replay_completed_steps": null,
+      "recorded_transitions": 3,
+      "qc_status": "passed",
+      "backup": {
+        "status": "unknown",
+        "receipt": null,
+        "revision": null,
+        "sha256": null
+      }
+    },
+    {
+      "id": "20261106-depth-query-wiring-001",
+      "kind": "integration_test",
+      "source_group": "integration-depth-query-wiring-20261106-depth-query-wiring-001",
+      "source_commit": "8f9f30b555e5ac0d89275023994ac069d1d20af0",
+      "source_working_tree_modified": true,
+      "parent_run_id": null,
+      "replay_prefix_steps": 0,
+      "replay_completed_steps": 0,
+      "recorded_transitions": 3,
+      "qc_status": "passed",
+      "backup": {
+        "status": "verified",
+        "receipt": "docs/project/sessions/20261106-depth-query-wiring-backup-verification.json",
+        "revision": "639f3b434ad853a7690bab56d637bf50144ed89d",
+        "sha256": "45225bc9af7f4b84cd362e414645bbe42ca65ed64993bdf3d92b40d650991190"
+      }
+    },
+    {
+      "id": "20261106-evening-wiring-001",
+      "kind": "integration_test",
+      "source_group": "20261106-evening-wiring-001",
+      "source_commit": "05152fa4bf250257481cae988b6f8f26c817084a",
+      "source_working_tree_modified": false,
+      "parent_run_id": null,
+      "replay_prefix_steps": 0,
+      "replay_completed_steps": 0,
+      "recorded_transitions": 3,
+      "qc_status": "passed",
+      "backup": {
+        "status": "verified",
+        "receipt": "docs/project/sessions/20261106-evening-wiring-backup-verification.json",
+        "revision": "d26917589b884df3f9bbd4bf7d3ce0861a96adde",
+        "sha256": "90f409dfefc2fe9bcec4a6eceb9074e5f49e65d7d54b6fa2f51a7080dcbf595c"
+      }
+    },
+    {
+      "id": "20261106-exec-metering-wiring-001",
+      "kind": "integration_test",
+      "source_group": "20261106-exec-metering-wiring-001",
+      "source_commit": "bb7c6afc30b7170d0053c70d74b3f3228facaedf",
+      "source_working_tree_modified": true,
+      "parent_run_id": null,
+      "replay_prefix_steps": 0,
+      "replay_completed_steps": null,
+      "recorded_transitions": 3,
+      "qc_status": "passed",
+      "backup": {
+        "status": "unknown",
+        "receipt": null,
+        "revision": null,
+        "sha256": null
+      }
+    },
+    {
+      "id": "20261106-exec-plan3-wiring-001",
+      "kind": "integration_test",
+      "source_group": "20261106-exec-plan3-wiring-001",
+      "source_commit": "bb7c6afc30b7170d0053c70d74b3f3228facaedf",
+      "source_working_tree_modified": true,
+      "parent_run_id": null,
+      "replay_prefix_steps": 0,
+      "replay_completed_steps": null,
+      "recorded_transitions": 3,
+      "qc_status": "passed",
+      "backup": {
+        "status": "unknown",
+        "receipt": null,
+        "revision": null,
+        "sha256": null
+      }
+    },
+    {
+      "id": "20261107-astra-entry801-named-001",
+      "kind": "demonstration",
+      "source_group": "20261106-coordinated-demo-methods",
+      "source_commit": "9aad60138dc5cded2e0e5219fc12395d4c37ff0a",
+      "source_working_tree_modified": false,
+      "parent_run_id": "20261106-astra-guide470-depth-001",
+      "replay_prefix_steps": 801,
+      "replay_completed_steps": 801,
+      "recorded_transitions": 932,
+      "qc_status": "passed",
+      "backup": {
+        "status": "verified",
+        "receipt": "docs/project/sessions/20261107-e19-backup-verification.json",
+        "revision": "a5f9136d1479933b6c026465a8af0321bad1504c",
+        "sha256": "b2fabcdba6d83418561925176a8fe48e02f9596a2e391d7132cf4f269ef03ab6"
+      }
+    },
+    {
+      "id": "20261107-astra-neckline470-named-001",
+      "kind": "demonstration",
+      "source_group": "20261106-coordinated-demo-methods",
+      "source_commit": "799fe804445c6e0fc401927f0ed82b4e5dd4f935",
+      "source_working_tree_modified": false,
+      "parent_run_id": "20261106-astra-guide470-depth-001",
+      "replay_prefix_steps": 470,
+      "replay_completed_steps": 470,
+      "recorded_transitions": 726,
+      "qc_status": "passed",
+      "backup": {
+        "status": "verified",
+        "receipt": "docs/project/sessions/20261107-e20-backup-verification.json",
+        "revision": "ad7b94f4dd65115082ad53527a48efbf99a5947d",
+        "sha256": "b427dc7b27d14c933fa67f85df751379044163c05e849c84e7fb138f86b97096"
+      }
+    },
+    {
+      "id": "20261107-astra-overhead470-named-001",
+      "kind": "demonstration",
+      "source_group": "20261106-coordinated-demo-methods",
+      "source_commit": "d383063670085afccabfb51e6af530607d2efd44",
+      "source_working_tree_modified": false,
+      "parent_run_id": "20261106-astra-guide470-depth-001",
+      "replay_prefix_steps": 470,
+      "replay_completed_steps": 470,
+      "recorded_transitions": null,
+      "qc_status": "pending",
+      "backup": {
+        "status": "unknown",
+        "receipt": null,
+        "revision": null,
+        "sha256": null
+      }
+    },
+    {
+      "id": "20261107-named-depth-wiring-001",
+      "kind": "integration_test",
+      "source_group": "integration-depth-query-wiring-20261107-named-depth-wiring-001",
+      "source_commit": "5bc0637fe41c057323f9e2c24e5973b015afcb2a",
+      "source_working_tree_modified": true,
+      "parent_run_id": null,
+      "replay_prefix_steps": 0,
+      "replay_completed_steps": 0,
+      "recorded_transitions": 3,
+      "qc_status": "passed",
+      "backup": {
+        "status": "verified",
+        "receipt": "docs/project/sessions/20261107-named-depth-wiring-backup-verification.json",
+        "revision": "7817a63289250cb40e94a50a9b816eb45a567660",
+        "sha256": "93837540ab791ca2749def44d9ee73732a8b92e71057f6f58071fb3d473310bd"
+      }
+    }
+  ],
+  "startpoints": [
+    {
+      "id": "20261106-astra-coordinated-fresh-001-p700",
+      "source_run_id": "20261106-astra-coordinated-fresh-001",
+      "boundary": 700,
+      "history": [],
+      "support": {
+        "status": "unknown",
+        "window_start": null,
+        "window_end": null,
+        "evidence": [],
+        "uncertainty": [
+          "Historical replay branch registered; support window has not been curated in this catalog."
+        ]
+      },
+      "score_at_boundary": {
+        "raw_points": null,
+        "evidence": null
+      },
+      "exact_checkpoint": false,
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "20261106-astra-pickup-hold5-001-p253",
+      "source_run_id": "20261106-astra-pickup-hold5-001",
+      "boundary": 253,
+      "history": [],
+      "support": {
+        "status": "unknown",
+        "window_start": null,
+        "window_end": null,
+        "evidence": [],
+        "uncertainty": [
+          "Historical replay branch registered; support window has not been curated in this catalog."
+        ]
+      },
+      "score_at_boundary": {
+        "raw_points": null,
+        "evidence": null
+      },
+      "exact_checkpoint": false,
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "20261106-astra-support264-002-p470",
+      "source_run_id": "20261106-astra-support264-002",
+      "boundary": 470,
+      "history": [],
+      "support": {
+        "status": "unknown",
+        "window_start": null,
+        "window_end": null,
+        "evidence": [],
+        "uncertainty": [
+          "Historical replay branch registered; support window has not been curated in this catalog."
+        ]
+      },
+      "score_at_boundary": {
+        "raw_points": null,
+        "evidence": null
+      },
+      "exact_checkpoint": false,
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "20261106-astra-support264-002-p352",
+      "source_run_id": "20261106-astra-support264-002",
+      "boundary": 352,
+      "history": [],
+      "support": {
+        "status": "unknown",
+        "window_start": null,
+        "window_end": null,
+        "evidence": [],
+        "uncertainty": [
+          "Historical replay branch registered; support window has not been curated in this catalog."
+        ]
+      },
+      "score_at_boundary": {
+        "raw_points": null,
+        "evidence": null
+      },
+      "exact_checkpoint": false,
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "20261106-astra-coordinated-fresh-001-p264",
+      "source_run_id": "20261106-astra-coordinated-fresh-001",
+      "boundary": 264,
+      "history": [],
+      "support": {
+        "status": "unknown",
+        "window_start": null,
+        "window_end": null,
+        "evidence": [],
+        "uncertainty": [
+          "Historical replay branch registered; support window has not been curated in this catalog."
+        ]
+      },
+      "score_at_boundary": {
+        "raw_points": null,
+        "evidence": null
+      },
+      "exact_checkpoint": false,
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "20261106-astra-guide470-depth-001-p801",
+      "source_run_id": "20261106-astra-guide470-depth-001",
+      "boundary": 801,
+      "history": [
+        771,
+        787
+      ],
+      "support": {
+        "status": "observed_bilateral",
+        "window_start": 563,
+        "window_end": 801,
+        "evidence": [
+          "docs/collection/research/2026-11-07-support-startpoints-review.ko.md — e18-pre-roll-801",
+          "docs/collection/research/2026-11-07-support-startpoints-review.json — score/timing/source and selected image hashes",
+          "output/actors/20261106-astra-guide470-depth-001/observations/00016/observation.json sha256:ed54f165ed6285e995ef906dea78191324787c5ade6505087485760eccc00dbc",
+          "Selected support window 563→801; observed samples 563,641,719,771,787,801; no open requests in complete final-command coverage (not physical grip proof)."
+        ],
+        "uncertainty": [
+          "Bilateral support is a visual hypothesis, not independently confirmed load-bearing attachment.",
+          "No all-frame visual verification; transient slip between selected samples is not excluded.",
+          "Layer identity, connected opening, and passage remain unconfirmed.",
+          "Same E07 lineage: correlated replay branches are not independent demonstrations.",
+          "Fresh replay must recheck current support; old query results are not current observations."
+        ]
+      },
+      "score_at_boundary": {
+        "raw_points": 5.0,
+        "evidence": "docs/collection/research/2026-11-07-support-startpoints-review.json — e18-pre-roll-801; exact physics_tick=9612; trusted offline selection only"
+      },
+      "exact_checkpoint": false,
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "20261106-astra-guide470-depth-001-p470",
+      "source_run_id": "20261106-astra-guide470-depth-001",
+      "boundary": 470,
+      "history": [
+        430,
+        464
+      ],
+      "support": {
+        "status": "uncertain",
+        "window_start": 470,
+        "window_end": 470,
+        "evidence": [
+          "docs/collection/research/2026-11-07-support-startpoints-review.ko.md — e18-table-470",
+          "docs/collection/research/2026-11-07-support-startpoints-review.json — score/timing/source and selected image hashes",
+          "output/actors/20261106-astra-guide470-depth-001/observations/00000/observation.json sha256:02ec1761906212e3793ab19301cff80d8b4021b3cd50f8ed65bb534a7bc4b328",
+          "Single reviewed boundary observation only; no support-duration claim."
+        ],
+        "uncertainty": [
+          "Bilateral support is a visual hypothesis, not independently confirmed load-bearing attachment.",
+          "No all-frame visual verification; transient slip between selected samples is not excluded.",
+          "Layer identity, connected opening, and passage remain unconfirmed.",
+          "Same E07 lineage: correlated replay branches are not independent demonstrations.",
+          "Fresh replay must recheck current support; old query results are not current observations."
+        ]
+      },
+      "score_at_boundary": {
+        "raw_points": 0.0,
+        "evidence": "docs/collection/research/2026-11-07-support-startpoints-review.json — e18-table-470; exact physics_tick=5640; trusted offline selection only"
+      },
+      "exact_checkpoint": false,
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "20261106-astra-guide470-depth-001-p563",
+      "source_run_id": "20261106-astra-guide470-depth-001",
+      "boundary": 563,
+      "history": [
+        510,
+        542
+      ],
+      "support": {
+        "status": "observed_bilateral",
+        "window_start": 510,
+        "window_end": 563,
+        "evidence": [
+          "docs/collection/research/2026-11-07-support-startpoints-review.ko.md — e18-lifted-563",
+          "docs/collection/research/2026-11-07-support-startpoints-review.json — score/timing/source and selected image hashes",
+          "output/actors/20261106-astra-guide470-depth-001/observations/00006/observation.json sha256:6443837faccda363fc276cbce0609804b1780ac01ec7f320c202551431f5ddc2",
+          "Selected support window 510→563; observed samples 510,542,563; no open requests in complete final-command coverage (not physical grip proof)."
+        ],
+        "uncertainty": [
+          "Bilateral support is a visual hypothesis, not independently confirmed load-bearing attachment.",
+          "No all-frame visual verification; transient slip between selected samples is not excluded.",
+          "Layer identity, connected opening, and passage remain unconfirmed.",
+          "Same E07 lineage: correlated replay branches are not independent demonstrations.",
+          "Fresh replay must recheck current support; old query results are not current observations."
+        ]
+      },
+      "score_at_boundary": {
+        "raw_points": 5.0,
+        "evidence": "docs/collection/research/2026-11-07-support-startpoints-review.json — e18-lifted-563; exact physics_tick=6756; trusted offline selection only"
+      },
+      "exact_checkpoint": false,
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "20261106-astra-guide470-depth-001-p787",
+      "source_run_id": "20261106-astra-guide470-depth-001",
+      "boundary": 787,
+      "history": [
+        719,
+        771
+      ],
+      "support": {
+        "status": "observed_bilateral",
+        "window_start": 563,
+        "window_end": 787,
+        "evidence": [
+          "docs/collection/research/2026-11-07-support-startpoints-review.ko.md — e18-hand-approach-787",
+          "docs/collection/research/2026-11-07-support-startpoints-review.json — score/timing/source and selected image hashes",
+          "output/actors/20261106-astra-guide470-depth-001/observations/00015/observation.json sha256:2f76ae40794d48883b0de7c4919fbf1d873817640ea16a8aa2ad2ae3e329b100",
+          "Selected support window 563→787; observed samples 563,641,719,771,787; no open requests in complete final-command coverage (not physical grip proof)."
+        ],
+        "uncertainty": [
+          "Bilateral support is a visual hypothesis, not independently confirmed load-bearing attachment.",
+          "No all-frame visual verification; transient slip between selected samples is not excluded.",
+          "Layer identity, connected opening, and passage remain unconfirmed.",
+          "Same E07 lineage: correlated replay branches are not independent demonstrations.",
+          "Fresh replay must recheck current support; old query results are not current observations."
+        ]
+      },
+      "score_at_boundary": {
+        "raw_points": 5.0,
+        "evidence": "docs/collection/research/2026-11-07-support-startpoints-review.json — e18-hand-approach-787; exact physics_tick=9444; trusted offline selection only"
+      },
+      "exact_checkpoint": false,
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "20261107-astra-entry801-named-001-p801",
+      "source_run_id": "20261107-astra-entry801-named-001",
+      "boundary": 801,
+      "history": [
+        771,
+        787
+      ],
+      "support": {
+        "status": "observed_bilateral",
+        "window_start": 801,
+        "window_end": 801,
+        "evidence": [
+          "docs/collection/research/2026-11-07-support-startpoints-review.ko.md — e19-replayed-801",
+          "docs/collection/research/2026-11-07-support-startpoints-review.json — score/timing/source and selected image hashes",
+          "output/actors/20261107-astra-entry801-named-001/observations/00000/observation.json sha256:3fa1cf7233e0e755fe2853b731ce3a96c577d4e9402c573eaa1c5feaac27b9b6",
+          "Single reviewed boundary observation only; no support-duration claim."
+        ],
+        "uncertainty": [
+          "Bilateral support is a visual hypothesis, not independently confirmed load-bearing attachment.",
+          "No all-frame visual verification; transient slip between selected samples is not excluded.",
+          "Layer identity, connected opening, and passage remain unconfirmed.",
+          "Same E07 lineage: correlated replay branches are not independent demonstrations.",
+          "Fresh replay must recheck current support; old query results are not current observations."
+        ]
+      },
+      "score_at_boundary": {
+        "raw_points": 5.0,
+        "evidence": "docs/collection/research/2026-11-07-support-startpoints-review.json — e19-replayed-801; exact physics_tick=9612; trusted offline selection only"
+      },
+      "exact_checkpoint": false,
+      "training_approval": "unreviewed"
+    }
+  ],
+  "methods": [
+    {
+      "id": "coordinated-array",
+      "name": "coordinated / array",
+      "status": "tested",
+      "axes": {
+        "grasp_arrangement": null,
+        "entry_target": null,
+        "approach": "coordinated",
+        "order": null,
+        "view": "designated RGB-D",
+        "action_encoding": "array"
+      },
+      "description": "Observed policy configuration family; actual physical changes and optional inputs are recorded per attempt. Method name does not assert a new grasp or success."
+    },
+    {
+      "id": "general-array",
+      "name": "general / array",
+      "status": "tested",
+      "axes": {
+        "grasp_arrangement": null,
+        "entry_target": null,
+        "approach": "general",
+        "order": null,
+        "view": "designated RGB-D",
+        "action_encoding": "array"
+      },
+      "description": "Observed policy configuration family; actual physical changes and optional inputs are recorded per attempt. Method name does not assert a new grasp or success."
+    },
+    {
+      "id": "coordinated-support-guide-array-query",
+      "name": "coordinated-support-guide / array / query",
+      "status": "tested",
+      "axes": {
+        "grasp_arrangement": "existing support with optional one-sided guide regrasp",
+        "entry_target": "body opening toward sleeve",
+        "approach": "coordinated-support-guide",
+        "order": "support and guide approach",
+        "view": "designated RGB-D + pixel depth query",
+        "action_encoding": "array"
+      },
+      "description": "Observed policy configuration family; actual physical changes and optional inputs are recorded per attempt. Method name does not assert a new grasp or success."
+    },
+    {
+      "id": "coordinated-hem-route-array",
+      "name": "coordinated-hem-route / array",
+      "status": "tested",
+      "axes": {
+        "grasp_arrangement": null,
+        "entry_target": "body opening toward corresponding sleeve",
+        "approach": "coordinated-hem-route",
+        "order": "hem/body entry route",
+        "view": "designated RGB-D",
+        "action_encoding": "array"
+      },
+      "description": "Observed policy configuration family; actual physical changes and optional inputs are recorded per attempt. Method name does not assert a new grasp or success."
+    },
+    {
+      "id": "coordinated-regrasp-hem-array",
+      "name": "coordinated-regrasp-hem / array",
+      "status": "tested",
+      "axes": {
+        "grasp_arrangement": "one-sided alternate lower-rim candidate",
+        "entry_target": "body opening",
+        "approach": "coordinated-regrasp-hem",
+        "order": "prepare altered support then approach",
+        "view": "designated RGB-D",
+        "action_encoding": "array"
+      },
+      "description": "Observed policy configuration family; actual physical changes and optional inputs are recorded per attempt. Method name does not assert a new grasp or success."
+    },
+    {
+      "id": "coordinated-opening-first-array",
+      "name": "coordinated-opening-first / array",
+      "status": "tested",
+      "axes": {
+        "grasp_arrangement": null,
+        "entry_target": "body opening",
+        "approach": "coordinated-opening-first",
+        "order": "opening preparation before approach",
+        "view": "designated RGB-D",
+        "action_encoding": "array"
+      },
+      "description": "Observed policy configuration family; actual physical changes and optional inputs are recorded per attempt. Method name does not assert a new grasp or success."
+    },
+    {
+      "id": "pickup-array",
+      "name": "pickup / array",
+      "status": "tested",
+      "axes": {
+        "grasp_arrangement": null,
+        "entry_target": null,
+        "approach": "pickup",
+        "order": null,
+        "view": "designated RGB-D",
+        "action_encoding": "array"
+      },
+      "description": "Observed policy configuration family; actual physical changes and optional inputs are recorded per attempt. Method name does not assert a new grasp or success."
+    },
+    {
+      "id": "coordinated-sleeve-array",
+      "name": "coordinated-sleeve / array",
+      "status": "tested",
+      "axes": {
+        "grasp_arrangement": null,
+        "entry_target": "corresponding sleeve",
+        "approach": "coordinated-sleeve",
+        "order": "sleeve-focused collaboration",
+        "view": "designated RGB-D",
+        "action_encoding": "array"
+      },
+      "description": "Observed policy configuration family; actual physical changes and optional inputs are recorded per attempt. Method name does not assert a new grasp or success."
+    },
+    {
+      "id": "coordinated-support-diagnostic-array",
+      "name": "coordinated-support-diagnostic / array",
+      "status": "tested",
+      "axes": {
+        "grasp_arrangement": "sequential local support test and optional same-edge repair",
+        "entry_target": "body-opening preparation",
+        "approach": "coordinated-support-diagnostic",
+        "order": "support diagnosis before transport",
+        "view": "designated RGB-D",
+        "action_encoding": "array"
+      },
+      "description": "Observed policy configuration family; actual physical changes and optional inputs are recorded per attempt. Method name does not assert a new grasp or success."
+    },
+    {
+      "id": "wiring-array",
+      "name": "wiring / array",
+      "status": "tested",
+      "axes": {
+        "grasp_arrangement": null,
+        "entry_target": null,
+        "approach": "wiring",
+        "order": null,
+        "view": "designated RGB-D",
+        "action_encoding": "array"
+      },
+      "description": "Observed policy configuration family; actual physical changes and optional inputs are recorded per attempt. Method name does not assert a new grasp or success."
+    },
+    {
+      "id": "general-array-query",
+      "name": "general / array / query",
+      "status": "tested",
+      "axes": {
+        "grasp_arrangement": null,
+        "entry_target": null,
+        "approach": "general",
+        "order": null,
+        "view": "designated RGB-D + pixel depth query",
+        "action_encoding": "array"
+      },
+      "description": "Observed policy configuration family; actual physical changes and optional inputs are recorded per attempt. Method name does not assert a new grasp or success."
+    },
+    {
+      "id": "coordinated-support-guide-named-query",
+      "name": "coordinated-support-guide / named / query",
+      "status": "tested",
+      "axes": {
+        "grasp_arrangement": "existing support with optional one-sided guide regrasp",
+        "entry_target": "body opening toward sleeve",
+        "approach": "coordinated-support-guide",
+        "order": "support and guide approach",
+        "view": "designated RGB-D + pixel depth query",
+        "action_encoding": "named"
+      },
+      "description": "Observed policy configuration family; actual physical changes and optional inputs are recorded per attempt. Method name does not assert a new grasp or success."
+    },
+    {
+      "id": "coordinated-neckline-first-named-query",
+      "name": "coordinated-neckline-first / named / query",
+      "status": "tested",
+      "axes": {
+        "grasp_arrangement": "neckline candidate supports",
+        "entry_target": "head through body opening and neck opening",
+        "approach": "coordinated-neckline-first",
+        "order": "head-first hypothesis; currently lower priority",
+        "view": "designated RGB-D + pixel depth query",
+        "action_encoding": "named"
+      },
+      "description": "Observed policy configuration family; actual physical changes and optional inputs are recorded per attempt. Method name does not assert a new grasp or success."
+    },
+    {
+      "id": "coordinated-overhead-drape-named-query",
+      "name": "coordinated-overhead-drape / named / query",
+      "status": "ready",
+      "axes": {
+        "grasp_arrangement": "retain useful bilateral body-edge supports",
+        "entry_target": "body opening around raised arms and head",
+        "approach": "coordinated-overhead-drape",
+        "order": "position high then lower and seat; no mandatory first sleeve/head",
+        "view": "designated RGB-D + pixel depth query",
+        "action_encoding": "named"
+      },
+      "description": "Observed policy configuration family; actual physical changes and optional inputs are recorded per attempt. Method name does not assert a new grasp or success."
+    },
+    {
+      "id": "general-named-query",
+      "name": "general / named / query",
+      "status": "tested",
+      "axes": {
+        "grasp_arrangement": null,
+        "entry_target": null,
+        "approach": "general",
+        "order": null,
+        "view": "designated RGB-D + pixel depth query",
+        "action_encoding": "named"
+      },
+      "description": "Observed policy configuration family; actual physical changes and optional inputs are recorded per attempt. Method name does not assert a new grasp or success."
+    }
+  ],
+  "attempts": [
+    {
+      "id": "20261106-astra-coordinated-branch700-001",
+      "status": "failed",
+      "run_id": "20261106-astra-coordinated-branch700-001",
+      "startpoint_id": "20261106-astra-coordinated-fresh-001-p700",
+      "method_id": "coordinated-array",
+      "result": {
+        "raw_points": null,
+        "success": null,
+        "review": null,
+        "videos": []
+      },
+      "notes": "Source local attempt metadata; no published full report\nOriginal status: failed\nReplay prefix is intended; completed replay is recorded separately; source_group is the split unit.\nReplay history settings: null\nWrist depth settings: {\"enabled\": null, \"schema\": null}\nController settle: {\"enabled\": null, \"requested_steps\": null, \"simulation_steps\": null}\nNo physical demonstration; failed before simulation actions."
+    },
+    {
+      "id": "20261106-astra-coordinated-branch700-002",
+      "status": "failed",
+      "run_id": "20261106-astra-coordinated-branch700-002",
+      "startpoint_id": "20261106-astra-coordinated-fresh-001-p700",
+      "method_id": "coordinated-array",
+      "result": {
+        "raw_points": 0.0,
+        "success": false,
+        "review": "docs/collection/reviews/20261106-astra-coordinated-branch700-002.ko.md",
+        "videos": [
+          "docs/collection/attempts/20261106-astra-coordinated-branch700-002/overview.mp4"
+        ]
+      },
+      "notes": "Source docs/collection/attempts/20261106-astra-coordinated-branch700-002/manifest.json\nOriginal status: failed\nReplay prefix is intended; completed replay is recorded separately; source_group is the split unit.\nReplay history settings: null\nWrist depth settings: {\"enabled\": null, \"schema\": null}\nController settle: {\"enabled\": null, \"requested_steps\": null, \"simulation_steps\": null}\nCapture validation failed: do not use as replay/training source."
+    },
+    {
+      "id": "20261106-astra-coordinated-fresh-001",
+      "status": "completed",
+      "run_id": "20261106-astra-coordinated-fresh-001",
+      "startpoint_id": null,
+      "method_id": "coordinated-array",
+      "result": {
+        "raw_points": 5.0,
+        "success": false,
+        "review": "docs/collection/reviews/20261106-astra-coordinated-fresh-001.ko.md",
+        "videos": [
+          "docs/collection/attempts/20261106-astra-coordinated-fresh-001/overview.mp4"
+        ]
+      },
+      "notes": "Source docs/collection/attempts/20261106-astra-coordinated-fresh-001/manifest.json\nOriginal status: completed\nReplay prefix is intended; completed replay is recorded separately; source_group is the split unit.\nReplay history settings: null\nWrist depth settings: {\"enabled\": null, \"schema\": null}\nController settle: {\"enabled\": null, \"requested_steps\": null, \"simulation_steps\": null}\nGallery: docs/gallery/20261106-astra-coordinated-fresh-001.ko.md"
+    },
+    {
+      "id": "20261106-astra-dressing-001",
+      "status": "completed",
+      "run_id": "20261106-astra-dressing-001",
+      "startpoint_id": null,
+      "method_id": "general-array",
+      "result": {
+        "raw_points": 0.0,
+        "success": false,
+        "review": "docs/collection/reviews/20261106-astra-dressing-001.ko.md",
+        "videos": [
+          "docs/collection/attempts/20261106-astra-dressing-001/overview.mp4"
+        ]
+      },
+      "notes": "Source docs/collection/attempts/20261106-astra-dressing-001/manifest.json\nOriginal status: interrupted\nReplay prefix is intended; completed replay is recorded separately; source_group is the split unit.\nReplay history settings: null\nWrist depth settings: {\"enabled\": null, \"schema\": null}\nController settle: {\"enabled\": null, \"requested_steps\": null, \"simulation_steps\": null}\nInterrupted run; completion/QC are separate from task success.\nGallery: docs/gallery/20261106-astra-dressing-001.ko.md"
+    },
+    {
+      "id": "20261106-astra-dressing-continue-001",
+      "status": "completed",
+      "run_id": "20261106-astra-dressing-continue-001",
+      "startpoint_id": "20261106-astra-pickup-hold5-001-p253",
+      "method_id": "general-array",
+      "result": {
+        "raw_points": 5.0,
+        "success": false,
+        "review": "docs/collection/reviews/20261106-astra-dressing-continue-001.ko.md",
+        "videos": [
+          "docs/collection/attempts/20261106-astra-dressing-continue-001/overview.mp4"
+        ]
+      },
+      "notes": "Source docs/collection/attempts/20261106-astra-dressing-continue-001/manifest.json\nOriginal status: interrupted\nReplay prefix is intended; completed replay is recorded separately; source_group is the split unit.\nReplay history settings: null\nWrist depth settings: {\"enabled\": null, \"schema\": null}\nController settle: {\"enabled\": null, \"requested_steps\": null, \"simulation_steps\": null}\nInterrupted run; completion/QC are separate from task success."
+    },
+    {
+      "id": "20261106-astra-guide470-depth-001",
+      "status": "completed",
+      "run_id": "20261106-astra-guide470-depth-001",
+      "startpoint_id": "20261106-astra-support264-002-p470",
+      "method_id": "coordinated-support-guide-array-query",
+      "result": {
+        "raw_points": 5.0,
+        "success": false,
+        "review": "docs/collection/reviews/20261106-astra-guide470-depth-001.ko.md",
+        "videos": [
+          "docs/collection/attempts/20261106-astra-guide470-depth-001/overview.mp4"
+        ]
+      },
+      "notes": "Source docs/collection/attempts/20261106-astra-guide470-depth-001/manifest.json\nOriginal status: interrupted\nReplay prefix is intended; completed replay is recorded separately; source_group is the split unit.\nReplay history settings: [430, 464]\nWrist depth settings: {\"enabled\": true, \"schema\": null}\nController settle: {\"enabled\": true, \"requested_steps\": 6, \"simulation_steps\": 144}\nInterrupted run; completion/QC are separate from task success.\nGallery: docs/gallery/20261106-astra-guide470-depth-001.ko.md\nActual guide regrasp count 0; retained prior corner supports. Strategy title does not imply performed regrasp."
+    },
+    {
+      "id": "20261106-astra-hem-depth-001",
+      "status": "completed",
+      "run_id": "20261106-astra-hem-depth-001",
+      "startpoint_id": "20261106-astra-coordinated-fresh-001-p700",
+      "method_id": "coordinated-hem-route-array",
+      "result": {
+        "raw_points": 5.0,
+        "success": false,
+        "review": null,
+        "videos": [
+          "docs/collection/attempts/20261106-astra-hem-depth-001/overview.mp4"
+        ]
+      },
+      "notes": "Source docs/collection/attempts/20261106-astra-hem-depth-001/manifest.json\nOriginal status: completed\nReplay prefix is intended; completed replay is recorded separately; source_group is the split unit.\nReplay history settings: null\nWrist depth settings: {\"enabled\": null, \"schema\": null}\nController settle: {\"enabled\": null, \"requested_steps\": null, \"simulation_steps\": null}\nGallery: docs/gallery/20261106-astra-hem-depth-001.ko.md"
+    },
+    {
+      "id": "20261106-astra-hem-route-001",
+      "status": "completed",
+      "run_id": "20261106-astra-hem-route-001",
+      "startpoint_id": "20261106-astra-coordinated-fresh-001-p700",
+      "method_id": "coordinated-hem-route-array",
+      "result": {
+        "raw_points": 5.0,
+        "success": false,
+        "review": null,
+        "videos": [
+          "docs/collection/attempts/20261106-astra-hem-route-001/overview.mp4"
+        ]
+      },
+      "notes": "Source docs/collection/attempts/20261106-astra-hem-route-001/manifest.json\nOriginal status: interrupted\nReplay prefix is intended; completed replay is recorded separately; source_group is the split unit.\nReplay history settings: null\nWrist depth settings: {\"enabled\": null, \"schema\": null}\nController settle: {\"enabled\": null, \"requested_steps\": null, \"simulation_steps\": null}\nInterrupted run; completion/QC are separate from task success.\nGallery: docs/gallery/20261106-astra-hem-route-001.ko.md"
+    },
+    {
+      "id": "20261106-astra-hem-settle-001",
+      "status": "completed",
+      "run_id": "20261106-astra-hem-settle-001",
+      "startpoint_id": "20261106-astra-coordinated-fresh-001-p700",
+      "method_id": "coordinated-hem-route-array",
+      "result": {
+        "raw_points": 5.0,
+        "success": false,
+        "review": null,
+        "videos": [
+          "docs/collection/attempts/20261106-astra-hem-settle-001/overview.mp4"
+        ]
+      },
+      "notes": "Source docs/collection/attempts/20261106-astra-hem-settle-001/manifest.json\nOriginal status: interrupted\nReplay prefix is intended; completed replay is recorded separately; source_group is the split unit.\nReplay history settings: null\nWrist depth settings: {\"enabled\": null, \"schema\": null}\nController settle: {\"enabled\": true, \"requested_steps\": 6, \"simulation_steps\": 12}\nInterrupted run; completion/QC are separate from task success.\nGallery: docs/gallery/20261106-astra-hem-settle-001.ko.md"
+    },
+    {
+      "id": "20261106-astra-layer352-001",
+      "status": "completed",
+      "run_id": "20261106-astra-layer352-001",
+      "startpoint_id": "20261106-astra-support264-002-p352",
+      "method_id": "coordinated-regrasp-hem-array",
+      "result": {
+        "raw_points": 5.0,
+        "success": false,
+        "review": "docs/collection/reviews/20261106-astra-layer352-001.ko.md",
+        "videos": [
+          "docs/collection/attempts/20261106-astra-layer352-001/overview.mp4"
+        ]
+      },
+      "notes": "Source docs/collection/attempts/20261106-astra-layer352-001/manifest.json\nOriginal status: completed\nReplay prefix is intended; completed replay is recorded separately; source_group is the split unit.\nReplay history settings: [264, 346]\nWrist depth settings: {\"enabled\": true, \"schema\": null}\nController settle: {\"enabled\": true, \"requested_steps\": 6, \"simulation_steps\": 48}\nGallery: docs/gallery/20261106-astra-layer352-001.ko.md"
+    },
+    {
+      "id": "20261106-astra-opening264-001",
+      "status": "completed",
+      "run_id": "20261106-astra-opening264-001",
+      "startpoint_id": "20261106-astra-coordinated-fresh-001-p264",
+      "method_id": "coordinated-opening-first-array",
+      "result": {
+        "raw_points": 5.0,
+        "success": false,
+        "review": "docs/collection/reviews/20261106-astra-opening264-001.ko.md",
+        "videos": [
+          "docs/collection/attempts/20261106-astra-opening264-001/overview.mp4"
+        ]
+      },
+      "notes": "Source docs/collection/attempts/20261106-astra-opening264-001/manifest.json\nOriginal status: completed\nReplay prefix is intended; completed replay is recorded separately; source_group is the split unit.\nReplay history settings: null\nWrist depth settings: {\"enabled\": null, \"schema\": null}\nController settle: {\"enabled\": true, \"requested_steps\": 6, \"simulation_steps\": 126}\nGallery: docs/gallery/20261106-astra-opening264-001.ko.md"
+    },
+    {
+      "id": "20261106-astra-pickup-hold5-001",
+      "status": "completed",
+      "run_id": "20261106-astra-pickup-hold5-001",
+      "startpoint_id": null,
+      "method_id": "pickup-array",
+      "result": {
+        "raw_points": 5.0,
+        "success": false,
+        "review": "docs/collection/reviews/20261106-astra-pickup-hold5-001.ko.md",
+        "videos": [
+          "docs/collection/attempts/20261106-astra-pickup-hold5-001/overview.mp4"
+        ]
+      },
+      "notes": "Source docs/collection/attempts/20261106-astra-pickup-hold5-001/manifest.json\nOriginal status: review_ready\nReplay prefix is intended; completed replay is recorded separately; source_group is the split unit.\nReplay history settings: null\nWrist depth settings: {\"enabled\": null, \"schema\": null}\nController settle: {\"enabled\": null, \"requested_steps\": null, \"simulation_steps\": null}\nGallery: docs/gallery/20261106-astra-pickup-hold5-001.ko.md"
+    },
+    {
+      "id": "20261106-astra-pickup-plan2-001",
+      "status": "completed",
+      "run_id": "20261106-astra-pickup-plan2-001",
+      "startpoint_id": null,
+      "method_id": "pickup-array",
+      "result": {
+        "raw_points": 0.0,
+        "success": false,
+        "review": "docs/collection/reviews/20261106-astra-pickup-plan2-001.ko.md",
+        "videos": [
+          "docs/collection/attempts/20261106-astra-pickup-plan2-001/overview.mp4"
+        ]
+      },
+      "notes": "Source docs/collection/attempts/20261106-astra-pickup-plan2-001/manifest.json\nOriginal status: completed\nReplay prefix is intended; completed replay is recorded separately; source_group is the split unit.\nReplay history settings: null\nWrist depth settings: {\"enabled\": null, \"schema\": null}\nController settle: {\"enabled\": null, \"requested_steps\": null, \"simulation_steps\": null}"
+    },
+    {
+      "id": "20261106-astra-sleeve-branch700-003",
+      "status": "completed",
+      "run_id": "20261106-astra-sleeve-branch700-003",
+      "startpoint_id": "20261106-astra-coordinated-fresh-001-p700",
+      "method_id": "coordinated-sleeve-array",
+      "result": {
+        "raw_points": 5.0,
+        "success": false,
+        "review": null,
+        "videos": [
+          "docs/collection/attempts/20261106-astra-sleeve-branch700-003/overview.mp4"
+        ]
+      },
+      "notes": "Source docs/collection/attempts/20261106-astra-sleeve-branch700-003/manifest.json\nOriginal status: completed\nReplay prefix is intended; completed replay is recorded separately; source_group is the split unit.\nReplay history settings: null\nWrist depth settings: {\"enabled\": null, \"schema\": null}\nController settle: {\"enabled\": null, \"requested_steps\": null, \"simulation_steps\": null}\nGallery: docs/gallery/20261106-astra-sleeve-branch700-003.ko.md"
+    },
+    {
+      "id": "20261106-astra-sleeve-history-001",
+      "status": "completed",
+      "run_id": "20261106-astra-sleeve-history-001",
+      "startpoint_id": "20261106-astra-coordinated-fresh-001-p700",
+      "method_id": "coordinated-sleeve-array",
+      "result": {
+        "raw_points": 5.0,
+        "success": false,
+        "review": null,
+        "videos": [
+          "docs/collection/attempts/20261106-astra-sleeve-history-001/overview.mp4"
+        ]
+      },
+      "notes": "Source docs/collection/attempts/20261106-astra-sleeve-history-001/manifest.json\nOriginal status: interrupted\nReplay prefix is intended; completed replay is recorded separately; source_group is the split unit.\nReplay history settings: null\nWrist depth settings: {\"enabled\": null, \"schema\": null}\nController settle: {\"enabled\": null, \"requested_steps\": null, \"simulation_steps\": null}\nInterrupted run; completion/QC are separate from task success.\nGallery: docs/gallery/20261106-astra-sleeve-history-001.ko.md"
+    },
+    {
+      "id": "20261106-astra-support264-002",
+      "status": "completed",
+      "run_id": "20261106-astra-support264-002",
+      "startpoint_id": "20261106-astra-coordinated-fresh-001-p264",
+      "method_id": "coordinated-support-diagnostic-array",
+      "result": {
+        "raw_points": 0.0,
+        "success": false,
+        "review": "docs/collection/reviews/20261106-astra-support264-002.ko.md",
+        "videos": [
+          "docs/collection/attempts/20261106-astra-support264-002/overview.mp4"
+        ]
+      },
+      "notes": "Source docs/collection/attempts/20261106-astra-support264-002/manifest.json\nOriginal status: completed\nReplay prefix is intended; completed replay is recorded separately; source_group is the split unit.\nReplay history settings: null\nWrist depth settings: {\"enabled\": true, \"schema\": null}\nController settle: {\"enabled\": true, \"requested_steps\": 6, \"simulation_steps\": 96}\nGallery: docs/gallery/20261106-astra-support264-002.ko.md"
+    },
+    {
+      "id": "20261106-codex-robot-wiring",
+      "status": "failed",
+      "run_id": "20261106-codex-robot-wiring",
+      "startpoint_id": null,
+      "method_id": "wiring-array",
+      "result": {
+        "raw_points": null,
+        "success": null,
+        "review": null,
+        "videos": []
+      },
+      "notes": "Source local attempt metadata; no published full report\nOriginal status: failed\nReplay prefix is intended; completed replay is recorded separately; source_group is the split unit.\nReplay history settings: null\nWrist depth settings: {\"enabled\": null, \"schema\": null}\nController settle: {\"enabled\": null, \"requested_steps\": null, \"simulation_steps\": null}"
+    },
+    {
+      "id": "20261106-codex-robot-wiring-r2",
+      "status": "failed",
+      "run_id": "20261106-codex-robot-wiring-r2",
+      "startpoint_id": null,
+      "method_id": "wiring-array",
+      "result": {
+        "raw_points": null,
+        "success": null,
+        "review": null,
+        "videos": []
+      },
+      "notes": "Source local attempt metadata; no published full report\nOriginal status: failed\nReplay prefix is intended; completed replay is recorded separately; source_group is the split unit.\nReplay history settings: null\nWrist depth settings: {\"enabled\": null, \"schema\": null}\nController settle: {\"enabled\": null, \"requested_steps\": null, \"simulation_steps\": null}"
+    },
+    {
+      "id": "20261106-codex-robot-wiring-r3",
+      "status": "failed",
+      "run_id": "20261106-codex-robot-wiring-r3",
+      "startpoint_id": null,
+      "method_id": "wiring-array",
+      "result": {
+        "raw_points": null,
+        "success": null,
+        "review": null,
+        "videos": []
+      },
+      "notes": "Source local attempt metadata; no published full report\nOriginal status: failed\nReplay prefix is intended; completed replay is recorded separately; source_group is the split unit.\nReplay history settings: null\nWrist depth settings: {\"enabled\": null, \"schema\": null}\nController settle: {\"enabled\": null, \"requested_steps\": null, \"simulation_steps\": null}"
+    },
+    {
+      "id": "20261106-codex-robot-wiring-r4",
+      "status": "failed",
+      "run_id": "20261106-codex-robot-wiring-r4",
+      "startpoint_id": null,
+      "method_id": "wiring-array",
+      "result": {
+        "raw_points": null,
+        "success": null,
+        "review": null,
+        "videos": []
+      },
+      "notes": "Source local attempt metadata; no published full report\nOriginal status: failed\nReplay prefix is intended; completed replay is recorded separately; source_group is the split unit.\nReplay history settings: null\nWrist depth settings: {\"enabled\": null, \"schema\": null}\nController settle: {\"enabled\": null, \"requested_steps\": null, \"simulation_steps\": null}"
+    },
+    {
+      "id": "20261106-codex-robot-wiring-r5",
+      "status": "completed",
+      "run_id": "20261106-codex-robot-wiring-r5",
+      "startpoint_id": null,
+      "method_id": "wiring-array",
+      "result": {
+        "raw_points": 0.0,
+        "success": false,
+        "review": null,
+        "videos": [
+          "docs/collection/attempts/20261106-codex-robot-wiring-r5/overview.mp4"
+        ]
+      },
+      "notes": "Source docs/collection/attempts/20261106-codex-robot-wiring-r5/manifest.json\nOriginal status: completed\nReplay prefix is intended; completed replay is recorded separately; source_group is the split unit.\nReplay history settings: null\nWrist depth settings: {\"enabled\": null, \"schema\": null}\nController settle: {\"enabled\": null, \"requested_steps\": null, \"simulation_steps\": null}\nGallery: docs/gallery/20261106-codex-robot-wiring-r5.ko.md"
+    },
+    {
+      "id": "20261106-depth-query-wiring-001",
+      "status": "completed",
+      "run_id": "20261106-depth-query-wiring-001",
+      "startpoint_id": null,
+      "method_id": "general-array-query",
+      "result": {
+        "raw_points": null,
+        "success": null,
+        "review": null,
+        "videos": []
+      },
+      "notes": "Source local attempt metadata; no published full report\nOriginal status: completed\nReplay prefix is intended; completed replay is recorded separately; source_group is the split unit.\nReplay history settings: null\nWrist depth settings: {\"enabled\": null, \"schema\": null}\nController settle: {\"enabled\": null, \"requested_steps\": null, \"simulation_steps\": null}"
+    },
+    {
+      "id": "20261106-evening-wiring-001",
+      "status": "completed",
+      "run_id": "20261106-evening-wiring-001",
+      "startpoint_id": null,
+      "method_id": "general-array",
+      "result": {
+        "raw_points": 0.0,
+        "success": false,
+        "review": null,
+        "videos": []
+      },
+      "notes": "Source docs/collection/attempts/20261106-evening-wiring-001/manifest.json\nOriginal status: completed\nReplay prefix is intended; completed replay is recorded separately; source_group is the split unit.\nReplay history settings: null\nWrist depth settings: {\"enabled\": null, \"schema\": null}\nController settle: {\"enabled\": null, \"requested_steps\": null, \"simulation_steps\": null}"
+    },
+    {
+      "id": "20261106-exec-metering-wiring-001",
+      "status": "completed",
+      "run_id": "20261106-exec-metering-wiring-001",
+      "startpoint_id": null,
+      "method_id": "wiring-array",
+      "result": {
+        "raw_points": 0.0,
+        "success": false,
+        "review": null,
+        "videos": [
+          "docs/collection/attempts/20261106-exec-metering-wiring-001/overview.mp4"
+        ]
+      },
+      "notes": "Source docs/collection/attempts/20261106-exec-metering-wiring-001/manifest.json\nOriginal status: completed\nReplay prefix is intended; completed replay is recorded separately; source_group is the split unit.\nReplay history settings: null\nWrist depth settings: {\"enabled\": null, \"schema\": null}\nController settle: {\"enabled\": null, \"requested_steps\": null, \"simulation_steps\": null}"
+    },
+    {
+      "id": "20261106-exec-plan3-wiring-001",
+      "status": "completed",
+      "run_id": "20261106-exec-plan3-wiring-001",
+      "startpoint_id": null,
+      "method_id": "wiring-array",
+      "result": {
+        "raw_points": 0.0,
+        "success": false,
+        "review": null,
+        "videos": [
+          "docs/collection/attempts/20261106-exec-plan3-wiring-001/overview.mp4"
+        ]
+      },
+      "notes": "Source docs/collection/attempts/20261106-exec-plan3-wiring-001/manifest.json\nOriginal status: completed\nReplay prefix is intended; completed replay is recorded separately; source_group is the split unit.\nReplay history settings: null\nWrist depth settings: {\"enabled\": null, \"schema\": null}\nController settle: {\"enabled\": null, \"requested_steps\": null, \"simulation_steps\": null}\nGallery: docs/gallery/20261106-exec-plan3-wiring-001.ko.md"
+    },
+    {
+      "id": "20261107-astra-entry801-named-001",
+      "status": "completed",
+      "run_id": "20261107-astra-entry801-named-001",
+      "startpoint_id": "20261106-astra-guide470-depth-001-p801",
+      "method_id": "coordinated-support-guide-named-query",
+      "result": {
+        "raw_points": 5.0,
+        "success": false,
+        "review": "docs/collection/reviews/20261107-astra-entry801-named-001.ko.md",
+        "videos": [
+          "docs/collection/attempts/20261107-astra-entry801-named-001/overview.mp4"
+        ]
+      },
+      "notes": "Source docs/collection/attempts/20261107-astra-entry801-named-001/manifest.json\nOriginal status: completed\nReplay prefix is intended; completed replay is recorded separately; source_group is the split unit.\nReplay history settings: [771, 787]\nWrist depth settings: {\"enabled\": true, \"schema\": null}\nController settle: {\"enabled\": true, \"requested_steps\": 6, \"simulation_steps\": 72}\nGallery: docs/gallery/20261107-astra-entry801-named-001.ko.md\nActual guide regrasp count 0; retained prior corner supports. Strategy title does not imply performed regrasp."
+    },
+    {
+      "id": "20261107-astra-neckline470-named-001",
+      "status": "completed",
+      "run_id": "20261107-astra-neckline470-named-001",
+      "startpoint_id": "20261106-astra-guide470-depth-001-p470",
+      "method_id": "coordinated-neckline-first-named-query",
+      "result": {
+        "raw_points": 0.0,
+        "success": false,
+        "review": "docs/collection/reviews/20261107-astra-neckline470-named-001.ko.md",
+        "videos": [
+          "docs/collection/attempts/20261107-astra-neckline470-named-001/overview.mp4"
+        ]
+      },
+      "notes": "Source docs/collection/attempts/20261107-astra-neckline470-named-001/manifest.json\nOriginal status: completed\nReplay prefix is intended; completed replay is recorded separately; source_group is the split unit.\nReplay history settings: [430, 464]\nWrist depth settings: {\"enabled\": true, \"schema\": null}\nController settle: {\"enabled\": true, \"requested_steps\": 6, \"simulation_steps\": 102}\nGallery: docs/gallery/20261107-astra-neckline470-named-001.ko.md\nActual two sequential neckline candidate regrasp cycles; ended before transport. Not a tested head-passage failure."
+    },
+    {
+      "id": "20261107-astra-overhead470-named-001",
+      "status": "in_progress",
+      "run_id": "20261107-astra-overhead470-named-001",
+      "startpoint_id": "20261106-astra-guide470-depth-001-p470",
+      "method_id": "coordinated-overhead-drape-named-query",
+      "result": {
+        "raw_points": null,
+        "success": null,
+        "review": "docs/collection/reviews/20261107-astra-overhead470-named-001.ko.md",
+        "videos": []
+      },
+      "notes": "Source local attempt metadata; no published full report\nOriginal status: collecting\nReplay prefix is intended; completed replay is recorded separately; source_group is the split unit.\nReplay history settings: [430, 464]\nWrist depth settings: {\"enabled\": true, \"schema\": null}\nController settle: {\"enabled\": true, \"requested_steps\": 6, \"simulation_steps\": 90}\nActive run: actual suffix is still evolving; final score/stage analysis pending. Next experiment will use reviewed post-5-point support catalog per user request.\nFinal recorded transitions, score and quality remain null/pending until capture closes; live progress is reported in STATUS/README."
+    },
+    {
+      "id": "20261107-named-depth-wiring-001",
+      "status": "completed",
+      "run_id": "20261107-named-depth-wiring-001",
+      "startpoint_id": null,
+      "method_id": "general-named-query",
+      "result": {
+        "raw_points": null,
+        "success": null,
+        "review": null,
+        "videos": []
+      },
+      "notes": "Source local attempt metadata; no published full report\nOriginal status: completed\nReplay prefix is intended; completed replay is recorded separately; source_group is the split unit.\nReplay history settings: null\nWrist depth settings: {\"enabled\": null, \"schema\": null}\nController settle: {\"enabled\": null, \"requested_steps\": null, \"simulation_steps\": null}"
+    },
+    {
+      "id": "planned-e18-563-overhead",
+      "status": "planned",
+      "run_id": null,
+      "startpoint_id": "20261106-astra-guide470-depth-001-p563",
+      "method_id": "coordinated-overhead-drape-named-query",
+      "result": {
+        "raw_points": null,
+        "success": null,
+        "review": null,
+        "videos": []
+      },
+      "notes": "Conditional comparison candidate requested by user: same reviewed 5-point support source, different actual route. Not dispatched; select order after E21 closes. Fresh replay support recheck required; no exact cloth checkpoint. Record any future cancellation/supersession before execution."
+    },
+    {
+      "id": "planned-e18-563-support-guide",
+      "status": "planned",
+      "run_id": null,
+      "startpoint_id": "20261106-astra-guide470-depth-001-p563",
+      "method_id": "coordinated-support-guide-named-query",
+      "result": {
+        "raw_points": null,
+        "success": null,
+        "review": null,
+        "videos": []
+      },
+      "notes": "Conditional comparison candidate requested by user: same reviewed 5-point support source, different actual route. Not dispatched; select order after E21 closes. Fresh replay support recheck required; no exact cloth checkpoint. Record any future cancellation/supersession before execution."
+    }
+  ]
+}
