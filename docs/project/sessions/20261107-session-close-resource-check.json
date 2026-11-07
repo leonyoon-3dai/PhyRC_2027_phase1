@@ -1,0 +1,20 @@
+{
+  "checked_at_utc": "2026-11-07T07:54:06.118974+00:00",
+  "user_requested_pause_after_E27": true,
+  "E28_not_launched": true,
+  "E28_paths_exist": {
+    "output/collections/20261107-astra-singlearm928-named-001": false,
+    "output/operator-traces/20261107-astra-singlearm928-named-001": false,
+    "output/actors/20261107-astra-singlearm928-named-001": false
+  },
+  "running_containers": [],
+  "matching_collection_or_simulator_processes": [],
+  "gpu_status": [
+    "NVIDIA L40S, 0 MiB, 0 %"
+  ],
+  "gpu_compute_processes": [],
+  "scope": "Read-only process/container/GPU inspection. Does not certify provider billing or VM power state.",
+  "server_poweroff_command_executed": false,
+  "cloud_instance_stop_or_delete_executed": false,
+  "automatic_collection_restart_created": false
+}

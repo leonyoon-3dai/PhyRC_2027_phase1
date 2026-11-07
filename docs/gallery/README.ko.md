@@ -2,7 +2,30 @@
 
 [저장소 소개](../../README.md) · [현재 상태](../project/STATUS.md) · [이번 세션 기록](../project/sessions/20261106-evening-resume.ko.md)
 
-**최신 E26 · 방향 변경·자세 보상과 손 관측**
+**최신 E27 · 새 파지로 운반하고 팔에 접근한 뒤 복구**
+
+<a href="assets/20261107-e27-arm-approach/event.mp4"><img src="assets/20261107-e27-arm-approach/preview.gif" width="960" alt="E27 공개 네 카메라. 새 파지로 옮긴 옷을 손에 접근시켜 전완과 노란 경계 사이 공간이 드러난 뒤 다른 손 쪽으로 목표를 바꾸는 과정"></a>
+
+[**MP4 크게 보기**](assets/20261107-e27-arm-approach/event.mp4) · [**운반·전체 영상**](20261107-astra-regrasp698-progress-named-001.ko.md) · [**분석**](../collection/reviews/20261107-astra-regrasp698-progress-named-001.ko.md) · [**피드백 남기기**](https://github.com/leonyoon-3dai/PhyRC_2027_phase1/issues/new?title=%5BE27+%ED%94%BC%EB%93%9C%EB%B0%B1%5D+%EC%83%88+%ED%8C%8C%EC%A7%80+%EC%9A%B4%EB%B0%98%C2%B7%ED%8C%94+%EC%A0%91%EA%B7%BC%C2%B7%EB%B3%B5%EA%B5%AC&body=%EC%8B%9C%EB%8F%84%3A+E27+%2F+20261107-astra-regrasp698-progress-named-001%0A%EC%98%81%EC%83%81+%EC%8B%9C%EA%B0%81+%EB%98%90%EB%8A%94+%EA%B2%BD%EA%B3%84%3A%0A%EC%B9%B4%EB%A9%94%EB%9D%BC%3A%0A%0A%EB%B3%B4%EC%9D%B4%EB%8A%94+%EC%82%AC%EC%8B%A4%3A%0A%0A%ED%95%B4%EC%84%9D%C2%B7%EC%A7%88%EB%AC%B8%3A%0A%0A%EB%8B%A4%EC%9D%8C%EC%97%90+%EB%B9%84%EA%B5%90%ED%95%A0+%EB%B0%A9%EB%B2%95%3A%0A)
+
+**공식 원점수 5/50 · 픽업5 · 착의0 · `success=false` · 1,159/1,159기록 검사 통과.** E25에서 바꾼 파지로 실제 운반과 팔 접근을 수행했습니다. 928경계에서는 전완이 노란 띠 사이 큰 공간을 가로질러 보였고, 후반에는 관절 오차와 시야가 일부 회복됐습니다. **연속 소매 통과는 미확인이고 추가 득점은 없습니다.** 22개 행동을 사용한 뒤 판단 예산으로 종료했습니다. 최고5점, 중간 목표10점은 아직 미달성입니다.
+
+868–968경계 · 101프레임 · 20.2초 · 4배 느리게. [출처](assets/20261107-e27-arm-approach/provenance.json) · [새 파지 상승·운반698–842 MP4](assets/20261107-e27-lift-transport/event.mp4) · [학습 검토 구간](../collection/reviews/20261107-astra-regrasp698-progress-named-001-learning-segments.json)
+
+전체 **1,159전이·시뮬레이션57.95초**, 새 구간은 **461전이·23.05초**입니다. 실제 **40분50.624초**가 걸렸고, 698재실행+334모델 행동+126자동 정착+1예산 종료 중립입니다. **23모델 호출·22행동·모델 종료판단0**, 깊이 질의1회6유효점·질의 중 물리0입니다. 전이1개는 관측→행동→다음 관측의0.05초 기록이며 모델 판단 횟수와 다릅니다.
+
+**사용자 요청으로 E27에서 시연을 마감하고 새 실행을 중지했습니다. 최고5점·목표10점 미달성이며 E28은 시작하지 않았습니다.** 서버 종료 후 오프라인 리뷰·전략 검토를 거쳐 후속 후보를 다시 선택합니다. E27/928·과거890/906의 같은 팔 연속 진행 후보는 준비됐지만 **실행 보류** 상태이고 자동 재개 계획은 없습니다. 후보의 전체325CPU·통합166개 해시 대조 통과와 실제 착의 효과 미검증을 구분합니다. 카메라 방향 보조는 미적용입니다. [후보 근거](../collection/research/2026-11-07-e27-single-arm-continuation.ko.md) · [후보 검사](../project/sessions/20261107-single-arm-progress-validation.json) · [통합 대조](../project/sessions/20261107-single-arm-integration-verification.json)
+
+[E27 원본 고정 백업](../project/sessions/20261107-e27-backup-verification.json)은 재다운로드와254개 구성 파일 SHA 검증을 완료했습니다. 두 영상은 같은 실행의 구간이고 독립 성공 시연이 아니며, 학습 승인은 `unreviewed`입니다.
+
+[출발점 비교](20261107-support-startpoints.ko.md) · [출발점·방법 데이터베이스](../collection/catalog/README.ko.md) · [0→5→10 구간 조합 장기계획](../collection/research/2026-11-07-composable-scoring-data-plan.ko.md)
+
+<details>
+<summary>E26과 이전 갤러리·당시 계획 이력</summary>
+
+> 아래는 각 게시 당시 기록입니다. 현재 실행 여부는 위 내용과 STATUS를 따릅니다.
+
+**E26 당시 최신 · 방향 변경·자세 보상과 손 관측**
 
 <a href="assets/20261107-e26-view-orbit/event.mp4"><img src="assets/20261107-e26-view-orbit/preview.gif" width="960" alt="E26 공개 네 카메라. 옷을 지지한 채 접근·상승하고 로봇1의 보상 회전으로 화면 끝의 손과 손목을 더 분명하게 관측하는 과정"></a>
 
@@ -554,5 +577,8 @@ plan3는 중간 관측으로 다시 판단하는 조건부 계획이 아닙니�
 </details>
 
 </details>
+
+</details>
+
 
 </details>

@@ -2,23 +2,23 @@
 
 ## 현재 사용자 요청
 
-2026-11-06 저녁 클린 L40S 서버에서 작업을 재개했다. 사용자는 **다양한 실제 시도를 계속해 원점수10점 이상을 달성하고, 충분한 미세조정 후 새 방법이 필요한지 지속 분석**하도록 요청했다. 현재 작업을 `main`에 통합하고 **루트 README 첫 화면 맨 위에 최신 시연 갤러리**를 배치한다. 영상·분석·피드백 동선을 우선하고 다른 기술 문서는 아래에서 찾게 한다. 이 통합은 이미 승인됐으므로 다시 확인을 요청하지 않는다.
+**2026-11-07 최신 지시: 현재 시연까지만 마감하고, 서버 종료 후 오프라인 리뷰·충분한 분석·전략 검토를 거쳐 다시 서버를 열기로 했다. E27은 이미 종료했으며 E28은 시작하지 않았다. 수집 목표는 일시 중지다. 새 GPU·Astra 시연·재시도·자동 재개를 시작하지 않는다.** 이전의10점까지 계속 실행하라는 승인보다 이 중지 지시가 우선한다.
 
-최신 추가 지시(2026-11-07): Astra를 유지하고 기존 지지·실패 자료를 활용해 빠른 분기 비교를 계속한다. 다음 시도부터 검수된 양측 가장자리 지지와5점 이후 출발점을 우선 선택하고, 전체 실행/출발점/방법/조합/결과를 데이터베이스로 연결한다. 사용자는 수시간 자리를 비우며 GitHub README로 모니터한다. **10점은 중간 목표이며, 공식 점수로 확인하면 멈추지 않고 다음 득점 항목으로 진행한다.** 장기적으로0→5→10 등 방법 구간을 조합한 합성 자료 확장을 기록하되, 현재 즉시 학습·미검증 성공자료 생성 요청으로 해석하지 않는다.
+현재는 원본 검증·고정 백업·main 게시·오프라인 검토 자료와 복원 안내를 마감한다. 후속same-arm 코드는E27종료후 준비·CPU검증됐으나 적용 시연은0이다. E28/928 설정은 오프라인 검토 후 재선택할 후보이며 실행 예약이 아니다. 사용자가 다시 재개를 요청한 뒤 현재 상태와 전략을 새로 검토한다. 서버 전원·클라우드 인스턴스 종료와 시뮬레이터 종료를 구분한다.
 
-라이브 화면을 보지 않으므로 Chrome·WebRTC는 사용하지 않는다. E15의 과거 중지 지시는 이번 재개 요청이 대체한다. [E15 당시 지침 원문](docs/project/history/AGENTS-E15-20261106.txt)은 이력이며 최신 실행 지시가 아니다. 사용자 메시지가 저장소 문서보다 우선한다.
+[마감·오프라인 검토](docs/project/SESSION_WRAPUP_20261107.ko.md), [README](README.md), [현재 상태](docs/project/STATUS.md), [복원 안내](docs/project/START_HERE.ko.md)를 먼저 읽는다. 최고 공식5/50점·착의0이며10점은 미달성이다. 시연 영상·분석·피드백을 README 맨 위에서 확인하게 유지한다. 장기0→5→10조합은 기록 계획이며 현재 합성 자료 생성·학습은 하지 않았다.
 
-먼저 [README](README.md), [현재 상태](docs/project/STATUS.md), [최신 일지](docs/project/sessions/20261106-evening-resume.ko.md), [방법 전환 기준](docs/project/sessions/20261106-method-switch-matrix.ko.md)을 확인한다.
+라이브 화면 대신 저장된 지정 공개 RGB/상태를 사용한다. 검수와 actor 접근을 분리하며 기존 평가·내부 기하를 정책 입력에 전달하지 않는다. 이전 E15 중지와 이후 재개 지시는 이력이고 최신 E27 마감 지시를 대체하지 않는다.
 
 ## 확인된 현재 상태
 
-- 최신E26 `20261107-astra-hand-swap787-named-001`은5/50·픽업5·착의0·successfalse·no_dressing_points/final_score0,QC1139/1139오류0으로 자율 종료했다. source53a58bb clean·05:51:36–06:42:28UTC·wall3051.140932266초.
-- 1139=787replay+232model+120settle,21act+finish1/25calls·3query22valid/물리0·마감0. 마지막22번째 판단이finish였으며 예산 강제중단/감독자신호아님. host78009=0·shellPython0·sim0·completed/errornull/capturecompleteoperator_finished. 백업receipt20261107-e26검증완료,trainingunreviewed.
-- 초기E23와 목표손차이·실제 상대배치/접근변경·D13자세보상·D17/D18관측보상은 보존한다. 역할교환/연속소매통과는미확인.953의유용한두손관계와 이후가림을분리한다.
-- E27은E25/698 새 파지의coordinated-task-progress·history657667·22dec/max1300/settle6/timeout180/named-query-wristpanel로 선택 후2026-11-07T06:58:14Z·source1ff16b29e28bc9d43faf6bb0f4518e9a65868cb9 clean으로실제시작. D5뒤842까지새6act·144=108model+36settle/query0. 양측상승후테이블밖운반과jaw국소유지·사람접근을확인. 독립하중/반대lip/소매통과미확인. source loaderfloat32(698,2,9)통과. 현재코드는E26이후변경없고전체CPU317검사가적용된다.
-- 카메라 방향 보조 후보b1f30은별도worktree335CPU검사/고정백업완료·실물리/actor미검증이며E27에적용하지않는다. 기존query는이미cameraXYZ를제공한다. 정적공개기구학의방향계산은새센서/IK/착의성과와구분한다.
-- E25 새파지국소follow/QC698/백업79e74, E24부분복구/QC1610/백업1edca, E23팔노출/QC1180, E22host143불확실성, E21새파지후속미검사/E20목선0/E19세접근/E18roll오류 이력을보존한다. 최신명령·실제시작여부는STATUS/attempt우선.
-- catalog정본35실행/12출발점/19방법/37시도(계획2·진행1). 같은E07계보·정확checkpoint아님. 장기0→5→10조합과현재학습/성공자료생성을구분하며10점이후다음득점으로계속한다.
+- E27 `20261107-astra-regrasp698-progress-named-001`은 공식5/50·픽업5·착의0·successfalse·no_dressing_points/final_score0.0,QC1159/1159오류0으로 종료했다. source1ff16b29 clean·06:58:14–07:39:05UTC·wall2450.624435922초.
+- 1159=698replay+334model+126settle+1budgetcleanup·22act/23calls·query1sixvalid물리0. 모델finish0이며decision_budget중립1마감;capture operator_finished는자율모델finish를뜻하지않는다. host25974/Python/sim0·completed/errornull/capturecomplete. trainingunreviewed. E27원본백업6506b153 고정재다운로드·254member검증완료.
+- 새grip운반/928팔–노란간격관계·D11타손전환·D17목표복귀·D20/21부분시야복구를보존한다. 마지막까지같은가림이라거나단계명second_sleeve/shoulder를성공으로쓰지않는다.
+- 준비된E28후보는E27/928·history890906·coordinated-single-arm-progress·24dec/max1600/settle6/timeout180/named-query-wristpanel·Astraultra로준비했으나사용자요청으로실행보류. 같은팔진행의목표순서비교이며새파지/손목보조는없다. 공개관측으로팔을선택하고유한진전·복구·정당한목표전환을허용한다.
+- 후보0c51a1a는E27종료후4ec8be8로통합. 격리전체CPU325/38.190초통과·root166소스SHA일치검증,실E28효과미검증. loader928/float32(928,2,9)07:41:06UTC통과. 실제시작source/시간은STATUS/attempt우선.
+- 별도wrist-translation후보b1f30/335CPU/privatebackup은미통합. 기존query의XYZ와새센서/IK/착의성과를구분한다.
+- catalog정본35실행/13출발점/20방법/38시도(계획3·진행0). 같은E07계보/정확checkpoint아님. 장기조합과현재합성/학습을구분하며공식10점뒤다음득점으로계속한다.
 
 ## 실행과 재현
 

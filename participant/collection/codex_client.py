@@ -175,6 +175,16 @@ If support is visibly lost, deformation worsens, actual motion saturates, or exe
 
 Finish when visually complete or when no useful task-directed movement or recovery remains supported by current observations. Keep uncertainty explicit. Use only the existing public observation/action contract, with no evaluator feedback, hidden geometry, external trajectories or changes to physics and joint limits.'''
 
+SINGLE_ARM_PROGRESS_TASK = '''For this attempt, preserve continuity of ONE selected arm within the task-progress approach. Choose the arm with the most useful CURRENT body-opening, hand and forearm relationship from the designated views; use available same-episode history to track that relationship, not as proof of current geometry or support. Identify the selected arm by its visible connected hand/forearm and relation to the garment, without assuming a predetermined anatomical side or robot-camera identity. Keep the existing grasps: the one-sided regrasp bound remains zero.
+
+Continue that hand's body-opening entry and guide the garment along the SAME forearm toward its corresponding sleeve and shoulder. Keep the body-entry-to-sleeve direction; do not insert the hand into a cuff from outside. A visible cuff is not required before starting a useful entry movement. Use the existing brief reason to state the selected arm relationship, the current purpose and any identity uncertainty; do not add output fields.
+
+A hand reappearing, visible skin, cloth overlap, or a stage label such as second_sleeve does not establish completion of the selected arm. Compare current and recent boundary continuity and relative movement across views for evidence that this same hand/wrist emerges through the corresponding sleeve, rather than around an exterior panel. The entire path need not be visible simultaneously, and any passage judgement remains a public-observation hypothesis, not measured success. Do not switch to the other arm or the head merely because another hand becomes visible.
+
+Partial occlusion or incomplete opening identity does not by itself stop useful progress. Retain the task-progress allowance for one bounded, task-directed movement using current and recent evidence, then inspect actual robot motion, cloth movement and the selected arm relationship. Support-preserving recovery, opening reorientation and a changed approach are allowed. Do not replace this with repeated tiny verification moves, require a perfect lip view, or chain concealed repetitions without reassessment.
+
+The other arm may inform clearance, viewpoint or garment support while the selected arm remains the dressing focus; robot guide/support roles may adapt without claiming an arm swap. Continue the selected objective while meaningful progress remains. Move to another dressing objective when public evidence supports the intended sleeve-exit relation, or when the current arm objective has become unproductive or unsuitable after useful recovery; briefly state why, and preserve unresolved passage/identity rather than calling it complete. Uncertainty about completion alone is not evidence of a stall. Do not impose a fixed correction-count gate or finish merely because the selected hand is temporarily hidden. After a justified transition under these criteria, continue full dressing using the existing limits and observation contract.'''
+
 OPPOSING_RIM_TASK = '''For this attempt, investigate whether changing ONE body-rim grasp gives better control of two distinct candidate opening boundaries. Preserve useful CURRENT bilateral supports instead of repeating the initial two-gripper open-align-close setup. Make the table-supported grasp change and its verification the initial work sequence before another long transport. Do not switch to a neckline grasp.
 
 Using CURRENT designated views and public robot state, return the garment body to visible table support while retaining both useful grips. Choose one robot to remain the anchor and the other to change grasp. Keep the anchor closed and useful throughout, with the garment body table-supported during release, placement and closing. Never release both grips together.
@@ -578,7 +588,8 @@ def main():
                         'coordinated-support-guide', 'coordinated-neckline-first',
                         'coordinated-overhead-drape', 'coordinated-entry-probe',
                         'coordinated-task-progress', 'coordinated-opposing-rim',
-                        'coordinated-leading-hand-swap'], default='general')
+                        'coordinated-leading-hand-swap',
+                        'coordinated-single-arm-progress'], default='general')
     parser.add_argument('--actor-backend', choices=['exec', 'app-server'], default='exec')
     parser.add_argument('--plan-size', type=int, default=1,
                         help='Maximum segments per model call; >1 is an open-loop list')
@@ -646,7 +657,8 @@ def main():
                          'coordinated-regrasp-hem', 'coordinated-support-guide',
                          'coordinated-neckline-first', 'coordinated-overhead-drape',
                          'coordinated-entry-probe', 'coordinated-task-progress',
-                         'coordinated-opposing-rim', 'coordinated-leading-hand-swap') and args.mode != 'dressing':
+                         'coordinated-opposing-rim', 'coordinated-leading-hand-swap',
+                         'coordinated-single-arm-progress') and args.mode != 'dressing':
         parser.error('coordinated strategy requires the full dressing objective')
     if args.strategy == 'coordinated-support-diagnostic' and args.plan_size != 1:
         parser.error('support diagnostic requires plan-size=1 to observe after each action')
@@ -664,6 +676,8 @@ def main():
         parser.error('opposing-rim requires plan-size=1 to inspect each placement and support check')
     if args.strategy == 'coordinated-leading-hand-swap' and args.plan_size != 1:
         parser.error('leading-hand-swap requires plan-size=1 to inspect each role and approach change')
+    if args.strategy == 'coordinated-single-arm-progress' and args.plan_size != 1:
+        parser.error('single-arm-progress requires plan-size=1 to reassess the selected arm relationship')
     if args.mode == 'wiring' and args.plan_size > 1 and (args.plan_size != 3 or args.decisions != 3):
         parser.error('grouped wiring requires plan-size=3 and decisions=3')
     if not math.isfinite(args.model_timeout) or not 10 <= args.model_timeout <= 1800:
@@ -699,7 +713,8 @@ def main():
                          'coordinated-regrasp-hem', 'coordinated-support-guide',
                          'coordinated-neckline-first', 'coordinated-overhead-drape',
                          'coordinated-entry-probe', 'coordinated-task-progress',
-                         'coordinated-opposing-rim', 'coordinated-leading-hand-swap'):
+                         'coordinated-opposing-rim', 'coordinated-leading-hand-swap',
+                         'coordinated-single-arm-progress'):
         task += '\n\n' + COORDINATED_TASK
     if args.strategy == 'coordinated-sleeve':
         task += '\n\n' + SLEEVE_TASK
@@ -727,6 +742,9 @@ def main():
         task += '\n\n' + OPPOSING_RIM_TASK + '\n\n' + METHOD_SATURATION_TASK
     elif args.strategy == 'coordinated-leading-hand-swap':
         task += '\n\n' + LEADING_HAND_SWAP_TASK + '\n\n' + METHOD_SATURATION_TASK
+    elif args.strategy == 'coordinated-single-arm-progress':
+        task += ('\n\n' + TASK_PROGRESS_TASK + '\n\n' + SINGLE_ARM_PROGRESS_TASK
+                 + '\n\n' + METHOD_SATURATION_TASK)
     if args.plan_size > 1:
         task += '\n\n' + PLAN_TASK.format(max_segments=args.plan_size, max_total_steps=args.plan_step_budget)
     if args.post_action_settle_steps:

@@ -1,0 +1,286 @@
+{
+  "schema": "phyrc-conditional-method-review-v1",
+  "created_utc": "2026-11-07T07:21:17.744382+00:00",
+  "status": "conditional_analysis_only_not_selected_not_actor_input",
+  "scope": {
+    "active_run": "20261107-astra-regrasp698-progress-named-001",
+    "active_source_commit": "1ff16b29e28bc9d43faf6bb0f4518e9a65868cb9",
+    "observation_cutoff": 6,
+    "boundary_cutoff": 842,
+    "decisions_considered": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "later_E27_observations_or_result_examined": false,
+    "closed_runs_reviewed": [
+      "E23",
+      "E24",
+      "E25",
+      "E26"
+    ],
+    "new_code_prompt_configuration_or_runtime_changes": false,
+    "GPU_model_calls": 0,
+    "forbidden_sources_read": [],
+    "external_search_performed": false
+  },
+  "main_finding_ko": "E27은 새 E25 파지의 운반이라는 이전 미실행 구간을 실제 수행 중이다. obs6/842까지만으로 진입 실패나 잘못된 의복 위상을 판정할 수 없다. 이후 새 관계가 생기면 그 진전을 우선하고, 같은 구간을 충분히 수행했는지 확인한 뒤 후속 방법을 고른다.",
+  "observed_evidence": [
+    {
+      "id": "E27_transport",
+      "source": "E27 obs0/4/6 designated overview, obs6 two wrists; final D0-D5",
+      "finding_ko": "출발 몸판은 테이블 부근이고 obs4에서 테이블 끝 밖, obs6에서는 사람 쪽 통로에 매달려 있다. 두 wrist의 jaw 부근 천이 남고 R1의 노란 경계 후보 사이 어두운 간격이 보인다. D0/D1 lift 뒤 D2-D5가 실제 운반 단계다. public_strategy의 독립 검수도 국소 유지·운반 진전을 보고했다.",
+      "limits_ko": "선택 영상은 연속 하중 증명이나 반대 free lip 식별이 아니다. 아직 사람 손과 충분히 근접하지 않았으므로 exterior panel 접근과 남은 간격을 이 cutoff에서 구별할 수 없다."
+    },
+    {
+      "id": "E25_changed_grasp",
+      "source": "E25 review D2-D12",
+      "finding_ko": "R1 release→낮은 곡선 경계 후보 placement→1 correction→reclose→국소 lift following을 수행했다. 차등 retraction/roll은 테이블 근처에서 했다.",
+      "limits_ko": "소매 뿌리 가까이 잡는 guide grasp를 수행한 것으로 확인되지 않았고, 두 lip의 독립 제어는 미확인이다. E25의 운반 미실행을 파지 실패나 운반 실패로 소급하지 않는다."
+    },
+    {
+      "id": "E23_relations",
+      "source": "E23 review D7-D17",
+      "finding_ko": "실제 상대 파지 배치 반전 뒤 D11/D12에서 손·전완이 옆 구멍 후보 밖으로 더 노출됐고 D13-D17은 경계 평탄화·머리 접근으로 전환했다.",
+      "limits_ko": "옆 구멍 정체·연속 sleeve passage는 미확인이다. 새 노출만으로 팔 끼우기 완료라 판단해 다음 단계로 넘기는 비교는 부적절하다."
+    },
+    {
+      "id": "E24_response",
+      "source": "E24 review D4-D6 and D17-D21",
+      "finding_ko": "R1 retraction target은 줄었으나 actual extension이 증가했고 neutral10 뒤 큰 잔차가 남았다. 후반 여러 복구의 새 정보는 작았지만 마지막 D21에서 틈이 부분 복원됐다.",
+      "limits_ko": "제어 목표-실측 불일치의 원인은 공개 자료로 특정하지 못한다. 좌표 보조로 접촉·유연체 반응·누적 목표 문제를 해결했다고 가정할 수 없다."
+    },
+    {
+      "id": "E26_height_plane",
+      "source": "E26 review D2-D15 and orientation review D2-D5",
+      "finding_ko": "D2와 D4의 실제 전진 뒤 손 가림·mouth 후보 좁아짐이 반복됐다. 그러나 D5 상대배치 변경, D7 낮춤, D8 접근 후 두 손 가시성이 유지됐고 D13은 큰 pitch 변화와 작은 기준점 endpoint 이동을 함께 만들었다.",
+      "limits_ko": "가림 반복이 전진 무효·항상 닫힌 입구·필연적인 잘못된 topology의 증거는 아니다. 그리퍼 연결선15.223도 변화는 mouth plane 회전 측정이 아니다."
+    }
+  ],
+  "distinguishing_hypotheses": [
+    {
+      "hypothesis": "remaining_approach_gap_or_direction",
+      "supporting_pattern_ko": "동일 관측에서 식별한 같은 손과 가까운 경계의 XYZ/횡방향 차이가 남고, 목표·실측과 일치하는 실제 접근 후 그 관계가 줄어든다. 아직 접촉/겹침 단계가 아니면 후속 진입은 미실행으로 남긴다.",
+      "not_sufficient_ko": "서로 다른 프레임의 camera Z 감소, 다른 표면의 점, base 또는 arm 이동량만으로 손-입구 간격 감소를 확정할 수 없다."
+    },
+    {
+      "hypothesis": "controllable_opening_or_material_direction_mismatch",
+      "supporting_pattern_ko": "실제 cloth following과 유한 접근을 확인한 뒤에도 같은 손 앞의 넓은 면만 접히고, 높이/방향을 바꿔도 경계-전완의 유용한 관계가 반복되지 않는다면 파지 배치나 몸판 방향 문제를 우선 비교할 근거가 늘어난다.",
+      "not_sufficient_ko": "반복 가림만으로 입구 폐쇄·같은 층 파지·뒤집힘·외면 접촉을 인증하지 않는다. 뒤몸판이 입구 너머 보일 수 있어 빈 배경은 필요조건이 아니다."
+    },
+    {
+      "hypothesis": "partial_progress_hidden",
+      "supporting_pattern_ko": "경계가 동일 전완을 따라 이동하고 손/손목/연결 전완의 출현 위치가 연속적으로 변하면 추가 목표 진행을 시험할 근거가 된다.",
+      "not_sufficient_ko": "손 사라짐/재노출, 점수 조건, 단계명만으로 inside·sleeve 통과를 라벨링하지 않는다. 충분한 한 구간 뒤 재평가 없이 숨은 반복을 연쇄하지 않는다."
+    }
+  ],
+  "ranked_options": [
+    {
+      "rank": 1,
+      "name": "새 파지의 미완료 body-entry/한 팔 방향 진행을 끝까지 비교",
+      "kind": "continue_unperformed_segment_or_goal_sequence_variant_not_automatically_new_method",
+      "condition_ko": "E27이 같은 손-경계/전완의 유용한 진전을 만들었으나 예산·운반 호출 때문에 후속이 짧았을 때. 실제 E27이 이 진행을 충분히 수행하고 관계가 포화됐다면 건너뛴다.",
+      "concrete_difference_ko": "현재 새 파지와 같은 추적 손을 유지하고 몸통 입구→그 전완→어깨/해당 소매 쪽으로 옷을 진행시키는 목표를 이어간다. 옆 손 노출을 곧바로 완료로 승격해 머리 쪽으로 전환하지 않는다. 단순 큰 상승/하강이 아니라 같은 팔을 따라 경계와 몸판이 실제로 이동하는 구간이 수행돼야 목표 순서 비교로 센다.",
+      "starting_point_ko": "종료·QC 뒤 실제 E27의 마지막 유용한 지지/손-경계 관계 직전 공개 boundary를 검토한다. 현재842를 진입 준비 완료로 지정하지 않는다. 그 관계가 보존되지 않으면 E25/698이 검토 가능한 원래 branch이며 아직 후속 checkpoint는 선택하지 않는다.",
+      "clean_comparison_ko": "task-progress·현재 grasp·Astra/ultra·named/query·settle6와 행동 한계를 유지한다. 단순 이어가기는 새 method로 세지 않는다. 선택 boundary의 same-source replay도 정확한 천 checkpoint가 아니므로 fresh 관측 차이를 기록한다.",
+      "gate_warning_ko": "현재 TASK_PROGRESS_TASK가 이미 lip 완전식별/빈배경/즉시 시야개선을 전제하지 않고 이 진행을 허용한다. 기존 support-guide+HEM_ROUTE의 엄격한 two-correction/no-progress gate로 무심코 돌아가지 않는다.",
+      "not_selected": true
+    },
+    {
+      "rank": 2,
+      "name": "몸판 anchor + 소매 방향의 guide 경계로 실제 한쪽 파지 변경",
+      "kind": "substantive_grasp_arrangement_variant",
+      "condition_ko": "새 E27 grasp의 운반·유한 진입을 실제로 시험했으나 같은 panel 접힘과 손-경계 관계가 반복되고, table에서 접근 가능한 몸통-소매 방향 연결 경계 후보를 현재뷰로 찾을 수 있을 때. score5만으로 발동하지 않는다.",
+      "concrete_difference_ko": "테이블이 몸판을 받치는 상태에서 한쪽 body anchor를 유지하고 다른 한쪽을 현재 lower body-rim에서 관측 가능한 sleeve-root 방향의 guide 경계 후보로 실제 release/reposition/reclose한다. 목선 재파지와 외부 cuff 밀어넣기는 섞지 않는다. 새 guide의 local following 뒤 같은 손의 body-entry를 안내하고 anchor는 몸판 배치를 유지한다.",
+      "why_new_ko": "E18/E19의 B라는 이름에도 실제 regrasp0이었다. E25는 낮은 opposing-rim 후보로 바꿨고 sleeve-root guide placement로 확인되지 않았다. 따라서 목표 이름·비대칭 lift만 바꾸지 않고 실제 잡은 경계와 그 경계가 제어하는 몸판/소매 후보의 상대 움직임이 바뀌어야 이 비교로 분류한다.",
+      "starting_point_ko": "E18/563은 테이블 접근·기존 grasp의 공통 기준으로 E25와 비교 가능하다. 운반된 E27 상태를 긴 복귀로 재사용할 실익은 현재 미확인이다. E07/430을 택하면 초기 grip/pitch까지 달라져 더 빠른 재생만으로 깨끗한 비교가 되지는 않는다.",
+      "clean_comparison_ko": "Astra/ultra·named/query·settle6 유지, wrist aid 동시 도입0. 한쪽1 regrasp cycle와 최대2 placement correction 안에서 실제 새 guide grasp만 핵심 변경축으로 기록한다. broad unfolding이나 두 grip 변경까지 필요하면 이번 비교의 준비 미성립으로 별도 기록한다.",
+      "gate_warning_ko": "기존 SUPPORT_GUIDE_TASK에는 구현 재사용 여지가 있으나 HEM_ROUTE_TASK와 연결된 불명확→전진중지 조건을 그대로 재도입하면 또 verification halt가 될 수 있다. 후속 선정 때 필요한 좁은 prompt 검토를 별도 승인·구현하며 지금 코드는 바꾸지 않는다. 명확한 완전입구/독립하중 증명을 선행 요구하지 않되 보이지 않는 grasp point를 만들지는 않는다.",
+      "not_selected": true
+    },
+    {
+      "rank": 3,
+      "name": "같은 출발·같은 전략에서 wrist 방향 보조만 ON/OFF",
+      "kind": "coordinate_expression_ablation_not_manipulation_method",
+      "condition_ko": "닫힌 E27 공개 final reason/명령/실측에서 카메라 축→로봇 이동 방향 혼동 또는 대응 손-rim XYZ 해석 문제가 구체적으로 남았을 때. 착의0 또는 가림 반복만으로 채택하지 않는다.",
+      "concrete_difference_ko": "b1f30dd 후보의 선택형 wrist aid만 바꾸고 grasp·목표손·경로·settle·관측/질의 예산은 유지한다. 기존 depth 표면좌표를 현재 로봇 이동 축으로 표현하는 계산일 뿐 새 sensor·cloth state·입구 정체·실제 이동예측이 아니다.",
+      "clean_comparison_ko": "같은 닫힌 source boundary와 history를 직접 부모로 사용하고 초기 천/관절 상태 차이를 기록한다. actor가 같은 손-rim 관계를 선택했는지, 명령 방향 및 실측과 의도가 더 일치하는지를 분리해 보며 score 효과는 독립 결과다.",
+      "limits_ko": "335 CPU PASS는 실제 카메라/모델/GPU/착의 성능 검증이 아니다. gripper-relative point를 손의 목표 위치로 쓰거나 dot product를 역제어해로 해석하지 않는다. E24의 비응답/잔류·E26의 입구 의미 불확실성을 해결하는 도구라고 주장하지 않는다.",
+      "not_selected": true
+    }
+  ],
+  "decision_rule_ko": "E27 새 관계가 계속 생기면 현재 실행을 우선한다. 종료 뒤 미실행 후속인지 실제 수행 후 포화인지 구분해1번을 선택하거나 건너뛴다. 실제 grasp/몸판 배치가 의심되는 근거가 쌓이면2번이 실질적인 다양성 후보이고, 좌표 해석의 구체적 오류가 보일 때만3번을 별도 비교한다. 어떤 순위도 자동 실험 발동·프롬프트 수정·actor 행동 처방이 아니다.",
+  "efficiency_and_provenance_ko": "불확실성 해소 자체를 종점으로 삼지 않고 실제 task-directed 조작을 평가한다. 현재 보존된 public 자료를 쓰며 새 모델/GPU 호출0. replay 비용과 decision 예산은 출발점 선택 뒤 산정하며 길이가 짧다는 이유만으로 지원 관계를 희생하지 않는다. 같은 E07 source_group의 반복 분기/인접 관측은 독립 성공 표본이 아니다. 점수와 과거 검토는 trusted offline 선택에만 쓰고 actor에게 전달하지 않는다.",
+  "selected_final_decision_hashes": [
+    {
+      "index": 0,
+      "tool": "act",
+      "stage": "lift",
+      "steps": 8,
+      "final_decision_sha256": "c7475937259804df6dbb289bf680e539e858e272b49ccdd9dbecb49596294f5b"
+    },
+    {
+      "index": 1,
+      "tool": "act",
+      "stage": "lift",
+      "steps": 20,
+      "final_decision_sha256": "be8627d3ba98f56a9b0da9378daa67223d1d773c052aac6a7e9c6fb0b1787fe8"
+    },
+    {
+      "index": 2,
+      "tool": "act",
+      "stage": "transport",
+      "steps": 20,
+      "final_decision_sha256": "0ce080e71b6c61909a6051e9ff5477c0baa7fac2a35ff38bd6557ef84e2146fb"
+    },
+    {
+      "index": 3,
+      "tool": "act",
+      "stage": "transport",
+      "steps": 20,
+      "final_decision_sha256": "737eece43ae9b5f7ffc914b5c8cf98e064c93ed8f29886590ce9d921026d3e5d"
+    },
+    {
+      "index": 4,
+      "tool": "act",
+      "stage": "transport",
+      "steps": 20,
+      "final_decision_sha256": "2b562e0564b0b7ce0211583e28232ec7e70b441cc725fc0792924424b124e189"
+    },
+    {
+      "index": 5,
+      "tool": "act",
+      "stage": "transport",
+      "steps": 20,
+      "final_decision_sha256": "2e570bce06121cfae84fad6f82bacd88f7009a203121b8ceca8ce77add9fddd2"
+    }
+  ],
+  "source_refs": [
+    {
+      "path": "docs/collection/reviews/20261107-astra-progress787-named-001.ko.md",
+      "kind": "closed_public_review_or_existing_reference_review",
+      "sha256": "64748b036d7b04bd24b10d0774bb289d97bed1811f9df59eb7be2552fb4caacb",
+      "bytes": 13880
+    },
+    {
+      "path": "docs/collection/reviews/20261107-astra-progress1179-named-001.ko.md",
+      "kind": "closed_public_review_or_existing_reference_review",
+      "sha256": "93db75d3665869ddd555f5077ea291fe916e1f87bd69e1abc6d65d204b75cb63",
+      "bytes": 17871
+    },
+    {
+      "path": "docs/collection/reviews/20261107-astra-opposing563-named-001.ko.md",
+      "kind": "closed_public_review_or_existing_reference_review",
+      "sha256": "6e818c32499663146458bc2e48e97dfb2e0fbf4edf951123c56915a178173438",
+      "bytes": 14785
+    },
+    {
+      "path": "docs/collection/reviews/20261107-astra-hand-swap787-named-001.ko.md",
+      "kind": "closed_public_review_or_existing_reference_review",
+      "sha256": "cc09a590834085ffd375fcfe4ce735ee620429fff354e1e4936bd579abefef5e",
+      "bytes": 20056
+    },
+    {
+      "path": "docs/collection/reviews/20261107-astra-hand-swap787-named-001-orientation.ko.md",
+      "kind": "closed_public_review_or_existing_reference_review",
+      "sha256": "4c7968864b60c3e736aa239a265a937b4565f71d103f9ced40feb1ea29f78dec",
+      "bytes": 2829
+    },
+    {
+      "path": "docs/collection/research/2026-11-07-post-overhead-method-options.ko.md",
+      "kind": "closed_public_review_or_existing_reference_review",
+      "sha256": "e346d312a9b92366bc7a92849ced45a48d969a584baba564e84444e6a3c790d6",
+      "bytes": 20799
+    },
+    {
+      "path": "docs/collection/research/2026-11-07-garment-direction-hypotheses.ko.md",
+      "kind": "closed_public_review_or_existing_reference_review",
+      "sha256": "e3c5a40e212f03634bb593072c72342a0d0d6abbe6a24a975fd9c0b1b1f8f18f",
+      "bytes": 5726
+    },
+    {
+      "path": "docs/collection/research/2026-11-07-official-demo-route-review.ko.md",
+      "kind": "closed_public_review_or_existing_reference_review",
+      "sha256": "df613ee4369e883f45e27bfe776de6c50d25bb6c5778fb088c76ac3e3dc9abb3",
+      "bytes": 10284
+    },
+    {
+      "path": "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00000/overview.png",
+      "kind": "designated_public_RGB_directly_viewed",
+      "sha256": "d6a0a7d059a58e1acad5d64ff2a23fa040369c1edc93f76b125d55305132948b",
+      "bytes": 73974
+    },
+    {
+      "path": "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00004/overview.png",
+      "kind": "designated_public_RGB_directly_viewed",
+      "sha256": "08b9502acf5316407cadb87443f73ba329e64702ef7bd474cc450c76a8e36569",
+      "bytes": 74317
+    },
+    {
+      "path": "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00006/overview.png",
+      "kind": "designated_public_RGB_directly_viewed",
+      "sha256": "395589cdcb778da5b9329d511854004b289ff3d51d0d6574370132e5475c3da4",
+      "bytes": 72886
+    },
+    {
+      "path": "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00006/robot_0_wrist.png",
+      "kind": "designated_public_RGB_directly_viewed",
+      "sha256": "7f881db48dcacd00f7d09621501e1c806db640131393a179180b044346fe5002",
+      "bytes": 62734
+    },
+    {
+      "path": "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00006/robot_1_wrist.png",
+      "kind": "designated_public_RGB_directly_viewed",
+      "sha256": "d2b7aa519fad3b3f91dc4277a1ec77422e8548c2de3c5829fbdff039bae0554f",
+      "bytes": 83305
+    },
+    {
+      "path": "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00000/observation.json",
+      "kind": "saved_public_observation_JSON_keys_checked_no_full_state_export",
+      "sha256": "034ad725b13fe26aa98bc3ed00cd52014555783436a56f538f58f06f7d8a548b",
+      "bytes": 25356
+    },
+    {
+      "path": "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00004/observation.json",
+      "kind": "saved_public_observation_JSON_keys_checked_no_full_state_export",
+      "sha256": "ae147a71d0c6075c01f4cfcf1cde4eccd0dc60d4da30d02828b9205bf86e8696",
+      "bytes": 25361
+    },
+    {
+      "path": "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00006/observation.json",
+      "kind": "saved_public_observation_JSON_keys_checked_no_full_state_export",
+      "sha256": "aaa5234d0c11f4909b91a038e1f0abe0f96b9ec1ed9c8c97d8e3619dfc3283d7",
+      "bytes": 25361
+    },
+    {
+      "path": "output/operator-traces/20261107-astra-regrasp698-progress-named-001/decisions.jsonl",
+      "kind": "public_trace_prefix_only_before_first_event_with_index_gt_5",
+      "sha256": "1237031a6f0ac49080b29be51b91789ae8c16cd722ae006dc3eb699aeaaad796",
+      "bytes": 96839,
+      "lines": 104,
+      "final_decision_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "path": "participant/collection/codex_client.py",
+      "kind": "public_runtime_prompt_code_read_only",
+      "sha256": "fc5b2270810f3250a569e774c73ae88d2d03f6f01201f0923ee9800ce01e9f2f",
+      "bytes": 118671
+    }
+  ],
+  "limitations": [
+    "E27 cutoff is obs6/boundary842; no later observations, final result or active HDF5 inspected.",
+    "Closed public review conclusions were read, but their score summaries are not used to infer contact, grasp identity or topology.",
+    "No new hidden state, evaluation, audit, seed, raw CLI reasoning, external camera imagery or supervisor coordinates enter actor input.",
+    "No method selected, no runtime/prompt/configuration changed, no training approval."
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "repo_id": "leonayoon/phyrc-2027-phase1-private-backup",
+  "repo_type": "dataset",
+  "private": true,
+  "revision": "6506b15378417c445bb8e84dbc43990a0c0fd291",
+  "archive_path": "sessions/20261107-e27-v1/archive.tar.gz",
+  "archive_bytes": 2823483370,
+  "archive_sha256": "941ac2a51d5aac4d885cbb0d6c851357ff2358a901fb745fb05f1b73ba7b65e8",
+  "archive_members_verified": 254,
+  "remote_download_verified": true,
+  "remote_archive_member_hashes_verified": true,
+  "verified_at_utc": "2026-11-07T07:45:20.494266+00:00",
+  "run_id": "20261107-astra-regrasp698-progress-named-001",
+  "validated_transitions": 1159,
+  "source_commit": "1ff16b29e28bc9d43faf6bb0f4518e9a65868cb9",
+  "source_working_tree_modified": false,
+  "attempt_status": "completed",
+  "capture_complete": true,
+  "capture_termination_reason": "operator_finished",
+  "simulator_returncode": 0,
+  "execution_returncode_observation": {
+    "host_exec_tool_session_id": 25974,
+    "host_exec_reported_returncode": 0,
+    "host_returncode_evidence_source": "root agent supplied functions.write_stdin completion receipt",
+    "python_client_exit_status_recorded_by_shell": 0,
+    "python_client_exit_evidence_file": "output/sessions/20261106-evening/e27-shell-observed-python-exit.txt",
+    "python_client_exit_evidence_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "simulator_returncode_from_closed_attempt": 0,
+    "interpretation": "Keep host completion, shell-observed Python exit, and simulator exit as separate matching observations.",
+    "closed_attempt_error": null,
+    "closed_attempt_finished": true,
+    "closed_attempt_activity": "closed"
+  },
+  "recorded_wall_fields": {
+    "wall_s": 2450.624435922,
+    "actor_call_wall_s": 1348.905617475004,
+    "environment_dispatch_wall_s": 1046.465704732018
+  },
+  "completion_context": {
+    "kind": "decision_budget_exhausted",
+    "finish_decision_index": null,
+    "finish_physics_transitions": 0,
+    "supervisor_stop_trace_events": 1,
+    "supervisor_stop_reason": "decision_budget",
+    "budget_cleanup_neutral_transitions": 1,
+    "capture_termination_reason_interpretation": "operator_finished is the capture protocol termination flag, not a model finish decision; all 22 model decisions were act.",
+    "root_reported_supervisor_signals": 0,
+    "capture_termination_reason": "operator_finished",
+    "started_at_utc": "2026-11-07T06:58:14Z",
+    "closed_at_utc": "2026-11-07T07:39:05Z"
+  },
+  "trace_verified_counts": {
+    "replay_transitions": 698,
+    "model_action_transitions": 334,
+    "controller_settle_transitions": 126,
+    "cleanup_or_finish_transitions": 1,
+    "budget_cleanup_transitions": 1,
+    "model_finish_transitions": 0,
+    "recorded_transitions": 1159,
+    "model_calls_recorded": 23,
+    "finalized_decisions": 22,
+    "act_decisions": 22,
+    "finish_decisions": 0,
+    "query_results_computed": 1,
+    "valid_queried_points": 6,
+    "physics_transitions_during_queries": 0,
+    "query_results": [
+      {
+        "decision_index": 7,
+        "camera": "robot_0_head",
+        "points": 6,
+        "valid_points": 6,
+        "physics_transitions": 0
+      }
+    ],
+    "applied_and_replayed_action_ranges_contiguous_0_to_1158": true,
+    "final_cleanup_range_inferred_from_closed_count_and_supervisor_stop": [
+      1158,
+      1159
+    ],
+    "cleanup_range_limit": "supervisor_stop records reason and neutral_steps but no explicit start/end fields; range follows contiguous prior actions and closed validated total."
+  },
+  "manifest_entries": 253,
+  "manifest_sha256": "fd6f5208d8b55cf91432f049e8bdba3304a322a367a675a3287d41497f083a33",
+  "source_snapshot_files": 22,
+  "privacy_scope": {
+    "strict_collection_trace_snapshot_public_observation_allowlist": true,
+    "trusted_audit_evaluation_archived_privately_without_geometry_review": true,
+    "not_actor_input_or_training_approval": true,
+    "excluded": [
+      "simulator.log",
+      "actor runtime",
+      "actor_events",
+      "credentials",
+      "session databases",
+      "raw CLI reasoning",
+      "unreviewed files"
+    ]
+  }
+}

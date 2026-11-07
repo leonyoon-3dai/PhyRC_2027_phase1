@@ -406,3 +406,22 @@ E25/698의새파지에서D0동시상승·D1차등상승·D2추가상승/운반�
 ## E27 공개 진행 · D11 후968경계
 
 새270=198model+72settle·12act/13calls·query1회6valid/물리0이다. D6손쪽접근→D7R0head질의후상승/이동→D8pitch/접근→D9–10팔에서몸통쪽이동→D11다른노출손접근을수행했다.928에서는R1wrist에전완이노란띠로둘러진간격을가로질러보여새관계가생겼으나950에는몸판가림이늘었다.968에서R0wrist노출손이jaw위중앙쪽으로옮겨졌지만연속소매exit는미확인이다. 모델stage가second_sleeve여도첫소매성공으로승격하지않는다. root도obs8/10/11/12선별wrist이미지를직접확인했고모델198/정착72를trace로별도합산했다. 실행중공식평가나activeH5를읽지않았으며새재파지0/현E25grip유지다.
+
+
+## E27 실제 마감과 다음 한 팔 진행 비교 · 2026-11-07T07:39:05Z
+
+E27공식raw5·pickup5·모든착의항목0·successfalse/no_dressing_points/final0.0이다.1159=698replay+334model+126settle+1budgetcleanup,22act/23calls/query1sixvalid물리0/model finish0이다. 마지막D21은16act+6settle로1158까지행동했고decision_budget중립1로마감했다. capture operator_finished를모델자율finish로해석하지않는다. host25974/Python/sim0·QC1159/1159오류0,trainingunreviewed. 시간06:58:14–07:39:05UTC·wall2450.624435922초/모델호출경로1348.905617475/환경1046.465704732초다.
+
+새파지운반과928의팔–경계관계가유용했으나D11은첫소매미확인상태에서다른손으로목표를옮겼다. 이후가림·각도/배치/하강시험과D17/D20/21의실제제어/시야복구를보존한다. 최종도부분가시성이커져모든후반행동을무효로묶지않는다. 원점수5는기존픽업이며새파지하중/소매성공증명은아니다.
+
+다음E28은20261107-astra-singlearm928-named-001,E27/928history890906의same-arm목표순서비교로선택했다.24dec/max1600/settle6/timeout180/named/query/wristpanel/plan1/Astraultra/review10을유지하고새파지/손목방향보조는섞지않는다. 928은첫타손목표전환전관계이며새actor가fresh공개관측으로팔을선택한다. 정확한물리checkpoint복원/과거handidentity/평가입력없음. loader07:41:06.794582UTC float32(928,2,9)통과,아직실행전이다.
+
+격리후보0c51a1a의집중64·전체325/38.190초검사와166현재소스SHA를root가확인하고E27종료후4ec8be8로통합했다. [원본격리검사](20261107-single-arm-progress-validation.json)·[통합동일성](20261107-single-arm-integration-verification.json)을보존한다. 실제모델/물리/득점효과는미검증이며변경없는전체검사는반복하지않았다. fullreport15artifactSHA와두선별영상출처를검사하고원본백업은고정revision재다운로드검증을진행한다.
+
+
+E27원본은고정HF revision`6506b15378417c445bb8e84dbc43990a0c0fd291`·archive2,823,483,370bytes·SHA`941ac2a51d5aac4d885cbb0d6c851357ff2358a901fb745fb05f1b73ba7b65e8`를2026-11-07T07:45:20.494266+00:00에강제재다운로드해254member와함께검증했다. [receipt](20261107-e27-backup-verification.json)의private/완료/출처/반환값을확인했다. root는publicfullreport15artifact·두클립4mediaSHA와23연속학습검토구간461=334+126+1을교차확인했다.
+
+
+## 최신 사용자 지시 · E27까지만 마감하고 오프라인 분석으로 전환
+
+사용자는 현재시연까지만마감하고서버종료후여러리뷰·충분한분석·전략수립을거쳐다시서버를열기로했다. 지시도착시E27은이미종료/QC/고정백업완료였으며E28은시작하지않았다. 새시연·모델/GPU호출·자동재개를하지않고준비된same-arm후보는보류한다. 앞선E28선택문단은중지전이력이다. 현재주요상태를README/STATUS/AGENTS/START_HERE/카탈로그에반영한다. [오프라인마감안내](../SESSION_WRAPUP_20261107.ko.md)를기준으로다음검토를이어간다.

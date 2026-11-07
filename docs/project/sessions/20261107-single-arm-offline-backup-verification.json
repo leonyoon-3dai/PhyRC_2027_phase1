@@ -1,0 +1,153 @@
+{
+  "schema": "phyrc-private-offline-research-preservation-v1",
+  "bundle_id": "20261107-single-arm-offline-review-v1",
+  "source_commit": "0c51a1aeccec9948332443044c033187813541e0",
+  "base_oracle_commit": "18f307dcadd7a323debb7fd26e99f6da6d4cc045",
+  "archive_bytes": 72047,
+  "archive_sha256": "4d3ba7a90c3f79f3d0ba9410d7345ba50d8479bdbab770f1e67b6b8fd2e3b199",
+  "manifest_sha256": "aa264377f621803c1e1b1cf1c514a3c78ac961e4130bc4acc5d24a7668ec6acd",
+  "archive_members_verified": 11,
+  "source_files": {
+    "docs/collection/research/2026-11-07-single-arm-progress-candidate.ko.md": {
+      "bytes": 8395,
+      "sha256": "f12df0ab7f43dfe49352df80fdd37f8290e7f574fcacf660b9c831cf529964d6",
+      "source_kind": "fixed_commit_blob",
+      "source_commit": "0c51a1aeccec9948332443044c033187813541e0"
+    },
+    "participant/collection/codex_client.py": {
+      "bytes": 122179,
+      "sha256": "24e8be926e326b5c67465c2af82e00c5207dbd875709d752c0e994517e20d4cd",
+      "source_kind": "fixed_commit_blob",
+      "source_commit": "0c51a1aeccec9948332443044c033187813541e0"
+    },
+    "tests/test_single_arm_progress_strategy.py": {
+      "bytes": 11483,
+      "sha256": "ff560282ba02225405c94735e4e916c234330573923e501bdc5cbaa07fda186f",
+      "source_kind": "fixed_commit_blob",
+      "source_commit": "0c51a1aeccec9948332443044c033187813541e0"
+    },
+    "output/reviews/e27-next-method-options.json": {
+      "bytes": 19453,
+      "sha256": "315c6a170dfea67e733b889e9fa5b9dbda09a72293eab14854687438b8afffed",
+      "source_kind": "offline_public_review",
+      "source_root": "/home/shadeform/workspace/PhyRC_2027_phase1"
+    },
+    "output/reviews/e28-e27-928-preflight-20261107.json": {
+      "bytes": 1095,
+      "sha256": "897b91b81e9b2363049099d8c491b2e4f8d9e3eb672e25eeabae9ef4e05f6b72",
+      "source_kind": "closed_source_preflight_no_execution",
+      "source_root": "/home/shadeform/workspace/PhyRC_2027_phase1"
+    },
+    "output/verification/20261107-single-arm-focused.log": {
+      "bytes": 11884,
+      "sha256": "7bd11354af673854f8990534d82b5035e39a0e9382c196f60e9f2315fde0a538",
+      "source_kind": "closed_cpu_test_log",
+      "source_root": "/home/shadeform/workspace/phyrc-single-arm-progress-candidate"
+    },
+    "output/verification/20261107-single-arm-focused.json": {
+      "bytes": 1483,
+      "sha256": "a477dbb81782319314bf4457a8aac4cb6862aaf47f04ee74723b59e6f3e5d0df",
+      "source_kind": "closed_cpu_test_receipt",
+      "source_root": "/home/shadeform/workspace/phyrc-single-arm-progress-candidate"
+    },
+    "output/verification/20261107-single-arm-full-suite.log": {
+      "bytes": 57430,
+      "sha256": "2c4b4ed657905dcdaa00c8c9bd9586181920a2ead2d3267e18697d121d214481",
+      "source_kind": "closed_cpu_test_log",
+      "source_root": "/home/shadeform/workspace/phyrc-single-arm-progress-candidate"
+    },
+    "output/verification/20261107-single-arm-full-suite.json": {
+      "bytes": 53921,
+      "sha256": "9d51de0500549f1e9bd304b8174e22f4f06d10129dfdf5d10726c7df7c96d5ba",
+      "source_kind": "closed_cpu_test_receipt",
+      "source_root": "/home/shadeform/workspace/phyrc-single-arm-progress-candidate"
+    }
+  },
+  "source_commit_file_count": 3,
+  "offline_review_file_count": 2,
+  "cpu_receipt_and_log_file_count": 4,
+  "scope_sha256": "3d27b7000b7e79cbe107d89aab8f864786d9f766daa408363b62d12a53fcfef1",
+  "private_storage_required": true,
+  "not_collection_or_training_data": true,
+  "originals_unchanged": true,
+  "repo_id": "leonayoon/phyrc-2027-phase1-private-backup",
+  "repo_type": "dataset",
+  "private": true,
+  "revision": "0663045ade65b7b622d24a05ba7049a2941ac5d5",
+  "archive_path": "research/20261107-single-arm-offline-review-v1/archive.tar.gz",
+  "manifest_path": "research/20261107-single-arm-offline-review-v1/SHA256.json",
+  "preservation_receipt_path": "research/20261107-single-arm-offline-review-v1/receipt.json",
+  "source_branch": "experiments/single-arm-progress-candidate",
+  "source_worktree": "/home/shadeform/workspace/phyrc-single-arm-progress-candidate",
+  "remote_download_verified": true,
+  "forced_download": true,
+  "remote_archive_member_hashes_verified": true,
+  "remote_manifest_and_receipt_byte_equal": true,
+  "verified_at_utc": "2026-11-07T07:52:23.333309+00:00",
+  "status_at_archive": {
+    "user_requested_stop": true,
+    "last_collection": "E27",
+    "E28_executed": false,
+    "future_experiments": "deferred_pending_offline_analysis_and_future_user_direction",
+    "candidate_merged_into_main": true,
+    "integration_commit": "4ec8be828ac9cbe13972833b2dd05c1dfc0a9e73",
+    "candidate_historical_doc_status": "Unmodified fixed-commit document describes its earlier unmerged status; integration happened afterward.",
+    "preflight_historical_status": "Unmodified preflight says selected_E28_source_preflight_only_not_executed; user STOP supersedes that selection. No E28 simulation or actor was launched.",
+    "basis": "Root closure task plus fixed Git and CPU receipt fingerprint checks; no live runtime inspected."
+  },
+  "cpu_evidence": {
+    "focused": {
+      "tests": 64,
+      "unittest_elapsed_s": 19.041,
+      "receipt": "output/verification/20261107-single-arm-focused.json",
+      "log": "output/verification/20261107-single-arm-focused.log"
+    },
+    "full": {
+      "tests": 325,
+      "unittest_elapsed_s": 38.19,
+      "receipt": "output/verification/20261107-single-arm-full-suite.json",
+      "log": "output/verification/20261107-single-arm-full-suite.log",
+      "tested_commit": "3869acadc449458b2d8043e590ec560a3c47059d",
+      "final_candidate_commit": "0c51a1aeccec9948332443044c033187813541e0"
+    },
+    "legacy_prompt_configuration_subcases": 56,
+    "subcases_not_additional_unittest_count": true,
+    "final_candidate_and_integrated_commit_match_full_suite_166_fingerprints": true,
+    "preservation_test_reruns": 0,
+    "evidence_limit": "Completed isolated CPU checks only; no actual actor/GPU/physics/dressing validation. Full suite tested the earlier commit recorded in its receipt; only the candidate document changed before the final commit. Both final candidate and integration commit match all 166 tested source fingerprints."
+  },
+  "log_review": {
+    "all_log_lines_checked": true,
+    "line_counts": {
+      "focused": 69,
+      "full": 336
+    },
+    "credential_or_raw_model_stream_pattern_hits": 0,
+    "non_test_output_review": "Full-suite JSON call summaries come from FakeActor in test_action_encoding_probe; pack summary comes from a temporary-directory preservation unit test. No auth fixtures, actual actor output or temporary directories are copied.",
+    "raw_cli_or_model_reasoning_included": false
+  },
+  "latest_collection_backup": {
+    "run_id": "20261107-astra-regrasp698-progress-named-001",
+    "revision": "6506b15378417c445bb8e84dbc43990a0c0fd291",
+    "archive_path": "sessions/20261107-e27-v1/archive.tar.gz",
+    "archive_sha256": "941ac2a51d5aac4d885cbb0d6c851357ff2358a901fb745fb05f1b73ba7b65e8",
+    "relationship": "Separate verified E27 collection backup; no collection data duplicated in this research bundle."
+  },
+  "purpose": "Preserve fixed same-arm goal-sequence candidate, completed CPU evidence and two explicitly selected offline reviews before server termination. Research/code provenance only; not a collection, synthetic demonstration or training dataset.",
+  "preservation_gpu_model_calls": 0,
+  "training_use_authorized": false,
+  "excluded": [
+    "whole worktree",
+    ".git",
+    "home/auth/credentials",
+    "raw CLI reasoning",
+    "actual actor model logs/events/runtime",
+    "simulator logs",
+    "continuation state",
+    "policy/evaluation/audit files",
+    "collections and images",
+    "unstable handoff documents",
+    "new experiments"
+  ],
+  "runtime_or_main_modified_by_preservation": false
+}

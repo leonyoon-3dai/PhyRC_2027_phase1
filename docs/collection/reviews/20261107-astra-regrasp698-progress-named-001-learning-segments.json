@@ -1,0 +1,567 @@
+{
+  "schema": "public-learning-segments-v1",
+  "run_id": "20261107-astra-regrasp698-progress-named-001",
+  "parent_attempt": "20261107-astra-opposing563-named-001",
+  "source_group": "20261106-coordinated-demo-methods",
+  "source_commit": "1ff16b29e28bc9d43faf6bb0f4518e9a65868cb9",
+  "recording_status": "closed_decision_budget",
+  "training_approval": "unreviewed",
+  "label_provenance": [
+    "Public finalized decisions and concise final reasons",
+    "Designated public RGB observations0–21, selected camera scope documented in review",
+    "Public robot joint/target state; no activeH5/evaluation/audit/internal geometry/raw reasoning used",
+    "Exported final designated5-camera RGB at1159 directly inspected after closure"
+  ],
+  "evidence_decisions_path": "output/operator-traces/20261107-astra-regrasp698-progress-named-001/decisions.jsonl",
+  "raw_recordings_preserved": true,
+  "raw_records_rewritten": false,
+  "policy_teacher_hidden_evaluation_fields_included": false,
+  "split_constraints": [
+    "Group shared source lineage before train/validation split.",
+    "Replay698 is a new rollout, not an exact cloth checkpoint.",
+    "Adjacent frames, shared prefixes and overlapping clips are not independent successful demonstrations.",
+    "Transport retention, visible forearms and control recovery do not certify attachment sensors or sleeve passage.",
+    "Model stage names second_sleeve/shoulder are intentions, not successful subgoals."
+  ],
+  "transition_boundary_semantics": "[start,end): count=end-start; inclusive video boundary images count+1. Episode elapsed time=count/20, distinct from absolute simulator clock.",
+  "counts": {
+    "recorded_transitions": 1159,
+    "replay_transitions": 698,
+    "new_transitions": 461,
+    "model_action_transitions": 334,
+    "model_neutral_transitions": 10,
+    "controller_settle_transitions": 126,
+    "cleanup_transitions": 1,
+    "model_call_attempts": 23,
+    "finalized_decisions": 22,
+    "executed_act_decisions": 22,
+    "finish_decisions": 0,
+    "depth_query_results": 1,
+    "queried_points": 6,
+    "valid_queried_points": 6,
+    "depth_query_physics_transitions": 0,
+    "release_regrasp_decisions": 0,
+    "configured_decision_budget": 22,
+    "remaining_decision_slots": 0
+  },
+  "segments": [
+    {
+      "id": "bilateral_lift_test",
+      "kind": "local_retention_test",
+      "decision_indices": [
+        0
+      ],
+      "transition_start": 698,
+      "transition_end_exclusive": 712,
+      "transition_count": 14,
+      "model_action_transitions": 8,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00000",
+        "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00001"
+      ],
+      "public_label": "Both jaws rise with adjacent cloth retained; tabletop contribution and independent load sharing remain uncertain.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "differential_lift",
+      "kind": "support_height_change",
+      "decision_indices": [
+        1
+      ],
+      "transition_start": 712,
+      "transition_end_exclusive": 738,
+      "transition_count": 26,
+      "model_action_transitions": 20,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00001",
+        "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00002"
+      ],
+      "public_label": "Lower R1 boundary rises more; two yellow edges and a dark gap become more visible, without certifying free opposing lips.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "table_corner_transport_start",
+      "kind": "transport",
+      "decision_indices": [
+        2
+      ],
+      "transition_start": 738,
+      "transition_end_exclusive": 764,
+      "transition_count": 26,
+      "model_action_transitions": 20,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00002",
+        "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00003"
+      ],
+      "public_label": "Actual transport with changed E25 grip begins; table overlap remains visible.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "table_edge_departure",
+      "kind": "transport",
+      "decision_indices": [
+        3
+      ],
+      "transition_start": 764,
+      "transition_end_exclusive": 790,
+      "transition_count": 26,
+      "model_action_transitions": 20,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00003",
+        "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00004"
+      ],
+      "public_label": "Panel hangs beyond table edge in the aisle with cloth at both jaws; adds transport retention evidence beyond E25 local testing.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "aisle_transport_1",
+      "kind": "transport",
+      "decision_indices": [
+        4
+      ],
+      "transition_start": 790,
+      "transition_end_exclusive": 816,
+      "transition_count": 26,
+      "model_action_transitions": 20,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00004",
+        "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00005"
+      ],
+      "public_label": "Retained hanging panel moves away from source table toward the person.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "aisle_transport_2",
+      "kind": "transport",
+      "decision_indices": [
+        5
+      ],
+      "transition_start": 816,
+      "transition_end_exclusive": 842,
+      "transition_count": 26,
+      "model_action_transitions": 20,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00005",
+        "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00006"
+      ],
+      "public_label": "Person-to-garment separation decreases while local cloth regions remain at jaws; passage not established.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "hand_enters_view",
+      "kind": "goal_directed_approach",
+      "decision_indices": [
+        6
+      ],
+      "transition_start": 842,
+      "transition_end_exclusive": 868,
+      "transition_count": 26,
+      "model_action_transitions": 20,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00006",
+        "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00007"
+      ],
+      "public_label": "A human hand enters R0 head image-right boundary; this is approach/visibility evidence, not sleeve passage.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "queried_hand_approach",
+      "kind": "goal_directed_approach",
+      "decision_indices": [
+        7
+      ],
+      "transition_start": 868,
+      "transition_end_exclusive": 890,
+      "transition_count": 22,
+      "model_action_transitions": 16,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00007",
+        "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00008"
+      ],
+      "public_label": "After a zero-physics query, diagonal approach and lift reveal a larger hand/forearm near the R1 wrist yellow boundary; R0 head becomes arm-occluded.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "pitch_and_rim_exposure",
+      "kind": "orientation_approach",
+      "decision_indices": [
+        8
+      ],
+      "transition_start": 890,
+      "transition_end_exclusive": 906,
+      "transition_count": 16,
+      "model_action_transitions": 10,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00008",
+        "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00009"
+      ],
+      "public_label": "Pitch and approach expose a larger dark yellow-bounded gap and two forearms; folded overlap versus opening interior remains unresolved.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "retained_928_arm_rim_relation",
+      "kind": "useful_public_relation",
+      "decision_indices": [
+        9
+      ],
+      "transition_start": 906,
+      "transition_end_exclusive": 928,
+      "transition_count": 22,
+      "model_action_transitions": 16,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00009",
+        "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00010"
+      ],
+      "public_label": "Near forearm spans a visible yellow-bounded space and skin hand/forearm appears at R0 wrist left edge. Useful relation preserved, without certified hand identity or sleeve/body-opening passage.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "approach_with_reocclusion",
+      "kind": "goal_directed_approach",
+      "decision_indices": [
+        10
+      ],
+      "transition_start": 928,
+      "transition_end_exclusive": 950,
+      "transition_count": 22,
+      "model_action_transitions": 16,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00010",
+        "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00011"
+      ],
+      "public_label": "Head views retain arm-rim relation while the large R1 wrist opening becomes panel-occluded; later loss does not erase the useful928 relation.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "other_exposed_hand_target_switch",
+      "kind": "target_switch",
+      "decision_indices": [
+        11
+      ],
+      "transition_start": 950,
+      "transition_end_exclusive": 968,
+      "transition_count": 18,
+      "model_action_transitions": 12,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00011",
+        "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00012"
+      ],
+      "public_label": "R0 wrist exposed hand moves toward jaw upper-center. Actual target switch; second_sleeve stage is not first-sleeve success.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "single_side_advance_and_finger_change",
+      "kind": "local_approach",
+      "decision_indices": [
+        12
+      ],
+      "transition_start": 968,
+      "transition_end_exclusive": 984,
+      "transition_count": 16,
+      "model_action_transitions": 10,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00012",
+        "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00013"
+      ],
+      "public_label": "R0 hand becomes more obscured; R1 finger posture changes with unchanged close target and residual arm tracking. Attachment loss and cause remain uncertain.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "intentional_counter_roll",
+      "kind": "orientation_test",
+      "decision_indices": [
+        13
+      ],
+      "transition_start": 984,
+      "transition_end_exclusive": 1002,
+      "transition_count": 18,
+      "model_action_transitions": 12,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00013",
+        "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00014"
+      ],
+      "public_label": "Explicit opposing wrist rolls change camera/rim angle but do not restore the broad928 gap in the inspected views.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "support_spacing_change",
+      "kind": "support_configuration_change",
+      "decision_indices": [
+        14
+      ],
+      "transition_start": 1002,
+      "transition_end_exclusive": 1020,
+      "transition_count": 18,
+      "model_action_transitions": 12,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00014",
+        "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00015"
+      ],
+      "public_label": "Opposing sidesteps broaden panel span; a newly visible traversable mouth is not confirmed.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "lower_along_arms",
+      "kind": "entry_trial",
+      "decision_indices": [
+        15
+      ],
+      "transition_start": 1020,
+      "transition_end_exclusive": 1042,
+      "transition_count": 22,
+      "model_action_transitions": 16,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00015",
+        "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00016"
+      ],
+      "public_label": "Lowering brings cloth toward face/head and exposes a hand above the blue edge; shoulder stage does not certify sleeve or shoulder success.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "continued_lower_approach",
+      "kind": "entry_trial",
+      "decision_indices": [
+        16
+      ],
+      "transition_start": 1042,
+      "transition_end_exclusive": 1064,
+      "transition_count": 22,
+      "model_action_transitions": 16,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00016",
+        "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00017"
+      ],
+      "public_label": "Further lowering/approach covers the face with a large panel; R0 arm actual exceeds target by110.596mm. Continuous sleeve passage remains unverified.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "existing_target_recovery",
+      "kind": "control_recovery",
+      "decision_indices": [
+        17
+      ],
+      "transition_start": 1064,
+      "transition_end_exclusive": 1082,
+      "transition_count": 18,
+      "model_action_transitions": 12,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00017",
+        "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00018"
+      ],
+      "public_label": "Forward/lift recovery returns R0 actual arm422.776→305.699mm toward unchanged312.180mm target. Error−110.596→+6.481mm is real existing-target recovery, not target relocation; simultaneous axes do not identify contact cause.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "fore_aft_height_reconfiguration",
+      "kind": "support_configuration_change",
+      "decision_indices": [
+        18
+      ],
+      "transition_start": 1082,
+      "transition_end_exclusive": 1104,
+      "transition_count": 22,
+      "model_action_transitions": 16,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00018",
+        "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00019"
+      ],
+      "public_label": "Opposed arm targets and R1 lift change support configuration, with sizable residual arm errors and no new continuous hand-opening relation.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "neutral_tracking_diagnostic",
+      "kind": "model_neutral",
+      "decision_indices": [
+        19
+      ],
+      "transition_start": 1104,
+      "transition_end_exclusive": 1114,
+      "transition_count": 10,
+      "model_action_transitions": 10,
+      "controller_settle_transitions": 0,
+      "observation_evidence": [
+        "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00019",
+        "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00020"
+      ],
+      "public_label": "Model neutral10 has no extra auto-settle. Arm errors partially converge toR0−49.810/R1+17.574mm while inspected cloth relation stays similar; not proof of stationarity or collision.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "pitch_visibility_recovery",
+      "kind": "observation_control_recovery",
+      "decision_indices": [
+        20
+      ],
+      "transition_start": 1114,
+      "transition_end_exclusive": 1136,
+      "transition_count": 22,
+      "model_action_transitions": 16,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00020",
+        "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00021"
+      ],
+      "public_label": "Pitch changes expose more forearms/face; arm errors partially converge with unchanged targets. Useful partial visibility recovery, not certified identity or passage.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "final_raise_approach",
+      "kind": "goal_directed_approach",
+      "decision_indices": [
+        21
+      ],
+      "transition_start": 1136,
+      "transition_end_exclusive": 1158,
+      "transition_count": 22,
+      "model_action_transitions": 16,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-regrasp698-progress-named-001/observations/00021",
+        "docs/collection/attempts/20261107-astra-regrasp698-progress-named-001/images"
+      ],
+      "public_label": "Last decision raises/advances with existing grips and wrist angles. Exported1159 views after one cleanup step show a larger yellow-bounded gap and more exposed forearms, maintaining/extending D20 partial visibility recovery; hand/opening identity and continuous sleeve passage remain unconfirmed.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "decision_budget_cleanup",
+      "kind": "controller_budget_stop",
+      "decision_indices": [],
+      "transition_start": 1158,
+      "transition_end_exclusive": 1159,
+      "transition_count": 1,
+      "model_action_transitions": 0,
+      "controller_settle_transitions": 0,
+      "controller_cleanup_transitions": 1,
+      "observation_evidence": [
+        "docs/collection/attempts/20261107-astra-regrasp698-progress-named-001/images"
+      ],
+      "public_label": "Configured22-act budget exhausted; controller added one neutral transition. No model finish and no supervisor SIGINT.",
+      "training_approval": "unreviewed"
+    }
+  ],
+  "zero_physics_events": [
+    {
+      "kind": "depth_query",
+      "decision_index": 7,
+      "model_call_index": 7,
+      "transition_boundary": 868,
+      "camera": "robot_0_head",
+      "point_count": 6,
+      "valid_points": 6,
+      "physics_transitions": 0,
+      "subsequent_action_executed": true,
+      "interpretation_limit": "Visible-surface optical depth and cameraXYZ do not establish semantic lip identity, hidden surfaces, contact or sleeve passage."
+    }
+  ],
+  "method_axes": {
+    "changed_grip_source": "Inherited actual E25 regrasp via fresh698 action replay; no new release/reclose in E27.",
+    "transport": "Actually tested bilateral lift and transport with local cloth retained away from source table.",
+    "opening_identity": "Opposing free lips/body versus sleeve opening identity not certified.",
+    "target_switch": "D11 approaches other exposed hand before first-sleeve exit is verified.",
+    "support_configuration": "D13 counter-roll, D14 spacing and D18 fore-aft/height changes actually executed; full method success not claimed."
+  },
+  "retained_public_relation": {
+    "transition_boundary": 928,
+    "observation_index": 10,
+    "status": "useful_public_relation_not_certified_passage",
+    "meaning": "Forearm spans visible yellow-bounded gap; later occlusion does not erase this earlier evidence."
+  },
+  "controlled_subskill_limits": [
+    "D17 returns actual arm toward an unchanged target; simultaneous base/lift cannot identify contact or load cause.",
+    "D19 all-zero command still permits target-following motion.",
+    "D20 changes pitch and partly recovers visibility/tracking; no exact fixed cloth point claim."
+  ],
+  "named_action_checks": {
+    "finalized_act_decisions_checked": 22,
+    "named_to_canonical_match": true,
+    "canonical_to_applied_float32_match": true,
+    "nonzero_roll_decisions": [
+      13
+    ],
+    "roll_intent": "D13 explicit counter-roll in final brief reason.",
+    "gripper_commands_all_zero": true
+  },
+  "termination": {
+    "kind": "controller_decision_budget",
+    "controller_budget_stop": true,
+    "model_finish": false,
+    "supervisor_interruptions": 0,
+    "neutral_cleanup_transitions": 1,
+    "host_exit_code": 0,
+    "python_exit_code": 0,
+    "simulator_returncode": 0
+  },
+  "technical_quality": {
+    "quality_passed": true,
+    "validated_transitions": 1159,
+    "errors": 0,
+    "source": "Root QC confirmation and public media provenance quality=true, matched policy SHA; not visual success or training approval."
+  },
+  "preservation": {
+    "status": "verified_private_fixed_revision",
+    "receipt": "docs/project/sessions/20261107-e27-backup-verification.json",
+    "revision": "6506b15378417c445bb8e84dbc43990a0c0fd291",
+    "archive_sha256": "941ac2a51d5aac4d885cbb0d6c851357ff2358a901fb745fb05f1b73ba7b65e8",
+    "archive_bytes": 2823483370,
+    "archive_members_verified": 254
+  },
+  "final_public_rgb": [
+    {
+      "path": "docs/collection/attempts/20261107-astra-regrasp698-progress-named-001/images/final-overview.png",
+      "sha256": "9c90e553f401496ba24fb546847c5ac22ae500157a973b039bb162ebee24ff73",
+      "directly_inspected": true
+    },
+    {
+      "path": "docs/collection/attempts/20261107-astra-regrasp698-progress-named-001/images/final-robot_0_head.png",
+      "sha256": "5958db11dfd65c83e0c1bf769c050e9b13e19933a0aef0a5b5c0443199c49772",
+      "directly_inspected": true
+    },
+    {
+      "path": "docs/collection/attempts/20261107-astra-regrasp698-progress-named-001/images/final-robot_1_head.png",
+      "sha256": "990fcc27f08801dfbb52fbc9b03f03c073937ea456e2a18bd1dd90fb5b574d94",
+      "directly_inspected": true
+    },
+    {
+      "path": "docs/collection/attempts/20261107-astra-regrasp698-progress-named-001/images/final-robot_0_wrist.png",
+      "sha256": "8fc6a9bc2c9d6a963e4ab7152e03ad134400fd643df9d06aef3203a62561679c",
+      "directly_inspected": true
+    },
+    {
+      "path": "docs/collection/attempts/20261107-astra-regrasp698-progress-named-001/images/final-robot_1_wrist.png",
+      "sha256": "1c54a06492a6bb25bd67dbc961b0d5baaceaadeca886f381a51ef7cf2a764729",
+      "directly_inspected": true
+    }
+  ],
+  "public_media_provenance": [
+    "docs/gallery/assets/20261107-e27-arm-approach/provenance.json",
+    "docs/gallery/assets/20261107-e27-lift-transport/provenance.json"
+  ],
+  "timing": {
+    "started_at_utc": "2026-11-07T06:58:14Z",
+    "ended_at_utc": "2026-11-07T07:39:05Z",
+    "wall_s": 2450.624435922,
+    "model_call_path_s": 1348.905617475004,
+    "environment_s": 1046.465704732018,
+    "recorded_simulation_s": 57.95,
+    "new_simulation_s": 23.05
+  }
+}

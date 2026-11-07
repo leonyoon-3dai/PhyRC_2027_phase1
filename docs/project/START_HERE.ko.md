@@ -1,10 +1,12 @@
 # 새 서버에서 이어가기
 
-**현재 E26은5/50·착의0·1139/1139QC·고정백업 검증으로 마감했고, E27은E25/698 새 파지 task-progress로2026-11-07T06:58:14Z·source1ff16b2 clean에서실제시작했다. D5뒤842까지양측들기와테이블밖운반중국소유지를확인했고진입은진행중이다.** 실제 시작 여부와 source는 [STATUS](STATUS.md)를 우선한다.
+**E27은5/50·착의0·1159/1159QC로 마감했습니다. 사용자 요청으로 새 수집을 중지했고 E28은 시작하지 않았습니다. 서버 종료 후 오프라인 검토·전략 수립을 먼저 진행합니다.** 실제 시작 여부와source는[STATUS](STATUS.md)를 우선합니다.
 
-[최신 영상](../gallery/20261107-astra-hand-swap787-named-001.ko.md) · [분석](../collection/reviews/20261107-astra-hand-swap787-named-001.ko.md) · [E26 백업](sessions/20261107-e26-backup-verification.json) · [세션 일지](sessions/20261106-evening-resume.ko.md)
+[최신 영상](../gallery/20261107-astra-regrasp698-progress-named-001.ko.md) · [분석](../collection/reviews/20261107-astra-regrasp698-progress-named-001.ko.md) · [E27 백업](sessions/20261107-e27-backup-verification.json) · [세션 일지](sessions/20261106-evening-resume.ko.md)
 
-다음에는 초기자산과 **E25/698의 검증 원본**이 필요하다. freshhistory657/667,22판단/max1300/settle6·Astraultra·기존task-progress를 유지한다. 카메라 방향 보조 후보는 적용하지 않는다. 정확한 천 checkpoint 복원이 아니며 현재 지지를 새 관측으로 확인한다.
+[마감과 오프라인 검토](SESSION_WRAPUP_20261107.ko.md)를 먼저 읽으세요. 아래 복원 정보와 수집 명령은 향후 참고용이며 자동 재개하지 않습니다.
+
+재개를 결정한 경우 초기자산과 **E27의 검증 원본**이 필요합니다. freshhistory890/906·prefix928·24판단/max1600/settle6·Astraultra·coordinated-single-arm-progress는 보류된 후보 설정입니다. 후보 전체325CPU검사와 통합166소스SHA일치를 확인했고 손목 방향 보조는 미적용입니다. 행동 재실행은 정확한 천checkpoint 복원이 아니므로 현재 지지/팔 관계를 새 관측으로 확인합니다.
 
 ## 보존 위치와 고정 revision
 
@@ -12,6 +14,7 @@
 
 | 묶음·검증 기록 | 고정 revision | 복원 목적 |
 |---|---|---|
+| [E27 최신·E28 분기 원본](sessions/20261107-e27-backup-verification.json) | `6506b15378417c445bb8e84dbc43990a0c0fd291` | 새 파지 운반·팔 접근·복구1159전이, 2,823,483,370bytes·254member 검증. E28 직접 부모의928분기 |
 | [초기 전체 백업](sessions/20261106-remote-backup-verification.json) | `e1d32f9f9ea82438f90bc379452abf83a150999b` | **실제 assets/custom·downloads와 E07 전체 원본** 포함. 11,779,782,360 bytes |
 | [E10](sessions/20261106-e10-backup-verification.json) | `3d474bb724adbb42ac44beaf82de7d216930dc5c` | 750전이 원본 |
 | [E11](sessions/20261106-e11-backup-verification.json) | `40a98682caca21222335293cc0947d98537cca66` | 777전이·새 과거 관측 |
@@ -25,8 +28,8 @@
 | [E19 원본](sessions/20261107-e19-backup-verification.json) | `a5f9136d1479933b6c026465a8af0321bad1504c` | 명명 명령·세 접근·자율 종료932전이,2,130,731,675 bytes. E20의 직접 부모는 E18 |
 | [E20 원본](sessions/20261107-e20-backup-verification.json) | `ad7b94f4dd65115082ad53527a48efbf99a5947d` | 목선 후보 두 재파지·준비 미완료·726전이, 1,721,601,271bytes. E21 직접부모는 E18 |
 | [E21 원본](sessions/20261107-e21-backup-verification.json) | `45e6adf8586f935b3ca9f6d19ed3ec97371be44f` | 상방 배치·하강·예산 종료1111전이,2,428,228,014 bytes. 마지막 새 파지는 후속 지지 미검증 |
-| [E26 최신 원본](sessions/20261107-e26-backup-verification.json) | `41c78439105eb3a6e1f5fd9c0943cee6039d041b` | 방향/접근·자세/관측보상1139전이,2,544,928,271bytes·254member검증. 다음E27직접부모는E25 |
-| [E25 다음 분기 원본](sessions/20261107-e25-backup-verification.json) | `79e74c3dda23a676a59754005a22d55e89c6034f` | 실제한쪽재파지·국소동행·입구미확인자율종료698전이,1,624,331,388bytes·182member검증. E26직접부모는E18 |
+| [E26 이전 원본](sessions/20261107-e26-backup-verification.json) | `41c78439105eb3a6e1f5fd9c0943cee6039d041b` | 방향/접근·자세/관측보상1139전이,2,544,928,271bytes·254member검증. 다음E27직접부모는E25 |
+| [E25 E27부모 원본](sessions/20261107-e25-backup-verification.json) | `79e74c3dda23a676a59754005a22d55e89c6034f` | 실제한쪽재파지·국소동행·입구미확인자율종료698전이,1,624,331,388bytes·182member검증. E26직접부모는E18 |
 | [E24 원본](sessions/20261107-e24-backup-verification.json) | `1edca310c1b869a8f4c01b3eeb67b14f6699e12c` | 진입 시도·부분 시야 복구·감독 종료1610전이,3,879,304,287bytes·263member검증. 다음E25직접부모는E18 |
 | [E23 원본](sessions/20261107-e23-backup-verification.json) | `c1157513362e30d6a8306e7c8fd2ec0265e5db2c` | 방향반전·팔노출·머리접근,1180전이·2,730,237,231bytes. E24의직접부모 |
 | [E22 원본](sessions/20261107-e22-backup-verification.json) | `788a36ece3f606ca06dd0f20224910974dbe270e` | 짧은 탐색·자율 종료813전이,1,854,271,559bytes·92member검증. host143/simulator0구분 보존 |

@@ -1,3 +1,58 @@
+# 수집 일시 중지 · E27 마감
+
+**사용자 요청으로 E27까지만 마감하고 새 수집을 중지했습니다. E28은 시작하지 않았습니다. 서버 종료 후 오프라인 리뷰·분석·전략 검토를 거쳐 재개 여부와 방법을 다시 정합니다.** [마감·오프라인 검토](SESSION_WRAPUP_20261107.ko.md)
+
+**E27은 공식5/50·픽업5·착의0·success=false,1159/1159전이 검사 통과로 마감했습니다.** 새 파지의 양측 들기·운반과 팔 접근, 목표 추종·관측 복구를 실제 수행했지만 소매 통과 득점은 없었습니다. 최고5점이며10점은 아직 미달성입니다.
+
+[최신 영상](../gallery/20261107-astra-regrasp698-progress-named-001.ko.md) · [분석](../collection/reviews/20261107-astra-regrasp698-progress-named-001.ko.md) · [학습 검토 구간](../collection/reviews/20261107-astra-regrasp698-progress-named-001-learning-segments.json) · [원본 백업 검증](sessions/20261107-e27-backup-verification.json)
+
+| 항목 | E27 마감 기록 |
+|---|---|
+| 소스·시간 | 1ff16b29e28bc9d43faf6bb0f4518e9a65868cb9·시작clean·06:58:14–07:39:05UTC·2450.624435922초 |
+| 기록 | 1159=698재실행+334모델+126정착+1예산마감, 전체57.95sim초·새461전이23.05sim초 |
+| 판단·질의 | 22act·모델finish0·23calls·1query6valid·질의물리0. D19 중립10은 모델이 선택한 추가 정착 |
+| 종료 구분 | decision_budget에 따른 중립1마감. capture의operator_finished는 프로토콜 표기이며 모델 자율finish가 아님 |
+| 평가·반환 | no_dressing_points/final_score0.0·host25974=0·shellPython0·simulator0·completed/errornull/capturecomplete |
+| 시간 범위 | 모델 호출 경로1348.905617475초·환경 요청1046.465704732초. 순수 내부 추론 시간은 제공되지 않음 |
+| 검사·보존 | QC1159/1159오류0·trainingunreviewed·고정 백업 재다운로드·254member SHA검증 완료 |
+
+928에서 전완이 노란 띠로 둘러진 큰 간격을 가로질러 보였고, 이후 가림과 D11의 다른 손 목표 전환을 구분했습니다. D17에는 R0가 기존 arm목표의110.596mm초과에서6.481mm미달까지 복귀했습니다. D20/D21에는 팔–경계 가시성이 다시 커졌으므로 후반 전체를 같은 가림으로 묶지 않습니다. 이 관측 진전과 공식 착의0을 따로 보존합니다.
+
+## 준비된 E28 후보 · 실행 보류
+
+E27/928의 `coordinated-single-arm-progress` 후보는 준비했으나 사용자 요청으로 실행을 보류했습니다. 오프라인 분석 후 재선택할 후보이며 자동 실행하지 않습니다. 새 재실행 관측890/906·24판단/max1600/settle6/timeout180·Astra/ultra·named/query/wristpanel을 유지합니다. 손목 좌표 보조는 적용하지 않습니다.
+
+928은 첫 팔 관계가 보인 뒤 다른 손으로 목표를 바꾸기 전의 비교 출발점입니다. 최종1158/1159의 부분 복구도 유용하지만 이번에는 목표 순서를 분리해 봅니다. 새 actor가 현재 공개 관측으로 팔을 선택하며, 과거 점수·검수자의 손 정체·좌표를 전달하지 않습니다. 가림만으로 멈추거나 첫 팔에 영구 고착시키는 규칙은 없고 유용한 복구 후 부적합하면 이유를 기록해 목표를 바꿀 수 있습니다. [분기 근거](../collection/research/2026-11-07-e27-single-arm-continuation.ko.md)
+
+source loader는07:41:06UTC에float32(928,2,9)로 통과했습니다. 같은E07계보의 실제 행동 재실행이며 정확한 천checkpoint가 아닙니다. 새 지지·입구·팔 관계를 다시 확인합니다. 928+24×(20+6)+1=1553으로max1600 안에 있습니다.
+
+후보0c51a1a를 E27 실제 종료 후4ec8be8로 통합했습니다. [격리 전체CPU325/38.190초](sessions/20261107-single-arm-progress-validation.json)와 [통합 후166소스 해시 일치](sessions/20261107-single-arm-integration-verification.json)를 확인했습니다. 같은 실행코드의 중복 전체검사는 하지 않았으며 실제E28의 목표 유지·착의 효과는 아직 미검증입니다. 별도 손목 방향 보조 후보는 미통합입니다.
+
+## 향후 검토용 설정 · 현재 실행하지 않음
+
+> 아래는 준비했던 명령의 기록입니다. 현재 실행 예약이 아니며 사용자 재개 요청과 오프라인 전략 검토 전에는 실행하지 않습니다.
+
+```bash
+export PATH="$PWD/.runtime/codex-0.166.0/node_modules/.bin:$PATH"
+unset STRETCH4_PRACTICE_LAYOUT STRETCH4_RANDOMIZE
+PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.codex_client \
+  --run-id 20261107-astra-singlearm928-named-001 --mode dressing \
+  --strategy coordinated-single-arm-progress --actor-backend exec \
+  --model gpt-6-astra --effort ultra --plan-size 1 --review-points 10 \
+  --replay-prefix-run 20261107-astra-regrasp698-progress-named-001 --replay-prefix-steps 928 \
+  --parent-attempt 20261107-astra-regrasp698-progress-named-001 --retry-reason same_arm_continuity_before_target_switch \
+  --replay-observe-steps 890 906 --wrist-depth-panel --pixel-depth-query --named-actions \
+  --post-action-settle-steps 6 --decisions 24 --max-steps 1600 --model-timeout 180 \
+  --profile-step-phases
+```
+
+장기 목표는10점 이후의 득점까지 이어지지만 현재 실제 수집은 중지했습니다. 0→5→10 자료 조합은 장기계획이며 현재 합성 생성·정책 학습은 실행하지 않았습니다.
+
+<details>
+<summary>E27 실행 당시와 이전 상태 이력</summary>
+
+> 아래는 당시 기록이며 현재 실행 여부와 선택은 위 내용을 따릅니다.
+
 # 현재 상태와 다음 작업
 
 **E26은5/50·착의0·success=false,1139/1139전이 검사 통과로 자율 종료했습니다.** 21act+finish1/25calls,3query22valid·물리0·마감0,1139=787replay+232model+120settle입니다. 최종 판단은 마지막22번째 슬롯의 모델finish이며 예산 강제중단이나 감독자 신호가 아닙니다. no_dressing_points/final_score0.0·host78009=0·shellPython0·sim0·capturecomplete/operator_finished입니다.
@@ -582,6 +637,8 @@ PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.codex_clie
 [클린 서버 복원](START_HERE.ko.md) · [초기 자산·E07 복원 검증](sessions/20261106-evening-restore-validation.json) · [E16 분석](../collection/reviews/20261106-astra-support264-002.ko.md) · [E15 마감 이력](SESSION_WRAPUP_20261106.ko.md) · [전체 개발 이력](HISTORY.ko.md)
 
 새 정책 학습·RL/VLA 성능 검증·학습 승인은 완료하지 않았습니다. 이전 문서의 일시 중지·미실행 문구는 당시 이력이며 현재 실행 상태는 이 문서와 최신 일지를 우선합니다.
+
+</details>
 
 </details>
 

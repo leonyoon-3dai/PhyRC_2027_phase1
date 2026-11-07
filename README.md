@@ -1,22 +1,24 @@
 # PhyRC 2027 · 두 로봇의 협력 착의
 
-**최신 E26 · 방향 변경·자세 보상과 손 관측**
+**최신 E27 · 새 파지로 운반하고 팔에 접근한 뒤 복구**
 
-<a href="docs/gallery/assets/20261107-e26-view-orbit/event.mp4"><img src="docs/gallery/assets/20261107-e26-view-orbit/preview.gif" width="960" alt="E26 공개 네 카메라. 옷을 지지한 채 접근·상승하고 로봇1의 보상 회전으로 화면 끝의 손과 손목을 더 분명하게 관측하는 과정"></a>
+<a href="docs/gallery/assets/20261107-e27-arm-approach/event.mp4"><img src="docs/gallery/assets/20261107-e27-arm-approach/preview.gif" width="960" alt="E27 공개 네 카메라. 새 파지로 옮긴 옷을 손에 접근시켜 전완과 노란 경계 사이 공간이 드러난 뒤 다른 손 쪽으로 목표를 바꾸는 과정"></a>
 
-[**MP4 크게 보기**](docs/gallery/assets/20261107-e26-view-orbit/event.mp4) · [**전체·세 구간 영상**](docs/gallery/20261107-astra-hand-swap787-named-001.ko.md) · [**분석**](docs/collection/reviews/20261107-astra-hand-swap787-named-001.ko.md) · [**피드백 남기기**](https://github.com/leonyoon-3dai/PhyRC_2027_phase1/issues/new?title=%5BE26+%ED%94%BC%EB%93%9C%EB%B0%B1%5D+%EB%B0%A9%ED%96%A5+%EB%B3%80%EA%B2%BD%C2%B7%EC%9E%90%EC%84%B8+%EB%B3%B4%EC%83%81%C2%B7%EC%86%90+%EA%B4%80%EC%B8%A1&body=%EC%8B%9C%EB%8F%84%3A+E26+%2F+20261107-astra-hand-swap787-named-001%0A%EC%98%81%EC%83%81+%EC%8B%9C%EA%B0%81+%EB%98%90%EB%8A%94+%EA%B2%BD%EA%B3%84%3A%0A%EC%B9%B4%EB%A9%94%EB%9D%BC%3A%0A%0A%EB%B3%B4%EC%9D%B4%EB%8A%94+%EC%82%AC%EC%8B%A4%3A%0A%0A%ED%95%B4%EC%84%9D%C2%B7%EC%A7%88%EB%AC%B8%3A%0A%0A%EB%8B%A4%EC%9D%8C%EC%97%90+%EB%B9%84%EA%B5%90%ED%95%A0+%EB%B0%A9%EB%B2%95%3A%0A) · [이전 E25 새 파지](docs/gallery/20261107-astra-opposing563-named-001.ko.md)
+[**MP4 크게 보기**](docs/gallery/assets/20261107-e27-arm-approach/event.mp4) · [**운반·전체 영상**](docs/gallery/20261107-astra-regrasp698-progress-named-001.ko.md) · [**분석**](docs/collection/reviews/20261107-astra-regrasp698-progress-named-001.ko.md) · [**피드백 남기기**](https://github.com/leonyoon-3dai/PhyRC_2027_phase1/issues/new?title=%5BE27+%ED%94%BC%EB%93%9C%EB%B0%B1%5D+%EC%83%88+%ED%8C%8C%EC%A7%80+%EC%9A%B4%EB%B0%98%C2%B7%ED%8C%94+%EC%A0%91%EA%B7%BC%C2%B7%EB%B3%B5%EA%B5%AC&body=%EC%8B%9C%EB%8F%84%3A+E27+%2F+20261107-astra-regrasp698-progress-named-001%0A%EC%98%81%EC%83%81+%EC%8B%9C%EA%B0%81+%EB%98%90%EB%8A%94+%EA%B2%BD%EA%B3%84%3A%0A%EC%B9%B4%EB%A9%94%EB%9D%BC%3A%0A%0A%EB%B3%B4%EC%9D%B4%EB%8A%94+%EC%82%AC%EC%8B%A4%3A%0A%0A%ED%95%B4%EC%84%9D%C2%B7%EC%A7%88%EB%AC%B8%3A%0A%0A%EB%8B%A4%EC%9D%8C%EC%97%90+%EB%B9%84%EA%B5%90%ED%95%A0+%EB%B0%A9%EB%B2%95%3A%0A) · [이전 E26](docs/gallery/20261107-astra-hand-swap787-named-001.ko.md)
 
-**공식 원점수 5/50 · 픽업5 · 착의0 · `success=false` · 1,139/1,139기록 검사 통과.** 다른 초기 목표 손을 선택하고 파지 배치·접근 방향·높이를 바꿨습니다. 두 손 관계가 다시 보인 구간과 큰 자세 변화에서 그리퍼 위치를 근사 유지한 조작, 손 후보를 더 잘 드러낸 보상 회전을 확인했습니다. **손 정체·소매 경계의 연속 통과는 미확인이고 추가 득점은 없습니다.** 양쪽 파지를 유지한 채 모델이 자율 종료했습니다. 최고5점, 중간 목표10점은 아직 미달성입니다.
+**공식 원점수 5/50 · 픽업5 · 착의0 · `success=false` · 1,159/1,159기록 검사 통과.** E25에서 바꾼 파지로 실제 운반과 팔 접근을 수행했습니다. 928경계에서는 전완이 노란 띠 사이 큰 공간을 가로질러 보였고, 후반에는 관절 오차와 시야가 일부 회복됐습니다. **연속 소매 통과는 미확인이고 추가 득점은 없습니다.** 22개 행동을 사용한 뒤 판단 예산으로 종료했습니다. 최고5점, 중간 목표10점은 아직 미달성입니다.
 
-1033–1139경계 · 107프레임 · 21.4초 · 4배 느리게입니다. 위는 로봇0/1 머리, 아래는 로봇0/1 손목이며 모델 대기는 제외했습니다. [영상 출처](docs/gallery/assets/20261107-e26-view-orbit/provenance.json) · [학습 검토 구간](docs/collection/reviews/20261107-astra-hand-swap787-named-001-learning-segments.json)
+868–968경계 · 101프레임 · 20.2초 · 4배 느리게입니다. 위는 로봇0/1 머리, 아래는 로봇0/1 손목이며 모델 대기는 제외했습니다. [영상 출처](docs/gallery/assets/20261107-e27-arm-approach/provenance.json) · [학습 검토 구간](docs/collection/reviews/20261107-astra-regrasp698-progress-named-001-learning-segments.json)
 
-전체 **1,139전이·시뮬레이션56.95초**, 새 구간은 **352전이·17.6초**입니다. 실행 기록50분51초,787재실행+232모델 행동+120정착이며25호출·21행동+자율종료1판단입니다. 깊이 질의3회22유효점·질의 중 물리0, 추가 마감 전이0입니다. 전이1개는 관측→행동→다음 관측의0.05초 기록입니다.
+전체 **1,159전이·시뮬레이션57.95초**, 새 구간은 **461전이·23.05초**입니다. 실제 **40분50.624초**가 걸렸고, 698재실행+334모델 행동+126자동 정착+1예산 종료 중립입니다. **23모델 호출·22행동·모델 종료판단0**, 깊이 질의1회6유효점·질의 중 물리0입니다. 전이1개는 관측→행동→다음 관측의0.05초 기록이며 모델 판단 횟수와 다릅니다.
 
-**E27 실행 중 · 06:58:14 UTC 시작:** E25/698의 새 파지에서 기존 `coordinated-task-progress`로 운반·진입을 시험하는 실행을 시작했습니다. history657/667·22판단/max1300/settle6·Astra/ultra·source`1ff16b29e28bc9d43faf6bb0f4518e9a65868cb9`·시작clean입니다. 새12행동 뒤968경계까지 검토했습니다. 새 파지로 테이블 밖 운반 후 손에 접근했고,928경계에서는 전완이 노란 띠로 둘러진 큰 간격을 가로질러 보였습니다. 이후 일부 가림이 생겼으며968에서는 다른 노출 손 쪽으로 접근 대상을 바꿨습니다. **첫 소매 통과는 아직 미확인**이며 모델의 `second_sleeve` 단계명을 성공으로 세지 않습니다. 새270전이=198모델+72정착·질의1회6유효점/물리0입니다. [진행 분석](docs/collection/reviews/20261107-astra-regrasp698-progress-named-001.ko.md). 카메라 방향 보조 후보는 적용하지 않았습니다. [현재 상태·명령](docs/project/STATUS.md) · [출발점 근거](docs/collection/research/2026-11-07-e25-new-grasp-continuation.ko.md)
+**사용자 요청으로 E27에서 시연을 마감하고 새 실행을 중지했습니다. E28은 시작하지 않았습니다.** 서버 종료 후 충분한 오프라인 리뷰·전략 검토를 거쳐 후속 후보를 다시 선택합니다. 준비한 E27/928의 `coordinated-single-arm-progress`는 **실행 보류 후보**이며 재개 일정이나 자동 실행을 정하지 않았습니다. 후보 코드는 E27 종료 뒤 통합했지만 실제 착의 효과는 미검증이고, 카메라 방향 보조는 적용하지 않았습니다. [후보 근거](docs/collection/research/2026-11-07-e27-single-arm-continuation.ko.md) · [현재 상태](docs/project/STATUS.md) · [마감·오프라인 검토](docs/project/SESSION_WRAPUP_20261107.ko.md)
+
+[E27 원본 고정 백업](docs/project/sessions/20261107-e27-backup-verification.json)은 재다운로드와254개 구성 파일 SHA 검증을 완료했습니다.
 
 [**출발점 화면 5개 비교·피드백**](docs/gallery/20261107-support-startpoints.ko.md) · [**출발점·방법 데이터베이스**](docs/collection/catalog/README.ko.md) · [**0→5→10 구간 조합 장기계획**](docs/collection/research/2026-11-07-composable-scoring-data-plan.ko.md)
 
-**10점은 중간 목표이며 공식 확인 후 다음 득점 항목으로 계속 진행합니다.** 실패·복구와 원본을 보존하고, 합성 자료 확대는 장기 계획으로 구분합니다.
+**최고5점으로 중간 목표10점은 미달성입니다. 현재는 사용자 요청에 따라 새 시연을 보류합니다.** 실패·복구와 원본을 보존하고, 오프라인 분석 뒤 후속 전략을 다시 검토합니다.
 
 ## 무엇을 만드는가
 
@@ -29,7 +31,7 @@
 | 반대 어깨 / 두 번째 소매 / 왼쪽 위팔 / 오른쪽 위팔 | 각각5 |
 | 목 / 앞면 방향 | 각각10 |
 
-목표는 **공식 원점수10점을 거쳐 다음 득점 항목과 반복 가능한 착의 진전으로 나아가는 것**입니다. 목 우선 준비와 상방·하강을 비교했고, 짧은 진입 탐색 뒤 목적 있는 이동에서 새 팔–옷 관계가 나타났으나 착의 득점은 아직 없습니다. E25는 실제 새 파지의 국소 동행을, E26은 기존 파지의 방향·접근·보상 관측을 시험했지만 착의 득점은 없었습니다. E27에서 E25 새 파지의 운반·진입 효과를 비교 중입니다. 어떤 경로든 실행·관측·공식 평가로 확인하며 모든 방법의 첫 단계를 소매로 고정하지 않습니다. 점수율은 픽업을 제외한 착의 점수를 첫 접촉부터 마지막 착의 득점까지의 시뮬레이션 시간으로 나눕니다. 픽업5점만으로는 양의 순위 점수가 생기지 않으며, 원점수10점도 전체 착의 성공과 다릅니다.
+목표는 **공식 원점수10점을 거쳐 다음 득점 항목과 반복 가능한 착의 진전으로 나아가는 것**입니다. 목 우선 준비와 상방·하강을 비교했고, 짧은 진입 탐색 뒤 목적 있는 이동에서 새 팔–옷 관계가 나타났으나 착의 득점은 아직 없습니다. E25는 실제 새 파지의 국소 동행을, E26은 기존 파지의 방향·접근·보상 관측을 시험했지만 착의 득점은 없었습니다. E27에서 E25 새 파지의 운반·팔 접근과 후반 복구를 실제 확인했으나 착의 득점은 없었습니다. 같은 팔의 연속 진행을 보는 E28 후보는 준비됐으나 실행을 보류하고 오프라인 분석 후 재선택합니다. 어떤 경로든 실행·관측·공식 평가로 확인하며 모든 방법의 첫 단계를 소매로 고정하지 않습니다. 점수율은 픽업을 제외한 착의 점수를 첫 접촉부터 마지막 착의 득점까지의 시뮬레이션 시간으로 나눕니다. 픽업5점만으로는 양의 순위 점수가 생기지 않으며, 원점수10점도 전체 착의 성공과 다릅니다.
 
 [점수 지도와 과제 설명](docs/project/CHALLENGE_GUIDE.ko.md) · [공식 평가 정의](docs/competition/EVALUATION.md) · [공식 대회](https://emprise.cs.cornell.edu/phyrc/challenge-2027/) · [원본 README](README.upstream.md)
 
@@ -52,13 +54,14 @@
 
 | 구분 | 확인된 상태 |
 |---|---|
-| 최신 과제 시도 | E26 `20261107-astra-hand-swap787-named-001` · 1139/1139검사 통과 · 5/50 · 모델 자율 종료 |
+| 최신 과제 시도 | E27 `20261107-astra-regrasp698-progress-named-001` · 1159/1159검사 통과 · 5/50 · 22행동 예산 종료 |
 | 모델·환경 | Astra/ultra · CLI0.166.0/exec · 고정 Isaac Sim6.0.1 · Chrome/WebRTC OFF |
-| 실제 비교 | 초기 목표 손 변경, 상대 파지 배치·접근 변경, 위치 보상을 곁들인 자세·관측 회전 |
-| 관찰된 한계 | 역할 교환·소매 통과 미확인. 손 재노출과 공식 추가 득점은 별도 |
-| E27 실행 중 | E25/698·history657/667·새 파지 task-progress·22판단/max1300/settle6 · 06:58:14UTC·source1ff16b2 clean |
-| 검증 범위 | 현재 실행 코드 전체 CPU317개 통과. [검증 기록](docs/project/sessions/20261107-leading-hand-validation.json). E26 이후 실행 코드 변경 없음 |
-| 마감·원본 | E26 source53a58bb·시작clean·capture완료·host0·shell Python0·simulator0. [고정 백업·재다운로드 검증](docs/project/sessions/20261107-e26-backup-verification.json) |
+| 실제 비교 | E25 새 파지의 양측 상승·운반·팔 접근, 다른 손으로 목표 전환, 자세·지지 간격 변경과 복구 |
+| 관찰된 한계 | 928의 팔–경계 관계와 후반 복구는 유용하나 입구 정체·연속 소매 통과 미확인. 착의0 |
+| 사용자 요청·후속 보류 | E27 마감 후 새 시연 중지. E28 미시작·후보만 준비. 서버 종료 후 오프라인 분석·전략 검토를 거쳐 재선택 |
+| 준비된 후보 설정 | E27/928 · history890/906 · coordinated-single-arm-progress · 24판단/max1600/settle6/timeout180 · named/query/wrist-depth-panel. 실행 명령/예약 아님 |
+| 검증 범위 | E28 후보 전체325CPU 통과(38.190초)·통합 후166개 소스/설정 해시 일치. 실제 E28 효과는 미검증. [후보 검사](docs/project/sessions/20261107-single-arm-progress-validation.json) · [통합 대조](docs/project/sessions/20261107-single-arm-integration-verification.json) |
+| 마감·원본 | E27 source1ff16b2·시작clean·capture완료·host/Python/simulator0. [고정 원본 백업·재다운로드 검증 완료](docs/project/sessions/20261107-e27-backup-verification.json) |
 
 [현재 상태·다음 명령](docs/project/STATUS.md) · [이번 세션 원문](docs/project/sessions/20261106-evening-resume.ko.md) · [방법 전환 기준](docs/project/sessions/20261106-method-switch-matrix.ko.md)
 

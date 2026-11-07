@@ -1,0 +1,16 @@
+{
+  "checked_at_utc": "2026-11-07T07:42:07.559050+00:00",
+  "isolated_candidate_commit": "0c51a1aeccec9948332443044c033187813541e0",
+  "integrated_commit": "4ec8be828ac9cbe13972833b2dd05c1dfc0a9e73",
+  "verified_current_source_files": 166,
+  "all_runtime_and_test_sha_match": true,
+  "full_cpu_passed": 325,
+  "full_cpu_rerun_after_integration": false,
+  "reason": "Exact tested Python/config/fixture fingerprints matched after cherry-pick; no runtime changes afterward.",
+  "log_sha256": "2c4b4ed657905dcdaa00c8c9bd9586181920a2ead2d3267e18697d121d214481",
+  "candidate_receipt_sha256": "9d51de0500549f1e9bd304b8174e22f4f06d10129dfdf5d10726c7df7c96d5ba",
+  "E27_closed_before_integration": true,
+  "actual_E28_model_or_GPU_calls": 0,
+  "integration_commit_scope": "local integration commit before final public tree publication",
+  "latest_user_disposition": "Collection paused after E27; E28 unexecuted and deferred for offline review."
+}

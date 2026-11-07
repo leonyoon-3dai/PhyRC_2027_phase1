@@ -1,6 +1,6 @@
 {
   "schema": "public-conditional-continuation-review-v1",
-  "status": "E27_started_replay_results_pending",
+  "status": "E27_closed_raw5_transport_and_approach_observed",
   "reviewed_run": "20261107-astra-opposing563-named-001",
   "reviewed_source_commit": "68658c9d9bb7e47591fb330f08f4f996ec4fcbfb",
   "candidate": {
@@ -17,7 +17,7 @@
     "strategy_family": "existing task-progress continuation; no strategy implementation or execution here",
     "selected": true,
     "executed": true,
-    "execution_scope": "Selected follow-up run actually started; preparation replay phase, no new transport or dressing outcome yet."
+    "execution_scope": "E27 completed: actual bilateral lift, transport, arm approach and recovery observed; raw5, dressing0, QC1159. No sleeve passage success."
   },
   "evidence_scope": [
     "Saved designated public RGB and public robot state",
@@ -351,5 +351,5 @@
     "source_working_tree_modified": false
   },
   "review_time_priority_preserved": "E26 M2 from E18/787 actually started2026-11-07T05:51:36Z and remains prioritized; this E25 branch is unselected.",
-  "current_selection": "E26 closed at raw5; E25/698 E27 existing task-progress started2026-11-07T06:58:14Z from clean1ff16b2; replay/new results pending. Original priority is review-time history."
+  "current_selection": "E27 closed raw5 after actual new-grasp transport/approach. Latest user request pauses all new collection afterE27; prepared E28/928 candidate is unexecuted/deferred for offline review, not scheduled."
 }
