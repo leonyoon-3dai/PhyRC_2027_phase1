@@ -8,7 +8,7 @@ E26은 상대 배치/접근을 바꿨고953에서 두 손 관계를 재노출했
 
 ## E27 실행 중 · 2026-11-07T06:58:14Z
 
-E27은 E25/698의 새 파지에서 기존 `coordinated-task-progress`로 운반·진입을 시험하도록 선택했습니다. history657/667·22판단/max1300/settle6·Astra/ultra를 유지하며, source`1ff16b29e28bc9d43faf6bb0f4518e9a65868cb9`·시작clean으로 실제 실행했습니다. D5 뒤842경계까지 공개 관측을 검토했습니다. 새144전이=108모델+36정착·6act·query0이며 양측 들기와 운반을 실제 수행했습니다. 출발 테이블과 떨어져 매달린 몸판 및 양 jaw 주변 천 유지, 사람 쪽 접근을 확인했습니다. 손 진입·소매 통과·최종 점수는 미확인입니다. [진행 분석](../collection/reviews/20261107-astra-regrasp698-progress-named-001.ko.md) 새 파지의 국소 동행과 운반 하중 검증은 다르므로 현재 지지를 다시 확인합니다. 카메라 방향 보조 후보는 별도 worktree 전체 CPU335개 검사와 고정 백업을 마쳤으나 이번 설정에 적용하지 않습니다.
+E27은 E25/698의 새 파지에서 기존 `coordinated-task-progress`로 운반·진입을 시험하도록 선택했습니다. history657/667·22판단/max1300/settle6·Astra/ultra를 유지하며, source`1ff16b29e28bc9d43faf6bb0f4518e9a65868cb9`·시작clean으로 실제 실행했습니다. D11 뒤968경계까지 공개 관측을 검토했습니다. 새270전이=198모델+72정착·12act/13calls·query1회6valid/물리0입니다. 운반 뒤 손 접근과928의 전완–노란 간격 겹침이 나타났으나950에서 일부 가림이 생겼고968에서는 다른 노출 손으로 접근 대상을 옮겼습니다. 첫 소매 통과·최종 점수는 미확인으로, `second_sleeve` 단계명을 성공으로 쓰지 않습니다. [진행 분석](../collection/reviews/20261107-astra-regrasp698-progress-named-001.ko.md). 새 파지의 국소 동행과 운반 하중 검증은 다르므로 현재 지지를 다시 확인합니다. 카메라 방향 보조 후보는 별도 worktree 전체 CPU335개 검사와 고정 백업을 마쳤으나 이번 설정에 적용하지 않습니다.
 
 E25의 새 파지는 release→다른 경계 placement→보정1→reclose와 R1국소 동행까지 시험했고, 새 파지 뒤 운반/진입은 실행하지 않았습니다. 따라서 운반 효과가 실패한 것으로 단정하지 않습니다. support상태는uncertain이며 table기여·잔류운동·독립하중 미검증을 유지합니다. 직접부모E25/698·새과거관측657/667·같은E07source group,정확한천checkpoint아닙니다. loader는06:45:33UTC에float32(698,2,9)로 통과했고trusted seed등은 공개 출력하지 않았습니다.
 

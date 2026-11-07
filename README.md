@@ -12,7 +12,7 @@
 
 전체 **1,139전이·시뮬레이션56.95초**, 새 구간은 **352전이·17.6초**입니다. 실행 기록50분51초,787재실행+232모델 행동+120정착이며25호출·21행동+자율종료1판단입니다. 깊이 질의3회22유효점·질의 중 물리0, 추가 마감 전이0입니다. 전이1개는 관측→행동→다음 관측의0.05초 기록입니다.
 
-**E27 실행 중 · 06:58:14 UTC 시작:** E25/698의 새 파지에서 기존 `coordinated-task-progress`로 운반·진입을 시험하는 실행을 시작했습니다. history657/667·22판단/max1300/settle6·Astra/ultra·source`1ff16b29e28bc9d43faf6bb0f4518e9a65868cb9`·시작clean입니다. 새6행동 뒤842경계까지 검토했습니다. 양측 들기·차등 상승 후 테이블 밖 운반을 실제 수행했고, 양 jaw 주변 천 유지와 사람 쪽 접근을 확인했습니다. 새144전이=108모델+36정착·질의0입니다. 소매 통과·최종 점수는 미확인입니다. [진행 분석](docs/collection/reviews/20261107-astra-regrasp698-progress-named-001.ko.md) 카메라 방향 보조 후보는 적용하지 않았습니다. [현재 상태·명령](docs/project/STATUS.md) · [출발점 근거](docs/collection/research/2026-11-07-e25-new-grasp-continuation.ko.md)
+**E27 실행 중 · 06:58:14 UTC 시작:** E25/698의 새 파지에서 기존 `coordinated-task-progress`로 운반·진입을 시험하는 실행을 시작했습니다. history657/667·22판단/max1300/settle6·Astra/ultra·source`1ff16b29e28bc9d43faf6bb0f4518e9a65868cb9`·시작clean입니다. 새12행동 뒤968경계까지 검토했습니다. 새 파지로 테이블 밖 운반 후 손에 접근했고,928경계에서는 전완이 노란 띠로 둘러진 큰 간격을 가로질러 보였습니다. 이후 일부 가림이 생겼으며968에서는 다른 노출 손 쪽으로 접근 대상을 바꿨습니다. **첫 소매 통과는 아직 미확인**이며 모델의 `second_sleeve` 단계명을 성공으로 세지 않습니다. 새270전이=198모델+72정착·질의1회6유효점/물리0입니다. [진행 분석](docs/collection/reviews/20261107-astra-regrasp698-progress-named-001.ko.md). 카메라 방향 보조 후보는 적용하지 않았습니다. [현재 상태·명령](docs/project/STATUS.md) · [출발점 근거](docs/collection/research/2026-11-07-e25-new-grasp-continuation.ko.md)
 
 [**출발점 화면 5개 비교·피드백**](docs/gallery/20261107-support-startpoints.ko.md) · [**출발점·방법 데이터베이스**](docs/collection/catalog/README.ko.md) · [**0→5→10 구간 조합 장기계획**](docs/collection/research/2026-11-07-composable-scoring-data-plan.ko.md)
 
