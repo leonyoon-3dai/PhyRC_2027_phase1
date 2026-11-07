@@ -1,0 +1,362 @@
+{
+  "schema": "public-learning-segments-v1",
+  "run_id": "20261107-astra-opposing563-named-001",
+  "parent_attempt": "20261106-astra-guide470-depth-001",
+  "source_group": "20261106-coordinated-demo-methods",
+  "source_commit": "68658c9d9bb7e47591fb330f08f4f996ec4fcbfb",
+  "recording_status": "closed_actor_finish",
+  "training_approval": "unreviewed",
+  "label_provenance": [
+    "Public finalized decisions and concise final reasons",
+    "Designated public RGB observations0–13 directly inspected; selected camera scope recorded in review",
+    "Exported final designated5-camera RGB at boundary698 directly inspected",
+    "Public robot joint/finger/target/velocity and gripper-reference state",
+    "Root-confirmed closed-run timing and termination metadata"
+  ],
+  "evidence_decisions_path": "output/operator-traces/20261107-astra-opposing563-named-001/decisions.jsonl",
+  "raw_recordings_preserved": true,
+  "raw_records_rewritten": false,
+  "policy_teacher_hidden_evaluation_fields_included": false,
+  "split_constraints": [
+    "Group by source_group and replay lineage before train/validation split.",
+    "Same replay prefix is not an exact cloth checkpoint; current563 support is assessed from this episode.",
+    "Adjacent frames, overlapping video segments and shared replay branches are not independent successful demonstrations.",
+    "Provisional local cloth following is not an approved independent-support, attachment or opposing-lip success label.",
+    "Actor finish and depth query are zero-physics events; do not expand their declared steps into applied actions."
+  ],
+  "transition_boundary_semantics": "[start,end): count=end-start; inclusive video boundary images count+1. Episode-relative elapsed time is count/20, separate from absolute simulator timestamps.",
+  "counts": {
+    "recorded_transitions": 698,
+    "replay_transitions": 563,
+    "new_transitions": 135,
+    "model_action_transitions": 93,
+    "controller_settle_transitions": 42,
+    "cleanup_transitions": 0,
+    "model_call_attempts": 15,
+    "finalized_decisions": 14,
+    "executed_act_decisions": 13,
+    "finish_decisions": 1,
+    "depth_query_results": 1,
+    "queried_points": 6,
+    "valid_queried_points": 6,
+    "depth_query_physics_transitions": 0,
+    "depth_query_action_cycles_completed": 1,
+    "initial_placements": 1,
+    "placement_corrections": 1,
+    "release_decisions": 1,
+    "reclose_decisions": 1,
+    "grasp_change_cycles": 1,
+    "transport_decisions": 0,
+    "dressing_entry_decisions": 0,
+    "configured_decision_budget": 30,
+    "remaining_decision_slots_at_finish": 16
+  },
+  "segments": [
+    {
+      "id": "table_support_preparation",
+      "kind": "preparation",
+      "decision_indices": [
+        0,
+        1
+      ],
+      "transition_start": 563,
+      "transition_end_exclusive": 591,
+      "transition_count": 28,
+      "model_action_transitions": 16,
+      "controller_settle_transitions": 12,
+      "observation_evidence": [
+        "output/actors/20261107-astra-opposing563-named-001/observations/00000",
+        "output/actors/20261107-astra-opposing563-named-001/observations/00001",
+        "output/actors/20261107-astra-opposing563-named-001/observations/00002"
+      ],
+      "public_label": "Both grips stay closed during two lowering actions. Cloth spreads more widely over the tabletop in head views; support load and full contact area are unmeasured.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "robot1_release",
+      "kind": "grasp_release",
+      "decision_indices": [
+        2
+      ],
+      "transition_start": 591,
+      "transition_end_exclusive": 599,
+      "transition_count": 8,
+      "model_action_transitions": 8,
+      "controller_settle_transitions": 0,
+      "observation_evidence": [
+        "output/actors/20261107-astra-opposing563-named-001/observations/00002",
+        "output/actors/20261107-astra-opposing563-named-001/observations/00003"
+      ],
+      "public_label": "Robot1 physically opens; fingertip-origin separation increases47.05to129.30mm with ongoing opening velocity. Robot0 cloth remains near its jaw. This is an actual release, not same-grip fine tuning.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "initial_lower_rim_placement",
+      "kind": "initial_placement",
+      "decision_indices": [
+        3
+      ],
+      "transition_start": 599,
+      "transition_end_exclusive": 613,
+      "transition_count": 14,
+      "model_action_transitions": 8,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-opposing563-named-001/observations/00003",
+        "output/actors/20261107-astra-opposing563-named-001/observations/00004"
+      ],
+      "public_label": "After public depth query, the open robot1 jaw lowers/retracts/yaws toward a different lower curved yellow boundary. Initial placement is separate from the correction allowance; free opposing-lip identity unconfirmed.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "initial_placement_settle",
+      "kind": "neutral_diagnostic",
+      "decision_indices": [
+        4
+      ],
+      "transition_start": 613,
+      "transition_end_exclusive": 619,
+      "transition_count": 6,
+      "model_action_transitions": 6,
+      "controller_settle_transitions": 0,
+      "observation_evidence": [
+        "output/actors/20261107-astra-opposing563-named-001/observations/00004",
+        "output/actors/20261107-astra-opposing563-named-001/observations/00005"
+      ],
+      "public_label": "Six model-neutral transitions reduce robot1 lift/yaw lag substantially while selected cloth/rim images remain similar. This clarifies residual target following, not new opening topology.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "placement_correction1",
+      "kind": "placement_correction",
+      "decision_indices": [
+        5
+      ],
+      "transition_start": 619,
+      "transition_end_exclusive": 633,
+      "transition_count": 14,
+      "model_action_transitions": 8,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-opposing563-named-001/observations/00005",
+        "output/actors/20261107-astra-opposing563-named-001/observations/00006"
+      ],
+      "public_label": "One lower/extend/yaw correction brings the selected yellow boundary end near the central closing region. Robot0 jaw cloth remains. No second correction or second grasp cycle.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "correction_settle",
+      "kind": "neutral_diagnostic",
+      "decision_indices": [
+        6
+      ],
+      "transition_start": 633,
+      "transition_end_exclusive": 639,
+      "transition_count": 6,
+      "model_action_transitions": 6,
+      "controller_settle_transitions": 0,
+      "observation_evidence": [
+        "output/actors/20261107-astra-opposing563-named-001/observations/00006",
+        "output/actors/20261107-astra-opposing563-named-001/observations/00007"
+      ],
+      "public_label": "Six model-neutral transitions reduce lift error from about12.22to0.69mm magnitude while the selected boundary layout remains similar.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "robot1_reclose",
+      "kind": "grasp_reclose",
+      "decision_indices": [
+        7
+      ],
+      "transition_start": 639,
+      "transition_end_exclusive": 649,
+      "transition_count": 10,
+      "model_action_transitions": 10,
+      "controller_settle_transitions": 0,
+      "observation_evidence": [
+        "output/actors/20261107-astra-opposing563-named-001/observations/00007",
+        "output/actors/20261107-astra-opposing563-named-001/observations/00008"
+      ],
+      "public_label": "Robot1 closes once around the visible boundary candidate. Finger separation decreases188.50to80.67mm, but fingers remain above close targets with substantial inward velocity; attachment not yet established.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "postclose_settle",
+      "kind": "closing_followup",
+      "decision_indices": [
+        8
+      ],
+      "transition_start": 649,
+      "transition_end_exclusive": 657,
+      "transition_count": 8,
+      "model_action_transitions": 8,
+      "controller_settle_transitions": 0,
+      "observation_evidence": [
+        "output/actors/20261107-astra-opposing563-named-001/observations/00008",
+        "output/actors/20261107-astra-opposing563-named-001/observations/00009"
+      ],
+      "public_label": "Eight model-neutral transitions allow further physical closing to46.61mm. Yellow boundary end remains at jaw center; residual closing remains and no attachment sensor is available.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "robot1_local_follow_test",
+      "kind": "provisional_local_grasp_evidence",
+      "decision_indices": [
+        9
+      ],
+      "transition_start": 657,
+      "transition_end_exclusive": 667,
+      "transition_count": 10,
+      "model_action_transitions": 4,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-opposing563-named-001/observations/00009",
+        "output/actors/20261107-astra-opposing563-named-001/observations/00010"
+      ],
+      "public_label": "Only robot1 lift is commanded. Measured lift+26.62mm accompanies visible local yellow-edge following; robot0 reference movement is small. Additional finger closing and table support remain. Useful provisional local grasp evidence, not certified independent load support or opposing free lips.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "differential_retract_roll",
+      "kind": "differential_shape_test",
+      "decision_indices": [
+        10
+      ],
+      "transition_start": 667,
+      "transition_end_exclusive": 678,
+      "transition_count": 11,
+      "model_action_transitions": 5,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-opposing563-named-001/observations/00010",
+        "output/actors/20261107-astra-opposing563-named-001/observations/00011"
+      ],
+      "public_label": "Robot1 measured retraction27.43mm and intentional roll0.1459rad change boundary tilt/outline with cloth retained near jaw. Residual lift also contributes. Two independently controlled free lips remain unresolved.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "compensated_view_recovery",
+      "kind": "view_posture_change",
+      "decision_indices": [
+        11
+      ],
+      "transition_start": 678,
+      "transition_end_exclusive": 690,
+      "transition_count": 12,
+      "model_action_transitions": 6,
+      "controller_settle_transitions": 6,
+      "observation_evidence": [
+        "output/actors/20261107-astra-opposing563-named-001/observations/00011",
+        "output/actors/20261107-astra-opposing563-named-001/observations/00012"
+      ],
+      "public_label": "Robot1 lift/extension/pitch changes its view. Gripper-reference base-frame height is nearly preserved but lateral displacement is about32.67mm; not a fixed cloth point. Large blue panel and one yellow boundary remain dominant.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "final_settle",
+      "kind": "neutral_final_check",
+      "decision_indices": [
+        12
+      ],
+      "transition_start": 690,
+      "transition_end_exclusive": 698,
+      "transition_count": 8,
+      "model_action_transitions": 8,
+      "controller_settle_transitions": 0,
+      "observation_evidence": [
+        "output/actors/20261107-astra-opposing563-named-001/observations/00012",
+        "output/actors/20261107-astra-opposing563-named-001/observations/00013"
+      ],
+      "public_label": "Eight model-neutral transitions bring posture targets closer while selected head/wrist views show little new boundary separation. Local-follow evidence is preserved; opposing opening identity remains inconclusive.",
+      "training_approval": "unreviewed"
+    }
+  ],
+  "zero_physics_events": [
+    {
+      "kind": "depth_query",
+      "decision_index": 3,
+      "model_call_index": 3,
+      "transition_boundary": 599,
+      "camera": "robot_1_head",
+      "point_count": 6,
+      "valid_points": 6,
+      "physics_transitions": 0,
+      "subsequent_action_executed": true,
+      "interpretation_limit": "Current visible-surface optical Z does not identify a free opposing layer or contact."
+    },
+    {
+      "kind": "actor_finish",
+      "decision_index": 13,
+      "model_call_index": 14,
+      "transition_boundary": 698,
+      "physics_transitions": 0,
+      "declared_steps": 1,
+      "applied_action": false,
+      "public_label": "Actor preserves apparent grips/table proximity and ends after local-follow evidence but unresolved opposing boundaries. Not budget exhaustion or supervisor interruption."
+    }
+  ],
+  "named_action_checks": {
+    "finalized_act_decisions_checked": 13,
+    "named_to_canonical_match": true,
+    "canonical_to_applied_float32_match": true,
+    "nonzero_roll_decisions": [
+      10
+    ],
+    "roll_intent": "Explicit differential retraction/roll test in final brief reason.",
+    "open_decision_indices": [
+      2
+    ],
+    "close_decision_indices": [
+      7
+    ]
+  },
+  "termination": {
+    "kind": "actor_finish",
+    "supervisor_interruptions": 0,
+    "decision_budget_exhausted": false,
+    "host_exit_code": 0,
+    "python_exit_code": 0,
+    "simulator_returncode": 0
+  },
+  "technical_quality": {
+    "quality_passed": true,
+    "validated_transitions": 698,
+    "errors": 0,
+    "source": "Root-confirmed full capture QC; separate from visual labels and training approval."
+  },
+  "preservation": {
+    "status": "verified",
+    "receipt_path": "docs/project/sessions/20261107-e25-backup-verification.json",
+    "revision": "79e74c3dda23a676a59754005a22d55e89c6034f",
+    "archive_sha256": "1d44bf676d162944907f33d090fa85f8516fafd22a7ef5f9190c57c13dfd8150",
+    "archive_members_verified": 182
+  },
+  "final_public_rgb": [
+    {
+      "path": "docs/collection/attempts/20261107-astra-opposing563-named-001/images/final-overview.png",
+      "sha256": "614b94e519f1adf29cf7b9f63bb5266fdd2db23778459c34ef5a545633bc84f7",
+      "directly_inspected": true
+    },
+    {
+      "path": "docs/collection/attempts/20261107-astra-opposing563-named-001/images/final-robot_0_head.png",
+      "sha256": "542867faf168665e1e383fb241f85572122558987006da98c041c7863b01c051",
+      "directly_inspected": true
+    },
+    {
+      "path": "docs/collection/attempts/20261107-astra-opposing563-named-001/images/final-robot_1_head.png",
+      "sha256": "9249f6dc9bb4c9f3adb5fabc13f2a7c4ad5e03e02a91705b23fa301763675aa8",
+      "directly_inspected": true
+    },
+    {
+      "path": "docs/collection/attempts/20261107-astra-opposing563-named-001/images/final-robot_0_wrist.png",
+      "sha256": "31e55c6b0e25f77b5ed3085de1c45bc26a3e4f8153e43d58801cded224f578dc",
+      "directly_inspected": true
+    },
+    {
+      "path": "docs/collection/attempts/20261107-astra-opposing563-named-001/images/final-robot_1_wrist.png",
+      "sha256": "add604798958ae790381f03720c215f4124ceeaf8b1829436c89bf45edefcfd9",
+      "directly_inspected": true
+    }
+  ],
+  "supplementary_public_motion_review": "docs/collection/reviews/20261107-astra-opposing563-named-001-settle.ko.md"
+}

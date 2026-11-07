@@ -1,0 +1,80 @@
+{
+  "schema": "phyrc-private-research-candidate-preservation-v1",
+  "bundle_id": "20261107-m2-candidate-v1",
+  "source_commit": "3d1bf2c4e1d13a342f73869be3348ac441f4903c",
+  "base_oracle_commit": "68658c9d9bb7e47591fb330f08f4f996ec4fcbfb",
+  "archive_bytes": 39026,
+  "archive_sha256": "5106014c33665f8111bfa86b01aacfcb0e5475bc9adc6f8e3f5aa24afa5332b9",
+  "manifest_sha256": "47ab63fa275006c9db29c732dac8d1b253d6e898fdea7972c7ca95af150afbb8",
+  "archive_members_verified": 5,
+  "source_files": {
+    "participant/collection/codex_client.py": {
+      "bytes": 118671,
+      "sha256": "fc5b2270810f3250a569e774c73ae88d2d03f6f01201f0923ee9800ce01e9f2f"
+    },
+    "tests/test_leading_hand_strategy.py": {
+      "bytes": 9809,
+      "sha256": "c68c58b8e04889ce9ad7d2a39cb7ffabe94f7ccb9c61575dbc531b0db4bf7989"
+    },
+    "docs/collection/research/2026-11-07-leading-hand-candidate.ko.md": {
+      "bytes": 7841,
+      "sha256": "0da3b2e41120e07fc78807d981f71c09419ddc9c3f4af79d1c211ba10e0ef1c6"
+    }
+  },
+  "scope_sha256": "1c40f893f1e0931ff20c8da5ae59d803e31d2740ea83d4d90c80a5aaf03f0e15",
+  "private_storage_required": true,
+  "not_collection_or_training_data": true,
+  "originals_unchanged": true,
+  "repo_id": "leonayoon/phyrc-2027-phase1-private-backup",
+  "repo_type": "dataset",
+  "private": true,
+  "revision": "1cfaa8fdfbf37f10fc292fd6e046bd7e83911cfa",
+  "archive_path": "research/20261107-m2-candidate-v1/archive.tar.gz",
+  "manifest_path": "research/20261107-m2-candidate-v1/SHA256.json",
+  "preservation_receipt_path": "research/20261107-m2-candidate-v1/receipt.json",
+  "source_branch": "experiments/leading-hand-candidate",
+  "source_worktree": "/home/shadeform/workspace/phyrc-leading-hand-candidate",
+  "base_oracle_client_sha256": "c567927658dfe3b713b10b04b5bc4ee82722fb98171cbd853d78c2237b12f943",
+  "remote_download_verified": true,
+  "forced_download": true,
+  "remote_archive_member_hashes_verified": true,
+  "remote_manifest_and_receipt_byte_equal": true,
+  "verified_at_utc": "2026-11-07T05:32:51.692304+00:00",
+  "status_at_request": {
+    "adopted": false,
+    "merged_into_main": false,
+    "basis": "root preservation request and committed candidate document; main/active runtime not inspected"
+  },
+  "reported_cpu_verification": {
+    "status": "reported_pass",
+    "tests": 77,
+    "unittest_elapsed_s": 18.052,
+    "reported_external_wall_s": 18.298,
+    "reported_utc_window": [
+      "2026-11-07T05:25:07Z",
+      "2026-11-07T05:25:25Z"
+    ],
+    "scope": "7 new CPU tests plus70 focused regressions; 52 legacy configuration subcases are not52 separate tests; not a full repository test suite.",
+    "evidence_source": "docs/collection/research/2026-11-07-leading-hand-candidate.ko.md",
+    "reported_raw_log_sha256": "2e137ce70835e940f4509d9647dc49ea90177713f08a22096a7ca86590e0e4be",
+    "reported_raw_log_bytes": 13989,
+    "evidence_limit": "Read the fixed committed candidate document only; raw test log was not read or included, and tests were not rerun during preservation."
+  },
+  "candidate_gpu_model_calls_reported": 0,
+  "preservation_gpu_model_calls": 0,
+  "purpose": "Preserve isolated M2 candidate source across server replacement; not current runtime, a collection, demonstration, or training dataset.",
+  "training_use_authorized": false,
+  "excluded": [
+    "home directories",
+    "auth/credentials",
+    "raw CLI or reasoning",
+    "actor sessions/events",
+    "runtime",
+    "raw test logs",
+    "simulator logs",
+    "collections",
+    "private evaluation/audit data",
+    ".git"
+  ],
+  "active_runtime_or_main_modified": false
+}

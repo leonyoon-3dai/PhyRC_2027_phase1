@@ -1,0 +1,65 @@
+{
+  "schema": "phyrc-leading-hand-validation-v1",
+  "source_commit_at_start": "bd92e931b338fdc636f26a6633e9c37a461c1ac0",
+  "source_commit_at_end": "bd92e931b338fdc636f26a6633e9c37a461c1ac0",
+  "candidate_commit": "3d1bf2c4e1d13a342f73869be3348ac441f4903c",
+  "integration_commit": "bd92e931b338fdc636f26a6633e9c37a461c1ac0",
+  "started_at_utc": "2026-11-07T05:41:20.078138+00:00",
+  "finished_at_utc": "2026-11-07T05:41:52.168798+00:00",
+  "command": "PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m unittest discover -s tests -v",
+  "working_directory": "/home/shadeform/workspace/PhyRC_2027_phase1",
+  "test_count": 317,
+  "unittest_reported_elapsed_s": 31.785,
+  "subprocess_wall_elapsed_s": 32.090648563000286,
+  "exit_code": 0,
+  "status": "passed",
+  "log_file": "output/verification/20261107-leading-hand-full-suite.log",
+  "log_bytes": 55710,
+  "log_sha256": "0a1f8233380ead024deba1bcaab7e2c8065bb3a17478ed6d079ffb6ba4325824",
+  "scope": "Full repository CPU unittest discovery after E25 closure and leading-hand candidate integration; fake fixtures, no real model/GPU/physics execution.",
+  "source_file_sha256_before": {
+    "participant/collection/codex_client.py": "fc5b2270810f3250a569e774c73ae88d2d03f6f01201f0923ee9800ce01e9f2f",
+    "tests/test_leading_hand_strategy.py": "c68c58b8e04889ce9ad7d2a39cb7ffabe94f7ccb9c61575dbc531b0db4bf7989"
+  },
+  "source_file_sha256_after": {
+    "participant/collection/codex_client.py": "fc5b2270810f3250a569e774c73ae88d2d03f6f01201f0923ee9800ce01e9f2f",
+    "tests/test_leading_hand_strategy.py": "c68c58b8e04889ce9ad7d2a39cb7ffabe94f7ccb9c61575dbc531b0db4bf7989"
+  },
+  "checked_source_files_unchanged_during_test": true,
+  "new_strategy_test_class": "test_leading_hand_strategy.LeadingHandStrategyTest",
+  "new_strategy_test_count": 7,
+  "new_strategy_tests_passed_in_full_discovery": [
+    "test_leading_hand_strategy.LeadingHandStrategyTest.test_new_task_uses_shared_contract_without_other_routes_or_probe_gate",
+    "test_leading_hand_strategy.LeadingHandStrategyTest.test_old_constants_and_nonrouting_functions_match_fixed_public_source",
+    "test_leading_hand_strategy.LeadingHandStrategyTest.test_optional_features_default_off_and_official_steps_schema_is_unchanged",
+    "test_leading_hand_strategy.LeadingHandStrategyTest.test_other_modes_and_open_loop_plans_rejected_before_output_or_simulator",
+    "test_leading_hand_strategy.LeadingHandStrategyTest.test_review_threshold_and_trusted_parent_data_do_not_change_actor_prompt",
+    "test_leading_hand_strategy.LeadingHandStrategyTest.test_thirteen_old_routes_keep_prompt_schema_images_and_dispatch_in_52_configs",
+    "test_leading_hand_strategy.LeadingHandStrategyTest.test_unestablished_swap_reason_keeps_query_frozen_and_action_dispatch_unchanged"
+  ],
+  "new_strategy_legacy_prompt_oracle": "68658c9d9bb7e47591fb330f08f4f996ec4fcbfb",
+  "legacy_strategy_configs_checked": 52,
+  "legacy_strategy_configs_definition": "13 existing strategies x named ON/OFF x depth-query ON/OFF; subcases within full suite, not added to test_count.",
+  "limitations": [
+    "CPU selection/protocol/default regression does not establish actual leading-hand/role/approach exchange or dressing performance.",
+    "General task progress with unestablished hand identity is not evidence that M2 was performed.",
+    "E26 is selected but not executed by this verification; settle remains6, not12."
+  ],
+  "runtime_changed_by_verification": false,
+  "gpu_or_real_model_calls": 0,
+  "planned_experiment_at_validation": {
+    "label": "E26",
+    "status": "planned_not_started",
+    "source_run_id": "20261106-astra-guide470-depth-001",
+    "replay_prefix_steps": 787,
+    "history_boundaries": [
+      719,
+      771
+    ],
+    "strategy": "coordinated-leading-hand-swap",
+    "decisions": 22,
+    "max_sim_steps": 1400,
+    "post_action_settle_steps": 6,
+    "actual_dressing_performance_tested": false
+  }
+}

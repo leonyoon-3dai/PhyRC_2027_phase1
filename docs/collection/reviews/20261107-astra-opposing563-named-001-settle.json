@@ -1,0 +1,1168 @@
+{
+  "schema": "public_settle_comparison.v1",
+  "run_id": "20261107-astra-opposing563-named-001",
+  "source_commit": "68658c9d9bb7e47591fb330f08f4f996ec4fcbfb",
+  "created_at_utc": "2026-11-07T05:38:47.445541+00:00",
+  "analysis_cutoff": {
+    "observation_index": 7,
+    "decision_index": 6,
+    "boundary": 639,
+    "status": "partial_running_episode_no_later_results"
+  },
+  "scope": {
+    "public_observation_indices": [
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "public_final_decision_indices": [
+      3,
+      4,
+      5,
+      6
+    ],
+    "raw_full_state_exported": false,
+    "hdf5_accessed": false,
+    "evaluation_or_audit_accessed": false,
+    "raw_cli_accessed": false,
+    "runtime_or_active_config_changed": false,
+    "model_or_gpu_calls": 0
+  },
+  "formulas": {
+    "actual_lift": "joint_position[robot][3]",
+    "actual_arm": "sum(joint_position[robot][4:8])",
+    "actual_yaw": "joint_position[robot][8]",
+    "target_minus_actual": "controller_target[robot][lift=0,arm=1,yaw=2] minus corresponding actual",
+    "velocity": "corresponding joint_velocity or sum of four arm velocities at observation instant",
+    "grasp_delta": "endpoint difference of public grasp_pose_base xyz; robot-base reference, not cloth contact/material point",
+    "delta_t": "next public simulation_time_s minus previous"
+  },
+  "public_mapping": {
+    "joint_names": [
+      [
+        "wheel_0_joint",
+        "wheel_1_joint",
+        "wheel_2_joint",
+        "lift_joint",
+        "arm_l1_joint",
+        "arm_l2_joint",
+        "arm_l3_joint",
+        "arm_l4_joint",
+        "wrist_yaw_joint",
+        "wrist_pitch_joint",
+        "wrist_roll_joint",
+        "gripper_finger_left_joint",
+        "gripper_finger_right_joint"
+      ],
+      [
+        "wheel_0_joint",
+        "wheel_1_joint",
+        "wheel_2_joint",
+        "lift_joint",
+        "arm_l1_joint",
+        "arm_l2_joint",
+        "arm_l3_joint",
+        "arm_l4_joint",
+        "wrist_yaw_joint",
+        "wrist_pitch_joint",
+        "wrist_roll_joint",
+        "gripper_finger_left_joint",
+        "gripper_finger_right_joint"
+      ]
+    ],
+    "joint_units": [
+      [
+        "rad",
+        "rad",
+        "rad",
+        "m",
+        "m",
+        "m",
+        "m",
+        "m",
+        "rad",
+        "rad",
+        "rad",
+        "rad",
+        "rad"
+      ],
+      [
+        "rad",
+        "rad",
+        "rad",
+        "m",
+        "m",
+        "m",
+        "m",
+        "m",
+        "rad",
+        "rad",
+        "rad",
+        "rad",
+        "rad"
+      ]
+    ],
+    "action_scales": {
+      "BASE_LINEAR_RATE": 0.616,
+      "BASE_ANGULAR_RATE": 2.86,
+      "LIFT_RATE": 1.54,
+      "ARM_RATE": 1.21,
+      "WRIST_RATE": 5.5
+    },
+    "controller_target_columns": [
+      "lift",
+      "arm",
+      "yaw",
+      "pitch",
+      "roll",
+      "grip_pos",
+      "base_fwd",
+      "base_strafe",
+      "base_turn"
+    ]
+  },
+  "mapping_provenance": {
+    "run_metadata": {
+      "path": "output/collections/20261107-astra-opposing563-named-001/run_metadata.json",
+      "bytes": 8687,
+      "sha256": "1b7ef00173a5e6c85627eba766552a46c2c3a585765c6eaa255455b538a15450"
+    },
+    "semantic_scope": "public_interface only; other metadata fields not used",
+    "public_selected_mapping_sha256": "89d9dc0b235dd6fb3b390871167bc21a4aaba57d493e1ad90052f300de3b27e6",
+    "public_policy_interface": {
+      "path": "output/operator-traces/20261107-astra-opposing563-named-001/source_snapshot/config/policy_interface.json",
+      "bytes": 12778,
+      "sha256": "0823b5a692621bc1effed308ac6427af7e97122de4db297ec14b5d751551a5dc"
+    },
+    "source_client": {
+      "path": "output/operator-traces/20261107-astra-opposing563-named-001/source_snapshot/participant/collection/codex_client.py",
+      "bytes": 112886,
+      "sha256": "c567927658dfe3b713b10b04b5bc4ee82722fb98171cbd853d78c2237b12f943"
+    }
+  },
+  "observation_files": [
+    {
+      "path": "output/actors/20261107-astra-opposing563-named-001/observations/00003/observation.json",
+      "bytes": 25280,
+      "sha256": "cbeb61f13401c097f229ee587ab1223361c7bf4c4afa6ad507ddcc31e1e4223a"
+    },
+    {
+      "path": "output/actors/20261107-astra-opposing563-named-001/observations/00004/observation.json",
+      "bytes": 25301,
+      "sha256": "f79a7896b5171c42cba26b3ed8c0320ab1277b688c25b1ad7edeb3d7db2e929b"
+    },
+    {
+      "path": "output/actors/20261107-astra-opposing563-named-001/observations/00005/observation.json",
+      "bytes": 25301,
+      "sha256": "e07ec5ccf10d9434fff2e8b6e6339ef84882209185a6d85c11303f1071b3abf2"
+    },
+    {
+      "path": "output/actors/20261107-astra-opposing563-named-001/observations/00006/observation.json",
+      "bytes": 25291,
+      "sha256": "4f9f234155b1b68a6a9cfe8f9ad28580693843bf2e6a4d1e2a6cdd88c7550890"
+    },
+    {
+      "path": "output/actors/20261107-astra-opposing563-named-001/observations/00007/observation.json",
+      "bytes": 25310,
+      "sha256": "e2d61927ffe176ba41a16d99bdba4185a06f2695e7afa65e87f563bd5add4ef5"
+    }
+  ],
+  "visually_inspected_images": [
+    {
+      "observation_index": 3,
+      "camera": "robot_1_head",
+      "path": "output/actors/20261107-astra-opposing563-named-001/observations/00003/robot_1_head.png",
+      "bytes": 65097,
+      "sha256": "0845bbf13302ad0ec04a58fbc9b9a9565cdd5cfd5a0df3d77fb61ff02ef665ac"
+    },
+    {
+      "observation_index": 3,
+      "camera": "robot_1_wrist",
+      "path": "output/actors/20261107-astra-opposing563-named-001/observations/00003/robot_1_wrist.png",
+      "bytes": 65263,
+      "sha256": "867d108de04d645d2f67b4cb5105c758af61f30e73558f9a169d8c2d0d00a40d"
+    },
+    {
+      "observation_index": 3,
+      "camera": "robot_0_wrist",
+      "path": "output/actors/20261107-astra-opposing563-named-001/observations/00003/robot_0_wrist.png",
+      "bytes": 72209,
+      "sha256": "bb9fe807c8537380c54b82d12b967aea846b403546351c3abca1029bd15b344d"
+    },
+    {
+      "observation_index": 4,
+      "camera": "robot_1_head",
+      "path": "output/actors/20261107-astra-opposing563-named-001/observations/00004/robot_1_head.png",
+      "bytes": 66374,
+      "sha256": "b66318d9e01cc7f133da21feba9cce4fec0a1a3d9fd672851e9c58ac7b1f4a3c"
+    },
+    {
+      "observation_index": 4,
+      "camera": "robot_1_wrist",
+      "path": "output/actors/20261107-astra-opposing563-named-001/observations/00004/robot_1_wrist.png",
+      "bytes": 66340,
+      "sha256": "740477eaafc578d8a88f07a5d261c7929e38b0a26d2ada4fcbe09aa2c2f91a61"
+    },
+    {
+      "observation_index": 4,
+      "camera": "robot_0_wrist",
+      "path": "output/actors/20261107-astra-opposing563-named-001/observations/00004/robot_0_wrist.png",
+      "bytes": 71346,
+      "sha256": "b5a1bb37a46f5d7271540ff7ce5d6812aa7186f01a6f207f401b435b0c6088fb"
+    },
+    {
+      "observation_index": 5,
+      "camera": "robot_1_head",
+      "path": "output/actors/20261107-astra-opposing563-named-001/observations/00005/robot_1_head.png",
+      "bytes": 65710,
+      "sha256": "ce980dbb58c70f3e7638860462fe57d48106dce591d64900679da356af34a062"
+    },
+    {
+      "observation_index": 5,
+      "camera": "robot_1_wrist",
+      "path": "output/actors/20261107-astra-opposing563-named-001/observations/00005/robot_1_wrist.png",
+      "bytes": 65761,
+      "sha256": "37bd1afca2f4cdce5e1bcda7cc5b140d7cb13a858ffd4dbeb50a66c907cb873f"
+    },
+    {
+      "observation_index": 5,
+      "camera": "robot_0_wrist",
+      "path": "output/actors/20261107-astra-opposing563-named-001/observations/00005/robot_0_wrist.png",
+      "bytes": 71699,
+      "sha256": "2d782e76017a85992afcf7c7e0a9c9ee62a4d0f79562bc2a7fa1858bcaa89541"
+    },
+    {
+      "observation_index": 6,
+      "camera": "robot_1_head",
+      "path": "output/actors/20261107-astra-opposing563-named-001/observations/00006/robot_1_head.png",
+      "bytes": 65519,
+      "sha256": "076356f9d09b4ad720373fc573cd1686b7771e5bbfdaaf4ba3065d061dd2a673"
+    },
+    {
+      "observation_index": 6,
+      "camera": "robot_1_wrist",
+      "path": "output/actors/20261107-astra-opposing563-named-001/observations/00006/robot_1_wrist.png",
+      "bytes": 65579,
+      "sha256": "efc3c2897be9453e3a5d3bce12500397bf097a48273f0e148744fc7ae252d51d"
+    },
+    {
+      "observation_index": 6,
+      "camera": "robot_0_wrist",
+      "path": "output/actors/20261107-astra-opposing563-named-001/observations/00006/robot_0_wrist.png",
+      "bytes": 71549,
+      "sha256": "077c5219a44c2dc32d1928fb758a062be6bc5409d39409e58891c17ac340c3aa"
+    },
+    {
+      "observation_index": 7,
+      "camera": "robot_1_head",
+      "path": "output/actors/20261107-astra-opposing563-named-001/observations/00007/robot_1_head.png",
+      "bytes": 65584,
+      "sha256": "2e6405eba6c9fe27370f2cc7eb0b43aa366d8c63216f231b1898c5626df609d8"
+    },
+    {
+      "observation_index": 7,
+      "camera": "robot_1_wrist",
+      "path": "output/actors/20261107-astra-opposing563-named-001/observations/00007/robot_1_wrist.png",
+      "bytes": 63129,
+      "sha256": "2a3aad15a0f84f0a84b4358af70d477129c9862700813763ded7faba19b98088"
+    },
+    {
+      "observation_index": 7,
+      "camera": "robot_0_wrist",
+      "path": "output/actors/20261107-astra-opposing563-named-001/observations/00007/robot_0_wrist.png",
+      "bytes": 71814,
+      "sha256": "03a68322df5062c246fe52cf6fcd2b3309c5234a874fa459b48a4c19b5dadacc"
+    }
+  ],
+  "trace_provenance": {
+    "path": "output/operator-traces/20261107-astra-opposing563-named-001/decisions.jsonl",
+    "scope": "complete bytes from start through D6 model applied_segment ending639; not a final live-file digest",
+    "prefix_bytes": 100542,
+    "prefix_lines": 90,
+    "prefix_sha256": "69a5a5840264392e8696ee84fe6ca560f016fc574aafad8b68fbac9e8947ced2",
+    "selected_public_event_lines": [
+      {
+        "line": 78,
+        "type": "decision",
+        "decision_index": 3,
+        "line_bytes": 3435,
+        "line_sha256_including_newline": "36d9820586f7118df229b4f9c743daa56bb30480452d54469e9bad79629f9d29",
+        "prefix_end_byte": 75361
+      },
+      {
+        "line": 79,
+        "type": "applied_segment",
+        "decision_index": 3,
+        "line_bytes": 944,
+        "line_sha256_including_newline": "eed7a0e4f0d3379ee41afaeaeb156b4a9ea49781b39763d0918622464d3447ee",
+        "prefix_end_byte": 76305
+      },
+      {
+        "line": 80,
+        "type": "applied_segment",
+        "decision_index": 3,
+        "line_bytes": 746,
+        "line_sha256_including_newline": "9ec7dfd0e7e6d9314351ee8c2ea09ae6a36c26d290856de8c2314cc6b638f93d",
+        "prefix_end_byte": 77051
+      },
+      {
+        "line": 82,
+        "type": "decision",
+        "decision_index": 4,
+        "line_bytes": 3440,
+        "line_sha256_including_newline": "958ce2d163feb10836f539859a7ddf876356d3301501b23cc4d0d89c7dddde5d",
+        "prefix_end_byte": 83668
+      },
+      {
+        "line": 83,
+        "type": "applied_segment",
+        "decision_index": 4,
+        "line_bytes": 896,
+        "line_sha256_including_newline": "60c6c4a7e4684bdde14d62ab41fea9bc8667ede4511990d04eab90535c25ecf0",
+        "prefix_end_byte": 84564
+      },
+      {
+        "line": 85,
+        "type": "decision",
+        "decision_index": 5,
+        "line_bytes": 3507,
+        "line_sha256_including_newline": "22874eee95e58f432fd0bbc7d3bb288765cc0da0ec0bf7315511fea8efe7a17e",
+        "prefix_end_byte": 91315
+      },
+      {
+        "line": 86,
+        "type": "applied_segment",
+        "decision_index": 5,
+        "line_bytes": 945,
+        "line_sha256_including_newline": "07a1c0a51156598d632c09b778fd5ec60212bd7cc2b423889aa17b7c4f7d08d2",
+        "prefix_end_byte": 92260
+      },
+      {
+        "line": 87,
+        "type": "applied_segment",
+        "decision_index": 5,
+        "line_bytes": 743,
+        "line_sha256_including_newline": "fee3e6cf3f2847017d00e5a91831fb1baedd1ba1af9a96ccb2203cf67918a7b8",
+        "prefix_end_byte": 93003
+      },
+      {
+        "line": 89,
+        "type": "decision",
+        "decision_index": 6,
+        "line_bytes": 3455,
+        "line_sha256_including_newline": "cfbf624ddc696b96ebaaff3ac0156a913a050fc3322585dd657b9846cd569051",
+        "prefix_end_byte": 99651
+      },
+      {
+        "line": 90,
+        "type": "applied_segment",
+        "decision_index": 6,
+        "line_bytes": 891,
+        "line_sha256_including_newline": "3273f8f7cb1200384649f5d51eb3dae26bd42b0b4e146df0ccffe21530836105",
+        "prefix_end_byte": 100542
+      }
+    ]
+  },
+  "samples": [
+    {
+      "observation_index": 3,
+      "boundary": 599,
+      "simulation_time_s": 31.47500164154917,
+      "previous_action_all_zero": false,
+      "robots": [
+        {
+          "robot": 0,
+          "axes": {
+            "lift": {
+              "actual": 921.7689633369446,
+              "target": 922.8000640869141,
+              "target_minus_actual": 1.0311007499694824,
+              "instantaneous_velocity": 2.7521708980202675,
+              "unit": "mm",
+              "velocity_unit": "mm/s"
+            },
+            "arm_extension_sum": {
+              "actual": 275.7648602128029,
+              "target": 275.88000893592834,
+              "target_minus_actual": 0.11514872312545776,
+              "instantaneous_velocity": -2.495628854376264,
+              "unit": "mm",
+              "velocity_unit": "mm/s"
+            },
+            "wrist_yaw": {
+              "actual": 0.0006140186451375484,
+              "target": 0.0,
+              "target_minus_actual": -0.0006140186451375484,
+              "instantaneous_velocity": 0.010143913328647614,
+              "unit": "rad",
+              "velocity_unit": "rad/s"
+            }
+          },
+          "base_linear_speed_mm_s": 0.7830904587260054
+        },
+        {
+          "robot": 1,
+          "axes": {
+            "lift": {
+              "actual": 921.7837452888489,
+              "target": 922.8000640869141,
+              "target_minus_actual": 1.0163187980651855,
+              "instantaneous_velocity": 1.9728769548237324,
+              "unit": "mm",
+              "velocity_unit": "mm/s"
+            },
+            "arm_extension_sum": {
+              "actual": 275.2031981945038,
+              "target": 275.88000893592834,
+              "target_minus_actual": 0.6768107414245605,
+              "instantaneous_velocity": 1.207810448249802,
+              "unit": "mm",
+              "velocity_unit": "mm/s"
+            },
+            "wrist_yaw": {
+              "actual": 3.1528976251138374e-05,
+              "target": 0.0,
+              "target_minus_actual": -3.1528976251138374e-05,
+              "instantaneous_velocity": -0.012079774402081966,
+              "unit": "rad",
+              "velocity_unit": "rad/s"
+            }
+          },
+          "base_linear_speed_mm_s": 2.187389928973047
+        }
+      ]
+    },
+    {
+      "observation_index": 4,
+      "boundary": 613,
+      "simulation_time_s": 32.175001678057015,
+      "previous_action_all_zero": true,
+      "robots": [
+        {
+          "robot": 0,
+          "axes": {
+            "lift": {
+              "actual": 920.2408790588379,
+              "target": 922.8000640869141,
+              "target_minus_actual": 2.559185028076172,
+              "instantaneous_velocity": 10.559624992311,
+              "unit": "mm",
+              "velocity_unit": "mm/s"
+            },
+            "arm_extension_sum": {
+              "actual": 275.5955904722214,
+              "target": 275.88000893592834,
+              "target_minus_actual": 0.2844184637069702,
+              "instantaneous_velocity": 0.7145087438402697,
+              "unit": "mm",
+              "velocity_unit": "mm/s"
+            },
+            "wrist_yaw": {
+              "actual": 0.0003380223351996392,
+              "target": 0.0,
+              "target_minus_actual": -0.0003380223351996392,
+              "instantaneous_velocity": -0.0009012914961203933,
+              "unit": "rad",
+              "velocity_unit": "rad/s"
+            }
+          },
+          "base_linear_speed_mm_s": 0.6095194389477788
+        },
+        {
+          "robot": 1,
+          "axes": {
+            "lift": {
+              "actual": 752.4110078811646,
+              "target": 738.0000352859497,
+              "target_minus_actual": -14.410972595214844,
+              "instantaneous_velocity": -75.87253302335739,
+              "unit": "mm",
+              "velocity_unit": "mm/s"
+            },
+            "arm_extension_sum": {
+              "actual": 254.5027658343315,
+              "target": 256.52000308036804,
+              "target_minus_actual": 2.0172372460365295,
+              "instantaneous_velocity": -9.769852855242789,
+              "unit": "mm",
+              "velocity_unit": "mm/s"
+            },
+            "wrist_yaw": {
+              "actual": -0.5996345281600952,
+              "target": -0.6600000262260437,
+              "target_minus_actual": -0.060365498065948486,
+              "instantaneous_velocity": -0.3484348952770233,
+              "unit": "rad",
+              "velocity_unit": "rad/s"
+            }
+          },
+          "base_linear_speed_mm_s": 2.875716949110595
+        }
+      ]
+    },
+    {
+      "observation_index": 5,
+      "boundary": 619,
+      "simulation_time_s": 32.475001693703234,
+      "previous_action_all_zero": true,
+      "robots": [
+        {
+          "robot": 0,
+          "axes": {
+            "lift": {
+              "actual": 920.2069044113159,
+              "target": 922.8000640869141,
+              "target_minus_actual": 2.5931596755981445,
+              "instantaneous_velocity": 9.99640952795744,
+              "unit": "mm",
+              "velocity_unit": "mm/s"
+            },
+            "arm_extension_sum": {
+              "actual": 275.635726749897,
+              "target": 275.88000893592834,
+              "target_minus_actual": 0.24428218603134155,
+              "instantaneous_velocity": 0.7449414697475731,
+              "unit": "mm",
+              "velocity_unit": "mm/s"
+            },
+            "wrist_yaw": {
+              "actual": 0.00036852501216344535,
+              "target": 0.0,
+              "target_minus_actual": -0.00036852501216344535,
+              "instantaneous_velocity": -0.010242318734526634,
+              "unit": "rad",
+              "velocity_unit": "rad/s"
+            }
+          },
+          "base_linear_speed_mm_s": 1.644461274511731
+        },
+        {
+          "robot": 1,
+          "axes": {
+            "lift": {
+              "actual": 739.1620874404907,
+              "target": 738.0000352859497,
+              "target_minus_actual": -1.1620521545410156,
+              "instantaneous_velocity": -7.756632287055254,
+              "unit": "mm",
+              "velocity_unit": "mm/s"
+            },
+            "arm_extension_sum": {
+              "actual": 254.70462441444397,
+              "target": 256.52000308036804,
+              "target_minus_actual": 1.8153786659240723,
+              "instantaneous_velocity": 3.945445583667606,
+              "unit": "mm",
+              "velocity_unit": "mm/s"
+            },
+            "wrist_yaw": {
+              "actual": -0.6466898918151855,
+              "target": -0.6600000262260437,
+              "target_minus_actual": -0.013310134410858154,
+              "instantaneous_velocity": -0.09596513956785202,
+              "unit": "rad",
+              "velocity_unit": "rad/s"
+            }
+          },
+          "base_linear_speed_mm_s": 2.199760452140729
+        }
+      ]
+    },
+    {
+      "observation_index": 6,
+      "boundary": 633,
+      "simulation_time_s": 33.17500173021108,
+      "previous_action_all_zero": true,
+      "robots": [
+        {
+          "robot": 0,
+          "axes": {
+            "lift": {
+              "actual": 920.1908111572266,
+              "target": 922.8000640869141,
+              "target_minus_actual": 2.6092529296875,
+              "instantaneous_velocity": 11.007367633283138,
+              "unit": "mm",
+              "velocity_unit": "mm/s"
+            },
+            "arm_extension_sum": {
+              "actual": 275.6762355566025,
+              "target": 275.88000893592834,
+              "target_minus_actual": 0.2037733793258667,
+              "instantaneous_velocity": -2.2170246884343214,
+              "unit": "mm",
+              "velocity_unit": "mm/s"
+            },
+            "wrist_yaw": {
+              "actual": 0.00040288918535225093,
+              "target": 0.0,
+              "target_minus_actual": -0.00040288918535225093,
+              "instantaneous_velocity": 0.016396209597587585,
+              "unit": "rad",
+              "velocity_unit": "rad/s"
+            }
+          },
+          "base_linear_speed_mm_s": 2.082879859882696
+        },
+        {
+          "robot": 1,
+          "axes": {
+            "lift": {
+              "actual": 590.0599956512451,
+              "target": 577.8400301933289,
+              "target_minus_actual": -12.21996545791626,
+              "instantaneous_velocity": -63.09894472360611,
+              "unit": "mm",
+              "velocity_unit": "mm/s"
+            },
+            "arm_extension_sum": {
+              "actual": 291.56459122896194,
+              "target": 295.24001479148865,
+              "target_minus_actual": 3.675423562526703,
+              "instantaneous_velocity": 18.299502786248922,
+              "unit": "mm",
+              "velocity_unit": "mm/s"
+            },
+            "wrist_yaw": {
+              "actual": -0.8791289329528809,
+              "target": -0.9020000100135803,
+              "target_minus_actual": -0.022871077060699463,
+              "instantaneous_velocity": -0.1349702775478363,
+              "unit": "rad",
+              "velocity_unit": "rad/s"
+            }
+          },
+          "base_linear_speed_mm_s": 0.9611424238697136
+        }
+      ]
+    },
+    {
+      "observation_index": 7,
+      "boundary": 639,
+      "simulation_time_s": 33.4750017458573,
+      "previous_action_all_zero": true,
+      "robots": [
+        {
+          "robot": 0,
+          "axes": {
+            "lift": {
+              "actual": 920.1934933662415,
+              "target": 922.8000640869141,
+              "target_minus_actual": 2.6065707206726074,
+              "instantaneous_velocity": 10.755633935332298,
+              "unit": "mm",
+              "velocity_unit": "mm/s"
+            },
+            "arm_extension_sum": {
+              "actual": 275.6810411810875,
+              "target": 275.88000893592834,
+              "target_minus_actual": 0.19896775484085083,
+              "instantaneous_velocity": 0.22498530233860947,
+              "unit": "mm",
+              "velocity_unit": "mm/s"
+            },
+            "wrist_yaw": {
+              "actual": 0.00039991564699448645,
+              "target": 0.0,
+              "target_minus_actual": -0.00039991564699448645,
+              "instantaneous_velocity": -0.0008076428202912211,
+              "unit": "rad",
+              "velocity_unit": "rad/s"
+            }
+          },
+          "base_linear_speed_mm_s": 0.8840071607581527
+        },
+        {
+          "robot": 1,
+          "axes": {
+            "lift": {
+              "actual": 578.5300135612488,
+              "target": 577.8400301933289,
+              "target_minus_actual": -0.6899833679199219,
+              "instantaneous_velocity": -5.653707310557365,
+              "unit": "mm",
+              "velocity_unit": "mm/s"
+            },
+            "arm_extension_sum": {
+              "actual": 293.88896375894547,
+              "target": 295.24001479148865,
+              "target_minus_actual": 1.3510510325431824,
+              "instantaneous_velocity": 2.4342454271391034,
+              "unit": "mm",
+              "velocity_unit": "mm/s"
+            },
+            "wrist_yaw": {
+              "actual": -0.8968017101287842,
+              "target": -0.9020000100135803,
+              "target_minus_actual": -0.005198299884796143,
+              "instantaneous_velocity": -0.025663988664746284,
+              "unit": "rad",
+              "velocity_unit": "rad/s"
+            }
+          },
+          "base_linear_speed_mm_s": 2.939389517670879
+        }
+      ]
+    }
+  ],
+  "action_checks": [
+    {
+      "decision_index": 3,
+      "tool": "act",
+      "requested_steps": 8,
+      "stage": "grasp",
+      "final_operational_reason": "Robot 0 keeps its closed anchor and unchanged targets; robot 1 continues opening. The queried lower rim lies below and inward of robot 1's jaws. Make the initial placement approach by lowering, retracting slightly and yawing inward, then inspect alignment before closing.",
+      "actor_call_wall_s": 90.73218414500298,
+      "nonzero_channels": [
+        {
+          "robot": 1,
+          "channel": "lift",
+          "normalized_command": -0.3
+        },
+        {
+          "robot": 1,
+          "channel": "arm_extension",
+          "normalized_command": -0.04
+        },
+        {
+          "robot": 1,
+          "channel": "wrist_yaw",
+          "normalized_command": -0.3
+        }
+      ],
+      "all_zero_action": false,
+      "raw_named_to_canonical_float32_equal": true,
+      "canonical_to_model_applied_float32_equal": true,
+      "segments": [
+        {
+          "action_source": "model",
+          "start_step": 599,
+          "end_step": 607,
+          "actual_steps": 8,
+          "simulation_start_s": 31.47500164154917,
+          "simulation_end_s": 31.875001662410796
+        },
+        {
+          "action_source": "controller_settle",
+          "start_step": 607,
+          "end_step": 613,
+          "actual_steps": 6,
+          "simulation_start_s": 31.875001662410796,
+          "simulation_end_s": 32.175001678057015
+        }
+      ]
+    },
+    {
+      "decision_index": 4,
+      "tool": "act",
+      "requested_steps": 6,
+      "stage": "grasp",
+      "final_operational_reason": "Robot 0's closed anchor moved under 2 mm. Robot 1 approached the visible rim, but remains 14 mm above its lift target and 0.06 rad short of its yaw target, with both still moving. Preserve targets for a short settling observation before correcting placement; the rim remains beyond the open jaws.",
+      "actor_call_wall_s": 41.40830243500022,
+      "nonzero_channels": [],
+      "all_zero_action": true,
+      "raw_named_to_canonical_float32_equal": true,
+      "canonical_to_model_applied_float32_equal": true,
+      "segments": [
+        {
+          "action_source": "model",
+          "start_step": 613,
+          "end_step": 619,
+          "actual_steps": 6,
+          "simulation_start_s": 32.175001678057015,
+          "simulation_end_s": 32.475001693703234
+        }
+      ]
+    },
+    {
+      "decision_index": 5,
+      "tool": "act",
+      "requested_steps": 8,
+      "stage": "grasp",
+      "final_operational_reason": "Robot 0 remains a closed, nearly stationary anchor; robot 1's approach has largely settled. The continuous lower rim remains below and beyond its open jaws. Placement correction 1 lowers and extends slightly while yawing toward the rim's free end; inspect whether that boundary comes between the fingers while the body stays table-supported.",
+      "actor_call_wall_s": 67.75359949099948,
+      "nonzero_channels": [
+        {
+          "robot": 1,
+          "channel": "lift",
+          "normalized_command": -0.26
+        },
+        {
+          "robot": 1,
+          "channel": "arm_extension",
+          "normalized_command": 0.08
+        },
+        {
+          "robot": 1,
+          "channel": "wrist_yaw",
+          "normalized_command": -0.11
+        }
+      ],
+      "all_zero_action": false,
+      "raw_named_to_canonical_float32_equal": true,
+      "canonical_to_model_applied_float32_equal": true,
+      "segments": [
+        {
+          "action_source": "model",
+          "start_step": 619,
+          "end_step": 627,
+          "actual_steps": 8,
+          "simulation_start_s": 32.475001693703234,
+          "simulation_end_s": 32.87500171456486
+        },
+        {
+          "action_source": "controller_settle",
+          "start_step": 627,
+          "end_step": 633,
+          "actual_steps": 6,
+          "simulation_start_s": 32.87500171456486,
+          "simulation_end_s": 33.17500173021108
+        }
+      ]
+    },
+    {
+      "decision_index": 6,
+      "tool": "act",
+      "requested_steps": 6,
+      "stage": "grasp",
+      "final_operational_reason": "Robot 0 retains its nearly stationary anchor. Correction 1 brought the selected rim into robot 1's central jaw region, but its lift remains 12 mm above target and descending; yaw and extension also continue settling. Preserve the open grip and targets briefly to inspect final placement before the sole reclose.",
+      "actor_call_wall_s": 30.95044223899822,
+      "nonzero_channels": [],
+      "all_zero_action": true,
+      "raw_named_to_canonical_float32_equal": true,
+      "canonical_to_model_applied_float32_equal": true,
+      "segments": [
+        {
+          "action_source": "model",
+          "start_step": 633,
+          "end_step": 639,
+          "actual_steps": 6,
+          "simulation_start_s": 33.17500173021108,
+          "simulation_end_s": 33.4750017458573
+        }
+      ]
+    }
+  ],
+  "intervals": [
+    {
+      "decision_index": 3,
+      "from_observation": 3,
+      "to_observation": 4,
+      "elapsed_simulation_s": 0.7000000365078449,
+      "robots": [
+        {
+          "robot": 0,
+          "axes": {
+            "lift": {
+              "actual_delta": -1.5280842781066895,
+              "target_delta": 0.0,
+              "unit": "mm"
+            },
+            "arm_extension_sum": {
+              "actual_delta": -0.16926974058151245,
+              "target_delta": 0.0,
+              "unit": "mm"
+            },
+            "wrist_yaw": {
+              "actual_delta": -0.00027599630993790925,
+              "target_delta": 0.0,
+              "unit": "rad"
+            }
+          },
+          "grasp_reference_base_frame_delta_xyz_mm": [
+            -0.20968914031982422,
+            -0.06787478923797607,
+            -1.5524625778198242
+          ],
+          "grasp_reference_base_frame_endpoint_norm_mm": 1.5680295208041015
+        },
+        {
+          "robot": 1,
+          "axes": {
+            "lift": {
+              "actual_delta": -169.37273740768433,
+              "target_delta": -184.80002880096436,
+              "unit": "mm"
+            },
+            "arm_extension_sum": {
+              "actual_delta": -20.70043236017227,
+              "target_delta": -19.360005855560303,
+              "unit": "mm"
+            },
+            "wrist_yaw": {
+              "actual_delta": -0.5996660571363464,
+              "target_delta": -0.6600000262260437,
+              "unit": "rad"
+            }
+          },
+          "grasp_reference_base_frame_delta_xyz_mm": [
+            -112.90353536605835,
+            -123.33348393440247,
+            -169.41356658935547
+          ],
+          "grasp_reference_base_frame_endpoint_norm_mm": 238.03216820858117
+        }
+      ]
+    },
+    {
+      "decision_index": 4,
+      "from_observation": 4,
+      "to_observation": 5,
+      "elapsed_simulation_s": 0.30000001564621925,
+      "robots": [
+        {
+          "robot": 0,
+          "axes": {
+            "lift": {
+              "actual_delta": -0.033974647521972656,
+              "target_delta": 0.0,
+              "unit": "mm"
+            },
+            "arm_extension_sum": {
+              "actual_delta": 0.04013627767562866,
+              "target_delta": 0.0,
+              "unit": "mm"
+            },
+            "wrist_yaw": {
+              "actual_delta": 3.0502676963806152e-05,
+              "target_delta": 0.0,
+              "unit": "rad"
+            }
+          },
+          "grasp_reference_base_frame_delta_xyz_mm": [
+            0.03820657730102539,
+            0.007413327693939209,
+            -0.04076957702636719
+          ],
+          "grasp_reference_base_frame_endpoint_norm_mm": 0.05636362645772397
+        },
+        {
+          "robot": 1,
+          "axes": {
+            "lift": {
+              "actual_delta": -13.248920440673828,
+              "target_delta": 0.0,
+              "unit": "mm"
+            },
+            "arm_extension_sum": {
+              "actual_delta": 0.20185858011245728,
+              "target_delta": 0.0,
+              "unit": "mm"
+            },
+            "wrist_yaw": {
+              "actual_delta": -0.04705536365509033,
+              "target_delta": 0.0,
+              "unit": "rad"
+            }
+          },
+          "grasp_reference_base_frame_delta_xyz_mm": [
+            -9.865880012512207,
+            -6.993308663368225,
+            -13.220608234405518
+          ],
+          "grasp_reference_base_frame_endpoint_norm_mm": 17.917210624705508
+        }
+      ]
+    },
+    {
+      "decision_index": 5,
+      "from_observation": 5,
+      "to_observation": 6,
+      "elapsed_simulation_s": 0.7000000365078449,
+      "robots": [
+        {
+          "robot": 0,
+          "axes": {
+            "lift": {
+              "actual_delta": -0.01609325408935547,
+              "target_delta": 0.0,
+              "unit": "mm"
+            },
+            "arm_extension_sum": {
+              "actual_delta": 0.040508806705474854,
+              "target_delta": 0.0,
+              "unit": "mm"
+            },
+            "wrist_yaw": {
+              "actual_delta": 3.436417318880558e-05,
+              "target_delta": 0.0,
+              "unit": "rad"
+            }
+          },
+          "grasp_reference_base_frame_delta_xyz_mm": [
+            0.037610530853271484,
+            0.008694827556610107,
+            -0.02467632293701172
+          ],
+          "grasp_reference_base_frame_endpoint_norm_mm": 0.0458156411173713
+        },
+        {
+          "robot": 1,
+          "axes": {
+            "lift": {
+              "actual_delta": -149.1020917892456,
+              "target_delta": -160.16000509262085,
+              "unit": "mm"
+            },
+            "arm_extension_sum": {
+              "actual_delta": 36.859966814517975,
+              "target_delta": 38.720011711120605,
+              "unit": "mm"
+            },
+            "wrist_yaw": {
+              "actual_delta": -0.2324390411376953,
+              "target_delta": -0.24199998378753662,
+              "unit": "rad"
+            }
+          },
+          "grasp_reference_base_frame_delta_xyz_mm": [
+            -17.158925533294678,
+            -27.145996689796448,
+            -149.1224765777588
+          ],
+          "grasp_reference_base_frame_endpoint_norm_mm": 152.54129566259692
+        }
+      ]
+    },
+    {
+      "decision_index": 6,
+      "from_observation": 6,
+      "to_observation": 7,
+      "elapsed_simulation_s": 0.30000001564621925,
+      "robots": [
+        {
+          "robot": 0,
+          "axes": {
+            "lift": {
+              "actual_delta": 0.002682209014892578,
+              "target_delta": 0.0,
+              "unit": "mm"
+            },
+            "arm_extension_sum": {
+              "actual_delta": 0.004805624485015869,
+              "target_delta": 0.0,
+              "unit": "mm"
+            },
+            "wrist_yaw": {
+              "actual_delta": -2.9735383577644825e-06,
+              "target_delta": 0.0,
+              "unit": "rad"
+            }
+          },
+          "grasp_reference_base_frame_delta_xyz_mm": [
+            0.006020069122314453,
+            -0.001043081283569336,
+            0.004827976226806641
+          ],
+          "grasp_reference_base_frame_endpoint_norm_mm": 0.007787079378572344
+        },
+        {
+          "robot": 1,
+          "axes": {
+            "lift": {
+              "actual_delta": -11.529982089996338,
+              "target_delta": 0.0,
+              "unit": "mm"
+            },
+            "arm_extension_sum": {
+              "actual_delta": 2.3243725299835205,
+              "target_delta": 0.0,
+              "unit": "mm"
+            },
+            "wrist_yaw": {
+              "actual_delta": -0.01767277717590332,
+              "target_delta": 0.0,
+              "unit": "rad"
+            }
+          },
+          "grasp_reference_base_frame_delta_xyz_mm": [
+            -1.9989609718322754,
+            -1.5629231929779053,
+            -11.486172676086426
+          ],
+          "grasp_reference_base_frame_endpoint_norm_mm": 11.76310913912352
+        }
+      ]
+    }
+  ],
+  "visual_findings": [
+    {
+      "from_obs": 3,
+      "to_obs": 4,
+      "finding": "R1 open jaw moves from upper held-edge area toward the lower curved yellow boundary; R0 local cloth remains visible. Boundary/layer identity and support force are unconfirmed."
+    },
+    {
+      "from_obs": 4,
+      "to_obs": 5,
+      "finding": "Viewed blue-panel/yellow-boundary/open-jaw arrangement is broadly similar; no clear new independent cloth-following or opening-separation evidence. Small view-relative movement is visible and is not asserted to be zero cloth motion."
+    },
+    {
+      "from_obs": 5,
+      "to_obs": 6,
+      "finding": "Lower yellow-boundary end moves nearer the R1 central jaw region in the wrist view; approach/placement relation changes, without an attachment or opposing-lip conclusion."
+    },
+    {
+      "from_obs": 6,
+      "to_obs": 7,
+      "finding": "The same selected boundary remains near the open-jaw region; no clear new cloth relation beyond settling. R0 cloth remains visible; independent anchoring is unconfirmed."
+    }
+  ],
+  "neutral_call_wall_s_observed": {
+    "D4": 41.40830243500022,
+    "D6": 30.95044223899822,
+    "sum": 72.35874467399844,
+    "meaning": "observed actor-call path wall, not inference-only time or a guaranteed future saving"
+  },
+  "comparison_e24": {
+    "reference": {
+      "path": "docs/collection/reviews/20261107-astra-progress1179-named-001-motion.ko.md",
+      "bytes": 6626,
+      "sha256": "4f8976e4b595d9dd128c6ba182085d3512b93dd4032083ee06425d5381f1f93b"
+    },
+    "scope": "previous published public-motion review only; original E24 HDF5/state/evaluation not reopened",
+    "D5_robot1_arm_error_mm_before": -104.789034,
+    "D5_robot1_arm_error_mm_after": -98.082602,
+    "D5_neutral_steps": 10,
+    "D5_actual_arm_delta_mm": -6.706432,
+    "interpretation": "Waiting reduced error only partly in that different configuration. E24 D6 changed the target substantially; its error reduction did not prove completion of the old retraction or contact resolution."
+  },
+  "candidate": {
+    "configured_settle_steps": 12,
+    "implemented_or_executed": false,
+    "evidence": "Two D3/D5 motion segments each had configured6 followed by a separate model-selected neutral6. R1 lift/yaw errors and velocities reduced over the latter6 steps. This supports a conditional comparison, not universal convergence.",
+    "tradeoffs": [
+      "May avoid a model decision devoted only to extra neutral6 in similar conditions; current two neutral calls total the recorded wall above, not a predicted saving.",
+      "For these selected local pairs neutral duration already totals12; globally changing6 to12 adds0.30 simulation seconds per otherwise eligible motion segment and consumes the transition budget.",
+      "Intermediate observation and choice after6 would be removed; contact/support changes could occur during the extra unobserved interval. Existing rules skip automatic settle after neutral or gripper-only acts.",
+      "Combining settle12 with a new M2 strategy confounds observation cadence/physical timing with the manipulation method; record separate axes or compare one change at a time.",
+      "No guarantee of identical cloth state on a later replay; no fixed wait proves attachment, independent support, all-target convergence or stopped motion."
+    ],
+    "no_automatic_gate": true
+  },
+  "subsequent_selection_reported_by_root": {
+    "E25_closed_at_utc": "2026-11-07T05:38:26Z",
+    "next_label": "E26",
+    "strategy": "coordinated-leading-hand-swap",
+    "configured_settle_steps": 6,
+    "status": "planned_not_started_at_report",
+    "settle12_candidate_selected": false,
+    "scope": "Root-supplied closure/plan only; no later public observation or score used in this analysis."
+  },
+  "independent_numeric_review": {
+    "reviewer": "restore_review",
+    "scope": "Only public obs6→7 R1 lift/arm/yaw using the listed public index mapping; not the entire report or a rerun.",
+    "result": "matched",
+    "lift_error_mm_before": -12.219965458,
+    "lift_error_mm_after": -0.689983368,
+    "lift_actual_delta_mm": -11.52998209,
+    "lift_velocity_mm_s_before": -63.098944724,
+    "lift_velocity_mm_s_after": -5.653707311,
+    "arm_error_mm_before": 3.675423563,
+    "arm_error_mm_after": 1.351051033,
+    "yaw_error_rad_before": -0.0228710771,
+    "yaw_error_rad_after": -0.0051982999,
+    "limitations": "No HDF5/evaluation/log/other-observation/file-edit/GPU access. Does not establish future settle12 effect or cloth support."
+  }
+}

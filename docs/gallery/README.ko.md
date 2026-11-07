@@ -2,6 +2,29 @@
 
 [저장소 소개](../../README.md) · [현재 상태](../project/STATUS.md) · [이번 세션 기록](../project/sessions/20261106-evening-resume.ko.md)
 
+**최신 E25 · 한쪽 가장자리 재파지와 국소 천 동행 검사**
+
+<a href="assets/20261107-e25-rim-regrasp/event.mp4"><img src="assets/20261107-e25-rim-regrasp/preview.gif" width="960" alt="E25 공개 네 카메라. 로봇0 지지를 유지하며 로봇1을 열고 다른 낮은 경계로 옮겨 다시 닫은 뒤 천 동행과 경계 반응을 확인하는 과정"></a>
+
+[**MP4 크게 보기**](assets/20261107-e25-rim-regrasp/event.mp4) · [**전체·지지 검사 영상**](20261107-astra-opposing563-named-001.ko.md) · [**분석**](../collection/reviews/20261107-astra-opposing563-named-001.ko.md) · [**피드백 남기기**](https://github.com/leonyoon-3dai/PhyRC_2027_phase1/issues/new?title=%5BE25+%ED%94%BC%EB%93%9C%EB%B0%B1%5D+%ED%95%9C%EC%AA%BD+%EC%9E%AC%ED%8C%8C%EC%A7%80%EC%99%80+%EC%A7%80%EC%A7%80+%EA%B2%80%EC%82%AC&body=%EC%8B%9C%EB%8F%84%3A+E25+%2F+20261107-astra-opposing563-named-001%0A%EC%98%81%EC%83%81+%EC%8B%9C%EA%B0%81+%EB%98%90%EB%8A%94+%EA%B2%BD%EA%B3%84%3A%0A%EC%B9%B4%EB%A9%94%EB%9D%BC%3A%0A%0A%EB%B3%B4%EC%9D%B4%EB%8A%94+%EC%82%AC%EC%8B%A4%3A%0A%0A%ED%95%B4%EC%84%9D%C2%B7%EC%A7%88%EB%AC%B8%3A%0A%0A%EB%8B%A4%EC%9D%8C%EC%97%90+%EB%B9%84%EA%B5%90%ED%95%A0+%EB%B0%A9%EB%B2%95%3A%0A) · [이전 E24 진입·복구](20261107-astra-progress1179-named-001.ko.md)
+
+**공식 원점수 5/50 · 픽업5 · 착의0 · `success=false` · 698/698기록 검사 통과.** 테이블 위에서 로봇0 쪽 지지를 유지하고 로봇1을 열어 낮은 곡선 경계로 옮겼습니다. 한 번 위치를 보정해 다시 닫은 뒤, 약2.7cm 상승에 새 파지 부근 천이 따라오는 모습을 확인했습니다. **국소 동행의 잠정 근거는 있지만, 반대인 두 입구 경계의 개방은 미확인입니다.** 차등 움직임·시점 복구 뒤 모델이 자율 종료했으며 운반·진입은 실행하지 않았습니다. 최고5점, 중간 목표10점은 아직 미달성입니다.
+
+591–698경계 · 108프레임 · 21.6초 · 4배 느리게입니다. 위는 로봇0/1 머리, 아래는 로봇0/1 손목이며 모델 대기는 제외했습니다. [영상 출처](assets/20261107-e25-rim-regrasp/provenance.json) · [학습 검토 구간](../collection/reviews/20261107-astra-opposing563-named-001-learning-segments.json)
+
+전체 **698전이·시뮬레이션34.9초**, 새 구간은 **135전이·6.75초**입니다. 실제20분26초, 563재실행+93모델 행동+42정착이며 15호출·13행동+자율종료1판단입니다. 깊이 질의1회6유효점·질의 중 물리0, 추가 마감 전이0입니다. 전이1개는 관측→행동→다음 관측의0.05초 기록입니다.
+
+**다음 E26 준비:** E18/787·history719/771에서 기존 파지를 유지하고, 먼저 안내할 손·지지/안내 역할·몸통 입구의 접근면을 바꾸는 `coordinated-leading-hand-swap`을 선택했습니다. 실제 손·역할 교환은 현재 관측으로 구분해 기록하며, 단순 비대칭 움직임이나 이름 변경으로 대신하지 않습니다. 22판단/max1400·정착6을 유지합니다. 아직 실행 전입니다. [현재 상태·명령](../project/STATUS.md) · [방법 설명](../collection/research/2026-11-07-leading-hand-candidate.ko.md)
+
+[**출발점 화면 5개 비교·피드백**](20261107-support-startpoints.ko.md) · [**출발점·방법 데이터베이스**](../collection/catalog/README.ko.md) · [**0→5→10 구간 조합 장기계획**](../collection/research/2026-11-07-composable-scoring-data-plan.ko.md)
+
+**10점은 중간 목표이며 공식 확인 후 다음 득점 항목으로 계속 진행합니다.** 실패·복구와 원본을 보존하고, 합성 자료 확대는 장기 계획으로 구분합니다.
+
+<details>
+<summary>E24까지 갤러리·당시 계획 이력</summary>
+
+> 아래는 당시 기록입니다. 현재 상태는 위 내용을 따릅니다.
+
 **최신 E24 · 손–가장자리 정렬 뒤 진입 시도, 부분 시야 복구**
 
 <a href="assets/20261107-e24-entry-recovery/event.mp4"><img src="assets/20261107-e24-entry-recovery/preview.gif" width="960" alt="E24 공개 네 카메라. 손 재노출과 옷 진입 시도 뒤 큰 면에 가려지고, 마지막 후퇴·들기에서 틈이 일부 다시 드러나는 과정"></a>
@@ -509,6 +532,8 @@ plan3는 중간 관측으로 다시 판단하는 조건부 계획이 아닙니�
 
 </details>
 
+
+</details>
 
 </details>
 

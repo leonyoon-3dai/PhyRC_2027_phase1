@@ -587,13 +587,13 @@
       "parent_run_id": "20261106-astra-guide470-depth-001",
       "replay_prefix_steps": 563,
       "replay_completed_steps": 563,
-      "recorded_transitions": null,
-      "qc_status": "pending",
+      "recorded_transitions": 698,
+      "qc_status": "passed",
       "backup": {
-        "status": "unknown",
-        "receipt": null,
-        "revision": null,
-        "sha256": null
+        "status": "verified",
+        "receipt": "docs/project/sessions/20261107-e25-backup-verification.json",
+        "revision": "79e74c3dda23a676a59754005a22d55e89c6034f",
+        "sha256": "1d44bf676d162944907f33d090fa85f8516fafd22a7ef5f9190c57c13dfd8150"
       }
     }
   ],
@@ -1148,7 +1148,7 @@
     {
       "id": "coordinated-opposing-rim-named-query",
       "name": "coordinated-opposing-rim / named / query",
-      "status": "ready",
+      "status": "tested",
       "axes": {
         "grasp_arrangement": "one retained anchor and one visible opposing-rim candidate regrasp under table support",
         "entry_target": "body opening, then corresponding sleeve route",
@@ -1157,7 +1157,21 @@
         "view": "designated RGB-D + optional pixel depth query",
         "action_encoding": "named"
       },
-      "description": "Integrated M1 after E24 closure; re-test E17 opposing-boundary hypothesis at reviewed E18/563. Preserve anchor, confirm changed local following and relative edges; no color-only layer identity or automatic grasp certification. CPU validation is not actual model performance. Not yet dispatched."
+      "description": "E25 performed one actual R1 grasp change with R0 retained, one placement correction, post-close local follow and differential/view tests. Local following provisional; opposing free lips unresolved, transport/entry not performed; autonomousfinish at5points. Actual grasp-change performance is separate from topology/score success."
+    },
+    {
+      "id": "coordinated-leading-hand-swap-named-query",
+      "name": "coordinated-leading-hand-swap / named / query",
+      "status": "ready",
+      "axes": {
+        "grasp_arrangement": "retain existing useful bilateral grasps; no regrasp",
+        "entry_target": "a currently distinguishable other leading hand, identity uncertainty explicit",
+        "approach": "change observable guide/anchor roles and relative body-opening entry side, then approach",
+        "order": "identify current hand/role relation; reassign where supported; useful finite positioning/entry; reassess",
+        "view": "designated RGB-D + optional pixel depth query",
+        "action_encoding": "named"
+      },
+      "description": "M2 selected after E25 closure; actual distinct-hand,role and approach changes classified separately. Unestablished swap does not force finish, but ordinary task progress is not M2 execution. Body-opening to same-hand sleeve direction preserved. Actual model performance not yet tested."
     }
   ],
   "attempts": [
@@ -1690,17 +1704,34 @@
     },
     {
       "id": "20261107-astra-opposing563-named-001",
-      "status": "in_progress",
+      "status": "completed",
       "run_id": "20261107-astra-opposing563-named-001",
       "startpoint_id": "20261106-astra-guide470-depth-001-p563",
       "method_id": "coordinated-opposing-rim-named-query",
+      "result": {
+        "raw_points": 5,
+        "success": false,
+        "review": "docs/collection/reviews/20261107-astra-opposing563-named-001.ko.md",
+        "videos": [
+          "docs/gallery/assets/20261107-e25-rim-regrasp/event.mp4",
+          "docs/gallery/assets/20261107-e25-local-follow/event.mp4"
+        ]
+      },
+      "notes": "E25 autonomous finish,13act+finish14dec/15calls/one6pointqueryphysics0.698=563replay+93model+42settle;no cleanup. One actual R1release-reposition-correction1-reclose with R0anchor retained, then provisional local following; opposing two lips remained unresolved after differential shaping/view recovery. Transport/entry0,remaining budget16. raw5pickup5allclothing0,no_contact/null,successfalse. host/shellPython/sim0;source68658c9clean;trainingunreviewed."
+    },
+    {
+      "id": "planned-e18-787-leading-hand-swap",
+      "status": "planned",
+      "run_id": null,
+      "startpoint_id": "20261106-astra-guide470-depth-001-p787",
+      "method_id": "coordinated-leading-hand-swap-named-query",
       "result": {
         "raw_points": null,
         "success": null,
         "review": null,
         "videos": []
       },
-      "notes": "Actual E25 started2026-11-07T05:18:00Z from clean public source68658c9d9bb7e47591fb330f08f4f996ec4fcbfb. E18 direct parent563/history510542,30dec/max1400/timeout180/settle6/review10, fixed Astra/ultra exec plan1 named/query/wristpanel. Initial replay; intended grasp-change and post-close following remain unobserved. Full CPU310 passed before launch. Same E07 lineage,not exact cloth checkpoint; final outcome/QC/backup pending. Progress through D1/591:563replay complete; first two bilateral lowerings place body more broadly over table, local jaw cloth retained but residual lowering remains. R0anchor/R1changed-side selected; release0/newgrasp0. Final score pending."
+      "notes": "Selected E26 E18/787 history719771,22dec/max1400/timeout180/settle6/review10, fixed Astraultra execplan1 namedquerywristpanel. M2candidate3d1 integrated after E25 closed; actual source/time assigned at launch. Not yet executed, same E07 lineage, not exact cloth checkpoint. Keep settle6; optionalsettle12 remains untested."
     }
   ]
 }

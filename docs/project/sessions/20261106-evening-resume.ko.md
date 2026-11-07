@@ -323,3 +323,12 @@ E25 중간:05:27:15UTC 관측시563재실행완료·첫model_request였다. 이�
 +
 +[E24닫힌시간분석](../performance/20261107-e24-stage-timing.ko.md)은실제all-replay563까지490.225초·1179까지1041.782초의준비요청합을분리했다. 차551.558초는같은실행의측정구간이며이후재파지총시간절감이아니다.26call은20초기act+3query+2실행후속+1폐기후속으로나눴고질의물리0과호출비용을구분한다.7출처SHA를root도대조했다. 실행코드/E25설정변경없음이다.
 +
+## E25 자율 종료와 M2 선택 (2026-11-07 05:38:26 UTC)
+
+공식raw5/pickup5/착의0/successfalse/no_contact/final_scorenull이다.698=563replay+93model+42settle,새135전이6.75sim초·전체34.9초,13act+finish1/15calls/query1R1head6valid·물리0·추가마감0. wall1225.593759257초·actor568.194193909·env609.287343601. host76977=0·shellPython0·sim0·completed/errornull/capturecompleteoperator_finished/QC698오류0으로닫혔다. source68658c9d9bb7e47591fb330f08f4f996ec4fcbfbclean.
+
+D2R1open8→D3초기placement8+6→D4중립6→D5보정1(8+6)→D6중립6→D7reclose10→D8중립8→D9한쪽lift4+6→D10수축/roll5+6→D11자세복구6+6→D12중립8. R0anchor유지와R1새경계localfollowing잠정근거는있지만반대두lip독립개방은미확인이다. D13은예산16을남기고자율finish했으며운반/진입미실행이다. 양측하중·반대free lip·착의성과를확정하지않는다.
+
+E26은M2leading-hand-swap을E18/787hist719771·22decmax1400/settle6로선택했고E25종료후후보3d1bf2c를통합했다. 이전M2격리백업receipt의미통합표시는05:32준비당시상태다. 새손/역할/접근면은실제구분하고일반taskprogressfallback을M2성공으로세지않는다. settle12는가능성분석만하며이번새방법과동시변경하지않는다. 아직E26실제시행전이다.
+
+E25[고정원본백업](20261107-e25-backup-verification.json)은revision`79e74c3dda23a676a59754005a22d55e89c6034f`·1,624,331,388bytes·SHA`1d44bf676d162944907f33d090fa85f8516fafd22a7ef5f9190c57c13dfd8150`이며05:43:45UTC강제재다운로드/182member전수해시검증완료다. M2통합전체CPU317검사31.785초PASS·source/logSHA를root도확인했다. E18/787source_loader actionsfloat32(787,2,9)preflight통과,seed등trustedmetadata를공개출력하지않았다.

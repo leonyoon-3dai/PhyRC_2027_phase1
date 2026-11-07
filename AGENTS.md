@@ -12,14 +12,13 @@
 
 ## 확인된 현재 상태
 
-- 최신 E24 `20261107-astra-progress1179-named-001`은5/50·픽업5·착의0·success=false·no_dressing_points/0.0,QC1610/1610오류0으로 종료했다. sourceb0513d43a87c813397c57d8a4fa6ec4e6ff6ba03 clean·04:11:53–05:02:19UTC·50분26초.
-- 1610=1179재실행+304모델+126정착+1감독 마감.22act/26calls·3query16valid/물리0·finish0. 감독SIGINT05:01:38요청,마지막D22query후act미실행. host22076=130·shellPython130·simulator0·capturecomplete/operator_finished·attemptinterrupted. [고정 원본 백업 검증 완료](docs/project/sessions/20261107-e24-backup-verification.json)·trainingunreviewed.
-- 손–경계 정렬뒤D17진입에서큰면가림,D18–20복구미확인,D21어두운틈부분재노출. 마지막변화없음/모든방향소진으로단정하지않고,실제파지변경을비교한다. 새파지0회·공식착의0.
-- E25선택은E18/563·history510/542·coordinated-opposing-rim·30dec/max1400/timeout180/settle6/review10. 후보a3d10a5를E24종료후통합. 한쪽anchor/테이블지지아래다른경계재파지1cycle·닫힘후국소동행/차등검사. 2026-11-07T05:18:00Z·source68658c9d9bb7e47591fb330f08f4f996ec4fcbfb clean으로실제시작,초기화/재실행중·새결과미확인. 실제상태는STATUS/attempt우선.
-- 실행source의전체CPU검사는docs/project/sessions/20261107-opposing-rim-validation.json참조. 새prompt선택외공식schema최대20step·물리·20Hz·고정Astra/ultra/CLI0.166.0exec 유지.
-- E23은5점/QC1180/18행동예산종료이며원본백업c1157513362e30d6a8306e7c8fd2ec0265e5db2c검증완료. E22는host143/clientnull/sim0원인미확인보존. E21새파지후속검사없음/E20목선준비0점/E19세접근5점/E18roll오류이력보존.
-- catalog.v1.jsoncanonical·SQLite재생성. 과거5점/관측양측지지/독립하중/현재지지/착의성공/학습승인은별도. 모두같은E07계보·정확checkpoint아님.
-- 공식시연/BEHAVIOR·관측절차·국소depth·의복방향가설·장기0→5→10조합계획기록. 외부영상·픽셀좌표·평가정답을actor에주지않는다.10점은중간목표이며확인후다음득점으로계속한다.
+- 최신E25 `20261107-astra-opposing563-named-001`은5/50·픽업5·착의0·successfalse·no_contact/null,QC698/698오류0으로종료. source68658c9d9bb7e47591fb330f08f4f996ec4fcbfb clean·05:18:00–05:38:26UTC·20분26초.
+- 698=563재실행+93모델+42정착.13act+finish1/15calls·1query6valid/물리0·마감물리0. host76977=0·shellPython0·sim0·attemptcompleted/capturecompleteoperator_finished. [고정 원본 백업 검증 완료](docs/project/sessions/20261107-e25-backup-verification.json)·trainingunreviewed.
+- R0anchor유지/R1release→다른낮은경계placement→보정1→reclose1실행. D9localfollowing잠정근거있음. D10차등/D11자세/D12중립뒤반대두lip관계미확인으로finish. 운반/진입0·남은예산16,감독중단/예산소진아님.
+- E26선택E18/787hist719771/coordinated-leading-hand-swap22decmax1400settle6. M2후보3d1bf2c를E25닫힘후통합. 다른leadinghand/역할교환/접근면변경은실제근거를따로분류하고미식별일반접근을M2수행으로세지않는다. 아직미실행,STATUS/attempt우선.
+- 전체통합CPU결과는docs/project/sessions/20261107-leading-hand-validation.json참조. 새선택prompt외공식schema최대20step·물리·20Hz·고정Astraultra/CLI0.166.0exec유지. settle12후보는분석만,E26정착6유지.
+- E24는5점/1610QC/22act감독중단130,shell130/sim0. D21부분복구보존·백업1edca310c1b869a8f4c01b3eeb67b14f6699e12c검증완료. E23팔노출/1180QC, E22host143/clientnull/sim0불확실성, E21새파지후속검사없음/E20목선0/E19세접근/E18roll오류이력보존.
+- catalog.v1.jsoncanonical·SQLite재생성. 과거5점/관측지지/독립하중/현재지지/착의성공/학습승인은별도. 같은E07계보·정확checkpoint아님. 장기0→5→10합성계획은현재학습/미검증성공자료생성과구분한다.10점이후다음득점으로계속한다.
 
 ## 실행과 재현
 

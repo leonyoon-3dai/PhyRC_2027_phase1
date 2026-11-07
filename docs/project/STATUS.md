@@ -1,5 +1,58 @@
 # 현재 상태와 다음 작업
 
+**E25는5/50·픽업5·착의0·success=false,698/698전이 검사 통과로 종료했습니다.** 한쪽 재파지1cycle과새파지국소동행을확인했지만반대두입구경계의개방은미확인입니다. 운반/진입전에모델이자율종료했습니다. 최고5점·중간목표10점미달성입니다.
+
+[최신 영상](../gallery/20261107-astra-opposing563-named-001.ko.md) · [분석](../collection/reviews/20261107-astra-opposing563-named-001.ko.md) · [학습 검토 구간](../collection/reviews/20261107-astra-opposing563-named-001-learning-segments.json) · [전체 일지](sessions/20261106-evening-resume.ko.md)
+
+| 확인 항목 | E25 결과 |
+|---|---|
+| 실행 소스·부모 | `68658c9d9bb7e47591fb330f08f4f996ec4fcbfb`·시작clean·직접E18/563·history510/542 |
+| 모델·전략 | Astra/ultra·coordinated-opposing-rim·named/query·13act+finish1/15calls·1query6유효점·질의물리0 |
+| 실제 구간 | 563재실행+93모델+42정착=698·34.9sim초. 새135전이6.75sim초·마감물리0 |
+| 실제 시간 | 05:18:00–05:38:26UTC·1225.593759초(20분26초) |
+| 호출 경로 | 모델568.194194초·환경609.287344초. 순수 내부 추론시간은 미제공 |
+| 공식 결과 | raw5·픽업5·착의전항목0·success=false·no_contact/final_scorenull |
+| 마감·검사 | 모델finish·attempt completed/errornull·capture complete/operator_finished·QC698/698오류0·host76977=0·shell Python0·simulator0 |
+| 보존·학습 | [고정 원본 백업·재다운로드 검증 완료](sessions/20261107-e25-backup-verification.json)·training unreviewed |
+
+## 실제 파지 변경에서 확인한 범위
+
+D2에서R1만열고D3초기배치·D5보정1후D7한번다시닫았습니다. R0쪽천을유지했고D9한쪽상승에서R1실제lift+26.62mm와국소천동행을확인했습니다. 추가닫힘도혼재하므로독립하중지지나반대free lip파지확정은아닙니다. D10수축/roll차등시험·D11자세복구·D12중립뒤에도큰파란면과한노란경계가주로보여두경계개방은미확인이었습니다. 30판단중14판단을사용했고16개를남긴자율finish입니다. 감독중단이나예산소진과구분합니다.
+
+## E26에서 손·역할·접근면을 바꾸는 비교
+
+**E18/787·history719/771·coordinated-leading-hand-swap·22판단/max1400**으로선택했습니다. 원래운반을마친출발점에서현재구별되는다른손을leading으로정하고guide/anchor역할과body-opening접근면을바꾸는비교입니다. 재파지0이며body opening으로들어가그손의대응sleeve로나오는방향을유지합니다. 과거손정체·좌표·평가정답을actor에주지않습니다.
+
+현재/이전목표손이나역할을식별하지못하면교환미확인으로기록합니다. 그상태에서도유용한일반접근은가능하지만M2수행으로세지않습니다. E25새파지결과는보존하며,이번에는기존E18/787의다른접근비교를우선합니다. 기존E23/E24와도천접힘·예산차이가있으므로단일인과를확정하지않습니다. [방법·판정구분](../collection/research/2026-11-07-leading-hand-candidate.ko.md)
+
+M2후보3d1bf2c를E25실제종료후통합했습니다. 전체CPU는[검증기록](sessions/20261107-leading-hand-validation.json)에남기며실제손교환·착의효과는아직미검증입니다. E25의추가중립에서위치추종수렴을봤지만이번E26은정착6을유지해새방법과관측시점변경을동시에섞지않습니다. 공식물리·20Hz·최대20step·모델·관측계약은그대로입니다. **아직 E26 실제 시행 전입니다.**
+
+## E26 예정 명령 · 공개 소스 확정 후, 아직 미실행
+
+```bash
+export PATH="$PWD/.runtime/codex-0.166.0/node_modules/.bin:$PATH"
+unset STRETCH4_PRACTICE_LAYOUT STRETCH4_RANDOMIZE
+PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.codex_client \
+  --run-id 20261107-astra-hand-swap787-named-001 --mode dressing \
+  --strategy coordinated-leading-hand-swap --actor-backend exec \
+  --model gpt-6-astra --effort ultra --plan-size 1 --review-points 10 \
+  --replay-prefix-run 20261106-astra-guide470-depth-001 --replay-prefix-steps 787 \
+  --parent-attempt 20261106-astra-guide470-depth-001 \
+  --retry-reason compare_leading_hand_roles_and_body_entry_approach \
+  --replay-observe-steps 719 771 --wrist-depth-panel --pixel-depth-query --named-actions \
+  --post-action-settle-steps 6 --decisions 22 --max-steps 1400 --model-timeout 180 \
+  --profile-step-phases
+```
+
+직접부모는E18이며같은E07 source group입니다. 재실행은정확한천checkpoint가아니고새현재지지를다시확인합니다. 공식10점을확인하면원본·성과를보존하고다음득점으로계속합니다.
+
+<details>
+<summary>E24 종료·E25 실행 중 당시 상태 이력</summary>
+
+> 아래는 당시 기록입니다. 현재 상태는 위 내용을 따릅니다.
+
+# 현재 상태와 다음 작업
+
 **E24는5/50·픽업5·착의0·success=false,1,610/1,610전이 검사 통과로 종료했습니다.** 22회 실제 행동에서 손–경계 정렬과 진입 시도, 큰 면 가림과 마지막 부분 시야 복구를 확인했습니다. 공식 소매 통과는 없으며 최고5점·중간목표10점미달성입니다.
 
 [최신 영상](../gallery/20261107-astra-progress1179-named-001.ko.md) · [분석](../collection/reviews/20261107-astra-progress1179-named-001.ko.md) · [학습 검토 구간](../collection/reviews/20261107-astra-progress1179-named-001-learning-segments.json) · [전체 일지](sessions/20261106-evening-resume.ko.md)
@@ -471,6 +524,8 @@ PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.codex_clie
 [클린 서버 복원](START_HERE.ko.md) · [초기 자산·E07 복원 검증](sessions/20261106-evening-restore-validation.json) · [E16 분석](../collection/reviews/20261106-astra-support264-002.ko.md) · [E15 마감 이력](SESSION_WRAPUP_20261106.ko.md) · [전체 개발 이력](HISTORY.ko.md)
 
 새 정책 학습·RL/VLA 성능 검증·학습 승인은 완료하지 않았습니다. 이전 문서의 일시 중지·미실행 문구는 당시 이력이며 현재 실행 상태는 이 문서와 최신 일지를 우선합니다.
+
+</details>
 
 </details>
 
