@@ -1,0 +1,334 @@
+{
+  "schema": "public-conditional-continuation-review-v1",
+  "status": "conditional_unselected_not_executed",
+  "priority_preserved": "E26 M2 from E18/787 actually started2026-11-07T05:51:36Z and remains prioritized; this E25 branch is unselected.",
+  "reviewed_run": "20261107-astra-opposing563-named-001",
+  "reviewed_source_commit": "68658c9d9bb7e47591fb330f08f4f996ec4fcbfb",
+  "candidate": {
+    "direct_parent": "20261107-astra-opposing563-named-001",
+    "replay_prefix_transitions": 698,
+    "suggested_fresh_replay_history_boundaries": [
+      657,
+      667
+    ],
+    "history_reason": "657 is after closing wait and before the local lift;667 is after that lift. Both precede698 and show evidence for the changed grip in the new replay.",
+    "capture_history_from_new_replay": true,
+    "exact_cloth_checkpoint_claimed": false,
+    "source_loading_verification_required_before_selection": true,
+    "strategy_family": "existing task-progress continuation; no strategy implementation or execution here",
+    "selected": false,
+    "executed": false
+  },
+  "evidence_scope": [
+    "Saved designated public RGB and public robot state",
+    "13 finalized physical act decisions and permitted final brief reasons",
+    "Root-provided final result used only as selection context, not grasp verification"
+  ],
+  "forbidden_sources_accessed": [],
+  "hidden_evaluation_used_as_teacher": false,
+  "training_approval": "unreviewed",
+  "observation_sources": [
+    {
+      "observation_index": 0,
+      "transition_boundary": 563,
+      "path": "output/actors/20261107-astra-opposing563-named-001/observations/00000/observation.json",
+      "sha256": "2d4eddb4fb83a858817ae9a5f4bab1b4473e6f7da1fcd9618ba04e883c69deb8"
+    },
+    {
+      "observation_index": 2,
+      "transition_boundary": 591,
+      "path": "output/actors/20261107-astra-opposing563-named-001/observations/00002/observation.json",
+      "sha256": "4c84c9c514fdca7212bf9abd3959d0f358018e7591abd5bc2cc0a12500008fd9"
+    },
+    {
+      "observation_index": 3,
+      "transition_boundary": 599,
+      "path": "output/actors/20261107-astra-opposing563-named-001/observations/00003/observation.json",
+      "sha256": "cbeb61f13401c097f229ee587ab1223361c7bf4c4afa6ad507ddcc31e1e4223a"
+    },
+    {
+      "observation_index": 9,
+      "transition_boundary": 657,
+      "path": "output/actors/20261107-astra-opposing563-named-001/observations/00009/observation.json",
+      "sha256": "2e007a4f53d743ba91ffc87d75808377b20ba24f8f6995f7b4f3a958e37ef247"
+    },
+    {
+      "observation_index": 10,
+      "transition_boundary": 667,
+      "path": "output/actors/20261107-astra-opposing563-named-001/observations/00010/observation.json",
+      "sha256": "226b7aed0fa8a74b2a2869b2cba18bef7464486243c4af1f77ce04b5c5091102"
+    },
+    {
+      "observation_index": 11,
+      "transition_boundary": 678,
+      "path": "output/actors/20261107-astra-opposing563-named-001/observations/00011/observation.json",
+      "sha256": "34481aedf26cfd04382830257fb4ffb3be226a4834db3125b003166562ba4534"
+    },
+    {
+      "observation_index": 12,
+      "transition_boundary": 690,
+      "path": "output/actors/20261107-astra-opposing563-named-001/observations/00012/observation.json",
+      "sha256": "ed200dff0ea09dbc8f0e3d81ee7ea16daea042d0f645c5a92244e6817c244f2a"
+    },
+    {
+      "observation_index": 13,
+      "transition_boundary": 698,
+      "path": "output/actors/20261107-astra-opposing563-named-001/observations/00013/observation.json",
+      "sha256": "913c03cff7129e31ffc2307ba2055b06e5789c5a6dba08ff5fe8516780aa33d7"
+    }
+  ],
+  "public_quantitative_comparisons": [
+    {
+      "start_boundary": 657,
+      "end_boundary": 667,
+      "robots": [
+        {
+          "robot": 0,
+          "lift_delta_mm": -0.00035762786865234375,
+          "arm_extension_delta_mm": 0.1375153660774231,
+          "wrist_roll_delta_rad": 1.5002686268417165e-05,
+          "gripper_reference_base_frame_delta_mm": [
+            0.14251470565795898,
+            0.011786818504333496,
+            0.0008344650268554688
+          ],
+          "gripper_reference_base_frame_displacement_mm": 0.14300372985034282,
+          "fingertip_origin_distance_start_mm": 39.975184947252274,
+          "fingertip_origin_distance_end_mm": 39.931073784828186
+        },
+        {
+          "robot": 1,
+          "lift_delta_mm": 26.623189449310303,
+          "arm_extension_delta_mm": 0.3323107957839966,
+          "wrist_roll_delta_rad": 1.1247005488712603e-05,
+          "gripper_reference_base_frame_delta_mm": [
+            0.3502964973449707,
+            0.006452202796936035,
+            26.620984077453613
+          ],
+          "gripper_reference_base_frame_displacement_mm": 26.623289475927123,
+          "fingertip_origin_distance_start_mm": 46.613991260528564,
+          "fingertip_origin_distance_end_mm": 40.68493843078613
+        }
+      ]
+    },
+    {
+      "start_boundary": 667,
+      "end_boundary": 678,
+      "robots": [
+        {
+          "robot": 0,
+          "lift_delta_mm": 0.0030994415283203125,
+          "arm_extension_delta_mm": -0.2182796597480774,
+          "wrist_roll_delta_rad": -8.709273970453069e-06,
+          "gripper_reference_base_frame_delta_mm": [
+            -0.22292137145996094,
+            -0.018805265426635742,
+            0.006258487701416016
+          ],
+          "gripper_reference_base_frame_displacement_mm": 0.22380068036014744,
+          "fingertip_origin_distance_start_mm": 39.931073784828186,
+          "fingertip_origin_distance_end_mm": 39.90460932254791
+        },
+        {
+          "robot": 1,
+          "lift_delta_mm": 3.8762688636779785,
+          "arm_extension_delta_mm": -27.425438165664673,
+          "wrist_roll_delta_rad": 0.1459013584687341,
+          "gripper_reference_base_frame_delta_mm": [
+            -27.390241622924805,
+            0.03316998481750488,
+            3.8448572158813477
+          ],
+          "gripper_reference_base_frame_displacement_mm": 27.658802638954025,
+          "fingertip_origin_distance_start_mm": 40.68493843078613,
+          "fingertip_origin_distance_end_mm": 39.85428065061569
+        }
+      ]
+    },
+    {
+      "start_boundary": 678,
+      "end_boundary": 690,
+      "robots": [
+        {
+          "robot": 0,
+          "lift_delta_mm": -0.006794929504394531,
+          "arm_extension_delta_mm": -0.5737245082855225,
+          "wrist_roll_delta_rad": 8.230412095144857e-05,
+          "gripper_reference_base_frame_delta_mm": [
+            -0.5756020545959473,
+            0.11715292930603027,
+            -0.07218122482299805
+          ],
+          "gripper_reference_base_frame_displacement_mm": 0.591821479262968,
+          "fingertip_origin_distance_start_mm": 39.90460932254791,
+          "fingertip_origin_distance_end_mm": 39.88983482122421
+        },
+        {
+          "robot": 1,
+          "lift_delta_mm": 49.589335918426514,
+          "arm_extension_delta_mm": 28.238125145435333,
+          "wrist_roll_delta_rad": 0.01922827959060669,
+          "gripper_reference_base_frame_delta_mm": [
+            2.3810863494873047,
+            32.672807574272156,
+            0.017940998077392578
+          ],
+          "gripper_reference_base_frame_displacement_mm": 32.759460448373424,
+          "fingertip_origin_distance_start_mm": 39.85428065061569,
+          "fingertip_origin_distance_end_mm": 39.82332721352577
+        }
+      ]
+    },
+    {
+      "start_boundary": 690,
+      "end_boundary": 698,
+      "robots": [
+        {
+          "robot": 0,
+          "lift_delta_mm": 0.0037550926208496094,
+          "arm_extension_delta_mm": -0.17559528350830078,
+          "wrist_roll_delta_rad": 3.937449764634948e-05,
+          "gripper_reference_base_frame_delta_mm": [
+            -0.1704096794128418,
+            0.07977336645126343,
+            -0.03039836883544922
+          ],
+          "gripper_reference_base_frame_displacement_mm": 0.19059724462964067,
+          "fingertip_origin_distance_start_mm": 39.88983482122421,
+          "fingertip_origin_distance_end_mm": 39.77731987833977
+        },
+        {
+          "robot": 1,
+          "lift_delta_mm": 5.303561687469482,
+          "arm_extension_delta_mm": 2.5261789560317993,
+          "wrist_roll_delta_rad": 0.0009808540344238281,
+          "gripper_reference_base_frame_delta_mm": [
+            -0.6657838821411133,
+            3.9888322353363037,
+            0.5542635917663574
+          ],
+          "gripper_reference_base_frame_displacement_mm": 4.081820538501741,
+          "fingertip_origin_distance_start_mm": 39.82332721352577,
+          "fingertip_origin_distance_end_mm": 39.8295633494854
+        }
+      ]
+    }
+  ],
+  "final_public_robot_state_summary": [
+    {
+      "robot": 0,
+      "close_intent": true,
+      "fingertip_origin_distance_mm": 39.77731987833977,
+      "finger_actual_rad": [
+        0.10279345512390137,
+        0.10361684113740921
+      ],
+      "finger_target_rad": 0.10300000011920929,
+      "finger_velocity_rad_s": [
+        -0.00710131973028183,
+        0.003445554291829467
+      ],
+      "target_minus_actual": {
+        "lift_mm": 2.6063919067382812,
+        "arm_extension_mm": 1.1034607887268066,
+        "wrist_yaw_rad": -0.0010583123657852411,
+        "wrist_pitch_rad": -0.0048146843910217285,
+        "wrist_roll_rad": -5.2018469432368875e-05
+      },
+      "velocity": {
+        "lift_mm_s": 11.082018725574017,
+        "arm_extension_mm_s": -2.160284493584186,
+        "wrist_yaw_rad_s": 0.01757703348994255,
+        "wrist_pitch_rad_s": -0.026975644752383232,
+        "wrist_roll_rad_s": -0.041772808879613876
+      }
+    },
+    {
+      "robot": 1,
+      "close_intent": true,
+      "fingertip_origin_distance_mm": 39.8295633494854,
+      "finger_actual_rad": [
+        0.102417953312397,
+        0.10426383465528488
+      ],
+      "finger_target_rad": 0.10300000011920929,
+      "finger_velocity_rad_s": [
+        0.07318978011608124,
+        -0.07624053210020065
+      ],
+      "target_minus_actual": {
+        "lift_mm": 3.3896565437316895,
+        "arm_extension_mm": -0.047616660594940186,
+        "wrist_yaw_rad": 0.00011861324310302734,
+        "wrist_pitch_rad": 0.0002251267433166504,
+        "wrist_roll_rad": -0.001110851764678955
+      },
+      "velocity": {
+        "lift_mm_s": 14.84052836894989,
+        "arm_extension_mm_s": 0.5600837175734341,
+        "wrist_yaw_rad_s": -0.05524421110749245,
+        "wrist_pitch_rad_s": -0.016970163211226463,
+        "wrist_roll_rad_s": -0.12009967863559723
+      }
+    }
+  ],
+  "frame_limit": "Gripper-reference displacement is measured in each robot base frame; it is not a cloth material point, world-fixed contact or an attachment sensor.",
+  "support_assessment": {
+    "robot1_new_grip": "Positive provisional local-follow evidence from657→667; additional closing and table support remain.",
+    "robot0_anchor": "Jaw-local cloth retained with small reference-point changes during robot1 tests; not independently load-certified.",
+    "bilateral_support": "Useful provisional local retention, not guaranteed independent load-bearing or opposing free-lip control.",
+    "dressing_utility": "Untested for the changed grasp: no transport or dressing-entry act in the new suffix563→698, after replay; replay actions are separate.",
+    "score_limit": "Retained pickup selection information does not verify the changed grip."
+  },
+  "competing_hypotheses": [
+    {
+      "id": "table_height_fold_visibility",
+      "status": "unresolved",
+      "hypothesis": "Lowering near the tabletop and subsequent release flatten or fold the two visible trim bands, hiding a potentially useful opposing boundary.",
+      "support": "Current-episode563 shows two yellow bands and a dark gap;591 flattens this relation;599 and698 show a dominant triangular blue panel.",
+      "limit": "Temporal sequence does not isolate table contact, lowering, release and folding as separate causes.",
+      "public_discriminator": "During a selected bounded continuation, compare both local held regions and visible trim shape as support/height/view changes; reveal of a second free lip would be new evidence."
+    },
+    {
+      "id": "same_boundary_or_layer",
+      "status": "unresolved",
+      "hypothesis": "The changed grip controls a different point on one continuous boundary/layer, without independently opening two free lips.",
+      "support": "After differential retraction/roll and compensated view recovery, one blue panel and one yellow boundary remain dominant.",
+      "limit": "Occlusion and support constraints could create the same appearance; no hidden layer identity is available.",
+      "public_discriminator": "Look for separable motion of two visible boundaries relative to their actual moving grippers, not merely apparent opening area or projected trim overlap."
+    },
+    {
+      "id": "table_assisted_local_hold",
+      "status": "unresolved",
+      "hypothesis": "Table contact/friction contributes to the apparent local retention, and support could change during transport.",
+      "support": "Only a small robot1 lift was tested near the tabletop; robot0 was retained rather than independently tested under changed load.",
+      "limit": "Table support does not invalidate the positive local-follow evidence, and it is not evidence that the grip is weak or failed.",
+      "public_discriminator": "Track each local cloth region and both measured gripper motions during bounded goal-directed movement with recoverable support; record slipping, redistribution or useful retention separately."
+    }
+  ],
+  "conditional_evaluation": {
+    "initial_gate": "Assess the new replay current RGB/state rather than inheriting old support or cloth topology.",
+    "objective": "Compare the new grip through bounded goal-directed manipulation; do not require hidden opening-identity proof before every movement.",
+    "positive_outcomes": [
+      "Measured gripper motion with corresponding retained local cloth on each side",
+      "New separable boundary or hand/garment relationship",
+      "Useful goal-directed progress beyond table preparation"
+    ],
+    "saturation": "If two or three completed goal-relevant changes preserve the same unresolved fold/occlusion without new relation, consider a structural alternative; count as context-sensitive review, not automatic termination.",
+    "limits": [
+      "Full garment clearance from the table is not required for provisional local-grasp evidence.",
+      "Loss of useful local support or uncontrolled redistribution should be recorded before committing to longer unsupported transport.",
+      "A continued task-progress branch would test an untried use of this grip; it is not proof that another correction of the same view will help.",
+      "Comparison against E26 would not isolate grip alone because start state and method differ."
+    ]
+  },
+  "policy_input_boundary": "No evaluator outputs, past scores, seeds, privileged geometry or developer-selected coordinate answers should be sent to an actor. Fresh public RGB/state/history only.",
+  "related_public_docs": [
+    "docs/collection/reviews/20261107-astra-opposing563-named-001.ko.md",
+    "docs/collection/reviews/20261107-astra-opposing563-named-001-learning-segments.json",
+    "docs/collection/reviews/20261107-astra-opposing563-named-001-settle.ko.md",
+    "docs/gallery/20261107-astra-opposing563-named-001.ko.md"
+  ],
+  "catalog_support_classification": "uncertain"
+}

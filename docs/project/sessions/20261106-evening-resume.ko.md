@@ -320,9 +320,9 @@ E24[고정원본백업](20261107-e24-backup-verification.json)은revision`1edca3
 `20261107-astra-opposing563-named-001`은공개source`68658c9d9bb7e47591fb330f08f4f996ec4fcbfb`·working_tree_modified=false에서시작했다. 직접부모E18/563·history510/542·coordinated-opposing-rim·named/query/wristpanel·Astra/ultra·30dec/max1400/timeout180/settle6/review10/profile이다. E17반대rim가설을더나은관측지지출발점과한번의재파지·닫힘후검사순서로재시험한다. 아직준비행동재실행중이며새파지수행/입구정체/성과는미확인이다. 로그output/sessions/20261106-evening/e25-opposing563-named-001.log. shell은Python명령이반환할때별도exit파일에그값을기록하며반환전에는값없다. 전체CPU310검사통과와실제조작효과를구분한다.
 
 E25 중간:05:27:15UTC 관측시563재실행완료·첫model_request였다. 이번history510 overview/양head와현재563의5뷰를root도확인했다. 양그리퍼부근천과테이블·두경계후보가보이나반대lip/독립하중/전체몸판테이블지지는별개다. D0양lift−.25×8+6settle→577, D1양lift−.2×8+6settle→591. 실제몸판이테이블위에더넓게놓이고틈은납작해졌으며jaw부근천은유지됐다. R0anchor/R1changed측을선택했지만release0·재파지미실행이다. 동시하강은독립지지검사가아니며잔류하강도남는다.
-+
-+[E24닫힌시간분석](../performance/20261107-e24-stage-timing.ko.md)은실제all-replay563까지490.225초·1179까지1041.782초의준비요청합을분리했다. 차551.558초는같은실행의측정구간이며이후재파지총시간절감이아니다.26call은20초기act+3query+2실행후속+1폐기후속으로나눴고질의물리0과호출비용을구분한다.7출처SHA를root도대조했다. 실행코드/E25설정변경없음이다.
-+
+
+[E24닫힌시간분석](../performance/20261107-e24-stage-timing.ko.md)은실제all-replay563까지490.225초·1179까지1041.782초의준비요청합을분리했다. 차551.558초는같은실행의측정구간이며이후재파지총시간절감이아니다.26call은20초기act+3query+2실행후속+1폐기후속으로나눴고질의물리0과호출비용을구분한다.7출처SHA를root도대조했다. 실행코드/E25설정변경없음이다.
+
 ## E25 자율 종료와 M2 선택 (2026-11-07 05:38:26 UTC)
 
 공식raw5/pickup5/착의0/successfalse/no_contact/final_scorenull이다.698=563replay+93model+42settle,새135전이6.75sim초·전체34.9초,13act+finish1/15calls/query1R1head6valid·물리0·추가마감0. wall1225.593759257초·actor568.194193909·env609.287343601. host76977=0·shellPython0·sim0·completed/errornull/capturecompleteoperator_finished/QC698오류0으로닫혔다. source68658c9d9bb7e47591fb330f08f4f996ec4fcbfbclean.
@@ -336,3 +336,5 @@ E25[고정원본백업](20261107-e25-backup-verification.json)은revision`79e74c
 ## E26 실제 시작 (2026-11-07T05:51:36Z)
 
 `20261107-astra-hand-swap787-named-001`은공개source`53a58bb4e9fa4ff5366b66485c8690b0784ad71f`·working_tree_modified=false에서시작했다. 직접부모E18/787·history719/771·coordinated-leading-hand-swap·named/query/wristpanel·Astraultra·22dec/max1400/timeout180/settle6/review10/profile이다. 기존grip을유지하면서다른leadinghand/guide-anchor역할/접근면을각각실제근거로분류한다. 아직초기화/재실행중이며새손교환·역할교환·접근·성과는미확인이다. 로그output/sessions/20261106-evening/e26-hand-swap787-named-001.log. shell은Python반환시별도exit파일에반환값을기록하며반환전에는값없다. 전체CPU317PASS와실제성능은구분한다.
+
+E26준비재실행중,E25/698새그립의task-progress연속분기를조건부대안으로등록했다. 새suffix563→698은운반/진입0이라새grip착의효과실패를확정할수없다. 국소follow긍정과table혼입·운반하중미시험·잔류운동을구분해supportstatusuncertain,window657→698/sample657667678690698/freshhistory657667로기록했다. 최종5점은새grip성공보상이아니며모두trainingunreviewed·같은E07계보다. 새코드/GPU/모델호출없고E26M2현재실행선택을바꾸지않았다.

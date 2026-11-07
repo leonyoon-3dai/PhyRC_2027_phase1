@@ -6,7 +6,7 @@
 
 [**MP4 크게 보기**](docs/gallery/assets/20261107-e25-rim-regrasp/event.mp4) · [**전체·지지 검사 영상**](docs/gallery/20261107-astra-opposing563-named-001.ko.md) · [**분석**](docs/collection/reviews/20261107-astra-opposing563-named-001.ko.md) · [**피드백 남기기**](https://github.com/leonyoon-3dai/PhyRC_2027_phase1/issues/new?title=%5BE25+%ED%94%BC%EB%93%9C%EB%B0%B1%5D+%ED%95%9C%EC%AA%BD+%EC%9E%AC%ED%8C%8C%EC%A7%80%EC%99%80+%EC%A7%80%EC%A7%80+%EA%B2%80%EC%82%AC&body=%EC%8B%9C%EB%8F%84%3A+E25+%2F+20261107-astra-opposing563-named-001%0A%EC%98%81%EC%83%81+%EC%8B%9C%EA%B0%81+%EB%98%90%EB%8A%94+%EA%B2%BD%EA%B3%84%3A%0A%EC%B9%B4%EB%A9%94%EB%9D%BC%3A%0A%0A%EB%B3%B4%EC%9D%B4%EB%8A%94+%EC%82%AC%EC%8B%A4%3A%0A%0A%ED%95%B4%EC%84%9D%C2%B7%EC%A7%88%EB%AC%B8%3A%0A%0A%EB%8B%A4%EC%9D%8C%EC%97%90+%EB%B9%84%EA%B5%90%ED%95%A0+%EB%B0%A9%EB%B2%95%3A%0A) · [이전 E24 진입·복구](docs/gallery/20261107-astra-progress1179-named-001.ko.md)
 
-**공식 원점수 5/50 · 픽업5 · 착의0 · `success=false` · 698/698기록 검사 통과.** 테이블 위에서 로봇0 쪽 지지를 유지하고 로봇1을 열어 낮은 곡선 경계로 옮겼습니다. 한 번 위치를 보정해 다시 닫은 뒤, 약2.7cm 상승에 새 파지 부근 천이 따라오는 모습을 확인했습니다. **국소 동행의 잠정 근거는 있지만, 반대인 두 입구 경계의 개방은 미확인입니다.** 차등 움직임·시점 복구 뒤 모델이 자율 종료했으며 운반·진입은 실행하지 않았습니다. 최고5점, 중간 목표10점은 아직 미달성입니다.
+**공식 원점수 5/50 · 픽업5 · 착의0 · `success=false` · 698/698기록 검사 통과.** 테이블 위에서 로봇0 쪽 지지를 유지하고 로봇1을 열어 낮은 곡선 경계로 옮겼습니다. 한 번 위치를 보정해 다시 닫은 뒤, 약2.7cm 상승에 새 파지 부근 천이 따라오는 모습을 확인했습니다. **국소 동행의 잠정 근거는 있지만, 반대인 두 입구 경계의 개방은 미확인입니다.** 차등 움직임·시점 복구 뒤 모델이 자율 종료했으며, 새 파지 이후 운반·진입은 실행하지 않았습니다. 최고5점, 중간 목표10점은 아직 미달성입니다.
 
 591–698경계 · 108프레임 · 21.6초 · 4배 느리게입니다. 위는 로봇0/1 머리, 아래는 로봇0/1 손목이며 모델 대기는 제외했습니다. [영상 출처](docs/gallery/assets/20261107-e25-rim-regrasp/provenance.json) · [학습 검토 구간](docs/collection/reviews/20261107-astra-opposing563-named-001-learning-segments.json)
 
