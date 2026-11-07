@@ -68,9 +68,9 @@
 | 최신 과제 시도 | E18 `20261106-astra-guide470-depth-001` · 추가 roll 명령 반복으로 감독 중단 · 928/928전이 검사 통과 |
 | 모델·환경 | Astra/ultra · Codex CLI0.166.0/exec · 고정 Isaac Sim6.0.1 · Chrome/WebRTC OFF |
 | 이번에 바꾼 접근 | E16의470전이 재실행 뒤 기존 두 파지로 운반 대형·접근 방향 변경. 공개 depth를 실제3회 조회했으며 질의의 물리 진행은0입니다. 계획한 소매 쪽 가이드 재파지는 실행하지 않았습니다. |
-| 다음 비교 | **E19 계획·미시작:** E18의801경계(첫 추가 roll 직전)에서 같은 B 전략·depth 질의를 유지하고 축 이름으로 명령을 작성합니다. 이번 재실행771·787경계의 과거 RGB를 사용해 유용했던 손 근처 접근을 이어갈 계획입니다. |
+| 다음 비교 | **E19 실행 중(00:45:20 UTC 시작):** E18의801경계(첫 추가 roll 직전)에서 같은 B 전략·depth 질의를 유지하고 축 이름으로 명령을 작성합니다. 이번 재실행771·787경계의 과거 RGB를 사용해 유용했던 손 근처 접근을 이어갑니다. 최종 결과는 아직 없습니다. |
 | 다른 경로 | 목 우선 전략 코드는 구현했으나 실제 과제에는 아직 사용하지 않았습니다. |
-| 명령 표현 후보 | 축 이름을 기존9채널로 변환하는 기능은 CPU269검사·동일16이미지 실제 CLI 합성2턴을 통과했습니다. [모델 없는 GPU 연결](docs/collection/assets/20261107-named-action-candidate/model-free-gpu-wiring.json)도3/3전이 전수 검사를 통과했습니다(실제 모델0회·fixture 질의1회·질의 물리0). **E18에는 적용하지 않았고 실제 착의 효과는 미검증**입니다. |
+| 명령 표현 후보 | 축 이름을 기존9채널로 변환하는 기능은 전체 CPU270검사·동일16이미지 실제 CLI 합성2턴을 통과했습니다. [모델 없는 GPU 연결](docs/collection/assets/20261107-named-action-candidate/model-free-gpu-wiring.json)도3/3전이 전수 검사를 통과했습니다(실제 모델0회·fixture 질의1회·질의 물리0). **E18에는 적용하지 않았고 실제 착의 효과는 미검증**입니다. |
 | 소스·원본 | E18 실행 소스499b3b8(작업 트리 clean). 공개 영상·분석을 보존했고 [E18 비공개 원본 고정 HF 백업·재다운로드 SHA 검증](docs/project/sessions/20261107-e18-backup-verification.json)을 완료했습니다. [E17 고정 백업](docs/project/sessions/20261106-e17-backup-verification.json)과 [E16 고정 백업](docs/project/sessions/20261106-e16-backup-verification.json)은 완료했습니다. |
 
 [현재 상태·다음 명령](docs/project/STATUS.md) · [이번 세션 원문](docs/project/sessions/20261106-evening-resume.ko.md) · [방법 전환 기준](docs/project/sessions/20261106-method-switch-matrix.ko.md)

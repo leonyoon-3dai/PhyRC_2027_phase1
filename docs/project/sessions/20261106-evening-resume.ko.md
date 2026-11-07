@@ -166,3 +166,11 @@ E18종료후명명행동후보227186d를병합했다. 기본OFF이며정확한�
 최신 전체검사는270개/10.077초통과,`output/sessions/20261106-evening/cpu-named-final.log`SHA256 `eef05f8da21a5f93da6882384a2a9917dce65232b9e929afd71bd0cf626d243e`. E18prefix801의닫힌전체928원본검사·출처·재실행입력검증도통과했다.
 
 E18원본재다운로드검증완료:revision`44d01871f0099f8a537f1bdbfee06a404a95f38c`,2,167,209,525bytes,SHA256`bfce450c5725e79ef7cf878f6412cfe08f64cf68ab91d1cc267433c079ccf470`,2026-11-07T00:36:13.693113UTC. [receipt](20261107-e18-backup-verification.json). namedwiring도revision`7817a63289250cb40e94a50a9b816eb45a567660`,9,576,993bytes,SHA256`93837540ab791ca2749def44d9ee73732a8b92e71057f6f58071fb3d473310bd`로00:38:23UTC재다운로드검증했다. [wiringreceipt](20261107-named-depth-wiring-backup-verification.json).
+
+## E19 이름 기반 명령 · 실제 시작
+
+E18 영상·학습 검토 구간·백업 receipt와 명명 행동 코드/검증을 main `9aad60138dc5cded2e0e5219fc12395d4c37ff0a`에 통합했다. 원격과 검토한 로컬 tree의 동일성을 확인했고 로컬 병합 이력은 `local-prepublication-e18-20261107` 태그에 보존했다.
+
+**2026-11-07 00:45:20 UTC**에 `20261107-astra-entry801-named-001`을 시작했다. source snapshot은9aad601·working_tree_modified=false다. STATUS에 기록한 명령 그대로 E18 직접부모/prefix801,새 재실행 과거771/787, B+depth질의+명명행동,40판단/max1600/timeout180/settle6/review10을 사용한다. 로그는 `output/sessions/20261106-evening/e19-entry801-named-001.log`다. 원본 source group은 `20261106-coordinated-demo-methods`를 유지한다.
+
+E19는 첫 추가 roll 직전의 유용했던 손 접근에서 명령 표현의 효과를 비교하는 시도다. 실제 옷 조작 전략이 바뀐 것으로 세지 않으며 새 재실행의 현재 관측에서 파지·손 관계를 다시 판단한다. 시작 후 코드·물리·행동 한계를 바꾸지 않고 현재 문서만 갱신한다. 결과는 아직 없다.
