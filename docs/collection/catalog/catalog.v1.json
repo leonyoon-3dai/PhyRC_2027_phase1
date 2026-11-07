@@ -595,6 +595,24 @@
         "revision": "79e74c3dda23a676a59754005a22d55e89c6034f",
         "sha256": "1d44bf676d162944907f33d090fa85f8516fafd22a7ef5f9190c57c13dfd8150"
       }
+    },
+    {
+      "id": "20261107-astra-hand-swap787-named-001",
+      "kind": "demonstration",
+      "source_group": "20261106-coordinated-demo-methods",
+      "source_commit": "53a58bb4e9fa4ff5366b66485c8690b0784ad71f",
+      "source_working_tree_modified": false,
+      "parent_run_id": "20261106-astra-guide470-depth-001",
+      "replay_prefix_steps": 787,
+      "replay_completed_steps": 0,
+      "recorded_transitions": null,
+      "qc_status": "pending",
+      "backup": {
+        "status": "unknown",
+        "receipt": null,
+        "revision": null,
+        "sha256": null
+      }
     }
   ],
   "startpoints": [
@@ -1720,9 +1738,9 @@
       "notes": "E25 autonomous finish,13act+finish14dec/15calls/one6pointqueryphysics0.698=563replay+93model+42settle;no cleanup. One actual R1release-reposition-correction1-reclose with R0anchor retained, then provisional local following; opposing two lips remained unresolved after differential shaping/view recovery. Transport/entry0,remaining budget16. raw5pickup5allclothing0,no_contact/null,successfalse. host/shellPython/sim0;source68658c9clean;trainingunreviewed."
     },
     {
-      "id": "planned-e18-787-leading-hand-swap",
-      "status": "planned",
-      "run_id": null,
+      "id": "20261107-astra-hand-swap787-named-001",
+      "status": "in_progress",
+      "run_id": "20261107-astra-hand-swap787-named-001",
       "startpoint_id": "20261106-astra-guide470-depth-001-p787",
       "method_id": "coordinated-leading-hand-swap-named-query",
       "result": {
@@ -1731,7 +1749,7 @@
         "review": null,
         "videos": []
       },
-      "notes": "Selected E26 E18/787 history719771,22dec/max1400/timeout180/settle6/review10, fixed Astraultra execplan1 namedquerywristpanel. M2candidate3d1 integrated after E25 closed; actual source/time assigned at launch. Not yet executed, same E07 lineage, not exact cloth checkpoint. Keep settle6; optionalsettle12 remains untested."
+      "notes": "Actual E26 started2026-11-07T05:51:36Z from clean public source53a58bb4e9fa4ff5366b66485c8690b0784ad71f. E18 direct parent787/history719771,22dec/max1400/timeout180/settle6/review10, fixed Astraultra execplan1 namedquerywristpanel. Initial replay; actual distinct hand,guide-anchor exchange and approach changes remain unobserved. Full CPU317 passed before launch. Same E07 lineage,not exact cloth checkpoint; final outcome/QC/backup pending."
     }
   ]
 }

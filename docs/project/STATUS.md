@@ -25,9 +25,9 @@ D2에서R1만열고D3초기배치·D5보정1후D7한번다시닫았습니다. R0
 
 현재/이전목표손이나역할을식별하지못하면교환미확인으로기록합니다. 그상태에서도유용한일반접근은가능하지만M2수행으로세지않습니다. E25새파지결과는보존하며,이번에는기존E18/787의다른접근비교를우선합니다. 기존E23/E24와도천접힘·예산차이가있으므로단일인과를확정하지않습니다. [방법·판정구분](../collection/research/2026-11-07-leading-hand-candidate.ko.md)
 
-M2후보3d1bf2c를E25실제종료후통합했습니다. 전체CPU는[검증기록](sessions/20261107-leading-hand-validation.json)에남기며실제손교환·착의효과는아직미검증입니다. E25의추가중립에서위치추종수렴을봤지만이번E26은정착6을유지해새방법과관측시점변경을동시에섞지않습니다. 공식물리·20Hz·최대20step·모델·관측계약은그대로입니다. **아직 E26 실제 시행 전입니다.**
+M2후보3d1bf2c를E25실제종료후통합했습니다. 전체CPU는[검증기록](sessions/20261107-leading-hand-validation.json)에남기며실제손교환·착의효과는아직미검증입니다. E25의추가중립에서위치추종수렴을봤지만이번E26은정착6을유지해새방법과관측시점변경을동시에섞지않습니다. 공식물리·20Hz·최대20step·모델·관측계약은그대로입니다. **E26는2026-11-07T05:51:36Z에source`53a58bb4e9fa4ff5366b66485c8690b0784ad71f`·시작clean으로 실제 시작했습니다.** 현재 초기화·준비 행동 재실행 중이며 새 실제 손 교환·역할·접근면 변경과 최종 결과는 미확인입니다.
 
-## E26 예정 명령 · 공개 소스 확정 후, 아직 미실행
+## E26 실제 시작 명령 · 2026-11-07T05:51:36Z
 
 ```bash
 export PATH="$PWD/.runtime/codex-0.166.0/node_modules/.bin:$PATH"
@@ -44,7 +44,7 @@ PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.codex_clie
   --profile-step-phases
 ```
 
-직접부모는E18이며같은E07 source group입니다. 재실행은정확한천checkpoint가아니고새현재지지를다시확인합니다. 공식10점을확인하면원본·성과를보존하고다음득점으로계속합니다.
+실제 source는`53a58bb4e9fa4ff5366b66485c8690b0784ad71f`,로그는output/sessions/20261106-evening/e26-hand-swap787-named-001.log입니다. 직접부모는E18이며같은E07 source group입니다. 재실행은정확한천checkpoint가아니고새현재지지를다시확인합니다. 공식10점을확인하면원본·성과를보존하고다음득점으로계속합니다.
 
 <details>
 <summary>E24 종료·E25 실행 중 당시 상태 이력</summary>

@@ -74,3 +74,5 @@ D9의 새 국소 동행 근거는 유지한다. D10 차등시험→D11 시점 �
 [D3–D6 중립·정착 독립 검토](20261107-astra-opposing563-named-001-settle.ko.md) · [선별 수치 JSON](20261107-astra-opposing563-named-001-settle.json). 추가 중립6전이에서 잔류 목표 추종은 개선됐고 새 천 관계는 거의 변하지 않았다. 이 분석은 E26에 정착12를 적용한 실행 검증이 아니며 다음 비교는 기존 settle6을 유지한다.
 
 [비공개 원본 백업](../../project/sessions/20261107-e25-backup-verification.json)은 고정 revision`79e74c3dda23a676a59754005a22d55e89c6034f`·1,624,331,388bytes·SHA`1d44bf676d162944907f33d090fa85f8516fafd22a7ef5f9190c57c13dfd8150`다. 05:43:45UTC 강제 재다운로드와182개 member 해시 검증을 완료했다. 학습 승인은unreviewed이며 실제 재파지·부분 동행·가설 미해결·자율 종료를 함께 보존했다.
+
+후속실행갱신: E26 `20261107-astra-hand-swap787-named-001`은2026-11-07T05:51:36Z·source`53a58bb4e9fa4ff5366b66485c8690b0784ad71f` clean으로실제시작했습니다. 위미실행표기는E25마감당시이며현재재실행중·새성과미확인입니다.

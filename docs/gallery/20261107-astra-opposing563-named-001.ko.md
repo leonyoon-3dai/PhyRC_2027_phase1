@@ -55,3 +55,5 @@
 다음 E26는 **M2 별도 방법, E18/787·과거719/771·22판단/max1400/settle6**으로 채택했고 후보 코드를 main에 통합했습니다. 실제 실행은 아직 시작하지 않았습니다. E25의 국소 동행을 인증된 반대 입구나 착의 출발점으로 승격하지 않습니다.
 
 [전체 공개 기록](../collection/attempts/20261107-astra-opposing563-named-001/README.ko.md) · [전체 overview](../collection/attempts/20261107-astra-opposing563-named-001/overview.mp4) · [현재 상태](../project/STATUS.md) · [세션 기록](../project/sessions/20261106-evening-resume.ko.md)
+
+후속실행갱신: E26 `20261107-astra-hand-swap787-named-001`은2026-11-07T05:51:36Z·source`53a58bb4e9fa4ff5366b66485c8690b0784ad71f` clean으로실제시작했습니다. 위미실행표기는E25마감당시이며현재재실행중·새성과미확인입니다.

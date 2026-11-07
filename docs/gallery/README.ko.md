@@ -14,7 +14,7 @@
 
 전체 **698전이·시뮬레이션34.9초**, 새 구간은 **135전이·6.75초**입니다. 실제20분26초, 563재실행+93모델 행동+42정착이며 15호출·13행동+자율종료1판단입니다. 깊이 질의1회6유효점·질의 중 물리0, 추가 마감 전이0입니다. 전이1개는 관측→행동→다음 관측의0.05초 기록입니다.
 
-**다음 E26 준비:** E18/787·history719/771에서 기존 파지를 유지하고, 먼저 안내할 손·지지/안내 역할·몸통 입구의 접근면을 바꾸는 `coordinated-leading-hand-swap`을 선택했습니다. 실제 손·역할 교환은 현재 관측으로 구분해 기록하며, 단순 비대칭 움직임이나 이름 변경으로 대신하지 않습니다. 22판단/max1400·정착6을 유지합니다. 아직 실행 전입니다. [현재 상태·명령](../project/STATUS.md) · [방법 설명](../collection/research/2026-11-07-leading-hand-candidate.ko.md)
+**E26 실행 중 · 05:51:36 UTC 시작:** E18/787·history719/771에서 `coordinated-leading-hand-swap`을 실제 시작했습니다. Astra/ultra·22판단/max1400/settle6·source`53a58bb4e9fa4ff5366b66485c8690b0784ad71f`·시작clean입니다. 현재 준비 행동 재실행 단계이며 새 손/역할 교환·접근·결과는 아직 미확인입니다. 기존 파지를 유지하면서 실제 손·역할·접근면 변경을 각각 확인합니다. [현재 상태·명령](../project/STATUS.md) · [방법 설명](../collection/research/2026-11-07-leading-hand-candidate.ko.md)
 
 [**출발점 화면 5개 비교·피드백**](20261107-support-startpoints.ko.md) · [**출발점·방법 데이터베이스**](../collection/catalog/README.ko.md) · [**0→5→10 구간 조합 장기계획**](../collection/research/2026-11-07-composable-scoring-data-plan.ko.md)
 

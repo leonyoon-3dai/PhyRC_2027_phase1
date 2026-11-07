@@ -55,3 +55,7 @@ root가 E25의05:38:26UTC 종료를 확인한 뒤 후보 `3d1bf2c4e1d13a342f7386
 통합 뒤 전체 CPU 검사를 실행해 **317개·31.785초 PASS**(프로세스 외부 wall32.091초)를 확인했다. 신규7개와 기존13전략×named/query52조합 검사도 이 전체 실행에 포함됐다. 실제 개수·시간·원본 로그 SHA·검사 당시 source는 [검증 receipt](../../project/sessions/20261107-leading-hand-validation.json)에 기록한다. 이는 준비 당시77개 집중 검사와 구분하며, 실제 모델/GPU·착의 성능 검증을 대체하지 않는다.
 
 격리준비당시3파일은[고정비공개연구백업](../../project/sessions/20261107-m2-candidate-backup-verification.json)에별도로보존했다. 당시미통합상태의receipt는이후E26채택/통합이력과구분한다.
+
+## E26 실제 시작 후속 기록
+
+E26 `20261107-astra-hand-swap787-named-001`은2026-11-07T05:51:36Z·공개source`53a58bb4e9fa4ff5366b66485c8690b0784ad71f` clean으로실제시작했다. 위미실행표기는통합/CPU검증당시상태다. 현재E18/787준비행동재실행중이며새손/역할/접근면변경·점수효과는미확인이다. 기존settle6·Astraultra/22decmax1400유지.

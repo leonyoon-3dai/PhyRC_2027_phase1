@@ -332,3 +332,7 @@ D2R1open8→D3초기placement8+6→D4중립6→D5보정1(8+6)→D6중립6→D7re
 E26은M2leading-hand-swap을E18/787hist719771·22decmax1400/settle6로선택했고E25종료후후보3d1bf2c를통합했다. 이전M2격리백업receipt의미통합표시는05:32준비당시상태다. 새손/역할/접근면은실제구분하고일반taskprogressfallback을M2성공으로세지않는다. settle12는가능성분석만하며이번새방법과동시변경하지않는다. 아직E26실제시행전이다.
 
 E25[고정원본백업](20261107-e25-backup-verification.json)은revision`79e74c3dda23a676a59754005a22d55e89c6034f`·1,624,331,388bytes·SHA`1d44bf676d162944907f33d090fa85f8516fafd22a7ef5f9190c57c13dfd8150`이며05:43:45UTC강제재다운로드/182member전수해시검증완료다. M2통합전체CPU317검사31.785초PASS·source/logSHA를root도확인했다. E18/787source_loader actionsfloat32(787,2,9)preflight통과,seed등trustedmetadata를공개출력하지않았다.
+
+## E26 실제 시작 (2026-11-07T05:51:36Z)
+
+`20261107-astra-hand-swap787-named-001`은공개source`53a58bb4e9fa4ff5366b66485c8690b0784ad71f`·working_tree_modified=false에서시작했다. 직접부모E18/787·history719/771·coordinated-leading-hand-swap·named/query/wristpanel·Astraultra·22dec/max1400/timeout180/settle6/review10/profile이다. 기존grip을유지하면서다른leadinghand/guide-anchor역할/접근면을각각실제근거로분류한다. 아직초기화/재실행중이며새손교환·역할교환·접근·성과는미확인이다. 로그output/sessions/20261106-evening/e26-hand-swap787-named-001.log. shell은Python반환시별도exit파일에반환값을기록하며반환전에는값없다. 전체CPU317PASS와실제성능은구분한다.
