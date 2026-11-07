@@ -1,0 +1,1893 @@
+{
+  "schema": "phyrc-public-e19-motion-v1",
+  "run_id": "20261107-astra-entry801-named-001",
+  "execution_source_commit": "9aad60138dc5cded2e0e5219fc12395d4c37ff0a",
+  "execution_source_clean": true,
+  "analysis_scope": "Closed E19 public robot kinematics and applied actions only; no cloth geometry, audit, evaluator, model or physics calls.",
+  "units": "metres, seconds, radians unless key explicitly says degrees",
+  "grasp_pose_semantics": "Public robot gripper reference frame; not the true cloth attachment point or a contact sensor.",
+  "endpoint_displacements_not_path_lengths": true,
+  "cloth_motion_measured": false,
+  "contact_or_passage_inferred": false,
+  "public_interface": {
+    "joint_names": [
+      [
+        "wheel_0_joint",
+        "wheel_1_joint",
+        "wheel_2_joint",
+        "lift_joint",
+        "arm_l1_joint",
+        "arm_l2_joint",
+        "arm_l3_joint",
+        "arm_l4_joint",
+        "wrist_yaw_joint",
+        "wrist_pitch_joint",
+        "wrist_roll_joint",
+        "gripper_finger_left_joint",
+        "gripper_finger_right_joint"
+      ],
+      [
+        "wheel_0_joint",
+        "wheel_1_joint",
+        "wheel_2_joint",
+        "lift_joint",
+        "arm_l1_joint",
+        "arm_l2_joint",
+        "arm_l3_joint",
+        "arm_l4_joint",
+        "wrist_yaw_joint",
+        "wrist_pitch_joint",
+        "wrist_roll_joint",
+        "gripper_finger_left_joint",
+        "gripper_finger_right_joint"
+      ]
+    ],
+    "joint_units": [
+      [
+        "rad",
+        "rad",
+        "rad",
+        "m",
+        "m",
+        "m",
+        "m",
+        "m",
+        "rad",
+        "rad",
+        "rad",
+        "rad",
+        "rad"
+      ],
+      [
+        "rad",
+        "rad",
+        "rad",
+        "m",
+        "m",
+        "m",
+        "m",
+        "m",
+        "rad",
+        "rad",
+        "rad",
+        "rad",
+        "rad"
+      ]
+    ],
+    "action_scales": {
+      "BASE_LINEAR_RATE": 0.616,
+      "BASE_ANGULAR_RATE": 2.86,
+      "LIFT_RATE": 1.54,
+      "ARM_RATE": 1.21,
+      "WRIST_RATE": 5.5
+    }
+  },
+  "joint_indices": {
+    "arm_extension_sum": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "lift": 3,
+    "wrist_yaw_pitch_roll": [
+      8,
+      9,
+      10
+    ]
+  },
+  "method": {
+    "position_world": "base_pose_world.xyz + R(base_pose_world.wxyz) @ grasp_pose_base.xyz",
+    "orientation_world": "R(base_pose_world.wxyz) @ R(grasp_pose_base.wxyz)",
+    "orientation_difference": "acos(clamp((trace(R_after @ R_before.T)-1)/2,-1,1))",
+    "arm_extension": "sum of four measured prismatic arm joint positions",
+    "target_increment": "normalized action arm_extension * public ARM_RATE * model_steps/20",
+    "settle_scope": "All selected intervals include the explicitly recorded 6 neutral controller steps; existing joint targets persist.",
+    "public_dataset_selection": "policy.hdf5 data/demo_0 public obs fields at boundaries801..931, plus next_obs at931 for boundary932. No RGB, depth, audit or evaluation datasets opened."
+  },
+  "sources": {
+    "policy_file": "output/collections/20261107-astra-entry801-named-001/policy.hdf5",
+    "selected_boundary_range_inclusive": [
+      801,
+      932
+    ],
+    "public_decisions": {
+      "file": "docs/collection/attempts/20261107-astra-entry801-named-001/decisions.jsonl",
+      "sha256": "3a6965de6eda0e06dbf5867105033e80e5135c5e560d40bb225661527ab7bf97"
+    },
+    "public_actor_observations": [
+      {
+        "observation_index": 0,
+        "boundary": 801,
+        "file": "output/actors/20261107-astra-entry801-named-001/observations/00000/observation.json",
+        "sha256": "3fa1cf7233e0e755fe2853b731ce3a96c577d4e9402c573eaa1c5feaac27b9b6"
+      },
+      {
+        "observation_index": 1,
+        "boundary": 811,
+        "file": "output/actors/20261107-astra-entry801-named-001/observations/00001/observation.json",
+        "sha256": "5eadc6cbbdab3f8fb0f965a7491599ec223c76fe6d93a3d5f986bdfd121ea0aa"
+      },
+      {
+        "observation_index": 2,
+        "boundary": 821,
+        "file": "output/actors/20261107-astra-entry801-named-001/observations/00002/observation.json",
+        "sha256": "25191e536b1277383dad5bf32e2cca098da3402a1c737449958cdc651e92833d"
+      },
+      {
+        "observation_index": 3,
+        "boundary": 832,
+        "file": "output/actors/20261107-astra-entry801-named-001/observations/00003/observation.json",
+        "sha256": "0472358bf2e3f6b76dd96ba6b52a806b98f43f9f465c8fa9ef8a82e64e2b22aa"
+      },
+      {
+        "observation_index": 4,
+        "boundary": 843,
+        "file": "output/actors/20261107-astra-entry801-named-001/observations/00004/observation.json",
+        "sha256": "f779670f7d41e62eed113a636d66337af3aec3a75eff1d05766018cc50ad6071"
+      },
+      {
+        "observation_index": 5,
+        "boundary": 854,
+        "file": "output/actors/20261107-astra-entry801-named-001/observations/00005/observation.json",
+        "sha256": "28bfe7af472dcc6441587c937696f5fa188a42b49e0a078b2b710d5dc01f7541"
+      },
+      {
+        "observation_index": 6,
+        "boundary": 866,
+        "file": "output/actors/20261107-astra-entry801-named-001/observations/00006/observation.json",
+        "sha256": "b4dc772a9e01abc40b98e60c626a799fd0e0c24dba436e1288148588bbb18b24"
+      },
+      {
+        "observation_index": 7,
+        "boundary": 878,
+        "file": "output/actors/20261107-astra-entry801-named-001/observations/00007/observation.json",
+        "sha256": "01fbf1523514be460d117b0ee1bb4b712ecdcd7f9ae0e1c7417ae82b5ae8abe1"
+      },
+      {
+        "observation_index": 8,
+        "boundary": 888,
+        "file": "output/actors/20261107-astra-entry801-named-001/observations/00008/observation.json",
+        "sha256": "02318abc507f953d1fd0bd15ca64a3542ceac2d988ede3c40eae8b4e4deb8086"
+      },
+      {
+        "observation_index": 9,
+        "boundary": 900,
+        "file": "output/actors/20261107-astra-entry801-named-001/observations/00009/observation.json",
+        "sha256": "defb5d3229a9400e382adba41845f82b069a9d2a68887950dca69e04a67d4175"
+      },
+      {
+        "observation_index": 10,
+        "boundary": 910,
+        "file": "output/actors/20261107-astra-entry801-named-001/observations/00010/observation.json",
+        "sha256": "d7c1d7051f6a5684a3d28f6ae3edca91134ba32ddce7a0f30f628e40e9b2060b"
+      },
+      {
+        "observation_index": 11,
+        "boundary": 921,
+        "file": "output/actors/20261107-astra-entry801-named-001/observations/00011/observation.json",
+        "sha256": "f39a296b3c013f02c1c34b1475bed13fc54438262db01edfa626ecbe42048fc5"
+      },
+      {
+        "observation_index": 12,
+        "boundary": 932,
+        "file": "output/actors/20261107-astra-entry801-named-001/observations/00012/observation.json",
+        "sha256": "a52914d6f127e37a9f2a48ab8744d8fbe9c1e34e442d908931b92cc5ac3a9793"
+      }
+    ],
+    "public_interface_subset_sha256": "3b2d811010d36f7eaa575ac229efd2d39552bbb0f6b2c21f5f8d60b2f97caa1d",
+    "quaternion_helper": {
+      "file": "scripts/analyze_support_diagnostic.py",
+      "sha256": "fdbfbee2b4f265bbf1b3516c1495ebdc8b00ba94fb6ff16b0728cc0918142cf4"
+    },
+    "selected_public_field_sha256": {
+      "joint_position": {
+        "dtype": "float32",
+        "recorded_flat_shape": [
+          132,
+          26
+        ],
+        "sha256": "1645430186b1f37d763c471fa8a98cdfc9d6bc66cebb16588ee1ac353b8aed14"
+      },
+      "joint_velocity": {
+        "dtype": "float32",
+        "recorded_flat_shape": [
+          132,
+          26
+        ],
+        "sha256": "31cd2e45edfdac5d7c8bf9fa78f58fd1eae664ee882a0d1432407caac173198d"
+      },
+      "base_pose_world": {
+        "dtype": "float32",
+        "recorded_flat_shape": [
+          132,
+          14
+        ],
+        "sha256": "92b1b06613f8cda9c36ff7af50e221eca08c0ad2aaf19ecaa0e39ec73cde8ace"
+      },
+      "grasp_pose_base": {
+        "dtype": "float32",
+        "recorded_flat_shape": [
+          132,
+          14
+        ],
+        "sha256": "6cf4f1168ebde5472e3c4a3a51c72ebfc70a1128c444dbfcfb12061909125b31"
+      },
+      "controller_target": {
+        "dtype": "float32",
+        "recorded_flat_shape": [
+          132,
+          18
+        ],
+        "sha256": "d3b63f26578a7b026035155f32f4a8a91ba86a2c5362f848af922f04a32d3bc2"
+      },
+      "base_twist_world": {
+        "dtype": "float32",
+        "recorded_flat_shape": [
+          132,
+          12
+        ],
+        "sha256": "0b33c6572a9879bb9534eeac2a79158e0b7fb6e044bae9c7ee391daf2d4a9801"
+      },
+      "simulation_time_s": {
+        "dtype": "float64",
+        "recorded_flat_shape": [
+          132,
+          1
+        ],
+        "sha256": "ad750ef099ddfdbd968c9bb89a03d344aba23cfc704de1ec2566c07e385bcaff"
+      }
+    }
+  },
+  "intervals": [
+    {
+      "decision_index": 2,
+      "boundaries": {
+        "start": 821,
+        "model_end": 826,
+        "settle_end": 832
+      },
+      "simulation_times_s": [
+        42.57500222045928,
+        42.8250022334978,
+        43.12500224914402
+      ],
+      "model_steps": 5,
+      "settle_steps": 6,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1599999964237213,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1599999964237213,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "robots": [
+        {
+          "robot": 0,
+          "arm_extension": {
+            "measured_start_model_end_settle_end_m": [
+              0.27500125020742416,
+              0.2923939898610115,
+              0.31936030834913254
+            ],
+            "measured_delta_m": 0.044359058141708374,
+            "target_start_model_end_settle_end_m": [
+              0.27588000893592834,
+              0.3242799937725067,
+              0.3242799937725067
+            ],
+            "target_delta_m": 0.04839998483657837,
+            "predicted_unclamped_target_delta_m": 0.048399998918175695,
+            "target_delta_error_m": -1.4081597325688033e-08,
+            "settle_delta_m": 0.026966318488121033,
+            "end_target_minus_measured_m": 0.004919685423374176,
+            "velocity_model_end_m_s": 0.13965710252523422,
+            "velocity_settle_end_m_s": 0.02673769509419799
+          },
+          "gripper_reference_world": {
+            "delta_m": [
+              -0.04650363727715223,
+              -0.0018073921642166035,
+              0.007332118579085778
+            ],
+            "displacement_m": 0.04711278923283984,
+            "during_model_delta_m": [
+              -0.01897376226509495,
+              -0.0005245256203162407,
+              0.005482229835308994
+            ],
+            "during_settle_delta_m": [
+              -0.02752987501205728,
+              -0.0012828665439003628,
+              0.0018498887437767841
+            ],
+            "orientation_delta_deg": 1.4371602235304222
+          },
+          "gripper_reference_base": {
+            "delta_m": [
+              0.047292351722717285,
+              2.3268163204193115e-05,
+              0.007048130035400391
+            ],
+            "displacement_m": 0.047814675674614095
+          },
+          "base_world": {
+            "delta_m": [
+              0.0007020235061645508,
+              -3.960728645324707e-05,
+              2.707820385694504e-07
+            ],
+            "displacement_m": 0.0007031399673398398
+          },
+          "wrist_yaw_pitch_roll_delta_rad": [
+            8.158988202922046e-05,
+            -0.02508258819580078,
+            -2.113651135005057e-06
+          ],
+          "wrist_yaw_pitch_roll_end_velocity_rad_s": [
+            0.05371181666851044,
+            -0.040255945175886154,
+            -0.13464511930942535
+          ],
+          "wrist_target_minus_measured_end_rad": [
+            -0.00041347710066474974,
+            -0.0064810216426849365,
+            0.00018213357543572783
+          ],
+          "lift_measured_delta_m": 0.00024199485778808594,
+          "lift_end_velocity_m_s": 0.012068717740476131
+        },
+        {
+          "robot": 1,
+          "arm_extension": {
+            "measured_start_model_end_settle_end_m": [
+              0.2750197947025299,
+              0.29244884103536606,
+              0.31936538964509964
+            ],
+            "measured_delta_m": 0.04434559494256973,
+            "target_start_model_end_settle_end_m": [
+              0.27588000893592834,
+              0.3242799937725067,
+              0.3242799937725067
+            ],
+            "target_delta_m": 0.04839998483657837,
+            "predicted_unclamped_target_delta_m": 0.048399998918175695,
+            "target_delta_error_m": -1.4081597325688033e-08,
+            "settle_delta_m": 0.02691654860973358,
+            "end_target_minus_measured_m": 0.004914604127407074,
+            "velocity_model_end_m_s": 0.148273803293705,
+            "velocity_settle_end_m_s": 0.03365373145788908
+          },
+          "gripper_reference_world": {
+            "delta_m": [
+              -0.04650307369812745,
+              -0.0017289347334156213,
+              0.007349843678853052
+            ],
+            "displacement_m": 0.0471120502715543,
+            "during_model_delta_m": [
+              -0.01902963105177946,
+              -0.00046967000114611634,
+              0.005487266682768999
+            ],
+            "during_settle_delta_m": [
+              -0.02747344264634799,
+              -0.001259264732269505,
+              0.0018625769960840532
+            ],
+            "orientation_delta_deg": 1.4407585487655554
+          },
+          "gripper_reference_base": {
+            "delta_m": [
+              0.04732048511505127,
+              0.00013137608766555786,
+              0.007065415382385254
+            ],
+            "displacement_m": 0.04784522615398369
+          },
+          "base_world": {
+            "delta_m": [
+              0.0007337331771850586,
+              -4.158914089202881e-05,
+              -1.9441358745098114e-07
+            ],
+            "displacement_m": 0.0007349109263977918
+          },
+          "wrist_yaw_pitch_roll_delta_rad": [
+            0.00048440291720908135,
+            -0.02514156699180603,
+            7.388481753878295e-05
+          ],
+          "wrist_yaw_pitch_roll_end_velocity_rad_s": [
+            -0.000873121723998338,
+            -0.0247847530990839,
+            0.0008030348108150065
+          ],
+          "wrist_target_minus_measured_end_rad": [
+            -0.00022746682225260884,
+            -0.00646248459815979,
+            0.0003097917651757598
+          ],
+          "lift_measured_delta_m": 0.000244140625,
+          "lift_end_velocity_m_s": 0.010807204060256481
+        }
+      ]
+    },
+    {
+      "decision_index": 3,
+      "boundaries": {
+        "start": 832,
+        "model_end": 837,
+        "settle_end": 843
+      },
+      "simulation_times_s": [
+        43.12500224914402,
+        43.375002262182534,
+        43.67500227782875
+      ],
+      "model_steps": 5,
+      "settle_steps": 6,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -0.1599999964237213,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -0.1599999964237213,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "robots": [
+        {
+          "robot": 0,
+          "arm_extension": {
+            "measured_start_model_end_settle_end_m": [
+              0.31936030834913254,
+              0.3054247051477432,
+              0.2790222465991974
+            ],
+            "measured_delta_m": -0.04033806174993515,
+            "target_start_model_end_settle_end_m": [
+              0.3242799937725067,
+              0.27588000893592834,
+              0.27588000893592834
+            ],
+            "target_delta_m": -0.04839998483657837,
+            "predicted_unclamped_target_delta_m": -0.048399998918175695,
+            "target_delta_error_m": 1.4081597325688033e-08,
+            "settle_delta_m": -0.026402458548545837,
+            "end_target_minus_measured_m": -0.003142237663269043,
+            "velocity_model_end_m_s": -0.1342463530600071,
+            "velocity_settle_end_m_s": -0.03179757483303547
+          },
+          "gripper_reference_world": {
+            "delta_m": [
+              0.04025303371494937,
+              0.0016334380274965477,
+              0.0002519060193373335
+            ],
+            "displacement_m": 0.04028694949594845,
+            "during_model_delta_m": [
+              0.013537973333498043,
+              0.0003397720376764335,
+              0.0002659931491537648
+            ],
+            "during_settle_delta_m": [
+              0.026715060381451328,
+              0.0012936659898201142,
+              -1.4087129816431343e-05
+            ],
+            "orientation_delta_deg": 0.10237236801630632
+          },
+          "gripper_reference_base": {
+            "delta_m": [
+              -0.04018014669418335,
+              -0.00011710822582244873,
+              0.0004932880401611328
+            ],
+            "displacement_m": 0.040183345253888635
+          },
+          "base_world": {
+            "delta_m": [
+              0.00010454654693603516,
+              -3.1560659408569336e-05,
+              -8.42846930027008e-08
+            ],
+            "displacement_m": 0.000109206514468972
+          },
+          "wrist_yaw_pitch_roll_delta_rad": [
+            -0.00042921179010591004,
+            -0.0017334222793579102,
+            -2.7190573746338487e-05
+          ],
+          "wrist_yaw_pitch_roll_end_velocity_rad_s": [
+            0.0012099627638235688,
+            -0.01441325806081295,
+            -0.005387082230299711
+          ],
+          "wrist_target_minus_measured_end_rad": [
+            1.57346894411603e-05,
+            -0.004747599363327026,
+            0.00020932414918206632
+          ],
+          "lift_measured_delta_m": 2.09808349609375e-05,
+          "lift_end_velocity_m_s": 0.010878142900764942
+        },
+        {
+          "robot": 1,
+          "arm_extension": {
+            "measured_start_model_end_settle_end_m": [
+              0.31936538964509964,
+              0.30548126995563507,
+              0.27915872633457184
+            ],
+            "measured_delta_m": -0.0402066633105278,
+            "target_start_model_end_settle_end_m": [
+              0.3242799937725067,
+              0.27588000893592834,
+              0.27588000893592834
+            ],
+            "target_delta_m": -0.04839998483657837,
+            "predicted_unclamped_target_delta_m": -0.048399998918175695,
+            "target_delta_error_m": 1.4081597325688033e-08,
+            "settle_delta_m": -0.026322543621063232,
+            "end_target_minus_measured_m": -0.0032787173986434937,
+            "velocity_model_end_m_s": -0.14007725194096565,
+            "velocity_settle_end_m_s": -0.03186726989224553
+          },
+          "gripper_reference_world": {
+            "delta_m": [
+              0.040025029855511374,
+              0.0013798160830079953,
+              0.00023884575033727984
+            ],
+            "displacement_m": 0.040049518781752655,
+            "during_model_delta_m": [
+              0.013421494042066162,
+              0.00023728393210944998,
+              0.0002645902050775195
+            ],
+            "during_settle_delta_m": [
+              0.02660353581344521,
+              0.0011425321508985453,
+              -2.5744454740239675e-05
+            ],
+            "orientation_delta_deg": 0.09969318899527585
+          },
+          "gripper_reference_base": {
+            "delta_m": [
+              -0.040056586265563965,
+              -0.0001260414719581604,
+              0.0004786252975463867
+            ],
+            "displacement_m": 0.04005964393100209
+          },
+          "base_world": {
+            "delta_m": [
+              -4.887580871582031e-06,
+              -7.919967174530029e-05,
+              4.330649971961975e-08
+            ],
+            "displacement_m": 7.935035177485032e-05
+          },
+          "wrist_yaw_pitch_roll_delta_rad": [
+            -0.00046225405822042376,
+            -0.001683950424194336,
+            1.3673852663487196e-06
+          ],
+          "wrist_yaw_pitch_roll_end_velocity_rad_s": [
+            -0.0016970176948234439,
+            -0.016905520111322403,
+            0.0004262203583493829
+          ],
+          "wrist_target_minus_measured_end_rad": [
+            0.00023478723596781492,
+            -0.004778534173965454,
+            0.00030842437990941107
+          ],
+          "lift_measured_delta_m": 1.8835067749023438e-05,
+          "lift_end_velocity_m_s": 0.010715663433074951
+        }
+      ]
+    },
+    {
+      "decision_index": 5,
+      "boundaries": {
+        "start": 854,
+        "model_end": 860,
+        "settle_end": 866
+      },
+      "simulation_times_s": [
+        44.22500230651349,
+        44.52500232215971,
+        44.82500233780593
+      ],
+      "model_steps": 6,
+      "settle_steps": 6,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.20000000298023224,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.20000000298023224,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "robots": [
+        {
+          "robot": 0,
+          "arm_extension": {
+            "measured_start_model_end_settle_end_m": [
+              0.2750886529684067,
+              0.30633843690156937,
+              0.34271854907274246
+            ],
+            "measured_delta_m": 0.06762989610433578,
+            "target_start_model_end_settle_end_m": [
+              0.27588000893592834,
+              0.3484800159931183,
+              0.3484800159931183
+            ],
+            "target_delta_m": 0.07260000705718994,
+            "predicted_unclamped_target_delta_m": 0.07260000108182431,
+            "target_delta_error_m": 5.975365632848728e-09,
+            "settle_delta_m": 0.036380112171173096,
+            "end_target_minus_measured_m": 0.005761466920375824,
+            "velocity_model_end_m_s": 0.1958569660782814,
+            "velocity_settle_end_m_s": 0.04324863664805889
+          },
+          "gripper_reference_world": {
+            "delta_m": [
+              -0.06713507269209185,
+              -0.002943605295387175,
+              -0.006698366266083777
+            ],
+            "displacement_m": 0.0675325914514029,
+            "during_model_delta_m": [
+              -0.03059914708417999,
+              -0.0010955283342943267,
+              -0.005604932496201753
+            ],
+            "during_settle_delta_m": [
+              -0.03653592560791186,
+              -0.0018480769610928482,
+              -0.001093433769882024
+            ],
+            "orientation_delta_deg": 0.04281494932805919
+          },
+          "gripper_reference_base": {
+            "delta_m": [
+              0.06769239902496338,
+              0.00019082427024841309,
+              -0.007104396820068359
+            ],
+            "displacement_m": 0.06806445293862264
+          },
+          "base_world": {
+            "delta_m": [
+              0.0005466938018798828,
+              -0.00012712180614471436,
+              -1.2922100722789764e-07
+            ],
+            "displacement_m": 0.0005612789710201546
+          },
+          "wrist_yaw_pitch_roll_delta_rad": [
+            0.0006987562956055626,
+            -9.953975677490234e-06,
+            0.0001387910742778331
+          ],
+          "wrist_yaw_pitch_roll_end_velocity_rad_s": [
+            -0.0009909003274515271,
+            -0.016131877899169922,
+            0.0008227654034271836
+          ],
+          "wrist_target_minus_measured_end_rad": [
+            -0.0008495660149492323,
+            -0.0044615864753723145,
+            -6.100390601204708e-05
+          ],
+          "lift_measured_delta_m": -0.007107257843017578,
+          "lift_end_velocity_m_s": 0.00888246763497591
+        },
+        {
+          "robot": 1,
+          "arm_extension": {
+            "measured_start_model_end_settle_end_m": [
+              0.2753114178776741,
+              0.30632486194372177,
+              0.34263430535793304
+            ],
+            "measured_delta_m": 0.06732288748025894,
+            "target_start_model_end_settle_end_m": [
+              0.27588000893592834,
+              0.3484800159931183,
+              0.3484800159931183
+            ],
+            "target_delta_m": 0.07260000705718994,
+            "predicted_unclamped_target_delta_m": 0.07260000108182431,
+            "target_delta_error_m": 5.975365632848728e-09,
+            "settle_delta_m": 0.03630944341421127,
+            "end_target_minus_measured_m": 0.005845710635185242,
+            "velocity_model_end_m_s": 0.1954549103975296,
+            "velocity_settle_end_m_s": 0.043193391524255276
+          },
+          "gripper_reference_world": {
+            "delta_m": [
+              -0.06674182385031602,
+              -0.0023518055895440926,
+              0.0003828681515307686
+            ],
+            "displacement_m": 0.06678434418648639,
+            "during_model_delta_m": [
+              -0.03034940222311866,
+              -0.0007527935069890079,
+              0.00019993442090404656
+            ],
+            "during_settle_delta_m": [
+              -0.03639242162719736,
+              -0.0015990120825550846,
+              0.00018293373062672202
+            ],
+            "orientation_delta_deg": 0.011653300480548377
+          },
+          "gripper_reference_base": {
+            "delta_m": [
+              0.06733572483062744,
+              6.64740800857544e-05,
+              -2.0265579223632812e-05
+            ],
+            "displacement_m": 0.06733576069194586
+          },
+          "base_world": {
+            "delta_m": [
+              0.0005487203598022461,
+              -6.684660911560059e-05,
+              -2.3515895009040833e-08
+            ],
+            "displacement_m": 0.0005527770825249159
+          },
+          "wrist_yaw_pitch_roll_delta_rad": [
+            0.00024373191263293847,
+            7.611513137817383e-05,
+            -2.3173866793513298e-05
+          ],
+          "wrist_yaw_pitch_roll_end_velocity_rad_s": [
+            0.0011587460758164525,
+            -0.01437148917466402,
+            -0.0031299693509936333
+          ],
+          "wrist_target_minus_measured_end_rad": [
+            -6.369831680785865e-06,
+            -0.004754185676574707,
+            0.0003895405388902873
+          ],
+          "lift_measured_delta_m": 2.384185791015625e-07,
+          "lift_end_velocity_m_s": 0.010782805271446705
+        }
+      ]
+    },
+    {
+      "decision_index": 6,
+      "boundaries": {
+        "start": 866,
+        "model_end": 872,
+        "settle_end": 878
+      },
+      "simulation_times_s": [
+        44.82500233780593,
+        45.125002353452146,
+        45.425002369098365
+      ],
+      "model_steps": 6,
+      "settle_steps": 6,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -0.20000000298023224,
+          0.0,
+          0.0,
+          0.25,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -0.20000000298023224,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "robots": [
+        {
+          "robot": 0,
+          "arm_extension": {
+            "measured_start_model_end_settle_end_m": [
+              0.34271854907274246,
+              0.31636740267276764,
+              0.28012044727802277
+            ],
+            "measured_delta_m": -0.0625981017947197,
+            "target_start_model_end_settle_end_m": [
+              0.3484800159931183,
+              0.27588000893592834,
+              0.27588000893592834
+            ],
+            "target_delta_m": -0.07260000705718994,
+            "predicted_unclamped_target_delta_m": -0.07260000108182431,
+            "target_delta_error_m": -5.975365632848728e-09,
+            "settle_delta_m": -0.03624695539474487,
+            "end_target_minus_measured_m": -0.004240438342094421,
+            "velocity_model_end_m_s": -0.19053607061505318,
+            "velocity_settle_end_m_s": -0.03661805856972933
+          },
+          "gripper_reference_world": {
+            "delta_m": [
+              0.06274897795751255,
+              0.002181771598389559,
+              -0.0011716543170472438
+            ],
+            "displacement_m": 0.06279782747721924,
+            "during_model_delta_m": [
+              0.025858163252905686,
+              0.00036221658116436517,
+              -0.0005359065420174058
+            ],
+            "during_settle_delta_m": [
+              0.03689081470460687,
+              0.001819555017225194,
+              -0.0006357477750298379
+            ],
+            "orientation_delta_deg": 21.288758501675535
+          },
+          "gripper_reference_base": {
+            "delta_m": [
+              -0.06282943487167358,
+              -0.0001609399914741516,
+              -0.0007953643798828125
+            ],
+            "displacement_m": 0.06283467508049607
+          },
+          "base_world": {
+            "delta_m": [
+              -1.0013580322265625e-05,
+              -0.00021860003471374512,
+              -1.5669502317905426e-07
+            ],
+            "displacement_m": 0.00021882932052412748
+          },
+          "wrist_yaw_pitch_roll_delta_rad": [
+            -0.000588805036386475,
+            0.0015942752361297607,
+            0.3714118614370818
+          ],
+          "wrist_yaw_pitch_roll_end_velocity_rad_s": [
+            0.004463755991309881,
+            -0.00027773715555667877,
+            0.2859032154083252
+          ],
+          "wrist_target_minus_measured_end_rad": [
+            -0.00026076097856275737,
+            -0.006055861711502075,
+            0.04102712869644165
+          ],
+          "lift_measured_delta_m": -0.0003606081008911133,
+          "lift_end_velocity_m_s": 0.011252529919147491
+        },
+        {
+          "robot": 1,
+          "arm_extension": {
+            "measured_start_model_end_settle_end_m": [
+              0.34263430535793304,
+              0.31632742285728455,
+              0.2804838567972183
+            ],
+            "measured_delta_m": -0.06215044856071472,
+            "target_start_model_end_settle_end_m": [
+              0.3484800159931183,
+              0.27588000893592834,
+              0.27588000893592834
+            ],
+            "target_delta_m": -0.07260000705718994,
+            "predicted_unclamped_target_delta_m": -0.07260000108182431,
+            "target_delta_error_m": -5.975365632848728e-09,
+            "settle_delta_m": -0.03584356606006622,
+            "end_target_minus_measured_m": -0.004603847861289978,
+            "velocity_model_end_m_s": -0.18604931607842445,
+            "velocity_settle_end_m_s": -0.042358752340078354
+          },
+          "gripper_reference_world": {
+            "delta_m": [
+              0.06221163811564012,
+              0.0023135836813458766,
+              -0.0003617100447237398
+            ],
+            "displacement_m": 0.0622556938812701,
+            "during_model_delta_m": [
+              0.025889035109570746,
+              0.0006350325094324483,
+              -0.0001864821920491977
+            ],
+            "during_settle_delta_m": [
+              0.036322603006069376,
+              0.0016785511719134283,
+              -0.0001752278526745421
+            ],
+            "orientation_delta_deg": 0.05460724533169069
+          },
+          "gripper_reference_base": {
+            "delta_m": [
+              -0.06222623586654663,
+              -0.0002558082342147827,
+              1.0013580322265625e-05
+            ],
+            "displacement_m": 0.06222676247599241
+          },
+          "base_world": {
+            "delta_m": [
+              2.6464462280273438e-05,
+              -7.908046245574951e-05,
+              1.0780058801174164e-07
+            ],
+            "displacement_m": 8.339124010929446e-05
+          },
+          "wrist_yaw_pitch_roll_delta_rad": [
+            -0.0009372736603836529,
+            -5.513429641723633e-05,
+            -0.00014062997070141137
+          ],
+          "wrist_yaw_pitch_roll_end_velocity_rad_s": [
+            -0.0025958125479519367,
+            -0.017525704577565193,
+            0.0007633351488038898
+          ],
+          "wrist_target_minus_measured_end_rad": [
+            0.000930903828702867,
+            -0.004699051380157471,
+            0.0005301705095916986
+          ],
+          "lift_measured_delta_m": -4.76837158203125e-06,
+          "lift_end_velocity_m_s": 0.01063872966915369
+        }
+      ]
+    },
+    {
+      "decision_index": 7,
+      "boundaries": {
+        "start": 878,
+        "model_end": 882,
+        "settle_end": 888
+      },
+      "simulation_times_s": [
+        45.425002369098365,
+        45.62500237952918,
+        45.9250023951754
+      ],
+      "model_steps": 4,
+      "settle_steps": 6,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.18000000715255737,
+          0.12999999523162842,
+          0.0,
+          0.20000000298023224,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "robots": [
+        {
+          "robot": 0,
+          "arm_extension": {
+            "measured_start_model_end_settle_end_m": [
+              0.28012044727802277,
+              0.2846939191222191,
+              0.3036901652812958
+            ],
+            "measured_delta_m": 0.02356971800327301,
+            "target_start_model_end_settle_end_m": [
+              0.27588000893592834,
+              0.30733999609947205,
+              0.30733999609947205
+            ],
+            "target_delta_m": 0.0314599871635437,
+            "predicted_unclamped_target_delta_m": 0.03145999884605408,
+            "target_delta_error_m": -1.1682510375754518e-08,
+            "settle_delta_m": 0.01899624615907669,
+            "end_target_minus_measured_m": 0.0036498308181762695,
+            "velocity_model_end_m_s": 0.08682741411030293,
+            "velocity_settle_end_m_s": 0.024617036804556847
+          },
+          "gripper_reference_world": {
+            "delta_m": [
+              0.0033343785514761137,
+              -0.00020629081393819249,
+              -0.0017566378550475381
+            ],
+            "displacement_m": 0.0037744420486007257,
+            "during_model_delta_m": [
+              0.006795382896960023,
+              0.0003371215482110834,
+              -0.0017119543878030274
+            ],
+            "during_settle_delta_m": [
+              -0.003461004345483909,
+              -0.0005434123621492759,
+              -4.4683467244510666e-05
+            ],
+            "orientation_delta_deg": 11.215713452498917
+          },
+          "gripper_reference_base": {
+            "delta_m": [
+              -0.0027944445610046387,
+              0.00012040138244628906,
+              -0.001740097999572754
+            ],
+            "displacement_m": 0.0032941399401878
+          },
+          "base_world": {
+            "delta_m": [
+              0.0005513429641723633,
+              -0.0001481473445892334,
+              1.8603168427944183e-07
+            ],
+            "displacement_m": 0.0005708999338404205
+          },
+          "wrist_yaw_pitch_roll_delta_rad": [
+            0.0005162844026926905,
+            0.19082653522491455,
+            0.043974488973617554
+          ],
+          "wrist_yaw_pitch_roll_end_velocity_rad_s": [
+            -0.00018921965966001153,
+            0.12718643248081207,
+            -0.005631689447909594
+          ],
+          "wrist_target_minus_measured_end_rad": [
+            -0.0007770453812554479,
+            0.02311760187149048,
+            -0.0029473602771759033
+          ],
+          "lift_measured_delta_m": 0.04795527458190918,
+          "lift_end_velocity_m_s": 0.04823656752705574
+        },
+        {
+          "robot": 1,
+          "arm_extension": {
+            "measured_start_model_end_settle_end_m": [
+              0.2804838567972183,
+              0.27630268037319183,
+              0.2756035849452019
+            ],
+            "measured_delta_m": -0.004880271852016449,
+            "target_start_model_end_settle_end_m": [
+              0.27588000893592834,
+              0.27588000893592834,
+              0.27588000893592834
+            ],
+            "target_delta_m": 0.0,
+            "predicted_unclamped_target_delta_m": 0.0,
+            "target_delta_error_m": 0.0,
+            "settle_delta_m": -0.0006990954279899597,
+            "end_target_minus_measured_m": 0.00027642399072647095,
+            "velocity_model_end_m_s": -0.007355739478953183,
+            "velocity_settle_end_m_s": 0.00035362514972803183
+          },
+          "gripper_reference_world": {
+            "delta_m": [
+              0.005274858749869105,
+              0.00021975085804629146,
+              -4.3776002498274735e-05
+            ],
+            "displacement_m": 0.005279615668690048,
+            "during_model_delta_m": [
+              0.004386376728515828,
+              0.00017106671191152722,
+              -2.387974884432431e-05
+            ],
+            "during_settle_delta_m": [
+              0.0008884820213532763,
+              4.868414613476424e-05,
+              -1.9896253653950424e-05
+            ],
+            "orientation_delta_deg": 0.005228395351002228
+          },
+          "gripper_reference_base": {
+            "delta_m": [
+              -0.004877269268035889,
+              2.7447938919067383e-05,
+              -1.430511474609375e-05
+            ],
+            "displacement_m": 0.004877367480371572
+          },
+          "base_world": {
+            "delta_m": [
+              0.00039505958557128906,
+              2.1442770957946777e-05,
+              1.9231811165809631e-07
+            ],
+            "displacement_m": 0.00039564113229588466
+          },
+          "wrist_yaw_pitch_roll_delta_rad": [
+            0.00010077026672661304,
+            5.2481889724731445e-05,
+            -6.680289516225457e-05
+          ],
+          "wrist_yaw_pitch_roll_end_velocity_rad_s": [
+            -0.00038020205101929605,
+            -0.015917949378490448,
+            -0.00011556020035641268
+          ],
+          "wrist_target_minus_measured_end_rad": [
+            0.000830133561976254,
+            -0.004751533269882202,
+            0.0005969734047539532
+          ],
+          "lift_measured_delta_m": 0.0,
+          "lift_end_velocity_m_s": 0.01068400964140892
+        }
+      ]
+    },
+    {
+      "decision_index": 8,
+      "boundaries": {
+        "start": 888,
+        "model_end": 894,
+        "settle_end": 900
+      },
+      "simulation_times_s": [
+        45.9250023951754,
+        46.22500241082162,
+        46.525002426467836
+      ],
+      "model_steps": 6,
+      "settle_steps": 6,
+      "applied_action": [
+        [
+          0.0,
+          -0.550000011920929,
+          0.0,
+          0.0,
+          0.07999999821186066,
+          0.30000001192092896,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "robots": [
+        {
+          "robot": 0,
+          "arm_extension": {
+            "measured_start_model_end_settle_end_m": [
+              0.3036901652812958,
+              0.31631017476320267,
+              0.3351206034421921
+            ],
+            "measured_delta_m": 0.0314304381608963,
+            "target_start_model_end_settle_end_m": [
+              0.30733999609947205,
+              0.3363800048828125,
+              0.3363800048828125
+            ],
+            "target_delta_m": 0.029040008783340454,
+            "predicted_unclamped_target_delta_m": 0.029039999350905416,
+            "target_delta_error_m": 9.432435037898257e-09,
+            "settle_delta_m": 0.01881042867898941,
+            "end_target_minus_measured_m": 0.0012594014406204224,
+            "velocity_model_end_m_s": 0.10204203426837921,
+            "velocity_settle_end_m_s": 0.01708091888576746
+          },
+          "gripper_reference_world": {
+            "delta_m": [
+              -0.039976745677792636,
+              -0.010850550692649064,
+              -8.09150444467388e-05
+            ],
+            "displacement_m": 0.041423196310341345,
+            "during_model_delta_m": [
+              -0.021732652586306966,
+              -0.013270826161384974,
+              6.59964628610954e-05
+            ],
+            "during_settle_delta_m": [
+              -0.01824409309148567,
+              0.0024202754687359107,
+              -0.0001469115073078342
+            ],
+            "orientation_delta_deg": 24.963658696574402
+          },
+          "gripper_reference_base": {
+            "delta_m": [
+              0.04080933332443237,
+              0.11087888479232788,
+              5.888938903808594e-05
+            ],
+            "displacement_m": 0.11815046443893094
+          },
+          "base_world": {
+            "delta_m": [
+              -0.0034322738647460938,
+              0.1012626588344574,
+              2.4726614356040955e-07
+            ],
+            "displacement_m": 0.1013208101930076
+          },
+          "wrist_yaw_pitch_roll_delta_rad": [
+            0.43852519046049565,
+            0.028792738914489746,
+            0.006152987480163574
+          ],
+          "wrist_yaw_pitch_roll_end_velocity_rad_s": [
+            0.277990460395813,
+            -0.013146704994142056,
+            -0.035484377294778824
+          ],
+          "wrist_target_minus_measured_end_rad": [
+            0.05569776892662048,
+            -0.005675137042999268,
+            -0.009100347757339478
+          ],
+          "lift_measured_delta_m": 0.007085442543029785,
+          "lift_end_velocity_m_s": 0.012560363858938217
+        },
+        {
+          "robot": 1,
+          "arm_extension": {
+            "measured_start_model_end_settle_end_m": [
+              0.2756035849452019,
+              0.27553755044937134,
+              0.2754944935441017
+            ],
+            "measured_delta_m": -0.00010909140110015869,
+            "target_start_model_end_settle_end_m": [
+              0.27588000893592834,
+              0.27588000893592834,
+              0.27588000893592834
+            ],
+            "target_delta_m": 0.0,
+            "predicted_unclamped_target_delta_m": 0.0,
+            "target_delta_error_m": 0.0,
+            "settle_delta_m": -4.30569052696228e-05,
+            "end_target_minus_measured_m": 0.00038551539182662964,
+            "velocity_model_end_m_s": 0.0032698774011805654,
+            "velocity_settle_end_m_s": 0.0033098964777309448
+          },
+          "gripper_reference_world": {
+            "delta_m": [
+              0.0002489150950271135,
+              -0.00033401381624176274,
+              -7.2570042799480206e-06
+            ],
+            "displacement_m": 0.00041662527297784297,
+            "during_model_delta_m": [
+              0.00011648801982377943,
+              -0.0002168419615647399,
+              -4.363066951951211e-06
+            ],
+            "during_settle_delta_m": [
+              0.00013242707520333408,
+              -0.00011717185467702285,
+              -2.8939373279968095e-06
+            ],
+            "orientation_delta_deg": 0.04318451603790729
+          },
+          "gripper_reference_base": {
+            "delta_m": [
+              -4.786252975463867e-05,
+              0.00019562989473342896,
+              -6.079673767089844e-06
+            ],
+            "displacement_m": 0.00020149153803830178
+          },
+          "base_world": {
+            "delta_m": [
+              0.00019979476928710938,
+              -7.769465446472168e-05,
+              -1.8742866814136505e-07
+            ],
+            "displacement_m": 0.00021436987730646162
+          },
+          "wrist_yaw_pitch_roll_delta_rad": [
+            0.000716330308932811,
+            1.0609626770019531e-05,
+            0.00022279194672591984
+          ],
+          "wrist_yaw_pitch_roll_end_velocity_rad_s": [
+            -0.004063907545059919,
+            -0.011901983991265297,
+            0.040423665195703506
+          ],
+          "wrist_target_minus_measured_end_rad": [
+            0.00011380325304344296,
+            -0.004762142896652222,
+            0.0003741814580280334
+          ],
+          "lift_measured_delta_m": -2.86102294921875e-06,
+          "lift_end_velocity_m_s": 0.01054038293659687
+        }
+      ]
+    },
+    {
+      "decision_index": 10,
+      "boundaries": {
+        "start": 910,
+        "model_end": 915,
+        "settle_end": 921
+      },
+      "simulation_times_s": [
+        47.02500245254487,
+        47.275002465583384,
+        47.5750024812296
+      ],
+      "model_steps": 5,
+      "settle_steps": 6,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.20000000298023224,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.20000000298023224,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "robots": [
+        {
+          "robot": 0,
+          "arm_extension": {
+            "measured_start_model_end_settle_end_m": [
+              0.33570028096437454,
+              0.3574583828449249,
+              0.39103706926107407
+            ],
+            "measured_delta_m": 0.055336788296699524,
+            "target_start_model_end_settle_end_m": [
+              0.3363800048828125,
+              0.39688000082969666,
+              0.39688000082969666
+            ],
+            "target_delta_m": 0.060499995946884155,
+            "predicted_unclamped_target_delta_m": 0.06050000090152026,
+            "target_delta_error_m": -4.954636104170795e-09,
+            "settle_delta_m": 0.03357868641614914,
+            "end_target_minus_measured_m": 0.005842931568622589,
+            "velocity_model_end_m_s": 0.1742859035730362,
+            "velocity_settle_end_m_s": 0.04175316449254751
+          },
+          "gripper_reference_world": {
+            "delta_m": [
+              -0.05681333301635849,
+              -0.004801989192133815,
+              0.006192728525458824
+            ],
+            "displacement_m": 0.057351231854416616,
+            "during_model_delta_m": [
+              -0.02284592907213312,
+              -0.002791079877084629,
+              0.004618916910249071
+            ],
+            "during_settle_delta_m": [
+              -0.03396740394422537,
+              -0.0020109093150491864,
+              0.0015738116152097525
+            ],
+            "orientation_delta_deg": 1.282705773297376
+          },
+          "gripper_reference_base": {
+            "delta_m": [
+              0.05760914087295532,
+              0.002572089433670044,
+              0.0058574676513671875
+            ],
+            "displacement_m": 0.057963252871639476
+          },
+          "base_world": {
+            "delta_m": [
+              0.000619053840637207,
+              -1.9669532775878906e-06,
+              2.193264663219452e-07
+            ],
+            "displacement_m": 0.0006190570043356036
+          },
+          "wrist_yaw_pitch_roll_delta_rad": [
+            0.004483222961425781,
+            -0.021935313940048218,
+            4.875659942626953e-05
+          ],
+          "wrist_yaw_pitch_roll_end_velocity_rad_s": [
+            0.0014016347704455256,
+            -0.029537007212638855,
+            -0.032122302800416946
+          ],
+          "wrist_target_minus_measured_end_rad": [
+            4.488229751586914e-05,
+            -0.009514063596725464,
+            -0.008175849914550781
+          ],
+          "lift_measured_delta_m": 2.7894973754882812e-05,
+          "lift_end_velocity_m_s": 0.01073129940778017
+        },
+        {
+          "robot": 1,
+          "arm_extension": {
+            "measured_start_model_end_settle_end_m": [
+              0.2753039076924324,
+              0.2971158102154732,
+              0.3306198939681053
+            ],
+            "measured_delta_m": 0.05531598627567291,
+            "target_start_model_end_settle_end_m": [
+              0.27588000893592834,
+              0.3363800048828125,
+              0.3363800048828125
+            ],
+            "target_delta_m": 0.060499995946884155,
+            "predicted_unclamped_target_delta_m": 0.06050000090152026,
+            "target_delta_error_m": -4.954636104170795e-09,
+            "settle_delta_m": 0.03350408375263214,
+            "end_target_minus_measured_m": 0.005760110914707184,
+            "velocity_model_end_m_s": 0.18207427486777306,
+            "velocity_settle_end_m_s": 0.041352598927915096
+          },
+          "gripper_reference_world": {
+            "delta_m": [
+              -0.056323380557293246,
+              -0.0021256634628777638,
+              0.006810476499752527
+            ],
+            "displacement_m": 0.05677344654601105,
+            "during_model_delta_m": [
+              -0.022395569752254763,
+              -0.0005802339344255225,
+              0.005052586672307902
+            ],
+            "during_settle_delta_m": [
+              -0.03392781080503848,
+              -0.0015454295284522412,
+              0.0017578898274446253
+            ],
+            "orientation_delta_deg": 1.285140323426012
+          },
+          "gripper_reference_base": {
+            "delta_m": [
+              0.05686318874359131,
+              0.00014986097812652588,
+              0.006470203399658203
+            ],
+            "displacement_m": 0.05723030861733146
+          },
+          "base_world": {
+            "delta_m": [
+              0.0004649162292480469,
+              -1.8030405044555664e-06,
+              1.4435499906539917e-07
+            ],
+            "displacement_m": 0.0004649197479260791
+          },
+          "wrist_yaw_pitch_roll_delta_rad": [
+            0.0005200365631026216,
+            -0.02242225408554077,
+            4.3032021494582295e-05
+          ],
+          "wrist_yaw_pitch_roll_end_velocity_rad_s": [
+            0.001683038310147822,
+            -0.021306876093149185,
+            -0.005362062249332666
+          ],
+          "wrist_target_minus_measured_end_rad": [
+            -0.00048691584379412234,
+            -0.0065437257289886475,
+            0.00028889041277579963
+          ],
+          "lift_measured_delta_m": 2.0265579223632812e-05,
+          "lift_end_velocity_m_s": 0.010826008394360542
+        }
+      ]
+    },
+    {
+      "decision_index": 11,
+      "boundaries": {
+        "start": 921,
+        "model_end": 926,
+        "settle_end": 932
+      },
+      "simulation_times_s": [
+        47.5750024812296,
+        47.82500249426812,
+        48.12500250991434
+      ],
+      "model_steps": 5,
+      "settle_steps": 6,
+      "applied_action": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -0.20000000298023224,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -0.20000000298023224,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "robots": [
+        {
+          "robot": 0,
+          "arm_extension": {
+            "measured_start_model_end_settle_end_m": [
+              0.39103706926107407,
+              0.3735100030899048,
+              0.34044936299324036
+            ],
+            "measured_delta_m": -0.05058770626783371,
+            "target_start_model_end_settle_end_m": [
+              0.39688000082969666,
+              0.3363800048828125,
+              0.3363800048828125
+            ],
+            "target_delta_m": -0.060499995946884155,
+            "predicted_unclamped_target_delta_m": -0.06050000090152026,
+            "target_delta_error_m": 4.954636104170795e-09,
+            "settle_delta_m": -0.03306064009666443,
+            "end_target_minus_measured_m": -0.0040693581104278564,
+            "velocity_model_end_m_s": -0.16893107444047928,
+            "velocity_settle_end_m_s": -0.029924821224994957
+          },
+          "gripper_reference_world": {
+            "delta_m": [
+              0.05061266955872923,
+              0.0018460738574413438,
+              0.00011090318571005398
+            ],
+            "displacement_m": 0.050646447141579884,
+            "during_model_delta_m": [
+              0.01721493222622994,
+              0.00044965677553374106,
+              0.00016924925641514932
+            ],
+            "during_settle_delta_m": [
+              0.03339773733249929,
+              0.0013964170819076027,
+              -5.834607070509534e-05
+            ],
+            "orientation_delta_deg": 0.09053014801794265
+          },
+          "gripper_reference_base": {
+            "delta_m": [
+              -0.050413429737091064,
+              6.828084588050842e-05,
+              0.00041484832763671875
+            ],
+            "displacement_m": 0.05041518282487405
+          },
+          "base_world": {
+            "delta_m": [
+              0.0002384185791015625,
+              -4.3839216232299805e-05,
+              0.0
+            ],
+            "displacement_m": 0.00024241554352118254
+          },
+          "wrist_yaw_pitch_roll_delta_rad": [
+            -8.514523506164551e-05,
+            -0.0015379786491394043,
+            -0.0004089176654815674
+          ],
+          "wrist_yaw_pitch_roll_end_velocity_rad_s": [
+            -0.02440391667187214,
+            0.036706291139125824,
+            -0.004711019806563854
+          ],
+          "wrist_target_minus_measured_end_rad": [
+            0.00013002753257751465,
+            -0.00797608494758606,
+            -0.007766932249069214
+          ],
+          "lift_measured_delta_m": 3.933906555175781e-06,
+          "lift_end_velocity_m_s": 0.011858317069709301
+        },
+        {
+          "robot": 1,
+          "arm_extension": {
+            "measured_start_model_end_settle_end_m": [
+              0.3306198939681053,
+              0.31318502873182297,
+              0.28022945672273636
+            ],
+            "measured_delta_m": -0.05039043724536896,
+            "target_start_model_end_settle_end_m": [
+              0.3363800048828125,
+              0.27588000893592834,
+              0.27588000893592834
+            ],
+            "target_delta_m": -0.060499995946884155,
+            "predicted_unclamped_target_delta_m": -0.06050000090152026,
+            "target_delta_error_m": 4.954636104170795e-09,
+            "settle_delta_m": -0.03295557200908661,
+            "end_target_minus_measured_m": -0.004349447786808014,
+            "velocity_model_end_m_s": -0.16494285315275192,
+            "velocity_settle_end_m_s": -0.04507186729460955
+          },
+          "gripper_reference_world": {
+            "delta_m": [
+              0.050274444111544137,
+              0.0016612001868394621,
+              0.00013721389232346226
+            ],
+            "displacement_m": 0.050302068987644805,
+            "during_model_delta_m": [
+              0.017026659071054384,
+              0.00022766275376853717,
+              0.00019358714177353242
+            ],
+            "during_settle_delta_m": [
+              0.03324778504048975,
+              0.001433537433070925,
+              -5.637324945007016e-05
+            ],
+            "orientation_delta_deg": 0.08945578823404866
+          },
+          "gripper_reference_base": {
+            "delta_m": [
+              -0.05033278465270996,
+              -0.0001270696520805359,
+              0.0004379749298095703
+            ],
+            "displacement_m": 0.050334850547425855
+          },
+          "base_world": {
+            "delta_m": [
+              -2.3365020751953125e-05,
+              -9.742379188537598e-05,
+              -1.5576370060443878e-07
+            ],
+            "displacement_m": 0.00010018654441787418
+          },
+          "wrist_yaw_pitch_roll_delta_rad": [
+            -0.00044037308543920517,
+            -0.0015154778957366943,
+            3.715045750141144e-05
+          ],
+          "wrist_yaw_pitch_roll_end_velocity_rad_s": [
+            0.05962183326482773,
+            -0.021455593407154083,
+            -0.16403116285800934
+          ],
+          "wrist_target_minus_measured_end_rad": [
+            -4.654275835491717e-05,
+            -0.005028247833251953,
+            0.0002517399552743882
+          ],
+          "lift_measured_delta_m": 9.5367431640625e-07,
+          "lift_end_velocity_m_s": 0.012415672652423382
+        }
+      ]
+    }
+  ],
+  "cycles": [
+    {
+      "approach_decision": 2,
+      "return_decision": 3,
+      "boundaries": [
+        821,
+        843
+      ],
+      "robots": [
+        {
+          "robot": 0,
+          "gripper_reference_world_end_minus_start_m": [
+            -0.006250603562202861,
+            -0.00017395413672005589,
+            0.007584024598423111
+          ],
+          "gripper_reference_world_displacement_after_return_m": 0.009829432030539301,
+          "gripper_reference_orientation_after_return_delta_deg": 1.5365838173071373
+        },
+        {
+          "robot": 1,
+          "gripper_reference_world_end_minus_start_m": [
+            -0.006478043842616077,
+            -0.000349118650407626,
+            0.007588689429190332
+          ],
+          "gripper_reference_world_displacement_after_return_m": 0.009983743942611088,
+          "gripper_reference_orientation_after_return_delta_deg": 1.5370647764908614
+        }
+      ]
+    },
+    {
+      "approach_decision": 5,
+      "return_decision": 6,
+      "boundaries": [
+        854,
+        878
+      ],
+      "robots": [
+        {
+          "robot": 0,
+          "gripper_reference_world_end_minus_start_m": [
+            -0.004386094734579293,
+            -0.0007618336969976158,
+            -0.007870020583131021
+          ],
+          "gripper_reference_world_displacement_after_return_m": 0.009041871575149206,
+          "gripper_reference_orientation_after_return_delta_deg": 21.279195802552017
+        },
+        {
+          "robot": 1,
+          "gripper_reference_world_end_minus_start_m": [
+            -0.004530185734675896,
+            -3.8221908198216026e-05,
+            2.1158106807028787e-05
+          ],
+          "gripper_reference_world_displacement_after_return_m": 0.0045303963811581605,
+          "gripper_reference_orientation_after_return_delta_deg": 0.044184159607115116
+        }
+      ]
+    },
+    {
+      "approach_decision": 10,
+      "return_decision": 11,
+      "boundaries": [
+        910,
+        932
+      ],
+      "robots": [
+        {
+          "robot": 0,
+          "gripper_reference_world_end_minus_start_m": [
+            -0.006200663457629263,
+            -0.0029559153346924716,
+            0.006303631711168878
+          ],
+          "gripper_reference_world_displacement_after_return_m": 0.009323166604255384,
+          "gripper_reference_orientation_after_return_delta_deg": 1.3696936315408128
+        },
+        {
+          "robot": 1,
+          "gripper_reference_world_end_minus_start_m": [
+            -0.006048936445749109,
+            -0.0004644632760383016,
+            0.006947690392075989
+          ],
+          "gripper_reference_world_displacement_after_return_m": 0.00922365220743091,
+          "gripper_reference_orientation_after_return_delta_deg": 1.3716487945169114
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "matched_sparse_actor_observations": 13,
+    "selected_motion_intervals": 8,
+    "public_action_array_and_neutral_settle_match": true,
+    "max_absolute_arm_target_increment_error_m": 1.4081597325688033e-08,
+    "arm_target_clamp_in_selected_intervals_observed": false,
+    "zero_physical_approach_interpretation_supported": false,
+    "motion_fully_settled_at_actor_endpoints": false
+  }
+}

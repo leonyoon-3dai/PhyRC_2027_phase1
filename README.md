@@ -14,6 +14,8 @@
 
 E20은 2026-11-07 01:18:21 UTC에 시작했고, 테이블에서 목선 후보를 제어해 **목부터 입히는 별도 경로**를 비교합니다. 현재 준비 행동을 재실행 중이며, 같은 파지의 미세조정을 마친 뒤 방법을 바꾸는 근거를 [여기](docs/collection/research/2026-11-07-post-named-route-choice.ko.md)에 남겼습니다.
 
+[**공식 시연의 실제 순서 검토**](docs/collection/research/2026-11-07-official-demo-route-review.ko.md) · [**BEHAVIOR 우승 자료: 그림·영상과 후속 수집 후보**](docs/collection/research/2026-11-07-behavior-champion-visual-transfer.ko.md) · [공식 집계·텍스트 근거](docs/collection/research/2026-11-07-behavior-champion-text-review.ko.md)
+
 <details>
 <summary>E18 이전 첫 화면 · 명령 오류와 복구 이력</summary>
 

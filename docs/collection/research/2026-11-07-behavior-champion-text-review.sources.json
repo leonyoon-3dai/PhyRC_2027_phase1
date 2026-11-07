@@ -1,0 +1,191 @@
+{
+  "schema_version": 1,
+  "review_date_utc": "2026-11-07",
+  "created_at_utc": "2026-11-07T01:28:24.848640+00:00",
+  "scope": "Read-only text and primary-source review; no third-party code executed, installation, policy implementation, training, model, GPU, or simulation call. Parent separately reviews website images/videos.",
+  "sources": [
+    {
+      "id": "author_site",
+      "source_type": "primary_author_project_page",
+      "requested_url": "https://behavior1k-champion.com/",
+      "final_url": "https://behavior1k-champion.com/",
+      "retrieved_at_utc": "2026-11-07T01:23:14.999800+00:00",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 55654,
+      "sha256": "350eaadf00be8058b1e4ae163991ddce684f4f1e790f40f87e9993a1e007396f",
+      "local_raw_path": "output/research/20261107-behavior-champion/index.html",
+      "raw_text_committed": false
+    },
+    {
+      "requested_url": "https://behavior.stanford.edu/challenge/",
+      "final_url": "https://behavior.stanford.edu/challenge/",
+      "retrieved_at_utc": "2026-11-07T01:25:47.784467+00:00",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 177327,
+      "sha256": "e4a19fc05e175c2882c9104dc8000d634731f979b79889011deaa2c57ec84835",
+      "local_path": "/tmp/behavior-champion-text-sources/challenge.html",
+      "id": "official_challenge",
+      "source_type": "primary_organizer_page",
+      "raw_text_committed": false,
+      "local_raw_retention": "scratch_only"
+    },
+    {
+      "requested_url": "https://raw.githubusercontent.com/StanfordVL/BEHAVIOR-1K/main/docs/challenge/evaluation.md",
+      "final_url": "https://raw.githubusercontent.com/StanfordVL/BEHAVIOR-1K/main/docs/challenge/evaluation.md",
+      "retrieved_at_utc": "2026-11-07T01:26:27.718084+00:00",
+      "http_status": 200,
+      "content_type": "text/plain; charset=utf-8",
+      "bytes": 21425,
+      "sha256": "ccd479ed102db70b4917720883eb65791b80a8ea3a86757b8fe036159865f8a2",
+      "local_path": "/tmp/behavior-champion-text-sources/evaluation.md",
+      "id": "official_evaluation",
+      "source_type": "primary_organizer_rules",
+      "raw_text_committed": false,
+      "local_raw_retention": "scratch_only"
+    },
+    {
+      "requested_url": "https://raw.githubusercontent.com/StanfordVL/BEHAVIOR-1K/main/docs/challenge/submission.md",
+      "final_url": "https://raw.githubusercontent.com/StanfordVL/BEHAVIOR-1K/main/docs/challenge/submission.md",
+      "retrieved_at_utc": "2026-11-07T01:25:48.046462+00:00",
+      "http_status": 200,
+      "content_type": "text/plain; charset=utf-8",
+      "bytes": 5758,
+      "sha256": "8f3393fe4d305fff1e50a4f3608acf91e4235ad8c73994a7591f6f7490801bd7",
+      "local_path": "/tmp/behavior-champion-text-sources/submission.md",
+      "id": "official_submission",
+      "source_type": "primary_organizer_submission_protocol",
+      "raw_text_committed": false,
+      "local_raw_retention": "scratch_only"
+    },
+    {
+      "requested_url": "https://huggingface.co/api/spaces/behavior-1k/2026-challenge-leaderboard",
+      "final_url": "https://huggingface.co/api/spaces/behavior-1k/2026-challenge-leaderboard",
+      "retrieved_at_utc": "2026-11-07T01:25:47.856673+00:00",
+      "http_status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "bytes": 1949,
+      "sha256": "4c030f2ffc4672717bfd0b1722062808efbbbf79e8c8710b49ac4321f3785f58",
+      "local_path": "/tmp/behavior-champion-text-sources/leaderboard-space.json",
+      "id": "leaderboard_repository_metadata",
+      "source_type": "primary_organizer_hosted_metadata",
+      "raw_text_committed": false,
+      "local_raw_retention": "scratch_only"
+    },
+    {
+      "requested_url": "https://huggingface.co/spaces/behavior-1k/2026-challenge-leaderboard/resolve/3daf4a386930f80f9f156ce579f0fddf418bcf6d/data/results.jsonl",
+      "final_url": "https://huggingface.co/api/resolve-cache/spaces/behavior-1k/2026-challenge-leaderboard/3daf4a386930f80f9f156ce579f0fddf418bcf6d/data%2Fresults.jsonl?%2Fspaces%2Fbehavior-1k%2F2026-challenge-leaderboard%2Fresolve%2F3daf4a386930f80f9f156ce579f0fddf418bcf6d%2Fdata%2Fresults.jsonl=&etag=%226371d08992e49711a7563c14c1c39c3349d3d53e%22",
+      "retrieved_at_utc": "2026-11-07T01:26:01.465730+00:00",
+      "http_status": 200,
+      "content_type": "text/plain; charset=utf-8",
+      "bytes": 1039,
+      "sha256": "dcf35dc3a817e874706f48e2b594682191ef9211dea16a37b6cd1e57dff5bf9c",
+      "local_path": "/tmp/behavior-champion-text-sources/leaderboard-results.jsonl",
+      "revision": "3daf4a386930f80f9f156ce579f0fddf418bcf6d",
+      "id": "official_verified_results",
+      "source_type": "primary_organizer_published_data",
+      "raw_text_committed": false,
+      "local_raw_retention": "scratch_only"
+    },
+    {
+      "requested_url": "https://huggingface.co/spaces/behavior-1k/2026-challenge-leaderboard/resolve/3daf4a386930f80f9f156ce579f0fddf418bcf6d/app.py",
+      "final_url": "https://huggingface.co/api/resolve-cache/spaces/behavior-1k/2026-challenge-leaderboard/3daf4a386930f80f9f156ce579f0fddf418bcf6d/app.py?%2Fspaces%2Fbehavior-1k%2F2026-challenge-leaderboard%2Fresolve%2F3daf4a386930f80f9f156ce579f0fddf418bcf6d%2Fapp.py=&etag=%2233ccd4c8ae97c93b781ceae8bca8f538284f6e52%22",
+      "retrieved_at_utc": "2026-11-07T01:26:01.347539+00:00",
+      "http_status": 200,
+      "content_type": "text/plain; charset=utf-8",
+      "bytes": 85377,
+      "sha256": "aa193373e8b5e84d5fd35868b69a1e586e7a20f39bb5d49934fea4e9e7ea8521",
+      "local_path": "/tmp/behavior-champion-text-sources/leaderboard-app.py",
+      "revision": "3daf4a386930f80f9f156ce579f0fddf418bcf6d",
+      "id": "leaderboard_display_source",
+      "source_type": "primary_organizer_display_code_not_method_code",
+      "raw_text_committed": false,
+      "local_raw_retention": "scratch_only"
+    },
+    {
+      "requested_url": "https://huggingface.co/spaces/behavior-1k/2026-challenge-leaderboard/resolve/3daf4a386930f80f9f156ce579f0fddf418bcf6d/data/README.md",
+      "final_url": "https://huggingface.co/api/resolve-cache/spaces/behavior-1k/2026-challenge-leaderboard/3daf4a386930f80f9f156ce579f0fddf418bcf6d/data%2FREADME.md?%2Fspaces%2Fbehavior-1k%2F2026-challenge-leaderboard%2Fresolve%2F3daf4a386930f80f9f156ce579f0fddf418bcf6d%2Fdata%2FREADME.md=&etag=%22d911628b1d0c2f5bd7eb42ccdaec02ffcce0133f%22",
+      "retrieved_at_utc": "2026-11-07T01:26:01.602146+00:00",
+      "http_status": 200,
+      "content_type": "text/plain; charset=utf-8",
+      "bytes": 2821,
+      "sha256": "0e4a9f1bc1c4a1f494e714f76c147c94e49ea65b8c9cdd75f14abd39e9d85a2b",
+      "local_path": "/tmp/behavior-champion-text-sources/leaderboard-data-readme.md",
+      "revision": "3daf4a386930f80f9f156ce579f0fddf418bcf6d",
+      "id": "leaderboard_public_data_schema",
+      "source_type": "primary_organizer_data_schema",
+      "raw_text_committed": false,
+      "local_raw_retention": "scratch_only"
+    }
+  ],
+  "verified_results": {
+    "source_id": "official_verified_results",
+    "revision": "3daf4a386930f80f9f156ce579f0fddf418bcf6d",
+    "verified_row_count": 6,
+    "rank_by_q": 1,
+    "first": {
+      "submission_id": "20261017T004338Z-the-north-star-hiearchical-physical-rsi",
+      "team": "The North Star",
+      "method": "Hiearchical Physical RSI",
+      "q_score": 0.682838813963814,
+      "success_rate": 0.482,
+      "verified": true
+    },
+    "second": {
+      "submission_id": "20261016T062725Z-if1001-vla-wam",
+      "team": "IF1001",
+      "method": "VLA WAM",
+      "q_score": 0.6154689588189589,
+      "success_rate": 0.412,
+      "verified": true
+    },
+    "unrounded_q_difference": 0.06736985514485505,
+    "final_hidden_rollout_count": null,
+    "count_note": "Public leaderboard rows omit rollout count. Submission protocol says 100 tasks x 10 instances x 1 rollout, but evaluation.md has conflicting hidden-instance counts (20-39 vs 10 more). Do not infer the final hidden denominator."
+  },
+  "paper_code_search": {
+    "searched_at_utc": "2026-11-07",
+    "web_search_used": true,
+    "queries": [
+      "site:behavior1k-champion.com",
+      "\"HiPhys-RSI\" arxiv github",
+      "\"HiPhys-RSI\" arxiv github \"The North Star\""
+    ],
+    "result": "Site labels technical report coming soon; no linked or search-discovered HiPhys-RSI technical paper or method repository confirmed. Search non-discovery is not proof that none exists.",
+    "excluded_conflation": "IliaLarchenko/behavior-1k-solution is a distinct 2025 first-place pi0.5 solution, not the provided 2026 HiPhys-RSI implementation."
+  },
+  "interpretation_boundaries": [
+    "Official competition allows privileged information in training, unlike this PhyRC policy/teacher boundary. No claim is made that HiPhys-RSI actually used a particular privileged modality.",
+    "Frozen refers to the coding-agent backbone; authors also describe downstream VLA fine-tuning.",
+    "Public method claims do not establish available source code, reproducibility, degree of human involvement, or causal contribution of each component.",
+    "Public leaderboard result is independent evidence for aggregate score, not implementation proof.",
+    "Q-score and full-task success are not PhyRC raw points.",
+    "E20 continues independently; no feature adoption implemented by this review."
+  ],
+  "collaborator_visual_check": {
+    "reviewer": "root agent",
+    "received_at_utc": "2026-11-07",
+    "video_url": "https://behavior1k-champion.com/assets/vid/case74.mp4",
+    "checked_video_times_seconds": [
+      0,
+      4,
+      8,
+      14
+    ],
+    "finding": "Parent visually observed wicker-chair transport; the red wheelbarrow remains in the background at 4 s. Website caption names wheelbarrow front-rim grasp. Caption is not treated as verified video content.",
+    "this_agent_directly_viewed_video": false
+  },
+  "phyrc_local_evidence": [
+    {
+      "path": "docs/collection/reviews/20261107-astra-entry801-named-001-motion.ko.md",
+      "sha256": "6139bc34ac72ba2ff0e7d25c097bb0c2024afe65f013d842d661a83031622c14",
+      "role": "Public-robot kinematic review; grasp reference point is not a cloth-contact ground truth."
+    },
+    {
+      "path": "docs/collection/reviews/20261106-astra-guide470-depth-001-learning-segments.json",
+      "sha256": "70c84bda5605d3ca59870767d4cba02ec476d9c22cde25a7dc4baa43ab2d93bf",
+      "role": "Error/recovery boundaries and unreviewed training status."
+    }
+  ]
+}

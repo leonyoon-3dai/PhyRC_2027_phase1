@@ -196,3 +196,13 @@ E19 갤러리·분석·학습 구간·백업 receipt를 main `799fe804445c6e0fc4
 **2026-11-07 01:18:21 UTC**에 `20261107-astra-neckline470-named-001`을 시작했다. source snapshot은799fe80·working_tree_modified=false다. STATUS의 명령 그대로 E18 직접부모/prefix470·hist430464,coordinated-neckline-first,named+query,40판단/max1400/timeout180/settle6/review10을 사용한다. 로그는 `output/sessions/20261106-evening/e20-neckline470-named-001.log`다. 현재 재실행을 진행 중이며 최종 결과는 없다.
 
 이번 비교는 손 접근에서 기존 파지를 유지한 E19와 달리 목표 입구·첫 착의 순서를 바꾼다. 실제 목선 파지·역할 변경 여부는 수행된 행동과 현재 공개 관측으로 검토하며 후보 이름만으로 구조적 조작이 실행됐다고 세지 않는다. 모델/CLI/공식 물리/행동 한계는 유지하고 시작 이후 현재 문서만 갱신한다.
+
+## 추가 사용자 요청 · 공식 시연과 BEHAVIOR 2026 우승 자료
+
+사용자는 목 접근을 지지하고 공식 성공 시연과 유사하게 도전하며 `https://behavior1k-champion.com/`의 텍스트·이미지에서 향후 시연 수집에 참고할 방법을 분석·기록하도록 요청했다. [피드백 기록](../../collection/feedback/2026-11-07.jsonl)은 실제 발화시각을 추정하지 않고 기록시각만 남긴다. E20과10점 목표는 계속 유지했다.
+
+공식 MP4를 재다운로드했고 기존2,230,083bytes·SHA256 `96ed735d0bca97eac758c534175133b1ea8dd01e11f59c376611c8a672b93c09`와 같았다. 넓은 가장자리의 양측 지지, 머리·팔 위 상승, 하강 안착이 보이지만 목선 재파지·머리 먼저 통과의 동일성은 확인할 수 없다. [순서·한계·후속 설계](../../collection/research/2026-11-07-official-demo-route-review.ko.md). 공식 유사 상방·하강 후보는 E20을 바꾸지 않는 격리 작업 트리에서 준비한다.
+
+BEHAVIOR 자료는[텍스트·공식 집계](../../collection/research/2026-11-07-behavior-champion-text-review.ko.md),[5개 도표·선택 영상과 적용 가설](../../collection/research/2026-11-07-behavior-champion-visual-transfer.ko.md),[시각 자료 해시](../../collection/research/2026-11-07-behavior-champion-visual-sources.json)로 보존했다. 원문 미디어 재게시·외부 코드 설치·새 학습·E20코드변경은 없다. 사례74의 설명과 실제 연결영상 대상 불일치, 선택 프레임의 완료 판정 한계, BEHAVIOR훈련 정보 허용범위와PhyRC차이를 함께 기록했다.
+
+E19의[공개 운동 수치](../../collection/reviews/20261107-astra-entry801-named-001-motion.ko.md)도 독립 대조했다. 세 접근은 실제44/67/55mm arm 이동이며 목표증가잘림근거없다. D7의base기준3.294mm와world3.774mm를구분하고, D8의world41.423mm이동으로위치보상이정확한고정이아님을명시했다. 그리퍼기준점은천접촉정답이아니다. 실행·관측·해석을분리하는후속절차카드의근거로연결한다.

@@ -26,7 +26,7 @@
 
 ## E20 목 우선 · 2026-11-07 01:18:21 UTC 시작
 
-아래 명령으로 실제 시작했습니다. source snapshot은 `799fe804445c6e0fc401927f0ed82b4e5dd4f935`·working_tree_modified=false입니다. 현재470개 준비 행동을 새 환경에서 재실행하며 최종 결과는 아직 없습니다.
+아래 명령으로 실제 시작했습니다. source snapshot은 `799fe804445c6e0fc401927f0ed82b4e5dd4f935`·working_tree_modified=false입니다. 470개 준비 행동의 재실행을 마쳤고, robot0가 기존 밑단을 놓아 목선 후보에 새로 닫는 단계까지 진행했습니다. 새 파지 지지·착의 결과는 아직 미확인입니다.
 
 E18의470경계는 테이블 위 몸판과 목선 후보를 다시 살펴볼 출발점입니다. 현재 지지·목선·머리/팔 여유를 새 관측에서 판단하고 필요하면 테이블 지지 아래 한쪽씩 파지를 바꿉니다. 머리가 몸통 입구로 들어가 목 입구로 나오고 가슴이 안착하는 경로를 먼저 다루며, 단순 목 접촉을 착의로 세지 않습니다. 정확한 천 checkpoint 복원이 아닙니다.
 
@@ -52,6 +52,15 @@ PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.codex_clie
 E19 종료 원본은 비공개 HF 고정 revision `a5f9136d1479933b6c026465a8af0321bad1504c`에서 재다운로드 SHA 검증을 완료했습니다. 2,130,731,675 bytes, SHA256 `b2fabcdba6d83418561925176a8fe48e02f9596a2e391d7132cf4f269ef03ab6`,01:16:34 UTC 확인입니다. [검증 receipt](sessions/20261107-e19-backup-verification.json). [복원 안내](START_HERE.ko.md). E18 원본은 고정 revision44d01871f0099f8a537f1bdbfee06a404a95f38c에서 검증 완료했고 E20의 직접 재실행 출처입니다.
 
 [E18 수집 시간 재검토](../collection/research/2026-11-07-e18-capture-timing.ko.md)에서는 경계별 중복 관측·저장을 발견하지 못했습니다. 단순 wrapper 제거의 비현실적 상한도 전체 경과의0.051%여서 신규 최적화를 채택하지 않았습니다. 공식 물리·20Hz·렌더 정합성은 유지합니다.
+
+
+## 공식 시연·BEHAVIOR 우승 자료 검토
+
+사용자는 목 접근을 지지하며 공식 성공 시연과 비교하고 BEHAVIOR 우승 사이트의 텍스트·이미지를 이후 수집에 참고하도록 요청했습니다. [공식 영상 재검토](../collection/research/2026-11-07-official-demo-route-review.ko.md)에서는 넓은 가장자리 지지→머리·팔 위 이동→하강이 더 분명하며 목선 재파지·머리 우선 순서와 같다고 단정할 수 없었습니다. E20은 독립 가설로 유지하고 공식 영상에 가까운 별도 상방·하강 후보를 격리 작업 트리에서 준비 중입니다. 현재 실험에는 적용하지 않았습니다.
+
+[BEHAVIOR 텍스트·공식 집계](../collection/research/2026-11-07-behavior-champion-text-review.ko.md)와 [그림·영상·적용 후보](../collection/research/2026-11-07-behavior-champion-visual-transfer.ko.md)를 기록했습니다. 직접 확인한 그림 수치·선택 영상 프레임, 설명/영상의 불일치, 현재 미공개인 방법 코드의 한계를 구분합니다. PhyRC의 공개 관측으로 검증하는 절차 카드·진행 조건·복구 후보는 향후 비교안이며 아직 제어·훈련에 도입하지 않았습니다.
+
+[E19 수치 검토](../collection/reviews/20261107-astra-entry801-named-001-motion.ko.md)는 실제 arm 접근44/67/55mm를 확인했습니다. 동작이 없어서 가림이 반복됐다는 설명은 맞지 않으며, 정착 뒤 잔류 운동과 불완전한 위치 보상은 별도로 남았습니다.
 
 <details>
 <summary>E18 종료와 E19 시작 당시 상태 이력</summary>

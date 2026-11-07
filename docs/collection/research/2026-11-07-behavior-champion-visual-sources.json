@@ -1,0 +1,221 @@
+{
+  "schema": "phyrc-external-visual-review-v1",
+  "reviewed_at_utc": "2026-11-07T01:29:24.082585+00:00",
+  "page_url": "https://behavior1k-champion.com/",
+  "page_sha256": "350eaadf00be8058b1e4ae163991ddce684f4f1e790f40f87e9993a1e007396f",
+  "assets": [
+    {
+      "url": "https://behavior1k-champion.com/assets/fig/fig1.png",
+      "bytes": 787424,
+      "sha256": "5d20b09e37110b87758020b6f0d12f2a1b6716914de5e0a67bf7b424154878df",
+      "reviewed": true,
+      "review_scope": "figure_or_poster"
+    },
+    {
+      "url": "https://behavior1k-champion.com/assets/fig/mean_q_five_methods_olympic.png",
+      "bytes": 1117117,
+      "sha256": "aee7964c3c21ce0ce7bafa5065ddba0bb25aa55106e49a11846fa2a20bdedc0b",
+      "reviewed": true,
+      "review_scope": "figure_or_poster"
+    },
+    {
+      "url": "https://behavior1k-champion.com/assets/fig/overall_score_and_iteration_distribution.png",
+      "bytes": 143759,
+      "sha256": "473f826e469206361afdb435caf3b745f8668f709ce754a42b77a0f3ebb6a2c6",
+      "reviewed": true,
+      "review_scope": "figure_or_poster"
+    },
+    {
+      "url": "https://behavior1k-champion.com/assets/fig/combined_failure_rankings.png",
+      "bytes": 192432,
+      "sha256": "27cf4cae1689131911c8ca4caddde0f67877737a465dce946a69c8f25df5d9eb",
+      "reviewed": true,
+      "review_scope": "figure_or_poster"
+    },
+    {
+      "url": "https://behavior1k-champion.com/assets/fig/iteration_distribution_by_category.png",
+      "bytes": 94172,
+      "sha256": "2c818c8e868d327935e59a91a8d34c21d1ad1a348278b2528de9ee4cfa6b33b7",
+      "reviewed": true,
+      "review_scope": "figure_or_poster"
+    },
+    {
+      "url": "https://behavior1k-champion.com/assets/vid/case96.jpg",
+      "bytes": 27022,
+      "sha256": "a6955b14947e90e248fd3e2bb91574e784d1e657456e789ea9e4a8dc59da03cf",
+      "reviewed": true,
+      "review_scope": "figure_or_poster"
+    },
+    {
+      "url": "https://behavior1k-champion.com/assets/vid/case74.jpg",
+      "bytes": 43942,
+      "sha256": "ada304fef3aa966308e1de2aea15082a8f79db6f437c5635b9076409a8599b06",
+      "reviewed": false,
+      "review_scope": "figure_or_poster"
+    },
+    {
+      "url": "https://behavior1k-champion.com/assets/vid/case38.jpg",
+      "bytes": 33556,
+      "sha256": "be07e43e39b6bf2c63fe9896b01317ae00ac15dd2d132bf7dbcaf22f62a660b1",
+      "reviewed": false,
+      "review_scope": "figure_or_poster"
+    },
+    {
+      "url": "https://behavior1k-champion.com/assets/vid/case58.jpg",
+      "bytes": 30693,
+      "sha256": "59b3819e6d8450450582030cd0916f9c8d67eba5083935bdf927ad058893184a",
+      "reviewed": true,
+      "review_scope": "figure_or_poster"
+    },
+    {
+      "url": "https://behavior1k-champion.com/assets/vid/case81.jpg",
+      "bytes": 35356,
+      "sha256": "623e061c01e9b829f55599b6a20314f4ebe93b809e1f6378b74787fdad73c58c",
+      "reviewed": false,
+      "review_scope": "figure_or_poster"
+    },
+    {
+      "url": "https://behavior1k-champion.com/assets/vid/case92.jpg",
+      "bytes": 16136,
+      "sha256": "a8016b320e395027fa0731074da89f67ad034e6d32c00558580639379de254ea",
+      "reviewed": true,
+      "review_scope": "figure_or_poster"
+    },
+    {
+      "url": "https://behavior1k-champion.com/assets/vid/case74.mp4",
+      "bytes": 1502887,
+      "sha256": "0185cb5af9a20885d09ef0882c319fe4715adedce84e3ed43658bd1ea18c3e74",
+      "reviewed": true,
+      "review_scope": "selected_decoded_frames"
+    },
+    {
+      "url": "https://behavior1k-champion.com/assets/vid/case38.mp4",
+      "bytes": 1220317,
+      "sha256": "7a59ae99118c2947e46391f102060805d4abdca6ba82da1f2bb0d5debab20b27",
+      "reviewed": true,
+      "review_scope": "selected_decoded_frames"
+    },
+    {
+      "url": "https://behavior1k-champion.com/assets/vid/case81.mp4",
+      "bytes": 1728397,
+      "sha256": "1e308efe0ffe27e887d4866c692768c2417c89791157b9585954393bbc1ec437",
+      "reviewed": true,
+      "review_scope": "selected_decoded_frames"
+    }
+  ],
+  "decoded_frames": [
+    {
+      "source_url": "https://behavior1k-champion.com/assets/vid/case38.mp4",
+      "video_time_s": 0,
+      "sha256": "2f17377641c5dddb9d8f074625ade1803f91c81756d1b3a1f283c50197e6e8aa",
+      "spatial_edit": false,
+      "interpolated": false
+    },
+    {
+      "source_url": "https://behavior1k-champion.com/assets/vid/case38.mp4",
+      "video_time_s": 4,
+      "sha256": "630ee09cdf7495f93f777b74493c82926a5163fe0ebf5ecd69d996eabe3c9bbf",
+      "spatial_edit": false,
+      "interpolated": false
+    },
+    {
+      "source_url": "https://behavior1k-champion.com/assets/vid/case38.mp4",
+      "video_time_s": 9,
+      "sha256": "b06dedd591c685e92ed47d85157ec50e0774ddba9cb0b62d1d9ae4c0348fcd35",
+      "spatial_edit": false,
+      "interpolated": false
+    },
+    {
+      "source_url": "https://behavior1k-champion.com/assets/vid/case38.mp4",
+      "video_time_s": 10,
+      "sha256": "64b4bd5d5419f075e254b4a0d7fa10e6562c4e99996c71c98c572967f6a46621",
+      "spatial_edit": false,
+      "interpolated": false
+    },
+    {
+      "source_url": "https://behavior1k-champion.com/assets/vid/case38.mp4",
+      "video_time_s": 11,
+      "sha256": "edecc7d9462c6189b4f72b6bc958f3f1b9d3b9e6ee307f99d59e17841258b98a",
+      "spatial_edit": false,
+      "interpolated": false
+    },
+    {
+      "source_url": "https://behavior1k-champion.com/assets/vid/case38.mp4",
+      "video_time_s": 12,
+      "sha256": "71915d8254ed7ba2177d3e1fe420812b8c2018990802a89d3bf8b08a2f691817",
+      "spatial_edit": false,
+      "interpolated": false
+    },
+    {
+      "source_url": "https://behavior1k-champion.com/assets/vid/case38.mp4",
+      "video_time_s": 13,
+      "sha256": "ea044af5d76267049ff8464e5b281b22819899ecbcefb3c049c85b47dfae4958",
+      "spatial_edit": false,
+      "interpolated": false
+    },
+    {
+      "source_url": "https://behavior1k-champion.com/assets/vid/case38.mp4",
+      "video_time_s": 15,
+      "sha256": "30bcd6bda3b2dde8985eb4a5764e6248dc7bb4fb1d85e94cb2865d7be521952b",
+      "spatial_edit": false,
+      "interpolated": false
+    },
+    {
+      "source_url": "https://behavior1k-champion.com/assets/vid/case74.mp4",
+      "video_time_s": 0,
+      "sha256": "b0066b3631834fe584da19d863052ff492383f14c6e3c372f451d91541d718ed",
+      "spatial_edit": false,
+      "interpolated": false
+    },
+    {
+      "source_url": "https://behavior1k-champion.com/assets/vid/case74.mp4",
+      "video_time_s": 4,
+      "sha256": "dfffb5aebba33565406bcda064426af5178833e09c148456d099283be24107ef",
+      "spatial_edit": false,
+      "interpolated": false
+    },
+    {
+      "source_url": "https://behavior1k-champion.com/assets/vid/case74.mp4",
+      "video_time_s": 8,
+      "sha256": "c30fde205f129ec856665625e0aabd0ccbc8ac964318e03a8480814c79718f3d",
+      "spatial_edit": false,
+      "interpolated": false
+    },
+    {
+      "source_url": "https://behavior1k-champion.com/assets/vid/case74.mp4",
+      "video_time_s": 14,
+      "sha256": "fe1d3f10acae6da44b050fd51aa0c69acce60ab9626f4db1de5b3df651ca402d",
+      "spatial_edit": false,
+      "interpolated": false
+    },
+    {
+      "source_url": "https://behavior1k-champion.com/assets/vid/case81.mp4",
+      "video_time_s": 0,
+      "sha256": "c84af60466dcfcc89262343d946826b030e87e74fe643fbfe4778d98bc6b394d",
+      "spatial_edit": false,
+      "interpolated": false
+    },
+    {
+      "source_url": "https://behavior1k-champion.com/assets/vid/case81.mp4",
+      "video_time_s": 5,
+      "sha256": "073d72eeeb3b60a103b650be34c328339f007cb11c5bfcf65438c8c2faa8f19d",
+      "spatial_edit": false,
+      "interpolated": false
+    },
+    {
+      "source_url": "https://behavior1k-champion.com/assets/vid/case81.mp4",
+      "video_time_s": 11,
+      "sha256": "990e892e37854af7eb85f7ac456a754be85550de461450a28bd77b9e748999c3",
+      "spatial_edit": false,
+      "interpolated": false
+    },
+    {
+      "source_url": "https://behavior1k-champion.com/assets/vid/case81.mp4",
+      "video_time_s": 17,
+      "sha256": "bbdd3a6ebc6bd9c894385181854fcd25c9a8928c46c0b86e5f6de435c079affa",
+      "spatial_edit": false,
+      "interpolated": false
+    }
+  ],
+  "scope": "Public source figures/posters and selected external video frames; no new policy training or simulator input. Sampling is not continuous-video verification. Source media kept outside Git; publish links, hashes and our analysis only."
+}
