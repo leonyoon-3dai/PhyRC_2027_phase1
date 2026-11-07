@@ -1,6 +1,6 @@
 # 클린 서버 복원·검사·재개 안내
 
-**최신 종료 E21은 5/50·착의0·success=false이며 1,111/1,111전이 검사를 통과했습니다.** 2026-11-07 01:56:25–02:48:54 UTC에 상방 배치·하강을 비교했고 40행동 예산으로 마감했습니다. 최고5/50·목표10은 아직 미달성입니다. 마지막 새 파지는 후속 지지 시험이 없어 다음 출발점으로 확정하지 않습니다. 다음 E22는 검토된 E18/787의 5점 출발점에서 짧은 진입 탐색을 비교하는 **미실행 계획**입니다. 실제 시작 여부·소스·명령은 [현재 상태](STATUS.md)를 우선합니다.
+**최신 종료 E21은 5/50·착의0·success=false이며 1,111/1,111전이 검사를 통과했습니다.** 2026-11-07 01:56:25–02:48:54 UTC에 상방 배치·하강을 비교했고 40행동 예산으로 마감했습니다. 최고5/50·목표10은 아직 미달성입니다. 마지막 새 파지는 후속 지지 시험이 없어 다음 출발점으로 확정하지 않습니다. E22는 검토된 E18/787의5점 출발점에서 짧은 진입 탐색을 비교하며 **2026-11-07 03:01:21UTC·source11faab3797cacd0160a725578d4a9dc65c6b018f·시작clean으로 실행 중**입니다. 실제 시작 여부·소스·명령은 [현재 상태](STATUS.md)를 우선합니다.
 
 [최신 일지](sessions/20261106-evening-resume.ko.md) · [영상](../gallery/README.ko.md) · [E21 분석](../collection/reviews/20261107-astra-overhead470-named-001.ko.md)
 
@@ -12,7 +12,7 @@
 | E21 실행 전 CPU 검사 | overhead 후보 통합277개/12.745초 통과. 기술 검사와 실제 착의 득점은 별도 |
 | 모델·화면 | 고정 CLI0.166.0·gpt-6-astra/ultra·exec. WebRTC OFF·Chrome 불필요 |
 | 기존 기능 | 공개 과거 RGB·손목 depth·query·named·정착·계측. 공식 배열·물리·행동한계 유지 |
-| 다음 E22 · 미실행 | 새 opt-in `coordinated-entry-probe`·E18 직접부모/prefix787·history719/771·named+query·plan1·18판단/max1300/timeout180/settle6/review10 |
+| E22 실행 중 · 03:01:21UTC | 새 opt-in `coordinated-entry-probe`·E18 직접부모/prefix787·history719/771·named+query·plan1·18판단/max1300/timeout180/settle6/review10 |
 
 E21은 E18/470에서 분기했고 모델 finish나 감독자 SIGINT 없이 판단 예산으로 마감했습니다. 다음 E22의 직접 행동 재실행 출처도 E18이며 경계는787입니다. [출발점 검토](../collection/research/2026-11-07-support-startpoints-review.ko.md)의 선택 관측에서 확인한 지지 유지 근거와 당시 raw5를 출발점 선택에 사용합니다. 이는 정확한 천 상태 복원이나 양측 파지 성공 보장이 아니며, 새 재실행 관측으로 현재 지지를 다시 판단합니다. 기술 검사·시각적 지지·공식 득점·학습 승인을 구분합니다.
 
@@ -41,7 +41,7 @@ E21은 E18/470에서 분기했고 모델 finish나 감독자 SIGINT 없이 판�
 
 E21 원본은 [검증 receipt](sessions/20261107-e21-backup-verification.json)의 고정 revision에서 별도 재다운로드 SHA와 전체416개 archive 파일 해시 일치를02:55:33 UTC에 확인했습니다. **다음 E22에는 초기 자산과 E18의787경계까지 재실행할 검증 원본이 필요합니다.** E21 마지막 새 파지는 지지가 미검증이므로 이번 분기의 직접 부모로 사용하지 않습니다.
 
-연구 묶음은 `sessions/20261106-private-research-handoff-v1/` 아래에 있으며 `scope.json`·`handoff.md`가 적용/미적용과 정확한 허용 목록을 설명합니다. phase2 profiler는 미적용입니다. pixel query는 이후 main에 통합돼 E18에서3회·E19에서1회 사용했습니다. 이름 기반 행동은 E19 실제 과제에 적용했고 의도 밖 roll 재발은 관측되지 않았으나 착의 득점은0입니다. 목 우선은 E20에서 실제 비교했고 입구 확인 준비에서 종료했습니다(raw0). 상방 배치·하강은 E21에서 실제 비교했고 raw5·착의0으로 예산 마감했습니다. E21에서는 pixel query를4회 사용했으며 질의 중 물리 진행은0입니다. 다음 E22의 `coordinated-entry-probe`는 새 opt-in 계획이며 실제 과제 효과는 아직 검증하지 않았습니다. 옛 후보 파일의 `not_applied`는 당시 상태일 수 있으므로 현재 상태표를 우선합니다. 인증·home·원시 추론·actor 이벤트·세션DB·시뮬레이터 로그는 백업에 넣지 않았습니다. 성능 자원121행은 정제된 수치 증거입니다. 실행 원본의 trusted 평가/audit는 비공개 검수용이고 actor에 연결하지 않습니다.
+연구 묶음은 `sessions/20261106-private-research-handoff-v1/` 아래에 있으며 `scope.json`·`handoff.md`가 적용/미적용과 정확한 허용 목록을 설명합니다. phase2 profiler는 미적용입니다. pixel query는 이후 main에 통합돼 E18에서3회·E19에서1회 사용했습니다. 이름 기반 행동은 E19 실제 과제에 적용했고 의도 밖 roll 재발은 관측되지 않았으나 착의 득점은0입니다. 목 우선은 E20에서 실제 비교했고 입구 확인 준비에서 종료했습니다(raw0). 상방 배치·하강은 E21에서 실제 비교했고 raw5·착의0으로 예산 마감했습니다. E21에서는 pixel query를4회 사용했으며 질의 중 물리 진행은0입니다. E22의 `coordinated-entry-probe`는 새 opt-in 실제 비교이며 실제 과제 효과는 아직 검증하지 않았습니다. 옛 후보 파일의 `not_applied`는 당시 상태일 수 있으므로 현재 상태표를 우선합니다. 인증·home·원시 추론·actor 이벤트·세션DB·시뮬레이터 로그는 백업에 넣지 않았습니다. 성능 자원121행은 정제된 수치 증거입니다. 실행 원본의 trusted 평가/audit는 비공개 검수용이고 actor에 연결하지 않습니다.
 
 ## 새 서버 준비와 원본 복원
 
@@ -139,4 +139,4 @@ PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.validate_c
 
 wiring은 연결 시험이며 성공 시연이 아닙니다. 종료 ACK·정상 파일 완료·전수 검사 이후에만 다음 전략을 선택합니다. 재실행 출처·중복 prefix·새 행동을 구분하고 같은 source group을 유지합니다. 점수 감시나 신뢰된 배치 설정을 actor 입력에 넣지 않습니다.
 
-[과거 시작 안내 전체](START_HERE.pre-E15-20261106.ko.md)는 재현 이력으로 보존했습니다. 그 문서의 “E09부터 수정”, “WebRTC/Chrome 필수”, “다음은700 분기”는 현재 지시가 아닙니다. 다음 과제는 STATUS의 **E22 짧은 진입 탐색 계획과 실제 시작 여부**를 확인하고 새 run ID로 수행하는 것입니다. 현재 E22는 미실행 계획이며, E18 prefix787과 초기 자산 복원이 필요합니다. 설정은 `coordinated-entry-probe`·history719/771·named+query·plan1·18판단/max1300/timeout180/settle6/review10입니다. 공유 prefix의 반복 분기를 독립 시연·검증 출처로 세지 않습니다. 사용자에게 이미 받은 재개·main 통합 승인을 반복해서 묻지 않습니다. 과거 E16에서는 독립 지지 진단과 한쪽 재파지를 실제 시행했으며, 국소 지지의 시각적 근거와 연속 입구 미확인을 구분합니다. 픽셀 조회는 보이는 표면 간 거리 질의이며 가림·접촉·입구 위상을 알아내는 기능이 아닙니다.
+[과거 시작 안내 전체](START_HERE.pre-E15-20261106.ko.md)는 재현 이력으로 보존했습니다. 그 문서의 “E09부터 수정”, “WebRTC/Chrome 필수”, “다음은700 분기”는 현재 지시가 아닙니다. 다음 과제는 STATUS의 **E22 짧은 진입 탐색 계획과 실제 시작 여부**를 확인하고 새 run ID로 수행하는 것입니다. 현재 E22는03:01:21UTC·source11faab3 clean으로실행중이며, E18 prefix787과 초기 자산 복원이 필요합니다. 설정은 `coordinated-entry-probe`·history719/771·named+query·plan1·18판단/max1300/timeout180/settle6/review10입니다. 공유 prefix의 반복 분기를 독립 시연·검증 출처로 세지 않습니다. 사용자에게 이미 받은 재개·main 통합 승인을 반복해서 묻지 않습니다. 과거 E16에서는 독립 지지 진단과 한쪽 재파지를 실제 시행했으며, 국소 지지의 시각적 근거와 연속 입구 미확인을 구분합니다. 픽셀 조회는 보이는 표면 간 거리 질의이며 가림·접촉·입구 위상을 알아내는 기능이 아닙니다.

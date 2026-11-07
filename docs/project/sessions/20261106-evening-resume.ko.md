@@ -258,3 +258,7 @@ E21은02:48:54UTC에40판단 예산으로마감했다. 원점수5/50(픽업5·�
 [E21원본](20261107-e21-backup-verification.json)은2,428,228,014bytes·SHA35549015dd45b59321c8ab77efa512a7079ed0dfff1a9c1d1df3ae8dd840b0d3,고정revision45e6adf8586f935b3ca9f6d19ed3ec97371be44f에서강제재다운로드/416member검증02:55:33UTC완료다. 시작source d383063·clean을보존한다.
 
 종료뒤entry-probe후보5559af6을통합했다. 전체295CPU검사18.451초통과. 같은파지의부분가림아래행동선택비교이며,조건부2–4step탐색1회와후속관측·새재파지0회지침이다. 실제물리효과미검증. E18/787의공개prefix787×2×9 float32와전체원본QC/hash를검증했고18판단분기를준비했다. 카탈로그E21완료와E22계획을분리한다. README에는최신GIF한개와두MP4·분석·피드백을두고예전영상은갤러리링크로정리했다.
+
+## E22 실제 시작 (2026-11-07 03:01:21 UTC)
+
+`20261107-astra-probe787-named-001`을공개source`11faab3797cacd0160a725578d4a9dc65c6b018f`·working_tree_modified=false에서시작했다. E18직접부모/prefix787·history719771·coordinated-entry-probe·named+query·plan1·18판단/max1300/timeout180/settle6/review10·profile이다. 로그`output/sessions/20261106-evening/e22-probe787-named-001.log`,초기화·재실행중이며최종결과는없다. E21은종료·QC·백업·영상게시완료뒤GPU를순차시작했다.

@@ -14,7 +14,7 @@
 
 - 최신 종료 E21 `20261107-astra-overhead470-named-001`: **5/50·픽업5·착의0·success=false**,1111/1111QC. 470재실행+412모델+228정착+1예산 종료,40act/44calls(query4). UTC01:56:25–02:48:54·52분29초·source d383063 clean. 두 하강 접근/시야·방향 보정과 테이블 복귀·한쪽 새 위치 재파지. 마지막 새 파지는 유지 검사 없어 검증된 양측 출발점으로 쓰지 않는다.
 - E21 원본 고정HF revision45e6adf8586f935b3ca9f6d19ed3ec97371be44f 재다운로드·416member hash 검증 완료. 학습unreviewed. 최고5점·중간 목표10점 미달성.
-- 다음 E22 **준비·아직 미실행**: E18/787·hist719771·coordinated-entry-probe·named+query·18판단/max1300/timeout180/settle6/review10. 실제 시작·소스는STATUS/attempt 우선.
+- E22 **실행 중·03:01:21UTC 시작·source11faab3797cacd0160a725578d4a9dc65c6b018f clean**: E18/787·hist719771·coordinated-entry-probe·named+query·18판단/max1300/timeout180/settle6/review10. 실제 시작·소스는STATUS/attempt 우선.
 - entry-probe 후보5559af6은E21종료뒤통합,전체295CPU검사18.451초통과. 부분가림 아래 공개 근거가 지지하는 단일2–4step 탐색 뒤 관측, 같은 grasp set 유지·새 재파지0회. 프롬프트 지침이며 공식schema/물리/20Hz변경없음. 실제성과미검증.
 - 출발점/방법/실제/계획은docs/collection/catalog/catalog.v1.json이canonical,SQLite는재생성한다. review_ready·관측양측지지·5점·착의·학습승인을혼동하지않는다. E18/787은5점후관측지지근거가있는경계이며새환경재실행을현재관측에서확인한다.
 - E20 목선후보재파지는0/50·준비종료,목우선우선순위낮춤. E19는5/50·세접근통과미확인. E18의두roll오류및복구는보존됐고named이후E19–E21에서축불일치재발을발견하지않았다. 일반오류율개선증명은아니다.

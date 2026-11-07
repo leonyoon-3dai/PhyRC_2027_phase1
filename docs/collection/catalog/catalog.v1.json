@@ -523,6 +523,24 @@
         "revision": "7817a63289250cb40e94a50a9b816eb45a567660",
         "sha256": "93837540ab791ca2749def44d9ee73732a8b92e71057f6f58071fb3d473310bd"
       }
+    },
+    {
+      "id": "20261107-astra-probe787-named-001",
+      "kind": "demonstration",
+      "source_group": "20261106-coordinated-demo-methods",
+      "source_commit": "11faab3797cacd0160a725578d4a9dc65c6b018f",
+      "source_working_tree_modified": false,
+      "parent_run_id": "20261106-astra-guide470-depth-001",
+      "replay_prefix_steps": 787,
+      "replay_completed_steps": 0,
+      "recorded_transitions": null,
+      "qc_status": "pending",
+      "backup": {
+        "status": "unknown",
+        "receipt": null,
+        "revision": null,
+        "sha256": null
+      }
     }
   ],
   "startpoints": [
@@ -1502,9 +1520,9 @@
       "notes": "Conditional comparison candidate requested by user: same reviewed 5-point support source, different actual route. Not dispatched; select order after E21 closes. Fresh replay support recheck required; no exact cloth checkpoint. Record any future cancellation/supersession before execution."
     },
     {
-      "id": "planned-e18-787-entry-probe",
-      "status": "planned",
-      "run_id": null,
+      "id": "20261107-astra-probe787-named-001",
+      "status": "in_progress",
+      "run_id": "20261107-astra-probe787-named-001",
       "startpoint_id": "20261106-astra-guide470-depth-001-p787",
       "method_id": "coordinated-entry-probe-named-query",
       "result": {
@@ -1513,7 +1531,7 @@
         "review": null,
         "videos": []
       },
-      "notes": "Next intended E22, not yet dispatched: 18 decisions/max1300/timeout180/settle6/review10; history719771; fixed Astra/ultra/exec and plan1. Source boundary5 points with curated observed bilateral support; current replay must recheck support. Same E07 source group; not an exact cloth checkpoint."
+      "notes": "Actual E22 started 2026-11-07T03:01:21Z from clean published source 11faab3797cacd0160a725578d4a9dc65c6b018f. 18 decisions/max1300/timeout180/settle6/review10; history719771; fixed Astra/ultra/exec/plan1. Intended prefix787; replay_completed_steps separately records observed progress, not assumed completion. Source boundary5 with curated observed bilateral support; fresh state needs current observation. Final outcome/QC/backup pending. Same E07 source group; no exact cloth checkpoint."
     }
   ]
 }

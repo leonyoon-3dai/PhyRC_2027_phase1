@@ -12,7 +12,7 @@
 
 전체 **1111전이·시뮬레이션55.55초**, 실제 **52분29초**입니다. 470재실행+412모델 행동+228정착+1예산 종료 중립이며, 40행동 판단·44모델 호출(추가질의4회)입니다. 전이1개는 관측→행동→다음 관측의0.05초 기록이고 질의 중 물리는 진행하지 않습니다.
 
-**다음 E22 준비:** 검수된 E18/787의5점 출발점에서 기존 양측 파지를 유지하고, 부분 가림의 두 해석을 구분할 짧은 진입 탐색을 비교합니다. Astra/ultra·18판단 예산이며 통합295CPU검사를 통과했습니다. 아직 실제 시작 전입니다. [후보 범위](docs/collection/research/2026-11-07-entry-probe-candidate.ko.md) · [현재 상태·명령](docs/project/STATUS.md)
+**E22 실행 중 · 2026-11-07 03:01:21 UTC 시작:** 검수된 E18/787의5점 출발점에서 기존 양측 파지를 유지하고, 부분 가림의 두 해석을 구분할 짧은 진입 탐색을 비교합니다. Astra/ultra·18판단 예산이며 통합295CPU검사를 통과했습니다. 공개 소스`11faab3`의 깨끗한 상태에서 시작했으며 현재 초기화·행동 재실행 단계입니다. [후보 범위](docs/collection/research/2026-11-07-entry-probe-candidate.ko.md) · [현재 상태·명령](docs/project/STATUS.md)
 
 [**출발점·방법 조합 데이터베이스**](docs/collection/catalog/README.ko.md) · [**0→5→10 구간 조합 장기계획**](docs/collection/research/2026-11-07-composable-scoring-data-plan.ko.md)
 
@@ -58,7 +58,7 @@
 | 모델·환경 | Astra/ultra · Codex CLI0.166.0/exec · 고정 Isaac Sim6.0.1 · Chrome/WebRTC OFF |
 | 실제 비교 | 높은 위치에서 두 하강 접근·시야/방향 보정 뒤 테이블 복귀와 한쪽 새 위치 재파지 |
 | 미세조정 결과 | 반복 손 가림·통과 미확인으로 접근 변경 필요. 마지막 새 파지 유지 검사는 미실행 |
-| 다음 E22 준비 | E18/787·검수5점 출발점에서 같은 파지를 유지한 짧은 진입 탐색,18판단. 아직 미실행 |
+| E22 실행 중 | E18/787·검수5점 출발점에서 같은 파지를 유지한 짧은 진입 탐색,18판단. 03:01:21UTC·source11faab3 clean 시작 |
 | 검증 범위 | entry-probe 통합295CPU검사18.451초 통과. 실제 전략 효과는 미검증 |
 | 소스·원본 | E21 source d383063·시작clean. [고정 백업·재다운로드 및416파일 검증](docs/project/sessions/20261107-e21-backup-verification.json) 완료 |
 

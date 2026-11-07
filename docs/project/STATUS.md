@@ -20,11 +20,11 @@
 
 E21은 기존 파지로 운반한 뒤 실제 하강·전후/측면 방향 보정을 수행했습니다. 두 시점 변경과 복구 뒤에도 손 가림·천 외면 관계를 해소하지 못해 테이블 복귀·파지 변경으로 전환했습니다. 모든 경로가 소진됐다는 뜻은 아닙니다. 마지막 닫힘 뒤 지지 검사 없는 상태를 검증된 시작점으로 승격하지 않습니다.
 
-**E22는 아직 준비 단계입니다.** [검수 출발점](../collection/research/2026-11-07-support-startpoints-review.ko.md)의 **E18/787**에서 기존 양측 지지를 유지하고 부분 가림 아래 한 구간의 정보 획득용 진입 탐색을 비교합니다. [후보](../collection/research/2026-11-07-entry-probe-candidate.ko.md)는 같은 손–경계 관계·국소 천 동행·공개 실측이 뒷받침할 때2–4control-step probe 뒤 별도6정착을 포함한 다음 관측을 검사하게 합니다. 새 재파지는0회로 한정하고 유용한 관계 변화 없는 가려진 전진을 이어 붙이지 않습니다. 불확실성 아래 행동 선택 비교이며 새 파지 구조나 성공을 보장하지 않습니다.
+**E22는2026-11-07 03:01:21UTC에 시작했습니다.** source `11faab3797cacd0160a725578d4a9dc65c6b018f`·working_tree_modified=false, 현재 초기화·행동 재실행 중입니다. [검수 출발점](../collection/research/2026-11-07-support-startpoints-review.ko.md)의 **E18/787**에서 기존 양측 지지를 유지하고 부분 가림 아래 한 구간의 정보 획득용 진입 탐색을 비교합니다. [후보](../collection/research/2026-11-07-entry-probe-candidate.ko.md)는 같은 손–경계 관계·국소 천 동행·공개 실측이 뒷받침할 때2–4control-step probe 뒤 별도6정착을 포함한 다음 관측을 검사하게 합니다. 새 재파지는0회로 한정하고 유용한 관계 변화 없는 가려진 전진을 이어 붙이지 않습니다. 불확실성 아래 행동 선택 비교이며 새 파지 구조나 성공을 보장하지 않습니다.
 
 후보5559af6을 E21 종료 뒤 통합했고 **전체295CPU검사18.451초 통과**했습니다. 기존10전략·공식입력/행동/물리/모델 경로는 유지합니다. E18 전체원본 hash·QC를 다시 확인하고787개의float32(2,9) 행동 prefix를 로드했습니다. 이번 새 환경에서의 물리·파지 상태는 별도로 다시 확인해야 합니다.
 
-## 다음 실제 명령 · 아직 미실행
+## E22 실제 시작 명령 · 2026-11-07 03:01:21 UTC
 
 ```bash
 export PATH="$PWD/.runtime/codex-0.166.0/node_modules/.bin:$PATH"
@@ -41,7 +41,7 @@ PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.codex_clie
   --profile-step-phases
 ```
 
-[출발점·방법 데이터베이스](../collection/catalog/README.ko.md)는29기존실행과다음계획을분리합니다. E18/787은5점·선택 관측의 양측지지 근거가 있는 경계이며 실제 물리 checkpoint가 아닙니다. 직접출처의 고정HF revision은44d01871f0099f8a537f1bdbfee06a404a95f38c입니다. [E21 백업 receipt](sessions/20261107-e21-backup-verification.json) · [복원 안내](START_HERE.ko.md)
+[출발점·방법 데이터베이스](../collection/catalog/README.ko.md)는30실행(현재E22포함)과조건부계획2건을분리합니다. E18/787은5점·선택 관측의 양측지지 근거가 있는 경계이며 실제 물리 checkpoint가 아닙니다. 직접출처의 고정HF revision은44d01871f0099f8a537f1bdbfee06a404a95f38c입니다. [E21 백업 receipt](sessions/20261107-e21-backup-verification.json) · [복원 안내](START_HERE.ko.md)
 
 Astra/ultra를 유지하고 README를 갱신합니다. **공식10점 확인 후 보존·검증하고 다음 득점 항목으로 계속 진행합니다.** [0→5→10 구간 조합](../collection/research/2026-11-07-composable-scoring-data-plan.ko.md)은 장기 계획이며 현재 합성·학습을 실행하지 않습니다. [공식 영상](../collection/research/2026-11-07-official-demo-route-review.ko.md)·[BEHAVIOR 검토](../collection/research/2026-11-07-behavior-champion-visual-transfer.ko.md)는 후속 수집 참고이며 외부 영상·좌표·평가값은 actor에 전달하지 않습니다.
 
