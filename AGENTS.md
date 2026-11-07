@@ -12,7 +12,7 @@
 
 - 최신 종료 E19: 20261107-astra-entry801-named-001,5/50·착의0·success=false·932/932전이 통과. 801replay+59model+72settle,13판단(12act+finish)/14호출(query1),26분18초. source9aad601·시작clean. 세 접근과 실제 상방/측면 시점 변경에도 손 통과가 미확인으로 남아 모델 자율 종료했다.
 - E19의12행동에서 named/공식배열/최종설명의 축이 일치했다. D6의r0roll+.25는 의도적 회전이다. 새 파지 변경은0회이며, 표현 오류 미재발과 입구 문제 미해결을 구분한다.
-- 다음 E20은 목 우선 경로 실제 비교 계획이다. E18 직접부모/prefix470,hist430464,named+query,40판단/max1400/timeout180/settle6/review10. 아직 미시작이며 실제 상태는STATUS를 우선한다. 전체270CPU 이후 실행 코드 변경 없음.
+- E20은 2026-11-07 01:18:21 UTC에 main799fe80의 깨끗한 소스에서 실제 시작한 목 우선 경로 비교다. E18 직접부모/prefix470,hist430464,named+query,40판단/max1400/timeout180/settle6/review10. 현재 실행 중이며 최종 결과와 실제 상태는STATUS를 우선한다. 전체270CPU 이후 실행 코드 변경 없음.
 - 아래 E18/E19시작·E17/E16은 이전 시점의 기록이다.
 
 - 최신 E18은928/928검사통과·5/50(픽업5·착의0),no_dressing_points/0.0points/s다. D16/D21의 설명과 다른r1roll+1 반복으로 감독SIGINT 마감. 470replay+313model+144settle+1stop,30호출시도/26행동/3질의+중단호출1. 원본오류·복구는학습검토구간으로보존하며unreviewed다.
