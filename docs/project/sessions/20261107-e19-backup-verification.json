@@ -1,0 +1,17 @@
+{
+  "repo_id": "leonayoon/phyrc-2027-phase1-private-backup",
+  "repo_type": "dataset",
+  "private": true,
+  "revision": "a5f9136d1479933b6c026465a8af0321bad1504c",
+  "archive_path": "sessions/20261107-e19-v1/archive.tar.gz",
+  "archive_bytes": 2130731675,
+  "archive_sha256": "b2fabcdba6d83418561925176a8fe48e02f9596a2e391d7132cf4f269ef03ab6",
+  "archive_members_verified": 173,
+  "remote_download_verified": true,
+  "verified_at_utc": "2026-11-07T01:16:34.148203+00:00",
+  "run_id": "20261107-astra-entry801-named-001",
+  "validated_transitions": 932,
+  "source_commit": "9aad60138dc5cded2e0e5219fc12395d4c37ff0a",
+  "source_working_tree_modified": false,
+  "attempt_status": "completed"
+}

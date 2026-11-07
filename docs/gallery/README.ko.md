@@ -2,6 +2,36 @@
 
 [저장소 소개](../../README.md) · [현재 상태](../project/STATUS.md) · [이번 세션 기록](../project/sessions/20261106-evening-resume.ko.md)
 
+## 최신 E19 · 세 접근과 시야 변경 후 자율 종료
+
+<a href="assets/20261107-e19-named-entry/event.mp4"><img src="assets/20261107-e19-named-entry/preview.gif" width="960" alt="E19 이름 기반 명령으로 수행한 실제 입구 접근과 시야 변경"></a>
+
+[**MP4 크게 열기**](assets/20261107-e19-named-entry/event.mp4) · [구간별 설명](20261107-astra-entry801-named-001.ko.md) · [공개 분석](../collection/reviews/20261107-astra-entry801-named-001.ko.md) · [**피드백 남기기**](https://github.com/leonyoon-3dai/PhyRC_2027_phase1/issues/new?title=%5BE19+%ED%94%BC%EB%93%9C%EB%B0%B1%5D+%EC%98%81%EC%83%81+%EA%B5%AC%EA%B0%84%EA%B3%BC+%EA%B4%80%EC%B8%A1&body=%EC%8B%9C%EB%8F%84%3A+E19+%2F+20261107-astra-entry801-named-001%0A%EC%98%81%EC%83%81+%EC%8B%9C%EA%B0%81+%EB%98%90%EB%8A%94+%EA%B2%BD%EA%B3%84%3A%0A%EC%B9%B4%EB%A9%94%EB%9D%BC%3A+%EB%A1%9C%EB%B4%870+%EB%A8%B8%EB%A6%AC+%2F+%EB%A1%9C%EB%B4%871+%EB%A8%B8%EB%A6%AC+%2F+%EB%A1%9C%EB%B4%870+%EC%86%90%EB%AA%A9+%2F+%EB%A1%9C%EB%B4%871+%EC%86%90%EB%AA%A9%0A%0A%EA%B4%80%EC%B8%A1%ED%95%9C+%EC%9E%A5%EB%A9%B4%3A%0A%0A%ED%95%B4%EC%84%9D+%EB%98%90%EB%8A%94+%EC%A7%88%EB%AC%B8%3A%0A%0A%EB%8B%A4%EC%9D%8C%EC%97%90+%EB%B9%84%EA%B5%90%ED%95%98%EB%A9%B4+%EC%A2%8B%EC%9D%84+%EB%8F%99%EC%9E%91%3A%0A%0A%EA%B0%A4%EB%9F%AC%EB%A6%AC%3A+https%3A%2F%2Fgithub.com%2Fleonyoon-3dai%2FPhyRC_2027_phase1%2Fblob%2Fmain%2Fdocs%2Fgallery%2FREADME.ko.md%0A)
+
+**5/50 · 픽업 5 · 착의 0 · success=false · 932/932기록 검사 통과.** 12개 행동에서 설명과 다른 축 적용을 발견하지 않았습니다. 한쪽 높이·의도적 회전·상방/측면 시야를 바꾼 세 접근 모두 손 통과가 미확인으로 남아 후퇴 후 종료했습니다. 같은 파지에서 단순 전진을 더 반복할 근거가 약해졌습니다.
+
+801~932경계 · 132프레임 · 26.4초 · 5fps·4배 느리게. 네 카메라 순서는 위 로봇0/1 머리, 아래 로봇0/1 손목입니다. 모델 대기 시간은 제외했습니다. [출처](assets/20261107-e19-named-entry/provenance.json) · [학습 검토 구간](../collection/reviews/20261107-astra-entry801-named-001-learning-segments.json). 의도적 회전과 오류 회전, 제안과 실제 실행, 복구와 종료를 구분하며 학습 승인은 unreviewed입니다. [E19 원본 고정 백업·재다운로드 SHA 검증](../project/sessions/20261107-e19-backup-verification.json)도 완료했습니다.
+
+피드백에는 영상 시각 또는 경계, 카메라, 관측한 관계를 남겨 주세요. GitHub 링크는 작성 화면을 열며 자동 제출하지 않습니다.
+
+전체 932전이는 **801재실행+59모델 행동+72제어기 정착**, 시뮬레이션 46.6초입니다. 실제 1577.537초(26분18초), 모델 14호출/13판단(행동12+종료1), depth 질의1회·물리0입니다. 같은 E07 출처의 분기이며 독립 성공 표본으로 세지 않습니다.
+
+## 다음 비교
+
+**E20 목 우선 경로는 아직 실행 전입니다.** E18의 테이블 준비 470경계에서 현재 목선·지지를 다시 판단하고, 목표 입구와 첫 착의 순서를 바꿉니다. [선택 근거](../collection/research/2026-11-07-post-named-route-choice.ko.md) · [실제 실행 상태·명령](../project/STATUS.md)
+
+| 시도 | 실제 바꾼 접근 | 결과·한계 |
+|---|---|---|
+| [E19](20261107-astra-entry801-named-001.ko.md) | 명명 명령, 세 접근과 기울기·관측 방향 변경 | 5/50. 축 불일치 미재발, 입구 통과 미확인 |
+| [E18](20261106-astra-guide470-depth-001.ko.md) | 공개 depth와 운반 대형·접근 변경 | 5/50. 추가 roll 오류 두 번, 감독 종료 |
+| [E17](20261106-astra-layer352-001.ko.md) | 다른 lower-rim 후보 재파지 | 5/50. 반대층·양측 지지 미확인 |
+| [E16](20261106-astra-support264-002.ko.md) | 순차 지지 진단·같은 가장자리 복구 | 0/50. 연속 입구 미확인 |
+
+<details>
+<summary>E18 당시 영상과 다음 계획 이력</summary>
+
+> 아래는 E18 정리 당시 기록이며 현재 실행 상태가 아닙니다.
+
 ## 최신 E18 · 손 근처 접근과 손목 회전 오류·복구
 
 <a href="assets/20261107-e18-roll-recovery/event.mp4"><img src="assets/20261107-e18-roll-recovery/preview.gif" width="960" alt="E18 경계801~851의 의도에 없던 robot1 roll과 복구. 네 공개 카메라"></a>
@@ -45,6 +75,8 @@ E18 / 영상 시각 또는 경계:
 | [E15](20261106-astra-opening264-001.ko.md) | 초기 입구 준비 후 운반 | 5/50. 손 근처 가림·입구 통과 미확인 |
 
 시작 경계·입력·행동·예산이 달라 통제된 성공률 비교는 아닙니다. 기술 검사·과제 성공·학습 승인은 별도입니다.
+
+</details>
 
 <details>
 <summary>E17 및 이전 시도 전체 · 당시 상태와 영상 보존</summary>

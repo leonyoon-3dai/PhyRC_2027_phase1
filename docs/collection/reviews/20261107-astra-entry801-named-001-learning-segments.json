@@ -1,0 +1,434 @@
+{
+  "schema": "public-learning-segments-v1",
+  "run_id": "20261107-astra-entry801-named-001",
+  "parent_attempt": "20261106-astra-guide470-depth-001",
+  "source_group": "20261106-coordinated-demo-methods",
+  "source_commit": "9aad60138dc5cded2e0e5219fc12395d4c37ff0a",
+  "recording_status": "closed_actor_finished",
+  "training_approval": "unreviewed",
+  "label_provenance": [
+    "Public finalized decisions and concise final reasons",
+    "Designated public RGB and public robot observations inspected by reviewer",
+    "Sanitized public depth query request/result"
+  ],
+  "evidence_decisions_path": "output/operator-traces/20261107-astra-entry801-named-001/decisions.jsonl",
+  "raw_recordings_preserved": true,
+  "raw_records_rewritten": false,
+  "policy_teacher_hidden_evaluation_fields_included": false,
+  "split_constraints": [
+    "Group by source_group and replay lineage before training/validation split.",
+    "Replay prefix and adjacent frames are not independent demonstrations or successful validation examples.",
+    "Failed approaches and recovery are reviewable, not automatically approved for positive imitation.",
+    "Query and finish events add zero physics transitions."
+  ],
+  "transition_boundary_semantics": "[start,end): count=end-start. A video including both boundary images has count+1 frames.",
+  "counts": {
+    "recorded_transitions": 932,
+    "replay_transitions": 801,
+    "new_transitions": 131,
+    "model_action_transitions": 59,
+    "controller_settle_transitions": 72,
+    "model_call_count": 14,
+    "finalized_decisions": 13,
+    "executed_act_decisions": 12,
+    "finish_decisions": 1,
+    "completed_depth_query_cycles": 1
+  },
+  "segments": [
+    {
+      "id": "lift_pitch_preparation",
+      "kind": "preparation",
+      "decision_indices": [
+        0,
+        1
+      ],
+      "transition_start": 801,
+      "transition_end_exclusive": 821,
+      "transition_count": 20,
+      "observation_evidence": [
+        "output/actors/20261107-astra-entry801-named-001/observations/00000",
+        "output/actors/20261107-astra-entry801-named-001/observations/00001",
+        "output/actors/20261107-astra-entry801-named-001/observations/00002"
+      ],
+      "public_label": "Existing grips lift and pitch; hand and rim overlap in projection, independent support unconfirmed.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "approach_1",
+      "kind": "approach",
+      "decision_indices": [
+        2
+      ],
+      "transition_start": 821,
+      "transition_end_exclusive": 832,
+      "transition_count": 11,
+      "observation_evidence": [
+        "output/actors/20261107-astra-entry801-named-001/observations/00002",
+        "output/actors/20261107-astra-entry801-named-001/observations/00003"
+      ],
+      "public_label": "Paired extension hides the target hand without observed continuous rim crossing.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "recovery_1",
+      "kind": "recovery",
+      "decision_indices": [
+        3
+      ],
+      "transition_start": 832,
+      "transition_end_exclusive": 843,
+      "transition_count": 11,
+      "observation_evidence": [
+        "output/actors/20261107-astra-entry801-named-001/observations/00003",
+        "output/actors/20261107-astra-entry801-named-001/observations/00004"
+      ],
+      "public_label": "Paired retraction restores the target-hand view in both wrist cameras.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "asymmetric_tilt_after_query",
+      "kind": "orientation_adjustment",
+      "decision_indices": [
+        4
+      ],
+      "transition_start": 843,
+      "transition_end_exclusive": 854,
+      "transition_count": 11,
+      "observation_evidence": [
+        "output/actors/20261107-astra-entry801-named-001/observations/00004",
+        "output/actors/20261107-astra-entry801-named-001/observations/00005"
+      ],
+      "public_label": "Robot0 lowers its inherited held edge after public depth comparison; no regrasp.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "approach_2",
+      "kind": "approach",
+      "decision_indices": [
+        5
+      ],
+      "transition_start": 854,
+      "transition_end_exclusive": 866,
+      "transition_count": 12,
+      "observation_evidence": [
+        "output/actors/20261107-astra-entry801-named-001/observations/00005",
+        "output/actors/20261107-astra-entry801-named-001/observations/00006"
+      ],
+      "public_label": "Extension with asymmetric tilt again hides target hand; passage unconfirmed.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "recovery_2_intentional_roll",
+      "kind": "recovery_with_intentional_view_change",
+      "decision_indices": [
+        6
+      ],
+      "transition_start": 866,
+      "transition_end_exclusive": 878,
+      "transition_count": 12,
+      "observation_evidence": [
+        "output/actors/20261107-astra-entry801-named-001/observations/00006",
+        "output/actors/20261107-astra-entry801-named-001/observations/00007"
+      ],
+      "public_label": "Paired retraction plus robot0 roll +0.25 explicitly stated in final reason. Different from E18 unexplained robot1 roll errors.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "higher_oblique_views",
+      "kind": "observation_configuration_change",
+      "decision_indices": [
+        7,
+        8
+      ],
+      "transition_start": 878,
+      "transition_end_exclusive": 900,
+      "transition_count": 22,
+      "observation_evidence": [
+        "output/actors/20261107-astra-entry801-named-001/observations/00007",
+        "output/actors/20261107-astra-entry801-named-001/observations/00008",
+        "output/actors/20261107-astra-entry801-named-001/observations/00009"
+      ],
+      "public_label": "Robot0 coordinated pitch/lift/extension then lateral base/yaw/extension creates higher and oblique views while robot1 remains approximately still.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "pitch_preparation_3",
+      "kind": "orientation_adjustment",
+      "decision_indices": [
+        9
+      ],
+      "transition_start": 900,
+      "transition_end_exclusive": 910,
+      "transition_count": 10,
+      "observation_evidence": [
+        "output/actors/20261107-astra-entry801-named-001/observations/00009",
+        "output/actors/20261107-astra-entry801-named-001/observations/00010"
+      ],
+      "public_label": "Both wrists pitch to change candidate rim height before the third approach.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "approach_3",
+      "kind": "approach",
+      "decision_indices": [
+        10
+      ],
+      "transition_start": 910,
+      "transition_end_exclusive": 921,
+      "transition_count": 11,
+      "observation_evidence": [
+        "output/actors/20261107-astra-entry801-named-001/observations/00010",
+        "output/actors/20261107-astra-entry801-named-001/observations/00011"
+      ],
+      "public_label": "Extension with changed height/view again hides hand; no visible continuous rim crossing.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "recovery_3",
+      "kind": "recovery",
+      "decision_indices": [
+        11
+      ],
+      "transition_start": 921,
+      "transition_end_exclusive": 932,
+      "transition_count": 11,
+      "observation_evidence": [
+        "output/actors/20261107-astra-entry801-named-001/observations/00011",
+        "output/actors/20261107-astra-entry801-named-001/observations/00012"
+      ],
+      "public_label": "Retraction after final reason acknowledges three unproductive approaches; entrance remains unconfirmed.",
+      "training_approval": "unreviewed"
+    }
+  ],
+  "approach_loops": [
+    {
+      "loop": 1,
+      "preparation_decisions": [
+        0,
+        1
+      ],
+      "approach_decision": 2,
+      "recovery_decision": 3
+    },
+    {
+      "loop": 2,
+      "preparation_decisions": [
+        4
+      ],
+      "approach_decision": 5,
+      "recovery_decision": 6
+    },
+    {
+      "loop": 3,
+      "preparation_decisions": [
+        7,
+        8,
+        9
+      ],
+      "approach_decision": 10,
+      "recovery_decision": 11
+    }
+  ],
+  "named_action_review": {
+    "mapping_sha256": "2772202314c637aca6c0e31d1148e80db233c3ca23e6cb59bd9871d9879568b4",
+    "axis_order": [
+      "base_forward",
+      "base_left",
+      "base_CCW_yaw",
+      "lift",
+      "arm_extension",
+      "wrist_yaw",
+      "wrist_pitch",
+      "wrist_roll",
+      "gripper"
+    ],
+    "checked_act_count": 12,
+    "all_named_to_array_equal": true,
+    "final_brief_reason_review": "No unexplained nonzero axes observed; D6 robot0 wrist_roll +0.25 is explicitly described. This does not establish correctness of manipulation intent or causal task improvement.",
+    "intentional_roll_decisions": [
+      6
+    ],
+    "unexplained_roll_decisions": [],
+    "per_decision": [
+      {
+        "decision_index": 0,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "lift": 0.16
+          },
+          "robot_1": {
+            "lift": 0.16
+          }
+        }
+      },
+      {
+        "decision_index": 1,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "wrist_pitch": -0.18
+          },
+          "robot_1": {
+            "wrist_pitch": -0.18
+          }
+        }
+      },
+      {
+        "decision_index": 2,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "arm_extension": 0.16
+          },
+          "robot_1": {
+            "arm_extension": 0.16
+          }
+        }
+      },
+      {
+        "decision_index": 3,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "arm_extension": -0.16
+          },
+          "robot_1": {
+            "arm_extension": -0.16
+          }
+        }
+      },
+      {
+        "decision_index": 4,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "lift": -0.16
+          },
+          "robot_1": {}
+        }
+      },
+      {
+        "decision_index": 5,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "arm_extension": 0.2
+          },
+          "robot_1": {
+            "arm_extension": 0.2
+          }
+        }
+      },
+      {
+        "decision_index": 6,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "arm_extension": -0.2,
+            "wrist_roll": 0.25
+          },
+          "robot_1": {
+            "arm_extension": -0.2
+          }
+        }
+      },
+      {
+        "decision_index": 7,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "lift": 0.18,
+            "arm_extension": 0.13,
+            "wrist_pitch": 0.2
+          },
+          "robot_1": {}
+        }
+      },
+      {
+        "decision_index": 8,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "base_left": -0.55,
+            "arm_extension": 0.08,
+            "wrist_yaw": 0.3
+          },
+          "robot_1": {}
+        }
+      },
+      {
+        "decision_index": 9,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "wrist_pitch": -0.16
+          },
+          "robot_1": {
+            "wrist_pitch": -0.16
+          }
+        }
+      },
+      {
+        "decision_index": 10,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "arm_extension": 0.2
+          },
+          "robot_1": {
+            "arm_extension": 0.2
+          }
+        }
+      },
+      {
+        "decision_index": 11,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "arm_extension": -0.2
+          },
+          "robot_1": {
+            "arm_extension": -0.2
+          }
+        }
+      }
+    ]
+  },
+  "query_events": [
+    {
+      "decision_index": 4,
+      "transition_boundary": 843,
+      "observation_evidence": "output/actors/20261107-astra-entry801-named-001/observations/00004",
+      "camera": "robot_0_wrist",
+      "point_count": 6,
+      "valid_point_count": 6,
+      "physics_transition_count": 0,
+      "physics_advanced_during_query": false,
+      "public_label": "Same current frozen observation; compare visible surface optical Z. Semantic identities, hidden openings, attachment and passage not inferred.",
+      "training_approval": "unreviewed"
+    }
+  ],
+  "finish_event": {
+    "decision_index": 12,
+    "transition_boundary": 932,
+    "physics_transition_count": 0,
+    "actor_tool": "finish_episode",
+    "public_label": "Actor autonomously stops after three approaches without visible entry/emergence. Final reason states table support for regrasp is not established. No supervisor interruption.",
+    "training_approval": "unreviewed"
+  },
+  "strategy_execution": {
+    "new_guide_regrasp_count": 0,
+    "public_label": "Current grips are assigned guide/support roles, but no release/reposition/reclose to a new sleeve-side edge occurs."
+  },
+  "video_cut_suggestions": [
+    {
+      "id": "whole_new_suffix",
+      "start_boundary": 801,
+      "end_boundary": 932,
+      "inclusive_frame_count": 132,
+      "fps": 5,
+      "playback_duration_s": 26.4
+    }
+  ]
+}
