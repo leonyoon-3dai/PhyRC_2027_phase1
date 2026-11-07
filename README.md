@@ -12,7 +12,7 @@
 
 전체 **1,139전이·시뮬레이션56.95초**, 새 구간은 **352전이·17.6초**입니다. 실행 기록50분51초,787재실행+232모델 행동+120정착이며25호출·21행동+자율종료1판단입니다. 깊이 질의3회22유효점·질의 중 물리0, 추가 마감 전이0입니다. 전이1개는 관측→행동→다음 관측의0.05초 기록입니다.
 
-**다음 E27 · 새 파지를 실제 운반에 사용:** E27은 E25/698의 새 파지에서 기존 `coordinated-task-progress`로 운반·진입을 시험하도록 선택했습니다. history657/667·22판단/max1300/settle6·Astra/ultra를 유지하며, 아직 실행 전입니다. 새 파지의 국소 동행과 운반 하중 검증은 다르므로 현재 지지를 다시 확인합니다. 카메라 방향 보조 후보는 별도 CPU 준비 중이며 이번 설정에 적용하지 않습니다. [현재 상태·명령](docs/project/STATUS.md) · [출발점 근거](docs/collection/research/2026-11-07-e25-new-grasp-continuation.ko.md)
+**E27 실행 중 · 06:58:14 UTC 시작:** E25/698의 새 파지에서 기존 `coordinated-task-progress`로 운반·진입을 시험하는 실행을 시작했습니다. history657/667·22판단/max1300/settle6·Astra/ultra·source`1ff16b29e28bc9d43faf6bb0f4518e9a65868cb9`·시작clean입니다. 현재 준비 행동을 재실행 중이며 새 파지의 현재 지지와 운반 효과는 새 관측으로 확인합니다. 카메라 방향 보조 후보는 적용하지 않았습니다. [현재 상태·명령](docs/project/STATUS.md) · [출발점 근거](docs/collection/research/2026-11-07-e25-new-grasp-continuation.ko.md)
 
 [**출발점 화면 5개 비교·피드백**](docs/gallery/20261107-support-startpoints.ko.md) · [**출발점·방법 데이터베이스**](docs/collection/catalog/README.ko.md) · [**0→5→10 구간 조합 장기계획**](docs/collection/research/2026-11-07-composable-scoring-data-plan.ko.md)
 
@@ -56,7 +56,7 @@
 | 모델·환경 | Astra/ultra · CLI0.166.0/exec · 고정 Isaac Sim6.0.1 · Chrome/WebRTC OFF |
 | 실제 비교 | 초기 목표 손 변경, 상대 파지 배치·접근 변경, 위치 보상을 곁들인 자세·관측 회전 |
 | 관찰된 한계 | 역할 교환·소매 통과 미확인. 손 재노출과 공식 추가 득점은 별도 |
-| 다음 E27 선택 | E25/698·history657/667·새 파지 task-progress·22판단/max1300/settle6 · 아직 실행 전 |
+| E27 실행 중 | E25/698·history657/667·새 파지 task-progress·22판단/max1300/settle6 · 06:58:14UTC·source1ff16b2 clean |
 | 검증 범위 | 현재 실행 코드 전체 CPU317개 통과. [검증 기록](docs/project/sessions/20261107-leading-hand-validation.json). E26 이후 실행 코드 변경 없음 |
 | 마감·원본 | E26 source53a58bb·시작clean·capture완료·host0·shell Python0·simulator0. [고정 백업·재다운로드 검증](docs/project/sessions/20261107-e26-backup-verification.json) |
 

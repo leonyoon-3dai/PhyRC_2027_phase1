@@ -1,6 +1,6 @@
 {
   "schema": "public-conditional-continuation-review-v1",
-  "status": "selected_for_E27_not_yet_executed",
+  "status": "E27_started_replay_results_pending",
   "reviewed_run": "20261107-astra-opposing563-named-001",
   "reviewed_source_commit": "68658c9d9bb7e47591fb330f08f4f996ec4fcbfb",
   "candidate": {
@@ -16,7 +16,8 @@
     "source_loading_verification_required_before_selection": true,
     "strategy_family": "existing task-progress continuation; no strategy implementation or execution here",
     "selected": true,
-    "executed": false
+    "executed": true,
+    "execution_scope": "Selected follow-up run actually started; preparation replay phase, no new transport or dressing outcome yet."
   },
   "evidence_scope": [
     "Saved designated public RGB and public robot state",
@@ -334,7 +335,7 @@
   "selection_followup": {
     "after_closed_run": "20261107-astra-hand-swap787-named-001",
     "selected_run_id": "20261107-astra-regrasp698-progress-named-001",
-    "actual_started": false,
+    "actual_started": true,
     "strategy": "coordinated-task-progress",
     "decisions": 22,
     "max_steps": 1300,
@@ -344,8 +345,11 @@
       667
     ],
     "source_preflight": "output/reviews/e27-e25-698-preflight-20261107.json",
-    "new_geometry_aid_applied": false
+    "new_geometry_aid_applied": false,
+    "started_at_utc": "2026-11-07T06:58:14Z",
+    "source_commit": "1ff16b29e28bc9d43faf6bb0f4518e9a65868cb9",
+    "source_working_tree_modified": false
   },
   "review_time_priority_preserved": "E26 M2 from E18/787 actually started2026-11-07T05:51:36Z and remains prioritized; this E25 branch is unselected.",
-  "current_selection": "E26 closed at raw5; E25/698 selected for E27 existing task-progress, not yet started. Original priority statement is retained as review-time history."
+  "current_selection": "E26 closed at raw5; E25/698 E27 existing task-progress started2026-11-07T06:58:14Z from clean1ff16b2; replay/new results pending. Original priority is review-time history."
 }

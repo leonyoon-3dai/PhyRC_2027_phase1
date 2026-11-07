@@ -32,4 +32,4 @@ D13은 양pitch변화 약−.460/−.461rad에 lift/arm 보상을 더했습니�
 
 [학습 검토21구간](../collection/reviews/20261107-astra-hand-swap787-named-001-learning-segments.json) · [원본 고정 백업](../project/sessions/20261107-e26-backup-verification.json). archive 2,544,928,271bytes·254member,revision`41c78439105eb3a6e1f5fd9c0943cee6039d041b`를 강제 재다운로드해 검증했습니다. raw5는 기존 픽업이며 손/역할 교환 성공이나 착의 득점으로 확대하지 않습니다.
 
-다음은 E25/698의 새 파지 task-progress를 선택했으며 현재 지지를 새 replay에서 다시 확인합니다. [현재 실행 여부](../project/STATUS.md)
+E27은 E25/698의 새 파지 task-progress로06:58:14UTC·source1ff16b2 clean에서 실제 시작했으며 현재 지지를 새 replay에서 다시 확인합니다. [현재 실행 여부](../project/STATUS.md)

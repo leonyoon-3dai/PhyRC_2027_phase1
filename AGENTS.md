@@ -15,10 +15,10 @@
 - 최신E26 `20261107-astra-hand-swap787-named-001`은5/50·픽업5·착의0·successfalse·no_dressing_points/final_score0,QC1139/1139오류0으로 자율 종료했다. source53a58bb clean·05:51:36–06:42:28UTC·wall3051.140932266초.
 - 1139=787replay+232model+120settle,21act+finish1/25calls·3query22valid/물리0·마감0. 마지막22번째 판단이finish였으며 예산 강제중단/감독자신호아님. host78009=0·shellPython0·sim0·completed/errornull/capturecompleteoperator_finished. 백업receipt20261107-e26검증완료,trainingunreviewed.
 - 초기E23와 목표손차이·실제 상대배치/접근변경·D13자세보상·D17/D18관측보상은 보존한다. 역할교환/연속소매통과는미확인.953의유용한두손관계와 이후가림을분리한다.
-- 다음E27은E25/698 새 파지의coordinated-task-progress·history657667·22dec/max1300/settle6/timeout180/named-query-wristpanel로 선택,아직실행전. supportuncertain·table기여/운반하중미시험. source loaderfloat32(698,2,9)통과. 현재코드는E26이후변경없고전체CPU317검사가적용된다.
+- E27은E25/698 새 파지의coordinated-task-progress·history657667·22dec/max1300/settle6/timeout180/named-query-wristpanel로 선택 후2026-11-07T06:58:14Z·source1ff16b29e28bc9d43faf6bb0f4518e9a65868cb9 clean으로실제시작·현재초기화/재실행중. supportuncertain·table기여/운반하중미시험. source loaderfloat32(698,2,9)통과. 현재코드는E26이후변경없고전체CPU317검사가적용된다.
 - 카메라 방향 보조 후보는 별도worktree CPU준비 중이며E27에적용하지않는다. 기존query는이미cameraXYZ를제공한다. 정적공개기구학의방향계산은새센서/IK/착의성과와구분한다.
 - E25 새파지국소follow/QC698/백업79e74, E24부분복구/QC1610/백업1edca, E23팔노출/QC1180, E22host143불확실성, E21새파지후속미검사/E20목선0/E19세접근/E18roll오류 이력을보존한다. 최신명령·실제시작여부는STATUS/attempt우선.
-- catalog정본34실행/12출발점/19방법/37시도(계획3·진행0). 같은E07계보·정확checkpoint아님. 장기0→5→10조합과현재학습/성공자료생성을구분하며10점이후다음득점으로계속한다.
+- catalog정본35실행/12출발점/19방법/37시도(계획2·진행1). 같은E07계보·정확checkpoint아님. 장기0→5→10조합과현재학습/성공자료생성을구분하며10점이후다음득점으로계속한다.
 
 ## 실행과 재현
 

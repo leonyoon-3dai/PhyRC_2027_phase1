@@ -382,3 +382,10 @@ D5상대배치변경,D7/D8하강뒤두손재노출953,D13기준점근사유지�
 [고정백업](20261107-e26-backup-verification.json)은revision`41c78439105eb3a6e1f5fd9c0943cee6039d041b`·2,544,928,271bytes·SHA`82f7f3fb3b0b255c7549499078ef86e90352257f12cb728ccbd88221e5127d44`,2026-11-07T06:49:13.774600+00:00강제재다운로드/254member검증완료다. 공개full15artifact와3클립SHA를root도대조했다. hero1033–1139/107frames21.4s,lower885–981/97frames19.4s,posture1009–1033/25frames5s는같은실행이며모델대기를제외한4배느린영상이다.
 
 다음E27 `20261107-astra-regrasp698-progress-named-001`은 E25/698 새그립을 기존task-progress로 운반/진입에사용하는 비교를선택했다. freshhistory657667·22dec/max1300/settle6/timeout180·기존named/query/wristpanel/Astraultra,아직시작전이다. E26같은그립의후속시점회복과다른조작비교이며E25새파지의운반효과는미시험이었다. supportuncertain/table기여/하중미검증을유지한다.06:45:33UTC loaderfloat32(698,2,9)PASS,seed등trustedmetadata공개출력없음. 카메라방향보조후보는격리CPU준비로남기며이번설정에섞지않는다. 실행코드는53a이후불변이라기존317CPU검사범위가적용되며새검사를실행했다고쓰지않는다.
+
+
+## E27 실제 시작 (2026-11-07T06:58:14Z)
+
+`20261107-astra-regrasp698-progress-named-001`은 공개source`1ff16b29e28bc9d43faf6bb0f4518e9a65868cb9`·working_tree_modified=false에서 실제 시작했다. 직접부모E25/698·freshhistory657/667·coordinated-task-progress/named/query/wristpanel/plan1/Astraultra·22dec/max1300/timeout180/settle6/review10/profile이다. 기존실행코드hash는E26source53a와같고기존317CPU검사범위에해당한다. source loader698/QC완료/E25고정백업확인을거쳤으며새geometryaid는적용하지않았다. 현재초기화/재실행중이며새양측lift/운반/진입·점수는미확인이다.
+
+host exec session25974,로그output/sessions/20261106-evening/e27-regrasp698-progress-named-001.log이며Python반환뒤별도shell exit파일을남긴다. 시작전GPU비어있음·새runID·전체workingtreeclean·clientSHA일치를확인했다. 계획된E25/698조합을actual행으로전환해catalog35runs/12startpoints/19methods/37attempts(계획2/진행1)이며중복계획을추가하지않았다.

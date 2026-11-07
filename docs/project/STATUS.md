@@ -6,15 +6,15 @@
 
 E26은 상대 배치/접근을 바꿨고953에서 두 손 관계를 재노출했습니다. D13의 큰 자세 변화와 작은 gripper 기준점 변화, D17/D18의 보상 관측으로 손 후보를 드러낸 결과를 보존합니다. 초기E23와 목표 손이 달랐다는 근거를 전 이력 최초의 다른 손 접근이나 역할 교환 완료로 확대하지 않습니다. 공식 추가 득점은 없었습니다.
 
-## E27 선택 · 아직 실행 전
+## E27 실행 중 · 2026-11-07T06:58:14Z
 
-E27은 E25/698의 새 파지에서 기존 `coordinated-task-progress`로 운반·진입을 시험하도록 선택했습니다. history657/667·22판단/max1300/settle6·Astra/ultra를 유지하며, 아직 실행 전입니다. 새 파지의 국소 동행과 운반 하중 검증은 다르므로 현재 지지를 다시 확인합니다. 카메라 방향 보조 후보는 별도 CPU 준비 중이며 이번 설정에 적용하지 않습니다.
+E27은 E25/698의 새 파지에서 기존 `coordinated-task-progress`로 운반·진입을 시험하도록 선택했습니다. history657/667·22판단/max1300/settle6·Astra/ultra를 유지하며, source`1ff16b29e28bc9d43faf6bb0f4518e9a65868cb9`·시작clean으로 실제 실행했습니다. 현재 준비 행동 재실행 중이며 새 운반·진입 결과는 미확인입니다. 새 파지의 국소 동행과 운반 하중 검증은 다르므로 현재 지지를 다시 확인합니다. 카메라 방향 보조 후보는 별도 CPU 준비 중이며 이번 설정에 적용하지 않습니다.
 
 E25의 새 파지는 release→다른 경계 placement→보정1→reclose와 R1국소 동행까지 시험했고, 새 파지 뒤 운반/진입은 실행하지 않았습니다. 따라서 운반 효과가 실패한 것으로 단정하지 않습니다. support상태는uncertain이며 table기여·잔류운동·독립하중 미검증을 유지합니다. 직접부모E25/698·새과거관측657/667·같은E07source group,정확한천checkpoint아닙니다. loader는06:45:33UTC에float32(698,2,9)로 통과했고trusted seed등은 공개 출력하지 않았습니다.
 
 현재 실행 코드는E26source53a58bb 이후 바뀌지 않았고 통합CPU317검사 결과가 적용됩니다. 새 카메라 방향 보조 후보는 별도worktree의CPU준비 단계이며 E27에 섞지 않습니다. 과거 점수나 검수자가 고른 좌표를actor에 전달하지 않습니다.
 
-## E27 선택 명령 · 실제 시작 source/시간은 시작 후 갱신
+## E27 실제 시작 명령 · 2026-11-07T06:58:14Z
 
 ```bash
 export PATH="$PWD/.runtime/codex-0.166.0/node_modules/.bin:$PATH"
@@ -30,6 +30,8 @@ PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.codex_clie
   --post-action-settle-steps 6 --decisions 22 --max-steps 1300 --model-timeout 180 \
   --profile-step-phases
 ```
+
+E27 실행 로그는`output/sessions/20261106-evening/e27-regrasp698-progress-named-001.log`입니다. host exec session25974이며 Python 반환 후에만 별도 exit파일을 기록합니다. 현재 실행 결과와 종료값은 미확인입니다.
 
 원본 백업은revision`41c78439105eb3a6e1f5fd9c0943cee6039d041b`,2,544,928,271bytes,SHA`82f7f3fb3b0b255c7549499078ef86e90352257f12cb728ccbd88221e5127d44`이며2026-11-07T06:49:13.774600+00:00에재다운로드·254member검증했습니다. 학습 승인은unreviewed입니다. 공식10점을 확인하면 보존 후 다음 득점으로 계속합니다.
 
