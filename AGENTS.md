@@ -15,7 +15,7 @@
 - 최신E25 `20261107-astra-opposing563-named-001`은5/50·픽업5·착의0·successfalse·no_contact/null,QC698/698오류0으로종료. source68658c9d9bb7e47591fb330f08f4f996ec4fcbfb clean·05:18:00–05:38:26UTC·20분26초.
 - 698=563재실행+93모델+42정착.13act+finish1/15calls·1query6valid/물리0·마감물리0. host76977=0·shellPython0·sim0·attemptcompleted/capturecompleteoperator_finished. [고정 원본 백업 검증 완료](docs/project/sessions/20261107-e25-backup-verification.json)·trainingunreviewed.
 - R0anchor유지/R1release→다른낮은경계placement→보정1→reclose1실행. D9localfollowing잠정근거있음. D10차등/D11자세/D12중립뒤반대두lip관계미확인으로finish. 운반/진입0·남은예산16,감독중단/예산소진아님.
-- E26선택E18/787hist719771/coordinated-leading-hand-swap22decmax1400settle6. M2후보3d1bf2c를E25닫힘후통합. 다른leadinghand/역할교환/접근면변경은실제근거를따로분류하고미식별일반접근을M2수행으로세지않는다. 2026-11-07T05:51:36Z·source53a58bb4e9fa4ff5366b66485c8690b0784ad71f clean으로실제시작. 현재초기화/재실행중·새결과미확인,STATUS/attempt우선.
+- E26선택E18/787hist719771/coordinated-leading-hand-swap22decmax1400settle6. M2후보3d1bf2c를E25닫힘후통합. 다른leadinghand/역할교환/접근면변경은실제근거를따로분류하고미식별일반접근을M2수행으로세지않는다. 2026-11-07T05:51:36Z·source53a58bb4e9fa4ff5366b66485c8690b0784ad71f clean으로실제시작. 06:05UTC준비787완료·D0모델16+정착6/총809. 먼손H_B선택·R1guide/R0support배정·비스듬한이동,이전목표/역할불명확으로손교환완료는미확인. 후속STATUS/attempt우선.
 - 전체통합CPU결과는docs/project/sessions/20261107-leading-hand-validation.json참조. 새선택prompt외공식schema최대20step·물리·20Hz·고정Astraultra/CLI0.166.0exec유지. settle12후보는분석만,E26정착6유지.
 - E24는5점/1610QC/22act감독중단130,shell130/sim0. D21부분복구보존·백업1edca310c1b869a8f4c01b3eeb67b14f6699e12c검증완료. E23팔노출/1180QC, E22host143/clientnull/sim0불확실성, E21새파지후속검사없음/E20목선0/E19세접근/E18roll오류이력보존.
 - catalog.v1.jsoncanonical·SQLite재생성. 과거5점/관측지지/독립하중/현재지지/착의성공/학습승인은별도. 같은E07계보·정확checkpoint아님. 장기0→5→10합성계획은현재학습/미검증성공자료생성과구분한다.10점이후다음득점으로계속한다.

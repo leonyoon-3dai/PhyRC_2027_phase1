@@ -338,3 +338,10 @@ E25[고정원본백업](20261107-e25-backup-verification.json)은revision`79e74c
 `20261107-astra-hand-swap787-named-001`은공개source`53a58bb4e9fa4ff5366b66485c8690b0784ad71f`·working_tree_modified=false에서시작했다. 직접부모E18/787·history719/771·coordinated-leading-hand-swap·named/query/wristpanel·Astraultra·22dec/max1400/timeout180/settle6/review10/profile이다. 기존grip을유지하면서다른leadinghand/guide-anchor역할/접근면을각각실제근거로분류한다. 아직초기화/재실행중이며새손교환·역할교환·접근·성과는미확인이다. 로그output/sessions/20261106-evening/e26-hand-swap787-named-001.log. shell은Python반환시별도exit파일에반환값을기록하며반환전에는값없다. 전체CPU317PASS와실제성능은구분한다.
 
 E26준비재실행중,E25/698새그립의task-progress연속분기를조건부대안으로등록했다. 새suffix563→698은운반/진입0이라새grip착의효과실패를확정할수없다. 국소follow긍정과table혼입·운반하중미시험·잔류운동을구분해supportstatusuncertain,window657→698/sample657667678690698/freshhistory657667로기록했다. 최종5점은새grip성공보상이아니며모두trainingunreviewed·같은E07계보다. 새코드/GPU/모델호출없고E26M2현재실행선택을바꾸지않았다.
+
+
+## E26 첫 새 행동 (2026-11-07 06:05 UTC 확인)
+
+준비787재실행 뒤 D0은 양base forward+.15/left+.22와 R1arm+.09를16step 실행했고 정착6을 더해809가 됐다. 최종 설명에서 위쪽·먼 H_B를 서로 다른 전완으로 H_A와 구별하고 R1guide/R0support를 선택했다. 이전 목표·역할은 불명확하다고 스스로 명시했으므로 대안 손 선택·현재 역할 배정과 실제 손/역할 교환을 구분한다. 두 지정 손목뷰에서 두 손을 구분할 시작 근거가 있으나 손의 입구 통과는 확인하지 않았다. 최종 결과 미확인·활성 실행 코드는 변경하지 않았다.
+
+E25/698 조건부 후보는 독립 검수에서 관측 JSON8개 SHA·경계·history·카탈로그 수와 지지/점수 구분이 일치했다. 출처 표기를 RGB 파일별 해시로 오해하지 않도록 `public observation JSON hashes`로 명확히 했다.

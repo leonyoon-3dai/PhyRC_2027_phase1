@@ -937,7 +937,7 @@
         "window_end": 698,
         "evidence": [
           "docs/collection/research/2026-11-07-e25-new-grasp-continuation.ko.md",
-          "docs/collection/research/2026-11-07-e25-new-grasp-continuation.json — selected public state/image hashes",
+          "docs/collection/research/2026-11-07-e25-new-grasp-continuation.json — selected public observation JSON hashes",
           "docs/collection/reviews/20261107-astra-opposing563-named-001.ko.md — local follow and retained anchor after one grasp change",
           "Selected samples657,667,678,690,698;657→667 R1localfollowing with retained R0jaw cloth;no new open commands within selected window."
         ],
@@ -1784,7 +1784,7 @@
         "review": null,
         "videos": []
       },
-      "notes": "Actual E26 started2026-11-07T05:51:36Z from clean public source53a58bb4e9fa4ff5366b66485c8690b0784ad71f. E18 direct parent787/history719771,22dec/max1400/timeout180/settle6/review10, fixed Astraultra execplan1 namedquerywristpanel. Initial replay; actual distinct hand,guide-anchor exchange and approach changes remain unobserved. Full CPU317 passed before launch. Same E07 lineage,not exact cloth checkpoint; final outcome/QC/backup pending."
+      "notes": "Actual E26 started2026-11-07T05:51:36Z from clean public source53a58bb4e9fa4ff5366b66485c8690b0784ad71f. E18 direct parent787/history719771,22dec/max1400/timeout180/settle6/review10, fixed Astraultra execplan1 namedquerywristpanel. At06:05UTC replay787 complete, D0 model16+settle6 to809; chose upper/far H_B and assigned R1guide/R0support, then bilateral oblique base motion plus R1extension. Prior target/roles uncertain, so actual hand swap and role exchange remain unestablished; current approach change requires follow-up public comparison. Full CPU317 passed before launch. Same E07 lineage,not exact cloth checkpoint; final outcome/QC/backup pending."
     },
     {
       "id": "planned-e25-698-task-progress",
