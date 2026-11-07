@@ -176,7 +176,7 @@
         "output/actors/20261106-astra-guide470-depth-001/observations/00024",
         "output/actors/20261106-astra-guide470-depth-001/observations/00025"
       ],
-      "public_label": "Two robot1 roll -0.5 actions followed by neutral observation. View direction approximately recovers; full cloth recovery unconfirmed.",
+      "public_label": "Two robot1 roll -0.5 actions followed by D24 observation with all eight motion channels zero and gripper +1 for both robots, preserving close intent. D24 is not an all-zero action. View direction approximately recovers; full cloth recovery unconfirmed.",
       "training_approval": "unreviewed"
     },
     {
@@ -259,10 +259,11 @@
       "depth_query_cycle_stopped"
     ],
     "error": "SIGINT",
-    "logged_final_decision": false,
+    "model_call_response_logged": true,
+    "finalized_decision_event_logged": false,
     "executed_action_transitions": 0,
     "completed_query_count": 0,
-    "public_label": "Attempted call interrupted before any executable finalized decision was logged. Do not treat its unlogged content as teacher action.",
+    "public_label": "A returned act response is recorded in model_call 29 for D26, but interruption prevented a finalized decision event and action execution. Do not treat this nonexecuted model-call response as an executed teacher action.",
     "training_approval": "unreviewed"
   },
   "video_cut_suggestions": [

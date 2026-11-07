@@ -11,7 +11,7 @@
 | 실제 질의 | 현재 공개 depth 픽셀3회, 각 질의 물리 진행0. 운반 geometry1회·손/rim 거리2회 |
 | 반복 오류 | D16,D21은 전진 설명과 달리 robot1 wrist_roll=+1 포함. 각각복구D17–19,D22–24 |
 | 기록 | **470재실행 +313모델 +144제어기중립 +1감독종료 =928**, 시뮬레이션46.4초 |
-| 호출·판단 |30모델호출시도,26실행행동. 질의추가3회와 마지막 중단된호출1회를 포함하며30판단이아님 |
+| 호출·판단 |30모델호출시도,26실행행동. 질의추가3회와 응답반환후미실행호출1회를 포함하며30실행판단이아님 |
 | 시간 |2026-11-06 23:58:53–2026-11-07 00:29:56 UTC,1862.366초(약31분2초) |
 | 호출 경로 |모델1000.803초·환경806.244초, 내부 추론시간 미제공 |
 | 종료 정합성 |SIGINT로client130·simulator0,finished/capture_complete=true,전수QC928/928통과 |
@@ -49,7 +49,7 @@ PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.codex_clie
   --profile-step-phases
 ```
 
-목 우선 경로도 선택형 `coordinated-neckline-first`로 구현·CPU검증했지만 아직 실제미실행입니다. 현재는 E18의 유용한 접근을 이어 비교하고, 그 결과에 따라 목 우선 등 다른 순서를 선택합니다. [방법 전환 근거](../collection/research/2026-11-06-post-support-methods.ko.md)
+목 우선 경로도 선택형 `coordinated-neckline-first`로 구현·CPU검증했지만 아직 실제미실행입니다. 현재는 E18의 유용한 접근을 이어 비교하고, 그 결과에 따라 목 우선 등 다른 순서를 선택합니다. [방법 전환 근거](../collection/research/2026-11-06-post-support-methods.ko.md) · [E19 이후 조건부 경로 선택](../collection/research/2026-11-07-post-named-route-choice.ko.md)
 
 ## 원본·기록
 
