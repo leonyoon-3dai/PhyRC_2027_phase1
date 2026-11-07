@@ -318,3 +318,8 @@ E24[고정원본백업](20261107-e24-backup-verification.json)은revision`1edca3
 ## E25 실제 시작 (2026-11-07T05:18:00Z)
 
 `20261107-astra-opposing563-named-001`은공개source`68658c9d9bb7e47591fb330f08f4f996ec4fcbfb`·working_tree_modified=false에서시작했다. 직접부모E18/563·history510/542·coordinated-opposing-rim·named/query/wristpanel·Astra/ultra·30dec/max1400/timeout180/settle6/review10/profile이다. E17반대rim가설을더나은관측지지출발점과한번의재파지·닫힘후검사순서로재시험한다. 아직준비행동재실행중이며새파지수행/입구정체/성과는미확인이다. 로그output/sessions/20261106-evening/e25-opposing563-named-001.log. shell은Python명령이반환할때별도exit파일에그값을기록하며반환전에는값없다. 전체CPU310검사통과와실제조작효과를구분한다.
+
+E25 중간:05:27:15UTC 관측시563재실행완료·첫model_request였다. 이번history510 overview/양head와현재563의5뷰를root도확인했다. 양그리퍼부근천과테이블·두경계후보가보이나반대lip/독립하중/전체몸판테이블지지는별개다. D0양lift−.25×8+6settle→577, D1양lift−.2×8+6settle→591. 실제몸판이테이블위에더넓게놓이고틈은납작해졌으며jaw부근천은유지됐다. R0anchor/R1changed측을선택했지만release0·재파지미실행이다. 동시하강은독립지지검사가아니며잔류하강도남는다.
++
++[E24닫힌시간분석](../performance/20261107-e24-stage-timing.ko.md)은실제all-replay563까지490.225초·1179까지1041.782초의준비요청합을분리했다. 차551.558초는같은실행의측정구간이며이후재파지총시간절감이아니다.26call은20초기act+3query+2실행후속+1폐기후속으로나눴고질의물리0과호출비용을구분한다.7출처SHA를root도대조했다. 실행코드/E25설정변경없음이다.
++

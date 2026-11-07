@@ -12,7 +12,7 @@
 
 전체 **1,610전이·시뮬레이션80.5초**, 새 구간은 **431전이·21.55초**입니다. 실제50분26초, 1179재실행+304모델 행동+126정착+1감독 마감이며 26호출/22행동, 깊이 질의3회16유효점·질의 중 물리0입니다. 마지막 질의 후 행동 응답은 실행하지 않았습니다. 전이1개는 관측→행동→다음 관측의0.05초 기록입니다.
 
-**E25 실행 중 · 05:18:00 UTC 시작:** E18/563·history510/542에서 `coordinated-opposing-rim`을 실제 시작했습니다. Astra/ultra·30판단/max1400·source`68658c9d9bb7e47591fb330f08f4f996ec4fcbfb`·시작clean입니다. 현재 준비 행동 재실행 단계이며 새 파지·결과는 아직 미확인입니다. 테이블 지지 아래 한쪽 anchor를 유지하고 다른 경계를 다시 잡은 뒤 국소 천 동행·상대 경계 반응을 비교합니다. [현재 상태·명령](docs/project/STATUS.md) · [방법 설명](docs/collection/research/2026-11-07-opposing-rim-candidate.ko.md)
+**E25 실행 중 · 05:18:00 UTC 시작:** E18/563·history510/542에서 `coordinated-opposing-rim`을 실제 시작했습니다. Astra/ultra·30판단/max1400·source`68658c9d9bb7e47591fb330f08f4f996ec4fcbfb`·시작clean입니다. 563개 준비 행동을 마친 뒤 첫2행동으로 옷을 함께 낮췄습니다(D1뒤591경계). 몸판이 테이블에 더 넓게 놓이고 양 jaw 부근 천은 남습니다. 로봇0을 anchor·로봇1을 바꿔 잡을 쪽으로 선택했으며, 아직 release·새 파지는 없습니다. 잔류 하강이 남아 테이블 지지와 새 파지를 별도로 확인합니다. 최종 점수는 미확인입니다. [현재 상태·명령](docs/project/STATUS.md) · [방법 설명](docs/collection/research/2026-11-07-opposing-rim-candidate.ko.md)
 
 [**출발점 화면 5개 비교·피드백**](docs/gallery/20261107-support-startpoints.ko.md) · [**출발점·방법 데이터베이스**](docs/collection/catalog/README.ko.md) · [**0→5→10 구간 조합 장기계획**](docs/collection/research/2026-11-07-composable-scoring-data-plan.ko.md)
 
@@ -78,6 +78,8 @@ E13의 4분·121표본에서 CPU 평균은 모델 대기2.08% / 동작19.14%, GP
 E15 전체28분29.785초 중 모델 호출 경로18분25.822초, 환경9분08.946초였습니다. 순수 모델 추론시간은 제공되지 않습니다. 메모리 부족이나 지속적인 전체 자원 포화 증거는 없지만 짧은 병목을 배제하지는 않습니다.
 
 E23에서는 모델 호출 경로821.40초(43.09%)·환경 요청1031.87초(54.13%)가 들었습니다. 실제0→563 재실행 요청은484.94초였지만, 짧은 출발점의 이후 조작 비용까지 줄어든다는 뜻은 아닙니다. [E23 구간별 시간 분석](docs/project/performance/20261107-e23-stage-timing.ko.md)
+
+E24의 실제 준비 재실행에서563→1179 구간은616전이·54요청·551.558초(9분12초)였습니다. 짧은 출발점이 이후 재파지·전체 시도 시간을 얼마나 바꾸는지는 별도 비교합니다. [E24 실제 재실행·질의 비용](docs/project/performance/20261107-e24-stage-timing.ko.md)
 
 [원문·표본·측정 한계](docs/project/performance/20261106-performance-review.ko.md) · [단계 계측과 속도 후보](docs/project/performance/20261106-speedup-plan.ko.md) · [개편 전 성능 메모 전체](README.before-reorganization-20261106.ko.md)
 
