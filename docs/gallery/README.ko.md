@@ -14,7 +14,7 @@
 
 전체 **726전이·시뮬레이션 36.3초**, 실제 약 **29분 43초**입니다. 470재실행+154모델 행동+102제어기 정착이며, 25모델 호출은 행동23회·종료판단1회·추가질의1회입니다. 전이 1개는 관측→행동→다음 관측의 0.05초 기록이고, 질의 중 물리는 진행하지 않았습니다.
 
-다음은 공식 시연에 가까운 **몸통 입구의 상방 배치→하강·안착 경로**를 비교합니다. 후보 통합 후 전체277CPU검사를 통과했으며 실제 착의 효과는 아직 미검증입니다. [후보 범위](../collection/research/2026-11-07-overhead-drape-candidate.ko.md) · [현재 실행 상태](../project/STATUS.md)
+**E21은 2026-11-07 01:56:25 UTC에 시작**했고 공식 시연에 가까운 **몸통 입구의 상방 배치→하강·안착 경로**를 비교합니다. 후보 통합 후 전체277CPU검사를 통과했으며 실제 착의 효과는 아직 미검증입니다. [후보 범위](../collection/research/2026-11-07-overhead-drape-candidate.ko.md) · [현재 실행 상태](../project/STATUS.md)
 
 [**공식 시연의 실제 순서 검토**](../collection/research/2026-11-07-official-demo-route-review.ko.md) · [**BEHAVIOR 우승 자료: 그림·영상과 후속 수집 후보**](../collection/research/2026-11-07-behavior-champion-visual-transfer.ko.md) · [공식 집계·텍스트 근거](../collection/research/2026-11-07-behavior-champion-text-review.ko.md)
 

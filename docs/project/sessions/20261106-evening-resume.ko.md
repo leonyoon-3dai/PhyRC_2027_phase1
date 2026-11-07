@@ -220,3 +220,11 @@ E20 종료 뒤 별도 후보f148d6을 main에 병합했다. `coordinated-overhea
 다음E21은STATUS의 명령으로E18/470·hist430464에서 공식유사경로를 비교할 계획이다. 원본 파지를 보존할 수 있는 출발을 선택했고 E20의 목선 재파지를 그대로 이어받는 분기가 아니다. 실제시작·소스는실행후별도로기록한다.
 
 E20 비공개 원본은 고정HF revision `ad7b94f4dd65115082ad53527a48efbf99a5947d`에서 재다운로드 SHA검증을 완료했습니다. 1,721,601,271bytes·SHA256`b427dc7b27d14c933fa67f85df751379044163c05e849c84e7fb138f86b97096`,2026-11-07 01:53:01UTC 확인입니다. 272archive member 전수검사와 고정revision 강제재다운로드를 통과했다. [receipt](20261107-e20-backup-verification.json).
+
+## E21 공식 유사 상방·하강 경로 · 실제 시작
+
+E20 영상·분석·학습 구간·공개 운동 수치·원본 백업과 overhead 후보를 공개 main `d383063670085afccabfb51e6af530607d2efd44`에 통합했다. 검토 로컬/원격 tree `db5072f1451c5bd4de8585bea48d93d993abfa9e` 동일성을 확인하고 로컬 병합 이력을 `local-prepublication-e20-20261107` 태그에 보존했다. README 맨 위 E20 영상도 원격에서 확인했다.
+
+**2026-11-07 01:56:25UTC**에 `20261107-astra-overhead470-named-001`을 실제 시작했다. source snapshot은d383063·working_tree_modified=false다. STATUS의 명령대로 E18 직접부모/prefix470·hist430464·coordinated-overhead-drape·named+query·plan1·40판단/max1400/timeout180/settle6/review10·profile을 사용한다. 로그는`output/sessions/20261106-evening/e21-overhead470-named-001.log`다. GPU는E20종료뒤순차실행이며초기화/재실행을진행한다. 최종 결과는아직없다.
+
+E18/470의닫힌전체928원본검사·해시·계보를재검증한후시작했다. 현재관측에서유용한지지와몸통입구를다시판단하며, 재실행을정확한천checkpoint로설명하지않는다. 공식영상의프레임·좌표·궤적·평가값은actor입력에넣지않았다. 실행중코드는유지하고문서만현재화한다.
