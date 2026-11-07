@@ -228,3 +228,13 @@ E20 영상·분석·학습 구간·공개 운동 수치·원본 백업과 overhe
 **2026-11-07 01:56:25UTC**에 `20261107-astra-overhead470-named-001`을 실제 시작했다. source snapshot은d383063·working_tree_modified=false다. STATUS의 명령대로 E18 직접부모/prefix470·hist430464·coordinated-overhead-drape·named+query·plan1·40판단/max1400/timeout180/settle6/review10·profile을 사용한다. 로그는`output/sessions/20261106-evening/e21-overhead470-named-001.log`다. GPU는E20종료뒤순차실행이며초기화/재실행을진행한다. 최종 결과는아직없다.
 
 E18/470의닫힌전체928원본검사·해시·계보를재검증한후시작했다. 현재관측에서유용한지지와몸통입구를다시판단하며, 재실행을정확한천checkpoint로설명하지않는다. 공식영상의프레임·좌표·궤적·평가값은actor입력에넣지않았다. 실행중코드는유지하고문서만현재화한다.
+
+## 사용자 선호 수정 · 목선 파지의 어려움
+
+사용자는 앞선 목 접근 선호를 수정하고 목으로 파지하는 것은 어려워 보인다고 평가를 요청했다. E20은 실제 목선 후보 두 재파지 이후에도 좁은 경계·겹친 천·닫힘/잔류운동 때문에 연속 입구를 확인하지 못했다. 현재 조건에서는 목선 우선 파지의 우선순위를 낮추되, 목 파지 일반이 불가능하다거나 머리 우선 착의 자체를 실행해 실패했다고 넓히지 않는다. 이미01:56:25UTC에 시작한 E21의 넓은 몸통 입구 상방·하강 경로는 그대로 진행하며 활성 코드·프롬프트는 바꾸지 않았다. 목선 위치 조정은 향후 부분 착의 뒤의 조건부 후보로 남긴다. [fb-20261107-002](../../collection/feedback/2026-11-07.jsonl)에 기록했다.
+
+## 외부 참고 원본의 비공개 보존
+
+BEHAVIOR 검토 원본19개(7,211,706bytes)와 출처/범위6파일을 unique20261107-champion-reference-v1 연구묶음으로 보존했다. archive6,879,270bytes·25member, 고정HF revision`427d3a150b48f2e522bbff30f9177d6a2722788d`, SHA256`e1b99b63d44673fdcced9e18ba97447fdb98e0dce24e616581880e307a831b15`다. 02:02:13UTC 고정revision 강제재다운로드·25member size/SHA 검증을 완료했다. 공식MP4/페이지HTML은 기존e1d32f9 백업의 동일SHA member여서 중복제외했고 receipt에 위치를 연결했다. 미검토poster·파생crop/frame·인증·actor이벤트는 포함하지 않았다. [receipt](20261107-champion-reference-backup-verification.json). 제3자 참고원본은비공개이며시연collection/actor/학습입력과분리했다. E21은변경하지않았다.
+
+E16–E20의닫힌증거를[절차·복구카드초안](../../collection/research/2026-11-07-observable-procedure-cards.ko.md)5개로재구성했다. 실제명령→로봇실측→천관계→입구/통과를구분하며연구용분석이지성공정책·훈련승인·실행제어기가아니다. 배경/빈픽셀을입구필요조건으로삼지않고뒤몸판가설과입구미확인을구분했다. 현재E20/E21task에그런명시필수조건은없으며이번에는코드·프롬프트변경없이문서에만남겼다.

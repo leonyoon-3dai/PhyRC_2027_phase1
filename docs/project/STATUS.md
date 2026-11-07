@@ -23,6 +23,8 @@ E20의 두 재파지는 실제 파지 위치 변경이었습니다. 그 뒤 높�
 
 다음은 [공식 시연](../collection/research/2026-11-07-official-demo-route-review.ko.md)에 가까운 **몸통 입구를 머리·팔 위로 배치한 뒤 내려 안착시키는 경로**입니다. 목선 재파지나 첫 소매·목 통과를 선행조건으로 강제하지 않고, 현재 유용한 몸통 입구 지지에서 관측 가능한 경로를 검토합니다. 더 높이 드는 것만으로 새 방법을 수행했다고 세지 않습니다. [후보·검증 범위](../collection/research/2026-11-07-overhead-drape-candidate.ko.md)
 
+사용자는 목선 파지가 어려워 보인다는 의견으로 앞선 선호를 수정했습니다. 현재 E20 근거도 목 우선 파지의 우선순위를 낮추는 판단을 지지합니다. 목선 조정은 부분 착의 뒤의 조건부 후보로 남기며, 이미 시작한 E21의 몸통 입구 상방·하강 비교는 그대로 진행합니다. [피드백 기록](../collection/feedback/2026-11-07.jsonl)
+
 ## E21 실행 중 · 2026-11-07 01:56:25 UTC 시작
 
 E20 종료 후 후보 f148d6을 통합했고 전체 **277CPU검사를12.745초에 통과**했습니다. 기존 실행 계약·공식 물리·행동 한계는 유지합니다. 순서 지침만 바뀐 후보의 실제 착의 효과는 미검증입니다. 아래 명령으로 실제 시작했고 source snapshot은 `d383063670085afccabfb51e6af530607d2efd44`·working_tree_modified=false입니다. 먼저470행동 재실행을 진행하며 최종 결과는 아직 없습니다.
@@ -45,6 +47,8 @@ PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.codex_clie
 직접 출처는 E18/470이며 E20의 변경된 목선 파지를 그대로 재생하지 않습니다. 행동 재실행은 정확한 천 checkpoint가 아니므로 현재 지지를 새 관측에서 확인합니다. E18 원본은 고정HF revision44d01871f0099f8a537f1bdbfee06a404a95f38c에서 검증 완료했습니다. E20 비공개 원본은 고정HF revision `ad7b94f4dd65115082ad53527a48efbf99a5947d`에서 재다운로드 SHA검증을 완료했습니다. 1,721,601,271bytes·SHA256`b427dc7b27d14c933fa67f85df751379044163c05e849c84e7fb138f86b97096`,2026-11-07 01:53:01UTC 확인입니다. [검증 receipt](sessions/20261107-e20-backup-verification.json).
 
 ## 참고 연구와 수집 원칙
+
+[공개 관측 절차·복구 카드 초안](../collection/research/2026-11-07-observable-procedure-cards.ko.md)은 E16–E20의 닫힌 증거에서 닫힘·잔류 운동·국소 지지·입구·통과를 분리합니다. 실제 선택기/제어기/훈련에는 연결하지 않았고, 입구 너머 천색만으로 폐쇄를 확정하지 않는 주의도 기록했습니다.
 
 [BEHAVIOR 텍스트·공식 집계](../collection/research/2026-11-07-behavior-champion-text-review.ko.md), [그림·영상·후속 수집 후보](../collection/research/2026-11-07-behavior-champion-visual-transfer.ko.md)를 main에 기록했습니다. 관측으로 검증하는 절차·복구 조건은 후속 비교안이며 새 제어기·훈련에는 적용하지 않았습니다. 외부 영상·좌표·평가값은 actor 입력으로 넣지 않습니다.
 
