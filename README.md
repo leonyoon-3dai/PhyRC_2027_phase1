@@ -12,7 +12,7 @@
 
 전체 **698전이·시뮬레이션34.9초**, 새 구간은 **135전이·6.75초**입니다. 실제20분26초, 563재실행+93모델 행동+42정착이며 15호출·13행동+자율종료1판단입니다. 깊이 질의1회6유효점·질의 중 물리0, 추가 마감 전이0입니다. 전이1개는 관측→행동→다음 관측의0.05초 기록입니다.
 
-**E26 실행 중 · 05:51:36 UTC 시작:** E18/787·history719/771에서 `coordinated-leading-hand-swap`을 실제 시작했습니다. Astra/ultra·22판단/max1400/settle6·source`53a58bb4e9fa4ff5366b66485c8690b0784ad71f`·시작clean입니다. 06:29 UTC 기준 새 행동14회·총1,027개 기록입니다(787재실행+156모델+84정착). 방향 변경과 하강 뒤953경계에서 두 손 관계를 회복했고, 후속 접근에서는 다시 일부 가림이 생겼습니다. 현재는 높이·팔 길이를 보상하며 손목 각도를 바꾸는 자세 시험까지 실행했습니다. 앞선 유용 관계와 이후 가림을 함께 보존하며, 손 통과·새 점수는 아직 확인하지 않았습니다. [현재 상태·명령](docs/project/STATUS.md) · [방법 설명](docs/collection/research/2026-11-07-leading-hand-candidate.ko.md)
+**E26 실행 중 · 05:51:36 UTC 시작:** E18/787·history719/771에서 `coordinated-leading-hand-swap`을 실제 시작했습니다. Astra/ultra·22판단/max1400/settle6·source`53a58bb4e9fa4ff5366b66485c8690b0784ad71f`·시작clean입니다. 06:38 UTC 기준 새 행동19회·총1,107개 기록입니다(787재실행+212모델+108정착). 방향 변경·하강·자세 보상 뒤 접근을 이어갔고, 최근에는 잡힌 가장자리 이동을 줄이는 보상 회전으로 관측 방향을 바꿨습니다. 화면 끝에 있던 손과 짧은 손목이 안으로 들어와 더 잘 보입니다. 전완 연결·소매 경계·손 정체는 아직 미확인으로, 손 통과나 추가 득점으로 단정하지 않습니다. [현재 상태·명령](docs/project/STATUS.md) · [방법 설명](docs/collection/research/2026-11-07-leading-hand-candidate.ko.md)
 
 [**출발점 화면 5개 비교·피드백**](docs/gallery/20261107-support-startpoints.ko.md) · [**출발점·방법 데이터베이스**](docs/collection/catalog/README.ko.md) · [**0→5→10 구간 조합 장기계획**](docs/collection/research/2026-11-07-composable-scoring-data-plan.ko.md)
 
