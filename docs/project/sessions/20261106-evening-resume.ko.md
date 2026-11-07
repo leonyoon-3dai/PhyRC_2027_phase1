@@ -206,3 +206,17 @@ E19 갤러리·분석·학습 구간·백업 receipt를 main `799fe804445c6e0fc4
 BEHAVIOR 자료는[텍스트·공식 집계](../../collection/research/2026-11-07-behavior-champion-text-review.ko.md),[5개 도표·선택 영상과 적용 가설](../../collection/research/2026-11-07-behavior-champion-visual-transfer.ko.md),[시각 자료 해시](../../collection/research/2026-11-07-behavior-champion-visual-sources.json)로 보존했다. 원문 미디어 재게시·외부 코드 설치·새 학습·E20코드변경은 없다. 사례74의 설명과 실제 연결영상 대상 불일치, 선택 프레임의 완료 판정 한계, BEHAVIOR훈련 정보 허용범위와PhyRC차이를 함께 기록했다.
 
 E19의[공개 운동 수치](../../collection/reviews/20261107-astra-entry801-named-001-motion.ko.md)도 독립 대조했다. 세 접근은 실제44/67/55mm arm 이동이며 목표증가잘림근거없다. D7의base기준3.294mm와world3.774mm를구분하고, D8의world41.423mm이동으로위치보상이정확한고정이아님을명시했다. 그리퍼기준점은천접촉정답이아니다. 실행·관측·해석을분리하는후속절차카드의근거로연결한다.
+
+## E20 종료 · 목선 재파지 준비와 다음 공식 유사 경로
+
+2026-11-07 01:48:05 UTC에 모델이 테이블 지지 쪽으로 낮춘 뒤 자율 종료했다. client0·capture complete·전수QC726/726오류0이며, raw0/50·전항목0·success=false·no_contact/null이다. 전체726=470재실행+154모델+102정착,36.3sim초이며 새256전이12.8sim초다. 24판단은23act+finish,25호출은추가depth질의1회를 포함하고질의물리0이다. wall1783.289404705초(29분43초),모델호출경로1090.693712822초·환경640.649879246초다.
+
+기존 밑단 파지 두 곳을 순차적으로 목선 후보로 바꿨다. robot0 국소 동행을 먼저 확인한 뒤 robot1을 옮겼으며 두 번째 확인은 양측 들기여서 독립 지지 시험과 구분한다. D14robot1roll+.47은 열린 그리퍼 접근 방향을 바꾸려는 의도적 회전이다. 이후 높이·간격·시점 보정에도 연속 목 개구부는 불명확해 운반 전에 마감했다. 실제 새 재파지와 그 뒤 미세조정 포화를 구분하며 머리 우선 착의 자체가 실행·실패했다고 확대하지 않는다.
+
+[공개 리뷰](../../collection/reviews/20261107-astra-neckline470-named-001.ko.md),[학습 구간](../../collection/reviews/20261107-astra-neckline470-named-001-learning-segments.json),[영상](../../gallery/assets/20261107-e20-neckline-regrasp/event.mp4)을 보존한다. 470–726inclusive의257프레임/51.4초/5fps·4배느리게이며 원본에 없는 중간프레임은 생성하지 않았다. 같은E07 source group·unreviewed다.
+
+E20 종료 뒤 별도 후보f148d6을 main에 병합했다. `coordinated-overhead-drape`는 몸통 입구의 상방 배치와 하강을 비교하고 목/첫소매의 선행완료를 강제하지 않는다. 실제통합 전체 **277CPU검사12.745초 통과**, 로그`output/sessions/20261106-evening/cpu-overhead-integrated.log` SHA256`ae4af21a8deafc14b4f69ffc0b17703e143761b799b155f57ebb59c79a36153f`다. 다른9전략의prompt/입력/schema/dispatch 불변과 신규선택지의query동결계약을 검증했고 실제천효과는 미검증이다. 독립프롬프트검토에서도 중대한 순서충돌·관측경계 문제는 찾지 못했다.
+
+다음E21은STATUS의 명령으로E18/470·hist430464에서 공식유사경로를 비교할 계획이다. 원본 파지를 보존할 수 있는 출발을 선택했고 E20의 목선 재파지를 그대로 이어받는 분기가 아니다. 실제시작·소스는실행후별도로기록한다.
+
+E20 비공개 원본은 고정HF revision `ad7b94f4dd65115082ad53527a48efbf99a5947d`에서 재다운로드 SHA검증을 완료했습니다. 1,721,601,271bytes·SHA256`b427dc7b27d14c933fa67f85df751379044163c05e849c84e7fb138f86b97096`,2026-11-07 01:53:01UTC 확인입니다. 272archive member 전수검사와 고정revision 강제재다운로드를 통과했다. [receipt](20261107-e20-backup-verification.json).

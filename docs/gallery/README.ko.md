@@ -2,6 +2,37 @@
 
 [저장소 소개](../../README.md) · [현재 상태](../project/STATUS.md) · [이번 세션 기록](../project/sessions/20261106-evening-resume.ko.md)
 
+## 최신 E20 · 목선 후보 재파지와 입구 확인
+
+<a href="assets/20261107-e20-neckline-regrasp/event.mp4"><img src="assets/20261107-e20-neckline-regrasp/preview.gif" width="960" alt="E20 실제 공개 네 카메라. 목선 후보로 순차 재파지, 지지와 입구 확인, 테이블 쪽 낮춤"></a>
+
+[**MP4 크게 보기**](assets/20261107-e20-neckline-regrasp/event.mp4) · [**전체 갤러리**](README.ko.md) · [**E20 분석**](../collection/reviews/20261107-astra-neckline470-named-001.ko.md) · [**영상 피드백 남기기**](https://github.com/leonyoon-3dai/PhyRC_2027_phase1/issues/new?title=%5BE20+%ED%94%BC%EB%93%9C%EB%B0%B1%5D+%EB%AA%A9%EC%84%A0+%EC%9E%AC%ED%8C%8C%EC%A7%80%EC%99%80+%EC%9E%85%EA%B5%AC+%ED%99%95%EC%9D%B8&body=%EC%8B%9C%EB%8F%84%3A+E20+%2F+20261107-astra-neckline470-named-001%0A%EC%98%81%EC%83%81+%EC%8B%9C%EA%B0%81+%EB%98%90%EB%8A%94+%EA%B2%BD%EA%B3%84%3A%0A%EC%B9%B4%EB%A9%94%EB%9D%BC%3A+%EB%A1%9C%EB%B4%870+%EB%A8%B8%EB%A6%AC+%2F+%EB%A1%9C%EB%B4%871+%EB%A8%B8%EB%A6%AC+%2F+%EB%A1%9C%EB%B4%870+%EC%86%90%EB%AA%A9+%2F+%EB%A1%9C%EB%B4%871+%EC%86%90%EB%AA%A9%0A%0A%EA%B4%80%EC%B8%A1%ED%95%9C+%EC%9E%A5%EB%A9%B4%3A%0A%0A%ED%95%B4%EC%84%9D%C2%B7%EC%A7%88%EB%AC%B8%3A%0A%0A%EB%8B%A4%EC%9D%8C%EC%97%90+%EB%B9%84%EA%B5%90%ED%95%98%EB%A9%B4+%EC%A2%8B%EC%9D%84+%EB%8F%99%EC%9E%91%3A%0A)
+
+**공식 원점수 0/50 · 착의 0 · `success=false` · 726/726기록 검사 통과.** 기존 밑단 파지를 한쪽씩 놓고 목선 후보 두 곳에 새로 닫았습니다. 국소 천 동행은 보였으나, 높이·간격·시점을 바꿔도 연속 목 입구가 불명확해 테이블 지지 쪽으로 낮추고 종료했습니다. 머리·소매 진입은 시도하지 못했습니다. 최고 기록은 5점으로 목표 10점은 아직 미달성입니다.
+
+470~726경계 · 257프레임 · 51.4초 재생 · 4배 느리게 · 모델 응답 대기 제외. 위는 로봇0·1 머리, 아래는 로봇0·1 손목입니다. [구간별 설명](20261107-astra-neckline470-named-001.ko.md) · [영상 출처](assets/20261107-e20-neckline-regrasp/provenance.json) · [학습 검토 구간](../collection/reviews/20261107-astra-neckline470-named-001-learning-segments.json)
+
+전체 **726전이·시뮬레이션 36.3초**, 실제 약 **29분 43초**입니다. 470재실행+154모델 행동+102제어기 정착이며, 25모델 호출은 행동23회·종료판단1회·추가질의1회입니다. 전이 1개는 관측→행동→다음 관측의 0.05초 기록이고, 질의 중 물리는 진행하지 않았습니다.
+
+다음은 공식 시연에 가까운 **몸통 입구의 상방 배치→하강·안착 경로**를 비교합니다. 후보 통합 후 전체277CPU검사를 통과했으며 실제 착의 효과는 아직 미검증입니다. [후보 범위](../collection/research/2026-11-07-overhead-drape-candidate.ko.md) · [현재 실행 상태](../project/STATUS.md)
+
+[**공식 시연의 실제 순서 검토**](../collection/research/2026-11-07-official-demo-route-review.ko.md) · [**BEHAVIOR 우승 자료: 그림·영상과 후속 수집 후보**](../collection/research/2026-11-07-behavior-champion-visual-transfer.ko.md) · [공식 집계·텍스트 근거](../collection/research/2026-11-07-behavior-champion-text-review.ko.md)
+
+| 시도 | 실제 바꾼 접근 | 결과·한계 |
+|---|---|---|
+| [E20](20261107-astra-neckline470-named-001.ko.md) | 목선 후보로 양쪽 순차 재파지 | 0/50. 국소 동행은 보였으나 입구 미확인·운반 전 종료 |
+| [E19](20261107-astra-entry801-named-001.ko.md) | 명명 명령, 세 접근과 관측 방향 변경 | 5/50. 축 불일치 미재발, 손 통과 미확인 |
+| [E18](20261106-astra-guide470-depth-001.ko.md) | 공개 depth와 운반 대형·접근 변경 | 5/50. 추가 roll 오류 두 번, 감독 종료 |
+| [E17](20261106-astra-layer352-001.ko.md) | 다른 lower-rim 후보 재파지 | 5/50. 반대층·양측 지지 미확인 |
+| [E16](20261106-astra-support264-002.ko.md) | 순차 지지 진단·같은 가장자리 복구 | 0/50. 연속 입구 미확인 |
+
+피드백에는 영상 시각 또는 경계·카메라·관측한 관계를 적어 주세요. 링크는 작성 화면을 열며 자동 제출하지 않습니다. 같은 E07 출처의 분기이므로 구간을 독립 성공 시연으로 세지 않으며 학습 승인은 unreviewed입니다. [E20 원본 백업 검증](../project/sessions/20261107-e20-backup-verification.json)을 완료했습니다.
+
+<details>
+<summary>E19 당시 영상과 다음 계획</summary>
+
+> 아래는 E19 종료 당시 기록입니다.
+
 ## 최신 E19 · 세 접근과 시야 변경 후 자율 종료
 
 <a href="assets/20261107-e19-named-entry/event.mp4"><img src="assets/20261107-e19-named-entry/preview.gif" width="960" alt="E19 이름 기반 명령으로 수행한 실제 입구 접근과 시야 변경"></a>
@@ -26,6 +57,9 @@
 | [E18](20261106-astra-guide470-depth-001.ko.md) | 공개 depth와 운반 대형·접근 변경 | 5/50. 추가 roll 오류 두 번, 감독 종료 |
 | [E17](20261106-astra-layer352-001.ko.md) | 다른 lower-rim 후보 재파지 | 5/50. 반대층·양측 지지 미확인 |
 | [E16](20261106-astra-support264-002.ko.md) | 순차 지지 진단·같은 가장자리 복구 | 0/50. 연속 입구 미확인 |
+
+
+</details>
 
 <details>
 <summary>E18 당시 영상과 다음 계획 이력</summary>

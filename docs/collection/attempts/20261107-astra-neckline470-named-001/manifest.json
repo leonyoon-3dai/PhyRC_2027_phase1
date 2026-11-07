@@ -1,0 +1,398 @@
+{
+  "schema": "phyrc-public-attempt-report-v1",
+  "attempt": {
+    "run_id": "20261107-astra-neckline470-named-001",
+    "parent_attempt": "20261106-astra-guide470-depth-001",
+    "retry_reason": "neckline_first_after_three_occluded_entry_approaches",
+    "source_group": "20261106-coordinated-demo-methods",
+    "source": "gpt",
+    "mode": "dressing",
+    "strategy": "coordinated-neckline-first",
+    "model": "gpt-6-astra",
+    "reasoning_effort": "ultra",
+    "prompt_sha256": "5783898c4cd1eb9ee1928ee77adaa016f9d13cd4bd064d3788d49eeb6b8e92e0",
+    "status": "completed",
+    "finished": true,
+    "started_at_utc": "2026-11-07T01:18:21Z",
+    "ended_at_utc": "2026-11-07T01:48:05Z",
+    "decisions_requested": 40,
+    "decisions_completed": 24,
+    "actor_calls_attempted": 25,
+    "actor_call_wall_s": 1090.6937128219997,
+    "model_internal_inference_wall_s": null,
+    "actor_call_timing_scope": "public staging + Docker/CLI startup + request/response; internal model time unavailable",
+    "environment_dispatch_wall_s": 640.6498792459824,
+    "wall_s": 1783.2894047049995,
+    "simulation_time_s": 36.3,
+    "simulation_steps": 726,
+    "acknowledged_simulation_steps": 726,
+    "recorded_simulation_steps": 726,
+    "capture_complete": true,
+    "capture_termination_reason": "operator_finished",
+    "human_intervention": false,
+    "quality_status": "unreviewed",
+    "input_profile": "five_public_RGB_images_all_public_state_and_16x16_depth_medians_with_first_call_same_episode_replay_RGB_history_with_current_wrist_depth_panel",
+    "actor_backend": "exec",
+    "plan_size": 1,
+    "plan_step_budget": 20,
+    "plan_execution": "single_decision",
+    "review_threshold_raw_points": 10,
+    "pickup_hold_target_simulation_s": null,
+    "replay_steps_completed": 470,
+    "policy_suffix_start_step": 470,
+    "new_recorded_suffix_steps": 256,
+    "activity": "closed",
+    "pixel_depth_query": {
+      "enabled": true,
+      "max_queries_per_observation": 1,
+      "max_points": 8,
+      "queries_completed": 1,
+      "followup_calls": 1,
+      "collector_idle_timeout_s": 480.0,
+      "model_call_timeout_s": 180.0
+    },
+    "named_actions": {
+      "schema": "phyrc-named-actions-v1",
+      "robot_order": [
+        "robot_0",
+        "robot_1"
+      ],
+      "channel_order": [
+        "base_forward",
+        "base_left",
+        "base_CCW_yaw",
+        "lift",
+        "arm_extension",
+        "wrist_yaw",
+        "wrist_pitch",
+        "wrist_roll",
+        "gripper"
+      ],
+      "official_dtype": "float32",
+      "value_transform": "none",
+      "validation": "existing_official_action_validator"
+    },
+    "continuation": {
+      "resume_kind": "action_replay",
+      "parent_attempt": "20261106-astra-guide470-depth-001",
+      "source_group": "20261106-coordinated-demo-methods",
+      "source_episode": "demo_0",
+      "source_policy_sha256": "db9e91b755dae43acf157f26639b7fa1b600d78d36ff26b3723f6572af290170",
+      "source_capture_sha256": "63fd03d5ddcb7fb33b020af93da4f5df46d1aaaab728b7ec3601dd70a8fd9f72",
+      "source_validation_sha256": "fff32e30df6f85fead1143bd74f8cc08e8abcad43ccc6693f2ce4146907f5592",
+      "source_steps": 928,
+      "replay_steps": 470,
+      "source_start_step": 0,
+      "source_end_step_exclusive": 470,
+      "bitwise_physics_restored": false,
+      "fresh_actor": true,
+      "replay_validation": "actions_reexecuted_new_state_recorded"
+    },
+    "post_action_settle": {
+      "enabled": true,
+      "requested_steps": 6,
+      "trigger": "nonzero_motion_act",
+      "segments_completed": 17,
+      "simulation_steps": 102,
+      "environment_dispatch_wall_s": 95.20377927699337,
+      "budget_capped_segments": 0,
+      "budget_skipped_segments": 0
+    },
+    "error": null,
+    "actor_usage": {
+      "input_tokens": 3271056,
+      "cached_input_tokens": 2770304,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 27925,
+      "reasoning_output_tokens": 22432
+    },
+    "actor_usage_scope": "sum_of_observed_thread_usage",
+    "actor_usage_accounting": {
+      "schema": "phyrc-token-accounting-v2",
+      "cli_usage_scope": "thread_cumulative",
+      "aggregate_scope": "sum_of_observed_thread_usage",
+      "fully_known": true,
+      "observed_usage": {
+        "input_tokens": 3271056,
+        "cached_input_tokens": 2770304,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 27925,
+        "reasoning_output_tokens": 22432
+      },
+      "calls_recorded": 25,
+      "unknown_call_indices": [],
+      "unknown_usage_is_zero": false,
+      "cached_input_is_subset_of_input": true,
+      "reasoning_output_is_subset_of_output": true,
+      "threads": [
+        {
+          "thread_index": 0,
+          "baseline": "fresh_attempt_thread_zero",
+          "last_observed_cumulative_usage": {
+            "input_tokens": 3271056,
+            "cached_input_tokens": 2770304,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 27925,
+            "reasoning_output_tokens": 22432
+          },
+          "last_accepted_cumulative_usage": {
+            "input_tokens": 3271056,
+            "cached_input_tokens": 2770304,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 27925,
+            "reasoning_output_tokens": 22432
+          }
+        }
+      ]
+    },
+    "code": {
+      "commit": "799fe804445c6e0fc401927f0ed82b4e5dd4f935",
+      "working_tree_modified": false
+    }
+  },
+  "capture": {
+    "schema": "participant-live-capture-v2",
+    "complete": true,
+    "termination_reason": "operator_finished",
+    "raw_archive": false,
+    "wall_s": 1779.7955147290013,
+    "requests": 91,
+    "steps": 726,
+    "idle_render_calls": 0,
+    "idle_render_wall_s": 0,
+    "evaluation_enabled": true,
+    "evaluation_valid": true
+  },
+  "quality": {
+    "schema": "phyrc-capture-validation-v1",
+    "quality_passed": true,
+    "training_approval": "unreviewed",
+    "scope": "immediate_sensor_capture",
+    "total_transitions": 726,
+    "validated_transitions": 726,
+    "available": true,
+    "checks": [
+      "manifest_sha256",
+      "file_episode_complete",
+      "public_observation_schema",
+      "all_transition_action_shape_dtype_range",
+      "actual_previous_action",
+      "0.05s_intervals",
+      "contiguous_12_physics_ticks",
+      "all_observation_continuity",
+      "finite_numeric_arrays",
+      "terminal_markers",
+      "evaluation_label_consistency"
+    ],
+    "error_count": 0,
+    "episodes": [
+      {
+        "episode": "demo_0",
+        "transitions": 726,
+        "complete": true,
+        "simulation_seconds": 36.30000189319253,
+        "quality_passed": true
+      }
+    ]
+  },
+  "evaluation": {
+    "evaluated": true,
+    "valid": true,
+    "raw_points": 0.0,
+    "success": false,
+    "score_status": "no_contact",
+    "final_score": null,
+    "breakdown": {
+      "pickup": 0.0,
+      "first_sleeve": 0.0,
+      "opposite_shoulder": 0.0,
+      "second_sleeve": 0.0,
+      "left_upper_arm": 0,
+      "right_upper_arm": 0,
+      "neck": 0.0,
+      "front_orientation": 0.0
+    },
+    "milestone_times_s": {
+      "pickup": null,
+      "first_sleeve": null,
+      "opposite_shoulder": null,
+      "second_sleeve": null,
+      "neck": null,
+      "front_orientation": null
+    },
+    "max_raw_points": 50.0,
+    "success_evaluated": true,
+    "rate_points": 0.0,
+    "max_rate_points": 45.0,
+    "task_time_s": 0.0,
+    "elapsed_episode_time_s": 36.3,
+    "first_contact_time_s": null,
+    "last_score_award_time_s": null,
+    "dressing_completed_at_s": null,
+    "rate_rule": "pickup-excluded-last-award-v9",
+    "scoring_revision": "pickup-excluded-last-award-v9",
+    "score_unit": "points/s"
+  },
+  "review_gate": {
+    "schema": "phyrc-review-gate-v2",
+    "run_id": "20261107-astra-neckline470-named-001",
+    "threshold_raw_points": 10,
+    "policy_input_changed": false,
+    "status": "collector_ended_before_gate",
+    "last_observed_raw_points": 0.0,
+    "acknowledged_steps": 726,
+    "collector_status": "completed"
+  },
+  "source_files": {
+    "trace/attempt.json": {
+      "sha256": "275b22e9714fc600ccfc88f5fc574252ed638684f3b66b11f35a5a3215f5cd2e",
+      "bytes": 176150
+    },
+    "trace/prompt.txt": {
+      "sha256": "5783898c4cd1eb9ee1928ee77adaa016f9d13cd4bd064d3788d49eeb6b8e92e0",
+      "bytes": 14060
+    },
+    "trace/decisions.jsonl": {
+      "sha256": "c601de24f6b772334c240f197843727b7fc1e74a0ad2fdd8575fcfe9561f9a63",
+      "bytes": 233763
+    },
+    "trace/review_gate.json": {
+      "sha256": "b5a92298ddbffd35adb1ca6e70661c884b3dbe0c076fffd0d2e11e08b91334d0",
+      "bytes": 372
+    },
+    "capture/capture.json": {
+      "sha256": "524aff8b6278d43a7dcb552a693bd0ed8d04951532580e9b3a20c74dd42b428d",
+      "bytes": 536
+    },
+    "capture/policy.hdf5": {
+      "sha256": "65fb4d597304cb7889243557d573a7d8f1815963eaf5ef169a49f7ba1d4223f2",
+      "bytes": 2076501019
+    },
+    "capture/audit.hdf5": {
+      "sha256": "093f019eafafa5dd83fbcf6e48a546d96d19303724b95cbe003a28a5ac50af71",
+      "bytes": 144666
+    },
+    "capture/evaluation_summary.json": {
+      "sha256": "95ae1d9753e7c8f1b35af079e09f1a6834e0264c063289f1af9ea71c1c2440ad",
+      "bytes": 23438
+    },
+    "capture/validation.json": {
+      "sha256": "0888d37fcdcdbbe3f1acf376eb94a64e7f4bdd83ea336cbe1fb77aa43c0ac3cc",
+      "bytes": 1484
+    },
+    "capture/score_events.jsonl": {
+      "sha256": "b55b3b35a4a961ca4925124780fb690f281ead13707a27ec73675956e65c666c",
+      "bytes": 562
+    }
+  },
+  "unrecognized_events_omitted": 2,
+  "publication_review": "generated_allowlisted_subset_requires_repository_review",
+  "decision_reason_scope": "final_action_explanation_only",
+  "artifacts": {
+    "README.ko.md": {
+      "sha256": "b08cbea3c33c93f45053c217b305922d59b880b524c486c4341e6e4c7f3f4d09",
+      "bytes": 59796
+    },
+    "decisions.jsonl": {
+      "sha256": "95be1f5b8f85a43ab1a3afc17cd1426ba49dfc9774f0bb1ceb1755aebcc4f65a",
+      "bytes": 210037
+    },
+    "images/final-overview.png": {
+      "sha256": "f0d82d2950adc3202a5628a5c59818621fb0bcdff2eedaac4529c8a28fe3286a",
+      "bytes": 72693
+    },
+    "images/final-robot_0_head.png": {
+      "sha256": "8ae4cd84fdd4f9f8ccc0675a6ca8e8d8dd1641e1f4594e63c1d0f0d3a9538b5d",
+      "bytes": 66872
+    },
+    "images/final-robot_0_wrist.png": {
+      "sha256": "c93b60c349d5d165bec19ef92ad0fafcd7906f67331f041c8d3cd74a034faea7",
+      "bytes": 84653
+    },
+    "images/final-robot_1_head.png": {
+      "sha256": "adcc07681c2dc671e67b80d36cf3677c4738eb6d6ee1155aba9eb9ca2f346eb4",
+      "bytes": 67632
+    },
+    "images/final-robot_1_wrist.png": {
+      "sha256": "eb9a4b4bc45d876d965347441c8ed514aa67608a28577e1614aa13474651f7cf",
+      "bytes": 82801
+    },
+    "images/initial-overview.png": {
+      "sha256": "8f1d36030d01274f729b368f3e892adcca16b3c4d1055fd7f071e400c661c26d",
+      "bytes": 67334
+    },
+    "images/initial-robot_0_head.png": {
+      "sha256": "b7f962ad1c3cad4b783e66e8399fd5655d78f8be4d5ec7cb94825d7d5e907628",
+      "bytes": 62002
+    },
+    "images/initial-robot_0_wrist.png": {
+      "sha256": "c27901f69439eabfc123353b91d14aeeb6ce502afc0cb5bf2cc546f69aa64813",
+      "bytes": 56640
+    },
+    "images/initial-robot_1_head.png": {
+      "sha256": "ba40150b0fb6706a57b3c0fa61031110fa2fb4da2e148be711fcad75f53c1040",
+      "bytes": 62785
+    },
+    "images/initial-robot_1_wrist.png": {
+      "sha256": "aae6062b2e5ec0ce54ef4bd685ff9434a025d6bf9bd3e19feba0c9a692b195d7",
+      "bytes": 57363
+    },
+    "overview.mp4": {
+      "sha256": "a3596d4bfab58c0a5c660419bd7d270ffa3043e357de17eaf285f4e9faab9447",
+      "bytes": 238346
+    },
+    "prompt.txt": {
+      "sha256": "5783898c4cd1eb9ee1928ee77adaa016f9d13cd4bd064d3788d49eeb6b8e92e0",
+      "bytes": 14060
+    },
+    "score-events.jsonl": {
+      "sha256": "694b5e16f8fa99113d8fa268a43b9f158b2da9f1e2992eb3b20b757a8795e29f",
+      "bytes": 562
+    }
+  },
+  "media": {
+    "available": true,
+    "transitions": 726,
+    "images": [
+      "images/initial-overview.png",
+      "images/initial-robot_0_wrist.png",
+      "images/initial-robot_1_wrist.png",
+      "images/initial-robot_0_head.png",
+      "images/initial-robot_1_head.png",
+      "images/final-overview.png",
+      "images/final-robot_0_wrist.png",
+      "images/final-robot_1_wrist.png",
+      "images/final-robot_0_head.png",
+      "images/final-robot_1_head.png"
+    ],
+    "video": {
+      "created": true,
+      "requested": true,
+      "file": "overview.mp4",
+      "source": "obs/overview_rgb",
+      "source_policy_hz": 20,
+      "available_frames": 726,
+      "exported_frames": 726,
+      "maximum_frames": 727,
+      "truncated": false,
+      "sampling": "contiguous_prefix_no_frame_skipping",
+      "slowdown_factor": 1,
+      "playback_fps": 20.0,
+      "playback_duration_s": 36.3,
+      "includes_wall_time_waits": false
+    },
+    "status": "recorded_public_frames",
+    "episode": "demo_0",
+    "file_complete": true,
+    "initial_simulation_time_s": 1.5250000795349479,
+    "final_simulation_time_s": 37.82500197272748
+  },
+  "milestone_path": {
+    "evaluation_valid": true,
+    "award_batches": [],
+    "success_events": [],
+    "time_origin_public_simulation_s": 1.5250000795349479,
+    "time_basis": "episode evaluation clock begins after reset; physics_tick/12 is transition boundary",
+    "order_rule": "different ticks chronological; same-tick awards unordered"
+  }
+}

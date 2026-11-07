@@ -1,0 +1,547 @@
+{
+  "schema": "public-learning-segments-v1",
+  "run_id": "20261107-astra-neckline470-named-001",
+  "parent_attempt": "20261106-astra-guide470-depth-001",
+  "source_group": "20261106-coordinated-demo-methods",
+  "source_commit": "799fe804445c6e0fc401927f0ed82b4e5dd4f935",
+  "recording_status": "closed_actor_finished",
+  "training_approval": "unreviewed",
+  "label_provenance": [
+    "Public finalized decisions and concise final reasons",
+    "Designated public RGB and public robot observations inspected by reviewer",
+    "Sanitized public depth query request/result"
+  ],
+  "evidence_decisions_path": "output/operator-traces/20261107-astra-neckline470-named-001/decisions.jsonl",
+  "raw_recordings_preserved": true,
+  "raw_records_rewritten": false,
+  "policy_teacher_hidden_evaluation_fields_included": false,
+  "split_constraints": [
+    "Group by source_group and replay lineage before train/validation split.",
+    "Replay prefix and adjacent frames are not independent demonstrations or successful validation examples.",
+    "Unconfirmed grasps, failed opening inspection and recovery remain reviewable; no automatic positive-imitation approval.",
+    "Depth query and finish events add zero physics transitions."
+  ],
+  "transition_boundary_semantics": "[start,end): count=end-start; inclusive video boundary images count+1.",
+  "counts": {
+    "recorded_transitions": 726,
+    "replay_transitions": 470,
+    "new_transitions": 256,
+    "model_action_transitions": 154,
+    "controller_settle_transitions": 102,
+    "model_call_count": 25,
+    "finalized_decisions": 24,
+    "executed_act_decisions": 23,
+    "finish_decisions": 1,
+    "completed_depth_query_cycles": 1
+  },
+  "segments": [
+    {
+      "id": "inherited_grip_lift",
+      "kind": "preparation",
+      "decision_indices": [
+        0
+      ],
+      "transition_start": 470,
+      "transition_end_exclusive": 480,
+      "transition_count": 10,
+      "observation_evidence": [
+        "output/actors/20261107-astra-neckline470-named-001/observations/00000",
+        "output/actors/20261107-astra-neckline470-named-001/observations/00001"
+      ],
+      "public_label": "Small coordinated lift at inherited hem-like edges, not independent support verification.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "robot0_release",
+      "kind": "release_for_new_candidate",
+      "decision_indices": [
+        1
+      ],
+      "transition_start": 480,
+      "transition_end_exclusive": 484,
+      "transition_count": 4,
+      "observation_evidence": [
+        "output/actors/20261107-astra-neckline470-named-001/observations/00001",
+        "output/actors/20261107-astra-neckline470-named-001/observations/00002"
+      ],
+      "public_label": "Robot0 releases the near edge while body remains table-supported.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "robot0_neck_candidate_approach",
+      "kind": "new_grasp_location_approach",
+      "decision_indices": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "transition_start": 484,
+      "transition_end_exclusive": 552,
+      "transition_count": 68,
+      "observation_evidence": [
+        "output/actors/20261107-astra-neckline470-named-001/observations/00003",
+        "output/actors/20261107-astra-neckline470-named-001/observations/00005",
+        "output/actors/20261107-astra-neckline470-named-001/observations/00006",
+        "output/actors/20261107-astra-neckline470-named-001/observations/00007"
+      ],
+      "public_label": "Open robot0 moves to a distinct far V-shaped candidate band using lift/extension/base approach and descent. Candidate identity remains unverified.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "robot0_close_clearance_recovery",
+      "kind": "closure_and_recovery",
+      "decision_indices": [
+        7,
+        8,
+        9
+      ],
+      "transition_start": 552,
+      "transition_end_exclusive": 578,
+      "transition_count": 26,
+      "observation_evidence": [
+        "output/actors/20261107-astra-neckline470-named-001/observations/00008",
+        "output/actors/20261107-astra-neckline470-named-001/observations/00009",
+        "output/actors/20261107-astra-neckline470-named-001/observations/00010"
+      ],
+      "public_label": "Initial close intent does not immediately narrow jaws; small clearance lift and neutral observation show convergence and local fabric gathering.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "robot0_local_support_test",
+      "kind": "one_sided_local_support_test",
+      "decision_indices": [
+        10
+      ],
+      "transition_start": 578,
+      "transition_end_exclusive": 588,
+      "transition_count": 10,
+      "observation_evidence": [
+        "output/actors/20261107-astra-neckline470-named-001/observations/00010",
+        "output/actors/20261107-astra-neckline470-named-001/observations/00011"
+      ],
+      "public_label": "Robot0 actual grasp z rises about26.48mm with partner z nearly unchanged and local fold following; closure continues. Useful local support evidence, not sensor attachment or full return test.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "robot1_release_after_first_test",
+      "kind": "release_for_new_candidate",
+      "decision_indices": [
+        11
+      ],
+      "transition_start": 588,
+      "transition_end_exclusive": 592,
+      "transition_count": 4,
+      "observation_evidence": [
+        "output/actors/20261107-astra-neckline470-named-001/observations/00011",
+        "output/actors/20261107-astra-neckline470-named-001/observations/00012"
+      ],
+      "public_label": "Robot1 releases the inherited edge after robot0 local lift-follow test, with table support retained.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "robot1_opposite_candidate_approach",
+      "kind": "new_grasp_location_approach",
+      "decision_indices": [
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "transition_start": 592,
+      "transition_end_exclusive": 666,
+      "transition_count": 74,
+      "observation_evidence": [
+        "output/actors/20261107-astra-neckline470-named-001/observations/00013",
+        "output/actors/20261107-astra-neckline470-named-001/observations/00014",
+        "output/actors/20261107-astra-neckline470-named-001/observations/00015",
+        "output/actors/20261107-astra-neckline470-named-001/observations/00016",
+        "output/actors/20261107-astra-neckline470-named-001/observations/00017"
+      ],
+      "public_label": "Robot1 approaches another visible candidate band; query informs explicitly intended open-gripper roll and descent clearance. First local fold persists near robot0 jaw.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "robot1_close_and_settle",
+      "kind": "closure_and_observation",
+      "decision_indices": [
+        17,
+        18
+      ],
+      "transition_start": 666,
+      "transition_end_exclusive": 680,
+      "transition_count": 14,
+      "observation_evidence": [
+        "output/actors/20261107-astra-neckline470-named-001/observations/00017",
+        "output/actors/20261107-astra-neckline470-named-001/observations/00018",
+        "output/actors/20261107-astra-neckline470-named-001/observations/00019"
+      ],
+      "public_label": "Close after possible interference signs, then neutral observation as jaws converge and arm target following continues.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "coordinated_local_support_test",
+      "kind": "coordinated_support_test",
+      "decision_indices": [
+        19
+      ],
+      "transition_start": 680,
+      "transition_end_exclusive": 690,
+      "transition_count": 10,
+      "observation_evidence": [
+        "output/actors/20261107-astra-neckline470-named-001/observations/00019",
+        "output/actors/20261107-astra-neckline470-named-001/observations/00020"
+      ],
+      "public_label": "Both grasp z rise about26.6/26.3mm and local folds remain near each jaw. Robot1 residual extension/closure continues; not its independent support verification.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "opening_inspection_adjustments",
+      "kind": "orientation_and_observation_adjustment",
+      "decision_indices": [
+        20,
+        21
+      ],
+      "transition_start": 690,
+      "transition_end_exclusive": 712,
+      "transition_count": 22,
+      "observation_evidence": [
+        "output/actors/20261107-astra-neckline470-named-001/observations/00020",
+        "output/actors/20261107-astra-neckline470-named-001/observations/00021",
+        "output/actors/20261107-astra-neckline470-named-001/observations/00022"
+      ],
+      "public_label": "Lift/separation then compensated robot0 viewpoint change; continuous separated neck opening remains unreadable.",
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "lower_to_table",
+      "kind": "recovery",
+      "decision_indices": [
+        22
+      ],
+      "transition_start": 712,
+      "transition_end_exclusive": 726,
+      "transition_count": 14,
+      "observation_evidence": [
+        "output/actors/20261107-astra-neckline470-named-001/observations/00022",
+        "output/actors/20261107-astra-neckline470-named-001/observations/00023"
+      ],
+      "public_label": "Both lower with grips retained toward table support before autonomous finish.",
+      "training_approval": "unreviewed"
+    }
+  ],
+  "named_action_review": {
+    "mapping_sha256": "2772202314c637aca6c0e31d1148e80db233c3ca23e6cb59bd9871d9879568b4",
+    "axis_order": [
+      "base_forward",
+      "base_left",
+      "base_CCW_yaw",
+      "lift",
+      "arm_extension",
+      "wrist_yaw",
+      "wrist_pitch",
+      "wrist_roll",
+      "gripper"
+    ],
+    "checked_act_count": 23,
+    "all_named_to_array_equal": true,
+    "final_brief_reason_review": "No unexplained nonzero axes observed; D14 robot1 roll0.47 is explicitly described as an intended clearance rotation. Mapping correctness does not establish manipulation success.",
+    "intentional_roll_decisions": [
+      14
+    ],
+    "unexplained_roll_decisions": [],
+    "per_decision": [
+      {
+        "decision_index": 0,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "lift": 0.1
+          },
+          "robot_1": {
+            "lift": 0.1
+          }
+        }
+      },
+      {
+        "decision_index": 1,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "gripper": -1
+          },
+          "robot_1": {}
+        }
+      },
+      {
+        "decision_index": 2,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "lift": 0.2,
+            "arm_extension": 0.3
+          },
+          "robot_1": {}
+        }
+      },
+      {
+        "decision_index": 3,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "base_CCW_yaw": 0.12,
+            "arm_extension": 0.45
+          },
+          "robot_1": {}
+        }
+      },
+      {
+        "decision_index": 4,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "base_forward": 0.4
+          },
+          "robot_1": {}
+        }
+      },
+      {
+        "decision_index": 5,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "base_forward": 0.46,
+            "base_CCW_yaw": 0.04,
+            "lift": -0.24
+          },
+          "robot_1": {}
+        }
+      },
+      {
+        "decision_index": 6,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "base_forward": 0.18,
+            "lift": -0.13
+          },
+          "robot_1": {}
+        }
+      },
+      {
+        "decision_index": 7,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "gripper": 1
+          },
+          "robot_1": {}
+        }
+      },
+      {
+        "decision_index": 8,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "lift": 0.065
+          },
+          "robot_1": {}
+        }
+      },
+      {
+        "decision_index": 9,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {},
+          "robot_1": {}
+        }
+      },
+      {
+        "decision_index": 10,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "lift": 0.1
+          },
+          "robot_1": {}
+        }
+      },
+      {
+        "decision_index": 11,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {},
+          "robot_1": {
+            "gripper": -1
+          }
+        }
+      },
+      {
+        "decision_index": 12,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {},
+          "robot_1": {
+            "base_CCW_yaw": -0.08,
+            "lift": 0.1,
+            "arm_extension": 0.4
+          }
+        }
+      },
+      {
+        "decision_index": 13,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {},
+          "robot_1": {
+            "base_forward": 0.4
+          }
+        }
+      },
+      {
+        "decision_index": 14,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {},
+          "robot_1": {
+            "wrist_roll": 0.47
+          }
+        }
+      },
+      {
+        "decision_index": 15,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {},
+          "robot_1": {
+            "base_forward": 0.3,
+            "base_CCW_yaw": -0.05,
+            "lift": -0.18,
+            "wrist_pitch": -0.1
+          }
+        }
+      },
+      {
+        "decision_index": 16,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {},
+          "robot_1": {
+            "lift": -0.18
+          }
+        }
+      },
+      {
+        "decision_index": 17,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {},
+          "robot_1": {
+            "gripper": 1
+          }
+        }
+      },
+      {
+        "decision_index": 18,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {},
+          "robot_1": {}
+        }
+      },
+      {
+        "decision_index": 19,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "lift": 0.1
+          },
+          "robot_1": {
+            "lift": 0.1
+          }
+        }
+      },
+      {
+        "decision_index": 20,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "base_CCW_yaw": -0.02,
+            "lift": 0.13
+          },
+          "robot_1": {
+            "base_CCW_yaw": 0.02,
+            "lift": 0.13
+          }
+        }
+      },
+      {
+        "decision_index": 21,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "lift": -0.1,
+            "arm_extension": -0.23,
+            "wrist_pitch": -0.2
+          },
+          "robot_1": {}
+        }
+      },
+      {
+        "decision_index": 22,
+        "named_to_array_equal": true,
+        "nonzero_axes": {
+          "robot_0": {
+            "lift": -0.15
+          },
+          "robot_1": {
+            "lift": -0.15
+          }
+        }
+      }
+    ]
+  },
+  "query_events": [
+    {
+      "decision_index": 14,
+      "transition_boundary": 626,
+      "observation_evidence": "output/actors/20261107-astra-neckline470-named-001/observations/00014",
+      "camera": "robot_1_wrist",
+      "point_count": 8,
+      "valid_point_count": 8,
+      "physics_transition_count": 0,
+      "physics_advanced_during_query": false,
+      "public_label": "Compare visible candidate band/panel and fingertip surface depths to select open-gripper approach orientation; hidden opening and attachment are not inferred.",
+      "training_approval": "unreviewed"
+    }
+  ],
+  "finish_event": {
+    "decision_index": 23,
+    "transition_boundary": 726,
+    "physics_transition_count": 0,
+    "actor_tool": "finish_episode",
+    "public_label": "Autonomous unresolved stop after bounded preparation; opening unverified, no transport/head/sleeve passage attempt.",
+    "training_approval": "unreviewed"
+  },
+  "strategy_execution": {
+    "distinct_candidate_regrasp_cycles": 2,
+    "first_new_local_support_test_before_second_release": true,
+    "robot0_individual_lift_test_decision": 10,
+    "robot1_individual_lift_test_decision": null,
+    "continuous_neck_opening_confirmed": false,
+    "head_transport_attempted": false,
+    "public_label": "Both robots execute release/relocate/close at different far candidate locations. Actual physical neck rim identity/opposing layers remain unconfirmed; do not label mere color bands as ground truth."
+  },
+  "video_cut_suggestions": [
+    {
+      "id": "whole_new_suffix",
+      "start_boundary": 470,
+      "end_boundary": 726,
+      "inclusive_frame_count": 257,
+      "fps": 5,
+      "playback_duration_s": 51.4
+    }
+  ]
+}

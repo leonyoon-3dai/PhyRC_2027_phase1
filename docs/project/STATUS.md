@@ -1,5 +1,62 @@
 # 현재 상태와 다음 작업
 
+**최신 종료 E20는 0/50점·착의0·success=false이며 726/726전이 검사를 통과했습니다. 최고5점으로 목표10점은 아직 미달성입니다.** 목선 후보 두 곳을 새로 잡았지만 연속 입구를 확인하지 못해 운반 전에 테이블 지지 쪽으로 낮추고 모델이 자율 종료했습니다.
+
+[최신 영상](../gallery/README.ko.md) · [공개 분석](../collection/reviews/20261107-astra-neckline470-named-001.ko.md) · [학습 구간](../collection/reviews/20261107-astra-neckline470-named-001-learning-segments.json) · [전체 일지](sessions/20261106-evening-resume.ko.md)
+
+| 확인 항목 | E20 결과 |
+|---|---|
+| 실제 실행 소스 | `799fe804445c6e0fc401927f0ed82b4e5dd4f935`·시작clean |
+| 직접 부모 | E18의470행동 재실행·이번 재실행 history430/464·같은 E07 source group |
+| 실제 새 방법 | 기존 밑단 파지에서 목선 후보로 한쪽씩 두 차례 새 파지 사이클 |
+| 준비 뒤 보정 | 짧은 들기·간격 변경·손목 시점 변경에도 연속 목 개구부 미확인 |
+| 호출·행동 | 25호출/24판단=23act+finish1, 추가 depth 질의1회·물리진행0 |
+| 기록 | **470재실행+154모델+102정착=726**,36.3sim초. 새256전이=12.8sim초 |
+| 실제 시간 | 2026-11-07 01:18:21–01:48:05 UTC,1783.289405초(29분43초) |
+| 호출 경로 | 모델1090.693713초·환경640.649879초. 모델 내부 추론시간 미제공 |
+| 평가·종료 | raw0/50·전 항목0·success=false·no_contact/null. client0·complete·QC726/726오류0 |
+| 학습 승인 | unreviewed. 실패 준비·부분 지지·질의·회복·종료를 구분해 원본 보존 |
+
+## 미세조정과 새 방법 선택
+
+E20의 두 재파지는 실제 파지 위치 변경이었습니다. 그 뒤 높이·간격·시점 보정에서도 목 입구는 파란 천으로 채워진 듯 보여 층 분리가 불명확했습니다. 따라서 이 결과를 머리 우선 착의 자체의 실패로 넓히지 않습니다. 이번 시도는 **입구 준비 단계에서 종료**됐습니다.
+
+다음은 [공식 시연](../collection/research/2026-11-07-official-demo-route-review.ko.md)에 가까운 **몸통 입구를 머리·팔 위로 배치한 뒤 내려 안착시키는 경로**입니다. 목선 재파지나 첫 소매·목 통과를 선행조건으로 강제하지 않고, 현재 유용한 몸통 입구 지지에서 관측 가능한 경로를 검토합니다. 더 높이 드는 것만으로 새 방법을 수행했다고 세지 않습니다. [후보·검증 범위](../collection/research/2026-11-07-overhead-drape-candidate.ko.md)
+
+## E21 실행 계획 · 아직 시작 전
+
+E20 종료 후 후보 f148d6을 통합했고 전체 **277CPU검사를12.745초에 통과**했습니다. 기존 실행 계약·공식 물리·행동 한계는 유지합니다. 순서 지침만 바뀐 후보의 실제 착의 효과는 미검증입니다. 아래 명령은 게시한 깨끗한 소스에서 실행할 계획이며, 실제 시작시각·소스는 시작 후 기록합니다.
+
+```bash
+export PATH="$PWD/.runtime/codex-0.166.0/node_modules/.bin:$PATH"
+unset STRETCH4_PRACTICE_LAYOUT STRETCH4_RANDOMIZE
+PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.codex_client \
+  --run-id 20261107-astra-overhead470-named-001 --mode dressing \
+  --strategy coordinated-overhead-drape --actor-backend exec \
+  --model gpt-6-astra --effort ultra --plan-size 1 --review-points 10 \
+  --replay-prefix-run 20261106-astra-guide470-depth-001 --replay-prefix-steps 470 \
+  --parent-attempt 20261106-astra-guide470-depth-001 \
+  --retry-reason overhead_lowering_after_neckline_preparation_unresolved \
+  --replay-observe-steps 430 464 --wrist-depth-panel --pixel-depth-query --named-actions \
+  --post-action-settle-steps 6 --decisions 40 --max-steps 1400 --model-timeout 180 \
+  --profile-step-phases
+```
+
+직접 출처는 E18/470이며 E20의 변경된 목선 파지를 그대로 재생하지 않습니다. 행동 재실행은 정확한 천 checkpoint가 아니므로 현재 지지를 새 관측에서 확인합니다. E18 원본은 고정HF revision44d01871f0099f8a537f1bdbfee06a404a95f38c에서 검증 완료했습니다. E20 비공개 원본은 고정HF revision `ad7b94f4dd65115082ad53527a48efbf99a5947d`에서 재다운로드 SHA검증을 완료했습니다. 1,721,601,271bytes·SHA256`b427dc7b27d14c933fa67f85df751379044163c05e849c84e7fb138f86b97096`,2026-11-07 01:53:01UTC 확인입니다. [검증 receipt](sessions/20261107-e20-backup-verification.json).
+
+## 참고 연구와 수집 원칙
+
+[BEHAVIOR 텍스트·공식 집계](../collection/research/2026-11-07-behavior-champion-text-review.ko.md), [그림·영상·후속 수집 후보](../collection/research/2026-11-07-behavior-champion-visual-transfer.ko.md)를 main에 기록했습니다. 관측으로 검증하는 절차·복구 조건은 후속 비교안이며 새 제어기·훈련에는 적용하지 않았습니다. 외부 영상·좌표·평가값은 actor 입력으로 넣지 않습니다.
+
+[원본 복원](START_HERE.ko.md) · [E19 운동 수치](../collection/reviews/20261107-astra-entry801-named-001-motion.ko.md). 실패·미실행 제안·실행 행동·정착과 회복을 분리하며, 같은 출처 분기를 독립 시연·검증 표본으로 세지 않습니다.
+
+<details>
+<summary>E19 종료·E20 실행 중 당시 상태 이력</summary>
+
+> 아래는 당시 기록이며 현재 지시는 위 내용을 따릅니다.
+
+# 현재 상태와 다음 작업
+
 **최신 종료 E19는 5/50점·착의 0·success=false이며 932/932기록 검사를 통과했습니다. 최고 5점으로 목표 10점은 아직 미달성입니다.** 명령 표현의 축 불일치는 재발하지 않았으나, 세 번의 접근과 시점 변경에도 손 통과를 확인하지 못해 모델이 후퇴 후 자율 종료했습니다.
 
 [최신 영상](../gallery/README.ko.md) · [E19 분석](../collection/reviews/20261107-astra-entry801-named-001.ko.md) · [학습 검토 구간](../collection/reviews/20261107-astra-entry801-named-001-learning-segments.json) · [전체 일지](sessions/20261106-evening-resume.ko.md)
@@ -26,7 +83,7 @@
 
 ## E20 목 우선 · 2026-11-07 01:18:21 UTC 시작
 
-아래 명령으로 실제 시작했습니다. source snapshot은 `799fe804445c6e0fc401927f0ed82b4e5dd4f935`·working_tree_modified=false입니다. 470개 준비 행동의 재실행을 마쳤고, robot0가 기존 밑단을 놓아 목선 후보에 새로 닫는 단계까지 진행했습니다. 새 파지 지지·착의 결과는 아직 미확인입니다.
+아래 명령으로 실제 시작했습니다. source snapshot은 `799fe804445c6e0fc401927f0ed82b4e5dd4f935`·working_tree_modified=false입니다. 470개 준비 행동의 재실행을 마친 뒤 양쪽 기존 밑단 파지를 순차적으로 목선 후보에 옮겨 닫았습니다. 국소 천 동행은 보였지만 연속 목 입구는 아직 불명확해 높이·간격·시점을 바꾸며 확인하고 있습니다. 이것은 실제 재파지라는 새 방법과 그 뒤 입구 확인 미세조정을 구분한 중간 관측이며, 최종 점수·머리 통과는 아직 미확인입니다.
 
 E18의470경계는 테이블 위 몸판과 목선 후보를 다시 살펴볼 출발점입니다. 현재 지지·목선·머리/팔 여유를 새 관측에서 판단하고 필요하면 테이블 지지 아래 한쪽씩 파지를 바꿉니다. 머리가 몸통 입구로 들어가 목 입구로 나오고 가슴이 안착하는 경로를 먼저 다루며, 단순 목 접촉을 착의로 세지 않습니다. 정확한 천 checkpoint 복원이 아닙니다.
 
@@ -56,7 +113,7 @@ E19 종료 원본은 비공개 HF 고정 revision `a5f9136d1479933b6c026465a8af0
 
 ## 공식 시연·BEHAVIOR 우승 자료 검토
 
-사용자는 목 접근을 지지하며 공식 성공 시연과 비교하고 BEHAVIOR 우승 사이트의 텍스트·이미지를 이후 수집에 참고하도록 요청했습니다. [공식 영상 재검토](../collection/research/2026-11-07-official-demo-route-review.ko.md)에서는 넓은 가장자리 지지→머리·팔 위 이동→하강이 더 분명하며 목선 재파지·머리 우선 순서와 같다고 단정할 수 없었습니다. E20은 독립 가설로 유지하고 공식 영상에 가까운 별도 상방·하강 후보를 격리 작업 트리에서 준비 중입니다. 현재 실험에는 적용하지 않았습니다.
+사용자는 목 접근을 지지하며 공식 성공 시연과 비교하고 BEHAVIOR 우승 사이트의 텍스트·이미지를 이후 수집에 참고하도록 요청했습니다. [공식 영상 재검토](../collection/research/2026-11-07-official-demo-route-review.ko.md)에서는 넓은 가장자리 지지→머리·팔 위 이동→하강이 더 분명하며 목선 재파지·머리 우선 순서와 같다고 단정할 수 없었습니다. E20은 독립 가설로 유지하고 공식 영상에 가까운 별도 상방·하강 후보를 격리 작업 트리에서 준비했고49CPU검사를 통과했습니다. 후보 f148d6의 전체 저장소 검사·실제 모델/물리 효과는 아직 미검증이며 현재 실험에는 적용하지 않았습니다.
 
 [BEHAVIOR 텍스트·공식 집계](../collection/research/2026-11-07-behavior-champion-text-review.ko.md)와 [그림·영상·적용 후보](../collection/research/2026-11-07-behavior-champion-visual-transfer.ko.md)를 기록했습니다. 직접 확인한 그림 수치·선택 영상 프레임, 설명/영상의 불일치, 현재 미공개인 방법 코드의 한계를 구분합니다. PhyRC의 공개 관측으로 검증하는 절차 카드·진행 조건·복구 후보는 향후 비교안이며 아직 제어·훈련에 도입하지 않았습니다.
 
@@ -199,6 +256,8 @@ PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.codex_clie
 [클린 서버 복원](START_HERE.ko.md) · [초기 자산·E07 복원 검증](sessions/20261106-evening-restore-validation.json) · [E16 분석](../collection/reviews/20261106-astra-support264-002.ko.md) · [E15 마감 이력](SESSION_WRAPUP_20261106.ko.md) · [전체 개발 이력](HISTORY.ko.md)
 
 새 정책 학습·RL/VLA 성능 검증·학습 승인은 완료하지 않았습니다. 이전 문서의 일시 중지·미실행 문구는 당시 이력이며 현재 실행 상태는 이 문서와 최신 일지를 우선합니다.
+
+</details>
 
 </details>
 

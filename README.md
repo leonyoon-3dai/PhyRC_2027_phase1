@@ -1,5 +1,26 @@
 # PhyRC 2027 · 두 로봇의 협력 착의
 
+**최신 E20 · 목선 후보로 양쪽 재파지, 입구 확인 미완료**
+
+<a href="docs/gallery/assets/20261107-e20-neckline-regrasp/event.mp4"><img src="docs/gallery/assets/20261107-e20-neckline-regrasp/preview.gif" width="960" alt="E20 실제 공개 네 카메라. 목선 후보로 순차 재파지, 지지와 입구 확인, 테이블 쪽 낮춤"></a>
+
+[**MP4 크게 보기**](docs/gallery/assets/20261107-e20-neckline-regrasp/event.mp4) · [**전체 갤러리**](docs/gallery/README.ko.md) · [**E20 분석**](docs/collection/reviews/20261107-astra-neckline470-named-001.ko.md) · [**영상 피드백 남기기**](https://github.com/leonyoon-3dai/PhyRC_2027_phase1/issues/new?title=%5BE20+%ED%94%BC%EB%93%9C%EB%B0%B1%5D+%EB%AA%A9%EC%84%A0+%EC%9E%AC%ED%8C%8C%EC%A7%80%EC%99%80+%EC%9E%85%EA%B5%AC+%ED%99%95%EC%9D%B8&body=%EC%8B%9C%EB%8F%84%3A+E20+%2F+20261107-astra-neckline470-named-001%0A%EC%98%81%EC%83%81+%EC%8B%9C%EA%B0%81+%EB%98%90%EB%8A%94+%EA%B2%BD%EA%B3%84%3A%0A%EC%B9%B4%EB%A9%94%EB%9D%BC%3A+%EB%A1%9C%EB%B4%870+%EB%A8%B8%EB%A6%AC+%2F+%EB%A1%9C%EB%B4%871+%EB%A8%B8%EB%A6%AC+%2F+%EB%A1%9C%EB%B4%870+%EC%86%90%EB%AA%A9+%2F+%EB%A1%9C%EB%B4%871+%EC%86%90%EB%AA%A9%0A%0A%EA%B4%80%EC%B8%A1%ED%95%9C+%EC%9E%A5%EB%A9%B4%3A%0A%0A%ED%95%B4%EC%84%9D%C2%B7%EC%A7%88%EB%AC%B8%3A%0A%0A%EB%8B%A4%EC%9D%8C%EC%97%90+%EB%B9%84%EA%B5%90%ED%95%98%EB%A9%B4+%EC%A2%8B%EC%9D%84+%EB%8F%99%EC%9E%91%3A%0A)
+
+**공식 원점수 0/50 · 착의 0 · `success=false` · 726/726기록 검사 통과.** 기존 밑단 파지를 한쪽씩 놓고 목선 후보 두 곳에 새로 닫았습니다. 국소 천 동행은 보였으나, 높이·간격·시점을 바꿔도 연속 목 입구가 불명확해 테이블 지지 쪽으로 낮추고 종료했습니다. 머리·소매 진입은 시도하지 못했습니다. 최고 기록은 5점으로 목표 10점은 아직 미달성입니다.
+
+470~726경계 · 257프레임 · 51.4초 재생 · 4배 느리게 · 모델 응답 대기 제외. 위는 로봇0·1 머리, 아래는 로봇0·1 손목입니다. [구간별 설명](docs/gallery/20261107-astra-neckline470-named-001.ko.md) · [영상 출처](docs/gallery/assets/20261107-e20-neckline-regrasp/provenance.json) · [학습 검토 구간](docs/collection/reviews/20261107-astra-neckline470-named-001-learning-segments.json)
+
+전체 **726전이·시뮬레이션 36.3초**, 실제 약 **29분 43초**입니다. 470재실행+154모델 행동+102제어기 정착이며, 25모델 호출은 행동23회·종료판단1회·추가질의1회입니다. 전이 1개는 관측→행동→다음 관측의 0.05초 기록이고, 질의 중 물리는 진행하지 않았습니다.
+
+다음은 공식 시연에 가까운 **몸통 입구의 상방 배치→하강·안착 경로**를 비교합니다. 후보 통합 후 전체277CPU검사를 통과했으며 실제 착의 효과는 아직 미검증입니다. [후보 범위](docs/collection/research/2026-11-07-overhead-drape-candidate.ko.md) · [현재 실행 상태](docs/project/STATUS.md)
+
+[**공식 시연의 실제 순서 검토**](docs/collection/research/2026-11-07-official-demo-route-review.ko.md) · [**BEHAVIOR 우승 자료: 그림·영상과 후속 수집 후보**](docs/collection/research/2026-11-07-behavior-champion-visual-transfer.ko.md) · [공식 집계·텍스트 근거](docs/collection/research/2026-11-07-behavior-champion-text-review.ko.md)
+
+<details>
+<summary>E19 당시 첫 화면과 다음 계획</summary>
+
+> 아래는 E19 종료 당시 기록입니다.
+
 **최신 E19 · 명령 축 오류 없이 세 번 접근했지만 손 통과는 미확인**
 
 <a href="docs/gallery/assets/20261107-e19-named-entry/event.mp4"><img src="docs/gallery/assets/20261107-e19-named-entry/preview.gif" width="960" alt="E19 실제 공개 네 카메라. 세 번의 입구 접근, 기울기와 시야 변경, 후퇴와 종료"></a>
@@ -12,9 +33,12 @@
 
 전체 **932전이·시뮬레이션 46.6초**, 실제 약 **26분 18초**입니다. 모델 호출 14회는 행동 12회·종료 판단 1회·질의 추가 1회이며 질의의 물리 진행은 0입니다. 전이 1개는 관측→행동→다음 관측의 0.05초 기록입니다. [기록 분해와 검수](docs/collection/reviews/20261107-astra-entry801-named-001.ko.md)
 
-E20은 2026-11-07 01:18:21 UTC에 시작했고, 테이블에서 목선 후보를 제어해 **목부터 입히는 별도 경로**를 비교합니다. 현재 준비 행동을 재실행 중이며, 같은 파지의 미세조정을 마친 뒤 방법을 바꾸는 근거를 [여기](docs/collection/research/2026-11-07-post-named-route-choice.ko.md)에 남겼습니다.
+E20은 2026-11-07 01:18:21 UTC에 시작했고, 테이블에서 목선 후보를 제어해 **목부터 입히는 별도 경로**를 비교합니다. 현재는 목선 후보로 양쪽 파지를 순차 변경한 뒤 입구가 벌어지는지 확인 중입니다. 연속 목 입구·머리 통과는 아직 미확인입니다. 같은 파지의 미세조정을 마친 뒤 방법을 바꾸는 근거를 [여기](docs/collection/research/2026-11-07-post-named-route-choice.ko.md)에 남겼습니다.
 
 [**공식 시연의 실제 순서 검토**](docs/collection/research/2026-11-07-official-demo-route-review.ko.md) · [**BEHAVIOR 우승 자료: 그림·영상과 후속 수집 후보**](docs/collection/research/2026-11-07-behavior-champion-visual-transfer.ko.md) · [공식 집계·텍스트 근거](docs/collection/research/2026-11-07-behavior-champion-text-review.ko.md)
+
+
+</details>
 
 <details>
 <summary>E18 이전 첫 화면 · 명령 오류와 복구 이력</summary>
@@ -88,13 +112,13 @@ E20은 2026-11-07 01:18:21 UTC에 시작했고, 테이블에서 목선 후보를
 
 | 구분 | 확인된 상태 |
 |---|---|
-| 최신 과제 시도 | E19 `20261107-astra-entry801-named-001` · 932/932기록 검사 통과 · 5/50 · 자율 종료 |
+| 최신 과제 시도 | E20 `20261107-astra-neckline470-named-001` · 726/726기록 검사 통과 · 0/50 · 운반 전 자율 종료 |
 | 모델·환경 | Astra/ultra · Codex CLI0.166.0/exec · 고정 Isaac Sim6.0.1 · Chrome/WebRTC OFF |
-| 이번에 비교한 것 | E18 첫 오류 직전 801경계에서 B+depth를 유지하고 이름 기반 명령을 사용했습니다. 실제 12개 행동의 축 일치를 확인했으나 점수는 오르지 않았습니다. |
-| 미세조정 결과 | 세 번의 접근, 한쪽 기울임, 의도적 roll, 위·옆 관측 방향을 실제 시험했습니다. 같은 가림이 반복됐고 새 파지 변경은 없었습니다. |
-| E20 실행 중 | **01:18:21 UTC 시작:** E18의 470경계에서 목 우선 경로. 현재 목선·테이블 지지를 재확인하고 한쪽씩 파지를 검토합니다. 이름 기반 명령과 공개 depth 질의는 유지합니다. |
-| 검증 범위 | 현재 소스 전체 CPU270검사 통과. 명명 행동은 합성 CLI·모델 없는 GPU 연결에 이어 E19 실제 조작에서 사용했습니다. 한 시도의 오류 미재발을 일반적 성공률 향상으로 단정하지 않습니다. |
-| 소스·원본 | E19 실행 소스9aad601·시작 clean. 영상·행동·질의·회복 구간과 [비공개 원본 고정 백업·재다운로드 SHA 검증](docs/project/sessions/20261107-e19-backup-verification.json)을 완료했습니다. |
+| 이번에 비교한 것 | 목선 후보 두 곳으로 순차 재파지. 국소 천 동행은 보였으나 연속 목 개구부·머리/소매 진입은 미확인 |
+| 미세조정 결과 | 새 파지 뒤 실제 높이·간격·손목 시점을 바꿨지만 층 분리가 불명확해 테이블 지지 쪽으로 낮추고 종료 |
+| 다음 E21 계획 | E18의470경계에서 몸통 입구 상방 배치→하강·안착 비교. 기존 유용한 지지를 보존할 수 있고 목선/첫소매 선행완료를 강제하지 않음. 아직 시작 전 |
+| 검증 범위 | E20종료 뒤 후보 통합 전체277CPU검사 통과. 실제 상방·하강 과제 효과는 미검증 |
+| 소스·원본 | E20 실행 소스799fe80·시작clean. [비공개 원본 고정 백업·재다운로드 SHA 검증](docs/project/sessions/20261107-e20-backup-verification.json) 완료. 실패·재파지·질의·회복 구간 보존 |
 
 [현재 상태·다음 명령](docs/project/STATUS.md) · [이번 세션 원문](docs/project/sessions/20261106-evening-resume.ko.md) · [방법 전환 기준](docs/project/sessions/20261106-method-switch-matrix.ko.md)
 

@@ -129,6 +129,25 @@ Guide the garment so the head enters the shirt body through the body opening and
 After actual visible head-first progress, continue toward full dressing: retain support, guide each arm through its corresponding sleeve, seat the shoulders and upper arms, and check front orientation. Do not require all these later conditions before acknowledging an intermediate head-passage hypothesis. All progress and completion statements remain visual judgements with uncertainty, never official score, contact labels or evaluator feedback.'''
 
 
+OVERHEAD_BASE_TASK = TASK.replace(
+    'Work toward a continuous complete dressing demonstration: thread both arms into the sleeves, seat the shirt over shoulders and upper arms, pass the head through the neck opening, and orient the front correctly.',
+    'Work toward complete dressing by controlling the body opening around the raised arms and head, then lowering and seating the garment over the torso. Seek both arms in their respective sleeves, the head out through the neck opening, shoulders and upper arms covered, and the front oriented correctly. Neither head passage nor a sleeve passage must be completed first.'
+).replace(
+    'Coordinate support while approaching and threading sleeves;',
+    'Coordinate support while positioning the body opening around the head and arms and lowering the garment;'
+)
+
+OVERHEAD_TASK = '''For this attempt, investigate a body-opening overhead-and-lowering route. Preserve useful CURRENT body-opening supports, position the controlled garment opening around and above the raised arms and head when visibly reachable, then guide the body panels downward around the chest. Do not require a completed first sleeve or head passage before attempting the other. A larger lift alone repeats preparation; the intended new manipulation is a changed opening-to-head-and-arms relationship followed by controlled lowering and seating.
+
+Inspect the CURRENT designated views and public robot state before changing a grasp. The held edge is not supplied as a hem: infer a plausible body opening and its connection to the panels, neck opening and sleeves from visible shape and continuity. Color boundaries, dark folds and historical locations do not establish opening identity. If current grips already provide useful support, preserve them instead of repeating the initial open-align-close setup. Confirm separately that local cloth follows EACH gripper, distinguishing measured robot motion from cloth following. Small support-preserving shape or view changes may expose an unclear rim. If the arrangement remains unsuitable, establish visible table support for the garment body before ONE deliberate one-sided grasp change, with at most TWO short placement corrections. Keep the body table-supported throughout the repair, preserve any useful partner anchor, and retain uncertainty if that grip is unconfirmed. Never release both grips together. Recheck both supports and the trackable body opening before carrying toward the mannequin. If the bounded preparation remains inconclusive, restore table support when feasible and finish with the unresolved visual reason.
+
+Choose the approach and reachable overhead arrangement from CURRENT head, raised-arm, garment and gripper relationships across the designated views. Keep both grippers outside the intended body-entry passage and retain support without excessive stretch. Check public measured joint positions, controller targets and recent motion before further lift or arm extension. Do not accumulate same-direction commands when targets or measured motion have saturated; a high target does not prove head clearance. Use an observable alternative posture, supported opening orientation or approach when available. Do not assume unlimited lift or arm travel, a fixed world height, or clearance behind a hidden panel. If a reachable path cannot be established, preserve support and recover or finish rather than force the overhead route.
+
+When the opening, body relation and clearance remain trackable, use one short coordinated segment to change their relative placement and inspect the result. Seek the head and arms entering through the body opening toward their respective neck and sleeve exits. Then use observed rim, panel, chest and limb relationships to guide controlled lowering and seating; completed head or sleeve passage is not a prerequisite for an otherwise visible, clear lowering motion. Occlusion in one camera is neither passage evidence nor an automatic reason to end the attempt. Check the other CURRENT designated views and recent public observations together with measured robot motion to re-establish the same boundary and intended path; history alone does not establish current clearance. A short supported rise or lowering is allowed only while the current relationship, clearance and direction remain trackable. If the designated views collectively leave the path unclear or cannot distinguish body-opening entry from pushing an exterior panel, stop advancing and restore a supported view or change the approach. Repeated disappearance behind exterior cloth is not passage evidence, and a colored edge near the face is not a neck opening. Do not push blindly to reproduce an assumed route.
+
+Continue useful corrections toward both hands outside different sleeves, head outside the neck opening with chest inside the garment, shoulders and upper arms seated, and correct front orientation. State which visible relationship actually changed, not just that the robots lifted or moved. Keep uncertain passage hypotheses explicit; no official success, score, hidden contact or garment labels are provided.'''
+
+
 def official_review_points(collection):
     """Trusted termination only. Never include this value in actor observations."""
     paths = list((Path(collection) / 'evaluation').glob('*/score_samples.jsonl'))
@@ -493,7 +512,8 @@ def main():
     parser.add_argument('--strategy', choices=['general', 'coordinated', 'coordinated-sleeve',
                         'coordinated-hem-route', 'coordinated-opening-first',
                         'coordinated-support-diagnostic', 'coordinated-regrasp-hem',
-                        'coordinated-support-guide', 'coordinated-neckline-first'], default='general')
+                        'coordinated-support-guide', 'coordinated-neckline-first',
+                        'coordinated-overhead-drape'], default='general')
     parser.add_argument('--actor-backend', choices=['exec', 'app-server'], default='exec')
     parser.add_argument('--plan-size', type=int, default=1,
                         help='Maximum segments per model call; >1 is an open-loop list')
@@ -559,7 +579,7 @@ def main():
     if args.strategy in ('coordinated', 'coordinated-sleeve', 'coordinated-hem-route',
                          'coordinated-opening-first', 'coordinated-support-diagnostic',
                          'coordinated-regrasp-hem', 'coordinated-support-guide',
-                         'coordinated-neckline-first') and args.mode != 'dressing':
+                         'coordinated-neckline-first', 'coordinated-overhead-drape') and args.mode != 'dressing':
         parser.error('coordinated strategy requires the full dressing objective')
     if args.strategy == 'coordinated-support-diagnostic' and args.plan_size != 1:
         parser.error('support diagnostic requires plan-size=1 to observe after each action')
@@ -567,6 +587,8 @@ def main():
         parser.error('regrasp strategies require plan-size=1 to observe after each action')
     if args.strategy == 'coordinated-neckline-first' and args.plan_size != 1:
         parser.error('neckline-first requires plan-size=1 to observe after each action')
+    if args.strategy == 'coordinated-overhead-drape' and args.plan_size != 1:
+        parser.error('overhead-drape requires plan-size=1 to observe after each action')
     if args.mode == 'wiring' and args.plan_size > 1 and (args.plan_size != 3 or args.decisions != 3):
         parser.error('grouped wiring requires plan-size=3 and decisions=3')
     if not math.isfinite(args.model_timeout) or not 10 <= args.model_timeout <= 1800:
@@ -595,10 +617,12 @@ def main():
     actor_root.mkdir(parents=True, exist_ok=False, mode=0o700)
     from participant.collection.plans import plan_schema, validate_plan, PLAN_TASK, BATCH_WIRING_TASK
     task = NECKLINE_BASE_TASK if args.strategy == 'coordinated-neckline-first' else TASK
+    if args.strategy == 'coordinated-overhead-drape':
+        task = OVERHEAD_BASE_TASK
     if args.strategy in ('coordinated', 'coordinated-sleeve', 'coordinated-hem-route',
                          'coordinated-opening-first', 'coordinated-support-diagnostic',
                          'coordinated-regrasp-hem', 'coordinated-support-guide',
-                         'coordinated-neckline-first'):
+                         'coordinated-neckline-first', 'coordinated-overhead-drape'):
         task += '\n\n' + COORDINATED_TASK
     if args.strategy == 'coordinated-sleeve':
         task += '\n\n' + SLEEVE_TASK
@@ -616,6 +640,8 @@ def main():
         task += '\n\n' + SUPPORT_GUIDE_TASK + '\n\n' + METHOD_SATURATION_TASK
     elif args.strategy == 'coordinated-neckline-first':
         task += '\n\n' + NECKLINE_TASK + '\n\n' + METHOD_SATURATION_TASK
+    elif args.strategy == 'coordinated-overhead-drape':
+        task += '\n\n' + OVERHEAD_TASK + '\n\n' + METHOD_SATURATION_TASK
     if args.plan_size > 1:
         task += '\n\n' + PLAN_TASK.format(max_segments=args.plan_size, max_total_steps=args.plan_step_budget)
     if args.post_action_settle_steps:
