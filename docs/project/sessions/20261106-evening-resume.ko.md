@@ -314,3 +314,7 @@ D15기저고정lift로손이새로보이고D16손–경계투영겹침뒤D17몸�
 QC완료뒤fullreport1610frame/20fps/80.5s,hero1483–1610inclusive128frame/5fps/25.6s,보조1263–1317inclusive55frame/5fps/11s를생성했다. 새파지0인현branch22행동과부분복구를보존하며M1실제파지변경비교를선택했다. E18/563hist510542·30decmax1400·coordinated-opposing-rim후보a3d10a5를종료후통합했다. E17가설의재시험이며다른rim정체/새지지/점수효과를미리확정하지않는다. 출발점loaderfloat32(563,2,9)검수완료,공개source확정후새E25실행예정이다.
 
 E24[고정원본백업](20261107-e24-backup-verification.json)은revision`1edca310c1b869a8f4c01b3eeb67b14f6699e12c`·3,879,304,287bytes·SHA`0c5ac72698bc35ee138b0e0629773fb23a7bbeacd7cd9cc195110a6af76d6af2`이며05:14:53UTC강제재다운로드/263member전수해시검증을완료했다. M1통합전체CPU310검사28.898초PASS와runtime/source파일SHA일치를확인했다.
+
+## E25 실제 시작 (2026-11-07T05:18:00Z)
+
+`20261107-astra-opposing563-named-001`은공개source`68658c9d9bb7e47591fb330f08f4f996ec4fcbfb`·working_tree_modified=false에서시작했다. 직접부모E18/563·history510/542·coordinated-opposing-rim·named/query/wristpanel·Astra/ultra·30dec/max1400/timeout180/settle6/review10/profile이다. E17반대rim가설을더나은관측지지출발점과한번의재파지·닫힘후검사순서로재시험한다. 아직준비행동재실행중이며새파지수행/입구정체/성과는미확인이다. 로그output/sessions/20261106-evening/e25-opposing563-named-001.log. shell은Python명령이반환할때별도exit파일에그값을기록하며반환전에는값없다. 전체CPU310검사통과와실제조작효과를구분한다.

@@ -23,9 +23,9 @@ E24 D15 높이 변경으로 손이 다시 보였고, D17 몸쪽 진입 뒤 큰 �
 
 E25는 **E18/563·history510/542·coordinated-opposing-rim·30판단/max1400**으로 선택했습니다. 새 재실행 관측에서 양측 지지와 테이블 지지를 확인하고, 한쪽 anchor를 남기며 다른 접근 가능한 경계를 한 번 다시 잡습니다. 닫힘 뒤 국소 천 동행·anchor 유지·차등 경계 반응을 확인한 다음 유용하면 운반과 착의를 이어갑니다. E17의 미확인 반대 경계 가설을 더 나은 출발점·검사 순서로 재시험하며 첫 발명으로 세지 않습니다. [방법·제약](../collection/research/2026-11-07-opposing-rim-candidate.ko.md)
 
-후보a3d10a5를 E24 종료 후 main에 통합했습니다. source loader563개 float32(563,2,9) 검수를 완료했고, 전체 CPU 결과는 [검증 기록](sessions/20261107-opposing-rim-validation.json)에 남깁니다. 새 선택 지침 외 공식 물리·20Hz·최대20step·모델·관측 계약은 유지합니다. **아직 E25 실제 모델/GPU 실행 전이며 실제 파지 개선·점수 효과는 미검증입니다.** E18/563의 과거5점은 actor 입력이 아닙니다. E07/430·E15/367은 다른 자세·기존 파지·잔류 운동의 대안이어서 함께 바꾸지 않았습니다.
+후보a3d10a5를 E24 종료 후 main에 통합했습니다. source loader563개 float32(563,2,9) 검수를 완료했고, 전체 CPU 결과는 [검증 기록](sessions/20261107-opposing-rim-validation.json)에 남깁니다. 새 선택 지침 외 공식 물리·20Hz·최대20step·모델·관측 계약은 유지합니다. **E25는2026-11-07T05:18:00Z에source`68658c9d9bb7e47591fb330f08f4f996ec4fcbfb`·시작clean으로 실제 시작했습니다.** 현재 준비 행동 재실행 중이며 새 파지 개선·점수 효과는 미확인입니다. E18/563의 과거5점은 actor 입력이 아닙니다. E07/430·E15/367은 다른 자세·기존 파지·잔류 운동의 대안이어서 함께 바꾸지 않았습니다.
 
-## E25 예정 명령 · 공개 소스 확정 후, 아직 미실행
+## E25 실제 시작 명령 · 2026-11-07T05:18:00Z
 
 ```bash
 export PATH="$PWD/.runtime/codex-0.166.0/node_modules/.bin:$PATH"
@@ -42,7 +42,7 @@ PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.codex_clie
   --profile-step-phases
 ```
 
-새 run ID·직접 부모E18·같은E07 source group을 보존합니다. 재실행은 정확한 천 checkpoint 복원이 아니며 새 지지를 다시 확인합니다. 공식10점 확인 뒤 보존·검증하고 다음 득점으로 계속합니다. [장기 구간 조합](../collection/research/2026-11-07-composable-scoring-data-plan.ko.md)은 현재 합성·학습 실행과 구분합니다.
+실제실행source는`68658c9d9bb7e47591fb330f08f4f996ec4fcbfb`,로그는output/sessions/20261106-evening/e25-opposing563-named-001.log입니다. 새 run ID·직접 부모E18·같은E07 source group을 보존합니다. 재실행은 정확한 천 checkpoint 복원이 아니며 새 지지를 다시 확인합니다. 공식10점 확인 뒤 보존·검증하고 다음 득점으로 계속합니다. [장기 구간 조합](../collection/research/2026-11-07-composable-scoring-data-plan.ko.md)은 현재 합성·학습 실행과 구분합니다.
 
 <details>
 <summary>E23 종료·E24 실행 중 당시 상태 이력</summary>

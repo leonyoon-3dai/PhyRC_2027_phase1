@@ -56,3 +56,5 @@ D4에서 로봇1 arm 목표는38.720mm 줄었지만 실측은67.077mm 늘었습�
 같은 E23 행동 prefix를 이어도 시작 천의 접힘은 달랐으며 정확한 checkpoint가 아닙니다. 다음 E25는 **M1 실제 파지 변경, E18/563·과거510/542·30판단/max1400**으로 채택했습니다. 코드 main 통합·전체310개 CPU 검사를 마쳤으며 실제 실행은 아직 시작하지 않았습니다. 기존 grip의 자세 보정과 다른 경계/층을 실제로 다시 잡는 방법을 비교하려는 계획입니다.
 
 [전체 공개 기록](../collection/attempts/20261107-astra-progress1179-named-001/README.ko.md) · [전체 overview로 앞선 접근 보기](../collection/attempts/20261107-astra-progress1179-named-001/overview.mp4) · [현재 상태](../project/STATUS.md) · [세션 기록](../project/sessions/20261106-evening-resume.ko.md)
+
+후속 실행 갱신: E25 `20261107-astra-opposing563-named-001`은2026-11-07 05:18:00UTC·source`68658c9d9bb7e47591fb330f08f4f996ec4fcbfb` clean으로실제시작했습니다. 위미실행표기는E24마감검토당시상태이며현재재실행중·새성과미확인입니다.

@@ -4,7 +4,7 @@
 
 [현재 상태·다음 명령](STATUS.md) · [E24 영상](../gallery/20261107-astra-progress1179-named-001.ko.md) · [분석](../collection/reviews/20261107-astra-progress1179-named-001.ko.md) · [전체 일지](sessions/20261106-evening-resume.ko.md)
 
-E25는E18/563·history510/542에서한쪽anchor와테이블지지를유지하며다른경계재파지1cycle·닫힘후검사를비교합니다. M1후보는E24종료후통합했고아직실제시행전입니다. [전체CPU검증](sessions/20261107-opposing-rim-validation.json)과실제옷효과는별도입니다. 모든자료trainingunreviewed이며재실행은정확한천checkpoint가아닙니다.
+E25는E18/563·history510/542에서한쪽anchor와테이블지지를유지하며다른경계재파지1cycle·닫힘후검사를비교합니다. M1후보는E24종료후통합했고E25는2026-11-07T05:18:00Z·source68658c9 clean으로실제시작했습니다.현재초기화/재실행중입니다. [전체CPU검증](sessions/20261107-opposing-rim-validation.json)과실제옷효과는별도입니다. 모든자료trainingunreviewed이며재실행은정확한천checkpoint가아닙니다.
 
 ## 보존 위치와 고정 revision
 
@@ -34,7 +34,7 @@ E25는E18/563·history510/542에서한쪽anchor와테이블지지를유지하며
 
 E22 원본은 [검증 receipt](sessions/20261107-e22-backup-verification.json)의 고정 revision에서 강제 재다운로드 SHA와 전체92개 archive 파일 해시 일치를03:24:59UTC에 확인했습니다. **다음 E25에는 초기 자산과 E18의563경계까지 재실행할 검증 원본이 필요합니다.** E21 마지막 새 파지는 지지가 미검증이므로 이번 분기의 직접 부모로 사용하지 않습니다.
 
-연구 묶음은 `sessions/20261106-private-research-handoff-v1/` 아래에 있으며 `scope.json`·`handoff.md`가 적용/미적용과 정확한 허용 목록을 설명합니다. phase2 profiler는 미적용입니다. pixel query는 이후 main에 통합돼 E18에서3회·E19에서1회 사용했습니다. 이름 기반 행동은 E19 실제 과제에 적용했고 의도 밖 roll 재발은 관측되지 않았으나 착의 득점은0입니다. 목 우선은 E20에서 실제 비교했고 입구 확인 준비에서 종료했습니다(raw0). 상방 배치·하강은 E21에서 실제 비교했고 raw5·착의0으로 예산 마감했습니다. E21에서는 pixel query를4회 사용했으며 질의 중 물리 진행은0입니다. E22의 `coordinated-entry-probe`는 실제 비교 후5점/no_contact로 종료했습니다. E23의 `coordinated-task-progress`는5점/1180QC로 종료했고, 후속E24도5점/1610QC로 감독 종료했습니다. E25용 `coordinated-opposing-rim`은 E24 종료 후 통합310CPU검사를 통과했으며 아직 실제 시행 전입니다. 옛 후보 파일의 `not_applied`는 당시 상태일 수 있으므로 현재 상태표를 우선합니다. 인증·home·원시 추론·actor 이벤트·세션DB·시뮬레이터 로그는 백업에 넣지 않았습니다. 성능 자원121행은 정제된 수치 증거입니다. 실행 원본의 trusted 평가/audit는 비공개 검수용이고 actor에 연결하지 않습니다.
+연구 묶음은 `sessions/20261106-private-research-handoff-v1/` 아래에 있으며 `scope.json`·`handoff.md`가 적용/미적용과 정확한 허용 목록을 설명합니다. phase2 profiler는 미적용입니다. pixel query는 이후 main에 통합돼 E18에서3회·E19에서1회 사용했습니다. 이름 기반 행동은 E19 실제 과제에 적용했고 의도 밖 roll 재발은 관측되지 않았으나 착의 득점은0입니다. 목 우선은 E20에서 실제 비교했고 입구 확인 준비에서 종료했습니다(raw0). 상방 배치·하강은 E21에서 실제 비교했고 raw5·착의0으로 예산 마감했습니다. E21에서는 pixel query를4회 사용했으며 질의 중 물리 진행은0입니다. E22의 `coordinated-entry-probe`는 실제 비교 후5점/no_contact로 종료했습니다. E23의 `coordinated-task-progress`는5점/1180QC로 종료했고, 후속E24도5점/1610QC로 감독 종료했습니다. E25용 `coordinated-opposing-rim`은 E24 종료 후 통합310CPU검사를 통과했으며 E25가2026-11-07T05:18:00Z에실제시작했으며새결과는미확인입니다. 옛 후보 파일의 `not_applied`는 당시 상태일 수 있으므로 현재 상태표를 우선합니다. 인증·home·원시 추론·actor 이벤트·세션DB·시뮬레이터 로그는 백업에 넣지 않았습니다. 성능 자원121행은 정제된 수치 증거입니다. 실행 원본의 trusted 평가/audit는 비공개 검수용이고 actor에 연결하지 않습니다.
 
 ## 새 서버 준비와 원본 복원
 

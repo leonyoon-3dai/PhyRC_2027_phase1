@@ -86,3 +86,5 @@ D6에서는 R1 target이229.900→355.740mm(**+125.840mm**), actual이327.983→
 최종1610경계의 지정5뷰를 직접 확인했다. [R1 head](../attempts/20261107-astra-progress1179-named-001/images/final-robot_1_head.png)의 두 노란 띠 사이 어두운 틈은 유지되지만 [R1 wrist](../attempts/20261107-astra-progress1179-named-001/images/final-robot_1_wrist.png)에는 큰 파란 면 가림이 남는다. R0 wrist는 얼굴·팔을 더 드러내고 overview는 몸 앞에 들어 올린 천을 보여준다. 관측 가능한 부분 복구이며 손의 연속 통과·자유 입구 정체·새 파지는 확인하지 못했다. 마감1중립 전이 뒤에도 이 해석은 바뀌지 않는다.
 
 [비공개 원본 백업](../../project/sessions/20261107-e24-backup-verification.json)은 고정 revision`1edca310c1b869a8f4c01b3eeb67b14f6699e12c`·3,879,304,287bytes·SHA`0c5ac72698bc35ee138b0e0629773fb23a7bbeacd7cd9cc195110a6af76d6af2`다. 05:14:53UTC 강제 재다운로드와263개 member 해시 검증을 완료했다. 학습 승인은unreviewed이며 감독 종료·실패/복구 구간도 보존했다.
+
+후속 실행 갱신: E25 `20261107-astra-opposing563-named-001`은2026-11-07 05:18:00UTC·source`68658c9d9bb7e47591fb330f08f4f996ec4fcbfb` clean으로실제시작했습니다. 위미실행표기는E24마감검토당시상태이며현재재실행중·새성과미확인입니다.

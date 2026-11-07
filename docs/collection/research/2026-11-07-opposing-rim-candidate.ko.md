@@ -1,6 +1,6 @@
 # 반대 rim 제어 재파지 · M1 준비 이력과 E25 채택
 
-**E24 종료 후 `coordinated-opposing-rim`을 채택하고 로컬 main `1e86599699ab8497c4227d8b43c30a7d1bcf7931`에 통합했다. E25는 E18/563·history510/542·30판단·max1400으로 계획했으며, 이 기록 시점에는 아직 실행하지 않았다.** 기존 양측 파지를 유지한 채 진입 방향만 바꾸는 실험과 구분해, 테이블 지지 아래 한쪽을 다른 rim 후보로 실제 옮기고 그 뒤 국소 천 동행·두 경계의 상대 변화를 검사한다. 실제 모델 행동·지지 개선·착의 성능은 미검증이다.
+**E24 종료 후 `coordinated-opposing-rim`을 채택하고 로컬 main `1e86599699ab8497c4227d8b43c30a7d1bcf7931`에 통합했다. E25는 E18/563·history510/542·30판단·max1400으로 2026-11-07T05:18:00Z에 실제 시작했다(source68658c9d9bb7e47591fb330f08f4f996ec4fcbfb clean). 현재 재실행 단계이며 새 결과는 미확인이다.** 기존 양측 파지를 유지한 채 진입 방향만 바꾸는 실험과 구분해, 테이블 지지 아래 한쪽을 다른 rim 후보로 실제 옮기고 그 뒤 국소 천 동행·두 경계의 상대 변화를 검사한다. 실제 모델 행동·지지 개선·착의 성능은 미검증이다.
 
 준비 당시에는 E23의 진전을 우선하며 미채택 후보로 분리했다. 작업 기준은 `357e5ebd7cd3c4608aab7857046c818c3033bd00`, 별도 worktree `../phyrc-opposing-rim-candidate`, branch `experiments/opposing-rim-candidate`였고 후보 commit은 `a3d10a5bed687469b2887cc28b7f4d01ed484548`다. 회귀 기준은 뒤이어 게시된 **공개 E23 소스 `952ec8da68cdc0ef635d0d45329712eee006fd1f`**로 고정했다. 이전 source에 task-progress 상수만 끼워 넣는 대조가 아니라 해당 공개 파일 전체를 독립 oracle로 사용한다. 이 별도 준비 단계에서는 main·활성 실행 파일이나 모델/GPU를 변경·호출하지 않았다.
 
@@ -67,3 +67,5 @@ PYTHONPATH=.:tests:src/PhyRC_Sim \
 별도 fixture는 **gripper-only close8에는 자동 settle/지지 동작이 붙지 않으며**, 다음 모델 판단이 따로 요청한 local movement2 뒤에만 configured settle6이 붙는 것을 확인한다. 두 질의는 각자의 현재 관측에서 물리0이고 총전이는3재생+8닫기+2동작+6정착+1마감=20이다. 이는 실제 지지가 확인됐다는 검사가 아니라 닫힘 명령과 후속 검사 행동을 구분하는 기존 계약의 검증이다.
 
 위 전략·프로토콜 검사는 fake actor/simulator를 사용하는 CPU 검사다. 실제 CLI 호출·GPU·물리·의복 행동·모델 지침 준수·점수 개선은 미검증이다. E24 종료 후 채택·main 통합과 E25 실행 계획이 정해졌으며, CPU 통과를 실제 시행이나 성공으로 표시하지 않는다.
+
+실제 E25 시작은 위 통합 CPU 검증 뒤 별도로 기록했다. CPU receipt의planned_not_started는05:08검증당시상태이며현재실행source와구분한다.

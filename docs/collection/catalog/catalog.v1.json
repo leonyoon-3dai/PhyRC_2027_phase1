@@ -577,6 +577,24 @@
         "revision": "1edca310c1b869a8f4c01b3eeb67b14f6699e12c",
         "sha256": "0c5ac72698bc35ee138b0e0629773fb23a7bbeacd7cd9cc195110a6af76d6af2"
       }
+    },
+    {
+      "id": "20261107-astra-opposing563-named-001",
+      "kind": "demonstration",
+      "source_group": "20261106-coordinated-demo-methods",
+      "source_commit": "68658c9d9bb7e47591fb330f08f4f996ec4fcbfb",
+      "source_working_tree_modified": false,
+      "parent_run_id": "20261106-astra-guide470-depth-001",
+      "replay_prefix_steps": 563,
+      "replay_completed_steps": 0,
+      "recorded_transitions": null,
+      "qc_status": "pending",
+      "backup": {
+        "status": "unknown",
+        "receipt": null,
+        "revision": null,
+        "sha256": null
+      }
     }
   ],
   "startpoints": [
@@ -1671,9 +1689,9 @@
       "notes": "Closed/QC-passed interrupted E24; catalog completed means archived actual attempt, not natural termination or task success. Original attempt interrupted/SIGINT; root supervisor requested stop after22acts at1609; pending D22 query follow-up not executed.1610=1179replay+304model+126settle+1cleanup;26calls3queries16validphysics0. D15hand visibility,D17entry panel occlusion,D18base-only reversal,D19/20unresolved,D21partial slit recovery. Do not call all directions exhausted or last action no change. raw5 all clothing0. host130,shellPython130,sim0. SameE07lineage;trainingunreviewed."
     },
     {
-      "id": "planned-e18-563-opposing-rim",
-      "status": "planned",
-      "run_id": null,
+      "id": "20261107-astra-opposing563-named-001",
+      "status": "in_progress",
+      "run_id": "20261107-astra-opposing563-named-001",
       "startpoint_id": "20261106-astra-guide470-depth-001-p563",
       "method_id": "coordinated-opposing-rim-named-query",
       "result": {
@@ -1682,7 +1700,7 @@
         "review": null,
         "videos": []
       },
-      "notes": "Selected E25 after E24 closed: E18 direct parent563/history510542,30dec/max1400/timeout180/settle6/review10, Astra/ultra exec plan1 named/query/wristpanel. Candidatea3d integrated; source loader563 validated. Not yet executed; actual source/time assigned at launch. Same E07 source group; fresh support recheck required, not exact cloth checkpoint."
+      "notes": "Actual E25 started2026-11-07T05:18:00Z from clean public source68658c9d9bb7e47591fb330f08f4f996ec4fcbfb. E18 direct parent563/history510542,30dec/max1400/timeout180/settle6/review10, fixed Astra/ultra exec plan1 named/query/wristpanel. Initial replay; intended grasp-change and post-close following remain unobserved. Full CPU310 passed before launch. Same E07 lineage,not exact cloth checkpoint; final outcome/QC/backup pending."
     }
   ]
 }

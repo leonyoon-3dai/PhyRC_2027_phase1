@@ -15,7 +15,7 @@
 - 최신 E24 `20261107-astra-progress1179-named-001`은5/50·픽업5·착의0·success=false·no_dressing_points/0.0,QC1610/1610오류0으로 종료했다. sourceb0513d43a87c813397c57d8a4fa6ec4e6ff6ba03 clean·04:11:53–05:02:19UTC·50분26초.
 - 1610=1179재실행+304모델+126정착+1감독 마감.22act/26calls·3query16valid/물리0·finish0. 감독SIGINT05:01:38요청,마지막D22query후act미실행. host22076=130·shellPython130·simulator0·capturecomplete/operator_finished·attemptinterrupted. [고정 원본 백업 검증 완료](docs/project/sessions/20261107-e24-backup-verification.json)·trainingunreviewed.
 - 손–경계 정렬뒤D17진입에서큰면가림,D18–20복구미확인,D21어두운틈부분재노출. 마지막변화없음/모든방향소진으로단정하지않고,실제파지변경을비교한다. 새파지0회·공식착의0.
-- E25선택은E18/563·history510/542·coordinated-opposing-rim·30dec/max1400/timeout180/settle6/review10. 후보a3d10a5를E24종료후통합. 한쪽anchor/테이블지지아래다른경계재파지1cycle·닫힘후국소동행/차등검사. 아직미실행,실제상태는STATUS/attempt우선.
+- E25선택은E18/563·history510/542·coordinated-opposing-rim·30dec/max1400/timeout180/settle6/review10. 후보a3d10a5를E24종료후통합. 한쪽anchor/테이블지지아래다른경계재파지1cycle·닫힘후국소동행/차등검사. 2026-11-07T05:18:00Z·source68658c9d9bb7e47591fb330f08f4f996ec4fcbfb clean으로실제시작,초기화/재실행중·새결과미확인. 실제상태는STATUS/attempt우선.
 - 실행source의전체CPU검사는docs/project/sessions/20261107-opposing-rim-validation.json참조. 새prompt선택외공식schema최대20step·물리·20Hz·고정Astra/ultra/CLI0.166.0exec 유지.
 - E23은5점/QC1180/18행동예산종료이며원본백업c1157513362e30d6a8306e7c8fd2ec0265e5db2c검증완료. E22는host143/clientnull/sim0원인미확인보존. E21새파지후속검사없음/E20목선준비0점/E19세접근5점/E18roll오류이력보존.
 - catalog.v1.jsoncanonical·SQLite재생성. 과거5점/관측양측지지/독립하중/현재지지/착의성공/학습승인은별도. 모두같은E07계보·정확checkpoint아님.

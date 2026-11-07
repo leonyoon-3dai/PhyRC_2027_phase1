@@ -12,7 +12,7 @@
 
 전체 **1,610전이·시뮬레이션80.5초**, 새 구간은 **431전이·21.55초**입니다. 실제50분26초, 1179재실행+304모델 행동+126정착+1감독 마감이며 26호출/22행동, 깊이 질의3회16유효점·질의 중 물리0입니다. 마지막 질의 후 행동 응답은 실행하지 않았습니다. 전이1개는 관측→행동→다음 관측의0.05초 기록입니다.
 
-**다음 E25 준비:** E18/563의 양측 지지 관측 구간에서 한쪽 지지를 유지하며 다른 접근 가능한 가장자리를 실제로 다시 잡는 `coordinated-opposing-rim`을 비교합니다. 테이블 지지·한 번의 재파지·닫힘 뒤 국소 천 동행·두 경계 상대 변화 검사를 포함합니다. E17의 미확인 가설을 다른 출발점과 검사 순서로 재시험하며, 아직 실제 효과는 미확인입니다. [현재 상태·명령](docs/project/STATUS.md) · [방법 설명](docs/collection/research/2026-11-07-opposing-rim-candidate.ko.md)
+**E25 실행 중 · 05:18:00 UTC 시작:** E18/563·history510/542에서 `coordinated-opposing-rim`을 실제 시작했습니다. Astra/ultra·30판단/max1400·source`68658c9d9bb7e47591fb330f08f4f996ec4fcbfb`·시작clean입니다. 현재 준비 행동 재실행 단계이며 새 파지·결과는 아직 미확인입니다. 테이블 지지 아래 한쪽 anchor를 유지하고 다른 경계를 다시 잡은 뒤 국소 천 동행·상대 경계 반응을 비교합니다. [현재 상태·명령](docs/project/STATUS.md) · [방법 설명](docs/collection/research/2026-11-07-opposing-rim-candidate.ko.md)
 
 [**출발점 화면 5개 비교·피드백**](docs/gallery/20261107-support-startpoints.ko.md) · [**출발점·방법 데이터베이스**](docs/collection/catalog/README.ko.md) · [**0→5→10 구간 조합 장기계획**](docs/collection/research/2026-11-07-composable-scoring-data-plan.ko.md)
 
@@ -58,7 +58,7 @@
 | 모델·환경 | Astra/ultra · CLI0.166.0/exec · 고정 Isaac Sim6.0.1 · Chrome/WebRTC OFF |
 | 실제 비교 | 목표·실제 팔 운동 차이 진단, 방향·높이 조정, 손–경계 정렬 뒤 진입 시도와 복구. 새 파지0회 |
 | 관찰된 한계 | 큰 면 가림 뒤 마지막 틈 부분 재노출. 손–입구 연결은 미확인·공식 착의0 |
-| 다음 E25 준비 | E18/563·history510/542·한쪽 반대 경계 후보 재파지·30판단/max1400. 아직 미실행 |
+| E25 실행 중 | E18/563·history510/542·한쪽 반대 경계 후보 재파지·30판단/max1400. 05:18:00UTC·source68658c9 clean |
 | 검증 범위 | M1 선택 분기 통합·전체 CPU310개 통과(28.898초). [검증 기록](docs/project/sessions/20261107-opposing-rim-validation.json). 기술 검사와 실제 조작 효과는 별도 |
 | 마감·원본 | E24 sourceb0513d4·시작clean·capture완료·host130·shell Python130·simulator0. [고정 원본 백업·재다운로드 검증 완료](docs/project/sessions/20261107-e24-backup-verification.json) |
 
