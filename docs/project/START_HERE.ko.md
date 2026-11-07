@@ -1,6 +1,6 @@
 # 새 서버에서 이어가기
 
-**현재 E26은5/50·착의0·1139/1139QC·고정백업 검증으로 마감했고, E27은E25/698 새 파지 task-progress로2026-11-07T06:58:14Z·source1ff16b2 clean에서실제시작했다. 현재초기화/재실행중이다.** 실제 시작 여부와 source는 [STATUS](STATUS.md)를 우선한다.
+**현재 E26은5/50·착의0·1139/1139QC·고정백업 검증으로 마감했고, E27은E25/698 새 파지 task-progress로2026-11-07T06:58:14Z·source1ff16b2 clean에서실제시작했다. D5뒤842까지양측들기와테이블밖운반중국소유지를확인했고진입은진행중이다.** 실제 시작 여부와 source는 [STATUS](STATUS.md)를 우선한다.
 
 [최신 영상](../gallery/20261107-astra-hand-swap787-named-001.ko.md) · [분석](../collection/reviews/20261107-astra-hand-swap787-named-001.ko.md) · [E26 백업](sessions/20261107-e26-backup-verification.json) · [세션 일지](sessions/20261106-evening-resume.ko.md)
 

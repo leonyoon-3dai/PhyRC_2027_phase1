@@ -394,3 +394,10 @@ host exec session25974,로그output/sessions/20261106-evening/e27-regrasp698-pro
 ## E27 재실행 중 공개 좌표 보조의 격리 준비
 
 현재E27source1ff16b2/기존taskprogress는변경하지않았다. 기존query가이미cameraXYZ를제공함을확인하고,새센서가아닌publicpose+고정staticmount의손목방향/좌표계산만격리후보b1f30dd로준비했다. [검토·적용범위](../../collection/research/2026-11-07-public-wrist-motion-aid-review.ko.md)와[전체CPU335/40.913초](20261107-wrist-translation-full-suite.json)를보존한다. root는helper/client/export변경을읽고logSHA/168sourceSHA를대조했다. 실camera/physics/model/득점검증0·main통합0이다. [후보private백업](20261107-wrist-translation-candidate-backup-verification.json)의15member동결에는별도로완료된335전체CPU영수증이포함되지않았음을명시한다.
+
+
+## E27 공개 진행 · D5 후842경계
+
+E25/698의새파지에서D0동시상승·D1차등상승·D2추가상승/운반시작·D3–5대각운반을실제로수행했다. 새144=108model+36settle·6act·query0이다. public_strategy가이번fresh657/667및obs0–6의선별공개RGB/상태를검수했고root도obs6 R1head/wrist를직접확인했다. D0실제lift+67.107/+67.929mm·D1+80.553/+213.302mm뒤양jaw주변천동행,790이후테이블밖에매달린몸판과운반중국소유지가보였다. 출발테이블에서멀어지고사람쪽접근간격이줄었지만완전비접촉·양측독립하중·반대free lip정체·소매통과는미확인이다. 실제새파지운반은E25새563→698에서미실행이었던부분을추가한것이며동일prefix를새독립시연으로세지않는다. 활성평가/H5를읽거나검수내용을actor에게전달하지않았다.
+
+사용자의장기0→5→10방법조합요청은기존composable-scoring-data-plan한문서에보강했다. 점수만으로상태호환을판정하지않고접합경계의실제도달·잔류운동·지지/층불확실성을남기며,새환경실행과종료QC/공식결과로검증한다. 공유prefix와여러기여원본의계보를묶어분할하고실패/복구중간기술도목적별로보존한다. 현재합성생성·학습·카탈로그schema/실행코드변경은없다.
