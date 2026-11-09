@@ -1,10 +1,14 @@
 # 새 서버에서 이어가기
 
+[전체 문서 지도](../README.ko.md) · [시간순 갤러리](../gallery/README.ko.md) · [Astra 수집 구현](../collection/guides/astra-end-to-end.ko.md) · [전체 이력](HISTORY.ko.md)
+
 **E27은5/50·착의0·1159/1159QC로 마감했습니다. 사용자 요청으로 새 수집을 중지했고 E28은 시작하지 않았습니다. 서버 종료 후 오프라인 검토·전략 수립을 먼저 진행합니다.** 실제 시작 여부와source는[STATUS](STATUS.md)를 우선합니다.
 
 [최신 영상](../gallery/20261107-astra-regrasp698-progress-named-001.ko.md) · [분석](../collection/reviews/20261107-astra-regrasp698-progress-named-001.ko.md) · [E27 백업](sessions/20261107-e27-backup-verification.json) · [세션 일지](sessions/20261106-evening-resume.ko.md)
 
 [마감과 오프라인 검토](SESSION_WRAPUP_20261107.ko.md)를 먼저 읽으세요. 아래 복원 정보와 수집 명령은 향후 참고용이며 자동 재개하지 않습니다.
+
+아래의 실제 복원·GPU·연결 검사 통과 서술은 **11월6–7일 당시 기록**입니다. 11월10일 문서 정리를 위해 새 서버를 열거나 그 검사를 다시 실행한 것은 아닙니다. 현재 후보의 CPU 검사와 실제 시연 결과도 구분합니다.
 
 재개를 결정한 경우 초기자산과 **E27의 검증 원본**이 필요합니다. freshhistory890/906·prefix928·24판단/max1600/settle6·Astraultra·coordinated-single-arm-progress는 보류된 후보 설정입니다. 후보 전체325CPU검사와 통합166소스SHA일치를 확인했고 손목 방향 보조는 미적용입니다. 행동 재실행은 정확한 천checkpoint 복원이 아니므로 현재 지지/팔 관계를 새 관측으로 확인합니다.
 
@@ -37,7 +41,7 @@
 | [BEHAVIOR 참고 원본](sessions/20261107-champion-reference-backup-verification.json) | `427d3a150b48f2e522bbff30f9177d6a2722788d` | 검토한 제3자 원본19개와 출처/범위6파일,6,879,270bytes. 시연·actor·학습 입력과 분리한 참고자료 |
 | [비공개 연구·후보](sessions/20261106-private-research-backup-verification.json) | `3349b6a73bf266cfba015654613e58ae490290b5` | 171개 선별 원본·적용 상태·CPU 근거, 4,600,121 bytes |
 
-E22 원본은 [검증 receipt](sessions/20261107-e22-backup-verification.json)의 고정 revision에서 강제 재다운로드 SHA와 전체92개 archive 파일 해시 일치를03:24:59UTC에 확인했습니다. **다음 E27에는 초기 자산과 E25의698경계까지 재실행할 검증 원본이 필요합니다.** E21 마지막 새 파지는 지지가 미검증이므로 이번 분기의 직접 부모로 사용하지 않습니다.
+E22 원본은 [검증 receipt](sessions/20261107-e22-backup-verification.json)의 고정 revision에서 강제 재다운로드 SHA와 전체92개 archive 파일 해시 일치를03:24:59UTC에 확인했습니다. **당시 E27은 초기 자산과 E25/698을 사용해 이미 완료했습니다. 현재 준비된 E28 후보를 재선택한다면 초기 자산과 검증된 E27 원본이 필요합니다.** E21 마지막 새 파지는 지지가 미검증이므로 검증된 출발점으로 자동 승격하지 않습니다.
 
 연구 묶음은 `sessions/20261106-private-research-handoff-v1/` 아래에 있으며 `scope.json`·`handoff.md`가 적용/미적용과 정확한 허용 목록을 설명합니다. phase2 profiler는 미적용입니다. pixel query는 이후 main에 통합돼 E18에서3회·E19에서1회 사용했습니다. 이름 기반 행동은 E19 실제 과제에 적용했고 의도 밖 roll 재발은 관측되지 않았으나 착의 득점은0입니다. 목 우선은 E20에서 실제 비교했고 입구 확인 준비에서 종료했습니다(raw0). 상방 배치·하강은 E21에서 실제 비교했고 raw5·착의0으로 예산 마감했습니다. E21에서는 pixel query를4회 사용했으며 질의 중 물리 진행은0입니다. E22의 `coordinated-entry-probe`는 실제 비교 후5점/no_contact로 종료했습니다. E23의 `coordinated-task-progress`는5점/1180QC로 종료했고, 후속E24도5점/1610QC로 감독 종료했습니다. E25용 `coordinated-opposing-rim`은 E24 종료 후 통합310CPU검사를 통과했으며 E25는5점/698QC로마감했습니다. E26은M2를실제비교해5점/1139QC로종료했고,E27은E25새파지의후속task-progress를선택했습니다. 옛 후보 파일의 `not_applied`는 당시 상태일 수 있으므로 현재 상태표를 우선합니다. 인증·home·원시 추론·actor 이벤트·세션DB·시뮬레이터 로그는 백업에 넣지 않았습니다. 성능 자원121행은 정제된 수치 증거입니다. 실행 원본의 trusted 평가/audit는 비공개 검수용이고 actor에 연결하지 않습니다.
 
@@ -57,7 +61,7 @@ command -v hf >/dev/null || uv tool install huggingface_hub==2.4.0
 hf auth login
 ```
 
-기존 checkout이나 `.venv`가 있으면 새로 덮어쓰지 않고 먼저 상태를 확인합니다. HF 인증은 새 서버에서 준비하며 토큰을 공개 명령·문서에 넣지 않습니다. 다음 코드는 **먼저 초기 전체 백업**을 새 staging에 복원합니다. 다음 E27 계획에는 초기 자산·E07 백업 뒤 `receipt`를 `docs/project/sessions/20261107-e25-backup-verification.json`으로 바꿔 E25도 별도 새 경로에 복원하고 같은 충돌 거부 병합을 수행합니다. E25 고정 revision은 `79e74c3dda23a676a59754005a22d55e89c6034f`입니다. E27은 E25의698경계에서 분기하고 이번 재실행의657/667 관측을 history로 사용할 예정이므로, 다른 시도 원본을 직접 부모로 대신하지 않습니다. 다른 묶음도 필요할 때 같은 방법으로 복원합니다.
+기존 checkout이나 `.venv`가 있으면 새로 덮어쓰지 않고 먼저 상태를 확인합니다. HF 인증은 새 서버에서 준비하며 토큰을 공개 명령·문서에 넣지 않습니다. 다음 코드는 **먼저 초기 전체 백업**을 새 staging에 복원합니다. E28 후보를 재선택한 경우 초기 자산·E07 백업 뒤 `receipt`를 `docs/project/sessions/20261107-e27-backup-verification.json`으로 바꿔 E27도 별도 새 경로에 복원하고 같은 충돌 거부 병합을 수행합니다. E27 고정 revision은 `6506b15378417c445bb8e84dbc43990a0c0fd291`입니다. 후보의 직접 부모는 E27/928이며 새 재실행 중890/906의 공개 관측을 얻는 설정입니다. 아직 실행하지 않았고, 다른 출발점을 선택하면 그 부모의 receipt·경계·과거 관측을 다시 확인합니다. 과거 E27은 E25/698과657/667을 사용해 완료했으며 현재 재개 계획으로 복사하지 않습니다.
 
 ```bash
 .venv/bin/python - <<'PY_RESTORE'
@@ -140,3 +144,4 @@ wiring은 연결 시험이며 성공 시연이 아닙니다. 종료 ACK·정상 
 [과거 시작 안내 전체](START_HERE.pre-E15-20261106.ko.md)는 재현 이력으로 보존했습니다. 그 문서의 “E09부터 수정”, “WebRTC/Chrome 필수”, “다음은700 분기”는 현재 지시가 아닙니다. 다음 과제는 [STATUS](STATUS.md)의 최신 선택·실제 시작 여부와 명령을 확인한 뒤 새 run ID로 수행합니다. 직접 부모·prefix·과거 관측·예산·정착 설정·실행 소스도 해당 최신 명령을 따릅니다. 공유 prefix의 반복 분기를 독립 시연·검증 출처로 세지 않습니다. 사용자에게 이미 받은 재개·main 통합 승인을 반복해서 묻지 않습니다. 과거 E16에서는 독립 지지 진단과 한쪽 재파지를 실제 시행했으며, 국소 지지의 시각적 근거와 연속 입구 미확인을 구분합니다. 픽셀 조회는 보이는 표면 간 거리 질의이며 가림·접촉·입구 위상을 알아내는 기능이 아닙니다.
 
 M2격리후보3파일은[별도연구백업](sessions/20261107-m2-candidate-backup-verification.json)에보존했다. 이receipt의미채택/미통합표기는05:32백업당시이며,이후E25닫힘뒤E26용으로통합했다. 원본시연·훈련자료백업과구분한다.
+

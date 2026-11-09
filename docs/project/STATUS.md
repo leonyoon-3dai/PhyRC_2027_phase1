@@ -1,5 +1,9 @@
 # 수집 일시 중지 · E27 마감
 
+[처음 읽기](../../README.md) · [시간순 갤러리](../gallery/README.ko.md) · [기술 발표](PRESENTATION.ko.md) · [수집 구현](../collection/guides/astra-end-to-end.ko.md) · [전체 이력](HISTORY.ko.md)
+
+이 문서는 **현재 중단 상태와 재개 조건**의 기준입니다. 시간순 설명과 장면 비교는 위 갤러리·이력에서 읽고, 아래 접힌 기록은 당시 실행 상태로 구분합니다.
+
 **사용자 요청으로 E27까지만 마감하고 새 수집을 중지했습니다. E28은 시작하지 않았습니다. 서버 종료 후 오프라인 리뷰·분석·전략 검토를 거쳐 재개 여부와 방법을 다시 정합니다.** [마감·오프라인 검토](SESSION_WRAPUP_20261107.ko.md)
 
 **E27은 공식5/50·픽업5·착의0·success=false,1159/1159전이 검사 통과로 마감했습니다.** 새 파지의 양측 들기·운반과 팔 접근, 목표 추종·관측 복구를 실제 수행했지만 소매 통과 득점은 없었습니다. 최고5점이며10점은 아직 미달성입니다.
@@ -657,3 +661,4 @@ PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.codex_clie
 </details>
 
 </details>
+
