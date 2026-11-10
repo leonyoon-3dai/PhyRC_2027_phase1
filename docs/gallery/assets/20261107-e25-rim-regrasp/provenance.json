@@ -92,8 +92,8 @@
   },
   "mp4": {
     "file": "event.mp4",
-    "bytes": 990370,
-    "sha256": "1cf9b7ef19b87edee7f6cec4f341e17fc5ebb84ae0116e6151e73ac6e9c8eb83",
+    "bytes": 990356,
+    "sha256": "aee3739a8099cfd67c3e31138b8c47ba0817d1a96da00e16dcd072eab9506b77",
     "stream": {
       "width": 512,
       "height": 588,

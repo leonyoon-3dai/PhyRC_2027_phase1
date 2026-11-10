@@ -33,7 +33,7 @@
   "pdf": {
     "path": "docs/guide/PhyRC_2027_Repository_Guide_KR.pdf",
     "source_sha256": "3ea510088e195f894045ac3758e334afaf72be20dcb8be0feeb6a6bb44856e82",
-    "display_sha256": "4e42058499f95d539d7c671940e8bf5669e024cbfb127d87dbfa62e7f2495182",
+    "display_sha256": "598ef5c8ed3f71322723bec6bd83a839614b84edead1b2aab133ed3ef0134ff0",
     "page_count": 26,
     "pages_modified_1based": [
       11,
@@ -51,5 +51,11 @@
     "action_array_modified": false,
     "simulation_runs": 0,
     "model_calls": 0
+  },
+  "publication_build": {
+    "github_run_id": "42727046075",
+    "created_at_utc": "2026-11-10T00:19:12.486923+00:00",
+    "cpu_only": true,
+    "code_checks_passed": 18
   }
 }
