@@ -4,6 +4,8 @@
 
 [**시간순 시연 갤러리**](docs/gallery/README.ko.md) · [**Astra 수집 전체 과정**](docs/collection/guides/astra-end-to-end.ko.md) · [**기술 발표 가이드**](docs/project/PRESENTATION.ko.md) · [**전체 문서 지도**](docs/README.ko.md) · [**원본 참가 안내**](README.upstream.md)
 
+> **리뷰 기준:** 최신 통합본은 [main](https://github.com/leonyoon-3dai/PhyRC_2027_phase1/tree/main)에서 확인합니다. 문서와 갤러리는 현재 정리·검토 중인 초안입니다.
+
 > **현재:** E27까지 수집을 마감하고 오프라인 검토 중입니다. 최고 **로컬 공식 평가기 원점수5/50**, 착의 득점 **0**, `success=false`입니다. E28은 준비한 후보로 **미실행**입니다. 새 시연으로 정책을 학습한 결과나 Codabench 점수로 소개하지 않습니다. [현재 상태](docs/project/STATUS.md)
 
 ## 먼저 볼 장면 · 새 파지로 운반하고 팔에 접근한 E27
