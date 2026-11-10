@@ -1,5 +1,7 @@
 # E07: 함께 들기·첫 5점·마네킹 방향 운반의 중간 검토
 
+**화면 배치:** 로봇을 나란히 비교하는 그림은 왼쪽 `robot_1`, 오른쪽 `robot_0`입니다. 카메라 픽셀을 좌우 반전하지 않고 표시 위치만 바꿨습니다. 원본 관측·행동의 로봇 번호와 배열 순서는 그대로입니다.
+
 **이후 구간:** [관측 48·700전이의 마네킹 손 근처 운반과 후속 분기 후보](2026-11-06-transport-waypoint.ko.md). 아래 고정 검토의 시각·경계·원본은 그대로 보존합니다.
 
 [첫 5점까지의 단계별 시간·모델 호출 분석](2026-11-06-first5-time-breakdown.ko.md)에서 접근·재파지 과정의 비용을 따로 확인할 수 있습니다.
@@ -25,9 +27,9 @@
 |---|---|
 | ![관측25 overview](../assets/20261106-coordinated-first5-review/observation-00025-overview.png) | ![관측27 overview](../assets/20261106-coordinated-first5-review/observation-00027-overview.png) |
 
-| 관측 27: 로봇 0 손목 | 같은 시각: 로봇 1 손목 |
-|---|---|
-| ![관측27 robot0 wrist](../assets/20261106-coordinated-first5-review/observation-00027-robot_0_wrist.png) | ![관측27 robot1 wrist](../assets/20261106-coordinated-first5-review/observation-00027-robot_1_wrist.png) |
+| 같은 시각: 로봇 1 손목 | 관측 27: 로봇 0 손목 |
+| --- | --- |
+| ![관측27 robot1 wrist](../assets/20261106-coordinated-first5-review/observation-00027-robot_1_wrist.png) | ![관측27 robot0 wrist](../assets/20261106-coordinated-first5-review/observation-00027-robot_0_wrist.png) |
 
 두 로봇의 lift 관절은 관측 25→27에서 각각 약 **0.295m** 올라갔습니다. 위 수치는 로봇 관절의 변화이며 천 자체의 높이·접촉력 측정은 아닙니다. 모든 선별 관측에서 두 `gripper_close_command`가 참이지만, 닫기 의도와 실제 파지는 별개입니다. 사진의 천·손끝 관계와 연속 행동을 함께 볼 때 **공동 지지와 들기를 뒷받침하는 시각적 근거**가 있습니다. 정확한 파지 접촉이나 이후까지 지속되는 안정성은 이 자료만으로 확정하지 않습니다.
 
@@ -69,19 +71,19 @@
 
 ## 마네킹 방향 회전과 실제 전진
 
-| 관측 34: 회전 전 로봇 0 머리 | 같은 시각: 로봇 1 머리 |
-|---|---|
-| ![관측34 robot0 head](../assets/20261106-coordinated-first5-review/observation-00034-robot_0_head.png) | ![관측34 robot1 head](../assets/20261106-coordinated-first5-review/observation-00034-robot_1_head.png) |
+| 같은 시각: 로봇 1 머리 | 관측 34: 회전 전 로봇 0 머리 |
+| --- | --- |
+| ![관측34 robot1 head](../assets/20261106-coordinated-first5-review/observation-00034-robot_1_head.png) | ![관측34 robot0 head](../assets/20261106-coordinated-first5-review/observation-00034-robot_0_head.png) |
 
-| 관측 37: 회전 후 로봇 0 머리 | 같은 시각: 로봇 1 머리 |
-|---|---|
-| ![관측37 robot0 head](../assets/20261106-coordinated-first5-review/observation-00037-robot_0_head.png) | ![관측37 robot1 head](../assets/20261106-coordinated-first5-review/observation-00037-robot_1_head.png) |
+| 같은 시각: 로봇 1 머리 | 관측 37: 회전 후 로봇 0 머리 |
+| --- | --- |
+| ![관측37 robot1 head](../assets/20261106-coordinated-first5-review/observation-00037-robot_1_head.png) | ![관측37 robot0 head](../assets/20261106-coordinated-first5-review/observation-00037-robot_0_head.png) |
 
 결정 34~36은 양쪽 `base_yaw=-0.2`와 서로 반대인 `base_forward=-0.202/+0.202`를 조합해 짝을 회전시켰습니다. 두 머리 카메라에서는 천이 양쪽 손끝 가까이에 남아 있고, 처음 화면 밖에 있던 마네킹이 앞쪽에 나타납니다. 모델의 “양쪽 그립이 안정적”이라는 이유는 모델의 시각 판단으로 보존하며 접촉 정답 라벨로 사용하지 않습니다.
 
-| 관측 39: 전진 후 로봇 0 머리 | 같은 시각: 로봇 1 머리 |
-|---|---|
-| ![관측39 robot0 head](../assets/20261106-coordinated-first5-review/observation-00039-robot_0_head.png) | ![관측39 robot1 head](../assets/20261106-coordinated-first5-review/observation-00039-robot_1_head.png) |
+| 같은 시각: 로봇 1 머리 | 관측 39: 전진 후 로봇 0 머리 |
+| --- | --- |
+| ![관측39 robot1 head](../assets/20261106-coordinated-first5-review/observation-00039-robot_1_head.png) | ![관측39 robot0 head](../assets/20261106-coordinated-first5-review/observation-00039-robot_0_head.png) |
 
 | 관측 37: 회전 후 | 관측 39: 40전이·2초 함께 이동 후 |
 |---|---|

@@ -1,14 +1,16 @@
 # E07: 마네킹 손 근처 운반 구간과 후속 분기 후보
 
+**화면 배치:** 로봇을 나란히 비교하는 그림은 왼쪽 `robot_1`, 오른쪽 `robot_0`입니다. 카메라 픽셀을 좌우 반전하지 않고 표시 위치만 바꿨습니다. 원본 관측·행동의 로봇 번호와 배열 순서는 그대로입니다.
+
 **두 로봇이 옷을 손끝 사이에 유지한 채 마네킹 손 근처까지 운반한 모습을 보존했습니다.** 아래는 E07 관측 48의 원본 공개 카메라 3장입니다. 소매 통과·최종 정렬·전체 착의 완료는 확인하지 않았습니다.
 
 [선별 기록·원본 SHA·분기 조건](../assets/20261106-transport-waypoint/snapshot.json) · [앞선 첫 5점·공동 운반 검토](2026-11-06-coordinated-first5-review.ko.md) · [수집 목차](../README.ko.md)
 
 <img src="../assets/20261106-transport-waypoint/observation-00048-overview.png" width="640" alt="관측48 overview: 두 로봇과 마네킹 손 근처로 옮긴 옷의 원본 관측">
 
-| 같은 관측의 로봇 0 머리 카메라 | 같은 관측의 로봇 1 머리 카메라 |
-|---|---|
-| ![관측48 로봇0 머리 원본](../assets/20261106-transport-waypoint/observation-00048-robot_0_head.png) | ![관측48 로봇1 머리 원본](../assets/20261106-transport-waypoint/observation-00048-robot_1_head.png) |
+| 같은 관측의 로봇 1 머리 카메라 | 같은 관측의 로봇 0 머리 카메라 |
+| --- | --- |
+| ![관측48 로봇1 머리 원본](../assets/20261106-transport-waypoint/observation-00048-robot_1_head.png) | ![관측48 로봇0 머리 원본](../assets/20261106-transport-waypoint/observation-00048-robot_0_head.png) |
 
 파랑·노랑 천이 두 손끝 사이에 남아 있고 마네킹의 손과 상체가 가까이 보입니다. 공개 이미지의 육안 검토이며 내부 천 기하·접촉 정답을 사용하지 않았습니다. 그리퍼와 천의 정확한 접촉, 보이지 않는 소매 내부, 이후 파지 안정성까지 증명하는 사진은 아닙니다. 원본 256×256 PNG를 바꾸지 않고 표시 크기만 늘렸습니다.
 

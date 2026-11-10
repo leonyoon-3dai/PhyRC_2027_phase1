@@ -10,7 +10,7 @@
 
 별도 CPU 검사 **13개**는 Z/거리 구분, 정확한 원본 값, invalid·영상 경계·정수 좌표, 요청 예산, 오래된 관측 거부, 같은 카메라 내 차이와 교차 카메라·시각 거부, 응답 JSON 해석과 tool event 거부를 확인했습니다. 실제 파일 읽기·해시·조회 검사의 경과는 약 **0.055초**였습니다. 모델·GPU 호출은 없었고 HDF5·audit·평가·숨은 기하를 읽지 않았습니다. 이 offline 비용은 실제 모델 질의 지연을 포함하지 않습니다.
 
-첫 관측의 [wrist0 RGB](../attempts/20261106-astra-hem-depth-001/first-call/01-robot_0_wrist.png)와 [wrist1 RGB](../attempts/20261106-astra-hem-depth-001/first-call/02-robot_1_wrist.png)는 수치 증거의 해당 원본 RGB SHA256과 일치합니다. 새 이미지나 수정 영상은 만들지 않았습니다. E13의 [실제 depth 패널](../attempts/20261106-astra-hem-depth-001/first-call/15-current_wrist_depth.png)은 이미 전달된 입력이고, 여기서 제안하는 픽셀별 숫자 질의는 아직 전달하지 않은 별도 후보입니다.
+첫 관측의 [wrist0 RGB](../attempts/20261106-astra-hem-depth-001/first-call/01-robot_0_wrist.png)와 [wrist1 RGB](../attempts/20261106-astra-hem-depth-001/first-call/02-robot_1_wrist.png)는 수치 증거의 해당 원본 RGB SHA256과 일치합니다. 새 이미지나 수정 영상은 만들지 않았습니다. E13의 [당시 depth 패널 원본](../attempts/20261106-astra-hem-depth-001/first-call/15-current_wrist_depth.png)은 이미 전달된 입력입니다. [현재 표시용 재배치](../../gallery/assets/robot-layout-20261110/e13-current-wrist-depth.png)는 왼쪽robot_1·오른쪽robot_0으로 타일만 옮긴 파생 화면이며 당시 입력 원본을 바꾸지 않습니다. 여기서 제안한 픽셀별 숫자 질의는 이 문서 작성 당시 아직 전달하지 않은 별도 후보입니다.
 
 ## 숫자가 뜻하는 것과 뜻하지 않는 것
 

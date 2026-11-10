@@ -6,7 +6,7 @@
 
 <img src="assets/20261106-astra-hem-depth-001/preview.gif" width="960" alt="E13 새 구간 전체700~810경계: 네 공개 카메라에서 앞·왼쪽 정렬, 내려보기, 철수·형태 복구, 중립 대기, 팔 신장과 재정렬 뒤 모델 종료를 보여 주는 실제 반복 영상">
 
-**새 구간 전체 700~810경계 · 네 카메라 · 111프레임 · 22.2초 반복 · 5fps · 4배 느리게 · GIF 5.95MB(5,948,246바이트).** 새 물리 진행은 110전이·5.50초입니다. 위는 로봇 0·1의 머리, 아래는 로봇 0·1의 손목입니다. 카메라당 원본은 256×256, 합성 화면은 512×588이며 선택 구간의 프레임 생략·시간 보간·자르기가 없습니다. 양 끝 경계를 포함한 111장을 표시하므로 영상 길이는 22.2초이며, 모델 응답 대기는 포함되지 않습니다.
+**새 구간 전체 700~810경계 · 네 카메라 · 111프레임 · 22.2초 반복 · 5fps · 4배 느리게 · GIF 용량은 출처 참조.** 새 물리 진행은 110전이·5.50초입니다. 위는 머리, 아래는 손목 카메라입니다. 두 행 모두 **왼쪽 robot_1 · 오른쪽 robot_0**입니다. 카메라당 원본은 256×256, 합성 화면은 512×588이며 선택 구간의 프레임 생략·시간 보간·자르기가 없습니다. 양 끝 경계를 포함한 111장을 표시하므로 영상 길이는 22.2초이며, 모델 응답 대기는 포함되지 않습니다.
 
 [**새 구간 MP4**](assets/20261106-astra-hem-depth-001/event.mp4) · [원본 SHA·경계 매핑·변환 근거](assets/20261106-astra-hem-depth-001/provenance.json) · [재실행 포함 전체 162초 overview MP4](../collection/attempts/20261106-astra-hem-depth-001/overview.mp4)
 
@@ -21,9 +21,9 @@ E12와 같은 E07 행동 700전이를 새로 재실행하고 `coordinated-hem-ro
 
 현재 공개 로봇 상태와 16×16 depth 중앙값 격자는 그대로 제공했습니다. 과거 사진은 같은 새 에피소드에서 직접 얻은 공개 관측이며, 과거의 로봇 상태·depth를 현재 수치로 섞지 않았습니다. [첫 호출 실제 16장·순서·현재/과거 표시·SHA256](../collection/attempts/20261106-astra-hem-depth-001/first-call-images.json) · [실제 기본 프롬프트](../collection/attempts/20261106-astra-hem-depth-001/prompt.txt)
 
-<img src="../collection/attempts/20261106-astra-hem-depth-001/first-call/15-current_wrist_depth.png" width="768" alt="E13 첫 모델 호출의 실제16번째 입력: 현재 양쪽 손목 광축Z depth, 고정0.03~1.20m 회색 표시와 invalid·범위밖 구분">
+<img src="assets/robot-layout-20261110/e13-current-wrist-depth.png" width="768" alt="E13 당시 depth 패널의 표시용 재배치: 왼쪽robot_1·오른쪽robot_0, 현재 양쪽 손목 광축Z depth, 고정0.03~1.20m 회색 표시와 invalid·범위밖 구분">
 
-**위 그림은 첫 호출에 전달한 실제 16번째 이미지입니다.** RGB 사진이나 물체 분류 마스크가 아니라 현재 손목의 광축 Z 깊이·유효성을 표시합니다. 0.03m는 흰색, 1.20m는 검은색이며 invalid는 자홍색, 하한 미만은 청록색, 상한 초과는 주황색입니다. 범위 밖의 실제 거리 차이와 가려진 표면은 이 표시로 읽을 수 없습니다. 색만으로 손·소매·접촉·통과 여부를 확정하지 않습니다. [고정 변환과 정보 손실 비교](../collection/research/2026-11-06-wrist-depth-input.ko.md)
+**위 그림은 당시 첫 호출의 depth 패널을 왼쪽 robot_1·오른쪽 robot_0으로 재배치한 표시용 파생본입니다.** [당시 모델 입력 원본](../collection/attempts/20261106-astra-hem-depth-001/first-call/15-current_wrist_depth.png)은 그대로 보존하며, 새 모델 입력·새 실험으로 해석하지 않습니다. [배치 변경 출처](assets/robot-layout-20261110/provenance.json). RGB 사진이나 물체 분류 마스크가 아니라 현재 손목의 광축 Z 깊이·유효성을 표시합니다. 0.03m는 흰색, 1.20m는 검은색이며 invalid는 자홍색, 하한 미만은 청록색, 상한 초과는 주황색입니다. 범위 밖의 실제 거리 차이와 가려진 표면은 이 표시로 읽을 수 없습니다. 색만으로 손·소매·접촉·통과 여부를 확정하지 않습니다. [고정 변환과 정보 손실 비교](../collection/research/2026-11-06-wrist-depth-input.ko.md)
 
 ## 실제 행동과 남은 불확실성
 

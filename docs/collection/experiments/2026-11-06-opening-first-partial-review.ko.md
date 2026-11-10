@@ -1,5 +1,7 @@
 # E15 부분 원인 검토: 첫 다섯 결정에서 층 분리와 시야 가림까지
 
+**화면 배치:** 로봇을 나란히 비교하는 그림은 왼쪽 `robot_1`, 오른쪽 `robot_0`입니다. 카메라 픽셀을 좌우 반전하지 않고 표시 위치만 바꿨습니다. 원본 관측·행동의 로봇 번호와 배열 순서는 그대로입니다.
+
 **초기 들기·기울이기 뒤 가까운 가장자리의 층 분리가 나타났고, 모델은 이를 가능한 입구로 해석해 계속 들어 올렸습니다. 더 큰 상승 뒤에는 팔·천의 가림이 커졌습니다.** 입구의 정체나 양쪽 파지의 독립적 지지를 확정한 결과는 아닙니다.
 
 이 페이지는 `20261106-astra-opening264-001`의 **첫 5개 실행 결정 D0…D4와 각각의 중립 대기까지만 고정한 부분 검토**입니다. 264→325경계의 모델 행동 31전이와 제어기 중립 30전이, 총 61전이·3.05 simulation초를 다룹니다. **E15 최종 결과나 현재 진행 상태를 나타내지 않습니다.** 관측 `00005`는 D4 실행·대기 뒤의 다음 D5 입력 상태라는 뜻이며, 여섯 번째 모델 판단·행동은 검토하지 않았습니다.
@@ -12,21 +14,21 @@
 
 **D0 입력 · 관측 00000 · 경계 264 · 공개 시계 14.725000768초.** 테이블 위 넓은 파란 몸판과 가까운 노란 가장자리가 보입니다. 그리퍼 근처에 천이 있다는 사실이나 닫기 의도만으로 파지가 확인되지는 않습니다.
 
-| robot_0_head | robot_1_head |
-|---|---|
-| <img src="../assets/20261106-opening-first-partial-review/obs00000-robot_0_head.png" width="420" alt="E15 D0 입력 robot0 head 원본 스냅샷: 테이블에 펼쳐진 몸판과 가까운 노란 가장자리"> | <img src="../assets/20261106-opening-first-partial-review/obs00000-robot_1_head.png" width="420" alt="E15 D0 입력 robot1 head 원본 스냅샷: 양쪽 손끝 근처의 천과 펼쳐진 몸판"> |
+| robot_1_head | robot_0_head |
+| --- | --- |
+| <img src="../assets/20261106-opening-first-partial-review/obs00000-robot_1_head.png" width="420" alt="E15 D0 입력 robot1 head 원본 스냅샷: 양쪽 손끝 근처의 천과 펼쳐진 몸판"> | <img src="../assets/20261106-opening-first-partial-review/obs00000-robot_0_head.png" width="420" alt="E15 D0 입력 robot0 head 원본 스냅샷: 테이블에 펼쳐진 몸판과 가까운 노란 가장자리"> |
 
 **D3 입력 · 관측 00003 · 경계 295 · 공개 시계 16.275000849초.** D0의 지지 확인과 D1·D2의 두 보정 뒤입니다. 가까운 노란 가장자리와 위쪽 파란 층 사이에 가는 어두운 띠가 드러납니다. 이는 새롭게 보이는 층 분리이며, 관통 구멍이나 몸통 입구라는 정답은 아닙니다.
 
-| robot_0_head | robot_1_head |
-|---|---|
-| <img src="../assets/20261106-opening-first-partial-review/obs00003-robot_0_head.png" width="420" alt="E15 D3 입력 robot0 head 원본 스냅샷: 가까운 노란 가장자리와 파란 층 사이의 어두운 띠"> | <img src="../assets/20261106-opening-first-partial-review/obs00003-robot_1_head.png" width="420" alt="E15 D3 입력 robot1 head 원본 스냅샷: 그리퍼 주변에서 높이가 달라진 천과 겹친 가장자리"> |
+| robot_1_head | robot_0_head |
+| --- | --- |
+| <img src="../assets/20261106-opening-first-partial-review/obs00003-robot_1_head.png" width="420" alt="E15 D3 입력 robot1 head 원본 스냅샷: 그리퍼 주변에서 높이가 달라진 천과 겹친 가장자리"> | <img src="../assets/20261106-opening-first-partial-review/obs00003-robot_0_head.png" width="420" alt="E15 D3 입력 robot0 head 원본 스냅샷: 가까운 노란 가장자리와 파란 층 사이의 어두운 띠"> |
 
 **D5 입력 상태 · 관측 00005 · 경계 325 · 공개 시계 17.775000927초.** D3·D4의 추가 상승 뒤입니다. 특히 D4의 더 큰 상승 뒤 머리 카메라 중앙을 로봇 팔이 크게 가리고, 천은 좁고 겹친 띠처럼 보입니다. 카메라 시야 변화와 천의 접힘이 각각 얼마나 기여했는지는 이 자료만으로 분리하지 못했습니다.
 
-| robot_0_head | robot_1_head |
-|---|---|
-| <img src="../assets/20261106-opening-first-partial-review/obs00005-robot_0_head.png" width="420" alt="E15 D4 실행 뒤 robot0 head 원본 스냅샷: 중앙 팔 가림과 겹친 천 가장자리"> | <img src="../assets/20261106-opening-first-partial-review/obs00005-robot_1_head.png" width="420" alt="E15 D4 실행 뒤 robot1 head 원본 스냅샷: 커진 팔 가림과 좁게 보이는 천"> |
+| robot_1_head | robot_0_head |
+| --- | --- |
+| <img src="../assets/20261106-opening-first-partial-review/obs00005-robot_1_head.png" width="420" alt="E15 D4 실행 뒤 robot1 head 원본 스냅샷: 커진 팔 가림과 좁게 보이는 천"> | <img src="../assets/20261106-opening-first-partial-review/obs00005-robot_0_head.png" width="420" alt="E15 D4 실행 뒤 robot0 head 원본 스냅샷: 중앙 팔 가림과 겹친 천 가장자리"> |
 
 ## 실제 행동과 모델 판단
 

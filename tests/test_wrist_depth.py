@@ -42,15 +42,19 @@ class WristDepthTest(unittest.TestCase):
             self.assertAlmostEqual(meta['maximum_rounding_error_m'], 1.17 / 510)
             self.assertTrue(np.isfinite(meta['quantization_step_m']))
             self.assertTrue(np.isfinite(meta['maximum_rounding_error_m']))
-            self.assertEqual(meta['panels'][0]['pixel_counts'], {'effective_valid': 65536,
-                'invalid': 0, 'below_range': 1, 'within_range': 65535, 'above_range': 0})
-            self.assertEqual(meta['panels'][1]['pixel_counts'], {'effective_valid': 65535,
+            self.assertEqual([p['camera'] for p in meta['panels']], ['robot_1_wrist', 'robot_0_wrist'])
+            self.assertEqual([p['pixel_rectangle_xyxy_exclusive'] for p in meta['panels']],
+                             [[0, 68, 256, 324], [256, 68, 512, 324]])
+            self.assertEqual(meta['panels'][0]['pixel_counts'], {'effective_valid': 65535,
                 'invalid': 1, 'below_range': 0, 'within_range': 65535, 'above_range': 0})
+            self.assertEqual(meta['panels'][1]['pixel_counts'], {'effective_valid': 65536,
+                'invalid': 0, 'below_range': 1, 'within_range': 65535, 'above_range': 0})
             self.assertEqual(meta['input_image_order'][-1]['simulation_time_s'], 37.5)
             self.assertEqual(hashlib.sha256(result[-1].read_bytes()).hexdigest(), meta['png_sha256'])
             pixels = np.asarray(Image.open(result[-1]))
             self.assertEqual(pixels.shape, (424, 512, 3))
-            for panel, source_i in zip(meta['panels'], (1, 2)):
+            for panel, source_i in zip(meta['panels'], (2, 1)):
+                self.assertEqual(panel['matching_current_rgb_image_index'], source_i)
                 x0, y0, x1, y1 = panel['pixel_rectangle_xyxy_exclusive']
                 np.testing.assert_array_equal(pixels[y0:y1, x0:x1],
                     render_depth(obs['depth'][source_i, :, :, 0], obs['depth_valid'][source_i, :, :, 0]))

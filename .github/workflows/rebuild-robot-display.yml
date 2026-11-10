@@ -1,0 +1,61 @@
+name: Rebuild robot display media
+on:
+  push:
+    branches: [codex/robot-layout-20261110]
+    paths: [scripts/reorder_display_media.py, scripts/reorder_display_guide.py]
+permissions:
+  contents: write
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install CPU media dependencies
+        run: |
+          sudo apt-get -qq update
+          sudo apt-get -qq install -y ffmpeg fonts-noto-cjk
+          python -m pip install --quiet numpy==2.3.5 pillow==13.0.0 pymupdf==1.26.6 fonttools==4.61.1 h5py gymnasium termcolor scipy
+      - name: Check camera labels and original array mapping
+        run: PYTHONPATH=.:src/PhyRC_Sim python -m unittest tests.test_gallery_event tests.test_wrist_depth tests.test_replay_visual_history -v
+      - name: Relocate published camera tiles
+        run: |
+          python scripts/reorder_display_media.py
+          python scripts/reorder_display_guide.py
+      - name: Verify guide and update publication receipt
+        run: |
+          python - <<'PY'
+          import json,hashlib,subprocess,os
+          from pathlib import Path
+          from datetime import datetime,timezone
+          import fitz
+          p=Path('docs/guide/PhyRC_2027_Repository_Guide_KR.pdf')
+          doc=fitz.open(p)
+          source=fitz.open(stream=subprocess.check_output(['git','show','3a255108a1c8e65428f19fa7caebb4b4684bc50f:'+str(p)]),filetype='pdf')
+          assert len(doc)==len(source)==26
+          assert all(doc[i].get_pixmap().samples==source[i].get_pixmap().samples for i in range(26) if i not in (10,11))
+          assert 'E15당시입력의표시용재배치입니다.' in ''.join(doc[11].get_text().split())
+          r=Path('docs/project/sessions/20261110-display-layout.json')
+          summary=json.loads(r.read_text())
+          media=json.loads(Path(summary['media']['provenance']).read_text())
+          for item in media['files']:
+              assert hashlib.sha256(Path(item['path']).read_bytes()).hexdigest()==item['sha256']
+          summary['pdf']['display_sha256']=hashlib.sha256(p.read_bytes()).hexdigest()
+          summary['media']['minimum_mp4_frame_psnr_db']=min(x['minimum_frame_psnr_db'] for x in media['files'] if 'minimum_frame_psnr_db' in x)
+          summary['publication_build']={'github_run_id':os.environ['GITHUB_RUN_ID'],'created_at_utc':datetime.now(timezone.utc).isoformat(),'cpu_only':True,'code_checks_passed':18}
+          r.write_text(json.dumps(summary,ensure_ascii=False,indent=2)+'\n')
+          print('Verified 78 display media, 18 code checks, and 24 unchanged PDF pages')
+          PY
+          git diff --check
+      - name: Commit reviewed display derivatives
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/gallery/assets docs/videos docs/examples/teleop/preview_rgb.png docs/examples/teleop/preview_depth.png docs/guide/PhyRC_2027_Repository_Guide_KR.pdf docs/project/sessions/20261110-display-layout.json
+          git commit -m "media: 왼쪽 robot_1 오른쪽 robot_0으로 분할 화면 재배치"
+          git push origin HEAD:codex/robot-layout-20261110

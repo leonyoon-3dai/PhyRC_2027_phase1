@@ -66,6 +66,8 @@ E18부터 실제 픽셀 질의, E19부터 named action을 사용했습니다. E1
 | 한 전이 |0.05로봇초|20Hz 경계·60Hz 제어3회·240Hz 물리12tick|
 | 한 모델 판단 |최대20전이 요청|호출·판단·전이·episode는 다른 수|
 
+표시용 로봇 비교 화면은 **왼쪽 robot_1·오른쪽 robot_0**으로 통일합니다.4분할은 윗행 머리·아랫행 손목이며, 이 표시 순서는 원본 RGB5 배열과 행동 행0/행1의 계약을 변경하지 않습니다.
+
 행동 순서는 전후·좌우·base yaw·lift·arm extension·wrist yaw/pitch/roll·gripper입니다. 앞8개는 속도 비율이고 gripper는 `>0.5`닫기·`<−0.5`열기·중간은 이전 의도 유지입니다.
 
 선택한 중립6전이는0.3초이며 `action_source=controller_settle`로 구분합니다.0명령은 실제 정지·목표 도달·파지 성공 인증이 아닙니다. [`step_profile.py`](../../participant/collection/step_profile.py)는 관측·capture 등 수치 시간 계측을 지원합니다. 모델 경로 시간에는 입력·CLI·통신·대기·생성이 포함되어 순수 추론시간으로 부르지 않습니다.

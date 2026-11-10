@@ -1,5 +1,7 @@
 # B1c: 두 후보의 배치 개선과 판단 보류 비교
 
+**화면 배치:** 로봇을 나란히 비교하는 그림은 왼쪽 `robot_1`, 오른쪽 `robot_0`입니다. 카메라 픽셀을 좌우 반전하지 않고 표시 위치만 바꿨습니다. 원본 관측·행동의 로봇 번호와 배열 순서는 그대로입니다.
+
 **기존 obs2의 한 조각 몰림은 B의 색 성분 합집합으로 영상상 분리를 개선했고, C는 남은 모호함 때문에 후보 쌍 출력을 보류했습니다.** 개선된 배치와 유효 파지점 판정은 구분합니다. 기존 B1b의 코드·결과를 그대로 보존하고 새 파일에서 세 방법을 비교했습니다.
 
 [전체 5프레임 결과·후보·보류 이유·원본 SHA](../assets/20261106-b1c-color-pair-comparison/result.json) · [실제 회귀 대조](../assets/20261106-b1c-color-pair-comparison/comparison-checks.json) · [새 비교 모듈](../../../participant/research/color_pair_comparison.py) · [CPU 테스트](../../../tests/test_color_pair_comparison.py) · [기존 B1b 실패](2026-11-06-b1b-color-depth-roi.ko.md)
@@ -50,13 +52,13 @@ C는 `multiple_color_components_semantically_ambiguous`와 양 후보의 `depth_
 
 A/B는 5건에서 후보 쌍을 내보냈고 C는 2건 출력·3건 보류했습니다. 이는 **출력·보류 개수**이며 정확도나 성공률이 아닙니다. 표에 실패·주의 사례를 모두 포함했습니다. 그림의 초록 원은 쌍을 출력했다는 뜻이고 빨간 점선은 보류된 제안점입니다. 분홍 상자는 비교 문맥의 모든 적격 색 성분을 표시합니다.
 
-| obs0 · 기존 / R depth 주의 | obs12 · 기존 / 후보 출력 |
-|---|---|
-| ![obs0 A/B/C](../assets/20261106-b1c-color-pair-comparison/obs00000-robot_0_head-ABC.svg) | ![obs12 A/B/C](../assets/20261106-b1c-color-pair-comparison/obs00012-robot_1_head-ABC.svg) |
+| obs12 · 기존 / 후보 출력 | obs0 · 기존 / R depth 주의 |
+| --- | --- |
+| ![obs12 A/B/C](../assets/20261106-b1c-color-pair-comparison/obs00012-robot_1_head-ABC.svg) | ![obs0 A/B/C](../assets/20261106-b1c-color-pair-comparison/obs00000-robot_0_head-ABC.svg) |
 
-| obs1 · 추가 / 양 후보 depth 주의 | obs8 · 추가 / 후보 출력 |
-|---|---|
-| ![obs1 A/B/C](../assets/20261106-b1c-color-pair-comparison/obs00001-robot_0_head-ABC.svg) | ![obs8 A/B/C](../assets/20261106-b1c-color-pair-comparison/obs00008-robot_1_head-ABC.svg) |
+| obs8 · 추가 / 후보 출력 | obs1 · 추가 / 양 후보 depth 주의 |
+| --- | --- |
+| ![obs8 A/B/C](../assets/20261106-b1c-color-pair-comparison/obs00008-robot_1_head-ABC.svg) | ![obs1 A/B/C](../assets/20261106-b1c-color-pair-comparison/obs00001-robot_0_head-ABC.svg) |
 
 ## 검증·과적합 위험·재현
 

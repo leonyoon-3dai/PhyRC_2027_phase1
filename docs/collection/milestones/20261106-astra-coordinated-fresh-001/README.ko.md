@@ -1,5 +1,7 @@
 # E07: 첫 5점 경계와 이후 마네킹 접근 장면
 
+**화면 배치:** 로봇을 나란히 비교하는 그림은 왼쪽 `robot_1`, 오른쪽 `robot_0`입니다. 카메라 픽셀을 좌우 반전하지 않고 표시 위치만 바꿨습니다. 원본 관측·행동의 로봇 번호와 배열 순서는 그대로입니다.
+
 [점수 구간 색인](../20261106-astra-coordinated-fresh-001.json) · [프레임 출처·SHA](manifest.json) · [전체 시도·영상](../../attempts/20261106-astra-coordinated-fresh-001/README.ko.md) · [종료 검토](../../reviews/20261106-astra-coordinated-fresh-001.ko.md)
 
 ## 첫 공식 픽업 5점: 전이 경계 356
@@ -16,9 +18,9 @@
 
 ![마네킹 접근 경계700의 실제 overview](images/approach-step-000700-overview.png)
 
-| 같은 시각 로봇 0 머리 | 같은 시각 로봇 1 머리 |
-|---|---|
-| ![경계700 robot0 head](images/approach-step-000700-robot_0_head.png) | ![경계700 robot1 head](images/approach-step-000700-robot_1_head.png) |
+| 같은 시각 로봇 1 머리 | 같은 시각 로봇 0 머리 |
+| --- | --- |
+| ![경계700 robot1 head](images/approach-step-000700-robot_1_head.png) | ![경계700 robot0 head](images/approach-step-000700-robot_0_head.png) |
 
 **에피소드 35.00초·전이 경계 700**은 결정 47의 680→700 `approach / progressing` 구간이 끝난 시점입니다. 원본 `next_obs/*_rgb[699]` 세 카메라를 같은 경계에서 추출했습니다. 두 손끝 가까이에 옷을 유지한 채 마네킹 앞에 접근한 장면을 보여 줍니다. 운반·정렬 완료나 새 득점 경계로 표시하지 않습니다.
 
