@@ -137,7 +137,7 @@ Exact keys, column order, and units are in the [data guide](docs/competition/DAT
 
 ![RGB from the 5 policy cameras](docs/videos/sample_cameras_rgb.gif)
 
-From left to right: **overview → robot_0 wrist → robot_1 wrist → robot_0 head → robot_1 head**.
+Display order updated for this fork: **overview → robot_1 wrist → robot_0 wrist → robot_1 head → robot_0 head**. Each robot pair shows robot_1 on the left and robot_0 on the right; the stored data order remains the upstream order.
 
 #### Depth
 

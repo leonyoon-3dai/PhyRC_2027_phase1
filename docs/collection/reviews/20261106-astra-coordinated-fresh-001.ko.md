@@ -1,5 +1,7 @@
 # E07 종료 검토: 함께 들기·운반 후 첫 소매 진입 시도
 
+**화면 배치:** 로봇을 나란히 비교하는 그림은 왼쪽 `robot_1`, 오른쪽 `robot_0`입니다. 카메라 픽셀을 좌우 반전하지 않고 표시 위치만 바꿨습니다. 원본 관측·행동의 로봇 번호와 배열 순서는 그대로입니다.
+
 **두 로봇이 옷을 함께 지지해 들고 마네킹 방향으로 운반한 부분 과정을 기록했으며, 80개 결정 예산을 모두 사용해 정상 종료했습니다.** 공식 픽업 원점수는 **5/50점**, 착의 `success=false`입니다. 착의 항목 득점은 없어서 최종 산식 점수는 **0 points/s**입니다. 이 정상 종료를 50점 달성이나 성공 시연 승인으로 해석하지 않습니다.
 
 [전체 프롬프트·행동·관측·영상](../attempts/20261106-astra-coordinated-fresh-001/README.ko.md) · [구조화 종료 검토](20261106-astra-coordinated-fresh-001.json) · [정확한 첫 5점·접근 프레임](../milestones/20261106-astra-coordinated-fresh-001/README.ko.md) · [당시 고정 시각 검토](../experiments/2026-11-06-coordinated-first5-review.ko.md) · [첫 5점까지 단계별 시간](../experiments/2026-11-06-first5-time-breakdown.ko.md)
@@ -37,9 +39,9 @@ E05의 한 로봇 픽업을 이어 재생한 실행이 아니라 처음부터 �
 
 모델은 결정 51, 전이 756→768부터 `first_sleeve` 단계에 들어갔습니다. 전체 실행에서 이 라벨을 붙인 구간은 **24개·254전이·12.70 simulation초**이며 모델의 시각 판단은 모두 `uncertain`이었습니다. 그 사이 방향 조정과 복구가 섞여 있으므로 24개를 독립적인 파지 실패나 새 시도 횟수로 세지 않습니다.
 
-| 종료 시 로봇 0 머리 | 종료 시 로봇 1 머리 |
-|---|---|
-| ![최종 robot0 head](../attempts/20261106-astra-coordinated-fresh-001/images/final-robot_0_head.png) | ![최종 robot1 head](../attempts/20261106-astra-coordinated-fresh-001/images/final-robot_1_head.png) |
+| 종료 시 로봇 1 머리 | 종료 시 로봇 0 머리 |
+| --- | --- |
+| ![최종 robot1 head](../attempts/20261106-astra-coordinated-fresh-001/images/final-robot_1_head.png) | ![최종 robot0 head](../attempts/20261106-astra-coordinated-fresh-001/images/final-robot_0_head.png) |
 
 ![최종 overview](../attempts/20261106-astra-coordinated-fresh-001/images/final-overview.png)
 

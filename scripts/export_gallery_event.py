@@ -19,7 +19,8 @@ from PIL import Image, ImageDraw, ImageFont
 from participant.collection.export_report import CAMERAS, identifier
 from participant.collection.validate_capture import complete_flag, load_json, sha256
 
-DEFAULT_CAMERAS = ('robot_0_head', 'robot_1_head', 'robot_0_wrist', 'robot_1_wrist')
+# Presentation order only; the public observation/action contract is unchanged.
+DEFAULT_CAMERAS = ('robot_1_head', 'robot_0_head', 'robot_1_wrist', 'robot_0_wrist')
 PLAYBACK_FPS = (1, 2, 4, 5, 10, 20)  # Exact integral GIF centisecond durations.
 
 
@@ -77,6 +78,18 @@ def boundary_pixels(episode, camera, boundary, count):
     return pixels
 
 
+def display_camera_order(cameras):
+    """Keep robot_1 left and robot_0 right, regardless of selection order.
+
+    An overview selection fills the slot of the single omitted robot camera.
+    The source RGB/depth indexing and robot IDs are never changed.
+    """
+    require(len(cameras) == 4 and len(set(cameras)) == 4 and all(c in CAMERAS for c in cameras),
+            'select four distinct designated public cameras')
+    selected = set(cameras)
+    return tuple(c if c in selected else 'overview' for c in DEFAULT_CAMERAS)
+
+
 def mosaic(views, cameras, boundary, tile_size):
     # All pixels retained, aspect ratio preserved; labels occupy separate bands.
     label_h, footer_h = 24, 28
@@ -111,8 +124,7 @@ def export_event(capture, output, *, start, end, run_id=None, validation=None,
     require(episode.startswith('demo_') and episode[5:].isdigit(), 'invalid episode name')
     require(type(start) is int and type(end) is int and 0 <= start < end,
             'specify increasing nonnegative inclusive boundaries')
-    require(len(cameras) == 4 and len(set(cameras)) == 4 and all(c in CAMERAS for c in cameras),
-            'select four distinct designated public cameras')
+    cameras = display_camera_order(cameras)
     require(fps in PLAYBACK_FPS and type(fps) is int, 'unsupported playback fps')
     require(type(tile_size) is int and 128 <= tile_size <= 512 and tile_size % 2 == 0,
             'tile size must be an even integer from 128 to 512')
@@ -178,6 +190,7 @@ def export_event(capture, output, *, start, end, run_id=None, validation=None,
                                      'for k < N also checked equal to obs[k]',
                           'contains_final_boundary': end == count, 'frames_omitted_within_interval': 0},
             'layout': {'columns': 2, 'rows': 2, 'cameras_row_major': list(cameras),
+                       'robot_columns': {'left': 'robot_1', 'right': 'robot_0'},
                        'source_height_width': source_dimensions, 'tile_size_px': tile_size,
                        'labels': 'camera names and derived episode-relative boundary/time only',
                        'resize': 'nearest_neighbor with aspect-preserving letterbox', 'cropped': False},
@@ -212,7 +225,8 @@ def main():
     parser.add_argument('--run-id')
     parser.add_argument('--validation', type=Path)
     parser.add_argument('--episode', default='demo_0')
-    parser.add_argument('--cameras', nargs=4, choices=CAMERAS, default=DEFAULT_CAMERAS)
+    parser.add_argument('--cameras', nargs=4, choices=CAMERAS, default=DEFAULT_CAMERAS,
+                        help='Select four cameras; displayed head row then wrist row, robot_1 left / robot_0 right')
     parser.add_argument('--fps', type=int, choices=PLAYBACK_FPS, default=5)
     parser.add_argument('--tile-size', type=int, default=256)
     parser.add_argument('--colors', type=int, default=64)

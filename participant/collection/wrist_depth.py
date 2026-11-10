@@ -16,11 +16,12 @@ from participant.collection.boundary import CONTRACT
 
 SCHEMA = 'phyrc-current-wrist-depth-panel-v1'
 CAMERAS = tuple(CONTRACT['competition_access']['allowed_cameras'])
-WRISTS = ('robot_0_wrist', 'robot_1_wrist')
+# Screen columns follow the physical view; the public camera/data order stays fixed.
+WRISTS = ('robot_1_wrist', 'robot_0_wrist')
 LOW, HIGH = .03, 1.20
 INVALID, BELOW, ABOVE = (255, 0, 255), (0, 255, 255), (255, 128, 0)
 MAX_IMAGES = 16
-TASK = '''An optional CURRENT wrist-depth panel is appended LAST after the RGB images (including any historical RGB groups). Its exact zero-based index, current simulation time and pixel rectangles are supplied in current_wrist_depth_panel. The RGB images at indices 0..4 remain CURRENT. Each wrist depth pane is native 256x256, matching that CURRENT wrist RGB, without interpolation. Depth is optical-axis Z in metres, not ray range: fixed 0.03m WHITE to 1.20m BLACK, with magenta invalid/missing (also nonfinite or nonpositive), cyan valid below0.03m, orange valid above1.20m. These colors encode range/validity, not hand/cloth labels. Out-of-range colors do not encode the exact distance. Missing pixels do not prove an opening or free space; the panel does not reveal hidden surfaces, object poses, contact or passage. Compare it with CURRENT RGB and the numeric public depth summaries, keeping occlusion and topology uncertain where unsupported.'''
+TASK = '''An optional CURRENT wrist-depth panel is appended LAST after the RGB images (including any historical RGB groups). Its exact zero-based index, current simulation time and pixel rectangles are supplied in current_wrist_depth_panel. The RGB images at indices 0..4 remain CURRENT. Screen left is robot_1_wrist and screen right is robot_0_wrist. Each wrist depth pane is native 256x256, matching that CURRENT wrist RGB, without interpolation. Depth is optical-axis Z in metres, not ray range: fixed 0.03m WHITE to 1.20m BLACK, with magenta invalid/missing (also nonfinite or nonpositive), cyan valid below0.03m, orange valid above1.20m. These colors encode range/validity, not hand/cloth labels. Out-of-range colors do not encode the exact distance. Missing pixels do not prove an opening or free space; the panel does not reveal hidden surfaces, object poses, contact or passage. Compare it with CURRENT RGB and the numeric public depth summaries, keeping occlusion and topology uncertain where unsupported.'''
 
 
 def _require(condition, message):

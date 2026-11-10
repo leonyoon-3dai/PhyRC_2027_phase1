@@ -6,6 +6,8 @@ Evaluation: pickup 5/50 points, dressing points 0/45, success=false. It is not a
 
 ![RGB from the 5 cameras](../../videos/sample_cameras_rgb.gif)
 
+Display order is **overview → robot_1 wrist → robot_0 wrist → robot_1 head → robot_0 head**. Within each robot pair, robot_1 is left and robot_0 is right. Camera pixels are not mirrored. This presentation order does not change the original HDF5/API camera order or action rows.
+
 [5-camera RGB MP4](../../videos/sample_all_cameras_rgb.mp4) · [Depth MP4](../../videos/sample_all_cameras_depth.mp4) ·
 [Teleop viewport MP4](../../videos/sample_teleop_viewport.mp4)
 

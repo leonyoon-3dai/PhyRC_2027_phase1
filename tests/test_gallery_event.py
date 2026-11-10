@@ -14,7 +14,7 @@ from PIL import Image
 from participant.collection.boundary import CONTRACT
 from participant.collection.validate_capture import sha256, validate_capture
 from Policy.training_dataset import DatasetWriter
-from scripts.export_gallery_event import boundary_pixels, export_event, mosaic, DEFAULT_CAMERAS
+from scripts.export_gallery_event import boundary_pixels, export_event, mosaic, display_camera_order, DEFAULT_CAMERAS
 
 
 class GalleryEventTest(unittest.TestCase):
@@ -81,6 +81,13 @@ class GalleryEventTest(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'continuity'):
                 boundary_pixels(f['data/demo_0'], 'robot_0_head', 1, 3)
 
+    def test_camera_selection_uses_spatial_robot_columns(self):
+        self.assertEqual(DEFAULT_CAMERAS,
+            ('robot_1_head', 'robot_0_head', 'robot_1_wrist', 'robot_0_wrist'))
+        self.assertEqual(display_camera_order(tuple(reversed(DEFAULT_CAMERAS))), DEFAULT_CAMERAS)
+        self.assertEqual(display_camera_order(('robot_0_head', 'overview', 'robot_0_wrist', 'robot_1_wrist')),
+            ('overview', 'robot_0_head', 'robot_1_wrist', 'robot_0_wrist'))
+
     def test_mosaic_retains_each_view_and_labels_outside_camera_pixels(self):
         views = [np.full((16, 16, 3), i * 50, dtype=np.uint8) for i in range(4)]
         result = np.asarray(mosaic(views, DEFAULT_CAMERAS, 3, 128))
@@ -100,7 +107,9 @@ class GalleryEventTest(unittest.TestCase):
 
     @unittest.skipUnless(shutil.which('ffmpeg') and shutil.which('ffprobe'), 'ffmpeg/ffprobe unavailable')
     def test_real_media_export_includes_terminal_boundary_without_private_metadata(self):
-        result = export_event(self.capture, self.output, start=0, end=3, tile_size=128)
+        result = export_event(self.capture, self.output, start=0, end=3, tile_size=128,
+            cameras=('robot_0_head', 'robot_1_head', 'robot_0_wrist', 'robot_1_wrist'))
+        self.assertEqual(result['layout']['cameras_row_major'], list(DEFAULT_CAMERAS))
         self.assertEqual(result['selection']['frame_count'], 4)
         self.assertTrue(result['selection']['contains_final_boundary'])
         self.assertEqual(result['selection']['sample_endpoint_span_s'], .15)

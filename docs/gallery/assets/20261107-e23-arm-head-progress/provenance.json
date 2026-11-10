@@ -29,10 +29,10 @@
     "columns": 2,
     "rows": 2,
     "cameras_row_major": [
-      "robot_0_head",
       "robot_1_head",
-      "robot_0_wrist",
-      "robot_1_wrist"
+      "robot_0_head",
+      "robot_1_wrist",
+      "robot_0_wrist"
     ],
     "source_height_width": {
       "robot_0_head": [
@@ -55,7 +55,9 @@
     "tile_size_px": 256,
     "labels": "camera names and derived episode-relative boundary/time only",
     "resize": "nearest_neighbor with aspect-preserving letterbox",
-    "cropped": false
+    "cropped": false,
+    "screen_left_robot": "robot_1",
+    "screen_right_robot": "robot_0"
   },
   "playback": {
     "source_policy_hz": 20,
@@ -66,18 +68,20 @@
     "temporal_interpolation": false
   },
   "encoding": {
-    "ffmpeg_threads": 2,
-    "filter_complex_threads": 2,
+    "ffmpeg_threads": 1,
+    "filter_complex_threads": 1,
     "gif_palette_colors": 64,
     "gif_dither": "none",
     "mp4_codec": "libx264",
-    "mp4_crf": 20,
-    "mp4_pixel_format": "yuv420p"
+    "mp4_crf": 18,
+    "mp4_pixel_format": "yuv420p",
+    "mp4_profile": "High",
+    "gif_encoder": "Pillow exact per-frame palettes; no quantization or frame coalescing"
   },
   "gif": {
     "file": "preview.gif",
-    "bytes": 9080162,
-    "sha256": "5c78f12473c4c7b39d0ffbbac98b00651a4628c053958392eccf5aea5d94a710",
+    "bytes": 10857172,
+    "sha256": "dc44646a9b123d3cfac6c06bf4ae39fd44c02a803cde3b733a3182019f13209a",
     "size_px": [
       512,
       588
@@ -88,8 +92,8 @@
   },
   "mp4": {
     "file": "event.mp4",
-    "bytes": 1719683,
-    "sha256": "4dc5ed0327e66c5af14b2ff359bbcbbde6dc872cf2b5f95b545f5db58ac169cd",
+    "bytes": 1960514,
+    "sha256": "a3f1a83cb6456cdf51a838552ce4bfa72da4ce6d84b858d881819cfca9b62f59",
     "stream": {
       "width": 512,
       "height": 588,
@@ -98,5 +102,15 @@
     }
   },
   "privacy": "Only selected designated camera RGB and fixed labels exported; no source filesystem paths, actor text, audit, geometry, seeds or evaluation copied.",
-  "evaluation": "Not inferred from video; consult separately reviewed run results."
+  "evaluation": "Not inferred from video; consult separately reviewed run results.",
+  "display_derivation": {
+    "source_git_commit": "3a255108a1c8e65428f19fa7caebb4b4684bc50f",
+    "source_provenance_sha256": "9b0d723205bc157be0678a4c1ed459751ce90d8f2407a5fc5ec90a79d0781a9f",
+    "script": "scripts/reorder_display_media.py",
+    "raw_capture_unchanged": true,
+    "operation": "Move labelled camera tiles; footer and frame timing unchanged; no mirror or interpolation",
+    "source_gif_sha256": "5c78f12473c4c7b39d0ffbbac98b00651a4628c053958392eccf5aea5d94a710",
+    "source_mp4_sha256": "4dc5ed0327e66c5af14b2ff359bbcbbde6dc872cf2b5f95b545f5db58ac169cd"
+  },
+  "exporter_sha256_scope": "Original export, before the separately recorded display derivation"
 }

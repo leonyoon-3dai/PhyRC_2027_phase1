@@ -39,7 +39,7 @@ E25의 실제 재파지에서 이어진 이번 실행은 양측 상승·차등 �
 | 결과 | pickup5·모든 착의0·successfalse·no_dressing_points/final_score0.0 |
 | 종료 | completed/errornull·capturecomplete/operator_finished·host/Python/simulator0. 실제 종료원인은 decision_budget |
 
-전이는0.05초의 관측→행동→다음 관측 기록입니다. 두 선별 영상은 위에 양 head·아래 양 wrist이며5fps·4배 느리게 재생합니다. 전체 overview는20fps이고 모든 영상에서 모델 대기시간은 제외했습니다. 중첩 구간·동일 재실행 출처를 독립 시연이나 성공 표본으로 세지 않습니다. [23개 학습 검토 구간](../collection/reviews/20261107-astra-regrasp698-progress-named-001-learning-segments.json)은22행동 구간과 종료 중립1구간을 분리합니다.
+전이는0.05초의 관측→행동→다음 관측 기록입니다. 두 선별 영상은 위에 양 head·아래 양 wrist이며 두 행 모두 **왼쪽 robot_1 · 오른쪽 robot_0**입니다. 5fps·4배 느리게 재생합니다. 전체 overview는20fps이고 모든 영상에서 모델 대기시간은 제외했습니다. 중첩 구간·동일 재실행 출처를 독립 시연이나 성공 표본으로 세지 않습니다. [23개 학습 검토 구간](../collection/reviews/20261107-astra-regrasp698-progress-named-001-learning-segments.json)은22행동 구간과 종료 중립1구간을 분리합니다.
 
 [원본 고정 백업](../project/sessions/20261107-e27-backup-verification.json)은2026-11-07T07:45:20.494266UTC에 재다운로드·254개 구성 파일 SHA 검증을 완료했습니다. revision`6506b15378417c445bb8e84dbc43990a0c0fd291`·2,823,483,370bytes·archive SHA`941ac2a51d5aac4d885cbb0d6c851357ff2358a901fb745fb05f1b73ba7b65e8`입니다.
 

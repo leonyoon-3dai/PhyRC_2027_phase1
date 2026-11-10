@@ -1,5 +1,7 @@
 # E26 · 방향 변경·자세 보상과 손 관측
 
+**분할 화면 배치:** 위쪽은 머리, 아래쪽은 손목 카메라이며 두 행 모두 **왼쪽 robot_1·오른쪽 robot_0**입니다. 카메라 픽셀의 좌우 반전이 아니라 표시 타일만 옮겼습니다. 원본 관측·로봇 명령의 번호는 유지합니다.
+
 [메인 README](../../README.md) · [분석](../collection/reviews/20261107-astra-hand-swap787-named-001.ko.md) · [전체 실행 패키지](../collection/attempts/20261107-astra-hand-swap787-named-001/README.ko.md) · [피드백 남기기](https://github.com/leonyoon-3dai/PhyRC_2027_phase1/issues/new?title=%5BE26+%ED%94%BC%EB%93%9C%EB%B0%B1%5D+%EB%B0%A9%ED%96%A5+%EB%B3%80%EA%B2%BD%C2%B7%EC%9E%90%EC%84%B8+%EB%B3%B4%EC%83%81%C2%B7%EC%86%90+%EA%B4%80%EC%B8%A1&body=%EC%8B%9C%EB%8F%84%3A+E26+%2F+20261107-astra-hand-swap787-named-001%0A%EC%98%81%EC%83%81+%EC%8B%9C%EA%B0%81+%EB%98%90%EB%8A%94+%EA%B2%BD%EA%B3%84%3A%0A%EC%B9%B4%EB%A9%94%EB%9D%BC%3A%0A%0A%EB%B3%B4%EC%9D%B4%EB%8A%94+%EC%82%AC%EC%8B%A4%3A%0A%0A%ED%95%B4%EC%84%9D%C2%B7%EC%A7%88%EB%AC%B8%3A%0A%0A%EB%8B%A4%EC%9D%8C%EC%97%90+%EB%B9%84%EA%B5%90%ED%95%A0+%EB%B0%A9%EB%B2%95%3A%0A)
 
 **5/50·픽업5·착의0·success=false.** 21회 조작과 마지막22번째 판단의 자율 종료로 마감했습니다. 예산이 강제로 끊었거나 감독자가 중단한 실행이 아닙니다. 1139/1139전수 검사 통과·학습 승인은unreviewed입니다.

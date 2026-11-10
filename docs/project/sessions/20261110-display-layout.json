@@ -1,0 +1,61 @@
+{
+  "schema": "phyrc-display-layout-verification-v1",
+  "created_at_utc": "2026-11-10T00:15:05.270859+00:00",
+  "source_git_commit": "3a255108a1c8e65428f19fa7caebb4b4684bc50f",
+  "layout": {
+    "left": "robot_1",
+    "right": "robot_0",
+    "row_major": [
+      "robot_1_head",
+      "robot_0_head",
+      "robot_1_wrist",
+      "robot_0_wrist"
+    ]
+  },
+  "media": {
+    "files": 78,
+    "gallery_events": 34,
+    "gif_png_verification": "Every decoded RGB pixel equals the relocated original; GIF frame durations preserved",
+    "mp4_verification": "Every frame has PSNR >=38dB against relocated original; all dimensions, FPS, frames and duration preserved",
+    "minimum_mp4_frame_psnr_db": 46.954,
+    "encoding": "H.264 High / yuv420p / CRF18 / faststart",
+    "provenance": "docs/gallery/assets/robot-layout-20261110/provenance.json"
+  },
+  "code_checks": {
+    "command": "PYTHONPATH=.:src/PhyRC_Sim python -m unittest tests.test_gallery_event tests.test_wrist_depth tests.test_replay_visual_history -v",
+    "passed": 18
+  },
+  "docs_checks": {
+    "robot_comparison_tables": 17,
+    "relative_links_checked": 802,
+    "missing_links": []
+  },
+  "pdf": {
+    "path": "docs/guide/PhyRC_2027_Repository_Guide_KR.pdf",
+    "source_sha256": "3ea510088e195f894045ac3758e334afaf72be20dcb8be0feeb6a6bb44856e82",
+    "display_sha256": "598ef5c8ed3f71322723bec6bd83a839614b84edead1b2aab133ed3ef0134ff0",
+    "page_count": 26,
+    "pages_modified_1based": [
+      11,
+      12
+    ],
+    "other_24_pages": "all raster pixels equal original",
+    "new_korean_caption": "rendered and text extraction verified",
+    "script": "scripts/reorder_display_guide.py"
+  },
+  "preserved": {
+    "mirrored": false,
+    "historical_actor_inputs_modified": false,
+    "source_snapshots_modified": false,
+    "public_camera_contract_modified": false,
+    "action_array_modified": false,
+    "simulation_runs": 0,
+    "model_calls": 0
+  },
+  "publication_build": {
+    "github_run_id": "42727046075",
+    "created_at_utc": "2026-11-10T00:19:12.486923+00:00",
+    "cpu_only": true,
+    "code_checks_passed": 18
+  }
+}

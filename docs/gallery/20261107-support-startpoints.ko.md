@@ -1,5 +1,7 @@
 # 출발점 화면 비교 · 5점 후보와 0점 대조군
 
+**화면 배치:** 로봇을 나란히 비교하는 그림은 왼쪽 `robot_1`, 오른쪽 `robot_0`입니다. 카메라 픽셀을 좌우 반전하지 않고 표시 위치만 바꿨습니다. 원본 관측·행동의 로봇 번호와 배열 순서는 그대로입니다.
+
 **검토된 다섯 출발점의 원본 공개 화면입니다.** 각 행은 한 시점의 overview와 로봇0·1 손목 화면입니다. 아래 이미지를 누르면 원본256×256 PNG가 열립니다. 그림을 자르거나 다시 압축하지 않았습니다. 실제 실행 상태는 [현재 상태](../project/STATUS.md)를 확인하세요.
 
 [지지·점수 선택 근거](../collection/research/2026-11-07-support-startpoints-review.ko.md) · [출발점 DB](../collection/catalog/README.ko.md) · [원본 경로·SHA·경계 매핑](assets/20261107-support-startpoints/provenance.json)
@@ -20,9 +22,9 @@
 
 몸판이 테이블에 있습니다. 5→10 출발점과 구분합니다. 공개 clock **25.025001초**, obs0 / 경계470입니다.
 
-| overview | 로봇0 손목 | 로봇1 손목 |
-|---|---|---|
-| [![E18/470 overview](assets/20261107-support-startpoints/e18-0470-overview.png)](assets/20261107-support-startpoints/e18-0470-overview.png) | [![E18/470 robot_0_wrist](assets/20261107-support-startpoints/e18-0470-robot_0_wrist.png)](assets/20261107-support-startpoints/e18-0470-robot_0_wrist.png) | [![E18/470 robot_1_wrist](assets/20261107-support-startpoints/e18-0470-robot_1_wrist.png)](assets/20261107-support-startpoints/e18-0470-robot_1_wrist.png) |
+| overview | 로봇1 손목 | 로봇0 손목 |
+| --- | --- | --- |
+| [![E18/470 overview](assets/20261107-support-startpoints/e18-0470-overview.png)](assets/20261107-support-startpoints/e18-0470-overview.png) | [![E18/470 robot_1_wrist](assets/20261107-support-startpoints/e18-0470-robot_1_wrist.png)](assets/20261107-support-startpoints/e18-0470-robot_1_wrist.png) | [![E18/470 robot_0_wrist](assets/20261107-support-startpoints/e18-0470-robot_0_wrist.png)](assets/20261107-support-startpoints/e18-0470-robot_0_wrist.png) |
 
 <a id="e18-563"></a>
 
@@ -30,9 +32,9 @@
 
 양 손가락 부근 경계와 들린 몸판을 비교하는 후보입니다. 공개 clock **29.675002초**, obs6 / 경계563입니다.
 
-| overview | 로봇0 손목 | 로봇1 손목 |
-|---|---|---|
-| [![E18/563 overview](assets/20261107-support-startpoints/e18-0563-overview.png)](assets/20261107-support-startpoints/e18-0563-overview.png) | [![E18/563 robot_0_wrist](assets/20261107-support-startpoints/e18-0563-robot_0_wrist.png)](assets/20261107-support-startpoints/e18-0563-robot_0_wrist.png) | [![E18/563 robot_1_wrist](assets/20261107-support-startpoints/e18-0563-robot_1_wrist.png)](assets/20261107-support-startpoints/e18-0563-robot_1_wrist.png) |
+| overview | 로봇1 손목 | 로봇0 손목 |
+| --- | --- | --- |
+| [![E18/563 overview](assets/20261107-support-startpoints/e18-0563-overview.png)](assets/20261107-support-startpoints/e18-0563-overview.png) | [![E18/563 robot_1_wrist](assets/20261107-support-startpoints/e18-0563-robot_1_wrist.png)](assets/20261107-support-startpoints/e18-0563-robot_1_wrist.png) | [![E18/563 robot_0_wrist](assets/20261107-support-startpoints/e18-0563-robot_0_wrist.png)](assets/20261107-support-startpoints/e18-0563-robot_0_wrist.png) |
 
 <a id="e18-787"></a>
 
@@ -40,9 +42,9 @@
 
 운반 뒤 손·팔과 경계 후보를 함께 보는 출발점입니다. 공개 clock **40.875002초**, obs15 / 경계787입니다.
 
-| overview | 로봇0 손목 | 로봇1 손목 |
-|---|---|---|
-| [![E18/787 overview](assets/20261107-support-startpoints/e18-0787-overview.png)](assets/20261107-support-startpoints/e18-0787-overview.png) | [![E18/787 robot_0_wrist](assets/20261107-support-startpoints/e18-0787-robot_0_wrist.png)](assets/20261107-support-startpoints/e18-0787-robot_0_wrist.png) | [![E18/787 robot_1_wrist](assets/20261107-support-startpoints/e18-0787-robot_1_wrist.png)](assets/20261107-support-startpoints/e18-0787-robot_1_wrist.png) |
+| overview | 로봇1 손목 | 로봇0 손목 |
+| --- | --- | --- |
+| [![E18/787 overview](assets/20261107-support-startpoints/e18-0787-overview.png)](assets/20261107-support-startpoints/e18-0787-overview.png) | [![E18/787 robot_1_wrist](assets/20261107-support-startpoints/e18-0787-robot_1_wrist.png)](assets/20261107-support-startpoints/e18-0787-robot_1_wrist.png) | [![E18/787 robot_0_wrist](assets/20261107-support-startpoints/e18-0787-robot_0_wrist.png)](assets/20261107-support-startpoints/e18-0787-robot_0_wrist.png) |
 
 <a id="e18-801"></a>
 
@@ -50,9 +52,9 @@
 
 설명에 없는 roll이 시작되는 D16 직전이며 해당 오류 동작은 prefix에 포함되지 않습니다. 공개 clock **41.575002초**, obs16 / 경계801입니다.
 
-| overview | 로봇0 손목 | 로봇1 손목 |
-|---|---|---|
-| [![E18/801 overview](assets/20261107-support-startpoints/e18-0801-overview.png)](assets/20261107-support-startpoints/e18-0801-overview.png) | [![E18/801 robot_0_wrist](assets/20261107-support-startpoints/e18-0801-robot_0_wrist.png)](assets/20261107-support-startpoints/e18-0801-robot_0_wrist.png) | [![E18/801 robot_1_wrist](assets/20261107-support-startpoints/e18-0801-robot_1_wrist.png)](assets/20261107-support-startpoints/e18-0801-robot_1_wrist.png) |
+| overview | 로봇1 손목 | 로봇0 손목 |
+| --- | --- | --- |
+| [![E18/801 overview](assets/20261107-support-startpoints/e18-0801-overview.png)](assets/20261107-support-startpoints/e18-0801-overview.png) | [![E18/801 robot_1_wrist](assets/20261107-support-startpoints/e18-0801-robot_1_wrist.png)](assets/20261107-support-startpoints/e18-0801-robot_1_wrist.png) | [![E18/801 robot_0_wrist](assets/20261107-support-startpoints/e18-0801-robot_0_wrist.png)](assets/20261107-support-startpoints/e18-0801-robot_0_wrist.png) |
 
 <a id="e19-801"></a>
 
@@ -60,9 +62,9 @@
 
 E18/801의 짝 비교입니다. 비슷한 화면도 동일 물리 상태를 뜻하지 않습니다. 공개 clock **41.575002초**, obs0 / 경계801입니다.
 
-| overview | 로봇0 손목 | 로봇1 손목 |
-|---|---|---|
-| [![E19/801 overview](assets/20261107-support-startpoints/e19-0801-overview.png)](assets/20261107-support-startpoints/e19-0801-overview.png) | [![E19/801 robot_0_wrist](assets/20261107-support-startpoints/e19-0801-robot_0_wrist.png)](assets/20261107-support-startpoints/e19-0801-robot_0_wrist.png) | [![E19/801 robot_1_wrist](assets/20261107-support-startpoints/e19-0801-robot_1_wrist.png)](assets/20261107-support-startpoints/e19-0801-robot_1_wrist.png) |
+| overview | 로봇1 손목 | 로봇0 손목 |
+| --- | --- | --- |
+| [![E19/801 overview](assets/20261107-support-startpoints/e19-0801-overview.png)](assets/20261107-support-startpoints/e19-0801-overview.png) | [![E19/801 robot_1_wrist](assets/20261107-support-startpoints/e19-0801-robot_1_wrist.png)](assets/20261107-support-startpoints/e19-0801-robot_1_wrist.png) | [![E19/801 robot_0_wrist](assets/20261107-support-startpoints/e19-0801-robot_0_wrist.png)](assets/20261107-support-startpoints/e19-0801-robot_0_wrist.png) |
 
 선택된 시점의 시각적 지지 가설을 모았으며, 모든 중간 프레임 검수나 양쪽의 독립 하중 시험을 뜻하지 않습니다. 층·입구 정체·연속 통과·학습 승인은 미확인입니다. 유지 구간에서 실제로 검토한 표본은 위 근거 문서에 별도로 열거했습니다. E21 마지막의 지지 미검증 새 파지는 포함하지 않았습니다.
 
