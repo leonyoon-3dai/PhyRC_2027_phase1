@@ -1,25 +1,20 @@
 # PhyRC 2027
 
-<table>
-<tr>
-<th width="50%">공식 착의 데모</th>
-<th width="50%">0–50점 득점 과정</th>
-</tr>
-<tr>
-<td width="50%" valign="top">
+## 공식 착의 데모
 
 https://github.com/user-attachments/assets/d2f347fe-712b-42f3-bdee-69d3fee2a47c
 
-<p><strong>주최 측이 제공한 착의 시연</strong><br>35.8초 · 공식 사이트 표기 8배속</p>
-<p><a href="https://emprise.cs.cornell.edu/phyrc/assets/c27/media/teleop-overhead.mp4">공식 원본 영상</a> · <a href="https://emprise.cs.cornell.edu/phyrc/challenge-2027/">챌린지 안내</a> · <a href="docs/collection/assets/20261106-official-demo-inline/provenance.json">영상 출처</a></p>
-</td>
-<td width="50%" valign="top">
-<a href="docs/project/assets/score-roadmap-20261104/score-roadmap.ko.svg"><img src="docs/project/assets/score-roadmap-20261104/score-roadmap.ko.svg" width="480" alt="0–50점 득점 과정 개념도: 준비 0, 픽업 5, 첫 소매 10, 반대 어깨 15, 두 번째 소매 20, 왼쪽 위팔 25, 오른쪽 위팔 30, 목 통과 40, 앞면 방향 50의 누적 예시"></a>
-<p><strong>픽업 5점 + 착의 45점 = 최대 50점</strong><br>기존 평가 항목 개념도입니다. 그림을 누르면 크게 볼 수 있습니다.</p>
-<p><a href="docs/project/CHALLENGE_GUIDE.ko.md#2-50점은-어떻게-쌓이는가">항목별 점수와 성공 조건</a> · <a href="docs/competition/EVALUATION.md">공식 평가 정의</a></p>
-</td>
-</tr>
-</table>
+**주최 측이 제공한 착의 시연 · 35.8초 · 공식 사이트 표기 8배속**
+
+[공식 원본 영상](https://emprise.cs.cornell.edu/phyrc/assets/c27/media/teleop-overhead.mp4) · [챌린지 안내](https://emprise.cs.cornell.edu/phyrc/challenge-2027/) · [영상 출처](docs/collection/assets/20261106-official-demo-inline/provenance.json)
+
+## 0–50점 득점 과정
+
+[![0–50점 득점 과정 개념도: 준비 0, 픽업 5, 첫 소매 10, 반대 어깨 15, 두 번째 소매 20, 왼쪽 위팔 25, 오른쪽 위팔 30, 목 통과 40, 앞면 방향 50의 누적 예시](docs/project/assets/score-roadmap-20261104/score-roadmap.ko.svg)](docs/project/assets/score-roadmap-20261104/score-roadmap.ko.svg)
+
+**픽업 5점 + 착의 45점 = 최대 50점**. 그림을 누르면 원본 크기로 볼 수 있습니다.
+
+[항목별 점수와 성공 조건](docs/project/CHALLENGE_GUIDE.ko.md#2-50점은-어떻게-쌓이는가) · [공식 평가 정의](docs/competition/EVALUATION.md)
 
 <sub>그림은 득점 과정을 설명하는 누적 예시이며, 실제 득점 순서는 달라질 수 있습니다. 누적 50점과 착의 성공 판정은 별도입니다. 이 저장소의 현재 성과는 아래에 구분해 표시합니다.</sub>
 
