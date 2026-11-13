@@ -11,10 +11,11 @@
 
 ## 현재 범위
 
-- **2026-11-13 사용자 재개 요청으로 E28 수집 진행 중**이다. `20261113-astra-side-hem-fresh-001`은 소스 `9f79772`의 새 reset에서 시작했으며, 마지막 마감 시연은 E27이다. 과거 문서 정리 한정·수집 중지 지시는 이번 명시적 재개 요청으로 해제됐다. [환경·연결 검사](docs/project/sessions/20261113-environment-setup.ko.md)를 통과했으며 E28 종료·전수 QC·최종 점수는 아직 미확정이다.
-- **E28 최신 목표:** 옷 앞이 아닌 양옆에서 파지 → 아래 입구 넓히기 → 마네킹의 한쪽 손목에 먼저 걸치기 → 이를 유지하며 양쪽 손목으로 진행. 구현된 `coordinated-side-hem-wrists`를 사용하며 [전략 검토](docs/collection/research/2026-11-13-side-hem-wrists.ko.md)와 [실행 조건](docs/COLLECTION_PLAN.md)을 따른다. 진행 중 실행의 코드·프롬프트를 변경하거나 두 번째 제어원을 시작하지 않는다.
+- **2026-11-13 사용자 재개 요청에 따른 E28 수집이 마감됐다.** `20261113-astra-side-hem-fresh-001`은 소스 `9f79772`의 새 reset에서 40결정·739전이를 기록했고, 21:29:28 UTC에 `completed/closed`로 마감해 전수 QC 739/739를 통과했다. 과거 문서 정리 한정·수집 중지 지시는 이번 명시적 재개 요청으로 해제됐다. [환경·연결 검사](docs/project/sessions/20261113-environment-setup.ko.md)와 [E28 결과](docs/collection/attempts/20261113-astra-side-hem-fresh-001/manifest.json)를 기준으로 한다.
+- **E28에서 시험한 목표:** 옷 앞이 아닌 양옆에서 파지 → 아래 입구 넓히기 → 마네킹의 한쪽 손목에 먼저 걸치기 → 이를 유지하며 양쪽 손목으로 진행. 구현된 `coordinated-side-hem-wrists`는 pickup 5점·착의 0점으로 마감했다. 후속은 [전략 검토](docs/collection/research/2026-11-13-side-hem-wrists.ko.md), [마감 결과와 다음 방향](docs/collection/research/2026-11-13-e28-outcome-e29-direction.ko.md), [실행 조건](docs/COLLECTION_PLAN.md)을 따른다. 진행 중 실행의 코드·프롬프트를 변경하거나 두 번째 제어원을 시작하지 않는다.
 - 기존 `E27/928`, `coordinated-single-arm-progress`는 이전 후보다. 현재 계획으로 자동 실행하지 않는다. 기존 CLI에 없는 strategy 이름을 만들어 넣지 않는다.
-- 완료된 시도의 최고 로컬 공식 평가기 원점수 **5/50**, 착의 득점 **0**, `success=false`다. 진행 중 E28의 성과나 Codabench 점수, 완전 착의 성과로 설명하지 않는다.
+- E28을 포함한 완료 시도의 최고 로컬 공식 평가기 원점수는 **5/50**, 착의 득점 **0**, `success=false`다. Codabench 점수나 완전 착의 성과로 설명하지 않는다.
+- E28은 739전이 = 516 model + 222 settle + 1 budget cleanup. 기술 QC는 통과했고 학습 승인은 `unreviewed`다.
 - E27은 1,159전이 = 698 replay + 334 model + 126 settle + 1 budget cleanup. 기술 QC는 통과했고 학습 승인은 `unreviewed`다. 세부 결과는 [현재 상태](docs/project/STATUS.md)와 실행 manifest를 기준으로 한다.
 - 초기 π0.5의 63전이·30 updates는 연결 시험이다. 새 시연 학습이나 착의 개선 결과가 아니다. 별도 OpenWAM·wrist translation 등의 연구 후보를 완료 기능으로 섞지 않는다.
 

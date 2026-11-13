@@ -1,0 +1,23 @@
+{
+  "repo_id": "leonayoon/phyrc-2027-phase1-private-backup",
+  "repo_type": "dataset",
+  "private": true,
+  "revision": "230c90a5d7abe76216311590f7764a65c19a946d",
+  "archive_path": "sessions/20261113-astra-side-hem-fresh-001-close-v1/20261113-astra-side-hem-fresh-001-close-v1.tar.gz",
+  "archive_bytes": 1687186946,
+  "archive_sha256": "b38a8136991b6a851c4b4dfabbb9f98a1549b8f56cd7d2586228c823101bfdfc",
+  "remote_download_verified": true,
+  "members_verified": 402,
+  "verified_at_utc": "2026-11-13T21:36:23.229906+00:00",
+  "run_id": "20261113-astra-side-hem-fresh-001",
+  "source_commit": "9f797722acdb0f8d35001175e3aaa7e07a8dd2f8",
+  "validated_transitions": 739,
+  "quality_passed": true,
+  "capture_complete": true,
+  "evaluation_valid": true,
+  "raw_points": 5.0,
+  "dressing_points": 0.0,
+  "success": false,
+  "training_approval": "unreviewed",
+  "exact_physics_checkpoint": false
+}

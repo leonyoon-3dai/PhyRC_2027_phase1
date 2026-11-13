@@ -4,7 +4,9 @@
 
 이 문서는 **새 Ubuntu GPU 서버에서 저장소와 보존 자료를 복원하고, 작은 연결 검사까지 준비하는 순서**입니다. 모든 프로젝트 명령은 저장소 루트에서 실행합니다. 2026-11-13 사용자 재개 요청으로 아래 복원·build·prepare·GPU smoke와 작은 wiring을 실제 완료했습니다. [환경 검사 receipt](project/sessions/20261113-environment-setup.json) / [세션 기록](project/sessions/20261113-environment-setup.ko.md)
 
-**마지막 마감 시연은 E27이며 E28 수집은 진행 중입니다.** `20261113-astra-side-hem-fresh-001`은 소스 `9f79772`의 새 reset에서 측면 파지·밑단 펼침·첫 손목 유지 전략을 실행합니다. 최종 점수는 아직 없으며 완료된 시도의 최고 기록은 5/50점입니다. [실행 조건](COLLECTION_PLAN.md)과 [전략 검토](collection/research/2026-11-13-side-hem-wrists.ko.md)를 따릅니다. 과거 E27/928 후보를 자동 재개하거나 진행 중 수집과 두 번째 GPU 수집기를 병행하지 않습니다.
+**마지막 마감 시연은 E28입니다.** `20261113-astra-side-hem-fresh-001`은 소스 `9f79772`의 새 reset에서 측면 파지·밑단 펼침·첫 손목 유지 전략을 실행했고, 2026-11-13 21:29:28 UTC에 40결정·739전이로 마감했습니다. 전수 QC 739/739를 통과했으며 로컬 공식 평가기 원점수는 pickup 5점·착의 0점, `success=false`입니다. 완료된 시도의 최고 기록은 5/50점입니다. [E28 결과](collection/attempts/20261113-astra-side-hem-fresh-001/manifest.json), [실행 조건](COLLECTION_PLAN.md), [전략 검토](collection/research/2026-11-13-side-hem-wrists.ko.md)를 따릅니다. 과거 E27/928 후보를 자동 재개하거나 진행 중 수집과 두 번째 GPU 수집기를 병행하지 않습니다.
+
+E28의 simulator 반환값은 0이지만 호스트 실행 세션 반환값은 143입니다. 완료 마커·닫힌 기록·전수 QC로 마감을 확인했으며 호스트 실행 전체가 exit 0이었다고 기록하지 않습니다. 앞선 wiring 연결 검사의 exit 0과 구분합니다.
 
 ## Codex CLI 시작 프롬프트
 
@@ -251,7 +253,7 @@ PY_PREFIX
 
 실제 분기는 새 환경에서 이전 행동을 다시 수행한 뒤 새 관측으로 시작합니다. **천의 정확한 physics checkpoint 복원이 아닙니다.** 직접 부모, 재실행 길이, 새 행동, 정착, 종료 정리를 각각 기록합니다. 같은 prefix와 source group의 반복 분기를 독립 시연·독립 검증 표본으로 세지 않습니다.
 
-E28의 옆면 접근·넓은 아래 입구·첫 손목 순서는 [수집 계획](COLLECTION_PLAN.md)의 실행 가설이며, 구현·CPU 검사를 마친 `coordinated-side-hem-wrists`로 새 reset에서 시험 중입니다. 효과와 최종 점수는 미확정입니다. 이후 새 전략도 구현·검사와 출발점·예산 검토를 거쳐 고유 run ID로 실행하며, 현재 `--strategy`에 없는 이름을 CLI에 넣지 않습니다.
+E28의 옆면 접근·넓은 아래 입구·첫 손목 순서는 구현·CPU 검사를 마친 `coordinated-side-hem-wrists`로 새 reset에서 시험했고, pickup 5점·착의 0점으로 마감했습니다. [마감 결과와 다음 방향](collection/research/2026-11-13-e28-outcome-e29-direction.ko.md)과 [수집 계획](COLLECTION_PLAN.md)을 기준으로 후속 출발점을 검토합니다. 이후 새 전략도 구현·검사와 출발점·예산 검토를 거쳐 고유 run ID로 실행하며, 현재 `--strategy`에 없는 이름을 CLI에 넣지 않습니다.
 
 ## 7. 사람 조작과 브라우저
 

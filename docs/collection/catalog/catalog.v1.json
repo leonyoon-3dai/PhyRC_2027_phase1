@@ -631,6 +631,24 @@
         "revision": "6506b15378417c445bb8e84dbc43990a0c0fd291",
         "sha256": "941ac2a51d5aac4d885cbb0d6c851357ff2358a901fb745fb05f1b73ba7b65e8"
       }
+    },
+    {
+      "id": "20261113-astra-side-hem-fresh-001",
+      "kind": "demonstration",
+      "source_group": "20261113-astra-side-hem-fresh-001",
+      "source_commit": "9f797722acdb0f8d35001175e3aaa7e07a8dd2f8",
+      "source_working_tree_modified": false,
+      "parent_run_id": null,
+      "replay_prefix_steps": 0,
+      "replay_completed_steps": 0,
+      "recorded_transitions": 739,
+      "qc_status": "passed",
+      "backup": {
+        "status": "verified",
+        "receipt": "docs/project/sessions/20261113-e28-backup-verification.json",
+        "revision": "230c90a5d7abe76216311590f7764a65c19a946d",
+        "sha256": "b38a8136991b6a851c4b4dfabbb9f98a1549b8f56cd7d2586228c823101bfdfc"
+      }
     }
   ],
   "startpoints": [
@@ -1008,6 +1026,118 @@
       },
       "exact_checkpoint": false,
       "training_approval": "unreviewed"
+    },
+    {
+      "id": "20261113-astra-side-hem-fresh-001-p264",
+      "source_run_id": "20261113-astra-side-hem-fresh-001",
+      "boundary": 264,
+      "history": [],
+      "support": {
+        "status": "uncertain",
+        "evidence": [
+          "docs/collection/reviews/20261113-astra-side-hem-fresh-001.ko.md",
+          "Selected public observation candidate: preclose setup/dwell comparison. Not an all-frame continuous support review."
+        ],
+        "uncertainty": [
+          "Local cloth following, candidate opening and body/hand relation are public visual hypotheses; independent bilateral load bearing, exact hem lips and sleeve passage are not certified.",
+          "History frames do not establish current replay support. A new replay must recheck support, opening and residual controller motion."
+        ],
+        "window_start": 264,
+        "window_end": 264
+      },
+      "score_at_boundary": {
+        "raw_points": 0.0,
+        "evidence": "output/collections/20261113-astra-side-hem-fresh-001/evaluation/20261113T204406_310115Z_740f8e/score_samples.jsonl: exact physics_tick=3168; only physics_tick/raw_points/evaluation_time_s projected from the closed score sample."
+      },
+      "exact_checkpoint": false,
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "20261113-astra-side-hem-fresh-001-p380",
+      "source_run_id": "20261113-astra-side-hem-fresh-001",
+      "boundary": 380,
+      "history": [
+        264,
+        320
+      ],
+      "support": {
+        "status": "uncertain",
+        "evidence": [
+          "docs/collection/reviews/20261113-astra-side-hem-fresh-001.ko.md",
+          "Selected public observation candidate: raised candidate opening before subsequent transport. Not an all-frame continuous support review.",
+          "Public observation sequence16–21 shows measured gripper rise with local cloth following each jaw; retained local following is not independent load or opening-topology verification."
+        ],
+        "uncertainty": [
+          "Local cloth following, candidate opening and body/hand relation are public visual hypotheses; independent bilateral load bearing, exact hem lips and sleeve passage are not certified.",
+          "History frames do not establish current replay support. A new replay must recheck support, opening and residual controller motion."
+        ],
+        "window_start": 320,
+        "window_end": 380
+      },
+      "score_at_boundary": {
+        "raw_points": 5.0,
+        "evidence": "output/collections/20261113-astra-side-hem-fresh-001/evaluation/20261113T204406_310115Z_740f8e/score_samples.jsonl: exact physics_tick=4560; only physics_tick/raw_points/evaluation_time_s projected from the closed score sample."
+      },
+      "exact_checkpoint": false,
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "20261113-astra-side-hem-fresh-001-p682",
+      "source_run_id": "20261113-astra-side-hem-fresh-001",
+      "boundary": 682,
+      "history": [
+        632,
+        668
+      ],
+      "support": {
+        "status": "uncertain",
+        "evidence": [
+          "docs/collection/reviews/20261113-astra-side-hem-fresh-001.ko.md",
+          "Selected public observation candidate: earlier mannequin-hand approach comparison. Not an all-frame continuous support review.",
+          "Public approach-history candidates632,668 precede682; use newly replayed observations, not old source images as current geometry."
+        ],
+        "uncertainty": [
+          "Local cloth following, candidate opening and body/hand relation are public visual hypotheses; independent bilateral load bearing, exact hem lips and sleeve passage are not certified.",
+          "History frames do not establish current replay support. A new replay must recheck support, opening and residual controller motion."
+        ],
+        "window_start": 632,
+        "window_end": 682
+      },
+      "score_at_boundary": {
+        "raw_points": 5.0,
+        "evidence": "output/collections/20261113-astra-side-hem-fresh-001/evaluation/20261113T204406_310115Z_740f8e/score_samples.jsonl: exact physics_tick=8184; only physics_tick/raw_points/evaluation_time_s projected from the closed score sample."
+      },
+      "exact_checkpoint": false,
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "20261113-astra-side-hem-fresh-001-p738",
+      "source_run_id": "20261113-astra-side-hem-fresh-001",
+      "boundary": 738,
+      "history": [
+        682,
+        714
+      ],
+      "support": {
+        "status": "uncertain",
+        "evidence": [
+          "docs/collection/reviews/20261113-astra-side-hem-fresh-001.ko.md",
+          "Selected public observation candidate: last new-action boundary before final neutral cleanup739. Not an all-frame continuous support review.",
+          "Selected public samples at682,714,738 retain local cloth near both grippers through hand approach; not independent load/attachment or sleeve-passage verification."
+        ],
+        "uncertainty": [
+          "Local cloth following, candidate opening and body/hand relation are public visual hypotheses; independent bilateral load bearing, exact hem lips and sleeve passage are not certified.",
+          "History frames do not establish current replay support. A new replay must recheck support, opening and residual controller motion."
+        ],
+        "window_start": 682,
+        "window_end": 738
+      },
+      "score_at_boundary": {
+        "raw_points": 5.0,
+        "evidence": "output/collections/20261113-astra-side-hem-fresh-001/evaluation/20261113T204406_310115Z_740f8e/score_samples.jsonl: exact physics_tick=8856; only physics_tick/raw_points/evaluation_time_s projected from the closed score sample."
+      },
+      "exact_checkpoint": false,
+      "training_approval": "unreviewed"
     }
   ],
   "methods": [
@@ -1289,7 +1419,21 @@
         "view": "designated RGB-D + optional pixel depth query + wrist depth panel; wrist translation aid OFF",
         "action_encoding": "named"
       },
-      "description": "Conditional goal-sequence variant, not a new grasp or observed success. Candidate0c51a1aeccec9948332443044c033187813541e0 integrated after E27exit as4ec8be8; isolated full325CPU passed with unchanged runtime/test hashes, no actual actor/physics/score test. Existing TASK_PROGRESS remains unchanged; new task preserves partial-observation finite progress and permits justified recovery/goal changes. Status proposed until actual E28 starts; selected_not_started is an offline plan, not a dispatched method. Latest user request pauses collection afterE27; candidate stays proposed and unexecuted pending offline review."
+      "description": "Historical unexecuted method candidate. Actual E28 used a separate side-hem-wrists method from a fresh reset; actual E28 does not mark this same-arm method tested. Original 2026-11-07 candidate description follows:\nConditional goal-sequence variant, not a new grasp or observed success. Candidate0c51a1aeccec9948332443044c033187813541e0 integrated after E27exit as4ec8be8; isolated full325CPU passed with unchanged runtime/test hashes, no actual actor/physics/score test. Existing TASK_PROGRESS remains unchanged; new task preserves partial-observation finite progress and permits justified recovery/goal changes. Status proposed until actual E28 starts; selected_not_started is an offline plan, not a dispatched method. Latest user request pauses collection afterE27; candidate stays proposed and unexecuted pending offline review."
+    },
+    {
+      "id": "coordinated-side-hem-wrists-named-query-panel-settle6-profile",
+      "name": "coordinated-side-hem-wrists / named / query / wrist panel / settle6 / profiling",
+      "status": "tested",
+      "axes": {
+        "grasp_arrangement": "side-access and candidate body-hem supports; bounded one-sided initial regrasp, later changes only after new observed progress",
+        "entry_target": "one mannequin hand through a visually hypothesized body opening, then preserve that relation while approaching the other hand",
+        "approach": "lateral placement, differential height/wrist opening, supported transport, short wrist-entry adjustments",
+        "order": "side preparation, opening, first wrist, retain first relationship while guiding second, then remaining dressing objective",
+        "view": "five designated RGB-D views, frozen pixel depth query and current wrist depth panel; no evaluator input",
+        "action_encoding": "named"
+      },
+      "description": "Executed in fresh-reset E28 using exec/gpt-6-astra/ultra, plan1, motion-only post-action neutral settle6, 180s model timeout and phase timing profile. Forty decisions and 46 calls include six zero-physics depth query followups. Initial close acquisition and local cloth gathering/lifting occurred, followed by transport and hand approach. Strategy name is intent, not evidence of opposite hem layers or completed wrist/sleeve passage. Tested means executed, not successful; raw5 pickup only and success=false."
     }
   ],
   "attempts": [
@@ -1881,7 +2025,25 @@
         "review": null,
         "videos": []
       },
-      "notes": "USER_REQUESTED_PAUSE_AFTER_E27: E28 not started; prepared candidate deferred for offline analysis and strategy review before any user-requested future resumption. No scheduled execution. E28 was selected_not_started before the latest user pause. DirectparentE27/928; freshhistory890906;24dec/max1600/settle6/named/query/wristpanel/Astraultra/timeout180/plan1/review10. Maximum allowance928+24*(20+6)+1=1553<1600,47transitionmargin;queriesphysics0 and model calls are separate from decision/transition counts. Samegrasp/zero regrasp/wristtranslationaidOFF. Loader preflight passed07:41:06UTC float32(928,2,9); exact928score unknown rather than copied from finalraw5. Current actor chooses its arm from fresh public views/history; no supervisor handidentity/coordinates/score input. CPU candidate validated but no actual E28 run exists; new run/source snapshot assigned at launch. Source backup verified at fixed HF revision6506b15378417c445bb8e84dbc43990a0c0fd291 with full archive/member download hashes. SameE07lineage/not exactcheckpoint/trainingunreviewed."
+      "notes": "HISTORICAL_UNEXECUTED_2026-11-07: This E27/928 same-arm candidate was superseded for the actual E28 slot by fresh-reset run 20261113-astra-side-hem-fresh-001 on 2026-11-13. It remains an unexecuted historical plan, not a command to run and not the parent of actual E28. Original dated plan follows (historical statements, not current status):\nUSER_REQUESTED_PAUSE_AFTER_E27: E28 not started; prepared candidate deferred for offline analysis and strategy review before any user-requested future resumption. No scheduled execution. E28 was selected_not_started before the latest user pause. DirectparentE27/928; freshhistory890906;24dec/max1600/settle6/named/query/wristpanel/Astraultra/timeout180/plan1/review10. Maximum allowance928+24*(20+6)+1=1553<1600,47transitionmargin;queriesphysics0 and model calls are separate from decision/transition counts. Samegrasp/zero regrasp/wristtranslationaidOFF. Loader preflight passed07:41:06UTC float32(928,2,9); exact928score unknown rather than copied from finalraw5. Current actor chooses its arm from fresh public views/history; no supervisor handidentity/coordinates/score input. CPU candidate validated but no actual E28 run exists; new run/source snapshot assigned at launch. Source backup verified at fixed HF revision6506b15378417c445bb8e84dbc43990a0c0fd291 with full archive/member download hashes. SameE07lineage/not exactcheckpoint/trainingunreviewed."
+    },
+    {
+      "id": "20261113-astra-side-hem-fresh-001",
+      "status": "completed",
+      "run_id": "20261113-astra-side-hem-fresh-001",
+      "startpoint_id": null,
+      "method_id": "coordinated-side-hem-wrists-named-query-panel-settle6-profile",
+      "result": {
+        "raw_points": 5.0,
+        "success": false,
+        "review": "docs/collection/reviews/20261113-astra-side-hem-fresh-001.ko.md",
+        "videos": [
+          "docs/collection/attempts/20261113-astra-side-hem-fresh-001/overview.mp4",
+          "docs/gallery/20261113-e28-opening-264-380/event.mp4",
+          "docs/gallery/20261113-e28-hand-588-738/event.mp4"
+        ]
+      },
+      "notes": "E28 fresh reset, no parent or replay. Source 9f797722acdb0f8d35001175e3aaa7e07a8dd2f8 clean at launch, not later documentation HEAD. Closed completed/finished with simulator returncode0 after decision budget. 739 transitions = 516 model + 222 motion-triggered neutral settle + 1 budget cleanup; 40 decisions/46 actor calls/6 depth queries. Wall2758.774043357s; capture complete; fullQC739/739 passed errors[]. Valid official evaluation raw5, pickup5 first awarded at boundary371 (physics_tick4452), dressing0, successfalse. First body-hem/wrist relation and cloth opening remain visual hypotheses, not sleeve passage. Private backup fixed revision 230c90a5d7abe76216311590f7764a65c19a946d force-downloaded; archive SHA256/bytes and402members verified. Separate host exec session returned143; do not infer host0 from simulator0 or complete capture. Candidate738 excludes final cleanup739;682 comparison;380 opening/lift;264 preclose. Exact physics not restored; training unreviewed; this fresh source family is separate from E07, while its own prefixes are correlated."
     }
   ]
 }

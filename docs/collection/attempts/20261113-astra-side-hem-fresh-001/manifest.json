@@ -1,0 +1,401 @@
+{
+  "schema": "phyrc-public-attempt-report-v1",
+  "attempt": {
+    "run_id": "20261113-astra-side-hem-fresh-001",
+    "parent_attempt": null,
+    "retry_reason": null,
+    "source_group": "20261113-astra-side-hem-fresh-001",
+    "source": "gpt",
+    "mode": "dressing",
+    "strategy": "coordinated-side-hem-wrists",
+    "model": "gpt-6-astra",
+    "reasoning_effort": "ultra",
+    "prompt_sha256": "13a1bdce722476d1878a84a58bb4fce4d71d15e400f65d9fd1f6203353394e1e",
+    "status": "completed",
+    "finished": true,
+    "started_at_utc": "2026-11-13T20:43:30Z",
+    "ended_at_utc": "2026-11-13T21:29:28Z",
+    "decisions_requested": 40,
+    "decisions_completed": 40,
+    "actor_calls_attempted": 46,
+    "actor_call_wall_s": 2054.429280358999,
+    "model_internal_inference_wall_s": null,
+    "actor_call_timing_scope": "public staging + Docker/CLI startup + request/response; internal model time unavailable",
+    "environment_dispatch_wall_s": 643.2165023519979,
+    "wall_s": 2758.7740433569998,
+    "simulation_time_s": 36.95,
+    "simulation_steps": 739,
+    "acknowledged_simulation_steps": 739,
+    "recorded_simulation_steps": 739,
+    "capture_complete": true,
+    "capture_termination_reason": "operator_finished",
+    "human_intervention": false,
+    "quality_status": "unreviewed",
+    "input_profile": "five_public_RGB_images_all_public_state_and_16x16_depth_medians_with_current_wrist_depth_panel",
+    "actor_backend": "exec",
+    "plan_size": 1,
+    "plan_step_budget": 20,
+    "plan_execution": "single_decision",
+    "review_threshold_raw_points": 10,
+    "pickup_hold_target_simulation_s": null,
+    "replay_steps_completed": 0,
+    "new_recorded_suffix_steps": 739,
+    "activity": "closed",
+    "pixel_depth_query": {
+      "enabled": true,
+      "max_queries_per_observation": 1,
+      "max_points": 8,
+      "queries_completed": 6,
+      "followup_calls": 6,
+      "collector_idle_timeout_s": 480.0,
+      "model_call_timeout_s": 180.0
+    },
+    "named_actions": {
+      "schema": "phyrc-named-actions-v1",
+      "robot_order": [
+        "robot_0",
+        "robot_1"
+      ],
+      "channel_order": [
+        "base_forward",
+        "base_left",
+        "base_CCW_yaw",
+        "lift",
+        "arm_extension",
+        "wrist_yaw",
+        "wrist_pitch",
+        "wrist_roll",
+        "gripper"
+      ],
+      "official_dtype": "float32",
+      "value_transform": "none",
+      "validation": "existing_official_action_validator"
+    },
+    "post_action_settle": {
+      "enabled": true,
+      "requested_steps": 6,
+      "trigger": "nonzero_motion_act",
+      "segments_completed": 37,
+      "simulation_steps": 222,
+      "environment_dispatch_wall_s": 201.71325538700012,
+      "budget_capped_segments": 0,
+      "budget_skipped_segments": 0
+    },
+    "error": null,
+    "actor_usage": {
+      "input_tokens": 6455527,
+      "cached_input_tokens": 5367296,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 52352,
+      "reasoning_output_tokens": 41906
+    },
+    "actor_usage_scope": "sum_of_observed_thread_usage",
+    "actor_usage_accounting": {
+      "schema": "phyrc-token-accounting-v2",
+      "cli_usage_scope": "thread_cumulative",
+      "aggregate_scope": "sum_of_observed_thread_usage",
+      "fully_known": true,
+      "observed_usage": {
+        "input_tokens": 6455527,
+        "cached_input_tokens": 5367296,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 52352,
+        "reasoning_output_tokens": 41906
+      },
+      "calls_recorded": 46,
+      "unknown_call_indices": [],
+      "unknown_usage_is_zero": false,
+      "cached_input_is_subset_of_input": true,
+      "reasoning_output_is_subset_of_output": true,
+      "threads": [
+        {
+          "thread_index": 0,
+          "baseline": "fresh_attempt_thread_zero",
+          "last_observed_cumulative_usage": {
+            "input_tokens": 6455527,
+            "cached_input_tokens": 5367296,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 52352,
+            "reasoning_output_tokens": 41906
+          },
+          "last_accepted_cumulative_usage": {
+            "input_tokens": 6455527,
+            "cached_input_tokens": 5367296,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 52352,
+            "reasoning_output_tokens": 41906
+          }
+        }
+      ]
+    },
+    "code": {
+      "commit": "9f797722acdb0f8d35001175e3aaa7e07a8dd2f8",
+      "working_tree_modified": false
+    }
+  },
+  "capture": {
+    "schema": "participant-live-capture-v2",
+    "complete": true,
+    "termination_reason": "operator_finished",
+    "raw_archive": false,
+    "wall_s": 2755.268448789,
+    "requests": 79,
+    "steps": 739,
+    "idle_render_calls": 0,
+    "idle_render_wall_s": 0,
+    "evaluation_enabled": true,
+    "evaluation_valid": true
+  },
+  "quality": {
+    "schema": "phyrc-capture-validation-v1",
+    "quality_passed": true,
+    "training_approval": "unreviewed",
+    "scope": "immediate_sensor_capture",
+    "total_transitions": 739,
+    "validated_transitions": 739,
+    "available": true,
+    "checks": [
+      "manifest_sha256",
+      "file_episode_complete",
+      "public_observation_schema",
+      "all_transition_action_shape_dtype_range",
+      "actual_previous_action",
+      "0.05s_intervals",
+      "contiguous_12_physics_ticks",
+      "all_observation_continuity",
+      "finite_numeric_arrays",
+      "terminal_markers",
+      "evaluation_label_consistency"
+    ],
+    "error_count": 0,
+    "episodes": [
+      {
+        "episode": "demo_0",
+        "transitions": 739,
+        "complete": true,
+        "simulation_seconds": 36.95000192709267,
+        "quality_passed": true
+      }
+    ]
+  },
+  "evaluation": {
+    "evaluated": true,
+    "valid": true,
+    "raw_points": 5.0,
+    "success": false,
+    "score_status": "no_dressing_points",
+    "final_score": 0.0,
+    "breakdown": {
+      "pickup": 5.0,
+      "first_sleeve": 0.0,
+      "opposite_shoulder": 0.0,
+      "second_sleeve": 0.0,
+      "left_upper_arm": 0,
+      "right_upper_arm": 0,
+      "neck": 0.0,
+      "front_orientation": 0.0
+    },
+    "milestone_times_s": {
+      "pickup": 18.55,
+      "first_sleeve": null,
+      "opposite_shoulder": null,
+      "second_sleeve": null,
+      "neck": null,
+      "front_orientation": null
+    },
+    "max_raw_points": 50.0,
+    "success_evaluated": true,
+    "rate_points": 0.0,
+    "max_rate_points": 45.0,
+    "task_time_s": 0.0,
+    "elapsed_episode_time_s": 36.95,
+    "first_contact_time_s": 33.81666666666666,
+    "last_score_award_time_s": null,
+    "dressing_completed_at_s": null,
+    "rate_rule": "pickup-excluded-last-award-v9",
+    "scoring_revision": "pickup-excluded-last-award-v9",
+    "score_unit": "points/s"
+  },
+  "review_gate": {
+    "schema": "phyrc-review-gate-v2",
+    "run_id": "20261113-astra-side-hem-fresh-001",
+    "threshold_raw_points": 10,
+    "policy_input_changed": false,
+    "status": "collector_ended_before_gate",
+    "last_observed_raw_points": 5.0,
+    "acknowledged_steps": 738,
+    "collector_status": "completed"
+  },
+  "source_files": {
+    "trace/attempt.json": {
+      "sha256": "8f7df8f0021304dcb5533dfe6c59ab805a6c90ae482c29c6a9cd9c156d32efe2",
+      "bytes": 287099
+    },
+    "trace/prompt.txt": {
+      "sha256": "13a1bdce722476d1878a84a58bb4fce4d71d15e400f65d9fd1f6203353394e1e",
+      "bytes": 15960
+    },
+    "trace/decisions.jsonl": {
+      "sha256": "97444286dcad57f1e00c1c9f7a7521417526cc1d362c39d12d1c2265f37913c0",
+      "bytes": 381278
+    },
+    "trace/review_gate.json": {
+      "sha256": "c9ad2d6b3b258e60b5c34091c1e7e17a60a83968c007a4a23dc01f8c1fdef236",
+      "bytes": 369
+    },
+    "capture/capture.json": {
+      "sha256": "22de85a2b55100af158d4fec208be76b09f34aed3bf0ab3f5aed9ac83a45d1d2",
+      "bytes": 532
+    },
+    "capture/policy.hdf5": {
+      "sha256": "03b0c37fc67737ed88af83e2400ff5a5d04e0778319ec3c3bac09906999b4ce9",
+      "bytes": 1912282707
+    },
+    "capture/audit.hdf5": {
+      "sha256": "19a59d6fb3242a0ecf97c28682d5ad6bf19367772be1947cf2d3a6fd93697cb3",
+      "bytes": 148546
+    },
+    "capture/evaluation_summary.json": {
+      "sha256": "64dbfc7282771e14523c90c01b591d5f41138f00525219a742cb3f44ae7c34b7",
+      "bytes": 25415
+    },
+    "capture/validation.json": {
+      "sha256": "bf7bd85edd3dc009bc2f164997996a2948949e4787326636f15e1c0145b650e6",
+      "bytes": 1491
+    },
+    "capture/score_events.jsonl": {
+      "sha256": "907aedc2e820825ee3519f8ba6c7ff773c4939197ca435197cd8898e8e1573ae",
+      "bytes": 1766
+    }
+  },
+  "unrecognized_events_omitted": 0,
+  "publication_review": "generated_allowlisted_subset_requires_repository_review",
+  "decision_reason_scope": "final_action_explanation_only",
+  "artifacts": {
+    "README.ko.md": {
+      "sha256": "042f3323521c661db241b64f543651f5a54de0ed1385de8a4da91d46bf279fd7",
+      "bytes": 121793
+    },
+    "decisions.jsonl": {
+      "sha256": "83d94b6621f2139e1cbf07c6a3247b172563058777e9882f114cd4533131a0cf",
+      "bytes": 341820
+    },
+    "images/final-overview.png": {
+      "sha256": "ba0164cd27526288239033085af4908fdec261a0299007814646d8b02b75d731",
+      "bytes": 72099
+    },
+    "images/final-robot_0_head.png": {
+      "sha256": "53dbd3a38e708e6d0c64779192c395a91b81bbe3829218347b33d00b2336df46",
+      "bytes": 81703
+    },
+    "images/final-robot_0_wrist.png": {
+      "sha256": "e693d893b3b43ed1bef62ef02cbf2d92a40c8b546c69b008e3da6e25973fb6b8",
+      "bytes": 55846
+    },
+    "images/final-robot_1_head.png": {
+      "sha256": "ddecbe9b08dabdb563a55ff115b9df90985b7a87837573bd3eacf97481a5af83",
+      "bytes": 73051
+    },
+    "images/final-robot_1_wrist.png": {
+      "sha256": "59c97b20be560277bbf70ffc4c0b2d46ecf4d3cd382566b2a8344c70e6357689",
+      "bytes": 42550
+    },
+    "images/initial-overview.png": {
+      "sha256": "4bd1420ac674deeb4dcd3da1d1a1c70655450f49bcd9045af654369ca23b82ff",
+      "bytes": 66542
+    },
+    "images/initial-robot_0_head.png": {
+      "sha256": "4b67a612aaf61f7538a15583107d630349dcbc2edbbcbeaa272907ac0d22ab4e",
+      "bytes": 60884
+    },
+    "images/initial-robot_0_wrist.png": {
+      "sha256": "ea85e5cefd8961c16aca8833f9a006e8feec8ca0449c3373e5dbb3e0885527d7",
+      "bytes": 54674
+    },
+    "images/initial-robot_1_head.png": {
+      "sha256": "40ce3a2d305f7c9c676b0d9dee932a011d9623c5c939b6513d48a42858eac014",
+      "bytes": 61717
+    },
+    "images/initial-robot_1_wrist.png": {
+      "sha256": "9d3e006da34217796179d86cbd3c1cea94b4727bc2193610a87c7aa913ec202d",
+      "bytes": 55664
+    },
+    "overview.mp4": {
+      "sha256": "06eeec08d7b2953f37538c309eb54b4e4c3ae662c9450e023237ced2fe5fb1cc",
+      "bytes": 243826
+    },
+    "prompt.txt": {
+      "sha256": "13a1bdce722476d1878a84a58bb4fce4d71d15e400f65d9fd1f6203353394e1e",
+      "bytes": 15960
+    },
+    "score-events.jsonl": {
+      "sha256": "693ba268353312dabfedf124289dcd00c66cca9193a0249bd4e80a80b6d2870a",
+      "bytes": 1766
+    }
+  },
+  "media": {
+    "available": true,
+    "transitions": 739,
+    "images": [
+      "images/initial-overview.png",
+      "images/initial-robot_0_wrist.png",
+      "images/initial-robot_1_wrist.png",
+      "images/initial-robot_0_head.png",
+      "images/initial-robot_1_head.png",
+      "images/final-overview.png",
+      "images/final-robot_0_wrist.png",
+      "images/final-robot_1_wrist.png",
+      "images/final-robot_0_head.png",
+      "images/final-robot_1_head.png"
+    ],
+    "video": {
+      "created": true,
+      "requested": true,
+      "file": "overview.mp4",
+      "source": "obs/overview_rgb",
+      "source_policy_hz": 20,
+      "available_frames": 739,
+      "exported_frames": 739,
+      "maximum_frames": 2000,
+      "truncated": false,
+      "sampling": "contiguous_prefix_no_frame_skipping",
+      "slowdown_factor": 1,
+      "playback_fps": 20.0,
+      "playback_duration_s": 36.95,
+      "includes_wall_time_waits": false
+    },
+    "status": "recorded_public_frames",
+    "episode": "demo_0",
+    "file_complete": true,
+    "initial_simulation_time_s": 1.5250000795349479,
+    "final_simulation_time_s": 38.47500200662762
+  },
+  "milestone_path": {
+    "evaluation_valid": true,
+    "award_batches": [
+      {
+        "physics_tick": 4452,
+        "transition_boundary_step": 371,
+        "step_alignment_exact": true,
+        "evaluation_time_s": 18.55,
+        "public_simulation_time_s": 20.07500007953495,
+        "batch_index": 0,
+        "raw_points_before": 0.0,
+        "raw_points_after": 5.0,
+        "changes": [
+          {
+            "stage": "pickup",
+            "before": 0.0,
+            "after": 5.0
+          }
+        ],
+        "simultaneous": false,
+        "order_within_batch": "not_inferred"
+      }
+    ],
+    "success_events": [],
+    "time_origin_public_simulation_s": 1.5250000795349479,
+    "time_basis": "episode evaluation clock begins after reset; physics_tick/12 is transition boundary",
+    "order_rule": "different ticks chronological; same-tick awards unordered"
+  }
+}

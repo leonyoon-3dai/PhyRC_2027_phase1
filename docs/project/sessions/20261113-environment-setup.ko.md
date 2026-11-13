@@ -23,6 +23,6 @@
 
 닫힌 wiring 원본은 비공개 백업의 고정 revision `7edc9d787c923e60eaea95e9ee02f3100ea1d238`에서 재다운로드하여 archive 크기·SHA256과 **62개 member**를 검증했습니다. [Wiring 백업 receipt](20261113-wiring-backup-verification.json).
 
-현재 구현한 측면 파지·밑단 펼침·첫 손목 유지 전략과 분기 기준은 [수집 계획](../../COLLECTION_PLAN.md)에 둡니다. 연결 검사 후 E28 `20261113-astra-side-hem-fresh-001`을 소스 `9f79772`의 새 reset에서 시작했으며, 현재 수집 중이고 최종 결과는 미확정입니다. 기존 prefix 재실행과 새 행동·정착·종료 구간을 분리하고, 마감 원본과 실패 근거를 보존합니다.
+현재 구현한 측면 파지·밑단 펼침·첫 손목 유지 전략과 분기 기준은 [수집 계획](../../COLLECTION_PLAN.md)에 둡니다. 연결 검사 후 E28 `20261113-astra-side-hem-fresh-001`을 소스 `9f79772`의 새 reset에서 시작했으며, 739전이·40결정으로 마감했습니다. 전수 QC는 739/739·오류 0이며, 로컬 평가기 점수는 pickup 5/50·착의 0·success=false입니다. [E28 마감 검토](../../collection/reviews/20261113-astra-side-hem-fresh-001.ko.md)에서 공개 영상과 다음 분기를 확인합니다. 기존 prefix 재실행과 새 행동·정착·종료 구간을 분리하고, 마감 원본과 실패 근거를 보존합니다.
 
 검증된 과거 최고 기록은 **5/50점, 착의 득점 0, success=false**입니다. 환경 준비·CPU 검사·GPU smoke 통과는 착의 성공이나 추가 점수 획득을 뜻하지 않습니다. 장비 비교 질문은 [GPU 비용 분석](../../collection/research/2026-11-13-gpu-rollout-cost.ko.md)에 별도로 기록했으며, 그 분석을 위한 인스턴스 변경·비교 벤치마크는 수행하지 않았습니다.

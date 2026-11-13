@@ -2,7 +2,7 @@
 
 [메인](../README.md) | [시연 목록](EPISODES.md) | [다음 수집](COLLECTION_PLAN.md) | [Astra 코드](ASTRA.md) | [클린 서버](OPERATIONS.md)
 
-**2026-11-13: E27까지 마감했고 E28은 수집 진행 중입니다.** E28 `20261113-astra-side-hem-fresh-001`은 새 reset에서 측면 파지·밑단 펼침을 시도하며 최종 결과는 아직 없습니다. 아래 표는 마감한 E00–E27 자료를 유지합니다. 완료된 시도의 최고 로컬 공식 평가기 원점수는 **5/50**, 착의 득점은 **0**, 전체 착의 성공은 미달입니다. E번호에는 연결 시험과 실패도 포함되며 독립 성공 시연 수가 아닙니다. [환경·연결 검사](project/sessions/20261113-environment-setup.ko.md) / [E28 전략 검토](collection/research/2026-11-13-side-hem-wrists.ko.md)
+**2026-11-13: E28까지 마감했습니다.** E28 `20261113-astra-side-hem-fresh-001`은 새 reset에서 파지·들기·운반과 손 접근을 수행해 739전이 전수 QC를 통과했습니다. 로컬 공식 평가기는 **5/50점, 픽업 5·착의 0, success=false**이며 소매 통과는 확인되지 않았습니다. 아래 E번호에는 연결 시험과 실패도 포함되며 독립 성공 시연 수가 아닙니다. [E28 리뷰](collection/reviews/20261113-astra-side-hem-fresh-001.ko.md) / [현재 상태·보존](project/STATUS.md)
 
 ## 대표 장면
 
@@ -35,7 +35,7 @@
 
 사람 시연은 **2,225전이 / 111.25로봇초**의 부분 기록입니다. 로봇별 분할 화면은 **왼쪽 robot_1, 오른쪽 robot_0**, 위 head / 아래 wrist 순서이며 픽셀을 좌우 반전하지 않습니다. [표시 규칙과 변환 출처](gallery/ROBOT_LAYOUT.ko.md)
 
-## E00–E27 전체 자료
+## E00–E28 전체 자료
 
 **전이 1개는 관측→행동→다음 관측의 0.05초 기록**입니다. 표의 길이는 재실행과 새 구간을 합친 로봇 시간이며 모델 호출 수·실제 대기 시간이 아닙니다. MP4 배속과 마지막 `next_obs`는 각 기록에서 확인합니다.
 
@@ -69,6 +69,7 @@
 | E25 | R1 열기→새 경계→닫기; 국소 천 동행 | E18 / 563 | 698 / 34.90 | [MP4](collection/attempts/20261107-astra-opposing563-named-001/overview.mp4) / [화면](collection/attempts/20261107-astra-opposing563-named-001/images/final-overview.png) / [원본](collection/attempts/20261107-astra-opposing563-named-001/manifest.json) |
 | E26 | 기존 파지로 다른 손·접근면 비교 | E18 / 787 | 1,139 / 56.95 | [MP4](collection/attempts/20261107-astra-hand-swap787-named-001/overview.mp4) / [화면](collection/attempts/20261107-astra-hand-swap787-named-001/images/final-overview.png) / [원본](collection/attempts/20261107-astra-hand-swap787-named-001/manifest.json) |
 | E27 | E25 새 파지로 운반·팔 접근 | E25 / 698 | 1,159 / 57.95 | [MP4](collection/attempts/20261107-astra-regrasp698-progress-named-001/overview.mp4) / [화면](collection/attempts/20261107-astra-regrasp698-progress-named-001/images/final-overview.png) / [원본](collection/attempts/20261107-astra-regrasp698-progress-named-001/manifest.json) |
+| E28 | 새 측면 접근 전략; 파지·들기·운반·손 접근, 픽업 5점·착의 0 | 새 환경 / replay 0 | 739 / 36.95 | [MP4](collection/attempts/20261113-astra-side-hem-fresh-001/overview.mp4) / [화면](collection/attempts/20261113-astra-side-hem-fresh-001/images/final-overview.png) / [원본](collection/attempts/20261113-astra-side-hem-fresh-001/manifest.json) |
 
 E09는 불완전 원본을 보존한 기록으로 학습·정상 재실행 출처에서 제외합니다. E10–E27 중 E16·E20을 제외한 시도의 최종 원점수는 5점이며, **정상 평가한 과제 시연의 착의 득점은 모두 0**입니다. 파지·시야 개선을 소매 통과나 추가 득점으로 해석하지 않습니다.
 
@@ -77,13 +78,14 @@ E09는 불완전 원본을 보존한 기록으로 학습·정상 재실행 출�
 `E18 / 787`은 **E18의 행동 787개를 새 환경에서 재실행한 뒤 분기**했다는 뜻입니다. 정확한 천 상태 checkpoint가 아닙니다. E04·E05·E07의 이전 시도 링크는 개발 순서이며, 세 실행은 행동 prefix 없이 새 환경에서 시작했습니다.
 
 - E04–E06은 픽업 방법 그룹입니다. E06의 픽업은 E05 행동 재실행 중 얻었습니다.
-- E07 이후의 재실행 분기는 같은 `source_group` 계보입니다. 인접 프레임과 공통 prefix를 독립 성공 표본이나 별도 검증 출처로 세지 않습니다.
+- E07에서 파생된 E27까지의 재실행 분기는 같은 `source_group` 계보입니다. 인접 프레임과 공통 prefix를 독립 성공 표본이나 별도 검증 출처로 세지 않습니다.
 - **E25→E27**은 새 파지의 후속입니다. **E26은 E18/787의 별도 분기**이며 E25 파지를 이어받지 않았습니다.
+- **E28은 새 reset의 별도 계보** `20261113-astra-side-hem-fresh-001`입니다. E27/928에서 이어간 실행이 아니며, E28 내부의 경계와 후속 prefix 분기는 같은 E28 계보로 묶습니다.
 
 [실행·출발점·방법 정본 JSON](collection/catalog/catalog.v1.json) / [경계별 근거](collection/catalog/README.ko.md) / [추가 연결 시험과 상세 이력](project/HISTORY.ko.md)
 
 ## E28 이후
 
-**새 계획, 미실행·미예약.** 두 로봇을 옷의 앞이 아닌 **양옆에 배치**하고, **아래쪽 입구를 잡아 넓힌 뒤 마네킹의 한쪽 손목을 먼저 통과시키고 반대쪽으로 이어가는 방법**을 검토합니다. 준비된 이전 same-arm/E27-928 후보를 현재 실행 계획으로 사용하지 않습니다. 새로운 시작점·명령·성공 여부는 아직 정해지거나 검증되지 않았습니다.
+**후속 시도는 아직 미실행입니다.** 마지막 종료 중립 이전의 **E28/738**에서 첫 손목과 입구 관계를 이어가는 분기를 우선 검토하고, **E28/682**를 이전 접근 비교점으로 둡니다. 입구 펼침은380, 닫기 전 준비는264에서 별도 비교할 수 있습니다. 원본의 QC·백업·공개 관측 검토를 마친 뒤 고유 run ID로 실행하며, 기존 5점을 복사하지 않고 새 episode에서 다시 평가합니다. 과거 E27/928 same-arm 후보는 역사적 미실행 계획으로 보존합니다.
 
 [다음 수집 계획과 검증 순서](COLLECTION_PLAN.md)
