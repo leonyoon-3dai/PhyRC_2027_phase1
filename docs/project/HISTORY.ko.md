@@ -1,3 +1,5 @@
+> **실행 이력.** 아래 계획·중지·재개 표현은 해당 시점의 기록입니다. 최신 상태는 [STATUS](STATUS.md), 다음 목표는 [COLLECTION_PLAN](../COLLECTION_PLAN.md)을 따릅니다.
+
 # 수집과 개발 이력
 
 [저장소 소개](../../README.md) · [시간순 시각 갤러리](../gallery/README.ko.md) · [기술 발표](PRESENTATION.ko.md) · [현재 상태](STATUS.md) · [수집 파이프라인](../collection/guides/astra-end-to-end.ko.md)

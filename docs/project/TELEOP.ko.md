@@ -1,3 +1,5 @@
+> **과거 기록.** 현재 클린 서버 절차는 [OPERATIONS](../OPERATIONS.md), 다음 목표는 [COLLECTION_PLAN](../COLLECTION_PLAN.md)을 따릅니다. 아래의 실행·재개 지시는 당시 문맥입니다.
+
 # 원격 조작과 자동 수집 설계
 
 > 2026-10-22 실행 단계로 전환했습니다. 아래는 초기 설계·계획을 보존한 문서입니다. 실제 구현·측정·실패·미검증 항목은 [STATUS](STATUS.md), [첫 세션 기록](sessions/20261022-bootstrap.md), [실제 복원 명령](RECOVERY.ko.md)을 따릅니다. API 과금 없는 Codex 작성 제한 명령 데이터로 첫 경로를 검증하며 live GPT API는 사용하지 않습니다.

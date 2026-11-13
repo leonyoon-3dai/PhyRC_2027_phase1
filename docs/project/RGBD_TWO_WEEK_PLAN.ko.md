@@ -1,3 +1,5 @@
+> **과거 기록.** 현재 클린 서버 절차는 [OPERATIONS](../OPERATIONS.md), 다음 목표는 [COLLECTION_PLAN](../COLLECTION_PLAN.md)을 따릅니다. 아래의 실행·재개 지시는 당시 문맥입니다.
+
 # RGB-D 관측 처리와 VLA 적응: 2주 실행 계획
 
 > **보존본 · 2026-10-23 대체됨.** 현재 실행 기준은 [ENGINEERING_SPRINT.ko.md](ENGINEERING_SPRINT.ko.md)와 [START_HERE.ko.md](START_HERE.ko.md)다. 아래 14일 일정·60–70시간 범위는 과거 설계 이력이며 현재 작업 순서가 아니다. 실제 인간 시연의 작은 SFT와 paired 평가를 10/26–27 목표로 앞당기고, 10/28 증거를 고정한다. 아래 문서에 남은 날짜·목표를 최신 상태로 해석하지 않는다.

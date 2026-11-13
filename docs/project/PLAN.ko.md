@@ -1,3 +1,5 @@
+> **과거 기록.** 현재 클린 서버 절차는 [OPERATIONS](../OPERATIONS.md), 다음 목표는 [COLLECTION_PLAN](../COLLECTION_PLAN.md)을 따릅니다. 아래의 실행·재개 지시는 당시 문맥입니다.
+
 # 초기 실행 계획 (보존본)
 
 > 이 문서는 첫 구현 이전 설계를 보존한 이력이다. 현재 실행 순서는 [START_HERE](START_HERE.ko.md)와 [2주 계획](RGBD_TWO_WEEK_PLAN.ko.md), 실제 검증 범위는 [STATUS](STATUS.md)를 따른다. 아래의 초기 미래형 문장을 현재 구현 상태로 해석하지 않는다.

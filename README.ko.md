@@ -1,7 +1,5 @@
-# PhyRC 2027 한국어 기술문서
+# 문서 안내
 
-현재 운영 문서는 **[README.md](README.md)** 하나를 기준으로 관리합니다.
+현재 안내는 **[메인](README.md)**에서 관리합니다. 중복 설명을 통합했습니다.
 
-새 서버 구성, 현재 코드 설명, Codex CLI 자동 시연 수집 계획, 검수와 학습 연결, 종료 후 보존 절차를 모두 한국어로 정리했습니다.
-
-[기술문서 읽기](README.md) · [새 서버 준비](docs/project/START_HERE.ko.md) · [다음 작업 상태](docs/project/STATUS.md)
+[개편 전 원문](https://github.com/leonyoon-3dai/PhyRC_2027_phase1/blob/f17f5495259468ce2c9fc625b4eff145a28d27cf/README.ko.md)은 당시 기록이며 현재 실행 지시가 아닙니다.

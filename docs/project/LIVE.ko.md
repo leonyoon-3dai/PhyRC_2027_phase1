@@ -1,3 +1,5 @@
+> **과거 기록.** 현재 클린 서버 절차는 [OPERATIONS](../OPERATIONS.md), 다음 목표는 [COLLECTION_PLAN](../COLLECTION_PLAN.md)을 따릅니다. 아래의 실행·재개 지시는 당시 문맥입니다.
+
 # 맥북 크롬으로 연습·수집하기
 
 [첫 화면](../../README.md) · [시연 결과](RESULTS.ko.md) · [오늘 상태](sessions/20261026-live.md)
