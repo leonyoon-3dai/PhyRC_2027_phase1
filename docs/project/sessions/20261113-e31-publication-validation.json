@@ -1,0 +1,35 @@
+{
+  "scope": "E31 closed report/media/catalog and approved central-span code/tests with E32 prelaunch docs",
+  "catalog_counts": {
+    "runs": 39,
+    "startpoints": 18,
+    "methods": 23,
+    "attempts": 42
+  },
+  "catalog_schema_valid": true,
+  "sqlite_index_matches_source": true,
+  "catalog_tests_passed": 11,
+  "approved_strategy_tests_passed": 24,
+  "strategy_integration_receipt": "docs/project/sessions/20261113-central-span-integration-validation.json",
+  "changed_markdown_links_resolve": true,
+  "approved_code_test_files": [
+    "participant/collection/codex_client.py",
+    "tests/test_central_span_strategy.py",
+    "tests/test_single_arm_progress_strategy.py"
+  ],
+  "new_dependencies": false,
+  "human_feedback_patch_applied": false,
+  "e31_source_commit": "000d4fcc1a44bcc602a6275b2f79f9dc6456c641",
+  "e31_capture_validation": {
+    "transitions_checked": 830,
+    "errors": []
+  },
+  "backup_receipt": "docs/project/sessions/20261113-e31-backup-verification.json",
+  "e32_run_id": "20261113-astra-central380-001",
+  "e32_started": false,
+  "new_method_model_gpu_tested": false,
+  "not_performed": [
+    "new full runtime CPU suite",
+    "Codabench submission"
+  ]
+}

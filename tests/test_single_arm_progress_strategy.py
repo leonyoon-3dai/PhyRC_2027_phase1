@@ -65,7 +65,8 @@ class SingleArmProgressStrategyTest(unittest.TestCase):
             return result
         old, current = nodes(BASE_SOURCE), nodes(Path(client.__file__).read_text())
         self.assertEqual(set(current) - set(old), {
-            'SINGLE_ARM_PROGRESS_TASK', 'SIDE_HEM_WRISTS_TASK', 'DIAGONAL_ENTRY_TASK'})
+            'SINGLE_ARM_PROGRESS_TASK', 'SIDE_HEM_WRISTS_TASK', 'DIAGONAL_ENTRY_TASK',
+            'CENTRAL_SPAN_ENTRY_TASK'})
         for name, node in old.items():
             if name != 'main':
                 with self.subTest(name=name):

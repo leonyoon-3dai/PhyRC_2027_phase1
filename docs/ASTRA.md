@@ -6,7 +6,7 @@
 
 실제 진행·마감·점수·백업은 [현재 상태](project/STATUS.md), 실행 조건·후속 판단은 [수집 계획](COLLECTION_PLAN.md)을 기준으로 합니다. 과거 결과는 [E30 마감](project/sessions/20261113-e30-close.ko.md)에 보존합니다.
 
-E31의 실제 시작 source·시각은 [시작 기록](project/sessions/20261113-e31-start.ko.md)에 남겼습니다. 실행 중 코드·프롬프트 변경과 동시 두 번째 simulator를 금지하며 미적용 피드백 큐는 활성화하지 않습니다.
+E31은 [마감 기록](project/sessions/20261113-e31-close.ko.md)에 보존했고, 다음 정적 전략과 검증 범위는 [중앙 자유 구간 방법](collection/research/2026-11-13-central-span-entry.ko.md)을 따른다. [E32 계획](project/sessions/20261113-e32-plan.ko.md)은 아직 실행 결과가 아니다. 진행 중 actor 지시 주입이나 미적용 피드백 큐 활성화는 하지 않는다.
 
 ## 1. 관측부터 기록까지
 

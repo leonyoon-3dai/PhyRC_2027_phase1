@@ -2,32 +2,28 @@
 
 [메인](../../README.md) | [시연 목록](../EPISODES.md) | [다음 수집](../COLLECTION_PLAN.md) | [Astra 코드](../ASTRA.md) | [클린 서버](../OPERATIONS.md)
 
-**E31 `20261113-astra-diagonal682-001`이 2026-11-13 23:17:37 UTC에 시작했습니다.** clean source `000d4fcc1a44bcc602a6275b2f79f9dc6456c641`, 직접 parent/source group E28, prefix682·새 replay history632/668, 같은 `coordinated-diagonal-entry`, 최대20개 새 결정·총1400전이·review10입니다. 실제 attempt의 시작과 prefix replay 진입을 확인했으며 replay 완료·새 행동·최종 득점·QC는 아직 확인하지 않았습니다. [E31 시작 기록](sessions/20261113-e31-start.ko.md) / [현재 실행 조건](../COLLECTION_PLAN.md)
+**E31을 마감했고 E32는 아직 시작하지 않았습니다.** E31은 **5/50·픽업5·착의0·success=false**, 새 구간 득점0입니다.50점 목표는 달성하지 못했습니다. E32 `20261113-astra-central380-001`은 E28/380·새 history264/332에서 중앙 자유 밑단 구간을 유지하고 같은 손을 정렬하는 `coordinated-central-span-entry` 비교로 준비했습니다. 코드 통합·24개 CPU 재검사와 E31 고정 원본 백업 검증을 마쳤습니다. [E32 계획](sessions/20261113-e32-plan.ko.md) / [새 방법](../collection/research/2026-11-13-central-span-entry.ko.md)
 
-**마지막 마감은 E30이며 아래 표는 그 결과입니다.** 유효한 로컬 공식 평가기5/50·픽업5·착의0·success=false, 새 구간 득점0입니다.50점 목표는 달성하지 못했습니다.
-
-| 구분 | 확인된 E30 상태 |
+| 구분 | 확인된 E31 상태 |
 |---|---|
-| 마지막 마감 시연 | `20261113-astra-diagonal738-001` |
-| 시작·출처 | clean source `7eaae3e6b56ce938237b873bcb1540470a449b79`; 직접 parent/source group 모두 E28 `20261113-astra-side-hem-fresh-001` |
-| 재실행 | prefix738 완료, 새 replay 관측682·714 사용. 정확한 천 checkpoint 복원 아님 |
-| 실행 시각 | 2026-11-13 22:31:59–23:02:50 UTC |
-| 수집 | 915전이 /45.75시뮬레이션초 /1,850.453초(약30.84분) 실제 경과 |
-| 구성 | 738 replay +87 model +90 settle; 새 구간177전이·8.85시뮬레이션초, 종료 중립0 |
-| 모델 | 최대20결정 중19결정=18 act+1 finish_episode,20호출=질의 후속1회 포함. 질의 중 물리 진행0 |
-| 종료 | D18 actor `finish_episode`; 예산 소진·10점 도달·timeout 아님. 국소 판단이며 불가능성 증명 아님 |
-| 기술 검사 | completed·closed·finished, simulator 반환0, capture complete,915/915 전수 QC·오류0 |
-| 공식 평가기 | valid=true, raw5/50, pickup5 at371(`replayed_parent`), 새 구간 득점0, dressing0, success=false |
-| 시간 | actor1,035.999초; 환경764.021초= replay617.940 +새146.081초. 전체 경과에는 초기화 포함 |
-| 학습 승인 | unreviewed. QC·기록 완료·단계 이름은 학습 승인이나 착의 성공이 아님 |
-| 원본 백업 | 고정 revision `6b259ab4e34103286c30235640a434c7ee74f60c` 강제 재다운로드·archive SHA256/크기·227개 member 검증 완료 |
+| 마지막 마감 시연 | `20261113-astra-diagonal682-001` |
+| source / 계보 | clean `000d4fcc1a44bcc602a6275b2f79f9dc6456c641`; 직접 parent/source group 모두 E28 `20261113-astra-side-hem-fresh-001` |
+| 시작–종료 | 2026-11-13 23:17:37–23:46:18 UTC |
+| 재실행·입력 | prefix682 완료, 새 history632·668; 정확한 천 checkpoint 복원 아님 |
+| 수집 | 830전이=682 replay+58 model+90 settle; 새148전이·7.4시뮬레이션초, 종료 중립0 |
+| 결정·호출 | 최대20개 중17결정=16 act+1 finish_episode,19호출=depth 질의 후속2회 포함. 질의 중 물리0 |
+| 종료 | D16 actor finish; 결정/전이 예산 소진·review10·timeout 종료 아님. 국소 판단이며 불가능성 증명 아님 |
+| QC·평가 | completed/closed/finished, capture complete,830/830 전수 QC·오류0; evaluation_valid=true, raw5/50, success=false |
+| 득점 구간 | pickup5 at371(`replayed_parent`), 새 구간 득점0·착의0 |
+| 시간 | 전체1,721.580초(28.69분), actor971.602초, 환경699.982초= replay577.617 +새122.366초 |
+| 반환값 | host session143, simulator0. 서로 다른 종료 상태로 기록 |
+| 원본 백업 | 고정 HF9254bf1e1fbdae8f4aebeb7d4f4c9858a88235fb 강제 재다운로드·archive SHA/크기·209members 검증 |
+| 학습 | unreviewed; 기록 완료·QC·단계명은 학습 승인이나 착의 성공이 아님 |
 
-[실행 manifest](../collection/attempts/20261113-astra-diagonal738-001/manifest.json) / [공개 리뷰](../collection/reviews/20261113-astra-diagonal738-001.ko.md) / [추가 구간 영상](../gallery/20261113-e30-diagonal-738-915/event.mp4) / [전체 영상](../collection/attempts/20261113-astra-diagonal738-001/overview.mp4) / [백업 receipt](sessions/20261113-e30-backup-verification.json) / [마감 기록](sessions/20261113-e30-close.ko.md) / [결정·시간 분석](../collection/reviews/20261113-decision-budget/E30/README.ko.md)
+[실행 manifest](../collection/attempts/20261113-astra-diagonal682-001/manifest.json) / [공개 리뷰](../collection/reviews/20261113-astra-diagonal682-001.ko.md) / [추가 구간 MP4](../gallery/20261113-e31-diagonal-682-830/event.mp4) / [전체 영상](../collection/attempts/20261113-astra-diagonal682-001/overview.mp4) / [백업 receipt](sessions/20261113-e31-backup-verification.json) / [마감 기록](sessions/20261113-e31-close.ko.md) / [결정·시간 분석](../collection/reviews/20261113-decision-budget/E31/README.ko.md)
 
-host exec session 반환값은143입니다. simulator0·완료 파일·유효한 평가·전수 QC를 구분하며 host까지0이라고 주장하지 않습니다. `coordinated-diagonal-entry`, 고정CLI0.166.0 / exec / gpt-6-astra / ultra, named/query/wrist-panel/plan1/settle6/profile을 사용했습니다. 실시간 사람 피드백 큐는 미적용입니다.
+수평 접근과 자세 복구는 관측했지만 첫 손의 중앙 진입·전완 진행은 확인하지 못했습니다. E31의 마지막830을 더 좋은 출발점으로 승격하지 않습니다. E32는 출발점과 방법을 함께 바꾸므로 단일 원인의 효과로 해석하지 않습니다. 기존 camera XYZ 질의를 새 기능으로 세지 않으며, 입구의 폭·깊이와 손–자유 구간의 실제 상대 변화를 검토합니다.
 
-E30은 같은 손의 낮춤·회전·올림을 나누어 시험했으나 확인된 통과나 추가 득점이 없었습니다. E31의 비교는 전략·기본20결정을 유지하고 더 이른 E28/682로 출발점만 바꿉니다. E30/886·915는 진단 자료이며 새로운 출발점으로 승격하지 않습니다. 사용자 승인에 따라 단일 시연→전수 QC·고정 백업→공개 관측·별도 점수/시간 분석→다음 시연을 자동 반복하며 매번 확인을 요청하지 않습니다. 중지·방향 변경 요청은 우선합니다.
+사용자 승인에 따라 단일 시연→마감·전수 QC·고정 백업→공개 관측 및 별도 점수/시간 분석→다음 시연을 자동 반복합니다. 기본 새 결정20개를 유지하며 남은 예산을 다음 run에 합산하지 않습니다. 중지·방향 변경 지시는 우선합니다. 실시간 피드백 큐 후보는 계속 미적용입니다.
 
-E28·E29·E30은 같은 source group이며 독립 성공 표본이 아닙니다. E28은 clean source `9f797722acdb0f8d35001175e3aaa7e07a8dd2f8`의 새 reset에서40결정·739전이로 마감했습니다. [E28 백업](sessions/20261113-e28-backup-verification.json)은 고정 revision230c90a5·402members, [E29 백업](sessions/20261113-e29-backup-verification.json)은4a470053·155members 검증을 완료했습니다. 과거 E27/928 same-arm은 실제 E28의 출발점이 아닌 역사적 미실행 계획입니다.
-
-새 환경의 CPU335개 검사·GPU smoke·별도 wiring3/3 QC와 [62members 백업](sessions/20261113-wiring-backup-verification.json)은 연결 근거입니다. E30 방법의17개 focused CPU 검사는 [방법 기록](../collection/research/2026-11-13-e30-diagonal-entry.ko.md)에 있습니다. 미적용 피드백 후보의353개 CPU 검사는 실행된 E30 코드의 전체 검사로 혼합하지 않습니다.
+E28·E29·E30·E31은 같은 source group이며 독립 성공 표본이 아닙니다. [E28](sessions/20261113-e28-close.ko.md), [E29](sessions/20261113-e29-close.ko.md), [E30](sessions/20261113-e30-close.ko.md)의 원본·검증·성과는 각각 보존합니다. 각 방법의 CPU 검사와 실제 모델/시뮬레이션 성과를 구분하며 로컬5/50을 Codabench 제출 성과나 공식900초 평가 예산 준수로 설명하지 않습니다.

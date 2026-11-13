@@ -201,6 +201,18 @@ During this comparison, retain the first-hand objective instead of switching to 
 
 Use the existing brief reason to identify the current trial, guide/anchor roles, the same-hand relation and the observable change to test, without adding response fields. Preserve the existing bounded one-sided regrasp and recovery rules. If two or three executed corrections leave the same obstruction, choose a different observable supported mechanism rather than repeating tiny offsets; do not finish solely because ambiguity remains when a useful bounded alternative is supported. Recover earlier when support or deformation worsens, account for residual target-following and saturation, and finish when useful supported movement or recovery is exhausted. No source trajectory, evaluation signal, hidden contact or geometry is provided.'''
 
+CENTRAL_SPAN_ENTRY_TASK = '''For this comparison, prioritize a broad, compliant FREE SPAN of the candidate BODY HEM between useful supports, then align one selected hand with that free interior before an entry lift. Central means an accessible region away from held corners and gripper housings, not an exact geometric midpoint. Preserve useful CURRENT grips; a U-shaped exterior panel, a dark fold, large gripper separation or visible color alone does not establish an open passage. These are public-observation hypotheses, not measured contact or topology.
+
+SHAPE AND RETAIN: Choose a guide and an anchor from current designated views and public state. Make one finite shape test at a time: a controlled relative-height change, ONE wrist rotation axis, or support spacing, chosen from the observed boundaries, remaining travel and recent measured response. Compare whether candidate width AND depth remain useful, whether two boundary candidates change relative to each other, and whether a whole exterior panel merely sags or becomes taut. If a visible free hem segment looks overly straight or taut and support permits, relieve that tension with a controlled change to allow a broad bowed or U-like free span while retaining useful width and depth. A U silhouette alone is not an aperture test. Do not always narrow or always spread; more sag and maximum tension are not objectives. No fixed gap, angle, coordinate or robot is prescribed. Keep useful support and preserve the resulting span through transport, rechecking it after movement. The anchor retains a useful cloth relationship, not a fixed world pose; coordinated translations are allowed when they preserve shape and clearance.
+
+ALIGN THE SAME HAND WITH THE FREE SPAN: Select one currently visible or trackable hand through its connected forearm, and reassess its relation after transport. Before raising for entry, compare that SAME hand with the free span, rather than steering it toward a held corner because the corner is easy to see. If the hand remains beside the span, choose a supported positioning or orientation change and inspect its relative effect before repeating an entry lift. Keep both jaws and housings outside the intended passage. When enabled, existing optional current pixel depth queries can resolve a visible-surface depth ambiguity; camera XYZ is already available, not a new sensor or a robot/world target transform. Use only same-camera/time samples, retain uncertain point identities, and never treat an invalid or background sample as free space or an opening plane. After each action distinguish actual robot displacement and residual target following from cloth motion and the same-hand/free-span change. Do not demand a perfectly visible hole, empty background, confirmed opposing layers or exact centering before a useful bounded test supported by current/recent observations.
+
+ENTER AND ADVANCE ALONG THE FIRST FOREARM: When the supported relation permits it, make a bounded body-hem entry trial toward that same hand and inspect the result. After the trial, advance the garment along its connected wrist/forearm toward that hand emerging through its corresponding sleeve only when current/recent observations support a plausible retained entry or same-forearm progression direction. If the hand still remains beside the free span, realign rather than repeat an entry lift. Certified passage is not required for a useful bounded test. Upward world motion alone is not the goal, and do not enter a cuff from outside. Choose direction and duration from current observations, public state and measured response; useful positioning may use the normal full action duration. A hand disappearing behind cloth is not entry, and partial occlusion alone is not an automatic finish. Retain the first hand objective while useful progress or a changed supported test remains available.
+
+RETAIN THE FIRST SIDE FOR THE OTHER HAND: Once current/recent views support useful first-hand entry or garment progression along the same forearm that can be retained, adjust the opposite guide while preserving that cloth-to-arm relation. Do not switch merely because another hand appears or require an evaluator score. The first side may move cooperatively; check its relation after each opposite-side action and recover if it slips or the aperture collapses. Continue the existing full-dressing objective when the observed relations support it.
+
+Keep the existing bounded one-sided regrasp and recovery rules. If current grips cannot control a useful span, select a different supported shape/approach mechanism or a permitted table-supported grasp change; do not spend the batch on tiny offsets with the same effect. Reserve actual post-close time and observations for local following and shape checks. Preserve useful intermediate support through preparation, transport and advancement so a bounded run can close without deliberately dropping it; do not assume one batch completes every stage. In the existing brief reason identify the phase, guide/anchor roles, selected hand when relevant, and intended observable change. Preserve uncertainty, recover when support or deformation worsens, and finish when no useful supported movement or recovery remains. No hidden geometry, evaluation input, extra action fields or physics changes are introduced.'''
+
 SINGLE_ARM_PROGRESS_TASK = '''For this attempt, preserve continuity of ONE selected arm within the task-progress approach. Choose the arm with the most useful CURRENT body-opening, hand and forearm relationship from the designated views; use available same-episode history to track that relationship, not as proof of current geometry or support. Identify the selected arm by its visible connected hand/forearm and relation to the garment, without assuming a predetermined anatomical side or robot-camera identity. Keep the existing grasps: the one-sided regrasp bound remains zero.
 
 Continue that hand's body-opening entry and guide the garment along the SAME forearm toward its corresponding sleeve and shoulder. Keep the body-entry-to-sleeve direction; do not insert the hand into a cuff from outside. A visible cuff is not required before starting a useful entry movement. Use the existing brief reason to state the selected arm relationship, the current purpose and any identity uncertainty; do not add output fields.
@@ -616,8 +628,9 @@ def main():
                         'coordinated-task-progress', 'coordinated-opposing-rim',
                         'coordinated-leading-hand-swap',
                         'coordinated-single-arm-progress',
-                        'coordinated-side-hem-wrists', 'coordinated-diagonal-entry'], default='general',
-                        help='Optional dressing guidance; diagonal-entry separately observes same-hand lowering, reorientation and conditional raising')
+                        'coordinated-side-hem-wrists', 'coordinated-diagonal-entry',
+                        'coordinated-central-span-entry'], default='general',
+                        help='Optional dressing guidance; central-span-entry shapes a free body-hem span before same-hand alignment and forearm advancement')
     parser.add_argument('--actor-backend', choices=['exec', 'app-server'], default='exec')
     parser.add_argument('--plan-size', type=int, default=1,
                         help='Maximum segments per model call; >1 is an open-loop list')
@@ -687,7 +700,8 @@ def main():
                          'coordinated-entry-probe', 'coordinated-task-progress',
                          'coordinated-opposing-rim', 'coordinated-leading-hand-swap',
                          'coordinated-single-arm-progress',
-                         'coordinated-side-hem-wrists', 'coordinated-diagonal-entry') and args.mode != 'dressing':
+                         'coordinated-side-hem-wrists', 'coordinated-diagonal-entry',
+                         'coordinated-central-span-entry') and args.mode != 'dressing':
         parser.error('coordinated strategy requires the full dressing objective')
     if args.strategy == 'coordinated-support-diagnostic' and args.plan_size != 1:
         parser.error('support diagnostic requires plan-size=1 to observe after each action')
@@ -711,6 +725,8 @@ def main():
         parser.error('side-hem-wrists requires exec and plan-size=1 to inspect each support and wrist transition')
     if args.strategy == 'coordinated-diagonal-entry' and (args.plan_size != 1 or args.actor_backend != 'exec'):
         parser.error('diagonal-entry requires exec and plan-size=1 to inspect each same-hand entry trial')
+    if args.strategy == 'coordinated-central-span-entry' and (args.plan_size != 1 or args.actor_backend != 'exec'):
+        parser.error('central-span-entry requires exec and plan-size=1 to inspect span shape and same-hand progress')
     if args.mode == 'wiring' and args.plan_size > 1 and (args.plan_size != 3 or args.decisions != 3):
         parser.error('grouped wiring requires plan-size=3 and decisions=3')
     if not math.isfinite(args.model_timeout) or not 10 <= args.model_timeout <= 1800:
@@ -748,7 +764,8 @@ def main():
                          'coordinated-entry-probe', 'coordinated-task-progress',
                          'coordinated-opposing-rim', 'coordinated-leading-hand-swap',
                          'coordinated-single-arm-progress',
-                         'coordinated-side-hem-wrists', 'coordinated-diagonal-entry'):
+                         'coordinated-side-hem-wrists', 'coordinated-diagonal-entry',
+                         'coordinated-central-span-entry'):
         task += '\n\n' + COORDINATED_TASK
     if args.strategy == 'coordinated-sleeve':
         task += '\n\n' + SLEEVE_TASK
@@ -783,6 +800,9 @@ def main():
         task += '\n\n' + SIDE_HEM_WRISTS_TASK + '\n\n' + METHOD_SATURATION_TASK
     elif args.strategy == 'coordinated-diagonal-entry':
         task += ('\n\n' + SIDE_HEM_WRISTS_TASK + '\n\n' + DIAGONAL_ENTRY_TASK
+                 + '\n\n' + METHOD_SATURATION_TASK)
+    elif args.strategy == 'coordinated-central-span-entry':
+        task += ('\n\n' + SIDE_HEM_WRISTS_TASK + '\n\n' + CENTRAL_SPAN_ENTRY_TASK
                  + '\n\n' + METHOD_SATURATION_TASK)
     if args.plan_size > 1:
         task += '\n\n' + PLAN_TASK.format(max_segments=args.plan_size, max_total_steps=args.plan_step_budget)

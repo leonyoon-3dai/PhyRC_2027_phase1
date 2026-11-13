@@ -1,0 +1,298 @@
+{
+  "schema": "phyrc-decision-budget-review-v1",
+  "run_id": "20261113-astra-diagonal682-001",
+  "scope": "developer_review_only_not_actor_input",
+  "publication_status": "prepared_for_review",
+  "source_files": [
+    {
+      "path": "output/operator-traces/20261113-astra-diagonal682-001/attempt.json",
+      "sha256": "ac9c678595d2e00facbcbe0ff93b234215b2b74be341ac49f4e3c61f7d2b2c1b"
+    },
+    {
+      "path": "output/operator-traces/20261113-astra-diagonal682-001/decisions.jsonl",
+      "sha256": "9b658915294f50aa9395be21f6082ca634dc5d5c622f94032aba254cc5471bd7"
+    },
+    {
+      "path": "docs/collection/attempts/20261113-astra-diagonal682-001/manifest.json",
+      "sha256": "7253c21bcef9dd65c49b76f2fa4753438bc1d1e3999e5dd1dbdb38cea1648174"
+    },
+    {
+      "path": "docs/collection/attempts/20261113-astra-diagonal682-001/score-events.jsonl",
+      "sha256": "dccdc10beb8ffd554f2221af9ca249fccaf6aabb98a5d1879d93b6a742f71039"
+    },
+    {
+      "path": "docs/collection/reviews/20261113-decision-budget/E30/review.json",
+      "sha256": "df9e3a6a2444decddd7bd182a81b7d3b745c42ecd846820171d1645e65530b32"
+    },
+    {
+      "path": "docs/project/sessions/20261113-e31-start.ko.md",
+      "sha256": "5b1f5dde3916f5e1a714ba84799d9d0cdbd3296a3d14e7539c7c5ebc862ef6ce"
+    }
+  ],
+  "method": {
+    "timing_event_types": [
+      "model_call",
+      "applied_segment",
+      "replayed_segment"
+    ],
+    "actor_timing": "sum model_call.wall_s once per call, including query followup; decision copies excluded",
+    "stage_intent": "accepted decision labels; not verified outcome",
+    "scores": "separate trusted exported score_awarded records; not actor input",
+    "transition_boundaries": "[start,end); award belongs to start < boundary <= end; physics_tick/12 rounded up to containing 20Hz transition boundary",
+    "configured_limits_source": "reviewed E31 start record; limits not inferred from completed counts",
+    "excluded": [
+      "raw reasoning",
+      "action reasons",
+      "session identifiers",
+      "auth data",
+      "images",
+      "actions",
+      "HDF5 reads",
+      "hidden geometry"
+    ]
+  },
+  "summary": {
+    "completed": true,
+    "quality_passed": true,
+    "validated_transitions": 830,
+    "source_commit": "000d4fcc1a44bcc602a6275b2f79f9dc6456c641",
+    "parent_attempt": "20261113-astra-side-hem-fresh-001",
+    "source_group": "20261113-astra-side-hem-fresh-001",
+    "strategy": "coordinated-diagonal-entry",
+    "decisions_requested": 20,
+    "decisions_completed": 17,
+    "motion_decisions": 16,
+    "finish_decisions": 1,
+    "unused_decision_slots": 3,
+    "actor_calls": 19,
+    "depth_query_followup_calls": 2,
+    "max_steps": 1400,
+    "review_points": 10,
+    "model_call_timeout_s": 180,
+    "stop_reason": "actor_finish_episode",
+    "finish_decision_index": 16,
+    "decision_budget_exhausted": false,
+    "step_budget_exhausted": false,
+    "whole_attempt_wall_s": 1721.580350964001,
+    "actor_call_wall_s": 971.6024803219989,
+    "environment_dispatch_wall_s": 699.9824793539992,
+    "replay_environment_wall_s": 577.616704389995,
+    "new_suffix_environment_wall_s": 122.36577496400423,
+    "new_suffix_attributed_actor_plus_environment_wall_s": 1093.9682552860031,
+    "wall_s_outside_attributed_call_and_action_rows": 49.99539128800279,
+    "replay_transitions": 682,
+    "new_model_transitions": 58,
+    "new_settle_transitions": 90,
+    "new_suffix_transitions": 148,
+    "finish_transitions": 0,
+    "cleanup_transitions": 0,
+    "total_transitions": 830,
+    "new_suffix_simulation_s": 7.4,
+    "whole_episode_simulation_s": 41.5,
+    "actor_s_per_new_decision_including_finish": 57.15308707776464,
+    "actor_s_per_model_call": 51.13697264852626,
+    "actor_s_per_motion_decision": 56.106405759062454,
+    "environment_s_per_motion_decision": 7.647295859562746,
+    "whole_wall_divided_by_decisions_is_not_suffix_latency": true,
+    "model_internal_inference_wall_s": null,
+    "raw_points": 5.0,
+    "dressing_points": 0.0,
+    "new_suffix_raw_points_awarded": 0.0,
+    "new_suffix_dressing_points_awarded": 0.0,
+    "success": false,
+    "human_intervention": false,
+    "started_at_utc": "2026-11-13T23:17:37Z",
+    "ended_at_utc": "2026-11-13T23:46:18Z"
+  },
+  "decision_groups": [
+    {
+      "group_id": "D00-D04",
+      "decision_index_start": 0,
+      "decision_index_end_inclusive": 4,
+      "decision_tool_counts": {
+        "act": 5
+      },
+      "actor_calls": 6,
+      "actor_call_phase_counts": {
+        "initial": 5,
+        "action_after_query": 1
+      },
+      "actor_call_wall_s": 292.13824621500135,
+      "environment_dispatch_wall_s": 38.885428667999804,
+      "model_environment_wall_s": 15.041637440001068,
+      "settle_environment_wall_s": 23.843791227998736,
+      "transition_start_boundary": 682,
+      "transition_end_boundary": 729,
+      "actual_transitions": 47,
+      "model_transitions": 17,
+      "settle_transitions": 30,
+      "observed_stage_intent_counts": {
+        "first_sleeve": 5
+      }
+    },
+    {
+      "group_id": "D05-D09",
+      "decision_index_start": 5,
+      "decision_index_end_inclusive": 9,
+      "decision_tool_counts": {
+        "act": 5
+      },
+      "actor_calls": 6,
+      "actor_call_phase_counts": {
+        "initial": 5,
+        "action_after_query": 1
+      },
+      "actor_call_wall_s": 332.0116806059996,
+      "environment_dispatch_wall_s": 38.790093079000144,
+      "model_environment_wall_s": 14.962622574001216,
+      "settle_environment_wall_s": 23.827470504998928,
+      "transition_start_boundary": 729,
+      "transition_end_boundary": 776,
+      "actual_transitions": 47,
+      "model_transitions": 17,
+      "settle_transitions": 30,
+      "observed_stage_intent_counts": {
+        "first_sleeve": 5
+      }
+    },
+    {
+      "group_id": "D10-D14",
+      "decision_index_start": 10,
+      "decision_index_end_inclusive": 14,
+      "decision_tool_counts": {
+        "act": 5
+      },
+      "actor_calls": 5,
+      "actor_call_phase_counts": {
+        "initial": 5
+      },
+      "actor_call_wall_s": 225.84358838699882,
+      "environment_dispatch_wall_s": 36.377200594002716,
+      "model_environment_wall_s": 17.10090819600191,
+      "settle_environment_wall_s": 19.276292398000805,
+      "transition_start_boundary": 776,
+      "transition_end_boundary": 820,
+      "actual_transitions": 44,
+      "model_transitions": 20,
+      "settle_transitions": 24,
+      "observed_stage_intent_counts": {
+        "first_sleeve": 2,
+        "recovery": 3
+      }
+    },
+    {
+      "group_id": "D15-D15",
+      "decision_index_start": 15,
+      "decision_index_end_inclusive": 15,
+      "decision_tool_counts": {
+        "act": 1
+      },
+      "actor_calls": 1,
+      "actor_call_phase_counts": {
+        "initial": 1
+      },
+      "actor_call_wall_s": 47.708976936999534,
+      "environment_dispatch_wall_s": 8.304011412001273,
+      "model_environment_wall_s": 3.341587464999975,
+      "settle_environment_wall_s": 4.962423947001298,
+      "transition_start_boundary": 820,
+      "transition_end_boundary": 830,
+      "actual_transitions": 10,
+      "model_transitions": 4,
+      "settle_transitions": 6,
+      "observed_stage_intent_counts": {
+        "first_sleeve": 1
+      }
+    },
+    {
+      "group_id": "D16-D16",
+      "decision_index_start": 16,
+      "decision_index_end_inclusive": 16,
+      "decision_tool_counts": {
+        "finish_episode": 1
+      },
+      "actor_calls": 1,
+      "actor_call_phase_counts": {
+        "initial": 1
+      },
+      "actor_call_wall_s": 73.89998817699961,
+      "environment_dispatch_wall_s": 0.009041211000294425,
+      "model_environment_wall_s": 0.009041211000294425,
+      "settle_environment_wall_s": 0,
+      "transition_start_boundary": 830,
+      "transition_end_boundary": 830,
+      "actual_transitions": 0,
+      "model_transitions": 0,
+      "settle_transitions": 0,
+      "observed_stage_intent_counts": {
+        "first_sleeve": 1
+      }
+    }
+  ],
+  "trusted_score_awards": [
+    {
+      "scope": "replay",
+      "transition_boundary": 371,
+      "evaluation_time_s": 18.55,
+      "award_stage": "pickup",
+      "raw_points_before": 0.0,
+      "raw_points_after": 5.0,
+      "raw_points_delta": 5.0,
+      "dressing_points_delta": 0.0
+    }
+  ],
+  "trusted_score_by_scope": [
+    {
+      "scope": "replay",
+      "raw_points_awarded": 5.0,
+      "dressing_points_awarded": 0.0
+    },
+    {
+      "scope": "D00-D04",
+      "raw_points_awarded": 0,
+      "dressing_points_awarded": 0
+    },
+    {
+      "scope": "D05-D09",
+      "raw_points_awarded": 0,
+      "dressing_points_awarded": 0
+    },
+    {
+      "scope": "D10-D14",
+      "raw_points_awarded": 0,
+      "dressing_points_awarded": 0
+    },
+    {
+      "scope": "D15-D15",
+      "raw_points_awarded": 0,
+      "dressing_points_awarded": 0
+    },
+    {
+      "scope": "D16-D16",
+      "raw_points_awarded": 0,
+      "dressing_points_awarded": 0
+    }
+  ],
+  "e30_startpoint_comparison": {
+    "run_id": "20261113-astra-diagonal738-001",
+    "strategy": "coordinated-diagonal-entry",
+    "motion_decisions": 18,
+    "finish_decisions": 1,
+    "actor_calls": 20,
+    "replay_transitions": 738,
+    "new_suffix_transitions": 177,
+    "new_suffix_simulation_s": 8.85,
+    "actor_call_wall_s": 1035.9994207350046,
+    "new_suffix_environment_wall_s": 146.08129134000956,
+    "new_suffix_raw_points_awarded": 0.0,
+    "stop_reason": "actor_finish_episode"
+  },
+  "interpretation": [
+    "E31 retained the diagonal-entry strategy and requested 20 decisions while moving its replay start from E28/738 to E28/682 with matching earlier history.",
+    "The 16 new motion decisions and 148 transitions produced no additional official score; replay supplied pickup 5.",
+    "The actor chose finish with 3 unused slots, so numeric budget exhaustion was not the stopping cause.",
+    "Fresh actor context, nonexact replay and changed available history prevent an exact causal estimate of prefix selection or decision-budget effectiveness.",
+    "Timing and stage labels do not establish physical passage, failure mechanism or future success probability.",
+    "Host exec 143 is recorded separately from simulator 0 and full capture QC; no cause is inferred here."
+  ]
+}

@@ -22,25 +22,25 @@ https://github.com/user-attachments/assets/d2f347fe-712b-42f3-bdee-69d3fee2a47c
 
 | [**시연 영상**](docs/EPISODES.md) | [**다음 조작 계획**](docs/COLLECTION_PLAN.md) | [**Astra 코드·Hz**](docs/ASTRA.md) | [**클린 서버 시작**](docs/OPERATIONS.md) |
 |:---:|:---:|:---:|:---:|
-| E00–E30 전체 자료 | 옆에서 파지하고 입구 펼치기 | 관측부터 HDF5까지 | 설치·복원·검증·Codex CLI |
+| E00–E31 전체 자료 | 옆에서 파지하고 입구 펼치기 | 관측부터 HDF5까지 | 설치·복원·검증·Codex CLI |
 
-**현재 실행·결과는 [STATUS](docs/project/STATUS.md), 다음 조작 조건은 [수집 계획](docs/COLLECTION_PLAN.md)에서 확인합니다.** E31은 E28의 더 이른682 경계에서 같은 대각선 진입 전략·최대20결정을 비교하도록 시작했습니다. [E31 시작 기록](docs/project/sessions/20261113-e31-start.ko.md). 마지막 마감 E30은 **5/50·새 구간 득점0·착의0·success=false**이며 아래 영상과 리뷰에 보존합니다.
+**현재 실행·결과는 [STATUS](docs/project/STATUS.md), 다음 조작 조건은 [수집 계획](docs/COLLECTION_PLAN.md)에서 확인합니다.** E31은 더 이른 접근 경계에서16번 움직인 뒤17번째 결정에서 마감했습니다. **5/50·새 구간 득점0·착의0·success=false**이며, 다음 E32는 E28/380에서 중앙 자유 구간의 형상과 첫 손 정렬을 비교하도록 준비 중입니다. [E31 마감](docs/project/sessions/20261113-e31-close.ko.md) / [E32 계획](docs/project/sessions/20261113-e32-plan.ko.md)
 
 ## 최근 시연
 
-<a href="docs/gallery/20261113-e30-diagonal-738-915/event.mp4"><img src="docs/gallery/20261113-e30-diagonal-738-915/preview.gif" width="960" alt="E30 실제 추가 구간: 낮춤·대각 방향·올림을 분리했으나 손목 통과는 미확인. 왼쪽 robot_1, 오른쪽 robot_0, 위 head, 아래 wrist."></a>
+<a href="docs/gallery/20261113-e31-diagonal-682-830/event.mp4"><img src="docs/gallery/20261113-e31-diagonal-682-830/preview.gif" width="960" alt="E31 실제 추가 구간: 더 이른 접근에서 대각선 진입과 수평 정렬을 시험했으나 첫 팔 진행은 미확인. 왼쪽 robot_1, 오른쪽 robot_0, 위 head, 아래 wrist."></a>
 
-**E30 — 같은 손의 낮춤·대각 방향·올림을 나누어18번 움직였지만 추가 득점은0점.** 최대20결정 중19결정으로 마감했습니다. 새 방식의 관측 자료를 얻었지만 현재 출발 관계의 진입은 해결하지 못했습니다.
+**E31 — 출발점을 앞당겨16번 움직였지만 추가 득점은0점.** 수평 접근과 자세 복구는 관측했으나 손이 중앙 자유 구간에 진입해 전완을 따라 진행한 근거는 확인하지 못했습니다. 최대20결정 중17개로 마감했습니다.
 
-[추가 구간 MP4](docs/gallery/20261113-e30-diagonal-738-915/event.mp4) / [전체 overview](docs/collection/attempts/20261113-astra-diagonal738-001/overview.mp4) / [E30 리뷰](docs/collection/reviews/20261113-astra-diagonal738-001.ko.md) / [E28 준비·운반](docs/collection/attempts/20261113-astra-side-hem-fresh-001/overview.mp4)
+[추가 구간 MP4](docs/gallery/20261113-e31-diagonal-682-830/event.mp4) / [전체 overview](docs/collection/attempts/20261113-astra-diagonal682-001/overview.mp4) / [E31 리뷰](docs/collection/reviews/20261113-astra-diagonal682-001.ko.md) / [E28 준비·운반](docs/collection/attempts/20261113-astra-side-hem-fresh-001/overview.mp4)
 
-<sub>왼쪽 robot_1, 오른쪽 robot_0, 위 head / 아래 wrist. 경계738–915의20 Hz 기록을5 fps로 재생해4배 느리며 모델 대기는 제외합니다. <a href="docs/gallery/20261113-e30-diagonal-738-915/provenance.json">영상 출처</a>. 이전 시연은 <a href="docs/EPISODES.md">전체 목록</a>에 보존합니다.</sub>
+<sub>왼쪽 robot_1, 오른쪽 robot_0, 위 head / 아래 wrist. 경계682–830의20 Hz 기록을5 fps로 재생해4배 느리며 모델 대기는 제외합니다. <a href="docs/gallery/20261113-e31-diagonal-682-830/provenance.json">영상 출처</a>. 이전 시연은 <a href="docs/EPISODES.md">전체 목록</a>에 보존합니다.</sub>
 
 ## 다음 수집
 
 ![E28 이후 계획: 옷 양옆에서 파지, 아래 입구 펼치기, 한쪽 손목, 반대쪽 손목. 실제 시연이 아닌 개념도.](docs/assets/collection-plan.svg)
 
-**E28에서 얻은 파지·운반 구간을 보존하고 손목 진입을 개선합니다.** E29의 같은 전략 후속과 E30의 대각선 진입 모두 추가 득점 없이 마감했습니다. E31의 비교는 전략·기본20결정을 유지하고 출발점만 E28/738에서682로 바꾸어 늦은 접힘 이전 관계를 비교합니다. 최종 E30/915는 진단 자료이며 우선 출발점으로 승격하지 않습니다. 사용자가 승인한 시연·분석 자동 반복에 따라 마감·QC·고정 백업·분석 후 다음 시도를 이어가고 주요 결과를 보고합니다. 아래 입구 펼침은 E28/380, 닫기 전 준비는 E28/264에서 따로 비교할 수 있습니다. 이전 `E27/928 same-arm` 후보는 과거 미실행 계획입니다.
+**사용자 제안을 반영해 중앙 자유 구간부터 다시 비교합니다.** 넓게 늘어진 모습 자체보다, 입구의 폭·깊이를 유지한 자유 밑단 구간과 같은 손의 정렬을 목표로 합니다. E32는 E28/380에서 유용한 파지를 보존해 형상을 조절하고 운반 후 중앙에 정렬한 뒤 같은 전완을 따라 옷을 진행시키는 계획입니다. 첫 팔 관계를 보존한 반대쪽 진행도 유지합니다. [제안 분석](docs/collection/research/2026-11-13-user-central-span.ko.md). 사용자가 승인한 단일 시연→QC·고정 백업→분석→다음 시연의 자동 반복을 따르며 E31을 실행 중에 변경하지 않았습니다.
 
 [단계별 관측 기준과 새 시작점 선택](docs/COLLECTION_PLAN.md)
 
@@ -54,7 +54,7 @@ https://github.com/user-attachments/assets/d2f347fe-712b-42f3-bdee-69d3fee2a47c
 </tr>
 </table>
 
-각 이미지를 누르면 영상이 열립니다. **[전체 시연 목록](docs/EPISODES.md)**에서 E00–E30 영상, 관측 이미지, 원본 manifest와 직접 부모를 한 번에 찾을 수 있습니다.
+각 이미지를 누르면 영상이 열립니다. **[전체 시연 목록](docs/EPISODES.md)**에서 E00–E31 영상, 관측 이미지, 원본 manifest와 직접 부모를 한 번에 찾을 수 있습니다.
 
 ## 코드와 재현
 

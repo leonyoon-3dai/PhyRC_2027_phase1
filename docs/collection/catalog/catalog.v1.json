@@ -685,6 +685,24 @@
         "revision": "6b259ab4e34103286c30235640a434c7ee74f60c",
         "sha256": "5be936af1f8686e2f69760c20d7c1179a08d333d3e253c3e66a78382d609c07f"
       }
+    },
+    {
+      "id": "20261113-astra-diagonal682-001",
+      "kind": "demonstration",
+      "source_group": "20261113-astra-side-hem-fresh-001",
+      "source_commit": "000d4fcc1a44bcc602a6275b2f79f9dc6456c641",
+      "source_working_tree_modified": false,
+      "parent_run_id": "20261113-astra-side-hem-fresh-001",
+      "replay_prefix_steps": 682,
+      "replay_completed_steps": 682,
+      "recorded_transitions": 830,
+      "qc_status": "passed",
+      "backup": {
+        "status": "verified",
+        "receipt": "docs/project/sessions/20261113-e31-backup-verification.json",
+        "revision": "9254bf1e1fbdae8f4aebeb7d4f4c9858a88235fb",
+        "sha256": "34958c01efa42a506151bc2ad541c06eeaed3872365b224f9dee88436c419945"
+      }
     }
   ],
   "startpoints": [
@@ -1094,14 +1112,15 @@
       "boundary": 380,
       "history": [
         264,
-        320
+        332
       ],
       "support": {
         "status": "uncertain",
         "evidence": [
           "docs/collection/reviews/20261113-astra-side-hem-fresh-001.ko.md",
           "Selected public observation candidate: raised candidate opening before subsequent transport. Not an all-frame continuous support review.",
-          "Public observation sequence16–21 shows measured gripper rise with local cloth following each jaw; retained local following is not independent load or opening-topology verification."
+          "Public observation sequence16–21 shows measured gripper rise with local cloth following each jaw; retained local following is not independent load or opening-topology verification.",
+          "E32 preparation updates recommended replay history from264/320 to264/332:264open tabletop placement,332closed initial local following,380current raised concavity. Original320–380 evidence window retained; current replay observation takes priority."
         ],
         "uncertainty": [
           "Local cloth following, candidate opening and body/hand relation are public visual hypotheses; independent bilateral load bearing, exact hem lips and sleeve passage are not certified.",
@@ -1512,7 +1531,21 @@
         "view": "five designated RGB-D views, frozen pixel depth query and current wrist depth panel; no evaluator input",
         "action_encoding": "named"
       },
-      "description": "Opt-in specialization of side-hem-wrists; existing baseline and saturation rules preserved. Executed in E30 from E28/738 with exec/gpt-6-astra/ultra, plan1, settle6,180s timeout and timing profile. Nineteen decisions=18act+finish,20calls including one query followup. Same-hand lower/roll/raise and later lower/pitch/raise tested; no confirmed passage or new points. Tested means executed, not successful. No live human-feedback queue applied."
+      "description": "Opt-in specialization of side-hem-wrists; existing baseline and saturation rules preserved. Executed in E30 from E28/738 with exec/gpt-6-astra/ultra, plan1, settle6,180s timeout and timing profile. Nineteen decisions=18act+finish,20calls including one query followup. Same-hand lower/roll/raise and later lower/pitch/raise tested; no confirmed passage or new points. Tested means executed, not successful. No live human-feedback queue applied. E31 also tested this unchanged strategy from E28/682 with fresh632/668 history:16act+finish,19calls,830total/new148transitions; no new points or confirmed forearm progression."
+    },
+    {
+      "id": "coordinated-central-span-entry-named-query-panel-settle6-profile",
+      "name": "coordinated-central-span-entry / named / query / wrist panel / settle6 / profiling",
+      "status": "proposed",
+      "axes": {
+        "grasp_arrangement": "preserve useful guide/anchor supports and existing bounded one-sided table-supported regrasp rules",
+        "entry_target": "free interior of candidate body-hem span away from held corners and housings, tracking same hand/connected forearm",
+        "approach": "finite one-factor relative-height, wrist-axis or spacing shape test; useful bowed width/depth; align free span before entry and advance along observed forearm",
+        "order": "preserve useful span through transport, first-hand entry/progression then opposite-side change retaining first relation",
+        "view": "five designated public RGB-D views, existing frozen pixel query/camera XYZ and current wrist depth panel; no new extrinsic transform or evaluator input",
+        "action_encoding": "named"
+      },
+      "description": "User-authorized next-run static strategy, composed with SIDE_HEM_WRISTS_TASK and unchanged saturation without forced diagonal sequence. Isolated candidate passed24focusedCPU tests and independent semantic/contract/source-preservation reviews. Integrated into main after E31 full backup verification; identical24focusedCPU tests passed again. No model/GPU or physical performance test yet. Planned E32 fromE28/380 fresh264/332 history,20newdecisions,max1400,review10. U silhouette/slack/large separation/world-Z lift/occlusion are not passage proof. No live human-feedback queue."
     }
   ],
   "attempts": [
@@ -2157,6 +2190,23 @@
         ]
       },
       "notes": "E30 source7eaae3e6b56ce938237b873bcb1540470a449b79 clean, parent/sourcegroupE28fresh, replay738/history682714. Started2026-11-13T22:31:59Z, ended23:02:50Z. Requested20 decisions; completed19=18act+1finish_episode,20calls/1zero-physics query followup. 915transitions=738replay+87model+90settle, cleanup0; new177transitions/8.85simseconds. Actor chose finish_episode; not decision budget exhaustion. FullQC915/915 passed errors[], valid raw5/pickup5 at371(replayed_parent), newgain0,dressing0,successfalse. Wall1850.452945349s, actor1035.999420735s, environment764.021449158s; whole wall includes replay/initialization. Host session143, simulator0, capturecomplete. Fixed private backup6b259ab4e34103286c30235640a434c7ee74f60c force-downloaded, archiveSHA/bytes and227members verified. Same hand and local cloth-jaw following remained but independent load/attachment and sleeve passage uncertain. No E30 startpoint promoted;915 final and886 intermediate remain diagnostic. Next planned comparison changes start to E28/682 with same strategy and20decision budget, fresh632668; no next run completed or launched by this record. Same sourcegroup, not independent success or exact physics checkpoint; trainingunreviewed."
+    },
+    {
+      "id": "20261113-astra-diagonal682-001",
+      "status": "completed",
+      "run_id": "20261113-astra-diagonal682-001",
+      "startpoint_id": "20261113-astra-side-hem-fresh-001-p682",
+      "method_id": "coordinated-diagonal-entry-named-query-panel-settle6-profile",
+      "result": {
+        "raw_points": 5.0,
+        "success": false,
+        "review": "docs/collection/reviews/20261113-astra-diagonal682-001.ko.md",
+        "videos": [
+          "docs/collection/attempts/20261113-astra-diagonal682-001/overview.mp4",
+          "docs/gallery/20261113-e31-diagonal-682-830/event.mp4"
+        ]
+      },
+      "notes": "E31 clean source000d4fcc1a44bcc602a6275b2f79f9dc6456c641, directparent/sourcegroupE28fresh; prefix682/history632668. Started2026-11-13T23:17:37Z, ended23:46:18Z. Requested20;17decisions=16act+finishD16,19calls/2zero-physicsqueryfollowups. 830=682replay+58model+90settle;new148transitions/7.4simseconds,cleanup0. Actorfinish before budget exhaustion, not review10/timeout. FullQC830/830 errors[],validraw5/pickup5atreplay371,newgain0,dressing0,successfalse. Wall1721.580350964s,actor971.602480322s,environment699.982479354s including577.616704s replay and122.365775s suffix. Host143/simulator0/capturecomplete. Samehand/localclothfollowing and approach/posture recovery observed but free-span centering and forearm progression unconfirmed. No E31 startpoint promoted. Planned E32 changes to E28/380 pluscentral-span strategy/history264332, so not isolated one-factor efficacy claim. Same sourcegroup,not independent success or exactphysicscheckpoint;trainingunreviewed. Fixedprivatebackup9254bf1e1fbdae8f4aebeb7d4f4c9858a88235fb force-downloaded;archiveSHA/bytes and209members verified."
     }
   ]
 }

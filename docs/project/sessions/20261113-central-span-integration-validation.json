@@ -1,0 +1,39 @@
+{
+  "schema": "phyrc-central-span-integration-validation-v1",
+  "verified_at_utc": "2026-11-13T23:52:47.744664+00:00",
+  "status": "integrated_and_focused_tests_passed_before_first_run",
+  "base_commit": "db1ff08d2f60a4ae30688b24ed4931c6634da42c",
+  "strategy": "coordinated-central-span-entry",
+  "files": {
+    "participant/collection/codex_client.py": {
+      "sha256": "4797a5d010ffb8b0d8d6faf127aabdc57431b34be8ee78f4bcd59524dcae2899",
+      "bytes": 140082
+    },
+    "tests/test_central_span_strategy.py": {
+      "sha256": "533187d60ad1012ade5081978a092bba839fcc580d279701f761ba1e4d199d3d",
+      "bytes": 10099
+    },
+    "tests/test_single_arm_progress_strategy.py": {
+      "sha256": "d26835e859d57e7c68afba0dc028e78ca127520bd84a059647de69f3b6c9db29",
+      "bytes": 11582
+    }
+  },
+  "reviewed_patch_sha256": "dc055028330b5ea6ca00fd106fcdd3e3eebe8ee7c8bb1bae5803887da6480146",
+  "patch_applied_after_e31_full_backup_verification": true,
+  "e31_fixed_backup_revision": "9254bf1e1fbdae8f4aebeb7d4f4c9858a88235fb",
+  "focused_tests": {
+    "passed": 24,
+    "wall_s": 7.168,
+    "command": "PYTHONPATH=.:tests:src/PhyRC_Sim .venv/bin/python -m unittest tests.test_central_span_strategy tests.test_diagonal_entry_strategy tests.test_side_hem_wrists_strategy tests.test_single_arm_progress_strategy -q"
+  },
+  "initial_test_invocation_issue": "Missing tests on PYTHONPATH caused helper import errors; corrected invocation passed without code changes.",
+  "cli_help_passed": true,
+  "diff_check_passed": true,
+  "matches_independently_reviewed_candidate": true,
+  "live_feedback_feature_applied": false,
+  "not_performed": [
+    "new simulator/model trial of central-span strategy",
+    "physical aperture or dressing performance validation",
+    "new full CPU suite"
+  ]
+}
