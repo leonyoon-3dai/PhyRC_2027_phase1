@@ -1,0 +1,221 @@
+{
+  "schema": "phyrc-decision-budget-review-v1",
+  "run_id": "20261113-astra-side-hem738-continue20-001",
+  "scope": "developer_review_only_not_actor_input",
+  "publication_status": "local_unpublished",
+  "source_files": [
+    {
+      "path": "output/operator-traces/20261113-astra-side-hem738-continue20-001/decisions.jsonl",
+      "sha256": "06f0a71f6fb8d86da11b3afce0a9597ddd39547bf64a3769faf89d4239ffbfad"
+    },
+    {
+      "path": "docs/collection/attempts/20261113-astra-side-hem738-continue20-001/manifest.json",
+      "sha256": "90a0c7704f78c797dd1614da9446484d34a2e89da70df5a9a6175ff6d09aa46b"
+    },
+    {
+      "path": "docs/collection/attempts/20261113-astra-side-hem738-continue20-001/score-events.jsonl",
+      "sha256": "acdcb996df840b7dbd87a2625636147163c33d3d208408df5b6088c99e19da6b"
+    },
+    {
+      "path": "output/reviews/20261113-e28-decision-budget-baseline/baseline.json",
+      "sha256": "e1f9080f091f0831692e42fb10f9c9684cf92e274c58e357f62c23563b96abde"
+    }
+  ],
+  "method": {
+    "timing_event_types": [
+      "model_call",
+      "applied_segment",
+      "replayed_segment"
+    ],
+    "actor_timing": "sum model_call.wall_s once per call, including query followups; decision copies excluded",
+    "stage_intent": "accepted decision labels; not verified outcome",
+    "scores": "separate trusted score_awarded records; no actor feedback",
+    "transition_boundaries": "[start,end), while an award at boundary b belongs to start < b <= end",
+    "excluded": [
+      "raw reasoning",
+      "action reasons",
+      "session identifiers",
+      "auth data",
+      "images",
+      "actions",
+      "HDF5 reads",
+      "hidden geometry"
+    ]
+  },
+  "summary": {
+    "completed": true,
+    "quality_passed": true,
+    "validated_transitions": 834,
+    "source_commit": "2baebcc381d707fd5aca5f69ea7518d326e8a80a",
+    "parent_attempt": "20261113-astra-side-hem-fresh-001",
+    "source_group": "20261113-astra-side-hem-fresh-001",
+    "strategy": "coordinated-side-hem-wrists",
+    "decisions_requested": 20,
+    "decisions_completed": 11,
+    "motion_decisions": 10,
+    "finish_decisions": 1,
+    "unused_decision_slots": 9,
+    "actor_calls": 12,
+    "max_steps": 1400,
+    "review_points": 10,
+    "model_call_timeout_s": 180,
+    "stop_reason": "actor_finish_episode",
+    "finish_decision_index": 10,
+    "decision_budget_exhausted": false,
+    "step_budget_exhausted": false,
+    "whole_attempt_wall_s": 1571.5392392270005,
+    "actor_call_wall_s": 775.8370004899989,
+    "environment_dispatch_wall_s": 747.0658841970017,
+    "replay_environment_wall_s": 667.2373179489996,
+    "new_suffix_environment_wall_s": 79.82856624800206,
+    "new_suffix_attributed_actor_plus_environment_wall_s": 855.665566738001,
+    "wall_s_outside_attributed_call_and_action_rows": 48.63635453999996,
+    "replay_transitions": 738,
+    "new_model_transitions": 42,
+    "new_settle_transitions": 54,
+    "new_suffix_transitions": 96,
+    "finish_transitions": 0,
+    "cleanup_transitions": 0,
+    "total_transitions": 834,
+    "new_suffix_simulation_s": 4.8,
+    "whole_episode_simulation_s": 41.7,
+    "actor_s_per_new_decision_including_finish": 70.53063640818172,
+    "actor_s_per_model_call": 64.65308337416657,
+    "actor_s_per_motion_decision": 73.58399950429984,
+    "environment_s_per_motion_decision": 7.982154434800213,
+    "whole_wall_divided_by_decisions_is_not_suffix_latency": true,
+    "model_internal_inference_wall_s": null,
+    "raw_points": 5.0,
+    "new_suffix_raw_points_awarded": 0.0,
+    "new_suffix_dressing_points_awarded": 0.0,
+    "success": false,
+    "human_intervention": false
+  },
+  "decision_groups": [
+    {
+      "group_id": "D00-D04",
+      "decision_index_start": 0,
+      "decision_index_end_inclusive": 4,
+      "decision_tool_counts": {
+        "act": 5
+      },
+      "actor_calls": 6,
+      "actor_call_phase_counts": {
+        "initial": 5,
+        "action_after_query": 1
+      },
+      "actor_call_wall_s": 393.35534793399984,
+      "environment_dispatch_wall_s": 38.4993689740013,
+      "model_environment_wall_s": 18.903781587001504,
+      "settle_environment_wall_s": 19.595587386999796,
+      "transition_start_boundary": 738,
+      "transition_end_boundary": 784,
+      "actual_transitions": 46,
+      "model_transitions": 22,
+      "settle_transitions": 24,
+      "observed_stage_intent_counts": {
+        "first_sleeve": 2,
+        "recovery": 3
+      }
+    },
+    {
+      "group_id": "D05-D09",
+      "decision_index_start": 5,
+      "decision_index_end_inclusive": 9,
+      "decision_tool_counts": {
+        "act": 5
+      },
+      "actor_calls": 5,
+      "actor_call_phase_counts": {
+        "initial": 5
+      },
+      "actor_call_wall_s": 342.4846471089986,
+      "environment_dispatch_wall_s": 41.322175374000835,
+      "model_environment_wall_s": 17.21656900400012,
+      "settle_environment_wall_s": 24.105606370000714,
+      "transition_start_boundary": 784,
+      "transition_end_boundary": 834,
+      "actual_transitions": 50,
+      "model_transitions": 20,
+      "settle_transitions": 30,
+      "observed_stage_intent_counts": {
+        "first_sleeve": 1,
+        "recovery": 3,
+        "second_sleeve": 1
+      }
+    },
+    {
+      "group_id": "D10-D10",
+      "decision_index_start": 10,
+      "decision_index_end_inclusive": 10,
+      "decision_tool_counts": {
+        "finish_episode": 1
+      },
+      "actor_calls": 1,
+      "actor_call_phase_counts": {
+        "initial": 1
+      },
+      "actor_call_wall_s": 39.99700544700045,
+      "environment_dispatch_wall_s": 0.007021899999926973,
+      "model_environment_wall_s": 0.007021899999926973,
+      "settle_environment_wall_s": 0,
+      "transition_start_boundary": 834,
+      "transition_end_boundary": 834,
+      "actual_transitions": 0,
+      "model_transitions": 0,
+      "settle_transitions": 0,
+      "observed_stage_intent_counts": {
+        "final_check": 1
+      }
+    }
+  ],
+  "trusted_score_awards": [
+    {
+      "scope": "replay",
+      "transition_boundary": 371,
+      "evaluation_time_s": 18.55,
+      "award_stage": "pickup",
+      "raw_points_before": 0.0,
+      "raw_points_after": 5.0,
+      "raw_points_delta": 5.0,
+      "dressing_points_delta": 0.0
+    }
+  ],
+  "trusted_score_by_scope": [
+    {
+      "scope": "replay",
+      "raw_points_awarded": 5.0,
+      "dressing_points_awarded": 0.0
+    },
+    {
+      "scope": "D00-D04",
+      "raw_points_awarded": 0,
+      "dressing_points_awarded": 0
+    },
+    {
+      "scope": "D05-D09",
+      "raw_points_awarded": 0,
+      "dressing_points_awarded": 0
+    },
+    {
+      "scope": "D10-D10",
+      "raw_points_awarded": 0,
+      "dressing_points_awarded": 0
+    }
+  ],
+  "e28_late_baseline": {
+    "run_id": "20261113-astra-side-hem-fresh-001",
+    "decisions": "35-39",
+    "actor_call_wall_s": 324.7390330750004,
+    "environment_dispatch_wall_s": 45.19303489499862,
+    "transitions": 56,
+    "new_dressing_points": 0
+  },
+  "interpretation": [
+    "The authorized continuation added 10 motion decisions and 96 new transitions but no new score award.",
+    "The actor used finish_episode with 9 decision slots remaining; increasing the numeric cap alone would not prevent this same finish decision.",
+    "Timing/stage labels alone do not establish visual progress or failure mechanisms; combine with the reviewed public-observation analysis.",
+    "Fresh actor context and nonexact action replay mean this is not a controlled estimate of added-decision effectiveness.",
+    "No probability of later success or future decision budget is inferred. Future changes remain the user decision."
+  ]
+}

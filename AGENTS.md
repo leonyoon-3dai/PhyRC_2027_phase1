@@ -11,12 +11,14 @@
 
 ## 현재 범위
 
-- **현재 단일 수집 실행은 E29 `20261113-astra-side-hem738-continue20-001`이다.** 사용자가 후반 +20결정을 요청해 2026-11-13 21:41:33 UTC에 시작했다. 실행 소스 `2baebcc381d707fd5aca5f69ea7518d326e8a80a`, 시작 시 clean. 직접 parent/source group은 E28 fresh run이며 prefix738·새 replay history682/714·20결정·총1400전이·review10을 사용한다. 시작은 확인했지만 replay 완료·새 행동·최종 점수·QC는 아직 미확정이다. 진행 중 코드·프롬프트 변경이나 두 번째 simulator 실행 금지.
+- **현재 새 수집은 실행하지 않는다. E29가 2026-11-13 22:07:44 UTC에 마감됐다.** `20261113-astra-side-hem738-continue20-001`은 clean source `2baebcc381d707fd5aca5f69ea7518d326e8a80a`에서 E28/738·새 replay history682/714로 시작했다. 최대20결정 중11결정(10 act +1 finish_episode),12호출,834전이(738 replay +42 model +54 settle), 종료 중립0이다. actor의 국소 진행 판단으로 끝났으며 예산 소진이나 과제 불가능성의 증거가 아니다. 전수 QC834/834 통과, 유효한 로컬 공식 평가5/50·새 구간 득점0·착의0·success=false다. 픽업은 재실행 구간에서 얻었다. 이후 실행·예산 변경은 사용자 판단이며 자동 재개하지 않는다.
 - **2026-11-13 사용자 재개 요청에 따른 E28 수집이 마감됐다.** `20261113-astra-side-hem-fresh-001`은 소스 `9f79772`의 새 reset에서 40결정·739전이를 기록했고, 21:29:28 UTC에 `completed/closed`로 마감해 전수 QC 739/739를 통과했다. 과거 문서 정리 한정·수집 중지 지시는 이번 명시적 재개 요청으로 해제됐다. [환경·연결 검사](docs/project/sessions/20261113-environment-setup.ko.md)와 [E28 결과](docs/collection/attempts/20261113-astra-side-hem-fresh-001/manifest.json)를 기준으로 한다.
-- **E28에서 시험한 목표:** 옷 앞이 아닌 양옆에서 파지 → 아래 입구 넓히기 → 마네킹의 한쪽 손목에 먼저 걸치기 → 이를 유지하며 양쪽 손목으로 진행. 구현된 `coordinated-side-hem-wrists`는 pickup 5점·착의 0점으로 마감했다. 후속은 [전략 검토](docs/collection/research/2026-11-13-side-hem-wrists.ko.md), [마감 결과와 다음 방향](docs/collection/research/2026-11-13-e28-outcome-e29-direction.ko.md), [실행 조건](docs/COLLECTION_PLAN.md)을 따른다. 진행 중 실행의 코드·프롬프트를 변경하거나 두 번째 제어원을 시작하지 않는다.
+- **E28에서 시험한 목표:** 옷 앞이 아닌 양옆에서 파지 → 아래 입구 넓히기 → 마네킹의 한쪽 손목에 먼저 걸치기 → 이를 유지하며 양쪽 손목으로 진행. 구현된 `coordinated-side-hem-wrists`는 pickup 5점·착의 0점으로 마감했다. 후속은 [전략 검토](docs/collection/research/2026-11-13-side-hem-wrists.ko.md), [E29 이후 예산·방법 검토](docs/collection/research/2026-11-13-e29-budget-review.ko.md), [실행 조건](docs/COLLECTION_PLAN.md)을 따른다. 진행 중 실행의 코드·프롬프트를 변경하거나 두 번째 제어원을 시작하지 않는다.
 - 기존 `E27/928`, `coordinated-single-arm-progress`는 이전 후보다. 현재 계획으로 자동 실행하지 않는다. 기존 CLI에 없는 strategy 이름을 만들어 넣지 않는다.
-- E28을 포함한 완료 시도의 최고 로컬 공식 평가기 원점수는 **5/50**, 착의 득점 **0**, `success=false`다. Codabench 점수나 완전 착의 성과로 설명하지 않는다.
-- **사용자 예산 지침:** 시간 비용 자체보다 새 시연마다 추가 결정의 효과를 분석하는 것을 우선한다. 마감 후 점수 변화, 공개 관측의 실제 진행과 비효율적 반복, 진행에 든 결정·호출·시간을 근거로 결정 추가와 접근 변경 중 무엇이 나은지 의견을 제시한다. 이후 예산 변경은 사용자가 결정하며 자동 증액하지 않는다. 현재 승인된 E29의20결정은 그대로 진행한다.
+- E29를 포함한 완료 시도의 최고 로컬 공식 평가기 원점수는 **5/50**, 착의 득점 **0**, `success=false`다. Codabench 점수나 완전 착의 성과로 설명하지 않는다.
+- **사용자 예산 지침:** 시간 비용 자체보다 새 시연마다 추가 결정의 효과를 분석하는 것을 우선한다. 마감 후 점수 변화, 공개 관측의 실제 진행과 비효율적 반복, 진행에 든 결정·호출·시간을 근거로 결정 추가와 접근 변경 중 무엇이 나은지 의견을 제시한다. 이후 예산 변경은 사용자가 결정하며 자동 증액하지 않는다. E29는 승인된 최대20결정 중11결정으로 마감했다. 이후 예산을 자동으로 이어 붙이지 않는다.
+- [미래 피드백 큐 후보](docs/collection/research/candidates/20261113-actor-feedback/README.ko.md)는 준비·CPU353개 검사·독립 검토를 마친 미적용 패치다. main actor 코드와 E29에 통합하지 않았고 실제 모델·GPU 연결은 미검증이다. 게시된 패치를 자동 적용하거나 현재 경로가 실시간 피드백 주입을 지원한다고 설명하지 않는다.
+- E29는 E28의 같은 source group이며 독립 성공 표본이 아니다. 다른 방법의 비교는 E28/738을 우선하고, E29/784는 선택적 후보로 둔다. 마지막834는 더 좋은 출발점으로 확인되지 않았다.
 - E28은 739전이 = 516 model + 222 settle + 1 budget cleanup. 기술 QC는 통과했고 학습 승인은 `unreviewed`다.
 - E27은 1,159전이 = 698 replay + 334 model + 126 settle + 1 budget cleanup. 기술 QC는 통과했고 학습 승인은 `unreviewed`다. 세부 결과는 [현재 상태](docs/project/STATUS.md)와 실행 manifest를 기준으로 한다.
 - 초기 π0.5의 63전이·30 updates는 연결 시험이다. 새 시연 학습이나 착의 개선 결과가 아니다. 별도 OpenWAM·wrist translation 등의 연구 후보를 완료 기능으로 섞지 않는다.

@@ -4,7 +4,7 @@
 
 `gpt-6-astra`는 공개 카메라와 로봇 상태를 읽고 짧은 행동을 제안합니다. 수집기가 응답을 검사하고 두 로봇에 적용한 뒤, 실제 관측과 행동을 HDF5에 기록합니다. **모델은 20 Hz로 호출되지 않습니다.** E27까지 사용한 수집 경로를 유지하며, 2026-11-13에는 별도 `coordinated-side-hem-wrists` 전략으로 E28 `20261113-astra-side-hem-fresh-001`을 새 reset에서 수집했습니다. E28은 40결정·739전이로 마감해 전수 QC 739/739를 통과했으며 pickup 5점·착의 0점, `success=false`입니다. [환경·연결 검사](project/sessions/20261113-environment-setup.ko.md) / [전략 검토](collection/research/2026-11-13-side-hem-wrists.ko.md) / [E28 결과](collection/attempts/20261113-astra-side-hem-fresh-001/manifest.json)
 
-**현재 E29 `20261113-astra-side-hem738-continue20-001`이 진행 중입니다.** 2026-11-13 21:41:33 UTC에 소스 `2baebcc`의 clean snapshot에서 E28/738 prefix·새 replay history682/714·후반20결정·총1400전이·review10으로 시작했습니다. 기존 모델·입력·행동 경로를 유지하며 최종 결과는 미확정입니다. [현재 상태](project/STATUS.md) / [실행 조건](COLLECTION_PLAN.md)
+**E29 `20261113-astra-side-hem738-continue20-001`은 2026-11-13 22:07:44 UTC에 마감했습니다.** clean source `2baebcc`에서 E28/738 prefix와 새 history682/714 뒤 최대20결정을 허용했지만,10 act 뒤11번째 결정에서 `finish_episode`를 선택했습니다.12호출(질의 후속1회),834전이=738 replay+42 model+54 settle이며 종료 중립은0입니다. 전수 QC834/834 통과, raw5·새 구간 득점0·착의0·success=false입니다. 예산 소진이 아닌 actor의 국소 판단이며 새 실행은 시작하지 않았습니다. [현재 상태](project/STATUS.md) / [추가 구간 리뷰](collection/reviews/20261113-astra-side-hem738-continue20-001.ko.md) / [다음 비교](COLLECTION_PLAN.md)
 
 ## 1. 관측부터 기록까지
 

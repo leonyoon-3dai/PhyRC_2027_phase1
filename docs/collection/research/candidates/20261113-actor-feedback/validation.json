@@ -1,0 +1,70 @@
+{
+  "schema": "phyrc-inactive-actor-feedback-candidate-v1",
+  "created_at_utc": "2026-11-13T22:10:21.761924+00:00",
+  "status": "prepared_unapplied",
+  "base_commit": "9acf07631ca09480d620d849771022a73d490bbb",
+  "patch_file": "actor-feedback.patch",
+  "patch_sha256": "e7b61c8467b613c8bcce72d2326d0c776697775899cde32c1d0d5706f3e09e19",
+  "patch_bytes": 73525,
+  "changed_files_sha256": {
+    "docs/collection/research/2026-11-13-human-feedback-prototype.ko.md": "cafb293975021b487e87b2a5b23416d7326d9b7efba5cdcd2657ad53e2391ff9",
+    "participant/collection/codex_client.py": "957ada1332eb12b6574a5d0f605472bed7a1787efeef308c194e2a9b2fbad2f7",
+    "participant/collection/continuation.py": "70a13054ec6e302174bad930e12eff5bfc2df56067a16e3b293acf833fe5f21f",
+    "participant/collection/export_report.py": "7e4464b749943a37c3645ca9a4a184dfd4d730302110ec4c1732974988232be3",
+    "participant/collection/human_feedback.py": "cf6c79dede27908163fbe1c39d709152877342a85a07f92a8e1ccc72f6d80b00",
+    "scripts/collect_operator.py": "f9ceed41beb9df98256d0224e9309e14238b6b4e599af6a67594b97c47582bd4",
+    "scripts/preserve_collection.py": "1c292942b08044f99ed534f0048eb3c1cec88f89659d6f7c1b51d393cf133885",
+    "tests/test_depth_query.py": "595f3cb657aa351848b10b74cd0e2cfc93a684bf3b2f109d3d4bf5c80c699d0f",
+    "tests/test_human_feedback.py": "b1bd4a593e3ac8a7b311b921316ba34bf713087d25baf1fc9b1f58f85f84857b"
+  },
+  "validation": {
+    "git_diff_check": "passed",
+    "apply_check_against_base": "passed_using_temporary_index",
+    "cpu_suite": {
+      "command": "PYTHONPATH=src/PhyRC_Sim:. python -m unittest discover -s tests -v",
+      "tests": 353,
+      "wall_s": 37.896,
+      "result": "passed"
+    },
+    "focused_feedback_tests": 18,
+    "independent_read_only_review": "passed_no_remaining_blocking_findings_for_preparation_scope",
+    "reviewed_human_feedback_sha256": "cf6c79dede27908163fbe1c39d709152877342a85a07f92a8e1ccc72f6d80b00",
+    "reviewed_codex_client_sha256": "957ada1332eb12b6574a5d0f605472bed7a1787efeef308c194e2a9b2fbad2f7",
+    "main_runtime_unchanged_from_base": {
+      "participant/collection/codex_client.py": true,
+      "participant/collection/continuation.py": true,
+      "participant/collection/export_report.py": true,
+      "participant/collection/human_feedback.py": true,
+      "scripts/collect_operator.py": true,
+      "scripts/preserve_collection.py": true
+    }
+  },
+  "implemented": [
+    "default_off_run_bound_exact_decision_queue",
+    "ordered_atomic_acceptance_and_frozen_boundary_delivery",
+    "no_query_followup_or_mid_physics_insertion",
+    "accepted_vs_delivered_vs_uncertain_provenance",
+    "seal_before_capture_hash_and_metadata_parity",
+    "direct_and_inherited_assistance_classification",
+    "private_ledger_preservation_and_source_snapshot",
+    "digest_pinned_assisted_public_review"
+  ],
+  "not_performed": [
+    "main_runtime_modification",
+    "candidate_activation",
+    "GPU_or_simulator_run",
+    "real_model_call",
+    "real_user_feedback_enqueue",
+    "new_demonstration",
+    "commit",
+    "publication"
+  ],
+  "limits": [
+    "Only CPU mocked orchestration and local file/HDF5 metadata were tested.",
+    "Free-text public-observation compliance is an operator attestation, not semantic validation.",
+    "Successful call acknowledgement does not prove the actor followed the guidance.",
+    "Timeout delivery is conservatively assisted and never automatically resent.",
+    "Inherited assistance conservatively covers every replay prefix of an assisted parent.",
+    "Existing per-transition generator codes must be read together with assisted episode provenance."
+  ]
+}

@@ -1,0 +1,1140 @@
+diff --git a/docs/collection/research/2026-11-13-human-feedback-prototype.ko.md b/docs/collection/research/2026-11-13-human-feedback-prototype.ko.md
+new file mode 100644
+index 0000000000000000000000000000000000000000..93dede2ed917e560d4ef906f607bd379f84d3d6f
+--- /dev/null
++++ b/docs/collection/research/2026-11-13-human-feedback-prototype.ko.md
+@@ -0,0 +1,38 @@
++# 다음 시연용 사람 피드백 큐 후보 — 미적용
++
++2026-11-13 사용자 요청에 따라 별도 개발 작업 공간에서 준비한 후보다. **현재 E29에 적용하지 않았고, 새 GPU 실행·모델 호출·실제 피드백 접수는 하지 않았다.** 합성 입력을 쓰는 CPU 검사만 수행한다. 향후 사용할지는 별도로 결정한다.
++
++## 입력과 경계
++
++기본값은 비활성이다. 향후 새 `dressing / exec / plan-size=1` 수집을 시작할 때 `--allow-human-feedback`를 명시한 경우에만 해당 run의 비공개 `human_feedback.json`을 만든다. 기존 실행의 큐를 사후 생성하거나 활성화하는 명령은 없다. 부모 시연의 assistance 이력을 상속하는 것만으로 새 큐가 활성화되지 않는다.
++
++별도 helper는 **사용자가 실제로 요청한 문장만** 접수한다. run ID·고유 message ID·정확한 새 decision index를 지정하고 공개 관측에 근거한 문장이라는 확인을 요구한다. 문장은 표준입력으로 받으며 자동 생성·파일 검색·코드 실행을 하지 않는다. 접수는 전달 성공이 아니다.
++
++```bash
++python -m participant.collection.human_feedback status --run-id FUTURE_RUN
++python -m participant.collection.human_feedback enqueue \
++  --run-id FUTURE_RUN --message-id UNIQUE_MESSAGE_ID --decision-index NEXT_INDEX \
++  --user-authorized --public-observations-only < reviewed-user-feedback.txt
++```
++
++위는 미래 인터페이스의 예시이며 실행 지시가 아니다. 확인 플래그는 실제 사용자 요청과 내용 검토를 대신하지 않는다. 목표 index가 이미 시작됐다면 접수를 거절한다. 다음 index를 임의로 선택해 같은 지시를 자동 재시도하지 않는다. 종료·다른 run·중복 ID·과도한 크기·제어 문자도 거절한다. 문장당 UTF-8 2,000 bytes, 결정당 4개, 실행당 64개로 제한한다.
++
++새 결정 시작 시 잠금 아래 접수 순서대로 한 번만 읽어 프롬프트에 고정한다. 모델 호출 중이나 동기 물리 실행 중 접수한 문장은 다음 지정 경계까지 대기한다. **같은 frozen depth-query와 action 후속 호출 사이에는 새 문장을 넣지 않는다.** 기존 공개 관측·행동 schema·격리된 actor의 도구 금지·물리·평가를 그대로 유지한다.
++
++## 접수·전달·보존
++
++비공개 ledger에는 문장 원문, ID, SHA256, 접수 시각, 목표 결정, 실제 전달 결정, 관측 전이 경계, 호출 index와 입력 hash를 남긴다. 상태는 `accepted → prepared → dispatching → delivered`이며, 호출 실패는 `delivery_uncertain`으로 남기고 자동 재전송하지 않는다. `delivered`는 호출이 결과를 반환했다는 뜻이며 배우가 지시를 이해·준수했거나 로봇이 원하는 결과를 얻었다는 뜻은 아니다. 실행이 먼저 끝나면 미전달 문장은 `not_delivered_closed`가 된다.
++
++접수만 된 상태에서는 `human_intervention=false`다. 호출에 실어 보내기 시작하면 보수적으로 assistance를 표시하고, 전달 불명확 상태도 계속 assisted로 분류한다. 이후 같은 actor 문맥이 영향을 받을 수 있으므로 최초 직접 영향 전이 경계 이후 전체를 잠재적으로 영향을 받은 구간으로 본다.
++
++수집기가 마감·HDF5 hash 계산 전에 큐를 닫는다. client의 중복 close는 파일 내용을 바꾸지 않는다. 최종 ledger hash와 원문을 제외한 동일 provenance를 `attempt.json`, `capture.json`, policy/audit HDF5의 파일·episode 속성에 기록한다. 기존 obs/actions와 simulator 물리는 바꾸지 않는다. 기존 audit의 `operator_source_code`는 행동을 생성한 경로의 기록이며, assisted 여부는 새 provenance와 최초 영향 경계를 함께 읽어야 한다. 이 데이터를 단독 무인 정책 성능으로 설명하지 않는다.
++
++assisted 부모의 행동 prefix를 재실행하면 새 피드백이 없어도 assistance를 상속한다. 첫 후보는 보수적으로 부모의 모든 prefix를 대상으로 한다. `direct_human_intervention`과 `inherited_human_intervention`을 분리하고, 전체 영향 경계는 0, 직접 피드백 경계는 별도로 남긴다. 부모 원문이나 검수 자료를 배우에게 다시 전달하지 않는다. 손자 시연에도 같은 provenance가 유지된다.
++
++비공개 보존 허용 목록은 닫힌 ledger와 새 모듈의 source snapshot을 포함하고, attempt/capture 요약·ledger hash의 일치를 검사한다. 원문이 actor의 행동 설명에 인용될 수 있으므로 ID/hash만 공개한다고 안전하다고 가정하지 않는다. **직접 또는 상속 assistance가 있는 공개 보고서는 별도 검수 없이 생성하지 않는다.** 개발자가 허용된 범위에서 원문·기본 프롬프트·actor 설명과 provenance를 검토한 뒤 그 파일들의 정확한 digest를 `--assisted-review-sha256`으로 지정한다. digest 지정은 검토를 대체하지 않으며 기존 공개 텍스트 필터도 유지한다. 원문 ledger는 공개 export에 복사하지 않는다.
++
++## 한계와 검사
++
++자유 문장이 공개 관측만으로 작성됐는지 코드는 의미적으로 증명하지 못한다. 점수·success·audit·내부 기하·정답 좌표를 사람을 통해 전달하는 것도 금지된다. [공식 규칙](../../competition/RULES.md)을 따르는 사람 보조 시연으로 분류하며 대회 적합성 인증이나 독립적인 평가 성과를 주장하지 않는다.
++
++CPU 검사는 동시 접수 순서, stale/중복/run 불일치, 접수와 전달 구분, query 동결, 진행 중 물리 요청 이후 전달, timeout 불명확성, seal/dispatch 경합, 마감 hash 일치, 부모·손자 상속, 비공개 보존, 공개 검수 gate를 확인한다. 고정 전 버전과 비교해 비활성 상태의 프롬프트·이미지·schema·호출·simulator 요청이 동일한지도 검사한다. 실제 GPU 환경에서의 연결이나 착의 성능은 미검증이다.
+diff --git a/participant/collection/codex_client.py b/participant/collection/codex_client.py
+index 7caa565190ab74ea934046f94982b3d57ace837e..2a6dcf8239aab3b0d7a077e988fded708537d0a8 100644
+--- a/participant/collection/codex_client.py
++++ b/participant/collection/codex_client.py
+@@ -635,7 +635,11 @@ def main():
+                         help='Enable trusted numeric collector phase timings; default off')
+     parser.add_argument('--post-action-settle-steps', type=int, default=0,
+                         help='After a motion act, apply 0..20 neutral control steps before observing again')
++    parser.add_argument('--allow-human-feedback', action='store_true',
++                        help='Enable private run-bound human coaching at new decision boundaries; default off')
+     args = parser.parse_args()
++    if args.allow_human_feedback and (args.mode != 'dressing' or args.actor_backend != 'exec' or args.plan_size != 1):
++        parser.error('human feedback requires dressing, exec and plan-size=1')
+     if args.named_actions and (args.actor_backend != 'exec' or args.plan_size != 1):
+         parser.error('named-actions requires exec and plan-size=1')
+     if args.pixel_depth_query and (args.actor_backend != 'exec' or args.plan_size != 1):
+@@ -718,10 +722,15 @@ def main():
+         args.parent_attempt = args.replay_prefix_run
+         args.retry_reason = args.retry_reason or 'recorded_action_prefix_then_fresh_actor'
+         args.source_group = replay.public_lineage['source_group']
++    inherited_assistance = replay.public_lineage.get('inherited_assistance') if replay is not None else None
+     trace = root / 'output/operator-traces' / args.run_id
+     actor_root = root / 'output/actors' / args.run_id
+     trace.mkdir(parents=True, exist_ok=False)
+     actor_root.mkdir(parents=True, exist_ok=False, mode=0o700)
++    feedback = None
++    if args.allow_human_feedback:
++        from participant.collection.human_feedback import FeedbackQueue
++        feedback = FeedbackQueue.create(trace, args.run_id, args.decisions)
+     from participant.collection.plans import plan_schema, validate_plan, PLAN_TASK, BATCH_WIRING_TASK
+     task = NECKLINE_BASE_TASK if args.strategy == 'coordinated-neckline-first' else TASK
+     if args.strategy == 'coordinated-overhead-drape':
+@@ -816,6 +825,8 @@ def main():
+     else:
+         from participant.collection.codex_actor import Actor
+     source = 'integration_test' if args.mode == 'wiring' else 'gpt'
++    if inherited_assistance:
++        source = 'human_corrected_gpt'
+     command = ['./run.sh', 'python', '-X', 'faulthandler', '/scripts/collect_operator.py', '--output',
+                '/output/collections/' + args.run_id, '--source', source,
+                '--source-group', args.source_group or args.run_id, '--model-id', args.model,
+@@ -826,6 +837,10 @@ def main():
+         command += ['--webrtc']
+     if args.profile_step_phases:
+         command += ['--profile-step-phases']
++    if feedback is not None:
++        command += ['--human-feedback-run-id', args.run_id]
++    if inherited_assistance:
++        command += ['--inherited-human-assistance-parent', inherited_assistance['parent_attempt']]
+     if replay is not None:
+         command += ['--reset-seed', str(replay.trusted_metadata['reset_seed'])]
+     started = time.monotonic()
+@@ -850,7 +865,7 @@ def main():
+         'environment_dispatch_wall_s': 0.0,
+         'official_evaluation': 'separate collector output; never actor input',
+         'input_profile': 'five_public_RGB_images_all_public_state_and_16x16_depth_medians',
+-        'simulation_steps': 0, 'human_intervention': False,
++        'simulation_steps': 0, 'human_intervention': bool(inherited_assistance),
+         'quality_status': 'unreviewed',
+         'replay_steps_completed': 0, 'activity': 'initializing',
+     }
+@@ -891,10 +906,15 @@ def main():
+     if args.profile_step_phases:
+         manifest['step_phase_profile_version'] = 1
+     manifest['source_snapshot'] = source_snapshot(root, trace)
++    if feedback is not None or inherited_assistance:
++        from participant.collection.human_feedback import with_inherited
++        manifest['human_feedback'] = with_inherited(feedback.status() if feedback is not None else None,
++                                                    inherited_assistance)
+     dump(trace / 'attempt.json', manifest)
+     (trace / 'prompt.txt').write_text(task)
+     sim, actor, finished, active = None, None, False, False
+     pending_plan, stop_reason, simulation_origin = [], 'decision_budget', None
++    feedback_pending_decision = None
+     gate = {'schema': 'phyrc-review-gate-v2', 'run_id': args.run_id,
+             'threshold_raw_points': args.review_points, 'policy_input_changed': False,
+             'status': 'disabled_wiring' if args.mode == 'wiring' else 'watching',
+@@ -904,6 +924,33 @@ def main():
+         def event(value):
+             events.write(json.dumps(value, allow_nan=False) + '\n')
+             events.flush()
++        def feedback_snapshot():
++            if feedback is not None:
++                manifest['human_feedback'] = with_inherited(feedback.status(), inherited_assistance)
++                manifest['human_intervention'] = manifest['human_feedback']['human_intervention']
++                if manifest['human_intervention']:
++                    manifest['source'] = 'human_corrected_gpt'
++                dump(trace / 'attempt.json', manifest)
++        def invoke_actor(prompt, images, schema, index, call_index, input_sha256):
++            nonlocal feedback_pending_decision
++            if feedback is None or feedback_pending_decision != index:
++                return actor.invoke(prompt, images, schema)
++            attempted = feedback.dispatch(index, call_index, input_sha256)
++            if not attempted:
++                raise ValueError('prepared guidance has no dispatch reservation; actor call rejected')
++            feedback_pending_decision = None
++            feedback_snapshot()
++            try:
++                result = actor.invoke(prompt, images, schema)
++            except BaseException:
++                if attempted:
++                    feedback.acknowledge(index, delivered=False)
++                    feedback_snapshot()
++                raise
++            if attempted:
++                feedback.acknowledge(index, delivered=True)
++                feedback_snapshot()
++            return result
+         def record_milestones():
+             if args.mode == 'wiring' or simulation_origin is None:
+                 return
+@@ -1010,6 +1057,9 @@ def main():
+             manifest['status'] = 'collecting'
+             for index in range(args.decisions if stop_reason != 'review_points' else 0):
+                 check_interrupt()
++                guidance = (feedback.begin_decision(index, manifest['simulation_steps'])
++                            if feedback is not None else '')
++                feedback_pending_decision = index if guidance else None
+                 observation_dir = actor_root / 'observations' / f'{index:05d}'
+                 payload, images = prepare_observation(obs, observation_dir)
+                 prompt = (task if index == 0 else 'Continue the same episode using the latest public observation.\n')
+@@ -1017,6 +1067,8 @@ def main():
+                 if index == 0:
+                     prompt += 'Public static interpretation metadata: ' + json.dumps(interface, allow_nan=False) + '\n'
+                 prompt += json.dumps(payload, allow_nan=False)
++                if guidance:
++                    prompt += guidance
+                 image_context = None
+                 if replay_history and not pending_plan and manifest['actor_calls_attempted'] == 0:
+                     images, image_context = replay_image_context(images, float(obs['simulation_time_s']),
+@@ -1091,7 +1143,7 @@ def main():
+                         call_started = time.monotonic()
+                         returned = None
+                         try:
+-                            returned = actor.invoke(call_prompt, images, call_schema)
++                            returned = invoke_actor(call_prompt, images, call_schema, index, call_index, call_input_hash)
+                             if args.named_actions:
+                                 returned = named_actions.normalize_result(returned)
+                         except BaseException as exc:
+@@ -1167,7 +1219,7 @@ def main():
+                     try:
+                         limit = min(args.plan_size, args.decisions - index)
+                         schema = plan_schema(limit) if args.plan_size > 1 else action_schema
+-                        result = actor.invoke(prompt, images, schema)
++                        result = invoke_actor(prompt, images, schema, index, model_call_index, input_hash)
+                         if args.named_actions:
+                             result = named_actions.normalize_result(result)
+                         if args.plan_size > 1:
+@@ -1332,6 +1384,14 @@ def main():
+             manifest['error'] = {'type': type(exc).__name__, 'message': str(exc)}
+             raise
+         finally:
++            if feedback is not None:
++                try:
++                    feedback.close()
++                    feedback_snapshot()
++                    manifest['human_feedback']['ledger_sha256'] = hashlib.sha256(feedback.path.read_bytes()).hexdigest()
++                except Exception as exc:
++                    manifest['status'] = 'failed'
++                    manifest['feedback_cleanup_error'] = type(exc).__name__
+             if pending_plan:
+                 event({'type': 'plan_suffix_discarded', 'reason': manifest['status'],
+                        'segments': [{'plan_id': item[2]['plan_id'],
+diff --git a/participant/collection/continuation.py b/participant/collection/continuation.py
+index d0fdf210c8b117e28fbfc714e647a10790e78363..27d6669c355e2008cbfdea1392a49e61faae808e 100644
+--- a/participant/collection/continuation.py
++++ b/participant/collection/continuation.py
+@@ -142,6 +142,8 @@ def load_replay_prefix(root, source_run_id, steps=None):
+     manifest_path = _inside(capture, 'capture.json')
+     validation_path = _inside(capture, 'validation.json')
+     manifest, validation = _json(manifest_path), _json(validation_path)
++    assisted_parent = bool(attempt.get('human_intervention') or manifest.get('human_intervention')
++                           or attempt.get('source') == 'human_corrected_gpt')
+     run_metadata = _json(_inside(capture, 'run_metadata.json'))
+     _require(attempt.get('run_id') == source_run_id and attempt.get('finished') is True
+              and attempt.get('capture_complete') is True
+@@ -176,6 +178,7 @@ def load_replay_prefix(root, source_run_id, steps=None):
+     _require(_hash(policy_path) == expected, 'Source policy checksum mismatch')
+     seed, seed_source = _seed_source(root, capture, run_metadata, group)
+     with h5py.File(policy_path, 'r') as policy:
++        assisted_parent = assisted_parent or bool(policy.attrs.get('human_intervention', False))
+         _require(bool(policy.attrs.get('complete', False)), 'Source policy is incomplete')
+         _require(list(policy['data']) == [name] and int(policy['data'].attrs.get('total', -1)) == total,
+                  'Source policy episode or total mismatch')
+@@ -205,6 +208,11 @@ def load_replay_prefix(root, source_run_id, steps=None):
+                'source_start_step': 0, 'source_end_step_exclusive': selected,
+                'bitwise_physics_restored': False, 'fresh_actor': True,
+                'replay_validation': 'source_verified_execution_not_yet_tested'}
++    if assisted_parent:
++        # Conservative attribution: even a prefix before the first coached action
++        # retains the parent's assistance classification; no text is replayed.
++        lineage['inherited_assistance'] = {'parent_attempt': source_run_id,
++                                          'scope': 'any_assisted_parent_prefix'}
+     trusted = {**lineage, 'source_run_id': source_run_id, 'steps': selected,
+                'root': root, 'source_capture': capture, 'reset_seed': seed, 'seed_source': seed_source}
+     return ReplayPrefix(actions, trusted, initial, final, lineage)
+diff --git a/participant/collection/export_report.py b/participant/collection/export_report.py
+index 25e701ef884f92afedcafe9028dd387826702480..8b096decac09ee3c2e45b9a0304dad4565fce37f 100644
+--- a/participant/collection/export_report.py
++++ b/participant/collection/export_report.py
+@@ -8,6 +8,7 @@ credential, absolute-path, or serialized privileged-state markers.
+ """
+ import argparse
+ import html
++import hashlib
+ import ipaddress
+ import json
+ import math
+@@ -179,6 +180,34 @@ def public_phase_timing(value):
+     return select(value, {**PHASE_TIMING_FIELDS, 'completed': boolean})
+ 
+ 
++def public_feedback(value):
++    result = select(value, {'enabled': boolean, 'accepted_messages': integer,
++        'dispatched_messages': integer, 'delivered_messages': integer, 'uncertain_messages': integer,
++        'human_intervention': boolean, 'assistance_status': identifier,
++        'direct_human_intervention': boolean, 'inherited_human_intervention': boolean,
++        'first_affected_transition_boundary': integer, 'first_direct_affected_transition_boundary': integer,
++        'ledger_sha256': digest})
++    if value.get('inherited_assistance'):
++        result['inherited_assistance'] = select(value['inherited_assistance'],
++                                                {'parent_attempt': identifier, 'scope': identifier})
++    result['messages'] = [select(message, {'message_id': identifier, 'sequence': integer,
++        'text_sha256': digest, 'target_decision_index': integer, 'accepted_at_utc': text,
++        'status': identifier, 'delivery_decision_index': integer, 'observation_step': integer,
++        'prepared_at_utc': text, 'model_call_index': integer, 'input_sha256': digest,
++        'dispatch_at_utc': text, 'acknowledged_at_utc': text}) for message in value.get('messages', [])]
++    return result
++
++
++def assisted_review_digest(trace):
++    """Pin reviewed coaching and text-bearing actor outputs; not an approval itself."""
++    trace = Path(trace)
++    names = ['attempt.json', 'decisions.jsonl', 'prompt.txt']
++    if (trace / 'human_feedback.json').exists():
++        names.append('human_feedback.json')
++    files = {name: sha256(trace / name) for name in names}
++    return hashlib.sha256(json.dumps(files, sort_keys=True).encode()).hexdigest()
++
++
+ def public_attempt(value):
+     result = select(value, {
+         'run_id': identifier, 'parent_attempt': identifier, 'retry_reason': text,
+@@ -199,6 +228,8 @@ def public_attempt(value):
+         'replay_steps_completed': integer, 'policy_suffix_start_step': integer,
+         'new_recorded_suffix_steps': integer, 'activity': identifier,
+     })
++    if isinstance(value.get('human_feedback'), dict):
++        result['human_feedback'] = public_feedback(value['human_feedback'])
+     if isinstance(value.get('pixel_depth_query'), dict):
+         result['pixel_depth_query'] = select(value['pixel_depth_query'], {
+             'enabled': boolean, 'max_queries_per_observation': integer, 'max_points': integer,
+@@ -216,6 +247,9 @@ def public_attempt(value):
+             'source_end_step_exclusive': integer, 'bitwise_physics_restored': boolean,
+             'fresh_actor': boolean, 'replay_validation': identifier,
+         })
++        if value['continuation'].get('inherited_assistance'):
++            result['continuation']['inherited_assistance'] = select(
++                value['continuation']['inherited_assistance'], {'parent_attempt': identifier, 'scope': identifier})
+     if 'post_action_settle' in value:
+         result['post_action_settle'] = select(value['post_action_settle'], {
+             'enabled': boolean, 'requested_steps': integer, 'trigger': identifier,
+@@ -872,7 +906,8 @@ def export_media(policy_path, output, *, video=False, max_video_frames=2000, slo
+     return result
+ 
+ 
+-def export_report(trace, collection, output, *, video=False, max_video_frames=2000, slowdown=None):
++def export_report(trace, collection, output, *, video=False, max_video_frames=2000, slowdown=None,
++                  assisted_review_sha256=None):
+     trace, collection, output = Path(trace), Path(collection), Path(output)
+     if output.exists():
+         raise FileExistsError('report output already exists')
+@@ -881,6 +916,26 @@ def export_report(trace, collection, output, *, video=False, max_video_frames=20
+     if slowdown is not None and (type(slowdown) not in (int, float) or not math.isfinite(slowdown) or slowdown <= 0):
+         raise ValueError('slowdown must be positive and finite')
+     raw_attempt = load_json((trace / 'attempt.json').read_text())
++    capture_raw = load_optional(collection / 'capture.json') or {}
++    assisted = bool(raw_attempt.get('human_intervention') or raw_attempt.get('source') == 'human_corrected_gpt'
++                    or capture_raw.get('human_intervention'))
++    if raw_attempt.get('human_feedback', {}).get('inherited_human_intervention'):
++        if raw_attempt.get('human_intervention') is not True:
++            raise ValueError('inherited assistance metadata mismatch')
++        assisted = True
++    if raw_attempt.get('human_feedback', {}).get('enabled'):
++        from participant.collection.human_feedback import read_ledger, FeedbackQueue, with_inherited
++        ledger = read_ledger(trace / 'human_feedback.json', raw_attempt['run_id'])
++        if ledger['state'] != 'closed':
++            raise ValueError('close the feedback queue before public export')
++        if sha256(trace / 'human_feedback.json') != raw_attempt['human_feedback'].get('ledger_sha256'):
++            raise ValueError('feedback provenance hash mismatch')
++        metadata = with_inherited(FeedbackQueue(trace / 'human_feedback.json', raw_attempt['run_id']).status(),
++                                  raw_attempt['human_feedback'].get('inherited_assistance'))
++        if metadata != raw_attempt['human_feedback'] or metadata['human_intervention'] != assisted:
++            raise ValueError('feedback assistance metadata mismatch')
++    if assisted and assisted_review_sha256 != assisted_review_digest(trace):
++        raise ValueError('assisted public review required: review provenance, feedback AND actor reasons, then pin their digest')
+     attempt = public_attempt(raw_attempt)
+     if attempt.get('status') not in ('completed', 'failed', 'interrupted', 'review_ready'):
+         raise ValueError('wait until the attempt stops before exporting its report')
+@@ -888,7 +943,6 @@ def export_report(trace, collection, output, *, video=False, max_video_frames=20
+     if attempt.get('prompt_sha256') != sha256(trace / 'prompt.txt'):
+         raise ValueError('prompt hash differs from recorded attempt')
+     events, skipped = public_events(trace / 'decisions.jsonl')
+-    capture_raw = load_optional(collection / 'capture.json') or {}
+     capture = select(capture_raw, {'schema': identifier, 'complete': boolean, 'termination_reason': identifier,
+         'raw_archive': boolean, 'wall_s': number, 'requests': integer, 'steps': integer,
+         'idle_render_calls': integer, 'idle_render_wall_s': number,
+@@ -923,6 +977,8 @@ def export_report(trace, collection, output, *, video=False, max_video_frames=20
+                 'publication_review': 'generated_allowlisted_subset_requires_repository_review',
+                 'decision_reason_scope': 'final_action_explanation_only',
+                 'artifacts': {}}
++    if assisted_review_sha256 is not None:
++        manifest['assisted_public_review_sha256'] = digest(assisted_review_sha256)
+     # All text selected above has passed the privacy checks before creating an
+     # output directory. A failed media export removes only this newly made path.
+     output.mkdir(parents=True, exist_ok=False)
+@@ -958,13 +1014,16 @@ def main():
+     parser.add_argument('--max-video-frames', type=int, default=2000,
+                         help='Explicit continuous-prefix video limit, recorded in the manifest and page')
+     parser.add_argument('--slowdown', type=float, help='Playback slowdown; default 20x for under 20 frames, otherwise 1x')
++    parser.add_argument('--assisted-review-sha256',
++                        help='Exact digest after reviewing private feedback AND actor reasons; not automatic approval')
+     args = parser.parse_args()
+     identifier(args.run_id)
+     if ':' in args.run_id:
+         parser.error('run-id must be a directory basename')
+     result = export_report(args.root / 'output/operator-traces' / args.run_id,
+                            args.root / 'output/collections' / args.run_id, args.output,
+-                           video=args.video, max_video_frames=args.max_video_frames, slowdown=args.slowdown)
++                           video=args.video, max_video_frames=args.max_video_frames, slowdown=args.slowdown,
++                           assisted_review_sha256=args.assisted_review_sha256)
+     print(json.dumps({'run_id': result['attempt']['run_id'], 'status': result['attempt']['status'],
+                       'frames': result['media']['transitions'], 'video': result['media']['video']['created'],
+                       'quality_passed': result['quality'].get('quality_passed')}, ensure_ascii=False))
+diff --git a/participant/collection/human_feedback.py b/participant/collection/human_feedback.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..8166e61a8e3fad8d106d94f9929f21388bf62534
+--- /dev/null
++++ b/participant/collection/human_feedback.py
+@@ -0,0 +1,286 @@
++"""Opt-in, run-bound human text queue. Host only; never an actor tool.
++
++The queue is private provenance, not a semantic rules validator. Enqueue only
++explicitly authorized guidance derived from designated public observations.
++"""
++import argparse
++from contextlib import contextmanager
++from datetime import datetime, timezone
++import fcntl
++import hashlib
++import json
++import os
++from pathlib import Path
++import re
++import sys
++import tempfile
++import unicodedata
++
++SCHEMA = 'phyrc-human-feedback-v1'
++FILENAME = 'human_feedback.json'
++MAX_TEXT_BYTES, MAX_MESSAGES, MAX_PER_DECISION = 2000, 64, 4
++MAX_FILE_BYTES = 512 * 1024
++STATES = {'accepted', 'prepared', 'dispatching', 'delivered', 'delivery_uncertain', 'not_delivered_closed'}
++DISPATCHED = {'dispatching', 'delivered', 'delivery_uncertain'}
++
++
++def now():
++    return datetime.now(timezone.utc).isoformat()
++
++
++def identifier(value):
++    if not isinstance(value, str) or not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_.-]{0,119}', value):
++        raise ValueError('unsafe run/message ID')
++    return value
++
++
++def validate_text(value):
++    if (not isinstance(value, str) or not value.strip() or len(value.encode()) > MAX_TEXT_BYTES
++            or any(unicodedata.category(c).startswith('C') and c not in '\n\t' for c in value)):
++        raise ValueError('feedback must be nonempty plain UTF-8 text, at most 2000 bytes')
++    return value
++
++
++def digest_text(value):
++    return hashlib.sha256(value.encode()).hexdigest()
++
++
++def _safe_path(path):
++    path = Path(path).absolute()
++    if '..' in path.parts or any(p.is_symlink() for p in (path, *path.parents)):
++        raise ValueError('feedback paths must not contain traversal or symlinks')
++    return path
++
++
++def read_ledger(path, run_id):
++    path = _safe_path(path)
++    if not path.is_file() or path.stat().st_size > MAX_FILE_BYTES:
++        raise ValueError('feedback not enabled or invalid queue file')
++    value = json.loads(path.read_text())
++    if value.get('schema') != SCHEMA or value.get('run_id') != identifier(run_id):
++        raise ValueError('feedback run mismatch or invalid schema')
++    if value.get('enabled') is not True or value.get('state') not in ('open', 'closed'):
++        raise ValueError('invalid feedback queue state')
++    if type(value.get('decisions')) is not int or not 1 <= value['decisions'] <= 2000:
++        raise ValueError('invalid feedback decision budget')
++    if type(value.get('next_decision_index')) is not int or not 0 <= value['next_decision_index'] <= value['decisions']:
++        raise ValueError('invalid feedback boundary')
++    messages = value.get('messages')
++    if not isinstance(messages, list) or len(messages) > MAX_MESSAGES:
++        raise ValueError('invalid feedback messages')
++    seen, per_decision = set(), {}
++    for sequence, message in enumerate(messages):
++        identifier(message['message_id'])
++        target = message['target_decision_index']
++        if (message['message_id'] in seen or message['sequence'] != sequence
++                or type(target) is not int or not 0 <= target < value['decisions']
++                or message['status'] not in STATES or message['public_observations_only'] is not True
++                or message['user_authorized'] is not True
++                or digest_text(validate_text(message['text'])) != message['text_sha256']):
++            raise ValueError('invalid feedback message provenance')
++        seen.add(message['message_id'])
++        per_decision[target] = per_decision.get(target, 0) + 1
++    if any(count > MAX_PER_DECISION for count in per_decision.values()):
++        raise ValueError('too many messages at one boundary')
++    return value
++
++
++def summary(value):
++    """Metadata only. Raw text is kept exclusively in the private ledger."""
++    dispatched = [m for m in value['messages'] if m['status'] in DISPATCHED]
++    fields = ('message_id', 'sequence', 'text_sha256', 'target_decision_index', 'accepted_at_utc',
++              'status', 'delivery_decision_index', 'observation_step', 'prepared_at_utc',
++              'model_call_index', 'input_sha256', 'dispatch_at_utc', 'acknowledged_at_utc')
++    return {'enabled': True, 'accepted_messages': len(value['messages']),
++            'dispatched_messages': len(dispatched),
++            'delivered_messages': sum(m['status'] == 'delivered' for m in dispatched),
++            'uncertain_messages': sum(m['status'] in ('dispatching', 'delivery_uncertain') for m in dispatched),
++            'human_intervention': bool(dispatched),
++            'assistance_status': ('delivery_uncertain' if any(m['status'] != 'delivered' for m in dispatched)
++                                  else 'human_assisted' if dispatched else 'none_delivered'),
++            'first_affected_transition_boundary': min((m['observation_step'] for m in dispatched), default=None),
++            'private_provenance_file': FILENAME,
++            'messages': [{k: m[k] for k in fields if k in m} for m in value['messages']]}
++
++
++def with_inherited(metadata, inherited=None):
++    result = dict(metadata or {'enabled': False, 'accepted_messages': 0, 'dispatched_messages': 0,
++                              'delivered_messages': 0, 'uncertain_messages': 0, 'messages': [],
++                              'human_intervention': False, 'assistance_status': 'none_delivered'})
++    result['direct_human_intervention'] = result['human_intervention']
++    result['inherited_human_intervention'] = bool(inherited)
++    result['first_direct_affected_transition_boundary'] = result.get('first_affected_transition_boundary')
++    if inherited:
++        result['inherited_assistance'] = dict(inherited)
++        result['human_intervention'] = True
++        result['first_affected_transition_boundary'] = 0
++        if not result['direct_human_intervention']:
++            result['assistance_status'] = 'inherited_only'
++    return result
++
++
++class FeedbackQueue:
++    def __init__(self, path, run_id):
++        self.path, self.run_id = _safe_path(path), identifier(run_id)
++
++    @classmethod
++    def create(cls, trace, run_id, decisions):
++        queue = cls(Path(trace) / FILENAME, run_id)
++        value = {'schema': SCHEMA, 'run_id': run_id, 'enabled': True, 'state': 'open',
++                 'decisions': decisions, 'next_decision_index': 0, 'created_at_utc': now(), 'messages': []}
++        fd = os.open(queue.path, os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW, 0o600)
++        with os.fdopen(fd, 'w') as stream:
++            json.dump(value, stream, ensure_ascii=False); stream.flush(); os.fsync(stream.fileno())
++        read_ledger(queue.path, run_id)
++        return queue
++
++    @contextmanager
++    def transaction(self):
++        # An enqueue attempt cannot create a disabled run's queue or directories.
++        if not self.path.is_file():
++            raise ValueError('human feedback is not enabled for this run')
++        _safe_path(self.path)
++        lock = self.path.with_suffix('.lock')
++        fd = os.open(lock, os.O_RDWR | os.O_CREAT | os.O_NOFOLLOW, 0o600)
++        with os.fdopen(fd, 'w') as handle:
++            fcntl.flock(handle, fcntl.LOCK_EX)
++            value = read_ledger(self.path, self.run_id)
++            yield value
++            temporary_fd, temporary = tempfile.mkstemp(prefix='.feedback-', dir=self.path.parent)
++            try:
++                with os.fdopen(temporary_fd, 'w') as stream:
++                    json.dump(value, stream, ensure_ascii=False, indent=2)
++                    stream.write('\n'); stream.flush(); os.fsync(stream.fileno())
++                os.replace(temporary, self.path)
++                directory = os.open(self.path.parent, os.O_DIRECTORY)
++                try: os.fsync(directory)
++                finally: os.close(directory)
++            finally:
++                if os.path.exists(temporary): os.unlink(temporary)
++
++    def enqueue(self, message_id, target, text, *, public_observations_only=False, user_authorized=False):
++        identifier(message_id); validate_text(text)
++        if public_observations_only is not True or user_authorized is not True:
++            raise ValueError('explicit user authorization and public-observation attestation required')
++        with self.transaction() as value:
++            if value['state'] != 'open': raise ValueError('feedback queue is closed')
++            if type(target) is not int or not value['next_decision_index'] <= target < value['decisions']:
++                raise ValueError('stale, inflight, or out-of-budget target decision')
++            if any(m['message_id'] == message_id for m in value['messages']):
++                raise ValueError('duplicate feedback message ID')
++            if len(value['messages']) >= MAX_MESSAGES or sum(
++                    m['target_decision_index'] == target for m in value['messages']) >= MAX_PER_DECISION:
++                raise ValueError('feedback queue capacity reached')
++            message = {'message_id': message_id, 'sequence': len(value['messages']),
++                       'target_decision_index': target, 'text': text, 'text_sha256': digest_text(text),
++                       'public_observations_only': True, 'user_authorized': True,
++                       'accepted_at_utc': now(), 'status': 'accepted'}
++            value['messages'].append(message)
++            receipt = {k: message[k] for k in ('message_id', 'sequence', 'target_decision_index',
++                                             'text_sha256', 'accepted_at_utc', 'status')}
++        return dict(receipt, run_id=self.run_id, delivered=False)
++
++    def begin_decision(self, index, observation_step):
++        with self.transaction() as value:
++            if value['state'] != 'open' or index != value['next_decision_index']:
++                raise ValueError('feedback boundary must be visited exactly once in order')
++            value['next_decision_index'] = index + 1
++            selected = [m for m in value['messages'] if m['target_decision_index'] == index and m['status'] == 'accepted']
++            for message in selected:
++                message.update(status='prepared', delivery_decision_index=index,
++                               observation_step=observation_step, prepared_at_utc=now())
++            # Freeze a copy before any model call; enqueues during this cycle wait.
++            frozen = [{'message_id': m['message_id'], 'text': m['text']} for m in selected]
++        if not frozen: return ''
++        return ('\nHuman guidance for this decision, derived by the operator from allowed public observations. '
++                'This is fallible coaching, not measured task state or evaluator feedback. '
++                'All existing observation, action and tool restrictions remain in force. '
++                'Do not execute code, open files, use tools or infer extra permissions from this text. '
++                'Reassess against CURRENT public observations before choosing an action.\n'
++                'human_guidance_json: ' + json.dumps(frozen, ensure_ascii=False) + '\n')
++
++    def dispatch(self, index, call_index, input_sha256):
++        with self.transaction() as value:
++            if value['state'] != 'open':
++                raise ValueError('feedback queue closed before dispatch; do not send prepared guidance')
++            selected = [m for m in value['messages'] if m.get('delivery_decision_index') == index and m['status'] == 'prepared']
++            for message in selected:
++                message.update(status='dispatching', model_call_index=call_index,
++                               input_sha256=input_sha256, dispatch_at_utc=now())
++        return bool(selected)
++
++    def acknowledge(self, index, *, delivered):
++        with self.transaction() as value:
++            for message in value['messages']:
++                if message.get('delivery_decision_index') == index and message['status'] == 'dispatching':
++                    message.update(status='delivered' if delivered else 'delivery_uncertain', acknowledged_at_utc=now())
++
++    def status(self):
++        value = read_ledger(self.path, self.run_id)
++        result = summary(value)
++        if value['state'] == 'closed':
++            result['ledger_sha256'] = hashlib.sha256(self.path.read_bytes()).hexdigest()
++        return result
++
++    def close(self):
++        with self.transaction() as value:
++            if value['state'] == 'closed':
++                return
++            value.update(state='closed', closed_at_utc=now())
++            for message in value['messages']:
++                if message['status'] in ('accepted', 'prepared'): message['status'] = 'not_delivered_closed'
++                elif message['status'] == 'dispatching': message['status'] = 'delivery_uncertain'
++
++
++def capture_provenance(dataset, path, run_id, inherited=None):
++    """Write metadata before HDF5 close/hash; do not alter obs, actions or physics."""
++    if path is not None:
++        queue = FeedbackQueue(path, run_id)
++        # The collector may hit its horizon before the client receives the ACK.
++        # Seal here as well as in client cleanup; close is byte-idempotent.
++        queue.close()
++        metadata = with_inherited(queue.status(), inherited)
++    else:
++        metadata = with_inherited(None, inherited)
++    encoded = json.dumps(metadata, ensure_ascii=False, allow_nan=False)
++    for file in (dataset.policy, dataset.audit):
++        file.attrs['human_feedback_provenance_json'] = encoded
++        file.attrs['human_intervention'] = metadata['human_intervention']
++    for episode in dataset.policy.get('data', {}).values():
++        episode.attrs['human_feedback_provenance_json'] = encoded
++        episode.attrs['human_intervention'] = metadata['human_intervention']
++    for episode in dataset.audit.values():
++        if hasattr(episode, 'attrs'):
++            episode.attrs['human_feedback_provenance_json'] = encoded
++            episode.attrs['human_intervention'] = metadata['human_intervention']
++    return metadata
++
++
++def main():
++    parser = argparse.ArgumentParser(description=__doc__)
++    parser.add_argument('command', choices=('enqueue', 'status'))
++    parser.add_argument('--root', type=Path, default=Path(__file__).resolve().parents[2])
++    parser.add_argument('--run-id', required=True)
++    parser.add_argument('--message-id')
++    parser.add_argument('--decision-index', type=int)
++    parser.add_argument('--public-observations-only', action='store_true')
++    parser.add_argument('--user-authorized', action='store_true')
++    args = parser.parse_args()
++    try:
++        identifier(args.run_id)
++        queue = FeedbackQueue(args.root / 'output/operator-traces' / args.run_id / FILENAME, args.run_id)
++        if args.command == 'status': result = queue.status()
++        else:
++            if not args.public_observations_only or not args.user_authorized:
++                raise ValueError('explicit user authorization and public-observation attestation required')
++            text = sys.stdin.buffer.read(MAX_TEXT_BYTES + 1).decode('utf-8')
++            result = queue.enqueue(args.message_id, args.decision_index, text,
++                                   public_observations_only=args.public_observations_only,
++                                   user_authorized=args.user_authorized)
++        print(json.dumps(result, ensure_ascii=False))
++    except (ValueError, OSError, KeyError) as exc:
++        parser.error(str(exc))
++
++
++if __name__ == '__main__':
++    main()
+diff --git a/scripts/collect_operator.py b/scripts/collect_operator.py
+index 163541c6bf13480a9323ad53a41f69c35009ce97..17e5e608438f92da707fa86061a92ff2860f50d0 100644
+--- a/scripts/collect_operator.py
++++ b/scripts/collect_operator.py
+@@ -134,6 +134,8 @@ def parse_arguments(argv=None):
+     p.add_argument('--preview', type=Path, help='Human observer HTML served by existing Jupyter')
+     p.add_argument('--webrtc', action='store_true', help='Enable existing WebRTC viewer in observation-only mode')
+     p.add_argument('--evaluate', action='store_true', help='Save official scoring only in trusted evaluation files')
++    p.add_argument('--human-feedback-run-id', help='Trusted collector provenance only; never an actor tool')
++    p.add_argument('--inherited-human-assistance-parent', help='Conservative provenance for an assisted replay parent')
+     p.add_argument('--profile-step-phases', action='store_true',
+                    help='Trusted numeric step/observation/capture wall timings; default off')
+     p.add_argument('--reset-seed', type=int,
+@@ -345,6 +347,22 @@ def main():
+                     evaluator.finish(reason, valid=False)
+                 except Exception:
+                     traceback.print_exc(file=sys.stderr)
++            feedback_metadata = None
++            if dataset and (args.human_feedback_run_id or args.inherited_human_assistance_parent):
++                try:
++                    from participant.collection.human_feedback import capture_provenance, identifier
++                    feedback_run = identifier(args.human_feedback_run_id or args.output.name)
++                    if args.output.name != feedback_run:
++                        raise ValueError('feedback provenance run mismatch')
++                    feedback_path = (args.output.parent.parent / 'operator-traces' / feedback_run / 'human_feedback.json'
++                                     if args.human_feedback_run_id else None)
++                    inherited = ({'parent_attempt': identifier(args.inherited_human_assistance_parent),
++                                  'scope': 'any_assisted_parent_prefix'}
++                                 if args.inherited_human_assistance_parent else None)
++                    feedback_metadata = capture_provenance(dataset, feedback_path, feedback_run, inherited)
++                except Exception:
++                    complete = False
++                    traceback.print_exc(file=sys.stderr)
+             if writer:
+                 try:
+                     writer.close(complete=complete)
+@@ -366,6 +384,9 @@ def main():
+                             'evaluation_enabled': args.evaluate,
+                             'evaluation_valid': (writer.result or {}).get('valid') if writer else None,
+                             'files': {}}
++                if feedback_metadata is not None:
++                    manifest['human_feedback'] = feedback_metadata
++                    manifest['human_intervention'] = feedback_metadata['human_intervention']
+                 for path in sorted(args.output.glob('*.hdf5')):
+                     with path.open('rb') as handle:
+                         manifest['files'][path.name] = hashlib.file_digest(handle, 'sha256').hexdigest()
+diff --git a/scripts/preserve_collection.py b/scripts/preserve_collection.py
+index 93c842e30e3c1f372f0f10150f80a408c531802d..92c2ee713381fcf990a3b678bbe7f9972c912ab1 100644
+--- a/scripts/preserve_collection.py
++++ b/scripts/preserve_collection.py
+@@ -24,7 +24,7 @@ COLLECTION_REQUIRED = {'capture.json', 'policy.hdf5', 'audit.hdf5', 'operator.js
+ COLLECTION_OPTIONAL = {'evaluation_summary.json', 'step_timings.jsonl', 'validation.json'}
+ EVALUATION_FILES = {'result.json', 'samples.jsonl', 'score_events.jsonl', 'score_samples.jsonl'}
+ TRACE_REQUIRED = {'attempt.json', 'decisions.jsonl', 'prompt.txt', 'review_gate.json'}
+-TRACE_OPTIONAL = {'score_segments.json'}
++TRACE_OPTIONAL = {'score_segments.json', 'human_feedback.json'}
+ OBS_REQUIRED = {'observation.json', 'public_depth.npz', 'overview.png', 'robot_0_wrist.png',
+                 'robot_1_wrist.png', 'robot_0_head.png', 'robot_1_head.png'}
+ OBS_OPTIONAL = {'current_wrist_depth.json', 'current_wrist_depth.png'}
+@@ -155,6 +155,26 @@ def select_sources(root, run_id, validation_path):
+         path = trace / name
+         if name in TRACE_REQUIRED or path.exists():
+             selected.append(path)
++    if attempt.get('human_feedback', {}).get('enabled') or (trace / 'human_feedback.json').exists():
++        from participant.collection.human_feedback import read_ledger, with_inherited, FeedbackQueue
++        require(attempt.get('human_feedback', {}).get('enabled') is True,
++                'feedback ledger exists without enabled attempt provenance')
++        ledger_path = trace / 'human_feedback.json'
++        safe_source(ledger_path, root)
++        ledger = read_ledger(ledger_path, run_id)
++        metadata = with_inherited(FeedbackQueue(ledger_path, run_id).status(),
++                                  attempt['human_feedback'].get('inherited_assistance'))
++        require(ledger['state'] == 'closed', 'feedback queue must be closed before preservation')
++        require(artifacts.digest(ledger_path) == attempt['human_feedback'].get('ledger_sha256'),
++                'feedback ledger hash differs from attempt')
++        require(attempt.get('human_intervention') == metadata['human_intervention']
++                and capture.get('human_intervention') == metadata['human_intervention']
++                and attempt['human_feedback'] == metadata and capture.get('human_feedback') == metadata,
++                'feedback assistance provenance disagrees across attempt/capture')
++    elif attempt.get('human_feedback', {}).get('inherited_human_intervention'):
++        require(attempt.get('human_intervention') is True and capture.get('human_intervention') is True
++                and capture.get('human_feedback') == attempt['human_feedback'],
++                'inherited assistance provenance disagrees across attempt/capture')
+ 
+     snapshot = attempt.get('source_snapshot', {})
+     hashes = snapshot.get('files_sha256')
+diff --git a/tests/test_depth_query.py b/tests/test_depth_query.py
+index 4048b471315c75502641952e3f13ce3171e749fc..c19425f6bce9fbdbbe08a1842c152e819b988b83 100644
+--- a/tests/test_depth_query.py
++++ b/tests/test_depth_query.py
+@@ -58,7 +58,7 @@ def observation():
+ 
+ 
+ class QueryTests(unittest.TestCase):
+-    def run_client(self, *, module=client, enabled=True, scenario='query', image_change=False, depth_panel=False, history=False, strategy='general', extra_flags=(), response_transform=None):
++    def run_client(self, *, module=client, enabled=True, scenario='query', image_change=False, depth_panel=False, history=False, strategy='general', extra_flags=(), response_transform=None, dispatch_hook=None):
+         calls, requests, order, handlers, commands = [], [], [], {}, []
+         with tempfile.TemporaryDirectory() as tmp:
+             root = Path(tmp)
+@@ -73,6 +73,8 @@ class QueryTests(unittest.TestCase):
+                     return {'ready': True, 'observation': self.obs, 'public_interface': interface()}
+                 def dispatch(self, tool, args=None):
+                     order.append(tool); requests.append((tool, deepcopy(args)))
++                    if dispatch_hook is not None:
++                        dispatch_hook(tool, args)
+                     if tool != 'finish_episode':
+                         self.steps += 1 if tool == 'stop' else args['steps']
+                         self.obs['simulation_time_s'] += (1 if tool == 'stop' else args['steps'])/20
+diff --git a/tests/test_human_feedback.py b/tests/test_human_feedback.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..337f603fa1134003be2f0e6ee922b9b5d5dfb9fd
+--- /dev/null
++++ b/tests/test_human_feedback.py
+@@ -0,0 +1,356 @@
++"""CPU-only queue, frozen-input, provenance and publication regressions."""
++import hashlib
++import json
++from pathlib import Path
++import subprocess
++import shutil
++import tempfile
++from types import ModuleType, SimpleNamespace
++import unittest
++from unittest import mock
++
++import h5py
++
++from participant.collection import codex_client as client, human_feedback as hf, export_report as report
++from participant.ops import artifacts
++from scripts import preserve_collection
++import test_depth_query as query_fixture
++import test_collection_report as report_fixture
++import test_preserve_collection as preserve_fixture
++import test_collection_continuation as continuation_fixture
++from participant.collection.continuation import load_replay_prefix
++
++ROOT = Path(__file__).resolve().parents[1]
++BASE_COMMIT = '9acf07631ca09480d620d849771022a73d490bbb'
++
++
++def enqueue(queue, name, target, text='Keep useful support and reassess the current view.'):
++    return queue.enqueue(name, target, text, public_observations_only=True, user_authorized=True)
++
++
++class QueueTest(unittest.TestCase):
++    def setUp(self):
++        self.tmp = tempfile.TemporaryDirectory()
++        self.addCleanup(self.tmp.cleanup)
++        self.path = Path(self.tmp.name)
++        self.queue = hf.FeedbackQueue.create(self.path, 'future-run', 3)
++
++    def test_order_acceptance_delivery_and_once_only(self):
++        a = enqueue(self.queue, 'a', 0, 'FIRST')
++        b = enqueue(self.queue, 'b', 0, 'SECOND')
++        self.assertEqual([a['status'], b['status']], ['accepted', 'accepted'])
++        self.assertFalse(a['delivered'])
++        self.assertFalse(self.queue.status()['human_intervention'])
++        prompt = self.queue.begin_decision(0, 738)
++        self.assertLess(prompt.index('FIRST'), prompt.index('SECOND'))
++        self.assertFalse(self.queue.status()['human_intervention'])
++        self.assertTrue(self.queue.dispatch(0, 0, 'a'*64))
++        self.assertTrue(self.queue.status()['human_intervention'])
++        self.assertEqual(self.queue.status()['assistance_status'], 'delivery_uncertain')
++        self.queue.acknowledge(0, delivered=True)
++        self.assertFalse(self.queue.dispatch(0, 1, 'b'*64))
++        self.assertEqual(self.queue.status()['delivered_messages'], 2)
++        self.assertEqual(self.queue.status()['first_affected_transition_boundary'], 738)
++        self.assertNotIn('FIRST', json.dumps(self.queue.status()))
++
++    def test_inflight_future_enqueue_stale_mismatch_duplicate_and_bounds(self):
++        self.queue.begin_decision(0, 0)
++        with self.assertRaisesRegex(ValueError, 'stale'):
++            enqueue(self.queue, 'late', 0)
++        enqueue(self.queue, 'next', 1)
++        with self.assertRaisesRegex(ValueError, 'duplicate'):
++            enqueue(self.queue, 'next', 2)
++        with self.assertRaisesRegex(ValueError, 'run mismatch'):
++            enqueue(hf.FeedbackQueue(self.queue.path, 'different-run'), 'wrong', 1)
++        for target in (True, -1, 3):
++            with self.assertRaises(ValueError): enqueue(self.queue, 'bad', target)
++        with self.assertRaisesRegex(ValueError, 'exactly once'):
++            self.queue.begin_decision(0, 0)
++        self.assertIn('next', self.queue.begin_decision(1, 20))
++
++    def test_validation_closed_queue_and_disabled_path_never_creates(self):
++        for text in ('', 'a'*2001, 'bad\x00text', '\u202eevil'):
++            with self.assertRaises(ValueError): enqueue(self.queue, 'bad', 0, text)
++        with self.assertRaisesRegex(ValueError, 'authorization'):
++            self.queue.enqueue('no-attestation', 0, 'Valid text')
++        for i in range(4): enqueue(self.queue, f'item{i}', 0)
++        with self.assertRaisesRegex(ValueError, 'capacity'):
++            enqueue(self.queue, 'fifth', 0)
++        self.queue.close()
++        self.assertFalse(self.queue.status()['human_intervention'])
++        self.assertTrue(all(m['status']=='not_delivered_closed' for m in self.queue.status()['messages']))
++        with self.assertRaisesRegex(ValueError, 'closed'): enqueue(self.queue, 'closed', 1)
++        missing = self.path/'disabled'/hf.FILENAME
++        with self.assertRaisesRegex(ValueError, 'not enabled'):
++            enqueue(hf.FeedbackQueue(missing, 'disabled'), 'no', 0)
++        self.assertFalse(missing.parent.exists())
++        self.assertEqual(self.queue.path.stat().st_mode & 0o777, 0o600)
++
++    def test_concurrent_enqueues_are_serialized_without_lost_messages(self):
++        from concurrent.futures import ThreadPoolExecutor
++        with ThreadPoolExecutor(max_workers=4) as pool:
++            results = list(pool.map(lambda i: enqueue(self.queue, f'msg{i}', 1), range(4)))
++        self.assertEqual(sorted(r['sequence'] for r in results), list(range(4)))
++        ledger = hf.read_ledger(self.queue.path, 'future-run')
++        self.assertEqual(len({m['message_id'] for m in ledger['messages']}), 4)
++        self.assertEqual([m['sequence'] for m in ledger['messages']], list(range(4)))
++
++    def test_failed_dispatch_is_uncertain_never_requeued_and_capture_is_marked(self):
++        enqueue(self.queue, 'one', 0, 'PRIVATE_COACHING_CANARY')
++        self.queue.begin_decision(0, 8)
++        self.queue.dispatch(0, 0, 'a'*64)
++        self.queue.acknowledge(0, delivered=False)
++        self.queue.close()
++        self.assertEqual(self.queue.status()['uncertain_messages'], 1)
++        with h5py.File(self.path/'policy.hdf5','w') as policy, h5py.File(self.path/'audit.hdf5','w') as audit:
++            policy.create_dataset('actions', data=[1,2,3])
++            metadata = hf.capture_provenance(SimpleNamespace(policy=policy,audit=audit), self.queue.path, 'future-run')
++            self.assertTrue(policy.attrs['human_intervention'])
++            self.assertEqual(metadata['first_affected_transition_boundary'], 8)
++            self.assertEqual(policy['actions'][:].tolist(), [1,2,3])
++            self.assertNotIn('PRIVATE_COACHING_CANARY', policy.attrs['human_feedback_provenance_json'])
++
++    def test_capture_seals_queue_and_final_metadata_hash_is_identical(self):
++        enqueue(self.queue, 'accepted-only', 2)
++        with h5py.File(self.path/'policy.hdf5','w') as policy, h5py.File(self.path/'audit.hdf5','w') as audit:
++            policy.create_group('data').create_group('demo_0')
++            audit.create_group('demo_0')
++            metadata = hf.capture_provenance(SimpleNamespace(policy=policy,audit=audit), self.queue.path, 'future-run')
++            with self.assertRaisesRegex(ValueError, 'closed'): enqueue(self.queue,'late',2)
++            before = self.queue.path.read_bytes()
++            self.queue.close()
++            self.assertEqual(before, self.queue.path.read_bytes())
++            self.assertEqual(metadata, hf.with_inherited(self.queue.status()))
++            self.assertEqual(metadata['ledger_sha256'], hashlib.sha256(before).hexdigest())
++            self.assertEqual(json.loads(policy['data/demo_0'].attrs['human_feedback_provenance_json']),metadata)
++            self.assertEqual(json.loads(audit['demo_0'].attrs['human_feedback_provenance_json']),metadata)
++
++    def test_seal_between_prepare_and_dispatch_rejects_frozen_guidance(self):
++        enqueue(self.queue,'one',0)
++        self.queue.begin_decision(0,10)
++        self.queue.close()
++        with self.assertRaisesRegex(ValueError,'closed before dispatch'):
++            self.queue.dispatch(0,0,'a'*64)
++        self.assertFalse(self.queue.status()['human_intervention'])
++
++    def test_inherited_and_direct_boundaries_are_separate(self):
++        enqueue(self.queue,'one',0)
++        self.queue.begin_decision(0,738);self.queue.dispatch(0,0,'a'*64)
++        combined=hf.with_inherited(self.queue.status(),{'parent_attempt':'parent','scope':'any_assisted_parent_prefix'})
++        self.assertEqual(combined['first_affected_transition_boundary'],0)
++        self.assertEqual(combined['first_direct_affected_transition_boundary'],738)
++
++
++class OrchestrationTest(unittest.TestCase):
++    def run_feedback(self, *, scenario='two_queries', initial_target=0, transform=None):
++        original_create = hf.FeedbackQueue.create
++        saved = {}
++        def create(trace, run, decisions):
++            q = original_create(trace, run, decisions)
++            enqueue(q, 'initial', initial_target, 'INITIAL_COACHING')
++            saved['queue'] = q
++            return q
++        def response(value, index, schema):
++            if transform: return transform(saved['queue'], value, index, schema)
++            return value
++        with mock.patch.object(hf.FeedbackQueue, 'create', side_effect=create):
++            return query_fixture.QueryTests().run_client(scenario=scenario,
++                extra_flags=('--mode','dressing','--allow-human-feedback'), response_transform=response)
++
++    def test_new_feedback_during_query_waits_until_next_decision(self):
++        def transform(queue, value, index, schema):
++            if index == 0:
++                enqueue(queue, 'next', 1, 'NEXT_DECISION_ONLY')
++                with self.assertRaisesRegex(ValueError, 'stale'): enqueue(queue, 'stale', 0)
++            return value
++        r = self.run_feedback(transform=transform)
++        self.assertIsNone(r['error'])
++        calls = r['calls']
++        self.assertIn('INITIAL_COACHING', calls[0]['prompt'])
++        self.assertTrue(calls[1]['prompt'].startswith(calls[0]['prompt']))
++        self.assertNotIn('NEXT_DECISION_ONLY', calls[0]['prompt']+calls[1]['prompt'])
++        self.assertIn('NEXT_DECISION_ONLY', calls[2]['prompt'])
++        self.assertTrue(calls[3]['prompt'].startswith(calls[2]['prompt']))
++        self.assertEqual(calls[0]['images'], calls[1]['images'])
++        self.assertEqual(r['order'], ['call0','call1','act','call2','call3','finish_episode'])
++        self.assertEqual(r['attempt']['human_feedback']['delivered_messages'], 2)
++        self.assertTrue(r['attempt']['human_intervention'])
++        self.assertEqual(r['attempt']['source'], 'human_corrected_gpt')
++        self.assertNotIn('NEVER_ACTOR', str(calls))
++
++    def test_timeout_uncertain_and_accepted_but_undelivered_do_not_conflate(self):
++        r = self.run_feedback(scenario='timeout_first')
++        self.assertIsInstance(r['error'], TimeoutError)
++        self.assertTrue(r['attempt']['human_intervention'])
++        self.assertEqual(r['attempt']['human_feedback']['uncertain_messages'], 1)
++        # Two-decision budget, but actor ends at the first boundary.
++        def finish_first(queue, value, index, schema):
++            value = query_fixture.action()
++            if 'depth_query' in schema['properties']: value['depth_query'] = None
++            return value
++        r = self.run_feedback(initial_target=1, transform=finish_first)
++        self.assertIsNone(r['error'])
++        self.assertFalse(r['attempt']['human_intervention'])
++        self.assertEqual(r['attempt']['source'], 'gpt')
++        self.assertEqual(r['attempt']['human_feedback']['messages'][0]['status'], 'not_delivered_closed')
++
++    def test_enqueue_during_physics_dispatch_waits_for_new_observation_boundary(self):
++        original_create=hf.FeedbackQueue.create
++        saved={}
++        def create(trace,run,decisions):
++            saved['queue']=original_create(trace,run,decisions)
++            return saved['queue']
++        def during_dispatch(tool,args):
++            if tool=='act':
++                receipt=enqueue(saved['queue'],'during-action',1,'AFTER_ACTION_BOUNDARY_ONLY')
++                self.assertFalse(receipt['delivered'])
++                self.assertFalse(saved['queue'].status()['human_intervention'])
++        with mock.patch.object(hf.FeedbackQueue,'create',side_effect=create):
++            r=query_fixture.QueryTests().run_client(scenario='two_queries',
++                extra_flags=('--mode','dressing','--allow-human-feedback'),dispatch_hook=during_dispatch)
++        self.assertIsNone(r['error'])
++        self.assertNotIn('AFTER_ACTION_BOUNDARY_ONLY',r['calls'][0]['prompt']+r['calls'][1]['prompt'])
++        self.assertIn('AFTER_ACTION_BOUNDARY_ONLY',r['calls'][2]['prompt'])
++        self.assertEqual(r['attempt']['human_feedback']['first_direct_affected_transition_boundary'],2)
++
++    def test_disabled_matches_pinned_pre_feature_actor_inputs_and_requests(self):
++        baseline = ModuleType('feedback_off_baseline')
++        baseline.__file__ = str(ROOT/'participant/collection/codex_client.py')
++        source = subprocess.check_output(['git','show',BASE_COMMIT+':participant/collection/codex_client.py'],cwd=ROOT,text=True)
++        exec(compile(source,baseline.__file__,'exec'),baseline.__dict__)
++        with mock.patch.object(hf.FeedbackQueue,'create',side_effect=AssertionError('must stay disabled')):
++            old = query_fixture.QueryTests().run_client(module=baseline, scenario='two_queries')
++            new = query_fixture.QueryTests().run_client(module=client, scenario='two_queries')
++        self.assertIsNone(old['error']); self.assertIsNone(new['error'])
++        for key in ('calls','requests','order','commands'): self.assertEqual(old[key],new[key])
++        self.assertEqual(baseline.SCHEMA,client.SCHEMA)
++        self.assertNotIn('human_feedback',new['attempt'])
++        self.assertFalse(new['attempt']['human_intervention'])
++
++    def test_inherited_assistance_does_not_enable_queue_or_enter_actor_input(self):
++        original = query_fixture.SimpleNamespace
++        def inherited_prefix(**kwargs):
++            kwargs['public_lineage']['inherited_assistance'] = {
++                'parent_attempt':'ASSISTED_PARENT_CANARY','scope':'any_assisted_parent_prefix'}
++            return original(**kwargs)
++        with mock.patch.object(query_fixture,'SimpleNamespace',side_effect=inherited_prefix), \
++             mock.patch.object(hf.FeedbackQueue,'create',side_effect=AssertionError('must not enable queue')):
++            r = query_fixture.QueryTests().run_client(history=True,scenario='direct')
++        self.assertIsNone(r['error'])
++        self.assertTrue(r['attempt']['human_intervention'])
++        self.assertEqual(r['attempt']['source'],'human_corrected_gpt')
++        meta=r['attempt']['human_feedback']
++        self.assertFalse(meta['enabled']); self.assertFalse(meta['direct_human_intervention'])
++        self.assertTrue(meta['inherited_human_intervention'])
++        self.assertNotIn('ASSISTED_PARENT_CANARY',''.join(c['prompt'] for c in r['calls']))
++        self.assertIn('--inherited-human-assistance-parent',r['commands'][0])
++
++
++class ProvenanceTest(unittest.TestCase):
++    def test_private_preservation_requires_ledger_hash_and_keeps_new_source(self):
++        case = preserve_fixture.PreserveCollectionTest()
++        case.setUp(); self.addCleanup(case.doCleanups)
++        q = hf.FeedbackQueue.create(case.trace,case.run,2)
++        enqueue(q,'one',0,'PRIVATE_COACHING_CANARY')
++        q.begin_decision(0,0); q.dispatch(0,0,'a'*64); q.acknowledge(0,delivered=True); q.close()
++        metadata = hf.with_inherited(q.status())
++        case.modify(case.trace/'attempt.json',human_feedback=metadata,human_intervention=True)
++        case.modify(case.collection/'capture.json',human_intervention=True,human_feedback=metadata)
++        name='participant/collection/human_feedback.py'
++        source=case.trace/'source_snapshot'/name
++        source.parent.mkdir(parents=True); source.write_bytes((ROOT/name).read_bytes())
++        attempt=json.loads((case.trace/'attempt.json').read_text())
++        attempt['source_snapshot']['files_sha256'][name]=artifacts.digest(source)
++        case.write(case.trace/'attempt.json',attempt)
++        receipt=preserve_collection.preserve(case.root,case.run,'feedback-private')
++        stage=case.root/receipt['stage_relative_path']
++        self.assertEqual((stage/q.path.relative_to(case.root)).read_bytes(),q.path.read_bytes())
++        self.assertTrue((stage/source.relative_to(case.root)).is_file())
++        case.modify(case.trace/'attempt.json',human_feedback=dict(metadata,ledger_sha256='0'*64))
++        with self.assertRaisesRegex(ValueError,'ledger hash'):
++            preserve_collection.preserve(case.root,case.run,'reject-changed')
++
++    def test_assisted_public_report_requires_review_of_feedback_and_quoted_reason(self):
++        case=report_fixture.CollectionReportTest()
++        case.setUp(); self.addCleanup(case.doCleanups)
++        case.make_trace(); case.make_capture()
++        q=hf.FeedbackQueue.create(case.trace,case.run_id,1)
++        enqueue(q,'one',0,'PRIVATE_COACHING_CANARY')
++        q.begin_decision(0,0);q.dispatch(0,0,'a'*64);q.acknowledge(0,delivered=True);q.close()
++        attempt=json.loads((case.trace/'attempt.json').read_text())
++        attempt.update(human_intervention=True,human_feedback=hf.with_inherited(q.status()))
++        (case.trace/'attempt.json').write_text(json.dumps(attempt))
++        events=[json.loads(x) for x in (case.trace/'decisions.jsonl').read_text().splitlines()]
++        events[0]['decision']['reason']='PRIVATE_COACHING_CANARY'
++        (case.trace/'decisions.jsonl').write_text('\n'.join(json.dumps(x) for x in events)+'\n')
++        with self.assertRaisesRegex(ValueError,'assisted public review required'):
++            report.export_report(case.trace,case.capture,case.output)
++        self.assertFalse(case.output.exists())
++        reviewed=report.assisted_review_digest(case.trace)
++        events[0]['decision']['reason']='Reviewed public observation guidance.'
++        (case.trace/'decisions.jsonl').write_text('\n'.join(json.dumps(x) for x in events)+'\n')
++        with self.assertRaisesRegex(ValueError,'assisted public review required'):
++            report.export_report(case.trace,case.capture,case.output,assisted_review_sha256=reviewed)
++        result=report.export_report(case.trace,case.capture,case.output,
++                                    assisted_review_sha256=report.assisted_review_digest(case.trace))
++        self.assertTrue(result['attempt']['human_intervention'])
++        self.assertIn('human_feedback',result['attempt'])
++        self.assertFalse((case.output/hf.FILENAME).exists())
++        for path in case.output.rglob('*'):
++            if path.is_file(): self.assertNotIn(b'PRIVATE_COACHING_CANARY',path.read_bytes())
++
++    def test_source_snapshot_includes_queue_and_helper_dependency(self):
++        with tempfile.TemporaryDirectory() as tmp:
++            snapshot=client.source_snapshot(ROOT,Path(tmp))
++            name='participant/collection/human_feedback.py'
++            self.assertIn(name,snapshot['files_sha256'])
++            self.assertEqual(snapshot['files_sha256'][name],hashlib.sha256((ROOT/name).read_bytes()).hexdigest())
++
++    def test_inherited_only_export_and_preservation_keep_review_requirement(self):
++        case=report_fixture.CollectionReportTest()
++        case.setUp();self.addCleanup(case.doCleanups)
++        case.make_trace();case.make_capture()
++        inherited={'parent_attempt':'assisted-parent','scope':'any_assisted_parent_prefix'}
++        metadata=hf.with_inherited(None,inherited)
++        attempt=json.loads((case.trace/'attempt.json').read_text())
++        attempt.update(human_intervention=True,source='human_corrected_gpt',human_feedback=metadata)
++        (case.trace/'attempt.json').write_text(json.dumps(attempt))
++        with self.assertRaisesRegex(ValueError,'assisted public review required'):
++            report.export_report(case.trace,case.capture,case.output)
++        result=report.export_report(case.trace,case.capture,case.output,
++                                    assisted_review_sha256=report.assisted_review_digest(case.trace))
++        self.assertTrue(result['attempt']['human_feedback']['inherited_human_intervention'])
++        self.assertFalse((case.trace/hf.FILENAME).exists())
++        private=preserve_fixture.PreserveCollectionTest()
++        private.setUp();self.addCleanup(private.doCleanups)
++        private.modify(private.trace/'attempt.json',human_intervention=True,human_feedback=metadata)
++        with self.assertRaisesRegex(ValueError,'inherited assistance'):
++            preserve_collection.preserve(private.root,private.run,'missing-provenance')
++        private.modify(private.collection/'capture.json',human_intervention=True,human_feedback=metadata)
++        preserve_collection.preserve(private.root,private.run,'inherited-private')
++
++    def test_assisted_parent_child_grandchild_and_undelivered_parent(self):
++        case=continuation_fixture.ContinuationTest()
++        case.setUp();self.addCleanup(case.doCleanups)
++        path=case.trace/'attempt.json'
++        original=json.loads(path.read_text())
++        no_delivery=dict(original,human_intervention=False,human_feedback={'enabled':True,'delivered_messages':0})
++        path.write_text(json.dumps(no_delivery))
++        self.assertNotIn('inherited_assistance',load_replay_prefix(case.root,case.run,1).public_lineage)
++        for status in ('completed','failed','interrupted'):
++            path.write_text(json.dumps(dict(original,status=status,human_intervention=True,
++                                            human_feedback={'assistance_status':'delivery_uncertain'})))
++            prefix=load_replay_prefix(case.root,case.run,1)
++            self.assertEqual(prefix.public_lineage['inherited_assistance']['parent_attempt'],case.run)
++        child='inherited-child'
++        child_capture=case.capture.parent/child;child_trace=case.trace.parent/child
++        shutil.copytree(case.capture,child_capture);shutil.copytree(case.trace,child_trace)
++        child_attempt=dict(original,run_id=child,human_intervention=True,source='human_corrected_gpt',
++                           human_feedback=hf.with_inherited(None,prefix.public_lineage['inherited_assistance']))
++        (child_trace/'attempt.json').write_text(json.dumps(child_attempt))
++        grandchild_prefix=load_replay_prefix(case.root,child,1)
++        self.assertEqual(grandchild_prefix.public_lineage['inherited_assistance']['parent_attempt'],child)
++
++
++if __name__ == '__main__':
++    unittest.main()

@@ -4,11 +4,9 @@
 
 이 문서는 **새 Ubuntu GPU 서버에서 저장소와 보존 자료를 복원하고, 작은 연결 검사까지 준비하는 순서**입니다. 모든 프로젝트 명령은 저장소 루트에서 실행합니다. 2026-11-13 사용자 재개 요청으로 아래 복원·build·prepare·GPU smoke와 작은 wiring을 실제 완료했습니다. [환경 검사 receipt](project/sessions/20261113-environment-setup.json) / [세션 기록](project/sessions/20261113-environment-setup.ko.md)
 
-**마지막 마감 시연은 E28입니다.** `20261113-astra-side-hem-fresh-001`은 소스 `9f79772`의 새 reset에서 측면 파지·밑단 펼침·첫 손목 유지 전략을 실행했고, 2026-11-13 21:29:28 UTC에 40결정·739전이로 마감했습니다. 전수 QC 739/739를 통과했으며 로컬 공식 평가기 원점수는 pickup 5점·착의 0점, `success=false`입니다. 완료된 시도의 최고 기록은 5/50점입니다. [E28 결과](collection/attempts/20261113-astra-side-hem-fresh-001/manifest.json), [실행 조건](COLLECTION_PLAN.md), [전략 검토](collection/research/2026-11-13-side-hem-wrists.ko.md)를 따릅니다. 과거 E27/928 후보를 자동 재개하거나 진행 중 수집과 두 번째 GPU 수집기를 병행하지 않습니다.
+**마지막 마감 시연은 E29이며 현재 새 수집은 시작하지 않았습니다.** `20261113-astra-side-hem738-continue20-001`은 clean source `2baebcc`에서 E28/738 prefix·새 history682/714 후 최대20개 새 결정을 허용했습니다. 2026-11-13 21:41:33–22:07:44 UTC에11결정(10 act+1 finish_episode)·12호출·834전이로 마감했고, 전수 QC834/834를 통과했습니다. 로컬 공식 평가5/50점은 재실행 구간의 픽업이며 새 구간 득점과 착의 점수는0, `success=false`입니다. [E29 결과](collection/attempts/20261113-astra-side-hem738-continue20-001/manifest.json) / [현재 상태·백업](project/STATUS.md) / [다음 비교](COLLECTION_PLAN.md)
 
-E28의 simulator 반환값은 0이지만 호스트 실행 세션 반환값은 143입니다. 완료 마커·닫힌 기록·전수 QC로 마감을 확인했으며 호스트 실행 전체가 exit 0이었다고 기록하지 않습니다. 앞선 wiring 연결 검사의 exit 0과 구분합니다.
-
-**현재 단일 수집 실행은 E29 `20261113-astra-side-hem738-continue20-001`입니다.** 사용자의 후반 +20결정 요청으로 2026-11-13 21:41:33 UTC에 소스 `2baebcc`의 clean snapshot에서 시작했습니다. E28/738 prefix·새 replay history682/714·후반20결정·총1400전이·review10이며 최종 결과는 미확정입니다. 현재 실행과 별도의 simulator·GPU 렌더·평가를 병행하지 않습니다. [실행 상태](project/STATUS.md)
+E29의 simulator 반환값은0이지만 host 실행 세션 반환값은143입니다. actor가 좁은 경계와 미해결 진입 관계를 근거로 `finish_episode`를 선택했으며,20결정 예산 소진·환경 한도·timeout으로 끝난 것이 아닙니다. 이 국소 판단을 과제 불가능성으로 해석하지 않습니다. 새 실행·예산 변경은 사용자가 결정하며 과거 후보나 남은 결정을 자동 재개하지 않습니다. GPU 작업은 계속 순차 실행합니다.
 
 ## Codex CLI 시작 프롬프트
 
@@ -20,7 +18,7 @@ AGENTS.md와 docs/OPERATIONS.md를 먼저 읽어라.
 요청받은 범위에서 고정 자산과 필요한 시연만 복원하고 해시와 파일을 검증하라.
 단계가 실패하면 원인을 해결하기 전 다음 단계로 넘어가지 마라.
 수집 재개 요청 전에는 새 시연을 시작하지 마라.
-E28 이후 전략은 docs/COLLECTION_PLAN.md이며 옛 same-arm 후보를 자동 실행하지 마라.
+E29 이후 전략은 docs/COLLECTION_PLAN.md이며 옛 same-arm 후보를 자동 실행하지 마라.
 완료한 검사, 미실행 검사, 부족한 외부 접근 권한과 다음 명령을 구분해 보고하라.
 ```
 
