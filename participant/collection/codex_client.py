@@ -189,6 +189,18 @@ LATER GRASP CHANGES: The initial setup bound does not prohibit grasp changes nee
 
 After every action, compare the intended change with actual robot displacement, local cloth movement and the chosen hand/rim relationship. Account for persistent controller targets; neutral commands and model latency do not certify settling. Avoid repeated commands against saturated joints. In the existing brief reason identify the current phase, each robot's support/guide role, the first-hand relationship being retained, and the next observable test, without adding fields or claiming points. A phase name does not establish passage. Use only the supplied public observations and permitted actions; preserve uncertainty and finish when no useful supported movement or recovery remains.'''
 
+DIAGONAL_ENTRY_TASK = '''For this comparison, specialize FIRST WRIST into separately observed lower, diagonal-reorient and conditional-raise trials toward the SAME selected mannequin hand. This is a manipulation hypothesis, not three unconditional moves or a guaranteed entry route. Preserve useful current grasps and choose a guide and an anchor from CURRENT designated views and public robot state. The anchor retains useful garment support while the guide changes the candidate lip; it is not a fixed world pose. Track the selected hand by its connected forearm across views. A yellow boundary may be a candidate body-hem lip, but color, a fold or a dark patch alone does not identify an opening.
+
+LOWER AND INSPECT: If the current candidate lip is not already usefully below the selected wrist and a supported reachable lowering is plausible, lower the guide edge slightly relative to that SAME wrist in one short act. Do not simultaneously advance, retract, rotate or switch target hands. Choose the robot, direction, normalized velocity and duration from current public state, visible relations and measured response, with no prescribed coordinate or distance. Inspect the next observation, including any configured settling: distinguish actual robot movement from cloth following, assess the retained anchor and same-hand relationship, and compare the lip and gripper/housing clearance. Skip further lowering when the observed relation already supports the next test; lowering farther is not the objective.
+
+DIAGONAL REORIENTATION AND INSPECT: From that current supported relation, test a small diagonal opening orientation using ONE bounded wrist rotation axis OR one controlled difference in held-edge height. Choose the axis or moving side from the visible lip, connected hand/forearm and measured state; no fixed angle, anatomical side or robot is prescribed. Keep the selected hand and useful anchor relationship. Do not combine this test with forward advance, arm retraction or a target-hand change. Inspect its actual effect before the next action: did the candidate lips separate or change their relation to the hand, or did an exterior panel merely fold? Compare clearance for BOTH grippers as well as the candidate hand path; do not aim the hand at a held corner just because it is visible. If a separate clearance recovery is needed, perform and inspect that recovery before resuming the entry comparison.
+
+CONDITIONAL RAISE AND INSPECT: Only when current/recent public observations still support a plausible reachable entry direction for that SAME hand, useful anchor support and a trackable lip relationship, make one separate short raising trial. Keep grippers and housings outside the intended passage; do not combine the rise with retraction, forward advance or a change to the other hand. Inspect the resulting relative cloth/hand movement before another trial. A hand disappearing behind cloth or a housing is not established entry. Partial occlusion alone is also not an automatic reason to stop: if a changed, supported mechanism remains plausible from current evidence, test it once with a bounded action and inspect instead of demanding a perfectly visible hole. Do not describe unobserved space as clear.
+
+During this comparison, retain the first-hand objective instead of switching to a second_sleeve stage merely because another hand appears or one correction is inconclusive. Before proceeding to the other hand, current and recent views must support useful entry or garment progression along the SAME selected wrist/forearm that can be retained during the opposite-side change; adjacency, a stage name and occlusion alone are insufficient. A measured score or a perfectly visible complete passage is not required. Continue the full dressing objective when that relationship supports it.
+
+Use the existing brief reason to identify the current trial, guide/anchor roles, the same-hand relation and the observable change to test, without adding response fields. Preserve the existing bounded one-sided regrasp and recovery rules. If two or three executed corrections leave the same obstruction, choose a different observable supported mechanism rather than repeating tiny offsets; do not finish solely because ambiguity remains when a useful bounded alternative is supported. Recover earlier when support or deformation worsens, account for residual target-following and saturation, and finish when useful supported movement or recovery is exhausted. No source trajectory, evaluation signal, hidden contact or geometry is provided.'''
+
 SINGLE_ARM_PROGRESS_TASK = '''For this attempt, preserve continuity of ONE selected arm within the task-progress approach. Choose the arm with the most useful CURRENT body-opening, hand and forearm relationship from the designated views; use available same-episode history to track that relationship, not as proof of current geometry or support. Identify the selected arm by its visible connected hand/forearm and relation to the garment, without assuming a predetermined anatomical side or robot-camera identity. Keep the existing grasps: the one-sided regrasp bound remains zero.
 
 Continue that hand's body-opening entry and guide the garment along the SAME forearm toward its corresponding sleeve and shoulder. Keep the body-entry-to-sleeve direction; do not insert the hand into a cuff from outside. A visible cuff is not required before starting a useful entry movement. Use the existing brief reason to state the selected arm relationship, the current purpose and any identity uncertainty; do not add output fields.
@@ -604,7 +616,8 @@ def main():
                         'coordinated-task-progress', 'coordinated-opposing-rim',
                         'coordinated-leading-hand-swap',
                         'coordinated-single-arm-progress',
-                        'coordinated-side-hem-wrists'], default='general')
+                        'coordinated-side-hem-wrists', 'coordinated-diagonal-entry'], default='general',
+                        help='Optional dressing guidance; diagonal-entry separately observes same-hand lowering, reorientation and conditional raising')
     parser.add_argument('--actor-backend', choices=['exec', 'app-server'], default='exec')
     parser.add_argument('--plan-size', type=int, default=1,
                         help='Maximum segments per model call; >1 is an open-loop list')
@@ -674,7 +687,7 @@ def main():
                          'coordinated-entry-probe', 'coordinated-task-progress',
                          'coordinated-opposing-rim', 'coordinated-leading-hand-swap',
                          'coordinated-single-arm-progress',
-                         'coordinated-side-hem-wrists') and args.mode != 'dressing':
+                         'coordinated-side-hem-wrists', 'coordinated-diagonal-entry') and args.mode != 'dressing':
         parser.error('coordinated strategy requires the full dressing objective')
     if args.strategy == 'coordinated-support-diagnostic' and args.plan_size != 1:
         parser.error('support diagnostic requires plan-size=1 to observe after each action')
@@ -696,6 +709,8 @@ def main():
         parser.error('single-arm-progress requires plan-size=1 to reassess the selected arm relationship')
     if args.strategy == 'coordinated-side-hem-wrists' and (args.plan_size != 1 or args.actor_backend != 'exec'):
         parser.error('side-hem-wrists requires exec and plan-size=1 to inspect each support and wrist transition')
+    if args.strategy == 'coordinated-diagonal-entry' and (args.plan_size != 1 or args.actor_backend != 'exec'):
+        parser.error('diagonal-entry requires exec and plan-size=1 to inspect each same-hand entry trial')
     if args.mode == 'wiring' and args.plan_size > 1 and (args.plan_size != 3 or args.decisions != 3):
         parser.error('grouped wiring requires plan-size=3 and decisions=3')
     if not math.isfinite(args.model_timeout) or not 10 <= args.model_timeout <= 1800:
@@ -733,7 +748,7 @@ def main():
                          'coordinated-entry-probe', 'coordinated-task-progress',
                          'coordinated-opposing-rim', 'coordinated-leading-hand-swap',
                          'coordinated-single-arm-progress',
-                         'coordinated-side-hem-wrists'):
+                         'coordinated-side-hem-wrists', 'coordinated-diagonal-entry'):
         task += '\n\n' + COORDINATED_TASK
     if args.strategy == 'coordinated-sleeve':
         task += '\n\n' + SLEEVE_TASK
@@ -766,6 +781,9 @@ def main():
                  + '\n\n' + METHOD_SATURATION_TASK)
     elif args.strategy == 'coordinated-side-hem-wrists':
         task += '\n\n' + SIDE_HEM_WRISTS_TASK + '\n\n' + METHOD_SATURATION_TASK
+    elif args.strategy == 'coordinated-diagonal-entry':
+        task += ('\n\n' + SIDE_HEM_WRISTS_TASK + '\n\n' + DIAGONAL_ENTRY_TASK
+                 + '\n\n' + METHOD_SATURATION_TASK)
     if args.plan_size > 1:
         task += '\n\n' + PLAN_TASK.format(max_segments=args.plan_size, max_total_steps=args.plan_step_budget)
     if args.post_action_settle_steps:
