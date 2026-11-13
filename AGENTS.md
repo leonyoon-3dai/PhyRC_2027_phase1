@@ -16,6 +16,7 @@
 - **E28에서 시험한 목표:** 옷 앞이 아닌 양옆에서 파지 → 아래 입구 넓히기 → 마네킹의 한쪽 손목에 먼저 걸치기 → 이를 유지하며 양쪽 손목으로 진행. 구현된 `coordinated-side-hem-wrists`는 pickup 5점·착의 0점으로 마감했다. 후속은 [전략 검토](docs/collection/research/2026-11-13-side-hem-wrists.ko.md), [마감 결과와 다음 방향](docs/collection/research/2026-11-13-e28-outcome-e29-direction.ko.md), [실행 조건](docs/COLLECTION_PLAN.md)을 따른다. 진행 중 실행의 코드·프롬프트를 변경하거나 두 번째 제어원을 시작하지 않는다.
 - 기존 `E27/928`, `coordinated-single-arm-progress`는 이전 후보다. 현재 계획으로 자동 실행하지 않는다. 기존 CLI에 없는 strategy 이름을 만들어 넣지 않는다.
 - E28을 포함한 완료 시도의 최고 로컬 공식 평가기 원점수는 **5/50**, 착의 득점 **0**, `success=false`다. Codabench 점수나 완전 착의 성과로 설명하지 않는다.
+- **사용자 예산 지침:** 시간 비용 자체보다 새 시연마다 추가 결정의 효과를 분석하는 것을 우선한다. 마감 후 점수 변화, 공개 관측의 실제 진행과 비효율적 반복, 진행에 든 결정·호출·시간을 근거로 결정 추가와 접근 변경 중 무엇이 나은지 의견을 제시한다. 이후 예산 변경은 사용자가 결정하며 자동 증액하지 않는다. 현재 승인된 E29의20결정은 그대로 진행한다.
 - E28은 739전이 = 516 model + 222 settle + 1 budget cleanup. 기술 QC는 통과했고 학습 승인은 `unreviewed`다.
 - E27은 1,159전이 = 698 replay + 334 model + 126 settle + 1 budget cleanup. 기술 QC는 통과했고 학습 승인은 `unreviewed`다. 세부 결과는 [현재 상태](docs/project/STATUS.md)와 실행 manifest를 기준으로 한다.
 - 초기 π0.5의 63전이·30 updates는 연결 시험이다. 새 시연 학습이나 착의 개선 결과가 아니다. 별도 OpenWAM·wrist translation 등의 연구 후보를 완료 기능으로 섞지 않는다.
