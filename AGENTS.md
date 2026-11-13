@@ -11,6 +11,7 @@
 
 ## 현재 범위
 
+- **현재 단일 수집 실행은 E29 `20261113-astra-side-hem738-continue20-001`이다.** 사용자가 후반 +20결정을 요청해 2026-11-13 21:41:33 UTC에 시작했다. 실행 소스 `2baebcc381d707fd5aca5f69ea7518d326e8a80a`, 시작 시 clean. 직접 parent/source group은 E28 fresh run이며 prefix738·새 replay history682/714·20결정·총1400전이·review10을 사용한다. 시작은 확인했지만 replay 완료·새 행동·최종 점수·QC는 아직 미확정이다. 진행 중 코드·프롬프트 변경이나 두 번째 simulator 실행 금지.
 - **2026-11-13 사용자 재개 요청에 따른 E28 수집이 마감됐다.** `20261113-astra-side-hem-fresh-001`은 소스 `9f79772`의 새 reset에서 40결정·739전이를 기록했고, 21:29:28 UTC에 `completed/closed`로 마감해 전수 QC 739/739를 통과했다. 과거 문서 정리 한정·수집 중지 지시는 이번 명시적 재개 요청으로 해제됐다. [환경·연결 검사](docs/project/sessions/20261113-environment-setup.ko.md)와 [E28 결과](docs/collection/attempts/20261113-astra-side-hem-fresh-001/manifest.json)를 기준으로 한다.
 - **E28에서 시험한 목표:** 옷 앞이 아닌 양옆에서 파지 → 아래 입구 넓히기 → 마네킹의 한쪽 손목에 먼저 걸치기 → 이를 유지하며 양쪽 손목으로 진행. 구현된 `coordinated-side-hem-wrists`는 pickup 5점·착의 0점으로 마감했다. 후속은 [전략 검토](docs/collection/research/2026-11-13-side-hem-wrists.ko.md), [마감 결과와 다음 방향](docs/collection/research/2026-11-13-e28-outcome-e29-direction.ko.md), [실행 조건](docs/COLLECTION_PLAN.md)을 따른다. 진행 중 실행의 코드·프롬프트를 변경하거나 두 번째 제어원을 시작하지 않는다.
 - 기존 `E27/928`, `coordinated-single-arm-progress`는 이전 후보다. 현재 계획으로 자동 실행하지 않는다. 기존 CLI에 없는 strategy 이름을 만들어 넣지 않는다.

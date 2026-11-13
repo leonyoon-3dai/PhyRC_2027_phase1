@@ -24,7 +24,7 @@ https://github.com/user-attachments/assets/d2f347fe-712b-42f3-bdee-69d3fee2a47c
 |:---:|:---:|:---:|:---:|
 | E00–E28 전체 자료 | 옆에서 파지하고 입구 펼치기 | 관측부터 HDF5까지 | 설치·복원·검증·Codex CLI |
 
-**현재(2026-11-13): E28을 739전이로 마감했습니다.** 새 환경에서 파지·들기·운반과 손 접근을 수행했고 전수 QC를 통과했습니다. 로컬 공식 평가기는 **5/50점**, 픽업 5점·착의 **0점**, `success=false`입니다. 소매 통과와 50점 목표는 미달입니다. 다음 분기는 보존된 E28/738을 우선 검토합니다. [E28 영상](docs/collection/attempts/20261113-astra-side-hem-fresh-001/overview.mp4) / [장면 리뷰](docs/collection/reviews/20261113-astra-side-hem-fresh-001.ko.md) / [현재 상태·보존](docs/project/STATUS.md)
+**현재(2026-11-13): 사용자 요청에 따라 E29 후반 +20결정 수집을 시작했습니다.** `20261113-astra-side-hem738-continue20-001`은 E28/738 행동 prefix를 재실행한 뒤 같은 손목 접근을 이어가는 실행이며 최종 결과는 아직 없습니다. **마지막 마감 시연은 E28(739전이)입니다.** 새 환경에서 파지·들기·운반과 손 접근을 수행했고 전수 QC를 통과했습니다. 로컬 공식 평가기는 **5/50점**, 픽업 5점·착의 **0점**, `success=false`입니다. 소매 통과와 50점 목표는 미달입니다. E29는 보존된 E28/738에서 분기합니다. [E28 영상](docs/collection/attempts/20261113-astra-side-hem-fresh-001/overview.mp4) / [장면 리뷰](docs/collection/reviews/20261113-astra-side-hem-fresh-001.ko.md) / [현재 상태·보존](docs/project/STATUS.md)
 
 ## 최근 시연
 
@@ -40,7 +40,7 @@ https://github.com/user-attachments/assets/d2f347fe-712b-42f3-bdee-69d3fee2a47c
 
 ![E28 이후 계획: 옷 양옆에서 파지, 아래 입구 펼치기, 한쪽 손목, 반대쪽 손목. 실제 시연이 아닌 개념도.](docs/assets/collection-plan.svg)
 
-**E28에서 얻은 파지·운반 구간을 보존하고 손목 진입을 개선합니다.** E28/738부터 같은 첫 손목과 입구 관계를 이어가는 분기를 우선 검토하며, E28/682를 비교 후보로 둡니다. 아래 입구 펼침은 E28/380, 닫기 전 준비는 E28/264에서 따로 비교할 수 있습니다. 이전 `E27/928 same-arm` 후보는 과거 미실행 계획입니다.
+**E28에서 얻은 파지·운반 구간을 보존하고 손목 진입을 개선합니다.** E29는 E28/738부터 같은 첫 손목과 입구 관계를 이어가는 후반20결정 시도이며, E28/682는 미실행 비교 후보입니다. 아래 입구 펼침은 E28/380, 닫기 전 준비는 E28/264에서 따로 비교할 수 있습니다. 이전 `E27/928 same-arm` 후보는 과거 미실행 계획입니다.
 
 [단계별 관측 기준과 새 시작점 선택](docs/COLLECTION_PLAN.md)
 
