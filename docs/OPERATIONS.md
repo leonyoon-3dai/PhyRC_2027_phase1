@@ -4,7 +4,9 @@
 
 이 문서는 **새 Ubuntu GPU 서버에서 저장소와 보존 자료를 복원하고, 작은 연결 검사까지 준비하는 순서**입니다. 모든 프로젝트 명령은 저장소 루트에서 실행합니다. 2026-11-13 사용자 재개 요청으로 아래 복원·build·prepare·GPU smoke와 작은 wiring을 실제 완료했습니다. [환경 검사 receipt](project/sessions/20261113-environment-setup.json) / [세션 기록](project/sessions/20261113-environment-setup.ko.md)
 
-**마지막 마감 시연은 E29이며 E30을 준비 중입니다. 아직 E30은 시작하지 않았습니다.** `20261113-astra-side-hem738-continue20-001`은 clean source `2baebcc`에서 E28/738 prefix·새 history682/714 후 최대20개 새 결정을 허용했습니다. 2026-11-13 21:41:33–22:07:44 UTC에11결정(10 act+1 finish_episode)·12호출·834전이로 마감했고, 전수 QC834/834를 통과했습니다. 로컬 공식 평가5/50점은 재실행 구간의 픽업이며 새 구간 득점과 착의 점수는0, `success=false`입니다. [E29 결과](collection/attempts/20261113-astra-side-hem738-continue20-001/manifest.json) / [현재 상태·백업](project/STATUS.md) / [다음 비교](COLLECTION_PLAN.md)
+**현재 단일 실행 E30 `20261113-astra-diagonal738-001`이 2026-11-13 22:31:59 UTC에 시작했습니다.** 실행 source `7eaae3e6b56ce938237b873bcb1540470a449b79`는 시작 시 clean이며 E28/738·새 history682/714·최대20결정·총1400전이·review10을 적용했습니다. 최종 결과는 미확정입니다. 진행 중 코드·프롬프트를 바꾸거나 두 번째 simulator를 실행하지 않습니다. [E30 시작 기록](project/sessions/20261113-e30-start.ko.md)
+
+**마지막 마감 시연은 E29입니다.** `20261113-astra-side-hem738-continue20-001`은 clean source `2baebcc`에서 E28/738 prefix·새 history682/714 후 최대20개 새 결정을 허용했습니다. 2026-11-13 21:41:33–22:07:44 UTC에11결정(10 act+1 finish_episode)·12호출·834전이로 마감했고, 전수 QC834/834를 통과했습니다. 로컬 공식 평가5/50점은 재실행 구간의 픽업이며 새 구간 득점과 착의 점수는0, `success=false`입니다. [E29 결과](collection/attempts/20261113-astra-side-hem738-continue20-001/manifest.json) / [현재 상태·백업](project/STATUS.md) / [다음 비교](COLLECTION_PLAN.md)
 
 E29의 simulator 반환값은0이지만 host 실행 세션 반환값은143입니다. actor가 좁은 경계와 미해결 진입 관계를 근거로 `finish_episode`를 선택했으며,20결정 예산 소진·환경 한도·timeout으로 끝난 것이 아닙니다. 이 국소 판단을 과제 불가능성으로 해석하지 않습니다. 사용자가 시연·분석의 자동 반복을 승인했습니다. 기본20결정으로 단일 실행을 마감·QC·백업·분석한 뒤 다음 방법·출발점을 선택하며 매 시도 승인 대기를 두지 않습니다. 과거 후보·남은 결정을 그대로 이어 붙이지 않고 최신 계획을 따릅니다. GPU 작업은 계속 순차 실행합니다.
 

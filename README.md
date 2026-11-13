@@ -24,7 +24,7 @@ https://github.com/user-attachments/assets/d2f347fe-712b-42f3-bdee-69d3fee2a47c
 |:---:|:---:|:---:|:---:|
 | E00–E29 전체 자료 | 옆에서 파지하고 입구 펼치기 | 관측부터 HDF5까지 | 설치·복원·검증·Codex CLI |
 
-**현재(2026-11-13): E29를 마감했고 E30의 진입 방법 변경을 준비 중입니다. 아직 E30은 시작하지 않았습니다.** E28/738에서 후반20결정까지 허용했지만, 실제로10번 움직인 뒤11번째 결정에서 actor가 `finish_episode`를 선택했습니다. 총834전이 전수 QC를 통과했으며 **5/50점, 새 구간 득점0·착의0, success=false**입니다. 픽업5점은 앞 행동 재실행 중 다시 얻었습니다. 입구 방향 변화는 있었으나 손목 통과는 확인되지 않았습니다. 다음에는 같은 방법의 예산만 늘리기보다 진입 방법 변경을 우선 권합니다. [E29 영상](docs/gallery/20261113-e29-extra-decisions-738-834/event.mp4) / [장면 리뷰](docs/collection/reviews/20261113-astra-side-hem738-continue20-001.ko.md) / [현재 상태·보존](docs/project/STATUS.md)
+**현재(2026-11-13): E30을 시작해 같은 손의 낮춤·대각선 방향·조건부 올림을 비교 중입니다. 최종 결과는 미확정입니다.** 마지막 마감 시연은 E29입니다. E29는 E28/738에서 후반20결정까지 허용했지만, 실제로10번 움직인 뒤11번째 결정에서 actor가 `finish_episode`를 선택했습니다. 총834전이 전수 QC를 통과했으며 **5/50점, 새 구간 득점0·착의0, success=false**입니다. 픽업5점은 앞 행동 재실행 중 다시 얻었습니다. 입구 방향 변화는 있었으나 손목 통과는 확인되지 않았습니다. 다음에는 같은 방법의 예산만 늘리기보다 진입 방법 변경을 우선 권합니다. [E30 시작](docs/project/sessions/20261113-e30-start.ko.md) / [E29 영상](docs/gallery/20261113-e29-extra-decisions-738-834/event.mp4) / [장면 리뷰](docs/collection/reviews/20261113-astra-side-hem738-continue20-001.ko.md) / [현재 상태·보존](docs/project/STATUS.md)
 
 ## 최근 시연
 

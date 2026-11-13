@@ -6,7 +6,7 @@
 
 **E29 `20261113-astra-side-hem738-continue20-001`은 2026-11-13 22:07:44 UTC에 마감했습니다.** clean source `2baebcc`에서 E28/738 prefix와 새 history682/714 뒤 최대20결정을 허용했지만,10 act 뒤11번째 결정에서 `finish_episode`를 선택했습니다.12호출(질의 후속1회),834전이=738 replay+42 model+54 settle이며 종료 중립은0입니다. 전수 QC834/834 통과, raw5·새 구간 득점0·착의0·success=false입니다. 예산 소진이 아닌 actor의 국소 판단이며 새 실행은 시작하지 않았습니다. [현재 상태](project/STATUS.md) / [추가 구간 리뷰](collection/reviews/20261113-astra-side-hem738-continue20-001.ko.md) / [다음 비교](COLLECTION_PLAN.md)
 
-**승인된 자동 시연·분석 반복의 다음 실행 E30은 준비 중이며 아직 시작하지 않았습니다.** 예정 run `20261113-astra-diagonal738-001`은 E28/738·새 history682/714 뒤 선택형 `coordinated-diagonal-entry`를 사용합니다. 기존 side-hem 경로를 유지하며, 새 경로는 같은 손·지지를 확인하는 낮춤·방향 변경·조건부 올림을 구간별로 관측하도록 지시합니다. 입력·행동 schema·물리·채점은 유지하고 미적용 피드백 큐는 활성화하지 않습니다. [E30 준비·검증](collection/research/2026-11-13-e30-diagonal-entry.ko.md)
+**승인된 자동 시연·분석 반복의 E30 `20261113-astra-diagonal738-001`이 2026-11-13 22:31:59 UTC에 시작했습니다.** 실행 소스 `7eaae3e6b56ce938237b873bcb1540470a449b79`는 시작 시 clean입니다. E30은 E28/738·새 history682/714 뒤 선택형 `coordinated-diagonal-entry`를 사용합니다. 기존 side-hem 경로를 유지하며, 새 경로는 같은 손·지지를 확인하는 낮춤·방향 변경·조건부 올림을 구간별로 관측하도록 지시합니다. 입력·행동 schema·물리·채점은 유지하고 미적용 피드백 큐는 활성화하지 않습니다. 최종 결과는 미확정입니다. [시작 기록](project/sessions/20261113-e30-start.ko.md) / [방법·검증](collection/research/2026-11-13-e30-diagonal-entry.ko.md)
 
 ## 1. 관측부터 기록까지
 

@@ -2,9 +2,9 @@
 
 [메인](../README.md) | [시연 목록](EPISODES.md) | [다음 수집](COLLECTION_PLAN.md) | [Astra 코드](ASTRA.md) | [클린 서버](OPERATIONS.md)
 
-**현재: 사용자가 분석대로 진행하도록 승인해 E30을 준비 중이며, 아직 실행하지 않았습니다.** 예정 run은 `20261113-astra-diagonal738-001`입니다. E28/738의 파지·접근을 재실행한 뒤 새 `coordinated-diagonal-entry` 전략으로 낮춤 → 대각선 방향 변경 → 조건부 올림을 나누어 비교합니다. 같은 마네킹 손·연결 전완과 한쪽 유용한 지지를 유지하고 각 구간 후 현재 공개 관측을 확인합니다. 코드 검토·CPU 검사·게시를 마친 clean source에서 시작한 뒤 실제 시작 시각·source snapshot을 따로 기록합니다. [E30 방법과 검증 기록](collection/research/2026-11-13-e30-diagonal-entry.ko.md)
+**현재: E30 `20261113-astra-diagonal738-001`이 2026-11-13 22:31:59 UTC에 시작했습니다.** 실행 소스는 `7eaae3e6b56ce938237b873bcb1540470a449b79`의 clean snapshot입니다. E28/738의 파지·접근을 새 환경에서 재실행한 뒤 `coordinated-diagonal-entry`로 낮춤 → 대각선 방향 변경 → 조건부 올림을 나누어 비교합니다. 같은 마네킹 손·연결 전완과 한쪽 유용한 지지를 유지하고 각 구간 후 현재 공개 관측을 확인하는 전략입니다. 실제 attempt에서 시작·초기화를 확인했으며 replay 완료·후반 행동·최종 결과는 아직 미확정입니다. [E30 시작 기록](project/sessions/20261113-e30-start.ko.md) / [방법과 검증](collection/research/2026-11-13-e30-diagonal-entry.ko.md)
 
-| E30 예정 조건 | 값 |
+| E30 시작 시 적용한 조건 | 값 |
 |---|---|
 | 직접 parent / source group | 둘 다 `20261113-astra-side-hem-fresh-001` (E28) |
 | prefix / history |738 / 새 replay 관측682·714 |
