@@ -2,7 +2,7 @@
 
 [메인](../README.md) | [시연 목록](EPISODES.md) | [다음 수집](COLLECTION_PLAN.md) | [Astra 코드](ASTRA.md) | [클린 서버](OPERATIONS.md)
 
-**2026-11-13: E30까지 마감했고 E31은 계획 단계입니다.** E30은 E28/738에서 대각선 진입을 비교해18 act 뒤19번째 결정에서 `finish_episode`를 선택했습니다. 총915전이 전수 QC와 고정 백업 검증을 마쳤으며 **5/50점·새 구간 득점0·착의0·success=false**입니다. E번호에는 연결 시험과 실패도 포함되며 독립 성공 시연 수가 아닙니다. [E30 리뷰](collection/reviews/20261113-astra-diagonal738-001.ko.md) / [E31 계획](project/sessions/20261113-e31-plan.ko.md) / [현재 상태·보존](project/STATUS.md)
+**아래 결과 표는 마감한 E00–E30을 담습니다.** E31의 시작 근거는 [시작 기록](project/sessions/20261113-e31-start.ko.md), 현재 실행 상태는 [STATUS](project/STATUS.md)에 있습니다. E30은18 act+finish,915전이 전수 QC와 고정 백업 검증을 마쳤으며 **5/50·새 구간 득점0·착의0·success=false**입니다. 진행 중 E31의 결과를 이 표에 미리 만들지 않습니다. E번호에는 연결 시험·실패도 포함되며 독립 성공 시연 수가 아닙니다. [E30 리뷰](collection/reviews/20261113-astra-diagonal738-001.ko.md)
 
 ## 대표 장면
 

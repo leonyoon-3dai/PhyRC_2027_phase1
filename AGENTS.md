@@ -11,8 +11,8 @@
 
 ## 현재 범위
 
-- **E30은 2026-11-13 23:02:50 UTC에 마감했습니다.** `20261113-astra-diagonal738-001`은 clean source `7eaae3e6b56ce938237b873bcb1540470a449b79`에서 E28/738·새 history682/714 뒤 `coordinated-diagonal-entry`를 시험했습니다. 최대20결정 중19결정(18 act +1 finish_episode),20호출,915전이(738 replay +87 model +90 settle), 종료 중립0입니다. 전수 QC915/915 통과, 유효한 로컬 공식 평가 **5/50·새 구간 득점0·착의0·success=false**입니다. 픽업5점은 재실행 구간에서 얻었습니다. actor의 국소 종료 판단이며 예산 소진이나 과제 불가능성 증명이 아닙니다. [마감·백업](docs/project/sessions/20261113-e30-close.ko.md)
-- **다음 E31은 준비 단계이며 아직 시작하지 않았습니다.** 고유 run `20261113-astra-diagonal682-001`을 E28/682·새 replay history632/668에서 같은 `coordinated-diagonal-entry`, 최대20개 새 결정·총1400전이·review10으로 비교합니다. E30/915를 최신이라는 이유로 잇지 않고, 늦게 접힌 접근 전의 관계를 비교하기 위해 출발점만 바꿉니다. [E31 계획](docs/project/sessions/20261113-e31-plan.ko.md)와 [현재 실행 조건](docs/COLLECTION_PLAN.md)을 따른다.
+- **현재 실행·최종 마감 상태는 [STATUS](docs/project/STATUS.md), 실행 조건·다음 선택은 [COLLECTION_PLAN](docs/COLLECTION_PLAN.md)이 정본이다.** 진입 문서의 과거 시작·마감 기록을 현재 명령으로 대체하지 않는다.
+- **E31 시작 근거:** `20261113-astra-diagonal682-001`이 2026-11-13 23:17:37 UTC에 clean source `000d4fcc1a44bcc602a6275b2f79f9dc6456c641`에서 시작했다. [시작 기록](docs/project/sessions/20261113-e31-start.ko.md). 실행 중 코드·프롬프트 변경과 두 번째 simulator를 금지한다.
 - **2026-11-13 사용자 재개 요청에 따른 E28 수집이 마감됐다.** `20261113-astra-side-hem-fresh-001`은 소스 `9f79772`의 새 reset에서 40결정·739전이를 기록했고, 21:29:28 UTC에 `completed/closed`로 마감해 전수 QC 739/739를 통과했다. 과거 문서 정리 한정·수집 중지 지시는 이번 명시적 재개 요청으로 해제됐다. [환경·연결 검사](docs/project/sessions/20261113-environment-setup.ko.md)와 [E28 결과](docs/collection/attempts/20261113-astra-side-hem-fresh-001/manifest.json)를 기준으로 한다.
 - **E28에서 시험한 목표:** 옷 앞이 아닌 양옆에서 파지 → 아래 입구 넓히기 → 마네킹의 한쪽 손목에 먼저 걸치기 → 이를 유지하며 양쪽 손목으로 진행. 구현된 `coordinated-side-hem-wrists`는 pickup 5점·착의 0점으로 마감했다. 후속은 [전략 검토](docs/collection/research/2026-11-13-side-hem-wrists.ko.md), [E29 이후 예산·방법 검토](docs/collection/research/2026-11-13-e29-budget-review.ko.md), [실행 조건](docs/COLLECTION_PLAN.md)을 따른다. 진행 중 실행의 코드·프롬프트를 변경하거나 두 번째 제어원을 시작하지 않는다.
 - 기존 `E27/928`, `coordinated-single-arm-progress`는 이전 후보다. 현재 계획으로 자동 실행하지 않는다. E30은 별도로 검토한 `coordinated-diagonal-entry`를 사용하며 임의의 strategy 이름을 만들어 넣지 않는다.

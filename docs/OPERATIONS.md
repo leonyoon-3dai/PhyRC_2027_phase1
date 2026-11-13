@@ -4,9 +4,9 @@
 
 이 문서는 **새 Ubuntu GPU 서버에서 저장소와 보존 자료를 복원하고, 작은 연결 검사까지 준비하는 순서**입니다. 모든 프로젝트 명령은 저장소 루트에서 실행합니다. 2026-11-13 사용자 재개 요청으로 아래 복원·build·prepare·GPU smoke와 작은 wiring을 실제 완료했습니다. [환경 검사 receipt](project/sessions/20261113-environment-setup.json) / [세션 기록](project/sessions/20261113-environment-setup.ko.md)
 
-**E30은 2026-11-13 23:02:50 UTC에 마감했습니다.** `20261113-astra-diagonal738-001`은 clean source `7eaae3e6b56ce938237b873bcb1540470a449b79`에서 E28/738·새 history682/714 뒤 `coordinated-diagonal-entry`를 시험했습니다. 최대20결정 중19결정(18 act +1 finish_episode),20호출,915전이(738 replay +87 model +90 settle), 종료 중립0입니다. 전수 QC915/915 통과, 유효한 로컬 공식 평가 **5/50·새 구간 득점0·착의0·success=false**입니다. 픽업5점은 재실행 구간에서 얻었습니다. actor의 국소 종료 판단이며 예산 소진이나 과제 불가능성 증명이 아닙니다. [E30 마감](project/sessions/20261113-e30-close.ko.md)
+실제 진행·마감·점수·백업은 [현재 상태](project/STATUS.md), 실행 조건·후속 판단은 [수집 계획](COLLECTION_PLAN.md)을 기준으로 합니다. 과거 결과는 [E30 마감](project/sessions/20261113-e30-close.ko.md)에 보존합니다.
 
-**다음 E31은 준비 단계이며 아직 시작하지 않았습니다.** 고유 run `20261113-astra-diagonal682-001`을 E28/682·새 replay history632/668에서 같은 `coordinated-diagonal-entry`, 최대20개 새 결정·총1400전이·review10으로 비교합니다. E30/915를 최신이라는 이유로 잇지 않고, 늦게 접힌 접근 전의 관계를 비교하기 위해 출발점만 바꿉니다. [E31 계획](project/sessions/20261113-e31-plan.ko.md) / [현재 상태·백업](project/STATUS.md)
+E31의 실제 시작 source·시각은 [시작 기록](project/sessions/20261113-e31-start.ko.md)에 남겼습니다. 실행 중 코드·프롬프트 변경과 동시 두 번째 simulator를 금지하며 미적용 피드백 큐는 활성화하지 않습니다.
 
 E30의 simulator 반환값은0이지만 host 실행 세션 반환값은143입니다. 전수 QC·유효한 평가·원본 고정 백업 검증을 각각 확인했습니다. 사용자가 시연·분석의 자동 반복을 승인했습니다. 기본20결정으로 단일 실행을 마감·QC·백업·분석한 뒤 다음 방법·출발점을 선택하며 매 시도 승인 대기를 두지 않습니다. 과거 후보·남은 결정을 그대로 이어 붙이지 않고 최신 계획을 따릅니다. GPU 작업은 계속 순차 실행합니다.
 

@@ -2,7 +2,7 @@
 
 # 양측 지지 출발점과 5→10점 비교 목록
 
-**2026-11-13: E30까지 마감했습니다.** E30은 E28/738에서 대각선 진입을 비교해19결정(18 act +finish)·20호출·915전이로 끝났고 fullQC915/915·고정 백업227members 검증을 마쳤습니다. 로컬raw5/50·새 구간 득점0·착의0·success=false입니다. 다음 E31은 같은 전략·20결정으로 E28/682·새 history632/668에서 비교할 계획이며 아직 시작하지 않았습니다. E30/886·915는 진단 자료이며 출발점으로 승격하지 않았습니다. E28 네 경계와 E29/784의 기존 기술적 review_ready 검증은 유지합니다.
+**마감 색인은 E30까지 포함합니다.** E30은 E28/738의 대각선 진입을19결정·20호출·915전이로 마감했고 fullQC915/915·고정 백업227members 검증을 마쳤습니다. 로컬raw5/50·새 구간 득점0·착의0·success=false입니다. E30/886·915는 진단 자료이며 출발점으로 승격하지 않았습니다. 진행 중 E31의 실제 상태는 [STATUS](../../project/STATUS.md), 시작 source·시각은 [시작 기록](../../project/sessions/20261113-e31-start.ko.md)을 따릅니다. 결과 행은 마감 후에만 추가합니다.
 
 **지지를 유지한 공개 관측 구간을 출발점으로 모으고, 그 뒤 바꾼 방법과 결과를 연결하는 연구용 목록입니다.** [정본 JSON](catalog.v1.json)을 Git에 보존하고, [조회 도구](../../../scripts/startpoint_catalog.py)로 SQLite 색인을 재생성합니다. 기록을 찾는 도구이며 시뮬레이터를 조작하거나 actor 입력을 만들지 않습니다.
 
@@ -125,4 +125,4 @@ E29는 E28과 같은 source group이며5점을 새 구간에서 추가한 것이
 
 E30은 E28/738의 같은 source group에서738재실행+87모델+90정착=915전이를 기록했다. 최대20결정 중18 act와 D18 finish로19개를 사용했고20호출에는질의 후속1회가 포함된다. 픽업5점은 replay371에서 얻었고 새177전이·8.85시뮬레이션초의 득점은0이다. 같은 손의 낮춤·방향 변경·올림을 분리했지만 통과는 확인되지 않았다. [공개 리뷰](../reviews/20261113-astra-diagonal738-001.ko.md)와 [결정·시간 분석](../reviews/20261113-decision-budget/E30/README.ko.md)을 연결한다.
 
-[고정 백업 receipt](../../project/sessions/20261113-e30-backup-verification.json)의 revision6b259ab4에서 archive SHA256·크기·227members 검증을 마쳤다. E30/886·915는 진단 자료로만 보존하고 새 startpoint를 만들지 않았다. [E31 계획](../../project/sessions/20261113-e31-plan.ko.md)은 E28/682에서 동일 전략·예산의 출발점 비교다. E31의 실제 run/outcome은 아직 생성하지 않았다.
+[고정 백업 receipt](../../project/sessions/20261113-e30-backup-verification.json)의 revision6b259ab4에서 archive SHA256·크기·227members 검증을 마쳤다. E30/886·915는 진단 자료로만 보존하고 새 startpoint를 만들지 않았다. [E31 계획](../../project/sessions/20261113-e31-plan.ko.md)은 E28/682에서 동일 전략·예산의 출발점 비교다. 이 색인에는 E31의 마감 run/outcome을 아직 생성하지 않았다.

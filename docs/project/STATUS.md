@@ -2,7 +2,9 @@
 
 [메인](../../README.md) | [시연 목록](../EPISODES.md) | [다음 수집](../COLLECTION_PLAN.md) | [Astra 코드](../ASTRA.md) | [클린 서버](../OPERATIONS.md)
 
-**E30을 마감했고 E31은 준비 단계입니다.** E30의 유효한 로컬 공식 평가기 원점수는 **5/50·픽업5·착의0·success=false**이며 **새 구간 득점은0**입니다.50점 목표는 달성하지 못했습니다. E31은 E28/682·새 history632/668에서 같은 대각선 진입 전략·최대20결정을 비교할 계획이며 아직 시작하지 않았습니다. [E31 계획](sessions/20261113-e31-plan.ko.md)
+**E31 `20261113-astra-diagonal682-001`이 2026-11-13 23:17:37 UTC에 시작했습니다.** clean source `000d4fcc1a44bcc602a6275b2f79f9dc6456c641`, 직접 parent/source group E28, prefix682·새 replay history632/668, 같은 `coordinated-diagonal-entry`, 최대20개 새 결정·총1400전이·review10입니다. 실제 attempt의 시작과 prefix replay 진입을 확인했으며 replay 완료·새 행동·최종 득점·QC는 아직 확인하지 않았습니다. [E31 시작 기록](sessions/20261113-e31-start.ko.md) / [현재 실행 조건](../COLLECTION_PLAN.md)
+
+**마지막 마감은 E30이며 아래 표는 그 결과입니다.** 유효한 로컬 공식 평가기5/50·픽업5·착의0·success=false, 새 구간 득점0입니다.50점 목표는 달성하지 못했습니다.
 
 | 구분 | 확인된 E30 상태 |
 |---|---|
@@ -24,7 +26,7 @@
 
 host exec session 반환값은143입니다. simulator0·완료 파일·유효한 평가·전수 QC를 구분하며 host까지0이라고 주장하지 않습니다. `coordinated-diagonal-entry`, 고정CLI0.166.0 / exec / gpt-6-astra / ultra, named/query/wrist-panel/plan1/settle6/profile을 사용했습니다. 실시간 사람 피드백 큐는 미적용입니다.
 
-E30은 같은 손의 낮춤·회전·올림을 나누어 시험했으나 확인된 통과나 추가 득점이 없었습니다. 다음 E31은 전략·기본20결정을 유지하고 더 이른 E28/682로 출발점만 바꿉니다. E30/886·915는 진단 자료이며 새로운 출발점으로 승격하지 않습니다. 사용자 승인에 따라 단일 시연→전수 QC·고정 백업→공개 관측·별도 점수/시간 분석→다음 시연을 자동 반복하며 매번 확인을 요청하지 않습니다. 중지·방향 변경 요청은 우선합니다.
+E30은 같은 손의 낮춤·회전·올림을 나누어 시험했으나 확인된 통과나 추가 득점이 없었습니다. E31의 비교는 전략·기본20결정을 유지하고 더 이른 E28/682로 출발점만 바꿉니다. E30/886·915는 진단 자료이며 새로운 출발점으로 승격하지 않습니다. 사용자 승인에 따라 단일 시연→전수 QC·고정 백업→공개 관측·별도 점수/시간 분석→다음 시연을 자동 반복하며 매번 확인을 요청하지 않습니다. 중지·방향 변경 요청은 우선합니다.
 
 E28·E29·E30은 같은 source group이며 독립 성공 표본이 아닙니다. E28은 clean source `9f797722acdb0f8d35001175e3aaa7e07a8dd2f8`의 새 reset에서40결정·739전이로 마감했습니다. [E28 백업](sessions/20261113-e28-backup-verification.json)은 고정 revision230c90a5·402members, [E29 백업](sessions/20261113-e29-backup-verification.json)은4a470053·155members 검증을 완료했습니다. 과거 E27/928 same-arm은 실제 E28의 출발점이 아닌 역사적 미실행 계획입니다.
 

@@ -4,9 +4,9 @@
 
 `gpt-6-astra`는 공개 카메라와 로봇 상태를 읽고 짧은 행동을 제안합니다. 수집기가 응답을 검사하고 두 로봇에 적용한 뒤, 실제 관측과 행동을 HDF5에 기록합니다. **모델은 20 Hz로 호출되지 않습니다.** E27까지 사용한 수집 경로를 유지하며, 2026-11-13에는 별도 `coordinated-side-hem-wrists` 전략으로 E28 `20261113-astra-side-hem-fresh-001`을 새 reset에서 수집했습니다. E28은 40결정·739전이로 마감해 전수 QC 739/739를 통과했으며 pickup 5점·착의 0점, `success=false`입니다. [환경·연결 검사](project/sessions/20261113-environment-setup.ko.md) / [전략 검토](collection/research/2026-11-13-side-hem-wrists.ko.md) / [E28 결과](collection/attempts/20261113-astra-side-hem-fresh-001/manifest.json)
 
-**E30은 2026-11-13 23:02:50 UTC에 마감했습니다.** `20261113-astra-diagonal738-001`은 clean source `7eaae3e6b56ce938237b873bcb1540470a449b79`에서 E28/738·새 history682/714 뒤 `coordinated-diagonal-entry`를 시험했습니다. 최대20결정 중19결정(18 act +1 finish_episode),20호출,915전이(738 replay +87 model +90 settle), 종료 중립0입니다. 전수 QC915/915 통과, 유효한 로컬 공식 평가 **5/50·새 구간 득점0·착의0·success=false**입니다. 픽업5점은 재실행 구간에서 얻었습니다. actor의 국소 종료 판단이며 예산 소진이나 과제 불가능성 증명이 아닙니다. [마감·원본 검증](project/sessions/20261113-e30-close.ko.md) / [공개 리뷰](collection/reviews/20261113-astra-diagonal738-001.ko.md)
+실제 진행·마감·점수·백업은 [현재 상태](project/STATUS.md), 실행 조건·후속 판단은 [수집 계획](COLLECTION_PLAN.md)을 기준으로 합니다. 과거 결과는 [E30 마감](project/sessions/20261113-e30-close.ko.md)에 보존합니다.
 
-**다음 E31은 준비 단계이며 아직 시작하지 않았습니다.** 고유 run `20261113-astra-diagonal682-001`을 E28/682·새 replay history632/668에서 같은 `coordinated-diagonal-entry`, 최대20개 새 결정·총1400전이·review10으로 비교합니다. E30/915를 최신이라는 이유로 잇지 않고, 늦게 접힌 접근 전의 관계를 비교하기 위해 출발점만 바꿉니다. 입력·행동 schema·물리·채점과 모델 경로는 유지하며 미적용 피드백 큐는 활성화하지 않습니다. [E31 계획](project/sessions/20261113-e31-plan.ko.md) / [현재 계획](COLLECTION_PLAN.md)
+E31의 실제 시작 source·시각은 [시작 기록](project/sessions/20261113-e31-start.ko.md)에 남겼습니다. 실행 중 코드·프롬프트 변경과 동시 두 번째 simulator를 금지하며 미적용 피드백 큐는 활성화하지 않습니다.
 
 ## 1. 관측부터 기록까지
 
