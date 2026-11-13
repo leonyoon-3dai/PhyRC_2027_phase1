@@ -64,7 +64,7 @@ class SingleArmProgressStrategyTest(unittest.TestCase):
                             result[target.id] = ast.dump(node)
             return result
         old, current = nodes(BASE_SOURCE), nodes(Path(client.__file__).read_text())
-        self.assertEqual(set(current) - set(old), {'SINGLE_ARM_PROGRESS_TASK'})
+        self.assertEqual(set(current) - set(old), {'SINGLE_ARM_PROGRESS_TASK', 'SIDE_HEM_WRISTS_TASK'})
         for name, node in old.items():
             if name != 'main':
                 with self.subTest(name=name):

@@ -175,6 +175,20 @@ If support is visibly lost, deformation worsens, actual motion saturates, or exe
 
 Finish when visually complete or when no useful task-directed movement or recovery remains supported by current observations. Keep uncertainty explicit. Use only the existing public observation/action contract, with no evaluator feedback, hidden geometry, external trajectories or changes to physics and joint limits.'''
 
+SIDE_HEM_WRISTS_TASK = '''For this attempt, use a side-approach, open-body-hem, first-wrist-then-second sequence. Wrist means the mannequin's wrist, not a robot wrist. Choose sides, edges, guide/support roles and the first target hand from CURRENT designated RGB/depth views and public robot state; no robot, anatomical side, world coordinate or garment-edge identity is predetermined. The following are visual working hypotheses and operational goals, not a contact detector or measured success.
+
+SIDE APPROACH: Bring the robots to separated lateral access regions beside the garment, rather than lining both grippers up in front of the same folded panel. Infer what is lateral from visible garment extent and reachable edges. Account for the table, partner and remaining joint travel while approaching. Keep the garment body supported near the table until both robots are ready. If continuing from existing grasps, assess those CURRENT supports first and preserve useful ones; do not automatically reopen both grippers or assume replay restored a grasp. To change an unsuitable grip, first establish visible table support and preserve the useful partner anchor. Change only one grasp at a time, using a separately visible accessible bottom-rim candidate. During this initial table-supported setup, allow at most one deliberate release-reposition-reclose cycle per robot, with at most two short placement corrections per cycle. Initial acquisition with an empty open gripper is not a regrasp cycle. Do not restart this failed setup budget by renaming the phase. Confirm local cloth following after actual gripper motion before treating a close command as support. Never release both useful grips together.
+
+OPEN THE BODY HEM: Track two candidate boundaries of the bottom body opening across current views. A long taut edge, large gripper separation, color boundary or dark crease does not establish an open passage. With both supports useful, try a small differential change in height or wrist orientation to separate candidate lips and expose the opening's depth, then widen laterally only as the observed aperture permits. Choose direction and scale from measured state and recent motion; no fixed spread distance or wrist angle is prescribed. Seek a controllable opening with clearance for the target hand and for both grippers, not maximum cloth tension. A rear panel may remain visible through a real opening, so visible background is not required. Invalid depth is not evidence of empty space. If widening merely flattens the same panel or collapses the aperture, reduce that tension and change opening orientation or one supported grasp rather than pulling farther apart. After two executed shape adjustments without a useful change, choose a different observable mechanism or finish if supported recovery is exhausted.
+
+FIRST WRIST: Select one hand with a useful current mouth-to-hand relationship and track its connected forearm across views. Assign one robot to maintain aperture/support while the other guides the mouth; roles may move cooperatively and need not use equal commands. Align the hand with the interior of the candidate body opening, keeping the grippers and wrist housings outside its intended passage. Make one bounded entry motion toward that same hand, then inspect the result. Use short segments near contact or uncertain clearance; productive clear positioning may use the normal full action duration. Distinguish cloth moving with the gripper, a hand crossing the rim, and a hand merely disappearing behind the outer panel. Preserve explicit uncertainty. Body-hem entry or resting cloth on a wrist is intermediate progress: continue toward that hand emerging outward through its corresponding sleeve, not entering a cuff from outside.
+
+SECOND WRIST WHILE RETAINING THE FIRST: Once current and recent views support a useful first wrist/arm relationship, retain it while the opposite side changes height, orientation or approach to the second hand. Do not require a measured sleeve score or assume a sleeve has already been passed. Use the first side as an observed support constraint, not as a fixed world anchor: compare its cloth-to-wrist/forearm relationship after each action. Move the opposite guide first when that preserves the first relation; add coordinated support motion when needed to avoid peeling the first side off. If that relation slips, aperture collapses, or occlusion prevents assessing a repeated advance, stop advancing the second side and recover support/view before retrying. Never treat seeing a different hand as proof that the first side is complete. When useful bilateral entry is supported, continue both corresponding sleeve passages, shoulders, head-through-neck and front orientation toward the full objective.
+
+LATER GRASP CHANGES: The initial setup bound does not prohibit grasp changes needed after new visible dressing progress. A later change needs a distinct observable task purpose and current evidence of support that retains any useful first wrist/arm relationship while the selected grip is open. Change only one grip at a time toward a visible accessible candidate, with at most two short placement corrections, then reassess local cloth following and retained wrist support before any further change. A failed placement or unchanged task relationship is not new progress authorizing another cycle. Restore support, change approach without releasing, or finish if recovery cannot preserve useful support. Never release both useful grips together.
+
+After every action, compare the intended change with actual robot displacement, local cloth movement and the chosen hand/rim relationship. Account for persistent controller targets; neutral commands and model latency do not certify settling. Avoid repeated commands against saturated joints. In the existing brief reason identify the current phase, each robot's support/guide role, the first-hand relationship being retained, and the next observable test, without adding fields or claiming points. A phase name does not establish passage. Use only the supplied public observations and permitted actions; preserve uncertainty and finish when no useful supported movement or recovery remains.'''
+
 SINGLE_ARM_PROGRESS_TASK = '''For this attempt, preserve continuity of ONE selected arm within the task-progress approach. Choose the arm with the most useful CURRENT body-opening, hand and forearm relationship from the designated views; use available same-episode history to track that relationship, not as proof of current geometry or support. Identify the selected arm by its visible connected hand/forearm and relation to the garment, without assuming a predetermined anatomical side or robot-camera identity. Keep the existing grasps: the one-sided regrasp bound remains zero.
 
 Continue that hand's body-opening entry and guide the garment along the SAME forearm toward its corresponding sleeve and shoulder. Keep the body-entry-to-sleeve direction; do not insert the hand into a cuff from outside. A visible cuff is not required before starting a useful entry movement. Use the existing brief reason to state the selected arm relationship, the current purpose and any identity uncertainty; do not add output fields.
@@ -589,7 +603,8 @@ def main():
                         'coordinated-overhead-drape', 'coordinated-entry-probe',
                         'coordinated-task-progress', 'coordinated-opposing-rim',
                         'coordinated-leading-hand-swap',
-                        'coordinated-single-arm-progress'], default='general')
+                        'coordinated-single-arm-progress',
+                        'coordinated-side-hem-wrists'], default='general')
     parser.add_argument('--actor-backend', choices=['exec', 'app-server'], default='exec')
     parser.add_argument('--plan-size', type=int, default=1,
                         help='Maximum segments per model call; >1 is an open-loop list')
@@ -658,7 +673,8 @@ def main():
                          'coordinated-neckline-first', 'coordinated-overhead-drape',
                          'coordinated-entry-probe', 'coordinated-task-progress',
                          'coordinated-opposing-rim', 'coordinated-leading-hand-swap',
-                         'coordinated-single-arm-progress') and args.mode != 'dressing':
+                         'coordinated-single-arm-progress',
+                         'coordinated-side-hem-wrists') and args.mode != 'dressing':
         parser.error('coordinated strategy requires the full dressing objective')
     if args.strategy == 'coordinated-support-diagnostic' and args.plan_size != 1:
         parser.error('support diagnostic requires plan-size=1 to observe after each action')
@@ -678,6 +694,8 @@ def main():
         parser.error('leading-hand-swap requires plan-size=1 to inspect each role and approach change')
     if args.strategy == 'coordinated-single-arm-progress' and args.plan_size != 1:
         parser.error('single-arm-progress requires plan-size=1 to reassess the selected arm relationship')
+    if args.strategy == 'coordinated-side-hem-wrists' and (args.plan_size != 1 or args.actor_backend != 'exec'):
+        parser.error('side-hem-wrists requires exec and plan-size=1 to inspect each support and wrist transition')
     if args.mode == 'wiring' and args.plan_size > 1 and (args.plan_size != 3 or args.decisions != 3):
         parser.error('grouped wiring requires plan-size=3 and decisions=3')
     if not math.isfinite(args.model_timeout) or not 10 <= args.model_timeout <= 1800:
@@ -714,7 +732,8 @@ def main():
                          'coordinated-neckline-first', 'coordinated-overhead-drape',
                          'coordinated-entry-probe', 'coordinated-task-progress',
                          'coordinated-opposing-rim', 'coordinated-leading-hand-swap',
-                         'coordinated-single-arm-progress'):
+                         'coordinated-single-arm-progress',
+                         'coordinated-side-hem-wrists'):
         task += '\n\n' + COORDINATED_TASK
     if args.strategy == 'coordinated-sleeve':
         task += '\n\n' + SLEEVE_TASK
@@ -745,6 +764,8 @@ def main():
     elif args.strategy == 'coordinated-single-arm-progress':
         task += ('\n\n' + TASK_PROGRESS_TASK + '\n\n' + SINGLE_ARM_PROGRESS_TASK
                  + '\n\n' + METHOD_SATURATION_TASK)
+    elif args.strategy == 'coordinated-side-hem-wrists':
+        task += '\n\n' + SIDE_HEM_WRISTS_TASK + '\n\n' + METHOD_SATURATION_TASK
     if args.plan_size > 1:
         task += '\n\n' + PLAN_TASK.format(max_segments=args.plan_size, max_total_steps=args.plan_step_budget)
     if args.post_action_settle_steps:
