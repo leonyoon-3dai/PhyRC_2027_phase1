@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "date_utc": "2026-11-13",
+  "scope": "Sanitized clean-server environment setup, pinned backup restoration, CPU regression, GPU smoke and closed wiring verification. No E28 dressing score is claimed.",
+  "source": {
+    "initial_clone_commit": "df1e3da2b34f035d982d8381b397a46c40c0dda5",
+    "checkout_commit_at_report": "6730e07f892ff0c227154d93e704b5428d596b4f",
+    "note": "The checkout commit identifies the report context. The test log alone does not capture an independent test-time source snapshot.",
+    "file_sha256": {
+      "config/assets.lock.json": "ebbbaf6d2f2aea8237451d890d0e54458f83e2a503bcfa47228c7f61b60835cd",
+      "Dockerfile": "fa01252b7afb64614e2cde90c0055f93c37f00aac3790f31b6c6c5ab78c9d20e",
+      "requirements-runtime.txt": "8c5fb7e6db90b803f5edfd2f4a094cc5dde51a5f412e7faefaff5881a79b63ff"
+    }
+  },
+  "host": {
+    "gpu": "NVIDIA L40S",
+    "gpu_memory_mib": 46068,
+    "nvidia_driver": "580.126.09",
+    "docker": "29.1.5",
+    "docker_storage_driver": "overlay2",
+    "nvidia_container_toolkit": "1.20.1",
+    "node": "20.20.2",
+    "npm": "10.8.2",
+    "python": "3.12.16",
+    "numpy": "1.26.4",
+    "h5py": "3.12.1",
+    "pillow": "11.0.0",
+    "psutil": "6.1.1",
+    "huggingface_hub_cli": "2.4.0"
+  },
+  "authentication": {
+    "hugging_face_login_confirmed": true,
+    "codex_chatgpt_login_confirmed": true,
+    "credential_material_published": false
+  },
+  "restore": {
+    "source_receipt": "docs/project/sessions/20261106-remote-backup-verification.json",
+    "repo_type": "dataset",
+    "private": true,
+    "revision": "e1d32f9f9ea82438f90bc379452abf83a150999b",
+    "archive_bytes": 11779782360,
+    "archive_sha256": "d087a7899f60fffd7e9541d13215585ef6b462f3e0d71c66e0649fd0172ed34b",
+    "archive_size_sha_verified": true,
+    "archive_manifest_verified": true,
+    "conflict_refusing_missing_only_merge": true,
+    "verified_assets_output_files": 5166,
+    "verified_at_utc": "2026-11-13T20:36:55.355720+00:00",
+    "core_custom_assets_already_tracked_in_git": true,
+    "all_asset_lock_entries_checked": true,
+    "asset_lock_check_passed": true,
+    "asset_lock_checked_files": 8,
+    "restore_itself_executed_physical_replay": false
+  },
+  "simulator": {
+    "isaac_sim": "6.0.1",
+    "base_image_digest": "sha256:783444c706538aa76cf5126e911ddc5e618779e6105305ad4af4260362a30aa9",
+    "built_image_id": "sha256:ad28c36f4cf821c9751f44dd8d3033980c258c1423c88d9c82f58de193fb1ed8",
+    "build_exit_code": 0,
+    "prepare_exit_code": 0,
+    "smoke_exit_code": 0,
+    "smoke_pass_marker_observed": true,
+    "smoke_pass_marker": "PHYRC-SMOKE-PASS",
+    "interpretation": "Real GPU smoke passed. This is not a dressing demonstration or task-score improvement."
+  },
+  "actor_setup": {
+    "codex_cli": "0.166.0",
+    "backend": "exec",
+    "configured_model": "gpt-6-astra",
+    "configured_effort": "ultra",
+    "actor_image_digest": "sha256:4840d514c583a4d3d8cad3940e68dee6f0f6f3635c12fcd0a3d74c21a5b93a54",
+    "native_executable_and_version_check_passed": true,
+    "docker_isolation_provisioning_passed": true,
+    "provisioning_model_calls": 0,
+    "provisioning_temporary_resources_cleaned": true,
+    "interpretation": "Provisioning and login status alone do not verify model access or dressing behavior."
+  },
+  "checks": {
+    "docker_hello_world_passed": true,
+    "gpu_container_nvidia_smi_passed": true,
+    "run_sh_doctor_passed": true,
+    "cpu_unittest": {
+      "command": "PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m unittest discover -s tests -v",
+      "passed": true,
+      "tests": 335,
+      "reported_wall_s": 45.829
+    }
+  },
+  "wiring": {
+    "run_id": "20261113-codex-wiring-001",
+    "status": "completed",
+    "quality_passed": true,
+    "task_score": 0.0,
+    "note": "Closed connection test with full capture validation. Its zero score is not an E28 dressing outcome.",
+    "activity": "closed",
+    "finished": true,
+    "host_exit_code": 0,
+    "simulator_exit_code": 0,
+    "total_transitions": 3,
+    "validated_transitions": 3,
+    "errors": [],
+    "decisions": 3,
+    "actor_calls": 3,
+    "actor_call_wall_s": 18.00857519999977,
+    "client_wall_s": 61.701179638999974,
+    "dressing_success": false,
+    "training_approval": "unreviewed"
+  },
+  "local_evidence": {
+    "runtime_setup_receipt": "output/sessions/20261113-runtime-setup/environment.json",
+    "restore_receipt": "output/restores/20261113-bootstrap/restore-verification.json",
+    "unpublished_log_sha256": {
+      "output/sessions/20261113-setup/prepare.log": "b71ac2345a3ab628578114bd017668e5b3b40f4f23256f78ec0fcaf340d79f12",
+      "output/sessions/20261113-setup/smoke.log": "f7dc2beb080e75626106d1080f48819052ec8558cd076933cb52dd55ad0efb3f",
+      "output/sessions/20261113-setup/tests.log": "6b3517bfe0ddd263bb62aa5c288fb5b9c3c9f650c39185f00cb9c7ef6a52a0c5"
+    },
+    "wiring_validation": "output/collections/20261113-codex-wiring-001/validation.json",
+    "wiring_validation_sha256": "8ff19d8fe9a6d4cc6003f5572d50311a61274b0b620145a7253750a78b9d67de"
+  },
+  "task_outcome": {
+    "new_e28_dressing_result": null,
+    "previous_verified_best_raw_score": 5,
+    "maximum_raw_score": 50,
+    "previous_verified_dressing_score": 0,
+    "previous_verified_success": false
+  },
+  "privacy": {
+    "sanitized_summary_only": true,
+    "excludes": [
+      "credential contents and locations",
+      "authentication and private connection URLs",
+      "raw model reasoning and CLI events",
+      "session databases",
+      "simulator log contents",
+      "hidden scene geometry and transforms"
+    ]
+  }
+}
