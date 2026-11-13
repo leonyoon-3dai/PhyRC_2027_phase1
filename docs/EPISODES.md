@@ -2,7 +2,7 @@
 
 [메인](../README.md) | [시연 목록](EPISODES.md) | [다음 수집](COLLECTION_PLAN.md) | [Astra 코드](ASTRA.md) | [클린 서버](OPERATIONS.md)
 
-**2026-11-13: E29까지 마감했고 E30은 2026-11-13 22:31:59 UTC에 시작해 진행 중입니다.** [E30 시작 기록](project/sessions/20261113-e30-start.ko.md)의 최종 결과는 미확정이며 아래 결과 표는 마감한 E00–E29를 유지합니다. E29는 E28/738에서 최대20개 새 결정을 허용했지만10 act 뒤11번째 결정에서 actor가 `finish_episode`를 선택했습니다. 총834전이 전수 QC 통과, **5/50점·새 구간 득점0·착의0·success=false**입니다. E번호에는 연결 시험과 실패도 포함되며 독립 성공 시연 수가 아닙니다. [E29 리뷰](collection/reviews/20261113-astra-side-hem738-continue20-001.ko.md) / [현재 상태·보존](project/STATUS.md)
+**2026-11-13: E30까지 마감했고 E31은 계획 단계입니다.** E30은 E28/738에서 대각선 진입을 비교해18 act 뒤19번째 결정에서 `finish_episode`를 선택했습니다. 총915전이 전수 QC와 고정 백업 검증을 마쳤으며 **5/50점·새 구간 득점0·착의0·success=false**입니다. E번호에는 연결 시험과 실패도 포함되며 독립 성공 시연 수가 아닙니다. [E30 리뷰](collection/reviews/20261113-astra-diagonal738-001.ko.md) / [E31 계획](project/sessions/20261113-e31-plan.ko.md) / [현재 상태·보존](project/STATUS.md)
 
 ## 대표 장면
 
@@ -35,7 +35,7 @@
 
 사람 시연은 **2,225전이 / 111.25로봇초**의 부분 기록입니다. 로봇별 분할 화면은 **왼쪽 robot_1, 오른쪽 robot_0**, 위 head / 아래 wrist 순서이며 픽셀을 좌우 반전하지 않습니다. [표시 규칙과 변환 출처](gallery/ROBOT_LAYOUT.ko.md)
 
-## E00–E29 전체 자료
+## E00–E30 전체 자료
 
 **전이 1개는 관측→행동→다음 관측의 0.05초 기록**입니다. 표의 길이는 재실행과 새 구간을 합친 로봇 시간이며 모델 호출 수·실제 대기 시간이 아닙니다. MP4 배속과 마지막 `next_obs`는 각 기록에서 확인합니다.
 
@@ -71,6 +71,7 @@
 | E27 | E25 새 파지로 운반·팔 접근 | E25 / 698 | 1,159 / 57.95 | [MP4](collection/attempts/20261107-astra-regrasp698-progress-named-001/overview.mp4) / [화면](collection/attempts/20261107-astra-regrasp698-progress-named-001/images/final-overview.png) / [원본](collection/attempts/20261107-astra-regrasp698-progress-named-001/manifest.json) |
 | E28 | 새 측면 접근 전략; 파지·들기·운반·손 접근, 픽업 5점·착의 0 | 새 환경 / replay 0 | 739 / 36.95 | [MP4](collection/attempts/20261113-astra-side-hem-fresh-001/overview.mp4) / [화면](collection/attempts/20261113-astra-side-hem-fresh-001/images/final-overview.png) / [원본](collection/attempts/20261113-astra-side-hem-fresh-001/manifest.json) |
 | E29 | 후반 최대20결정 중10 act+1 finish로 조기 마감; 새 구간 득점0 | E28 / 738 | 834 / 41.70 | [추가 구간](gallery/20261113-e29-extra-decisions-738-834/event.mp4) / [전체 MP4](collection/attempts/20261113-astra-side-hem738-continue20-001/overview.mp4) / [리뷰](collection/reviews/20261113-astra-side-hem738-continue20-001.ko.md) / [원본](collection/attempts/20261113-astra-side-hem738-continue20-001/manifest.json) |
+| E30 | 같은 손의 낮춤·대각 방향·조건부 올림을 분리;18 act+1 finish, 새 득점0 | E28 / 738 | 915 / 45.75 | [추가 구간](gallery/20261113-e30-diagonal-738-915/event.mp4) / [전체 MP4](collection/attempts/20261113-astra-diagonal738-001/overview.mp4) / [리뷰](collection/reviews/20261113-astra-diagonal738-001.ko.md) / [원본](collection/attempts/20261113-astra-diagonal738-001/manifest.json) |
 
 E09는 불완전 원본을 보존한 기록으로 학습·정상 재실행 출처에서 제외합니다. E10–E27 중 E16·E20을 제외한 시도의 최종 원점수는 5점이며, **정상 평가한 과제 시연의 착의 득점은 모두 0**입니다. 파지·시야 개선을 소매 통과나 추가 득점으로 해석하지 않습니다.
 
@@ -86,8 +87,8 @@ E09는 불완전 원본을 보존한 기록으로 학습·정상 재실행 출�
 
 [실행·출발점·방법 정본 JSON](collection/catalog/catalog.v1.json) / [경계별 근거](collection/catalog/README.ko.md) / [추가 연결 시험과 상세 이력](project/HISTORY.ko.md)
 
-## E29 이후
+## E30 이후
 
-**같은 방법의 결정 예산만 늘리기보다 진입 방식 변경을 우선 권합니다.** E29는 양쪽 그립을 유지하며 손목 방향·높이를 바꿨지만 새 구간96전이·4.8시뮬레이션초 동안 추가 득점이나 확인된 손 통과가 없었습니다. 다른 방법의 우선 출발점은 **E28/738**, 방향 변경을 보존하는 선택적 비교점은 **E29/784**입니다. 마지막834가 더 좋은 상태라는 근거는 없습니다. E28/682·380·264도 각각 접근·펼침·닫기 전 준비 비교점으로 보존합니다. 사용자가 분석 기반 자동 반복을 승인해 E30부터 같은 손의 낮춤·대각선 방향·조건부 올림을 비교하고 있습니다. 기본20결정으로 마감·QC·백업·분석 후 다음 시도를 선택하며 매번 확인을 요청하지 않습니다.
+**다음 E31은 같은 대각선 전략·20결정을 유지하며 E28/682에서 시작하는 비교입니다.** E30은18 act·새177전이(8.85시뮬레이션초)에서 같은 손의 낮춤·방향 변경·조건부 올림을 나누어 시험했지만 추가 득점과 확인된 손목 통과는 없었습니다. 출발점을 더 이른 접근 관계로 바꾸고, 새 replay history632·668을 사용합니다. E30/886·915는 진단 자료이며 출발점으로 승격하지 않습니다. E28/738·E29/784도 과거 비교점으로 보존합니다. 사용자 승인에 따라 단일 시연→QC·백업→분석→다음 시연을 자동으로 이어갑니다.
 
 [다음 수집 계획과 검증 순서](COLLECTION_PLAN.md)

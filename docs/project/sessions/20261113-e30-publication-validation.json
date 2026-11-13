@@ -1,0 +1,30 @@
+{
+  "scope": "E30 closed-run documentation, curated catalog and E31 prelaunch plan; no runtime changes",
+  "catalog_counts": {
+    "runs": 38,
+    "startpoints": 18,
+    "methods": 22,
+    "attempts": 41
+  },
+  "catalog_schema_valid": true,
+  "sqlite_index_matches_source": true,
+  "catalog_unittest": {
+    "passed": 11,
+    "command": ".venv/bin/python -m unittest tests.test_startpoint_catalog -q"
+  },
+  "changed_markdown_links_resolve": true,
+  "runtime_files_changed": false,
+  "human_feedback_patch_applied": false,
+  "e31_started": false,
+  "source_commit_e30": "7eaae3e6b56ce938237b873bcb1540470a449b79",
+  "capture_validation": {
+    "transitions_checked": 915,
+    "errors": []
+  },
+  "backup_receipt": "docs/project/sessions/20261113-e30-backup-verification.json",
+  "not_performed": [
+    "new GPU/model run during documentation validation",
+    "new full runtime CPU suite",
+    "Codabench submission"
+  ]
+}

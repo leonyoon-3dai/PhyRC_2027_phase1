@@ -22,25 +22,25 @@ https://github.com/user-attachments/assets/d2f347fe-712b-42f3-bdee-69d3fee2a47c
 
 | [**시연 영상**](docs/EPISODES.md) | [**다음 조작 계획**](docs/COLLECTION_PLAN.md) | [**Astra 코드·Hz**](docs/ASTRA.md) | [**클린 서버 시작**](docs/OPERATIONS.md) |
 |:---:|:---:|:---:|:---:|
-| E00–E29 전체 자료 | 옆에서 파지하고 입구 펼치기 | 관측부터 HDF5까지 | 설치·복원·검증·Codex CLI |
+| E00–E30 전체 자료 | 옆에서 파지하고 입구 펼치기 | 관측부터 HDF5까지 | 설치·복원·검증·Codex CLI |
 
-**현재(2026-11-13): E30을 시작해 같은 손의 낮춤·대각선 방향·조건부 올림을 비교 중입니다. 최종 결과는 미확정입니다.** 마지막 마감 시연은 E29입니다. E29는 E28/738에서 후반20결정까지 허용했지만, 실제로10번 움직인 뒤11번째 결정에서 actor가 `finish_episode`를 선택했습니다. 총834전이 전수 QC를 통과했으며 **5/50점, 새 구간 득점0·착의0, success=false**입니다. 픽업5점은 앞 행동 재실행 중 다시 얻었습니다. 입구 방향 변화는 있었으나 손목 통과는 확인되지 않았습니다. 다음에는 같은 방법의 예산만 늘리기보다 진입 방법 변경을 우선 권합니다. [E30 시작](docs/project/sessions/20261113-e30-start.ko.md) / [E29 영상](docs/gallery/20261113-e29-extra-decisions-738-834/event.mp4) / [장면 리뷰](docs/collection/reviews/20261113-astra-side-hem738-continue20-001.ko.md) / [현재 상태·보존](docs/project/STATUS.md)
+**현재(2026-11-13): E30의 대각선 진입 비교를 마감했습니다.** 18번 움직인 뒤19번째 결정에서 actor가 `finish_episode`를 선택했습니다. 915전이 전수 QC와 고정 원본 백업 검증을 마쳤으며 **5/50점·새 구간 득점0·착의0·success=false**입니다. 같은 손의 낮춤·방향 변경·올림을 나누어 시도했지만 손목 통과는 확인되지 않았습니다. 다음 E31은 E28의 더 이른682 경계에서 같은 전략·최대20결정을 비교하도록 준비했습니다. [E30 마감](docs/project/sessions/20261113-e30-close.ko.md) / [장면 리뷰](docs/collection/reviews/20261113-astra-diagonal738-001.ko.md) / [E31 계획](docs/project/sessions/20261113-e31-plan.ko.md)
 
 ## 최근 시연
 
-<a href="docs/gallery/20261113-e29-extra-decisions-738-834/event.mp4"><img src="docs/gallery/20261113-e29-extra-decisions-738-834/preview.gif" width="960" alt="E29 실제 추가 구간: 손목 방향과 높이를 조절했으나 통과는 미확인. 왼쪽 robot_1, 오른쪽 robot_0, 위 head, 아래 wrist."></a>
+<a href="docs/gallery/20261113-e30-diagonal-738-915/event.mp4"><img src="docs/gallery/20261113-e30-diagonal-738-915/preview.gif" width="960" alt="E30 실제 추가 구간: 낮춤·대각 방향·올림을 분리했으나 손목 통과는 미확인. 왼쪽 robot_1, 오른쪽 robot_0, 위 head, 아래 wrist."></a>
 
-**E29 — 보존한 접근 뒤10번 더 움직였지만 추가 득점은0점.** 전체20결정 예산을 쓰기 전에 actor가 국소적으로 더 진행하기 어렵다고 판단해 마감했습니다. 이는 과제 불가능성의 증거가 아닙니다.
+**E30 — 같은 손의 낮춤·대각 방향·올림을 나누어18번 움직였지만 추가 득점은0점.** 최대20결정 중19결정으로 마감했습니다. 새 방식의 관측 자료를 얻었지만 현재 출발 관계의 진입은 해결하지 못했습니다.
 
-[추가 구간 MP4](docs/gallery/20261113-e29-extra-decisions-738-834/event.mp4) / [전체 overview](docs/collection/attempts/20261113-astra-side-hem738-continue20-001/overview.mp4) / [E29 리뷰](docs/collection/reviews/20261113-astra-side-hem738-continue20-001.ko.md) / [E28 준비·운반](docs/collection/attempts/20261113-astra-side-hem-fresh-001/overview.mp4)
+[추가 구간 MP4](docs/gallery/20261113-e30-diagonal-738-915/event.mp4) / [전체 overview](docs/collection/attempts/20261113-astra-diagonal738-001/overview.mp4) / [E30 리뷰](docs/collection/reviews/20261113-astra-diagonal738-001.ko.md) / [E28 준비·운반](docs/collection/attempts/20261113-astra-side-hem-fresh-001/overview.mp4)
 
-<sub>왼쪽 robot_1, 오른쪽 robot_0, 위 head / 아래 wrist. 경계738–834의20 Hz 기록을5 fps로 재생해4배 느리며 모델 대기는 제외합니다. <a href="docs/gallery/20261113-e29-extra-decisions-738-834/provenance.json">영상 출처</a>. 이전 시연은 <a href="docs/EPISODES.md">전체 목록</a>에 보존합니다.</sub>
+<sub>왼쪽 robot_1, 오른쪽 robot_0, 위 head / 아래 wrist. 경계738–915의20 Hz 기록을5 fps로 재생해4배 느리며 모델 대기는 제외합니다. <a href="docs/gallery/20261113-e30-diagonal-738-915/provenance.json">영상 출처</a>. 이전 시연은 <a href="docs/EPISODES.md">전체 목록</a>에 보존합니다.</sub>
 
 ## 다음 수집
 
 ![E28 이후 계획: 옷 양옆에서 파지, 아래 입구 펼치기, 한쪽 손목, 반대쪽 손목. 실제 시연이 아닌 개념도.](docs/assets/collection-plan.svg)
 
-**E28에서 얻은 파지·운반 구간을 보존하고 손목 진입을 개선합니다.** E29의 같은 전략 후속은 추가 득점 없이 마감했습니다. 다른 진입 방법의 우선 비교점은 E28/738이며, E29/784는 방향을 바꾼 중간 상태의 선택적 비교점입니다. 마지막834를 최신이라는 이유만으로 우선하지 않습니다. 사용자가 시연·분석의 자동 반복을 승인했습니다. 기본20결정으로 마감·QC·백업·분석 후 다음 방법을 선택하며 주요 결과를 보고합니다. E28/682도 더 이른 접근 비교 후보입니다. 아래 입구 펼침은 E28/380, 닫기 전 준비는 E28/264에서 따로 비교할 수 있습니다. 이전 `E27/928 same-arm` 후보는 과거 미실행 계획입니다.
+**E28에서 얻은 파지·운반 구간을 보존하고 손목 진입을 개선합니다.** E29의 같은 전략 후속과 E30의 대각선 진입 모두 추가 득점 없이 마감했습니다. E31은 전략·기본20결정을 유지하고 출발점만 E28/738에서682로 바꾸어 늦은 접힘 이전 관계를 비교합니다. 최종 E30/915는 진단 자료이며 우선 출발점으로 승격하지 않습니다. 사용자가 승인한 시연·분석 자동 반복에 따라 마감·QC·고정 백업·분석 후 다음 시도를 이어가고 주요 결과를 보고합니다. 아래 입구 펼침은 E28/380, 닫기 전 준비는 E28/264에서 따로 비교할 수 있습니다. 이전 `E27/928 same-arm` 후보는 과거 미실행 계획입니다.
 
 [단계별 관측 기준과 새 시작점 선택](docs/COLLECTION_PLAN.md)
 
@@ -54,7 +54,7 @@ https://github.com/user-attachments/assets/d2f347fe-712b-42f3-bdee-69d3fee2a47c
 </tr>
 </table>
 
-각 이미지를 누르면 영상이 열립니다. **[전체 시연 목록](docs/EPISODES.md)**에서 E00–E27 영상, 관측 이미지, 원본 manifest와 직접 부모를 한 번에 찾을 수 있습니다.
+각 이미지를 누르면 영상이 열립니다. **[전체 시연 목록](docs/EPISODES.md)**에서 E00–E30 영상, 관측 이미지, 원본 manifest와 직접 부모를 한 번에 찾을 수 있습니다.
 
 ## 코드와 재현
 

@@ -1,0 +1,115 @@
+{
+  "schema": "phyrc-public-topology-audit-v1",
+  "sources": [
+    {
+      "file": "e28-156-r0-head.png",
+      "source": "output/actors/20261113-astra-side-hem-fresh-001/observations/00006/robot_0_head.png",
+      "run_id": "20261113-astra-side-hem-fresh-001",
+      "observation_index": 6,
+      "boundary": 156,
+      "camera": "robot_0_head",
+      "sha256": "39592ffc355a59ab6faadb2db1226eac59b6e9139af9c05c99cf6d60ad89e993",
+      "transformed": false
+    },
+    {
+      "file": "e28-208-r1-head.png",
+      "source": "output/actors/20261113-astra-side-hem-fresh-001/observations/00008/robot_1_head.png",
+      "run_id": "20261113-astra-side-hem-fresh-001",
+      "observation_index": 8,
+      "boundary": 208,
+      "camera": "robot_1_head",
+      "sha256": "d9feb6da1bca1173220bd6d51716072f5a8694d9472ce7092dab1e28edd9613f",
+      "transformed": false
+    },
+    {
+      "file": "e28-264-r0-wrist.png",
+      "source": "output/actors/20261113-astra-side-hem-fresh-001/observations/00012/robot_0_wrist.png",
+      "run_id": "20261113-astra-side-hem-fresh-001",
+      "observation_index": 12,
+      "boundary": 264,
+      "camera": "robot_0_wrist",
+      "sha256": "2cd11627008830f52856e1890b3a634ecaad3e74bfb6bc25f9aec0fede65ed66",
+      "transformed": false
+    },
+    {
+      "file": "e28-264-r1-wrist.png",
+      "source": "output/actors/20261113-astra-side-hem-fresh-001/observations/00012/robot_1_wrist.png",
+      "run_id": "20261113-astra-side-hem-fresh-001",
+      "observation_index": 12,
+      "boundary": 264,
+      "camera": "robot_1_wrist",
+      "sha256": "7f37e8a5c0c8af2bb0d509f195983ccbfa9194f2cbd27a04603d4d9d47de8ece",
+      "transformed": false
+    },
+    {
+      "file": "e28-306-r1-wrist.png",
+      "source": "output/actors/20261113-astra-side-hem-fresh-001/observations/00016/robot_1_wrist.png",
+      "run_id": "20261113-astra-side-hem-fresh-001",
+      "observation_index": 16,
+      "boundary": 306,
+      "camera": "robot_1_wrist",
+      "sha256": "d363c484e31429c97598e43e24a8a634d0ccd3290f9223b8f609c8e6ffdfab98",
+      "transformed": false
+    },
+    {
+      "file": "e28-362-r1-wrist.png",
+      "source": "output/actors/20261113-astra-side-hem-fresh-001/observations/00020/robot_1_wrist.png",
+      "run_id": "20261113-astra-side-hem-fresh-001",
+      "observation_index": 20,
+      "boundary": 362,
+      "camera": "robot_1_wrist",
+      "sha256": "4b74fcce8d6a0cd3cd1524c5745c20f239d01dea6ec3b781c5e8b634b4dea988",
+      "transformed": false
+    },
+    {
+      "file": "e28-380-r0-wrist.png",
+      "source": "output/actors/20261113-astra-side-hem-fresh-001/observations/00021/robot_0_wrist.png",
+      "run_id": "20261113-astra-side-hem-fresh-001",
+      "observation_index": 21,
+      "boundary": 380,
+      "camera": "robot_0_wrist",
+      "sha256": "a4ce8848b4bff9a88ff8b7cc76919364085c9e9345f5a4205986d38ed0773214",
+      "transformed": false
+    },
+    {
+      "file": "e29-738-r1-wrist.png",
+      "source": "output/actors/20261113-astra-side-hem738-continue20-001/observations/00000/robot_1_wrist.png",
+      "run_id": "20261113-astra-side-hem738-continue20-001",
+      "observation_index": 0,
+      "boundary": 738,
+      "camera": "robot_1_wrist",
+      "sha256": "29dfef3312bef159de948c2541f0485fbd1c4b108e887388b2d40e4fbe1ceae4",
+      "transformed": false
+    },
+    {
+      "file": "e29-834-r1-wrist.png",
+      "source": "output/actors/20261113-astra-side-hem738-continue20-001/observations/00010/robot_1_wrist.png",
+      "run_id": "20261113-astra-side-hem738-continue20-001",
+      "observation_index": 10,
+      "boundary": 834,
+      "camera": "robot_1_wrist",
+      "sha256": "43c65eeb18f6f10993b3c20c9fc7eb90b62eb2f272ec2f4beff1c296ddf63a18",
+      "transformed": false
+    }
+  ],
+  "reviewed_depth_panel_observation_indices": [
+    6,
+    8,
+    12,
+    20,
+    21
+  ],
+  "depth_source": "current public wrist optical-axis-Z panels; no hidden surfaces",
+  "boundary_mapping": "E28 public decision observation_time with recorded initial1.5250000795349479s and20Hz; E29 closed review correspondence",
+  "actor_reason_semantics_used_as_ground_truth": false,
+  "conclusion_body_hem_region": "strong visual support at flat placement; exact material identity through occlusion not proven",
+  "conclusion_distinct_opposite_lips": "unresolved",
+  "read_HDF5_audit_evaluator_or_hidden_geometry": false,
+  "code_or_actor_changes": false,
+  "new_GPU_or_model_run": false,
+  "note_sha256": "2bd894eee46716e0515da0600768e0c0a4bb8d6f467ee1029f18d498426e2fa5",
+  "links_checked": 14,
+  "publication_status": "reviewed_public_copy_prepared",
+  "current_selection": "E30 closed: 915 transitions, 5/50, new suffix score 0; E31 selected the same strategy from E28/682 with history 632/668 and 20 new decisions; no E31 outcome claimed.",
+  "original_local_review_preserved": true
+}

@@ -1,0 +1,60 @@
+{
+  "schema": "phyrc-suffix-retry-plan-v1",
+  "created_at_utc": "2026-11-13T23:08:03.602917+00:00",
+  "status": "source_verified_execution_not_yet_tested",
+  "actor_receives_plan": false,
+  "reason": "Compare the same diagonal-entry strategy from an earlier hand approach before the late folded boundary; retain same-hand support and inspect lowering, reorientation and conditional raising separately.",
+  "lineage": {
+    "resume_kind": "action_replay",
+    "parent_attempt": "20261113-astra-side-hem-fresh-001",
+    "source_group": "20261113-astra-side-hem-fresh-001",
+    "source_episode": "demo_0",
+    "source_policy_sha256": "03b0c37fc67737ed88af83e2400ff5a5d04e0778319ec3c3bac09906999b4ce9",
+    "source_capture_sha256": "22de85a2b55100af158d4fec208be76b09f34aed3bf0ab3f5aed9ac83a45d1d2",
+    "source_validation_sha256": "bf7bd85edd3dc009bc2f164997996a2948949e4787326636f15e1c0145b650e6",
+    "source_steps": 739,
+    "replay_steps": 682,
+    "source_start_step": 0,
+    "source_end_step_exclusive": 682,
+    "bitwise_physics_restored": false,
+    "fresh_actor": true,
+    "replay_validation": "source_verified_execution_not_yet_tested"
+  },
+  "boundary": {
+    "exclusive_step": 682,
+    "source_observation_file": "output/collections/20261113-astra-side-hem-fresh-001/policy.hdf5",
+    "source_observation_group": "data/demo_0/next_obs",
+    "source_observation_index": 681,
+    "source_public_simulation_time_s": 35.625001857988536,
+    "source_remaining_steps": 57
+  },
+  "continuation_arguments": [
+    "--replay-prefix-run",
+    "20261113-astra-side-hem-fresh-001",
+    "--replay-prefix-steps",
+    "682",
+    "--parent-attempt",
+    "20261113-astra-side-hem-fresh-001",
+    "--source-group",
+    "20261113-astra-side-hem-fresh-001",
+    "--retry-reason",
+    "Compare the same diagonal-entry strategy from an earlier hand approach before the late folded boundary; retain same-hand support and inspect lowering, reorientation and conditional raising separately."
+  ],
+  "execution_requirements": [
+    "Choose a new run ID, an implemented strategy, and an explicit decision/step budget.",
+    "The max-steps budget includes the replay prefix, new actions, and settling.",
+    "Choose review-points above the retained prefix score to allow suffix actions.",
+    "Recheck current cloth support and opening from freshly replayed public observations.",
+    "Replay every prefix action in a fresh environment; no prefix actor calls are needed.",
+    "Re-evaluate all awards in the new episode; old awards are not copied.",
+    "Close, validate, visually review, and privately preserve the new capture separately."
+  ],
+  "limitations": {
+    "bitwise_physics_restored": false,
+    "new_score_guaranteed": false,
+    "independent_demonstration": false,
+    "training_approval": "unreviewed",
+    "score_is_not_success": true,
+    "source_observations_are_review_only": true
+  }
+}

@@ -667,6 +667,24 @@
         "revision": "4a4700539b5abcd8e5e9a0a93a3824916f1ca7e3",
         "sha256": "e5a64ac5bb696a022fdceaa57f151b5c9f0d202c14222a81765a843e0365f841"
       }
+    },
+    {
+      "id": "20261113-astra-diagonal738-001",
+      "kind": "demonstration",
+      "source_group": "20261113-astra-side-hem-fresh-001",
+      "source_commit": "7eaae3e6b56ce938237b873bcb1540470a449b79",
+      "source_working_tree_modified": false,
+      "parent_run_id": "20261113-astra-side-hem-fresh-001",
+      "replay_prefix_steps": 738,
+      "replay_completed_steps": 738,
+      "recorded_transitions": 915,
+      "qc_status": "passed",
+      "backup": {
+        "status": "verified",
+        "receipt": "docs/project/sessions/20261113-e30-backup-verification.json",
+        "revision": "6b259ab4e34103286c30235640a434c7ee74f60c",
+        "sha256": "5be936af1f8686e2f69760c20d7c1179a08d333d3e253c3e66a78382d609c07f"
+      }
     }
   ],
   "startpoints": [
@@ -1481,6 +1499,20 @@
         "action_encoding": "named"
       },
       "description": "Executed in fresh-reset E28 using exec/gpt-6-astra/ultra, plan1, motion-only post-action neutral settle6, 180s model timeout and phase timing profile. Forty decisions and 46 calls include six zero-physics depth query followups. Initial close acquisition and local cloth gathering/lifting occurred, followed by transport and hand approach. Strategy name is intent, not evidence of opposite hem layers or completed wrist/sleeve passage. Tested means executed, not successful; raw5 pickup only and success=false. E29 reused the same strategy from E28/738 with up to20 new decisions:10 act then actor finish_episode on decision11,12 calls including one query followup. Extra96 transitions changed orientation/height but added zero points; same lineage, not an independent success. Future method change is recommended before a simple budget increase."
+    },
+    {
+      "id": "coordinated-diagonal-entry-named-query-panel-settle6-profile",
+      "name": "coordinated-diagonal-entry / named / query / wrist panel / settle6 / profiling",
+      "status": "tested",
+      "axes": {
+        "grasp_arrangement": "retain useful support/guide roles and existing bounded one-sided regrasp rules",
+        "entry_target": "same mannequin hand tracked by connected forearm and candidate body-hem relation",
+        "approach": "separately observed lowering, one wrist axis or differential-height reorientation, conditional raising; separate clearance recovery",
+        "order": "retain same-hand objective until current/recent garment progression supports opposite-side change",
+        "view": "five designated RGB-D views, frozen pixel depth query and current wrist depth panel; no evaluator input",
+        "action_encoding": "named"
+      },
+      "description": "Opt-in specialization of side-hem-wrists; existing baseline and saturation rules preserved. Executed in E30 from E28/738 with exec/gpt-6-astra/ultra, plan1, settle6,180s timeout and timing profile. Nineteen decisions=18act+finish,20calls including one query followup. Same-hand lower/roll/raise and later lower/pitch/raise tested; no confirmed passage or new points. Tested means executed, not successful. No live human-feedback queue applied."
     }
   ],
   "attempts": [
@@ -2108,6 +2140,23 @@
         ]
       },
       "notes": "E29 continued E28/738 with freshly replayed histories682/714, clean source2baebcc381d707fd5aca5f69ea7518d326e8a80a. Started2026-11-13T21:41:33Z, ended22:07:44Z. Requested20 decisions but completed11=10act+1finish_episode(D10),12calls/1zero-physics query followup. 834transitions=738replay+42model+54settle, cleanup0; suffix96transitions/4.8simseconds. Actor chose finish_episode for narrow folded candidate opening and unresolved passage/supported regrasp; local judgment, not proof of impossibility. Not decision/step budget exhaustion, review10 or timeout. FullQC834/834 passed errors[], evaluationvalidtrue raw5/pickup5 atboundary371(replayed_parent), suffixgain0,dressing0,successfalse. Wall1571.539239227s includes replay/init; actor775.83700049s, environment747.065884197s. Simulator0 and capturecomplete; separate host session143, not host0. No live human feedback injected; existing strategy/inputs unchanged. Private backup fixed revision 4a4700539b5abcd8e5e9a0a93a3824916f1ca7e3 force-downloaded; archive SHA256/bytes and155members verified. E28/738 preferred for new method; E29/784 optional altered orientation; final834 not automatically better. Same E28sourcegroup, not independent success or exact cloth checkpoint; trainingunreviewed. No new run or automatic budget extension."
+    },
+    {
+      "id": "20261113-astra-diagonal738-001",
+      "status": "completed",
+      "run_id": "20261113-astra-diagonal738-001",
+      "startpoint_id": "20261113-astra-side-hem-fresh-001-p738",
+      "method_id": "coordinated-diagonal-entry-named-query-panel-settle6-profile",
+      "result": {
+        "raw_points": 5.0,
+        "success": false,
+        "review": "docs/collection/reviews/20261113-astra-diagonal738-001.ko.md",
+        "videos": [
+          "docs/collection/attempts/20261113-astra-diagonal738-001/overview.mp4",
+          "docs/gallery/20261113-e30-diagonal-738-915/event.mp4"
+        ]
+      },
+      "notes": "E30 source7eaae3e6b56ce938237b873bcb1540470a449b79 clean, parent/sourcegroupE28fresh, replay738/history682714. Started2026-11-13T22:31:59Z, ended23:02:50Z. Requested20 decisions; completed19=18act+1finish_episode,20calls/1zero-physics query followup. 915transitions=738replay+87model+90settle, cleanup0; new177transitions/8.85simseconds. Actor chose finish_episode; not decision budget exhaustion. FullQC915/915 passed errors[], valid raw5/pickup5 at371(replayed_parent), newgain0,dressing0,successfalse. Wall1850.452945349s, actor1035.999420735s, environment764.021449158s; whole wall includes replay/initialization. Host session143, simulator0, capturecomplete. Fixed private backup6b259ab4e34103286c30235640a434c7ee74f60c force-downloaded, archiveSHA/bytes and227members verified. Same hand and local cloth-jaw following remained but independent load/attachment and sleeve passage uncertain. No E30 startpoint promoted;915 final and886 intermediate remain diagnostic. Next planned comparison changes start to E28/682 with same strategy and20decision budget, fresh632668; no next run completed or launched by this record. Same sourcegroup, not independent success or exact physics checkpoint; trainingunreviewed."
     }
   ]
 }

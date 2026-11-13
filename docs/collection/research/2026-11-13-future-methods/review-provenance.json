@@ -1,0 +1,47 @@
+{
+  "schema": "phyrc-public-history-method-review-v1",
+  "scope": "developer-only historical/public observation review, updated after E30 closure; not actor input",
+  "note": "20261113-after-e30-conditional-methods.ko.md",
+  "sha256": {
+    "20261113-after-e30-conditional-methods.ko.md": "52cde82dee6fa3b8f9b2a1b128ea144b35af827a3fcc2c0eeef9e4fff69be1c5",
+    "e25-667.png": "b9bb0101e663e02f1aca9790895853c7867b60c60404f6e704cdedbe967e82c3",
+    "e27-928.png": "e80b976b250ee68c6f13a26c25e4b0159c0f468529b9f12554ebc21b41ec5f2e",
+    "e27-968.png": "417754b15497503a0f27b049fdb898c73eb57677b704bdaba17d8cc161dae1c9",
+    "e28-738.png": "2852c7ab238dac0099d58bfe5e32a9bf8268d54a69f5f299b84e7cf0b8576c0f"
+  },
+  "source_frames": [
+    {
+      "image": "e25-667.png",
+      "source": "docs/gallery/assets/20261107-e25-local-follow/event.mp4",
+      "source_frame_index": 10,
+      "boundary": 667
+    },
+    {
+      "image": "e27-928.png",
+      "source": "docs/gallery/assets/20261107-e27-arm-approach/event.mp4",
+      "source_frame_index": 60,
+      "boundary": 928
+    },
+    {
+      "image": "e27-968.png",
+      "source": "docs/gallery/assets/20261107-e27-arm-approach/event.mp4",
+      "source_frame_index": 100,
+      "boundary": 968
+    },
+    {
+      "image": "e28-738.png",
+      "source": "docs/gallery/20261113-e28-hand-588-738/event.mp4",
+      "source_frame_index": 150,
+      "boundary": 738
+    }
+  ],
+  "link_check_passed": true,
+  "read_live_state": false,
+  "read_hidden_geometry_or_evaluation_originals": false,
+  "actor_instruction_delivered": false,
+  "code_changed": false,
+  "GPU_or_model_started": false,
+  "publication_status": "reviewed_public_copy_prepared",
+  "current_selection": "E30 closed: 915 transitions, 5/50, new suffix score 0; E31 selected the same strategy from E28/682 with history 632/668 and 20 new decisions; no E31 outcome claimed.",
+  "original_local_review_preserved": true
+}
