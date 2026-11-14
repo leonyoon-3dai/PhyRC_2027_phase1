@@ -4,6 +4,10 @@
 
 [메인](../../README.md) | [시연 목록](../EPISODES.md) | [마감·재정비 계획](../COLLECTION_PLAN.md) | [Astra 코드](../ASTRA.md) | [클린 서버](../OPERATIONS.md)
 
+## 실행 중: E35 / 최대5회 중1회차
+
+`20261114-astra-wide-hem723-001`은2026-11-14T09:52:22Z, 공개 source `9a09099f170a76469b99ee1f7a177e3429933302`의 clean 상태에서 시작했다. E34/723·새 history671/697을 재생한 뒤 기존 파지 유지·넓은 아래 자유구간·약간 위에서 같은 손목으로 측면 접근을 비교한다. 새20결정/총1400/review10이다. 아직 마감·QC·성과는 미확정이다. [실행 기록](sessions/20261114-e35-wide-hem.ko.md) / [배치](sessions/20261114-wide-hem-five-attempt-batch.ko.md).
+
 ## 정상 마감한 E34
 
 | 구분 | 확인된 E34 상태 |

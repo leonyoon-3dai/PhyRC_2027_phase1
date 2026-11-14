@@ -19,7 +19,7 @@ E35는 E34/723·새 history671/697을 후보로 한다. E34의 운반 후 D13 �
 
 | 배치 시도 | run / 출발 | 상태 | 마감·다음 판단 |
 |---|---|---|---|
-|1 / E35| `20261114-astra-wide-hem723-001`, E34/723 | CPU 검증 완료·선게시 대기 | [세션](20261114-e35-wide-hem.ko.md) |
+|1 / E35| `20261114-astra-wide-hem723-001`, E34/723 | 09:52:22 UTC 시작·재생 중 | [세션](20261114-e35-wide-hem.ko.md) |
 |2–5| 결과·피드백 후 선택 | 미실행 | 자동 선예약하지 않음 |
 
 정상 마감 후 전수 QC·공개 영상·시각 리뷰·로컬 평가 요약·고정 private HF 백업 재다운로드를 각각 확인한다. 실패 시 원본을 수정하지 않고 진단 보존하며 해당 실행을 시도 이력에 포함한다. 데이터와 문서를 마무리한 뒤 추가 결정의 효용·반복·다음 계획을 종합한다.
@@ -33,3 +33,7 @@ E35는 E34/723·새 history671/697을 후보로 한다. E34의 운반 후 D13 �
 게시 경로 변경 후 baseline 원본의 바이트 동일성을 확인했고 해당12개 CPU 검사가8.796초에 통과했다. actor 코드는 이 변경으로 수정하지 않았다.
 
 [GitHub 동일 파일 트리 대응표](20261114-github-tree-equivalence.json): historical4개 tree와83개 blob을 원격 객체에서 검증했다. 커밋 메타데이터는 재생성되며 과거 시연의 source ID를 원격 ID로 덮어쓰지 않는다. 원본 출처0a5121c의 파일 내용은 공개 e468f30f, 정리본7bdd82c는 공개875ba3ff의 동일 tree로 확인할 수 있다. 현재 배치 소스는 main ref 게시를 확인한 뒤 그 실제 공개 commit에서 시작한다.
+
+## 선게시 확인과 E35 시작
+
+[GitHub main9a09099f](https://github.com/leonyoon-3dai/PhyRC_2027_phase1/commit/9a09099f170a76469b99ee1f7a177e3429933302)의 tree가 local480cfc7과 동일함을 원격 readback과 로컬 fetch에서 확인했다. 기존 main112cc514를 expected SHA로 하는 force=false 갱신이었다. 두 회귀 oracle blob은 공개 ancestor tree에도 포함된다. 이후 이 공개 source의 clean checkout에서 E35를09:52:22 UTC에 시작했다. 원본 출처와 API 재생성 commit을 혼동하지 않는다.
