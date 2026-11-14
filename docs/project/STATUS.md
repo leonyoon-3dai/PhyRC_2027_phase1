@@ -8,7 +8,7 @@
 
 ## 준비 중: E36 / 이번 배치 마지막 실행
 
-E36 `20261114-astra-wrist-body835-001`은 **아직 실행하지 않은 계획**입니다. 직접 parent E34/835·새 history787/815, 같은 E28 source group에서 기존 근접 형상을 보존하고 같은 손목·연결 전완 방향에 정렬한 뒤 몸쪽으로 짧게 진행하는 `coordinated-wrist-body-entry`를 선택했습니다. 새20결정/총1400/review10이며 소스 게시·실제 시작 확인을 기다립니다. 실행 source·UTC 시작·성과는 아직 확정하지 않습니다. [E36 준비와 검증](sessions/20261114-e36-wrist-body.ko.md) / [현재 수집 계획](../COLLECTION_PLAN.md).
+E36 `20261114-astra-wrist-body835-001`은 **2026-11-14T10:43:35Z에 시작했습니다.** 직접 parent E34/835·새 history787/815, 같은 E28 source group에서 기존 근접 형상을 보존하고 같은 손목·연결 전완 방향에 정렬한 뒤 몸쪽으로 짧게 진행하는 `coordinated-wrist-body-entry`를 선택했습니다. 새20결정/총1400/review10이며 공개 source `f39b0e2fc9407adc1d9ced9765ff89824e90d05a`의 clean 상태를 source snapshot에서 확인했습니다. 먼저835 prefix를 재생합니다. 종료 결과·QC·성과는 아직 미확정입니다. [E36 준비와 검증](sessions/20261114-e36-wrist-body.ko.md) / [현재 수집 계획](../COLLECTION_PLAN.md).
 
 E35의 최신983을 자동 후속하지 않고 공개 검토로 선택한 E34/835를 재실행합니다. 이는 같은 천 상태 복원이나 성공 보장이 아니며 다음 현재 관측에서 지지와 같은 손 관계를 다시 확인합니다.
 
@@ -31,7 +31,7 @@ E35의 최신983을 자동 후속하지 않고 공개 검토로 선택한 E34/83
 
 [E35 리뷰](../collection/reviews/20261114-astra-wide-hem723-001.ko.md) / [전체983프레임 영상](../collection/attempts/20261114-astra-wide-hem723-001/overview.mp4) / [공개 manifest](../collection/attempts/20261114-astra-wide-hem723-001/manifest.json) / [실행·마감 기록](sessions/20261114-e35-wide-hem.ko.md) / [고정 백업 receipt](sessions/20261114-e35-backup-verification.json) / [이번 배치](sessions/20261114-wide-hem-five-attempt-batch.ko.md).
 
-남은1결정을 다음 run에 합산하지 않습니다. 후속 E36은 사용자의 같은 손목 정렬·몸통 방향 진행 피드백과 종료된 공개 관측을 검토해 위 조건으로 선택했으며 아직 시작하지 않았습니다. 연구 재정비 시스템·실시간 피드백 큐·자동 학습은 통합하지 않았습니다.
+남은1결정을 다음 run에 합산하지 않습니다. 후속 E36은 사용자의 같은 손목 정렬·몸통 방향 진행 피드백과 종료된 공개 관측을 검토해 위 조건으로 선택해10:43:35Z에 시작했습니다. 연구 재정비 시스템·실시간 피드백 큐·자동 학습은 통합하지 않았습니다.
 
 ## 정상 마감한 E34
 
