@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="112" viewBox="0 0 960 112" role="img" aria-labelledby="title desc">
+  <title id="title">Agentic Robotics 워크숍: PhyRC 시연 수집 참고</title>
+  <desc id="desc">논문과 데모 분석, 적용 우선순위, 클린 서버 Codex CLI 인계 문서 열기</desc>
+  <rect x="1" y="1" width="958" height="110" rx="18" fill="#12354a" stroke="#3d718d" stroke-width="2"/>
+  <rect x="26" y="27" width="7" height="58" rx="3.5" fill="#70e1c1"/>
+  <g font-family="Noto Sans KR, Apple SD Gothic Neo, Malgun Gothic, sans-serif">
+    <text x="52" y="48" fill="#ffffff" font-size="26" font-weight="700">Agentic Robotics 워크숍 · PhyRC 시연 수집 참고</text>
+    <text x="52" y="81" fill="#cee0e9" font-size="19">논문·데모 분석과 적용 제안 · 클린 서버 Codex CLI 인계</text>
+  </g>
+  <circle cx="906" cy="56" r="25" fill="#20526b"/>
+  <path d="M895 56h21m-8-8 8 8-8 8" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -8,6 +8,7 @@
 2. 새 서버라면 [OPERATIONS](docs/OPERATIONS.md)를 순서대로 따른다. 외부 준비물, 고정 버전, 원본 복원, 검증 명령이 한 문서에 있다.
 3. 수집 변경 전 [COLLECTION_PLAN](docs/COLLECTION_PLAN.md)과 [ASTRA](docs/ASTRA.md)를 읽는다. 시연과 직접 부모는 [EPISODES](docs/EPISODES.md)에서 찾는다.
 4. 과거 세션의 “다음”, “재개”, 날짜별 TODO는 현재 지시가 아니다. 고유 실행 근거는 [보관함](docs/ARCHIVE.md)을 통해 확인한다.
+5. 시연 수집 방법을 검토할 때 [Agentic Robotics 워크숍 참고](docs/collection/research/2026-11-14-agentic-robotics-workshop.ko.md)를 읽는다. 채택 논문 39편의 조사 범위, Stretch 4+Astra 사례, 현재 코드와의 차이, 다음 비교 제안 및 원문 접근 한계를 기록했다. 개발용 참고이며 actor 입력·구현·재개 명령이 아니다. 최신 상태와 실행 계획은 계속 STATUS/COLLECTION_PLAN이 정본이다.
 
 ## 현재 범위
 
@@ -64,3 +65,4 @@
 - GitHub에는 코드·문서·선별 이미지·영상만 둔다. 큰 원본, audit·평가, 모델은 비공개 자료 저장소에 고정 revision과 검증 receipt로 남긴다.
 - `scripts/preserve_collection.py`의 허용 목록으로 정상 마감·QC 통과 원본을 보존한다. 불완전 E32는 별도 검토한 로컬 허용 목록으로 진단 전용 백업하며 정상 보존 gate를 완화하지 않는다. 분석은 별도 review/session에 두고 collection 원본에 임의 파일을 추가하지 않는다. 신규 의존성이 있으면 소스 보존 목록도 검증한다.
 - 인증 파일·키·토큰·개인 접속 주소·원시 CLI reasoning/events·세션 DB·미검수 로그·simulator.log를 게시하지 않는다. 홈이나 저장소 전체를 백업으로 압축하지 않는다.
+

@@ -1,5 +1,7 @@
 # PhyRC 2027
 
+[![Agentic Robotics 워크숍: PhyRC 시연 수집 참고 문서 열기](docs/assets/agentic-robotics-workshop-button.svg)](docs/collection/research/2026-11-14-agentic-robotics-workshop.ko.md)
+
 **[이번 세션 영상·실패 분석 모음](docs/collection/reviews/20261114-session-review.ko.md)**에서 E28–E32 영상과 시도별 판단을 바로 검토할 수 있습니다.
 
 ## 공식 착의 데모
@@ -69,3 +71,4 @@ https://github.com/user-attachments/assets/d2f347fe-712b-42f3-bdee-69d3fee2a47c
 GitHub에는 코드와 선별 영상이 있습니다. 전체 시연 HDF5와 필수 자산 복원에는 **접근 권한이 있는 비공개 백업**이 필요합니다. 새 서버 가이드에 고정 revision과 해시 검증 절차를 함께 남깁니다.
 
 [공식 챌린지](https://emprise.cs.cornell.edu/phyrc/challenge-2027/) / [점수·규칙](docs/project/CHALLENGE_GUIDE.ko.md) / [현재 상태](docs/project/STATUS.md) / [기록 보관함](docs/ARCHIVE.md) / [주최 측 README](README.upstream.md) / [LICENSE](LICENSE) / [NOTICE](NOTICE) / [THIRD_PARTY](THIRD_PARTY.md)
+

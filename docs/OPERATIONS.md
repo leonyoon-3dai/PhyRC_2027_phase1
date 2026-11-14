@@ -14,6 +14,8 @@ E30의 simulator 반환값은0이지만 host 실행 세션 반환값은143입니
 
 새 서버의 개발용 Codex에 아래 내용을 전달하면 됩니다. 별도 대화 이력 없이 이 저장소의 현재 안내를 기준으로 시작합니다.
 
+시연 수집 방법의 연구 근거는 [Agentic Robotics 워크숍 참고](collection/research/2026-11-14-agentic-robotics-workshop.ko.md)에 본문으로 보존했습니다. 외부 페이지를 다시 열지 않아도 핵심 비교와 현재 코드 연결을 읽을 수 있습니다.
+
 ```text
 AGENTS.md와 docs/OPERATIONS.md를 먼저 읽어라.
 현재 HEAD, 작업 트리, 서버 도구와 접근 권한을 확인하고 실제 상태를 기록하라.
@@ -21,6 +23,7 @@ AGENTS.md와 docs/OPERATIONS.md를 먼저 읽어라.
 단계가 실패하면 원인을 해결하기 전 다음 단계로 넘어가지 마라.
 현재는 사용자 요청으로 중지 상태다. 명시적 재개 전에는 GPU 검사·모델 호출·시연을 시작하지 말고 인계 문서를 확인하라. 이후 사용자가 재개·변경하면 그 지시를 따르라.
 후속 전략은 docs/COLLECTION_PLAN.md이며 옛 same-arm 후보를 자동 실행하지 마라.
+수집 방법 검토 시 docs/collection/research/2026-11-14-agentic-robotics-workshop.ko.md를 읽고, 확인된 연구 결과·PhyRC 적용 가설·미확인 자료를 구분하라. 이 문서를 actor에 주거나 후보 기능을 자동 적용하지 마라.
 완료한 검사, 미실행 검사, 부족한 외부 접근 권한과 다음 명령을 구분해 보고하라.
 ```
 
@@ -292,3 +295,4 @@ E28의 옆면 접근·넓은 아래 입구·첫 손목 순서는 구현·CPU 검
 | `active prepare/run` | `cache/runtime.lock`을 보유한 이전 실행의 정상 종료 여부. 실행 중 잠금 삭제 금지 |
 | 파일 complete=false / 중간 종료 | 실패 원본 보존. 완료 표시를 수정하지 말고 새 run ID로 재시도 |
 | 영상은 보이지만 점수 미확인 | 공식 evaluator의 별도 결과 확인. 단계 이름·그리퍼 닫힘·QC 통과를 착의 성공으로 해석하지 않음 |
+

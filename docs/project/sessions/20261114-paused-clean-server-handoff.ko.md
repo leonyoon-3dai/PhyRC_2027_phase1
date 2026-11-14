@@ -12,6 +12,8 @@
 
 ## 새 서버에서 읽을 기준
 
+[Agentic Robotics 워크숍 참고](../../collection/research/2026-11-14-agentic-robotics-workshop.ko.md)에는 39편 조사 목록, 수상 데모의 Stretch 4+Astra 사례, 현재 코드 대응, 파지 변경·위에서 내려 걸치기 검토안을 보존했다. 새 서버의 개발용 Codex가 읽는 연구 문서이며, actor에 전달하거나 중지 상태를 해제하는 지시가 아니다.
+
 [AGENTS](../../../AGENTS.md)와 [OPERATIONS](../../OPERATIONS.md)를 먼저 읽고 `main`의 실제 clone commit과 clean 상태를 기록한다. 이 문서를 포함한 게시 commit은 Git 이력에서 고정할 수 있다. 과거 E32의 실행 source는 `0421f8b3c45fd0291455fb278144ce279682dd98`이며 새 개발 checkout의 commit과 혼동하지 않는다. 현재 정적 전략 client SHA256은 `4797a5d010ffb8b0d8d6faf127aabdc57431b34be8ee78f4bcd59524dcae2899`다. E32 실행 이후 정책·actor·simulator·평가 코드는 변경하지 않았다.
 
 | 구성 | 유지할 기준 |
@@ -48,3 +50,4 @@ E28 policy SHA는 `03b0c37fc67737ed88af83e2400ff5a5d04e0778319ec3c3bac09906999b4
 긴 운반보다 첫 손 접촉 전 중앙 자유 구간의 폭·깊이·정렬에 판단을 쓰는 목적이다. U자 외형이나 가림을 삽입 성공으로 세지 않고 같은 손과 연결 전완의 실제 상대 진행을 확인한다. [선택 근거](../../collection/research/2026-11-14-e33-central632-direction.ko.md). 최신 E32 경계를 재사용하거나 결과를 독립 성공 표본으로 세지 않는다.
 
 [별도 process session launcher 준비](20261114-detached-launch-preparation.ko.md)는9개 합성 CPU 검사를 통과했지만 실제 GPU/모델에 적용하지 않았다. 검토한 source·9개 검사·당시 사용 설명을 [미적용 인계 artifact](../../collection/research/candidates/20261114-detached-launcher/README.ko.md)에 byte-identical로 보존했다. 게시가 설치·활성화나 실제 수집 검증을 뜻하지 않으며 명시적 재개 뒤 원본 해시·실행 명령을 다시 검토한다.143 발신 원인은 미확정이고 세션 분리가 모든 host/cgroup 종료에서 생존을 보장하지 않는다. 미적용 실시간 피드백 큐 패치도 활성화하지 않는다.
+
