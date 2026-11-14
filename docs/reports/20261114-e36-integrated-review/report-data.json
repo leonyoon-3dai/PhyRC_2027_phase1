@@ -1,0 +1,159 @@
+{
+  "schema": "phyrc-e36-review-data-v1",
+  "date": "2026-11-14",
+  "runs": {
+    "e33": {
+      "run_id": "20261114-astra-middle-grip264-001",
+      "manifest": "docs/collection/attempts/20261114-astra-middle-grip264-001/manifest.json",
+      "images": "docs/collection/attempts/20261114-astra-middle-grip264-001/images",
+      "wall_s": 1351.411,
+      "actor_s": 881.828,
+      "replay_s": 218.986,
+      "new_env_s": 200.125
+    },
+    "e34": {
+      "run_id": "20261114-astra-middle-grip470-retain-001",
+      "manifest": "docs/collection/attempts/20261114-astra-middle-grip470-retain-001/manifest.json",
+      "images": "docs/collection/attempts/20261114-astra-middle-grip470-retain-001/images",
+      "wall_s": 1959.323,
+      "actor_s": 1170.153,
+      "replay_s": 418.908,
+      "new_env_s": 318.601
+    },
+    "e35": {
+      "run_id": "20261114-astra-wide-hem723-001",
+      "manifest": "docs/collection/attempts/20261114-astra-wide-hem723-001/manifest.json",
+      "images": "docs/collection/attempts/20261114-astra-wide-hem723-001/images",
+      "wall_s": 2410.110354016,
+      "actor_s": 1473.9168682360032,
+      "replay_s": 634.7650663659979,
+      "new_env_s": 248.76668492000317
+    },
+    "e36": {
+      "run_id": "20261114-astra-wrist-body835-001",
+      "manifest": "docs/collection/attempts/20261114-astra-wrist-body835-001/manifest.json",
+      "images": "docs/collection/attempts/20261114-astra-wrist-body835-001/images",
+      "wall_s": 1686.9993665,
+      "actor_s": 806.6396092669947,
+      "replay_s": 735.6778815629932,
+      "new_env_s": 96.53364027699536
+    }
+  },
+  "sources": {
+    "e33": {
+      "label": "E33 공개 리뷰",
+      "url": "https://github.com/leonyoon-3dai/PhyRC_2027_phase1/blob/main/docs/collection/reviews/20261114-astra-middle-grip264-001.ko.md",
+      "title": "E33 공개 리뷰"
+    },
+    "e34": {
+      "label": "E34 공개 리뷰",
+      "url": "https://github.com/leonyoon-3dai/PhyRC_2027_phase1/blob/main/docs/collection/reviews/20261114-astra-middle-grip470-retain-001.ko.md",
+      "title": "E34 공개 리뷰"
+    },
+    "e35": {
+      "label": "E35 공개 리뷰",
+      "url": "https://github.com/leonyoon-3dai/PhyRC_2027_phase1/blob/main/docs/collection/reviews/20261114-astra-wide-hem723-001.ko.md",
+      "title": "E35 공개 리뷰"
+    },
+    "e36": {
+      "label": "E36 공개 리뷰",
+      "url": "https://github.com/leonyoon-3dai/PhyRC_2027_phase1/blob/main/docs/collection/reviews/20261114-astra-wrist-body835-001.ko.md",
+      "title": "E36 공개 리뷰"
+    },
+    "e36manifest": {
+      "label": "E36 원본 근거",
+      "url": "https://github.com/leonyoon-3dai/PhyRC_2027_phase1/blob/main/docs/collection/attempts/20261114-astra-wrist-body835-001/manifest.json",
+      "title": "E36 원본 근거"
+    },
+    "status": {
+      "label": "현재 상태",
+      "url": "https://github.com/leonyoon-3dai/PhyRC_2027_phase1/blob/main/docs/project/STATUS.md",
+      "title": "현재 상태"
+    },
+    "plan": {
+      "label": "다음 작업 계획",
+      "url": "https://github.com/leonyoon-3dai/PhyRC_2027_phase1/blob/main/docs/COLLECTION_PLAN.md",
+      "title": "다음 작업 계획"
+    },
+    "batch": {
+      "label": "E35–E36 배치",
+      "url": "https://github.com/leonyoon-3dai/PhyRC_2027_phase1/blob/main/docs/project/sessions/20261114-wide-hem-five-attempt-batch.ko.md",
+      "title": "E35–E36 배치"
+    },
+    "episodes": {
+      "label": "전체 시연",
+      "url": "https://github.com/leonyoon-3dai/PhyRC_2027_phase1/blob/main/docs/EPISODES.md",
+      "title": "전체 시연"
+    },
+    "catalog": {
+      "label": "카탈로그",
+      "url": "https://github.com/leonyoon-3dai/PhyRC_2027_phase1/blob/main/docs/collection/catalog/catalog.v1.json",
+      "title": "카탈로그"
+    },
+    "redesign": {
+      "label": "전체 경험·설계 근거",
+      "url": "https://github.com/leonyoon-3dai/PhyRC_2027_phase1/blob/main/docs/collection/research/2026-11-14-collection-system-redesign.ko.md",
+      "title": "전체 경험·설계 근거"
+    },
+    "research": {
+      "label": "연구 검증 범위",
+      "url": "https://github.com/leonyoon-3dai/PhyRC_2027_phase1/blob/main/docs/reports/20261114-e36-integrated-review/research-sources.json",
+      "title": "연구 검증 범위"
+    },
+    "teleop": {
+      "label": "현재 운영 경로",
+      "url": "https://github.com/leonyoon-3dai/PhyRC_2027_phase1/blob/main/docs/OPERATIONS.md",
+      "title": "현재 운영 경로"
+    },
+    "feedback": {
+      "label": "미적용 텍스트 개입 후보",
+      "url": "https://github.com/leonyoon-3dai/PhyRC_2027_phase1/blob/main/docs/collection/research/candidates/20261113-actor-feedback/README.ko.md",
+      "title": "미적용 텍스트 개입 후보"
+    },
+    "backup35": {
+      "label": "E35 백업 검증",
+      "url": "https://github.com/leonyoon-3dai/PhyRC_2027_phase1/blob/main/docs/project/sessions/20261114-e35-backup-verification.json",
+      "title": "E35 백업 검증"
+    },
+    "backup36": {
+      "label": "E36 백업 검증",
+      "url": "https://github.com/leonyoon-3dai/PhyRC_2027_phase1/blob/main/docs/project/sessions/20261114-e36-backup-verification.json",
+      "title": "E36 백업 검증"
+    },
+    "encore": {
+      "label": "ENCORE v1",
+      "url": "https://arxiv.org/abs/2609.37359v1",
+      "title": "Encore: Few-Shot Agentic Discovery of Manipulation Strategies"
+    },
+    "help": {
+      "label": "HELP v2",
+      "url": "https://arxiv.org/abs/2607.09776v2",
+      "title": "HELP: Human-Efficient Large-Scale Robot Post-Training with Rollout Segmentation"
+    },
+    "phil": {
+      "label": "PHIL v1",
+      "url": "https://arxiv.org/abs/2611.05667v1",
+      "title": "Correct Robots Before They Make Mistakes: Proactive Human-in-the-Loop Intervention via Preference Learning"
+    },
+    "feijoa": {
+      "label": "FEIJOA v1",
+      "url": "https://arxiv.org/abs/2611.04080v1",
+      "title": "FEIJOA: Task-Driven Grounding and Execution for Mobile Manipulation"
+    },
+    "rules": {
+      "label": "허용 관측 규칙",
+      "title": "Official observation rules",
+      "url": "https://github.com/leonyoon-3dai/PhyRC_2027_phase1/blob/main/docs/competition/RULES.md"
+    }
+  },
+  "catalog_counts": {
+    "demonstrations": 33,
+    "qc_passed": 31,
+    "qc_failed": 2,
+    "passed_transitions": 24296,
+    "known_replay": 16095,
+    "replay_null": 3,
+    "source_group_labels": 4
+  },
+  "result_scope": "E36 closed; no E37; score and public visual interpretation are separate"
+}

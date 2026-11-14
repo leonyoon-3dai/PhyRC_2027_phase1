@@ -1,0 +1,34 @@
+{
+  "schema": "phyrc-public-review-slides-v1",
+  "pages": 18,
+  "page_size_points": [
+    960,
+    540
+  ],
+  "source_scope": "public exports, reviewed measurements, catalog, fixed backup receipts and primary research",
+  "pdf_sha256": "8c1521b13c6df35071ae13c845a7a316125a7e24430c64872c78361e016ee071",
+  "pdf_bytes": 1225901,
+  "source_file_sha256": {
+    "docs/collection/attempts/20261114-astra-middle-grip264-001/manifest.json": "9e1c5bd08e4bef00571e85c518d2e19bacddf5cadcc6ddbdb75f1ad2c9636b75",
+    "docs/collection/attempts/20261114-astra-middle-grip470-retain-001/manifest.json": "0d3192b85c9c1e661d56b4761e5d31e7714152553b71db85d3af54ad85122ead",
+    "docs/collection/attempts/20261114-astra-wide-hem723-001/manifest.json": "e82a83c30ed633be2c1368f9d7538d46fdbec71c46495145175409cc232044de",
+    "docs/collection/attempts/20261114-astra-wrist-body835-001/manifest.json": "a544348619431927b8c5d4efc29618e609387ea6d3061b5f9621d8bb72fff640",
+    "docs/collection/attempts/20261114-astra-middle-grip470-retain-001/images/final-robot_1_head.png": "a5fe6b9378aa218869dd9828f8cfc3d5bcee2841b25441628b17e8f6b36e0ac3",
+    "docs/collection/attempts/20261114-astra-wide-hem723-001/images/final-robot_1_head.png": "eed5e2786e71f54bb08727341e01f66be1d9a938c02afb2a7d9b551440d7930b",
+    "docs/reports/20261114-e36-integrated-review/assets/e36-0835-robot_1_head.png": "1e59a90db52827a4f7b39a0d59a8d45cd26938d2b37915ef8eef36497b564dda",
+    "docs/reports/20261114-e36-integrated-review/assets/e36-0835-robot_0_head.png": "082ab777226bfbd2756dcd32044f62ba07d7e998434261c221006c945639c2be",
+    "docs/reports/20261114-e36-integrated-review/assets/e36-0835-robot_1_wrist.png": "b5730fc0b7d831cc71a25df7df883c8bf73b7bb0406ea37b21ad967182e6824c",
+    "docs/reports/20261114-e36-integrated-review/assets/e36-0835-robot_0_wrist.png": "b70cb4ddfee500807bb2771b03fa26f2cec94db0d398287d39e772fc1d20afc4",
+    "docs/collection/attempts/20261114-astra-wrist-body835-001/images/final-robot_1_head.png": "36d5dd6773ce7af6aa10c23d60ba09b563d1fd079a67e426450219cbe63b1c31",
+    "docs/collection/attempts/20261114-astra-wrist-body835-001/images/final-robot_0_head.png": "31ebca123326d3076f9f8371a86f8825666c707e0f60205e00c426aa835c9a88",
+    "docs/collection/attempts/20261114-astra-wrist-body835-001/images/final-robot_1_wrist.png": "ba1cbf4c1c2c46069ec8c372094a6d616be3b8d59cdfeab3695a9039816adda5",
+    "docs/collection/attempts/20261114-astra-wrist-body835-001/images/final-robot_0_wrist.png": "333bf7530b30298c436d00532f6070bac92a0edcf5f44109f5a00c2f46944183"
+  },
+  "renderer": "ReportLab 5.1.0",
+  "font": "NanumGothic / NanumGothicBold (embedded subsets)",
+  "no_simulator_or_actor_execution": true,
+  "no_original_media_mutation": true,
+  "image_layout": "left robot_1, right robot_0; head above wrist; no pixel reflection",
+  "data_sha256": "6822e41e07a32eb0e802ad600971675893b5bb327d49834e7cd2dc455cbe610f",
+  "builder_sha256": "e27f28381eb0e1b2426e99e25ee4a55336fab743cc20e7dea1c8b4c2bc57f6b4"
+}

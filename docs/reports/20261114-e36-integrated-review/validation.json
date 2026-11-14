@@ -1,0 +1,19 @@
+{
+  "schema": "phyrc-slide-validation-v1",
+  "pages": 18,
+  "page_size_points": [
+    960,
+    540
+  ],
+  "all_pages_rendered": true,
+  "korean_text_extractable": true,
+  "missing_font_glyphs": [],
+  "text_outside_page": [],
+  "clickable_links": 55,
+  "negative_measurements_preserved": true,
+  "source_hashes_match": true,
+  "initial_comparison_boundary": 835,
+  "initial_comparison_hdf5_index": 834,
+  "pdf_sha256": "8c1521b13c6df35071ae13c845a7a316125a7e24430c64872c78361e016ee071",
+  "limits": "Automated checks do not establish cloth passage or replace visual/content review."
+}

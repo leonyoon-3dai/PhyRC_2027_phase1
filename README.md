@@ -1,5 +1,9 @@
 # PhyRC 2027
 
+[![E00–E36 통합 분석 보고서 PDF 열기](docs/assets/e36-integrated-report-button.svg)](docs/reports/20261114-e36-integrated-review/phyrc-e36-integrated-review.ko.pdf)
+
+[18장 슬라이드 PDF](docs/reports/20261114-e36-integrated-review/phyrc-e36-integrated-review.ko.pdf) · [텍스트·출처·검증](docs/reports/20261114-e36-integrated-review/README.ko.md)
+
 [![Agentic Robotics 워크숍: PhyRC 시연 수집 참고 문서 열기](docs/assets/agentic-robotics-workshop-button.svg)](docs/collection/research/2026-11-14-agentic-robotics-workshop.ko.md)
 
 **[전체 경험과 연구에 기반한 수집 시스템 재정비 계획](docs/collection/research/2026-11-14-collection-system-redesign.ko.md)** · [이전 E28–E32 영상·실패 분석](docs/collection/reviews/20261114-session-review.ko.md)
@@ -26,23 +30,23 @@ https://github.com/user-attachments/assets/d2f347fe-712b-42f3-bdee-69d3fee2a47c
 
 | [**시연 영상**](docs/EPISODES.md) | [**마감·재정비 계획**](docs/COLLECTION_PLAN.md) | [**Astra 코드·Hz**](docs/ASTRA.md) | [**클린 서버 시작**](docs/OPERATIONS.md) |
 |:---:|:---:|:---:|:---:|
-| E00–E35 기록과 상태 | 최대5회 비교·연구 제안 | 관측부터 HDF5까지 | 설치·복원·검증·Codex CLI |
+| E00–E36 기록과 상태 | E36 종료·후속 시험 계획 | 관측부터 HDF5까지 | 설치·복원·검증·Codex CLI |
 
-**최대5회 비교 배치의 첫 시도 E35가19결정·983전이로 정상 마감해 QC983/983을 통과했습니다.** 로컬5/50은 replay 구간의 픽업5점이며 새 착의 득점0·success=false입니다. [현재 상태와 고정 백업 검증](docs/project/STATUS.md) / [재정비 계획](docs/collection/research/2026-11-14-collection-system-redesign.ko.md). 재정비안은 제안 단계이며 새 시스템이나 자동 학습을 구현하지 않았습니다.
+**E36이11결정·933전이로 정상 마감해 QC933/933을 통과했고, 사용자 요청에 따라 이번 수집을 종료했습니다. E37–E39는 실행하지 않습니다.** 로컬5/50은 replay 구간의 픽업5점이며 새 착의 득점0·success=false입니다. [현재 상태와 고정 백업 검증](docs/project/STATUS.md) / [재정비 계획](docs/collection/research/2026-11-14-collection-system-redesign.ko.md). 재정비안은 제안 단계이며 새 시스템이나 자동 학습을 구현하지 않았습니다.
 
-## 최근 시연 · E35
+## 최근 시연 · E36
 
-<a href="docs/collection/attempts/20261114-astra-wide-hem723-001/overview.mp4"><img src="docs/gallery/20261114-e35-overview/preview.gif" width="960" alt="E35 실제 원본 영상의 GIF: 전체 0–49.15초를 기본 10fps로 프레임 샘플링하고 마지막 프레임은 50ms 유지. 누르면 원본 MP4가 열립니다."></a>
+<a href="docs/collection/attempts/20261114-astra-wrist-body835-001/overview.mp4"><img src="docs/gallery/20261114-e36-overview/preview.gif" width="960" alt="E36 실제 원본 영상의 GIF: 전체 0–46.65초를 기본 10fps로 프레임 샘플링하고 마지막 프레임은 50ms 유지. 누르면 원본 MP4가 열립니다."></a>
 
-**E34의 운반 뒤부터 아래 자유 구간의 형상 조절과 같은 손목을 향한 측면 접근을 시험했습니다.** 18 act 뒤 모델이 종료를 요청해 총19결정·21모델 호출로 마감했으며 새 구간은260전이·13시뮬레이션초입니다. 픽업5점은 새 조작 전 replay에서 얻었고, 새 착의 득점은 없습니다.
+**E34의 손목 근처 형상을 출발점으로, 같은 손목·연결 전완 방향에 맞춰 몸쪽으로 접근하는 조작을 시험했습니다.** 10 act 뒤 모델이 종료를 요청해 총11결정·12모델 호출로 마감했으며 새 구간은98전이·4.9시뮬레이션초입니다. 픽업5점은 새 조작 전 replay에서 얻었고, 새 착의 득점은 없습니다.
 
-[전체 MP4](docs/collection/attempts/20261114-astra-wide-hem723-001/overview.mp4) / [E35 실행 기록](docs/collection/attempts/20261114-astra-wide-hem723-001/README.ko.md) / [이전 E34 GIF](docs/gallery/20261114-e34-overview/preview.gif) / [E34 리뷰](docs/collection/reviews/20261114-astra-middle-grip470-retain-001.ko.md)
+[E36 GIF 페이지](docs/gallery/20261114-e36-overview/README.ko.md) / [전체 MP4](docs/collection/attempts/20261114-astra-wrist-body835-001/overview.mp4) / [E36 실행 기록](docs/collection/attempts/20261114-astra-wrist-body835-001/README.ko.md) / [이전 E35 GIF](docs/gallery/20261114-e35-overview/README.ko.md) / [E34 GIF](docs/gallery/20261114-e34-overview/README.ko.md)
 
-<sub>실제 원본 영상 GIF · 전체0–49.15초 · 원본256×256 · 20fps에서2프레임마다1장을 샘플링한492프레임. 기본10fps이며 마지막 프레임만50ms로 유지해 원본 재생 길이를 보존합니다. 원본 MP4는983프레임이며 모델 대기는 제외합니다. 앞723전이는 E34 행동 prefix의 새 환경 재실행으로, 정확한 천 checkpoint나 독립 성공 시연이 아닙니다. <a href="docs/gallery/20261114-e35-overview/provenance.json">GIF 변환·검증</a> · <a href="docs/collection/attempts/20261114-astra-wide-hem723-001/manifest.json">영상·원본 근거</a>.</sub>
+<sub>실제 원본 영상 GIF · 전체0–46.65초 · 원본256×256 · 20fps에서2프레임마다1장을 샘플링한467프레임. 기본10fps이며 마지막 프레임만50ms로 유지해 원본 재생 길이를 보존합니다. 원본 MP4는933프레임이며 모델 대기는 제외합니다. 앞835전이는 E34 행동 prefix의 새 환경 재실행으로, 정확한 천 checkpoint나 독립 성공 시연이 아닙니다. <a href="docs/gallery/20261114-e36-overview/provenance.json">GIF 변환·검증</a> · <a href="docs/collection/attempts/20261114-astra-wrist-body835-001/manifest.json">영상·원본 근거</a>.</sub>
 
 ## 수집 시스템 재정비
 
-**다음 시연을 자동으로 늘리기보다, 실제 실행 이력·불확실한 관측 가설·효과를 확인할 예산·구간별 학습 승인을 분리하는 계획을 제안합니다.** E33/E34에서 검토한 가운데 파지와 손 위 하강 목표, E00 이후의 반복·복구·종료 실패를 함께 분석했습니다. 시스템 개편 구현은 보류하고, 최신 요청의 기존 방식 추가 수집은 [이번 배치](docs/project/sessions/20261114-wide-hem-five-attempt-batch.ko.md)로 별도 진행합니다.
+**실제 실행 이력·불확실한 관측 가설·효과를 확인할 예산·구간별 학습 승인을 분리하는 계획을 제안합니다.** E33/E34에서 검토한 가운데 파지와 손 위 하강 목표, E00 이후의 반복·복구·종료 실패를 함께 분석했습니다. 시스템 개편 구현은 보류했으며, 기존 방식의 [이번 배치](docs/project/sessions/20261114-wide-hem-five-attempt-batch.ko.md)는 E36에서 종료했습니다. 다음 키보드 직접 조작·시연 중 사용자 개입은 후속 시험 계획입니다.
 
 [전체 근거·설계·검증 순서](docs/collection/research/2026-11-14-collection-system-redesign.ko.md) · [마감 범위와 과거 조작 계획](docs/COLLECTION_PLAN.md)
 
@@ -56,7 +60,7 @@ https://github.com/user-attachments/assets/d2f347fe-712b-42f3-bdee-69d3fee2a47c
 </tr>
 </table>
 
-각 이미지를 누르면 영상이 열립니다. **[전체 시연 목록](docs/EPISODES.md)**에서 E00–E35 기록의 영상, 관측 이미지, 원본 manifest와 직접 부모를 한 번에 찾을 수 있습니다.
+각 이미지를 누르면 영상이 열립니다. **[전체 시연 목록](docs/EPISODES.md)**에서 E00–E36 기록의 영상, 관측 이미지, 원본 manifest와 직접 부모를 한 번에 찾을 수 있습니다.
 
 ## 코드와 재현
 

@@ -775,6 +775,24 @@
         "revision": "befd4675a2da81d63b719dbc514d7495b96112bf",
         "sha256": "fbd9aad47bc2ee378acac51952182bed17854fc71769465adbb8964a9f2845aa"
       }
+    },
+    {
+      "id": "20261114-astra-wrist-body835-001",
+      "kind": "demonstration",
+      "source_group": "20261113-astra-side-hem-fresh-001",
+      "source_commit": "f39b0e2fc9407adc1d9ced9765ff89824e90d05a",
+      "source_working_tree_modified": false,
+      "parent_run_id": "20261114-astra-middle-grip470-retain-001",
+      "replay_prefix_steps": 835,
+      "replay_completed_steps": 835,
+      "recorded_transitions": 933,
+      "qc_status": "passed",
+      "backup": {
+        "status": "verified",
+        "receipt": "docs/project/sessions/20261114-e36-backup-verification.json",
+        "revision": "dcf059881e4e6c103dc8206438a70eb1b8ccb26f",
+        "sha256": "2dcbf5e3ed0c02f879821747577ea20a7d538fd75660a8545eef475af6333bed"
+      }
     }
   ],
   "startpoints": [
@@ -1779,6 +1797,20 @@
         "action_encoding": "named"
       },
       "description": "Opt-in static strategy composed with existing SIDE_HEM_WRISTS_TASK and saturation guidance, then an explicit zero-regrasp side-entry specialization. Existing observation/action schema, simulator and isolation remain unchanged. Actual E35 from E34/723 with fresh671/697 history closed normally after19 decisions (18 act and finish),21 calls and983 transitions; fullQC983/983 passed. Raw5/pickup5 were replayed, dressing0, new points0, successfalse. Tested means executed, not aperture, wrist entry or task success. Retention is a prompt instruction, not a runtime action gate or persistent operation ledger. No new research system or training was integrated."
+    },
+    {
+      "id": "coordinated-wrist-body-entry-named-query-panel-settle6-profile",
+      "name": "coordinated-wrist-body-entry / named / query / wrist panel / settle6 / profiling",
+      "status": "tested",
+      "axes": {
+        "grasp_arrangement": "retain the useful current near-wrist grasp, width and depth with zero additional release/regrasp",
+        "entry_target": "same visually tracked mannequin wrist and connected forearm approached through the candidate body opening",
+        "approach": "align the supported free span with the same wrist/forearm, then one bounded bodyward comparison followed by inspection; no fixed world axis or mandatory lift/lower/max-width search",
+        "order": "verify current support and same-hand relationship, align direction, short bodyward trial, inspect actual motion and settled cloth before continuing",
+        "view": "five designated public RGB-D views, frozen pixel depth query/camera XYZ and current wrist depth panel; no evaluator input or hidden geometry",
+        "action_encoding": "named"
+      },
+      "description": "Opt-in static wrist/body-entry specialization composed with existing public-only side-hem guidance. Existing observation/action schema, environment, isolation and older strategy prompts remain unchanged. E36 from E34/835 with fresh787/815 history executed11 decisions (10 act and finish),12 calls and933 transitions, fullQC933/933 passed. Raw5/pickup5 were replayed; dressing0, new points0, successfalse. Tested means executed, not wrist/sleeve entry or task success. Zero additional regrasp is prompt guidance, not a runtime action gate or persistent operation ledger. No new research system, live human handoff or training was integrated."
     }
   ],
   "attempts": [
@@ -2502,6 +2534,22 @@
         ]
       },
       "notes": "E35 first of the user-authorized up-to-five existing-path attempts. Clean public source9a09099f170a76469b99ee1f7a177e3429933302; direct parent E34, source group E28, prefix723 with fresh671/697 history. Started2026-11-14T09:52:22Z, ended10:32:33Z.19 decisions=18 act+final finish_episode,21 calls including2 zero-physics query followups.983 transitions=723 replay+158 model+102 controller settle, cleanup0;260 new transitions/13.00 simulation seconds. Actor finished within the20-decision allowance; not decision/step budget exhaustion, review10 or timeout. Client0/simulator0, completed/closed/finished, capturecomplete; fullQC983/983 errors0. Valid raw5/pickup5/dressing0/successfalse; pickup26.85s precedes prefix boundary36.15s, so new suffix points0. Public review observed a changed hanging-cloth shape and the same hand newly visible in robot_1 wrist at899/910, but no confirmed free-rim crossing, retained wrist drape, continuous forearm progression or sleeve exit. Later robot_1 wrist/finger deflection and grasp-side occlusion remained; actor voluntarily finished within the zero-regrasp constraint. All18 model act gripper commands and the entire new suffix retained intent with0; no open commands, without claiming attachment or slip absence. Client internal wall2410.110354016s, actor1473.916868236s, environment883.531751286s including replay; launcher duration has a separate measurement scope. Fixed private backupbefd4675a2da81d63b719dbc514d7495b96112bf force-redownloaded; archive2,285,223,382bytes/SHA,227 manifest entries and225 original files verified unchanged. Same E28 lineage, not independent success or exact cloth checkpoint; training unreviewed. No E35 startpoint promoted without a separate evidence-backed selection."
+    },
+    {
+      "id": "20261114-astra-wrist-body835-001",
+      "status": "completed",
+      "run_id": "20261114-astra-wrist-body835-001",
+      "startpoint_id": "20261114-astra-middle-grip470-retain-001-p835",
+      "method_id": "coordinated-wrist-body-entry-named-query-panel-settle6-profile",
+      "result": {
+        "raw_points": 5.0,
+        "success": false,
+        "review": "docs/collection/reviews/20261114-astra-wrist-body835-001.ko.md",
+        "videos": [
+          "docs/collection/attempts/20261114-astra-wrist-body835-001/overview.mp4"
+        ]
+      },
+      "notes": "E36 second and final attempt of the resumed batch; latest user instruction cancels E37-E39. Clean public sourcef39b0e2fc9407adc1d9ced9765ff89824e90d05a; direct parent E34, source group E28, prefix835 excluding E34 cleanup, fresh787/815 history. Started2026-11-14T10:43:35Z, ended11:11:42Z.11 decisions=10 act+final finish_episode,12 calls including1 zero-physics query followup.933 transitions=835 replay+50 model+48 controller settle across8 settle segments, cleanup0;98 new transitions/4.90 simulation seconds. Actor finished within20-decision allowance; not decision/step budget exhaustion, review10 or timeout. Client0/simulator0, completed/closed/finished, capturecomplete; fullQC933/933 errors0. Valid raw5/pickup5/dressing0/successfalse; pickup26.85s precedes prefix boundary41.75s, so new suffix points0. Public review observed direct entry trials without repeated regrasp/transport and the same forearm newly visible in robot_1 wrist, but the same hand remained beside the yellow grasp corner/housing through933. No confirmed free-rim crossing, retained wrist drape, continuous forearm progression or sleeve exit.10 acts comprised5 entry/lowering trials,2 wrist-direction adjustments,1 arm retraction and2 model neutral observations. All model-act gripper values and all98 new transitions retained intent with0; no open commands, without claiming attachment or slip absence. Actual joint/grasp displacement and settling response differed; public state does not establish a hidden contact cause. Fixed private backupdcf059881e4e6c103dc8206438a70eb1b8ccb26f force-redownloaded; archive2,119,594,428bytes/SHA,155 manifest entries and153 original files verified unchanged. All10 new model acts had base yaw0, with2 wrist-yaw adjustments; precise base/forearm alignment was not established merely by the strategy instruction. Client internal wall1686.9993665s, actor806.639609267s, environment832.21152184s including replay735.6778816s and new environment96.5336403s. Same E28 lineage, not independent success or exact cloth checkpoint; training unreviewed. No E36 startpoint promoted; no additional demonstration is authorized after E36."
     }
   ]
 }

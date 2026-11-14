@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="104" viewBox="0 0 860 104" role="img" aria-labelledby="title desc">
+  <title id="title">E00–E36 통합 분석 보고서 PDF 열기</title>
+  <desc id="desc">사용자 관찰, Codex 실행 분석, 연구 시사점과 다음 직접 조작 계획을 정리한 18장 슬라이드 PDF</desc>
+  <rect width="860" height="104" rx="12" fill="#142B45"/>
+  <rect width="7" height="104" rx="3" fill="#57CEC2"/>
+  <rect x="24" y="25" width="56" height="54" rx="8" fill="#28506B"/>
+  <text x="52" y="59" text-anchor="middle" fill="#8EE5D9" font-family="Arial,sans-serif" font-size="18" font-weight="700">PDF</text>
+  <text x="102" y="45" fill="#FFFFFF" font-family="Arial,Apple SD Gothic Neo,Malgun Gothic,sans-serif" font-size="23" font-weight="700">E00–E36 통합 분석 보고서</text>
+  <text x="102" y="74" fill="#CDDEE9" font-family="Arial,Apple SD Gothic Neo,Malgun Gothic,sans-serif" font-size="15">사용자 관찰 · Codex 분석 · 연구 시사점 · 다음 직접 조작 계획</text>
+  <text x="813" y="59" text-anchor="middle" fill="#8EE5D9" font-family="Arial,sans-serif" font-size="29">→</text>
+</svg>

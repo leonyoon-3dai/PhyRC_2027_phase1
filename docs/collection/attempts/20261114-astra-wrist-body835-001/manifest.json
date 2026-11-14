@@ -1,0 +1,418 @@
+{
+  "schema": "phyrc-public-attempt-report-v1",
+  "attempt": {
+    "run_id": "20261114-astra-wrist-body835-001",
+    "parent_attempt": "20261114-astra-middle-grip470-retain-001",
+    "retry_reason": "Preserve the useful near-wrist shape, align the supported free span with the same visible wrist and connected forearm, then compare one short bodyward entry movement before inspecting the result.",
+    "source_group": "20261113-astra-side-hem-fresh-001",
+    "source": "gpt",
+    "mode": "dressing",
+    "strategy": "coordinated-wrist-body-entry",
+    "model": "gpt-6-astra",
+    "reasoning_effort": "ultra",
+    "prompt_sha256": "375db33656f835334fb575d24d247250a8d6e46f1e349bfe4adb3deedb01282b",
+    "status": "completed",
+    "finished": true,
+    "started_at_utc": "2026-11-14T10:43:35Z",
+    "ended_at_utc": "2026-11-14T11:11:42Z",
+    "decisions_requested": 20,
+    "decisions_completed": 11,
+    "actor_calls_attempted": 12,
+    "actor_call_wall_s": 806.6396092669947,
+    "model_internal_inference_wall_s": null,
+    "actor_call_timing_scope": "public staging + Docker/CLI startup + request/response; internal model time unavailable",
+    "environment_dispatch_wall_s": 832.2115218399886,
+    "wall_s": 1686.9993665000002,
+    "simulation_time_s": 46.65,
+    "simulation_steps": 933,
+    "acknowledged_simulation_steps": 933,
+    "recorded_simulation_steps": 933,
+    "capture_complete": true,
+    "capture_termination_reason": "operator_finished",
+    "human_intervention": false,
+    "quality_status": "unreviewed",
+    "input_profile": "five_public_RGB_images_all_public_state_and_16x16_depth_medians_with_first_call_same_episode_replay_RGB_history_with_current_wrist_depth_panel",
+    "actor_backend": "exec",
+    "plan_size": 1,
+    "plan_step_budget": 20,
+    "plan_execution": "single_decision",
+    "review_threshold_raw_points": 10,
+    "pickup_hold_target_simulation_s": null,
+    "replay_steps_completed": 835,
+    "policy_suffix_start_step": 835,
+    "new_recorded_suffix_steps": 98,
+    "activity": "closed",
+    "pixel_depth_query": {
+      "enabled": true,
+      "max_queries_per_observation": 1,
+      "max_points": 8,
+      "queries_completed": 1,
+      "followup_calls": 1,
+      "collector_idle_timeout_s": 480.0,
+      "model_call_timeout_s": 180.0
+    },
+    "named_actions": {
+      "schema": "phyrc-named-actions-v1",
+      "robot_order": [
+        "robot_0",
+        "robot_1"
+      ],
+      "channel_order": [
+        "base_forward",
+        "base_left",
+        "base_CCW_yaw",
+        "lift",
+        "arm_extension",
+        "wrist_yaw",
+        "wrist_pitch",
+        "wrist_roll",
+        "gripper"
+      ],
+      "official_dtype": "float32",
+      "value_transform": "none",
+      "validation": "existing_official_action_validator"
+    },
+    "continuation": {
+      "resume_kind": "action_replay",
+      "parent_attempt": "20261114-astra-middle-grip470-retain-001",
+      "source_group": "20261113-astra-side-hem-fresh-001",
+      "source_episode": "demo_0",
+      "source_policy_sha256": "dfcb2761b94816b520f8a418f73bfd14a4e52aca757fdeae87b0d73a4c800da5",
+      "source_capture_sha256": "d3f27555be1cd421088a66a9cfa8bc512e81a6f02955dfab8ae26572ddd0a74c",
+      "source_validation_sha256": "36345f6e33f552ae0dd9bf00a3f3e747be6d5c93a231afa318805449d9e135fe",
+      "source_steps": 836,
+      "replay_steps": 835,
+      "source_start_step": 0,
+      "source_end_step_exclusive": 835,
+      "bitwise_physics_restored": false,
+      "fresh_actor": true,
+      "replay_validation": "actions_reexecuted_new_state_recorded"
+    },
+    "post_action_settle": {
+      "enabled": true,
+      "requested_steps": 6,
+      "trigger": "nonzero_motion_act",
+      "segments_completed": 8,
+      "simulation_steps": 48,
+      "environment_dispatch_wall_s": 46.74369409399878,
+      "budget_capped_segments": 0,
+      "budget_skipped_segments": 0
+    },
+    "error": null,
+    "actor_usage": {
+      "input_tokens": 981571,
+      "cached_input_tokens": 784768,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 19880,
+      "reasoning_output_tokens": 17078
+    },
+    "actor_usage_scope": "sum_of_observed_thread_usage",
+    "actor_usage_accounting": {
+      "schema": "phyrc-token-accounting-v2",
+      "cli_usage_scope": "thread_cumulative",
+      "aggregate_scope": "sum_of_observed_thread_usage",
+      "fully_known": true,
+      "observed_usage": {
+        "input_tokens": 981571,
+        "cached_input_tokens": 784768,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 19880,
+        "reasoning_output_tokens": 17078
+      },
+      "calls_recorded": 12,
+      "unknown_call_indices": [],
+      "unknown_usage_is_zero": false,
+      "cached_input_is_subset_of_input": true,
+      "reasoning_output_is_subset_of_output": true,
+      "threads": [
+        {
+          "thread_index": 0,
+          "baseline": "fresh_attempt_thread_zero",
+          "last_observed_cumulative_usage": {
+            "input_tokens": 981571,
+            "cached_input_tokens": 784768,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 19880,
+            "reasoning_output_tokens": 17078
+          },
+          "last_accepted_cumulative_usage": {
+            "input_tokens": 981571,
+            "cached_input_tokens": 784768,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 19880,
+            "reasoning_output_tokens": 17078
+          }
+        }
+      ]
+    },
+    "code": {
+      "commit": "f39b0e2fc9407adc1d9ced9765ff89824e90d05a",
+      "working_tree_modified": false
+    }
+  },
+  "capture": {
+    "schema": "participant-live-capture-v2",
+    "complete": true,
+    "termination_reason": "operator_finished",
+    "raw_archive": false,
+    "wall_s": 1683.1592276610008,
+    "requests": 115,
+    "steps": 933,
+    "idle_render_calls": 0,
+    "idle_render_wall_s": 0,
+    "evaluation_enabled": true,
+    "evaluation_valid": true
+  },
+  "quality": {
+    "schema": "phyrc-capture-validation-v1",
+    "quality_passed": true,
+    "training_approval": "unreviewed",
+    "scope": "immediate_sensor_capture",
+    "total_transitions": 933,
+    "validated_transitions": 933,
+    "available": true,
+    "checks": [
+      "manifest_sha256",
+      "file_episode_complete",
+      "public_observation_schema",
+      "all_transition_action_shape_dtype_range",
+      "actual_previous_action",
+      "0.05s_intervals",
+      "contiguous_12_physics_ticks",
+      "all_observation_continuity",
+      "finite_numeric_arrays",
+      "terminal_markers",
+      "evaluation_label_consistency"
+    ],
+    "error_count": 0,
+    "episodes": [
+      {
+        "episode": "demo_0",
+        "transitions": 933,
+        "complete": true,
+        "simulation_seconds": 46.650002432987094,
+        "quality_passed": true
+      }
+    ]
+  },
+  "evaluation": {
+    "evaluated": true,
+    "valid": true,
+    "raw_points": 5.0,
+    "success": false,
+    "score_status": "no_dressing_points",
+    "final_score": 0.0,
+    "breakdown": {
+      "pickup": 5.0,
+      "first_sleeve": 0.0,
+      "opposite_shoulder": 0.0,
+      "second_sleeve": 0.0,
+      "left_upper_arm": 0,
+      "right_upper_arm": 0,
+      "neck": 0.0,
+      "front_orientation": 0.0
+    },
+    "milestone_times_s": {
+      "pickup": 26.849999999999998,
+      "first_sleeve": null,
+      "opposite_shoulder": null,
+      "second_sleeve": null,
+      "neck": null,
+      "front_orientation": null
+    },
+    "max_raw_points": 50.0,
+    "success_evaluated": true,
+    "rate_points": 0.0,
+    "max_rate_points": 45.0,
+    "task_time_s": 0.0,
+    "elapsed_episode_time_s": 46.65,
+    "first_contact_time_s": 39.8875,
+    "last_score_award_time_s": null,
+    "dressing_completed_at_s": null,
+    "rate_rule": "pickup-excluded-last-award-v9",
+    "scoring_revision": "pickup-excluded-last-award-v9",
+    "score_unit": "points/s"
+  },
+  "review_gate": {
+    "schema": "phyrc-review-gate-v2",
+    "run_id": "20261114-astra-wrist-body835-001",
+    "threshold_raw_points": 10,
+    "policy_input_changed": false,
+    "status": "collector_ended_before_gate",
+    "last_observed_raw_points": 5.0,
+    "acknowledged_steps": 933,
+    "collector_status": "completed"
+  },
+  "source_files": {
+    "trace/attempt.json": {
+      "sha256": "e14946bb353e56728be8186896510ca7bf0e93bfc417819dc8a674236c164bb5",
+      "bytes": 96917
+    },
+    "trace/prompt.txt": {
+      "sha256": "375db33656f835334fb575d24d247250a8d6e46f1e349bfe4adb3deedb01282b",
+      "bytes": 23515
+    },
+    "trace/decisions.jsonl": {
+      "sha256": "6f71de9826b58e2f5e158217efdc8828581ac1818ab569342a50cfb7bab3ab72",
+      "bytes": 156008
+    },
+    "trace/review_gate.json": {
+      "sha256": "f860a7b5485c84cd5ea888035814834b39f66d1f064ae6e331ed0f59b1489645",
+      "bytes": 368
+    },
+    "capture/capture.json": {
+      "sha256": "e8009427fc8cd81f7962a78f15119b6b381dd561fbe54af23c106ed9a134feda",
+      "bytes": 537
+    },
+    "capture/policy.hdf5": {
+      "sha256": "51205acea98ce25ac72520de1ddad846517f814856b0db4ccf1949be05981087",
+      "bytes": 2442186132
+    },
+    "capture/audit.hdf5": {
+      "sha256": "36539afb60fd2c496a57884d18cd6505ceb96a5977b7b75dd333c2b71129beba",
+      "bytes": 191909
+    },
+    "capture/evaluation_summary.json": {
+      "sha256": "77278c6689e9340eb755ed5fecbc4044f34b3f39c4239bbd2c724ed196b49868",
+      "bytes": 33012
+    },
+    "capture/validation.json": {
+      "sha256": "65689b1b57e979f5f64b5d1ba86bfbeb2f4d9c72428950e8f570a548520cd746",
+      "bytes": 1492
+    },
+    "capture/score_events.jsonl": {
+      "sha256": "cb1be97bf6c29990b88ac6485301cfa6f2c1a0fa9113f90a882c08abe911ddcf",
+      "bytes": 1780
+    }
+  },
+  "unrecognized_events_omitted": 2,
+  "publication_review": "generated_allowlisted_subset_requires_repository_review",
+  "decision_reason_scope": "final_action_explanation_only",
+  "artifacts": {
+    "README.ko.md": {
+      "sha256": "8a7411cbb9b8058c6a8fbcba48c7654e26835b2b59c0c6cbb0ee0da3b04603db",
+      "bytes": 36017
+    },
+    "decisions.jsonl": {
+      "sha256": "51323df968694ab85ff9ca1dfea3a92fbe4017b6ef104b31e14fc16275b6c921",
+      "bytes": 142772
+    },
+    "images/final-overview.png": {
+      "sha256": "c44550bad2915c7d401e91d057451b4ca94be7134cc7fa27dd86394adacf957b",
+      "bytes": 72004
+    },
+    "images/final-robot_0_head.png": {
+      "sha256": "31ebca123326d3076f9f8371a86f8825666c707e0f60205e00c426aa835c9a88",
+      "bytes": 78179
+    },
+    "images/final-robot_0_wrist.png": {
+      "sha256": "333bf7530b30298c436d00532f6070bac92a0edcf5f44109f5a00c2f46944183",
+      "bytes": 29808
+    },
+    "images/final-robot_1_head.png": {
+      "sha256": "36d5dd6773ce7af6aa10c23d60ba09b563d1fd079a67e426450219cbe63b1c31",
+      "bytes": 82487
+    },
+    "images/final-robot_1_wrist.png": {
+      "sha256": "ba1cbf4c1c2c46069ec8c372094a6d616be3b8d59cdfeab3695a9039816adda5",
+      "bytes": 56771
+    },
+    "images/initial-overview.png": {
+      "sha256": "0bbef152a1a03f5fb5424deaa0f41c9287d81362ebd45afda5e164bd1986b8ee",
+      "bytes": 67249
+    },
+    "images/initial-robot_0_head.png": {
+      "sha256": "30d886c8594b7e079a9cbf737c941190c63bd5f0dce7e3874baca98412e64c72",
+      "bytes": 61892
+    },
+    "images/initial-robot_0_wrist.png": {
+      "sha256": "8923fd6b83666a1523d6e292265942f767edc63401ce5a52a65f78da5c5bf90b",
+      "bytes": 56222
+    },
+    "images/initial-robot_1_head.png": {
+      "sha256": "eb2a6e5bfd9ac4aa7601e8d9c23fa198e9cd21157137928b7f51e1b7337d0ebb",
+      "bytes": 62912
+    },
+    "images/initial-robot_1_wrist.png": {
+      "sha256": "f61d2ce9c4e97970dd9b15fc093e9b08f1db0072cf431848d8ba9201226bbd7d",
+      "bytes": 58317
+    },
+    "overview.mp4": {
+      "sha256": "54be1326d6ef35102857bbfb3ab9f0f83344733d0cc27e12344ab54a9addc292",
+      "bytes": 291037
+    },
+    "prompt.txt": {
+      "sha256": "375db33656f835334fb575d24d247250a8d6e46f1e349bfe4adb3deedb01282b",
+      "bytes": 23515
+    },
+    "score-events.jsonl": {
+      "sha256": "57c699f445fc2688fb409b741de651d43199375c4421c4de71efdfd5f42cff48",
+      "bytes": 1780
+    }
+  },
+  "media": {
+    "available": true,
+    "transitions": 933,
+    "images": [
+      "images/initial-overview.png",
+      "images/initial-robot_0_wrist.png",
+      "images/initial-robot_1_wrist.png",
+      "images/initial-robot_0_head.png",
+      "images/initial-robot_1_head.png",
+      "images/final-overview.png",
+      "images/final-robot_0_wrist.png",
+      "images/final-robot_1_wrist.png",
+      "images/final-robot_0_head.png",
+      "images/final-robot_1_head.png"
+    ],
+    "video": {
+      "created": true,
+      "requested": true,
+      "file": "overview.mp4",
+      "source": "obs/overview_rgb",
+      "source_policy_hz": 20,
+      "available_frames": 933,
+      "exported_frames": 933,
+      "maximum_frames": 2000,
+      "truncated": false,
+      "sampling": "contiguous_prefix_no_frame_skipping",
+      "slowdown_factor": 1.0,
+      "playback_fps": 20.0,
+      "playback_duration_s": 46.65,
+      "includes_wall_time_waits": false
+    },
+    "status": "recorded_public_frames",
+    "episode": "demo_0",
+    "file_complete": true,
+    "initial_simulation_time_s": 1.5250000795349479,
+    "final_simulation_time_s": 48.17500251252204
+  },
+  "milestone_path": {
+    "evaluation_valid": true,
+    "award_batches": [
+      {
+        "physics_tick": 6444,
+        "transition_boundary_step": 537,
+        "step_alignment_exact": true,
+        "evaluation_time_s": 26.849999999999998,
+        "public_simulation_time_s": 28.375000079534946,
+        "batch_index": 0,
+        "raw_points_before": 0.0,
+        "raw_points_after": 5.0,
+        "changes": [
+          {
+            "stage": "pickup",
+            "before": 0.0,
+            "after": 5.0
+          }
+        ],
+        "simultaneous": false,
+        "order_within_batch": "not_inferred"
+      }
+    ],
+    "success_events": [],
+    "time_origin_public_simulation_s": 1.5250000795349479,
+    "time_basis": "episode evaluation clock begins after reset; physics_tick/12 is transition boundary",
+    "order_rule": "different ticks chronological; same-tick awards unordered"
+  }
+}

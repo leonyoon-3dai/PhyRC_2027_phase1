@@ -1,0 +1,59 @@
+{
+  "run_id": "20261114-astra-wrist-body835-001",
+  "boundary_exclusive_step": 835,
+  "source_file": "policy.hdf5",
+  "source_sha256": "51205acea98ce25ac72520de1ddad846517f814856b0db4ccf1949be05981087",
+  "source_scope": "closed full-QC public next_obs RGB only",
+  "source_commit": "f39b0e2fc9407adc1d9ced9765ff89824e90d05a",
+  "pixel_transformation": "none",
+  "files": [
+    {
+      "file": "e36-0835-robot_1_head.png",
+      "sha256": "1e59a90db52827a4f7b39a0d59a8d45cd26938d2b37915ef8eef36497b564dda",
+      "dataset": "data/demo_0/next_obs/robot_1_head_rgb",
+      "index": 834,
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "pixel_sha256": "764988b276515a882d52462d93741c7076c07bbb240fa5b6d312cce089887511"
+    },
+    {
+      "file": "e36-0835-robot_0_head.png",
+      "sha256": "082ab777226bfbd2756dcd32044f62ba07d7e998434261c221006c945639c2be",
+      "dataset": "data/demo_0/next_obs/robot_0_head_rgb",
+      "index": 834,
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "pixel_sha256": "4b787a773b3edcda17999f77688b79d766777d8abf70330ef9416fa57b8a92ea"
+    },
+    {
+      "file": "e36-0835-robot_1_wrist.png",
+      "sha256": "b5730fc0b7d831cc71a25df7df883c8bf73b7bb0406ea37b21ad967182e6824c",
+      "dataset": "data/demo_0/next_obs/robot_1_wrist_rgb",
+      "index": 834,
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "pixel_sha256": "79b89d9e0b2a27cd42450e1b7a9aa431bea0aa177c946bfff065edbfac66eb4b"
+    },
+    {
+      "file": "e36-0835-robot_0_wrist.png",
+      "sha256": "b70cb4ddfee500807bb2771b03fa26f2cec94db0d398287d39e772fc1d20afc4",
+      "dataset": "data/demo_0/next_obs/robot_0_wrist_rgb",
+      "index": 834,
+      "shape": [
+        256,
+        256,
+        3
+      ],
+      "pixel_sha256": "61b1550d96e8044f1a3e88f6768beeb805fdf5f6c6da6a278f8cf2a6eb46d536"
+    }
+  ]
+}
