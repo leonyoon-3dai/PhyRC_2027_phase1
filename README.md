@@ -24,7 +24,7 @@ https://github.com/user-attachments/assets/d2f347fe-712b-42f3-bdee-69d3fee2a47c
 |:---:|:---:|:---:|:---:|
 | E00–E31 전체 자료 | 옆에서 파지하고 입구 펼치기 | 관측부터 HDF5까지 | 설치·복원·검증·Codex CLI |
 
-**현재 실행·결과는 [STATUS](docs/project/STATUS.md), 다음 조작 조건은 [수집 계획](docs/COLLECTION_PLAN.md)에서 확인합니다.** E31은 더 이른 접근 경계에서16번 움직인 뒤17번째 결정에서 마감했습니다. **5/50·새 구간 득점0·착의0·success=false**이며, 다음 E32는 E28/380에서 중앙 자유 구간의 형상과 첫 손 정렬을 비교하도록 준비 중입니다. [E31 마감](docs/project/sessions/20261113-e31-close.ko.md) / [E32 계획](docs/project/sessions/20261113-e32-plan.ko.md)
+**현재 실행·결과는 [STATUS](docs/project/STATUS.md), 조작 조건은 [수집 계획](docs/COLLECTION_PLAN.md)에서 확인합니다.** E32는 E28/380에서 중앙 자유 구간의 형상과 첫 손 정렬을 비교하도록 시작했습니다. [실제 시작 기록](docs/project/sessions/20261113-e32-start.ko.md). 마지막 마감 E31은 **5/50·새 구간 득점0·착의0·success=false**이며 아래 영상에 보존합니다. E32의 최종 결과는 미확정입니다.
 
 ## 최근 시연
 
@@ -40,7 +40,7 @@ https://github.com/user-attachments/assets/d2f347fe-712b-42f3-bdee-69d3fee2a47c
 
 ![E28 이후 계획: 옷 양옆에서 파지, 아래 입구 펼치기, 한쪽 손목, 반대쪽 손목. 실제 시연이 아닌 개념도.](docs/assets/collection-plan.svg)
 
-**사용자 제안을 반영해 중앙 자유 구간부터 다시 비교합니다.** 넓게 늘어진 모습 자체보다, 입구의 폭·깊이를 유지한 자유 밑단 구간과 같은 손의 정렬을 목표로 합니다. E32는 E28/380에서 유용한 파지를 보존해 형상을 조절하고 운반 후 중앙에 정렬한 뒤 같은 전완을 따라 옷을 진행시키는 계획입니다. 첫 팔 관계를 보존한 반대쪽 진행도 유지합니다. [제안 분석](docs/collection/research/2026-11-13-user-central-span.ko.md). 사용자가 승인한 단일 시연→QC·고정 백업→분석→다음 시연의 자동 반복을 따르며 E31을 실행 중에 변경하지 않았습니다.
+**사용자 제안을 반영해 중앙 자유 구간부터 다시 비교합니다.** 넓게 늘어진 모습 자체보다, 입구의 폭·깊이를 유지한 자유 밑단 구간과 같은 손의 정렬을 목표로 합니다. E32는 E28/380에서 유용한 파지를 보존해 형상을 조절하고 운반 후 중앙에 정렬한 뒤 같은 전완을 따라 옷의 진행을 비교합니다. 첫 팔 관계를 보존한 반대쪽 진행도 유지합니다. [제안 분석](docs/collection/research/2026-11-13-user-central-span.ko.md). 사용자가 승인한 단일 시연→QC·고정 백업→분석→다음 시연의 자동 반복을 따르며 E31을 실행 중에 변경하지 않았습니다.
 
 [단계별 관측 기준과 새 시작점 선택](docs/COLLECTION_PLAN.md)
 

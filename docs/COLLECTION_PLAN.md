@@ -2,9 +2,9 @@
 
 [메인](../README.md) | [시연 목록](EPISODES.md) | [다음 수집](COLLECTION_PLAN.md) | [Astra 코드](ASTRA.md) | [클린 서버](OPERATIONS.md)
 
-**현재: E31을 2026-11-13 23:46:18 UTC에 마감했고 E32는 준비 단계입니다.** E31은17결정(16 act+finish)·19호출·830전이 전수 QC를 통과했고 로컬5/50·새 득점0·착의0·success=false입니다. 사용자 제안을 반영한 다음 중앙 자유 구간 전략은 별도 작업 공간의24개 CPU 검사·독립 검토와 main 통합 뒤 동일24개 재검사를 마쳤습니다. E31 고정 백업도 재다운로드·209개 member 검증을 완료했습니다. [E31 마감](project/sessions/20261113-e31-close.ko.md) / [공개 리뷰](collection/reviews/20261113-astra-diagonal682-001.ko.md) / [E32 계획](project/sessions/20261113-e32-plan.ko.md)
+**현재: E32 `20261113-astra-central380-001`이 2026-11-13 23:59:34 UTC에 시작했습니다.** clean source `0421f8b3c45fd0291455fb278144ce279682dd98`, 실제 attempt의 시작·prefix replay 진입을 확인했습니다. 아래 조건으로 중앙 자유 구간의 형상·같은 손 정렬을 비교하며 replay 완료·후반 행동·최종 결과는 미확정입니다. [E32 시작 기록](project/sessions/20261113-e32-start.ko.md) / [현재 상태·마지막 E31 결과](project/STATUS.md)
 
-| E32 계획 조건 — 아직 시작하지 않음 | 값 |
+| E32 시작 시 적용한 조건 | 값 |
 |---|---|
 | 고유 run / 직접 parent·source group | `20261113-astra-central380-001` / 둘 다 `20261113-astra-side-hem-fresh-001` (E28) |
 | 바꿀 요소 | 출발 경계682→380와 전략을 함께 변경. 중앙 자유 구간 형상·손 정렬 비교 |
@@ -16,7 +16,7 @@
 | 보존 | 유용한 중간 준비·운반 상태도 마감·검수 후 다음 prefix 후보로 보존; 한 묶음의 완전 착의 보장 없음 |
 | 제외 | 실시간 사람 지시 주입·미적용 피드백 큐 활성화·동시 두 번째 simulator |
 
-[E32 분기 계획](project/sessions/20261113-e32-plan.ko.md) / [닫힌 E28 해시·전체 QC·380 경계를 검사한 CPU retry-plan](collection/retry-plans/20261113-e32-e28-380-central-span.json) / [새 전략·검증 범위](collection/research/2026-11-13-central-span-entry.ko.md). 실제 source·UTC 시작 시각은 실행 뒤 attempt로 기록합니다. run ID의 날짜는 생성일이며 실제 시작 시각을 대신하지 않습니다.
+[E32 분기 계획](project/sessions/20261113-e32-plan.ko.md) / [닫힌 E28 해시·전체 QC·380 경계를 검사한 CPU retry-plan](collection/retry-plans/20261113-e32-e28-380-central-span.json) / [새 전략·검증 범위](collection/research/2026-11-13-central-span-entry.ko.md). 실제 source·UTC 시작 시각은 위 시작 기록에 남겼습니다. run ID의 날짜와 자정 뒤 진행 시각을 실제 시작 시각 대신 쓰지 않습니다.
 
 **사용자가 당분간 시연→분석→시연을 자동으로 이어가도록 승인했습니다.** E30 이후에도 매 시도마다 확인을 요청하지 않고, 단일 수집 마감 → 전수 QC·고정 원본 백업 검증 → 공개 관측·별도 점수와 시간 분석 → 다음 방법·유효 출발점 선택 순서로 진행합니다. 기본 한도는 새 결정20개로 유지해 비교하고, 정체 시 같은 예산만 늘리기보다 접근이나 출발점을 바꿉니다. 최대20개는 의무 실행 수가 아니며 `finish_episode`와 기존 종료 조건은 유지합니다. 주요 결과와 변경 이유를 보고하고, 사용자의 모아진 피드백은 다음 시도에 반영합니다. 사용자가 중지하거나 방향을 바꾸면 그 지시를 우선합니다. 미적용 피드백 큐 패치는 이 자동 반복에 포함하지 않습니다.
 

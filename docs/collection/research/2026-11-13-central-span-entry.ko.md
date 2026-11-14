@@ -1,6 +1,6 @@
 # 중앙 자유 구간 진입 전략: 사용자 제안의 다음 실행 반영
 
-사용자가 [넓게 늘어진 중앙 구간으로 첫 손부터 입히는 제안](2026-11-13-user-central-span.ko.md)을 분석대로 반영하도록 요청했다. E31이 실행 중일 때 별도 worktree에서 후보를 준비하고, E31의 전체 원본 보존·고정 원격 복원 검증 뒤에만 main에 통합했다. 실행 중 actor 입력은 바꾸지 않았다. 아직 새 전략의 실제 모델/GPU 시연이나 성능 검증은 수행하지 않았다.
+사용자가 [넓게 늘어진 중앙 구간으로 첫 손부터 입히는 제안](2026-11-13-user-central-span.ko.md)을 분석대로 반영하도록 요청했다. E31이 실행 중일 때 별도 worktree에서 후보를 준비하고, E31의 전체 원본 보존·고정 원격 복원 검증 뒤에만 main에 통합했다. 실행 중 actor 입력은 바꾸지 않았다. 아래 검증은 첫 실행 전의 CPU·통합 검토 범위다. 실제 시연 상태와 성과는 시작·마감 기록으로 따로 확인한다.
 
 새 선택 경로는 `coordinated-central-span-entry`다. 기존 `TASK + COORDINATED_TASK + SIDE_HEM_WRISTS_TASK`에 `CENTRAL_SPAN_ENTRY_TASK`와 기존 saturation 규칙을 조합한다. 기존 task 상수·기본값·옛 경로는 유지한다. 새 경로는 dressing/exec/plan1을 요구한다. 공식 입력·float32(2,9) 행동·물리·평가·query schema는 바뀌지 않는다.
 
@@ -18,3 +18,5 @@
 - client SHA256: `4797a5d010ffb8b0d8d6faf127aabdc57431b34be8ee78f4bcd59524dcae2899`. 실제 모델 순응·층 분리·착의 성공·새 전체 CPU suite의 결과로 확대하지 않는다.
 
 다음 선택은 [E32 계획](../../project/sessions/20261113-e32-plan.ko.md): E28/380·새264/332 history·최대20결정/1400전이/review10이다. E31의 마지막830은 새 출발점으로 승격하지 않았다. 출발점과 방법이 함께 달라지므로 결과를 하나의 원인 효과로 주장하지 않는다. [E31 공개 검토](../reviews/20261113-astra-diagonal682-001.ko.md) / [결정·시간 비교](../reviews/20261113-decision-budget/E31/README.ko.md).
+
+실행 후 연결: [E32 시작 기록](../../project/sessions/20261113-e32-start.ko.md)은2026-11-13 23:59:34 UTC의 실제 시작·clean source를 남긴다. 이 방법 문서의 준비 검증을 새 시연 성공으로 확대하지 않는다.

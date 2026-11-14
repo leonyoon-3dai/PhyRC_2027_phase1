@@ -2,7 +2,7 @@
 
 # 양측 지지 출발점과 5→10점 비교 목록
 
-**마감 색인은 E31까지 포함합니다.** E31은 E28/682에서 같은 대각선 전략을17결정·19호출·830전이로 마감했고 QC830/830·고정 백업209members 검증을 마쳤습니다. raw5/50·새 구간 득점0·착의0·success=false입니다. 새 출발점은 승격하지 않았습니다. 다음 E32의 중앙 자유 구간 방법은 main 통합·CPU 검사를 마쳤으나 실제 미실행이므로 `proposed`입니다. [현재 상태](../../project/STATUS.md)와 [E32 계획](../../project/sessions/20261113-e32-plan.ko.md)을 따르며 run/outcome은 마감 후에만 추가합니다.
+**마감 색인은 E31까지 포함합니다.** E31은17결정·19호출·830전이·QC830/830·고정 백업209members 검증을 마쳤고 raw5/50·새 득점0·착의0·success=false입니다. 새 E31 출발점은 승격하지 않았습니다. 중앙 자유 구간 방법의 실행 상태는 [STATUS](../../project/STATUS.md), E32의 실제 source·시각은 [시작 기록](../../project/sessions/20261113-e32-start.ko.md)을 따릅니다. 카탈로그의 실행 결과는 마감 후에 갱신합니다.
 
 **지지를 유지한 공개 관측 구간을 출발점으로 모으고, 그 뒤 바꾼 방법과 결과를 연결하는 연구용 목록입니다.** [정본 JSON](catalog.v1.json)을 Git에 보존하고, [조회 도구](../../../scripts/startpoint_catalog.py)로 SQLite 색인을 재생성합니다. 기록을 찾는 도구이며 시뮬레이터를 조작하거나 actor 입력을 만들지 않습니다.
 
@@ -133,4 +133,4 @@ E30은 E28/738의 같은 source group에서738재실행+87모델+90정착=915전
 
 E31은682재실행+58모델+90정착=830전이,17결정(16act+finish)·19호출(질의후속2회)로 마감했다. 픽업5점은 replay371이고 새148전이·7.4시뮬레이션초의 득점은0이다. 수평 접근·자세 복구 뒤에도 같은 첫 팔 진행은 미확인이다. [공개 리뷰](../reviews/20261113-astra-diagonal682-001.ko.md) / [시간 분석](../reviews/20261113-decision-budget/E31/README.ko.md). 고정9254bf1e의 강제 재다운로드·archive SHA/크기·209members를 [검증](../../project/sessions/20261113-e31-backup-verification.json)했다. 새 E31 startpoint는 만들지 않았다.
 
-E32는 E28/380에서 `coordinated-central-span-entry`로 형상·같은 손의 자유 구간 정렬을 비교하는 계획이다. [방법과 검증](../research/2026-11-13-central-span-entry.ko.md)을 연결하며 실제 모델 실행 전이라 proposed로 둔다. 추천 history는264/320에서264/332로 갱신했다.264 열린 테이블 준비→332 닫힌 초기 동행→현재380 raised concavity의 맥락을 보며, 기존320–380 근거 창은 유지했다. 새 replay에서 다시 기록해야 하고 현재380 관측이 우선이다. 같은 계보의 기존 점수·지지 가설을 새 현재 상태 인증으로 복사하지 않는다.
+E32는 E28/380에서 `coordinated-central-span-entry`로 형상·같은 손의 자유 구간 정렬을 비교하는 계획이다. [방법과 검증](../research/2026-11-13-central-span-entry.ko.md)을 연결하며 실행 결과가 아직 마감되지 않아 준비 시점의 proposed 기록을 유지하며 마감 후 갱신한다. 추천 history는264/320에서264/332로 갱신했다.264 열린 테이블 준비→332 닫힌 초기 동행→현재380 raised concavity의 맥락을 보며, 기존320–380 근거 창은 유지했다. 새 replay에서 다시 기록해야 하고 현재380 관측이 우선이다. 같은 계보의 기존 점수·지지 가설을 새 현재 상태 인증으로 복사하지 않는다.

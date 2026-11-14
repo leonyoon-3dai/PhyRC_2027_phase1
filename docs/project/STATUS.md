@@ -2,7 +2,9 @@
 
 [메인](../../README.md) | [시연 목록](../EPISODES.md) | [다음 수집](../COLLECTION_PLAN.md) | [Astra 코드](../ASTRA.md) | [클린 서버](../OPERATIONS.md)
 
-**E31을 마감했고 E32는 아직 시작하지 않았습니다.** E31은 **5/50·픽업5·착의0·success=false**, 새 구간 득점0입니다.50점 목표는 달성하지 못했습니다. E32 `20261113-astra-central380-001`은 E28/380·새 history264/332에서 중앙 자유 밑단 구간을 유지하고 같은 손을 정렬하는 `coordinated-central-span-entry` 비교로 준비했습니다. 코드 통합·24개 CPU 재검사와 E31 고정 원본 백업 검증을 마쳤습니다. [E32 계획](sessions/20261113-e32-plan.ko.md) / [새 방법](../collection/research/2026-11-13-central-span-entry.ko.md)
+**E32 `20261113-astra-central380-001`이 2026-11-13 23:59:34 UTC에 시작했습니다.** clean source `0421f8b3c45fd0291455fb278144ce279682dd98`, 직접 parent/source group E28, prefix380·새 history264/332, `coordinated-central-span-entry`, 최대20개 새 결정·총1400전이·review10입니다. 실제 attempt의 시작과 prefix replay 진입을 확인했으며 replay 완료·새 행동·최종 득점·QC는 아직 확인하지 않았습니다. 자정 뒤의 진행 시각을 시작 시각으로 바꾸지 않습니다. [E32 시작 기록](sessions/20261113-e32-start.ko.md) / [현재 실행 조건](../COLLECTION_PLAN.md)
+
+**아래 표는 마지막 마감 E31의 결과입니다.** 로컬5/50·픽업5·착의0·success=false, 새 구간 득점0이며50점 목표는 달성하지 못했습니다.
 
 | 구분 | 확인된 E31 상태 |
 |---|---|
