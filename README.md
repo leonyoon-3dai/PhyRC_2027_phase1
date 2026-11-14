@@ -28,7 +28,7 @@ https://github.com/user-attachments/assets/d2f347fe-712b-42f3-bdee-69d3fee2a47c
 |:---:|:---:|:---:|:---:|
 | E00–E32 전체 자료 | 옆에서 파지하고 입구 펼치기 | 관측부터 HDF5까지 | 설치·복원·검증·Codex CLI |
 
-**클린 서버에서 최신 파지 제안으로 시연 1회 재개를 준비하고 있습니다.** [이번 세션](docs/project/sessions/20261114-e33-middle-grip-resume.ko.md)에서 검증과 실행 상태를 확인합니다. [현재 상태](docs/project/STATUS.md)와 [클린 서버 인계](docs/project/sessions/20261114-paused-clean-server-handoff.ko.md)를 보존합니다. E32는 불완전 capture로 전체 QC 실패이며 진단 자료로만 보관합니다. 마지막 정상 마감 E31은 **5/50·새 득점0·착의0·success=false**입니다. 종전 E28/632 후보는 보존하며 이번 실행 조건은 [COLLECTION_PLAN](docs/COLLECTION_PLAN.md#이번-e33-실행-조건)을 따릅니다.
+**클린 서버에서 최신 파지 제안으로 우선 시연3회를 순차 수집하도록 재개를 준비하고 있습니다.** [이번 세션](docs/project/sessions/20261114-e33-middle-grip-resume.ko.md)에서 검증과 실행 상태를 확인합니다. [현재 상태](docs/project/STATUS.md)와 [클린 서버 인계](docs/project/sessions/20261114-paused-clean-server-handoff.ko.md)를 보존합니다. E32는 불완전 capture로 전체 QC 실패이며 진단 자료로만 보관합니다. 마지막 정상 마감 E31은 **5/50·새 득점0·착의0·success=false**입니다. 종전 E28/632 후보는 보존하며 이번 실행 조건은 [COLLECTION_PLAN](docs/COLLECTION_PLAN.md#이번-e33-실행-조건)을 따릅니다.
 
 ## 최근 시연
 

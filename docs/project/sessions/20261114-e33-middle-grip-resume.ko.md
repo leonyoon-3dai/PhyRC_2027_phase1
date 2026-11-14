@@ -17,3 +17,9 @@
 마감 시 실제 시작/종료, source snapshot, replay/model/settle/cleanup 전이, 모델 호출·시간, 파일 complete, 전수 QC, 별도 점수와 영상, 고정 백업을 각각 기록한다. 단계별 시각적 진행과 착의 득점은 별개이며 학습 승인은 자동 부여하지 않는다.
 
 [검증된264 CPU 분기 계획](../../collection/retry-plans/20261114-e33-e28-264-middle-grip.json)과 [추가 에이전틱 연구 제안](../../collection/research/2026-11-14-agentic-collection-proposal.ko.md)을 보존한다. 연구 제안의 구간 sampler·실패 기억·교정쌍 학습은 구현하지 않았다.
+
+## 같은 세션의 추가 수집 요청과 연결 검사
+
+사용자가 “기존 방법으로 시연 몇번 수집을 더 진행보면서 다른 연구나 시스템의 장점을 어떻게 적용할지 함께 고민”하도록 요청했다. 우선3회를 기존 Astra 방식으로 순차 수집하고 각 결과를 근거로 다음 경계·조작을 선택한다. 새 연구 시스템 기능의 동시 도입은 하지 않는다. 이후 E34/E35의 출발점은 E33 결과 전에 확정하지 않는다.
+
+실제 GPU smoke는 종료0과 `PHYRC-SMOKE-PASS`를 확인했다. 첫 초기화 약256초이며 착의 성공 검사가 아니다. wiring001은 detached supervisor의 umask077을 상속해 prompt 파일을 simulator UID1234가 읽지 못했다. 모델 호출0·물리전이0에서 실패했고 원본을 보존했다. launcher 원본은 유지하고 검토된 명령 스크립트에 `umask 027`을 넣어 같은 작업 그룹의 trace 접근/프롬프트 읽기를 허용한다. actor 인증 디렉터리700·인증파일600은 그대로다. 재검사는 새 wiring002로 진행한다.

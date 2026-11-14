@@ -1,6 +1,6 @@
 # 클린 서버 시작 안내
 
-**2026-11-14 재개 안내:** 최신 사용자 요청으로 시연1회를 준비한다. [현재 계획](COLLECTION_PLAN.md#이번-e33-실행-조건)과 [이번 세션](project/sessions/20261114-e33-middle-grip-resume.ko.md)을 우선한다. 아래 과거 인계의 중지 문구·미실행632 후보는 이 요청 이전 기록이다.
+**2026-11-14 재개 안내:** 최신 추가 요청으로 기존 수집 방식의 시연3회를 순차 준비한다. [현재 계획](COLLECTION_PLAN.md#이번-e33-실행-조건)과 [이번 세션](project/sessions/20261114-e33-middle-grip-resume.ko.md)을 우선한다. 아래 과거 인계의 중지 문구·미실행632 후보는 이 요청 이전 기록이다.
 
 [메인](../README.md) | [시연 목록](EPISODES.md) | [다음 수집](COLLECTION_PLAN.md) | [Astra 코드](ASTRA.md) | [클린 서버](OPERATIONS.md)
 
