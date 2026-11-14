@@ -1,0 +1,58 @@
+{
+  "schema": "phyrc-clean-server-check-v1",
+  "date_utc": "2026-11-14",
+  "initial_checkout": "112cc5145dda4203ddce478473ddd70e7f17b3bb",
+  "collection_source_commit": "464203860304631d00a8acd6747b86c23cfded61",
+  "hf_cli": "2.4.0",
+  "codex_cli": "0.166.0",
+  "model": "gpt-6-astra",
+  "effort": "ultra",
+  "cpu_tests": {
+    "passed": true,
+    "count": 352,
+    "seconds": 48.542
+  },
+  "detached_launcher_cpu_tests": 9,
+  "umask027_uid1234_probe_passed": true,
+  "restores": [
+    {
+      "revision": "230c90a5d7abe76216311590f7764a65c19a946d",
+      "archive_sha256": "b38a8136991b6a851c4b4dfabbb9f98a1549b8f56cd7d2586228c823101bfdfc",
+      "archive_bytes": 1687186946,
+      "members_verified": 403,
+      "merged_files": 400,
+      "verified": true
+    },
+    {
+      "revision": "e1d32f9f9ea82438f90bc379452abf83a150999b",
+      "archive_sha256": "d087a7899f60fffd7e9541d13215585ef6b462f3e0d71c66e0649fd0172ed34b",
+      "archive_bytes": 11779782360,
+      "members_verified": 5168,
+      "merged_files": 5166,
+      "verified": true
+    }
+  ],
+  "asset_lock_files_verified": 8,
+  "build_passed": true,
+  "prepare_passed": true,
+  "gpu_smoke": {
+    "exit_code": 0,
+    "pass_marker": true,
+    "dressing_performance_claimed": false
+  },
+  "wiring": {
+    "run_id": "20261114-clean-server-wiring-002",
+    "calls": 3,
+    "transitions": 3,
+    "qc_passed": true,
+    "finished": true,
+    "simulator_returncode": 0
+  },
+  "failed_wiring_001": {
+    "cause": "Inherited umask077 prevented simulator UID1234 from reading prompt file",
+    "model_calls": 0,
+    "transitions": 0,
+    "original_preserved": true
+  },
+  "secrets_included": false
+}

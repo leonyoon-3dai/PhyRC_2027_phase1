@@ -721,6 +721,24 @@
         "revision": "91f91b06e39bb8257b8c888675b74d747261edd4",
         "sha256": "eadd08aff5ab09a93828bf3f2177d28efcedde8d3a7f4d9d927cb62202a1889d"
       }
+    },
+    {
+      "id": "20261114-astra-middle-grip264-001",
+      "kind": "demonstration",
+      "source_group": "20261113-astra-side-hem-fresh-001",
+      "source_commit": "464203860304631d00a8acd6747b86c23cfded61",
+      "source_working_tree_modified": false,
+      "parent_run_id": "20261113-astra-side-hem-fresh-001",
+      "replay_prefix_steps": 264,
+      "replay_completed_steps": 264,
+      "recorded_transitions": 471,
+      "qc_status": "passed",
+      "backup": {
+        "status": "verified",
+        "receipt": "docs/project/sessions/20261114-e33-backup-verification.json",
+        "revision": "0a79834c426d1be7b325ff5010027752751d5cd5",
+        "sha256": "eb1984407e645f2a2a8633185058a144bdefdd98a08385b97ff7305c7091c6f9"
+      }
     }
   ],
   "startpoints": [
@@ -1103,12 +1121,16 @@
       "id": "20261113-astra-side-hem-fresh-001-p264",
       "source_run_id": "20261113-astra-side-hem-fresh-001",
       "boundary": 264,
-      "history": [],
+      "history": [
+        242,
+        254
+      ],
       "support": {
         "status": "uncertain",
         "evidence": [
           "docs/collection/reviews/20261113-astra-side-hem-fresh-001.ko.md",
-          "Selected public observation candidate: preclose setup/dwell comparison. Not an all-frame continuous support review."
+          "Selected public observation candidate: preclose setup/dwell comparison. Not an all-frame continuous support review.",
+          "docs/project/sessions/20261114-e33-middle-grip-resume.ko.md: E33 actually used fresh replay history242/254 at this boundary; these images do not certify current support."
         ],
         "uncertainty": [
           "Local cloth following, candidate opening and body/hand relation are public visual hypotheses; independent bilateral load bearing, exact hem lips and sleeve passage are not certified.",
@@ -1265,6 +1287,34 @@
       "score_at_boundary": {
         "raw_points": 5.0,
         "evidence": "output/collections/20261113-astra-side-hem-fresh-001/evaluation/20261113T204406_310115Z_740f8e/score_samples.jsonl: exact physics_tick=7584, raw_points=5.0, evaluation_time_s=31.599999999999998; trusted offline projection, never actor input."
+      },
+      "exact_checkpoint": false,
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "20261114-astra-middle-grip264-001-p470",
+      "source_run_id": "20261114-astra-middle-grip264-001",
+      "boundary": 470,
+      "history": [
+        434,
+        454
+      ],
+      "support": {
+        "status": "uncertain",
+        "evidence": [
+          "docs/collection/reviews/20261114-astra-middle-grip264-001.ko.md",
+          "Selected designated RGB boundaries454/470: final robot_1 close changed jaw spacing/local gathering while garment remained table-side. This is a post-close follow-up candidate, not a continuous support certification."
+        ],
+        "uncertainty": [
+          "No confirmed useful vertical body aperture, bilateral load bearing, mannequin-hand approach or sleeve passage. The latest robot_1 grasp has not received a post-close movement/following test.",
+          "Both robots used their initial one-sided regrasp cycle in E33. A fresh run must not silently restart that setup budget. Replay is not an exact cloth checkpoint; inspect current support and residual target following."
+        ],
+        "window_start": 454,
+        "window_end": 470
+      },
+      "score_at_boundary": {
+        "raw_points": 0.0,
+        "evidence": "output/collections/20261114-astra-middle-grip264-001/evaluation/20261114T081355_239094Z_c228cb/score_samples.jsonl: exact physics_tick=5640; only physics_tick/raw_points/evaluation_time_s projected from the closed score sample."
       },
       "exact_checkpoint": false,
       "training_approval": "unreviewed"
@@ -1592,6 +1642,20 @@
         "action_encoding": "named"
       },
       "description": "Opt-in static central-span strategy composed with SIDE_HEM_WRISTS_TASK and unchanged saturation without forced diagonal sequence. Candidate and main integration each passed24 focused CPU tests with independent semantic/contract/source-preservation review. Executed E32 fromE28/380 with fresh264/332 history:20act,256model+120settle,380replay plus2shutdown transitions=758. Capture/root files remain incomplete after input_closed and full QC failed; tested means actual execution, not successful or normal completed data. Public shape/transport and hand-adjacent contact observed, no confirmed passage or new points. E33 planned from validE28/632 with fresh588/614 history and unchanged20decision cap. No live human feedback queue."
+    },
+    {
+      "id": "coordinated-middle-grip-drape-named-query-panel-settle6-profile",
+      "name": "coordinated-middle-grip-drape / named / query / wrist panel / settle6 / profiling",
+      "status": "tested",
+      "axes": {
+        "grasp_arrangement": "accessible inward body-hem candidates, one-sided table-supported relocation within existing per-robot setup limits; verify local cloth following",
+        "entry_target": "candidate body-hem space above one visually tracked mannequin hand and connected forearm",
+        "approach": "retain visible vertical space, align above the same hand, then one short lowering trial followed by observation; no image-up to world-Z assumption",
+        "order": "grasp relocation and support check, shape retention and transport, same-hand descent, forearm progression while preserving support",
+        "view": "five designated public RGB-D views, frozen pixel depth query/camera XYZ and current wrist depth panel; no evaluator input or hidden geometry",
+        "action_encoding": "named"
+      },
+      "description": "Opt-in static strategy composed with SIDE_HEM_WRISTS_TASK and existing saturation guidance. New strategy/central-span regression checks passed13 CPU tests; actual E33 from E28/264 with fresh242/254 history closed normally with471 transitions and full passing QC. E33 used20 act/21 model calls on acquisition, both one-sided grasp relocations and shape tests. Transport, above-hand alignment and lowering were not reached; tested means the strategy executed, not that the complete sequence or dressing succeeded. Raw/pickup/dressing points0, successfalse. No new research memory/sampler or live feedback system was integrated."
     }
   ],
   "attempts": [
@@ -2267,6 +2331,22 @@
         "videos": []
       },
       "notes": "E32 started2026-11-13T23:59:34Z fromclean0421f8b3c45fd0291455fb278144ce279682dd98, directparent/sourcegroupE28.20decisions allact, nofinish_episode. Accepted trace756=380replay+256model+120settle; capture758 includes1collectorstop+1EOFcleanup. Hostexit143; sender/root cause not established. Attempt stays collecting/controller_settle,finishedfalse,simulationsteps756,simulatorreturnnull; originalflags unchanged. Capture completefalse/input_closed/758 and bothHDF5rootcompletefalse; episodecomplete does not override. FullQC checked758/758 but failed exactly3incomplete errors. Recorded evaluatorvalidtrue/raw5/pickup5replayedparent/new0/dressing0/successfalse is diagnostic and does not grant normalreplay or training eligibility. No E32 startpoint promoted. Public actorobs ends744; later756/758 designatedRGB extracted only after files stopped for diagnosticreview. Private diagnostic-only backup fixed91f91b06e39bb8257b8c888675b74d747261edd4 force-downloaded; archiveSHA/bytes,234members andall233originalfiles unchanged verified. FullQC remainsfailed; no replay/training eligibility. E33 planned from validE28/632 histories588614 with same centralmethod/max20, not launched; user subsequently paused all collection for later clean-server restart, explicit resume required. Same sourcegroup, not independent success or exactphysicscheckpoint."
+    },
+    {
+      "id": "20261114-astra-middle-grip264-001",
+      "status": "completed",
+      "run_id": "20261114-astra-middle-grip264-001",
+      "startpoint_id": "20261113-astra-side-hem-fresh-001-p264",
+      "method_id": "coordinated-middle-grip-drape-named-query-panel-settle6-profile",
+      "result": {
+        "raw_points": 0.0,
+        "success": false,
+        "review": "docs/collection/reviews/20261114-astra-middle-grip264-001.ko.md",
+        "videos": [
+          "docs/collection/attempts/20261114-astra-middle-grip264-001/overview.mp4"
+        ]
+      },
+      "notes": "E33 clean source464203860304631d00a8acd6747b86c23cfded61; direct parent/source group E28, prefix264 and fresh history242/254. Started2026-11-14T08:13:20Z, ended08:35:52Z.20 decisions all act,21 calls including1 zero-physics depth-query followup.471 transitions=264 replay+128 model+78 settle+1 budget cleanup;207 new transitions/10.35 simulation seconds. Decision budget exhaustion, not finish_episode, review10 or timeout. Client0/simulator0, completed/closed/finished, capturecomplete; fullQC471/471 errors0. Valid raw0/pickup0/dressing0/successfalse, no_contact. Both one-sided grasp relocations and local shape changes observed; no confirmed useful vertical aperture or hand approach/descent. Final robot_1 close awaits a subsequent following test. Wall1351.410685024s, actor881.828317856s, environment419.111352059s including replay. Fixed backup0a79834c426d1be7b325ff5010027752751d5cd5 force-redownloaded; archive bytes/SHA,236 manifest entries and234 original files verified. E33/470 before cleanup is a reviewed uncertain-support continuation candidate with fresh434/454 history; retain exhausted initial regrasp budget. Same E28 source group, not independent success or exact physics checkpoint; training unreviewed. Local0 from a pre-pickup start is not a controlled regression against earlier5-point starts."
     }
   ]
 }

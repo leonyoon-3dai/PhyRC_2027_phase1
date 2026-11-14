@@ -23,3 +23,23 @@
 사용자가 “기존 방법으로 시연 몇번 수집을 더 진행보면서 다른 연구나 시스템의 장점을 어떻게 적용할지 함께 고민”하도록 요청했다. 우선3회를 기존 Astra 방식으로 순차 수집하고 각 결과를 근거로 다음 경계·조작을 선택한다. 새 연구 시스템 기능의 동시 도입은 하지 않는다. 이후 E34/E35의 출발점은 E33 결과 전에 확정하지 않는다.
 
 실제 GPU smoke는 종료0과 `PHYRC-SMOKE-PASS`를 확인했다. 첫 초기화 약256초이며 착의 성공 검사가 아니다. wiring001은 detached supervisor의 umask077을 상속해 prompt 파일을 simulator UID1234가 읽지 못했다. 모델 호출0·물리전이0에서 실패했고 원본을 보존했다. launcher 원본은 유지하고 검토된 명령 스크립트에 `umask 027`을 넣어 같은 작업 그룹의 trace 접근/프롬프트 읽기를 허용한다. actor 인증 디렉터리700·인증파일600은 그대로다. 재검사는 새 wiring002로 진행한다.
+
+## E33 시작 확인
+
+- 실제 시작: 2026-11-14T08:13:20Z; source `464203860304631d00a8acd6747b86c23cfded61`, 시작 시 clean.
+- wiring002: 모델3호출·3전이, 정상 마감·simulator/client 반환0·전수 QC3/3·오류0.
+- 실행기 명령은 `umask 027`을 적용했으며 UID1234 합성 권한 검사도 통과했다.
+- E28 prefix264를 새 환경에서 완료했고 history242·254는 새 replay에서 생성했다. 현재 수집 중이며 마감/성과/QC는 이후 별도 기록한다.
+- [클린 서버 검증 receipt](20261114-clean-server-resume-checks.json).
+
+## E33 마감 검증
+
+-20 act·21모델 호출,471전이=264 replay+128 model+78 settle+1 budget cleanup.20결정 예산으로 종료했다.
+- 정상 마감: client와 simulator 반환0, attempt completed/closed/finished=true, capture complete=true. 전수 QC471/471·오류0.
+- 로컬 공식 평가기 valid=true,0/50·픽업0·착의0·success=false. 추가 점수0이며 Codabench 성과가 아니다.
+- client 내부 wall1351.411초(22.52분), actor881.828초, 환경419.111초. 별도 launcher wall1352.862초를 섞지 않는다.
+- 테이블 위에서 양쪽 각각1회의 재파지를 수행했다. 마지막470은 robot1 닫기 뒤이며471은 예산 정리 중립이다. 손 접근·위에서 하강은 미실행이다.
+- [전체471프레임 영상](../../collection/attempts/20261114-astra-middle-grip264-001/overview.mp4), [manifest](../../collection/attempts/20261114-astra-middle-grip264-001/manifest.json), [시각 리뷰](../../collection/reviews/20261114-astra-middle-grip264-001.ko.md).
+- [고정 백업](20261114-e33-backup-verification.json): HF0a79834c426d1be7b325ff5010027752751d5cd5, archive1,076,873,795bytes, SHA eb1984407e645f2a2a8633185058a144bdefdd98a08385b97ff7305c7091c6f9. 강제 재다운로드·236개 manifest 파일·원본 불변 검증. 학습 승인은 unreviewed.
+
+추가 결정은 새로 닫은 파지의 동행을 아직 시험하지 못했다는 점에서 한 차례 더 검토할 근거가 있다. E34는470에서 이어가되 이미 소진한 초기 재파지 횟수를 새 run이라고 다시 부여하지 않는다. 파지 유지 조건으로 실제 들기·공간 확보를 확인하고, 또 준비 반복에 머무르면 같은 경계의 예산 증액보다 출발점 변경을 권한다.

@@ -223,6 +223,8 @@ ABOVE THE SAME HAND, THEN LOWER AND INSPECT: Select a mannequin hand through its
 
 RETAIN AND PROGRESS: If current/recent observations support a useful draped first-wrist or same-forearm relationship, preserve it while selecting the next bounded movement toward body-entry and the corresponding sleeve, then the other hand and the full dressing objective. A drape, overlap, hidden hand or stage name is not sleeve passage or official success. Do not enter a cuff from outside or switch to the other hand merely because it is visible. If space collapses, support weakens or the hand cannot be tracked, recover a supported view/shape before repeating the descent. Keep the existing later-grasp-change rules and saturation checks. In the existing brief reason state the phase, guide/anchor roles, the same-hand relation when relevant, intended change and unresolved evidence; add no fields. Close with useful support retained when the bounded run ends, without assuming all stages fit one batch. Use only the public observation/action contract; no hidden geometry, evaluator feedback or physics changes are introduced.'''
 
+MIDDLE_GRIP_RETAIN_TASK = '''For this bounded continuation, preserve the CURRENT grasp set while continuing the middle-grip, vertical-space and same-hand top-down method. The regrasp bound is ZERO for the entire continuation, including initial setup, recovery and any later dressing progress. This overrides the earlier permissions for initial or later grasp relocation: do not open either gripper, release/reposition/reclose, or rename a phase to obtain another setup cycle. Keep the existing closed or closing intent with neutral or close commands; a repeated close command does not establish attachment. A replayed grasp is not certified support. Inspect current finger motion, local cloth following and public measured response before relying on either support. Permit actual settling, a short lift test, shape adjustment, transport and hand-relative descent only as current evidence supports them. If useful support or shape cannot be recovered without release, preserve what remains and finish with that limitation rather than restart acquisition. Continue to distinguish cloth motion, draping and sleeve passage. Use only the existing brief reason and public observation/action contract. This is an actor instruction, not an external contact detector or an automatic action gate.'''
+
 SINGLE_ARM_PROGRESS_TASK = '''For this attempt, preserve continuity of ONE selected arm within the task-progress approach. Choose the arm with the most useful CURRENT body-opening, hand and forearm relationship from the designated views; use available same-episode history to track that relationship, not as proof of current geometry or support. Identify the selected arm by its visible connected hand/forearm and relation to the garment, without assuming a predetermined anatomical side or robot-camera identity. Keep the existing grasps: the one-sided regrasp bound remains zero.
 
 Continue that hand's body-opening entry and guide the garment along the SAME forearm toward its corresponding sleeve and shoulder. Keep the body-entry-to-sleeve direction; do not insert the hand into a cuff from outside. A visible cuff is not required before starting a useful entry movement. Use the existing brief reason to state the selected arm relationship, the current purpose and any identity uncertainty; do not add output fields.
@@ -639,7 +641,8 @@ def main():
                         'coordinated-leading-hand-swap',
                         'coordinated-single-arm-progress',
                         'coordinated-side-hem-wrists', 'coordinated-diagonal-entry',
-                        'coordinated-central-span-entry', 'coordinated-middle-grip-drape'], default='general',
+                        'coordinated-central-span-entry', 'coordinated-middle-grip-drape',
+                        'coordinated-middle-grip-drape-retain'], default='general',
                         help='Optional dressing guidance; middle-grip-drape compares inward hem grasps and a short descent from above the same hand')
     parser.add_argument('--actor-backend', choices=['exec', 'app-server'], default='exec')
     parser.add_argument('--plan-size', type=int, default=1,
@@ -711,7 +714,8 @@ def main():
                          'coordinated-opposing-rim', 'coordinated-leading-hand-swap',
                          'coordinated-single-arm-progress',
                          'coordinated-side-hem-wrists', 'coordinated-diagonal-entry',
-                         'coordinated-central-span-entry', 'coordinated-middle-grip-drape') and args.mode != 'dressing':
+                         'coordinated-central-span-entry', 'coordinated-middle-grip-drape',
+                         'coordinated-middle-grip-drape-retain') and args.mode != 'dressing':
         parser.error('coordinated strategy requires the full dressing objective')
     if args.strategy == 'coordinated-support-diagnostic' and args.plan_size != 1:
         parser.error('support diagnostic requires plan-size=1 to observe after each action')
@@ -737,7 +741,7 @@ def main():
         parser.error('diagonal-entry requires exec and plan-size=1 to inspect each same-hand entry trial')
     if args.strategy == 'coordinated-central-span-entry' and (args.plan_size != 1 or args.actor_backend != 'exec'):
         parser.error('central-span-entry requires exec and plan-size=1 to inspect span shape and same-hand progress')
-    if args.strategy == 'coordinated-middle-grip-drape' and (args.plan_size != 1 or args.actor_backend != 'exec'):
+    if args.strategy in ('coordinated-middle-grip-drape', 'coordinated-middle-grip-drape-retain') and (args.plan_size != 1 or args.actor_backend != 'exec'):
         parser.error('middle-grip-drape requires exec and plan-size=1 to inspect each grasp, shape and same-hand descent')
     if args.mode == 'wiring' and args.plan_size > 1 and (args.plan_size != 3 or args.decisions != 3):
         parser.error('grouped wiring requires plan-size=3 and decisions=3')
@@ -777,7 +781,8 @@ def main():
                          'coordinated-opposing-rim', 'coordinated-leading-hand-swap',
                          'coordinated-single-arm-progress',
                          'coordinated-side-hem-wrists', 'coordinated-diagonal-entry',
-                         'coordinated-central-span-entry', 'coordinated-middle-grip-drape'):
+                         'coordinated-central-span-entry', 'coordinated-middle-grip-drape',
+                         'coordinated-middle-grip-drape-retain'):
         task += '\n\n' + COORDINATED_TASK
     if args.strategy == 'coordinated-sleeve':
         task += '\n\n' + SLEEVE_TASK
@@ -816,9 +821,11 @@ def main():
     elif args.strategy == 'coordinated-central-span-entry':
         task += ('\n\n' + SIDE_HEM_WRISTS_TASK + '\n\n' + CENTRAL_SPAN_ENTRY_TASK
                  + '\n\n' + METHOD_SATURATION_TASK)
-    elif args.strategy == 'coordinated-middle-grip-drape':
+    elif args.strategy in ('coordinated-middle-grip-drape', 'coordinated-middle-grip-drape-retain'):
         task += ('\n\n' + SIDE_HEM_WRISTS_TASK + '\n\n' + MIDDLE_GRIP_DRAPE_TASK
                  + '\n\n' + METHOD_SATURATION_TASK)
+        if args.strategy == 'coordinated-middle-grip-drape-retain':
+            task += '\n\n' + MIDDLE_GRIP_RETAIN_TASK
     if args.plan_size > 1:
         task += '\n\n' + PLAN_TASK.format(max_segments=args.plan_size, max_total_steps=args.plan_step_budget)
     if args.post_action_settle_steps:

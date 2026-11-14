@@ -59,7 +59,7 @@ class MiddleGripDrapeStrategyTest(unittest.TestCase):
                             result[target.id] = ast.dump(node)
             return result
         old, new = nodes(BASE_SOURCE), nodes(Path(client.__file__).read_text())
-        self.assertEqual(set(new) - set(old), {'MIDDLE_GRIP_DRAPE_TASK'})
+        self.assertEqual(set(new) - set(old), {'MIDDLE_GRIP_DRAPE_TASK', 'MIDDLE_GRIP_RETAIN_TASK'})
         self.assertEqual(set(old) - set(new), set())
         for key in old:
             if key != 'main':

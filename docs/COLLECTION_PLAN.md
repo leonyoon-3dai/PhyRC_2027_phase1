@@ -4,7 +4,18 @@
 
 **2026-11-14 클린 서버에서 사용자가 최신 제안으로 재개한 뒤 기존 방식으로 몇 차례 더 수집하도록 요청했습니다.** 과거 중지 지시는 이번 재개·추가 수집 범위에서 해제됐습니다. 우선3회를 순차 진행하며 각 마감·QC·보존·분석 뒤 다음 출발점과 조작을 고릅니다. 연구 시스템 기능은 아직 통합하지 않습니다. [이번 준비·실행 기록](project/sessions/20261114-e33-middle-grip-resume.ko.md) / [과거 인계](project/sessions/20261114-paused-clean-server-handoff.ko.md)
 
-## 이번 E33 실행 조건
+## 다음 E34 실행 조건
+
+E33은20결정·471전이·QC통과·고정 백업 검증으로 마감했고0/50이다. [리뷰](collection/reviews/20261114-astra-middle-grip264-001.ko.md)에서 마지막 새 파지의 들기 시험이 남아 있음을 확인했다. 새 run `20261114-astra-middle-grip470-retain-001`, 직접 parent E33, source group E28, prefix470·새 history434/454로 진행한다. 새20결정/총1400/review10, 입력·모델·settle6·timeout180은 유지한다. 상한 `470+20×(20+6)+1=991`이다.
+
+선택형 `coordinated-middle-grip-drape-retain`은 가운데 파지·세로 공간·같은 손 위 하강 목표를 유지하면서 **추가 재파지0**을 마지막 전략 지시로 명시한다. 이전 허용 문구보다 이 조건이 우선한다. 닫힌/닫히는 현재 의도를 유지해 천 동행·형상·운반을 시험하고, 열지 않고는 복구할 수 없다면 마감한다. 이는 정적 actor 지시이며 그리퍼 명령을 자동 차단하는 상태기계나 누적 memory 구현이 아니다. 새 연구 시스템은 통합하지 않았다. 실제 재개 전 CPU검사와 clean source를 확인하고 실행 중 코드는 바꾸지 않는다.
+
+[E34 CPU 분기 계획](collection/retry-plans/20261114-e34-e33-470-retain.json) / [E34 세션](project/sessions/20261114-e34-retain-resume.ko.md). E35 출발점은 E34 결과를 검토한 뒤 정한다.
+
+<a id="이번-e33-실행-조건"></a>
+
+## 마감한 E33 실행 조건
+
 
 | 항목 | 선택 |
 |---|---|

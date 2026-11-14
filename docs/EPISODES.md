@@ -37,7 +37,7 @@
 
 사람 시연은 **2,225전이 / 111.25로봇초**의 부분 기록입니다. 로봇별 분할 화면은 **왼쪽 robot_1, 오른쪽 robot_0**, 위 head / 아래 wrist 순서이며 픽셀을 좌우 반전하지 않습니다. [표시 규칙과 변환 출처](gallery/ROBOT_LAYOUT.ko.md)
 
-## E00–E31 전체 자료
+## E00–E33 전체 자료
 
 **전이 1개는 관측→행동→다음 관측의 0.05초 기록**입니다. 표의 길이는 재실행과 새 구간을 합친 로봇 시간이며 모델 호출 수·실제 대기 시간이 아닙니다. MP4 배속과 마지막 `next_obs`는 각 기록에서 확인합니다.
 
@@ -76,6 +76,7 @@
 | E30 | 같은 손의 낮춤·대각 방향·조건부 올림을 분리;18 act+1 finish, 새 득점0 | E28 / 738 | 915 / 45.75 | [추가 구간](gallery/20261113-e30-diagonal-738-915/event.mp4) / [전체 MP4](collection/attempts/20261113-astra-diagonal738-001/overview.mp4) / [리뷰](collection/reviews/20261113-astra-diagonal738-001.ko.md) / [원본](collection/attempts/20261113-astra-diagonal738-001/manifest.json) |
 | E31 | 더 이른 접근에서 같은 대각선 전략;16 act+1 finish, 새 득점0 | E28 / 682 | 830 / 41.50 | [추가 구간](gallery/20261113-e31-diagonal-682-830/event.mp4) / [전체 MP4](collection/attempts/20261113-astra-diagonal682-001/overview.mp4) / [리뷰](collection/reviews/20261113-astra-diagonal682-001.ko.md) / [원본](collection/attempts/20261113-astra-diagonal682-001/manifest.json) |
 | E32 | 중앙 자유 구간·운반·같은 손 접근; **capture/file 불완전·전체 QC 실패** | E28 /380 |758 /37.90 | [진단 리뷰·공개 RGB](collection/reviews/20261113-astra-central380-001.ko.md) / [실패·보존 기록](project/sessions/20261114-e32-incomplete.ko.md) |
+| E33 | 가운데 파지 준비·양측 순차 재파지;20 act,0/50·손 접근 미실행·QC 통과 | E28 /264 |471 /23.55 | [전체 MP4](collection/attempts/20261114-astra-middle-grip264-001/overview.mp4) / [리뷰](collection/reviews/20261114-astra-middle-grip264-001.ko.md) / [원본](collection/attempts/20261114-astra-middle-grip264-001/manifest.json) |
 
 E09·E32는 불완전 원본을 보존한 기록으로 학습·정상 재실행 출처에서 제외합니다. E10–E27 중 E16·E20을 제외한 시도의 최종 원점수는 5점이며, **정상 평가한 과제 시연의 착의 득점은 모두 0**입니다. 파지·시야 개선을 소매 통과나 추가 득점으로 해석하지 않습니다.
 
