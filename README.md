@@ -32,13 +32,13 @@ https://github.com/user-attachments/assets/d2f347fe-712b-42f3-bdee-69d3fee2a47c
 
 ## 최근 시연 · E34
 
-<a href="docs/collection/attempts/20261114-astra-middle-grip470-retain-001/overview.mp4"><img src="docs/collection/attempts/20261114-astra-middle-grip470-retain-001/images/final-overview.png" width="960" alt="E34의 마지막 지정 overview 관측. 이미지를 누르면 재실행과 새 구간을 포함한 전체 실제 영상이 열립니다."></a>
+<a href="docs/collection/attempts/20261114-astra-middle-grip470-retain-001/overview.mp4"><img src="docs/gallery/20261114-e34-overview/preview.gif" width="960" alt="E34 실제 원본 영상의 GIF: 전체 0–41.8초를 10fps로 프레임 샘플링. 누르면 원본 MP4가 열립니다."></a>
 
 **E33에서 바꾼 파지를 유지해 들기·운반·같은 손 근처의 짧은 하강까지 시험했습니다.** E33의 준비 단계보다 진행했지만 손목에 걸침·소매 통과는 확인하지 못했습니다.20 act·24모델 호출 뒤 결정 예산으로 마감했으며 새 구간은366전이·18.3시뮬레이션초입니다.
 
 [전체 MP4](docs/collection/attempts/20261114-astra-middle-grip470-retain-001/overview.mp4) / [E34 리뷰](docs/collection/reviews/20261114-astra-middle-grip470-retain-001.ko.md) / [E33 준비 리뷰](docs/collection/reviews/20261114-astra-middle-grip264-001.ko.md) / [이전 E31 접근 비교](docs/gallery/20261113-e31-diagonal-682-830/event.mp4)
 
-<sub>지정 overview 카메라의836프레임 전체를20fps·41.8초로 재생하며 모델 대기는 제외합니다. 앞470전이는 E33 행동 prefix를 새 환경에서 재실행한 구간입니다. 정확한 천 checkpoint나 독립 성공 시연이 아닙니다. <a href="docs/collection/attempts/20261114-astra-middle-grip470-retain-001/manifest.json">영상·원본 근거</a>.</sub>
+<sub>실제 원본 영상 GIF · 전체0–41.8초 · 원본256×256 · 20fps에서2프레임마다1장을 샘플링한10fps·418프레임, 원래 재생속도 유지. 원본 MP4는836프레임이며 모델 대기는 제외합니다. 앞470전이는 E33 행동 prefix를 새 환경에서 재실행한 구간으로, 정확한 천 checkpoint나 독립 성공 시연이 아닙니다. <a href="docs/gallery/20261114-e34-overview/provenance.json">GIF 변환·검증</a> · <a href="docs/collection/attempts/20261114-astra-middle-grip470-retain-001/manifest.json">영상·원본 근거</a>.</sub>
 
 ## 수집 시스템 재정비
 

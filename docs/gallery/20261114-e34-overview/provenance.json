@@ -1,0 +1,103 @@
+{
+  "schema": "phyrc-public-video-gif-preview-v1",
+  "run_id": "20261114-astra-middle-grip470-retain-001",
+  "source": {
+    "path": "docs/collection/attempts/20261114-astra-middle-grip470-retain-001/overview.mp4",
+    "sha256": "06a05b2bfac7bdf49a47708619ab6424e4efca2835a65fb2c7f621a79d2ec459",
+    "bytes": 257566,
+    "probe": {
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 256,
+          "height": 256,
+          "r_frame_rate": "20/1",
+          "avg_frame_rate": "20/1",
+          "duration": "41.800000",
+          "nb_frames": "836"
+        }
+      ],
+      "format": {
+        "duration": "41.800000",
+        "size": "257566"
+      }
+    },
+    "camera": "overview"
+  },
+  "output": {
+    "path": "docs/gallery/20261114-e34-overview/preview.gif",
+    "sha256": "a8d397502c16c2e16ef847edb842daa77c77002248eb0e0126f5c8afb2761cf2",
+    "bytes": 2216375,
+    "probe": {
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "gif",
+          "width": 256,
+          "height": 256,
+          "r_frame_rate": "10/1",
+          "avg_frame_rate": "10/1",
+          "duration": "41.800000",
+          "nb_frames": "418"
+        }
+      ],
+      "format": {
+        "duration": "41.800000",
+        "size": "2216375"
+      }
+    }
+  },
+  "conversion": {
+    "command": [
+      "ffmpeg",
+      "-hide_banner",
+      "-loglevel",
+      "warning",
+      "-n",
+      "-i",
+      "docs/collection/attempts/20261114-astra-middle-grip470-retain-001/overview.mp4",
+      "-filter_complex_threads",
+      "1",
+      "-filter_complex",
+      "select='not(mod(n,2))',setpts=N/(10*TB),split[frames][palette_input];[palette_input]palettegen=max_colors=128:stats_mode=diff[palette];[frames][palette]paletteuse=dither=none:diff_mode=rectangle",
+      "-vsync",
+      "0",
+      "-loop",
+      "0",
+      "docs/gallery/20261114-e34-overview/preview.gif"
+    ],
+    "ffmpeg_version": "ffmpeg version 4.4.2-0ubuntu0.22.04.1 Copyright (c) 2000-2021 the FFmpeg developers",
+    "source_frame_selection": "zero-based indices 0,2,...,834; every second decoded frame",
+    "time_range_seconds": [
+      0.0,
+      41.8
+    ],
+    "source_fps": 20,
+    "output_fps": 10,
+    "source_frames": 836,
+    "output_frames": 418,
+    "dimensions": [
+      256,
+      256
+    ],
+    "palette_max_colors": 128,
+    "dither": "none",
+    "spatial_resize": false,
+    "interpolation": false,
+    "horizontal_flip": false,
+    "generated_frames": false,
+    "playback_speed": 1,
+    "loop": 0
+  },
+  "validation": {
+    "pillow_frame_count": 418,
+    "pillow_duration_ms": 41800,
+    "frame_durations_ms": [
+      100
+    ],
+    "source_sha256_unchanged": true,
+    "below_5000000_bytes": true
+  },
+  "notes": "Full 0.0-41.8 s public MP4 timeline retained at original playback speed. Frames are sampled and palette-quantized; no image synthesis or interpolation. Model waiting is absent from the source MP4. The source MP4 and collection files are unchanged."
+}
