@@ -8,7 +8,7 @@
 
 **E32는 수집 불완전으로 종료했고 전체 QC를 통과하지 못했습니다.** 20개 행동과 정착은756까지 기록됐지만 정상 마감 요청 없이 입력이 닫혔습니다. 종료 정리2전이를 포함한758전이를 전수 검사했고, capture와 두 HDF5 파일의 `complete=false` 때문에 실패했습니다. 원본 표식을 고치거나 E32 경계를 정상 replay 출처로 승격하지 않습니다. [불완전 수집 기록](sessions/20261114-e32-incomplete.ko.md) / [공개 리뷰](../collection/reviews/20261113-astra-central380-001.ko.md)
 
-**다음 E33은 아직 시작하지 않은 계획입니다.** 유효한 E28/632·새 history588/614에서 같은 `coordinated-central-span-entry`, 최대20개 새 결정·총1400전이·review10으로 중앙 형상과 같은 손 정렬에 집중합니다. E32 실패 자료 보존·고정 원격 검증과 문서 정리 뒤에도 실행하지 않으며, 명시적 재개 후 환경·clean source·유효 출처를 다시 확인합니다. [E33 계획](sessions/20261114-e33-plan.ko.md) / [현재 실행 조건](../COLLECTION_PLAN.md)
+**다음 E33은 아직 시작하지 않은 계획입니다.** 2026-11-14 사용자 제안인 **더 가운데 파지·노란 경계의 위아래 늘어짐과 여유 공간·손 위에서 살짝 내려 걸치기**를 [다음 시연 메모](../COLLECTION_PLAN.md#2026-11-14-다음-시연-메모)에 문서로만 기록했습니다. 코드·actor 프롬프트에는 적용하지 않았습니다. 종전 E28/632·history588/614·같은 `coordinated-central-span-entry`·최대20새 결정/총1400전이/review10 후보는 파지 변경에 맞춰 재검토합니다. 다음 클린 서버에서 명시적으로 재개한 뒤 환경·clean source·유효 출처와 시연 방법을 다시 확인합니다. [종전 E33 후보](sessions/20261114-e33-plan.ko.md) / [현재 실행 조건](../COLLECTION_PLAN.md)
 
 | 구분 | 확인된 E32 상태 |
 |---|---|
@@ -21,7 +21,7 @@
 | 원본 상태 | attempt는 collecting/controller_settle·finished=false·756에 남음; capture758/complete=false/input_closed, 두 HDF5 root complete=false |
 | QC |758/758 검사. episode 검사는 통과했지만 capture와 두 파일의 incomplete 오류3개로 전체 quality_passed=false |
 | 별도 평가 | 기록된 evaluation_valid=true, raw5/50·pickup5·착의0·success=false, 새 득점0. 전체 QC·replay·학습 승인 아님 |
-| 다음 출처 |E32 전체와 중간 경계는 진단 전용. 검증된 E28/632를 선택 |
+| 다음 출처 |E32 전체와 중간 경계는 진단 전용. 종전 후보는 검증된 E28/632이며 최신 파지 변경 제안에 따라 재검토 |
 | 보존 |고정 private HF91f91b06 강제 재다운로드·234members·원본233파일 불변 검증. [진단 백업 receipt](sessions/20261114-e32-backup-verification.json); 정상 replay 불가 |
 
 E32에서 넓어진 형상과 운반 유지, 같은 손 근처의 접촉·좁아짐·일부 복구를 관측했습니다. 공개 마지막 actor 관측은744이며,756/758은 정지 후 파일의 지정 공개 RGB로 검토했습니다. 손 통과나 연결 전완 진행은 확인하지 못했습니다. 최신 경계를 더 좋은 시작점으로 취급하지 않습니다. [E28/632 비교 근거](../collection/research/2026-11-14-e33-central632-direction.ko.md)

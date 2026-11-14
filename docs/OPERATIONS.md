@@ -6,7 +6,7 @@
 
 실제 진행·마감·점수·백업은 [현재 상태](project/STATUS.md), 실행 조건·후속 판단은 [수집 계획](COLLECTION_PLAN.md)을 기준으로 합니다. 과거 결과는 [E30 마감](project/sessions/20261113-e30-close.ko.md)에 보존합니다.
 
-E32는 [불완전 수집 기록](project/sessions/20261114-e32-incomplete.ko.md)에 진단 전용으로 보존하며 정상 replay 출처로 사용하지 않는다. [E33 계획](project/sessions/20261114-e33-plan.ko.md)은 검증된 E28/632에서 같은 [중앙 자유 구간 방법](collection/research/2026-11-13-central-span-entry.ko.md)을 유지하는 미실행 계획이다. 현재 사용자 요청으로 자동 반복을 중지했으며 명시적 재개 전에는 실행하지 않는다. [클린 서버 인계](project/sessions/20261114-paused-clean-server-handoff.ko.md)와 정본 STATUS/COLLECTION_PLAN을 따르며 실시간 피드백 큐는 미적용이다.
+E32는 [불완전 수집 기록](project/sessions/20261114-e32-incomplete.ko.md)에 진단 전용으로 보존하며 정상 replay 출처로 사용하지 않는다. [종전 E33 계획](project/sessions/20261114-e33-plan.ko.md)은 E28/632에서 같은 중앙 전략을 유지하는 미실행 후보였다. 새 서버에서는 먼저 [2026-11-14 다음 시연 메모](COLLECTION_PLAN.md#2026-11-14-다음-시연-메모)의 파지 위치 변경·손 위에서 내려 걸치기 방향을 읽고 출발점·전략을 재검토한다. 이번 추가는 문서 기록이며 코드·프롬프트에 적용하지 않았다. 현재 사용자 요청으로 자동 반복을 중지했으며 명시적 재개 전에는 실행하지 않는다. [클린 서버 인계](project/sessions/20261114-paused-clean-server-handoff.ko.md)와 정본 STATUS/COLLECTION_PLAN을 따르며 실시간 피드백 큐는 미적용이다.
 
 E30의 simulator 반환값은0이지만 host 실행 세션 반환값은143입니다. 전수 QC·유효한 평가·원본 고정 백업 검증을 각각 확인했습니다. 과거 자동 반복 승인은 현재 사용자 중지 요청으로 일시 중단됐습니다. 명시적 재개 후에는 기본20결정으로 단일 실행을 마감·QC·백업·분석하고 다음 방법·출발점을 선택합니다. 과거 후보·남은 결정을 그대로 이어 붙이지 않고 최신 계획을 따릅니다. GPU 작업은 계속 순차 실행합니다.
 
