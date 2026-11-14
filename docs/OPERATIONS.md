@@ -1,5 +1,7 @@
 # 클린 서버 시작 안내
 
+**2026-11-14 재개 안내:** 최신 사용자 요청으로 시연1회를 준비한다. [현재 계획](COLLECTION_PLAN.md#이번-e33-실행-조건)과 [이번 세션](project/sessions/20261114-e33-middle-grip-resume.ko.md)을 우선한다. 아래 과거 인계의 중지 문구·미실행632 후보는 이 요청 이전 기록이다.
+
 [메인](../README.md) | [시연 목록](EPISODES.md) | [다음 수집](COLLECTION_PLAN.md) | [Astra 코드](ASTRA.md) | [클린 서버](OPERATIONS.md)
 
 이 문서는 **새 Ubuntu GPU 서버에서 저장소와 보존 자료를 복원하고, 작은 연결 검사까지 준비하는 순서**입니다. 모든 프로젝트 명령은 저장소 루트에서 실행합니다. 2026-11-13 사용자 재개 요청으로 아래 복원·build·prepare·GPU smoke와 작은 wiring을 실제 완료했습니다. [환경 검사 receipt](project/sessions/20261113-environment-setup.json) / [세션 기록](project/sessions/20261113-environment-setup.ko.md)

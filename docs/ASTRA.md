@@ -1,5 +1,7 @@
 # Astra 수집 코드
 
+**2026-11-14 재개 안내:** 최신 사용자 요청으로 시연1회를 준비한다. [현재 계획](COLLECTION_PLAN.md#이번-e33-실행-조건)과 [이번 세션](project/sessions/20261114-e33-middle-grip-resume.ko.md)을 우선한다. 아래 과거 인계의 중지 문구·미실행632 후보는 이 요청 이전 기록이다.
+
 [메인](../README.md) | [시연 목록](EPISODES.md) | [다음 수집](COLLECTION_PLAN.md) | [Astra 코드](ASTRA.md) | [클린 서버](OPERATIONS.md)
 
 `gpt-6-astra`는 공개 카메라와 로봇 상태를 읽고 짧은 행동을 제안합니다. 수집기가 응답을 검사하고 두 로봇에 적용한 뒤, 실제 관측과 행동을 HDF5에 기록합니다. **모델은 20 Hz로 호출되지 않습니다.** E27까지 사용한 수집 경로를 유지하며, 2026-11-13에는 별도 `coordinated-side-hem-wrists` 전략으로 E28 `20261113-astra-side-hem-fresh-001`을 새 reset에서 수집했습니다. E28은 40결정·739전이로 마감해 전수 QC 739/739를 통과했으며 pickup 5점·착의 0점, `success=false`입니다. [환경·연결 검사](project/sessions/20261113-environment-setup.ko.md) / [전략 검토](collection/research/2026-11-13-side-hem-wrists.ko.md) / [E28 결과](collection/attempts/20261113-astra-side-hem-fresh-001/manifest.json)

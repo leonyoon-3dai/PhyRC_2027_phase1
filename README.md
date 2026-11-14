@@ -28,7 +28,7 @@ https://github.com/user-attachments/assets/d2f347fe-712b-42f3-bdee-69d3fee2a47c
 |:---:|:---:|:---:|:---:|
 | E00–E32 전체 자료 | 옆에서 파지하고 입구 펼치기 | 관측부터 HDF5까지 | 설치·복원·검증·Codex CLI |
 
-**사용자 요청으로 수집을 잠시 중지했습니다. E33은 시작하지 않았습니다.** [현재 상태](docs/project/STATUS.md)와 [클린 서버 인계](docs/project/sessions/20261114-paused-clean-server-handoff.ko.md)를 보존합니다. E32는 불완전 capture로 전체 QC 실패이며 진단 자료로만 보관합니다. 마지막 정상 마감 E31은 **5/50·새 득점0·착의0·success=false**입니다. 다음 후보 E28/632는 명시적 재개 후 검토합니다.
+**클린 서버에서 최신 파지 제안으로 시연 1회 재개를 준비하고 있습니다.** [이번 세션](docs/project/sessions/20261114-e33-middle-grip-resume.ko.md)에서 검증과 실행 상태를 확인합니다. [현재 상태](docs/project/STATUS.md)와 [클린 서버 인계](docs/project/sessions/20261114-paused-clean-server-handoff.ko.md)를 보존합니다. E32는 불완전 capture로 전체 QC 실패이며 진단 자료로만 보관합니다. 마지막 정상 마감 E31은 **5/50·새 득점0·착의0·success=false**입니다. 종전 E28/632 후보는 보존하며 이번 실행 조건은 [COLLECTION_PLAN](docs/COLLECTION_PLAN.md#이번-e33-실행-조건)을 따릅니다.
 
 ## 최근 시연
 
@@ -44,7 +44,7 @@ https://github.com/user-attachments/assets/d2f347fe-712b-42f3-bdee-69d3fee2a47c
 
 ![E28 이후 계획: 옷 양옆에서 파지, 아래 입구 펼치기, 한쪽 손목, 반대쪽 손목. 실제 시연이 아닌 개념도.](docs/assets/collection-plan.svg)
 
-**다음 시도는 파지 위치를 더 가운데 쪽으로 조정하고, 노란 경계가 위아래로 길게 늘어져 공간이 충분히 보이는 상태에서 마네킹 손 위로 접근한 뒤 살짝 내려오며 걸치는 방향을 검토합니다.** [2026-11-14 다음 시연 메모](docs/COLLECTION_PLAN.md#2026-11-14-다음-시연-메모)에 기록했습니다. 다음 클린 서버 재시작 후 참고할 미실행 제안이며, 현재 수집은 중지 상태입니다. 종전 E33의 출발점·전략은 새 제안에 맞춰 재검토합니다.
+**다음 시도는 파지 위치를 더 가운데 쪽으로 조정하고, 노란 경계가 위아래로 길게 늘어져 공간이 충분히 보이는 상태에서 마네킹 손 위로 접근한 뒤 살짝 내려오며 걸치는 방향을 검토합니다.** [2026-11-14 다음 시연 메모](docs/COLLECTION_PLAN.md#2026-11-14-다음-시연-메모)에 기록했습니다. 이번에는 E28의 최초 닫기 직전264에서 파지 위치부터 바꾸는 선택형 전략으로 준비합니다. 실제 하강 수행 여부와 결과는 시연 후 구분해 기록합니다.
 
 [단계별 관측 기준과 새 시작점 선택](docs/COLLECTION_PLAN.md)
 
