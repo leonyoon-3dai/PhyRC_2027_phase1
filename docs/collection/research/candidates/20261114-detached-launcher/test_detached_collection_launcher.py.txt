@@ -1,0 +1,118 @@
+"""Local CPU probe only. Signals target a newly created synthetic process group."""
+from contextlib import redirect_stdout
+import hashlib
+import importlib.util
+import io
+import json
+import os
+from pathlib import Path
+import shlex
+import signal
+import subprocess
+import sys
+import tempfile
+import time
+from unittest.mock import patch
+
+LAUNCHER = Path(__file__).with_name('detached_collection_launcher.py').resolve()
+spec = importlib.util.spec_from_file_location('launcher_probe', LAUNCHER)
+module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+checks = []
+
+
+def reject(call, message):
+    try:
+        call()
+    except ValueError as exc:
+        assert message in str(exc), str(exc)
+        return
+    raise AssertionError('expected rejection')
+
+
+def wait_for(check, seconds=8):
+    limit = time.monotonic()+seconds
+    while time.monotonic()<limit:
+        result = check()
+        if result:
+            return result
+        time.sleep(.04)
+    raise AssertionError('synthetic probe timed out')
+
+
+with tempfile.TemporaryDirectory(prefix='phyrc-detached-probe-') as tmp:
+    root = Path(tmp); script = root/'probe.sh'
+    script.write_text('#!/bin/bash\nexec '+shlex.quote(sys.executable)+
+                      " -c 'import time; time.sleep(1.5); print(\"CPU_PROBE_COMPLETE\",flush=True); raise SystemExit(7)'\n")
+    argv = ['--root',str(root),'--run-id','probe','--job-id','probe','--script',str(script)]
+    folder = root/'output/sessions/20261113-setup/detached-probe'
+    with patch.object(module.subprocess,'Popen',side_effect=AssertionError('dry-run spawned process')),redirect_stdout(io.StringIO()):
+        assert module.main(argv)==0
+    assert not folder.exists();checks.append('dry_run_has_no_files_or_subprocess')
+    ready=root/'outer-ready'
+    outer_code = ('import subprocess,time,pathlib; '
+                  f'subprocess.run({[sys.executable,str(LAUNCHER),*argv,"--execute"]!r},check=True); '
+                  f'pathlib.Path({str(ready)!r}).write_text("ready"); time.sleep(20)')
+    outer = subprocess.Popen([sys.executable,'-c',outer_code],start_new_session=True,
+                             stdin=subprocess.DEVNULL,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+    try:
+        wait_for(ready.exists)
+        def running():
+            p=folder/'status.json'
+            return json.loads(p.read_text()) if p.exists() and json.loads(p.read_text()).get('status')=='running' else None
+        active=wait_for(running)
+        assert os.getpgid(outer.pid)==outer.pid
+        assert active['supervisor_pgid']==active['supervisor_pid']!=outer.pid
+        assert active['client_pgid']==active['client_sid']==active['client_pid']
+        assert active['client_pgid'] not in (outer.pid,active['supervisor_pgid'])
+        os.killpg(outer.pid,signal.SIGTERM)  # only this synthetic outer group
+        assert outer.wait(timeout=5)==-signal.SIGTERM
+        def exited():
+            value=json.loads((folder/'status.json').read_text())
+            return value if value.get('status')=='exited' else None
+        final=wait_for(exited)
+        assert final['client_returncode']==7 and final['shell_style_exit_code']==7
+        assert final['capture_completion_inferred'] is False
+        assert 'CPU_PROBE_COMPLETE' in (folder/'client.log').read_text()
+        checks.extend(['supervisor_and_child_have_separate_sessions','synthetic_outer_SIGTERM_does_not_stop_child',
+                       'actual_nonzero_child_exit_is_recorded','process_exit_does_not_claim_capture_completion'])
+        reject(lambda:module.main([*argv,'--execute']),'job exists')
+        checks.append('existing_job_refuses_automatic_relaunch')
+        before=(folder/'status.json').read_bytes()
+        try:module.worker(folder)
+        except FileExistsError:pass
+        else:raise AssertionError('worker reused')
+        assert (folder/'status.json').read_bytes()==before
+        checks.append('duplicate_worker_does_not_overwrite_exit_receipt')
+        record=root/'output/collections/old';record.mkdir(parents=True)
+        reject(lambda:module.main(['--root',str(root),'--run-id','old','--job-id','other','--script',str(script)]),'run already exists')
+        checks.append('existing_run_files_refuse_launch')
+    finally:
+        if outer.poll() is None:
+            os.killpg(outer.pid,signal.SIGTERM);outer.wait(timeout=5)
+        outer.stdout.close();outer.stderr.close()
+
+    # Construct the supervisor's already-accepted private job, then alter only
+    # the synthetic command file before it may spawn a child.
+    bound=root/'hash-bound-job';bound.mkdir()
+    launch={'schema':module.SCHEMA,'run_id':'hashprobe','job_id':'hashprobe',
+            'root':str(root),'script':str(script),'script_sha256':module.digest(script),
+            'launcher_sha256':module.digest(LAUNCHER)}
+    (bound/'launch.json').write_text(json.dumps(launch))
+    script.write_text('#!/bin/bash\nexit 0\n')
+    with patch.object(module.subprocess,'Popen',side_effect=AssertionError('changed script spawned process')):
+        reject(lambda:module.worker(bound),'command script changed before launch')
+    state=json.loads((bound/'status.json').read_text())
+    assert state['status']=='supervision_error' and state['error_type']=='ValueError'
+    assert 'client_pid' not in state and not (bound/'client.log').exists()
+    checks.append('changed_command_script_hash_refuses_child_spawn')
+
+receipt={'schema':'phyrc-detached-launcher-preparation-v1','launcher_sha256':hashlib.sha256(LAUNCHER.read_bytes()).hexdigest(),
+         'checks':checks,'tests_passed':len(checks),'synthetic_only':True,'GPU_or_model_started':False,
+         'real_collection_started':False,'network_called':False,'existing_capture_or_runtime_changed':False,
+         'signal_scope':'only the newly created synthetic outer process group',
+         'limitations':['This verifies POSIX process-group isolation only; host/cgroup/tool cleanup survival is not proven.',
+                        'The cause of prior host143 remains unknown.','No real GPU/model collection has used this launcher.',
+                        'A dead supervisor may leave a stale running record; inspect actual processes and capture state separately.']}
+target=LAUNCHER.with_name('detached_collection_launcher.preparation.json')
+target.write_text(json.dumps(receipt,ensure_ascii=False,indent=2)+'\n')
+print(json.dumps(receipt,ensure_ascii=False,indent=2))

@@ -6,7 +6,7 @@
 
 실제 진행·마감·점수·백업은 [현재 상태](project/STATUS.md), 실행 조건·후속 판단은 [수집 계획](COLLECTION_PLAN.md)을 기준으로 합니다. 과거 결과는 [E30 마감](project/sessions/20261113-e30-close.ko.md)에 보존합니다.
 
-E31은 [마감 기록](project/sessions/20261113-e31-close.ko.md)에 보존했고, 다음 정적 전략과 검증 범위는 [중앙 자유 구간 방법](collection/research/2026-11-13-central-span-entry.ko.md)을 따른다. [E32 계획](project/sessions/20261113-e32-plan.ko.md)은 아직 실행 결과가 아니다. 진행 중 actor 지시 주입이나 미적용 피드백 큐 활성화는 하지 않는다.
+E32는 [불완전 수집 기록](project/sessions/20261114-e32-incomplete.ko.md)에 진단 전용으로 보존하며 정상 replay 출처로 사용하지 않는다. [E33 계획](project/sessions/20261114-e33-plan.ko.md)은 검증된 E28/632에서 같은 [중앙 자유 구간 방법](collection/research/2026-11-13-central-span-entry.ko.md)을 유지하는 미실행 계획이다. 현재 사용자 요청으로 자동 반복을 중지했으며 명시적 재개 전에는 실행하지 않는다. [클린 서버 인계](project/sessions/20261114-paused-clean-server-handoff.ko.md)와 정본 STATUS/COLLECTION_PLAN을 따르며 실시간 피드백 큐는 미적용이다.
 
 ## 1. 관측부터 기록까지
 

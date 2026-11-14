@@ -1,8 +1,10 @@
 # 시연 목록
 
+**[이번 세션 영상·실패 분석 모음](collection/reviews/20261114-session-review.ko.md)**에서 E28–E32 영상과 시도별 판단을 바로 검토할 수 있습니다.
+
 [메인](../README.md) | [시연 목록](EPISODES.md) | [다음 수집](COLLECTION_PLAN.md) | [Astra 코드](ASTRA.md) | [클린 서버](OPERATIONS.md)
 
-**아래 결과 표는 마감한 E00–E31을 담습니다.** E32의 실제 시작 source·시각은 [시작 기록](project/sessions/20261113-e32-start.ko.md), 진행 상태는 [STATUS](project/STATUS.md)에 있습니다. E31은16 act+finish,19호출·830전이 전수 QC를 통과했고 **5/50·새 구간 득점0·착의0·success=false**입니다. E32의 결과 행은 마감 후에 추가합니다. E번호에는 연결 시험·실패도 포함되며 독립 성공 시연 수가 아닙니다.
+**아래 표는 E00–E32의 정상 마감과 실패를 함께 보존합니다.** E32는20 act·758전이를 기록했으나 capture/file incomplete로 전체 QC 실패이며 진단 전용입니다. 마지막 정상 마감 E31은 **5/50·새 구간 득점0·착의0·success=false**입니다. 다음 E33은 시작하지 않았으며 사용자 요청으로 수집을 중지했습니다. [조건부 다음 계획](COLLECTION_PLAN.md)을 보존합니다. E번호는 독립 성공 시연 수가 아닙니다.
 
 ## 대표 장면
 
@@ -73,8 +75,9 @@
 | E29 | 후반 최대20결정 중10 act+1 finish로 조기 마감; 새 구간 득점0 | E28 / 738 | 834 / 41.70 | [추가 구간](gallery/20261113-e29-extra-decisions-738-834/event.mp4) / [전체 MP4](collection/attempts/20261113-astra-side-hem738-continue20-001/overview.mp4) / [리뷰](collection/reviews/20261113-astra-side-hem738-continue20-001.ko.md) / [원본](collection/attempts/20261113-astra-side-hem738-continue20-001/manifest.json) |
 | E30 | 같은 손의 낮춤·대각 방향·조건부 올림을 분리;18 act+1 finish, 새 득점0 | E28 / 738 | 915 / 45.75 | [추가 구간](gallery/20261113-e30-diagonal-738-915/event.mp4) / [전체 MP4](collection/attempts/20261113-astra-diagonal738-001/overview.mp4) / [리뷰](collection/reviews/20261113-astra-diagonal738-001.ko.md) / [원본](collection/attempts/20261113-astra-diagonal738-001/manifest.json) |
 | E31 | 더 이른 접근에서 같은 대각선 전략;16 act+1 finish, 새 득점0 | E28 / 682 | 830 / 41.50 | [추가 구간](gallery/20261113-e31-diagonal-682-830/event.mp4) / [전체 MP4](collection/attempts/20261113-astra-diagonal682-001/overview.mp4) / [리뷰](collection/reviews/20261113-astra-diagonal682-001.ko.md) / [원본](collection/attempts/20261113-astra-diagonal682-001/manifest.json) |
+| E32 | 중앙 자유 구간·운반·같은 손 접근; **capture/file 불완전·전체 QC 실패** | E28 /380 |758 /37.90 | [진단 리뷰·공개 RGB](collection/reviews/20261113-astra-central380-001.ko.md) / [실패·보존 기록](project/sessions/20261114-e32-incomplete.ko.md) |
 
-E09는 불완전 원본을 보존한 기록으로 학습·정상 재실행 출처에서 제외합니다. E10–E27 중 E16·E20을 제외한 시도의 최종 원점수는 5점이며, **정상 평가한 과제 시연의 착의 득점은 모두 0**입니다. 파지·시야 개선을 소매 통과나 추가 득점으로 해석하지 않습니다.
+E09·E32는 불완전 원본을 보존한 기록으로 학습·정상 재실행 출처에서 제외합니다. E10–E27 중 E16·E20을 제외한 시도의 최종 원점수는 5점이며, **정상 평가한 과제 시연의 착의 득점은 모두 0**입니다. 파지·시야 개선을 소매 통과나 추가 득점으로 해석하지 않습니다.
 
 ## 분기와 원본
 
@@ -88,8 +91,8 @@ E09는 불완전 원본을 보존한 기록으로 학습·정상 재실행 출�
 
 [실행·출발점·방법 정본 JSON](collection/catalog/catalog.v1.json) / [경계별 근거](collection/catalog/README.ko.md) / [추가 연결 시험과 상세 이력](project/HISTORY.ko.md)
 
-## E31 이후
+## E32 이후
 
-**E32는 E28/380에서 중앙 자유 구간 형상과 같은 손의 정렬을 비교합니다.** E31은 수평 접근·방향 변화·자세 복구를 실제 수행했으나 중앙 진입·같은 전완 진행은 미확인이어서 최종830을 새 출발점으로 승격하지 않습니다. E32는 출발점과 전략을 함께 바꾸므로 한 변수만의 효과라고 주장하지 않습니다. 새 history264·332는 이번 replay에서 다시 기록하며 현재380 관측이 우선입니다. 마감·QC·고정 백업·분석 후 다음 시연을 자동으로 이어가는 사용자 지침을 유지합니다.
+**E33은 검증된 E28/632에서 같은 중앙 전략을 비교할 계획입니다.** E32의 어떤 중간 경계도 정상 출발점으로 승격하지 않습니다. 새 history588·614는 새 replay에서 기록하며 현재632의 형상·같은 손 관계가 우선입니다.20개 새 결정 상한은 유지하고 긴 운반보다 접촉 전 형상·정렬에 판단을 쓸 수 있는지 비교합니다. E32의 불완전 자료는 실패 근거로 보존합니다. 자동 반복은 현재 중지했으며 명시적 재개 전에는 실행하지 않습니다.
 
-[다음 수집 계획과 검증 순서](COLLECTION_PLAN.md)
+[다음 수집 계획과 검증 순서](COLLECTION_PLAN.md) / [공개 비교](collection/research/2026-11-14-e33-central632-direction.ko.md)

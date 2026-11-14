@@ -1,5 +1,7 @@
 # PhyRC 2027
 
+**[이번 세션 영상·실패 분석 모음](docs/collection/reviews/20261114-session-review.ko.md)**에서 E28–E32 영상과 시도별 판단을 바로 검토할 수 있습니다.
+
 ## 공식 착의 데모
 
 https://github.com/user-attachments/assets/d2f347fe-712b-42f3-bdee-69d3fee2a47c
@@ -22,9 +24,9 @@ https://github.com/user-attachments/assets/d2f347fe-712b-42f3-bdee-69d3fee2a47c
 
 | [**시연 영상**](docs/EPISODES.md) | [**다음 조작 계획**](docs/COLLECTION_PLAN.md) | [**Astra 코드·Hz**](docs/ASTRA.md) | [**클린 서버 시작**](docs/OPERATIONS.md) |
 |:---:|:---:|:---:|:---:|
-| E00–E31 전체 자료 | 옆에서 파지하고 입구 펼치기 | 관측부터 HDF5까지 | 설치·복원·검증·Codex CLI |
+| E00–E32 전체 자료 | 옆에서 파지하고 입구 펼치기 | 관측부터 HDF5까지 | 설치·복원·검증·Codex CLI |
 
-**현재 실행·결과는 [STATUS](docs/project/STATUS.md), 조작 조건은 [수집 계획](docs/COLLECTION_PLAN.md)에서 확인합니다.** E32는 E28/380에서 중앙 자유 구간의 형상과 첫 손 정렬을 비교하도록 시작했습니다. [실제 시작 기록](docs/project/sessions/20261113-e32-start.ko.md). 마지막 마감 E31은 **5/50·새 구간 득점0·착의0·success=false**이며 아래 영상에 보존합니다. E32의 최종 결과는 미확정입니다.
+**사용자 요청으로 수집을 잠시 중지했습니다. E33은 시작하지 않았습니다.** [현재 상태](docs/project/STATUS.md)와 [클린 서버 인계](docs/project/sessions/20261114-paused-clean-server-handoff.ko.md)를 보존합니다. E32는 불완전 capture로 전체 QC 실패이며 진단 자료로만 보관합니다. 마지막 정상 마감 E31은 **5/50·새 득점0·착의0·success=false**입니다. 다음 후보 E28/632는 명시적 재개 후 검토합니다.
 
 ## 최근 시연
 
@@ -40,7 +42,7 @@ https://github.com/user-attachments/assets/d2f347fe-712b-42f3-bdee-69d3fee2a47c
 
 ![E28 이후 계획: 옷 양옆에서 파지, 아래 입구 펼치기, 한쪽 손목, 반대쪽 손목. 실제 시연이 아닌 개념도.](docs/assets/collection-plan.svg)
 
-**사용자 제안을 반영해 중앙 자유 구간부터 다시 비교합니다.** 넓게 늘어진 모습 자체보다, 입구의 폭·깊이를 유지한 자유 밑단 구간과 같은 손의 정렬을 목표로 합니다. E32는 E28/380에서 유용한 파지를 보존해 형상을 조절하고 운반 후 중앙에 정렬한 뒤 같은 전완을 따라 옷의 진행을 비교합니다. 첫 팔 관계를 보존한 반대쪽 진행도 유지합니다. [제안 분석](docs/collection/research/2026-11-13-user-central-span.ko.md). 사용자가 승인한 단일 시연→QC·고정 백업→분석→다음 시연의 자동 반복을 따르며 E31을 실행 중에 변경하지 않았습니다.
+**사용자 제안을 반영한 중앙 자유 구간 전략을 이어 비교합니다.** E32에서 형상·운반 유지와 접촉 뒤 좁아짐을 관측했지만 첫 팔 진행은 확인하지 못했습니다. E33은 유효한 접근 전 경계에서 같은 손과 자유 구간의 정렬에 집중할 계획입니다. [제안 분석](docs/collection/research/2026-11-13-user-central-span.ko.md) / [다음 출발점 근거](docs/collection/research/2026-11-14-e33-central632-direction.ko.md). 현재 자동 반복은 사용자 요청으로 중지했으며 이 방향은 다음 재개 시의 후보입니다.
 
 [단계별 관측 기준과 새 시작점 선택](docs/COLLECTION_PLAN.md)
 
@@ -54,7 +56,7 @@ https://github.com/user-attachments/assets/d2f347fe-712b-42f3-bdee-69d3fee2a47c
 </tr>
 </table>
 
-각 이미지를 누르면 영상이 열립니다. **[전체 시연 목록](docs/EPISODES.md)**에서 E00–E31 영상, 관측 이미지, 원본 manifest와 직접 부모를 한 번에 찾을 수 있습니다.
+각 이미지를 누르면 영상이 열립니다. **[전체 시연 목록](docs/EPISODES.md)**에서 E00–E32 영상, 관측 이미지, 원본 manifest와 직접 부모를 한 번에 찾을 수 있습니다.
 
 ## 코드와 재현
 

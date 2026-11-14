@@ -1,0 +1,28 @@
+{
+  "schema": "phyrc-detached-launcher-preparation-v1",
+  "launcher_sha256": "3ce0a697d6187de0e4eef83cb37e375f00170f738f297175b898d7c3cb5280f3",
+  "checks": [
+    "dry_run_has_no_files_or_subprocess",
+    "supervisor_and_child_have_separate_sessions",
+    "synthetic_outer_SIGTERM_does_not_stop_child",
+    "actual_nonzero_child_exit_is_recorded",
+    "process_exit_does_not_claim_capture_completion",
+    "existing_job_refuses_automatic_relaunch",
+    "duplicate_worker_does_not_overwrite_exit_receipt",
+    "existing_run_files_refuse_launch",
+    "changed_command_script_hash_refuses_child_spawn"
+  ],
+  "tests_passed": 9,
+  "synthetic_only": true,
+  "GPU_or_model_started": false,
+  "real_collection_started": false,
+  "network_called": false,
+  "existing_capture_or_runtime_changed": false,
+  "signal_scope": "only the newly created synthetic outer process group",
+  "limitations": [
+    "This verifies POSIX process-group isolation only; host/cgroup/tool cleanup survival is not proven.",
+    "The cause of prior host143 remains unknown.",
+    "No real GPU/model collection has used this launcher.",
+    "A dead supervisor may leave a stale running record; inspect actual processes and capture state separately."
+  ]
+}

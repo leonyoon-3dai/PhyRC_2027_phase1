@@ -1,0 +1,70 @@
+{
+  "schema": "phyrc-detached-launch-preparation-public-v1",
+  "prepared_at_utc": "2026-11-14T00:39:12.472371+00:00",
+  "status": "preparation_validated_not_yet_used_for_real_collection",
+  "launcher_local_relative_path": "output/sessions/20261113-setup/detached_collection_launcher.py",
+  "launcher_sha256": "3ce0a697d6187de0e4eef83cb37e375f00170f738f297175b898d7c3cb5280f3",
+  "cpu_probe_sha256": "12b21fd564ec5b6d84497334052249442b4be63566d95d94002a038974e5b25f",
+  "default_mode": "dry_run",
+  "design": {
+    "supervisor_start_new_session": true,
+    "client_start_new_session": true,
+    "stdin": "DEVNULL",
+    "stdout_stderr": "private local logs",
+    "actual_client_exit_recorded": true,
+    "script_hash_bound_before_child_start": true,
+    "existing_job_or_run_refused": true,
+    "signal_forwarding_to_collection": false,
+    "capture_completion_inferred_from_exit": false
+  },
+  "cpu_checks": {
+    "count": 9,
+    "all_passed": true,
+    "checks": [
+      "dry_run_has_no_files_or_subprocess",
+      "supervisor_and_child_have_separate_sessions",
+      "synthetic_outer_SIGTERM_does_not_stop_child",
+      "actual_nonzero_child_exit_is_recorded",
+      "process_exit_does_not_claim_capture_completion",
+      "existing_job_refuses_automatic_relaunch",
+      "duplicate_worker_does_not_overwrite_exit_receipt",
+      "existing_run_files_refuse_launch",
+      "changed_command_script_hash_refuses_child_spawn"
+    ],
+    "scope": "synthetic CPU processes only; SIGTERM targeted only a newly created synthetic outer process group",
+    "network_or_GPU_or_model_calls": false
+  },
+  "independent_review": {
+    "reviewer": "root",
+    "method": "read-only full launcher source review",
+    "result": "no blocking finding",
+    "reviewed_scope": [
+      "hash binding",
+      "unique job/run gates",
+      "separate supervisor and client sessions",
+      "private logs",
+      "actual exit receipt",
+      "default root resolution"
+    ],
+    "final_launcher_sha256": "3ce0a697d6187de0e4eef83cb37e375f00170f738f297175b898d7c3cb5280f3"
+  },
+  "changes": {
+    "actor_model_code_changed": false,
+    "collector_code_changed": false,
+    "simulator_physics_or_scoring_changed": false,
+    "existing_capture_or_attempt_modified": false
+  },
+  "real_collection_started_during_preparation": false,
+  "privacy": {
+    "raw_logs_included": false,
+    "environment_values_included": false,
+    "authentication_data_included": false,
+    "process_identifiers_included": false
+  },
+  "limitations": [
+    "POSIX process-group isolation was tested; survival of host/cgroup/tool-wide cleanup is not proven.",
+    "The cause of earlier host exit143 remains unknown.",
+    "A supervisor may die and leave stale running metadata; inspect actual processes and capture state independently.",
+    "Process exit0 does not certify capture completion, QC, or normal preservation eligibility."
+  ]
+}

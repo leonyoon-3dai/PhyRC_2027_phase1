@@ -1,0 +1,59 @@
+{
+  "status": "NOT_APPLIED_NOT_APPROVED_INCOMPLETE_STOPPED",
+  "base_commit": "7fbe477584822b1a1a500bf97b7ffe1b2ea3e6da",
+  "source_branch": "codex/table-peel-candidate",
+  "source_worktree": "/home/shadeform/workspace/phyrc-table-peel-candidate",
+  "main_applied": false,
+  "runtime_or_gpu_verified": false,
+  "preserved_without_code_changes_or_retest": true,
+  "patch": "table-peel-incomplete.patch",
+  "patch_sha256": "63bc8385e935cf9a213ff98fa91b6f1da199a8e7688f0fdc85fd49eddb9d40c8",
+  "files": [
+    {
+      "saved_copy": "files/participant/collection/codex_client.py.txt",
+      "sha256": "8b2ba2ef31cdc9cc6285747583c868e9cb1f426549a48346e304b17ebc6dfbe0",
+      "bytes": 147574,
+      "base_sha256": "4797a5d010ffb8b0d8d6faf127aabdc57431b34be8ee78f4bcd59524dcae2899",
+      "base_present": true,
+      "original_source_path": "participant/collection/codex_client.py"
+    },
+    {
+      "saved_copy": "files/tests/test_central_span_strategy.py.txt",
+      "sha256": "c7b518888fa0067e76f2f177a864695f8be76f3d80b5a4bb1acbf3e9c38f1474",
+      "bytes": 10124,
+      "base_sha256": "533187d60ad1012ade5081978a092bba839fcc580d279701f761ba1e4d199d3d",
+      "base_present": true,
+      "original_source_path": "tests/test_central_span_strategy.py"
+    },
+    {
+      "saved_copy": "files/tests/test_single_arm_progress_strategy.py.txt",
+      "sha256": "c8a77177e7945172f8c77625dda42ebe42bb422177ca4950f38bf0a1261269b5",
+      "bytes": 11607,
+      "base_sha256": "d26835e859d57e7c68afba0dc028e78ca127520bd84a059647de69f3b6c9db29",
+      "base_present": true,
+      "original_source_path": "tests/test_single_arm_progress_strategy.py"
+    },
+    {
+      "saved_copy": "files/tests/test_table_peel_strategy.py.txt",
+      "sha256": "34184aa208e3570bd97441402e7eebfb3a12381035d15e39c00a730444aac7c4",
+      "bytes": 9406,
+      "base_sha256": null,
+      "base_present": false,
+      "original_source_path": "tests/test_table_peel_strategy.py"
+    }
+  ],
+  "last_test_run": {
+    "command": "PYTHONPATH=tests /home/shadeform/workspace/PhyRC_2027_phase1/.venv/bin/python -m unittest test_table_peel_strategy test_central_span_strategy test_diagonal_entry_strategy test_side_hem_wrists_strategy test_single_arm_progress_strategy",
+    "cwd": "/home/shadeform/workspace/phyrc-table-peel-candidate",
+    "tests_run": 30,
+    "passed": 29,
+    "errors": 1,
+    "failures": 0,
+    "duration_s": 8.619,
+    "error_test": "test_table_peel_strategy.TablePeelStrategyTest.test_close_and_explicit_dwell_remain_separate_physical_actions",
+    "exception": "IndexError: list index out of range",
+    "line": 155,
+    "retested_after_stop": false
+  },
+  "artifact_packaging": "Byte-identical Python source/test copies use .py.txt to prevent automatic test discovery/import. Original worktree and patch unchanged."
+}

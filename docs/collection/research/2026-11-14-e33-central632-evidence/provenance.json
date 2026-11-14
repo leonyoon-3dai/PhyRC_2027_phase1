@@ -1,0 +1,258 @@
+{
+  "source_run": "20261113-astra-side-hem-fresh-001",
+  "purpose": "public RGB comparison for E33 source choice; no actor injection",
+  "pixel_transform": "none",
+  "hidden_geometry_or_evaluation_read": false,
+  "records": [
+    {
+      "source_path": "output/actors/20261113-astra-side-hem-fresh-001/observations/00030/overview.png",
+      "observation_index": 30,
+      "transition_boundary": 588,
+      "camera": "overview",
+      "simulation_time_s": 30.925001612864435,
+      "copy": "e28-588-overview.png",
+      "sha256": "730866a913751456fda62d72473f45f948a97359b407049ada47b8c9a2f9254e",
+      "byte_identical": true
+    },
+    {
+      "source_path": "output/actors/20261113-astra-side-hem-fresh-001/observations/00030/robot_1_head.png",
+      "observation_index": 30,
+      "transition_boundary": 588,
+      "camera": "robot_1_head",
+      "simulation_time_s": 30.925001612864435,
+      "copy": "e28-588-robot_1_head.png",
+      "sha256": "5adc6accf84bd488295e3b09df482a8fd5554d38668908a605865573f6c3f7c0",
+      "byte_identical": true
+    },
+    {
+      "source_path": "output/actors/20261113-astra-side-hem-fresh-001/observations/00030/robot_0_head.png",
+      "observation_index": 30,
+      "transition_boundary": 588,
+      "camera": "robot_0_head",
+      "simulation_time_s": 30.925001612864435,
+      "copy": "e28-588-robot_0_head.png",
+      "sha256": "82a68ab781707765a2bc540f25539bf566c38e043c3044d8b19720b7903a73ab",
+      "byte_identical": true
+    },
+    {
+      "source_path": "output/actors/20261113-astra-side-hem-fresh-001/observations/00030/robot_1_wrist.png",
+      "observation_index": 30,
+      "transition_boundary": 588,
+      "camera": "robot_1_wrist",
+      "simulation_time_s": 30.925001612864435,
+      "copy": "e28-588-robot_1_wrist.png",
+      "sha256": "a40a86fd2b91c775e31870fbcfc8d4edac6109118bd07d27e1b2fcd29f6fd3b0",
+      "byte_identical": true
+    },
+    {
+      "source_path": "output/actors/20261113-astra-side-hem-fresh-001/observations/00030/robot_0_wrist.png",
+      "observation_index": 30,
+      "transition_boundary": 588,
+      "camera": "robot_0_wrist",
+      "simulation_time_s": 30.925001612864435,
+      "copy": "e28-588-robot_0_wrist.png",
+      "sha256": "2d98c4d33f6ad02f9872bbd8b9cce7e55b03b5be53be3dbcf9b03b69fb6e0f69",
+      "byte_identical": true
+    },
+    {
+      "source_path": "output/actors/20261113-astra-side-hem-fresh-001/observations/00031/overview.png",
+      "observation_index": 31,
+      "transition_boundary": 614,
+      "camera": "overview",
+      "simulation_time_s": 32.22500168066472,
+      "copy": "e28-614-overview.png",
+      "sha256": "32301b5d54716802adf13d52b38f5c9cec8cbdd2b0b255f7f140a28abed921ec",
+      "byte_identical": true
+    },
+    {
+      "source_path": "output/actors/20261113-astra-side-hem-fresh-001/observations/00031/robot_1_head.png",
+      "observation_index": 31,
+      "transition_boundary": 614,
+      "camera": "robot_1_head",
+      "simulation_time_s": 32.22500168066472,
+      "copy": "e28-614-robot_1_head.png",
+      "sha256": "6a5295d5ae152f8ebb9d9e4a59efbefa011edc0a1bee4b49b9c71f1316aae651",
+      "byte_identical": true
+    },
+    {
+      "source_path": "output/actors/20261113-astra-side-hem-fresh-001/observations/00031/robot_0_head.png",
+      "observation_index": 31,
+      "transition_boundary": 614,
+      "camera": "robot_0_head",
+      "simulation_time_s": 32.22500168066472,
+      "copy": "e28-614-robot_0_head.png",
+      "sha256": "0f2a4a675a1422d8ce619d71ee9f0d929757b7d2625f72dac179237f9f57d3f9",
+      "byte_identical": true
+    },
+    {
+      "source_path": "output/actors/20261113-astra-side-hem-fresh-001/observations/00031/robot_1_wrist.png",
+      "observation_index": 31,
+      "transition_boundary": 614,
+      "camera": "robot_1_wrist",
+      "simulation_time_s": 32.22500168066472,
+      "copy": "e28-614-robot_1_wrist.png",
+      "sha256": "b9d281b21745c332450cef4737e8f59e12b381164bba97cab850b08e1dec8775",
+      "byte_identical": true
+    },
+    {
+      "source_path": "output/actors/20261113-astra-side-hem-fresh-001/observations/00031/robot_0_wrist.png",
+      "observation_index": 31,
+      "transition_boundary": 614,
+      "camera": "robot_0_wrist",
+      "simulation_time_s": 32.22500168066472,
+      "copy": "e28-614-robot_0_wrist.png",
+      "sha256": "e4bebc47a534d9cf5c3878f089563a3d92bc524e610be807868953058d2edcaf",
+      "byte_identical": true
+    },
+    {
+      "source_path": "output/actors/20261113-astra-side-hem-fresh-001/observations/00032/overview.png",
+      "observation_index": 32,
+      "transition_boundary": 632,
+      "camera": "overview",
+      "simulation_time_s": 33.125001727603376,
+      "copy": "e28-632-overview.png",
+      "sha256": "0afdea1866bdefd3a479590b49c82441c0f2467cfe4107ef97380cf52f73e475",
+      "byte_identical": true
+    },
+    {
+      "source_path": "output/actors/20261113-astra-side-hem-fresh-001/observations/00032/robot_1_head.png",
+      "observation_index": 32,
+      "transition_boundary": 632,
+      "camera": "robot_1_head",
+      "simulation_time_s": 33.125001727603376,
+      "copy": "e28-632-robot_1_head.png",
+      "sha256": "8a02358c5c8d446078a63038e306978098ac743ea7a955dda97f02307ff39bb1",
+      "byte_identical": true
+    },
+    {
+      "source_path": "output/actors/20261113-astra-side-hem-fresh-001/observations/00032/robot_0_head.png",
+      "observation_index": 32,
+      "transition_boundary": 632,
+      "camera": "robot_0_head",
+      "simulation_time_s": 33.125001727603376,
+      "copy": "e28-632-robot_0_head.png",
+      "sha256": "27593ef538a3aa177563c92543d944a6972902219e4c1edc2101c61d3236c959",
+      "byte_identical": true
+    },
+    {
+      "source_path": "output/actors/20261113-astra-side-hem-fresh-001/observations/00032/robot_1_wrist.png",
+      "observation_index": 32,
+      "transition_boundary": 632,
+      "camera": "robot_1_wrist",
+      "simulation_time_s": 33.125001727603376,
+      "copy": "e28-632-robot_1_wrist.png",
+      "sha256": "4c646db79f631ab3672a36078eaea7ca00de57a20a72e1c48942687b676c3021",
+      "byte_identical": true
+    },
+    {
+      "source_path": "output/actors/20261113-astra-side-hem-fresh-001/observations/00032/robot_0_wrist.png",
+      "observation_index": 32,
+      "transition_boundary": 632,
+      "camera": "robot_0_wrist",
+      "simulation_time_s": 33.125001727603376,
+      "copy": "e28-632-robot_0_wrist.png",
+      "sha256": "50714864f0c702740c31c80076d8e0f2ad5fb63376605834e8b07eb895bc35a0",
+      "byte_identical": true
+    },
+    {
+      "source_path": "output/actors/20261113-astra-side-hem-fresh-001/observations/00034/overview.png",
+      "observation_index": 34,
+      "transition_boundary": 668,
+      "camera": "overview",
+      "simulation_time_s": 34.92500182148069,
+      "copy": "e28-668-overview.png",
+      "sha256": "488c192928d1dffb5f6789c59f16b7d397d3c461a16e98cc01c0ccbf19a3a0c3",
+      "byte_identical": true
+    },
+    {
+      "source_path": "output/actors/20261113-astra-side-hem-fresh-001/observations/00034/robot_1_head.png",
+      "observation_index": 34,
+      "transition_boundary": 668,
+      "camera": "robot_1_head",
+      "simulation_time_s": 34.92500182148069,
+      "copy": "e28-668-robot_1_head.png",
+      "sha256": "7d5081c6e5fb6654a6e8010849320d37fc2a4f007428665b3c5bf5f48c604261",
+      "byte_identical": true
+    },
+    {
+      "source_path": "output/actors/20261113-astra-side-hem-fresh-001/observations/00034/robot_0_head.png",
+      "observation_index": 34,
+      "transition_boundary": 668,
+      "camera": "robot_0_head",
+      "simulation_time_s": 34.92500182148069,
+      "copy": "e28-668-robot_0_head.png",
+      "sha256": "edef152f9f6e8452ba9c80d1334e6957d661498a520665b36f558979e5064575",
+      "byte_identical": true
+    },
+    {
+      "source_path": "output/actors/20261113-astra-side-hem-fresh-001/observations/00034/robot_1_wrist.png",
+      "observation_index": 34,
+      "transition_boundary": 668,
+      "camera": "robot_1_wrist",
+      "simulation_time_s": 34.92500182148069,
+      "copy": "e28-668-robot_1_wrist.png",
+      "sha256": "e0f30032eacefedc511e6ba2cfbdaae2c5621e5e08f77647cc391a900bef8578",
+      "byte_identical": true
+    },
+    {
+      "source_path": "output/actors/20261113-astra-side-hem-fresh-001/observations/00034/robot_0_wrist.png",
+      "observation_index": 34,
+      "transition_boundary": 668,
+      "camera": "robot_0_wrist",
+      "simulation_time_s": 34.92500182148069,
+      "copy": "e28-668-robot_0_wrist.png",
+      "sha256": "5d76bd41656664199534ed2773738358589d34ba11db672ad0321bf7f56c3f44",
+      "byte_identical": true
+    },
+    {
+      "source_path": "output/actors/20261113-astra-side-hem-fresh-001/observations/00035/overview.png",
+      "observation_index": 35,
+      "transition_boundary": 682,
+      "camera": "overview",
+      "simulation_time_s": 35.625001857988536,
+      "copy": "e28-682-overview.png",
+      "sha256": "b57d7172681e41903d45ef8789f8f51457776f521bf573d4ff3b46fd9d00ea09",
+      "byte_identical": true
+    },
+    {
+      "source_path": "output/actors/20261113-astra-side-hem-fresh-001/observations/00035/robot_1_head.png",
+      "observation_index": 35,
+      "transition_boundary": 682,
+      "camera": "robot_1_head",
+      "simulation_time_s": 35.625001857988536,
+      "copy": "e28-682-robot_1_head.png",
+      "sha256": "5bfc4be2a5242dd0f4b6a1f22fe1f5c29c5f98a8a5ddab562af1a5747a418285",
+      "byte_identical": true
+    },
+    {
+      "source_path": "output/actors/20261113-astra-side-hem-fresh-001/observations/00035/robot_0_head.png",
+      "observation_index": 35,
+      "transition_boundary": 682,
+      "camera": "robot_0_head",
+      "simulation_time_s": 35.625001857988536,
+      "copy": "e28-682-robot_0_head.png",
+      "sha256": "d84c90bbbf75b7ce213e90830ecba4e91fd182de4d87bc45d3d5a7195f488287",
+      "byte_identical": true
+    },
+    {
+      "source_path": "output/actors/20261113-astra-side-hem-fresh-001/observations/00035/robot_1_wrist.png",
+      "observation_index": 35,
+      "transition_boundary": 682,
+      "camera": "robot_1_wrist",
+      "simulation_time_s": 35.625001857988536,
+      "copy": "e28-682-robot_1_wrist.png",
+      "sha256": "1f866397f8462b10c55c4e414a205a757422c94b2f2b998b3e99fc921fa69bb6",
+      "byte_identical": true
+    },
+    {
+      "source_path": "output/actors/20261113-astra-side-hem-fresh-001/observations/00035/robot_0_wrist.png",
+      "observation_index": 35,
+      "transition_boundary": 682,
+      "camera": "robot_0_wrist",
+      "simulation_time_s": 35.625001857988536,
+      "copy": "e28-682-robot_0_wrist.png",
+      "sha256": "a63bf52b3d675f242c0d0ceaec4ad6aa1529dc7eb7931e9c18397a01c867ee34",
+      "byte_identical": true
+    }
+  ]
+}

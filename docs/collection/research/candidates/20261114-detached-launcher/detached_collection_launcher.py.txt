@@ -1,0 +1,158 @@
+#!/usr/bin/env python3
+"""Local preparation helper. Default dry-run; --execute launches a detached supervisor.
+
+This isolates process groups; it does not guarantee survival of host/cgroup/tool
+cleanup. Process exit is not capture completion or QC approval. Never auto-retry
+an existing job or send signals to collection processes.
+"""
+import argparse
+from datetime import datetime, timezone
+import hashlib
+import json
+import os
+from pathlib import Path
+import re
+import signal
+import subprocess
+import sys
+import tempfile
+import time
+
+SCHEMA = 'phyrc-local-detached-launch-v1'
+
+
+def require(ok, message):
+    if not ok:
+        raise ValueError(message)
+
+
+def utc():
+    return datetime.now(timezone.utc).isoformat()
+
+
+def digest(path):
+    with Path(path).open('rb') as stream:
+        return hashlib.file_digest(stream, 'sha256').hexdigest()
+
+
+def safe_path(path):
+    p = Path(path).absolute()
+    require('..' not in p.parts and not any(x.is_symlink() for x in (p, *p.parents)),
+            'symlink/traversal path rejected')
+    return p
+
+
+def atomic(path, value):
+    fd, tmp = tempfile.mkstemp(prefix='.launch-', dir=path.parent)
+    try:
+        with os.fdopen(fd, 'w') as stream:
+            json.dump(value, stream, ensure_ascii=False, indent=2, allow_nan=False)
+            stream.write('\n'); stream.flush(); os.fsync(stream.fileno())
+        os.replace(tmp, path)
+    finally:
+        if os.path.exists(tmp):
+            os.unlink(tmp)
+
+
+def worker(folder):
+    os.umask(0o077)
+    folder = safe_path(folder)
+    with (folder/'worker.claim').open('x') as claim:
+        claim.write(str(os.getpid())+'\n')
+    launch = json.loads((folder/'launch.json').read_text())
+    root, script = safe_path(launch['root']), safe_path(launch['script'])
+    state = {'schema': SCHEMA, 'run_id': launch['run_id'], 'job_id': launch['job_id'],
+             'status': 'worker_started', 'worker_started_at_utc': utc(),
+             'supervisor_pid': os.getpid(), 'supervisor_pgid': os.getpgrp(),
+             'supervisor_sid': os.getsid(0), 'script_sha256': launch['script_sha256'],
+             'capture_completion_inferred': False}
+    atomic(folder/'status.json', state)
+    try:
+        require(launch['schema'] == SCHEMA, 'launch schema mismatch')
+        require(script.is_relative_to(root) and script.is_file(), 'command script outside root or missing')
+        require(digest(script) == launch['script_sha256'], 'command script changed before launch')
+        require(digest(__file__) == launch['launcher_sha256'], 'launcher changed before worker start')
+        require(not any((root/'output'/kind/launch['run_id']).exists()
+                        for kind in ('operator-traces', 'collections', 'actors')),
+                'run already exists; launch refused')
+        started = time.monotonic()
+        with (folder/'client.log').open('xb') as log:
+            child = subprocess.Popen(['/bin/bash', str(script)], cwd=root,
+                stdin=subprocess.DEVNULL, stdout=log, stderr=subprocess.STDOUT,
+                start_new_session=True, close_fds=True)
+            # start_new_session creates a fresh SID/PGID equal to child PID.
+            # Record actual values while live; a very short-lived child can exit
+            # first, in which case preserve the declared creation contract too.
+            try:
+                pgid, sid = os.getpgid(child.pid), os.getsid(child.pid)
+            except ProcessLookupError:
+                pgid = sid = None
+            state.update(status='running', client_pid=child.pid, client_pgid=pgid,
+                         client_sid=sid, expected_new_session_id=child.pid,
+                         client_started_at_utc=utc(), client_returncode=None)
+            atomic(folder/'status.json', state)
+            code = child.wait()
+        state.update(status='exited', client_returncode=code,
+                     shell_style_exit_code=128-code if code < 0 else code,
+                     termination_signal=signal.Signals(-code).name if code < 0 else None,
+                     client_ended_at_utc=utc(), client_wall_s=time.monotonic()-started)
+        atomic(folder/'status.json', state)
+        return 0
+    except BaseException as exc:
+        state.update(status='supervision_error', error_type=type(exc).__name__,
+                     error_at_utc=utc(), client_may_still_be_running='client_pid' in state)
+        atomic(folder/'status.json', state)
+        raise
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--root', type=Path, default=Path(__file__).resolve().parents[3])
+    parser.add_argument('--run-id', required=True)
+    parser.add_argument('--job-id', required=True)
+    parser.add_argument('--script', type=Path, required=True)
+    parser.add_argument('--execute', action='store_true')
+    args = parser.parse_args(argv)
+    for value in (args.run_id, args.job_id):
+        require(re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_-]{0,127}', value), 'unsafe run/job ID')
+    root, script = safe_path(args.root), safe_path(args.script)
+    require(root.is_dir() and script.is_file() and script.is_relative_to(root), 'root/script missing or script outside root')
+    require(script.suffix == '.sh', 'reviewed shell command file required')
+    require(not any((root/'output'/kind/args.run_id).exists()
+                    for kind in ('operator-traces', 'collections', 'actors')),
+            'run already exists; launch refused')
+    folder = safe_path(root/'output/sessions/20261113-setup'/('detached-'+args.job_id))
+    require(not folder.exists(), 'job exists; inspect status and processes manually; never automatically relaunch')
+    launch = {'schema': SCHEMA, 'run_id': args.run_id, 'job_id': args.job_id,
+              'root': str(root), 'script': str(script), 'script_sha256': digest(script),
+              'launcher_sha256': digest(__file__), 'requested_at_utc': utc(),
+              'client_command': ['/bin/bash', str(script)],
+              'stdin': 'DEVNULL', 'stdout_stderr': 'private client.log',
+              'supervisor_new_session': True, 'client_new_session': True,
+              'environment_values_recorded': False, 'capture_completion_inferred': False}
+    if not args.execute:
+        print(json.dumps({'mode': 'dry_run', 'run_id': args.run_id, 'job_id': args.job_id,
+                          'script_sha256': launch['script_sha256'],
+                          'job_directory': str(folder.relative_to(root)),
+                          'processes_started': False, 'files_created': False}, indent=2))
+        return 0
+    os.umask(0o077)
+    folder.mkdir(parents=True, mode=0o700)
+    atomic(folder/'launch.json', launch)
+    with (folder/'supervisor.log').open('xb') as log:
+        supervisor = subprocess.Popen([sys.executable, str(Path(__file__).resolve()), '__worker', str(folder)],
+            cwd=root, stdin=subprocess.DEVNULL, stdout=log, stderr=subprocess.STDOUT,
+            start_new_session=True, close_fds=True)
+    receipt = {'accepted_at_utc': utc(), 'supervisor_pid': supervisor.pid,
+               'job_directory': str(folder.relative_to(root)),
+               'status': 'launch_accepted_not_yet_client_started',
+               'inspect': str((folder/'status.json').relative_to(root))}
+    atomic(folder/'launcher-receipt.json', receipt)
+    print(json.dumps(receipt, ensure_ascii=False), flush=True)
+    return 0
+
+
+if __name__ == '__main__':
+    if len(sys.argv) == 3 and sys.argv[1] == '__worker':
+        raise SystemExit(worker(Path(sys.argv[2])))
+    raise SystemExit(main())

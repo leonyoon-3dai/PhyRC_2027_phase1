@@ -1,0 +1,266 @@
+diff --git a/participant/collection/codex_client.py b/participant/collection/codex_client.py
+index f4f56ec..a9f55aa 100644
+--- a/participant/collection/codex_client.py
++++ b/participant/collection/codex_client.py
+@@ -213,6 +213,20 @@ RETAIN THE FIRST SIDE FOR THE OTHER HAND: Once current/recent views support usef
+ 
+ Keep the existing bounded one-sided regrasp and recovery rules. If current grips cannot control a useful span, select a different supported shape/approach mechanism or a permitted table-supported grasp change; do not spend the batch on tiny offsets with the same effect. Reserve actual post-close time and observations for local following and shape checks. Preserve useful intermediate support through preparation, transport and advancement so a bounded run can close without deliberately dropping it; do not assume one batch completes every stage. In the existing brief reason identify the phase, guide/anchor roles, selected hand when relevant, and intended observable change. Preserve uncertainty, recover when support or deformation worsens, and finish when no useful supported movement or recovery remains. No hidden geometry, evaluation input, extra action fields or physics changes are introduced.'''
+ 
++TABLE_PEEL_ENTRY_TASK = '''For this comparison, specialize table-supported body-hem preparation into GUIDE OPEN -> ANCHOR PEEL -> OBSERVE AN ACCESSIBLE FREE BOUNDARY -> GUIDE PLACE/CLOSE -> PHYSICAL DWELL AND LOCAL FOLLOWING -> DIFFERENTIAL SPAN TEST. This sequence replaces the generic simultaneous close-and-lift preparation above; both robots must still approach and be ready before cloth lifting. The material test is active boundary exposure by the anchor WHILE THE GUIDE REMAINS OPEN, before deciding the guide's placement. It is not merely another low-edge regrasp followed by lifting the newly closed guide. These are observation-grounded manipulation hypotheses, not supplied garment-layer labels, grasp/contact detection or a promised opening.
++
++ESTABLISH THE ANCHOR AND TABLE SUPPORT: Choose the robots and accessible candidate body-hem regions from CURRENT designated head/wrist views, public state, remaining travel and measured response. If both grippers are open, neither is an established anchor: keep the broad garment body supported on the visible table, close ONLY the chosen anchor, allow actual simulation time for closing, and inspect fingers/targets plus local cloth following during a small separate anchor test. Keep the guide open and ready nearby. Initial acquisition by an empty open gripper is not a regrasp. If starting with useful held regions, preserve them while establishing broad body/table support, then open ONLY the chosen guide while retaining the useful anchor. A close intent, small finger distance, an old image or replay itself does not establish support. If existing grips already control a useful free span and hand approach, preserve that relationship rather than release merely to satisfy this strategy's name.
++
++PEEL BEFORE GUIDE PLACEMENT: With the guide still open and the broad body remaining table-supported, make one bounded anchor lift chosen from the visible edge/table relationship. Inspect whether the anchored local edge rises relative to an accessible free boundary, or a whole exterior panel merely moves together. If useful, test ONE separate wrist rotation or changed supported direction and inspect again; do not initially combine lift, rotation and horizontal pulling into an unobserved compound path. The nominal anchor may move and retain useful support; check actual motion rather than assuming its pose is fixed. A partial peel intentionally lifting one local region is not itself loss of the remaining body's table support. If useful local following or that remaining support is lost, recover support before guide placement.
++
++PLACE THE OPEN GUIDE AT THE EXPOSED CANDIDATE: Use a boundary made visible or more accessible by the peel, with a current supported jaw approach and clearance from the table/partner. Compare its relative motion and continuity with the anchored region; do not require certification that it is the opposite fabric layer. Color, a dark fold, depth alone and a background patch do not identify hidden lips. Align the open jaw and its approach using current views, then make a bounded placement and inspect. A shallow scoop is only a candidate when its gap and above-table approach are already observable; never wedge beneath unseen layers or push into the table to search for a presumed boundary. Brief jaw occlusion alone is not failure, but reobserve or recover when the approach relationship becomes untrackable. If the peel has not exposed an accessible candidate, do not silently skip exposure and call an arbitrary placement this method.
++
++CLOSE, DWELL, THEN TEST: Retain the anchor and remaining body/table support while closing the guide. Closing can require physical time across more than one act; follow the elapsed public simulation clock, actual finger/joint motion, controller targets and cloth relation. After a new close, request a separate neutral physical dwell and inspect before a local lift or transport. Model waiting does not advance physics, neutral commands retain earlier targets, and a gripper-only close does not trigger configured motion settling. Repeating close intent is not a new grasp event or proof that closing completed; neither a fixed wait nor low velocity proves support. When the public relation supports testing, move ONLY the guide a little and inspect its local cloth following, also checking actual residual anchor motion. Then make a separate differential shape test to compare candidate relative separation, width and depth. Local following is useful evidence, not independent load or opposite-layer certification. Visible empty background through a hole is not required.
++
++BOUNDED PREPARATION AND RECOVERY: Within this peel preparation, allow at most ONE deliberate one-sided release-reposition-reclose cycle in total, with at most TWO short placement corrections for an initial acquisition or that cycle. Keep track of the count across role/phase changes. Closing each initially empty gripper for the first time is not a release-reclose cycle; opening a newly acquired grip to place it again is. Never release both useful grips together. The later distinct-progress grasp-change rules above remain available only after a genuinely new observed dressing relationship, not as a reset for failed peel preparation. Reserve budget after the last close for at least a separate physical dwell/observation, a local-following test, a differential-shape test, and recovery/finish margin; do not spend the batch on placement and end at an untested close. Treat two or three correction-and-observation cycles as a saturation comparison window, not a hard stop after two actions: continue useful refinement if a new relevant boundary/support relationship emerges. If the same whole-panel fold repeats, choose a different supported mechanism or recover/finish when useful options are exhausted, rather than cycling tiny offsets or blind scoops.
++
++USE THE RESULT FOR THE CENTRAL FIRST-HAND GOAL: When current views support useful bilateral local following and a controllable candidate free span, preserve its width/depth and support through transport. Reassess one hand by its connected forearm and align it with the free interior away from both held corners, jaws and housings. Apply the central-span entry and same-forearm progression goals above, then preserve that first cloth-to-arm relation while guiding the opposite side. Do not abandon an actually useful first-arm relation to redo table preparation. Partial occlusion or uncertain lip identity alone does not mandate termination: a supported changed mechanism may receive one bounded test, followed by observation. Keep the full dressing goal, the existing action/observation contract and the brief reason format; state the current preparation or entry purpose, anchor/guide roles, relevant uncertainty and observable effect to test. No fixed coordinate, robot side, angle, hidden geometry, evaluation signal or source trajectory is supplied.'''
++
+ SINGLE_ARM_PROGRESS_TASK = '''For this attempt, preserve continuity of ONE selected arm within the task-progress approach. Choose the arm with the most useful CURRENT body-opening, hand and forearm relationship from the designated views; use available same-episode history to track that relationship, not as proof of current geometry or support. Identify the selected arm by its visible connected hand/forearm and relation to the garment, without assuming a predetermined anatomical side or robot-camera identity. Keep the existing grasps: the one-sided regrasp bound remains zero.
+ 
+ Continue that hand's body-opening entry and guide the garment along the SAME forearm toward its corresponding sleeve and shoulder. Keep the body-entry-to-sleeve direction; do not insert the hand into a cuff from outside. A visible cuff is not required before starting a useful entry movement. Use the existing brief reason to state the selected arm relationship, the current purpose and any identity uncertainty; do not add output fields.
+@@ -629,8 +643,8 @@ def main():
+                         'coordinated-leading-hand-swap',
+                         'coordinated-single-arm-progress',
+                         'coordinated-side-hem-wrists', 'coordinated-diagonal-entry',
+-                        'coordinated-central-span-entry'], default='general',
+-                        help='Optional dressing guidance; central-span-entry shapes a free body-hem span before same-hand alignment and forearm advancement')
++                        'coordinated-central-span-entry', 'coordinated-table-peel-entry'], default='general',
++                        help='Optional dressing guidance; table-peel-entry exposes an accessible boundary with an open guide before closing and central-span entry')
+     parser.add_argument('--actor-backend', choices=['exec', 'app-server'], default='exec')
+     parser.add_argument('--plan-size', type=int, default=1,
+                         help='Maximum segments per model call; >1 is an open-loop list')
+@@ -701,7 +715,7 @@ def main():
+                          'coordinated-opposing-rim', 'coordinated-leading-hand-swap',
+                          'coordinated-single-arm-progress',
+                          'coordinated-side-hem-wrists', 'coordinated-diagonal-entry',
+-                         'coordinated-central-span-entry') and args.mode != 'dressing':
++                         'coordinated-central-span-entry', 'coordinated-table-peel-entry') and args.mode != 'dressing':
+         parser.error('coordinated strategy requires the full dressing objective')
+     if args.strategy == 'coordinated-support-diagnostic' and args.plan_size != 1:
+         parser.error('support diagnostic requires plan-size=1 to observe after each action')
+@@ -727,6 +741,8 @@ def main():
+         parser.error('diagonal-entry requires exec and plan-size=1 to inspect each same-hand entry trial')
+     if args.strategy == 'coordinated-central-span-entry' and (args.plan_size != 1 or args.actor_backend != 'exec'):
+         parser.error('central-span-entry requires exec and plan-size=1 to inspect span shape and same-hand progress')
++    if args.strategy == 'coordinated-table-peel-entry' and (args.plan_size != 1 or args.actor_backend != 'exec'):
++        parser.error('table-peel-entry requires exec and plan-size=1 to inspect each exposure, placement and support test')
+     if args.mode == 'wiring' and args.plan_size > 1 and (args.plan_size != 3 or args.decisions != 3):
+         parser.error('grouped wiring requires plan-size=3 and decisions=3')
+     if not math.isfinite(args.model_timeout) or not 10 <= args.model_timeout <= 1800:
+@@ -765,7 +781,7 @@ def main():
+                          'coordinated-opposing-rim', 'coordinated-leading-hand-swap',
+                          'coordinated-single-arm-progress',
+                          'coordinated-side-hem-wrists', 'coordinated-diagonal-entry',
+-                         'coordinated-central-span-entry'):
++                         'coordinated-central-span-entry', 'coordinated-table-peel-entry'):
+         task += '\n\n' + COORDINATED_TASK
+     if args.strategy == 'coordinated-sleeve':
+         task += '\n\n' + SLEEVE_TASK
+@@ -804,6 +820,9 @@ def main():
+     elif args.strategy == 'coordinated-central-span-entry':
+         task += ('\n\n' + SIDE_HEM_WRISTS_TASK + '\n\n' + CENTRAL_SPAN_ENTRY_TASK
+                  + '\n\n' + METHOD_SATURATION_TASK)
++    elif args.strategy == 'coordinated-table-peel-entry':
++        task += ('\n\n' + SIDE_HEM_WRISTS_TASK + '\n\n' + CENTRAL_SPAN_ENTRY_TASK
++                 + '\n\n' + TABLE_PEEL_ENTRY_TASK + '\n\n' + METHOD_SATURATION_TASK)
+     if args.plan_size > 1:
+         task += '\n\n' + PLAN_TASK.format(max_segments=args.plan_size, max_total_steps=args.plan_step_budget)
+     if args.post_action_settle_steps:
+diff --git a/tests/test_central_span_strategy.py b/tests/test_central_span_strategy.py
+index bddf7bf..0dd7f60 100644
+--- a/tests/test_central_span_strategy.py
++++ b/tests/test_central_span_strategy.py
+@@ -58,7 +58,7 @@ class CentralSpanStrategyTest(unittest.TestCase):
+                             result[target.id] = ast.dump(node)
+             return result
+         old, new = nodes(BASE_SOURCE), nodes(Path(client.__file__).read_text())
+-        self.assertEqual(set(new) - set(old), {'CENTRAL_SPAN_ENTRY_TASK'})
++        self.assertEqual(set(new) - set(old), {'CENTRAL_SPAN_ENTRY_TASK', 'TABLE_PEEL_ENTRY_TASK'})
+         self.assertEqual(set(old) - set(new), set())
+         for key in old:
+             if key != 'main':
+diff --git a/tests/test_single_arm_progress_strategy.py b/tests/test_single_arm_progress_strategy.py
+index 71fd845..fdd81fc 100644
+--- a/tests/test_single_arm_progress_strategy.py
++++ b/tests/test_single_arm_progress_strategy.py
+@@ -66,7 +66,7 @@ class SingleArmProgressStrategyTest(unittest.TestCase):
+         old, current = nodes(BASE_SOURCE), nodes(Path(client.__file__).read_text())
+         self.assertEqual(set(current) - set(old), {
+             'SINGLE_ARM_PROGRESS_TASK', 'SIDE_HEM_WRISTS_TASK', 'DIAGONAL_ENTRY_TASK',
+-            'CENTRAL_SPAN_ENTRY_TASK'})
++            'CENTRAL_SPAN_ENTRY_TASK', 'TABLE_PEEL_ENTRY_TASK'})
+         for name, node in old.items():
+             if name != 'main':
+                 with self.subTest(name=name):
+diff --git a/tests/test_table_peel_strategy.py b/tests/test_table_peel_strategy.py
+new file mode 100644
+index 0000000..ce7572b
+--- /dev/null
++++ b/tests/test_table_peel_strategy.py
+@@ -0,0 +1,161 @@
++"""Conditional strategy routing and public contract; no cloth/physics claims."""
++import ast
++import hashlib
++from pathlib import Path
++import subprocess
++import sys
++import tempfile
++from types import ModuleType
++import unittest
++from unittest import mock
++
++import numpy as np
++
++from participant.collection import codex_client as client, named_actions
++import test_depth_query as query
++import test_support_diagnostic_strategy as diagnostic
++from test_overhead_strategy import encode
++
++
++ROOT = Path(__file__).resolve().parents[1]
++BASE = '7fbe477584822b1a1a500bf97b7ffe1b2ea3e6da'
++BASE_SOURCE = subprocess.check_output(
++    ['git', 'show', BASE + ':participant/collection/codex_client.py'], cwd=ROOT, text=True)
++baseline = ModuleType('table_peel_baseline_client')
++baseline.__file__ = str(ROOT / 'participant/collection/codex_client.py')
++exec(compile(BASE_SOURCE, baseline.__file__, 'exec'), baseline.__dict__)
++STRATEGY = 'coordinated-table-peel-entry'
++
++
++class TablePeelStrategyTest(unittest.TestCase):
++    def test_route_keeps_central_goal_and_excludes_private_selection_data(self):
++        result = diagnostic.SupportDiagnosticStrategyTest().prepare(strategy=STRATEGY, replay=False)
++        prompt = result['prompt']
++        self.assertEqual(prompt, '\n\n'.join([client.TASK, client.COORDINATED_TASK,
++            client.SIDE_HEM_WRISTS_TASK, client.CENTRAL_SPAN_ENTRY_TASK,
++            client.TABLE_PEEL_ENTRY_TASK, client.METHOD_SATURATION_TASK]))
++        self.assertNotIn(client.DIAGONAL_ENTRY_TASK, prompt)
++        self.assertEqual(result['attempt']['strategy'], STRATEGY)
++        self.assertEqual(result['attempt']['plan_execution'], 'single_decision')
++        self.assertEqual(result['attempt']['prompt_sha256'], hashlib.sha256(prompt.encode()).hexdigest())
++        low = diagnostic.SupportDiagnosticStrategyTest().prepare(
++            strategy=STRATEGY, review_points=10, settle=6, depth=True)
++        high = diagnostic.SupportDiagnosticStrategyTest().prepare(
++            strategy=STRATEGY, review_points=50, settle=6, depth=True)
++        self.assertEqual(low['prompt'], high['prompt'])
++        for forbidden in ('892321', 'private-parent', 'private-source-family',
++                          'reset_seed', 'raw_points', 'score_segments'):
++            self.assertNotIn(forbidden, low['prompt'])
++
++    def test_old_constants_schema_and_nonrouting_code_are_unchanged(self):
++        def nodes(source):
++            result = {}
++            for node in ast.parse(source).body:
++                if isinstance(node, (ast.FunctionDef, ast.ClassDef)):
++                    result[node.name] = ast.dump(node)
++                elif isinstance(node, ast.Assign):
++                    for target in node.targets:
++                        if isinstance(target, ast.Name):
++                            result[target.id] = ast.dump(node)
++            return result
++        old, new = nodes(BASE_SOURCE), nodes(Path(client.__file__).read_text())
++        self.assertEqual(set(new) - set(old), {'TABLE_PEEL_ENTRY_TASK'})
++        self.assertEqual(set(old) - set(new), set())
++        for key in old:
++            if key != 'main':
++                with self.subTest(node=key):
++                    self.assertEqual(old[key], new[key])
++
++    def test_existing_central_side_and_diagonal_routes_and_default_match_baseline(self):
++        for strategy in ('coordinated-central-span-entry', 'coordinated-side-hem-wrists',
++                         'coordinated-diagonal-entry'):
++            for enabled in (False, True):
++                for names in (False, True):
++                    with self.subTest(strategy=strategy, query=enabled, named=names):
++                        options = dict(strategy=strategy, enabled=enabled, history=True, depth_panel=True,
++                            extra_flags=['--named-actions'] if names else [],
++                            response_transform=encode if names else None)
++                        old = query.QueryTests().run_client(module=baseline, **options)
++                        new = query.QueryTests().run_client(**options)
++                        self.assertIsNone(old['error']); self.assertIsNone(new['error'])
++                        for field in ('calls', 'requests', 'order', 'commands'):
++                            self.assertEqual(old[field], new[field])
++                        self.assertNotIn(client.TABLE_PEEL_ENTRY_TASK, new['calls'][0]['prompt'])
++        old = query.QueryTests().run_client(module=baseline, enabled=False, scenario='direct')
++        new = query.QueryTests().run_client(enabled=False, scenario='direct')
++        self.assertIsNone(new['error'])
++        self.assertEqual(new['attempt']['strategy'], 'general')
++        for field in ('calls', 'requests', 'order', 'commands'):
++            self.assertEqual(old[field], new[field])
++
++    def test_rejects_wrong_mode_backend_or_grouped_plan_before_outputs(self):
++        for mode, size, backend in [('wiring', 1, 'exec'), ('pickup', 1, 'exec'),
++                ('dressing', 2, 'exec'), ('dressing', 3, 'exec'), ('dressing', 1, 'app-server')]:
++            with self.subTest(mode=mode, size=size, backend=backend), tempfile.TemporaryDirectory() as tmp:
++                root = Path(tmp)
++                argv = ['client', '--run-id', 'reject', '--mode', mode, '--strategy', STRATEGY,
++                        '--plan-size', str(size), '--actor-backend', backend]
++                with mock.patch.object(client, '__file__', str(root / 'participant/collection/client.py')), \
++                     mock.patch.object(client.signal, 'signal'), \
++                     mock.patch.object(client, 'Simulator') as simulator, \
++                     mock.patch.object(sys, 'argv', argv), mock.patch('sys.stderr'), \
++                     self.assertRaises(SystemExit):
++                    client.main()
++                simulator.assert_not_called()
++                self.assertFalse((root / 'output').exists())
++
++    def test_named_anchor_motion_and_open_guide_keep_frozen_query_and_mapping(self):
++        def move(value, index, schema):
++            if index == 1:
++                value.update(tool='act', steps=6, stage='preparation',
++                    visual_assessment='uncertain', reason='Compare the exposed boundary while the guide stays open.')
++                value['action'][0][3] = .03
++                value['action'][1][8] = -1.
++            return encode(value)
++        result = query.QueryTests().run_client(strategy=STRATEGY, history=True, depth_panel=True,
++            extra_flags=['--named-actions', '--post-action-settle-steps', '6'], response_transform=move)
++        self.assertIsNone(result['error'])
++        first, followup = result['calls']
++        self.assertEqual(len(first['images']), 16)
++        self.assertEqual(first['images'], followup['images'])
++        self.assertEqual(followup['schema'], named_actions.response_schema(baseline.SCHEMA))
++        calls = [e for e in result['events'] if e['type'] == 'model_call']
++        self.assertEqual(calls[0]['frozen_observation_id'], calls[1]['frozen_observation_id'])
++        self.assertEqual(calls[0]['observation_simulation_time_s'], calls[1]['observation_simulation_time_s'])
++        queries = [e for e in result['events'] if e['type'] == 'depth_query_result']
++        self.assertEqual(len(queries), 1)
++        self.assertFalse(queries[0]['executed'])
++        expected = np.zeros((2, 9), np.float32); expected[0, 3] = .03; expected[1, 8] = -1.
++        acts = [args for tool, args in result['requests'] if tool == 'act']
++        self.assertEqual(acts[-2], {'action': expected.tolist(), 'steps': 6})
++        self.assertEqual(acts[-1], {'action': np.zeros((2, 9)).tolist(), 'steps': 6})
++        self.assertEqual(result['attempt']['simulation_steps'], 16)  # replay3 +act6 +settle6 +cleanup1
++        for call in result['calls']:
++            for forbidden in ('NEVER_ACTOR', 'PRIVATE_LINEAGE', '123987', 'PRIVATE_SESSION_CANARY'):
++                self.assertNotIn(forbidden, call['prompt'])
++
++    def test_close_and_explicit_dwell_remain_separate_physical_actions(self):
++        def close_then_dwell(value, index, schema):
++            value.update(tool='act', steps=20, stage='preparation',
++                visual_assessment='uncertain', reason='Observe physical closing time and then reassess.')
++            if index == 0:
++                value['action'][0][8] = 1.
++            return value
++        result = query.QueryTests().run_client(strategy=STRATEGY, enabled=False, scenario='direct',
++            extra_flags=['--decisions', '2', '--post-action-settle-steps', '6'],
++            response_transform=close_then_dwell)
++        self.assertIsNone(result['error'])
++        expected = np.zeros((2, 9), np.float32); expected[0, 8] = 1.
++        acts = [args for tool, args in result['requests'] if tool == 'act']
++        self.assertEqual(acts, [{'action': expected.tolist(), 'steps': 20},
++            {'action': np.zeros((2, 9)).tolist(), 'steps': 20}])
++        self.assertEqual(result['order'], ['call0', 'act', 'call1', 'act', 'stop', 'finish_episode'])
++        self.assertEqual(result['attempt']['simulation_steps'], 41)  # no injected close-only settle
++        calls = [e for e in result['events'] if e['type'] == 'model_call']
++        self.assertEqual(calls[1]['observation_simulation_time_s'] -
++                         calls[0]['observation_simulation_time_s'], 1.)
++        self.assertEqual(result['calls'][0]['schema'], baseline.SCHEMA)
++
++
++if __name__ == '__main__':
++    unittest.main()

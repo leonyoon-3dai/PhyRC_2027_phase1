@@ -1,0 +1,312 @@
+{
+  "schema": "phyrc-decision-budget-review-v1",
+  "run_id": "20261113-astra-central380-001",
+  "scope": "developer_review_only_not_actor_input",
+  "publication_status": "prepared_incomplete_evidence_only",
+  "source_files": [
+    {
+      "path": "output/operator-traces/20261113-astra-central380-001/attempt.json",
+      "sha256": "0f310e276114bd3cadb2722cc03428c41986fc564f4040f1243bcde4c1e40785"
+    },
+    {
+      "path": "output/operator-traces/20261113-astra-central380-001/decisions.jsonl",
+      "sha256": "fae3297b7f6546a2060b13581f997959a20804f0867195c0649bfffb414237aa"
+    },
+    {
+      "path": "output/collections/20261113-astra-central380-001/capture.json",
+      "sha256": "67793da96585db62edd600c382220025de02337d4262366b3f3d2bd00eb9cb12"
+    },
+    {
+      "path": "output/collections/20261113-astra-central380-001/operator.jsonl",
+      "sha256": "133bd2678f96999dfcd1f6d998f837948bc1b6ef31a5698026e45d9d6548724e"
+    },
+    {
+      "path": "output/reviews/20261114-e32-validation.json",
+      "sha256": "f89dd4d3c18bda5f684684084203ad1608c9682f2613a1f59e4a6d5ed42bb3cd"
+    },
+    {
+      "path": "docs/project/sessions/20261113-e32-start.ko.md",
+      "sha256": "5b130b4b5ae726a47e8f565b88825fe665eff638ea1d052a6a7214a3dec305d4"
+    },
+    {
+      "path": "output/operator-traces/20261113-astra-central380-001/score_segments.json",
+      "sha256": "5182fb40ba817f5054a9588129cabdeddaa6c97159bb478f20962756d736d23a"
+    }
+  ],
+  "method": {
+    "timing_event_types": [
+      "model_call",
+      "applied_segment",
+      "replayed_segment"
+    ],
+    "actor_timing": "sum completed model_call.wall_s once; include query followup, exclude duplicated decision timing",
+    "cleanup_count_source": "collector stop756→757 and shutdown neutral757→758; no finish_episode request",
+    "cleanup_timing": "client timing missing; explicit stop has separate collector execution time; EOF cleanup not individually timed",
+    "score_source": "root-verified final QC evaluation and score index; not actor input",
+    "stage_intent": "accepted labels only; no independent visual or passage inference",
+    "excluded": [
+      "raw reasoning",
+      "action reasons",
+      "auth data",
+      "images",
+      "actions",
+      "hidden geometry"
+    ],
+    "integrity_scope": "after quiescence: capture hash/header checks and root full758-transition QC with3 completeness errors"
+  },
+  "summary": {
+    "completed": false,
+    "capture_complete": false,
+    "quality_passed": false,
+    "total_transitions_examined": 758,
+    "validated_transitions": 758,
+    "validation_errors": [
+      "capture manifest is incomplete",
+      "policy HDF5 file is incomplete",
+      "audit HDF5 file is incomplete"
+    ],
+    "evidence_classification": "incomplete capture; failed evidence, not normal replay/training source",
+    "source_commit": "0421f8b3c45fd0291455fb278144ce279682dd98",
+    "parent_attempt": "20261113-astra-side-hem-fresh-001",
+    "source_group": "20261113-astra-side-hem-fresh-001",
+    "strategy": "coordinated-central-span-entry",
+    "decisions_requested": 20,
+    "decisions_completed": 20,
+    "motion_decisions": 20,
+    "finish_decisions": 0,
+    "unused_decision_slots": 0,
+    "actor_calls": 21,
+    "depth_query_followup_calls": 1,
+    "max_steps": 1400,
+    "review_points": 10,
+    "model_call_timeout_s": 180,
+    "decision_budget_exhausted": true,
+    "step_budget_exhausted": false,
+    "normal_client_finalization_completed": false,
+    "collector_termination_reason": "input_closed",
+    "client_stop_reason_event_recorded": false,
+    "attempt_status_stale": "collecting",
+    "attempt_activity_stale": "controller_settle",
+    "attempt_finished_stale": false,
+    "attempt_simulation_steps_stale": 756,
+    "simulator_returncode_recorded": null,
+    "host_exec_returncode_reported_by_operator": 143,
+    "host_exit_cause": "unknown",
+    "whole_attempt_wall_s": null,
+    "collector_wall_s": 1915.873022619,
+    "actor_call_wall_s": 1220.8714702609996,
+    "accepted_environment_dispatch_wall_s": 646.7368523649984,
+    "replay_environment_wall_s": 324.02604132599663,
+    "new_model_plus_settle_environment_wall_s": 322.7108110390018,
+    "accepted_suffix_actor_plus_environment_wall_s": 1543.5822813000013,
+    "cleanup_environment_dispatch_wall_s": null,
+    "collector_explicit_stop_execution_wall_s": 0.6923843439999473,
+    "replay_transitions": 380,
+    "new_model_transitions": 256,
+    "new_settle_transitions": 120,
+    "accepted_new_model_plus_settle_transitions": 376,
+    "explicit_stop_transitions": 1,
+    "input_eof_shutdown_neutral_transitions": 1,
+    "cleanup_transitions": 2,
+    "captured_new_suffix_transitions": 378,
+    "client_trace_final_boundary": 756,
+    "capture_final_boundary": 758,
+    "total_transitions": 758,
+    "accepted_new_action_simulation_s": 18.8,
+    "captured_new_suffix_simulation_s": 18.9,
+    "whole_episode_simulation_s": 37.9,
+    "actor_s_per_motion_decision": 61.04357351304998,
+    "environment_s_per_motion_decision": 16.13554055195009,
+    "actor_s_per_model_call": 58.136736679095215,
+    "model_internal_inference_wall_s": null,
+    "evaluation_valid": true,
+    "raw_points": 5.0,
+    "dressing_points": 0.0,
+    "new_suffix_raw_points_awarded": 0.0,
+    "new_suffix_dressing_points_awarded": 0.0,
+    "success": false,
+    "score_source": "root-verified final QC evaluation and trusted index; only pickup at replay boundary371",
+    "human_intervention": false,
+    "started_at_utc": "2026-11-13T23:59:34Z",
+    "client_ended_at_utc": null
+  },
+  "decision_groups": [
+    {
+      "group_id": "D00-D04",
+      "decision_index_start": 0,
+      "decision_index_end_inclusive": 4,
+      "decision_tool_counts": {
+        "act": 5
+      },
+      "actor_calls": 5,
+      "actor_call_phase_counts": {
+        "initial": 5
+      },
+      "actor_call_wall_s": 248.81872675500017,
+      "environment_dispatch_wall_s": 66.09862074500052,
+      "model_environment_wall_s": 39.40369671799999,
+      "settle_environment_wall_s": 26.694924027000525,
+      "transition_start_boundary": 380,
+      "transition_end_boundary": 456,
+      "actual_transitions": 76,
+      "model_transitions": 46,
+      "settle_transitions": 30,
+      "observed_stage_intent_counts": {
+        "preparation": 2,
+        "lift": 2,
+        "transport": 1
+      }
+    },
+    {
+      "group_id": "D05-D09",
+      "decision_index_start": 5,
+      "decision_index_end_inclusive": 9,
+      "decision_tool_counts": {
+        "act": 5
+      },
+      "actor_calls": 6,
+      "actor_call_phase_counts": {
+        "initial": 5,
+        "action_after_query": 1
+      },
+      "actor_call_wall_s": 384.5678123639991,
+      "environment_dispatch_wall_s": 107.58461548599917,
+      "model_environment_wall_s": 80.71313237699906,
+      "settle_environment_wall_s": 26.87148310900011,
+      "transition_start_boundary": 456,
+      "transition_end_boundary": 586,
+      "actual_transitions": 130,
+      "model_transitions": 100,
+      "settle_transitions": 30,
+      "observed_stage_intent_counts": {
+        "transport": 4,
+        "approach": 1
+      }
+    },
+    {
+      "group_id": "D10-D14",
+      "decision_index_start": 10,
+      "decision_index_end_inclusive": 14,
+      "decision_tool_counts": {
+        "act": 5
+      },
+      "actor_calls": 5,
+      "actor_call_phase_counts": {
+        "initial": 5
+      },
+      "actor_call_wall_s": 297.62595086999863,
+      "environment_dispatch_wall_s": 98.36550012400039,
+      "model_environment_wall_s": 70.92793248999988,
+      "settle_environment_wall_s": 27.437567634000516,
+      "transition_start_boundary": 586,
+      "transition_end_boundary": 694,
+      "actual_transitions": 108,
+      "model_transitions": 78,
+      "settle_transitions": 30,
+      "observed_stage_intent_counts": {
+        "approach": 5
+      }
+    },
+    {
+      "group_id": "D15-D19",
+      "decision_index_start": 15,
+      "decision_index_end_inclusive": 19,
+      "decision_tool_counts": {
+        "act": 5
+      },
+      "actor_calls": 5,
+      "actor_call_phase_counts": {
+        "initial": 5
+      },
+      "actor_call_wall_s": 289.85898027200165,
+      "environment_dispatch_wall_s": 50.66207468400171,
+      "model_environment_wall_s": 26.582835422001153,
+      "settle_environment_wall_s": 24.079239262000556,
+      "transition_start_boundary": 694,
+      "transition_end_boundary": 756,
+      "actual_transitions": 62,
+      "model_transitions": 32,
+      "settle_transitions": 30,
+      "observed_stage_intent_counts": {
+        "first_sleeve": 2,
+        "approach": 1,
+        "recovery": 2
+      }
+    }
+  ],
+  "query_cycle": {
+    "decision_index": 9,
+    "initial_call_wall_s": 127.21117611899899,
+    "followup_call_wall_s": 65.52548655600003,
+    "total_cycle_actor_wall_s": 192.73666267499902,
+    "physics_transitions": 0,
+    "caution": "cycle time is not a controlled overhead estimate versus a no-query decision"
+  },
+  "cleanup_events": [
+    {
+      "scope": "explicit_stop",
+      "transition_start_boundary": 756,
+      "transition_end_boundary": 757,
+      "transitions": 1,
+      "collector_execution_wall_s": 0.6923843439999473,
+      "client_ACK_event_recorded": false
+    },
+    {
+      "scope": "input_eof_shutdown_neutral",
+      "transition_start_boundary": 757,
+      "transition_end_boundary": 758,
+      "transitions": 1,
+      "collector_execution_wall_s": null
+    }
+  ],
+  "trusted_score_awards": [
+    {
+      "scope": "replay",
+      "transition_boundary": 371,
+      "award_stage": "pickup",
+      "raw_points_delta": 5.0,
+      "dressing_points_delta": 0.0,
+      "verification": "root-verified trusted index"
+    }
+  ],
+  "trusted_score_by_scope": [
+    {
+      "scope": "replay",
+      "raw_points_awarded": 5.0,
+      "dressing_points_awarded": 0.0
+    },
+    {
+      "scope": "D00-D04",
+      "raw_points_awarded": 0.0,
+      "dressing_points_awarded": 0.0
+    },
+    {
+      "scope": "D05-D09",
+      "raw_points_awarded": 0.0,
+      "dressing_points_awarded": 0.0
+    },
+    {
+      "scope": "D10-D14",
+      "raw_points_awarded": 0.0,
+      "dressing_points_awarded": 0.0
+    },
+    {
+      "scope": "D15-D19",
+      "raw_points_awarded": 0.0,
+      "dressing_points_awarded": 0.0
+    },
+    {
+      "scope": "cleanup",
+      "raw_points_awarded": 0.0,
+      "dressing_points_awarded": 0.0
+    }
+  ],
+  "interpretation": [
+    "All 20 requested model decisions and the final settle completed; the normal shutdown protocol did not.",
+    "The 758 recorded transitions include two neutral cleanup steps after the client trace ends at 756; retain stale/incomplete metadata.",
+    "QC examined 758 transitions but failed capture/root completeness; valid score evaluation does not make this a normal complete capture.",
+    "Time and stage labels do not establish new geometry, passage or repetition; consult the separate public-observation review.",
+    "Do not use E32 as a normal replay/training source; use a valid parent and a separately reviewed host launcher.",
+    "E33 is selected from valid E28/632 with new replay history588/614, unchanged central strategy and20 new decisions; reassess a normally closed valid result before a separate continuation."
+  ]
+}

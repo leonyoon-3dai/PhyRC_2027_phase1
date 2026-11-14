@@ -1,0 +1,180 @@
+{
+  "source_run": "20261113-astra-central380-001",
+  "status": "incomplete_capture_full_QC_failed_not_a_replay_or_training_source",
+  "purpose": "public RGB diagnostic comparison only",
+  "normal_QC_gated_export": false,
+  "pixel_transform": "none",
+  "hidden_geometry_or_evaluation_read": false,
+  "records": [
+    {
+      "copy": "e32-694-overview.png",
+      "camera": "overview",
+      "source_png": "output/actors/20261113-astra-central380-001/observations/00015/overview.png",
+      "transition_boundary": 694,
+      "simulation_time_s": 36.225001889280975,
+      "sha256": "47319dc365f38b921a362fefe3f26e0c87bdda0ece612b193960f9a11f79776a",
+      "byte_identical_to_source_png": true,
+      "actor_observation_index": 15
+    },
+    {
+      "copy": "e32-694-robot_1_head.png",
+      "camera": "robot_1_head",
+      "source_png": "output/actors/20261113-astra-central380-001/observations/00015/robot_1_head.png",
+      "transition_boundary": 694,
+      "simulation_time_s": 36.225001889280975,
+      "sha256": "efbe553065b41ee2e824064fccd18b06a34b6211879a6b468451bcba14fe7211",
+      "byte_identical_to_source_png": true,
+      "actor_observation_index": 15
+    },
+    {
+      "copy": "e32-694-robot_0_head.png",
+      "camera": "robot_0_head",
+      "source_png": "output/actors/20261113-astra-central380-001/observations/00015/robot_0_head.png",
+      "transition_boundary": 694,
+      "simulation_time_s": 36.225001889280975,
+      "sha256": "afa9c970c167f58f19966548a32ede32f556d4cd51754295242b875721431e10",
+      "byte_identical_to_source_png": true,
+      "actor_observation_index": 15
+    },
+    {
+      "copy": "e32-694-robot_1_wrist.png",
+      "camera": "robot_1_wrist",
+      "source_png": "output/actors/20261113-astra-central380-001/observations/00015/robot_1_wrist.png",
+      "transition_boundary": 694,
+      "simulation_time_s": 36.225001889280975,
+      "sha256": "32f8d25c3ac76f4a03ea63e4b2941ec575ad1cda2298745368c29fbc9c7eb472",
+      "byte_identical_to_source_png": true,
+      "actor_observation_index": 15
+    },
+    {
+      "copy": "e32-694-robot_0_wrist.png",
+      "camera": "robot_0_wrist",
+      "source_png": "output/actors/20261113-astra-central380-001/observations/00015/robot_0_wrist.png",
+      "transition_boundary": 694,
+      "simulation_time_s": 36.225001889280975,
+      "sha256": "3ba5cdfd987fb3df653f3c733068a2068200ff07c966492089aa84779303b38b",
+      "byte_identical_to_source_png": true,
+      "actor_observation_index": 15
+    },
+    {
+      "copy": "e32-732-overview.png",
+      "camera": "overview",
+      "source_png": "output/actors/20261113-astra-central380-001/observations/00018/overview.png",
+      "transition_boundary": 732,
+      "simulation_time_s": 38.1250019883737,
+      "sha256": "d4f5050c11c613650433e3c0d87a2c9a8f5edd4af52c422c7b7a2dc3fc19349a",
+      "byte_identical_to_source_png": true,
+      "actor_observation_index": 18
+    },
+    {
+      "copy": "e32-732-robot_1_head.png",
+      "camera": "robot_1_head",
+      "source_png": "output/actors/20261113-astra-central380-001/observations/00018/robot_1_head.png",
+      "transition_boundary": 732,
+      "simulation_time_s": 38.1250019883737,
+      "sha256": "b937ace4dd0eeb2325ba4713ef6f2a6fe7f61de8d6d8f8bef6d92cc7db580603",
+      "byte_identical_to_source_png": true,
+      "actor_observation_index": 18
+    },
+    {
+      "copy": "e32-732-robot_0_head.png",
+      "camera": "robot_0_head",
+      "source_png": "output/actors/20261113-astra-central380-001/observations/00018/robot_0_head.png",
+      "transition_boundary": 732,
+      "simulation_time_s": 38.1250019883737,
+      "sha256": "8a6227ac15cdcf3f14d88fd84eec4f3013f54618167f5f4e99a0b9012ea416b5",
+      "byte_identical_to_source_png": true,
+      "actor_observation_index": 18
+    },
+    {
+      "copy": "e32-732-robot_1_wrist.png",
+      "camera": "robot_1_wrist",
+      "source_png": "output/actors/20261113-astra-central380-001/observations/00018/robot_1_wrist.png",
+      "transition_boundary": 732,
+      "simulation_time_s": 38.1250019883737,
+      "sha256": "66c74ee745cc46ead69a658c6aec89a83e5bdeec0f477607b9c5fdf8989ce5af",
+      "byte_identical_to_source_png": true,
+      "actor_observation_index": 18
+    },
+    {
+      "copy": "e32-732-robot_0_wrist.png",
+      "camera": "robot_0_wrist",
+      "source_png": "output/actors/20261113-astra-central380-001/observations/00018/robot_0_wrist.png",
+      "transition_boundary": 732,
+      "simulation_time_s": 38.1250019883737,
+      "sha256": "9a97de111b5bf3fc63d20df8fa03032f973bfbb4615612345bafe186e42d17c7",
+      "byte_identical_to_source_png": true,
+      "actor_observation_index": 18
+    },
+    {
+      "copy": "e32-756-overview.png",
+      "camera": "overview",
+      "source_png": "output/reviews/20261113-e32-incomplete-public-diagnostic/boundary-756/overview.png",
+      "transition_boundary": 756,
+      "simulation_time_s": 39.325002050958574,
+      "sha256": "01a7311800fa620f72e63bcb7671628b0881965273b18749c534a40715d98742",
+      "byte_identical_to_source_png": true,
+      "actor_observation": false,
+      "closed_hdf5_source": "output/collections/20261113-astra-central380-001/policy.hdf5",
+      "dataset": "data/demo_0/next_obs/overview_rgb",
+      "row_index": 755,
+      "diagnostic_only_after_all_simulators_stopped": true
+    },
+    {
+      "copy": "e32-756-robot_1_head.png",
+      "camera": "robot_1_head",
+      "source_png": "output/reviews/20261113-e32-incomplete-public-diagnostic/boundary-756/robot_1_head.png",
+      "transition_boundary": 756,
+      "simulation_time_s": 39.325002050958574,
+      "sha256": "7ac72d9d7acdb44a669b1c3faf4750e987c4bc2a64cf83bd0ae37d08b1a94d29",
+      "byte_identical_to_source_png": true,
+      "actor_observation": false,
+      "closed_hdf5_source": "output/collections/20261113-astra-central380-001/policy.hdf5",
+      "dataset": "data/demo_0/next_obs/robot_1_head_rgb",
+      "row_index": 755,
+      "diagnostic_only_after_all_simulators_stopped": true
+    },
+    {
+      "copy": "e32-756-robot_0_head.png",
+      "camera": "robot_0_head",
+      "source_png": "output/reviews/20261113-e32-incomplete-public-diagnostic/boundary-756/robot_0_head.png",
+      "transition_boundary": 756,
+      "simulation_time_s": 39.325002050958574,
+      "sha256": "5e8f90194af913341d2943f92b05d7d9bfbae7b38557d075310028eafa7bdd27",
+      "byte_identical_to_source_png": true,
+      "actor_observation": false,
+      "closed_hdf5_source": "output/collections/20261113-astra-central380-001/policy.hdf5",
+      "dataset": "data/demo_0/next_obs/robot_0_head_rgb",
+      "row_index": 755,
+      "diagnostic_only_after_all_simulators_stopped": true
+    },
+    {
+      "copy": "e32-756-robot_1_wrist.png",
+      "camera": "robot_1_wrist",
+      "source_png": "output/reviews/20261113-e32-incomplete-public-diagnostic/boundary-756/robot_1_wrist.png",
+      "transition_boundary": 756,
+      "simulation_time_s": 39.325002050958574,
+      "sha256": "11b9f9495ea4706663bd7bcfa8341ef389d8a1652c932c5a4f9f37a6e345d90b",
+      "byte_identical_to_source_png": true,
+      "actor_observation": false,
+      "closed_hdf5_source": "output/collections/20261113-astra-central380-001/policy.hdf5",
+      "dataset": "data/demo_0/next_obs/robot_1_wrist_rgb",
+      "row_index": 755,
+      "diagnostic_only_after_all_simulators_stopped": true
+    },
+    {
+      "copy": "e32-756-robot_0_wrist.png",
+      "camera": "robot_0_wrist",
+      "source_png": "output/reviews/20261113-e32-incomplete-public-diagnostic/boundary-756/robot_0_wrist.png",
+      "transition_boundary": 756,
+      "simulation_time_s": 39.325002050958574,
+      "sha256": "9029c39df09784d01b9f4b17d53b73b0b9462ab957b82721f786234817f03b7e",
+      "byte_identical_to_source_png": true,
+      "actor_observation": false,
+      "closed_hdf5_source": "output/collections/20261113-astra-central380-001/policy.hdf5",
+      "dataset": "data/demo_0/next_obs/robot_0_wrist_rgb",
+      "row_index": 755,
+      "diagnostic_only_after_all_simulators_stopped": true
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "schema": "phyrc-incomplete-capture-diagnostic-media-v1",
+  "created_at_utc": "2026-11-14T00:49:41.646046+00:00",
+  "run_id": "20261113-astra-central380-001",
+  "status": "diagnostic_only_incomplete_capture_qc_failed",
+  "source_episode": "demo_0",
+  "source": {
+    "policy_sha256": "8a0e9902d2fb28f8af6c01c56e4a4ca41f4568f9f888b2e3d08a5a1c1acbccd3",
+    "capture_sha256": "67793da96585db62edd600c382220025de02337d4262366b3f3d2bd00eb9cb12",
+    "validation_sha256": "f89dd4d3c18bda5f684684084203ad1608c9682f2613a1f59e4a6d5ed42bb3cd"
+  },
+  "exporter_sha256": "4960cba123266a4642ad102f4b4901f3d1b15b5f7b96111dfb9779da338f5b65",
+  "reused_renderer_sha256": "b81677569bd9573c57aab798daa87beec6eaeb08c890e014065f284c5cef50ee",
+  "validation": {
+    "capture_complete": false,
+    "policy_file_complete": false,
+    "quality_passed": false,
+    "errors": [
+      "capture manifest is incomplete",
+      "policy HDF5 file is incomplete",
+      "audit HDF5 file is incomplete"
+    ],
+    "total_transitions": 758,
+    "internally_examined_transitions": 758,
+    "episode_internal_quality_passed": true,
+    "scope": "Preexisting failed full-capture QC; episode checks do not override root/capture incompleteness."
+  },
+  "eligibility": {
+    "normal_replay_source": false,
+    "training_approved": false,
+    "normal_capture_report": false,
+    "original_flags_modified": false
+  },
+  "selection": {
+    "boundary_start_inclusive": 380,
+    "boundary_end_inclusive": 758,
+    "frame_count": 379,
+    "policy_relative_start_s": 19.0,
+    "policy_relative_end_s": 37.9,
+    "sample_endpoint_span_s": 18.9,
+    "mapping": "boundary k > 0 = next_obs[k-1]; for k < 758 also equals obs[k]",
+    "frames_omitted_within_interval": 0,
+    "final_boundary": 758,
+    "accepted_client_actions_end_boundary": 756,
+    "cleanup_boundaries": {
+      "explicit_stop": 757,
+      "input_eof_neutral": 758
+    }
+  },
+  "layout": {
+    "cameras_row_major": [
+      "robot_1_head",
+      "robot_0_head",
+      "robot_1_wrist",
+      "robot_0_wrist"
+    ],
+    "robot_columns": {
+      "left": "robot_1",
+      "right": "robot_0"
+    },
+    "top_row": "head",
+    "bottom_row": "wrist",
+    "source_tile_px": [
+      256,
+      256
+    ],
+    "resized_before_encoding": false,
+    "cropped": false,
+    "mirrored": false,
+    "persistent_banner": "E32 DIAGNOSTIC - INCOMPLETE CAPTURE / QC FAILED",
+    "label_over_source_pixels": false,
+    "source_rgb_pixels_equal_before_encoding": true
+  },
+  "playback": {
+    "source_policy_hz": 20,
+    "fps": 5,
+    "slowdown_factor": 4,
+    "duration_s": 75.8,
+    "includes_wall_time_waits": false,
+    "temporal_interpolation": false
+  },
+  "encoding": {
+    "cpu_only": true,
+    "ffmpeg_threads": 2,
+    "filter_complex_threads": 2,
+    "mp4_codec": "libx264",
+    "mp4_crf": 20,
+    "mp4_pixel_format": "yuv420p",
+    "gif_palette_colors": 48,
+    "gif_dither": "none",
+    "note": "MP4 compression and GIF palette quantization are lossy; source RGB geometry is unchanged."
+  },
+  "files": {
+    "event.mp4": {
+      "bytes": 3832901,
+      "sha256": "d2cf9711ef72f7cbd1522ade2dfee534a0e458741fdabc8b8cc4fb5af3190c87"
+    },
+    "first.png": {
+      "bytes": 259758,
+      "sha256": "e19307d436be7e04fe443c62f04ce273b7e92b97b6345e18d32c904f77c7a88a"
+    },
+    "last.png": {
+      "bytes": 262614,
+      "sha256": "a47c5f1985c4c960af3adb37c3176a5a97e5093b65ea8807759f8951b81d60d0"
+    }
+  },
+  "video_stream": {
+    "width": 512,
+    "height": 640,
+    "duration": "75.800000",
+    "nb_read_frames": "379"
+  },
+  "privacy": "Only four designated camera RGB arrays and fixed diagnostic/boundary labels are rendered. No actor text, audit, evaluation, robot state, hidden geometry, auth, raw logs or private absolute paths are exported.",
+  "publication": "Reviewed diagnostic media copy only; full GIF omitted. No normal capture export, upload or replay eligibility is implied.",
+  "source_unchanged_after_render": true,
+  "omitted_generated_outputs": {
+    "preview.gif": {
+      "bytes": 18076787,
+      "sha256": "911744562c39ff34f0ab0df332157cd1c78cb6971eadd9f7bb05f85b24678e65",
+      "reason": "18 MB full-length GIF omitted from public assets; the full MP4 and small close-interval GIF provide review media. Original generated GIF is retained privately."
+    }
+  }
+}

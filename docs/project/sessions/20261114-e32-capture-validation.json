@@ -1,0 +1,56 @@
+{
+  "schema": "phyrc-capture-validation-v1",
+  "quality_passed": false,
+  "training_approval": "unreviewed",
+  "scope": "immediate_sensor_capture",
+  "episodes": [
+    {
+      "episode": "demo_0",
+      "transitions": 758,
+      "complete": true,
+      "source": {
+        "operator_source": "gpt",
+        "source_group": "20261113-astra-side-hem-fresh-001",
+        "model_id": "gpt-6-astra",
+        "episode_id": 1
+      },
+      "quality_passed": true,
+      "simulation_seconds": 37.90000197663903,
+      "termination_reason": "input_closed",
+      "evaluation": {
+        "evaluated": true,
+        "valid": true,
+        "raw_points": 5.0,
+        "success_known": true,
+        "dressing_success": false,
+        "score_status": "no_dressing_points",
+        "final_score_points_per_s": 0.0,
+        "reason": "input_closed"
+      }
+    }
+  ],
+  "total_transitions": 758,
+  "validated_transitions": 758,
+  "sha256": {
+    "audit.hdf5": "5a9435be1507e07a954f189beed14ae2c3d749a0359347784247bd937cc9bd4d",
+    "policy.hdf5": "8a0e9902d2fb28f8af6c01c56e4a4ca41f4568f9f888b2e3d08a5a1c1acbccd3"
+  },
+  "errors": [
+    "capture manifest is incomplete",
+    "policy HDF5 file is incomplete",
+    "audit HDF5 file is incomplete"
+  ],
+  "checks": [
+    "manifest_sha256",
+    "file_episode_complete",
+    "public_observation_schema",
+    "all_transition_action_shape_dtype_range",
+    "actual_previous_action",
+    "0.05s_intervals",
+    "contiguous_12_physics_ticks",
+    "all_observation_continuity",
+    "finite_numeric_arrays",
+    "terminal_markers",
+    "evaluation_label_consistency"
+  ]
+}

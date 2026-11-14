@@ -20,3 +20,5 @@
 다음 선택은 [E32 계획](../../project/sessions/20261113-e32-plan.ko.md): E28/380·새264/332 history·최대20결정/1400전이/review10이다. E31의 마지막830은 새 출발점으로 승격하지 않았다. 출발점과 방법이 함께 달라지므로 결과를 하나의 원인 효과로 주장하지 않는다. [E31 공개 검토](../reviews/20261113-astra-diagonal682-001.ko.md) / [결정·시간 비교](../reviews/20261113-decision-budget/E31/README.ko.md).
 
 실행 후 연결: [E32 시작 기록](../../project/sessions/20261113-e32-start.ko.md)은2026-11-13 23:59:34 UTC의 실제 시작·clean source를 남긴다. 이 방법 문서의 준비 검증을 새 시연 성공으로 확대하지 않는다.
+
+실행 후 결과: [E32 공개 리뷰](../reviews/20261113-astra-central380-001.ko.md)는 실제20개 act의 형상·운반·접촉 비교와 불완전 capture/QC 실패를 구분한다. [다음 E33 계획](../../project/sessions/20261114-e33-plan.ko.md)은 유효한 E28/632에서 같은 정적 전략을 유지하며 아직 실행 결과가 아니다.
