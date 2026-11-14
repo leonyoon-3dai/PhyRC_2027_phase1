@@ -739,6 +739,24 @@
         "revision": "0a79834c426d1be7b325ff5010027752751d5cd5",
         "sha256": "eb1984407e645f2a2a8633185058a144bdefdd98a08385b97ff7305c7091c6f9"
       }
+    },
+    {
+      "id": "20261114-astra-middle-grip470-retain-001",
+      "kind": "demonstration",
+      "source_group": "20261113-astra-side-hem-fresh-001",
+      "source_commit": "0a5121cde33a32db5e4888255de150e846d52c15",
+      "source_working_tree_modified": false,
+      "parent_run_id": "20261114-astra-middle-grip264-001",
+      "replay_prefix_steps": 470,
+      "replay_completed_steps": 470,
+      "recorded_transitions": 836,
+      "qc_status": "passed",
+      "backup": {
+        "status": "verified",
+        "receipt": "docs/project/sessions/20261114-e34-backup-verification.json",
+        "revision": "ba71dd6a07e2b05202c3dcaa5b0c9a3c17997b1d",
+        "sha256": "ccd01e7a41b72dcb03b055e834c7f2e4404dc7b50d8a84647b2e6d956bd0620b"
+      }
     }
   ],
   "startpoints": [
@@ -1656,6 +1674,20 @@
         "action_encoding": "named"
       },
       "description": "Opt-in static strategy composed with SIDE_HEM_WRISTS_TASK and existing saturation guidance. New strategy/central-span regression checks passed13 CPU tests; actual E33 from E28/264 with fresh242/254 history closed normally with471 transitions and full passing QC. E33 used20 act/21 model calls on acquisition, both one-sided grasp relocations and shape tests. Transport, above-hand alignment and lowering were not reached; tested means the strategy executed, not that the complete sequence or dressing succeeded. Raw/pickup/dressing points0, successfalse. No new research memory/sampler or live feedback system was integrated."
+    },
+    {
+      "id": "coordinated-middle-grip-drape-retain-named-query-panel-settle6-profile",
+      "name": "coordinated-middle-grip-drape-retain / named / query / wrist panel / settle6 / profiling",
+      "status": "tested",
+      "axes": {
+        "grasp_arrangement": "retain the current closed/closing grasps after both initial setup regrasp cycles were used on the ancestor path; no additional release/regrasp; verify local cloth following and shape",
+        "entry_target": "candidate body-hem space above one visually tracked mannequin hand and connected forearm",
+        "approach": "retain visible vertical space, align above the same hand, then one short lowering trial followed by observation; no image-up to world-Z assumption",
+        "order": "post-close following and support check, retain vertical space during transport, same-hand alignment and one short lowering trial, observe result",
+        "view": "five designated public RGB-D views, frozen pixel depth query/camera XYZ and current wrist depth panel; no evaluator input or hidden geometry",
+        "action_encoding": "named"
+      },
+      "description": "Static opt-in retain variant of the middle-grip strategy. The final instruction permits no additional release/regrasp after E33 setup; this is prompt guidance, not a runtime action gate or persistent operation ledger. Full CPU356 checks passed before clean source0a5121c E34 execution. E34 from E33/470 with fresh434/454 history closed20 act/24 calls/836 transitions, fullQC passed. All20 new model actions kept both gripper channels+1; the recorded suffix contains only0/+1, not open. Actual lift/transport, same-hand approach and one short lowering occurred, but wrist drape, sleeve passage and dressing were unconfirmed. Valid raw5/pickup5/dressing0/successfalse. Tested means executed, not task success. No research system, learned monitor, live feedback or automatic training was integrated."
     }
   ],
   "attempts": [
@@ -2347,6 +2379,22 @@
         ]
       },
       "notes": "E33 clean source464203860304631d00a8acd6747b86c23cfded61; direct parent/source group E28, prefix264 and fresh history242/254. Started2026-11-14T08:13:20Z, ended08:35:52Z.20 decisions all act,21 calls including1 zero-physics depth-query followup.471 transitions=264 replay+128 model+78 settle+1 budget cleanup;207 new transitions/10.35 simulation seconds. Decision budget exhaustion, not finish_episode, review10 or timeout. Client0/simulator0, completed/closed/finished, capturecomplete; fullQC471/471 errors0. Valid raw0/pickup0/dressing0/successfalse, no_contact. Both one-sided grasp relocations and local shape changes observed; no confirmed useful vertical aperture or hand approach/descent. Final robot_1 close awaits a subsequent following test. Wall1351.410685024s, actor881.828317856s, environment419.111352059s including replay. Fixed backup0a79834c426d1be7b325ff5010027752751d5cd5 force-redownloaded; archive bytes/SHA,236 manifest entries and234 original files verified. E33/470 before cleanup is a reviewed uncertain-support continuation candidate with fresh434/454 history; retain exhausted initial regrasp budget. Same E28 source group, not independent success or exact physics checkpoint; training unreviewed. Local0 from a pre-pickup start is not a controlled regression against earlier5-point starts."
+    },
+    {
+      "id": "20261114-astra-middle-grip470-retain-001",
+      "status": "completed",
+      "run_id": "20261114-astra-middle-grip470-retain-001",
+      "startpoint_id": "20261114-astra-middle-grip264-001-p470",
+      "method_id": "coordinated-middle-grip-drape-retain-named-query-panel-settle6-profile",
+      "result": {
+        "raw_points": 5.0,
+        "success": false,
+        "review": "docs/collection/reviews/20261114-astra-middle-grip470-retain-001.ko.md",
+        "videos": [
+          "docs/collection/attempts/20261114-astra-middle-grip470-retain-001/overview.mp4"
+        ]
+      },
+      "notes": "E34 clean source0a5121cde33a32db5e4888255de150e846d52c15; direct parent E33, source group E28, prefix470 including E28/264 and E33 preparation206, fresh434/454 history. Started2026-11-14T08:41:36Z, ended09:14:16Z.20 decisions all act,24 calls including4 zero-physics query followups.836 transitions=470 replay+245 model+120 settle+1 budget cleanup;366 new transitions/18.30 simulation seconds. Decision budget exhaustion, no model finish_episode, review10 or timeout. Client0/simulator0, completed/closed/finished, capturecomplete; fullQC836/836 errors0. Valid raw5/pickup5/dressing0/successfalse; pickup awarded after replay, not confirmed wrist drape or sleeve passage. Kept existing grasps, lifted and transported cloth, approached the same hand, applied one short lowering D18 with measured lifts approximately-16mm and subsequent lateral correction D19; no second lowering. No open commands in new suffix; prompt-only constraint is not a runtime guarantee. Client wall1959.323467330s, actor1170.152985920s, environment737.508680345s including replay418.908s. Fixed backupba71dd6a07e2b05202c3dcaa5b0c9a3c17997b1d force-redownloaded; archive bytes/SHA,236 manifest entries and234 original files verified. Same E28 lineage, not an independent successful demonstration, exact cloth checkpoint or controlled retain-strategy comparison; training unreviewed. Latest user instruction stops collection after E34 and cancels E35; no E34 startpoint or follow-on run is promoted."
     }
   ]
 }

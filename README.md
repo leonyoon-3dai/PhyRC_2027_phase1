@@ -2,7 +2,7 @@
 
 [![Agentic Robotics 워크숍: PhyRC 시연 수집 참고 문서 열기](docs/assets/agentic-robotics-workshop-button.svg)](docs/collection/research/2026-11-14-agentic-robotics-workshop.ko.md)
 
-**[이번 세션 영상·실패 분석 모음](docs/collection/reviews/20261114-session-review.ko.md)**에서 E28–E32 영상과 시도별 판단을 바로 검토할 수 있습니다.
+**[전체 경험과 연구에 기반한 수집 시스템 재정비 계획](docs/collection/research/2026-11-14-collection-system-redesign.ko.md)** · [이전 E28–E32 영상·실패 분석](docs/collection/reviews/20261114-session-review.ko.md)
 
 ## 공식 착의 데모
 
@@ -24,29 +24,27 @@ https://github.com/user-attachments/assets/d2f347fe-712b-42f3-bdee-69d3fee2a47c
 
 두 대의 **Stretch 4**로 마네킹에 티셔츠를 입히는 시뮬레이션 연구. 사람의 직접 조작과 **GPT Astra**로 시연을 수집하고, 관측과 행동을 검토해 다음 조작을 개선합니다.
 
-| [**시연 영상**](docs/EPISODES.md) | [**다음 조작 계획**](docs/COLLECTION_PLAN.md) | [**Astra 코드·Hz**](docs/ASTRA.md) | [**클린 서버 시작**](docs/OPERATIONS.md) |
+| [**시연 영상**](docs/EPISODES.md) | [**마감·재정비 계획**](docs/COLLECTION_PLAN.md) | [**Astra 코드·Hz**](docs/ASTRA.md) | [**클린 서버 시작**](docs/OPERATIONS.md) |
 |:---:|:---:|:---:|:---:|
-| E00–E32 전체 자료 | 옆에서 파지하고 입구 펼치기 | 관측부터 HDF5까지 | 설치·복원·검증·Codex CLI |
+| E00–E34 기록과 상태 | E34 이후 중지·연구 제안 | 관측부터 HDF5까지 | 설치·복원·검증·Codex CLI |
 
-**클린 서버에서 최신 파지 제안으로 우선 시연3회를 순차 수집하도록 재개를 준비하고 있습니다.** [이번 세션](docs/project/sessions/20261114-e33-middle-grip-resume.ko.md)에서 검증과 실행 상태를 확인합니다. [현재 상태](docs/project/STATUS.md)와 [클린 서버 인계](docs/project/sessions/20261114-paused-clean-server-handoff.ko.md)를 보존합니다. E32는 불완전 capture로 전체 QC 실패이며 진단 자료로만 보관합니다. 마지막 정상 마감 E31은 **5/50·새 득점0·착의0·success=false**입니다. 종전 E28/632 후보는 보존하며 이번 실행 조건은 [COLLECTION_PLAN](docs/COLLECTION_PLAN.md#이번-e33-실행-조건)을 따릅니다.
+**E34는20결정·836전이로 정상 마감해 QC836/836을 통과했습니다. 이후 수집은 중지하며 E35는 취소했습니다.** 로컬5/50은 픽업5점이며 착의 득점0·success=false입니다. [현재 상태와 고정 백업 검증](docs/project/STATUS.md) / [재정비 계획](docs/collection/research/2026-11-14-collection-system-redesign.ko.md). 재정비안은 제안 단계이며 새 시스템이나 자동 학습을 구현하지 않았습니다.
 
-## 최근 시연
+## 최근 시연 · E34
 
-<a href="docs/gallery/20261113-e31-diagonal-682-830/event.mp4"><img src="docs/gallery/20261113-e31-diagonal-682-830/preview.gif" width="960" alt="E31 실제 추가 구간: 더 이른 접근에서 대각선 진입과 수평 정렬을 시험했으나 첫 팔 진행은 미확인. 왼쪽 robot_1, 오른쪽 robot_0, 위 head, 아래 wrist."></a>
+<a href="docs/collection/attempts/20261114-astra-middle-grip470-retain-001/overview.mp4"><img src="docs/collection/attempts/20261114-astra-middle-grip470-retain-001/images/final-overview.png" width="960" alt="E34의 마지막 지정 overview 관측. 이미지를 누르면 재실행과 새 구간을 포함한 전체 실제 영상이 열립니다."></a>
 
-**E31 — 출발점을 앞당겨16번 움직였지만 추가 득점은0점.** 수평 접근과 자세 복구는 관측했으나 손이 중앙 자유 구간에 진입해 전완을 따라 진행한 근거는 확인하지 못했습니다. 최대20결정 중17개로 마감했습니다.
+**E33에서 바꾼 파지를 유지해 들기·운반·같은 손 근처의 짧은 하강까지 시험했습니다.** E33의 준비 단계보다 진행했지만 손목에 걸침·소매 통과는 확인하지 못했습니다.20 act·24모델 호출 뒤 결정 예산으로 마감했으며 새 구간은366전이·18.3시뮬레이션초입니다.
 
-[추가 구간 MP4](docs/gallery/20261113-e31-diagonal-682-830/event.mp4) / [전체 overview](docs/collection/attempts/20261113-astra-diagonal682-001/overview.mp4) / [E31 리뷰](docs/collection/reviews/20261113-astra-diagonal682-001.ko.md) / [E28 준비·운반](docs/collection/attempts/20261113-astra-side-hem-fresh-001/overview.mp4)
+[전체 MP4](docs/collection/attempts/20261114-astra-middle-grip470-retain-001/overview.mp4) / [E34 리뷰](docs/collection/reviews/20261114-astra-middle-grip470-retain-001.ko.md) / [E33 준비 리뷰](docs/collection/reviews/20261114-astra-middle-grip264-001.ko.md) / [이전 E31 접근 비교](docs/gallery/20261113-e31-diagonal-682-830/event.mp4)
 
-<sub>왼쪽 robot_1, 오른쪽 robot_0, 위 head / 아래 wrist. 경계682–830의20 Hz 기록을5 fps로 재생해4배 느리며 모델 대기는 제외합니다. <a href="docs/gallery/20261113-e31-diagonal-682-830/provenance.json">영상 출처</a>. 이전 시연은 <a href="docs/EPISODES.md">전체 목록</a>에 보존합니다.</sub>
+<sub>지정 overview 카메라의836프레임 전체를20fps·41.8초로 재생하며 모델 대기는 제외합니다. 앞470전이는 E33 행동 prefix를 새 환경에서 재실행한 구간입니다. 정확한 천 checkpoint나 독립 성공 시연이 아닙니다. <a href="docs/collection/attempts/20261114-astra-middle-grip470-retain-001/manifest.json">영상·원본 근거</a>.</sub>
 
-## 다음 수집
+## 수집 시스템 재정비
 
-![E28 이후 계획: 옷 양옆에서 파지, 아래 입구 펼치기, 한쪽 손목, 반대쪽 손목. 실제 시연이 아닌 개념도.](docs/assets/collection-plan.svg)
+**다음 시연을 자동으로 늘리기보다, 실제 실행 이력·불확실한 관측 가설·효과를 확인할 예산·구간별 학습 승인을 분리하는 계획을 제안합니다.** E33/E34에서 검토한 가운데 파지와 손 위 하강 목표, E00 이후의 반복·복구·종료 실패를 함께 분석했습니다. 구현과 후속 수집은 아직 시작하지 않습니다.
 
-**다음 시도는 파지 위치를 더 가운데 쪽으로 조정하고, 노란 경계가 위아래로 길게 늘어져 공간이 충분히 보이는 상태에서 마네킹 손 위로 접근한 뒤 살짝 내려오며 걸치는 방향을 검토합니다.** [2026-11-14 다음 시연 메모](docs/COLLECTION_PLAN.md#2026-11-14-다음-시연-메모)에 기록했습니다. 이번에는 E28의 최초 닫기 직전264에서 파지 위치부터 바꾸는 선택형 전략으로 준비합니다. 실제 하강 수행 여부와 결과는 시연 후 구분해 기록합니다.
-
-[단계별 관측 기준과 새 시작점 선택](docs/COLLECTION_PLAN.md)
+[전체 근거·설계·검증 순서](docs/collection/research/2026-11-14-collection-system-redesign.ko.md) · [마감 범위와 과거 조작 계획](docs/COLLECTION_PLAN.md)
 
 ## 수집한 과정
 
@@ -58,7 +56,7 @@ https://github.com/user-attachments/assets/d2f347fe-712b-42f3-bdee-69d3fee2a47c
 </tr>
 </table>
 
-각 이미지를 누르면 영상이 열립니다. **[전체 시연 목록](docs/EPISODES.md)**에서 E00–E32 영상, 관측 이미지, 원본 manifest와 직접 부모를 한 번에 찾을 수 있습니다.
+각 이미지를 누르면 영상이 열립니다. **[전체 시연 목록](docs/EPISODES.md)**에서 E00–E34 기록의 영상, 관측 이미지, 원본 manifest와 직접 부모를 한 번에 찾을 수 있습니다.
 
 ## 코드와 재현
 

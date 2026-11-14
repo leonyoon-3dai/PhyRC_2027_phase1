@@ -1,0 +1,418 @@
+{
+  "schema": "phyrc-public-attempt-report-v1",
+  "attempt": {
+    "run_id": "20261114-astra-middle-grip470-retain-001",
+    "parent_attempt": "20261114-astra-middle-grip264-001",
+    "retry_reason": "Continue the final closed-grasp trial with zero further reopening; test cloth following and usable opening before transport and same-hand descent.",
+    "source_group": "20261113-astra-side-hem-fresh-001",
+    "source": "gpt",
+    "mode": "dressing",
+    "strategy": "coordinated-middle-grip-drape-retain",
+    "model": "gpt-6-astra",
+    "reasoning_effort": "ultra",
+    "prompt_sha256": "1b05145d63b627861755d3793fde5f7488e2938857292866dc6695917bf613dd",
+    "status": "completed",
+    "finished": true,
+    "started_at_utc": "2026-11-14T08:41:36Z",
+    "ended_at_utc": "2026-11-14T09:14:16Z",
+    "decisions_requested": 20,
+    "decisions_completed": 20,
+    "actor_calls_attempted": 24,
+    "actor_call_wall_s": 1170.1529859200018,
+    "model_internal_inference_wall_s": null,
+    "actor_call_timing_scope": "public staging + Docker/CLI startup + request/response; internal model time unavailable",
+    "environment_dispatch_wall_s": 737.5086803450044,
+    "wall_s": 1959.3234673299999,
+    "simulation_time_s": 41.8,
+    "simulation_steps": 836,
+    "acknowledged_simulation_steps": 836,
+    "recorded_simulation_steps": 836,
+    "capture_complete": true,
+    "capture_termination_reason": "operator_finished",
+    "human_intervention": false,
+    "quality_status": "unreviewed",
+    "input_profile": "five_public_RGB_images_all_public_state_and_16x16_depth_medians_with_first_call_same_episode_replay_RGB_history_with_current_wrist_depth_panel",
+    "actor_backend": "exec",
+    "plan_size": 1,
+    "plan_step_budget": 20,
+    "plan_execution": "single_decision",
+    "review_threshold_raw_points": 10,
+    "pickup_hold_target_simulation_s": null,
+    "replay_steps_completed": 470,
+    "policy_suffix_start_step": 470,
+    "new_recorded_suffix_steps": 366,
+    "activity": "closed",
+    "pixel_depth_query": {
+      "enabled": true,
+      "max_queries_per_observation": 1,
+      "max_points": 8,
+      "queries_completed": 4,
+      "followup_calls": 4,
+      "collector_idle_timeout_s": 480.0,
+      "model_call_timeout_s": 180.0
+    },
+    "named_actions": {
+      "schema": "phyrc-named-actions-v1",
+      "robot_order": [
+        "robot_0",
+        "robot_1"
+      ],
+      "channel_order": [
+        "base_forward",
+        "base_left",
+        "base_CCW_yaw",
+        "lift",
+        "arm_extension",
+        "wrist_yaw",
+        "wrist_pitch",
+        "wrist_roll",
+        "gripper"
+      ],
+      "official_dtype": "float32",
+      "value_transform": "none",
+      "validation": "existing_official_action_validator"
+    },
+    "continuation": {
+      "resume_kind": "action_replay",
+      "parent_attempt": "20261114-astra-middle-grip264-001",
+      "source_group": "20261113-astra-side-hem-fresh-001",
+      "source_episode": "demo_0",
+      "source_policy_sha256": "a388a2a481578426dcd302e4b7c92833bca34ad00a3ad7fe61899c475bdcdc8b",
+      "source_capture_sha256": "de3b787304204a155a64257c6af22623f4dae67b970e0fe1cb84ab2de8bc5212",
+      "source_validation_sha256": "e1f32bbecb495367a9b9e73c4d0598e362f2302f56e2d9f52ef30920ff86863e",
+      "source_steps": 471,
+      "replay_steps": 470,
+      "source_start_step": 0,
+      "source_end_step_exclusive": 470,
+      "bitwise_physics_restored": false,
+      "fresh_actor": true,
+      "replay_validation": "actions_reexecuted_new_state_recorded"
+    },
+    "post_action_settle": {
+      "enabled": true,
+      "requested_steps": 6,
+      "trigger": "nonzero_motion_act",
+      "segments_completed": 20,
+      "simulation_steps": 120,
+      "environment_dispatch_wall_s": 109.04289087299958,
+      "budget_capped_segments": 0,
+      "budget_skipped_segments": 0
+    },
+    "error": null,
+    "actor_usage": {
+      "input_tokens": 3103736,
+      "cached_input_tokens": 2510080,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 34065,
+      "reasoning_output_tokens": 28291
+    },
+    "actor_usage_scope": "sum_of_observed_thread_usage",
+    "actor_usage_accounting": {
+      "schema": "phyrc-token-accounting-v2",
+      "cli_usage_scope": "thread_cumulative",
+      "aggregate_scope": "sum_of_observed_thread_usage",
+      "fully_known": true,
+      "observed_usage": {
+        "input_tokens": 3103736,
+        "cached_input_tokens": 2510080,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 34065,
+        "reasoning_output_tokens": 28291
+      },
+      "calls_recorded": 24,
+      "unknown_call_indices": [],
+      "unknown_usage_is_zero": false,
+      "cached_input_is_subset_of_input": true,
+      "reasoning_output_is_subset_of_output": true,
+      "threads": [
+        {
+          "thread_index": 0,
+          "baseline": "fresh_attempt_thread_zero",
+          "last_observed_cumulative_usage": {
+            "input_tokens": 3103736,
+            "cached_input_tokens": 2510080,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 34065,
+            "reasoning_output_tokens": 28291
+          },
+          "last_accepted_cumulative_usage": {
+            "input_tokens": 3103736,
+            "cached_input_tokens": 2510080,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 34065,
+            "reasoning_output_tokens": 28291
+          }
+        }
+      ]
+    },
+    "code": {
+      "commit": "0a5121cde33a32db5e4888255de150e846d52c15",
+      "working_tree_modified": false
+    }
+  },
+  "capture": {
+    "schema": "participant-live-capture-v2",
+    "complete": true,
+    "termination_reason": "operator_finished",
+    "raw_archive": false,
+    "wall_s": 1955.7072902289997,
+    "requests": 98,
+    "steps": 836,
+    "idle_render_calls": 0,
+    "idle_render_wall_s": 0,
+    "evaluation_enabled": true,
+    "evaluation_valid": true
+  },
+  "quality": {
+    "schema": "phyrc-capture-validation-v1",
+    "quality_passed": true,
+    "training_approval": "unreviewed",
+    "scope": "immediate_sensor_capture",
+    "total_transitions": 836,
+    "validated_transitions": 836,
+    "available": true,
+    "checks": [
+      "manifest_sha256",
+      "file_episode_complete",
+      "public_observation_schema",
+      "all_transition_action_shape_dtype_range",
+      "actual_previous_action",
+      "0.05s_intervals",
+      "contiguous_12_physics_ticks",
+      "all_observation_continuity",
+      "finite_numeric_arrays",
+      "terminal_markers",
+      "evaluation_label_consistency"
+    ],
+    "error_count": 0,
+    "episodes": [
+      {
+        "episode": "demo_0",
+        "transitions": 836,
+        "complete": true,
+        "simulation_seconds": 41.80000218003988,
+        "quality_passed": true
+      }
+    ]
+  },
+  "evaluation": {
+    "evaluated": true,
+    "valid": true,
+    "raw_points": 5.0,
+    "success": false,
+    "score_status": "no_dressing_points",
+    "final_score": 0.0,
+    "breakdown": {
+      "pickup": 5.0,
+      "first_sleeve": 0.0,
+      "opposite_shoulder": 0.0,
+      "second_sleeve": 0.0,
+      "left_upper_arm": 0,
+      "right_upper_arm": 0,
+      "neck": 0.0,
+      "front_orientation": 0.0
+    },
+    "milestone_times_s": {
+      "pickup": 26.849999999999998,
+      "first_sleeve": null,
+      "opposite_shoulder": null,
+      "second_sleeve": null,
+      "neck": null,
+      "front_orientation": null
+    },
+    "max_raw_points": 50.0,
+    "success_evaluated": true,
+    "rate_points": 0.0,
+    "max_rate_points": 45.0,
+    "task_time_s": 0.0,
+    "elapsed_episode_time_s": 41.8,
+    "first_contact_time_s": 39.854166666666664,
+    "last_score_award_time_s": null,
+    "dressing_completed_at_s": null,
+    "rate_rule": "pickup-excluded-last-award-v9",
+    "scoring_revision": "pickup-excluded-last-award-v9",
+    "score_unit": "points/s"
+  },
+  "review_gate": {
+    "schema": "phyrc-review-gate-v2",
+    "run_id": "20261114-astra-middle-grip470-retain-001",
+    "threshold_raw_points": 10,
+    "policy_input_changed": false,
+    "status": "collector_ended_before_gate",
+    "last_observed_raw_points": 5.0,
+    "acknowledged_steps": 835,
+    "collector_status": "completed"
+  },
+  "source_files": {
+    "trace/attempt.json": {
+      "sha256": "44835e9ea71c0eda69eb4de57f6ed5ae00c35b8cf6990ffc537f56ad9400fbe6",
+      "bytes": 171245
+    },
+    "trace/prompt.txt": {
+      "sha256": "1b05145d63b627861755d3793fde5f7488e2938857292866dc6695917bf613dd",
+      "bytes": 23126
+    },
+    "trace/decisions.jsonl": {
+      "sha256": "7fce294fb72f13be6521eed24534f4038a3df256d3f43db331aa6cc7ac633883",
+      "bytes": 237350
+    },
+    "trace/review_gate.json": {
+      "sha256": "0708b34dafe4c5bf3b2e1a1a23ef12576626887ccc1aab5c642d659d5cce8a6d",
+      "bytes": 376
+    },
+    "capture/capture.json": {
+      "sha256": "d3f27555be1cd421088a66a9cfa8bc512e81a6f02955dfab8ae26572ddd0a74c",
+      "bytes": 536
+    },
+    "capture/policy.hdf5": {
+      "sha256": "dfcb2761b94816b520f8a418f73bfd14a4e52aca757fdeae87b0d73a4c800da5",
+      "bytes": 2192783848
+    },
+    "capture/audit.hdf5": {
+      "sha256": "8d1dc8acabe0e4856e56651d1fe94a31c27e79ec57bb2aca9f852796f780cc2a",
+      "bytes": 178413
+    },
+    "capture/evaluation_summary.json": {
+      "sha256": "6956ed842cc11ece62a2ca08d01e021137d79ea2606c7b6d412c28f9ad6ac379",
+      "bytes": 32625
+    },
+    "capture/validation.json": {
+      "sha256": "36345f6e33f552ae0dd9bf00a3f3e747be6d5c93a231afa318805449d9e135fe",
+      "bytes": 1491
+    },
+    "capture/score_events.jsonl": {
+      "sha256": "182f079a52e8557b01ce42c3f030933d534e7b1becc84a2daf4745af7d7bca0a",
+      "bytes": 1777
+    }
+  },
+  "unrecognized_events_omitted": 2,
+  "publication_review": "generated_allowlisted_subset_requires_repository_review",
+  "decision_reason_scope": "final_action_explanation_only",
+  "artifacts": {
+    "README.ko.md": {
+      "sha256": "69b60ff7f7ade416266464eab940f13bd64225abea6f9c580964293378c67060",
+      "bytes": 72992
+    },
+    "decisions.jsonl": {
+      "sha256": "cc5edd3d9eb9b8ca4faa88c34c1ce4f1e0347b419fad56891e0ab5f3ec8a1dd1",
+      "bytes": 212863
+    },
+    "images/final-overview.png": {
+      "sha256": "c562c62122a853c6a9d460d0d9bb07d4c6737b5e3494a8db44e17d4dc95325d0",
+      "bytes": 71941
+    },
+    "images/final-robot_0_head.png": {
+      "sha256": "500e5256aae550915bb8ba42080fed449fc39a6492bfb5e375c641cd381cb11b",
+      "bytes": 76017
+    },
+    "images/final-robot_0_wrist.png": {
+      "sha256": "96292a160a1cf22f5561eb4ad6a12259537092dc61cce4c99d96715ba6cf05f9",
+      "bytes": 26906
+    },
+    "images/final-robot_1_head.png": {
+      "sha256": "a5fe6b9378aa218869dd9828f8cfc3d5bcee2841b25441628b17e8f6b36e0ac3",
+      "bytes": 81030
+    },
+    "images/final-robot_1_wrist.png": {
+      "sha256": "015a5236350791fc9072aa85d078ee6cfdbdcdf06b87ad3f1940da482ef4073f",
+      "bytes": 44877
+    },
+    "images/initial-overview.png": {
+      "sha256": "403d451cbcd1d17739411318abeeeb54dbf1d58bfc068372566c51f1cd0f76fc",
+      "bytes": 67299
+    },
+    "images/initial-robot_0_head.png": {
+      "sha256": "e413b866044d0446639cc6c3961c32ffdc25cc428dd0642276e9f9d7d23d1244",
+      "bytes": 61730
+    },
+    "images/initial-robot_0_wrist.png": {
+      "sha256": "2b74764127a6078823bf39e6c359b857e7cf674e77fdb9826961920f5dc54259",
+      "bytes": 56154
+    },
+    "images/initial-robot_1_head.png": {
+      "sha256": "ab071bfcd25d56cb5d0bf0fda8190e5fdd1d3fd97c7e219c8d03ecabdb3db756",
+      "bytes": 62976
+    },
+    "images/initial-robot_1_wrist.png": {
+      "sha256": "32b764cf21e7015506eb57be6bae9f54f6c15dfad176f29ea810833dc88fbcbf",
+      "bytes": 57704
+    },
+    "overview.mp4": {
+      "sha256": "06a05b2bfac7bdf49a47708619ab6424e4efca2835a65fb2c7f621a79d2ec459",
+      "bytes": 257566
+    },
+    "prompt.txt": {
+      "sha256": "1b05145d63b627861755d3793fde5f7488e2938857292866dc6695917bf613dd",
+      "bytes": 23126
+    },
+    "score-events.jsonl": {
+      "sha256": "a43e410978750ed37e067114a694614fe0fdd68ad31010bca7e31665d646cc25",
+      "bytes": 1777
+    }
+  },
+  "media": {
+    "available": true,
+    "transitions": 836,
+    "images": [
+      "images/initial-overview.png",
+      "images/initial-robot_0_wrist.png",
+      "images/initial-robot_1_wrist.png",
+      "images/initial-robot_0_head.png",
+      "images/initial-robot_1_head.png",
+      "images/final-overview.png",
+      "images/final-robot_0_wrist.png",
+      "images/final-robot_1_wrist.png",
+      "images/final-robot_0_head.png",
+      "images/final-robot_1_head.png"
+    ],
+    "video": {
+      "created": true,
+      "requested": true,
+      "file": "overview.mp4",
+      "source": "obs/overview_rgb",
+      "source_policy_hz": 20,
+      "available_frames": 836,
+      "exported_frames": 836,
+      "maximum_frames": 2000,
+      "truncated": false,
+      "sampling": "contiguous_prefix_no_frame_skipping",
+      "slowdown_factor": 1.0,
+      "playback_fps": 20.0,
+      "playback_duration_s": 41.8,
+      "includes_wall_time_waits": false
+    },
+    "status": "recorded_public_frames",
+    "episode": "demo_0",
+    "file_complete": true,
+    "initial_simulation_time_s": 1.5250000795349479,
+    "final_simulation_time_s": 43.32500225957483
+  },
+  "milestone_path": {
+    "evaluation_valid": true,
+    "award_batches": [
+      {
+        "physics_tick": 6444,
+        "transition_boundary_step": 537,
+        "step_alignment_exact": true,
+        "evaluation_time_s": 26.849999999999998,
+        "public_simulation_time_s": 28.375000079534946,
+        "batch_index": 0,
+        "raw_points_before": 0.0,
+        "raw_points_after": 5.0,
+        "changes": [
+          {
+            "stage": "pickup",
+            "before": 0.0,
+            "after": 5.0
+          }
+        ],
+        "simultaneous": false,
+        "order_within_batch": "not_inferred"
+      }
+    ],
+    "success_events": [],
+    "time_origin_public_simulation_s": 1.5250000795349479,
+    "time_basis": "episode evaluation clock begins after reset; physics_tick/12 is transition boundary",
+    "order_rule": "different ticks chronological; same-tick awards unordered"
+  }
+}

@@ -1,6 +1,6 @@
 # Astra 수집 코드
 
-**2026-11-14 재개 안내:** 최신 추가 요청으로 기존 수집 방식의 시연3회를 순차 준비한다. [현재 계획](COLLECTION_PLAN.md#이번-e33-실행-조건)과 [이번 세션](project/sessions/20261114-e33-middle-grip-resume.ko.md)을 우선한다. 아래 과거 인계의 중지 문구·미실행632 후보는 이 요청 이전 기록이다.
+**E34 정상 마감·전수 QC·공개 검토·고정 백업 검증을 완료했고 추가 수집을 중지했습니다. E35는 취소했습니다.** 이후 작업은 [데이터 수집 시스템 재정비 계획](collection/research/2026-11-14-collection-system-redesign.ko.md)의 분석·제안이며 새 시스템·학습·모니터는 구현하지 않았습니다. 실제 마감 상태는 [STATUS](project/STATUS.md)를 따릅니다.
 
 [메인](../README.md) | [시연 목록](EPISODES.md) | [다음 수집](COLLECTION_PLAN.md) | [Astra 코드](ASTRA.md) | [클린 서버](OPERATIONS.md)
 
@@ -8,7 +8,7 @@
 
 실제 진행·마감·점수·백업은 [현재 상태](project/STATUS.md), 실행 조건·후속 판단은 [수집 계획](COLLECTION_PLAN.md)을 기준으로 합니다. 과거 결과는 [E30 마감](project/sessions/20261113-e30-close.ko.md)에 보존합니다.
 
-E32는 [불완전 수집 기록](project/sessions/20261114-e32-incomplete.ko.md)에 진단 전용으로 보존하며 정상 replay 출처로 사용하지 않는다. [E33 계획](project/sessions/20261114-e33-plan.ko.md)은 검증된 E28/632에서 같은 [중앙 자유 구간 방법](collection/research/2026-11-13-central-span-entry.ko.md)을 유지하는 미실행 계획이다. 현재 사용자 요청으로 자동 반복을 중지했으며 명시적 재개 전에는 실행하지 않는다. [클린 서버 인계](project/sessions/20261114-paused-clean-server-handoff.ko.md)와 정본 STATUS/COLLECTION_PLAN을 따르며 실시간 피드백 큐는 미적용이다.
+E33은 E28/264에서 가운데 파지 전략으로 정상 마감했고, E34는 E33/470에서 추가 재파지0을 지시한 후속입니다. 이 retain 조건은 프롬프트에 명시된 것이며 누적 작업 상태나 release 차단을 런타임이 보장하지 않습니다. [E33 기록](project/sessions/20261114-e33-middle-grip-resume.ko.md) / [E34 기록](project/sessions/20261114-e34-retain-resume.ko.md). E09·E32는 계속 정상 replay·학습에서 제외합니다. 종전 E28/632 후보는 [과거 계획](project/sessions/20261114-e33-plan.ko.md)으로 보존하며 자동 실행하지 않습니다. 실시간 피드백 큐와 연구 시스템은 미적용입니다.
 
 ## 1. 관측부터 기록까지
 
@@ -138,4 +138,4 @@ sequenceDiagram
 
 [`Actor._cli()`](../participant/collection/codex_actor.py#L265)는 웹 검색과 개발 도구 기능을 비활성화하고, [`_read_result()`](../participant/collection/codex_actor.py#L87)는 도구 실행 이벤트가 섞인 응답을 거부합니다. 같은 episode는 CLI `resume`으로 이어가며, 실패한 호출 뒤 자동으로 행동 이력을 이어 붙이지 않습니다. 공개 이미지도 픽셀로 다시 저장해 원래 파일명과 메타데이터를 제거합니다.
 
-점수와 내부 기하는 별도 검수에만 사용합니다. 공개 자료에는 선별한 입력과 최종 행동, 결과 요약만 남기며 인증 정보, 원시 추론, 이벤트 로그, 세션 DB는 게시하지 않습니다. [수집 계획](COLLECTION_PLAN.md)의 E28 전략은 **마감됐으며 착의 추가 득점은 0점**입니다. [마감 결과와 다음 방향](collection/research/2026-11-13-e28-outcome-e29-direction.ko.md)을 보존하며, 구현·연결 검사·기술 QC 통과를 착의 완료 실적으로 포함하지 않습니다.
+점수와 내부 기하는 별도 검수에만 사용합니다. 공개 자료에는 선별한 입력과 최종 행동, 결과 요약만 남기며 인증 정보, 원시 추론, 이벤트 로그, 세션 DB는 게시하지 않습니다. [전체 시연](EPISODES.md)과 [현재 상태](project/STATUS.md)에서 실행별 결과를 확인합니다. E34 뒤 추가 수집은 중지하며, [재정비 계획](collection/research/2026-11-14-collection-system-redesign.ko.md)의 상태 원장·구간 검수·학습 연결은 미구현 제안입니다. 구현·연결 검사·기술 QC 통과를 착의 완료 실적으로 포함하지 않습니다.

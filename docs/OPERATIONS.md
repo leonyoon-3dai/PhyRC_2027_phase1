@@ -1,6 +1,6 @@
 # 클린 서버 시작 안내
 
-**2026-11-14 재개 안내:** 최신 추가 요청으로 기존 수집 방식의 시연3회를 순차 준비한다. [현재 계획](COLLECTION_PLAN.md#이번-e33-실행-조건)과 [이번 세션](project/sessions/20261114-e33-middle-grip-resume.ko.md)을 우선한다. 아래 과거 인계의 중지 문구·미실행632 후보는 이 요청 이전 기록이다.
+**E34 정상 마감·전수 QC·공개 검토·고정 백업 검증을 완료했고 추가 수집을 중지했습니다. E35는 취소했습니다.** 이후 작업은 [데이터 수집 시스템 재정비 계획](collection/research/2026-11-14-collection-system-redesign.ko.md)의 분석·제안이며 새 시스템·학습·모니터는 구현하지 않았습니다. 실제 마감 상태는 [STATUS](project/STATUS.md)를 따릅니다.
 
 [메인](../README.md) | [시연 목록](EPISODES.md) | [다음 수집](COLLECTION_PLAN.md) | [Astra 코드](ASTRA.md) | [클린 서버](OPERATIONS.md)
 
@@ -8,9 +8,11 @@
 
 실제 진행·마감·점수·백업은 [현재 상태](project/STATUS.md), 실행 조건·후속 판단은 [수집 계획](COLLECTION_PLAN.md)을 기준으로 합니다. 과거 결과는 [E30 마감](project/sessions/20261113-e30-close.ko.md)에 보존합니다.
 
-E32는 [불완전 수집 기록](project/sessions/20261114-e32-incomplete.ko.md)에 진단 전용으로 보존하며 정상 replay 출처로 사용하지 않는다. [종전 E33 계획](project/sessions/20261114-e33-plan.ko.md)은 E28/632에서 같은 중앙 전략을 유지하는 미실행 후보였다. 새 서버에서는 먼저 [2026-11-14 다음 시연 메모](COLLECTION_PLAN.md#2026-11-14-다음-시연-메모)의 파지 위치 변경·손 위에서 내려 걸치기 방향을 읽고 출발점·전략을 재검토한다. 이번 추가는 문서 기록이며 코드·프롬프트에 적용하지 않았다. 현재 사용자 요청으로 자동 반복을 중지했으며 명시적 재개 전에는 실행하지 않는다. [클린 서버 인계](project/sessions/20261114-paused-clean-server-handoff.ko.md)와 정본 STATUS/COLLECTION_PLAN을 따르며 실시간 피드백 큐는 미적용이다.
+2026-11-14에는 HF CLI2.4.0 설치·로그인과 고정 모델/환경 연결을 확인한 뒤 E33을 정상 마감했습니다. detached launcher를 적용한 첫 wiring은 umask077 때문에 simulator UID1234가 prompt를 읽지 못해 모델0회·물리0전이에서 실패했습니다. 검토한 명령 스크립트의 `umask 027`로 공유 trace/프롬프트 접근을 허용한 새 wiring은 통과했습니다. actor 인증 디렉터리700·파일600은 유지했습니다. [검사와 E33 마감](project/sessions/20261114-e33-middle-grip-resume.ko.md).
 
-E30의 simulator 반환값은0이지만 host 실행 세션 반환값은143입니다. 전수 QC·유효한 평가·원본 고정 백업 검증을 각각 확인했습니다. 과거 자동 반복 승인은 현재 사용자 중지 요청으로 일시 중단됐습니다. 명시적 재개 후에는 기본20결정으로 단일 실행을 마감·QC·백업·분석하고 다음 방법·출발점을 선택합니다. 과거 후보·남은 결정을 그대로 이어 붙이지 않고 최신 계획을 따릅니다. GPU 작업은 계속 순차 실행합니다.
+E09·E32의 불완전 원본은 정상 replay 출처로 사용하지 않습니다. E30/E31의 host143은 simulator0·complete·QC통과와 공존했으므로 host 반환값만으로 마감을 판정하지 않습니다. 별도 process session은 host/cgroup 종료 생존을 보장하지 않으며 E32의143 발신 원인은 미확정입니다. [E32 실패 기록](project/sessions/20261114-e32-incomplete.ko.md) / [launcher 검토](project/sessions/20261114-detached-launch-preparation.ko.md).
+
+아래 설치·복원·GPU·모델 명령은 재현 절차입니다. 현재 E34 마감 범위를 넘어 새 검사를 실행하거나 E35를 시작하는 지시가 아닙니다. 명시적 재개 전에는 현재 결과와 [재정비 계획](collection/research/2026-11-14-collection-system-redesign.ko.md)을 검토합니다. 종전632 후보·남은 결정·과거 자동 반복 승인을 이어받지 않습니다.
 
 ## Codex CLI 시작 프롬프트
 
@@ -24,7 +26,7 @@ AGENTS.md와 docs/OPERATIONS.md를 먼저 읽어라.
 요청받은 범위에서 고정 자산과 필요한 시연만 복원하고 해시와 파일을 검증하라.
 단계가 실패하면 원인을 해결하기 전 다음 단계로 넘어가지 마라.
 현재는 사용자 요청으로 중지 상태다. 명시적 재개 전에는 GPU 검사·모델 호출·시연을 시작하지 말고 인계 문서를 확인하라. 이후 사용자가 재개·변경하면 그 지시를 따르라.
-후속 전략은 docs/COLLECTION_PLAN.md이며 옛 same-arm 후보를 자동 실행하지 마라.
+E34 이후 추가 수집은 중지이며 E35는 취소됐다. docs/COLLECTION_PLAN.md와 docs/collection/research/2026-11-14-collection-system-redesign.ko.md를 읽고, 옛 후보나 연구 기능을 자동 실행·구현하지 마라.
 수집 방법 검토 시 docs/collection/research/2026-11-14-agentic-robotics-workshop.ko.md를 읽고, 확인된 연구 결과·PhyRC 적용 가설·미확인 자료를 구분하라. 이 문서를 actor에 주거나 후보 기능을 자동 적용하지 마라.
 완료한 검사, 미실행 검사, 부족한 외부 접근 권한과 다음 명령을 구분해 보고하라.
 ```
@@ -280,7 +282,7 @@ E28의 옆면 접근·넓은 아래 입구·첫 손목 순서는 구현·CPU 검
 2. 닫힌 원본에 전수 QC를 수행합니다. 원점수, 착의 점수, 점수율, `success`, 시각 검토, 학습 승인 상태를 따로 기록합니다.
 3. 새 run ID의 원본과 실행 소스·모델·프롬프트·명령·직접 부모를 보존합니다. 원본 수정 대신 별도 review 파일에 분석을 씁니다.
 4. [보존 도구](../scripts/preserve_collection.py)의 허용 목록으로 묶고 비공개 저장소의 고정 revision에서 재다운로드·SHA 검증합니다. 공개 GitHub에는 선별 관측과 검토 자료만 둡니다.
-5. 시연 목록에 변화와 결과를 한 줄로 추가하고 다음 계획을 갱신합니다. 세부 명령·검사 receipt는 기존 `project/sessions/`와 실행별 기록 경로에 남깁니다.
+5. 시연 목록에 변화와 결과를 한 줄로 추가하고 현재 계획을 갱신합니다. 이번에는 E34 마감 후 중지·E35 취소를 유지합니다. 세부 명령·검사 receipt는 기존 `project/sessions/`와 실행별 기록 경로에 남깁니다.
 6. 수집 프로세스가 없는지 확인한 뒤 요청받은 서버 종료를 별도로 수행합니다. **시뮬레이터 종료와 클라우드 인스턴스 정지는 다른 작업**입니다.
 
 인증·원시 reasoning·CLI 이벤트·세션 DB·미검수 simulator 로그를 공개하거나 홈 전체를 압축하지 않습니다. GPU 검사·모델 호출·과제 성능·문서 링크 검사는 각각 실제 수행한 범위로 기록합니다.
@@ -293,7 +295,7 @@ E28의 옆면 접근·넓은 아래 입구·첫 손목 순서는 구현·CPU 검
 | Docker `invalid tar header` | [공식 설치 가이드의 Docker 29 설명](competition/SETUP.md#troubleshooting). 기존 daemon 설정을 통째로 덮어쓰지 않음 |
 | actor의 CLI/인증 오류 | 고정 PATH, `codex-cli 0.166.0`, private 권한의 본인 auth 파일, 모델 접근 권한 |
 | actor network 생성 실패 | Docker의 isolated gateway와 `--gw-priority` 지원. 격리 설정을 끄고 우회하지 않음 |
-| 공유 폴더 permission denied | simulator UID 1234와 공유 부모 디렉터리의 현재 그룹 접근 |
+| 공유 폴더 permission denied | simulator UID1234와 공유 부모의 현재 그룹 접근, launcher가 상속한 umask와 prompt 권한. 인증 폴더까지 재귀 chmod하지 않음 |
 | `active prepare/run` | `cache/runtime.lock`을 보유한 이전 실행의 정상 종료 여부. 실행 중 잠금 삭제 금지 |
 | 파일 complete=false / 중간 종료 | 실패 원본 보존. 완료 표시를 수정하지 말고 새 run ID로 재시도 |
 | 영상은 보이지만 점수 미확인 | 공식 evaluator의 별도 결과 확인. 단계 이름·그리퍼 닫힘·QC 통과를 착의 성공으로 해석하지 않음 |
