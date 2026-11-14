@@ -1,6 +1,6 @@
 # Astra 수집 코드
 
-**E34 정상 마감·전수 QC·공개 검토·고정 백업 검증을 완료했고 추가 수집을 중지했습니다. E35는 취소했습니다.** 이후 작업은 [데이터 수집 시스템 재정비 계획](collection/research/2026-11-14-collection-system-redesign.ko.md)의 분석·제안이며 새 시스템·학습·모니터는 구현하지 않았습니다. 실제 마감 상태는 [STATUS](project/STATUS.md)를 따릅니다.
+**2026-11-14 09:29 UTC 최신 사용자 지시:** 정리된 E33/E34 결과와 재정비 계획을 먼저 GitHub에 게시한 뒤, 기존 수집 경로로 옷 아래를 넓게 펼쳐 같은 손목보다 약간 위에서 측면으로 넣는 시연을 **최대5회** 진행한다. 예상 작업 범위는3–4시간이며 매회 마감·QC·공개 검토·고정 백업 뒤 다음 출발점을 선택한다. 사용자의 중간 피드백·중지 지시를 우선한다. 종전 E34 이후 중지는 이 범위에서 해제됐으며 새 시스템 개편·학습은 수행하지 않는다. [이번 배치](project/sessions/20261114-wide-hem-five-attempt-batch.ko.md)
 
 [메인](../README.md) | [시연 목록](EPISODES.md) | [다음 수집](COLLECTION_PLAN.md) | [Astra 코드](ASTRA.md) | [클린 서버](OPERATIONS.md)
 
@@ -138,4 +138,4 @@ sequenceDiagram
 
 [`Actor._cli()`](../participant/collection/codex_actor.py#L265)는 웹 검색과 개발 도구 기능을 비활성화하고, [`_read_result()`](../participant/collection/codex_actor.py#L87)는 도구 실행 이벤트가 섞인 응답을 거부합니다. 같은 episode는 CLI `resume`으로 이어가며, 실패한 호출 뒤 자동으로 행동 이력을 이어 붙이지 않습니다. 공개 이미지도 픽셀로 다시 저장해 원래 파일명과 메타데이터를 제거합니다.
 
-점수와 내부 기하는 별도 검수에만 사용합니다. 공개 자료에는 선별한 입력과 최종 행동, 결과 요약만 남기며 인증 정보, 원시 추론, 이벤트 로그, 세션 DB는 게시하지 않습니다. [전체 시연](EPISODES.md)과 [현재 상태](project/STATUS.md)에서 실행별 결과를 확인합니다. E34 뒤 추가 수집은 중지하며, [재정비 계획](collection/research/2026-11-14-collection-system-redesign.ko.md)의 상태 원장·구간 검수·학습 연결은 미구현 제안입니다. 구현·연결 검사·기술 QC 통과를 착의 완료 실적으로 포함하지 않습니다.
+점수와 내부 기하는 별도 검수에만 사용합니다. 공개 자료에는 선별한 입력과 최종 행동, 결과 요약만 남기며 인증 정보, 원시 추론, 이벤트 로그, 세션 DB는 게시하지 않습니다. [전체 시연](EPISODES.md)과 [현재 상태](project/STATUS.md)에서 실행별 결과를 확인합니다. E34 뒤 중지했던 수집은 최신 최대5회 요청 범위에서 재개하며, [재정비 계획](collection/research/2026-11-14-collection-system-redesign.ko.md)의 상태 원장·구간 검수·학습 연결은 미구현 제안입니다. 구현·연결 검사·기술 QC 통과를 착의 완료 실적으로 포함하지 않습니다.

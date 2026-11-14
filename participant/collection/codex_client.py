@@ -225,6 +225,18 @@ RETAIN AND PROGRESS: If current/recent observations support a useful draped firs
 
 MIDDLE_GRIP_RETAIN_TASK = '''For this bounded continuation, preserve the CURRENT grasp set while continuing the middle-grip, vertical-space and same-hand top-down method. The regrasp bound is ZERO for the entire continuation, including initial setup, recovery and any later dressing progress. This overrides the earlier permissions for initial or later grasp relocation: do not open either gripper, release/reposition/reclose, or rename a phase to obtain another setup cycle. Keep the existing closed or closing intent with neutral or close commands; a repeated close command does not establish attachment. A replayed grasp is not certified support. Inspect current finger motion, local cloth following and public measured response before relying on either support. Permit actual settling, a short lift test, shape adjustment, transport and hand-relative descent only as current evidence supports them. If useful support or shape cannot be recovered without release, preserve what remains and finish with that limitation rather than restart acquisition. Continue to distinguish cloth motion, draping and sleeve passage. Use only the existing brief reason and public observation/action contract. This is an actor instruction, not an external contact detector or an automatic action gate.'''
 
+WIDE_HEM_SIDE_ENTRY_TASK = '''For this bounded continuation, preserve the CURRENT grasp set and investigate a broadly opened lower-body-hem approach from slightly above and to the side of ONE selected mannequin wrist. This specializes the opening shape and FIRST WRIST route above. It does not require new central grasps, a vertically elongated opening, an initial downward drape, or a lower-rotate-raise sequence.
+
+The regrasp bound is ZERO for this entire continuation, including preparation, recovery and later progress. This overrides the earlier initial and later grasp-change permissions. Do not open either gripper or repeat acquisition. Preserve the existing closed or closing intent with neutral or close commands; inspect actual local cloth following and measured robot response rather than assuming replay certified either grasp. A repeated close command does not establish attachment.
+
+BROADEN AND RETAIN: Use the current candidate lower opening between the supports. Seek useful width AND depth through a bounded change in support spacing, relative height or wrist orientation. A broad exterior panel, taut edge, dark fold or large gripper separation does not establish a passage. Relieve tension or change orientation if widening merely flattens the same panel. Preserve useful shape through positioning, keeping both jaws and housings outside the intended hand path. Do not spend the continuation repeating pickup preparation or require a perfectly visible hole before a useful bounded trial. Visible background is not required, and invalid depth does not establish free space.
+
+SLIGHTLY ABOVE, THEN SIDEWAYS: Select and track the same hand through its connected forearm. Bring the usable free span slightly above and beside that wrist, then make one bounded lateral entry trial that carries the candidate mouth toward and around the same hand. Sideways and above describe observed garment-to-hand relationships, not image directions, a fixed world axis or a prescribed robot command. If the current height is suitable, do not add a mandatory lowering step. Choose any needed height correction and lateral motion from current views, public state, action scales and measured response. The supporting robot may move cooperatively to preserve the opening rather than holding a fixed world pose.
+
+After each act and configured settling, inspect actual robot displacement, local cloth movement and the same hand/rim relationship before another advance. A bounded trial may test an uncertain entry hypothesis; do not describe occluded space as clear or disappearance behind cloth as entry. Preserve any useful same-wrist/forearm relationship and continue toward that hand emerging through its corresponding sleeve when observations support that direction, without entering a cuff from outside or switching hands merely because another appears. A drape or overlap is not sleeve passage or measured success.
+
+Apply the existing saturation checks within the zero-regrasp bound. If support or opening shape cannot be usefully recovered without release, retain available support and finish with that limitation. In the existing brief reason identify the guide/support roles, same-hand relationship, intended change and unresolved evidence. Use the existing public observations, permitted actions and response schema only. These are actor instructions, not contact measurements or an automatic action gate.'''
+
 SINGLE_ARM_PROGRESS_TASK = '''For this attempt, preserve continuity of ONE selected arm within the task-progress approach. Choose the arm with the most useful CURRENT body-opening, hand and forearm relationship from the designated views; use available same-episode history to track that relationship, not as proof of current geometry or support. Identify the selected arm by its visible connected hand/forearm and relation to the garment, without assuming a predetermined anatomical side or robot-camera identity. Keep the existing grasps: the one-sided regrasp bound remains zero.
 
 Continue that hand's body-opening entry and guide the garment along the SAME forearm toward its corresponding sleeve and shoulder. Keep the body-entry-to-sleeve direction; do not insert the hand into a cuff from outside. A visible cuff is not required before starting a useful entry movement. Use the existing brief reason to state the selected arm relationship, the current purpose and any identity uncertainty; do not add output fields.
@@ -642,7 +654,8 @@ def main():
                         'coordinated-single-arm-progress',
                         'coordinated-side-hem-wrists', 'coordinated-diagonal-entry',
                         'coordinated-central-span-entry', 'coordinated-middle-grip-drape',
-                        'coordinated-middle-grip-drape-retain'], default='general',
+                        'coordinated-middle-grip-drape-retain',
+                        'coordinated-wide-hem-side-entry'], default='general',
                         help='Optional dressing guidance; middle-grip-drape compares inward hem grasps and a short descent from above the same hand')
     parser.add_argument('--actor-backend', choices=['exec', 'app-server'], default='exec')
     parser.add_argument('--plan-size', type=int, default=1,
@@ -715,7 +728,8 @@ def main():
                          'coordinated-single-arm-progress',
                          'coordinated-side-hem-wrists', 'coordinated-diagonal-entry',
                          'coordinated-central-span-entry', 'coordinated-middle-grip-drape',
-                         'coordinated-middle-grip-drape-retain') and args.mode != 'dressing':
+                         'coordinated-middle-grip-drape-retain',
+                         'coordinated-wide-hem-side-entry') and args.mode != 'dressing':
         parser.error('coordinated strategy requires the full dressing objective')
     if args.strategy == 'coordinated-support-diagnostic' and args.plan_size != 1:
         parser.error('support diagnostic requires plan-size=1 to observe after each action')
@@ -743,6 +757,8 @@ def main():
         parser.error('central-span-entry requires exec and plan-size=1 to inspect span shape and same-hand progress')
     if args.strategy in ('coordinated-middle-grip-drape', 'coordinated-middle-grip-drape-retain') and (args.plan_size != 1 or args.actor_backend != 'exec'):
         parser.error('middle-grip-drape requires exec and plan-size=1 to inspect each grasp, shape and same-hand descent')
+    if args.strategy == 'coordinated-wide-hem-side-entry' and (args.plan_size != 1 or args.actor_backend != 'exec'):
+        parser.error('wide-hem-side-entry requires exec and plan-size=1 to inspect opening shape and same-wrist lateral entry')
     if args.mode == 'wiring' and args.plan_size > 1 and (args.plan_size != 3 or args.decisions != 3):
         parser.error('grouped wiring requires plan-size=3 and decisions=3')
     if not math.isfinite(args.model_timeout) or not 10 <= args.model_timeout <= 1800:
@@ -782,7 +798,8 @@ def main():
                          'coordinated-single-arm-progress',
                          'coordinated-side-hem-wrists', 'coordinated-diagonal-entry',
                          'coordinated-central-span-entry', 'coordinated-middle-grip-drape',
-                         'coordinated-middle-grip-drape-retain'):
+                         'coordinated-middle-grip-drape-retain',
+                         'coordinated-wide-hem-side-entry'):
         task += '\n\n' + COORDINATED_TASK
     if args.strategy == 'coordinated-sleeve':
         task += '\n\n' + SLEEVE_TASK
@@ -826,6 +843,9 @@ def main():
                  + '\n\n' + METHOD_SATURATION_TASK)
         if args.strategy == 'coordinated-middle-grip-drape-retain':
             task += '\n\n' + MIDDLE_GRIP_RETAIN_TASK
+    elif args.strategy == 'coordinated-wide-hem-side-entry':
+        task += ('\n\n' + SIDE_HEM_WRISTS_TASK + '\n\n' + METHOD_SATURATION_TASK
+                 + '\n\n' + WIDE_HEM_SIDE_ENTRY_TASK)
     if args.plan_size > 1:
         task += '\n\n' + PLAN_TASK.format(max_segments=args.plan_size, max_total_steps=args.plan_step_budget)
     if args.post_action_settle_steps:

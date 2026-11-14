@@ -28,7 +28,7 @@ https://github.com/user-attachments/assets/d2f347fe-712b-42f3-bdee-69d3fee2a47c
 |:---:|:---:|:---:|:---:|
 | E00–E34 기록과 상태 | E34 이후 중지·연구 제안 | 관측부터 HDF5까지 | 설치·복원·검증·Codex CLI |
 
-**E34는20결정·836전이로 정상 마감해 QC836/836을 통과했습니다. 이후 수집은 중지하며 E35는 취소했습니다.** 로컬5/50은 픽업5점이며 착의 득점0·success=false입니다. [현재 상태와 고정 백업 검증](docs/project/STATUS.md) / [재정비 계획](docs/collection/research/2026-11-14-collection-system-redesign.ko.md). 재정비안은 제안 단계이며 새 시스템이나 자동 학습을 구현하지 않았습니다.
+**E34는20결정·836전이로 정상 마감해 QC836/836을 통과했습니다. 최신 요청에 따라 정리본 게시 후 기존 방식의 측면 손목 접근을 최대5회 추가 수집합니다.** 로컬5/50은 픽업5점이며 착의 득점0·success=false입니다. [현재 상태와 고정 백업 검증](docs/project/STATUS.md) / [재정비 계획](docs/collection/research/2026-11-14-collection-system-redesign.ko.md). 재정비안은 제안 단계이며 새 시스템이나 자동 학습을 구현하지 않았습니다.
 
 ## 최근 시연 · E34
 
@@ -42,7 +42,7 @@ https://github.com/user-attachments/assets/d2f347fe-712b-42f3-bdee-69d3fee2a47c
 
 ## 수집 시스템 재정비
 
-**다음 시연을 자동으로 늘리기보다, 실제 실행 이력·불확실한 관측 가설·효과를 확인할 예산·구간별 학습 승인을 분리하는 계획을 제안합니다.** E33/E34에서 검토한 가운데 파지와 손 위 하강 목표, E00 이후의 반복·복구·종료 실패를 함께 분석했습니다. 구현과 후속 수집은 아직 시작하지 않습니다.
+**다음 시연을 자동으로 늘리기보다, 실제 실행 이력·불확실한 관측 가설·효과를 확인할 예산·구간별 학습 승인을 분리하는 계획을 제안합니다.** E33/E34에서 검토한 가운데 파지와 손 위 하강 목표, E00 이후의 반복·복구·종료 실패를 함께 분석했습니다. 시스템 개편 구현은 보류하고, 최신 요청의 기존 방식 추가 수집은 [이번 배치](docs/project/sessions/20261114-wide-hem-five-attempt-batch.ko.md)로 별도 진행합니다.
 
 [전체 근거·설계·검증 순서](docs/collection/research/2026-11-14-collection-system-redesign.ko.md) · [마감 범위와 과거 조작 계획](docs/COLLECTION_PLAN.md)
 

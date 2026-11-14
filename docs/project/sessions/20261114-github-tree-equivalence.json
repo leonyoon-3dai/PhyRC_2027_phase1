@@ -1,0 +1,39 @@
+{
+  "schema": "phyrc-github-tree-equivalence-v1",
+  "repository": "leonyoon-3dai/PhyRC_2027_phase1",
+  "base_commit": "112cc5145dda4203ddce478473ddd70e7f17b3bb",
+  "scope": "historical_tree_equivalence_before_current_batch_publication",
+  "method": "connected GitHub Git Data API",
+  "commit_metadata_recreated": true,
+  "source_record_ids_modified": false,
+  "original_local_history_preserved": true,
+  "unique_blob_versions_verified": 83,
+  "remote_commits_refetched": true,
+  "entries": [
+    {
+      "local_original_commit": "8fa26c0a722d9444d833a4b559968df527dbecdb",
+      "published_commit": "4850ed23e278b21312a78a92aa83bebde0a87aa9",
+      "identical_git_tree_sha": "f06f70827c85daff6a1dfa6d3a87ce58c4bf2c53"
+    },
+    {
+      "local_original_commit": "464203860304631d00a8acd6747b86c23cfded61",
+      "published_commit": "1aa75129ec66e1d827ccfbcec9cd08cd1535076e",
+      "identical_git_tree_sha": "00fd712c965f3353085b16a7a7490f0fa5b0a104"
+    },
+    {
+      "local_original_commit": "0a5121cde33a32db5e4888255de150e846d52c15",
+      "published_commit": "e468f30facd9f353a0fd6af0cca64d1e7c2e399f",
+      "identical_git_tree_sha": "dd9dada8e4fbc3904d925f82fadfa4726b9545f9"
+    },
+    {
+      "local_original_commit": "7bdd82c0abf0d719257eaa5fced3090ba8f01068",
+      "published_commit": "875ba3ff17e7021363fe3db3f47ac9e427b02067",
+      "identical_git_tree_sha": "839db524e4bce9ec1049e6c8b9960c65134fb171"
+    }
+  ],
+  "regression_oracle_content_unchanged": true,
+  "regression_oracle_blobs": [
+    "a60253067fd10772000a4ee537cbb9bdb2521c72",
+    "d256e8d205a1352b7294de5b299441804dc3ce70"
+  ]
+}

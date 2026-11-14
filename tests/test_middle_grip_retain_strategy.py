@@ -15,9 +15,12 @@ from test_overhead_strategy import encode
 
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE = '464203860304631d00a8acd6747b86c23cfded61'
-BASE_SOURCE = subprocess.check_output(
-    ['git', 'show', BASE + ':participant/collection/codex_client.py'], cwd=ROOT, text=True)
+# Original source: 464203860304631d00a8acd6747b86c23cfded61:participant/collection/codex_client.py
+# Pin content independently of commit metadata when identical trees are republished.
+BASE_BLOB = 'a60253067fd10772000a4ee537cbb9bdb2521c72'
+BASE_SOURCE_BYTES = subprocess.check_output(['git', 'cat-file', 'blob', BASE_BLOB], cwd=ROOT)
+assert hashlib.sha256(BASE_SOURCE_BYTES).hexdigest() == 'e77f09589cd021a9ada5343a8a85e87d41f641cc546ea74ab4b5b20020082262'
+BASE_SOURCE = BASE_SOURCE_BYTES.decode('utf-8')
 baseline = ModuleType('retained_grip_baseline_client')
 baseline.__file__ = str(ROOT / 'participant/collection/codex_client.py')
 exec(compile(BASE_SOURCE, baseline.__file__, 'exec'), baseline.__dict__)
