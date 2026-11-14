@@ -1,6 +1,6 @@
 # 클린 서버 시작 안내
 
-**2026-11-14 09:29 UTC 최신 사용자 지시:** 정리된 E33/E34 결과와 재정비 계획을 먼저 GitHub에 게시한 뒤, 기존 수집 경로로 옷 아래를 넓게 펼쳐 같은 손목보다 약간 위에서 측면으로 넣는 시연을 **최대5회** 진행한다. 예상 작업 범위는3–4시간이며 매회 마감·QC·공개 검토·고정 백업 뒤 다음 출발점을 선택한다. 사용자의 중간 피드백·중지 지시를 우선한다. 종전 E34 이후 중지는 이 범위에서 해제됐으며 새 시스템 개편·학습은 수행하지 않는다. [이번 배치](project/sessions/20261114-wide-hem-five-attempt-batch.ko.md)
+**2026-11-15 현재 방향:** E36의 종료·득점·직접 조작·연구 분석을 기록하고, 한 방법에 고정하지 않은 후속 시스템과 추가 득점 방향을 검토한다. 실제 실행 상태는 E36 마감이며 이번 갱신은 문서화다. [현재 계획](COLLECTION_PLAN.md)과 [E36 후속 분석](collection/research/2026-11-15-e36-continuation-options.ko.md)을 먼저 읽는다. 종전 최대5회 승인은 E36에서 종료된 [배치 이력](project/sessions/20261114-wide-hem-five-attempt-batch.ko.md)이며 남은 횟수의 실행 지시가 아니다.
 
 [메인](../README.md) | [시연 목록](EPISODES.md) | [다음 수집](COLLECTION_PLAN.md) | [Astra 코드](ASTRA.md) | [클린 서버](OPERATIONS.md)
 
@@ -12,21 +12,24 @@
 
 E09·E32의 불완전 원본은 정상 replay 출처로 사용하지 않습니다. E30/E31의 host143은 simulator0·complete·QC통과와 공존했으므로 host 반환값만으로 마감을 판정하지 않습니다. 별도 process session은 host/cgroup 종료 생존을 보장하지 않으며 E32의143 발신 원인은 미확정입니다. [E32 실패 기록](project/sessions/20261114-e32-incomplete.ko.md) / [launcher 검토](project/sessions/20261114-detached-launch-preparation.ko.md).
 
-아래 설치·복원·GPU·모델 명령은 재현 절차입니다. 최신 사용자는 기존 방식으로 최대5회 추가 수집을 승인했습니다. [현재 수집 계획](COLLECTION_PLAN.md)의 새 출발점·전략을 따르고 종전632 후보·남은 결정·무제한 자동 반복을 이어받지 않습니다. 재정비 시스템 구현과 학습은 이번 범위가 아닙니다.
+아래 설치·복원·GPU·모델 명령은 필요할 때 선택하는 재현 절차입니다. 문서의 과거 명령을 현재 실행 요청으로 해석하지 않습니다. [현재 계획](COLLECTION_PLAN.md)에서 질문·출발 경계·제어 방법·예산·기능 준비 상태를 확인합니다. 종전632 후보·배치의 남은 횟수·남은 결정을 자동으로 이어받지 않습니다. 이번 기록 작업에서 새 기능·수집·학습을 실행하지 않았습니다.
 
 ## Codex CLI 시작 프롬프트
 
 새 서버의 개발용 Codex에 아래 내용을 전달하면 됩니다. 별도 대화 이력 없이 이 저장소의 현재 안내를 기준으로 시작합니다.
 
-시연 수집 방법의 연구 근거는 [Agentic Robotics 워크숍 참고](collection/research/2026-11-14-agentic-robotics-workshop.ko.md)에 본문으로 보존했습니다. 외부 페이지를 다시 열지 않아도 핵심 비교와 현재 코드 연결을 읽을 수 있습니다.
+시연 수집 방법의 연구 근거는 [Agentic Robotics 워크숍 참고](collection/research/2026-11-14-agentic-robotics-workshop.ko.md), [E36 후속 분석](collection/research/2026-11-15-e36-continuation-options.ko.md), [HolidayFactory 적용 검토](collection/research/2026-11-15-holidayfactory-phyrc.ko.md)에 보존했습니다. 이 채팅을 보지 못한 Codex CLI도 현재 사실·선택지·미구현 부분을 구분할 수 있도록 연결합니다.
 
 ```text
-AGENTS.md와 docs/OPERATIONS.md를 먼저 읽어라.
+AGENTS.md, docs/project/STATUS.md, docs/COLLECTION_PLAN.md와 docs/OPERATIONS.md를 먼저 읽어라.
 현재 HEAD, 작업 트리, 서버 도구와 접근 권한을 확인하고 실제 상태를 기록하라.
 요청받은 범위에서 고정 자산과 필요한 시연만 복원하고 해시와 파일을 검증하라.
 단계가 실패하면 원인을 해결하기 전 다음 단계로 넘어가지 마라.
-2026-11-14 09:29 UTC 사용자가 기존 방식 최대5회 추가 수집을 승인했다. 현재 실행 계획과 출처 검증을 따르고 매회 마감·QC·보존·분석을 수행하라.
-E35부터 최대5회 범위이며 중간 피드백·중지 지시를 우선한다. docs/COLLECTION_PLAN.md를 읽고, 옛 후보나 새 연구 시스템 기능을 자동 실행·구현하지 마라.
+E36에서 당시 배치가 종료됐으며 2026-11-15 갱신은 여러 방법을 비교하는 분석·설계 기록이다. 과거 최대5회 배치나 남은 예산을 현재 실행 명령으로 삼지 마라.
+docs/collection/research/2026-11-15-e36-continuation-options.ko.md와 docs/collection/research/2026-11-15-holidayfactory-phyrc.ko.md를 읽어라.
+목표는 E36의 경험과 계보를 이어 추가 착의 득점을 확보할 수 있는 시스템이다. 사람 조작, Astra, 개입, 감독·복구, 후속 학습 중 한 방법을 미리 고정하지 마라.
+현재 요청이 문서 기록인지 구현인지 실험인지 구분하고 요청 범위에 맞춰 진행하라. 실행한다면 정상 원본·경계·제어원·공개 입력·예산·종료/검토 조건과 실제 준비 상태를 확인하라.
+닫힌 E36은 실행 중 환경이 아니다. prefix replay는 정확한 천 checkpoint가 아니며 pause/resume·실시간 handoff는 아직 검증된 기능이 아니다.
 수집 방법 검토 시 docs/collection/research/2026-11-14-agentic-robotics-workshop.ko.md를 읽고, 확인된 연구 결과·PhyRC 적용 가설·미확인 자료를 구분하라. 이 문서를 actor에 주거나 후보 기능을 자동 적용하지 마라.
 완료한 검사, 미실행 검사, 부족한 외부 접근 권한과 다음 명령을 구분해 보고하라.
 ```
@@ -282,7 +285,7 @@ E28의 옆면 접근·넓은 아래 입구·첫 손목 순서는 구현·CPU 검
 2. 닫힌 원본에 전수 QC를 수행합니다. 원점수, 착의 점수, 점수율, `success`, 시각 검토, 학습 승인 상태를 따로 기록합니다.
 3. 새 run ID의 원본과 실행 소스·모델·프롬프트·명령·직접 부모를 보존합니다. 원본 수정 대신 별도 review 파일에 분석을 씁니다.
 4. [보존 도구](../scripts/preserve_collection.py)의 허용 목록으로 묶고 비공개 저장소의 고정 revision에서 재다운로드·SHA 검증합니다. 공개 GitHub에는 선별 관측과 검토 자료만 둡니다.
-5. 시연 목록에 변화와 결과를 한 줄로 추가하고 현재 계획을 갱신합니다. 이번에는 최대5회 배치 상한과 사용자 피드백을 반영합니다. 세부 명령·검사 receipt는 기존 `project/sessions/`와 실행별 기록 경로에 남깁니다.
+5. 실제 새 시연을 수행한 경우 시연 목록에 변화와 결과를 한 줄로 추가하고 현재 계획을 갱신합니다. 선택한 시험 카드의 예산·중지 조건과 사용자 피드백을 반영하며 과거 최대5회 배치를 자동 재개하지 않습니다. 세부 명령·검사 receipt는 기존 `project/sessions/`와 실행별 기록 경로에 남깁니다.
 6. 수집 프로세스가 없는지 확인한 뒤 요청받은 서버 종료를 별도로 수행합니다. **시뮬레이터 종료와 클라우드 인스턴스 정지는 다른 작업**입니다.
 
 인증·원시 reasoning·CLI 이벤트·세션 DB·미검수 simulator 로그를 공개하거나 홈 전체를 압축하지 않습니다. GPU 검사·모델 호출·과제 성능·문서 링크 검사는 각각 실제 수행한 범위로 기록합니다.
@@ -299,4 +302,5 @@ E28의 옆면 접근·넓은 아래 입구·첫 손목 순서는 구현·CPU 검
 | `active prepare/run` | `cache/runtime.lock`을 보유한 이전 실행의 정상 종료 여부. 실행 중 잠금 삭제 금지 |
 | 파일 complete=false / 중간 종료 | 실패 원본 보존. 완료 표시를 수정하지 말고 새 run ID로 재시도 |
 | 영상은 보이지만 점수 미확인 | 공식 evaluator의 별도 결과 확인. 단계 이름·그리퍼 닫힘·QC 통과를 착의 성공으로 해석하지 않음 |
+
 

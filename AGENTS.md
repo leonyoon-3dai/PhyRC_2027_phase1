@@ -1,6 +1,8 @@
 # Codex 작업 지침
 
-**최신 사용자 지시(2026-11-14, E35 마감 뒤): E36까지만 진행하고 수집을 종료한다.** E37–E39는 실행하지 않는다. E36 종료 후 원본·QC·백업·공개 문서를 정리하고 시연 영상의 페이지 내 GIF를 유지한다. 사용자 관찰·Codex 실행 분석·관련 연구 분석을 통합한 슬라이드 형식 PDF를 만들고 README 맨 위 버튼에서 연다. 다음 작업은 키보드 직접 조작과 시연 중 사용자 개입의 시험 계획이며, 이번에 해당 기능을 구현하거나 새 시연을 시작하지 않는다.
+**최신 사용자 방향(2026-11-15): 이 채팅의 E36 분석, HolidayFactory 검토, 직접 조작 활용 논의를 저장소에 기록한다. 한 가지 방법을 고집하지 않고 여러 접근을 비교·조합할 수 있는 시스템을 설계해, E36의 경험과 계보를 이어 추가 착의 득점을 계속 확보하는 방향을 모색한다.** 사람 단독 조작, Astra, 사용자 피드백, 제어권 전환, 감독·복구, 후속 학습은 비교 가능한 선택지다. 이번 변경은 분석·설계 문서화이며 수집 재개나 기능 구현 완료를 뜻하지 않는다. [현재 계획](docs/COLLECTION_PLAN.md)과 [E36 후속 분석](docs/collection/research/2026-11-15-e36-continuation-options.ko.md)을 먼저 읽는다.
+
+**2026-11-14 마감 이력:** E36까지 수집하고 당시 배치를 종료했다. E37–E39는 실행하지 않았다. 원본·QC·백업·공개 GIF·통합 PDF는 보존한다. 당시 사람 조작 우선안은 후보 중 하나이며 2026-11-15의 열린 비교 방향을 대신하지 않는다.
 
 
 **과거 배치 승인(2026-11-14 09:29 UTC, 현재는 E36 종료):** 정리된 E33/E34 결과와 재정비 계획을 먼저 GitHub에 게시한 뒤, 기존 수집 경로로 옷 아래를 넓게 펼쳐 같은 손목보다 약간 위에서 측면으로 넣는 시연을 **최대5회** 진행한다. 예상 작업 범위는3–4시간이며 매회 마감·QC·공개 검토·고정 백업 뒤 다음 출발점을 선택한다. 사용자의 중간 피드백·중지 지시를 우선한다. 종전 E34 이후 중지는 이 범위에서 해제됐으며 새 시스템 개편·학습은 수행하지 않는다.
@@ -14,11 +16,13 @@
 3. 수집 변경 전 [COLLECTION_PLAN](docs/COLLECTION_PLAN.md)과 [ASTRA](docs/ASTRA.md)를 읽는다. 시연과 직접 부모는 [EPISODES](docs/EPISODES.md)에서 찾는다.
 4. 과거 세션의 “다음”, “재개”, 날짜별 TODO는 현재 지시가 아니다. 고유 실행 근거는 [보관함](docs/ARCHIVE.md)을 통해 확인한다.
 5. 시연 수집 방법을 검토할 때 [Agentic Robotics 워크숍 참고](docs/collection/research/2026-11-14-agentic-robotics-workshop.ko.md)를 읽는다. 채택 논문 39편의 조사 범위, Stretch 4+Astra 사례, 현재 코드와의 차이, 다음 비교 제안 및 원문 접근 한계를 기록했다. 개발용 참고이며 actor 입력·구현·재개 명령이 아니다. 최신 상태와 실행 계획은 계속 STATUS/COLLECTION_PLAN이 정본이다.
+6. E36 이후를 검토할 때 [종료·득점·직접 조작·다중 방법 설계](docs/collection/research/2026-11-15-e36-continuation-options.ko.md)와 [HolidayFactory 적용 검토](docs/collection/research/2026-11-15-holidayfactory-phyrc.ko.md)를 읽는다. 논문 결과와 PhyRC 가설을 구분하고, 사람 조작이나 특정 모델·재파지 조건을 유일한 정답으로 고정하지 않는다.
 
 ## 현재 범위
 
-- **E36 마감으로 수집을 종료했다. E37 이후를 실행하지 않는다.** 현재 범위는 종료 자료·GIF·통합 PDF 정리와 다음 키보드 직접 조작/사용자 개입 시험 계획이다. 새 시연·handoff 구현·학습은 다음 별도 지시를 따른다.
-- **현재 실행·마감 상태는 [STATUS](docs/project/STATUS.md), 마감 범위와 후속 개발 제안은 [COLLECTION_PLAN](docs/COLLECTION_PLAN.md)이 정본이다.** [데이터 수집 시스템 재정비 계획](docs/collection/research/2026-11-14-collection-system-redesign.ko.md)은 전체 경험과 연구를 연결한 미구현 제안이다. 문서를 actor에 주거나 제안 기능을 자동 적용하지 않는다.
+- **실제 실행 상태는 E36 마감이며 E37 이후 새 실행은 없다.** 현재 작업은 분석을 기록하고 여러 방법을 선택·조합할 수 있는 후속 설계를 정리하는 것이다. 장기 목표인 추가 득점과 현재 구현·실행 상태를 구분한다. 닫힌 E36을 실행 중인 환경처럼 취급하지 않으며 새 시연 원본으로 덮어쓰지 않는다.
+- **현재 실행·마감 상태는 [STATUS](docs/project/STATUS.md), 후속 방향과 작업 범위는 [COLLECTION_PLAN](docs/COLLECTION_PLAN.md)이 정본이다.** [2026-11-15 후속 분석](docs/collection/research/2026-11-15-e36-continuation-options.ko.md)이 최신 비교 방향이며, [2026-11-14 재정비 계획](docs/collection/research/2026-11-14-collection-system-redesign.ko.md)은 선행 설계로 보존한다. 문서를 actor에 주거나 제안 기능을 자동 적용하지 않는다.
+- E36의 추가 재파지0·20결정·review10은 해당 시도의 조건이다. 향후 모든 방법의 고정 규칙으로 일반화하지 않는다. 각 실험에서 제어원, 입력, 재파지·복구 조건, 예산과 종료/검토 방식을 명시하고 공식 물리·관측·행동·평가 계약은 유지한다.
 - E33 `20261114-astra-middle-grip264-001`은 E28/264·새 history242/254에서20결정·471전이로 정상 마감했다. QC471/471·고정 백업 검증을 통과했으나0/50·착의0·success=false이며 손 접근은 미실행이다. [E33 기록](docs/project/sessions/20261114-e33-middle-grip-resume.ko.md).
 - E34 `20261114-astra-middle-grip470-retain-001`은 E33/470·새 history434/454, 같은 E28 source group의 후속으로20act·24호출·836전이를 정상 마감했다. QC836/836,5/50·픽업5·착의0·success=false이며 새 파지의 들기·운반·짧은 하강을 시험했으나 손목 걸침·소매 통과는 확인하지 못했다. `coordinated-middle-grip-drape-retain`의 추가 재파지0은 정적 actor 지시이며 상태 원장이나 런타임 차단 기능이 아니다. 고정 백업의 재다운로드·236개 manifest 파일·원본234파일 불변 검증도 완료했다. [E34 기록](docs/project/sessions/20261114-e34-retain-resume.ko.md).
 - E35·E36은 각각 QC983/983·933/933과 고정 백업 검증으로 정상 마감했다. 최종 raw5/50은 replay의 pickup이며 새 착의점0이다. E36은10act+finish로 종료했다. [통합 분석 PDF](docs/reports/20261114-e36-integrated-review/phyrc-e36-integrated-review.ko.pdf)에 사용자/Codex/연구 분석과 다음 사람 조작 계획을 정리했다.
@@ -65,4 +69,5 @@
 - GitHub에는 코드·문서·선별 이미지·영상만 둔다. 큰 원본, audit·평가, 모델은 비공개 자료 저장소에 고정 revision과 검증 receipt로 남긴다.
 - `scripts/preserve_collection.py`의 허용 목록으로 정상 마감·QC 통과 원본을 보존한다. 불완전 E32는 별도 검토한 로컬 허용 목록으로 진단 전용 백업하며 정상 보존 gate를 완화하지 않는다. 분석은 별도 review/session에 두고 collection 원본에 임의 파일을 추가하지 않는다. 신규 의존성이 있으면 소스 보존 목록도 검증한다.
 - 인증 파일·키·토큰·개인 접속 주소·원시 CLI reasoning/events·세션 DB·미검수 로그·simulator.log를 게시하지 않는다. 홈이나 저장소 전체를 백업으로 압축하지 않는다.
+
 
