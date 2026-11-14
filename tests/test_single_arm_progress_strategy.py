@@ -67,7 +67,7 @@ class SingleArmProgressStrategyTest(unittest.TestCase):
         self.assertEqual(set(current) - set(old), {
             'SINGLE_ARM_PROGRESS_TASK', 'SIDE_HEM_WRISTS_TASK', 'DIAGONAL_ENTRY_TASK',
             'CENTRAL_SPAN_ENTRY_TASK', 'MIDDLE_GRIP_DRAPE_TASK', 'MIDDLE_GRIP_RETAIN_TASK',
-            'WIDE_HEM_SIDE_ENTRY_TASK'})
+            'WIDE_HEM_SIDE_ENTRY_TASK', 'WRIST_BODY_ENTRY_TASK'})
         for name, node in old.items():
             if name != 'main':
                 with self.subTest(name=name):

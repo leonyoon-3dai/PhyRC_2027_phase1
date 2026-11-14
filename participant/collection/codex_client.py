@@ -237,6 +237,16 @@ After each act and configured settling, inspect actual robot displacement, local
 
 Apply the existing saturation checks within the zero-regrasp bound. If support or opening shape cannot be usefully recovered without release, retain available support and finish with that limitation. In the existing brief reason identify the guide/support roles, same-hand relationship, intended change and unresolved evidence. Use the existing public observations, permitted actions and response schema only. These are actor instructions, not contact measurements or an automatic action gate.'''
 
+WRIST_BODY_ENTRY_TASK = '''For this continuation, prioritize aligning the existing supported opening with ONE selected mannequin wrist and advancing it toward the body along that same connected forearm. Preserve the current useful grasp set and opening shape. This specializes the preceding broadening and slightly-above/sideways guidance: do not restart acquisition, transport, extensive widening, or a mandatory raise/lower sequence when the current arrangement already supports this entry test. The zero-regrasp bound remains in force for the ENTIRE continuation, including recovery and later progress.
+
+USE THE EXISTING SHAPE: Treat the present width as a useful starting hypothesis, not proof of an open passage. Check current local cloth following, hand clearance and the free span between the supports. Replayed poses and historical images do not certify present support. Preserve useful width and depth; reshape only to address an observed collapse, loss of support or a specific approach obstruction. Do not consume the attempt seeking maximum width or a perfectly visible hole before a useful bounded trial.
+
+ALIGN TO THE SAME WRIST AND FOREARM: Track the selected hand through its connected wrist and forearm in current and recent designated views. Orient and position the robots and controlled opening so that the usable free span approaches that hand rather than a held corner or wrist housing. Choose any base heading, arm or wrist adjustment from the observed relationship, public poses, remaining travel and measured response; no robot, anatomical side, yaw, world axis or coordinate is prescribed. If the current relation is already suitable, proceed without repeating alignment. A slightly-above approach may be retained, but a separate descent is not required.
+
+BOUNDED BODYWARD ENTRY, THEN INSPECT: When current evidence supports a plausible supported direction, make one finite movement guiding the candidate opening around the same hand/wrist and toward the base of its connected forearm and torso. Bodyward means this observed arm-relative direction, not image-forward or a fixed base command. The partner may move cooperatively to preserve the free span and avoid pulling the opening away. The dressing direction remains entry through the body opening and eventual emergence through the corresponding sleeve, not entry into a cuff from outside. Partial uncertainty may be tested by one bounded movement; do not assert unseen space is clear or require certified passage before trying it.
+
+Inspect the next observation, including configured settling, before another push. Distinguish actual robot displacement, residual target following, local cloth movement and changed same-hand/forearm relationships. Cloth covering the hand, housing occlusion or a stage name does not establish entry. Continue useful bodyward progression when supported; do not switch hands merely because another appears. If executed movements leave the same obstruction, change a supported approach/orientation instead of repeating speed or duration offsets. Retain the zero-regrasp bound and finish when useful supported movement or recovery is exhausted. In the existing brief reason state the retained shape, same-hand relationship, intended bodyward change and unresolved evidence. Use only the existing public observations, actions and response schema.'''
+
 SINGLE_ARM_PROGRESS_TASK = '''For this attempt, preserve continuity of ONE selected arm within the task-progress approach. Choose the arm with the most useful CURRENT body-opening, hand and forearm relationship from the designated views; use available same-episode history to track that relationship, not as proof of current geometry or support. Identify the selected arm by its visible connected hand/forearm and relation to the garment, without assuming a predetermined anatomical side or robot-camera identity. Keep the existing grasps: the one-sided regrasp bound remains zero.
 
 Continue that hand's body-opening entry and guide the garment along the SAME forearm toward its corresponding sleeve and shoulder. Keep the body-entry-to-sleeve direction; do not insert the hand into a cuff from outside. A visible cuff is not required before starting a useful entry movement. Use the existing brief reason to state the selected arm relationship, the current purpose and any identity uncertainty; do not add output fields.
@@ -655,7 +665,8 @@ def main():
                         'coordinated-side-hem-wrists', 'coordinated-diagonal-entry',
                         'coordinated-central-span-entry', 'coordinated-middle-grip-drape',
                         'coordinated-middle-grip-drape-retain',
-                        'coordinated-wide-hem-side-entry'], default='general',
+                        'coordinated-wide-hem-side-entry',
+                        'coordinated-wrist-body-entry'], default='general',
                         help='Optional dressing guidance; middle-grip-drape compares inward hem grasps and a short descent from above the same hand')
     parser.add_argument('--actor-backend', choices=['exec', 'app-server'], default='exec')
     parser.add_argument('--plan-size', type=int, default=1,
@@ -729,7 +740,8 @@ def main():
                          'coordinated-side-hem-wrists', 'coordinated-diagonal-entry',
                          'coordinated-central-span-entry', 'coordinated-middle-grip-drape',
                          'coordinated-middle-grip-drape-retain',
-                         'coordinated-wide-hem-side-entry') and args.mode != 'dressing':
+                         'coordinated-wide-hem-side-entry',
+                         'coordinated-wrist-body-entry') and args.mode != 'dressing':
         parser.error('coordinated strategy requires the full dressing objective')
     if args.strategy == 'coordinated-support-diagnostic' and args.plan_size != 1:
         parser.error('support diagnostic requires plan-size=1 to observe after each action')
@@ -759,6 +771,8 @@ def main():
         parser.error('middle-grip-drape requires exec and plan-size=1 to inspect each grasp, shape and same-hand descent')
     if args.strategy == 'coordinated-wide-hem-side-entry' and (args.plan_size != 1 or args.actor_backend != 'exec'):
         parser.error('wide-hem-side-entry requires exec and plan-size=1 to inspect opening shape and same-wrist lateral entry')
+    if args.strategy == 'coordinated-wrist-body-entry' and (args.plan_size != 1 or args.actor_backend != 'exec'):
+        parser.error('wrist-body-entry requires exec and plan-size=1 to inspect same-wrist alignment and bodyward progress')
     if args.mode == 'wiring' and args.plan_size > 1 and (args.plan_size != 3 or args.decisions != 3):
         parser.error('grouped wiring requires plan-size=3 and decisions=3')
     if not math.isfinite(args.model_timeout) or not 10 <= args.model_timeout <= 1800:
@@ -799,7 +813,8 @@ def main():
                          'coordinated-side-hem-wrists', 'coordinated-diagonal-entry',
                          'coordinated-central-span-entry', 'coordinated-middle-grip-drape',
                          'coordinated-middle-grip-drape-retain',
-                         'coordinated-wide-hem-side-entry'):
+                         'coordinated-wide-hem-side-entry',
+                         'coordinated-wrist-body-entry'):
         task += '\n\n' + COORDINATED_TASK
     if args.strategy == 'coordinated-sleeve':
         task += '\n\n' + SLEEVE_TASK
@@ -843,9 +858,11 @@ def main():
                  + '\n\n' + METHOD_SATURATION_TASK)
         if args.strategy == 'coordinated-middle-grip-drape-retain':
             task += '\n\n' + MIDDLE_GRIP_RETAIN_TASK
-    elif args.strategy == 'coordinated-wide-hem-side-entry':
+    elif args.strategy in ('coordinated-wide-hem-side-entry', 'coordinated-wrist-body-entry'):
         task += ('\n\n' + SIDE_HEM_WRISTS_TASK + '\n\n' + METHOD_SATURATION_TASK
                  + '\n\n' + WIDE_HEM_SIDE_ENTRY_TASK)
+        if args.strategy == 'coordinated-wrist-body-entry':
+            task += '\n\n' + WRIST_BODY_ENTRY_TASK
     if args.plan_size > 1:
         task += '\n\n' + PLAN_TASK.format(max_segments=args.plan_size, max_total_steps=args.plan_step_budget)
     if args.post_action_settle_steps:

@@ -757,6 +757,24 @@
         "revision": "ba71dd6a07e2b05202c3dcaa5b0c9a3c17997b1d",
         "sha256": "ccd01e7a41b72dcb03b055e834c7f2e4404dc7b50d8a84647b2e6d956bd0620b"
       }
+    },
+    {
+      "id": "20261114-astra-wide-hem723-001",
+      "kind": "demonstration",
+      "source_group": "20261113-astra-side-hem-fresh-001",
+      "source_commit": "9a09099f170a76469b99ee1f7a177e3429933302",
+      "source_working_tree_modified": false,
+      "parent_run_id": "20261114-astra-middle-grip470-retain-001",
+      "replay_prefix_steps": 723,
+      "replay_completed_steps": 723,
+      "recorded_transitions": 983,
+      "qc_status": "passed",
+      "backup": {
+        "status": "verified",
+        "receipt": "docs/project/sessions/20261114-e35-backup-verification.json",
+        "revision": "befd4675a2da81d63b719dbc514d7495b96112bf",
+        "sha256": "fbd9aad47bc2ee378acac51952182bed17854fc71769465adbb8964a9f2845aa"
+      }
     }
   ],
   "startpoints": [
@@ -1336,6 +1354,65 @@
       },
       "exact_checkpoint": false,
       "training_approval": "unreviewed"
+    },
+    {
+      "id": "20261114-astra-middle-grip470-retain-001-p723",
+      "source_run_id": "20261114-astra-middle-grip470-retain-001",
+      "boundary": 723,
+      "history": [
+        671,
+        697
+      ],
+      "support": {
+        "status": "uncertain",
+        "evidence": [
+          "docs/collection/reviews/20261114-astra-middle-grip470-retain-001.ko.md",
+          "docs/project/sessions/20261114-e35-wide-hem.ko.md",
+          "Selected public boundary723 after transport and before E34 D13 height/pitch changes; recent671/697 transport views were reviewed for E35 selection. Cloth remains near both jaws with a vertically elongated yellow boundary, without certified aperture or independent load bearing."
+        ],
+        "uncertainty": [
+          "Local following and transport retention do not certify independent bilateral attachment, a body-hem opening, wrist drape or sleeve passage.",
+          "Replay reexecutes actions in a fresh simulator, not an exact cloth checkpoint. Preserve the exhausted setup regrasp budget and inspect current supports and same-hand identity."
+        ],
+        "window_start": 671,
+        "window_end": 723
+      },
+      "score_at_boundary": {
+        "raw_points": 5.0,
+        "evidence": "output/collections/20261114-astra-middle-grip470-retain-001/evaluation/20261114T084210_714923Z_aeaabf/score_samples.jsonl: exact physics_tick=8676, raw_points=5, evaluation_time_s=36.15; only these score fields projected from the closed original."
+      },
+      "exact_checkpoint": false,
+      "training_approval": "unreviewed"
+    },
+    {
+      "id": "20261114-astra-middle-grip470-retain-001-p835",
+      "source_run_id": "20261114-astra-middle-grip470-retain-001",
+      "boundary": 835,
+      "history": [
+        787,
+        815
+      ],
+      "support": {
+        "status": "uncertain",
+        "evidence": [
+          "docs/collection/reviews/20261114-astra-middle-grip470-retain-001.ko.md",
+          "docs/collection/reviews/20261114-astra-wide-hem723-001.ko.md",
+          "docs/project/sessions/20261114-e36-wrist-body.ko.md",
+          "Selected designated public boundaries815/825/835 retain the near-hand cloth outline and connected forearm relation after a short lowering and lateral correction; no gross collapse or loss was observed in these selected views.835 excludes final cleanup836 and is selected for the planned E36 alignment/bodyward comparison, not a completed E36 run."
+        ],
+        "uncertainty": [
+          "No confirmed free-rim crossing, stable wrist drape, continuous forearm progression, independent bilateral load bearing or sleeve passage.",
+          "A held corner/housing can occlude the hand-opening relation. Fresh replay must recheck support, shape and the same hand; prior views do not certify current geometry or attachment."
+        ],
+        "window_start": 815,
+        "window_end": 835
+      },
+      "score_at_boundary": {
+        "raw_points": 5.0,
+        "evidence": "output/collections/20261114-astra-middle-grip470-retain-001/evaluation/20261114T084210_714923Z_aeaabf/score_samples.jsonl: exact physics_tick=10020, raw_points=5, evaluation_time_s=41.75; only these fields projected from the closed original."
+      },
+      "exact_checkpoint": false,
+      "training_approval": "unreviewed"
     }
   ],
   "methods": [
@@ -1688,6 +1765,20 @@
         "action_encoding": "named"
       },
       "description": "Static opt-in retain variant of the middle-grip strategy. The final instruction permits no additional release/regrasp after E33 setup; this is prompt guidance, not a runtime action gate or persistent operation ledger. Full CPU356 checks passed before clean source0a5121c E34 execution. E34 from E33/470 with fresh434/454 history closed20 act/24 calls/836 transitions, fullQC passed. All20 new model actions kept both gripper channels+1; the recorded suffix contains only0/+1, not open. Actual lift/transport, same-hand approach and one short lowering occurred, but wrist drape, sleeve passage and dressing were unconfirmed. Valid raw5/pickup5/dressing0/successfalse. Tested means executed, not task success. No research system, learned monitor, live feedback or automatic training was integrated."
+    },
+    {
+      "id": "coordinated-wide-hem-side-entry-named-query-panel-settle6-profile",
+      "name": "coordinated-wide-hem-side-entry / named / query / wrist panel / settle6 / profiling",
+      "status": "tested",
+      "axes": {
+        "grasp_arrangement": "retain current closed/closing grasps with zero additional release/regrasp; inspect current local cloth following without repeating setup",
+        "entry_target": "candidate lower body-hem free span near one visually tracked mannequin wrist and connected forearm",
+        "approach": "bounded opening-width/depth adjustment, then lateral entry from slightly above and beside the same wrist; no fixed world axis or mandatory lowering",
+        "order": "check current support, broaden and retain a useful free span, same-hand lateral trial, inspect relationship before further advance",
+        "view": "five designated public RGB-D views, frozen pixel depth query/camera XYZ and current wrist depth panel; no evaluator input or hidden geometry",
+        "action_encoding": "named"
+      },
+      "description": "Opt-in static strategy composed with existing SIDE_HEM_WRISTS_TASK and saturation guidance, then an explicit zero-regrasp side-entry specialization. Existing observation/action schema, simulator and isolation remain unchanged. Actual E35 from E34/723 with fresh671/697 history closed normally after19 decisions (18 act and finish),21 calls and983 transitions; fullQC983/983 passed. Raw5/pickup5 were replayed, dressing0, new points0, successfalse. Tested means executed, not aperture, wrist entry or task success. Retention is a prompt instruction, not a runtime action gate or persistent operation ledger. No new research system or training was integrated."
     }
   ],
   "attempts": [
@@ -2394,7 +2485,23 @@
           "docs/collection/attempts/20261114-astra-middle-grip470-retain-001/overview.mp4"
         ]
       },
-      "notes": "E34 clean source0a5121cde33a32db5e4888255de150e846d52c15; direct parent E33, source group E28, prefix470 including E28/264 and E33 preparation206, fresh434/454 history. Started2026-11-14T08:41:36Z, ended09:14:16Z.20 decisions all act,24 calls including4 zero-physics query followups.836 transitions=470 replay+245 model+120 settle+1 budget cleanup;366 new transitions/18.30 simulation seconds. Decision budget exhaustion, no model finish_episode, review10 or timeout. Client0/simulator0, completed/closed/finished, capturecomplete; fullQC836/836 errors0. Valid raw5/pickup5/dressing0/successfalse; pickup awarded after replay, not confirmed wrist drape or sleeve passage. Kept existing grasps, lifted and transported cloth, approached the same hand, applied one short lowering D18 with measured lifts approximately-16mm and subsequent lateral correction D19; no second lowering. No open commands in new suffix; prompt-only constraint is not a runtime guarantee. Client wall1959.323467330s, actor1170.152985920s, environment737.508680345s including replay418.908s. Fixed backupba71dd6a07e2b05202c3dcaa5b0c9a3c17997b1d force-redownloaded; archive bytes/SHA,236 manifest entries and234 original files verified. Same E28 lineage, not an independent successful demonstration, exact cloth checkpoint or controlled retain-strategy comparison; training unreviewed. Latest user instruction stops collection after E34 and cancels E35; no E34 startpoint or follow-on run is promoted."
+      "notes": "E34 clean source0a5121cde33a32db5e4888255de150e846d52c15; direct parent E33, source group E28, prefix470 including E28/264 and E33 preparation206, fresh434/454 history. Started2026-11-14T08:41:36Z, ended09:14:16Z.20 decisions all act,24 calls including4 zero-physics query followups.836 transitions=470 replay+245 model+120 settle+1 budget cleanup;366 new transitions/18.30 simulation seconds. Decision budget exhaustion, no model finish_episode, review10 or timeout. Client0/simulator0, completed/closed/finished, capturecomplete; fullQC836/836 errors0. Valid raw5/pickup5/dressing0/successfalse; pickup awarded after replay, not confirmed wrist drape or sleeve passage. Kept existing grasps, lifted and transported cloth, approached the same hand, applied one short lowering D18 with measured lifts approximately-16mm and subsequent lateral correction D19; no second lowering. No open commands in new suffix; prompt-only constraint is not a runtime guarantee. Client wall1959.323467330s, actor1170.152985920s, environment737.508680345s including replay418.908s. Fixed backupba71dd6a07e2b05202c3dcaa5b0c9a3c17997b1d force-redownloaded; archive bytes/SHA,236 manifest entries and234 original files verified. Same E28 lineage, not an independent successful demonstration, exact cloth checkpoint or controlled retain-strategy comparison; training unreviewed. At E34 closure the user had stopped collection and cancelled E35. A subsequent explicit2026-11-14T09:29Z request authorized up to five further attempts beginning with E35; E34/723 was then selected and recorded separately."
+    },
+    {
+      "id": "20261114-astra-wide-hem723-001",
+      "status": "completed",
+      "run_id": "20261114-astra-wide-hem723-001",
+      "startpoint_id": "20261114-astra-middle-grip470-retain-001-p723",
+      "method_id": "coordinated-wide-hem-side-entry-named-query-panel-settle6-profile",
+      "result": {
+        "raw_points": 5.0,
+        "success": false,
+        "review": "docs/collection/reviews/20261114-astra-wide-hem723-001.ko.md",
+        "videos": [
+          "docs/collection/attempts/20261114-astra-wide-hem723-001/overview.mp4"
+        ]
+      },
+      "notes": "E35 first of the user-authorized up-to-five existing-path attempts. Clean public source9a09099f170a76469b99ee1f7a177e3429933302; direct parent E34, source group E28, prefix723 with fresh671/697 history. Started2026-11-14T09:52:22Z, ended10:32:33Z.19 decisions=18 act+final finish_episode,21 calls including2 zero-physics query followups.983 transitions=723 replay+158 model+102 controller settle, cleanup0;260 new transitions/13.00 simulation seconds. Actor finished within the20-decision allowance; not decision/step budget exhaustion, review10 or timeout. Client0/simulator0, completed/closed/finished, capturecomplete; fullQC983/983 errors0. Valid raw5/pickup5/dressing0/successfalse; pickup26.85s precedes prefix boundary36.15s, so new suffix points0. Public review observed a changed hanging-cloth shape and the same hand newly visible in robot_1 wrist at899/910, but no confirmed free-rim crossing, retained wrist drape, continuous forearm progression or sleeve exit. Later robot_1 wrist/finger deflection and grasp-side occlusion remained; actor voluntarily finished within the zero-regrasp constraint. All18 model act gripper commands and the entire new suffix retained intent with0; no open commands, without claiming attachment or slip absence. Client internal wall2410.110354016s, actor1473.916868236s, environment883.531751286s including replay; launcher duration has a separate measurement scope. Fixed private backupbefd4675a2da81d63b719dbc514d7495b96112bf force-redownloaded; archive2,285,223,382bytes/SHA,227 manifest entries and225 original files verified unchanged. Same E28 lineage, not independent success or exact cloth checkpoint; training unreviewed. No E35 startpoint promoted without a separate evidence-backed selection."
     }
   ]
 }

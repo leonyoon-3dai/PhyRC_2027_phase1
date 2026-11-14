@@ -26,19 +26,19 @@ https://github.com/user-attachments/assets/d2f347fe-712b-42f3-bdee-69d3fee2a47c
 
 | [**시연 영상**](docs/EPISODES.md) | [**마감·재정비 계획**](docs/COLLECTION_PLAN.md) | [**Astra 코드·Hz**](docs/ASTRA.md) | [**클린 서버 시작**](docs/OPERATIONS.md) |
 |:---:|:---:|:---:|:---:|
-| E00–E34 기록과 상태 | E34 이후 중지·연구 제안 | 관측부터 HDF5까지 | 설치·복원·검증·Codex CLI |
+| E00–E35 기록과 상태 | 최대5회 비교·연구 제안 | 관측부터 HDF5까지 | 설치·복원·검증·Codex CLI |
 
-**E34는20결정·836전이로 정상 마감해 QC836/836을 통과했습니다. 최신 요청에 따라 정리본 게시 후 기존 방식의 측면 손목 접근을 최대5회 추가 수집합니다.** 로컬5/50은 픽업5점이며 착의 득점0·success=false입니다. [현재 상태와 고정 백업 검증](docs/project/STATUS.md) / [재정비 계획](docs/collection/research/2026-11-14-collection-system-redesign.ko.md). 재정비안은 제안 단계이며 새 시스템이나 자동 학습을 구현하지 않았습니다.
+**최대5회 비교 배치의 첫 시도 E35가19결정·983전이로 정상 마감해 QC983/983을 통과했습니다.** 로컬5/50은 replay 구간의 픽업5점이며 새 착의 득점0·success=false입니다. [현재 상태와 고정 백업 검증](docs/project/STATUS.md) / [재정비 계획](docs/collection/research/2026-11-14-collection-system-redesign.ko.md). 재정비안은 제안 단계이며 새 시스템이나 자동 학습을 구현하지 않았습니다.
 
-## 최근 시연 · E34
+## 최근 시연 · E35
 
-<a href="docs/collection/attempts/20261114-astra-middle-grip470-retain-001/overview.mp4"><img src="docs/gallery/20261114-e34-overview/preview.gif" width="960" alt="E34 실제 원본 영상의 GIF: 전체 0–41.8초를 10fps로 프레임 샘플링. 누르면 원본 MP4가 열립니다."></a>
+<a href="docs/collection/attempts/20261114-astra-wide-hem723-001/overview.mp4"><img src="docs/gallery/20261114-e35-overview/preview.gif" width="960" alt="E35 실제 원본 영상의 GIF: 전체 0–49.15초를 기본 10fps로 프레임 샘플링하고 마지막 프레임은 50ms 유지. 누르면 원본 MP4가 열립니다."></a>
 
-**E33에서 바꾼 파지를 유지해 들기·운반·같은 손 근처의 짧은 하강까지 시험했습니다.** E33의 준비 단계보다 진행했지만 손목에 걸침·소매 통과는 확인하지 못했습니다.20 act·24모델 호출 뒤 결정 예산으로 마감했으며 새 구간은366전이·18.3시뮬레이션초입니다.
+**E34의 운반 뒤부터 아래 자유 구간의 형상 조절과 같은 손목을 향한 측면 접근을 시험했습니다.** 18 act 뒤 모델이 종료를 요청해 총19결정·21모델 호출로 마감했으며 새 구간은260전이·13시뮬레이션초입니다. 픽업5점은 새 조작 전 replay에서 얻었고, 새 착의 득점은 없습니다.
 
-[전체 MP4](docs/collection/attempts/20261114-astra-middle-grip470-retain-001/overview.mp4) / [E34 리뷰](docs/collection/reviews/20261114-astra-middle-grip470-retain-001.ko.md) / [E33 준비 리뷰](docs/collection/reviews/20261114-astra-middle-grip264-001.ko.md) / [이전 E31 접근 비교](docs/gallery/20261113-e31-diagonal-682-830/event.mp4)
+[전체 MP4](docs/collection/attempts/20261114-astra-wide-hem723-001/overview.mp4) / [E35 실행 기록](docs/collection/attempts/20261114-astra-wide-hem723-001/README.ko.md) / [이전 E34 GIF](docs/gallery/20261114-e34-overview/preview.gif) / [E34 리뷰](docs/collection/reviews/20261114-astra-middle-grip470-retain-001.ko.md)
 
-<sub>실제 원본 영상 GIF · 전체0–41.8초 · 원본256×256 · 20fps에서2프레임마다1장을 샘플링한10fps·418프레임, 원래 재생속도 유지. 원본 MP4는836프레임이며 모델 대기는 제외합니다. 앞470전이는 E33 행동 prefix를 새 환경에서 재실행한 구간으로, 정확한 천 checkpoint나 독립 성공 시연이 아닙니다. <a href="docs/gallery/20261114-e34-overview/provenance.json">GIF 변환·검증</a> · <a href="docs/collection/attempts/20261114-astra-middle-grip470-retain-001/manifest.json">영상·원본 근거</a>.</sub>
+<sub>실제 원본 영상 GIF · 전체0–49.15초 · 원본256×256 · 20fps에서2프레임마다1장을 샘플링한492프레임. 기본10fps이며 마지막 프레임만50ms로 유지해 원본 재생 길이를 보존합니다. 원본 MP4는983프레임이며 모델 대기는 제외합니다. 앞723전이는 E34 행동 prefix의 새 환경 재실행으로, 정확한 천 checkpoint나 독립 성공 시연이 아닙니다. <a href="docs/gallery/20261114-e35-overview/provenance.json">GIF 변환·검증</a> · <a href="docs/collection/attempts/20261114-astra-wide-hem723-001/manifest.json">영상·원본 근거</a>.</sub>
 
 ## 수집 시스템 재정비
 
@@ -56,7 +56,7 @@ https://github.com/user-attachments/assets/d2f347fe-712b-42f3-bdee-69d3fee2a47c
 </tr>
 </table>
 
-각 이미지를 누르면 영상이 열립니다. **[전체 시연 목록](docs/EPISODES.md)**에서 E00–E34 기록의 영상, 관측 이미지, 원본 manifest와 직접 부모를 한 번에 찾을 수 있습니다.
+각 이미지를 누르면 영상이 열립니다. **[전체 시연 목록](docs/EPISODES.md)**에서 E00–E35 기록의 영상, 관측 이미지, 원본 manifest와 직접 부모를 한 번에 찾을 수 있습니다.
 
 ## 코드와 재현
 

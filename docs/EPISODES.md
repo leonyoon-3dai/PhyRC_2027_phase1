@@ -4,7 +4,7 @@
 
 [메인](../README.md) | [시연 목록](EPISODES.md) | [다음 수집](COLLECTION_PLAN.md) | [Astra 코드](ASTRA.md) | [클린 서버](OPERATIONS.md)
 
-**아래 표는 정상 마감과 연결·수집 실패를 함께 보존합니다.** E33은20 act·471전이·QC통과·고정 백업 검증으로 마감했으나0/50·착의0입니다. E34는 E33/470 후속으로20 act·836전이·QC836/836·5/50(픽업5·착의0·success=false)으로 정상 마감했습니다. 고정 백업의 재다운로드·전체 manifest 검증도 완료했습니다. [현재 상태](project/STATUS.md). **E34 이후 추가 수집은 중지하고 E35는 취소했습니다.** [재정비 계획](collection/research/2026-11-14-collection-system-redesign.ko.md)은 미구현 제안입니다. E번호는 독립 성공 시연 수가 아닙니다.
+**아래 표는 정상 마감과 연결·수집 실패를 함께 보존합니다.** 최신 E35는 최대20개 중19결정(18 act+finish)·983전이·QC983/983으로 정상 마감했습니다. 로컬5/50은 prefix 중의 픽업5이며 새 득점0·착의0·success=false입니다. 공개 시각 검수와 고정 백업227개 manifest 파일 검증도 완료했습니다. E36은 E34/835에서 준비 중이며 아직 실행 자료가 아닙니다. [현재 상태](project/STATUS.md). **09:29 UTC에 최대5회 추가 수집을 승인받았으나 최신 지시로 E36까지만 실행하고 종료합니다. E37–E39는 취소합니다.** [재정비 계획](collection/research/2026-11-14-collection-system-redesign.ko.md)은 미구현 제안이며 E번호는 독립 성공 시연 수가 아닙니다.
 
 ## 대표 장면
 
@@ -37,7 +37,7 @@
 
 사람 시연은 **2,225전이 / 111.25로봇초**의 부분 기록입니다. 로봇별 분할 화면은 **왼쪽 robot_1, 오른쪽 robot_0**, 위 head / 아래 wrist 순서이며 픽셀을 좌우 반전하지 않습니다. [표시 규칙과 변환 출처](gallery/ROBOT_LAYOUT.ko.md)
 
-## E00–E34 전체 자료
+## E00–E35 전체 자료
 
 **전이 1개는 관측→행동→다음 관측의 0.05초 기록**입니다. 표의 길이는 재실행과 새 구간을 합친 로봇 시간이며 모델 호출 수·실제 대기 시간이 아닙니다. MP4 배속과 마지막 `next_obs`는 각 기록에서 확인합니다.
 
@@ -78,6 +78,7 @@
 | E32 | 중앙 자유 구간·운반·같은 손 접근; **capture/file 불완전·전체 QC 실패** | E28 /380 |758 /37.90 | [진단 리뷰·공개 RGB](collection/reviews/20261113-astra-central380-001.ko.md) / [실패·보존 기록](project/sessions/20261114-e32-incomplete.ko.md) |
 | E33 | 가운데 파지 준비·양측 순차 재파지;20 act,0/50·손 접근 미실행·QC 통과 | E28 /264 |471 /23.55 | [전체 MP4](collection/attempts/20261114-astra-middle-grip264-001/overview.mp4) / [리뷰](collection/reviews/20261114-astra-middle-grip264-001.ko.md) / [원본](collection/attempts/20261114-astra-middle-grip264-001/manifest.json) |
 | E34 | 파지 유지·들기·운반·같은 손 근처 짧은 하강;20 act,5/50·착의0·QC 통과 | E33 /470 |836 /41.80 | [전체 MP4](collection/attempts/20261114-astra-middle-grip470-retain-001/overview.mp4) / [리뷰](collection/reviews/20261114-astra-middle-grip470-retain-001.ko.md) / [원본](collection/attempts/20261114-astra-middle-grip470-retain-001/manifest.json) |
+| E35 | 넓은 아래 자유구간·같은 손목 측면 접근 비교;18 act+finish, 새 득점0·QC 통과 | E34 /723 |983 /49.15 | [전체 MP4](collection/attempts/20261114-astra-wide-hem723-001/overview.mp4) / [리뷰](collection/reviews/20261114-astra-wide-hem723-001.ko.md) / [원본](collection/attempts/20261114-astra-wide-hem723-001/manifest.json) |
 
 E09·E32는 불완전 원본을 보존한 기록으로 학습·정상 재실행 출처에서 제외합니다. E10–E27 중 E16·E20을 제외한 시도의 최종 원점수는 5점이며, **정상 평가한 과제 시연의 착의 득점은 모두 0**입니다. 파지·시야 개선을 소매 통과나 추가 득점으로 해석하지 않습니다.
 
@@ -90,14 +91,15 @@ E09·E32는 불완전 원본을 보존한 기록으로 학습·정상 재실행 
 - **E25→E27**은 새 파지의 후속입니다. **E26은 E18/787의 별도 분기**이며 E25 파지를 이어받지 않았습니다.
 - **E29는 E28/738의 직접 후속**입니다. 738재실행+42모델 행동+54정착, 종료 중립0이며 픽업5점은 재실행 중 다시 얻었습니다. E28과 독립 성공 시연으로 세지 않습니다.
 - **E33→E34는 E28의 같은 계보입니다.** E33은 E28/264에서 준비했고 E34는 E33/470에서 파지를 유지한 후속입니다. E34의 새366전이는245모델+120정착+1종료 중립이며 픽업5는 새 구간에서 발생했습니다. 손목 걸침·소매 통과 성공과는 별개입니다.
+- **E35는 E34/723의 직접 분기이며 E28의 같은 계보입니다.** 723재실행+158모델+102정착=983전이이며 새260전이의 추가 득점은0입니다.19번째 결정은 물리0의finish이며 남은1개를 다음 run에 합산하지 않습니다.
 - **E28은 새 reset의 별도 계보** `20261113-astra-side-hem-fresh-001`입니다. E27/928에서 이어간 실행이 아니며, E28 내부의 경계와 후속 prefix 분기는 같은 E28 계보로 묶습니다.
 
 [실행·출발점·방법 정본 JSON](collection/catalog/catalog.v1.json) / [경계별 근거](collection/catalog/README.ko.md) / [추가 연결 시험과 상세 이력](project/HISTORY.ko.md)
 
-## E34 이후 중지와 재정비
+## E34 이후 재개와 연구 범위
 
-E33은 검증된 E28/264에서 가운데 파지 전략을 실행했고, E34는 E33/470에서 추가 재파지 없이 들기·운반·짧은 하강을 시험했습니다. E34까지 마감·검수·보존하고 수집을 중지하며 E35를 선택하거나 예약하지 않습니다. E32의 어떤 경계도 정상 출발점으로 승격하지 않습니다.
+E33은 검증된 E28/264에서 가운데 파지 전략을 실행했고 E34는 E33/470에서 들기·운반·짧은 하강을 시험했습니다. 당시 E34 뒤 중지·E35 취소 이력은 보존합니다. 이후 사용자가 정리본 선게시와 최대5회 추가 시연을 승인했고 첫 E35를 E34/723에서 정상 마감했습니다. 마지막 E36은 E34/835에서 준비하며 마감·검수·보존 뒤 수집을 종료합니다. E37–E39는 취소하고 E32의 어떤 경계도 정상 출발점으로 승격하지 않습니다.
 
-종전 E28/632·새 history588/614·중앙 전략 안은 [역사적 미실행 후보](collection/research/2026-11-14-e33-central632-direction.ko.md)로 보존합니다. 최신 방향은 [전체 경험과 연구를 연결한 수집 시스템 재정비 계획](collection/research/2026-11-14-collection-system-redesign.ko.md)이며 새 시스템 구현·학습·추가 시연은 시작하지 않았습니다.
+종전 E28/632·새 history588/614·중앙 전략 안은 [역사적 미실행 후보](collection/research/2026-11-14-e33-central632-direction.ko.md)로 보존합니다. [전체 경험과 연구를 연결한 수집 시스템 재정비 계획](collection/research/2026-11-14-collection-system-redesign.ko.md)은 후속 설계 자료입니다. 현재 추가 시연은 기존 수집 경로와 선택형 전략으로 진행하며 새 시스템 개편·학습은 수행하지 않습니다.
 
 [마감 범위와 과거 실행 조건](COLLECTION_PLAN.md) / [현재 상태](project/STATUS.md)
