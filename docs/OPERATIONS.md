@@ -1,6 +1,6 @@
 # 클린 서버 시작 안내
 
-**2026-11-15 현재 방향:** E36의 종료·득점·직접 조작·연구 분석을 기록하고, 한 방법에 고정하지 않은 후속 시스템과 추가 득점 방향을 검토한다. 실제 실행 상태는 E36 마감이며 이번 갱신은 문서화다. [현재 계획](COLLECTION_PLAN.md)과 [E36 후속 분석](collection/research/2026-11-15-e36-continuation-options.ko.md)을 먼저 읽는다. 종전 최대5회 승인은 E36에서 종료된 [배치 이력](project/sessions/20261114-wide-hem-five-attempt-batch.ko.md)이며 남은 횟수의 실행 지시가 아니다.
+**2026-11-16 현재 상태: 기존 계획 HOLD, 분석·기록 중.** checkpoint 복원과 실행 결과에 따른 다음 행동 수정을 우선 검토한다. 분석 정리가 끝난 뒤 사용자가 클린 서버에서 반영할 예정이며, 이 문서를 읽었다는 이유로 기존 수집·구현·학습을 재개하지 않는다. [현재 계획](COLLECTION_PLAN.md)과 [누적 분석](collection/research/2026-11-16-checkpoint-effect-feedback.ko.md)을 먼저 읽는다. 실제 최신 실행은 종료된 E36이다.
 
 [메인](../README.md) | [시연 목록](EPISODES.md) | [다음 수집](COLLECTION_PLAN.md) | [Astra 코드](ASTRA.md) | [클린 서버](OPERATIONS.md)
 
@@ -12,7 +12,7 @@
 
 E09·E32의 불완전 원본은 정상 replay 출처로 사용하지 않습니다. E30/E31의 host143은 simulator0·complete·QC통과와 공존했으므로 host 반환값만으로 마감을 판정하지 않습니다. 별도 process session은 host/cgroup 종료 생존을 보장하지 않으며 E32의143 발신 원인은 미확정입니다. [E32 실패 기록](project/sessions/20261114-e32-incomplete.ko.md) / [launcher 검토](project/sessions/20261114-detached-launch-preparation.ko.md).
 
-아래 설치·복원·GPU·모델 명령은 필요할 때 선택하는 재현 절차입니다. 문서의 과거 명령을 현재 실행 요청으로 해석하지 않습니다. [현재 계획](COLLECTION_PLAN.md)에서 질문·출발 경계·제어 방법·예산·기능 준비 상태를 확인합니다. 종전632 후보·배치의 남은 횟수·남은 결정을 자동으로 이어받지 않습니다. 이번 기록 작업에서 새 기능·수집·학습을 실행하지 않았습니다.
+아래 설치·복원·GPU·모델 명령은 **분석 정리 후 요청된 적용 범위에서 사용할 재현 절차**다. 현재는 HOLD이며 자동 실행 지시가 아니다. [현재 계획](COLLECTION_PLAN.md)과 [미결 사항](collection/research/2026-11-16-checkpoint-effect-feedback.ko.md)을 확인한다. 과거 배치의 남은 횟수·예산을 이어받지 않는다.
 
 ## Codex CLI 시작 프롬프트
 
@@ -25,11 +25,13 @@ AGENTS.md, docs/project/STATUS.md, docs/COLLECTION_PLAN.md와 docs/OPERATIONS.md
 현재 HEAD, 작업 트리, 서버 도구와 접근 권한을 확인하고 실제 상태를 기록하라.
 요청받은 범위에서 고정 자산과 필요한 시연만 복원하고 해시와 파일을 검증하라.
 단계가 실패하면 원인을 해결하기 전 다음 단계로 넘어가지 마라.
-E36에서 당시 배치가 종료됐으며 2026-11-15 갱신은 여러 방법을 비교하는 분석·설계 기록이다. 과거 최대5회 배치나 남은 예산을 현재 실행 명령으로 삼지 마라.
+2026-11-16 현재 기존 계획은 HOLD이며 연구 분석을 계속 기록하는 단계다. 과거 최대5회 배치나 남은 예산을 현재 실행 명령으로 삼지 마라.
+docs/collection/research/2026-11-16-checkpoint-effect-feedback.ko.md에서 최신 판단·미결 사항·checkpoint 및 실행 효과 피드백 설계를 먼저 읽어라.
+분석 정리 뒤 사용자가 클린 서버에서 반영할 예정이다. 현재 요청이 분석·기록이면 문서만 갱신하고, 나중에 구현·실험을 요청받으면 그 범위와 당시 최신 문서를 기준으로 적용하라.
 docs/collection/research/2026-11-15-e36-continuation-options.ko.md와 docs/collection/research/2026-11-15-holidayfactory-phyrc.ko.md를 읽어라.
 목표는 E36의 경험과 계보를 이어 추가 착의 득점을 확보할 수 있는 시스템이다. 사람 조작, Astra, 개입, 감독·복구, 후속 학습 중 한 방법을 미리 고정하지 마라.
 현재 요청이 문서 기록인지 구현인지 실험인지 구분하고 요청 범위에 맞춰 진행하라. 실행한다면 정상 원본·경계·제어원·공개 입력·예산·종료/검토 조건과 실제 준비 상태를 확인하라.
-닫힌 E36은 실행 중 환경이 아니다. prefix replay는 정확한 천 checkpoint가 아니며 pause/resume·실시간 handoff는 아직 검증된 기능이 아니다.
+닫힌 E36은 실행 중 환경이 아니다. 기존 state slot / initial_slot은 일부 상태를 초기화하는 근사 복원이며, prefix replay와 별개다. E36 checkpoint 원본의 존재나 복원 재현성을 검증 없이 가정하지 마라. 살아 있는 환경의 pause/resume·실시간 handoff도 별도 검토 대상이다.
 수집 방법 검토 시 docs/collection/research/2026-11-14-agentic-robotics-workshop.ko.md를 읽고, 확인된 연구 결과·PhyRC 적용 가설·미확인 자료를 구분하라. 이 문서를 actor에 주거나 후보 기능을 자동 적용하지 마라.
 완료한 검사, 미실행 검사, 부족한 외부 접근 권한과 다음 명령을 구분해 보고하라.
 ```

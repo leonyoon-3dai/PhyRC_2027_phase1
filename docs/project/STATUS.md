@@ -1,8 +1,10 @@
 # 현재 상태
 
+**2026-11-16 연구 방향 재정비 — 기존 계획 HOLD.** 현재는 분석·기록 단계다. checkpoint 복원과 명령 실행 후 실제 변화를 확인해 다음 행동을 바꾸는 실험을 우선 설계한다. 분석이 정리된 뒤 사용자가 나중에 클린 서버에 반영할 예정이다. 이번 문서 갱신에서 수집·구현·학습을 재개하지 않았다. [현재 계획](../COLLECTION_PLAN.md) · [누적 분석과 미결 사항](../collection/research/2026-11-16-checkpoint-effect-feedback.ko.md)
+
 **[E00–E36 통합 분석 슬라이드 PDF](../reports/20261114-e36-integrated-review/phyrc-e36-integrated-review.ko.pdf)** · [텍스트·출처·검증](../reports/20261114-e36-integrated-review/README.ko.md)
 
-**2026-11-15 분석·설계 갱신:** E36 종료·득점 분석, HolidayFactory 검토, 직접 키보드 성공·복구 시연의 활용을 기록했습니다. 특정 한 방법을 고집하지 않고 사람 조작·Astra·개입·감독·후속 학습을 선택·조합할 수 있는 시스템과 추가 득점 방향을 모색합니다. [현재 계획](../COLLECTION_PLAN.md) · [E36 후속 분석](../collection/research/2026-11-15-e36-continuation-options.ko.md) · [논문 검토](../collection/research/2026-11-15-holidayfactory-phyrc.ko.md)
+**2026-11-15 선행 분석·설계:** E36 종료·득점 분석, HolidayFactory 검토, 직접 키보드 성공·복구 시연의 활용을 기록했습니다. 특정 한 방법을 고집하지 않고 사람 조작·Astra·개입·감독·후속 학습을 선택·조합할 수 있는 시스템과 추가 득점 방향을 모색합니다. [현재 계획](../COLLECTION_PLAN.md) · [E36 후속 분석](../collection/research/2026-11-15-e36-continuation-options.ko.md) · [논문 검토](../collection/research/2026-11-15-holidayfactory-phyrc.ko.md)
 
 **실제 실행 상태는 E36 정상 마감입니다. 당시 E37–E39는 취소했고 이후 새 시연은 없습니다.** 공개 검토·고정 백업·GIF·통합 PDF를 보존합니다. 이번 갱신은 문서화이며 런타임 기능·handoff·새 학습을 구현하거나 추가 득점을 얻은 기록이 아닙니다.
 
@@ -12,7 +14,7 @@
 
 ## 정상 마감한 E36 / 이번 배치 종료
 
-E36까지의 당시 배치는 종료됐고 E37–E39는 실행하지 않았습니다. 공개 검토와 고정 백업 검증을 완료했습니다. 현재 후속 방향은 여러 방법을 비교하는 분석·설계이며 새 연구 시스템·학습·실시간 사용자 개입은 아직 구현하지 않았습니다.
+E36까지의 당시 배치는 종료됐고 E37–E39는 실행하지 않았습니다. 공개 검토와 고정 백업 검증을 완료했습니다. 현재 기존 계획은 HOLD이며 checkpoint와 실행 효과 피드백을 우선 분석합니다. 새 연구 시스템·학습·실시간 사용자 개입은 아직 구현하지 않았습니다.
 
 | 구분 | 확인된 E36 상태 |
 |---|---|

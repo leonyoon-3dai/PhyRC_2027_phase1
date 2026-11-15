@@ -1,12 +1,18 @@
 # PhyRC 2027
 
+> **2026-11-16 연구 방향 재정비 · 기존 계획 HOLD**
+>
+> 지금은 분석하면서 근거와 미결 사항을 계속 기록하는 단계입니다. **checkpoint로 유용한 중간 상태를 복원하는 방법**과 **명령 실행 후 실제 변화를 확인하고 다음 행동을 바꾸는 방법**을 우선 검토합니다. 기존 시연 재개·구현·학습 계획은 보류하며, 분석 정리가 끝난 뒤 사용자가 클린 서버에서 반영합니다. 현재 최신 실제 시연은 종료된 E36입니다.
+>
+> **[현재 연구 방향과 누적 분석 기록](docs/collection/research/2026-11-16-checkpoint-effect-feedback.ko.md)** · [보류 상태와 현재 계획](docs/COLLECTION_PLAN.md) · [나중에 적용할 클린 서버 안내](docs/OPERATIONS.md)
+
 [![E00–E36 통합 분석 보고서 PDF 열기](docs/assets/e36-integrated-report-button.svg)](docs/reports/20261114-e36-integrated-review/phyrc-e36-integrated-review.ko.pdf)
 
 [18장 슬라이드 PDF](docs/reports/20261114-e36-integrated-review/phyrc-e36-integrated-review.ko.pdf) · [텍스트·출처·검증](docs/reports/20261114-e36-integrated-review/README.ko.md)
 
 **[E36 이후: 종료·득점 분석과 여러 방법을 지원하는 후속 시스템 설계](docs/collection/research/2026-11-15-e36-continuation-options.ko.md)** · [HolidayFactory 논문 적용 검토](docs/collection/research/2026-11-15-holidayfactory-phyrc.ko.md)
 
-**2026-11-15 방향:** 사람 직접 조작, Astra, 사용자 개입, 복구 감독, 후속 학습을 비교·조합하며 E36의 경험을 이어 추가 착의 득점을 확보하는 시스템을 모색합니다. 한 방법을 정답으로 고정하지 않습니다. 현재는 분석·설계 기록이며 실제 최신 시연은 아래 E36입니다. [현재 계획](docs/COLLECTION_PLAN.md)
+**2026-11-15 선행 검토:** 사람 직접 조작, Astra, 사용자 개입, 복구 감독, 후속 학습은 가능한 선택지로 보존합니다. 이들의 기존 실행 계획은 현재 HOLD이며, 최신 우선 검토 대상은 위의 checkpoint와 실행 효과 피드백입니다. 한 방법을 영구적인 정답으로 고정하지 않습니다. [현재 계획](docs/COLLECTION_PLAN.md)
 
 [![Agentic Robotics 워크숍: PhyRC 시연 수집 참고 문서 열기](docs/assets/agentic-robotics-workshop-button.svg)](docs/collection/research/2026-11-14-agentic-robotics-workshop.ko.md)
 
@@ -34,7 +40,7 @@ https://github.com/user-attachments/assets/d2f347fe-712b-42f3-bdee-69d3fee2a47c
 
 | [**시연 영상**](docs/EPISODES.md) | [**후속 분석·설계**](docs/COLLECTION_PLAN.md) | [**Astra 코드·Hz**](docs/ASTRA.md) | [**클린 서버 시작**](docs/OPERATIONS.md) |
 |:---:|:---:|:---:|:---:|
-| E00–E36 기록과 상태 | 여러 방법 비교·추가 득점 방향 | 관측부터 HDF5까지 | 설치·복원·검증·Codex CLI |
+| E00–E36 기록과 상태 | 기존 계획 HOLD·두 연구 축 | 관측부터 HDF5까지 | 분석 후 적용할 재현 절차 |
 
 **E36이11결정·933전이로 정상 마감해 QC933/933을 통과했고, 당시 수집 배치를 종료했습니다. E37–E39는 실행하지 않았습니다.** 로컬5/50은 replay 구간의 픽업5점이며 새 착의 득점0·success=false입니다. [현재 상태와 고정 백업 검증](docs/project/STATUS.md) / [최신 후속 계획](docs/COLLECTION_PLAN.md). 새 시스템이나 자동 학습을 구현했다는 의미는 아닙니다.
 
@@ -50,7 +56,7 @@ https://github.com/user-attachments/assets/d2f347fe-712b-42f3-bdee-69d3fee2a47c
 
 ## 수집 시스템 재정비
 
-**실제 실행 이력·관측 가설·공식 득점·종료 판단을 분리하고, 여러 제어 방법을 같은 기록·검증 구조에서 비교하는 설계를 검토합니다.** E36의 조기 종료, 손목 진입처럼 보이는 장면과 소매 득점 조건의 차이, 직접 조작의 진단·복구 데이터 가치, HolidayFactory의 시사점을 추가했습니다. 사람 조작을 포함한 각 경로의 준비 수준을 구분하며 특정 방법을 의무적인 첫 단계로 정하지 않습니다. 기존 수집 [배치](docs/project/sessions/20261114-wide-hem-five-attempt-batch.ko.md)는 E36에서 종료했고 이번 갱신은 문서화입니다.
+**기존 계획은 HOLD하고 checkpoint 복원과 실행 효과 피드백을 우선 분석합니다.** 상태 복원 전후와 다음 행동의 재현성을 어떻게 확인할지, 의도와 실제 운동·천의 변화가 다를 때 다음 행동을 어떻게 바꿀지 기록합니다. [현재 누적 분석](docs/collection/research/2026-11-16-checkpoint-effect-feedback.ko.md)은 계속 갱신할 연구 기록이며 실제 적용은 분석 정리 후 클린 서버에서 진행합니다. E36 종료·득점 분석, 직접 조작, HolidayFactory 등 선행 검토도 보존합니다. 기존 수집 [배치](docs/project/sessions/20261114-wide-hem-five-attempt-batch.ko.md)는 E36에서 종료했고 이번 갱신은 문서화입니다.
 
 [E36 후속 분석·선택지](docs/collection/research/2026-11-15-e36-continuation-options.ko.md) · [현재 계획](docs/COLLECTION_PLAN.md) · [선행 재정비 설계](docs/collection/research/2026-11-14-collection-system-redesign.ko.md)
 

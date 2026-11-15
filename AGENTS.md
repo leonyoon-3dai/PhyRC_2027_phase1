@@ -1,6 +1,6 @@
 # Codex 작업 지침
 
-**최신 사용자 방향(2026-11-15): 이 채팅의 E36 분석, HolidayFactory 검토, 직접 조작 활용 논의를 저장소에 기록한다. 한 가지 방법을 고집하지 않고 여러 접근을 비교·조합할 수 있는 시스템을 설계해, E36의 경험과 계보를 이어 추가 착의 득점을 계속 확보하는 방향을 모색한다.** 사람 단독 조작, Astra, 사용자 피드백, 제어권 전환, 감독·복구, 후속 학습은 비교 가능한 선택지다. 이번 변경은 분석·설계 문서화이며 수집 재개나 기능 구현 완료를 뜻하지 않는다. [현재 계획](docs/COLLECTION_PLAN.md)과 [E36 후속 분석](docs/collection/research/2026-11-15-e36-continuation-options.ko.md)을 먼저 읽는다.
+**최신 사용자 방향(2026-11-16): 기존 계획은 HOLD한다.** 지금은 연구 방향을 분석하고 계속 기록하는 단계다. **checkpoint 복원**과 **명령 실행 후 실제 변화를 확인해 다음 행동을 바꾸는 피드백**을 우선 검토한다. 분석 정리가 끝난 뒤 사용자가 클린 서버에서 반영할 예정이며, 이번 요청은 저장소 문서 갱신이다. 과거 수집·구현·학습 계획을 자동 실행하지 않는다. [현재 계획](docs/COLLECTION_PLAN.md)과 [누적 분석 기록](docs/collection/research/2026-11-16-checkpoint-effect-feedback.ko.md)을 먼저 읽는다. 사람·Astra·개입·후속 학습 등 다른 선택지는 참고로 보존하며 한 방법을 영구 고정하지 않는다.
 
 **2026-11-14 마감 이력:** E36까지 수집하고 당시 배치를 종료했다. E37–E39는 실행하지 않았다. 원본·QC·백업·공개 GIF·통합 PDF는 보존한다. 당시 사람 조작 우선안은 후보 중 하나이며 2026-11-15의 열린 비교 방향을 대신하지 않는다.
 
@@ -12,16 +12,17 @@
 이 파일은 저장소를 읽는 **개발용 Codex CLI**의 진입점이다. 실제 로봇 행동을 생성하는 격리 actor에는 저장소와 검수 자료를 전달하지 않는다.
 
 1. [메인](README.md)에서 대표 영상과 현재 목표를 확인한다.
-2. 새 서버라면 [OPERATIONS](docs/OPERATIONS.md)를 순서대로 따른다. 외부 준비물, 고정 버전, 원본 복원, 검증 명령이 한 문서에 있다.
+2. 새 서버라면 [OPERATIONS](docs/OPERATIONS.md)의 최신 HOLD 안내와 작업 범위를 먼저 읽는다. 설치·복원·검증 명령은 나중에 요청된 적용 범위에서 사용하는 재현 절차다.
 3. 수집 변경 전 [COLLECTION_PLAN](docs/COLLECTION_PLAN.md)과 [ASTRA](docs/ASTRA.md)를 읽는다. 시연과 직접 부모는 [EPISODES](docs/EPISODES.md)에서 찾는다.
 4. 과거 세션의 “다음”, “재개”, 날짜별 TODO는 현재 지시가 아니다. 고유 실행 근거는 [보관함](docs/ARCHIVE.md)을 통해 확인한다.
 5. 시연 수집 방법을 검토할 때 [Agentic Robotics 워크숍 참고](docs/collection/research/2026-11-14-agentic-robotics-workshop.ko.md)를 읽는다. 채택 논문 39편의 조사 범위, Stretch 4+Astra 사례, 현재 코드와의 차이, 다음 비교 제안 및 원문 접근 한계를 기록했다. 개발용 참고이며 actor 입력·구현·재개 명령이 아니다. 최신 상태와 실행 계획은 계속 STATUS/COLLECTION_PLAN이 정본이다.
-6. E36 이후를 검토할 때 [종료·득점·직접 조작·다중 방법 설계](docs/collection/research/2026-11-15-e36-continuation-options.ko.md)와 [HolidayFactory 적용 검토](docs/collection/research/2026-11-15-holidayfactory-phyrc.ko.md)를 읽는다. 논문 결과와 PhyRC 가설을 구분하고, 사람 조작이나 특정 모델·재파지 조건을 유일한 정답으로 고정하지 않는다.
+6. E36 이후를 검토할 때 [2026-11-16 checkpoint·실행 효과 분석](docs/collection/research/2026-11-16-checkpoint-effect-feedback.ko.md)을 우선 읽는다. [이전 다중 방법 설계](docs/collection/research/2026-11-15-e36-continuation-options.ko.md)와 [HolidayFactory 적용 검토](docs/collection/research/2026-11-15-holidayfactory-phyrc.ko.md)는 선행 근거다. 사실·가설·미구현·미실행을 구분하며 분석 중 새 판단과 미결 사항을 기록한다.
 
 ## 현재 범위
 
-- **실제 실행 상태는 E36 마감이며 E37 이후 새 실행은 없다.** 현재 작업은 분석을 기록하고 여러 방법을 선택·조합할 수 있는 후속 설계를 정리하는 것이다. 장기 목표인 추가 득점과 현재 구현·실행 상태를 구분한다. 닫힌 E36을 실행 중인 환경처럼 취급하지 않으며 새 시연 원본으로 덮어쓰지 않는다.
-- **현재 실행·마감 상태는 [STATUS](docs/project/STATUS.md), 후속 방향과 작업 범위는 [COLLECTION_PLAN](docs/COLLECTION_PLAN.md)이 정본이다.** [2026-11-15 후속 분석](docs/collection/research/2026-11-15-e36-continuation-options.ko.md)이 최신 비교 방향이며, [2026-11-14 재정비 계획](docs/collection/research/2026-11-14-collection-system-redesign.ko.md)은 선행 설계로 보존한다. 문서를 actor에 주거나 제안 기능을 자동 적용하지 않는다.
+- **기존 계획 HOLD, 실제 실행 상태는 E36 마감이다.** 현재는 checkpoint 복원과 실행 효과 피드백의 분석·기록을 우선한다. 분석 후 클린 서버에 적용하는 작업은 나중 단계이며 이번 문서 갱신으로 수집·구현·학습을 재개하지 않는다. 닫힌 E36을 실행 중인 환경처럼 취급하지 않으며 새 원본으로 덮어쓰지 않는다.
+- **현재 실행·마감 상태는 [STATUS](docs/project/STATUS.md), 후속 방향과 작업 범위는 [COLLECTION_PLAN](docs/COLLECTION_PLAN.md)이 정본이다.** 최신 근거와 미결 사항은 [2026-11-16 누적 분석](docs/collection/research/2026-11-16-checkpoint-effect-feedback.ko.md)에 둔다. 11월14·15일 계획은 선행 설계로 보존한다. 문서를 actor에 주거나 후보 기능을 자동 적용하지 않는다.
+- 사람 조작용 state slot과 `initial_slot` 근사 복원 경로는 이미 존재한다. 완전한 FEM 물리 checkpoint나 E36 중간 복원 검증이 완료됐다고 설명하지 않는다. 현재 collector의 행동 재생과 구분하고, 복원 시 초기화되는 상태·정착·평가 재시작을 검토한다. 기존 관측→행동→관측 루프가 전혀 없었다거나 E36까지 모든 명령이 오작동했다고 일반화하지 않는다.
 - E36의 추가 재파지0·20결정·review10은 해당 시도의 조건이다. 향후 모든 방법의 고정 규칙으로 일반화하지 않는다. 각 실험에서 제어원, 입력, 재파지·복구 조건, 예산과 종료/검토 방식을 명시하고 공식 물리·관측·행동·평가 계약은 유지한다.
 - E33 `20261114-astra-middle-grip264-001`은 E28/264·새 history242/254에서20결정·471전이로 정상 마감했다. QC471/471·고정 백업 검증을 통과했으나0/50·착의0·success=false이며 손 접근은 미실행이다. [E33 기록](docs/project/sessions/20261114-e33-middle-grip-resume.ko.md).
 - E34 `20261114-astra-middle-grip470-retain-001`은 E33/470·새 history434/454, 같은 E28 source group의 후속으로20act·24호출·836전이를 정상 마감했다. QC836/836,5/50·픽업5·착의0·success=false이며 새 파지의 들기·운반·짧은 하강을 시험했으나 손목 걸침·소매 통과는 확인하지 못했다. `coordinated-middle-grip-drape-retain`의 추가 재파지0은 정적 actor 지시이며 상태 원장이나 런타임 차단 기능이 아니다. 고정 백업의 재다운로드·236개 manifest 파일·원본234파일 불변 검증도 완료했다. [E34 기록](docs/project/sessions/20261114-e34-retain-resume.ko.md).
@@ -58,7 +59,7 @@
 ## 표시와 문서
 
 - 로봇별 비교 화면은 **왼쪽 robot_1, 오른쪽 robot_0**. 4분할은 위 head, 아래 wrist다. 이름과 이미지를 함께 옮기며 픽셀을 좌우 반전하지 않는다. 원본 카메라 배열과 action 행은 바꾸지 않는다. [배치 기준](docs/gallery/ROBOT_LAYOUT.ko.md)
-- README 맨 위에 통합 분석 PDF 버튼을 두고 최신 실제 시연은 페이지에서 바로 재생되는 GIF로 표시한다. 새 마감에도 GIF·변환 provenance와 별도 gallery 페이지를 만들고 EPISODES에서 연결한다. 고정 manifest에 포함된 기존 attempt README/원본 MP4를 임의 수정하지 않는다. 상세 근거는 링크로 연결한다.
+- README 최상단에는 최신 연구 방향·HOLD 상태·누적 분석 링크를 두고 그 바로 아래 기존 통합 분석 PDF 버튼을 보존한다. 최신 실제 시연은 페이지에서 바로 재생되는 GIF로 표시한다. 새 마감에도 GIF·변환 provenance와 별도 gallery 페이지를 만들고 EPISODES에서 연결한다. 고정 manifest에 포함된 기존 attempt README/원본 MP4를 임의 수정하지 않는다. 상세 근거는 링크로 연결한다.
 - 실제 관측, 가설, 미실행 계획을 구분한다. 모델이 붙인 stage, 파일 complete, QC 통과, 기본 reward 0은 착의 성공이 아니다. 영상 일부를 독립 시연으로 세지 않는다.
 - 과거 세션·실패·provenance·catalog·주최 측 README·LICENSE·NOTICE·THIRD_PARTY는 보존한다. 중복 설명의 이전 본문은 보관함의 고정 Git revision에서 확인한다.
 - 새 결과 마감 시 STATUS, EPISODES, catalog, 세션 기록, 백업 receipt를 갱신한다. 현재 계획은 COLLECTION_PLAN 한 곳에 둔다.
