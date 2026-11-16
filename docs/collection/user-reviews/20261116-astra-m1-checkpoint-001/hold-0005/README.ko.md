@@ -1,6 +1,8 @@
 # 사용자 검토: 손을 든 자세에 맞춘 아주 작은 몸쪽 접근
 
-**20261116-astra-m1-checkpoint-001 / hold-0005 · live HOLD**
+**20261116-astra-m1-checkpoint-001 / hold-0005 · 촬영 당시 live HOLD, 이후 실제 사용자 답변으로 재개**
+
+사용자가 같은 방향으로 약15mm 더 진행하도록 지시했습니다. 같은 live 상태에서 재개했으며 최신 상태는 저장소 최상단을 확인하세요.
 
 사용자가 현재 높이를 적절하다고 판단하고, 손을 든 자세에 맞춰 조금씩 낮추면서 몸쪽으로 조금 이동한 뒤 다시 확인하도록 지시했습니다. 양쪽 파지를 유지한 새1 act·2전이(0.10초) 뒤 HOLD했습니다. 누적17호출·13 act·44전이이며 마지막 stop은 실행하지 않았습니다.
 
@@ -24,6 +26,6 @@
 
 [overview](overview.png) · [robot_1_head](robot_1_head.png) · [robot_0_head](robot_0_head.png) · [robot_1_wrist](robot_1_wrist.png) · [robot_0_wrist](robot_0_wrist.png) · [metadata](observation-metadata.json)
 
-열린 run으로 마감·QC·백업 전이며 사용자 답변 전 물리 진행0입니다.
+열린 run으로 마감·QC·백업 전이며 이 경계의 대기는 실제 사용자 답변으로 끝났습니다.
 
-**현재 접근 방향과 높이를 확인해 주세요. 같은 방향으로 조금 더 진행할까요?**
+당시 질문에 사용자는 같은 방향으로 약15mm 더 이동하도록 답했습니다.
