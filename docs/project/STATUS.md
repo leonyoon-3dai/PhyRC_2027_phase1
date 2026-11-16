@@ -41,3 +41,7 @@
 - 과거 최대5회 배치는 E35·E36에서 종료됐다. 당시 E37–E39는 미실행이며 남은 횟수·예산은 현재 계획에 이월하지 않는다.
 
 상세 시행착오는 [과거 결과 요약](../HISTORY_SUMMARY.ko.md)에서 필요한 근거로 연결한다. 원본 세션·실패·백업은 [보관함](../ARCHIVE.md), 영상과 계보는 [시연 목록](../EPISODES.md)에 보존한다. [E00–E36 통합 PDF](../reports/20261114-e36-integrated-review/phyrc-e36-integrated-review.ko.pdf)와 [출처·검증](../reports/20261114-e36-integrated-review/README.ko.md)은 기존 분석 자료다.
+
+## 현재 검증 원본 백업
+
+준비934전이·복원1전이는 전수 QC와 비공개 HF 고정 revision `eb05c6f98f59cce84084ab9a10e153687292ee53`의 재다운로드 SHA 검증까지 완료했다. [91개 파일·2.11GB 백업 receipt](../collection/reviews/20261116-checkpoint-backup-verification.json). 현재 사용자 선택을 기다리는 열린 HOLD는 별도다.

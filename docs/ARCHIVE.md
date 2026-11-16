@@ -95,3 +95,7 @@
 |---|---|
 | STATUS | [1bd3f597의 상세 상태](https://github.com/leonyoon-3dai/PhyRC_2027_phase1/blob/1bd3f597ac5da6ee037f0f491b5b078ba57b7b32/docs/project/STATUS.md) |
 | AGENTS | [1bd3f597의 인계 지침](https://github.com/leonyoon-3dai/PhyRC_2027_phase1/blob/1bd3f597ac5da6ee037f0f491b5b078ba57b7b32/AGENTS.md) |
+
+## 사용자 피드백 checkpoint 검증
+
+[E36 저장·복원 비교](collection/reviews/20261116-checkpoint-validation.ko.md) · [고정 백업 receipt](collection/reviews/20261116-checkpoint-backup-verification.json). 준비934전이·복원1전이 정상 마감 및 전수 QC, HF revision `eb05c6f98f59cce84084ab9a10e153687292ee53`,91개 manifest 파일·archive 재다운로드 SHA 검증. M1 착의 성과나 현재 열린 HOLD의 마감으로 세지 않는다.

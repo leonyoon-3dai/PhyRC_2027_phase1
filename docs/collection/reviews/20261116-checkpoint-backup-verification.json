@@ -1,0 +1,12 @@
+{
+  "repo_id": "leonayoon/phyrc-2027-phase1-private-backup",
+  "repo_type": "dataset",
+  "private": true,
+  "revision": "eb05c6f98f59cce84084ab9a10e153687292ee53",
+  "archive_path": "sessions/20261116-e36-checkpoint-001-validation-v2/20261116-e36-checkpoint-001-validation-v2.tar.gz",
+  "archive_bytes": 2106745656,
+  "archive_sha256": "4fe0ec4c3e43a9a2bebf498e7d9f5b63dd817823b4b3240a5e4a4e4cf429dcb2",
+  "remote_download_verified": true,
+  "scope": "checkpoint validation; not a new dressing demonstration",
+  "manifest_files": 91
+}
