@@ -1,6 +1,6 @@
 # 시연 목록
 
-**현재:** 새 `20261116-astra-m1-checkpoint-001`은 **hold-0011·120전이에서 live HOLD**다. 같은 방향으로 세 번째 줄무늬를 향해 추가XY순변위 R0/R1 **18.37/13.55mm**를 수행했으나 목표 도달은 미확인이다. 마지막3전이의 파지점 전진 감소·명령 없는R1 자세 변화로 검토했다. 새3 act·10전이, 누적48호출·38 act·120전이, reset0. 열린 run으로 마감·QC·백업 전이다. [현재 GIF·5카메라](collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0011/README.ko.md) · [실제 운동·목표 분석](collection/reviews/20261116-m1-third-stripe.ko.md)
+**현재:** `20261116-astra-m1-checkpoint-001`은사용자의이전구간복귀지시에따라**120전이로정상마감·QC120/120통과**했다. 종료전추가물리0이며live HOLD가아니다. 동일초기slot+앞110행동을사용하는새 `20261116-astra-right-hand-hold10-001` 분기를준비하며,복귀비교후오른손쪽R0만두줄무늬정도진행할계획이다. 원본보존·고정HF백업검증진행중. [복귀 대상110전이](collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0010/README.ko.md) · [마감경계120전이](collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0011/README.ko.md)
 
 
 **[이번 세션 영상·실패 분석 모음](collection/reviews/20261114-session-review.ko.md)**에서 E28–E32 영상과 시도별 판단을 바로 검토할 수 있습니다.
