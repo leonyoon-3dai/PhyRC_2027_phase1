@@ -1,0 +1,30 @@
+{
+  "schema": "phyrc-user-review-v1",
+  "run_id": "20261116-astra-m1-checkpoint-001",
+  "hold_id": "hold-0007",
+  "observation_id": "3f77008cf00cb97c06b2e325f220fac982e3c949d16b83743f20497d6730c971",
+  "observation_step": 68,
+  "physics_tick_since_recording_start": 816,
+  "simulation_time_s": 4.908333589322865,
+  "captured_at_utc": "2026-11-16T02:42:30.744537+00:00",
+  "source_checkpoint": {
+    "initial_slot": "/output/collections/20261116-e36-checkpoint-001-original/checkpoints/20261116-e36-checkpoint-001-slot/slot_20261116-e36-checkpoint-001-slot.npz",
+    "replay_run": null,
+    "replay_steps": 0,
+    "exact_physics_checkpoint": false
+  },
+  "method": "M1",
+  "reason": "model_stop",
+  "camera_sha256": {
+    "overview": "be7e9403a08a770f022864b22262873f97f43eaed9733f7cd4402999dcdb4141",
+    "robot_1_head": "4261f1a1c726d2b8d9726780d8c1ba5383171cd0dec6cbf95cb0617eb3bab373",
+    "robot_0_head": "069358e5aeb178a82471fccf620ac8dd1ebc7d32970fbdc2c757bda65383c2cf",
+    "robot_1_wrist": "3613e5d92dab8255ba7187ef9896052de791174186291e4a6b1231a52a03e1ee",
+    "robot_0_wrist": "702a0dbc3a63fd6f082648cc74e4b4fa5c397575c9c5121ad95afbc8ecf0a4b4"
+  },
+  "live_hold_at_capture": true,
+  "last_intent": "Request physics-zero HOLD for review. Public grasp-pose changes estimate 30.4 mm and 30.2 mm along the visually inferred bodyward direction from HOLD6, with about 0.2 mm lowering each. Both cloth supports appear retained and the same raised hand remains visible; sleeve insertion is unconfirmed.",
+  "observed_effect": "Inspect the five current views against the preceding review; intent alone is not evidence of effect.",
+  "unknown": "Grasp support, garment topology and sleeve passage require review of public observations.",
+  "question": "Continue with a direction, change M1/M2/M3, choose another checkpoint, or finish?"
+}

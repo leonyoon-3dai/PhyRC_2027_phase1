@@ -1,6 +1,6 @@
 # 시연 목록
 
-**현재:** 새 `20261116-astra-m1-checkpoint-001`은 **hold-0006·52전이에서 같은 몸쪽 방향으로 약30mm 추가 접근 중**이다. 실제 사용자 요청에 따라 reset 없이 재개했으며 현재 파지·같은 손을 유지하고 실제 이동을 확인한다. 다음 HOLD의 GIF·5카메라와 수치를 게시한다. 열린 run으로 마감·QC·백업 전이다. [직전 GIF](gallery/20261116-m1-guided-segments/README.ko.md) · [직전15mm 결과](collection/reviews/20261116-m1-bodyward-15mm.ko.md)
+**현재:** 새 `20261116-astra-m1-checkpoint-001`은 **약30mm 추가 접근 뒤 hold-0007·68전이에서 live HOLD**다. 이번5 act·16전이, 누적27호출·21 act·68전이이며 파지점 추가XY순변위30.44/30.19mm·하강약0.2mm를 확인했다. 열린 run으로 마감·QC·백업 전이다. [현재 GIF](gallery/20261116-m1-guided-segments/README.ko.md) · [현재5카메라](collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0007/README.ko.md) · [최근 분석](collection/reviews/20261116-m1-bodyward-30mm.ko.md)
 
 
 **[이번 세션 영상·실패 분석 모음](collection/reviews/20261114-session-review.ko.md)**에서 E28–E32 영상과 시도별 판단을 바로 검토할 수 있습니다.
