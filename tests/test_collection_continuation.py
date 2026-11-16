@@ -80,6 +80,79 @@ class ContinuationTest(unittest.TestCase):
         self.edit('capture.json', lambda v: v['files'].update({'policy.hdf5': digest}))
         self.edit('validation.json', lambda v: v['sha256'].update({'policy.hdf5': digest}))
 
+    def add_initial_slot(self):
+        path = '/output/checkpoints/source-slot/slot_SOURCE.npz'
+        slot = self.root / path.removeprefix('/')
+        slot.parent.mkdir(parents=True)
+        slot.write_bytes(b'CPU slot identity fixture; no GPU restoration claim')
+        receipt_path = slot.parent / 'receipt.json'
+        receipt = {'schema': 'phyrc-held-checkpoint-v1', 'key': 'SOURCE',
+                   'run_id': 'source-slot-run', 'slot_path': path,
+                   'slot_sha256': self.hash(slot), 'slot_bytes': slot.stat().st_size,
+                   'source_group': self.group}
+        self.write(receipt_path, receipt)
+        origin = {'path': path, 'sha256': self.hash(slot),
+                  'receipt_path': str(Path(path).parent / 'receipt.json'),
+                  'receipt_sha256': self.hash(receipt_path), 'source_group': self.group,
+                  'parent_run': 'source-slot-run'}
+        self.edit('run_metadata.json', lambda v: v.update(initial_slot=origin))
+        return path, slot, receipt_path, origin
+
+    def test_slot_prefix_matches_origin_and_preserves_all_source_files(self):
+        path, slot, receipt, origin = self.add_initial_slot()
+        tracked = [p for p in self.root.rglob('*') if p.is_file()]
+        before = {str(p): self.hash(p) for p in tracked}
+        result = load_replay_prefix(self.root, self.run, steps=2, initial_slot=path)
+        np.testing.assert_array_equal(result.actions, self.actions[:2])
+        self.assertEqual(result.trusted_metadata['initial_slot'], origin)
+        self.assertEqual(result.public_lineage['replay_initialization'], 'approximate_slot')
+        self.assertEqual(result.public_lineage['source_initial_slot_sha256'], self.hash(slot))
+        self.assertNotIn(path, json.dumps(result.public_lineage))
+        self.assertEqual(before, {str(p): self.hash(p) for p in tracked})
+
+    def test_slot_origin_missing_or_mismatched_fails_before_policy_open(self):
+        path, slot, receipt, origin = self.add_initial_slot()
+        for selected in (None, '/output/checkpoints/other/slot_SOURCE.npz'):
+            with self.subTest(selected=selected), patch('participant.collection.continuation.h5py.File') as opened:
+                with self.assertRaisesRegex(ValueError, 'matching --initial-slot'):
+                    load_replay_prefix(self.root, self.run, initial_slot=selected)
+                opened.assert_not_called()
+        for key in origin:
+            with self.subTest(missing=key):
+                incomplete = dict(origin); del incomplete[key]
+                self.edit('run_metadata.json', lambda v: v.update(initial_slot=incomplete))
+                with self.assertRaises(ValueError):
+                    load_replay_prefix(self.root, self.run, initial_slot=path)
+        self.edit('run_metadata.json', lambda v: v.pop('initial_slot'))
+        with self.assertRaisesRegex(ValueError, 'seed reset'):
+            load_replay_prefix(self.root, self.run, initial_slot=path)
+
+    def test_slot_receipt_group_and_hash_mismatches_are_rejected(self):
+        path, slot, receipt_path, origin = self.add_initial_slot()
+        metadata = (self.capture / 'run_metadata.json').read_text()
+        receipt_original = receipt_path.read_text()
+        for field, wrong in [('receipt_path', '/output/other/receipt.json'),
+                             ('source_group', 'wrong-source'), ('parent_run', 'wrong-parent')]:
+            with self.subTest(field=field):
+                altered = dict(origin, **{field: wrong})
+                self.edit('run_metadata.json', lambda v: v.update(initial_slot=altered))
+                with self.assertRaises(ValueError):
+                    load_replay_prefix(self.root, self.run, initial_slot=path)
+                (self.capture / 'run_metadata.json').write_text(metadata)
+        receipt = json.loads(receipt_original)
+        receipt['source_group'] = 'wrong-receipt-group'
+        self.write(receipt_path, receipt)
+        with self.assertRaisesRegex(ValueError, 'receipt checksum'):
+            load_replay_prefix(self.root, self.run, initial_slot=path)
+        self.edit('run_metadata.json', lambda v: v['initial_slot'].update(receipt_sha256=self.hash(receipt_path)))
+        with self.assertRaisesRegex(ValueError, 'group mismatch'):
+            load_replay_prefix(self.root, self.run, initial_slot=path)
+        receipt_path.write_text(receipt_original)
+        (self.capture / 'run_metadata.json').write_text(metadata)
+        slot.write_bytes(b'tampered slot')
+        with self.assertRaisesRegex(ValueError, 'initial-slot checksum'):
+            load_replay_prefix(self.root, self.run, initial_slot=path)
+
     def test_prefix_reads_only_policy_and_returns_selected_public_state(self):
         real_file = h5py.File
         opened = []

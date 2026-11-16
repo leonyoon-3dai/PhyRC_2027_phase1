@@ -717,7 +717,7 @@ def main():
                         help='Persistent live HOLD and bound file feedback; first boundary always reviewed')
     parser.add_argument('--segment-decisions', type=int, default=20)
     parser.add_argument('--segment-steps', type=int, default=400)
-    parser.add_argument('--initial-slot', help='Trusted container path to a validated approximate slot file')
+    parser.add_argument('--initial-slot', help='Trusted approximate slot; with replay must match the source reset slot')
     parser.add_argument('--checkpoint-dir', help='Trusted container output directory for new checkpoints')
     parser.add_argument('--save-checkpoint-on-start', action='store_true')
     parser.add_argument('--prepare-checkpoint-only', action='store_true',
@@ -735,8 +735,8 @@ def main():
         parser.error('prepare-checkpoint-only requires user-guided, replay-prefix-run and save-checkpoint-on-start')
     if args.start_state_validation and not (args.user_guided and args.initial_slot):
         parser.error('start-state-validation requires user-guided and initial-slot')
-    if args.initial_slot and args.replay_prefix_run:
-        parser.error('select either initial-slot or replay-prefix-run')
+    if args.start_state_validation and args.replay_prefix_run:
+        parser.error('start-state-validation cannot skip the required post-replay HOLD')
 
     if args.named_actions and (args.actor_backend != 'exec' or args.plan_size != 1):
         parser.error('named-actions requires exec and plan-size=1')
@@ -822,7 +822,8 @@ def main():
     replay = None
     if args.replay_prefix_run:
         from participant.collection.continuation import load_replay_prefix
-        replay = load_replay_prefix(root, args.replay_prefix_run, args.replay_prefix_steps)
+        replay = load_replay_prefix(root, args.replay_prefix_run, args.replay_prefix_steps,
+                                    initial_slot=args.initial_slot)
         if args.replay_observe_steps and args.replay_observe_steps[-1] >= len(replay.actions):
             parser.error('replay-observe-steps must be strictly before the replay prefix end')
         if args.parent_attempt not in (None, args.replay_prefix_run):

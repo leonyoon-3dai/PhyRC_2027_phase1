@@ -126,7 +126,48 @@ def _seed_source(root, capture, run_metadata, source_group):
                   'sha256': _hash(path)}
 
 
-def load_replay_prefix(root, source_run_id, steps=None):
+def _initial_slot_source(root, run_metadata, source_group, selected_slot):
+    """Bind replay to the recorded reset origin before opening any policy data.
+
+    The simulator still validates the slot geometry and code/assets receipt.
+    This check prevents a valid but different slot, or randomized reset, from
+    silently becoming the origin of another run's action prefix.
+    """
+    origin = run_metadata.get('initial_slot')
+    if origin is None:
+        _require(selected_slot is None, 'Source used seed reset, not the selected initial-slot')
+        return None
+    _require(isinstance(origin, dict), 'Invalid source initial-slot metadata')
+    _require(isinstance(selected_slot, str) and selected_slot == origin.get('path'),
+             'Slot-start source requires its matching --initial-slot path')
+    _require(selected_slot.startswith('/output/'), 'Initial-slot must be inside /output/')
+    slot = _inside(root, Path('output') / selected_slot.removeprefix('/output/'))
+    _require(slot.is_file() and _hash(slot) == _digest(origin.get('sha256')),
+             'Source initial-slot checksum mismatch')
+    expected_receipt = str(Path(selected_slot).parent / 'receipt.json')
+    _require(origin.get('receipt_path') == expected_receipt,
+             'Source initial-slot receipt path mismatch')
+    receipt_path = _inside(root, Path('output') / expected_receipt.removeprefix('/output/'))
+    receipt = _json(receipt_path)
+    _require(_hash(receipt_path) == _digest(origin.get('receipt_sha256')),
+             'Source initial-slot receipt checksum mismatch')
+    _require(origin.get('source_group') == source_group == receipt.get('source_group'),
+             'Source initial-slot group mismatch')
+    _require(receipt.get('schema') == 'phyrc-held-checkpoint-v1'
+             and receipt.get('slot_path') == selected_slot
+             and receipt.get('slot_sha256') == origin['sha256']
+             and receipt.get('slot_bytes') == slot.stat().st_size
+             and isinstance(receipt.get('key'), str)
+             and slot.name == 'slot_' + receipt['key'] + '.npz'
+             and isinstance(origin.get('parent_run'), str)
+             and RUN_ID.fullmatch(origin['parent_run'])
+             and origin.get('parent_run') == receipt.get('run_id'),
+             'Source initial-slot receipt identity mismatch')
+    return {key: origin[key] for key in ('path', 'sha256', 'receipt_path',
+                                        'receipt_sha256', 'source_group', 'parent_run')}
+
+
+def load_replay_prefix(root, source_run_id, steps=None, *, initial_slot=None):
     """Read a fully checked, closed one-episode source without modifying it.
 
     ``steps`` is an exclusive prefix boundary; None selects all recorded actions,
@@ -166,6 +207,7 @@ def load_replay_prefix(root, source_run_id, steps=None):
              and run_metadata.get('source_group') == group
              and episodes[0].get('source', {}).get('source_group') == group,
              'Source group metadata mismatch')
+    slot_origin = _initial_slot_source(root, run_metadata, group, initial_slot)
     selected = total if steps is None else steps
     _require(_positive(selected) and selected <= total, 'Prefix must contain 1..source_steps transitions')
     expected = _digest(manifest.get('files', manifest.get('checksums', {})).get('policy.hdf5'))
@@ -205,8 +247,13 @@ def load_replay_prefix(root, source_run_id, steps=None):
                'source_start_step': 0, 'source_end_step_exclusive': selected,
                'bitwise_physics_restored': False, 'fresh_actor': True,
                'replay_validation': 'source_verified_execution_not_yet_tested'}
+    lineage['replay_initialization'] = 'approximate_slot' if slot_origin else 'seed_reset'
+    if slot_origin:
+        lineage['source_initial_slot_sha256'] = slot_origin['sha256']
     trusted = {**lineage, 'source_run_id': source_run_id, 'steps': selected,
                'root': root, 'source_capture': capture, 'reset_seed': seed, 'seed_source': seed_source}
+    if slot_origin:
+        trusted['initial_slot'] = slot_origin
     return ReplayPrefix(actions, trusted, initial, final, lineage)
 
 

@@ -58,9 +58,31 @@ PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.codex_clie
   --named-actions --model-timeout 180
 ```
 
-경로와 ID를 실제 값으로 바꾼다. 슬롯 출처는 `--parent-attempt`와 `--retry-reason`, `--source-group`으로 이어서 명시한다. 슬롯 시작에서는 replay 옵션을 함께 쓰지 않는다. 최초 M1은 현재 파지를 유지하는 국소 교정이며 첫 교정은2–4전이(0.1–0.2시뮬레이션초)로 시작해 실제 효과를 확인하고 공식 범위 안에서 조정하도록 지시한다. 이는 고정 좌표나 정답 행동을 지정하지 않는다. M1/M2의 open 제안은 실행 전에 HOLD한다. 같은 상태의 M2/M3 전환은 사용자 응답에서 선택한다.
+경로와 ID를 실제 값으로 바꾼다. 슬롯 출처는 `--parent-attempt`와 `--retry-reason`, `--source-group`으로 이어서 명시한다. 슬롯에서 바로 M1을 시작할 때는 replay 옵션을 생략한다. 슬롯으로 시작했던 이전 시연의 경계를 재현할 때는 아래3a절의 출처 검증을 거쳐 같은 슬롯과 replay를 함께 사용한다. 최초 M1은 현재 파지를 유지하는 국소 교정이며 첫 교정은2–4전이(0.1–0.2시뮬레이션초)로 시작해 실제 효과를 확인하고 공식 범위 안에서 조정하도록 지시한다. 이는 고정 좌표나 정답 행동을 지정하지 않는다. M1/M2의 open 제안은 실행 전에 HOLD한다. 같은 상태의 M2/M3 전환은 사용자 응답에서 선택한다.
 
 `--pixel-depth-query`는 현재 guided 경로와 함께 사용할 수 없다. 기본 공개 depth 요약, `--named-actions`, 선택적 `--wrist-depth-panel`, `--post-action-settle-steps 0..20`을 지원한다. act와 settle 합계가 soft 예산을 넘으면 그 행동 전체를 폐기하고 HOLD한다. 공식 hard horizon에 닿기 전 최소1전이를 남기며 하드 경계에서는 새 checkpoint 분기 또는 종료만 받는다. raw pickup점수를 첫 소매 목표로 사용하지 않는다.
+
+## 3a. 같은 시작 슬롯에서 이전 시연의 경계 재현
+
+이전 시연이 `initial_slot`으로 시작했다면, 그 행동을 일반 무작위 reset에서 재생하지 않는다. `--initial-slot`과 `--replay-prefix-run`의 조합은 `--user-guided`에서만 허용하며, source의 `run_metadata.initial_slot`과 선택한 슬롯의 **경로·SHA256·receipt 경로와 SHA256·source group·직접 슬롯 parent**가 일치해야 한다. 빠진 정보, 다른 슬롯, 바뀐 receipt/파일, symlink는 재생 전에 거절한다. source가 일반 seed reset으로 시작했다면 슬롯을 덧붙일 수 없다. 기존 일반 replay는 동일 seed reset 경로를 유지한다. simulator의 기존 슬롯 형상·코드·자산 검증도 그대로 적용한다.
+
+현재 run의 과거 HOLD로 돌아가는 예에서는 먼저 해당 run을 `checkpoint` 응답으로 물리0 마감하고 **전체 원본의 QC·보존**을 완료한다. 불완전 live capture나 검토용 고정 사본으로 정상 replay gate를 우회하지 않는다. 그다음 별도 고유 run에서 원래 시작 슬롯을 복원하고 선택 경계까지 기록된 행동을 다시 실행한다. 아래는 `20261116-astra-m1-checkpoint-001`의 HOLD10 경계110을 대상으로 한 명령 형태다.
+
+```bash
+PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.codex_client \
+  --run-id NEW_REPLAY_RUN --mode dressing --user-guided \
+  --actor-backend exec --model gpt-6-astra --effort ultra --plan-size 1 \
+  --initial-slot /output/collections/20261116-e36-checkpoint-001-original/checkpoints/20261116-e36-checkpoint-001-slot/slot_20261116-e36-checkpoint-001-slot.npz \
+  --replay-prefix-run 20261116-astra-m1-checkpoint-001 --replay-prefix-steps 110 \
+  --save-checkpoint-on-start --max-steps 2400 \
+  --named-actions --model-timeout 180
+```
+
+실제 원본은120전이 전체가 정상 마감·QC를 통과해야 하며, 선택된 prefix는 **actions[0:110]**, 목표 관측은 **next_obs[109]**다. 재생 요청을 묶어도 모든 원본 행동과 순서를 보존하며 추가 settle/stop 전이를 삽입하지 않는다. 첫110전이는 새 정책 성과가 아니라 replay로 기록한다. 직접 parent는 이전 run, source group은 같은 E28 계보를 유지한다.
+
+원래 슬롯의90 control ticks 정착은 유지한다. 초기와 재생 말단의 공개 로봇 상태 차이를 `attempt.json`의 continuation에 기록하지만, 이 수치만으로 천 상태의 동일성을 보장하지 않는다. 새5카메라·depth·파지·손 관계를 과거 HOLD10과 비교한다. **물리 solver의 정확한 시간 되감기가 아니라 근사 슬롯 복원과 행동 재실행**이다.
+
+슬롯 원본의 `--start-state-validation`을 replay와 함께 지정하면 거절한다. 원래 시작 슬롯의 검증을110전이 뒤 상태의 검증으로 대신할 수 없기 때문이다. 재생 말단에서는 모델 행동을 호출하기 전에 실제 `start_state_review` HOLD를 만들고, 선택한 경우 고유 checkpoint를 저장한다. 게시·관측 비교·사용자 지시 처리 뒤 새 방향의 시연을 시작한다. 출발 관계가 달라졌다면 기존 HOLD10과 동일하다고 표시하지 않고 차이를 먼저 검토한다.
 
 ## 4. HOLD 게시와 사용자 응답
 
