@@ -1,6 +1,6 @@
 # 현재 상태
 
-**현재 M1은 hold-0009·93전이에서 사용자 검토 후33mm 추가 이동 중이다.** 사용자가 기존 가림 상태를 보고 문제없다고 판단하여 같은 몸쪽 방향 진행을 지시했다. 앞서 약2mm 상승했으므로 이번에는 추가 lift 없이 실제 높이를 확인한다. 새12결정/40전이 상한을 유지하며 다음 HOLD에 GIF·5카메라·실측을 게시한다. [재개 직전 화면](../collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0009/README.ko.md)
+**현재 M1은33mm 추가 요청 후 약32mm 진행하여 hold-0010·110전이에서 live HOLD다.** 실제XY순변위 R0/R1 **31.97/31.45mm**, 높이 **+0.29/+0.50mm**다. 추가 lift 명령 없이 진행했고, 요청 방향33mm보다1.03/1.57mm 짧은 목표 근처에서 검토한다. 원래50mm 요청의HOLD8→10 전체XY순변위는49.06/48.30mm다. 손끝의 가림은 늘었으며 실제 입구 진입·소매 통과는 미확인이다. 새6 act·17전이, 누적44호출·35 act·110전이로 stop은 실행하지 않았다. [현재 GIF·5카메라](../collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0010/README.ko.md) · [측정·전체 요청 분석](../collection/reviews/20261116-m1-bodyward-33mm-completion.ko.md)
 
 개발 대화의 `gpt-6-astra` 전환, HF CLI2.4.0과 `leonayoon` 로그인, L40S GPU, 초기 자산·E36 복원/QC933/933, 격리 CLI0.166.0/Astra/ultra 연결, CPU394개 검사와 GPU smoke/HOLD·checkpoint 비교를 확인했다. 사용자가 정착 차이를 검토하고 현재 복원 상태를 채택했다. [출발 비교](../collection/reviews/20261116-checkpoint-validation.ko.md)
 
@@ -10,7 +10,7 @@
 
 | 항목 | 확인한 상태 |
 |---|---|
-| 현재 열린 과제 시연 | `20261116-astra-m1-checkpoint-001`, hold-0009·93전이에서 사용자 검토 후33mm 추가 이동. 마감·QC·백업 전 |
+| 현재 열린 과제 시연 | `20261116-astra-m1-checkpoint-001`, hold-0010·110전이·tick1320의 물리0 HOLD.33mm 요청 후 약32mm 진행하여 사용자 판단 대기. 마감·QC·백업 전 |
 | 현재 분기 평가 | raw0/50·first_sleeve0·success=false. checkpoint reset의 새 평가로 과거 pickup5를 이월하지 않음 |
 | 최신 정상 과제 시연 | E36 `20261114-astra-wrist-body835-001`, 정상 마감 |
 | 새 시연 출발 후보 | E36의933전이 경계. 재생·slot 저장/복원 확인. 정착 차이를 게시한 뒤 사용자가 현재 복원 상태를 채택하고 구체적 방향을 교정 |
