@@ -1,6 +1,6 @@
 # 시연 목록
 
-**현재:** 새 `20261116-astra-m1-checkpoint-001`은 사용자 지시의 후퇴→하강→같은 손목 재접근을 실행한 뒤 **hold-0002에서 live HOLD**다. 6호출·5 act·16전이(0.80초), 손목 진입 미확인·첫 소매0점이다. 열린 run으로 마감·QC·백업 전이며 새 완성 시연으로 세지 않는다. [현재5카메라](collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0002/README.ko.md) · [실제 효과 분석](collection/reviews/20261116-m1-front-lower-wrist.ko.md). 별도 E36 checkpoint 준비 검증(934+1전이)은 정상 마감·전수 QC·고정 백업 검증을 완료했다. [검증 비교](collection/reviews/20261116-checkpoint-validation.ko.md)
+**현재:** 새 `20261116-astra-m1-checkpoint-001`은 사용자 지시의 후퇴→하강→재접근16전이 뒤 hold-0002를 거쳐, **오른손 전체를 드러내기 위한 추가 후퇴를 실행 중**이다. 구간별 GIF와 다음 HOLD5카메라를 게시한다. 열린 run이며 마감·QC·백업 전이다. [이전 구간 효과](collection/reviews/20261116-m1-front-lower-wrist.ko.md). 별도 E36 checkpoint 준비 검증(934+1전이)은 정상 마감·전수 QC·고정 백업 검증을 완료했다. [검증 비교](collection/reviews/20261116-checkpoint-validation.ko.md)
 
 
 **[이번 세션 영상·실패 분석 모음](collection/reviews/20261114-session-review.ko.md)**에서 E28–E32 영상과 시도별 판단을 바로 검토할 수 있습니다.

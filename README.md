@@ -1,19 +1,17 @@
 # PhyRC 2027
 
 <!-- PHYRC_USER_REVIEW:START -->
-> **현재 live HOLD · 후퇴 → 하강 → 재접근 후 사용자 판단 대기**
+> **M1 실행 중 · 오른손 전체를 드러내기 위한 추가 후퇴**
 >
-> 요청하신 세 단계의 조작을 실행했습니다. 파지 기준점은 약 **16mm 낮아졌고**, 마지막 짧은 재접근에서 반대 방향으로 약 **7mm** 움직였습니다. 물러난 전체 거리를 되돌아오지는 않았습니다. 수치는 로봇 파지점의 world 좌표 변화이며 천·손목 사이 거리와 다릅니다.
+> 사용자가 hold-0002 화면을 검토하고 **오른손 전체가 보일 때까지 몸에서 충분히 멀어진 뒤 옷의 처짐을 확인**하도록 지시했습니다. 현재 파지를 유지해 짧게 나누어 후퇴하며, 이번 구간에는 추가 하강·재접근을 하지 않습니다. 확인 후 새 화면과 구간별 움직임 GIF를 게시하고 사용자 판단을 기다립니다.
 >
-> **손목 진입은 아직 확인되지 않았습니다.** 천과 그리퍼 하우징이 손목–입구 관계를 가려 모델이 검토를 요청했습니다. 양쪽 닫기 의도를 유지한 채 물리 진행 없이 기다립니다. [실제 효과·기전 분석](docs/collection/reviews/20261116-m1-front-lower-wrist.ko.md)
->
-> Run `20261116-astra-m1-checkpoint-001` · **hold-0002** · 관측 `893fea342c192970` · 6호출·5 act·16전이(0.80초) · 기록 tick192 · 시뮬레이션 시각2.308333s. 마지막 stop 제안은 실행하지 않았습니다. 열린 run으로 마감·QC·백업 전입니다.
+> **아래는 재개 직전 hold-0002의 화면입니다.** Run `20261116-astra-m1-checkpoint-001` · 관측 `893fea342c192970` · 촬영 당시 누적16전이. 같은 live 상태에서 사용자 답변을 적용했으며 reset하지 않았습니다.
 
 <a href="docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0002/cameras.png"><img src="docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0002/cameras.png" width="512" alt="후퇴·하강·재접근 뒤 hold-0002의 같은 관측 공개5카메라. 왼쪽 robot_1, 오른쪽 robot_0; 위 head, 아래 wrist."></a>
 
 **원본5장:** [overview](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0002/overview.png) · [R1 head](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0002/robot_1_head.png) · [R0 head](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0002/robot_0_head.png) · [R1 wrist](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0002/robot_1_wrist.png) · [R0 wrist](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0002/robot_0_wrist.png)
 
-**다음 판단:** 낮아진 위치에서 손목 쪽으로 조금 더 접근할까요, 먼저 높이·방향을 교정할까요? 자유 텍스트로 방법·출발점 변경이나 종료도 선택할 수 있습니다. 새 답변 전에는 움직이지 않습니다.
+다음 검토에는 후퇴·하강·재접근 및 이번 추가 후퇴의 **구간별 GIF**를 제공합니다.
 
 [현재 검토 페이지](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0002/README.ko.md) · [관측 metadata](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0002/observation-metadata.json) · [조작 전 화면](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0001/README.ko.md) · [현재 전략](docs/COLLECTION_PLAN.md) · [기전 요약](docs/MECHANISMS.ko.md)
 <!-- PHYRC_USER_REVIEW:END -->

@@ -1,6 +1,6 @@
 # 현재 상태
 
-**현재 M1은 사용자 지시의 후퇴→하강→같은 손목 재접근을 실행한 뒤 hold-0002에서 live HOLD다.** `20261116-astra-m1-checkpoint-001`에서 reset 없이6호출·6결정 중5 act·16전이(0.80초)를 진행했다. 파지 기준점은 약16mm 낮아졌지만 손목 진입은 가림 때문에 미확인이다. 마지막 stop 제안은 dispatch하지 않았고 새 사용자 답변 전 추가 운동은 없다. [현재5카메라](../collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0002/README.ko.md) · [실제 효과 분석](../collection/reviews/20261116-m1-front-lower-wrist.ko.md)
+**현재 M1은 hold-0002에서 실제 사용자 답변을 받아 추가 후퇴를 실행 중이다.** `20261116-astra-m1-checkpoint-001`의16전이 경계에서 reset 없이 재개했다. 오른손 전체가 보일 때까지 몸에서 충분히 물러난 뒤 옷의 처짐을 확인하고 새 HOLD에서 질문한다. 이전 구간과 이번 구간의 GIF를 게시한다. [재개 직전5카메라](../collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0002/README.ko.md) · [이전 실제 효과 분석](../collection/reviews/20261116-m1-front-lower-wrist.ko.md)
 
 개발 대화의 `gpt-6-astra` 전환, HF CLI2.4.0과 `leonayoon` 로그인, L40S GPU, 초기 자산·E36 복원/QC933/933, 격리 CLI0.166.0/Astra/ultra 연결, CPU394개 검사와 GPU smoke/HOLD·checkpoint 비교를 확인했다. 사용자가 정착 차이를 검토하고 현재 복원 상태를 채택했다. [출발 비교](../collection/reviews/20261116-checkpoint-validation.ko.md)
 
@@ -10,7 +10,7 @@
 
 | 항목 | 확인한 상태 |
 |---|---|
-| 현재 열린 과제 시연 | `20261116-astra-m1-checkpoint-001`, hold-0002·16전이·물리0 대기. 마감·QC·백업 전 |
+| 현재 열린 과제 시연 | `20261116-astra-m1-checkpoint-001`, hold-0002·16전이에서 사용자 지시의 추가 후퇴 재개. 마감·QC·백업 전 |
 | 현재 분기 평가 | raw0/50·first_sleeve0·success=false. checkpoint reset의 새 평가로 과거 pickup5를 이월하지 않음 |
 | 최신 정상 과제 시연 | E36 `20261114-astra-wrist-body835-001`, 정상 마감 |
 | 새 시연 출발 후보 | E36의933전이 경계. 재생·slot 저장/복원 확인. 정착 차이를 게시한 뒤 사용자가 현재 복원 상태를 채택하고 구체적 방향을 교정 |
