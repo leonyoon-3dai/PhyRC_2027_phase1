@@ -29,7 +29,8 @@ TITLES = {'retreat': 'Retreat', 'lower-and-neutral': 'Lower, then neutral',
           'bodyward-30mm-slight-rise': '30 mm additional target / brief slight rise',
           'bodyward-50mm-slight-rise': '50 mm requested / ~17 mm moved / early HOLD',
           'bodyward-33mm-completion': '33 mm requested / about 32 mm moved',
-          'third-stripe-approach': 'Third stripe unconfirmed / asymmetric HOLD'}
+          'third-stripe-approach': 'Third stripe unconfirmed / asymmetric HOLD',
+          'restore-tail': 'Restoration replay / no new policy actions'}
 
 
 def sha(path):

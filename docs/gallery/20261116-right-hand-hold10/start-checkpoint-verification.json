@@ -1,0 +1,20 @@
+{
+  "schema": "phyrc-checkpoint-save-verification-v1",
+  "source_run": "20261116-astra-right-hand-hold10-001",
+  "hold_id": "hold-0001",
+  "observation_step": 110,
+  "episode_tick": 1320,
+  "observation_id": "a22ece51b72d78fe73354dc26f67df987c662b81904bdec91347ec0a71cc2ac3",
+  "actor_calls_attempted_at_verification": 0,
+  "checkpoint_key": "20261116-astra-right-hand-hold10-001-start",
+  "slot_sha256": "c26cc58caf6176ce2b1120a9ea1e68d0a7e0f4f88c0e46978c4aa3de3f0b05e6",
+  "slot_bytes": 363487,
+  "receipt_sha256": "bb53e3914ec7479a01944df8b1dd8e7758f5206905f4418ed0d15dcdbc7f5872",
+  "saved_slot_hash_matches_receipt": true,
+  "request_executed_steps": 0,
+  "request_end_step": 110,
+  "public_camera_hashes_match": true,
+  "exact_physics_checkpoint": false,
+  "restore_validated": false,
+  "verification_scope": "Checkpoint saved at replay boundary with zero new transitions. This newly saved slot has not been restored or validated for continuation."
+}

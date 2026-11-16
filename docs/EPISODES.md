@@ -1,6 +1,6 @@
 # 시연 목록
 
-**현재:** `20261116-astra-m1-checkpoint-001`은사용자의이전구간복귀지시에따라**120전이로정상마감·QC120/120통과**했다. 종료전추가물리0이며live HOLD가아니다. 동일초기slot+앞110행동을사용하는새 `20261116-astra-right-hand-hold10-001` 분기를준비하며,복귀비교후오른손쪽R0만두줄무늬정도진행할계획이다. 원본보존·고정HF백업검증진행중. [복귀 대상110전이](collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0010/README.ko.md) · [마감경계120전이](collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0011/README.ko.md)
+**현재:** 기존 M1은120전이 정상 마감·QC120/120·비공개 고정 백업 검증을 마쳤다. 새 `20261116-astra-right-hand-hold10-001`은 동일 초기slot에서 앞110행동을 재생해 시작 HOLD1에 도달했다. 원래 HOLD10과 파지점 차이는1.86/0.63mm이며 큰 배치·지지를 확인했다. 사용자의 기존 지시에 따라 오른손 쪽R0만 두 줄무늬 간격 정도 접근하는 다음 단계를 준비한다. [복귀 비교·현재 run](collection/reviews/20261116-right-hand-hold10-branch.ko.md) · [마감 원본 요약](collection/attempts/20261116-astra-m1-checkpoint-001/README.ko.md)
 
 
 **[이번 세션 영상·실패 분석 모음](collection/reviews/20261114-session-review.ko.md)**에서 E28–E32 영상과 시도별 판단을 바로 검토할 수 있습니다.
@@ -8,6 +8,14 @@
 [메인](../README.md) | [시연 목록](EPISODES.md) | [다음 수집](COLLECTION_PLAN.md) | [Astra 코드](ASTRA.md) | [클린 서버](OPERATIONS.md)
 
 **아래 표는 정상 마감과 연결·수집 실패를 함께 보존합니다.** 최신 E36은 최대20개 중11결정(10 act+finish)·933전이·QC933/933으로 정상 마감했습니다. 로컬5/50은 prefix 중의 픽업5이며 새 득점0·착의0·success=false입니다. 공개 시각 검토와 고정 백업155개 manifest 파일 검증도 완료했습니다. **E36으로 이번 수집을 종료했으며 E37–E39는 취소했습니다.** 09:29 UTC의 최대5회 추가 승인은 이후 중지 지시에 따라 E35·E36 두 번으로 마감했습니다. [현재 상태](project/STATUS.md) / [재정비 계획](collection/research/2026-11-14-collection-system-redesign.ko.md). 과거 재정비 문서는 당시 제안이며 현재 guided 구현·검증은 STATUS를 따릅니다. E번호는 독립 성공 시연 수가 아닙니다.
+
+## 사용자 교정 시연 · M1 정상 마감
+
+| 실행 | 출발·결과 | 기록과 자료 |
+|---|---|---|
+| `20261116-astra-m1-checkpoint-001` | E36 재생에서 만든 근사 슬롯, 사용자 방향 교정. raw0·소매 통과 미확인 | 38 act·120전이, QC120/120·비공개 고정 백업 검증. [요약](collection/attempts/20261116-astra-m1-checkpoint-001/README.ko.md) · [구간별 GIF](gallery/20261116-m1-guided-segments/README.ko.md) |
+
+과거 E37–E39 취소는 이전 배치의 이력이다. 위 run은 이후 사용자가 새로 승인한 슬롯 기반 시연이며, 기존 E번호를 다시 부여하지 않았다.
 
 ## 대표 장면
 

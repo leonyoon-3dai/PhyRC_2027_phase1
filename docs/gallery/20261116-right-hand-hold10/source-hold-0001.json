@@ -1,0 +1,20 @@
+{
+  "source_run": "20261116-astra-right-hand-hold10-001",
+  "hold": {
+    "schema": "phyrc-supervisor-state-v1",
+    "held": true,
+    "hold_id": "hold-0001",
+    "reason": "start_state_review",
+    "active": true,
+    "observation_step": 110,
+    "episode_tick": 1320,
+    "simulation_time_s": 7.0083336988464,
+    "requests": 17,
+    "protocol_connected": true
+  },
+  "source_sha256_before": "388bcd935c9a7e7e1efb10335599d40f16f43dea1b3c699a178e1176ea72db6e",
+  "source_sha256_after": "388bcd935c9a7e7e1efb10335599d40f16f43dea1b3c699a178e1176ea72db6e",
+  "copy_sha256": "388bcd935c9a7e7e1efb10335599d40f16f43dea1b3c699a178e1176ea72db6e",
+  "source_capture_complete": false,
+  "method": "ordinary file copy at acknowledged HOLD; source hashes and state matched before/after; copy opened read-only"
+}

@@ -1,6 +1,6 @@
 # 현재 상태
 
-**사용자 방향 변경으로 기존 M1을 마감하고110전이 출발의 한쪽 접근 분기를 준비 중이다.** 기존 run은 추가 물리0으로120전이 정상 마감·QC120/120 통과했다. 사용자가 의심한 왼손 충돌의 원인은 미확정이며, 공개 팔 연결은R0=오른손 쪽/R1=왼손 쪽으로 확인했다. 별도110전이 슬롯이 없어 동일초기slot에서앞110행동을새run으로재생하고실제공개상태를비교한다. 이후R0만두줄무늬정도접근하고R1지지를유지한다. [복귀 대상 화면](../collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0010/README.ko.md)
+**110전이 복귀 비교를 마쳤고 오른손 쪽 R0 단독 접근을 준비한다.** 새 `20261116-astra-right-hand-hold10-001`의 시작 HOLD1은110전이·모델0호출이다. 기존 HOLD10과 grasp 위치 차이는 R0 1.86mm/R1 0.63mm이며 공개5뷰의 큰 배치와 지지를 확인했다. 동일 초기slot와110행동 재생으로 얻은 근사 출발점이며 정확한 되감기는 아니다. 기존 사용자 지시에 따라 R0만 두 줄무늬 간격 정도 접근하고 R1은 중립·지지를 유지한다. [복귀 화면·비교](../collection/reviews/20261116-right-hand-hold10-branch.ko.md)
 
 개발 대화의 `gpt-6-astra` 전환, HF CLI2.4.0과 `leonayoon` 로그인, L40S GPU, 초기 자산·E36 복원/QC933/933, 격리 CLI0.166.0/Astra/ultra 연결, CPU394개 검사와 GPU smoke/HOLD·checkpoint 비교를 확인했다. 사용자가 정착 차이를 검토하고 현재 복원 상태를 채택했다. [출발 비교](../collection/reviews/20261116-checkpoint-validation.ko.md)
 
@@ -10,9 +10,9 @@
 
 | 항목 | 확인한 상태 |
 |---|---|
-| 현재 실행 | 기존M1은120전이정상마감·QC통과. 새 `20261116-astra-right-hand-hold10-001`은동일slot+110전이재생후R0단독접근준비 |
+| 현재 실행 | `20261116-astra-right-hand-hold10-001`, 동일slot+110행동 재생 후 HOLD1. 출발 비교 완료·R0 단독 접근 준비, 새run은 미마감 |
 | 현재 분기 평가 | raw0/50·first_sleeve0·success=false. checkpoint reset의 새 평가로 과거 pickup5를 이월하지 않음 |
-| 최신 정상 과제 시연 | E36 `20261114-astra-wrist-body835-001`, 정상 마감 |
+| 최신 정상 과제 시연 | `20261116-astra-m1-checkpoint-001`,120전이·QC120/120·고정HF 백업 검증 완료 |
 | 새 시연 출발 후보 | E36의933전이 경계. 재생·slot 저장/복원 확인. 정착 차이를 게시한 뒤 사용자가 현재 복원 상태를 채택하고 구체적 방향을 교정 |
 | 새 기능 | `e9cca07`에 checkpoint·물리0 HOLD·5카메라 export·텍스트 재개 구현. CPU394개 통과; GPU HOLD8개 검사 통과·slot 비교 완료. 원래934전이/복원1전이 전수 QC 통과 |
 | 첫 방법 / 목표 | M1 현재 파지 유지·국소 교정 / trusted evaluator의 `first_sleeve` 새0→5 |

@@ -1,18 +1,26 @@
-> **보존된 실행 색인.** JSON의 planned 항목은 당시 후보이며 자동 실행 지시가 아닙니다. 과거 E27/928의 same-arm 계획과 새 reset에서 마감한 실제 E28은 별도입니다. 추가 승인으로 E35·E36을 실행한 뒤 E36에서 수집을 종료했습니다. E37–E39는 취소했습니다. [COLLECTION_PLAN](../../COLLECTION_PLAN.md)을 따릅니다.
+> **보존된 실행 색인.** JSON의 planned 항목과 E37–E39 취소는 과거 배치 이력이며 현재 실행 지시가 아닙니다. 사용자 피드백으로 진행한 `20261116-astra-m1-checkpoint-001`은120전이에서 정상 마감·QC·비공개 고정 백업 검증을 완료했습니다. 최신 방향은 [COLLECTION_PLAN](../../COLLECTION_PLAN.md)을 따릅니다.
 
 # 양측 지지 출발점과 5→10점 비교 목록
 
-**색인은 E36 정상 마감과 E09·E32 실패를 함께 포함합니다.** E33은 E28/264, E34는 E33/470, E35·E36은 각각 E34/723·835에서 분기했습니다. E35·E36 모두 QC·공개 시각 검토·고정 백업 검증을 완료했습니다. E36에서 수집을 종료했고 E37–E39는 취소했습니다. E32는758전이 내용 검사가 통과했어도 capture/file incomplete로 전체 QC 실패이며 출발점을 추가하지 않습니다. 진단 백업과 정상 replay 자격을 구분합니다. [현재 상태](../../project/STATUS.md) / [미구현 재정비 계획](../research/2026-11-14-collection-system-redesign.ko.md).
+**최신 마감 M1은 E36 재생 준비 run에서 저장한 근사 slot을 사용했습니다.** 직접 parent는 `20261116-e36-checkpoint-001-original`이며 source group은 E28입니다. M1 자체의 행동 replay는0전이이고, 사용자 HOLD·텍스트 재개를 포함한 새120전이를 기록했습니다. E09·E32의 불완전 원본은 정상 replay·학습 출처에서 계속 제외합니다. [현재 상태](../../project/STATUS.md) / [실행 중인 사용자 피드백 구조](../GUIDED_RUNTIME.ko.md).
 
 **지지를 유지한 공개 관측 구간을 출발점으로 모으고, 그 뒤 바꾼 방법과 결과를 연결하는 연구용 목록입니다.** [정본 JSON](catalog.v1.json)을 Git에 보존하고, [조회 도구](../../../scripts/startpoint_catalog.py)로 SQLite 색인을 재생성합니다. 기록을 찾는 도구이며 시뮬레이터를 조작하거나 actor 입력을 만들지 않습니다.
 
-현재 목록은 **실제 실행44건, 출발점22개, 방법·입력 설정27종, 조합 시도47건(실제44건·역사적 계획3건)**입니다. 실제는 completed37건·failed7건이며 연결 시험도 포함합니다. 시연으로 분류한33실행은 QC 통과31건·실패2건이며 E번호 전체와 같은 범위가 아닙니다. E34/723·835는 각각 E35·E36의 검토된 출발점입니다. E35·E36 자체의 새 출발점이나 다음 실행 계획은 추가하지 않았습니다. 같은 계보의 경계·분기를 독립 성공 표본으로 세지 않습니다.
+현재 목록은 **run46건, 출발점22개, 방법·입력 설정28종, 조합 시도48건(실제45건·역사적 계획3건)**입니다. 실제 시도는 completed38건·failed7건이며 연결 시험도 포함합니다. 별도 준비 run1건은 M1의 직접 parent 관계를 보존하는 최소 기록으로, 새 시연 시도에 합산하지 않았습니다. 시연으로 분류한34실행은 QC 통과32건·실패2건이며 E번호 전체와 같은 범위가 아닙니다. M1에 새 E번호나 미실행 복귀 분기를 부여하지 않았고, 같은 계보의 경계·분기를 독립 성공 표본으로 세지 않습니다.
 
-QC 통과 시연31건의 기록은24,296전이이며 확인된 ACK replay는16,095전이(66.25%)입니다. 나머지8,201전이는 모델 행동·정착·종료 정리와 replay 메타데이터가 없는3실행을 포함하므로 독립적인 새 전문가 행동 수로 해석하지 않습니다. 불완전 E09·E32는 이 합계에서 제외합니다.
+QC 통과 시연32건의 기록은24,416전이이며 확인된 ACK replay는16,095전이(65.92%)입니다. 나머지8,321전이는 사용자 피드백을 받은 M1 행동·과거 모델 행동·정착·종료 정리와 replay 메타데이터가 없는3실행을 포함하므로 독립적인 새 전문가 행동 수로 해석하지 않습니다. 준비 run과 불완전 E09·E32는 이 합계에서 제외합니다.
+
+## 최신 마감: 사용자 피드백 M1
+
+`20261116-astra-m1-checkpoint-001`은48호출·38 act·120전이,11개 검토 HOLD 뒤 사용자의 복귀 지시에 따라 물리0으로 마감했습니다. 마지막 비대칭 반응에서 세 번째 줄무늬 도달·소매 통과는 미확인이며, 평가 재시작 뒤 로컬 raw0·success=false입니다. 기본90 control ticks의 slot 복원 정착은 정책 기록 전이고, M1의 행동 replay·종료 추가 전이는 모두0입니다. `human_intervention=true`, 학습 승인은 `unreviewed`로 유지합니다. [최근 관측·실측](../reviews/20261116-m1-third-stripe.ko.md) / [전체 구간별 GIF](../../gallery/20261116-m1-guided-segments/README.ko.md).
+
+직접 parent 준비 run은 E36 행동933전이 재생 후 slot을 저장하고 검증 probe1전이를 수행한934전이의 연결 시험입니다. 준비 slot을 원래 천 상태의 완전한 복원이나 E36 직접 행동 replay로 표시하지 않습니다. [준비·복원 근거](../reviews/20261116-checkpoint-validation.ko.md) / [준비 백업](../reviews/20261116-checkpoint-backup-verification.json).
+
+M1은 QC120/120을 통과했고, 비공개 HF 고정 revision `91384b01de9d566ec6d1d221ff332a6d4fddd289`에서313,358,782bytes archive를 강제 재다운로드하여 SHA256·488개 manifest 파일을 모두 검증했습니다. 선택한 원본486개 파일은 불변입니다. [백업 검증 receipt](../reviews/20261116-m1-checkpoint-backup-verification.json). 새 복귀 분기의 실행·성공을 이 마감 기록에 합산하지 않습니다.
 
 [전체 갤러리](../../gallery/README.ko.md) · [현재 실행](../../project/STATUS.md) · [출발 경계·점수·출처 검토](../research/2026-11-07-support-startpoints-review.ko.md) · [정밀 근거 JSON](../research/2026-11-07-support-startpoints-review.json)
 
-## 보존된 출발점 비교 — 현재 수집 중지
+## 과거에 검토한 출발점 비교
 
 | 출발점 | 그 경계의 점수 | 지지 근거 구간·표본 | 비교할 부분 |
 |---|---:|---|---|
@@ -79,7 +87,7 @@ flowchart LR
   E34 --> P723["723 · 근접 형상/지지불확실"]
   P723 --> E35["E35 넓은 아래 경계·측면 접근 · 새 득점0"]
   E34 --> P835["835 · 종료 중립 전/지지불확실"]
-  P835 --> E36["E36 손목 정렬·몸쪽 비교 · 새 득점0/수집종료"]
+  P835 --> E36["E36 손목 정렬·몸쪽 비교 · 새 득점0/당시 배치 종료"]
 ```
 
 - `runs`: 실행 종류·소스 커밋/수정 여부·계보·기록 수·QC·원본 백업. `replay_prefix_steps`는 의도한 길이, `replay_completed_steps`는 응답으로 확인한 재실행 길이입니다. E09처럼 ACK120·실제 부모 행동140이 다를 수 있어 차이를 신규 actor 행동으로 계산하지 않습니다.
@@ -164,12 +172,12 @@ E33은 E28/264·새 history242/254에서 가운데 파지 전략을 실행해20 
 
 E34는 직접 parent E33/470, source group E28에서 `coordinated-middle-grip-drape-retain`으로20 act·24호출·836전이를 기록했다.836=470 replay+245 model+120 settle+1 cleanup이며 새366전이·18.30시뮬레이션초다. client/simulator0·complete·QC836/836, 로컬5/50·pickup5·착의0·success=false다.5점은 새 구간 픽업에서 발생했고 같은 손목 걸침·소매 통과는 확인하지 못했다. 실제 들기·운반과 D18의약16mm하강, D19의횡방향 보정을 구분한다. 추가 열기 명령은0이지만 retain은 정적 프롬프트 조건이며 런타임 차단·누적 작업 원장 구현이 아니다. [E34 리뷰](../reviews/20261114-astra-middle-grip470-retain-001.ko.md) / [마감 세션](../../project/sessions/20261114-e34-retain-resume.ko.md).
 
-[고정 백업 receipt](../../project/sessions/20261114-e34-backup-verification.json)의 revision `ba71dd6a07e2b05202c3dcaa5b0c9a3c17997b1d`에서 archive1,910,237,869bytes·SHA256·236개 manifest 파일·원본234파일 불변 검증을 완료했다. 정상 수집과 보존 검증은 학습 승인·착의 성공과 별개다. 당시 E34 이후 중지로 E34 startpoint나 E35 planned 조합을 생성하지 않았다. 이후 추가 수집 승인으로 E34/723·835를 검토해 아래 두 실행을 기록했으며, 최신 지시에 따라 E36 뒤 수집을 종료했다. [수집 시스템 재정비 계획](../research/2026-11-14-collection-system-redesign.ko.md)의 구현·학습은 수행하지 않았다.
+[고정 백업 receipt](../../project/sessions/20261114-e34-backup-verification.json)의 revision `ba71dd6a07e2b05202c3dcaa5b0c9a3c17997b1d`에서 archive1,910,237,869bytes·SHA256·236개 manifest 파일·원본234파일 불변 검증을 완료했다. 정상 수집과 보존 검증은 학습 승인·착의 성공과 별개다. 당시 E34 이후 중지로 E34 startpoint나 E35 planned 조합을 생성하지 않았다. 이후 추가 수집 승인으로 E34/723·835를 검토해 아래 두 실행을 기록했으며, 당시 지시에 따라 E36 뒤 그 배치를 종료했다. [수집 시스템 재정비 계획](../research/2026-11-14-collection-system-redesign.ko.md)의 구현·학습은 수행하지 않았다.
 
-## E35·E36 마감과 최종 종료
+## E35·E36 마감과 당시 배치 종료
 
 E35는 E34/723·새 history671/697에서 넓은 아래 자유구간과 같은 손목 측면 접근을 비교했다.983=723 replay+158 model+102 settle,19결정(18act+finish)·21호출이며 QC983/983·5/50·착의0·success=false다.5점은 replay26.85초에 얻었고 새260전이·13.00초의 득점은0이다. 손의 새 근접 관계는 관측했으나 손목 걸침·연속 전완 진행·소매 통과는 미확인이다. [리뷰](../reviews/20261114-astra-wide-hem723-001.ko.md) / [검증된 고정 백업](../../project/sessions/20261114-e35-backup-verification.json).
 
 E36은 E35 말단 대신 E34/835·새 history787/815에서 현재 근접 형상을 보존하고 같은 손목 정렬 뒤 몸쪽으로 짧게 이동하는 비교를 수행했다.933=835 replay+50 model+48 settle,11결정(10act+finish)·12호출이며 QC933/933·5/50·착의0·success=false다.5점은 replay26.85초에 얻었고 새98전이·4.90초의 득점은0이다. 직접 진입 시험과 같은 전완의 새 노출은 관측했으나 손이 노란 파지 모서리/housing 곁에 남아 자유 경계 통과·손목 걸침·소매 통과는 미확인이다. [고정 백업 receipt](../../project/sessions/20261114-e36-backup-verification.json)의 revision `dcf059881e4e6c103dc8206438a70eb1b8ccb26f`에서 archive2,119,594,428bytes·SHA·155개 manifest 파일·원본153파일 불변 검증을 완료했다. 새10act의 base yaw는 모두0이므로 정확한 몸 방향 정렬이 달성됐다고 명령만으로 결론 내리지 않는다. [E36 리뷰](../reviews/20261114-astra-wrist-body835-001.ko.md) / [E36 실행 기록](../../project/sessions/20261114-e36-wrist-body.ko.md).
 
-E35·E36은 각각20결정 예산 안에서 자발적으로 finish했고, 남은1개·9개를 합산하거나 다른 run에 이월하지 않는다. 같은 E28 계보로 묶으며 새 근접 변화·정상 QC·백업 무결성을 착의 성공 또는 학습 승인으로 바꾸지 않는다. E36까지 수집을 종료했고 E37–E39는 실행하지 않는다. 후속 키보드 직접 조작·사용자 개입은 계획이며 미구현 handoff를 현재 기능으로 설명하지 않는다.
+E35·E36은 각각20결정 예산 안에서 자발적으로 finish했고, 남은1개·9개를 합산하거나 다른 run에 이월하지 않는다. 같은 E28 계보로 묶으며 새 근접 변화·정상 QC·백업 무결성을 착의 성공 또는 학습 승인으로 바꾸지 않는다. 당시 배치는 E36에서 종료했고 E37–E39는 취소했다. 이후 구현한 사용자 HOLD·텍스트 피드백 M1은 위 별도 run으로 기록하며, 키보드 직접 조작 handoff와 구분한다.

@@ -1,17 +1,17 @@
 # PhyRC 2027
 
 <!-- PHYRC_USER_REVIEW:START -->
-> **사용자 방향 변경 · 이전110전이로 복귀 후 오른손 쪽 R0만 접근 준비**
+> **110전이 복귀 확인 · 오른손 쪽 R0만 접근 준비**
 >
-> 사용자가 왼손 쪽 로봇의 충돌을 의심해 이전 구간으로 돌아간 뒤 오른손 가까운 로봇만 줄무늬 두 칸 정도 진행하도록 지시했습니다. 공개 화면의 어깨–팔–손 연결을 확인한 매핑은 **R0=오른손 쪽, R1=왼손 쪽**입니다. 실제 충돌 원인은 아직 확정하지 않았습니다.
+> 원래 출발 슬롯에서 이전 행동110전이를 재생했습니다. 기존 HOLD10과 파지점 차이는 **R0 1.86mm / R1 0.63mm**이며, 공개5뷰의 큰 배치·양쪽 지지·손 연결은 유지돼 보입니다. 정확한 물리 상태의 되감기는 아닙니다.
 >
-> 기존 `20261116-astra-m1-checkpoint-001`은 **추가 전이 없이120전이로 정상 마감·QC120/120 통과**했습니다. 현재 live HOLD가 아닙니다. 직전 구간 시작인 hold-0010·110전이로 복귀하기 위해 동일 출발 슬롯과 앞110개 기록 행동으로 새 분기 `20261116-astra-right-hand-hold10-001`을 준비합니다. 별도110전이 슬롯은 없어 행동 재생을 사용하며, 당시 상태와의 비교 후 진행합니다.
+> 사용자의 기존 지시에 따라 **오른손 가까운 R0만 두 줄무늬 간격 정도 더 접근**하고 왼손 쪽R1은 중립 명령으로 지지를 유지합니다. 공개 어깨–팔–손 연결로 좌우를 확인했습니다. 중립 명령이 실제 위치 고정을 보장하지 않으므로 R1의 남는 운동도 측정합니다.
 >
-> **아래 GIF는 복귀 대상으로 선택한 이전 hold-0010까지의 기록**입니다. 새 분기의 현재 화면이 아닙니다.
+> 새 run `20261116-astra-right-hand-hold10-001` · 시작 **hold-0001**, 관측 `a22ece51b72d78fe` ·110전이/tick1320/7.008334s. 아래는 복귀 재생의 마지막 구간이며 새로운 단독 접근 영상은 아닙니다. 현재 검증·게시 HOLD 뒤 이미 승인된 사용자 지시를 이어갑니다.
 
-<a href="docs/gallery/20261116-m1-guided-segments/README.ko.md"><img src="docs/gallery/20261116-m1-guided-segments/bodyward-33mm-completion.gif" width="536" alt="복귀 대상인 기존 hold-0010까지의 기록 GIF"></a>
+<a href="docs/gallery/20261116-right-hand-hold10/README.ko.md"><img src="docs/gallery/20261116-right-hand-hold10/restore-tail.gif" width="536" alt="같은 출발 슬롯에서 재생한93–110전이 복귀 기록, 새 단독 접근 전"></a>
 
-[복귀 대상110전이 화면](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0010/README.ko.md) · [마감한120전이 화면](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0011/README.ko.md) · [현재 전략](docs/COLLECTION_PLAN.md)
+[복귀한5카메라](docs/collection/user-reviews/20261116-astra-right-hand-hold10-001/hold-0001/README.ko.md) · [기존110전이와 비교·좌우 매핑](docs/collection/reviews/20261116-right-hand-hold10-branch.ko.md) · [원래120전이 마감·백업](docs/collection/attempts/20261116-astra-m1-checkpoint-001/README.ko.md) · [현재 전략](docs/COLLECTION_PLAN.md)
 <!-- PHYRC_USER_REVIEW:END -->
 
 [![E00–E36 통합 분석 보고서 PDF 열기](docs/assets/e36-integrated-report-button.svg)](docs/reports/20261114-e36-integrated-review/phyrc-e36-integrated-review.ko.pdf)
