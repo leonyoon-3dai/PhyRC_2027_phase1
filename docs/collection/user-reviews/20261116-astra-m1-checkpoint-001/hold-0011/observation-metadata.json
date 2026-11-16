@@ -1,0 +1,30 @@
+{
+  "schema": "phyrc-user-review-v1",
+  "run_id": "20261116-astra-m1-checkpoint-001",
+  "hold_id": "hold-0011",
+  "observation_id": "1ae72bb8fe2b52ce3daebd876a58adbf06a455799ec330d12ca0eac110d75667",
+  "observation_step": 120,
+  "physics_tick_since_recording_start": 1440,
+  "simulation_time_s": 7.508333724923432,
+  "captured_at_utc": "2026-11-16T03:24:18.850891+00:00",
+  "source_checkpoint": {
+    "initial_slot": "/output/collections/20261116-e36-checkpoint-001-original/checkpoints/20261116-e36-checkpoint-001-slot/slot_20261116-e36-checkpoint-001-slot.npz",
+    "replay_run": null,
+    "replay_steps": 0,
+    "exact_physics_checkpoint": false
+  },
+  "method": "M1",
+  "reason": "model_stop",
+  "camera_sha256": {
+    "overview": "3fb2c547e70f86d368ff1746f8d223aff2ef8dcf740cb8fed77c5b3895d8832f",
+    "robot_1_head": "ac774c9e5a6e2135dc475dfaf546fd2cbb9d4f4fcaa20b06aa88c53026745c7d",
+    "robot_0_head": "3177ca4a0e59c1533d59cd7b65a1364acdd7b506797ad58df49f8186f83d4066",
+    "robot_1_wrist": "9eee803e68ecfbf863c9442bcbbb4e244f37f4f1f0af8cb9040b798ff2e6b1e3",
+    "robot_0_wrist": "dc76028dbd09e446a6c3154f22598d46e1e8aca6a2a875a1b7af72ae00ea1d08"
+  },
+  "live_hold_at_capture": true,
+  "last_intent": "Request physics-zero review for a new asymmetric response: robot_1 grasp advanced only about 0.3 mm versus robot_0's 5.3 mm, with uncommanded robot_1 yaw and arm deflection. Estimated segment travel is 18.3/13.5 mm. Both grips appear retained, but further coordinated advance is uncertain; third-stripe edge alignment remains unconfirmed.",
+  "observed_effect": "Inspect the five current views against the preceding review; intent alone is not evidence of effect.",
+  "unknown": "Grasp support, garment topology and sleeve passage require review of public observations.",
+  "question": "Continue with a direction, change M1/M2/M3, choose another checkpoint, or finish?"
+}
