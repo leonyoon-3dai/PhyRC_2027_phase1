@@ -417,7 +417,11 @@ def source_snapshot(root, trace):
     paths = [root / 'run.sh', root / 'scripts/collect_operator.py',
              root / 'participant/streaming/collector_stream.py',
              root / 'config/policy_interface.json', root / 'config/assets.lock.json',
-             root / 'participant/research/depth_backprojection.py']
+             root / 'participant/research/depth_backprojection.py',
+             root / 'src/PhyRC_Sim/Policy/training_dataset.py',
+             root / 'src/PhyRC_Sim/Policy/environment.py',
+             root / 'src/PhyRC_Sim/Policy/stages.py',
+             root / 'src/PhyRC_Sim/Env_StandAlone/Teleop_TShirt_Stretch4_Env.py']
     paths += sorted((root / 'participant/collection').glob('*.py'))
     hashes = {}
     for path in paths:
@@ -542,6 +546,12 @@ def replay_image_context(current_images, current_time, history):
     return images, {'schema': REPLAY_IMAGE_SCHEMA, 'groups': groups}
 
 
+class SimulatorRequestRejected(ValueError):
+    def __init__(self, value):
+        super().__init__('simulator rejected request: ' + str(value.get('error')))
+        self.request_id = value.get('request_id')
+
+
 class Simulator:
     """Timeout-bounded transport; stdout contains public JSON, logs stay private."""
     def __init__(self, command, root, log, *, timeout_s=600):
@@ -596,7 +606,7 @@ class Simulator:
             self.log.flush()
             raise ValueError('non-JSON simulator output; inspect private simulator.log') from None
         if value.get('ok') is False:
-            raise ValueError('simulator rejected request: ' + str(value.get('error')))
+            raise SimulatorRequestRejected(value)
         if 'observation_step' in value:
             self.observation_step = value['observation_step']
         return value
@@ -614,7 +624,12 @@ class Simulator:
                                             'request_id': request_id,
                                             'observation_step': self.observation_step}, allow_nan=False) + '\n')
         self.process.stdin.flush()
-        response = self.receive()
+        try:
+            response = self.receive()
+        except SimulatorRequestRejected as exc:
+            if exc.request_id == request_id:
+                self.pending_request = None
+            raise
         if response.get('request_id') != request_id:
             raise ValueError('simulator response does not match request')
         self.pending_request = None
@@ -698,7 +713,31 @@ def main():
                         help='Enable trusted numeric collector phase timings; default off')
     parser.add_argument('--post-action-settle-steps', type=int, default=0,
                         help='After a motion act, apply 0..20 neutral control steps before observing again')
+    parser.add_argument('--user-guided', action='store_true',
+                        help='Persistent live HOLD and bound file feedback; first boundary always reviewed')
+    parser.add_argument('--segment-decisions', type=int, default=20)
+    parser.add_argument('--segment-steps', type=int, default=400)
+    parser.add_argument('--initial-slot', help='Trusted container path to a validated approximate slot file')
+    parser.add_argument('--checkpoint-dir', help='Trusted container output directory for new checkpoints')
+    parser.add_argument('--save-checkpoint-on-start', action='store_true')
+    parser.add_argument('--prepare-checkpoint-only', action='store_true',
+                        help='Replay, save and export setup state, then explicitly close without actor actions')
+    parser.add_argument('--start-state-validation',
+                        help='Trusted validation receipt for this initial-slot; skips only initial setup review')
     args = parser.parse_args()
+    if args.user_guided and (args.actor_backend != 'exec' or args.plan_size != 1 or args.pixel_depth_query):
+        parser.error('user-guided currently requires exec, plan-size=1 and no pixel-depth-query')
+    if not 1 <= args.segment_decisions <= 2000 or not 1 <= args.segment_steps <= 18000:
+        parser.error('invalid user review segment budget')
+    if (args.initial_slot or args.checkpoint_dir or args.save_checkpoint_on_start) and not args.user_guided:
+        parser.error('checkpoint options require user-guided mode')
+    if args.prepare_checkpoint_only and not (args.user_guided and args.replay_prefix_run and args.save_checkpoint_on_start):
+        parser.error('prepare-checkpoint-only requires user-guided, replay-prefix-run and save-checkpoint-on-start')
+    if args.start_state_validation and not (args.user_guided and args.initial_slot):
+        parser.error('start-state-validation requires user-guided and initial-slot')
+    if args.initial_slot and args.replay_prefix_run:
+        parser.error('select either initial-slot or replay-prefix-run')
+
     if args.named_actions and (args.actor_backend != 'exec' or args.plan_size != 1):
         parser.error('named-actions requires exec and plan-size=1')
     if args.pixel_depth_query and (args.actor_backend != 'exec' or args.plan_size != 1):
@@ -903,6 +942,9 @@ def main():
                  'the published 3-second criterion. A raised gripper pose alone does not prove cloth '
                  'height or grasp. Continue preserving the grip and neutral motion until the hold '
                  'target is met, unless observations require recovery or the controller ends the episode.')
+    if args.user_guided:
+        # The selected method replaces old strategy-specific acquisition/regrasp constraints.
+        task = TASK + '\n\nHuman review controls this episode. stop/finish_episode are review proposals; the supervisor pauses without advancing physics. Inspect each new observation before a short action. Do not request hidden state or evaluation feedback.'
     action_schema = SCHEMA
     if args.named_actions:
         from participant.collection import named_actions
@@ -919,6 +961,12 @@ def main():
                '--prompt-file', '/output/operator-traces/' + args.run_id + '/prompt.txt',
                '--max-steps', str(args.max_steps), '--evaluate',
                '--input-timeout', str((2 if args.pixel_depth_query else 1) * args.model_timeout + 120)]
+    if args.user_guided:
+        command += ['--user-guided']
+    if args.initial_slot:
+        command += ['--initial-slot', args.initial_slot]
+    if args.checkpoint_dir:
+        command += ['--checkpoint-dir', args.checkpoint_dir]
     if args.webrtc:
         command += ['--webrtc']
     if args.profile_step_phases:
@@ -932,12 +980,12 @@ def main():
         'source_group': args.source_group or args.run_id, 'source': source,
         'model': args.model, 'reasoning_effort': args.effort,
         'prompt_sha256': hashlib.sha256(task.encode()).hexdigest(),
-        'mode': args.mode, 'decisions_requested': args.decisions, 'decisions_completed': 0,
+        'mode': args.mode, 'decisions_requested': args.segment_decisions if args.user_guided else args.decisions, 'decisions_completed': 0,
         'strategy': args.strategy,
         'actor_backend': args.actor_backend, 'plan_size': args.plan_size,
         'plan_step_budget': args.plan_step_budget,
         'plan_execution': 'open_loop_list' if args.plan_size > 1 else 'single_decision',
-        'review_threshold_raw_points': None if args.mode == 'wiring' else args.review_points,
+        'review_threshold_raw_points': None if args.mode == 'wiring' or args.user_guided else args.review_points,
         'pickup_hold_target_simulation_s': args.pickup_hold_seconds if args.mode == 'pickup' else None,
         'actor_calls_attempted': 0, 'actor_usage': {},
         'finished': False, 'status': 'starting', 'error': None,
@@ -1014,7 +1062,7 @@ def main():
                         capture_complete=manifest.get('capture_complete', False))
         def check_review_gate():
             nonlocal stop_reason
-            if args.mode == 'wiring':
+            if args.mode == 'wiring' or args.user_guided:
                 return
             points = official_review_points(root / 'output/collections' / args.run_id)
             gate['last_observed_raw_points'] = points
@@ -1101,11 +1149,26 @@ def main():
                         replay.final_public_state, obs)
                 manifest['policy_suffix_start_step'] = manifest['simulation_steps']
                 record_milestones()
-            if stop_reason != 'review_points':
+            if stop_reason != 'review_points' and not args.prepare_checkpoint_only:
                 check_interrupt()
                 actor = Actor(actor_root / 'runtime', model=args.model, effort=args.effort, timeout_s=args.model_timeout)
             manifest['status'] = 'collecting'
-            for index in range(args.decisions if stop_reason != 'review_points' else 0):
+            if args.user_guided:
+                from participant.collection.user_review import run_guided
+                def reset_guided_actor():
+                    nonlocal actor
+                    actor.close()
+                    actor = Actor(actor_root / f'runtime-resume-{manifest["actor_calls_attempted"]:05d}',
+                                  model=args.model, effort=args.effort, timeout_s=args.model_timeout)
+                    return actor
+                obs = run_guided(sim=sim, actor=actor, obs=obs, args=args, root=root,
+                    trace=trace, actor_root=actor_root, task=task, interface=interface,
+                    manifest=manifest, event=event, prepare_observation=prepare_observation,
+                    validate_decision=validate_decision, action_schema=action_schema,
+                    token_usage=token_usage, check_interrupt=check_interrupt, reset_actor=reset_guided_actor)
+                finished, active = True, False
+                stop_reason = 'user_finish_or_checkpoint'
+            for index in range(args.decisions if stop_reason != 'review_points' and not args.user_guided else 0):
                 check_interrupt()
                 observation_dir = actor_root / 'observations' / f'{index:05d}'
                 payload, images = prepare_observation(obs, observation_dir)
@@ -1435,7 +1498,7 @@ def main():
                                      'plan_segment_index': item[2]['plan_segment_index']}
                                     for item in pending_plan]})
             if sim is not None:
-                if active and sim.process.poll() is None:
+                if active and sim.process.poll() is None and not args.user_guided:
                     try:
                         neutral_steps = 0
                         if args.post_action_settle_steps and manifest['simulation_steps'] >= args.max_steps:
@@ -1450,10 +1513,17 @@ def main():
                         finished, active = True, False
                     except Exception as exc:
                         manifest['shutdown_error'] = str(exc)
-                try:
-                    manifest['simulator_returncode'] = sim.close()
-                except Exception as exc:
-                    manifest['shutdown_error'] = str(exc)
+                if args.user_guided and active and sim.process.poll() is None:
+                    # A supervisor failure must not turn into a neutral action/finish.
+                    # Collector EOF enters orphan HOLD. Do not wait for it to exit.
+                    sim.process.stdin.close()
+                    manifest['orphan_collector_pid'] = sim.process.pid
+                    manifest['live_hold_confirmed'] = False
+                else:
+                    try:
+                        manifest['simulator_returncode'] = sim.close()
+                    except Exception as exc:
+                        manifest['shutdown_error'] = str(exc)
             if actor is not None:
                 try:
                     actor.close()

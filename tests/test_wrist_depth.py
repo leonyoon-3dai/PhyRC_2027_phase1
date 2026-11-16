@@ -97,10 +97,17 @@ class WristDepthTest(unittest.TestCase):
                          'participant/collection/wrist_depth.py',
                          'participant/collection/depth_query.py',
                          'participant/collection/named_actions.py',
-                         'participant/research/depth_backprojection.py'):
+                         'participant/research/depth_backprojection.py',
+                         'src/PhyRC_Sim/Policy/training_dataset.py',
+                         'src/PhyRC_Sim/Policy/environment.py',
+                         'src/PhyRC_Sim/Policy/stages.py',
+                         'src/PhyRC_Sim/Env_StandAlone/Teleop_TShirt_Stretch4_Env.py'):
                 p=root/name; p.parent.mkdir(parents=True, exist_ok=True); p.write_text('fixed-source')
             with patch.object(codex_client.subprocess, 'check_output', side_effect=['a'*40, '']):
                 snapshot=codex_client.source_snapshot(root,trace)
+            for name in ('training_dataset.py', 'environment.py', 'stages.py'):
+                self.assertIn('src/PhyRC_Sim/Policy/' + name, snapshot['files_sha256'])
+            self.assertIn('src/PhyRC_Sim/Env_StandAlone/Teleop_TShirt_Stretch4_Env.py', snapshot['files_sha256'])
             self.assertIn('participant/collection/wrist_depth.py',snapshot['files_sha256'])
             self.assertIn('participant/collection/depth_query.py',snapshot['files_sha256'])
             self.assertIn('participant/collection/named_actions.py',snapshot['files_sha256'])

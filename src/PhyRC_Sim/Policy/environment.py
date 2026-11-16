@@ -20,7 +20,8 @@ class DressingEnv(gym.Env):
     _claimed = False
 
     def __init__(self, *, profile='actor_rgbd', resolution=None, max_episode_steps=400,
-                 evaluator=None, contract_path=None, render_mode=None, settle_ticks=90, initial_slot=None):
+                 evaluator=None, contract_path=None, render_mode=None, settle_ticks=90, initial_slot=None,
+                 slot_reset_observer=None):
         if profile not in ('measured_state', 'actor_rgbd'):
             raise ValueError('Unknown observation profile')
         if render_mode not in (None, 'rgb_array') or (render_mode and profile != 'actor_rgbd'):
@@ -53,6 +54,7 @@ class DressingEnv(gym.Env):
         DressingEnv._claimed = True
         self.M = M
         self.initial_slot = Path(initial_slot).resolve() if initial_slot else None
+        self.slot_reset_observer = slot_reset_observer
         original_placement = M.randomize_human_and_chair
         if self.initial_slot:
             from .stages import validate_slot, restore_placement
@@ -226,6 +228,19 @@ class DressingEnv(gym.Env):
         load_slot(self, self.initial_slot)
         self.spawn = {'restored_from': str(self.initial_slot), 'randomized': False}
         self.garment_spawn = {'restored_from': str(self.initial_slot), 'randomized': False}
+        if self.slot_reset_observer is not None:
+            # Trusted diagnostics: render public cameras before settling without
+            # modifying the physical reset or exposing private state to actors.
+            self._previous_action = np.zeros(self.action_space.shape, np.float32)
+            self._step_id = 0
+            self._start_time = float(self.world.current_time)
+            if self.sensors:
+                self.sensors.reset_episode()
+            before = float(self.world.current_time)
+            snapshot_observation, _ = self._observe()
+            self.slot_reset_observer('before_settle', snapshot_observation)
+            if float(self.world.current_time) != before:
+                raise RuntimeError('slot_reset_observer_advanced_physics')
         neutral = decode_action(np.zeros(self.action_space.shape, np.float32), self.contract, self._runtime)
         for _ in range(self.settle_ticks):
             self._tick(neutral)
@@ -237,6 +252,8 @@ class DressingEnv(gym.Env):
             self.sensors.reset_episode()
         observation, info = self._observe()
         info['reset_settling'] = {'control_ticks': self.settle_ticks, 'mode': 'checkpoint; FEM history not bitwise restored'}
+        if self.slot_reset_observer is not None:
+            self.slot_reset_observer('after_settle', observation)
         self._last_observation = {key: value.copy() for key, value in observation.items()}
         if self.evaluator is not None and hasattr(self.evaluator, 'reset'):
             self.evaluator.reset(info)

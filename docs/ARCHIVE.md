@@ -2,7 +2,7 @@
 
 [메인](../README.md) | [시연 목록](EPISODES.md) | [다음 수집](COLLECTION_PLAN.md) | [Astra 코드](ASTRA.md) | [클린 서버](OPERATIONS.md)
 
-현재 안내는 네 개의 주요 문서에서 관리합니다. 아래 자료는 실행 근거와 당시 연구 기록입니다. 과거 문서의 “다음 실행”을 현재 지시로 사용하지 않습니다.
+**먼저 [과거 결과 요약](HISTORY_SUMMARY.ko.md)과 [기전·판단 기준](MECHANISMS.ko.md)을 읽습니다.** 현재 방향은 [COLLECTION_PLAN](COLLECTION_PLAN.md), 실제 실행 상태는 [STATUS](project/STATUS.md)가 정본입니다. 아래 자료는 상세 재현 근거와 당시 연구 기록입니다. 과거 문서의 “현재”, “다음 실행”은 작성 당시 상태이며 현재 지시로 사용하지 않습니다.
 
 ## 실행과 자료
 
@@ -12,7 +12,8 @@
 | 실행·출발점·방법 정본 | [catalog.v1.json](collection/catalog/catalog.v1.json), [색인 설명](collection/catalog/README.ko.md) |
 | 시도별 검수 | [reviews](collection/reviews/), [attempts](collection/attempts/) |
 | 날짜별 진행 | [HISTORY](project/HISTORY.ko.md), [project sessions](project/sessions/), [collection sessions](collection/sessions/) |
-| E27 마감 | [마감 기록](project/SESSION_WRAPUP_20261107.ko.md), [현재 상태](project/STATUS.md) |
+| E36 최신 정상 마감 | [실행 기록](project/sessions/20261114-e36-wrist-body.ko.md), [통합 PDF·근거](reports/20261114-e36-integrated-review/README.ko.md) |
+| E27 당시 마감 | [과거 마감 기록](project/SESSION_WRAPUP_20261107.ko.md) |
 | 화면 표시·원본 출처 | [robot_1 왼쪽 / robot_0 오른쪽](gallery/ROBOT_LAYOUT.ko.md) |
 | 성능 계측과 한계 | [performance](project/performance/) |
 
@@ -22,6 +23,15 @@
 
 | 복원 대상 | 검증 receipt |
 |---|---|
+| `20261114-e36` | [JSON](project/sessions/20261114-e36-backup-verification.json) |
+| `20261114-e35` | [JSON](project/sessions/20261114-e35-backup-verification.json) |
+| `20261114-e34` | [JSON](project/sessions/20261114-e34-backup-verification.json) |
+| `20261114-e33` | [JSON](project/sessions/20261114-e33-backup-verification.json) |
+| `20261114-e32` (진단 전용·불완전 원본) | [JSON](project/sessions/20261114-e32-backup-verification.json) |
+| `20261113-e31` | [JSON](project/sessions/20261113-e31-backup-verification.json) |
+| `20261113-e30` | [JSON](project/sessions/20261113-e30-backup-verification.json) |
+| `20261113-e29` | [JSON](project/sessions/20261113-e29-backup-verification.json) |
+| `20261113-e28` | [JSON](project/sessions/20261113-e28-backup-verification.json) |
 | `20261106-depth-query-wiring-backup-verification` | [JSON](project/sessions/20261106-depth-query-wiring-backup-verification.json) |
 | `20261106-e10-backup-verification` | [JSON](project/sessions/20261106-e10-backup-verification.json) |
 | `20261106-e11-backup-verification` | [JSON](project/sessions/20261106-e11-backup-verification.json) |
@@ -76,3 +86,12 @@
 | `docs/project/PRESENTATION.ko.md` | [고정 원문](https://github.com/leonyoon-3dai/PhyRC_2027_phase1/blob/f17f5495259468ce2c9fc625b4eff145a28d27cf/docs/project/PRESENTATION.ko.md) |
 | `docs/project/RESEARCH_ROADMAP.ko.md` | [고정 원문](https://github.com/leonyoon-3dai/PhyRC_2027_phase1/blob/f17f5495259468ce2c9fc625b4eff145a28d27cf/docs/project/RESEARCH_ROADMAP.ko.md) |
 | `docs/project/TODO.ko.md` | [고정 원문](https://github.com/leonyoon-3dai/PhyRC_2027_phase1/blob/f17f5495259468ce2c9fc625b4eff145a28d27cf/docs/project/TODO.ko.md) |
+
+## 현재 전략 중심 정리 이전 본문
+
+2026-11-16의 상세 E33–E36 표와 이전 실행 지시를 확인하려면 아래 고정 원문을 사용합니다. 현재 checkout은 중복을 줄였으며 세션·영상·manifest·백업 receipt 경로는 보존했습니다.
+
+| 문서 | 정리 전 고정 원문 |
+|---|---|
+| STATUS | [1bd3f597의 상세 상태](https://github.com/leonyoon-3dai/PhyRC_2027_phase1/blob/1bd3f597ac5da6ee037f0f491b5b078ba57b7b32/docs/project/STATUS.md) |
+| AGENTS | [1bd3f597의 인계 지침](https://github.com/leonyoon-3dai/PhyRC_2027_phase1/blob/1bd3f597ac5da6ee037f0f491b5b078ba57b7b32/AGENTS.md) |

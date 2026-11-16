@@ -41,6 +41,7 @@ class Operator:
         self._active = False
         self._tick = 0
         self._calls = []
+        self._hold_id = None
 
     def begin(self, *, seed=None):
         # Only the implementation-side runner can reset; seed is never returned.
@@ -52,6 +53,7 @@ class Operator:
         self._tick = 0  # episode-relative ticks, not a claim about raw archives
         self._active = True
         self._calls = []
+        self._hold_id = None
         return self.observe()
 
     def observe(self):
@@ -63,6 +65,8 @@ class Operator:
         a = validate_action(action, steps)
         if not self._active:
             raise RuntimeError('no active episode')
+        if self._hold_id is not None:
+            raise RuntimeError('episode_held')
         started = time.perf_counter()
         for _ in range(steps):
             before = self._obs
@@ -83,9 +87,31 @@ class Operator:
         # Synchronous execution has no pending queue. Neutral motion preserves grip intent.
         return self.act(np.zeros((2,9), np.float32), 1)
 
+    def hold(self, hold_id, reason):
+        """Trusted supervisor only: flush, preserving the exact live boundary."""
+        if not self._active:
+            raise RuntimeError('no active episode')
+        if self._hold_id is not None and self._hold_id != hold_id:
+            raise ValueError('different_hold_active')
+        self._hold_id = hold_id
+        self._writer.flush()
+        return {'active': True, 'held': True, 'hold_id': hold_id,
+                'observation': self.observe()}
+
+    def resume(self, hold_id):
+        """A matching explicit user response is required; no reset or motion."""
+        if not self._active or self._hold_id != hold_id:
+            raise ValueError('stale_hold')
+        self._hold_id = None
+        if self._meta['operator_source'] == 'gpt':
+            self._meta['operator_source'] = 'human_corrected_gpt'
+        return {'active': True, 'held': False, 'hold_id': hold_id,
+                'observation': self.observe()}
+
     def finish_episode(self, reason='operator_finished'):
         if self._active:
             valid = self._tick > 0
             self._writer.finish_episode(reason, valid=valid)
             self._active = False
+            self._hold_id = None
         return {'steps': self._tick // 12, 'complete': self._tick > 0}

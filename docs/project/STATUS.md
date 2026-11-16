@@ -1,106 +1,43 @@
 # 현재 상태
 
-**2026-11-16 최신 결정: 조사 종료, checkpoint 기반 사용자 피드백 시연으로 전환.** 현재는 클린 서버 대기이며 이번 변경은 문서 인계다. 최신 E36/933 후보를 복원·검증하고 M1부터 첫 소매 새5점에 도전한다. 자동 종료·관리 예산·득점 검토 시5카메라를 README 상단에 게시하고 사용자 텍스트를 기다리는 live HOLD를 먼저 구현·검증한다. [현재 계획](../COLLECTION_PLAN.md) · [클린 서버 인계서](../collection/research/2026-11-16-user-guided-resume.ko.md)
+**현재 방향은 E36/933 출발 후보를 검증하고 M1 국소 교정으로 첫 소매 새5점에 도전하는 사용자 피드백 시연이다.** 2026-11-16 클린 서버 착수를 시작했다. 개발 대화의 `gpt-6-astra` 전환, HF CLI 2.4.0과 `leonayoon` 로그인, L40S GPU 접근을 확인했다. 자산·원본 복원과 checkpoint·HOLD 연결을 준비 중이며, 실제 새 시연 결과는 아직 없다. 개발 대화의 모델 전환과 격리 로봇 actor의 고정 CLI 연결 검사는 별도다.
 
-**[E00–E36 통합 분석 슬라이드 PDF](../reports/20261114-e36-integrated-review/phyrc-e36-integrated-review.ko.pdf)** · [텍스트·출처·검증](../reports/20261114-e36-integrated-review/README.ko.md)
+[현재 실행 계획](../COLLECTION_PLAN.md) · [기전·판단 기준](../MECHANISMS.ko.md) · [과거 결과 요약](../HISTORY_SUMMARY.ko.md) · [실행 인계서](../collection/research/2026-11-16-user-guided-resume.ko.md) · [환경 복원](../OPERATIONS.md)
 
-**2026-11-15 선행 분석·설계:** E36 종료·득점 분석, HolidayFactory 검토, 직접 키보드 성공·복구 시연의 활용을 기록했습니다. 특정 한 방법을 고집하지 않고 사람 조작·Astra·개입·감독·후속 학습을 선택·조합할 수 있는 시스템과 추가 득점 방향을 모색합니다. [현재 계획](../COLLECTION_PLAN.md) · [E36 후속 분석](../collection/research/2026-11-15-e36-continuation-options.ko.md) · [논문 검토](../collection/research/2026-11-15-holidayfactory-phyrc.ko.md)
+## 현재 실행과 검증 경계
 
-**실제 실행 상태는 E36 정상 마감입니다. 당시 E37–E39는 취소했고 이후 새 시연은 없습니다.** 공개 검토·고정 백업·GIF·통합 PDF를 보존합니다. 이번 갱신은 문서화이며 런타임 기능·handoff·새 학습을 구현하거나 추가 득점을 얻은 기록이 아닙니다.
-
-**추가 수집 이력:** 09:29 UTC에 정리본 선게시와 기존 방식의 최대5회 추가 수집을 승인받았습니다. E35·E36 두 번을 수행했고, 이후 중지 지시에 따라 E36을 마지막으로 종료했습니다. 새 시스템 개편·학습은 수행하지 않았습니다. [이번 배치](sessions/20261114-wide-hem-five-attempt-batch.ko.md)
-
-[메인](../../README.md) | [시연 목록](../EPISODES.md) | [마감·재정비 계획](../COLLECTION_PLAN.md) | [Astra 코드](../ASTRA.md) | [클린 서버](../OPERATIONS.md)
-
-## 정상 마감한 E36 / 이번 배치 종료
-
-E36까지의 당시 배치는 종료됐고 E37–E39는 실행하지 않았습니다. 공개 검토와 고정 백업 검증을 완료했습니다. 새 계획은 클린 서버에서 checkpoint·사용자 HOLD 기능을 준비한 뒤 추가5점 시도를 시작하는 것입니다. 새 연구 시스템·학습·실시간 사용자 개입은 아직 구현하지 않았습니다.
-
-| 구분 | 확인된 E36 상태 |
+| 항목 | 확인한 상태 |
 |---|---|
-| 실행 / 소스 | `20261114-astra-wrist-body835-001` / 공개 source `f39b0e2fc9407adc1d9ced9765ff89824e90d05a`, 시작 시 clean |
-| UTC |2026-11-14 10:43:35–11:11:42 |
-| 직접 parent / source group | E34 `20261114-astra-middle-grip470-retain-001` / E28 `20261113-astra-side-hem-fresh-001` |
-| 출발·입력 | prefix835·새 history787/815; `coordinated-wrist-body-entry` |
-| 기록 |933=835 replay+50 model+48 settle(8구간); 새98전이·4.90시뮬레이션초, 종료 정리0 |
-| 판단·종료 | 최대20개 중11결정=10 act+마지막 finish_episode;12모델 호출(물리0 질의 후속1회). 예산 소진·review10·timeout 종료가 아님 |
-| 마감 / QC | client/simulator0, completed/closed/finished=true, capture complete; 전수 QC933/933·오류0 |
-| 별도 평가 | valid=true, raw5/50·pickup5·착의0·success=false. pickup26.85초는835 prefix의41.75초 이전이며 새 구간 득점0 |
-| 시간 | client 내부1686.999초(28.12분), actor806.640초, 환경832.212초(replay735.678초+새 환경96.534초) |
-| 공개 검토 | 준비 반복 없이 직접 진입을 시험하고 같은 전완이 새로 보였으나, 손은 파지 모서리/housing 곁에 남음. 자유 경계 통과·유지된 손목 걸침·연속 전완 진행·소매 출구 미확인 |
-| 고정 백업 | HF `dcf059881e4e6c103dc8206438a70eb1b8ccb26f`; archive2,119,594,428bytes·SHA,155개 manifest 파일·원본153파일 불변 검증 |
-| 학습 승인 | `unreviewed` |
+| 최신 정상 과제 시연 | E36 `20261114-astra-wrist-body835-001`, 정상 마감 |
+| 새 시연 출발 후보 | E36의933전이 경계. 실제 재생·slot 저장·복원·정착 검증 후 채택 |
+| 새 기능 | checkpoint 수집 연결·물리0 HOLD·5카메라 게시·텍스트 재개 구현 및 검증 준비. CPU·GPU·실제 actor 확인을 구분해 갱신 |
+| 첫 방법 / 목표 | M1 현재 파지 유지·국소 교정 / trusted evaluator의 `first_sleeve` 새0→5 |
+| 사용자 판단 | 자동 종료 제안·구간 예산·득점·출발 부적합에서 물리0 HOLD 후 README 상단에 같은 관측의5장 게시 |
+| 현재 성능 | 정상 평가 최고 로컬 raw5/50, 착의0, 완전 착의 성공 미확인 |
+| 학습 | 최신 시연 `unreviewed`; 새 VLA/RL 학습은 현재 범위에 없음 |
 
-[E36 리뷰](../collection/reviews/20261114-astra-wrist-body835-001.ko.md) / [페이지에서 GIF 보기](../gallery/20261114-e36-overview/README.ko.md) / [전체933프레임 영상](../collection/attempts/20261114-astra-wrist-body835-001/overview.mp4) / [공개 manifest](../collection/attempts/20261114-astra-wrist-body835-001/manifest.json) / [실행·마감 기록](sessions/20261114-e36-wrist-body.ko.md) / [고정 백업 receipt](sessions/20261114-e36-backup-verification.json) / [이번 배치](sessions/20261114-wide-hem-five-attempt-batch.ko.md).
+사용자의 답변 전에는 동작·정착·자동 재개를 하지 않는다. 살아 있는 HOLD와 실제 환경 종료·프로세스 장애를 구분한다. 실행 상태의 최신 화면은 [README 검토 패널](../../README.md)에서 확인한다.
 
-새10개 act의 base yaw는 모두0이었고 wrist yaw만2회 조정했습니다. 사용자가 요청한 정확한 몸 방향 정렬이 충분히 시험됐다고 볼 수는 없습니다.
+## 출발 근거: E36
 
-E36은 E35의983 말단을 자동 후속하지 않고 검토한 E34/835에서 새 replay로 분기했습니다. 같은 천 상태의 정확한 복원이나 독립 성공 표본이 아닙니다. 남은9결정은 다른 run에 자동 합산하지 않습니다. 후속 출발점과 방법은 최신 계획에서 검토하며 이번 문서화로 새 수집을 시작하지 않았습니다.
-
-## 정상 마감한 E35 / 이번 배치 첫 실행
-
-| 구분 | 확인된 E35 상태 |
+| 항목 | 확인된 결과 |
 |---|---|
-| 실행 / 소스 | `20261114-astra-wide-hem723-001` / 공개 source `9a09099f170a76469b99ee1f7a177e3429933302`, 시작 시 clean |
-| UTC |2026-11-14 09:52:22–10:32:33 |
-| 직접 parent / source group | E34 `20261114-astra-middle-grip470-retain-001` / E28 `20261113-astra-side-hem-fresh-001` |
-| 출발·입력 | prefix723·새 history671/697; `coordinated-wide-hem-side-entry` |
-| 기록 |983=723 replay+158 model+102 settle; 새260전이·13.00시뮬레이션초, 종료 정리0 |
-| 판단·종료 | 최대20개 중19결정=18 act+마지막 finish_episode;21모델 호출(물리0 질의 후속2회). 예산 소진·review10·timeout 종료가 아님 |
-| 마감 / QC | client/simulator0, completed/closed/finished=true, capture complete; 전수 QC983/983·오류0 |
-| 별도 평가 | valid=true, raw5/50·pickup5·착의0·success=false. pickup26.85초는723 prefix의36.15초 이전이며 새 구간 득점0 |
-| 시간 | client 내부2410.110초(40.17분), actor1473.917초, 환경883.532초; 전체 경과에는723 replay 포함 |
-| 공개 검토 | 손이 R1 wrist 시야에 새로 들어오는 근접 변화는 관측했으나 자유 경계 통과·손목 걸침·연속 전완 진행·소매 출구는 미확인. 마지막 손목·손가락 편차와 파지부 가림에서 자발적 마감 |
-| 고정 백업 | HF `befd4675a2da81d63b719dbc514d7495b96112bf`; archive2,285,223,382bytes·SHA,227개 manifest 파일·원본225파일 불변 검증 |
-| 학습 승인 | `unreviewed` |
+| 직접 parent / source group | E34/835 / E28 `20261113-astra-side-hem-fresh-001` |
+| 수집 | 933전이 =835 replay+50 model+48 settle. 새98전이·4.90시뮬레이션초 |
+| 종료 | 10 act+모델 `finish_episode`, 총11결정·12호출. 예산·review10·timeout 종료가 아님 |
+| 기술 QC | 전수933/933·오류0, capture complete, client/simulator0 |
+| 별도 평가 | valid=true, raw5/50·pickup5·착의0·success=false. 새 구간 득점0 |
+| 공개 관측 | 같은 전완이 새로 보였으나 손은 파지 모서리/housing 곁에 남음. 자유 경계 통과·유지된 손목 걸침·소매 출구 미확인 |
+| 미시험 조건 | 새10개 act의 base yaw는 모두0. 베이스 방향 변경의 효과는 충분히 시험하지 않음 |
+| 고정 백업 | HF `dcf059881e4e6c103dc8206438a70eb1b8ccb26f`, SHA·크기·155 manifest 파일·원본153파일 불변 검증 |
 
-[E35 리뷰](../collection/reviews/20261114-astra-wide-hem723-001.ko.md) / [전체983프레임 영상](../collection/attempts/20261114-astra-wide-hem723-001/overview.mp4) / [공개 manifest](../collection/attempts/20261114-astra-wide-hem723-001/manifest.json) / [실행·마감 기록](sessions/20261114-e35-wide-hem.ko.md) / [고정 백업 receipt](sessions/20261114-e35-backup-verification.json) / [이번 배치](sessions/20261114-wide-hem-five-attempt-batch.ko.md).
+[E36 리뷰](../collection/reviews/20261114-astra-wrist-body835-001.ko.md) · [GIF](../gallery/20261114-e36-overview/README.ko.md) · [전체 영상](../collection/attempts/20261114-astra-wrist-body835-001/overview.mp4) · [manifest](../collection/attempts/20261114-astra-wrist-body835-001/manifest.json) · [실행 상세](sessions/20261114-e36-wrist-body.ko.md) · [백업 receipt](sessions/20261114-e36-backup-verification.json)
 
-남은1결정을 다음 run에 합산하지 않습니다. 후속 E36은 사용자의 같은 손목 정렬·몸통 방향 진행 피드백을 검토해 E34/835에서 실행하고 정상 마감했습니다. 연구 재정비 시스템·실시간 피드백 큐·자동 학습은 통합하지 않았습니다.
+## 결과 해석과 보존
 
-## 정상 마감한 E34
+- E36은 E35 말단의 후속이 아니라 E34/835에서 행동을 재생한 분기다. E28과 후속 분기·공통 prefix는 독립 성공 표본이 아니다.
+- E09·E32는 불완전 원본으로 정상 replay·학습에서 제외한다. E32의758전이 내용 검사와 진단 백업 검증은 전체 QC 통과를 뜻하지 않는다. [E32 기록](sessions/20261114-e32-incomplete.ko.md)
+- 기술 QC, 공식 로컬 평가, 시각 검토, 학습 승인은 별도다. 로컬 점수를 Codabench 제출 성과나 공식900초 예산 준수로 설명하지 않는다.
+- 과거 최대5회 배치는 E35·E36에서 종료됐다. 당시 E37–E39는 미실행이며 남은 횟수·예산은 현재 계획에 이월하지 않는다.
 
-| 구분 | 확인된 E34 상태 |
-|---|---|
-| 실행 / 소스 | `20261114-astra-middle-grip470-retain-001` / clean `0a5121cde33a32db5e4888255de150e846d52c15` |
-| 직접 parent / source group | E33 `20261114-astra-middle-grip264-001` / E28 `20261113-astra-side-hem-fresh-001` |
-| 출발·입력 | prefix470·새 history434/454; `coordinated-middle-grip-drape-retain` |
-| 기록 |836=470 replay+245 model+120 settle+1 budget cleanup; 새366전이·18.3시뮬레이션초 |
-| 판단·종료 |20개 모두 act·24모델 호출; decision budget 종료. client/simulator0, completed/closed/finished=true, capture complete |
-| 전수 QC |836/836·오류0 |
-| 별도 평가 | valid=true, raw5/50·pickup5·착의0·success=false. 픽업5는 replay 뒤 새 구간에서 발생 |
-| 공개 검토 | 기존 파지의 들기·운반·같은 손 근처의 짧은 하강. 손목 걸침·소매 통과는 확인하지 못함 |
-| 시간 | client 내부1959.323초(32.66분), actor1170.153초, 환경737.509초. 전체 경과에는470 replay 포함 |
-| 고정 백업 | HF `ba71dd6a07e2b05202c3dcaa5b0c9a3c17997b1d`; archive1,910,237,869bytes·SHA,236개 manifest 파일·원본234파일 불변 검증 |
-| 학습 승인 | `unreviewed` |
-
-[E34 리뷰](../collection/reviews/20261114-astra-middle-grip470-retain-001.ko.md) / [전체836프레임 영상](../collection/attempts/20261114-astra-middle-grip470-retain-001/overview.mp4) / [공개 manifest](../collection/attempts/20261114-astra-middle-grip470-retain-001/manifest.json) / [마감 세션](sessions/20261114-e34-retain-resume.ko.md) / [고정 백업 receipt](sessions/20261114-e34-backup-verification.json).
-
-추가 재파지0은 프롬프트 지시이며 런타임 차단·누적 상태 원장 구현이 아닙니다. E34에서 그리퍼 open 명령 위반은 없었지만 이것을 모든 실행에서의 보장으로 확대하지 않습니다. E33과 E34는 같은 E28 계보이며 파지 유지의 통제된 성능 비교가 아닙니다. E34 뒤 중지했던 이력은 보존하며, 09:29 UTC 요청으로 추가 수집을 재개했고, 이후 지시에 따라 E36을 마지막으로 종료했습니다.
-
-## 정상 마감한 E33
-
-| 구분 | 확인된 E33 상태 |
-|---|---|
-| 실행 / 소스 | `20261114-astra-middle-grip264-001` / clean `464203860304631d00a8acd6747b86c23cfded61` |
-| 직접 parent / source group | E28 `20261113-astra-side-hem-fresh-001` |
-| 출발·입력 | prefix264·새 history242/254; `coordinated-middle-grip-drape` |
-| 기록 |471=264 replay+128 model+78 settle+1 budget cleanup; 새207전이·10.35시뮬레이션초 |
-| 판단·종료 |20개 모두 act·21호출(물리0 질의 후속1회); decision budget 종료 |
-| 마감 / QC | client0·simulator0, completed/closed/finished=true, capture complete;471/471·오류0 |
-| 별도 평가 | valid=true, raw0/50·pickup0·착의0·success=false, no_contact |
-| 공개 검토 | 양측 각1회 순차 재파지와 국소 형상 변화. 유용한 세로 입구·손 접근·하강은 미확인/미실행. 마지막 R1 닫기 뒤 동행 검토가 E34의 질문 |
-| 고정 백업 | HF `0a79834c426d1be7b325ff5010027752751d5cd5`; archive SHA·크기·236manifest entries·원본234파일 불변 검증 |
-| 학습 승인 | `unreviewed`; QC·보존 검증과 학습 가치·착의 성공은 별도 |
-
-[E33 리뷰](../collection/reviews/20261114-astra-middle-grip264-001.ko.md) / [전체 영상](../collection/attempts/20261114-astra-middle-grip264-001/overview.mp4) / [세션·환경 검사](sessions/20261114-e33-middle-grip-resume.ko.md) / [백업 receipt](sessions/20261114-e33-backup-verification.json).
-
-## 불완전 원본과 과거 결과
-
-E09·E32는 정상 replay·학습에서 계속 제외합니다. E32는758전이 내용 검사는 통과했으나 capture와 두 HDF5 root의 `complete=false` 세 오류로 전체 QC 실패입니다. 별도 평가5/50·착의0·success=false와 진단 archive 재다운로드 검증이 수집 완료를 대신하지 않습니다. host143 발신 원인은 미확정입니다. [E32 실패·보존 기록](sessions/20261114-e32-incomplete.ko.md) / [진단 백업 receipt](sessions/20261114-e32-backup-verification.json).
-
-E31은 정상830/830 QC·5/50·새 득점0으로 마감한 이전 접근 비교이며 [리뷰](../collection/reviews/20261113-astra-diagonal682-001.ko.md)와 [마감 기록](sessions/20261113-e31-close.ko.md)을 보존합니다. 종전 E28/632 중앙 전략 후보는 [역사적 미실행 계획](sessions/20261114-e33-plan.ko.md)이며 실제 E33의 출발점은264였습니다.
-
-[재정비 계획](../collection/research/2026-11-14-collection-system-redesign.ko.md)은 실행 상태·관측 가설·후속 검증 예산·구간 승인과 계보를 분리하는 방향입니다. 문서 검토와 후속 구현·GPU 실험은 별도 단계이며, 기존 수집 방식의 E36까지 마감했고 자동 재학습은 수행하지 않습니다. 실시간 피드백 큐도 계속 미적용입니다.
-
-E28과 후속 분기는 같은 source group이며 독립 성공 표본이 아닙니다. 현재까지 정상 평가한 시연의 최고 로컬 원점수는5/50, 착의 득점0이며 완전 착의 성공은 확인하지 못했습니다. CPU 검사·실제 모델/시뮬레이션 실행·기술 QC·학습 승인·착의 성과를 구분합니다. 로컬 점수를 Codabench 제출 성과나 공식900초 평가 예산 준수로 설명하지 않습니다.
+상세 시행착오는 [과거 결과 요약](../HISTORY_SUMMARY.ko.md)에서 필요한 근거로 연결한다. 원본 세션·실패·백업은 [보관함](../ARCHIVE.md), 영상과 계보는 [시연 목록](../EPISODES.md)에 보존한다. [E00–E36 통합 PDF](../reports/20261114-e36-integrated-review/phyrc-e36-integrated-review.ko.pdf)와 [출처·검증](../reports/20261114-e36-integrated-review/README.ko.md)은 기존 분석 자료다.

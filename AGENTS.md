@@ -1,11 +1,8 @@
 # Codex 작업 지침
 
-**최신 사용자 결정(2026-11-16): 조사를 마무리하고 checkpoint 기반 사용자 피드백 시연으로 전환한다.** 가장 최근의 넓은 옷·손목 근접 상태(E36/933 우선 후보)를 복원·검증하고, 세 방법 중 M1 현재 파지 유지·국소 교정으로 첫 소매 새5점에 도전한다. 모델 자동 종료·관리 예산·득점 검토에서는 live HOLD하고 공개5카메라를 README 상단에 push한 뒤 사용자 텍스트를 기다린다. 사용자 답변으로 계속·방향/방법 변경·다른 checkpoint·종료를 처리한다. [현재 계획](docs/COLLECTION_PLAN.md)과 [실행 인계서](docs/collection/research/2026-11-16-user-guided-resume.ko.md)가 정본이다. 현재 작업은 문서 인계이며 실제 최신 시연은 종료된 E36이다. 클린 서버에서 이 계획으로 착수 요청을 받으면 복원·필수 기능 구현/검증·M1 시작까지 진행한다. 과거 분석-only HOLD나 최대5회 배치는 현재 지시가 아니다.
+**현재 사용자 지시(2026-11-16): 최신 전략으로 시연을 시작하고, 판단 지점에서5카메라를 저장소에 게시해 사용자 텍스트를 기다린다.** 개발 대화의 Astra 전환과 HF 로그인 확인 후 클린 서버 복원·필수 기능 구현/검증에 착수했다. E36/933을 우선 검증하고 M1 현재 파지 유지·국소 교정으로 첫 소매 새5점을 시도한다. [현재 계획](docs/COLLECTION_PLAN.md)과 [실행 인계서](docs/collection/research/2026-11-16-user-guided-resume.ko.md)가 정본이다. 실제 실행·검증 상태는 [STATUS](docs/project/STATUS.md)에서 확인한다.
 
-**2026-11-14 마감 이력:** E36까지 수집하고 당시 배치를 종료했다. E37–E39는 실행하지 않았다. 원본·QC·백업·공개 GIF·통합 PDF는 보존한다. 당시 사람 조작 우선안은 후보 중 하나이며 2026-11-15의 열린 비교 방향을 대신하지 않는다.
-
-
-**과거 배치 승인(2026-11-14 09:29 UTC, 현재는 E36 종료):** 정리된 E33/E34 결과와 재정비 계획을 먼저 GitHub에 게시한 뒤, 기존 수집 경로로 옷 아래를 넓게 펼쳐 같은 손목보다 약간 위에서 측면으로 넣는 시연을 **최대5회** 진행한다. 예상 작업 범위는3–4시간이며 매회 마감·QC·공개 검토·고정 백업 뒤 다음 출발점을 선택한다. 사용자의 중간 피드백·중지 지시를 우선한다. 종전 E34 이후 중지는 이 범위에서 해제됐으며 새 시스템 개편·학습은 수행하지 않는다.
+**문서 관리:** [기전·판단 기준](docs/MECHANISMS.ko.md)과 [과거 결과 요약](docs/HISTORY_SUMMARY.ko.md)을 중심으로 현재 전략과 최근 분석을 관리한다. 시간별 초기 시행착오를 활성 문서에 반복하지 않는다. 세션·원본·실패·provenance·GIF·PDF는 보존하고, 현재 판단을 바꾼 근거에서 상세 이력으로 연결한다. 과거 분석-only HOLD·최대5회 배치·날짜별 TODO는 현재 지시가 아니다.
 
 ## 시작
 
@@ -20,14 +17,11 @@
 
 ## 현재 범위
 
-- **현재는 새 서버 대기, 실제 실행 상태는 E36 마감이다.** 이번 갱신은 문서다. 클린 서버 착수 시 최신 지시에 필요한 최소 구현·검증 뒤 새 고유 run으로 M1을 시도한다. 닫힌 E36 원본을 덮어쓰지 않는다.
+- **최신 정상 과제 시연은 E36 마감이며 클린 서버 착수 작업을 진행한다.** 필요한 최소 구현·검증 뒤 새 고유 run으로 M1을 시도한다. 닫힌 E36 원본을 덮어쓰지 않으며 구현 준비·CPU 검사·실제 연결·과제 실행을 구분한다.
 - **실제 실행·점수·백업은 [STATUS](docs/project/STATUS.md), 현재 방향은 [COLLECTION_PLAN](docs/COLLECTION_PLAN.md), 복원·구현 계약은 [실행 인계서](docs/collection/research/2026-11-16-user-guided-resume.ko.md)가 정본이다.** 이전 문서의 HOLD·재개·날짜별 TODO보다 최신 사용자 결정을 우선한다. 연구 문서 전체를 actor에 전달하지 않는다.
 - 사람 조작용 state slot과 `initial_slot` 근사 복원 경로는 이미 존재한다. 완전한 FEM 물리 checkpoint나 E36 중간 복원 검증이 완료됐다고 설명하지 않는다. 현재 collector의 행동 재생과 구분하고, 복원 시 초기화되는 상태·정착·평가 재시작을 검토한다. 기존 관측→행동→관측 루프가 전혀 없었다거나 E36까지 모든 명령이 오작동했다고 일반화하지 않는다.
 - E36의 추가 재파지0·20결정·review10은 해당 시도의 조건이다. 향후 모든 방법의 고정 규칙으로 일반화하지 않는다. 각 실험에서 제어원, 입력, 재파지·복구 조건, 예산과 종료/검토 방식을 명시하고 공식 물리·관측·행동·평가 계약은 유지한다.
-- E33 `20261114-astra-middle-grip264-001`은 E28/264·새 history242/254에서20결정·471전이로 정상 마감했다. QC471/471·고정 백업 검증을 통과했으나0/50·착의0·success=false이며 손 접근은 미실행이다. [E33 기록](docs/project/sessions/20261114-e33-middle-grip-resume.ko.md).
-- E34 `20261114-astra-middle-grip470-retain-001`은 E33/470·새 history434/454, 같은 E28 source group의 후속으로20act·24호출·836전이를 정상 마감했다. QC836/836,5/50·픽업5·착의0·success=false이며 새 파지의 들기·운반·짧은 하강을 시험했으나 손목 걸침·소매 통과는 확인하지 못했다. `coordinated-middle-grip-drape-retain`의 추가 재파지0은 정적 actor 지시이며 상태 원장이나 런타임 차단 기능이 아니다. 고정 백업의 재다운로드·236개 manifest 파일·원본234파일 불변 검증도 완료했다. [E34 기록](docs/project/sessions/20261114-e34-retain-resume.ko.md).
-- E35·E36은 각각 QC983/983·933/933과 고정 백업 검증으로 정상 마감했다. 최종 raw5/50은 replay의 pickup이며 새 착의점0이다. E36은10act+finish로 종료했다. [통합 분석 PDF](docs/reports/20261114-e36-integrated-review/phyrc-e36-integrated-review.ko.pdf)에 사용자/Codex/연구 분석과 다음 사람 조작 계획을 정리했다.
-- E09·E32는 불완전 원본으로 정상 replay·학습 출처에서 제외한다. E32는758전이·전체 QC 실패이며 진단 백업 검증과 수집 완료를 구분한다. [실패 기록](docs/project/sessions/20261114-e32-incomplete.ko.md). 종전 E28/632·중앙 전략 후보와 E27/928 same-arm 후보는 역사적 미실행 계획이며 현재 출발점이 아니다.
+- E33–E36의 핵심 결과와 계보는 [과거 결과 요약](docs/HISTORY_SUMMARY.ko.md), 원본·검사·백업은 [보관함](docs/ARCHIVE.md)에 보존한다. E36은10act+finish·933전이·QC933/933·raw5/50·새 착의점0이다. E09·E32는 불완전 원본으로 정상 replay·학습 출처에서 제외한다. E32의 진단 백업 검증을 수집 완료로 바꾸어 설명하지 않는다.
 - 정상 평가한 시연의 최고 로컬 원점수는5/50, 착의 득점0이며 완전 착의 성공은 확인하지 못했다. E28과 후속 분기·재사용 prefix를 독립 성공 표본으로 세지 않는다. 기술 QC와 학습 승인은 별도이며 최신 시연의 학습 승인은 `unreviewed`다.
 - 모델 stop/finish, 정체, 관리 예산, 목표 득점은 종료 dispatch 전에 사용자 HOLD로 바꾼다. 물리0 대기와 기록기·프로세스 유지,5카메라 README 게시·원격 확인, 텍스트 재개를 검증한다. 사용자 무응답은 재개 승인이 아니며 구간 예산을 자동 증액하지 않는다. 실제 하드 horizon·장애는 정상 HOLD와 구분한다.
 - [미래 피드백 큐 후보](docs/collection/research/candidates/20261113-actor-feedback/README.ko.md)는 준비·CPU검사·독립 검토를 마친 미적용 패치다. 실제 모델·GPU 연결이나 실시간 사람–Astra handoff가 완료된 기능으로 설명하지 않는다. 초기 π0.5의63전이·30updates 역시 연결 시험이며 새 시연 학습·착의 개선 성과가 아니다.
@@ -62,7 +56,7 @@
 - README 최상단의 `PHYRC_USER_REVIEW:START/END`에는 현재 서버/시연 상태와 최신 사용자 검토를 둔다. HOLD마다 같은 관측의 overview+양쪽 head/wrist5장·원본 링크·관측 ID·사유·질문을 push한다. 과거 이미지를 live로 표시하지 않는다. 기존 통합 PDF 버튼·공식 데모·E36 GIF는 보존하며 새 마감에도 gallery·provenance를 연결한다.
 - 실제 관측, 가설, 미실행 계획을 구분한다. 모델이 붙인 stage, 파일 complete, QC 통과, 기본 reward 0은 착의 성공이 아니다. 영상 일부를 독립 시연으로 세지 않는다.
 - 과거 세션·실패·provenance·catalog·주최 측 README·LICENSE·NOTICE·THIRD_PARTY는 보존한다. 중복 설명의 이전 본문은 보관함의 고정 Git revision에서 확인한다.
-- 새 결과 마감 시 STATUS, EPISODES, catalog, 세션 기록, 백업 receipt를 갱신한다. 현재 계획은 COLLECTION_PLAN 한 곳에 둔다.
+- 새 결과 마감 시 STATUS, EPISODES, catalog, 재현용 run 기록, 백업 receipt를 갱신한다. 현재 계획은 COLLECTION_PLAN 한 곳에 두고, 기전·가설·판별 근거는 MECHANISMS에, 과거 핵심 교훈은 HISTORY_SUMMARY에 요약한다. 실행 시각·hash는 상세 provenance에 보존하되 활성 문서에 시간순 로그를 복제하지 않는다.
 - 문서 변경은 링크·경로·코드 예제·현재/계획 구분을 검사한다. CPU 검사, 실제 CLI, GPU 실행, 과제 성능 중 수행하지 않은 검사를 통과했다고 쓰지 않는다.
 
 ## 공개 범위

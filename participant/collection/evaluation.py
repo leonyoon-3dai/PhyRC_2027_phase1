@@ -179,6 +179,10 @@ class RecordedWriter:
         self.steps.flush()
         self.step_count += 1
 
+    def flush(self):
+        self.writer.flush()
+        self.steps.flush()
+
     def finish_episode(self, reason, result=None, valid=True):
         if self.evaluation:
             self.result = self.evaluation.finish(self.failure_reason or reason,

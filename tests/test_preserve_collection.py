@@ -190,6 +190,135 @@ class PreserveCollectionTest(unittest.TestCase):
             preservation.preserve(self.root, self.run, 'with-unreviewed-research')
         self.assertFalse((self.root / 'output/preservation/with-unreviewed-research').exists())
 
+    def guided_fixture(self):
+        self.modify(self.trace / 'attempt.json', user_guided={'enabled': True})
+        guided = self.obs.parent / 'guided-00000'
+        self.obs.rename(guided)
+        self.obs = guided
+        self.write(self.collection / 'supervisor_state.json',
+                   {'schema': 'phyrc-supervisor-state-v1', 'active': False, 'held': False})
+        hold = self.trace / 'user-review/hold-0001'
+        hold.mkdir(parents=True)
+        for name in preservation.OBS_REQUIRED:
+            (hold / name).write_bytes(b'public observation fixture')
+        cameras = {name.removesuffix('.png'): artifacts.digest(hold / name)
+                   for name in preservation.OBS_REQUIRED if name.endswith('.png')}
+        meta = {'schema': 'phyrc-user-review-v1', 'run_id': self.run, 'hold_id': hold.name,
+                'observation_id': 'b' * 64, 'camera_sha256': cameras}
+        self.write(hold / 'hold.json', meta)
+        self.write(hold / 'published.json', dict(meta, commit_sha='a' * 40,
+                                               verified_camera_sha256=cameras))
+        inbox = hold / 'inbox'
+        inbox.mkdir()
+        (inbox / 'rejected.json').write_text('PRIVATE_UNREVIEWED_INBOX_SENTINEL')
+        # Accepted human text lives in the private decisions event log.
+        (self.trace / 'decisions.jsonl').write_text('accepted direction event\n')
+        reset = self.collection / 'slot_reset'
+        reset.mkdir()
+        for name in ('before_settle.npz', 'after_settle.npz'):
+            (reset / name).write_bytes(b'public reset observation fixture')
+        return hold
+
+    def checkpoint_fixture(self, directory, run_id):
+        directory.mkdir(parents=True)
+        key = directory.name
+        slot = directory / ('slot_' + key + '.npz')
+        slot.write_bytes(b'trusted slot fixture')
+        receipt = {'schema': 'phyrc-held-checkpoint-v1', 'run_id': run_id,
+                   'source_group': 'original-group', 'key': key,
+                   'slot_path': '/output/' + slot.relative_to(self.root / 'output').as_posix(),
+                   'slot_sha256': artifacts.digest(slot), 'slot_bytes': slot.stat().st_size,
+                   'exact_physics_checkpoint': False}
+        self.write(directory / 'receipt.json', receipt)
+        return slot, receipt
+
+    def test_guided_artifacts_preserved_without_inbox_or_runtime(self):
+        self.guided_fixture()
+        slot, receipt = self.checkpoint_fixture(self.collection / 'checkpoints/start', self.run)
+        self.write(self.trace / 'start-checkpoint.json', {'active': True, 'held': True, 'checkpoint': receipt})
+        result = preservation.preserve(self.root, self.run, 'guided')
+        stage = self.root / result['stage_relative_path']
+        inventory = artifacts.verify(stage)
+        expected = [slot, slot.parent / 'receipt.json', self.trace / 'start-checkpoint.json',
+                    self.trace / 'user-review/hold-0001/public_depth.npz',
+                    self.collection / 'supervisor_state.json',
+                    self.collection / 'slot_reset/before_settle.npz', self.obs / 'overview.png']
+        for path in expected:
+            self.assertIn(path.relative_to(self.root).as_posix(), inventory)
+        for path in stage.rglob('*'):
+            self.assertNotEqual(path.name, 'inbox')
+            if path.is_file():
+                self.assertNotIn(b'PRIVATE_', path.read_bytes())
+
+    def test_guided_checkpoint_hash_and_unreviewed_files_rejected(self):
+        hold = self.guided_fixture()
+        slot, _ = self.checkpoint_fixture(self.collection / 'checkpoints/start', self.run)
+        original = slot.read_bytes()
+        slot.write_bytes(b'tampered')
+        with self.assertRaisesRegex(ValueError, 'checkpoint hash mismatch'):
+            preservation.preserve(self.root, self.run, 'tampered-slot')
+        slot.write_bytes(original)
+        (hold / 'auth.json').write_text('secret')
+        with self.assertRaisesRegex(ValueError, 'unreviewed user review file'):
+            preservation.preserve(self.root, self.run, 'unreviewed-hold')
+        self.assertFalse((self.root / 'output/preservation').exists())
+
+    def test_initial_slot_reference_includes_parent_pair_and_checks_provenance(self):
+        self.guided_fixture()
+        slot, _ = self.checkpoint_fixture(self.root / 'output/states/parent-slot', 'parent-run')
+        receipt_path = slot.parent / 'receipt.json'
+        initial = {'path': '/output/states/parent-slot/' + slot.name,
+                   'sha256': artifacts.digest(slot), 'receipt_path': '/output/states/parent-slot/receipt.json',
+                   'receipt_sha256': artifacts.digest(receipt_path)}
+        self.write(self.collection / 'run_metadata.json', {'initial_slot': initial})
+        result = preservation.preserve(self.root, self.run, 'parent-slot')
+        inventory = artifacts.verify(self.root / result['stage_relative_path'])
+        self.assertIn('output/states/parent-slot/' + slot.name, inventory)
+        initial['receipt_sha256'] = '0' * 64
+        self.write(self.collection / 'run_metadata.json', {'initial_slot': initial})
+        with self.assertRaisesRegex(ValueError, 'initial slot provenance mismatch'):
+            preservation.preserve(self.root, self.run, 'bad-parent-slot')
+
+    def test_guided_artifacts_rejected_without_explicit_guided_mode(self):
+        self.guided_fixture()
+        self.modify(self.trace / 'attempt.json', user_guided={'enabled': False})
+        with self.assertRaisesRegex(ValueError, 'unreviewed'):
+            preservation.preserve(self.root, self.run, 'not-guided')
+
+    def test_start_validation_preserves_only_bound_evidence_and_rejects_logs(self):
+        self.guided_fixture()
+        validation = self.root / 'output/guided-validation/check-001'
+        validation.mkdir(parents=True)
+        evidence = []
+        for name in ('report.json', 'checkpoint.json', 'original-held/public.npz',
+                     'restored-before-settle/overview.png', 'restored-after-probe/robot_1_head.png'):
+            path = validation / name
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_bytes(b'verified evidence fixture')
+            evidence.append({'path': path.relative_to(self.root).as_posix(),
+                             'sha256': artifacts.digest(path)})
+        log = validation / 'simulator.log'
+        log.write_text('PRIVATE_VALIDATION_LOG_SENTINEL')
+        receipt = self.trace / 'start-state-validation.json'
+        record = {'schema': 'phyrc-start-state-validation-v1', 'status': 'validated',
+                  'evidence': evidence}
+        self.write(receipt, record)
+        result = preservation.preserve(self.root, self.run, 'with-validation-evidence')
+        stage = self.root / result['stage_relative_path']
+        inventory = artifacts.verify(stage)
+        for item in evidence:
+            self.assertIn(item['path'], inventory)
+        self.assertNotIn(log.relative_to(self.root).as_posix(), inventory)
+        record['evidence'][0]['sha256'] = '0' * 64
+        self.write(receipt, record)
+        with self.assertRaisesRegex(ValueError, 'evidence hash mismatch'):
+            preservation.preserve(self.root, self.run, 'bad-evidence-hash')
+        record['evidence'] = [{'path': log.relative_to(self.root).as_posix(),
+                               'sha256': artifacts.digest(log)}]
+        self.write(receipt, record)
+        with self.assertRaisesRegex(ValueError, 'excluded source path'):
+            preservation.preserve(self.root, self.run, 'secret-evidence')
+
     def test_archive_uses_existing_artifacts_format_and_restores(self):
         # Actual artifacts CLI, synthetic small data; no upload or GPU.
         script = self.root / 'participant/ops/artifacts.py'

@@ -1,8 +1,8 @@
 # Astra 수집 코드
 
-**현재: E36 마감·클린 서버 대기. 최신 방향은 사용자 텍스트 피드백을 받는 checkpoint 시연이다.** [현재 계획](COLLECTION_PLAN.md)과 [실행 인계서](collection/research/2026-11-16-user-guided-resume.ko.md)를 먼저 읽는다. 현재 코드의 stop/finish·예산·idle timeout은 기록을 닫으므로, 새 사용자 HOLD 흐름을 구현·검증하기 전 기존 수집기를 본 시연에 그대로 사용하지 않는다. 아래는 기존 구현과 과거 이력이며 새 기능 완료를 뜻하지 않는다.
+**현재 방향은 checkpoint에서 M1을 시작하고 사용자 판단이 필요할 때 물리0 HOLD하는 시연입니다.** [현재 계획](COLLECTION_PLAN.md)과 [guided 실행 계약](collection/GUIDED_RUNTIME.ko.md)을 따릅니다. `--user-guided` 경로는 종료 제안·구간 예산·새 첫 소매 득점을 종료 dispatch 전에 가로채고, 같은 경계의 공개5카메라를 내보낸 뒤 게시 확인과 사용자 텍스트를 기다립니다. 기존 모드는 기존 종료 동작을 유지합니다.
 
-**과거 배치 승인(2026-11-14 09:29 UTC, 현재는 E36 종료):** 정리된 E33/E34 결과와 재정비 계획을 먼저 GitHub에 게시한 뒤, 기존 수집 경로로 옷 아래를 넓게 펼쳐 같은 손목보다 약간 위에서 측면으로 넣는 시연을 **최대5회** 진행한다. 예상 작업 범위는3–4시간이며 매회 마감·QC·공개 검토·고정 백업 뒤 다음 출발점을 선택한다. 사용자의 중간 피드백·중지 지시를 우선한다. 종전 E34 이후 중지는 이 범위에서 해제됐으며 새 시스템 개편·학습은 수행하지 않는다. [이번 배치](project/sessions/20261114-wide-hem-five-attempt-batch.ko.md)
+새 기능의 CPU 검사와 실제 GPU·모델 검증은 구분합니다. 현재 실행·검증 결과는 [STATUS](project/STATUS.md)에 기록합니다. 과거 최대5회 배치와 분석-only HOLD는 현재 실행 지시가 아닙니다.
 
 [메인](../README.md) | [시연 목록](EPISODES.md) | [다음 수집](COLLECTION_PLAN.md) | [Astra 코드](ASTRA.md) | [클린 서버](OPERATIONS.md)
 
@@ -10,7 +10,15 @@
 
 실제 진행·마감·점수·백업은 [현재 상태](project/STATUS.md), 실행 조건·후속 판단은 [수집 계획](COLLECTION_PLAN.md)을 기준으로 합니다. 과거 결과는 [E30 마감](project/sessions/20261113-e30-close.ko.md)에 보존합니다.
 
-E33은 E28/264에서 가운데 파지 전략으로 정상 마감했고, E34는 E33/470에서 추가 재파지0을 지시한 후속입니다. 이 retain 조건은 프롬프트에 명시된 것이며 누적 작업 상태나 release 차단을 런타임이 보장하지 않습니다. [E33 기록](project/sessions/20261114-e33-middle-grip-resume.ko.md) / [E34 기록](project/sessions/20261114-e34-retain-resume.ko.md). E09·E32는 계속 정상 replay·학습에서 제외합니다. 종전 E28/632 후보는 [과거 계획](project/sessions/20261114-e33-plan.ko.md)으로 보존하며 자동 실행하지 않습니다. 실시간 피드백 큐와 연구 시스템은 미적용입니다.
+E33은 E28/264에서 가운데 파지 전략으로 정상 마감했고, E34는 E33/470에서 추가 재파지0을 지시한 후속입니다. 이 retain 조건은 프롬프트에 명시된 것이며 누적 작업 상태나 release 차단을 런타임이 보장하지 않습니다. [E33 기록](project/sessions/20261114-e33-middle-grip-resume.ko.md) / [E34 기록](project/sessions/20261114-e34-retain-resume.ko.md). E09·E32는 계속 정상 replay·학습에서 제외합니다. 종전 E28/632 후보는 [과거 계획](project/sessions/20261114-e33-plan.ko.md)으로 보존하며 자동 실행하지 않습니다. 당시 실시간 피드백 큐는 미적용이었습니다. 현재의 새 파일 기반 사용자 HOLD는 아래 guided 경로로 분리합니다.
+
+## 사용자 HOLD 경로
+
+[`user_review.py`](../participant/collection/user_review.py)는 `--user-guided`에서만 사용합니다. `exec`, `plan-size=1`을 요구하며, 현재 이 경로에는 `--pixel-depth-query`를 함께 사용할 수 없습니다. 허용된 RGB5장·공개 상태·16×16 depth 요약은 계속 입력하며 named action과 손목 depth 패널을 지원합니다.
+
+초기 구간은20결정 또는 새400전이이며 act와 settle을 함께 셉니다. `--decisions` 대신 `--segment-decisions`·`--segment-steps`가 구간 크기를 정합니다. replay는 별도로 기록합니다. 사용자 응답이 있을 때만 새 구간을 열며 누적 카운터를 유지합니다. M1/M2에서는 gripper open 제안을 실행 전에 HOLD하고, M3 전환은 명시적 사용자 선택으로 처리합니다.
+
+초기 경계는 검토 HOLD가 기본입니다. `--prepare-checkpoint-only`는 출발 후보를 저장·관측한 뒤 정상 마감하는 기술 준비 실행이며, `--start-state-validation`은 저장·복원·정착·다음 행동·시각 적합성 근거가 있는 **같은 슬롯**에 한해 초기 검토를 생략합니다. 이 receipt는 이후 사용자 HOLD를 생략하지 않습니다. 모델 오류 뒤 사용자가 계속을 선택하면 오염된 actor 세션을 닫고 새 격리 세션을 만듭니다. GPU 검증 완료나 착의 성공을 옵션 존재만으로 주장하지 않습니다.
 
 ## 1. 관측부터 기록까지
 

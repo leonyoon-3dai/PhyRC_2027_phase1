@@ -30,7 +30,10 @@ OBS_REQUIRED = {'observation.json', 'public_depth.npz', 'overview.png', 'robot_0
 OBS_OPTIONAL = {'current_wrist_depth.json', 'current_wrist_depth.png'}
 SOURCE_FIXED = {'run.sh', 'scripts/collect_operator.py', 'participant/streaming/collector_stream.py',
                 'config/policy_interface.json', 'config/assets.lock.json',
-                'participant/research/depth_backprojection.py'}
+                'participant/research/depth_backprojection.py',
+                'src/PhyRC_Sim/Policy/training_dataset.py', 'src/PhyRC_Sim/Policy/environment.py',
+                'src/PhyRC_Sim/Policy/stages.py',
+                'src/PhyRC_Sim/Env_StandAlone/Teleop_TShirt_Stretch4_Env.py'}
 FORBIDDEN_PARTS = {'runtime', 'actor_events', 'codex_home', '.git', '.ssh', '__pycache__',
                    'auth.json', 'token', 'stored_tokens', 'simulator.log'}
 
@@ -78,14 +81,14 @@ def tree_files(directory):
         yield path
 
 
-def observation_files(directory, *, required):
+def observation_files(directory, *, required, guided=False):
     if not directory.exists():
         require(not required, 'public observations directory missing')
         return []
     require(directory.is_dir() and not directory.is_symlink(), 'invalid observations directory')
     result = []
     for folder in sorted(directory.iterdir()):
-        require(folder.is_dir() and not folder.is_symlink() and re.fullmatch(r'\d{5,}', folder.name),
+        require(folder.is_dir() and not folder.is_symlink() and re.fullmatch(r'(?:guided-)?\d{5,}' if guided else r'\d{5,}', folder.name),
                 'unexpected observation directory: ' + folder.name)
         paths = list(tree_files(folder))
         names = {p.relative_to(folder).as_posix() for p in paths}
@@ -97,6 +100,109 @@ def observation_files(directory, *, required):
     if required:
         require(result, 'public observation set is empty')
     return result
+
+
+def trusted_output_path(value, root):
+    """Map a container /output reference without accepting arbitrary host paths."""
+    require(isinstance(value, str) and value, 'missing trusted output reference')
+    path = Path(value)
+    if path.is_absolute() and path.parts[:2] == ('/', 'output'):
+        path = root / 'output' / Path(*path.parts[2:])
+    elif not path.is_absolute():
+        path = root / path
+    relative = safe_source(path, root)
+    require(relative.parts[0] == 'output', 'checkpoint must be in trusted output tree')
+    return path
+
+
+def checkpoint_files(directory, root, *, run_id=None, expected_slot=None):
+    """Only a receipt-bound slot pair, including external checkpoint roots."""
+    files = list(tree_files(directory))
+    receipt_path = directory / 'receipt.json'
+    safe_source(receipt_path, root)
+    receipt = read_json(receipt_path)
+    key = receipt.get('key')
+    require(isinstance(key, str) and re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_.-]{0,127}', key),
+            'invalid checkpoint key')
+    slot = directory / ('slot_' + key + '.npz')
+    require(set(files) == {receipt_path, slot}, 'unreviewed checkpoint files')
+    require(receipt.get('schema') == 'phyrc-held-checkpoint-v1'
+            and receipt.get('exact_physics_checkpoint') is False,
+            'unreviewed checkpoint receipt')
+    require(run_id is None or receipt.get('run_id') == run_id, 'checkpoint run mismatch')
+    safe_source(slot, root)
+    require(trusted_output_path(receipt.get('slot_path'), root) == slot,
+            'checkpoint receipt path mismatch')
+    require(slot.stat().st_size == receipt.get('slot_bytes')
+            and artifacts.digest(slot) == receipt.get('slot_sha256'), 'checkpoint hash mismatch')
+    require(expected_slot is None or slot == expected_slot, 'initial checkpoint slot mismatch')
+    return files
+
+
+def validation_evidence_files(receipt_path, root):
+    """Copy only hashed, fixed-name checkpoint validation evidence; never logs."""
+    value = read_json(receipt_path)
+    require(value.get('schema') == 'phyrc-start-state-validation-v1'
+            and value.get('status') == 'validated', 'invalid start state validation receipt')
+    evidence = value.get('evidence')
+    require(isinstance(evidence, list) and evidence, 'validation evidence missing')
+    snapshots = {'original-held', 'original-after-probe', 'restored-before-settle',
+                 'restored-held', 'restored-after-probe'}
+    filenames = {'public.npz'} | {name for name in OBS_REQUIRED if name.endswith('.png')}
+    selected = []
+    for item in evidence:
+        require(isinstance(item, dict) and set(item) == {'path', 'sha256'},
+                'invalid validation evidence entry')
+        path = trusted_output_path(item['path'], root)
+        parts = path.relative_to(root).parts
+        require(len(parts) in (4, 5) and parts[:2] == ('output', 'guided-validation')
+                and re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_.-]{0,127}', parts[2]),
+                'unreviewed validation evidence path')
+        require((len(parts) == 4 and parts[3] in {'report.json', 'checkpoint.json'})
+                or (len(parts) == 5 and parts[3] in snapshots and parts[4] in filenames),
+                'unreviewed validation evidence file')
+        require(isinstance(item['sha256'], str) and re.fullmatch(r'[a-f0-9]{64}', item['sha256'])
+                and artifacts.digest(path) == item['sha256'], 'validation evidence hash mismatch')
+        selected.append(path)
+    return selected
+
+
+def guided_review_files(directory, root, run_id):
+    if not directory.exists():
+        return []
+    require(directory.is_dir() and not directory.is_symlink(), 'invalid user review directory')
+    selected = []
+    for folder in sorted(directory.iterdir()):
+        require(folder.is_dir() and not folder.is_symlink()
+                and re.fullmatch(r'hold-\d{4,}', folder.name), 'unexpected user review directory')
+        files = list(tree_files(folder))
+        names = {p.relative_to(folder).as_posix() for p in files}
+        required = OBS_REQUIRED | {'hold.json'}
+        optional = OBS_OPTIONAL | {'published.json'}
+        require(required <= names, 'incomplete user review observation')
+        for path in files:
+            relative = path.relative_to(folder)
+            if len(relative.parts) == 2 and relative.parts[0] == 'inbox':
+                require(re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_.-]{0,119}\.json', path.name),
+                        'unexpected feedback inbox path')
+                # Accepted user messages are copied into decisions.jsonl. Pending,
+                # rejected or malformed messages are unreviewed input, not artifacts.
+                continue
+            require(relative.as_posix() in required | optional, 'unreviewed user review file')
+            safe_source(path, root)
+            selected.append(path)
+        meta = read_json(folder / 'hold.json')
+        require(meta.get('schema') == 'phyrc-user-review-v1' and meta.get('run_id') == run_id
+                and meta.get('hold_id') == folder.name, 'user review identity mismatch')
+        hashes = meta.get('camera_sha256', {})
+        cameras = {name.removesuffix('.png') for name in OBS_REQUIRED if name.endswith('.png')}
+        require(set(hashes) == cameras and all(artifacts.digest(folder / (name + '.png')) == digest
+                for name, digest in hashes.items()), 'user review camera hashes mismatch')
+        publication = folder / 'published.json'
+        if publication.exists():
+            from participant.collection.user_review import publication_verified
+            require(publication_verified(publication, meta), 'invalid publication receipt')
+    return selected
 
 
 def select_sources(root, run_id, validation_path):
@@ -129,15 +235,22 @@ def select_sources(root, run_id, validation_path):
                 and validation.get('sha256', {}).get(name) == expected,
                 'capture and validation hashes disagree: ' + name)
 
+    guided = attempt.get('user_guided', {}).get('enabled') is True
     selected = []
     observed_root = set()
     evaluation_names = {}
     for path in tree_files(collection):
         relative = path.relative_to(collection)
         if len(relative.parts) == 1:
-            require(path.name in COLLECTION_REQUIRED | COLLECTION_OPTIONAL,
+            require(path.name in COLLECTION_REQUIRED | COLLECTION_OPTIONAL | ({'supervisor_state.json'} if guided else set()),
                     'unreviewed collection file: ' + str(relative))
             observed_root.add(path.name)
+        elif guided and relative.parts[0] == 'checkpoints':
+            require(len(relative.parts) == 3, 'unexpected checkpoint nesting')
+            # Validate the entire pair after scanning the collection tree.
+        elif guided and relative.parts[0] == 'slot_reset':
+            require(relative.as_posix() in {'slot_reset/before_settle.npz', 'slot_reset/after_settle.npz'},
+                    'unreviewed slot reset snapshot')
         else:
             require(len(relative.parts) == 3 and relative.parts[0] == 'evaluation'
                     and re.fullmatch(r'[A-Za-z0-9_-]+', relative.parts[1])
@@ -151,6 +264,41 @@ def select_sources(root, run_id, validation_path):
     if capture.get('evaluation_enabled') is True:
         require(evaluation_names and 'evaluation_summary.json' in observed_root,
                 'enabled evaluation is missing')
+    if guided:
+        checkpoints = collection / 'checkpoints'
+        if checkpoints.exists():
+            require(checkpoints.is_dir() and not checkpoints.is_symlink(), 'invalid checkpoint directory')
+            for folder in checkpoints.iterdir():
+                checkpoint_files(folder, root, run_id=run_id)
+        reset = collection / 'slot_reset'
+        if reset.exists():
+            require({p.name for p in tree_files(reset)} == {'before_settle.npz', 'after_settle.npz'},
+                    'incomplete slot reset snapshots')
+        state = collection / 'supervisor_state.json'
+        if state.exists():
+            require(read_json(state).get('schema') == 'phyrc-supervisor-state-v1', 'invalid supervisor state')
+        selected.extend(guided_review_files(trace / 'user-review', root, run_id))
+        validation_receipt = trace / 'start-state-validation.json'
+        if validation_receipt.exists():
+            safe_source(validation_receipt, root)
+            selected.append(validation_receipt)
+            selected.extend(validation_evidence_files(validation_receipt, root))
+        start_checkpoint = trace / 'start-checkpoint.json'
+        if start_checkpoint.exists():
+            safe_source(start_checkpoint, root)
+            receipt = read_json(start_checkpoint).get('checkpoint', {})
+            slot = trusted_output_path(receipt.get('slot_path'), root)
+            selected.extend(checkpoint_files(slot.parent, root, run_id=run_id, expected_slot=slot))
+            require(read_json(slot.parent / 'receipt.json') == receipt, 'start checkpoint receipt mismatch')
+            selected.append(start_checkpoint)
+        initial = read_json(collection / 'run_metadata.json').get('initial_slot')
+        if initial:
+            slot = trusted_output_path(initial.get('path'), root)
+            receipt_path = trusted_output_path(initial.get('receipt_path'), root)
+            require(receipt_path == slot.parent / 'receipt.json'
+                    and artifacts.digest(receipt_path) == initial.get('receipt_sha256')
+                    and artifacts.digest(slot) == initial.get('sha256'), 'initial slot provenance mismatch')
+            selected.extend(checkpoint_files(slot.parent, root, expected_slot=slot))
     for name in TRACE_REQUIRED | TRACE_OPTIONAL:
         path = trace / name
         if name in TRACE_REQUIRED or path.exists():
@@ -169,11 +317,11 @@ def select_sources(root, run_id, validation_path):
                 'invalid source snapshot hash')
     selected.extend(source_paths)
     selected.extend(observation_files(root / 'output/actors' / run_id / 'observations',
-                                      required=bool(attempt.get('actor_calls_attempted', 0))))
+                                      required=bool(attempt.get('actor_calls_attempted', 0)), guided=guided))
     selected.extend(observation_files(trace / 'replay_observations', required=False))
     for path in selected:
         safe_source(path, root)
-    return selected, capture, attempt, validation
+    return list(dict.fromkeys(selected)), capture, attempt, validation
 
 
 def preserve(root, run_id, bundle_id, *, validation=None, pack=False):
@@ -239,9 +387,9 @@ def preserve(root, run_id, bundle_id, *, validation=None, pack=False):
             'validation_source': str(validation.relative_to(root)),
             'validation_sha256': sources[validation]['sha256'],
             'source_files': len(copied), 'source_bytes': sum(v['bytes'] for v in copied.values()),
-            'scope': 'reviewed collection + trace + source snapshot + public actor/replay observations',
+            'scope': 'reviewed collection + trace + source snapshot + public actor/replay observations + receipt-bound checkpoints and user reviews',
             'excluded': ['simulator.log', 'actor runtime', 'actor_events', 'credentials',
-                         'session databases', 'raw CLI reasoning', 'unreviewed files'],
+                         'session databases', 'raw CLI reasoning', 'pending/rejected feedback inbox', 'unreviewed files'],
             'remote_uploaded': False, 'remote_download_verified': False,
         }
         (stage / 'scope.json').write_text(json.dumps(receipt, indent=2) + '\n')

@@ -2,9 +2,9 @@
 
 **2026-11-16 사용자 결정:** 자료 조사는 여기서 마무리한다. 가장 최근의 넓게 펼친 옷·손목 근접 상태를 출발점으로 삼고, 아래 세 방법 중 하나로 공식 첫 소매 통과 5점을 시도한다. 자동 종료 제안이나 예산 도달에서는 시연을 닫지 않고 물리를 HOLD한다. 공개 카메라 5장의 스크린샷을 README 상단에 push한 뒤 사용자에게 다음 행동을 묻고 텍스트 답변을 기다린다.
 
-**현재 실제 상태는 E36 마감·새 서버 대기다.** 이번 변경은 인계 문서다. 새 시연·추가 득점·사용자 HOLD 기능 구현은 아직 없다. 사용자가 클린 서버에서 이 계획으로 착수를 요청하면 환경 복원과 필수 기능 구현·검증을 수행한 뒤 첫 시도를 시작한다. 이전의 “분석만 계속하는 HOLD” 계획은 이 결정으로 대체한다. 과거 배치의 남은 횟수나 예산은 재사용하지 않는다.
+**현재는 클린 서버 착수 단계이며 최신 정상 시연은 E36이다.** Astra 전환·HF 로그인·GPU 접근을 확인하고 환경 복원과 필수 기능 구현·검증을 진행한다. 실제 새 시연·득점·기능 검증 범위는 [STATUS](project/STATUS.md)에 기록한다. 과거 배치의 남은 횟수나 예산은 재사용하지 않는다.
 
-[메인](../README.md) · [클린 서버 실행 인계서](collection/research/2026-11-16-user-guided-resume.ko.md) · [환경 복원 명령](OPERATIONS.md) · [실제 상태](project/STATUS.md)
+[기전·판단 기준](MECHANISMS.ko.md) · [과거 결과 요약](HISTORY_SUMMARY.ko.md) · [메인](../README.md) · [클린 서버 실행 인계서](collection/research/2026-11-16-user-guided-resume.ko.md) · [환경 복원 명령](OPERATIONS.md) · [실제 상태](project/STATUS.md)
 
 ## 1. 출발 상태와 득점 목표
 
@@ -96,4 +96,4 @@ README 상단에는 overview와 2×2 로봇 패널을 표시하고 5개 원본 P
 
 [E36 실제 리뷰](collection/reviews/20261114-astra-wrist-body835-001.ko.md) · [Astra 실행 설명](ASTRA.md) · [checkpoint·효과 분석](collection/research/2026-11-16-checkpoint-effect-feedback.ko.md) · [최신 착의 연구 조사](collection/research/2026-11-16-recent-dressing-resources.ko.md) · [이전 분석 단계 계획 고정본](https://github.com/leonyoon-3dai/PhyRC_2027_phase1/blob/e63b3f6d0ed069eef004bd09b04ba99d130192b6/docs/COLLECTION_PLAN.md)
 
-선행 논문·PPT와 당시 HOLD 문구는 연구 이력으로 보존한다. 현재 실행 방향은 이 문서가 정본이며, 이번 결정은 문서로 인계한 상태다.
+선행 논문·PPT와 당시 HOLD 문구는 연구 이력으로 보존한다. 현재 실행 방향은 이 문서가 정본이다. 새 분석은 시간순 기록을 늘리기보다 기전별 질문·관측 근거·가설·다음 판별로 정리하고, 상세 실행 시각과 해시는 재현용 기록으로 연결한다.

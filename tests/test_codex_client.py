@@ -23,6 +23,21 @@ def observation():
 
 
 class CodexClientTest(unittest.TestCase):
+    def test_known_rejected_ack_clears_pending_but_unknown_ack_does_not(self):
+        import io
+        for matching in (True, False):
+            sim = Simulator.__new__(Simulator)
+            sim.pending_request = None
+            sim.request_sequence = 0
+            sim.observation_step = 12
+            sim.process = type('Process', (), {'stdin': io.StringIO()})()
+            rejection = codex_client.SimulatorRequestRejected({
+                'error': 'episode_held', 'request_id': '0' if matching else 'different'})
+            sim.receive = mock.Mock(side_effect=rejection)
+            with self.assertRaises(codex_client.SimulatorRequestRejected):
+                sim.dispatch('act', {'steps': 1, 'action': [[0]*9]*2})
+            self.assertEqual(sim.pending_request, None if matching else '0')
+
     def test_transport_timeout_does_not_send_stop_over_pending_action(self):
         command = [sys.executable, '-c', """
 import json, sys, time

@@ -114,6 +114,11 @@ class DatasetWriter:
         self.policy.flush()
         self.audit.flush()
 
+    def flush(self):
+        """Persist an open boundary without finalizing any completion flags."""
+        self.policy.flush()
+        self.audit.flush()
+
     def finish_episode(self, reason, result=None, valid=True):
         if self.episode is None:
             return

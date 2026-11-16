@@ -1,3 +1,5 @@
+> **사용자 피드백 실행 경로가 추가되었습니다.** 실제 옵션·checkpoint 준비/검증·M1 시작·게시/답변 형식은 [GUIDED_RUNTIME](collection/GUIDED_RUNTIME.ko.md)을 따릅니다. 아래 복원 절차는 그대로 사용하며, 실제 GPU 검증 범위는 [STATUS](project/STATUS.md)를 확인합니다.
+
 # 클린 서버 시작 안내
 
 **2026-11-16 최신 방향: 조사 종료·클린 서버에서 사용자 피드백 시연 준비.** 현재 실제 실행은 종료된 E36이며 이번 갱신은 문서 인계다. 클린 서버에서 이 계획으로 착수를 요청받으면 아래 환경·원본 복원과 [실행 인계서](collection/research/2026-11-16-user-guided-resume.ko.md)의 필수 기능 구현·검증을 진행한 뒤 M1 시도를 시작한다. 자동 종료·관리 예산에서는 물리0 HOLD, 지정5카메라 README 게시, 사용자 텍스트 응답을 따른다. [현재 계획](COLLECTION_PLAN.md)이 정본이다.
@@ -260,7 +262,7 @@ PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.validate_c
 5. 검증된 checkpoint에서 M1을 시작한다. 출발이 부적합하면 화면을 게시하고 사용자에게 E34/835·E34/723 등 대안을 묻는다.
 6. 모델 stop/finish·관리 예산·득점 검토는 live HOLD한다.5카메라를 README 상단에 push하고 사용자 텍스트를 기다린다.
 
-현재 collector에는 완성된 checkpoint·HOLD 실행 옵션이 없다. 실제 구현 후 검증한 새 명령과 commit을 인계서와 세션 기록에 남긴다. 기존 `--strategy`에 없는 M1 이름을 CLI에 넣거나 과거 E27/E28 재개 명령을 이번 시작 명령으로 복사하지 않는다.
+collector와 client에 opt-in `--user-guided` 경로가 추가되었다. [실제 명령과 검증 receipt](collection/GUIDED_RUNTIME.ko.md)를 사용한다. M1/M2/M3는 guided 방법이며 과거 `--strategy` 이름과 구분한다. 과거 E27/E28 명령을 이번 시작 명령으로 복사하지 않는다.
 
 같은 live HOLD에서 계속할 때는 환경을 reset하지 않는다. 사용자가 다른 checkpoint를 선택하면 현재 분기를 보존하고 **새 run**으로 기록한다. 과거 점수·시간을 이월하거나 동일 source group을 독립 성공으로 세지 않는다.
 

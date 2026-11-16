@@ -73,10 +73,11 @@ class WideHemSideEntryStrategyTest(unittest.TestCase):
             return result
         current_source = Path(client.__file__).read_text()
         old, new = nodes(BASE_SOURCE), nodes(current_source)
-        self.assertEqual(set(new) - set(old), {'WIDE_HEM_SIDE_ENTRY_TASK', 'WRIST_BODY_ENTRY_TASK'})
+        self.assertEqual(set(new) - set(old) - {'SimulatorRequestRejected'}, {'WIDE_HEM_SIDE_ENTRY_TASK', 'WRIST_BODY_ENTRY_TASK'})
         self.assertEqual(set(old) - set(new), set())
+        # Guided integration changes provenance and rejected-ACK transport; behavioral tests cover these.
         for name in old:
-            if name != 'main':
+            if name not in ('main', 'source_snapshot', 'Simulator'):
                 with self.subTest(node=name):
                     self.assertEqual(old[name], new[name])
         self.assertEqual(strategy_choices(current_source),

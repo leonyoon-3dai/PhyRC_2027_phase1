@@ -3,7 +3,7 @@
 <!-- PHYRC_USER_REVIEW:START -->
 > **다음 시연: 최신 손목 근접 checkpoint에서 첫 소매 +5점**
 >
-> **현재 상태: 클린 서버 대기 · 새 시연 미실행.** 조사는 마무리했습니다. E36/933 출발 후보를 복원·검증하고, 현재 파지를 유지한 국소 교정(M1)부터 시도합니다.
+> **현재 상태: L40S 서버 복원·HOLD 기능 검증 중 · 새 시연 미실행.** Astra 전환과 HF 로그인을 확인했습니다. E36/933 출발 후보를 복원·검증하고, 현재 파지를 유지한 국소 교정(M1)부터 시도합니다.
 >
 > 자동 종료 제안이나 예산 도달에서는 **시연을 HOLD → 공개 카메라 5장 게시 → 사용자에게 질문 → 텍스트 답변 후 재개·방향 변경·checkpoint 변경·종료**합니다. 이 기능은 클린 서버에서 먼저 구현·검증합니다.
 >
@@ -16,13 +16,19 @@
 
 [18장 슬라이드 PDF](docs/reports/20261114-e36-integrated-review/phyrc-e36-integrated-review.ko.pdf) · [텍스트·출처·검증](docs/reports/20261114-e36-integrated-review/README.ko.md)
 
-**[E36 이후: 종료·득점 분석과 여러 방법을 지원하는 후속 시스템 설계](docs/collection/research/2026-11-15-e36-continuation-options.ko.md)** · [HolidayFactory 논문 적용 검토](docs/collection/research/2026-11-15-holidayfactory-phyrc.ko.md)
+## 현재 전략과 판단 근거
 
-**선행 분석은 보존합니다.** 사람 조작·Astra·개입·복구·학습의 여러 가능성을 검토했고, 현재는 사용자 텍스트 피드백을 받는 checkpoint 시연을 선택했습니다. [최신 착의 연구 조사](docs/collection/research/2026-11-16-recent-dressing-resources.ko.md) · [실행 효과 분석](docs/collection/research/2026-11-16-checkpoint-effect-feedback.ko.md)
+두 대의 **Stretch 4**로 티셔츠를 입히는 연구입니다. 최신 정상 원본 E36/933의 손목 근접 상태를 재현하고 **M1 현재 파지 유지·국소 교정**을 먼저 시험합니다. 첫 소매 새5점을 목표로, 짧은 행동 뒤 실제 로봇 운동·천의 동행·손과 자유 경계 관계를 각각 확인합니다.
 
-[![Agentic Robotics 워크숍: PhyRC 시연 수집 참고 문서 열기](docs/assets/agentic-robotics-workshop-button.svg)](docs/collection/research/2026-11-14-agentic-robotics-workshop.ko.md)
+| 지금 필요한 정보 | 문서 |
+|---|---|
+| 실행할 방법·구간 예산·사용자 판단 | [현재 계획](docs/COLLECTION_PLAN.md) |
+| 명령이 어떻게 천과 착의 상태를 바꾸는가 | [기전·관측·판별 실험](docs/MECHANISMS.ko.md) |
+| 완료된 사실과 아직 확인할 것 | [현재 상태](docs/project/STATUS.md) |
+| 지난 시도에서 남긴 결론과 근거 | [과거 결과 요약](docs/HISTORY_SUMMARY.ko.md) · [원본 보관함](docs/ARCHIVE.md) |
+| 최신 연구와 이번 전략의 연결 | [착의 연구 분석](docs/collection/research/2026-11-16-recent-dressing-resources.ko.md) · [checkpoint·실행 효과](docs/collection/research/2026-11-16-checkpoint-effect-feedback.ko.md) |
 
-**[전체 경험과 연구에 기반한 수집 시스템 재정비 계획](docs/collection/research/2026-11-14-collection-system-redesign.ko.md)** · [이전 E28–E32 영상·실패 분석](docs/collection/reviews/20261114-session-review.ko.md)
+현재까지 정상 평가의 최고 원점수는 **5/50, 착의 득점0**입니다. 파일 QC, 파지 성공, 손 근접과 첫 소매 통과를 구분합니다. 과거의 시간순 작업 기록은 보관함에서 찾고, 여기서는 현재 선택과 그 근거를 관리합니다.
 
 ## 공식 착의 데모
 
@@ -60,11 +66,11 @@ https://github.com/user-attachments/assets/d2f347fe-712b-42f3-bdee-69d3fee2a47c
 
 <sub>실제 원본 영상 GIF · 전체0–46.65초 · 원본256×256 · 20fps에서2프레임마다1장을 샘플링한467프레임. 기본10fps이며 마지막 프레임만50ms로 유지해 원본 재생 길이를 보존합니다. 원본 MP4는933프레임이며 모델 대기는 제외합니다. 앞835전이는 E34 행동 prefix의 새 환경 재실행으로, 정확한 천 checkpoint나 독립 성공 시연이 아닙니다. <a href="docs/gallery/20261114-e36-overview/provenance.json">GIF 변환·검증</a> · <a href="docs/collection/attempts/20261114-astra-wrist-body835-001/manifest.json">영상·원본 근거</a>.</sub>
 
-## 수집 시스템 재정비
+## 사용자 판단으로 이어가는 시연
 
-**조사는 종료하고 사용자 피드백을 받는 시연으로 방향을 정했습니다.** 최신 출발 후보를 복원한 뒤 세 방법 중 M1부터 첫 소매 통과5점에 도전합니다. 자동 종료·예산·득점 조건에서는5카메라를 게시하고 사용자에게 다음 행동을 묻습니다. [클린 서버 인계서](docs/collection/research/2026-11-16-user-guided-resume.ko.md)에 필요한 기능, 실제 코드의 미구현 부분, 복원 순서와 시작 프롬프트를 정리했습니다. 이번 변경은 문서이며 새 시연은 아직 없습니다.
+모델의 종료 제안·정체·구간 예산·목표 득점에서는 물리와 기록기를 유지한 HOLD로 전환합니다. 같은 관측의 공개5카메라를 이 페이지 맨 위에 게시하고, 사용자가 계속·방향/방법 변경·다른 checkpoint·종료를 결정합니다. 무응답 동안은 대기를 유지합니다.
 
-[E36 후속 분석·선택지](docs/collection/research/2026-11-15-e36-continuation-options.ko.md) · [현재 계획](docs/COLLECTION_PLAN.md) · [선행 재정비 설계](docs/collection/research/2026-11-14-collection-system-redesign.ko.md)
+[실행 인계서](docs/collection/research/2026-11-16-user-guided-resume.ko.md) · [환경 복원](docs/OPERATIONS.md) · [Astra 관측·행동 경로](docs/ASTRA.md)
 
 ## 수집한 과정
 
