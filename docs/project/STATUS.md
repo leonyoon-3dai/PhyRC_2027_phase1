@@ -1,26 +1,26 @@
 # 현재 상태
 
-**이전110전이 근처로 복귀한 뒤 R0 단독 접근 명령을 수행했고, 새run의 hold-0002·135전이에서 live HOLD다.** 새 파지점 XY순변위는 R0 41.57mm/R1 12.66mm이며 R1은 모든 명령0에서도 움직였다. 오른팔 두 줄무늬 간격의 진행은 가림으로 확정하지 못했다. 기록135=110 replay+25new, 새9 act·10호출, stop 추가전이0이다. 복귀 출발의 기존H10 대비 파지점 차이는1.86/0.63mm였고 정확한 물리 되감기는 아니다. [현재 GIF·5카메라](../collection/user-reviews/20261116-astra-right-hand-hold10-001/hold-0002/README.ko.md) · [복귀·좌우·실제 운동 분석](../collection/reviews/20261116-right-hand-hold10-branch.ko.md)
+**이번 세션은 종료됐다.** 마지막 `20261116-astra-right-hand-hold10-001`은135전이에서 사용자 `finish`로 정상 마감했고 추가 물리 전이는0이다. `completed/closed/finished=true`, `capture_complete=true`, simulator 종료코드0을 확인했다. **전수 QC135/135·오류0**이며 비공개 HF 고정 revision의 강제 재다운로드·전체 파일 SHA 검증도 완료했다. 현재 live HOLD는 없다.
 
-개발 대화의 `gpt-6-astra` 전환, HF CLI2.4.0과 `leonayoon` 로그인, L40S GPU, 초기 자산·E36 복원/QC933/933, 격리 CLI0.166.0/Astra/ultra 연결, CPU394개 검사와 GPU smoke/HOLD·checkpoint 비교를 확인했다. 사용자가 정착 차이를 검토하고 현재 복원 상태를 채택했다. [출발 비교](../collection/reviews/20261116-checkpoint-validation.ko.md)
+다음 방향은 **마지막 R0 단독 접근 전110전이 상태에서 두 로봇을 마네킹 왼손 쪽으로 함께 이동한 뒤, 옷을 양손에 모두 걸치기**다. 사용자 제안으로 기록했으며 실행하지 않았다. [각 움직임의 지시·명령·실제 효과·GIF](../collection/reviews/20261116-user-guided-movement-ledger.ko.md) · [다음 계획](../COLLECTION_PLAN.md)
 
-[현재 실행 계획](../COLLECTION_PLAN.md) · [기전·판단 기준](../MECHANISMS.ko.md) · [과거 결과 요약](../HISTORY_SUMMARY.ko.md) · [실행 인계서](../collection/research/2026-11-16-user-guided-resume.ko.md) · [환경 복원](../OPERATIONS.md)
-
-## 현재 실행과 검증 경계
+## 이번 실행과 검증 경계
 
 | 항목 | 확인한 상태 |
 |---|---|
-| 현재 실행 | `20261116-astra-right-hand-hold10-001`, hold-0002·135전이·tick1620의 물리0 HOLD. R0 단독 접근 후 목표 관계 검토, 새run은 미마감 |
-| 현재 분기 평가 | raw0/50·first_sleeve0·success=false. checkpoint reset의 새 평가로 과거 pickup5를 이월하지 않음 |
-| 최신 정상 과제 시연 | `20261116-astra-m1-checkpoint-001`,120전이·QC120/120·고정HF 백업 검증 완료 |
-| 새 시연 출발 후보 | E36의933전이 경계. 재생·slot 저장/복원 확인. 정착 차이를 게시한 뒤 사용자가 현재 복원 상태를 채택하고 구체적 방향을 교정 |
-| 새 기능 | `e9cca07`에 checkpoint·물리0 HOLD·5카메라 export·텍스트 재개 구현. CPU394개 통과; GPU HOLD8개 검사 통과·slot 비교 완료. 원래934전이/복원1전이 전수 QC 통과 |
-| 첫 방법 / 목표 | M1 현재 파지 유지·국소 교정 / trusted evaluator의 `first_sleeve` 새0→5 |
-| 사용자 판단 | 자동 종료 제안·구간 예산·득점·출발 부적합에서 물리0 HOLD 후 README 상단에 같은 관측의5장 게시 |
-| 현재 성능 | 정상 평가 최고 로컬 raw5/50, 착의0, 완전 착의 성공 미확인 |
-| 학습 | 최신 시연 `unreviewed`; 새 VLA/RL 학습은 현재 범위에 없음 |
+| 마지막 시연 | `20261116-astra-right-hand-hold10-001`,135전이=110 replay+25 new. 새9 act·10호출, 마지막 tick1620/8.258334s. 사용자 종료·추가 전이0·QC135/135 |
+| 직전 M1 시연 | `20261116-astra-m1-checkpoint-001`,38 act·48호출·120전이. 정상 마감·QC120/120·고정HF 백업 재다운로드 검증 완료 |
+| 마지막 실제 이동 | R0만 평면 접근을 명령했으나 파지점 XY 순변위 R0 41.57mm/R1 12.66mm. R1 모든9채널0과 실제 고정은 다르다. [분석](../collection/reviews/20261116-right-hand-hold10-branch.ko.md) |
+| 해석의 한계 | 오른팔 두 줄무늬 간격 도달·실제 충돌·소매 통과 미확인. 사용자 왼손 충돌 우려는 다음 전략을 바꾼 근거이며 접촉 검증 결과는 아님 |
+| 이번 두 시연 평가 | raw0/50·first_sleeve0·success=false. checkpoint reset의 새 평가로 과거 pickup5를 이월하지 않음 |
+| 다음 출발 후보 | 새 분기 hold-0001·110전이에서 저장한slot, SHA `c26cc58c…`. 저장·해시 확인 완료, **복원 미검증**. [저장 receipt](../gallery/20261116-right-hand-hold10/start-checkpoint-verification.json) |
+| 기능 검증 | checkpoint/HOLD/게시·재개 CPU394개 및 GPU HOLD8개 검사 통과. 이후slot+prefix 계보 검증 확장 CPU399개 통과, 실제110전이 replay와 시작checkpoint 저장 확인 |
+| 모델·HF | 격리 Codex CLI0.166.0 / exec / gpt-6-astra / ultra; HF CLI2.4.0·leonayoon 로그인 확인. L40S GPU |
+| 현재 성능·학습 | 정상 평가 최고 raw5/50, 착의0·완전 착의 성공 미확인. 두 최신 시연 학습 승인 `unreviewed`; 기술QC와 별개 |
 
-사용자의 답변 전에는 동작·정착·자동 재개를 하지 않는다. 살아 있는 HOLD와 실제 환경 종료·프로세스 장애를 구분한다. 실행 상태의 최신 화면은 [README 검토 패널](../../README.md)에서 확인한다.
+[마지막 실행 마감 기록](../collection/attempts/20261116-astra-right-hand-hold10-001/README.ko.md) · [이전 M1 마감 기록](../collection/attempts/20261116-astra-m1-checkpoint-001/README.ko.md) · [기전](../MECHANISMS.ko.md) · [과거 요약](../HISTORY_SUMMARY.ko.md) · [복원 인계서](../collection/research/2026-11-16-user-guided-resume.ko.md)
+
+마감 뒤 `supervisor_state.json`의 held/active 표시는 마지막 스냅샷으로 남을 수 있다. 최종 attempt·capture 마감과 프로세스 종료를 기준으로 판정하며 이를 살아 있는 HOLD로 표시하지 않는다. 클라우드 서버 전원 종료는 수행하지 않았다.
 
 ## 출발 근거: E36
 
@@ -48,4 +48,8 @@
 
 ## 현재 검증 원본 백업
 
-준비934전이·복원1전이는 전수 QC와 비공개 HF 고정 revision `eb05c6f98f59cce84084ab9a10e153687292ee53`의 재다운로드 SHA 검증까지 완료했다. [91개 파일·2.11GB 백업 receipt](../collection/reviews/20261116-checkpoint-backup-verification.json). 현재 M1을 수행하는 열린 run은 별도다.
+준비934전이·복원1전이는 전수 QC와 비공개 HF 고정 revision `eb05c6f98f59cce84084ab9a10e153687292ee53`의 재다운로드 SHA 검증까지 완료했다. [91개 파일·2.11GB 백업 receipt](../collection/reviews/20261116-checkpoint-backup-verification.json). 이번 두 과제 시연은 이 준비 원본과 별도 실행으로 마감했다.
+
+M1 120전이는 HF 고정 revision `91384b01de9d566ec6d1d221ff332a6d4fddd289`에서486개 원본/488개 manifest 파일의 SHA·크기·정확한 구성까지 재검증했다. [M1 백업 receipt](../collection/reviews/20261116-m1-checkpoint-backup-verification.json).
+
+마지막 R0 분기135전이와110전이 출발slot은 HF 고정 revision `7b432df530a4b7001f3aaa63dea67b9bd6c44ef7`에 보존했다. 304,192,227bytes archive의 재다운로드 SHA와144개 manifest 파일의 크기·SHA·정확한 목록을 검증했고 원본142개 파일도 불변이었다. [R0 분기 백업 receipt](../collection/reviews/20261116-right-hand-hold10-backup-verification.json). 저장slot 자체를 다시 복원해 품질을 검증한 것은 아니다.

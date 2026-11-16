@@ -1,30 +1,30 @@
 # PhyRC 2027
 
 <!-- PHYRC_USER_REVIEW:START -->
-> **현재 live HOLD · 이전 위치 복귀 후 R0 단독 명령으로 접근**
+> **이번 시연 종료 · 각 움직임 기록과 다음 전략 정리**
 >
-> 이전110전이 근처로 복귀한 뒤 **오른손 쪽 R0에만 접근 명령**을 주었습니다. 새 구간의 파지점 XY 순변위는 **R0 41.57mm / R1 12.66mm**입니다. R1의 모든 명령은0이었지만 실제로는 함께 움직였으므로 왼손 쪽 로봇을 고정했다고 설명할 수 없습니다.
+> 사용자 종료 지시에 따라 마지막 **135전이에서 추가 움직임 없이 정상 마감**했습니다. 아래는 마지막 기록 영상이며 live HOLD가 아닙니다.
 >
-> **오른팔 줄무늬 두 칸만큼의 진행은 아직 확정하지 못했습니다.** 손·옷 경계가 파지부에 가려 남은 이동을 판단하기 어려워 HOLD했습니다. 실제 충돌·소매 통과도 미확인입니다.
+> **다음 시도 계획:** 마지막 R0 단독 접근 **전** 상태로 돌아가, 두 로봇을 **마네킹의 왼손 쪽으로 함께 이동**시킨 뒤 공식 데모를 참고해 **옷을 양손에 모두 걸치는 방향**을 시험합니다. 이번에는 실행하지 않았습니다.
 >
-> Run `20261116-astra-right-hand-hold10-001` · **hold-0002** · 관측 `48101e32d536f9ce` ·135전이/tick1620/8.258334s. 기록은110 replay+새25전이이며, 새9 act·10모델 호출입니다. 현재 물리 진행0으로 대기합니다.
+> 오른손 쪽은 R0, 왼손 쪽은 R1입니다. 마지막 구간에서 R0만 명령했지만 실제 파지점 XY 순변위는 **R0 41.57mm / R1 12.66mm**였습니다. 줄무늬 목표 도달·실제 충돌·소매 통과는 확정하지 못했습니다.
 
-<a href="docs/gallery/20261116-right-hand-hold10/README.ko.md"><img src="docs/gallery/20261116-right-hand-hold10/right-hand-only-two-stripes.gif" width="536" alt="복귀 후 R0만 접근 명령을 준110–135전이, R1 중립 중 실제 움직임도 포함한 GIF"></a>
+**[이번의 모든 움직임: 사용자 지시·명령·실제 이동·구간 GIF](docs/collection/reviews/20261116-user-guided-movement-ledger.ko.md)** · [다음 전략과 출발점](docs/COLLECTION_PLAN.md) · [마감·QC·백업 상태](docs/project/STATUS.md)
 
-실제20Hz 기록의110–135 경계26장을 모두 표시합니다. 중간 프레임은4배 느리게 재생하며 시작·끝에는 정지가 있습니다.
+<a href="docs/gallery/20261116-right-hand-hold10/README.ko.md"><img src="docs/gallery/20261116-right-hand-hold10/right-hand-only-two-stripes.gif" width="536" alt="마감한 마지막 R0 단독 명령 구간110–135전이: R1 중립 중 실제 움직임도 포함"></a>
+
+Run `20261116-astra-right-hand-hold10-001` · 마지막 hold-0002 · 관측 `48101e32d536f9ce` · 135전이 = 110 replay + 새25전이. 실제20Hz 기록의110–135 경계26장, 중간은4배 느리게 재생하고 시작·끝에 정지가 있습니다.
 
 <details>
-<summary>현재 같은 관측의5카메라와 원본 보기</summary>
+<summary>마감 직전 같은 관측의5카메라와 원본 보기</summary>
 
-![hold-0002 현재 공개5카메라](docs/collection/user-reviews/20261116-astra-right-hand-hold10-001/hold-0002/cameras.png)
+![마감 직전 hold-0002 공개5카메라](docs/collection/user-reviews/20261116-astra-right-hand-hold10-001/hold-0002/cameras.png)
 
 [overview](docs/collection/user-reviews/20261116-astra-right-hand-hold10-001/hold-0002/overview.png) · [robot_1_head](docs/collection/user-reviews/20261116-astra-right-hand-hold10-001/hold-0002/robot_1_head.png) · [robot_0_head](docs/collection/user-reviews/20261116-astra-right-hand-hold10-001/hold-0002/robot_0_head.png) · [robot_1_wrist](docs/collection/user-reviews/20261116-astra-right-hand-hold10-001/hold-0002/robot_1_wrist.png) · [robot_0_wrist](docs/collection/user-reviews/20261116-astra-right-hand-hold10-001/hold-0002/robot_0_wrist.png)
 
 </details>
 
-[현재 GIF·5카메라](docs/collection/user-reviews/20261116-astra-right-hand-hold10-001/hold-0002/README.ko.md) · [복귀 비교·좌우 식별·R1의 실제 움직임](docs/collection/reviews/20261116-right-hand-hold10-branch.ko.md) · [원래120전이 마감·백업](docs/collection/attempts/20261116-astra-m1-checkpoint-001/README.ko.md) · [현재 전략](docs/COLLECTION_PLAN.md)
-
-**GIF를 보고 다음 진행 방향을 알려주세요.** 사용자 답변 전에는 추가 행동·정착·종료 없이 현재 상태를 유지합니다.
+[첫 시연의 구간별 GIF](docs/gallery/20261116-m1-guided-segments/README.ko.md) · [복귀·R0 접근 GIF](docs/gallery/20261116-right-hand-hold10/README.ko.md) · [복귀 비교·R1 실제 움직임](docs/collection/reviews/20261116-right-hand-hold10-branch.ko.md) · [최종 실행 마감 기록](docs/collection/attempts/20261116-astra-right-hand-hold10-001/README.ko.md)
 <!-- PHYRC_USER_REVIEW:END -->
 
 [![E00–E36 통합 분석 보고서 PDF 열기](docs/assets/e36-integrated-report-button.svg)](docs/reports/20261114-e36-integrated-review/phyrc-e36-integrated-review.ko.pdf)
@@ -33,7 +33,7 @@
 
 ## 현재 전략과 판단 근거
 
-두 대의 **Stretch 4**로 티셔츠를 입히는 연구입니다. 최신 정상 원본 E36/933의 손목 근접 상태를 재현하고 **M1 현재 파지 유지·국소 교정**을 먼저 시험합니다. 첫 소매 새5점을 목표로, 짧은 행동 뒤 실제 로봇 운동·천의 동행·손과 자유 경계 관계를 각각 확인합니다.
+두 대의 **Stretch 4**로 티셔츠를 입히는 연구입니다. 이번 사용자 교정 시연은 마감했습니다. 다음 방향은 **R0 단독 접근 전 상태에서 두 로봇을 왼손 쪽으로 함께 옮겨 양손에 옷을 걸치기**입니다. 짧은 구간마다 실제 로봇 운동·천의 동행·양손과 자유 경계 관계를 확인할 계획이며, 소매 통과와 공식 득점은 별도로 검증합니다.
 
 | 지금 필요한 정보 | 문서 |
 |---|---|
@@ -67,11 +67,11 @@ https://github.com/user-attachments/assets/d2f347fe-712b-42f3-bdee-69d3fee2a47c
 
 | [**시연 영상**](docs/EPISODES.md) | [**후속 분석·설계**](docs/COLLECTION_PLAN.md) | [**Astra 코드·Hz**](docs/ASTRA.md) | [**클린 서버 시작**](docs/OPERATIONS.md) |
 |:---:|:---:|:---:|:---:|
-| E00–E36 기록과 상태 | 세 방법·사용자 HOLD | 관측부터 HDF5까지 | 복원·최소 구현·새 시연 |
+| E00–E36·사용자 교정 기록 | 양손 걸침 계획·사용자 HOLD | 관측부터 HDF5까지 | 복원·검증·새 시연 |
 
 **E36이11결정·933전이로 정상 마감해 QC933/933을 통과했고, 당시 수집 배치를 종료했습니다. E37–E39는 실행하지 않았습니다.** 로컬5/50은 replay 구간의 픽업5점이며 새 착의 득점0·success=false입니다. [현재 상태와 고정 백업 검증](docs/project/STATUS.md) / [최신 후속 계획](docs/COLLECTION_PLAN.md). 새 시스템이나 자동 학습을 구현했다는 의미는 아닙니다.
 
-## 최근 시연 · E36
+## 앞선 기준 시연 · E36
 
 <a href="docs/collection/attempts/20261114-astra-wrist-body835-001/overview.mp4"><img src="docs/gallery/20261114-e36-overview/preview.gif" width="960" alt="E36 실제 원본 영상의 GIF: 전체 0–46.65초를 기본 10fps로 프레임 샘플링하고 마지막 프레임은 50ms 유지. 누르면 원본 MP4가 열립니다."></a>
 

@@ -12,7 +12,8 @@
 | 실행·출발점·방법 정본 | [catalog.v1.json](collection/catalog/catalog.v1.json), [색인 설명](collection/catalog/README.ko.md) |
 | 시도별 검수 | [reviews](collection/reviews/), [attempts](collection/attempts/) |
 | 날짜별 진행 | [HISTORY](project/HISTORY.ko.md), [project sessions](project/sessions/), [collection sessions](collection/sessions/) |
-| E36 최신 정상 마감 | [실행 기록](project/sessions/20261114-e36-wrist-body.ko.md), [통합 PDF·근거](reports/20261114-e36-integrated-review/README.ko.md) |
+| 이번 사용자 교정·R0 분기 마감 | [각 움직임 장부](collection/reviews/20261116-user-guided-movement-ledger.ko.md), [M1 마감](collection/attempts/20261116-astra-m1-checkpoint-001/README.ko.md), [R0 분기 마감](collection/attempts/20261116-astra-right-hand-hold10-001/README.ko.md) |
+| 앞선 E36 정상 마감 | [실행 기록](project/sessions/20261114-e36-wrist-body.ko.md), [통합 PDF·근거](reports/20261114-e36-integrated-review/README.ko.md) |
 | E27 당시 마감 | [과거 마감 기록](project/SESSION_WRAPUP_20261107.ko.md) |
 | 화면 표시·원본 출처 | [robot_1 왼쪽 / robot_0 오른쪽](gallery/ROBOT_LAYOUT.ko.md) |
 | 성능 계측과 한계 | [performance](project/performance/) |
@@ -23,6 +24,9 @@
 
 | 복원 대상 | 검증 receipt |
 |---|---|
+| `20261116` R0 분기135전이·출발slot | [JSON](collection/reviews/20261116-right-hand-hold10-backup-verification.json) |
+| `20261116` 사용자 교정 M1 120전이 | [JSON](collection/reviews/20261116-m1-checkpoint-backup-verification.json) |
+| `20261116` 출발 준비934전이·복원1전이 | [JSON](collection/reviews/20261116-checkpoint-backup-verification.json) |
 | `20261114-e36` | [JSON](project/sessions/20261114-e36-backup-verification.json) |
 | `20261114-e35` | [JSON](project/sessions/20261114-e35-backup-verification.json) |
 | `20261114-e34` | [JSON](project/sessions/20261114-e34-backup-verification.json) |

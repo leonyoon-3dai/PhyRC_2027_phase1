@@ -1,9 +1,8 @@
 # Codex 작업 지침
 
-**현재 실행:** `20261116-astra-right-hand-hold10-001`은 **hold-0002·135전이에서 live HOLD**다. 동일 초기slot+마감 M1의 앞110행동으로 이전 HOLD10 근처를 재현한 뒤, 실제 사용자 지시를 이어 R0만 접근시켰다. 공개 팔 연결은R0=오른손 쪽/R1=왼손 쪽. 새9 act·25전이의 R0/R1 grasp XY순변위는41.57/12.66mm다. R1의9채널 명령은 모두0이지만 실제 고정은 아니며, 후반에도 이동이 지속됐다. 두 줄무늬 간격 도달은 가림으로 미확인, 모델 stop은 물리0 HOLD로 전환했다. 누적 기록135=110replay+25new, 모델10호출. 실제 다음 사용자 답변 전 행동·정착·자동 재개·종료0. 이전 M1은120전이 정상마감·QC·고정HF 백업 검증 완료; 새run은 미마감·미QC·미백업이다.
+**현재 실행: 종료.** 사용자 지시로 `20261116-astra-right-hand-hold10-001`을 hold-0002·135전이에서 추가 물리0으로 정상 마감했다. 기록은110 replay+25 new, 새9 act·10모델 호출이다. 현재 live HOLD나 자동 재개할 세션은 없다. 각 움직임의 명령·효과·GIF는 [이동 장부](docs/collection/reviews/20261116-user-guided-movement-ledger.ko.md), QC·백업은 [STATUS](docs/project/STATUS.md)를 따른다.
 
-
-**현재 사용자 지시(2026-11-16): 최신 전략으로 시연을 시작하고, 판단 지점에서5카메라를 저장소에 게시해 사용자 텍스트를 기다린다.** 개발 대화의 Astra 전환과 HF 로그인 확인 후 클린 서버 복원·필수 기능 구현/검증에 착수했다. E36/933을 우선 검증하고 M1 현재 파지 유지·국소 교정으로 첫 소매 새5점을 시도한다. [현재 계획](docs/COLLECTION_PLAN.md)과 [실행 인계서](docs/collection/research/2026-11-16-user-guided-resume.ko.md)가 정본이다. 실제 실행·검증 상태는 [STATUS](docs/project/STATUS.md)에서 확인한다.
+**현재 사용자 방향(2026-11-16, 미실행 계획):** 마지막 R0 단독 접근 전의 새 분기 hold-0001·110전이를 출발 후보로 삼아, **두 로봇을 마네킹의 왼손 쪽으로 함께 옮긴 뒤 옷을 양손에 모두 걸치는 방향**을 시험한다. 이번 지시는 정리·종료이며 새 시연 실행 승인이 아니다. 다음 사용자 재개 지시 때 [현재 계획](docs/COLLECTION_PLAN.md)에 따라 새 run과 복원 검토부터 시작한다. R0=오른손 쪽, R1=왼손 쪽이며 카메라 이름만으로 해부학적 좌우를 정하지 않는다. 저장한 출발slot은 해시 검증만 완료했고 복원은 미검증이다.
 
 **문서 관리:** [기전·판단 기준](docs/MECHANISMS.ko.md)과 [과거 결과 요약](docs/HISTORY_SUMMARY.ko.md)을 중심으로 현재 전략과 최근 분석을 관리한다. 시간별 초기 시행착오를 활성 문서에 반복하지 않는다. 세션·원본·실패·provenance·GIF·PDF는 보존하고, 현재 판단을 바꾼 근거에서 상세 이력으로 연결한다. 과거 분석-only HOLD·최대5회 배치·날짜별 TODO는 현재 지시가 아니다.
 
@@ -12,16 +11,16 @@
 이 파일은 저장소를 읽는 **개발용 Codex CLI**의 진입점이다. 실제 로봇 행동을 생성하는 격리 actor에는 저장소와 검수 자료를 전달하지 않는다.
 
 1. [메인](README.md)에서 대표 영상과 현재 목표를 확인한다.
-2. 새 서버라면 [실행 인계서](docs/collection/research/2026-11-16-user-guided-resume.ko.md)와 [OPERATIONS](docs/OPERATIONS.md)를 읽고 고정 원본·자산·모델 환경을 복원한다. 필요한 HOLD·checkpoint·게시·피드백 연결을 검증하기 전 기존 즉시 종료 수집기로 본 시연을 시작하지 않는다.
+2. 새 서버라면 [GUIDED_RUNTIME](docs/collection/GUIDED_RUNTIME.ko.md)과 [OPERATIONS](docs/OPERATIONS.md)를 읽고 고정 원본·자산·모델 환경을 복원한다. 필요한 HOLD·checkpoint·게시·피드백 연결을 검증하기 전 기존 즉시 종료 수집기로 본 시연을 시작하지 않는다.
 3. 수집 변경 전 [COLLECTION_PLAN](docs/COLLECTION_PLAN.md)과 [ASTRA](docs/ASTRA.md)를 읽는다. 시연과 직접 부모는 [EPISODES](docs/EPISODES.md)에서 찾는다.
 4. 과거 세션의 “다음”, “재개”, 날짜별 TODO는 현재 지시가 아니다. 고유 실행 근거는 [보관함](docs/ARCHIVE.md)을 통해 확인한다.
 5. 시연 수집 방법을 검토할 때 [Agentic Robotics 워크숍 참고](docs/collection/research/2026-11-14-agentic-robotics-workshop.ko.md)를 읽는다. 채택 논문 39편의 조사 범위, Stretch 4+Astra 사례, 현재 코드와의 차이, 다음 비교 제안 및 원문 접근 한계를 기록했다. 개발용 참고이며 actor 입력·구현·재개 명령이 아니다. 최신 상태와 실행 계획은 계속 STATUS/COLLECTION_PLAN이 정본이다.
-6. [현재 계획](docs/COLLECTION_PLAN.md)의 M1/M2/M3와 사용자 HOLD 절차를 따른다. [checkpoint·실행 효과 분석](docs/collection/research/2026-11-16-checkpoint-effect-feedback.ko.md), [최신 착의 연구](docs/collection/research/2026-11-16-recent-dressing-resources.ko.md), 이전 다중 방법·HolidayFactory 문서는 선행 근거다. 조사 자체를 다시 확대하지 않는다.
+6. [현재 계획](docs/COLLECTION_PLAN.md)의 양손 걸침 방향과 사용자 HOLD 절차를 따른다. [checkpoint·실행 효과 분석](docs/collection/research/2026-11-16-checkpoint-effect-feedback.ko.md), [최신 착의 연구](docs/collection/research/2026-11-16-recent-dressing-resources.ko.md), 이전 다중 방법·HolidayFactory 문서는 선행 근거다. 조사 자체를 다시 확대하지 않는다.
 
 ## 현재 범위
 
-- **기존 M1은120전이 정상마감·QC·백업 검증을 완료했고, 새 분기는110전이 복귀 후 R0 단독 접근을 수행한135전이에서 검토 중이다.** 과거 원본을 보존하며 마감한 이전 HOLD를live로 표시하지 않는다. 슬롯 기반 replay 확장과 초기 검토 gate는 CPU399개 검사를 통과했고 실제110전이 재생·시작checkpoint 저장도 확인했다.
-- **실제 실행·점수·백업은 [STATUS](docs/project/STATUS.md), 현재 방향은 [COLLECTION_PLAN](docs/COLLECTION_PLAN.md), 복원·구현 계약은 [실행 인계서](docs/collection/research/2026-11-16-user-guided-resume.ko.md)가 정본이다.** 이전 문서의 HOLD·재개·날짜별 TODO보다 최신 사용자 결정을 우선한다. 연구 문서 전체를 actor에 전달하지 않는다.
+- **이번 두 시연은 모두 종료됐다.** 기존 M1은120전이, R0 단독 접근 분기는135전이(110 replay+25 new)로 보존한다. 마감한 과거 HOLD를 live로 표시하지 않는다. 슬롯 기반 replay 확장은 CPU399개 검사를 통과했고 실제110전이 재생·출발checkpoint 저장도 확인했다. 저장만 한 새 출발slot을 복원 검증 완료로 설명하지 않는다.
+- **실제 실행·점수·백업은 [STATUS](docs/project/STATUS.md), 현재 방향은 [COLLECTION_PLAN](docs/COLLECTION_PLAN.md), 복원·실행 계약은 [OPERATIONS](docs/OPERATIONS.md)와 [GUIDED_RUNTIME](docs/collection/GUIDED_RUNTIME.ko.md)이 정본이다.** 이전 문서의 HOLD·재개·날짜별 TODO보다 최신 사용자 결정을 우선한다. 연구 문서 전체를 actor에 전달하지 않는다.
 - 사람 조작용 state slot과 `initial_slot` 근사 복원 경로는 이미 존재한다. 원래 E36의 완전한 FEM checkpoint는 없다. 이번 새 E36/933 재생 경계의 근사 slot 저장·복원은 검증했고, 정착과 짧은 명령 효과 차이를 게시했다. 이를 정확한 동일 상태 복원으로 설명하지 않는다. 현재 collector의 행동 재생과 구분하고, 복원 시 초기화되는 상태·정착·평가 재시작을 검토한다. 기존 관측→행동→관측 루프가 전혀 없었다거나 E36까지 모든 명령이 오작동했다고 일반화하지 않는다.
 - E36의 추가 재파지0·20결정·review10은 해당 시도의 조건이다. 향후 모든 방법의 고정 규칙으로 일반화하지 않는다. 각 실험에서 제어원, 입력, 재파지·복구 조건, 예산과 종료/검토 방식을 명시하고 공식 물리·관측·행동·평가 계약은 유지한다.
 - E33–E36의 핵심 결과와 계보는 [과거 결과 요약](docs/HISTORY_SUMMARY.ko.md), 원본·검사·백업은 [보관함](docs/ARCHIVE.md)에 보존한다. E36은10act+finish·933전이·QC933/933·raw5/50·새 착의점0이다. E09·E32는 불완전 원본으로 정상 replay·학습 출처에서 제외한다. E32의 진단 백업 검증을 수집 완료로 바꾸어 설명하지 않는다.

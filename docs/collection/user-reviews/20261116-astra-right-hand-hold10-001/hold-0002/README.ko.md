@@ -1,6 +1,8 @@
 # 사용자 검토:이전 위치 복귀 후 R0 단독 접근
 
-**20261116-astra-right-hand-hold10-001 / hold-0002 · 현재 live HOLD**
+**20261116-astra-right-hand-hold10-001 / hold-0002 · 종료한 실행의 마지막 관측**
+
+사용자의 종료 지시에 따라 135전이에서 정상 마감했다. 이 화면은 마감 직전 HOLD2의 기록이며 현재 live HOLD가 아니다. 종료 요청으로 추가 물리 전이는 발생하지 않았다. 관측·GIF·사본 메타데이터의 HOLD 표시는 촬영 당시 값 그대로 보존한다.
 
 이전110전이 근처로 복귀한 뒤 **오른손 쪽 R0에만 접근 명령**을 주었다. 새 파지점 XY순변위는 **R0 41.57mm/R1 12.66mm**다. 왼손 쪽R1의 모든 명령은0이었지만 실제로 함께 움직였으므로 위치를 고정했다고 말할 수 없다.
 
@@ -25,14 +27,12 @@ R1 베이스 worldY도+7.79mm 이동했다. 첫 전환에서 줄어든 뒤 후�
 
 [좌우 식별·복귀 차이·최종 분석](../../../reviews/20261116-right-hand-hold10-branch.ko.md) · [복귀한 출발 화면](../hold-0001/README.ko.md)
 
-## 현재5카메라
+## 마지막 HOLD에서 촬영한 5카메라
 
 관측 `48101e32d536f9ce0a487fcba5204021815cc74b3cf9aeab4dc7e7b13aeba313` ·135전이·tick1620·8.258334s. 모두 같은 경계다.
 
-![현재 공개5카메라](cameras.png)
+![종료 직전 HOLD2의 공개5카메라](cameras.png)
 
 [overview](overview.png) · [robot_1_head](robot_1_head.png) · [robot_0_head](robot_0_head.png) · [robot_1_wrist](robot_1_wrist.png) · [robot_0_wrist](robot_0_wrist.png) · [metadata](observation-metadata.json)
 
-현재run은 열려 있으며 마감·QC·백업 전이다. 이전120전이run은 별도로 정상 마감·백업했다. 실제 다음 사용자 답변 전에는 추가 행동·정착·종료 없이 현재 상태를 유지한다.
-
-**GIF를 보고 다음 진행 방향을 알려주세요.** [이후 최신 상태](../../../../../README.md)
+이번 실행과 이전120전이 실행은 모두 마감했다. QC·고정 백업의 최신 확인은 [현재 상태](../../../../project/STATUS.md)에서 관리한다. 사용자가 지정한 다음 방향은 마지막 R0 접근 전 상태에서 양쪽 로봇을 마네킹의 해부학적 왼쪽으로 조정한 뒤 옷을 양손 위로 보내는 계획이며, 이번 마감 뒤 실행하지 않았다. [다음 실행 계획](../../../../COLLECTION_PLAN.md) · [출발 체크포인트와 복원 한계](../../../reviews/20261116-right-hand-hold10-branch.ko.md#다음-출발점으로-남긴-체크포인트)

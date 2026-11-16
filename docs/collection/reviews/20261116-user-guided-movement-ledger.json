@@ -1,0 +1,4867 @@
+{
+  "schema": "phyrc-public-movement-ledger-v1",
+  "scope": {
+    "original_new_acts": 38,
+    "branch_new_acts": 9,
+    "total_new_acts": 47,
+    "new_act_transitions": 145,
+    "branch_prefix_replay_transitions_separate": 110,
+    "recorded_transitions_in_both_runs_including_replay": 255,
+    "simulation_executed_to_build_this_ledger": false
+  },
+  "action_channel_order": [
+    "base_fwd",
+    "base_left",
+    "base_yaw",
+    "lift",
+    "arm",
+    "wrist_yaw",
+    "wrist_pitch",
+    "wrist_roll",
+    "gripper"
+  ],
+  "action_units": "normalized recorded command; base_fwd/base_left are robot-local directions",
+  "pose_convention": "xyz metres + wxyz quaternion; world_grasp=base_xyz+R(base_wxyz)@grasp_base_xyz",
+  "display_precision": "Markdown command values rounded to6 decimals and motion to3 decimals; neither is a sensor accuracy claim.",
+  "command_catalog": {
+    "C01": {
+      "normalized_action_by_robot": {
+        "robot_0": {
+          "base_fwd": 0.03700000047683716,
+          "base_left": -0.19699999690055847,
+          "base_yaw": 0.0,
+          "lift": 0.0,
+          "arm": 0.0,
+          "wrist_yaw": 0.0,
+          "wrist_pitch": 0.0,
+          "wrist_roll": 0.0,
+          "gripper": 0.0
+        },
+        "robot_1": {
+          "base_fwd": 0.07199999690055847,
+          "base_left": 0.18700000643730164,
+          "base_yaw": 0.0,
+          "lift": 0.0,
+          "arm": 0.0,
+          "wrist_yaw": 0.0,
+          "wrist_pitch": 0.0,
+          "wrist_roll": 0.0,
+          "gripper": 0.0
+        }
+      },
+      "normalized_action_matrix": [
+        [
+          0.03700000047683716,
+          -0.19699999690055847,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.07199999690055847,
+          0.18700000643730164,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    "C02": {
+      "normalized_action_by_robot": {
+        "robot_0": {
+          "base_fwd": 0.0,
+          "base_left": 0.0,
+          "base_yaw": 0.0,
+          "lift": -0.07999999821186066,
+          "arm": 0.0,
+          "wrist_yaw": 0.0,
+          "wrist_pitch": 0.0,
+          "wrist_roll": 0.0,
+          "gripper": 0.0
+        },
+        "robot_1": {
+          "base_fwd": 0.0,
+          "base_left": 0.0,
+          "base_yaw": 0.0,
+          "lift": -0.07999999821186066,
+          "arm": 0.0,
+          "wrist_yaw": 0.0,
+          "wrist_pitch": 0.0,
+          "wrist_roll": 0.0,
+          "gripper": 0.0
+        }
+      },
+      "normalized_action_matrix": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          -0.07999999821186066,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -0.07999999821186066,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    "C03": {
+      "normalized_action_by_robot": {
+        "robot_0": {
+          "base_fwd": 0.0,
+          "base_left": 0.0,
+          "base_yaw": 0.0,
+          "lift": 0.0,
+          "arm": 0.0,
+          "wrist_yaw": 0.0,
+          "wrist_pitch": 0.0,
+          "wrist_roll": 0.0,
+          "gripper": 0.0
+        },
+        "robot_1": {
+          "base_fwd": 0.0,
+          "base_left": 0.0,
+          "base_yaw": 0.0,
+          "lift": 0.0,
+          "arm": 0.0,
+          "wrist_yaw": 0.0,
+          "wrist_pitch": 0.0,
+          "wrist_roll": 0.0,
+          "gripper": 0.0
+        }
+      },
+      "normalized_action_matrix": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    "C04": {
+      "normalized_action_by_robot": {
+        "robot_0": {
+          "base_fwd": -0.02199999988079071,
+          "base_left": 0.11800000071525574,
+          "base_yaw": 0.0,
+          "lift": 0.0,
+          "arm": 0.0,
+          "wrist_yaw": 0.0,
+          "wrist_pitch": 0.0,
+          "wrist_roll": 0.0,
+          "gripper": 0.0
+        },
+        "robot_1": {
+          "base_fwd": -0.0430000014603138,
+          "base_left": -0.1120000034570694,
+          "base_yaw": 0.0,
+          "lift": 0.0,
+          "arm": 0.0,
+          "wrist_yaw": 0.0,
+          "wrist_pitch": 0.0,
+          "wrist_roll": 0.0,
+          "gripper": 0.0
+        }
+      },
+      "normalized_action_matrix": [
+        [
+          -0.02199999988079071,
+          0.11800000071525574,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -0.0430000014603138,
+          -0.1120000034570694,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    "C05": {
+      "normalized_action_by_robot": {
+        "robot_0": {
+          "base_fwd": 0.035999998450279236,
+          "base_left": -0.19699999690055847,
+          "base_yaw": 0.0,
+          "lift": 0.0,
+          "arm": 0.0,
+          "wrist_yaw": 0.0,
+          "wrist_pitch": 0.0,
+          "wrist_roll": 0.0,
+          "gripper": 0.0
+        },
+        "robot_1": {
+          "base_fwd": 0.07100000232458115,
+          "base_left": 0.18700000643730164,
+          "base_yaw": 0.0,
+          "lift": 0.0,
+          "arm": 0.0,
+          "wrist_yaw": 0.0,
+          "wrist_pitch": 0.0,
+          "wrist_roll": 0.0,
+          "gripper": 0.0
+        }
+      },
+      "normalized_action_matrix": [
+        [
+          0.035999998450279236,
+          -0.19699999690055847,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.07100000232458115,
+          0.18700000643730164,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    "C06": {
+      "normalized_action_by_robot": {
+        "robot_0": {
+          "base_fwd": 0.02199999988079071,
+          "base_left": -0.11800000071525574,
+          "base_yaw": 0.0,
+          "lift": 0.0,
+          "arm": 0.0,
+          "wrist_yaw": 0.0,
+          "wrist_pitch": 0.0,
+          "wrist_roll": 0.0,
+          "gripper": 0.0
+        },
+        "robot_1": {
+          "base_fwd": 0.0430000014603138,
+          "base_left": 0.1120000034570694,
+          "base_yaw": 0.0,
+          "lift": 0.0,
+          "arm": 0.0,
+          "wrist_yaw": 0.0,
+          "wrist_pitch": 0.0,
+          "wrist_roll": 0.0,
+          "gripper": 0.0
+        }
+      },
+      "normalized_action_matrix": [
+        [
+          0.02199999988079071,
+          -0.11800000071525574,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0430000014603138,
+          0.1120000034570694,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    "C07": {
+      "normalized_action_by_robot": {
+        "robot_0": {
+          "base_fwd": 0.0,
+          "base_left": 0.0,
+          "base_yaw": 0.0,
+          "lift": -0.019999999552965164,
+          "arm": 0.0,
+          "wrist_yaw": 0.0,
+          "wrist_pitch": 0.0,
+          "wrist_roll": 0.0,
+          "gripper": 0.0
+        },
+        "robot_1": {
+          "base_fwd": 0.0,
+          "base_left": 0.0,
+          "base_yaw": 0.0,
+          "lift": -0.019999999552965164,
+          "arm": 0.0,
+          "wrist_yaw": 0.0,
+          "wrist_pitch": 0.0,
+          "wrist_roll": 0.0,
+          "gripper": 0.0
+        }
+      },
+      "normalized_action_matrix": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          -0.019999999552965164,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -0.019999999552965164,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    "C08": {
+      "normalized_action_by_robot": {
+        "robot_0": {
+          "base_fwd": -0.007000000216066837,
+          "base_left": 0.039000000804662704,
+          "base_yaw": 0.0,
+          "lift": 0.0,
+          "arm": 0.0,
+          "wrist_yaw": 0.0,
+          "wrist_pitch": 0.0,
+          "wrist_roll": 0.0,
+          "gripper": 0.0
+        },
+        "robot_1": {
+          "base_fwd": -0.014000000432133675,
+          "base_left": -0.03700000047683716,
+          "base_yaw": 0.0,
+          "lift": 0.0,
+          "arm": 0.0,
+          "wrist_yaw": 0.0,
+          "wrist_pitch": 0.0,
+          "wrist_roll": 0.0,
+          "gripper": 0.0
+        }
+      },
+      "normalized_action_matrix": [
+        [
+          -0.007000000216066837,
+          0.039000000804662704,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -0.014000000432133675,
+          -0.03700000047683716,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    "C09": {
+      "normalized_action_by_robot": {
+        "robot_0": {
+          "base_fwd": -0.012000000104308128,
+          "base_left": 0.06700000166893005,
+          "base_yaw": 0.0,
+          "lift": 0.0,
+          "arm": 0.0,
+          "wrist_yaw": 0.0,
+          "wrist_pitch": 0.0,
+          "wrist_roll": 0.0,
+          "gripper": 0.0
+        },
+        "robot_1": {
+          "base_fwd": -0.01899999938905239,
+          "base_left": -0.05000000074505806,
+          "base_yaw": 0.0,
+          "lift": 0.0,
+          "arm": 0.0,
+          "wrist_yaw": 0.0,
+          "wrist_pitch": 0.0,
+          "wrist_roll": 0.0,
+          "gripper": 0.0
+        }
+      },
+      "normalized_action_matrix": [
+        [
+          -0.012000000104308128,
+          0.06700000166893005,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -0.01899999938905239,
+          -0.05000000074505806,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    "C10": {
+      "normalized_action_by_robot": {
+        "robot_0": {
+          "base_fwd": -0.012000000104308128,
+          "base_left": 0.06700000166893005,
+          "base_yaw": 0.0,
+          "lift": 0.009999999776482582,
+          "arm": 0.0,
+          "wrist_yaw": 0.0,
+          "wrist_pitch": 0.0,
+          "wrist_roll": 0.0,
+          "gripper": 0.0
+        },
+        "robot_1": {
+          "base_fwd": -0.01899999938905239,
+          "base_left": -0.05000000074505806,
+          "base_yaw": 0.0,
+          "lift": 0.009999999776482582,
+          "arm": 0.0,
+          "wrist_yaw": 0.0,
+          "wrist_pitch": 0.0,
+          "wrist_roll": 0.0,
+          "gripper": 0.0
+        }
+      },
+      "normalized_action_matrix": [
+        [
+          -0.012000000104308128,
+          0.06700000166893005,
+          0.0,
+          0.009999999776482582,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -0.01899999938905239,
+          -0.05000000074505806,
+          0.0,
+          0.009999999776482582,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    "C11": {
+      "normalized_action_by_robot": {
+        "robot_0": {
+          "base_fwd": -0.012000000104308128,
+          "base_left": 0.06700000166893005,
+          "base_yaw": 0.0,
+          "lift": 0.0,
+          "arm": 0.0,
+          "wrist_yaw": 0.0,
+          "wrist_pitch": 0.0,
+          "wrist_roll": 0.0,
+          "gripper": 0.0
+        },
+        "robot_1": {
+          "base_fwd": 0.0,
+          "base_left": 0.0,
+          "base_yaw": 0.0,
+          "lift": 0.0,
+          "arm": 0.0,
+          "wrist_yaw": 0.0,
+          "wrist_pitch": 0.0,
+          "wrist_roll": 0.0,
+          "gripper": 0.0
+        }
+      },
+      "normalized_action_matrix": [
+        [
+          -0.012000000104308128,
+          0.06700000166893005,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    }
+  },
+  "runs": [
+    {
+      "id": "M",
+      "run_id": "20261116-astra-m1-checkpoint-001",
+      "new_act_count": 38,
+      "new_act_start_step": 0,
+      "new_act_end_step": 120,
+      "new_act_transitions": 120,
+      "prefix_replay_transitions": 0,
+      "intercepted_stop_decision_indices": [
+        5,
+        11,
+        14,
+        16,
+        20,
+        26,
+        32,
+        36,
+        43,
+        47
+      ],
+      "stop_physics_transitions": 0,
+      "source_event_prefix": {
+        "relative_path": "output/operator-traces/20261116-astra-m1-checkpoint-001/decisions.jsonl",
+        "bytes": 152445,
+        "sha256": "9cbdf5d6a87c1dc3378b36e0b3aad0cf2b9db0dc780ee69b78b4faafa802d959"
+      },
+      "metadata_source": {
+        "path": "output/collections/20261116-astra-m1-checkpoint-001/run_metadata.json",
+        "sha256": "40141b9531e4c1f60ec3326422d3a7d60571e1872b992ac34fcdbac3567b392c"
+      },
+      "act_ids": [
+        "M-D00",
+        "M-D01",
+        "M-D02",
+        "M-D03",
+        "M-D04",
+        "M-D06",
+        "M-D07",
+        "M-D08",
+        "M-D09",
+        "M-D10",
+        "M-D12",
+        "M-D13",
+        "M-D15",
+        "M-D17",
+        "M-D18",
+        "M-D19",
+        "M-D21",
+        "M-D22",
+        "M-D23",
+        "M-D24",
+        "M-D25",
+        "M-D27",
+        "M-D28",
+        "M-D29",
+        "M-D30",
+        "M-D31",
+        "M-D33",
+        "M-D34",
+        "M-D35",
+        "M-D37",
+        "M-D38",
+        "M-D39",
+        "M-D40",
+        "M-D41",
+        "M-D42",
+        "M-D44",
+        "M-D45",
+        "M-D46"
+      ]
+    },
+    {
+      "id": "B",
+      "run_id": "20261116-astra-right-hand-hold10-001",
+      "new_act_count": 9,
+      "new_act_start_step": 110,
+      "new_act_end_step": 135,
+      "new_act_transitions": 25,
+      "prefix_replay_transitions": 110,
+      "intercepted_stop_decision_indices": [
+        9
+      ],
+      "stop_physics_transitions": 0,
+      "source_event_prefix": {
+        "relative_path": "output/operator-traces/20261116-astra-right-hand-hold10-001/decisions.jsonl",
+        "bytes": 40455,
+        "sha256": "441baa7021fa9194dbf909211fbb90fff29a69a7bd5c027713d92c3126bbab33"
+      },
+      "metadata_source": {
+        "path": "output/collections/20261116-astra-right-hand-hold10-001/run_metadata.json",
+        "sha256": "d0f7e5c8432c73ae5fa6ecf923f37b0a1b987b3a7d7ae2895d058135dd78550a"
+      },
+      "act_ids": [
+        "B-D00",
+        "B-D01",
+        "B-D02",
+        "B-D03",
+        "B-D04",
+        "B-D05",
+        "B-D06",
+        "B-D07",
+        "B-D08"
+      ]
+    }
+  ],
+  "phases": [
+    {
+      "id": "P01",
+      "run_short_id": "M",
+      "start_step": 0,
+      "end_step": 16,
+      "user_intent_summary_ko": "앞쪽 후퇴 → 하강 → 같은 손 재접근",
+      "observed_outcome_summary_ko": "파지점 약16mm 하강, 진입 미확인",
+      "new_act_count": 5,
+      "gif": "../../gallery/20261116-m1-guided-segments/full.gif",
+      "review": "20261116-m1-front-lower-wrist.ko.md"
+    },
+    {
+      "id": "P02",
+      "run_short_id": "M",
+      "start_step": 16,
+      "end_step": 39,
+      "user_intent_summary_ko": "손 노출·옷 처짐을 위한 추가 후퇴",
+      "observed_outcome_summary_ko": "손 노출 증가와 처진 형상 관측; 해부학적 식별은 현재 교정 기준 적용",
+      "new_act_count": 5,
+      "gif": "../../gallery/20261116-m1-guided-segments/right-hand-retreat.gif",
+      "review": "20261116-m1-right-hand-clearance.ko.md"
+    },
+    {
+      "id": "P03",
+      "run_short_id": "M",
+      "start_step": 39,
+      "end_step": 42,
+      "user_intent_summary_ko": "아주 작은 추가 후퇴·하강",
+      "observed_outcome_summary_ko": "중립1전이의 추가 이동과 미세 하강",
+      "new_act_count": 2,
+      "gif": "../../gallery/20261116-m1-guided-segments/neutral-and-tiny-lowering.gif",
+      "review": "20261116-m1-small-clearance-lower.ko.md"
+    },
+    {
+      "id": "P04",
+      "run_short_id": "M",
+      "start_step": 42,
+      "end_step": 44,
+      "user_intent_summary_ko": "몸쪽 미세 접근·점진 하강",
+      "observed_outcome_summary_ko": "lift 명령0에서 미세 하강 관측",
+      "new_act_count": 1,
+      "gif": "../../gallery/20261116-m1-guided-segments/tiny-bodyward-approach.gif",
+      "review": "20261116-m1-tiny-body-approach.ko.md"
+    },
+    {
+      "id": "P05",
+      "run_short_id": "M",
+      "start_step": 44,
+      "end_step": 52,
+      "user_intent_summary_ko": "같은 방향 약15mm 추가",
+      "observed_outcome_summary_ko": "XY 순변위14.87/14.96mm",
+      "new_act_count": 3,
+      "gif": "../../gallery/20261116-m1-guided-segments/bodyward-15mm.gif",
+      "review": "20261116-m1-bodyward-15mm.ko.md"
+    },
+    {
+      "id": "P06",
+      "run_short_id": "M",
+      "start_step": 52,
+      "end_step": 68,
+      "user_intent_summary_ko": "같은 방향 약30mm 추가",
+      "observed_outcome_summary_ko": "XY 순변위30.44/30.19mm",
+      "new_act_count": 5,
+      "gif": "../../gallery/20261116-m1-guided-segments/bodyward-30mm.gif",
+      "review": "20261116-m1-bodyward-30mm.ko.md"
+    },
+    {
+      "id": "P07",
+      "run_short_id": "M",
+      "start_step": 68,
+      "end_step": 84,
+      "user_intent_summary_ko": "약30mm 추가·아주 작은 상승",
+      "observed_outcome_summary_ko": "XY30.40/30.08mm·상승2.24/2.31mm, 중심·통과 미확인",
+      "new_act_count": 5,
+      "gif": "../../gallery/20261116-m1-guided-segments/bodyward-30mm-slight-rise.gif",
+      "review": "20261116-m1-bodyward-30mm-slight-rise.ko.md"
+    },
+    {
+      "id": "P08",
+      "run_short_id": "M",
+      "start_step": 84,
+      "end_step": 93,
+      "user_intent_summary_ko": "약50mm 추가·아주 작은 상승 요청",
+      "observed_outcome_summary_ko": "약17mm에서 가림에 따른 중간 HOLD; 50mm 미완료",
+      "new_act_count": 3,
+      "gif": "../../gallery/20261116-m1-guided-segments/bodyward-50mm-slight-rise.gif",
+      "review": "20261116-m1-bodyward-50mm-slight-rise.ko.md"
+    },
+    {
+      "id": "P09",
+      "run_short_id": "M",
+      "start_step": 93,
+      "end_step": 110,
+      "user_intent_summary_ko": "사용자 검토 후 남은33mm 요청",
+      "observed_outcome_summary_ko": "추가 XY31.97/31.45mm; 원래50mm 전체는49.06/48.30mm",
+      "new_act_count": 6,
+      "gif": "../../gallery/20261116-m1-guided-segments/bodyward-33mm-completion.gif",
+      "review": "20261116-m1-bodyward-33mm-completion.ko.md"
+    },
+    {
+      "id": "P10",
+      "run_short_id": "M",
+      "start_step": 110,
+      "end_step": 120,
+      "user_intent_summary_ko": "손목 위 세 번째 짙은 띠까지 접근",
+      "observed_outcome_summary_ko": "마지막 R1 전진 성분 감소·자세 변화, 목표 미확인",
+      "new_act_count": 3,
+      "gif": "../../gallery/20261116-m1-guided-segments/third-stripe-approach.gif",
+      "review": "20261116-m1-third-stripe.ko.md"
+    },
+    {
+      "id": "P11",
+      "run_short_id": "B",
+      "start_step": 110,
+      "end_step": 135,
+      "user_intent_summary_ko": "복귀 뒤 오른손 가까운 R0만 접근 명령",
+      "observed_outcome_summary_ko": "R0 XY41.57mm, 중립 R1도12.66mm; 두 간격 미확인",
+      "new_act_count": 9,
+      "gif": "../../gallery/20261116-right-hand-hold10/right-hand-only-two-stripes.gif",
+      "review": "20261116-right-hand-hold10-branch.ko.md"
+    }
+  ],
+  "acts": [
+    {
+      "id": "M-D00",
+      "run_id": "20261116-astra-m1-checkpoint-001",
+      "decision_index": 0,
+      "phase": "P01",
+      "command_id": "C01",
+      "normalized_action_matrix": [
+        [
+          0.03700000047683716,
+          -0.19699999690055847,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.07199999690055847,
+          0.18700000643730164,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 0,
+      "end_step": 3,
+      "actual_transitions": 3,
+      "nominal_duration_s": 0.15000000000000002,
+      "observed_simulation_duration_s": 0.15000000782310963,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            0.1416172359397505,
+            -10.067161867812008,
+            0.08153645356023809
+          ],
+          "base_delta_world_mm": [
+            1.1349916458129883,
+            -10.606840252876282,
+            -0.000200001522898674
+          ],
+          "base_yaw_delta_deg": 0.010194732245702987,
+          "lift_joint_delta_mm": 0.0026226043701171875,
+          "arm_extension_joint_sum_delta_mm": -1.0885074734687805,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            -0.2850244589862605,
+            -7.32686059886295,
+            0.00818799945423443
+          ],
+          "base_delta_world_mm": [
+            -1.3941526412963867,
+            -9.819656610488892,
+            2.2584572434425354e-05
+          ],
+          "base_yaw_delta_deg": -0.14386890125334148,
+          "lift_joint_delta_mm": 0.0020265579223632812,
+          "arm_extension_joint_sum_delta_mm": -1.798376441001892,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "2a5ebc122b2d6cca089839b957660b2f5991c65bb267e8df66e11200e66f1523"
+        ],
+        "end": [
+          "c40936052ff01040af758061c81889810d6b851640c831a65d82573f2c6acdb9"
+        ]
+      },
+      "gif": "../../gallery/20261116-m1-guided-segments/full.gif"
+    },
+    {
+      "id": "M-D01",
+      "run_id": "20261116-astra-m1-checkpoint-001",
+      "decision_index": 1,
+      "phase": "P01",
+      "command_id": "C01",
+      "normalized_action_matrix": [
+        [
+          0.03700000047683716,
+          -0.19699999690055847,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.07199999690055847,
+          0.18700000643730164,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 3,
+      "end_step": 6,
+      "actual_transitions": 3,
+      "nominal_duration_s": 0.15000000000000002,
+      "observed_simulation_duration_s": 0.15000000782310963,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            0.40629726031915503,
+            -18.619149453760585,
+            0.1089402864038469
+          ],
+          "base_delta_world_mm": [
+            0.3647804260253906,
+            -18.929779529571533,
+            1.6763806343078613e-05
+          ],
+          "base_yaw_delta_deg": 0.012778270106128224,
+          "lift_joint_delta_mm": 0.005602836608886719,
+          "arm_extension_joint_sum_delta_mm": -0.01344829797744751,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            -0.9851522468266039,
+            -16.963668773372575,
+            -0.038365474936963295
+          ],
+          "base_delta_world_mm": [
+            -0.44482946395874023,
+            -17.459124326705933,
+            -0.0001203734427690506
+          ],
+          "base_yaw_delta_deg": -0.06430450939516165,
+          "lift_joint_delta_mm": 0.00035762786865234375,
+          "arm_extension_joint_sum_delta_mm": 0.3314167261123657,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "c40936052ff01040af758061c81889810d6b851640c831a65d82573f2c6acdb9"
+        ],
+        "end": [
+          "75a24d7e1cfb261d12075e495b3c6bc33658d66ad486f244e167cf6aead0c0f5"
+        ]
+      },
+      "gif": "../../gallery/20261116-m1-guided-segments/full.gif"
+    },
+    {
+      "id": "M-D02",
+      "run_id": "20261116-astra-m1-checkpoint-001",
+      "decision_index": 2,
+      "phase": "P01",
+      "command_id": "C02",
+      "normalized_action_matrix": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          -0.07999999821186066,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -0.07999999821186066,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 6,
+      "end_step": 9,
+      "actual_transitions": 3,
+      "nominal_duration_s": 0.15000000000000002,
+      "observed_simulation_duration_s": 0.15000000782310963,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            0.2571948095274612,
+            -9.43106726436907,
+            -5.8467184610797585
+          ],
+          "base_delta_world_mm": [
+            -0.4672408103942871,
+            -9.42009687423706,
+            -0.000189291313290596
+          ],
+          "base_yaw_delta_deg": 0.0091094561876581,
+          "lift_joint_delta_mm": -5.961894989013672,
+          "arm_extension_joint_sum_delta_mm": 0.7070153951644897,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            -0.8915073446116306,
+            -8.187312332763375,
+            -5.981713529726429
+          ],
+          "base_delta_world_mm": [
+            0.7044076919555664,
+            -7.298961281776428,
+            0.00017299316823482513
+          ],
+          "base_yaw_delta_deg": -0.007660765981440275,
+          "lift_joint_delta_mm": -5.97149133682251,
+          "arm_extension_joint_sum_delta_mm": 1.7036348581314087,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "75a24d7e1cfb261d12075e495b3c6bc33658d66ad486f244e167cf6aead0c0f5"
+        ],
+        "end": [
+          "da93e557f816b960085a2d469543b807bb8e969ee5ad58d51abdecd0bb89dfac"
+        ]
+      },
+      "gif": "../../gallery/20261116-m1-guided-segments/full.gif"
+    },
+    {
+      "id": "M-D03",
+      "run_id": "20261116-astra-m1-checkpoint-001",
+      "decision_index": 3,
+      "phase": "P01",
+      "command_id": "C03",
+      "normalized_action_matrix": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 9,
+      "end_step": 13,
+      "actual_transitions": 4,
+      "nominal_duration_s": 0.2,
+      "observed_simulation_duration_s": 0.20000001043081284,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            -0.23583533769855336,
+            -0.7423608775991852,
+            -7.878696975481603
+          ],
+          "base_delta_world_mm": [
+            0.36281347274780273,
+            -1.2386888265609741,
+            0.00015343539416790009
+          ],
+          "base_yaw_delta_deg": 0.01479531639001316,
+          "lift_joint_delta_mm": -7.934689521789551,
+          "arm_extension_joint_sum_delta_mm": -0.7505565881729126,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            0.857875500545835,
+            1.2078450235838145,
+            -7.900118433908476
+          ],
+          "base_delta_world_mm": [
+            -0.3269314765930176,
+            0.753358006477356,
+            -1.210719347000122e-05
+          ],
+          "base_yaw_delta_deg": -0.014264102022514881,
+          "lift_joint_delta_mm": -7.934391498565674,
+          "arm_extension_joint_sum_delta_mm": -1.3225600123405457,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "da93e557f816b960085a2d469543b807bb8e969ee5ad58d51abdecd0bb89dfac"
+        ],
+        "end": [
+          "bc195f3e7c1b9400818ecde1e80679c98a84f5ff7204e5b694a79d3bf1383387"
+        ]
+      },
+      "gif": "../../gallery/20261116-m1-guided-segments/full.gif"
+    },
+    {
+      "id": "M-D04",
+      "run_id": "20261116-astra-m1-checkpoint-001",
+      "decision_index": 4,
+      "phase": "P01",
+      "command_id": "C04",
+      "normalized_action_matrix": [
+        [
+          -0.02199999988079071,
+          0.11800000071525574,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -0.0430000014603138,
+          -0.1120000034570694,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 13,
+      "end_step": 16,
+      "actual_transitions": 3,
+      "nominal_duration_s": 0.15000000000000002,
+      "observed_simulation_duration_s": 0.15000000782310963,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            0.17138131854244065,
+            6.537559820692346,
+            -2.400652419425331
+          ],
+          "base_delta_world_mm": [
+            0.0026226043701171875,
+            6.41903281211853,
+            0.0001648440957069397
+          ],
+          "base_yaw_delta_deg": 0.008567987748220521,
+          "lift_joint_delta_mm": -2.425074577331543,
+          "arm_extension_joint_sum_delta_mm": 0.12475252151489258,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            -0.11734332696811123,
+            7.554663955148754,
+            -2.40809180259971
+          ],
+          "base_delta_world_mm": [
+            0.13715028762817383,
+            8.05632770061493,
+            -0.0002307351678609848
+          ],
+          "base_yaw_delta_deg": 0.00882069270256117,
+          "lift_joint_delta_mm": -2.4233460426330566,
+          "arm_extension_joint_sum_delta_mm": 0.3535076975822449,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "bc195f3e7c1b9400818ecde1e80679c98a84f5ff7204e5b694a79d3bf1383387"
+        ],
+        "end": [
+          "0fe7465f56069255668ed4cea0e98dffdb0401124ff8a33c43f201c72c485a7c"
+        ]
+      },
+      "gif": "../../gallery/20261116-m1-guided-segments/full.gif"
+    },
+    {
+      "id": "M-D06",
+      "run_id": "20261116-astra-m1-checkpoint-001",
+      "decision_index": 6,
+      "phase": "P02",
+      "command_id": "C05",
+      "normalized_action_matrix": [
+        [
+          0.035999998450279236,
+          -0.19699999690055847,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.07100000232458115,
+          0.18700000643730164,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 16,
+      "end_step": 20,
+      "actual_transitions": 4,
+      "nominal_duration_s": 0.2,
+      "observed_simulation_duration_s": 0.20000001043081284,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            0.471664507152747,
+            -5.5924565858670725,
+            -1.2884196634443956
+          ],
+          "base_delta_world_mm": [
+            2.313971519470215,
+            -6.4258575439453125,
+            -0.0003555323928594589
+          ],
+          "base_yaw_delta_deg": 0.01584487076671842,
+          "lift_joint_delta_mm": -1.3625621795654297,
+          "arm_extension_joint_sum_delta_mm": -2.000465989112854,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            0.21061559103985328,
+            -4.132633666276641,
+            -1.2916137556204799
+          ],
+          "base_delta_world_mm": [
+            -3.0655264854431152,
+            -5.930587649345398,
+            0.00017136335372924805
+          ],
+          "base_yaw_delta_deg": -0.026064286457529673,
+          "lift_joint_delta_mm": -1.365363597869873,
+          "arm_extension_joint_sum_delta_mm": -3.619775176048279,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "0fe7465f56069255668ed4cea0e98dffdb0401124ff8a33c43f201c72c485a7c"
+        ],
+        "end": [
+          "afe8332045087a5140c5558808f13fbcc29e6ae1cce7773d5135e4d16a3ca29c"
+        ]
+      },
+      "gif": "../../gallery/20261116-m1-guided-segments/right-hand-retreat.gif"
+    },
+    {
+      "id": "M-D07",
+      "run_id": "20261116-astra-m1-checkpoint-001",
+      "decision_index": 7,
+      "phase": "P02",
+      "command_id": "C05",
+      "normalized_action_matrix": [
+        [
+          0.035999998450279236,
+          -0.19699999690055847,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.07100000232458115,
+          0.18700000643730164,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 20,
+      "end_step": 26,
+      "actual_transitions": 6,
+      "nominal_duration_s": 0.30000000000000004,
+      "observed_simulation_duration_s": 0.30000001564621925,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            0.3814722625308242,
+            -37.52464584948495,
+            -0.4884973342553778
+          ],
+          "base_delta_world_mm": [
+            0.5056858062744141,
+            -37.85407543182373,
+            0.00047404319047927856
+          ],
+          "base_yaw_delta_deg": 0.017477315044470632,
+          "lift_joint_delta_mm": -0.6068944931030273,
+          "arm_extension_joint_sum_delta_mm": -0.16748905181884766,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            -2.2358036747177623,
+            -36.28423377103088,
+            -0.7631319304612916
+          ],
+          "base_delta_world_mm": [
+            -0.6538629531860352,
+            -35.260625183582306,
+            -7.008202373981476e-05
+          ],
+          "base_yaw_delta_deg": 0.013882252799295681,
+          "lift_joint_delta_mm": -0.621795654296875,
+          "arm_extension_joint_sum_delta_mm": 1.7290934920310974,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "afe8332045087a5140c5558808f13fbcc29e6ae1cce7773d5135e4d16a3ca29c"
+        ],
+        "end": [
+          "0941120276cf25834e94151ded662eda50ef38cca5bd4e93bb085a2c3fe693ee"
+        ]
+      },
+      "gif": "../../gallery/20261116-m1-guided-segments/right-hand-retreat.gif"
+    },
+    {
+      "id": "M-D08",
+      "run_id": "20261116-astra-m1-checkpoint-001",
+      "decision_index": 8,
+      "phase": "P02",
+      "command_id": "C05",
+      "normalized_action_matrix": [
+        [
+          0.035999998450279236,
+          -0.19699999690055847,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.07100000232458115,
+          0.18700000643730164,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 26,
+      "end_step": 32,
+      "actual_transitions": 6,
+      "nominal_duration_s": 0.30000000000000004,
+      "observed_simulation_duration_s": 0.30000001564621925,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            -0.4153046296906382,
+            -37.813470800450524,
+            -0.053572189580686214
+          ],
+          "base_delta_world_mm": [
+            0.4075169563293457,
+            -38.19224238395691,
+            -0.00014738179743289948
+          ],
+          "base_yaw_delta_deg": 0.01201355069903538,
+          "lift_joint_delta_mm": -0.13500452041625977,
+          "arm_extension_joint_sum_delta_mm": -0.8667632937431335,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            -1.4495696360433685,
+            -36.0400748796523,
+            -0.2667769189550473
+          ],
+          "base_delta_world_mm": [
+            -0.6105899810791016,
+            -35.52741929888725,
+            -5.797483026981354e-05
+          ],
+          "base_yaw_delta_deg": 0.006223079544121464,
+          "lift_joint_delta_mm": -0.14495849609375,
+          "arm_extension_joint_sum_delta_mm": 0.8892863988876343,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "0941120276cf25834e94151ded662eda50ef38cca5bd4e93bb085a2c3fe693ee"
+        ],
+        "end": [
+          "91ede4ba3e675aab798fe36a03a41c38fb132c2774440d59bf454fb8a4d9065b"
+        ]
+      },
+      "gif": "../../gallery/20261116-m1-guided-segments/right-hand-retreat.gif"
+    },
+    {
+      "id": "M-D09",
+      "run_id": "20261116-astra-m1-checkpoint-001",
+      "decision_index": 9,
+      "phase": "P02",
+      "command_id": "C05",
+      "normalized_action_matrix": [
+        [
+          0.035999998450279236,
+          -0.19699999690055847,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.07100000232458115,
+          0.18700000643730164,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 32,
+      "end_step": 36,
+      "actual_transitions": 4,
+      "nominal_duration_s": 0.2,
+      "observed_simulation_duration_s": 0.20000001043081284,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            0.20637904719955635,
+            -25.24704864594407,
+            -0.027804305109180305
+          ],
+          "base_delta_world_mm": [
+            0.2903938293457031,
+            -25.446951389312744,
+            -0.00016111880540847778
+          ],
+          "base_yaw_delta_deg": 0.007797532129706403,
+          "lift_joint_delta_mm": -0.02282857894897461,
+          "arm_extension_joint_sum_delta_mm": -0.13832002878189087,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            -0.9321668141353268,
+            -24.16327349398206,
+            -0.16868755937227142
+          ],
+          "base_delta_world_mm": [
+            -0.3941059112548828,
+            -23.72998371720314,
+            0.000125030055642128
+          ],
+          "base_yaw_delta_deg": 0.007433133654619162,
+          "lift_joint_delta_mm": -0.031948089599609375,
+          "arm_extension_joint_sum_delta_mm": 0.5748644471168518,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "91ede4ba3e675aab798fe36a03a41c38fb132c2774440d59bf454fb8a4d9065b"
+        ],
+        "end": [
+          "cfc18fa6787ec1ce367fedc6cad7a0b5416b8e606e5fd667c996b5d403dd05c0"
+        ]
+      },
+      "gif": "../../gallery/20261116-m1-guided-segments/right-hand-retreat.gif"
+    },
+    {
+      "id": "M-D10",
+      "run_id": "20261116-astra-m1-checkpoint-001",
+      "decision_index": 10,
+      "phase": "P02",
+      "command_id": "C06",
+      "normalized_action_matrix": [
+        [
+          0.02199999988079071,
+          -0.11800000071525574,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0430000014603138,
+          0.1120000034570694,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 36,
+      "end_step": 39,
+      "actual_transitions": 3,
+      "nominal_duration_s": 0.15000000000000002,
+      "observed_simulation_duration_s": 0.15000000782310963,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            0.7676216990937235,
+            -13.873437460071635,
+            -0.0526991111649
+          ],
+          "base_delta_world_mm": [
+            0.18650293350219727,
+            -13.883993029594421,
+            0.00020954757928848267
+          ],
+          "base_yaw_delta_deg": 0.005094058063356297,
+          "lift_joint_delta_mm": -0.012636184692382812,
+          "arm_extension_joint_sum_delta_mm": 0.5402490496635437,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            -0.7260922586507235,
+            -13.049713351040326,
+            -0.13744674290072645
+          ],
+          "base_delta_world_mm": [
+            -0.18286705017089844,
+            -12.557737529277802,
+            -5.2619725465774536e-05
+          ],
+          "base_yaw_delta_deg": 0.009236365896029518,
+          "lift_joint_delta_mm": -0.01424551010131836,
+          "arm_extension_joint_sum_delta_mm": 0.5986839532852173,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "cfc18fa6787ec1ce367fedc6cad7a0b5416b8e606e5fd667c996b5d403dd05c0"
+        ],
+        "end": [
+          "683c0b38485236becda0cbce96d085e6fbf9ff2c4f94171258a5f502c64ee543"
+        ]
+      },
+      "gif": "../../gallery/20261116-m1-guided-segments/right-hand-retreat.gif"
+    },
+    {
+      "id": "M-D12",
+      "run_id": "20261116-astra-m1-checkpoint-001",
+      "decision_index": 12,
+      "phase": "P03",
+      "command_id": "C03",
+      "normalized_action_matrix": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 39,
+      "end_step": 40,
+      "actual_transitions": 1,
+      "nominal_duration_s": 0.05,
+      "observed_simulation_duration_s": 0.05000000260770321,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            0.15918581136409315,
+            -3.0155215012616923,
+            0.0029867484927503796
+          ],
+          "base_delta_world_mm": [
+            -0.06860494613647461,
+            -3.001503646373749,
+            -0.00011711381375789642
+          ],
+          "base_yaw_delta_deg": 0.002328290836780924,
+          "lift_joint_delta_mm": -0.0016689300537109375,
+          "arm_extension_joint_sum_delta_mm": 0.22789835929870605,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            -0.1495954250392284,
+            -2.7500788252237953,
+            -0.034543182606761036
+          ],
+          "base_delta_world_mm": [
+            0.1277327537536621,
+            -2.474213019013405,
+            -5.9138983488082886e-05
+          ],
+          "base_yaw_delta_deg": 0.005385974155193592,
+          "lift_joint_delta_mm": -0.0037550926208496094,
+          "arm_extension_joint_sum_delta_mm": 0.3248676657676697,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "683c0b38485236becda0cbce96d085e6fbf9ff2c4f94171258a5f502c64ee543"
+        ],
+        "end": [
+          "0e7dc59f48db28ecc545d74605e5ce1fda5d8fc7ccc14712a7f7d01ff57316bf"
+        ]
+      },
+      "gif": "../../gallery/20261116-m1-guided-segments/neutral-and-tiny-lowering.gif"
+    },
+    {
+      "id": "M-D13",
+      "run_id": "20261116-astra-m1-checkpoint-001",
+      "decision_index": 13,
+      "phase": "P03",
+      "command_id": "C07",
+      "normalized_action_matrix": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          -0.019999999552965164,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -0.019999999552965164,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 40,
+      "end_step": 42,
+      "actual_transitions": 2,
+      "nominal_duration_s": 0.1,
+      "observed_simulation_duration_s": 0.10000000521540642,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            0.18278287632877976,
+            -1.5697762108199398,
+            -0.7284060847776441
+          ],
+          "base_delta_world_mm": [
+            0.07414817810058594,
+            -1.6051940619945526,
+            -0.0002996530383825302
+          ],
+          "base_yaw_delta_deg": 0.0017572256955340274,
+          "lift_joint_delta_mm": -0.748753547668457,
+          "arm_extension_joint_sum_delta_mm": 0.0964924693107605,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            -0.2670096893307994,
+            -0.9443874129058671,
+            -0.7808720376916156
+          ],
+          "base_delta_world_mm": [
+            -0.05996227264404297,
+            -0.6736479699611664,
+            0.0001641456037759781
+          ],
+          "base_yaw_delta_deg": 0.007308789980692203,
+          "lift_joint_delta_mm": -0.7497668266296387,
+          "arm_extension_joint_sum_delta_mm": 0.25187432765960693,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "0e7dc59f48db28ecc545d74605e5ce1fda5d8fc7ccc14712a7f7d01ff57316bf"
+        ],
+        "end": [
+          "c1ff2ccab7e45f62397fafe2f984256fb255cc515d78a9d5e1a7ff75c63f18f2"
+        ]
+      },
+      "gif": "../../gallery/20261116-m1-guided-segments/neutral-and-tiny-lowering.gif"
+    },
+    {
+      "id": "M-D15",
+      "run_id": "20261116-astra-m1-checkpoint-001",
+      "decision_index": 15,
+      "phase": "P04",
+      "command_id": "C08",
+      "normalized_action_matrix": [
+        [
+          -0.007000000216066837,
+          0.039000000804662704,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -0.014000000432133675,
+          -0.03700000047683716,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 42,
+      "end_step": 44,
+      "actual_transitions": 2,
+      "nominal_duration_s": 0.1,
+      "observed_simulation_duration_s": 0.10000000521540642,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            -0.012599777198696316,
+            1.2396337897354337,
+            -0.9165247441280666
+          ],
+          "base_delta_world_mm": [
+            0.15729665756225586,
+            1.1271871626377106,
+            9.103678166866302e-05
+          ],
+          "base_yaw_delta_deg": 0.0033599138372886347,
+          "lift_joint_delta_mm": -0.9236335754394531,
+          "arm_extension_joint_sum_delta_mm": -0.1992359757423401,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            0.04761225476312969,
+            1.9130808428967916,
+            -0.951430414772414
+          ],
+          "base_delta_world_mm": [
+            -0.17559528350830078,
+            1.962384209036827,
+            -0.00028172507882118225
+          ],
+          "base_yaw_delta_deg": 0.006057532334099551,
+          "lift_joint_delta_mm": -0.9263157844543457,
+          "arm_extension_joint_sum_delta_mm": -0.21898746490478516,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "c1ff2ccab7e45f62397fafe2f984256fb255cc515d78a9d5e1a7ff75c63f18f2"
+        ],
+        "end": [
+          "586610b9f8a5983c462255dbdb6338189a45c1c9faed14efaff7167c8e5cab66"
+        ]
+      },
+      "gif": "../../gallery/20261116-m1-guided-segments/tiny-bodyward-approach.gif"
+    },
+    {
+      "id": "M-D17",
+      "run_id": "20261116-astra-m1-checkpoint-001",
+      "decision_index": 17,
+      "phase": "P05",
+      "command_id": "C09",
+      "normalized_action_matrix": [
+        [
+          -0.012000000104308128,
+          0.06700000166893005,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -0.01899999938905239,
+          -0.05000000074505806,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 44,
+      "end_step": 47,
+      "actual_transitions": 3,
+      "nominal_duration_s": 0.15000000000000002,
+      "observed_simulation_duration_s": 0.15000000782310963,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            -0.044362062864844454,
+            5.199605809838942,
+            -0.7488406450888441
+          ],
+          "base_delta_world_mm": [
+            0.2556443214416504,
+            5.062323063611984,
+            0.00032479874789714813
+          ],
+          "base_yaw_delta_deg": 0.004012021755236189,
+          "lift_joint_delta_mm": -0.750422477722168,
+          "arm_extension_joint_sum_delta_mm": -0.3306567668914795,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            0.28920864465864504,
+            5.383770166022317,
+            -0.7749599588915412
+          ],
+          "base_delta_world_mm": [
+            -0.27751922607421875,
+            5.226736888289452,
+            -0.00016344711184501648
+          ],
+          "base_yaw_delta_deg": 0.0041514810047003255,
+          "lift_joint_delta_mm": -0.752568244934082,
+          "arm_extension_joint_sum_delta_mm": -0.6010830402374268,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "586610b9f8a5983c462255dbdb6338189a45c1c9faed14efaff7167c8e5cab66"
+        ],
+        "end": [
+          "648f0ca5a998bb6cdef25fce2138c90bc942bf40c8efe326a14276beba4ed089"
+        ]
+      },
+      "gif": "../../gallery/20261116-m1-guided-segments/bodyward-15mm.gif"
+    },
+    {
+      "id": "M-D18",
+      "run_id": "20261116-astra-m1-checkpoint-001",
+      "decision_index": 18,
+      "phase": "P05",
+      "command_id": "C09",
+      "normalized_action_matrix": [
+        [
+          -0.012000000104308128,
+          0.06700000166893005,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -0.01899999938905239,
+          -0.05000000074505806,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 47,
+      "end_step": 50,
+      "actual_transitions": 3,
+      "nominal_duration_s": 0.15000000000000002,
+      "observed_simulation_duration_s": 0.15000000782310963,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            -0.027922742834363135,
+            5.809800228071399,
+            -0.3764761664435401
+          ],
+          "base_delta_world_mm": [
+            0.24467706680297852,
+            5.729753524065018,
+            -0.0006563495844602585
+          ],
+          "base_yaw_delta_deg": 0.0021729177555518072,
+          "lift_joint_delta_mm": -0.3535747528076172,
+          "arm_extension_joint_sum_delta_mm": -0.2938807010650635,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            0.14214660548894642,
+            5.77017918873085,
+            -0.36617382616599414
+          ],
+          "base_delta_world_mm": [
+            -0.2949237823486328,
+            5.583973601460457,
+            0.00038906000554561615
+          ],
+          "base_yaw_delta_deg": 0.00022237446404298848,
+          "lift_joint_delta_mm": -0.3541707992553711,
+          "arm_extension_joint_sum_delta_mm": -0.47803670167922974,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "648f0ca5a998bb6cdef25fce2138c90bc942bf40c8efe326a14276beba4ed089"
+        ],
+        "end": [
+          "64fef0c3c5e38e4fd7be862fce9782d379eb7bbb19b53fae7273f892cbe07f0d"
+        ]
+      },
+      "gif": "../../gallery/20261116-m1-guided-segments/bodyward-15mm.gif"
+    },
+    {
+      "id": "M-D19",
+      "run_id": "20261116-astra-m1-checkpoint-001",
+      "decision_index": 19,
+      "phase": "P05",
+      "command_id": "C09",
+      "normalized_action_matrix": [
+        [
+          -0.012000000104308128,
+          0.06700000166893005,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -0.01899999938905239,
+          -0.05000000074505806,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 50,
+      "end_step": 52,
+      "actual_transitions": 2,
+      "nominal_duration_s": 0.1,
+      "observed_simulation_duration_s": 0.10000000521540642,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            0.04551582402612109,
+            3.856976404607942,
+            -0.13805341734451915
+          ],
+          "base_delta_world_mm": [
+            0.1550912857055664,
+            3.8360431790351868,
+            0.0004926696419715881
+          ],
+          "base_yaw_delta_deg": 0.0009899330522126896,
+          "lift_joint_delta_mm": -0.12362003326416016,
+          "arm_extension_joint_sum_delta_mm": -0.11605769395828247,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            -0.06450883473185787,
+            3.799383401138945,
+            -0.13249019079220048
+          ],
+          "base_delta_world_mm": [
+            -0.19973516464233398,
+            3.74666228890419,
+            0.00022491440176963806
+          ],
+          "base_yaw_delta_deg": 0.0005152032046979113,
+          "lift_joint_delta_mm": -0.1252293586730957,
+          "arm_extension_joint_sum_delta_mm": -0.14891475439071655,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "64fef0c3c5e38e4fd7be862fce9782d379eb7bbb19b53fae7273f892cbe07f0d"
+        ],
+        "end": [
+          "324c1b66f9a00b170f5fa4b55961d187d447a3bad938e027070ae9cc254c9cd7"
+        ]
+      },
+      "gif": "../../gallery/20261116-m1-guided-segments/bodyward-15mm.gif"
+    },
+    {
+      "id": "M-D21",
+      "run_id": "20261116-astra-m1-checkpoint-001",
+      "decision_index": 21,
+      "phase": "P06",
+      "command_id": "C09",
+      "normalized_action_matrix": [
+        [
+          -0.012000000104308128,
+          0.06700000166893005,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -0.01899999938905239,
+          -0.05000000074505806,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 52,
+      "end_step": 56,
+      "actual_transitions": 4,
+      "nominal_duration_s": 0.2,
+      "observed_simulation_duration_s": 0.20000001043081284,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            0.14249648632158607,
+            7.645412030289261,
+            -0.1418730634505927
+          ],
+          "base_delta_world_mm": [
+            0.3342628479003906,
+            7.6686665415763855,
+            1.1408701539039612e-05
+          ],
+          "base_yaw_delta_deg": -0.001386864009488772,
+          "lift_joint_delta_mm": -0.12308359146118164,
+          "arm_extension_joint_sum_delta_mm": -0.18545985221862793,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            -0.2017961972498039,
+            7.518106681977082,
+            -0.12428481664072955
+          ],
+          "base_delta_world_mm": [
+            -0.40394067764282227,
+            7.434912025928497,
+            -0.00028335489332675934
+          ],
+          "base_yaw_delta_deg": -0.00016711675696523117,
+          "lift_joint_delta_mm": -0.11968612670898438,
+          "arm_extension_joint_sum_delta_mm": -0.21927058696746826,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "324c1b66f9a00b170f5fa4b55961d187d447a3bad938e027070ae9cc254c9cd7"
+        ],
+        "end": [
+          "2af21898e6236489f9a2386212f39813ecca53820a1008d3b0aa38d66f995fdc"
+        ]
+      },
+      "gif": "../../gallery/20261116-m1-guided-segments/bodyward-30mm.gif"
+    },
+    {
+      "id": "M-D22",
+      "run_id": "20261116-astra-m1-checkpoint-001",
+      "decision_index": 22,
+      "phase": "P06",
+      "command_id": "C09",
+      "normalized_action_matrix": [
+        [
+          -0.012000000104308128,
+          0.06700000166893005,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -0.01899999938905239,
+          -0.05000000074505806,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 56,
+      "end_step": 60,
+      "actual_transitions": 4,
+      "nominal_duration_s": 0.2,
+      "observed_simulation_duration_s": 0.20000001043081284,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            0.0975862429574148,
+            7.617183169565917,
+            -0.06171186898429326
+          ],
+          "base_delta_world_mm": [
+            0.29909610748291016,
+            7.674753665924072,
+            0.0002689193934202194
+          ],
+          "base_yaw_delta_deg": -0.0035163540304327893,
+          "lift_joint_delta_mm": -0.04482269287109375,
+          "arm_extension_joint_sum_delta_mm": -0.18530339002609253,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            -0.15372731435447928,
+            7.505670837791273,
+            -0.04286745494486155
+          ],
+          "base_delta_world_mm": [
+            -0.3383159637451172,
+            7.464274764060974,
+            7.706694304943085e-05
+          ],
+          "base_yaw_delta_deg": 0.001884429813690888,
+          "lift_joint_delta_mm": -0.0432133674621582,
+          "arm_extension_joint_sum_delta_mm": -0.188484787940979,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "2af21898e6236489f9a2386212f39813ecca53820a1008d3b0aa38d66f995fdc"
+        ],
+        "end": [
+          "087eaf3dc65485871b4db9f2966793ea6bb6922fee3fe2513fcb0bdc02cfae68"
+        ]
+      },
+      "gif": "../../gallery/20261116-m1-guided-segments/bodyward-30mm.gif"
+    },
+    {
+      "id": "M-D23",
+      "run_id": "20261116-astra-m1-checkpoint-001",
+      "decision_index": 23,
+      "phase": "P06",
+      "command_id": "C09",
+      "normalized_action_matrix": [
+        [
+          -0.012000000104308128,
+          0.06700000166893005,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -0.01899999938905239,
+          -0.05000000074505806,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 60,
+      "end_step": 64,
+      "actual_transitions": 4,
+      "nominal_duration_s": 0.2,
+      "observed_simulation_duration_s": 0.20000001043081284,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            0.17642873871226428,
+            7.627754882575194,
+            -0.012451555662984504
+          ],
+          "base_delta_world_mm": [
+            0.3212094306945801,
+            7.6414793729782104,
+            -0.00030105002224445343
+          ],
+          "base_yaw_delta_deg": -0.0006636392016648858,
+          "lift_joint_delta_mm": -0.013887882232666016,
+          "arm_extension_joint_sum_delta_mm": -0.13016164302825928,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            -0.13490582748532098,
+            7.619427071710538,
+            -0.02273322572365899
+          ],
+          "base_delta_world_mm": [
+            -0.32275915145874023,
+            7.490508258342743,
+            4.6333298087120056e-05
+          ],
+          "base_yaw_delta_deg": -0.0022236654477734265,
+          "lift_joint_delta_mm": -0.017583370208740234,
+          "arm_extension_joint_sum_delta_mm": -0.21731853485107422,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "087eaf3dc65485871b4db9f2966793ea6bb6922fee3fe2513fcb0bdc02cfae68"
+        ],
+        "end": [
+          "441c91cd85e60b50fcdc8b76809113ac930e3dea45db2f823a38aa9dde85cc2b"
+        ]
+      },
+      "gif": "../../gallery/20261116-m1-guided-segments/bodyward-30mm.gif"
+    },
+    {
+      "id": "M-D24",
+      "run_id": "20261116-astra-m1-checkpoint-001",
+      "decision_index": 24,
+      "phase": "P06",
+      "command_id": "C09",
+      "normalized_action_matrix": [
+        [
+          -0.012000000104308128,
+          0.06700000166893005,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -0.01899999938905239,
+          -0.05000000074505806,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 64,
+      "end_step": 66,
+      "actual_transitions": 2,
+      "nominal_duration_s": 0.1,
+      "observed_simulation_duration_s": 0.10000000521540642,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            0.103335585258435,
+            3.789919327699148,
+            -0.011391445164932179
+          ],
+          "base_delta_world_mm": [
+            0.1652240753173828,
+            3.8150176405906677,
+            -0.0002207234501838684
+          ],
+          "base_yaw_delta_deg": -0.0012136046940531898,
+          "lift_joint_delta_mm": -0.004649162292480469,
+          "arm_extension_joint_sum_delta_mm": -0.05397200584411621,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            -0.0790928972950189,
+            3.768027813594421,
+            -0.0004655447616297437
+          ],
+          "base_delta_world_mm": [
+            -0.18590688705444336,
+            3.7326253950595856,
+            -0.00027636997401714325
+          ],
+          "base_yaw_delta_deg": 0.0007178070368816727,
+          "lift_joint_delta_mm": -0.0038743019104003906,
+          "arm_extension_joint_sum_delta_mm": -0.1098141074180603,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "441c91cd85e60b50fcdc8b76809113ac930e3dea45db2f823a38aa9dde85cc2b"
+        ],
+        "end": [
+          "df6242a688ec2e508641a7b92236518277adeafaf8890f760ac01a6e54a04af9"
+        ]
+      },
+      "gif": "../../gallery/20261116-m1-guided-segments/bodyward-30mm.gif"
+    },
+    {
+      "id": "M-D25",
+      "run_id": "20261116-astra-m1-checkpoint-001",
+      "decision_index": 25,
+      "phase": "P06",
+      "command_id": "C09",
+      "normalized_action_matrix": [
+        [
+          -0.012000000104308128,
+          0.06700000166893005,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -0.01899999938905239,
+          -0.05000000074505806,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 66,
+      "end_step": 68,
+      "actual_transitions": 2,
+      "nominal_duration_s": 0.1,
+      "observed_simulation_duration_s": 0.10000000521540642,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            0.07647790911857744,
+            3.7490072341735123,
+            -0.01223406586192688
+          ],
+          "base_delta_world_mm": [
+            0.14698505401611328,
+            3.7994012236595154,
+            0.0001969747245311737
+          ],
+          "base_yaw_delta_deg": -0.002697587295823936,
+          "lift_joint_delta_mm": -0.003933906555175781,
+          "arm_extension_joint_sum_delta_mm": -0.05795806646347046,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            -0.06518422825030346,
+            3.7676769899414597,
+            0.003880978442838412
+          ],
+          "base_delta_world_mm": [
+            -0.16224384307861328,
+            3.738522529602051,
+            0.00015692785382270813
+          ],
+          "base_yaw_delta_deg": 0.0005809402716330247,
+          "lift_joint_delta_mm": -0.0012516975402832031,
+          "arm_extension_joint_sum_delta_mm": -0.0998079776763916,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "df6242a688ec2e508641a7b92236518277adeafaf8890f760ac01a6e54a04af9"
+        ],
+        "end": [
+          "fbfe995c1fe123a6061b7272acb1f399af6aaf2e1050acfc3a30486a01b0c429"
+        ]
+      },
+      "gif": "../../gallery/20261116-m1-guided-segments/bodyward-30mm.gif"
+    },
+    {
+      "id": "M-D27",
+      "run_id": "20261116-astra-m1-checkpoint-001",
+      "decision_index": 27,
+      "phase": "P07",
+      "command_id": "C10",
+      "normalized_action_matrix": [
+        [
+          -0.012000000104308128,
+          0.06700000166893005,
+          0.0,
+          0.009999999776482582,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -0.01899999938905239,
+          -0.05000000074505806,
+          0.0,
+          0.009999999776482582,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 68,
+      "end_step": 71,
+      "actual_transitions": 3,
+      "nominal_duration_s": 0.15000000000000002,
+      "observed_simulation_duration_s": 0.15000000782310963,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            0.08265907236071346,
+            5.722792516478503,
+            0.7275865594367215
+          ],
+          "base_delta_world_mm": [
+            0.21308660507202148,
+            5.802027881145477,
+            2.7474015951156616e-05
+          ],
+          "base_yaw_delta_deg": -0.005127790914853312,
+          "lift_joint_delta_mm": 0.742495059967041,
+          "arm_extension_joint_sum_delta_mm": -0.10492652654647827,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            -0.09575585648580187,
+            5.675400249117002,
+            0.7488595838420764
+          ],
+          "base_delta_world_mm": [
+            -0.2707242965698242,
+            5.617126822471619,
+            -4.260800778865814e-05
+          ],
+          "base_yaw_delta_deg": 0.0002907621245907669,
+          "lift_joint_delta_mm": 0.7415413856506348,
+          "arm_extension_joint_sum_delta_mm": -0.17687678337097168,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "fbfe995c1fe123a6061b7272acb1f399af6aaf2e1050acfc3a30486a01b0c429"
+        ],
+        "end": [
+          "631ed706335750b1107298c04bb6ab8c7a32732310d980243106f4266d186605"
+        ]
+      },
+      "gif": "../../gallery/20261116-m1-guided-segments/bodyward-30mm-slight-rise.gif"
+    },
+    {
+      "id": "M-D28",
+      "run_id": "20261116-astra-m1-checkpoint-001",
+      "decision_index": 28,
+      "phase": "P07",
+      "command_id": "C09",
+      "normalized_action_matrix": [
+        [
+          -0.012000000104308128,
+          0.06700000166893005,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -0.01899999938905239,
+          -0.05000000074505806,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 71,
+      "end_step": 75,
+      "actual_transitions": 4,
+      "nominal_duration_s": 0.2,
+      "observed_simulation_duration_s": 0.20000001043081284,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            0.062463516108279826,
+            7.560919266020011,
+            0.983158220832614
+          ],
+          "base_delta_world_mm": [
+            0.26619434356689453,
+            7.625415921211243,
+            4.493631422519684e-05
+          ],
+          "base_yaw_delta_deg": -0.00453394799814749,
+          "lift_joint_delta_mm": 0.9906291961669922,
+          "arm_extension_joint_sum_delta_mm": -0.17283111810684204,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            -0.13948402902397294,
+            7.520373072923691,
+            1.0132413569630128
+          ],
+          "base_delta_world_mm": [
+            -0.32907724380493164,
+            7.485672831535339,
+            2.514570951461792e-05
+          ],
+          "base_yaw_delta_deg": 0.001553056466736606,
+          "lift_joint_delta_mm": 0.9926557540893555,
+          "arm_extension_joint_sum_delta_mm": -0.17675012350082397,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "631ed706335750b1107298c04bb6ab8c7a32732310d980243106f4266d186605"
+        ],
+        "end": [
+          "f7b47755dd3a99d22af46b8c3aa993a0913c1f905323c0a83085e7162dda056b"
+        ]
+      },
+      "gif": "../../gallery/20261116-m1-guided-segments/bodyward-30mm-slight-rise.gif"
+    },
+    {
+      "id": "M-D29",
+      "run_id": "20261116-astra-m1-checkpoint-001",
+      "decision_index": 29,
+      "phase": "P07",
+      "command_id": "C09",
+      "normalized_action_matrix": [
+        [
+          -0.012000000104308128,
+          0.06700000166893005,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -0.01899999938905239,
+          -0.05000000074505806,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 75,
+      "end_step": 79,
+      "actual_transitions": 4,
+      "nominal_duration_s": 0.2,
+      "observed_simulation_duration_s": 0.20000001043081284,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            0.1181349069726556,
+            7.656847090114632,
+            0.36917216141540976
+          ],
+          "base_delta_world_mm": [
+            0.27501583099365234,
+            7.692739367485046,
+            -0.00013224780559539795
+          ],
+          "base_yaw_delta_deg": -0.0028030120741906798,
+          "lift_joint_delta_mm": 0.3604888916015625,
+          "arm_extension_joint_sum_delta_mm": -0.13611465692520142,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            -0.1714509112564766,
+            7.501961177005883,
+            0.3773862349785162
+          ],
+          "base_delta_world_mm": [
+            -0.30606985092163086,
+            7.445178925991058,
+            4.423782229423523e-05
+          ],
+          "base_yaw_delta_deg": -0.0009407976829633197,
+          "lift_joint_delta_mm": 0.3630518913269043,
+          "arm_extension_joint_sum_delta_mm": -0.13832002878189087,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "f7b47755dd3a99d22af46b8c3aa993a0913c1f905323c0a83085e7162dda056b"
+        ],
+        "end": [
+          "2cb8b60e62b5bff5bfb36d371223f7b55d51fa24b92283dc22f0874668a16ec7"
+        ]
+      },
+      "gif": "../../gallery/20261116-m1-guided-segments/bodyward-30mm-slight-rise.gif"
+    },
+    {
+      "id": "M-D30",
+      "run_id": "20261116-astra-m1-checkpoint-001",
+      "decision_index": 30,
+      "phase": "P07",
+      "command_id": "C09",
+      "normalized_action_matrix": [
+        [
+          -0.012000000104308128,
+          0.06700000166893005,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -0.01899999938905239,
+          -0.05000000074505806,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 79,
+      "end_step": 82,
+      "actual_transitions": 3,
+      "nominal_duration_s": 0.15000000000000002,
+      "observed_simulation_duration_s": 0.15000000782310963,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            0.11114750520124783,
+            5.667426007332138,
+            0.11812415733447601
+          ],
+          "base_delta_world_mm": [
+            0.20486116409301758,
+            5.681551992893219,
+            0.00021071173250675201
+          ],
+          "base_yaw_delta_deg": -0.0009547528766937952,
+          "lift_joint_delta_mm": 0.11140108108520508,
+          "arm_extension_joint_sum_delta_mm": -0.08254498243331909,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            -0.1557133443801373,
+            5.632698475612235,
+            0.12041767211301568
+          ],
+          "base_delta_world_mm": [
+            -0.2512335777282715,
+            5.60837984085083,
+            -0.00017299316823482513
+          ],
+          "base_yaw_delta_deg": 0.0006556840206437767,
+          "lift_joint_delta_mm": 0.11152029037475586,
+          "arm_extension_joint_sum_delta_mm": -0.09494274854660034,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "2cb8b60e62b5bff5bfb36d371223f7b55d51fa24b92283dc22f0874668a16ec7"
+        ],
+        "end": [
+          "9c1e0dff332a3013c35f08c8b0e1e2a974a9e919625a5389282a63cf08bd5edc"
+        ]
+      },
+      "gif": "../../gallery/20261116-m1-guided-segments/bodyward-30mm-slight-rise.gif"
+    },
+    {
+      "id": "M-D31",
+      "run_id": "20261116-astra-m1-checkpoint-001",
+      "decision_index": 31,
+      "phase": "P07",
+      "command_id": "C09",
+      "normalized_action_matrix": [
+        [
+          -0.012000000104308128,
+          0.06700000166893005,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -0.01899999938905239,
+          -0.05000000074505806,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 82,
+      "end_step": 84,
+      "actual_transitions": 2,
+      "nominal_duration_s": 0.1,
+      "observed_simulation_duration_s": 0.10000000521540642,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            0.08913686071887472,
+            3.79108508808193,
+            0.04296472498266368
+          ],
+          "base_delta_world_mm": [
+            0.1583099365234375,
+            3.7732571363449097,
+            -1.0244548320770264e-05
+          ],
+          "base_yaw_delta_deg": 0.0011793448500501372,
+          "lift_joint_delta_mm": 0.038743019104003906,
+          "arm_extension_joint_sum_delta_mm": -0.06865710020065308,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            -0.11086035513629966,
+            3.73831507324629,
+            0.04698664994551294
+          ],
+          "base_delta_world_mm": [
+            -0.17696619033813477,
+            3.731653094291687,
+            2.3050233721733093e-05
+          ],
+          "base_yaw_delta_deg": 0.0010556375979078032,
+          "lift_joint_delta_mm": 0.0400543212890625,
+          "arm_extension_joint_sum_delta_mm": -0.06173551082611084,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "9c1e0dff332a3013c35f08c8b0e1e2a974a9e919625a5389282a63cf08bd5edc"
+        ],
+        "end": [
+          "42b6b372b703ee04c869052af3e7f35a856f61cad5dbb82e8b668ea124199457"
+        ]
+      },
+      "gif": "../../gallery/20261116-m1-guided-segments/bodyward-30mm-slight-rise.gif"
+    },
+    {
+      "id": "M-D33",
+      "run_id": "20261116-astra-m1-checkpoint-001",
+      "decision_index": 33,
+      "phase": "P08",
+      "command_id": "C10",
+      "normalized_action_matrix": [
+        [
+          -0.012000000104308128,
+          0.06700000166893005,
+          0.0,
+          0.009999999776482582,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -0.01899999938905239,
+          -0.05000000074505806,
+          0.0,
+          0.009999999776482582,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 84,
+      "end_step": 87,
+      "actual_transitions": 3,
+      "nominal_duration_s": 0.15000000000000002,
+      "observed_simulation_duration_s": 0.15000000782310963,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            0.13596795624570834,
+            5.682379890739608,
+            0.7894050200167868
+          ],
+          "base_delta_world_mm": [
+            0.20462274551391602,
+            5.702376365661621,
+            -5.797483026981354e-05
+          ],
+          "base_yaw_delta_deg": -0.0017162324649519626,
+          "lift_joint_delta_mm": 0.7794499397277832,
+          "arm_extension_joint_sum_delta_mm": -0.05254894495010376,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            -0.13743157758316915,
+            5.629417618894045,
+            0.7785117797536323
+          ],
+          "base_delta_world_mm": [
+            -0.23418664932250977,
+            5.608662962913513,
+            0.0003210734575986862
+          ],
+          "base_yaw_delta_deg": 0.0004262071316440368,
+          "lift_joint_delta_mm": 0.7764101028442383,
+          "arm_extension_joint_sum_delta_mm": -0.09369105100631714,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "42b6b372b703ee04c869052af3e7f35a856f61cad5dbb82e8b668ea124199457"
+        ],
+        "end": [
+          "f467eec2d5603e8e2d2aeb3a343e393edbc6493aedda603269daa1b861aa1f54"
+        ]
+      },
+      "gif": "../../gallery/20261116-m1-guided-segments/bodyward-50mm-slight-rise.gif"
+    },
+    {
+      "id": "M-D34",
+      "run_id": "20261116-astra-m1-checkpoint-001",
+      "decision_index": 34,
+      "phase": "P08",
+      "command_id": "C09",
+      "normalized_action_matrix": [
+        [
+          -0.012000000104308128,
+          0.06700000166893005,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -0.01899999938905239,
+          -0.05000000074505806,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 87,
+      "end_step": 90,
+      "actual_transitions": 3,
+      "nominal_duration_s": 0.15000000000000002,
+      "observed_simulation_duration_s": 0.15000000782310963,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            0.12034609075051161,
+            5.686303104910056,
+            0.8584263597344322
+          ],
+          "base_delta_world_mm": [
+            0.20700693130493164,
+            5.681708455085754,
+            5.052424967288971e-05
+          ],
+          "base_yaw_delta_deg": 5.8834065517611226e-05,
+          "lift_joint_delta_mm": 0.8432865142822266,
+          "arm_extension_joint_sum_delta_mm": -0.07253140211105347,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            -0.12894617032488398,
+            5.627695053629145,
+            0.8504000174949233
+          ],
+          "base_delta_world_mm": [
+            -0.24050474166870117,
+            5.601577460765839,
+            -0.0002039596438407898
+          ],
+          "base_yaw_delta_deg": 0.0006305987959792372,
+          "lift_joint_delta_mm": 0.8426308631896973,
+          "arm_extension_joint_sum_delta_mm": -0.10605156421661377,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "f467eec2d5603e8e2d2aeb3a343e393edbc6493aedda603269daa1b861aa1f54"
+        ],
+        "end": [
+          "7b90c2b8b82ff0adad362fba0b2d57135b5b15792e78aed1fb24fcbd74f0ec2f"
+        ]
+      },
+      "gif": "../../gallery/20261116-m1-guided-segments/bodyward-50mm-slight-rise.gif"
+    },
+    {
+      "id": "M-D35",
+      "run_id": "20261116-astra-m1-checkpoint-001",
+      "decision_index": 35,
+      "phase": "P08",
+      "command_id": "C09",
+      "normalized_action_matrix": [
+        [
+          -0.012000000104308128,
+          0.06700000166893005,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -0.01899999938905239,
+          -0.05000000074505806,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 90,
+      "end_step": 93,
+      "actual_transitions": 3,
+      "nominal_duration_s": 0.15000000000000002,
+      "observed_simulation_duration_s": 0.15000000782310963,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            0.10464378334973379,
+            5.710128314750984,
+            0.4079527501315017
+          ],
+          "base_delta_world_mm": [
+            0.19496679306030273,
+            5.738690495491028,
+            -0.00015902332961559296
+          ],
+          "base_yaw_delta_deg": -0.0023181083125975808,
+          "lift_joint_delta_mm": 0.39756298065185547,
+          "arm_extension_joint_sum_delta_mm": -0.07122009992599487,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            -0.08402488594361213,
+            5.595032388625631,
+            0.40887672073641745
+          ],
+          "base_delta_world_mm": [
+            -0.2084970474243164,
+            5.6021809577941895,
+            -6.449408829212189e-05
+          ],
+          "base_yaw_delta_deg": 0.0016492899633397979,
+          "lift_joint_delta_mm": 0.3981590270996094,
+          "arm_extension_joint_sum_delta_mm": -0.11227279901504517,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "7b90c2b8b82ff0adad362fba0b2d57135b5b15792e78aed1fb24fcbd74f0ec2f"
+        ],
+        "end": [
+          "405cb847711dc439e98e84116e483236c1cfc85357da52c78d6d1fd0c0ac8f00"
+        ]
+      },
+      "gif": "../../gallery/20261116-m1-guided-segments/bodyward-50mm-slight-rise.gif"
+    },
+    {
+      "id": "M-D37",
+      "run_id": "20261116-astra-m1-checkpoint-001",
+      "decision_index": 37,
+      "phase": "P09",
+      "command_id": "C09",
+      "normalized_action_matrix": [
+        [
+          -0.012000000104308128,
+          0.06700000166893005,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -0.01899999938905239,
+          -0.05000000074505806,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 93,
+      "end_step": 96,
+      "actual_transitions": 3,
+      "nominal_duration_s": 0.15000000000000002,
+      "observed_simulation_duration_s": 0.15000000782310963,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            0.1096181689198561,
+            5.684308768821422,
+            0.18169985436111702
+          ],
+          "base_delta_world_mm": [
+            0.19228458404541016,
+            5.755007266998291,
+            0.00020489096641540527
+          ],
+          "base_yaw_delta_deg": -0.004212445733941838,
+          "lift_joint_delta_mm": 0.18554925918579102,
+          "arm_extension_joint_sum_delta_mm": -0.06388872861862183,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            -0.014846176434102354,
+            5.56824558501115,
+            0.2032274505374687
+          ],
+          "base_delta_world_mm": [
+            -0.19598007202148438,
+            5.587585270404816,
+            8.684583008289337e-05
+          ],
+          "base_yaw_delta_deg": 0.0028428033036794025,
+          "lift_joint_delta_mm": 0.18775463104248047,
+          "arm_extension_joint_sum_delta_mm": -0.1652836799621582,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "405cb847711dc439e98e84116e483236c1cfc85357da52c78d6d1fd0c0ac8f00"
+        ],
+        "end": [
+          "99a68deee224ba7af4a43290e670a6c942f4205cf405f06ee0cdee0957f447df"
+        ]
+      },
+      "gif": "../../gallery/20261116-m1-guided-segments/bodyward-33mm-completion.gif"
+    },
+    {
+      "id": "M-D38",
+      "run_id": "20261116-astra-m1-checkpoint-001",
+      "decision_index": 38,
+      "phase": "P09",
+      "command_id": "C09",
+      "normalized_action_matrix": [
+        [
+          -0.012000000104308128,
+          0.06700000166893005,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -0.01899999938905239,
+          -0.05000000074505806,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 96,
+      "end_step": 99,
+      "actual_transitions": 3,
+      "nominal_duration_s": 0.15000000000000002,
+      "observed_simulation_duration_s": 0.15000000782310963,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            0.09462227258616451,
+            5.677840617107605,
+            0.07451425429927383
+          ],
+          "base_delta_world_mm": [
+            0.1970529556274414,
+            5.735814571380615,
+            2.561137080192566e-05
+          ],
+          "base_yaw_delta_deg": -0.0024883718479796623,
+          "lift_joint_delta_mm": 0.08589029312133789,
+          "arm_extension_joint_sum_delta_mm": -0.08269399404525757,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            -0.003034171906390881,
+            5.548349614499903,
+            0.10455060407577044
+          ],
+          "base_delta_world_mm": [
+            -0.2320408821105957,
+            5.589626729488373,
+            3.259629011154175e-05
+          ],
+          "base_yaw_delta_deg": 0.005074863890392424,
+          "lift_joint_delta_mm": 0.08720159530639648,
+          "arm_extension_joint_sum_delta_mm": -0.20326673984527588,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "99a68deee224ba7af4a43290e670a6c942f4205cf405f06ee0cdee0957f447df"
+        ],
+        "end": [
+          "a7fd1e9eeb69040e9779ce160a779ec1c48c689c4b9675a1da4dae934f472130"
+        ]
+      },
+      "gif": "../../gallery/20261116-m1-guided-segments/bodyward-33mm-completion.gif"
+    },
+    {
+      "id": "M-D39",
+      "run_id": "20261116-astra-m1-checkpoint-001",
+      "decision_index": 39,
+      "phase": "P09",
+      "command_id": "C09",
+      "normalized_action_matrix": [
+        [
+          -0.012000000104308128,
+          0.06700000166893005,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -0.01899999938905239,
+          -0.05000000074505806,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 99,
+      "end_step": 102,
+      "actual_transitions": 3,
+      "nominal_duration_s": 0.15000000000000002,
+      "observed_simulation_duration_s": 0.15000000782310963,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            0.11786842285455013,
+            5.611490786699896,
+            0.022196746886526952
+          ],
+          "base_delta_world_mm": [
+            0.18906593322753906,
+            5.724877119064331,
+            6.472691893577576e-05
+          ],
+          "base_yaw_delta_deg": -0.0049267290812893836,
+          "lift_joint_delta_mm": 0.041484832763671875,
+          "arm_extension_joint_sum_delta_mm": -0.04315376281738281,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            0.05807750294473113,
+            5.550938072024253,
+            0.06890662802150338
+          ],
+          "base_delta_world_mm": [
+            -0.1938343048095703,
+            5.594655871391296,
+            -0.0001778826117515564
+          ],
+          "base_yaw_delta_deg": 0.00481302079133502,
+          "lift_joint_delta_mm": 0.043451786041259766,
+          "arm_extension_joint_sum_delta_mm": -0.22321194410324097,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "a7fd1e9eeb69040e9779ce160a779ec1c48c689c4b9675a1da4dae934f472130"
+        ],
+        "end": [
+          "220c5c968679f5781ea73830b4fb1b004a7de24e18fb6f46027730b1eababe4c"
+        ]
+      },
+      "gif": "../../gallery/20261116-m1-guided-segments/bodyward-33mm-completion.gif"
+    },
+    {
+      "id": "M-D40",
+      "run_id": "20261116-astra-m1-checkpoint-001",
+      "decision_index": 40,
+      "phase": "P09",
+      "command_id": "C09",
+      "normalized_action_matrix": [
+        [
+          -0.012000000104308128,
+          0.06700000166893005,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -0.01899999938905239,
+          -0.05000000074505806,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 102,
+      "end_step": 105,
+      "actual_transitions": 3,
+      "nominal_duration_s": 0.15000000000000002,
+      "observed_simulation_duration_s": 0.15000000782310963,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            0.14675975889832937,
+            5.627905155908025,
+            0.0025034109942811966
+          ],
+          "base_delta_world_mm": [
+            0.18352270126342773,
+            5.759909749031067,
+            -0.0003082677721977234
+          ],
+          "base_yaw_delta_deg": -0.006193217447209938,
+          "lift_joint_delta_mm": 0.017642974853515625,
+          "arm_extension_joint_sum_delta_mm": -0.004447996616363525,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            0.10029178063086785,
+            5.527437889180225,
+            0.047873799426723096
+          ],
+          "base_delta_world_mm": [
+            -0.19305944442749023,
+            5.567297339439392,
+            0.00020582228899002075
+          ],
+          "base_yaw_delta_deg": 0.0059264609518585275,
+          "lift_joint_delta_mm": 0.020384788513183594,
+          "arm_extension_joint_sum_delta_mm": -0.26237964630126953,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "220c5c968679f5781ea73830b4fb1b004a7de24e18fb6f46027730b1eababe4c"
+        ],
+        "end": [
+          "928275d1b7012cf28a6e86a1f427ad4312aa3d4ba0c24a2c14541be2840d5589"
+        ]
+      },
+      "gif": "../../gallery/20261116-m1-guided-segments/bodyward-33mm-completion.gif"
+    },
+    {
+      "id": "M-D41",
+      "run_id": "20261116-astra-m1-checkpoint-001",
+      "decision_index": 41,
+      "phase": "P09",
+      "command_id": "C09",
+      "normalized_action_matrix": [
+        [
+          -0.012000000104308128,
+          0.06700000166893005,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -0.01899999938905239,
+          -0.05000000074505806,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 105,
+      "end_step": 108,
+      "actual_transitions": 3,
+      "nominal_duration_s": 0.15000000000000002,
+      "observed_simulation_duration_s": 0.15000000782310963,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            0.16352579127376643,
+            5.633296779423147,
+            0.001380517771654155
+          ],
+          "base_delta_world_mm": [
+            0.17458200454711914,
+            5.784884095191956,
+            -2.491287887096405e-05
+          ],
+          "base_yaw_delta_deg": -0.006678865797505685,
+          "lift_joint_delta_mm": 0.009119510650634766,
+          "arm_extension_joint_sum_delta_mm": 0.031113624572753906,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            0.07722839053769803,
+            5.559781698620564,
+            0.04214018014048193
+          ],
+          "base_delta_world_mm": [
+            -0.1946091651916504,
+            5.585774779319763,
+            -0.00021955929696559906
+          ],
+          "base_yaw_delta_deg": 0.005146828162335931,
+          "lift_joint_delta_mm": 0.00864267349243164,
+          "arm_extension_joint_sum_delta_mm": -0.2432018518447876,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "928275d1b7012cf28a6e86a1f427ad4312aa3d4ba0c24a2c14541be2840d5589"
+        ],
+        "end": [
+          "c5ac76123c621e68579037bf06aed678a34d8429b9aba1840e23eb37838b9bf6"
+        ]
+      },
+      "gif": "../../gallery/20261116-m1-guided-segments/bodyward-33mm-completion.gif"
+    },
+    {
+      "id": "M-D42",
+      "run_id": "20261116-astra-m1-checkpoint-001",
+      "decision_index": 42,
+      "phase": "P09",
+      "command_id": "C09",
+      "normalized_action_matrix": [
+        [
+          -0.012000000104308128,
+          0.06700000166893005,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -0.01899999938905239,
+          -0.05000000074505806,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 108,
+      "end_step": 110,
+      "actual_transitions": 2,
+      "nominal_duration_s": 0.1,
+      "observed_simulation_duration_s": 0.10000000521540642,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            0.08160194814998967,
+            3.731457614652489,
+            0.0032283748139239066
+          ],
+          "base_delta_world_mm": [
+            0.11605024337768555,
+            3.7887096405029297,
+            0.00010523945093154907
+          ],
+          "base_yaw_delta_deg": -0.002166329401477492,
+          "lift_joint_delta_mm": 0.004589557647705078,
+          "arm_extension_joint_sum_delta_mm": -0.01679360866546631,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            0.07119995566839954,
+            3.691193955069699,
+            0.03305398847541774
+          ],
+          "base_delta_world_mm": [
+            -0.11116266250610352,
+            3.709346055984497,
+            0.0003259629011154175
+          ],
+          "base_yaw_delta_deg": 0.003495419225531366,
+          "lift_joint_delta_mm": 0.00476837158203125,
+          "arm_extension_joint_sum_delta_mm": -0.16220659017562866,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "c5ac76123c621e68579037bf06aed678a34d8429b9aba1840e23eb37838b9bf6"
+        ],
+        "end": [
+          "68450572c9a58129ae81f9ea4e29d1f96394b1aa7198ae5e84c522a677c0b4f2"
+        ]
+      },
+      "gif": "../../gallery/20261116-m1-guided-segments/bodyward-33mm-completion.gif"
+    },
+    {
+      "id": "M-D44",
+      "run_id": "20261116-astra-m1-checkpoint-001",
+      "decision_index": 44,
+      "phase": "P10",
+      "command_id": "C09",
+      "normalized_action_matrix": [
+        [
+          -0.012000000104308128,
+          0.06700000166893005,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -0.01899999938905239,
+          -0.05000000074505806,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 110,
+      "end_step": 113,
+      "actual_transitions": 3,
+      "nominal_duration_s": 0.15000000000000002,
+      "observed_simulation_duration_s": 0.15000000782310963,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            0.19036648811809886,
+            5.635218193341979,
+            0.01302270992908916
+          ],
+          "base_delta_world_mm": [
+            0.18310546875,
+            5.7172030210494995,
+            -0.00014901161193847656
+          ],
+          "base_yaw_delta_deg": -0.0031897587010146096,
+          "lift_joint_delta_mm": 0.004887580871582031,
+          "arm_extension_joint_sum_delta_mm": 0.03463029861450195,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            0.20593588808481833,
+            5.571619139247364,
+            0.07341011661532448
+          ],
+          "base_delta_world_mm": [
+            -0.16242265701293945,
+            5.577012896537781,
+            -0.00023329630494117737
+          ],
+          "base_yaw_delta_deg": 0.00559749350923438,
+          "lift_joint_delta_mm": 0.0038743019104003906,
+          "arm_extension_joint_sum_delta_mm": -0.32510608434677124,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "68450572c9a58129ae81f9ea4e29d1f96394b1aa7198ae5e84c522a677c0b4f2"
+        ],
+        "end": [
+          "6452a50bc00add47092b0e7f44ed164d8d196af68cc474a106ed130ba9fba7d0"
+        ]
+      },
+      "gif": "../../gallery/20261116-m1-guided-segments/third-stripe-approach.gif"
+    },
+    {
+      "id": "M-D45",
+      "run_id": "20261116-astra-m1-checkpoint-001",
+      "decision_index": 45,
+      "phase": "P10",
+      "command_id": "C09",
+      "normalized_action_matrix": [
+        [
+          -0.012000000104308128,
+          0.06700000166893005,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -0.01899999938905239,
+          -0.05000000074505806,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 113,
+      "end_step": 117,
+      "actual_transitions": 4,
+      "nominal_duration_s": 0.2,
+      "observed_simulation_duration_s": 0.20000001043081284,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            0.6574440328068754,
+            7.383920046461573,
+            0.022185731447743606
+          ],
+          "base_delta_world_mm": [
+            0.276029109954834,
+            7.577672600746155,
+            0.0002796296030282974
+          ],
+          "base_yaw_delta_deg": -0.005402808230482779,
+          "lift_joint_delta_mm": 0.0030994415283203125,
+          "arm_extension_joint_sum_delta_mm": 0.4262477159500122,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            -0.19562079099622043,
+            7.644865777355986,
+            0.007879781523056906
+          ],
+          "base_delta_world_mm": [
+            -0.2123117446899414,
+            7.4556320905685425,
+            4.400499165058136e-05
+          ],
+          "base_yaw_delta_deg": -0.003965173386161199,
+          "lift_joint_delta_mm": 0.0016093254089355469,
+          "arm_extension_joint_sum_delta_mm": -0.058710575103759766,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "6452a50bc00add47092b0e7f44ed164d8d196af68cc474a106ed130ba9fba7d0"
+        ],
+        "end": [
+          "7ae001871476bbf70a42ac19bcd60575dbc2b0307782d7fdf6b961abc1ab5d30"
+        ]
+      },
+      "gif": "../../gallery/20261116-m1-guided-segments/third-stripe-approach.gif"
+    },
+    {
+      "id": "M-D46",
+      "run_id": "20261116-astra-m1-checkpoint-001",
+      "decision_index": 46,
+      "phase": "P10",
+      "command_id": "C09",
+      "normalized_action_matrix": [
+        [
+          -0.012000000104308128,
+          0.06700000166893005,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -0.01899999938905239,
+          -0.05000000074505806,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 117,
+      "end_step": 120,
+      "actual_transitions": 3,
+      "nominal_duration_s": 0.15000000000000002,
+      "observed_simulation_duration_s": 0.15000000782310963,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            0.46793861317606655,
+            5.305852467108379,
+            -0.022926442465154295
+          ],
+          "base_delta_world_mm": [
+            0.23996829986572266,
+            5.6088268756866455,
+            -0.0001525040715932846
+          ],
+          "base_yaw_delta_deg": -0.007382542574140932,
+          "lift_joint_delta_mm": 0.0010728836059570312,
+          "arm_extension_joint_sum_delta_mm": 0.3040134906768799,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            -1.454090473268388,
+            0.25891153160934044,
+            0.24005677222493915
+          ],
+          "base_delta_world_mm": [
+            0.2357959747314453,
+            4.124492406845093,
+            -8.614733815193176e-06
+          ],
+          "base_yaw_delta_deg": 0.2938655382853667,
+          "lift_joint_delta_mm": -0.29730796813964844,
+          "arm_extension_joint_sum_delta_mm": 3.087177872657776,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "7ae001871476bbf70a42ac19bcd60575dbc2b0307782d7fdf6b961abc1ab5d30"
+        ],
+        "end": [
+          "48be254e1960e7ad1fdaa8f87cf7c3768ee1a5412d4c3015d6aa9ad396d9fa34"
+        ]
+      },
+      "gif": "../../gallery/20261116-m1-guided-segments/third-stripe-approach.gif"
+    },
+    {
+      "id": "B-D00",
+      "run_id": "20261116-astra-right-hand-hold10-001",
+      "decision_index": 0,
+      "phase": "P11",
+      "command_id": "C11",
+      "normalized_action_matrix": [
+        [
+          -0.012000000104308128,
+          0.06700000166893005,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 110,
+      "end_step": 112,
+      "actual_transitions": 2,
+      "nominal_duration_s": 0.1,
+      "observed_simulation_duration_s": 0.10000000521540642,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            0.165593549813714,
+            3.6982191185921387,
+            -0.005572328394043424
+          ],
+          "base_delta_world_mm": [
+            0.11545419692993164,
+            3.7936419248580933,
+            2.7939677238464355e-06
+          ],
+          "base_yaw_delta_deg": -0.003082725374318156,
+          "lift_joint_delta_mm": 0.0019073486328125,
+          "arm_extension_joint_sum_delta_mm": 0.07382035255432129,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            0.319826460780992,
+            1.895367092887179,
+            0.042403115373179645
+          ],
+          "base_delta_world_mm": [
+            -0.14394521713256836,
+            1.6194730997085571,
+            9.313225746154785e-07
+          ],
+          "base_yaw_delta_deg": -0.0031788187961666902,
+          "lift_joint_delta_mm": 0.004589557647705078,
+          "arm_extension_joint_sum_delta_mm": -0.5035921931266785,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "e53e9930f37648c40e534913d7a903f18c9209ed7f2444e763b11f50182cbc3d"
+        ],
+        "end": [
+          "569a5ae1865d1aa23ae56886101ecd7636c5096e303e159f722ac93ff76e2f09"
+        ]
+      },
+      "gif": "../../gallery/20261116-right-hand-hold10/right-hand-only-two-stripes.gif"
+    },
+    {
+      "id": "B-D01",
+      "run_id": "20261116-astra-right-hand-hold10-001",
+      "decision_index": 1,
+      "phase": "P11",
+      "command_id": "C11",
+      "normalized_action_matrix": [
+        [
+          -0.012000000104308128,
+          0.06700000166893005,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 112,
+      "end_step": 115,
+      "actual_transitions": 3,
+      "nominal_duration_s": 0.15000000000000002,
+      "observed_simulation_duration_s": 0.15000000782310963,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            0.3823772302238293,
+            5.278734321708667,
+            -0.0690715662048369
+          ],
+          "base_delta_world_mm": [
+            0.17648935317993164,
+            5.671694874763489,
+            -0.0002677552402019501
+          ],
+          "base_yaw_delta_deg": -0.012448623206926954,
+          "lift_joint_delta_mm": 0.0002980232238769531,
+          "arm_extension_joint_sum_delta_mm": 0.29125064611434937,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            0.10077187410872934,
+            1.0178556035807806,
+            0.07074869384693372
+          ],
+          "base_delta_world_mm": [
+            -0.12552738189697266,
+            0.743865966796875,
+            0.00017043203115463257
+          ],
+          "base_yaw_delta_deg": -0.0047539889702882575,
+          "lift_joint_delta_mm": 0.005066394805908203,
+          "arm_extension_joint_sum_delta_mm": -0.2589002251625061,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "569a5ae1865d1aa23ae56886101ecd7636c5096e303e159f722ac93ff76e2f09"
+        ],
+        "end": [
+          "c72b2308d0005c49fe886a8d1dd170cf6df3e326c565ba01cf552210c339d2ae"
+        ]
+      },
+      "gif": "../../gallery/20261116-right-hand-hold10/right-hand-only-two-stripes.gif"
+    },
+    {
+      "id": "B-D02",
+      "run_id": "20261116-astra-right-hand-hold10-001",
+      "decision_index": 2,
+      "phase": "P11",
+      "command_id": "C11",
+      "normalized_action_matrix": [
+        [
+          -0.012000000104308128,
+          0.06700000166893005,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 115,
+      "end_step": 118,
+      "actual_transitions": 3,
+      "nominal_duration_s": 0.15000000000000002,
+      "observed_simulation_duration_s": 0.15000000782310963,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            0.46755857349889407,
+            5.057541702338214,
+            -0.10235462171670484
+          ],
+          "base_delta_world_mm": [
+            0.20039081573486328,
+            5.602747201919556,
+            0.00015366822481155396
+          ],
+          "base_yaw_delta_deg": -0.017179693725830676,
+          "lift_joint_delta_mm": -0.0020265579223632812,
+          "arm_extension_joint_sum_delta_mm": 0.38286298513412476,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            0.14781857997314685,
+            1.175726015818418,
+            0.08778885891702615
+          ],
+          "base_delta_world_mm": [
+            -0.14460086822509766,
+            0.6705522537231445,
+            0.0002498272806406021
+          ],
+          "base_yaw_delta_deg": -0.012458705553079307,
+          "lift_joint_delta_mm": 0.006973743438720703,
+          "arm_extension_joint_sum_delta_mm": -0.37386268377304077,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "c72b2308d0005c49fe886a8d1dd170cf6df3e326c565ba01cf552210c339d2ae"
+        ],
+        "end": [
+          "d84231c432da4487f5181efad942d4a4005f8765baba0956447ca01e2cb79983"
+        ]
+      },
+      "gif": "../../gallery/20261116-right-hand-hold10/right-hand-only-two-stripes.gif"
+    },
+    {
+      "id": "B-D03",
+      "run_id": "20261116-astra-right-hand-hold10-001",
+      "decision_index": 3,
+      "phase": "P11",
+      "command_id": "C11",
+      "normalized_action_matrix": [
+        [
+          -0.012000000104308128,
+          0.06700000166893005,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 118,
+      "end_step": 121,
+      "actual_transitions": 3,
+      "nominal_duration_s": 0.15000000000000002,
+      "observed_simulation_duration_s": 0.15000000782310963,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            0.44054373596524865,
+            4.889733988373362,
+            -0.10671956119145953
+          ],
+          "base_delta_world_mm": [
+            0.2002120018005371,
+            5.510538816452026,
+            1.3271346688270569e-05
+          ],
+          "base_yaw_delta_deg": -0.02111976568759985,
+          "lift_joint_delta_mm": -0.0030994415283203125,
+          "arm_extension_joint_sum_delta_mm": 0.3769993782043457,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            0.13591371938914687,
+            1.3483726777837879,
+            0.07169338049872742
+          ],
+          "base_delta_world_mm": [
+            -0.15884637832641602,
+            0.7256120443344116,
+            -0.0001655425876379013
+          ],
+          "base_yaw_delta_deg": -0.016935885970672467,
+          "lift_joint_delta_mm": 0.004947185516357422,
+          "arm_extension_joint_sum_delta_mm": -0.41130930185317993,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "d84231c432da4487f5181efad942d4a4005f8765baba0956447ca01e2cb79983"
+        ],
+        "end": [
+          "44bca1f67ddbe6da1371ad17bcbc47eee3eddddb4ab3eec7147676b32c749386"
+        ]
+      },
+      "gif": "../../gallery/20261116-right-hand-hold10/right-hand-only-two-stripes.gif"
+    },
+    {
+      "id": "B-D04",
+      "run_id": "20261116-astra-right-hand-hold10-001",
+      "decision_index": 4,
+      "phase": "P11",
+      "command_id": "C11",
+      "normalized_action_matrix": [
+        [
+          -0.012000000104308128,
+          0.06700000166893005,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 121,
+      "end_step": 124,
+      "actual_transitions": 3,
+      "nominal_duration_s": 0.15000000000000002,
+      "observed_simulation_duration_s": 0.15000000782310963,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            0.4641002738069444,
+            4.889566965207232,
+            -0.0827920430375162
+          ],
+          "base_delta_world_mm": [
+            0.20068883895874023,
+            5.493417382240295,
+            5.075708031654358e-05
+          ],
+          "base_yaw_delta_deg": -0.022012769566194558,
+          "lift_joint_delta_mm": -0.0019073486328125,
+          "arm_extension_joint_sum_delta_mm": 0.401817262172699,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            0.15772146943160426,
+            1.4689317597637308,
+            0.07273692918241537
+          ],
+          "base_delta_world_mm": [
+            -0.15813112258911133,
+            0.7805377244949341,
+            3.14321368932724e-05
+          ],
+          "base_yaw_delta_deg": -0.01887969122317435,
+          "lift_joint_delta_mm": 0.0030994415283203125,
+          "arm_extension_joint_sum_delta_mm": -0.4454106092453003,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "44bca1f67ddbe6da1371ad17bcbc47eee3eddddb4ab3eec7147676b32c749386"
+        ],
+        "end": [
+          "a89be9c896eaf4ad122475870012be288921b5d44782f37b6f47e524a04890f8"
+        ]
+      },
+      "gif": "../../gallery/20261116-right-hand-hold10/right-hand-only-two-stripes.gif"
+    },
+    {
+      "id": "B-D05",
+      "run_id": "20261116-astra-right-hand-hold10-001",
+      "decision_index": 5,
+      "phase": "P11",
+      "command_id": "C11",
+      "normalized_action_matrix": [
+        [
+          -0.012000000104308128,
+          0.06700000166893005,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 124,
+      "end_step": 127,
+      "actual_transitions": 3,
+      "nominal_duration_s": 0.15000000000000002,
+      "observed_simulation_duration_s": 0.15000000782310963,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            0.4571090108570486,
+            4.870155901220475,
+            -0.07842763194476632
+          ],
+          "base_delta_world_mm": [
+            0.21445751190185547,
+            5.452021956443787,
+            7.008202373981476e-05
+          ],
+          "base_yaw_delta_deg": -0.021636765112972932,
+          "lift_joint_delta_mm": -0.0032782554626464844,
+          "arm_extension_joint_sum_delta_mm": 0.37657469511032104,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            0.06585185406837724,
+            1.5157135220977835,
+            0.03557830679778995
+          ],
+          "base_delta_world_mm": [
+            -0.16939640045166016,
+            0.8326619863510132,
+            -0.0001655425876379013
+          ],
+          "base_yaw_delta_deg": -0.021313170202269145,
+          "lift_joint_delta_mm": 0.0008344650268554688,
+          "arm_extension_joint_sum_delta_mm": -0.3813207149505615,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "a89be9c896eaf4ad122475870012be288921b5d44782f37b6f47e524a04890f8"
+        ],
+        "end": [
+          "82ae52920cd5f01dcada5f2ed396b94ac518402d38b7ab23c3f9035239cffced"
+        ]
+      },
+      "gif": "../../gallery/20261116-right-hand-hold10/right-hand-only-two-stripes.gif"
+    },
+    {
+      "id": "B-D06",
+      "run_id": "20261116-astra-right-hand-hold10-001",
+      "decision_index": 6,
+      "phase": "P11",
+      "command_id": "C11",
+      "normalized_action_matrix": [
+        [
+          -0.012000000104308128,
+          0.06700000166893005,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 127,
+      "end_step": 130,
+      "actual_transitions": 3,
+      "nominal_duration_s": 0.15000000000000002,
+      "observed_simulation_duration_s": 0.15000000782310963,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            0.5219529237718845,
+            4.817089077241405,
+            -0.08138030029947174
+          ],
+          "base_delta_world_mm": [
+            0.2282261848449707,
+            5.409941077232361,
+            1.6996636986732483e-05
+          ],
+          "base_yaw_delta_deg": -0.02142643956848305,
+          "lift_joint_delta_mm": -0.0030994415283203125,
+          "arm_extension_joint_sum_delta_mm": 0.4291832447052002,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            0.03904829440004587,
+            1.5266723666810533,
+            0.05334654577127118
+          ],
+          "base_delta_world_mm": [
+            -0.15544891357421875,
+            0.8734464645385742,
+            0.00014388933777809143
+          ],
+          "base_yaw_delta_deg": -0.02055119045799007,
+          "lift_joint_delta_mm": 0.005245208740234375,
+          "arm_extension_joint_sum_delta_mm": -0.3306642174720764,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "82ae52920cd5f01dcada5f2ed396b94ac518402d38b7ab23c3f9035239cffced"
+        ],
+        "end": [
+          "6b8ed36a59da15e3d9cab291d167a0172d0d38c23e3c4dfea2a15f1a1bf01e2c"
+        ]
+      },
+      "gif": "../../gallery/20261116-right-hand-hold10/right-hand-only-two-stripes.gif"
+    },
+    {
+      "id": "B-D07",
+      "run_id": "20261116-astra-right-hand-hold10-001",
+      "decision_index": 7,
+      "phase": "P11",
+      "command_id": "C11",
+      "normalized_action_matrix": [
+        [
+          -0.012000000104308128,
+          0.06700000166893005,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 130,
+      "end_step": 133,
+      "actual_transitions": 3,
+      "nominal_duration_s": 0.15000000000000002,
+      "observed_simulation_duration_s": 0.15000000782310963,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            0.5088802452924979,
+            4.729078797828329,
+            -0.08939581801659102
+          ],
+          "base_delta_world_mm": [
+            0.25159120559692383,
+            5.363106727600098,
+            -0.00016787089407444
+          ],
+          "base_yaw_delta_deg": -0.02307507373676123,
+          "lift_joint_delta_mm": -0.0032186508178710938,
+          "arm_extension_joint_sum_delta_mm": 0.40394067764282227,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            0.07468280000477723,
+            1.6149384938894673,
+            0.058058301951824376
+          ],
+          "base_delta_world_mm": [
+            -0.22262334823608398,
+            0.9233653545379639,
+            -4.540197551250458e-05
+          ],
+          "base_yaw_delta_deg": -0.021748688326753522,
+          "lift_joint_delta_mm": 0.0008940696716308594,
+          "arm_extension_joint_sum_delta_mm": -0.43460726737976074,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "6b8ed36a59da15e3d9cab291d167a0172d0d38c23e3c4dfea2a15f1a1bf01e2c"
+        ],
+        "end": [
+          "9a75095ccf6b17f248f3c281eee132f1264502f23246238c9d0bca6442349843"
+        ]
+      },
+      "gif": "../../gallery/20261116-right-hand-hold10/right-hand-only-two-stripes.gif"
+    },
+    {
+      "id": "B-D08",
+      "run_id": "20261116-astra-right-hand-hold10-001",
+      "decision_index": 8,
+      "phase": "P11",
+      "command_id": "C11",
+      "normalized_action_matrix": [
+        [
+          -0.012000000104308128,
+          0.06700000166893005,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "start_step": 133,
+      "end_step": 135,
+      "actual_transitions": 2,
+      "nominal_duration_s": 0.1,
+      "observed_simulation_duration_s": 0.10000000521540642,
+      "robots": {
+        "robot_0": {
+          "grasp_delta_world_mm": [
+            0.3083060133249882,
+            3.1723756536445324,
+            -0.04239547558526624
+          ],
+          "base_delta_world_mm": [
+            0.15556812286376953,
+            3.5966485738754272,
+            0.00011897645890712738
+          ],
+          "base_yaw_delta_deg": -0.017157044902494506,
+          "lift_joint_delta_mm": -0.0013709068298339844,
+          "arm_extension_joint_sum_delta_mm": 0.2562180161476135,
+          "gripper_close_intent_before_and_after": true
+        },
+        "robot_1": {
+          "grasp_delta_world_mm": [
+            -0.00037606174552173854,
+            1.0537592754019387,
+            0.028249154220505446
+          ],
+          "base_delta_world_mm": [
+            -0.11050701141357422,
+            0.6192922592163086,
+            -0.00026263296604156494
+          ],
+          "base_yaw_delta_deg": -0.01433484474793099,
+          "lift_joint_delta_mm": 0.003933906555175781,
+          "arm_extension_joint_sum_delta_mm": -0.20250678062438965,
+          "gripper_close_intent_before_and_after": true
+        }
+      },
+      "public_endpoint_sha256": {
+        "start": [
+          "9a75095ccf6b17f248f3c281eee132f1264502f23246238c9d0bca6442349843"
+        ],
+        "end": [
+          "a2afdeb88289ea357ea6cf960380a33f4f760b2a067e5acae6e17981187fd0bc"
+        ]
+      },
+      "gif": "../../gallery/20261116-right-hand-hold10/right-hand-only-two-stripes.gif"
+    }
+  ],
+  "public_snapshot_sources_by_sha256": {
+    "2a5ebc122b2d6cca089839b957660b2f5991c65bb267e8df66e11200e66f1523": {
+      "sha256": "2a5ebc122b2d6cca089839b957660b2f5991c65bb267e8df66e11200e66f1523",
+      "relative_paths": [
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00000/observation.json",
+        "output/operator-traces/20261116-astra-m1-checkpoint-001/user-review/hold-0001/observation.json"
+      ]
+    },
+    "c40936052ff01040af758061c81889810d6b851640c831a65d82573f2c6acdb9": {
+      "sha256": "c40936052ff01040af758061c81889810d6b851640c831a65d82573f2c6acdb9",
+      "relative_paths": [
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00001/observation.json"
+      ]
+    },
+    "75a24d7e1cfb261d12075e495b3c6bc33658d66ad486f244e167cf6aead0c0f5": {
+      "sha256": "75a24d7e1cfb261d12075e495b3c6bc33658d66ad486f244e167cf6aead0c0f5",
+      "relative_paths": [
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00002/observation.json"
+      ]
+    },
+    "da93e557f816b960085a2d469543b807bb8e969ee5ad58d51abdecd0bb89dfac": {
+      "sha256": "da93e557f816b960085a2d469543b807bb8e969ee5ad58d51abdecd0bb89dfac",
+      "relative_paths": [
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00003/observation.json"
+      ]
+    },
+    "bc195f3e7c1b9400818ecde1e80679c98a84f5ff7204e5b694a79d3bf1383387": {
+      "sha256": "bc195f3e7c1b9400818ecde1e80679c98a84f5ff7204e5b694a79d3bf1383387",
+      "relative_paths": [
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00004/observation.json"
+      ]
+    },
+    "0fe7465f56069255668ed4cea0e98dffdb0401124ff8a33c43f201c72c485a7c": {
+      "sha256": "0fe7465f56069255668ed4cea0e98dffdb0401124ff8a33c43f201c72c485a7c",
+      "relative_paths": [
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00005/observation.json",
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00006/observation.json",
+        "output/operator-traces/20261116-astra-m1-checkpoint-001/user-review/hold-0002/observation.json"
+      ]
+    },
+    "afe8332045087a5140c5558808f13fbcc29e6ae1cce7773d5135e4d16a3ca29c": {
+      "sha256": "afe8332045087a5140c5558808f13fbcc29e6ae1cce7773d5135e4d16a3ca29c",
+      "relative_paths": [
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00007/observation.json"
+      ]
+    },
+    "0941120276cf25834e94151ded662eda50ef38cca5bd4e93bb085a2c3fe693ee": {
+      "sha256": "0941120276cf25834e94151ded662eda50ef38cca5bd4e93bb085a2c3fe693ee",
+      "relative_paths": [
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00008/observation.json"
+      ]
+    },
+    "91ede4ba3e675aab798fe36a03a41c38fb132c2774440d59bf454fb8a4d9065b": {
+      "sha256": "91ede4ba3e675aab798fe36a03a41c38fb132c2774440d59bf454fb8a4d9065b",
+      "relative_paths": [
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00009/observation.json"
+      ]
+    },
+    "cfc18fa6787ec1ce367fedc6cad7a0b5416b8e606e5fd667c996b5d403dd05c0": {
+      "sha256": "cfc18fa6787ec1ce367fedc6cad7a0b5416b8e606e5fd667c996b5d403dd05c0",
+      "relative_paths": [
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00010/observation.json"
+      ]
+    },
+    "683c0b38485236becda0cbce96d085e6fbf9ff2c4f94171258a5f502c64ee543": {
+      "sha256": "683c0b38485236becda0cbce96d085e6fbf9ff2c4f94171258a5f502c64ee543",
+      "relative_paths": [
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00011/observation.json",
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00012/observation.json",
+        "output/operator-traces/20261116-astra-m1-checkpoint-001/user-review/hold-0003/observation.json"
+      ]
+    },
+    "0e7dc59f48db28ecc545d74605e5ce1fda5d8fc7ccc14712a7f7d01ff57316bf": {
+      "sha256": "0e7dc59f48db28ecc545d74605e5ce1fda5d8fc7ccc14712a7f7d01ff57316bf",
+      "relative_paths": [
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00013/observation.json"
+      ]
+    },
+    "c1ff2ccab7e45f62397fafe2f984256fb255cc515d78a9d5e1a7ff75c63f18f2": {
+      "sha256": "c1ff2ccab7e45f62397fafe2f984256fb255cc515d78a9d5e1a7ff75c63f18f2",
+      "relative_paths": [
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00014/observation.json",
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00015/observation.json",
+        "output/operator-traces/20261116-astra-m1-checkpoint-001/user-review/hold-0004/observation.json"
+      ]
+    },
+    "586610b9f8a5983c462255dbdb6338189a45c1c9faed14efaff7167c8e5cab66": {
+      "sha256": "586610b9f8a5983c462255dbdb6338189a45c1c9faed14efaff7167c8e5cab66",
+      "relative_paths": [
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00016/observation.json",
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00017/observation.json",
+        "output/operator-traces/20261116-astra-m1-checkpoint-001/user-review/hold-0005/observation.json"
+      ]
+    },
+    "648f0ca5a998bb6cdef25fce2138c90bc942bf40c8efe326a14276beba4ed089": {
+      "sha256": "648f0ca5a998bb6cdef25fce2138c90bc942bf40c8efe326a14276beba4ed089",
+      "relative_paths": [
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00018/observation.json"
+      ]
+    },
+    "64fef0c3c5e38e4fd7be862fce9782d379eb7bbb19b53fae7273f892cbe07f0d": {
+      "sha256": "64fef0c3c5e38e4fd7be862fce9782d379eb7bbb19b53fae7273f892cbe07f0d",
+      "relative_paths": [
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00019/observation.json"
+      ]
+    },
+    "324c1b66f9a00b170f5fa4b55961d187d447a3bad938e027070ae9cc254c9cd7": {
+      "sha256": "324c1b66f9a00b170f5fa4b55961d187d447a3bad938e027070ae9cc254c9cd7",
+      "relative_paths": [
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00020/observation.json",
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00021/observation.json",
+        "output/operator-traces/20261116-astra-m1-checkpoint-001/user-review/hold-0006/observation.json"
+      ]
+    },
+    "2af21898e6236489f9a2386212f39813ecca53820a1008d3b0aa38d66f995fdc": {
+      "sha256": "2af21898e6236489f9a2386212f39813ecca53820a1008d3b0aa38d66f995fdc",
+      "relative_paths": [
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00022/observation.json"
+      ]
+    },
+    "087eaf3dc65485871b4db9f2966793ea6bb6922fee3fe2513fcb0bdc02cfae68": {
+      "sha256": "087eaf3dc65485871b4db9f2966793ea6bb6922fee3fe2513fcb0bdc02cfae68",
+      "relative_paths": [
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00023/observation.json"
+      ]
+    },
+    "441c91cd85e60b50fcdc8b76809113ac930e3dea45db2f823a38aa9dde85cc2b": {
+      "sha256": "441c91cd85e60b50fcdc8b76809113ac930e3dea45db2f823a38aa9dde85cc2b",
+      "relative_paths": [
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00024/observation.json"
+      ]
+    },
+    "df6242a688ec2e508641a7b92236518277adeafaf8890f760ac01a6e54a04af9": {
+      "sha256": "df6242a688ec2e508641a7b92236518277adeafaf8890f760ac01a6e54a04af9",
+      "relative_paths": [
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00025/observation.json"
+      ]
+    },
+    "fbfe995c1fe123a6061b7272acb1f399af6aaf2e1050acfc3a30486a01b0c429": {
+      "sha256": "fbfe995c1fe123a6061b7272acb1f399af6aaf2e1050acfc3a30486a01b0c429",
+      "relative_paths": [
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00026/observation.json",
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00027/observation.json",
+        "output/operator-traces/20261116-astra-m1-checkpoint-001/user-review/hold-0007/observation.json"
+      ]
+    },
+    "631ed706335750b1107298c04bb6ab8c7a32732310d980243106f4266d186605": {
+      "sha256": "631ed706335750b1107298c04bb6ab8c7a32732310d980243106f4266d186605",
+      "relative_paths": [
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00028/observation.json"
+      ]
+    },
+    "f7b47755dd3a99d22af46b8c3aa993a0913c1f905323c0a83085e7162dda056b": {
+      "sha256": "f7b47755dd3a99d22af46b8c3aa993a0913c1f905323c0a83085e7162dda056b",
+      "relative_paths": [
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00029/observation.json"
+      ]
+    },
+    "2cb8b60e62b5bff5bfb36d371223f7b55d51fa24b92283dc22f0874668a16ec7": {
+      "sha256": "2cb8b60e62b5bff5bfb36d371223f7b55d51fa24b92283dc22f0874668a16ec7",
+      "relative_paths": [
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00030/observation.json"
+      ]
+    },
+    "9c1e0dff332a3013c35f08c8b0e1e2a974a9e919625a5389282a63cf08bd5edc": {
+      "sha256": "9c1e0dff332a3013c35f08c8b0e1e2a974a9e919625a5389282a63cf08bd5edc",
+      "relative_paths": [
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00031/observation.json"
+      ]
+    },
+    "42b6b372b703ee04c869052af3e7f35a856f61cad5dbb82e8b668ea124199457": {
+      "sha256": "42b6b372b703ee04c869052af3e7f35a856f61cad5dbb82e8b668ea124199457",
+      "relative_paths": [
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00032/observation.json",
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00033/observation.json",
+        "output/operator-traces/20261116-astra-m1-checkpoint-001/user-review/hold-0008/observation.json"
+      ]
+    },
+    "f467eec2d5603e8e2d2aeb3a343e393edbc6493aedda603269daa1b861aa1f54": {
+      "sha256": "f467eec2d5603e8e2d2aeb3a343e393edbc6493aedda603269daa1b861aa1f54",
+      "relative_paths": [
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00034/observation.json"
+      ]
+    },
+    "7b90c2b8b82ff0adad362fba0b2d57135b5b15792e78aed1fb24fcbd74f0ec2f": {
+      "sha256": "7b90c2b8b82ff0adad362fba0b2d57135b5b15792e78aed1fb24fcbd74f0ec2f",
+      "relative_paths": [
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00035/observation.json"
+      ]
+    },
+    "405cb847711dc439e98e84116e483236c1cfc85357da52c78d6d1fd0c0ac8f00": {
+      "sha256": "405cb847711dc439e98e84116e483236c1cfc85357da52c78d6d1fd0c0ac8f00",
+      "relative_paths": [
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00036/observation.json",
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00037/observation.json",
+        "output/operator-traces/20261116-astra-m1-checkpoint-001/user-review/hold-0009/observation.json"
+      ]
+    },
+    "99a68deee224ba7af4a43290e670a6c942f4205cf405f06ee0cdee0957f447df": {
+      "sha256": "99a68deee224ba7af4a43290e670a6c942f4205cf405f06ee0cdee0957f447df",
+      "relative_paths": [
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00038/observation.json"
+      ]
+    },
+    "a7fd1e9eeb69040e9779ce160a779ec1c48c689c4b9675a1da4dae934f472130": {
+      "sha256": "a7fd1e9eeb69040e9779ce160a779ec1c48c689c4b9675a1da4dae934f472130",
+      "relative_paths": [
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00039/observation.json"
+      ]
+    },
+    "220c5c968679f5781ea73830b4fb1b004a7de24e18fb6f46027730b1eababe4c": {
+      "sha256": "220c5c968679f5781ea73830b4fb1b004a7de24e18fb6f46027730b1eababe4c",
+      "relative_paths": [
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00040/observation.json"
+      ]
+    },
+    "928275d1b7012cf28a6e86a1f427ad4312aa3d4ba0c24a2c14541be2840d5589": {
+      "sha256": "928275d1b7012cf28a6e86a1f427ad4312aa3d4ba0c24a2c14541be2840d5589",
+      "relative_paths": [
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00041/observation.json"
+      ]
+    },
+    "c5ac76123c621e68579037bf06aed678a34d8429b9aba1840e23eb37838b9bf6": {
+      "sha256": "c5ac76123c621e68579037bf06aed678a34d8429b9aba1840e23eb37838b9bf6",
+      "relative_paths": [
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00042/observation.json"
+      ]
+    },
+    "68450572c9a58129ae81f9ea4e29d1f96394b1aa7198ae5e84c522a677c0b4f2": {
+      "sha256": "68450572c9a58129ae81f9ea4e29d1f96394b1aa7198ae5e84c522a677c0b4f2",
+      "relative_paths": [
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00043/observation.json",
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00044/observation.json",
+        "output/operator-traces/20261116-astra-m1-checkpoint-001/user-review/hold-0010/observation.json"
+      ]
+    },
+    "6452a50bc00add47092b0e7f44ed164d8d196af68cc474a106ed130ba9fba7d0": {
+      "sha256": "6452a50bc00add47092b0e7f44ed164d8d196af68cc474a106ed130ba9fba7d0",
+      "relative_paths": [
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00045/observation.json"
+      ]
+    },
+    "7ae001871476bbf70a42ac19bcd60575dbc2b0307782d7fdf6b961abc1ab5d30": {
+      "sha256": "7ae001871476bbf70a42ac19bcd60575dbc2b0307782d7fdf6b961abc1ab5d30",
+      "relative_paths": [
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00046/observation.json"
+      ]
+    },
+    "48be254e1960e7ad1fdaa8f87cf7c3768ee1a5412d4c3015d6aa9ad396d9fa34": {
+      "sha256": "48be254e1960e7ad1fdaa8f87cf7c3768ee1a5412d4c3015d6aa9ad396d9fa34",
+      "relative_paths": [
+        "output/actors/20261116-astra-m1-checkpoint-001/observations/guided-00047/observation.json",
+        "output/operator-traces/20261116-astra-m1-checkpoint-001/user-review/hold-0011/observation.json"
+      ]
+    },
+    "e53e9930f37648c40e534913d7a903f18c9209ed7f2444e763b11f50182cbc3d": {
+      "sha256": "e53e9930f37648c40e534913d7a903f18c9209ed7f2444e763b11f50182cbc3d",
+      "relative_paths": [
+        "output/actors/20261116-astra-right-hand-hold10-001/observations/guided-00000/observation.json",
+        "output/operator-traces/20261116-astra-right-hand-hold10-001/user-review/hold-0001/observation.json"
+      ]
+    },
+    "569a5ae1865d1aa23ae56886101ecd7636c5096e303e159f722ac93ff76e2f09": {
+      "sha256": "569a5ae1865d1aa23ae56886101ecd7636c5096e303e159f722ac93ff76e2f09",
+      "relative_paths": [
+        "output/actors/20261116-astra-right-hand-hold10-001/observations/guided-00001/observation.json"
+      ]
+    },
+    "c72b2308d0005c49fe886a8d1dd170cf6df3e326c565ba01cf552210c339d2ae": {
+      "sha256": "c72b2308d0005c49fe886a8d1dd170cf6df3e326c565ba01cf552210c339d2ae",
+      "relative_paths": [
+        "output/actors/20261116-astra-right-hand-hold10-001/observations/guided-00002/observation.json"
+      ]
+    },
+    "d84231c432da4487f5181efad942d4a4005f8765baba0956447ca01e2cb79983": {
+      "sha256": "d84231c432da4487f5181efad942d4a4005f8765baba0956447ca01e2cb79983",
+      "relative_paths": [
+        "output/actors/20261116-astra-right-hand-hold10-001/observations/guided-00003/observation.json"
+      ]
+    },
+    "44bca1f67ddbe6da1371ad17bcbc47eee3eddddb4ab3eec7147676b32c749386": {
+      "sha256": "44bca1f67ddbe6da1371ad17bcbc47eee3eddddb4ab3eec7147676b32c749386",
+      "relative_paths": [
+        "output/actors/20261116-astra-right-hand-hold10-001/observations/guided-00004/observation.json"
+      ]
+    },
+    "a89be9c896eaf4ad122475870012be288921b5d44782f37b6f47e524a04890f8": {
+      "sha256": "a89be9c896eaf4ad122475870012be288921b5d44782f37b6f47e524a04890f8",
+      "relative_paths": [
+        "output/actors/20261116-astra-right-hand-hold10-001/observations/guided-00005/observation.json"
+      ]
+    },
+    "82ae52920cd5f01dcada5f2ed396b94ac518402d38b7ab23c3f9035239cffced": {
+      "sha256": "82ae52920cd5f01dcada5f2ed396b94ac518402d38b7ab23c3f9035239cffced",
+      "relative_paths": [
+        "output/actors/20261116-astra-right-hand-hold10-001/observations/guided-00006/observation.json"
+      ]
+    },
+    "6b8ed36a59da15e3d9cab291d167a0172d0d38c23e3c4dfea2a15f1a1bf01e2c": {
+      "sha256": "6b8ed36a59da15e3d9cab291d167a0172d0d38c23e3c4dfea2a15f1a1bf01e2c",
+      "relative_paths": [
+        "output/actors/20261116-astra-right-hand-hold10-001/observations/guided-00007/observation.json"
+      ]
+    },
+    "9a75095ccf6b17f248f3c281eee132f1264502f23246238c9d0bca6442349843": {
+      "sha256": "9a75095ccf6b17f248f3c281eee132f1264502f23246238c9d0bca6442349843",
+      "relative_paths": [
+        "output/actors/20261116-astra-right-hand-hold10-001/observations/guided-00008/observation.json"
+      ]
+    },
+    "a2afdeb88289ea357ea6cf960380a33f4f760b2a067e5acae6e17981187fd0bc": {
+      "sha256": "a2afdeb88289ea357ea6cf960380a33f4f760b2a067e5acae6e17981187fd0bc",
+      "relative_paths": [
+        "output/actors/20261116-astra-right-hand-hold10-001/observations/guided-00009/observation.json",
+        "output/operator-traces/20261116-astra-right-hand-hold10-001/user-review/hold-0002/observation.json"
+      ]
+    }
+  },
+  "next_start_candidate": {
+    "run_id": "20261116-astra-right-hand-hold10-001",
+    "hold_id": "hold-0001",
+    "step": 110,
+    "meaning": "before the final R0-only commanded segment, not the end of HOLD2",
+    "replay_vs_original_hold10_grasp_difference_norm_mm": [
+      1.8589313315609777,
+      0.6336048282944509
+    ],
+    "exact_physics_checkpoint": false,
+    "saved_start_slot_restore_validated": false
+  },
+  "future_direction": {
+    "executed": false,
+    "user_hypothesis_ko": "최종 R0 단독 조작 전 출발 후보에서 두 로봇을 함께 마네킹의 해부학적 왼손 쪽으로 접근시킨 뒤 옷을 양손에 걸치는 방향. 사용자가 공식 시연을 참고해 제시한 가설.",
+    "anatomical_mapping": {
+      "robot_0_near": "right hand",
+      "robot_1_near": "left hand"
+    }
+  },
+  "limitations": [
+    "Public robot grasp reference displacement is not cloth displacement, anatomical distance, or sleeve passage.",
+    "Neutral command is not zero physics or a fixed robot; intercepted stop has zero transitions.",
+    "Pose/RGB similarity across replay does not establish exact hidden physics or identical future response.",
+    "No hidden garment/human state, evaluator, raw model traces, or mutable HDF5 was used.",
+    "Historical user phase intentions are preserved; camera identity is not anatomical hand identity."
+  ]
+}

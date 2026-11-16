@@ -1,19 +1,20 @@
 # 시연 목록
 
-**현재:** 새 `20261116-astra-right-hand-hold10-001`은 **hold-0002·135전이에서 live HOLD**다. 이전110전이 근처로 복귀한 뒤 R0만 접근 명령을 주어 새25전이를 수행했다. 파지점 XY순변위는R0 41.57mm/R1 12.66mm이며 중립인R1도 움직였다. 두 줄무늬 도달은 미확인이다. 기록135=110replay+25new, 새9 act·10호출. 이전 M1은120전이 정상 마감·QC·고정 백업 검증 완료했고 새run은 미마감이다. [현재 GIF·5카메라](collection/user-reviews/20261116-astra-right-hand-hold10-001/hold-0002/README.ko.md) · [복귀·단독 접근 분석](collection/reviews/20261116-right-hand-hold10-branch.ko.md)
+**현재 세션 종료:** `20261116-astra-m1-checkpoint-001` 120전이와 후속 `20261116-astra-right-hand-hold10-001` 135전이를 정상 마감했다. 후속 기록은110 replay+25 new, 새9 act·10호출이다. [각 움직임의 명령·효과·GIF](collection/reviews/20261116-user-guided-movement-ledger.ko.md) · [마감·검증 상태](project/STATUS.md) · [다음 양손 걸침 계획](COLLECTION_PLAN.md). 다음 전략은 아직 실행하지 않았다.
 
 
-**[이번 세션 영상·실패 분석 모음](collection/reviews/20261114-session-review.ko.md)**에서 E28–E32 영상과 시도별 판단을 바로 검토할 수 있습니다.
+**[2026-11-14 세션의 영상·실패 분석 모음](collection/reviews/20261114-session-review.ko.md)**에서 E28–E32 영상과 시도별 판단을 바로 검토할 수 있습니다.
 
 [메인](../README.md) | [시연 목록](EPISODES.md) | [다음 수집](COLLECTION_PLAN.md) | [Astra 코드](ASTRA.md) | [클린 서버](OPERATIONS.md)
 
-**아래 표는 정상 마감과 연결·수집 실패를 함께 보존합니다.** 최신 E36은 최대20개 중11결정(10 act+finish)·933전이·QC933/933으로 정상 마감했습니다. 로컬5/50은 prefix 중의 픽업5이며 새 득점0·착의0·success=false입니다. 공개 시각 검토와 고정 백업155개 manifest 파일 검증도 완료했습니다. **E36으로 이번 수집을 종료했으며 E37–E39는 취소했습니다.** 09:29 UTC의 최대5회 추가 승인은 이후 중지 지시에 따라 E35·E36 두 번으로 마감했습니다. [현재 상태](project/STATUS.md) / [재정비 계획](collection/research/2026-11-14-collection-system-redesign.ko.md). 과거 재정비 문서는 당시 제안이며 현재 guided 구현·검증은 STATUS를 따릅니다. E번호는 독립 성공 시연 수가 아닙니다.
+**아래 E00–E36 표는 앞선 배치의 정상 마감과 연결·수집 실패를 함께 보존합니다.** 당시 마지막 E36은 최대20개 중11결정(10 act+finish)·933전이·QC933/933으로 정상 마감했습니다. 로컬5/50은 prefix 중의 픽업5이며 새 득점0·착의0·success=false입니다. 공개 시각 검토와 고정 백업155개 manifest 파일 검증도 완료했습니다. **해당 배치는 E36으로 종료했으며 당시 E37–E39는 취소했습니다.** 09:29 UTC의 최대5회 추가 승인은 이후 중지 지시에 따라 E35·E36 두 번으로 마감했습니다. [현재 상태](project/STATUS.md) / [재정비 계획](collection/research/2026-11-14-collection-system-redesign.ko.md). 과거 재정비 문서는 당시 제안이며 현재 guided 구현·검증은 STATUS를 따릅니다. E번호는 독립 성공 시연 수가 아닙니다.
 
-## 사용자 교정 시연 · M1 정상 마감
+## 이번 사용자 교정 시연 · 두 실행 정상 마감
 
 | 실행 | 출발·결과 | 기록과 자료 |
 |---|---|---|
 | `20261116-astra-m1-checkpoint-001` | E36 재생에서 만든 근사 슬롯, 사용자 방향 교정. raw0·소매 통과 미확인 | 38 act·120전이, QC120/120·비공개 고정 백업 검증. [요약](collection/attempts/20261116-astra-m1-checkpoint-001/README.ko.md) · [구간별 GIF](gallery/20261116-m1-guided-segments/README.ko.md) |
+| `20261116-astra-right-hand-hold10-001` | 같은 초기slot+M1 앞110행동 재생 후 R0만 접근 명령. R1도 실제 이동; 두 줄무늬·소매 통과 미확인, raw0 | 9 act·135전이=110 replay+25 new. [마감·QC·백업](collection/attempts/20261116-astra-right-hand-hold10-001/README.ko.md) · [복귀·접근 GIF](gallery/20261116-right-hand-hold10/README.ko.md) |
 
 과거 E37–E39 취소는 이전 배치의 이력이다. 위 run은 이후 사용자가 새로 승인한 슬롯 기반 시연이며, 기존 E번호를 다시 부여하지 않았다.
 

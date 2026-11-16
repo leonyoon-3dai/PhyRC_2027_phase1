@@ -1,8 +1,8 @@
-> **사용자 피드백 실행 경로가 추가되었습니다.** 실제 옵션·checkpoint 준비/검증·M1 시작·게시/답변 형식은 [GUIDED_RUNTIME](collection/GUIDED_RUNTIME.ko.md)을 따릅니다. 아래 복원 절차는 그대로 사용하며, 실제 GPU 검증 범위는 [STATUS](project/STATUS.md)를 확인합니다.
+> **사용자 피드백 실행 경로는 구현·실행 검증됐습니다.** 옵션·checkpoint 준비·게시/답변 형식은 [GUIDED_RUNTIME](collection/GUIDED_RUNTIME.ko.md)을 따릅니다. 이번 시연은 종료됐으며, 다음 출발점과 방향은 [현재 계획](COLLECTION_PLAN.md), 고정 백업과 실제 검증 범위는 [STATUS](project/STATUS.md)를 확인합니다.
 
 # 클린 서버 시작 안내
 
-**2026-11-16 최신 방향: 조사 종료·클린 서버에서 사용자 피드백 시연 준비.** 현재 실제 실행은 종료된 E36이며 이번 갱신은 문서 인계다. 클린 서버에서 이 계획으로 착수를 요청받으면 아래 환경·원본 복원과 [실행 인계서](collection/research/2026-11-16-user-guided-resume.ko.md)의 필수 기능 구현·검증을 진행한 뒤 M1 시도를 시작한다. 자동 종료·관리 예산에서는 물리0 HOLD, 지정5카메라 README 게시, 사용자 텍스트 응답을 따른다. [현재 계획](COLLECTION_PLAN.md)이 정본이다.
+**2026-11-16 세션 마감:** 사용자 교정 M1 120전이와 R0 단독 접근 분기135전이를 정상 마감했다. 다음 사용자 재개 지시가 오면 **R0 단독 접근 전110전이의 저장slot을 검증·복원**하고, 두 로봇을 마네킹 왼손 쪽으로 함께 이동시켜 양손에 옷을 걸치는 방향을 시험한다. 저장slot의 복원은 아직 시험하지 않았다. 이번 마감 지시만으로 새 실행을 시작하지 않는다. [현재 계획](COLLECTION_PLAN.md)이 정본이다.
 
 [메인](../README.md) | [시연 목록](EPISODES.md) | [다음 수집](COLLECTION_PLAN.md) | [Astra 코드](ASTRA.md) | [클린 서버](OPERATIONS.md)
 
@@ -14,7 +14,7 @@
 
 E09·E32의 불완전 원본은 정상 replay 출처로 사용하지 않습니다. E30/E31의 host143은 simulator0·complete·QC통과와 공존했으므로 host 반환값만으로 마감을 판정하지 않습니다. 별도 process session은 host/cgroup 종료 생존을 보장하지 않으며 E32의143 발신 원인은 미확정입니다. [E32 실패 기록](project/sessions/20261114-e32-incomplete.ko.md) / [launcher 검토](project/sessions/20261114-detached-launch-preparation.ko.md).
 
-아래는 클린 서버 착수에 사용할 환경 재현 절차다. **기존 수집기의 즉시 종료 동작을 그대로 본 시연에 사용하지 않는다.** [실행 인계서](collection/research/2026-11-16-user-guided-resume.ko.md)의 checkpoint·사용자 HOLD·게시·텍스트 재개 검증을 먼저 완료한다. 현재 없는 CLI 옵션을 지어내지 않고, 검증한 새 실행 명령을 인계서에 추가한다. 과거 배치의 남은 횟수·예산을 이어받지 않는다.
+아래는 클린 서버 환경 재현 절차다. checkpoint·물리0 HOLD·5카메라/GIF·텍스트 재개는 이미 구현했고 slot+prefix 확장까지 CPU399개와 실제 GPU replay를 검증했다. 기능을 다시 구현하지 말고 해당 코드·자산·선택 출발slot을 확인한다. 다음110전이slot의 복원 품질은 새 run에서 별도 검증한다. 과거 배치의 남은 횟수·예산을 이어받지 않는다.
 
 ## Codex CLI 시작 프롬프트
 
@@ -23,17 +23,17 @@ E09·E32의 불완전 원본은 정상 replay 출처로 사용하지 않습니�
 시연 수집 방법의 연구 근거는 [Agentic Robotics 워크숍 참고](collection/research/2026-11-14-agentic-robotics-workshop.ko.md), [E36 후속 분석](collection/research/2026-11-15-e36-continuation-options.ko.md), [HolidayFactory 적용 검토](collection/research/2026-11-15-holidayfactory-phyrc.ko.md)에 보존했습니다. 이 채팅을 보지 못한 Codex CLI도 현재 사실·선택지·미구현 부분을 구분할 수 있도록 연결합니다.
 
 ```text
-AGENTS.md, docs/project/STATUS.md, docs/COLLECTION_PLAN.md, docs/OPERATIONS.md와
-docs/collection/research/2026-11-16-user-guided-resume.ko.md를 읽고 최신 계획으로 착수하라.
-조사는 종료됐다. 현재 HEAD·작업 트리·서버 권한을 확인하고 초기 자산과 E36 원본을 고정 receipt로 복원하라.
-고정 Codex CLI0.166.0 / exec / gpt-6-astra / ultra 및 actor 격리를 유지하라.
-checkpoint 연결·물리0 사용자 HOLD·5카메라 README 게시·텍스트 재개를 최소 구현하고 검증하라.
-E36/933 후보를 재현·관측하고 고유 checkpoint를 저장·복원 검증한 뒤, 적합하면 M1부터 첫 소매 새5점에 도전하라.
-출발 상태가 부적합하면 화면을 게시하고 E34/835 또는 E34/723 등 대안을 사용자에게 물어라.
-모델 종료 제안·관리 예산·득점 검토에서는 종료하지 말고5카메라를 README 상단에 push한 후 사용자 텍스트를 기다려라.
-답변에 따라 계속·방향/방법 변경·새 checkpoint 분기·종료를 처리한다. 무응답은 재개 승인이 아니다.
-공식 하드 제한·실제 장애는 정상 HOLD와 구분해 보고하고 원본과 계보를 보존하라.
-필수 복원·구현·검증·첫 시도는 이 착수 범위에서 진행한다. 과거 분석-only HOLD나 최대5회 배치를 적용하지 마라.
+AGENTS.md, docs/project/STATUS.md, docs/COLLECTION_PLAN.md, docs/OPERATIONS.md를 읽어라.
+현재 세션은 종료됐다. 사용자 재개 요청이 있을 때 아래 절차로 새 run을 시작하라.
+고정 Codex CLI0.166.0 / exec / gpt-6-astra / ultra와 actor 격리·단일 GPU 제어원을 유지하라.
+최신 고정 백업에서 초기 자산, 선택한110전이 출발slot·receipt·원본을 SHA 검증해 복원하라.
+마지막 R0 단독 접근 전인 새 분기 hold-0001/110의 slot은 저장·해시 확인만 됐고 복원은 미검증이다.
+복원·정착을 별도 기록하고 과거5카메라와 새 관측을 비교·게시하라. 정확한 물리 복원으로 주장하지 마라.
+다음 방향은 두 로봇을 마네킹 왼손 쪽으로 함께 옮긴 뒤 옷을 양손에 모두 걸치는 것이다.
+R0=오른손 쪽, R1=왼손 쪽이며 양쪽의 실제 운동과 천의 동행을 짧은 구간마다 확인하라.
+구간별 GIF와 같은 경계의5카메라를 README에 게시하고 판단 지점에서 사용자 텍스트를 기다려라.
+모델 종료 제안·관리 예산·득점 검토는 물리0 HOLD로 전환하라. 무응답은 재개 승인이 아니다.
+사용자 종료 때 정상 마감·QC·고정 백업 검증·각 움직임 기록을 완료하라. 과거 배치는 이어받지 마라.
 ```
 
 ## 1. 먼저 준비할 것
@@ -251,20 +251,20 @@ PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.validate_c
 
 확인할 것은 종료 응답, 파일 완결성, 실제 `obs/action/next_obs` 정렬입니다. `quality_passed=true`는 착의 성공이나 학습 승인이 아닙니다. 모델 호출 중 물리는 멈추며, 20 Hz는 기록·행동 경계입니다. 모델의 실제 응답 주파수로 설명하지 않습니다.
 
-## 6. 최신 손목 근접 상태에서 새 시연 시작
+## 6. 다음 세션: 단독 접근 전110전이에서 양손 걸침 시도
 
-**새 시연의 정본은 [현재 계획](COLLECTION_PLAN.md)과 [실행 인계서](collection/research/2026-11-16-user-guided-resume.ko.md)다.** E36/933을 최신 출발 후보로 검토한다. E36 저장 슬롯이 이미 있다고 가정하지 않는다.
+**사용자 재개 지시 후** [현재 계획](COLLECTION_PLAN.md)과 [GUIDED_RUNTIME](collection/GUIDED_RUNTIME.ko.md)의 구현된 경로를 사용한다. 이번 세션은 마감됐으므로 살아 있는 HOLD를 재개하는 것이 아니다.
 
-1. 초기 자산과 E36 원본을 위3절로 복원·검증한다.
-2. 인계서의 CPU prefix 검사를 수행한다. 그 다음 필요한 checkpoint·사용자 HOLD·게시·피드백 기능을 구현하고 검증한다.
-3. 최초 한 번 E36 행동 prefix933개를 재실행하고 새로운5카메라 관측에서 펼침·파지·손목 관계를 확인한다.
-4. 적합한 상태를 고유 checkpoint로 저장하고 별도 검증 실행에서 복원·정착·다음 짧은 행동의 재현성을 확인한다. 이는 근사 복원이며 원래 E36의 정확한 solver 상태가 아니다.
-5. 검증된 checkpoint에서 M1을 시작한다. 출발이 부적합하면 화면을 게시하고 사용자에게 E34/835·E34/723 등 대안을 묻는다.
-6. 모델 stop/finish·관리 예산·득점 검토는 live HOLD한다.5카메라를 README 상단에 push하고 사용자 텍스트를 기다린다.
+1. 초기 자산과 [최신 백업 receipt](collection/reviews/20261116-right-hand-hold10-backup-verification.json)의 원본·출발slot·receipt를 위3절로 복원·검증한다. M1 앞110행동 replay가 필요하면 [parent 백업](collection/reviews/20261116-m1-checkpoint-backup-verification.json)도 복원한다.
+2. 새 분기 hold-0001/110에서 저장한slot의 SHA·코드·자산 계보를 확인하고 고유 새 run에서 복원한다. 이 slot은 저장·해시 검증만 마쳤고 복원 품질은 미검증이다.
+3. 복원 정착을 별도 기록하고 당시 공개5카메라와 새 관측을 비교·게시한다. 정확한 FEM 물리 되감기로 주장하지 않는다.
+4. 적합한 출발에서 **두 로봇을 마네킹 왼손 쪽으로 함께 이동한 뒤 옷을 양손에 걸치는 방향**을 짧게 시험한다. R0=오른손 쪽/R1=왼손 쪽, 실제 양쪽 이동과 천의 동행을 확인한다.
+5. 판단 지점·모델 stop/finish·관리 예산·득점 검토에서는 물리0 HOLD하고 구간 GIF와5카메라를 README 상단에 게시한 뒤 사용자 텍스트를 기다린다.
+6. 사용자 종료 때 정상 마감·전수 QC·고정 백업 검증과 개별 움직임 장부를 갱신한다.
 
-collector와 client에 opt-in `--user-guided` 경로가 추가되었다. [실제 명령과 검증 receipt](collection/GUIDED_RUNTIME.ko.md)를 사용한다. M1/M2/M3는 guided 방법이며 과거 `--strategy` 이름과 구분한다. 과거 E27/E28 명령을 이번 시작 명령으로 복사하지 않는다.
+collector/client의 opt-in `--user-guided`와 초기slot+선택 prefix 경로는 이미 구현·검증됐다. M1/M2/M3는 guided 방법 이름이며 실제 최신 작업 지시는 현재 계획과 사용자 텍스트다. 과거 E27/E28 또는 E36 최초 준비 명령을 그대로 시작 명령으로 복사하지 않는다.
 
-같은 live HOLD에서 계속할 때는 환경을 reset하지 않는다. 사용자가 다른 checkpoint를 선택하면 현재 분기를 보존하고 **새 run**으로 기록한다. 과거 점수·시간을 이월하거나 동일 source group을 독립 성공으로 세지 않는다.
+같은 live HOLD에서 계속할 때는 환경을 reset하지 않는다. 다른 checkpoint 선택이나 마감 후 복원은 **새 run**으로 기록한다. 과거 점수·시간을 이월하거나 동일 source group을 독립 성공으로 세지 않는다.
 
 ## 7. 사람 조작과 브라우저
 

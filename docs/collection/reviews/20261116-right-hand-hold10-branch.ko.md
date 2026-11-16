@@ -1,10 +1,10 @@
 # M1 분기: R0만 접근 명령, 중립 R1의 이동도 관측
 
-**사용자 지시를 이어서 적용해 오른손에 가까운 R0에만 접근 명령을 보냈다.** 새 run `20261116-astra-right-hand-hold10-001`의110→135전이에서 파지점 평면 순변위는 R0 약41.57mm였고,9채널 모두0인 R1도 약12.66mm 움직였다. 오른팔 줄무늬 두 간격의 도달은 확인하지 못해 `hold-0002`에서 검토를 기다린다.
+**사용자 지시를 이어서 적용해 오른손에 가까운 R0에만 접근 명령을 보낸 뒤, 사용자 종료 지시에 따라 135전이에서 마감했다.** 실행 `20261116-astra-right-hand-hold10-001`의110→135전이에서 파지점 평면 순변위는 R0 약41.57mm였고,9채널 모두0인 R1도 약12.66mm 움직였다. 오른팔 줄무늬 두 간격의 도달은 확인하지 못했다. 마지막 `hold-0002` 이후 추가 물리 전이는0이며 아래 화면은 종료한 실행의 기록이다.
 
 ![R0 접근 명령과 R1 중립 명령 중 실제110→135전이 움직임](../../gallery/20261116-right-hand-hold10/right-hand-only-two-stripes.gif)
 
-[현재 HOLD 5카메라](../user-reviews/20261116-astra-right-hand-hold10-001/hold-0002/README.ko.md) · [새 출발 HOLD](../user-reviews/20261116-astra-right-hand-hold10-001/hold-0001/README.ko.md) · [기존 HOLD10](../user-reviews/20261116-astra-m1-checkpoint-001/hold-0010/README.ko.md) · [복귀 재생과 신규 실행 GIF 구분](../../gallery/20261116-right-hand-hold10/README.ko.md)
+[마지막 HOLD 5카메라](../user-reviews/20261116-astra-right-hand-hold10-001/hold-0002/README.ko.md) · [새 출발 HOLD](../user-reviews/20261116-astra-right-hand-hold10-001/hold-0001/README.ko.md) · [기존 HOLD10](../user-reviews/20261116-astra-m1-checkpoint-001/hold-0010/README.ko.md) · [복귀 재생과 신규 실행 GIF 구분](../../gallery/20261116-right-hand-hold10/README.ko.md)
 
 ## 사용자 지시와 좌우 식별
 
@@ -47,6 +47,20 @@ overview는 뒤통수·등을 보는 구도다. 어깨→팔꿈치→손의 연�
 
 R0 head의 오른전완 곁 노란 경계에는 작은 변화가 있지만 손·경계 일부가 파지부에 가려 두 간격 진행을 확정하기 어렵다. R0 wrist는 전경 housing과 천의 가림이 크다. R1 head에서 연결된 오른팔을 함께 보아도 유효한 입구 전체는 확인되지 않는다. 왼손쪽 R1 wrist에서는 상단 노란 경계가 더 펴지고 손의 가림은 남는다. 큰 지지 붕괴는 보이지 않지만 비접촉이나 왼쪽 무이동을 입증하지 않는다.
 
-모델은 마지막 짧은 조작 뒤에도 부분적으로 가려진 경계로 남은 두 간격 목표를 신뢰 있게 판단할 수 없다고 stop을 요청했다. **목표 도달·입구 진입·소매 통과는 미확인**이다. D9 stop은 물리0 HOLD이며 별도 자동 settle은 없다. 현재135전이·새10모델 호출(9 act+stop)의 live HOLD다.110전이는 복귀 재생이며 새 모델 시연25전이와 구분한다. 사용자 응답 전 물리 진행0, 마감·QC·고정 백업 전이다.
+모델은 마지막 짧은 조작 뒤에도 부분적으로 가려진 경계로 남은 두 간격 목표를 신뢰 있게 판단할 수 없다고 stop을 요청했다. **목표 도달·입구 진입·소매 통과는 미확인**이다. D9 stop은 물리0 HOLD로 전환했고 별도 자동 settle은 없었다. 이후 사용자의 종료 지시로 물리0 `finish_episode`를 실행해135전이에서 마감했다.110전이는 복귀 재생이며 새 모델 시연25전이·10모델 호출(9 act+stop)과 구분한다. QC·고정 백업의 최신 결과는 [STATUS](../../project/STATUS.md)에서 관리한다.
 
 비교에는 두 run의 불변 공개 관측, 신규 `guided-00000`–`guided-00009`, 완료 ACK를 사용했다. 실행 중 HDF5는 열지 않았고 내부 인체·천 상태나 평가를 행동 정답으로 사용하지 않았다. 신규 GIF는 고정 사본의110–135 모든26경계다. [고정 사본 근거](../../gallery/20261116-right-hand-hold10/source-hold-0002.json) · [GIF 메타데이터](../../gallery/20261116-right-hand-hold10/right-hand-only-two-stripes.json)
+
+## 다음 출발점으로 남긴 체크포인트
+
+마지막 R0 접근을 시작하기 전 새 분기의 HOLD1, step110·tick1320에서 저장한 근사 슬롯이 있다. 원래 M1의 HOLD10을 직접 저장한 파일은 아니며, 같은 초기 슬롯과110개 행동을 재생한 뒤 얻은 새 상태다. 저장 당시 모델 호출0회·추가 물리0전이였고 실제 파일 SHA·receipt·코드/자산7개 해시를 다시 확인했다.
+
+```text
+/output/collections/20261116-astra-right-hand-hold10-001/checkpoints/20261116-astra-right-hand-hold10-001-start/slot_20261116-astra-right-hand-hold10-001-start.npz
+```
+
+슬롯 SHA256은 `c26cc58caf6176ce2b1120a9ea1e68d0a7e0f4f88c0e46978c4aa3de3f0b05e6`, 같은 폴더의 `receipt.json` SHA256은 `bb53e3914ec7479a01944df8b1dd8e7758f5206905f4418ed0d15dcdbc7f5872`다. source group은 `20261113-astra-side-hem-fresh-001`이다. [저장 검증 기록](../../gallery/20261116-right-hand-hold10/start-checkpoint-verification.json)
+
+**저장은 확인했지만 이 새 슬롯에서의 복원은 아직 시험하지 않았다.** 복원은 속도·접촉 캐시 등이 초기화되고 기존1.5초 정착을 거치는 근사 경로이므로, 이후 실행에서 공개5뷰와 로봇 상태를 다시 비교한 뒤 새 행동으로 넘어가야 한다. 저장 시점과 정확히 같은 천 상태·반응을 보장하지 않는다.
+
+사용자가 지정한 다음 방향은 이 마지막 R0 접근 전 출발점에서 **두 로봇을 마네킹의 해부학적 왼손 쪽으로 함께 이동한 뒤 옷을 양손에 모두 걸치는 것**이다. 현재 로봇 화면의 좌우와 해부학적 왼쪽을 혼동하지 않는다. 이 방향은 미실행 계획이며 구체적인 단계와 검토 기준은 [COLLECTION_PLAN](../../COLLECTION_PLAN.md)에서 관리한다. 공식 영상에서 본 양측 지지·상방 이동·하강은 참고 순서일 뿐, 현재 파지에서 양손 통과가 성립한다는 검증은 아니다. [기존 공식 영상 검토와 한계](../research/2026-11-07-official-demo-route-review.ko.md)
