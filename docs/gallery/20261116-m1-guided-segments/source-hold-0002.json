@@ -1,0 +1,20 @@
+{
+  "source_run": "20261116-astra-m1-checkpoint-001",
+  "hold": {
+    "schema": "phyrc-supervisor-state-v1",
+    "held": true,
+    "hold_id": "hold-0002",
+    "reason": "model_stop",
+    "active": true,
+    "observation_step": 16,
+    "episode_tick": 192,
+    "simulation_time_s": 2.308333453722298,
+    "requests": 8,
+    "protocol_connected": true
+  },
+  "source_sha256_before": "987ca96b2706b3830aa25a3e1d9862cd4c6b202368546fedf7949a004894dc38",
+  "source_sha256_after": "987ca96b2706b3830aa25a3e1d9862cd4c6b202368546fedf7949a004894dc38",
+  "copy_sha256": "987ca96b2706b3830aa25a3e1d9862cd4c6b202368546fedf7949a004894dc38",
+  "source_capture_complete": false,
+  "method": "ordinary file copy at acknowledged HOLD; source hashes and state matched before/after; copy opened read-only"
+}

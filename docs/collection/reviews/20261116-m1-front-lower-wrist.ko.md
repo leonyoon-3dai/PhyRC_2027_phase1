@@ -2,9 +2,11 @@
 
 **사용자가 선택한 현재 상태에서 세 단계의 조작을 모두 시도했다. 파지 기준점은 약16mm 낮아졌고 짧은 재접근도 실행됐으나, 손목과 옷 입구의 관계가 계속 가려져 진입은 확인하지 못했다.** 모델의 stop 제안을 실제 종료 전에 가로채 **16전이·0.80시뮬레이션초 경계에서 live HOLD**했다.
 
-[현재 HOLD 5카메라](../user-reviews/20261116-astra-m1-checkpoint-001/hold-0002/README.ko.md) · [출발 HOLD 5카메라](../user-reviews/20261116-astra-m1-checkpoint-001/hold-0001/README.ko.md) · [기전 요약](../../MECHANISMS.ko.md) · [현재 계획](../../COLLECTION_PLAN.md)
+[촬영 당시 HOLD 5카메라](../user-reviews/20261116-astra-m1-checkpoint-001/hold-0002/README.ko.md) · [출발 HOLD 5카메라](../user-reviews/20261116-astra-m1-checkpoint-001/hold-0001/README.ko.md) · [기전 요약](../../MECHANISMS.ko.md) · [현재 계획](../../COLLECTION_PLAN.md)
 
 ![재접근 뒤 현재 HOLD의 공개5카메라](../user-reviews/20261116-astra-m1-checkpoint-001/hold-0002/cameras.png)
+
+[구간별 실제 움직임 GIF](../../gallery/20261116-m1-guided-segments/README.ko.md) · 후속 현재 상태는 저장소 최상단을 따른다.
 
 ## 질문과 실제 실행
 
@@ -40,7 +42,7 @@ D2의 base 명령은0이었지만 베이스 world Y가 −9.42/−7.30mm 더 움
 
 ## 화면으로 확인한 것과 남은 판단
 
-출발과 현재의 R1 wrist 화면 모두 같은 손가락·손 부위가 상단의 노란 경계 가까이에 보인다. 현재 화면에서도 파지 housing과 천이 손목–입구 관계 일부를 가린다. head/overview에는 양측이 옷을 잡고 있는 배치가 보이지만, 이것만으로 손이 자유 밑단을 지나 소매 경로 안으로 들어갔다고 판정할 수 없다.
+출발과 현재의 R1 wrist 화면에서 손목–입구 관계는 천과 파지 housing에 가려져 있다. 상단 노란 경계 부근의 회색 돌출부만으로 마네킹 손을 식별할 수 없으므로 손가락·손의 증거로 삼지 않는다. head/overview에는 양측이 옷을 잡고 있는 배치가 보이지만, 이것만으로 손이 자유 밑단을 지나 소매 경로 안으로 들어갔다고 판정할 수 없다.
 
 - **확인:** 물러나기·하강·재접근의 로봇 운동을 실행했고 양쪽 닫기 의도를 유지했다. 새 상태에서 모델의 stop을 물리0 사용자 HOLD로 바꿨다.
 - **미확인:** 손목의 실제 밑단 진입, 유효한 소매 경로, housing과 손의 충분한 여유, 유지된 천의 하중 지지. 로봇 파지점 변위는 천 재료점의 변위가 아니다.

@@ -11,7 +11,9 @@
 
 **원본5장:** [overview](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0002/overview.png) · [R1 head](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0002/robot_1_head.png) · [R0 head](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0002/robot_0_head.png) · [R1 wrist](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0002/robot_1_wrist.png) · [R0 wrist](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0002/robot_0_wrist.png)
 
-다음 검토에는 후퇴·하강·재접근 및 이번 추가 후퇴의 **구간별 GIF**를 제공합니다.
+[**후퇴·하강·재접근 구간별 GIF 보기**](docs/gallery/20261116-m1-guided-segments/README.ko.md) · 실제20Hz 모든 기록 프레임,4배 느리게 재생. 이번 추가 후퇴 GIF는 다음 HOLD에서 이어 게시합니다.
+
+<a href="docs/gallery/20261116-m1-guided-segments/README.ko.md"><img src="docs/gallery/20261116-m1-guided-segments/full.gif" width="536" alt="이전0–16전이 전체의 실제5카메라 움직임,4배 느린 재생. 구간별 GIF는 클릭."></a>
 
 [현재 검토 페이지](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0002/README.ko.md) · [관측 metadata](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0002/observation-metadata.json) · [조작 전 화면](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0001/README.ko.md) · [현재 전략](docs/COLLECTION_PLAN.md) · [기전 요약](docs/MECHANISMS.ko.md)
 <!-- PHYRC_USER_REVIEW:END -->
