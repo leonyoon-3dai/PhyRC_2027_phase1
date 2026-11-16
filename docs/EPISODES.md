@@ -1,6 +1,6 @@
 # 시연 목록
 
-**현재:** 기존 M1은120전이 정상 마감·QC120/120·비공개 고정 백업 검증을 마쳤다. 새 `20261116-astra-right-hand-hold10-001`은 동일 초기slot에서 앞110행동을 재생해 시작 HOLD1에 도달했다. 원래 HOLD10과 파지점 차이는1.86/0.63mm이며 큰 배치·지지를 확인했다. 출발 비교·게시 후 사용자의 기존 지시로 오른손 쪽R0만 두 줄무늬 간격 정도 접근 중이다. [복귀 비교·현재 run](collection/reviews/20261116-right-hand-hold10-branch.ko.md) · [마감 원본 요약](collection/attempts/20261116-astra-m1-checkpoint-001/README.ko.md)
+**현재:** 새 `20261116-astra-right-hand-hold10-001`은 **hold-0002·135전이에서 live HOLD**다. 이전110전이 근처로 복귀한 뒤 R0만 접근 명령을 주어 새25전이를 수행했다. 파지점 XY순변위는R0 41.57mm/R1 12.66mm이며 중립인R1도 움직였다. 두 줄무늬 도달은 미확인이다. 기록135=110replay+25new, 새9 act·10호출. 이전 M1은120전이 정상 마감·QC·고정 백업 검증 완료했고 새run은 미마감이다. [현재 GIF·5카메라](collection/user-reviews/20261116-astra-right-hand-hold10-001/hold-0002/README.ko.md) · [복귀·단독 접근 분석](collection/reviews/20261116-right-hand-hold10-branch.ko.md)
 
 
 **[이번 세션 영상·실패 분석 모음](collection/reviews/20261114-session-review.ko.md)**에서 E28–E32 영상과 시도별 판단을 바로 검토할 수 있습니다.

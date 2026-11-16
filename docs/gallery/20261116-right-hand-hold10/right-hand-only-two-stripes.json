@@ -1,0 +1,44 @@
+{
+  "schema": "phyrc-held-segment-gif-v1",
+  "source_run": "20261116-astra-right-hand-hold10-001",
+  "source_receipt": "source-hold-0002.json",
+  "source_capture_complete": false,
+  "boundary_start": 110,
+  "boundary_end": 135,
+  "transition_count": 25,
+  "source_frames": 26,
+  "source_simulation_duration_s": 1.2500000651925802,
+  "all_boundaries_included": true,
+  "interpolated_frames": false,
+  "mirrored": false,
+  "layout": {
+    "top": "overview",
+    "left": [
+      "robot_1_head",
+      "robot_1_wrist"
+    ],
+    "right": [
+      "robot_0_head",
+      "robot_0_wrist"
+    ]
+  },
+  "original_camera_size_px": [
+    256,
+    256
+  ],
+  "display_scale": 1,
+  "resize": "none",
+  "gif_palette_colors": 256,
+  "gif_dither": "none",
+  "delta_frame_optimization": true,
+  "decoded_frames_match_palette_frames": true,
+  "source_spacing_s": 0.05,
+  "interior_playback_spacing_ms": 200,
+  "endpoint_durations_ms": [
+    800,
+    1000
+  ],
+  "playback_duration_ms": 6600,
+  "gif_bytes": 2586817,
+  "gif_sha256": "56c4e3c2e2096ae9461652904420aa21edb8e882ea375f66291fcfca88cf858f"
+}

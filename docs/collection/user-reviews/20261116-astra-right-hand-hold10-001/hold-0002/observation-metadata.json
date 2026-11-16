@@ -1,0 +1,30 @@
+{
+  "schema": "phyrc-user-review-v1",
+  "run_id": "20261116-astra-right-hand-hold10-001",
+  "hold_id": "hold-0002",
+  "observation_id": "48101e32d536f9ce0a487fcba5204021815cc74b3cf9aeab4dc7e7b13aeba313",
+  "observation_step": 135,
+  "physics_tick_since_recording_start": 1620,
+  "simulation_time_s": 8.25833376403898,
+  "captured_at_utc": "2026-11-16T03:55:18.782878+00:00",
+  "source_checkpoint": {
+    "initial_slot": "/output/collections/20261116-e36-checkpoint-001-original/checkpoints/20261116-e36-checkpoint-001-slot/slot_20261116-e36-checkpoint-001-slot.npz",
+    "replay_run": "20261116-astra-m1-checkpoint-001",
+    "replay_steps": 110,
+    "exact_physics_checkpoint": false
+  },
+  "method": "M1",
+  "reason": "model_stop",
+  "camera_sha256": {
+    "overview": "556c103e66f959ca64ba0995e2e6f48371512d32e23aee46d3d80f3a23d705be",
+    "robot_1_head": "484348f656c4a1124cd3b662c2a81d0890941380d9f68bdfa82c8a5977a618ff",
+    "robot_0_head": "f296c6a1f0b12b2506a0070a9c6ed893b558ef0d55c50c99642db5646f75d83a",
+    "robot_1_wrist": "36e60ea8e6ee4688c82fa5d5815f274f9e0865c48d2bec23b31a9b2d24572777",
+    "robot_0_wrist": "cd0e29d1c167ae899664428feac779afd403e6ef2d3a3617085e350f0f8425a2"
+  },
+  "live_hold_at_capture": true,
+  "last_intent": "The smaller increment did not resolve the partly obscured garment boundary against the right-forearm baseline stripes. Remaining travel to two intervals cannot be judged reliably. Request physics-zero review with both grip intents preserved; sleeve passage is unconfirmed.",
+  "observed_effect": "Inspect the five current views against the preceding review; intent alone is not evidence of effect.",
+  "unknown": "Grasp support, garment topology and sleeve passage require review of public observations.",
+  "question": "Continue with a direction, change M1/M2/M3, choose another checkpoint, or finish?"
+}

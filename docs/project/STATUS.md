@@ -1,6 +1,6 @@
 # 현재 상태
 
-**110전이 복귀 비교를 마쳤고 오른손 쪽 R0 단독 접근을 진행한다.** 새 `20261116-astra-right-hand-hold10-001`의 시작 HOLD1은110전이·모델0호출이다. 기존 HOLD10과 grasp 위치 차이는 R0 1.86mm/R1 0.63mm이며 공개5뷰의 큰 배치와 지지를 확인했다. 동일 초기slot와110행동 재생으로 얻은 근사 출발점이며 정확한 되감기는 아니다. 기존 사용자 지시에 따라 R0만 두 줄무늬 간격 정도 접근하고 R1은 중립·지지를 유지한다. [복귀 화면·비교](../collection/reviews/20261116-right-hand-hold10-branch.ko.md)
+**이전110전이 근처로 복귀한 뒤 R0 단독 접근 명령을 수행했고, 새run의 hold-0002·135전이에서 live HOLD다.** 새 파지점 XY순변위는 R0 41.57mm/R1 12.66mm이며 R1은 모든 명령0에서도 움직였다. 오른팔 두 줄무늬 간격의 진행은 가림으로 확정하지 못했다. 기록135=110 replay+25new, 새9 act·10호출, stop 추가전이0이다. 복귀 출발의 기존H10 대비 파지점 차이는1.86/0.63mm였고 정확한 물리 되감기는 아니다. [현재 GIF·5카메라](../collection/user-reviews/20261116-astra-right-hand-hold10-001/hold-0002/README.ko.md) · [복귀·좌우·실제 운동 분석](../collection/reviews/20261116-right-hand-hold10-branch.ko.md)
 
 개발 대화의 `gpt-6-astra` 전환, HF CLI2.4.0과 `leonayoon` 로그인, L40S GPU, 초기 자산·E36 복원/QC933/933, 격리 CLI0.166.0/Astra/ultra 연결, CPU394개 검사와 GPU smoke/HOLD·checkpoint 비교를 확인했다. 사용자가 정착 차이를 검토하고 현재 복원 상태를 채택했다. [출발 비교](../collection/reviews/20261116-checkpoint-validation.ko.md)
 
@@ -10,7 +10,7 @@
 
 | 항목 | 확인한 상태 |
 |---|---|
-| 현재 실행 | `20261116-astra-right-hand-hold10-001`, 동일slot+110행동 재생 후 HOLD1. 출발 비교·게시 후 R0 단독 접근 진행, 새run은 미마감 |
+| 현재 실행 | `20261116-astra-right-hand-hold10-001`, hold-0002·135전이·tick1620의 물리0 HOLD. R0 단독 접근 후 목표 관계 검토, 새run은 미마감 |
 | 현재 분기 평가 | raw0/50·first_sleeve0·success=false. checkpoint reset의 새 평가로 과거 pickup5를 이월하지 않음 |
 | 최신 정상 과제 시연 | `20261116-astra-m1-checkpoint-001`,120전이·QC120/120·고정HF 백업 검증 완료 |
 | 새 시연 출발 후보 | E36의933전이 경계. 재생·slot 저장/복원 확인. 정착 차이를 게시한 뒤 사용자가 현재 복원 상태를 채택하고 구체적 방향을 교정 |
