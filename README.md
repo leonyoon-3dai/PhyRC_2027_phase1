@@ -1,34 +1,15 @@
 # PhyRC 2027
 
 <!-- PHYRC_USER_REVIEW:START -->
-> **현재 live HOLD · 같은 방향 약30mm 추가 접근 완료**
+> **M1 실행 중 · 같은 방향30mm 추가 접근 + 아주 작은 상승**
 >
-> 현재 위치에서 같은 방향으로30mm 이동하라는 요청을 실행했습니다. 시작 hold-0006 대비 파지점의 **평면 순이동은30.44 / 30.19mm**, 높이 변화는 **−0.24 / −0.19mm**입니다(R0/R1). 직전 실제평면방향에 대한 투영은30.43/30.15mm여서 요청량 근처에 도달하고 멈췄습니다. 이는 로봇 기준점 이동으로 손–천 간격이나 천 재료점의 변위와 다릅니다.
+> 사용자가 같은 몸쪽 방향으로30mm 더 접근하면서 아주 살짝 올리면 손이 옷 가운데에 놓일 것으로 예상해 조작을 요청했습니다. 이번에는 이전 하강 지시를 **작은 상승**으로 바꿉니다. 같은 손·양쪽 파지를 유지하며 실제 평면 이동과 높이 변화를 짧게 확인하고, 손–옷 정렬은 완료 후 사용자가 판단합니다.
 >
-> 같은 손·연결 손목은 계속 보이고 양쪽 파지부와 처진 천의 큰 배치는 유지되어 보입니다. 손과 노란 경계의 상대 위치는 변했지만 실제 진입은 미확인입니다. 베이스 평행이동만 명령했고 높이는 거의 유지됐습니다. 다음 사용자 판단 전 추가 움직임은 없습니다.
->
-> Run `20261116-astra-m1-checkpoint-001` · **hold-0007** · 관측 `3f77008cf00cb97c` · 이번5 act·16전이(0.80초), 누적27호출·21 act·68전이. 기록 tick816 · 시뮬레이션4.908334s. 마지막 stop은 실행하지 않았고 대기 중 물리 진행0입니다.
+> Run `20261116-astra-m1-checkpoint-001` · **아래는 재개 직전 hold-0007까지의 GIF**입니다. 관측 `3f77008cf00cb97c` · 누적68전이에서 reset 없이 재개했습니다.30mm는 현재 위치부터의 추가 주 이동량이며30mm 상승을 뜻하지 않습니다. 다음 HOLD에서 새 GIF·5카메라와 측정치를 게시합니다.
 
-### 이번 약30mm 접근 · step52 → 68
+<a href="docs/gallery/20261116-m1-guided-segments/README.ko.md"><img src="docs/gallery/20261116-m1-guided-segments/bodyward-30mm.gif" width="536" alt="재개 직전 hold-0007의52–68전이 약30mm 접근 GIF"></a>
 
-**실제20Hz의17개 기록 경계 · 중간 프레임4배 느린 재생 · 시작/끝 정지**. 카메라는 원본256×256이며 프레임 생성·좌우 반전 없음.
-
-<a href="docs/gallery/20261116-m1-guided-segments/bodyward-30mm.gif"><img src="docs/gallery/20261116-m1-guided-segments/bodyward-30mm.gif" width="536" alt="약30mm 추가 접근52–68전이의 실제5카메라 GIF"></a>
-
-[**이번 구간과 이전 움직임 GIF 전체**](docs/gallery/20261116-m1-guided-segments/README.ko.md) · [이동량·목표 비교·현재 관측 분석](docs/collection/reviews/20261116-m1-bodyward-30mm.ko.md)
-
-<details>
-<summary>현재 같은 관측의 5카메라 정지 화면</summary>
-
-<a href="docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0007/cameras.png"><img src="docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0007/cameras.png" width="512" alt="hold-0007의 동일 관측 공개5카메라. 왼쪽 R1·오른쪽 R0, 위 head·아래 wrist"></a>
-
-</details>
-
-**원본5장:** [overview](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0007/overview.png) · [R1 head](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0007/robot_1_head.png) · [R0 head](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0007/robot_0_head.png) · [R1 wrist](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0007/robot_1_wrist.png) · [R0 wrist](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0007/robot_0_wrist.png)
-
-**다음 판단:** 약30mm 추가 이동 후 손과 옷의 관계를 확인해 주세요. 다음 방향을 알려주실 때까지 현재 상태를 유지합니다.
-
-[현재 검토 페이지](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0007/README.ko.md) · [관측 metadata](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0007/observation-metadata.json) · [현재 전략](docs/COLLECTION_PLAN.md) · [기전 요약](docs/MECHANISMS.ko.md)
+[구간별 실제 GIF](docs/gallery/20261116-m1-guided-segments/README.ko.md) · [재개 직전5카메라](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0007/README.ko.md) · [현재 전략](docs/COLLECTION_PLAN.md)
 <!-- PHYRC_USER_REVIEW:END -->
 
 [![E00–E36 통합 분석 보고서 PDF 열기](docs/assets/e36-integrated-report-button.svg)](docs/reports/20261114-e36-integrated-review/phyrc-e36-integrated-review.ko.pdf)

@@ -1,6 +1,8 @@
 # 사용자 검토: 같은 방향30mm 추가 접근 후 현재 상태
 
-**20261116-astra-m1-checkpoint-001 / hold-0007 · live HOLD**
+**20261116-astra-m1-checkpoint-001 / hold-0007 · 촬영 당시 live HOLD, 이후 실제 사용자 답변으로 재개**
+
+사용자가 같은 방향으로30mm 더 접근하면서 아주 조금 올리면 손이 옷 가운데에 놓일 것으로 예상해 조작을 요청했습니다. 같은 live 상태에서 재개했으며 최신 상태는 저장소 최상단을 확인하세요.
 
 현재 위치에서 같은 방향으로30mm 더 이동하라는 요청을 실제 파지점 이동량으로 확인하며 실행했습니다. 같은 손·양쪽 파지를 유지한 새5 act·16전이(0.80초) 뒤 HOLD했습니다. 누적27호출·21 act·68전이이며 마지막 stop은 실행하지 않았습니다.
 
@@ -24,6 +26,6 @@
 
 [overview](overview.png) · [robot_1_head](robot_1_head.png) · [robot_0_head](robot_0_head.png) · [robot_1_wrist](robot_1_wrist.png) · [robot_0_wrist](robot_0_wrist.png) · [metadata](observation-metadata.json)
 
-열린 run으로 마감·QC·백업 전이며 사용자 답변 전 물리 진행0입니다.
+열린 run으로 마감·QC·백업 전이며 이 경계의 대기는 실제 사용자 답변으로 끝났습니다.
 
-**약30mm 추가 이동 후 손과 옷의 관계를 확인해 주세요. 다음 방향을 알려주실 때까지 현재 상태를 유지합니다.**
+이 경계에서 사용자는 같은 방향30mm 추가 접근과 아주 작은 상승을 선택했습니다.
