@@ -2,7 +2,7 @@
 
 **2026-11-16 사용자 결정:** 자료 조사는 여기서 마무리한다. 가장 최근의 넓게 펼친 옷·손목 근접 상태를 출발점으로 삼고, 아래 세 방법 중 하나로 공식 첫 소매 통과 5점을 시도한다. 자동 종료 제안이나 예산 도달에서는 시연을 닫지 않고 물리를 HOLD한다. 공개 카메라 5장의 스크린샷을 README 상단에 push한 뒤 사용자에게 다음 행동을 묻고 텍스트 답변을 기다린다.
 
-**현재는 복원 출발 상태의 사용자 선택을 기다리는 live HOLD이며 최신 정상 과제 시연은 E36이다.** Astra·HF·복원·CPU394개·GPU smoke/HOLD 검사를 통과했다. E36/933의 새 slot은 저장/복원했지만 정착 후 위치와 짧은 행동 효과 차이가 있어 M1 전에 [사용자 검토](collection/reviews/20261116-checkpoint-validation.ko.md)를 받는다. 실제 새 시연·득점·기능 검증 범위는 [STATUS](project/STATUS.md)에 기록한다. 과거 배치의 남은 횟수나 예산은 재사용하지 않는다.
+**현재는 사용자 교정으로 M1을 실행 중이며 최신 정상 마감 과제 시연은 E36이다.** Astra·HF·복원·CPU394개·GPU smoke/HOLD 검사를 통과했다. E36/933의 새 slot은 저장/복원했지만 정착 후 위치와 짧은 행동 효과 차이가 있어 [사용자 검토](collection/reviews/20261116-checkpoint-validation.ko.md) 후 현재 상태의 실행을 선택했다. 이번 구간은 파지를 유지한 몸 정면 후퇴→약간 하강→같은 손목 재접근이며 단계마다 관측과 실제 효과를 확인한다. 실제 새 시연·득점·기능 검증 범위는 [STATUS](project/STATUS.md)에 기록한다. 과거 배치의 남은 횟수나 예산은 재사용하지 않는다.
 
 [기전·판단 기준](MECHANISMS.ko.md) · [과거 결과 요약](HISTORY_SUMMARY.ko.md) · [메인](../README.md) · [클린 서버 실행 인계서](collection/research/2026-11-16-user-guided-resume.ko.md) · [환경 복원 명령](OPERATIONS.md) · [실제 상태](project/STATUS.md)
 

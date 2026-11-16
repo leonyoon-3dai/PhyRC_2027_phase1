@@ -1,6 +1,6 @@
 # Codex 작업 지침
 
-**현재 live HOLD:** `20261116-astra-m1-checkpoint-001 / hold-0001`, 초기 slot 복원 상태에서 모델 호출0·정책 행동0. [검증 비교](docs/collection/reviews/20261116-checkpoint-validation.ko.md)와 README5카메라를 게시하고 사용자 출발 선택을 기다린다. 같은 상태 계속은 실제 사용자 답변을 [GUIDED_RUNTIME](docs/collection/GUIDED_RUNTIME.ko.md)의 matching inbox로 전달한다. 일반 착수 승인이나 무응답을 이 HOLD의 답변으로 만들지 않는다. 원래 검증 run은 정상 마감했고 live run은 마감하지 않았다.
+**현재 실행:** `20261116-astra-m1-checkpoint-001`에서 hold-0001의 실제 사용자 답변을 적용해 M1을 재개했다. 지시: “옷이 손목 위로 올라가 있네요. 몸 정면으로 멀어졌다가 조금 아래로 내리고 다시 손목으로 다가가서 손목이 들어가는지 확인”. 양쪽 파지 유지, 같은 손목 추적, 몸 정면으로 후퇴→약간 하강→재접근을 짧게 나눠 확인한다. 기존20결정/새400전이 구간을 부여했으며 reset하지 않았다. 다음 HOLD에서는 같은 관측5장을 게시하고 새 사용자 답변을 기다린다. [실행 인터페이스](docs/collection/GUIDED_RUNTIME.ko.md).
 
 
 **현재 사용자 지시(2026-11-16): 최신 전략으로 시연을 시작하고, 판단 지점에서5카메라를 저장소에 게시해 사용자 텍스트를 기다린다.** 개발 대화의 Astra 전환과 HF 로그인 확인 후 클린 서버 복원·필수 기능 구현/검증에 착수했다. E36/933을 우선 검증하고 M1 현재 파지 유지·국소 교정으로 첫 소매 새5점을 시도한다. [현재 계획](docs/COLLECTION_PLAN.md)과 [실행 인계서](docs/collection/research/2026-11-16-user-guided-resume.ko.md)가 정본이다. 실제 실행·검증 상태는 [STATUS](docs/project/STATUS.md)에서 확인한다.
@@ -20,7 +20,7 @@
 
 ## 현재 범위
 
-- **최신 정상 과제 시연은 E36 마감이며 현재 초기 live HOLD에서 사용자 출발 선택을 기다린다.** checkpoint/HOLD 구현·CPU394개·GPU smoke/HOLD·원본 복원/QC를 완료했다. 사용자 선택 뒤 같은 live 상태에서 M1 또는 선택한 새 분기를 시작한다. 닫힌 E36 원본을 덮어쓰지 않으며 구현 준비·CPU 검사·실제 연결·과제 실행을 구분한다.
+- **최신 정상 과제 시연은 E36 마감이며 현재 사용자 교정으로 M1을 실행한다.** checkpoint/HOLD 구현·CPU394개·GPU smoke/HOLD·원본 복원/QC를 완료했다. 사용자가 현재 복원 상태를 선택했고 같은 live 상태에서 재개했다. 닫힌 E36 원본을 덮어쓰지 않으며 구현 준비·CPU 검사·실제 연결·과제 실행을 구분한다.
 - **실제 실행·점수·백업은 [STATUS](docs/project/STATUS.md), 현재 방향은 [COLLECTION_PLAN](docs/COLLECTION_PLAN.md), 복원·구현 계약은 [실행 인계서](docs/collection/research/2026-11-16-user-guided-resume.ko.md)가 정본이다.** 이전 문서의 HOLD·재개·날짜별 TODO보다 최신 사용자 결정을 우선한다. 연구 문서 전체를 actor에 전달하지 않는다.
 - 사람 조작용 state slot과 `initial_slot` 근사 복원 경로는 이미 존재한다. 원래 E36의 완전한 FEM checkpoint는 없다. 이번 새 E36/933 재생 경계의 근사 slot 저장·복원은 검증했고, 정착과 짧은 명령 효과 차이를 게시했다. 이를 정확한 동일 상태 복원으로 설명하지 않는다. 현재 collector의 행동 재생과 구분하고, 복원 시 초기화되는 상태·정착·평가 재시작을 검토한다. 기존 관측→행동→관측 루프가 전혀 없었다거나 E36까지 모든 명령이 오작동했다고 일반화하지 않는다.
 - E36의 추가 재파지0·20결정·review10은 해당 시도의 조건이다. 향후 모든 방법의 고정 규칙으로 일반화하지 않는다. 각 실험에서 제어원, 입력, 재파지·복구 조건, 예산과 종료/검토 방식을 명시하고 공식 물리·관측·행동·평가 계약은 유지한다.

@@ -1,15 +1,15 @@
 # PhyRC 2027
 
 <!-- PHYRC_USER_REVIEW:START -->
-> **사용자 판단 대기 · 현재 live HOLD · M1 행동 전**
+> **M1 실행 중 · 사용자 교정 적용**
 >
-> E36/933 재생 상태를 저장·복원했습니다. 화면상 파지·손 근접은 대체로 유지됐지만 정착 후 파지점이 축별 최대 약6.4mm 달라졌고, 같은 작은 lift 명령의 효과도 달랐습니다. [복원 비교·수치·판단 근거](docs/collection/reviews/20261116-checkpoint-validation.ko.md)
+> 사용자가 현재 복원 상태를 선택하고 **몸 정면으로 물리기 → 조금 내리기 → 같은 손목으로 재접근**을 지시했습니다. 현재 파지를 유지하며 짧게 실행하고 실제 효과를 확인합니다. [복원 비교·수치·판단 근거](docs/collection/reviews/20261116-checkpoint-validation.ko.md)
 >
-> **선택:** 현재 복원 상태에서 M1 진행 / 새 E36 재생 말단에서 진행 / E34 등 이전 출발점으로 변경 / 종료.
+> **아래 화면은 재개 직전 hold-0001의 관측입니다.** 다음 판단 지점에서 새5카메라를 게시하고 다시 사용자 답변을 기다립니다.
 >
-> Run `20261116-astra-m1-checkpoint-001` · `hold-0001` · 관측 `d4b2a7f8c08b3fac` · 기록 전이0 · 모델 호출0. reset 정착 후 시뮬레이션 시각 1.508333s. 답변 전까지 물리와 모델 호출을 진행하지 않습니다.
+> Run `20261116-astra-m1-checkpoint-001` · `hold-0001` · 관측 `d4b2a7f8c08b3fac` · 촬영 당시 기록 전이0·모델 호출0, 시뮬레이션 시각1.508333s. 실제 사용자 답변으로 reset 없이 같은 상태에서 재개했습니다.
 
-<a href="docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0001/cameras.png"><img src="docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0001/cameras.png" width="512" alt="현재 live HOLD의 같은 관측 공개5카메라. 왼쪽 robot_1, 오른쪽 robot_0; 위 head, 아래 wrist."></a>
+<a href="docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0001/cameras.png"><img src="docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0001/cameras.png" width="512" alt="재개 직전 hold-0001의 같은 관측 공개5카메라. 왼쪽 robot_1, 오른쪽 robot_0; 위 head, 아래 wrist."></a>
 
 **원본5장:** [overview](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0001/overview.png) · [R1 head](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0001/robot_1_head.png) · [R0 head](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0001/robot_0_head.png) · [R1 wrist](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0001/robot_1_wrist.png) · [R0 wrist](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0001/robot_0_wrist.png)
 
