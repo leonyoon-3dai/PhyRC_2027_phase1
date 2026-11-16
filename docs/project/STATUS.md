@@ -1,6 +1,6 @@
 # 현재 상태
 
-**현재 방향은 E36/933 출발 후보를 검증하고 M1 국소 교정으로 첫 소매 새5점에 도전하는 사용자 피드백 시연이다.** 2026-11-16 클린 서버 착수를 시작했다. 개발 대화의 `gpt-6-astra` 전환, HF CLI 2.4.0과 `leonayoon` 로그인, L40S GPU 접근을 확인했다. 초기 자산·E36 복원 및 원본 QC933/933, 격리 actor의 CLI0.166.0/Astra/ultra 실제 연결, 전체 CPU394개 검사, 실제 GPU smoke를 통과했다. 현재 E36/933의 재생·checkpoint 저장/복원 비교를 수행 중이며 M1 새 착의 시연은 아직 시작하지 않았다.
+**현재 방향은 E36/933 출발 후보를 검증하고 M1 국소 교정으로 첫 소매 새5점에 도전하는 사용자 피드백 시연이다.** 2026-11-16 클린 서버 착수를 시작했다. 개발 대화의 `gpt-6-astra` 전환, HF CLI 2.4.0과 `leonayoon` 로그인, L40S GPU 접근을 확인했다. 초기 자산·E36 복원 및 원본 QC933/933, 격리 actor의 CLI0.166.0/Astra/ultra 실제 연결, 전체 CPU394개 검사, 실제 GPU smoke를 통과했다. E36/933 재생·checkpoint 저장/복원 및 실제 GPU HOLD 검사를 완료했다. 정착 뒤 위치·단기 명령 효과 차이를 확인하여 현재 `20261116-astra-m1-checkpoint-001 / hold-0001`에서 출발 상태 선택을 기다린다. 모델 호출0·정책 행동0이며, M1 착의 시연은 아직 시작하지 않았다. [비교 근거](../collection/reviews/20261116-checkpoint-validation.ko.md)
 
 [현재 실행 계획](../COLLECTION_PLAN.md) · [기전·판단 기준](../MECHANISMS.ko.md) · [과거 결과 요약](../HISTORY_SUMMARY.ko.md) · [실행 인계서](../collection/research/2026-11-16-user-guided-resume.ko.md) · [환경 복원](../OPERATIONS.md)
 
@@ -9,8 +9,8 @@
 | 항목 | 확인한 상태 |
 |---|---|
 | 최신 정상 과제 시연 | E36 `20261114-astra-wrist-body835-001`, 정상 마감 |
-| 새 시연 출발 후보 | E36의933전이 경계. 실제 재생·slot 저장·복원·정착 검증 후 채택 |
-| 새 기능 | `e9cca07`에 checkpoint·물리0 HOLD·5카메라 export·텍스트 재개 구현. CPU394개 통과; GPU HOLD·목표 slot 비교 진행 중 |
+| 새 시연 출발 후보 | E36의933전이 경계. 재생·slot 저장/복원 확인. 정착 후 축별 최대6.4mm 파지점 차이·probe 효과 차이로 사용자 채택 대기 |
+| 새 기능 | `e9cca07`에 checkpoint·물리0 HOLD·5카메라 export·텍스트 재개 구현. CPU394개 통과; GPU HOLD8개 검사 통과·slot 비교 완료. 원래934전이/복원1전이 전수 QC 통과 |
 | 첫 방법 / 목표 | M1 현재 파지 유지·국소 교정 / trusted evaluator의 `first_sleeve` 새0→5 |
 | 사용자 판단 | 자동 종료 제안·구간 예산·득점·출발 부적합에서 물리0 HOLD 후 README 상단에 같은 관측의5장 게시 |
 | 현재 성능 | 정상 평가 최고 로컬 raw5/50, 착의0, 완전 착의 성공 미확인 |

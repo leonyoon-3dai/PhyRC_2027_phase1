@@ -1,5 +1,8 @@
 # Codex 작업 지침
 
+**현재 live HOLD:** `20261116-astra-m1-checkpoint-001 / hold-0001`, 초기 slot 복원 상태에서 모델 호출0·정책 행동0. [검증 비교](docs/collection/reviews/20261116-checkpoint-validation.ko.md)와 README5카메라를 게시하고 사용자 출발 선택을 기다린다. 같은 상태 계속은 실제 사용자 답변을 [GUIDED_RUNTIME](docs/collection/GUIDED_RUNTIME.ko.md)의 matching inbox로 전달한다. 일반 착수 승인이나 무응답을 이 HOLD의 답변으로 만들지 않는다. 원래 검증 run은 정상 마감했고 live run은 마감하지 않았다.
+
+
 **현재 사용자 지시(2026-11-16): 최신 전략으로 시연을 시작하고, 판단 지점에서5카메라를 저장소에 게시해 사용자 텍스트를 기다린다.** 개발 대화의 Astra 전환과 HF 로그인 확인 후 클린 서버 복원·필수 기능 구현/검증에 착수했다. E36/933을 우선 검증하고 M1 현재 파지 유지·국소 교정으로 첫 소매 새5점을 시도한다. [현재 계획](docs/COLLECTION_PLAN.md)과 [실행 인계서](docs/collection/research/2026-11-16-user-guided-resume.ko.md)가 정본이다. 실제 실행·검증 상태는 [STATUS](docs/project/STATUS.md)에서 확인한다.
 
 **문서 관리:** [기전·판단 기준](docs/MECHANISMS.ko.md)과 [과거 결과 요약](docs/HISTORY_SUMMARY.ko.md)을 중심으로 현재 전략과 최근 분석을 관리한다. 시간별 초기 시행착오를 활성 문서에 반복하지 않는다. 세션·원본·실패·provenance·GIF·PDF는 보존하고, 현재 판단을 바꾼 근거에서 상세 이력으로 연결한다. 과거 분석-only HOLD·최대5회 배치·날짜별 TODO는 현재 지시가 아니다.

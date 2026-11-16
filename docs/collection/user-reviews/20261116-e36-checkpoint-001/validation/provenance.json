@@ -1,0 +1,28 @@
+{
+  "run_id": "20261116-e36-checkpoint-001",
+  "scope": "closed checkpoint validation snapshots, not live HOLD",
+  "pixel_transform": "none; original 256x256 PNG copied; panel layout only",
+  "phases": {
+    "original-held": {
+      "overview": "26f5dc4c30d942a3ee9e26b758690a3be83ca5241dc7d9bd1f9128eb25075169",
+      "robot_1_head": "96b50f61c7fa84c18e6b2b0330fab55d7965ca0b9ad5cbc3db54958a06e1b18d",
+      "robot_0_head": "6d592f87cd2e70b5772e5b18e347c10124e592f199720fad5ca6e0becc493b5f",
+      "robot_1_wrist": "8b33a6dab8ed75b9c2b502423d003f217ff523715d1e25567af7c9d62b0438d6",
+      "robot_0_wrist": "a873686cd168a7db734f936c3931627463919ca12fa7bd39c575c04e81503c32"
+    },
+    "restored-before-settle": {
+      "overview": "11865ac57bd6fd58bc0af66edc1cfd2d267b95055824ebbbe0209aad88d50a02",
+      "robot_1_head": "0b13ed43a71962b653505ceaa8a07643ae3ba300cddca89aaaa19b87f5875c06",
+      "robot_0_head": "ca4503353e22f718f93c303e8c96c74a3853f6f63ff6819c151fc9962411cc18",
+      "robot_1_wrist": "976d4008dd89ef12fd3e20393900783e7cbf401b55d47a7d45d83778ef743cd3",
+      "robot_0_wrist": "b43ef0d9a05dc6e3376036c9664d6fdee279e02aa22ac6e5312b4c26f686c9e8"
+    },
+    "restored-held": {
+      "overview": "90a1916a81346286573a60ff8b124d1232ffc8c0bb6be001a85721d260c2f4d2",
+      "robot_1_head": "93926e11397267aded13280a4c2bdfba24947cabe8bf566f696f5437003b4f8b",
+      "robot_0_head": "ed1f126f15b9b45f672ac54b938ab120cc1c7a78b23bcd48a505b261afb15b69",
+      "robot_1_wrist": "50adb1e209365b6a2fb1b4f0eb75c58eb9f10a5b9dbef38d0bc29222f48e3b51",
+      "robot_0_wrist": "113728aebf03ccc9e89ee824f4d8eddb492aa26b8632211fb4a76f1d402968b9"
+    }
+  }
+}

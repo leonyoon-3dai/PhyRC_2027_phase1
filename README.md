@@ -1,15 +1,19 @@
 # PhyRC 2027
 
 <!-- PHYRC_USER_REVIEW:START -->
-> **다음 시연: 최신 손목 근접 checkpoint에서 첫 소매 +5점**
+> **사용자 판단 대기 · 현재 live HOLD · M1 행동 전**
 >
-> **현재 상태: E36/933 재생·checkpoint 검증 실행 중 · M1 시연 준비.** Astra·HF 로그인, 원본 QC933/933, CPU394개 검사와 GPU smoke를 통과했습니다. E36/933 출발 후보를 복원·검증하고, 현재 파지를 유지한 국소 교정(M1)부터 시도합니다.
+> E36/933 재생 상태를 저장·복원했습니다. 화면상 파지·손 근접은 대체로 유지됐지만 정착 후 파지점이 축별 최대 약6.4mm 달라졌고, 같은 작은 lift 명령의 효과도 달랐습니다. [복원 비교·수치·판단 근거](docs/collection/reviews/20261116-checkpoint-validation.ko.md)
 >
-> 자동 종료 제안이나 예산 도달에서는 **시연을 HOLD → 공개 카메라 5장 게시 → 사용자에게 질문 → 텍스트 답변 후 재개·방향 변경·checkpoint 변경·종료**합니다. 이 기능은 클린 서버에서 먼저 구현·검증합니다.
+> **선택:** 현재 복원 상태에서 M1 진행 / 새 E36 재생 말단에서 진행 / E34 등 이전 출발점으로 변경 / 종료.
 >
-> **새 live 스크린샷은 아직 없습니다.** 실행 중 HOLD가 발생하면 이 영역에 같은 관측의 overview와 양쪽 head/wrist 화면, 원본5장 링크, HOLD 이유와 질문을 게시합니다. 아래 기존 E36 영상은 과거 시연입니다.
->
-> **[현재 계획·세 가지 방법](docs/COLLECTION_PLAN.md)** · **[클린 서버 실행 인계서](docs/collection/research/2026-11-16-user-guided-resume.ko.md)** · [환경 복원 명령](docs/OPERATIONS.md) · [실제 실행 상태](docs/project/STATUS.md)
+> Run `20261116-astra-m1-checkpoint-001` · `hold-0001` · 관측 `d4b2a7f8c08b3fac` · 기록 전이0 · 모델 호출0. reset 정착 후 시뮬레이션 시각 1.508333s. 답변 전까지 물리와 모델 호출을 진행하지 않습니다.
+
+<a href="docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0001/cameras.png"><img src="docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0001/cameras.png" width="512" alt="현재 live HOLD의 같은 관측 공개5카메라. 왼쪽 robot_1, 오른쪽 robot_0; 위 head, 아래 wrist."></a>
+
+**원본5장:** [overview](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0001/overview.png) · [R1 head](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0001/robot_1_head.png) · [R0 head](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0001/robot_0_head.png) · [R1 wrist](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0001/robot_1_wrist.png) · [R0 wrist](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0001/robot_0_wrist.png)
+
+[검토 페이지](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0001/README.ko.md) · [관측 metadata](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0001/observation-metadata.json) · [현재 전략](docs/COLLECTION_PLAN.md) · [기전 요약](docs/MECHANISMS.ko.md)
 <!-- PHYRC_USER_REVIEW:END -->
 
 [![E00–E36 통합 분석 보고서 PDF 열기](docs/assets/e36-integrated-report-button.svg)](docs/reports/20261114-e36-integrated-review/phyrc-e36-integrated-review.ko.pdf)

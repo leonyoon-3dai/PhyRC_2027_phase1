@@ -1,0 +1,30 @@
+{
+  "schema": "phyrc-user-review-v1",
+  "run_id": "20261116-astra-m1-checkpoint-001",
+  "hold_id": "hold-0001",
+  "observation_id": "d4b2a7f8c08b3fac9bf16948da0219d318e8f59cc651db7e93e67ada4964446b",
+  "observation_step": 0,
+  "physics_tick_since_recording_start": 0,
+  "simulation_time_s": 1.5083334119990468,
+  "captured_at_utc": "2026-11-16T01:42:56.129870+00:00",
+  "source_checkpoint": {
+    "initial_slot": "/output/collections/20261116-e36-checkpoint-001-original/checkpoints/20261116-e36-checkpoint-001-slot/slot_20261116-e36-checkpoint-001-slot.npz",
+    "replay_run": null,
+    "replay_steps": 0,
+    "exact_physics_checkpoint": false
+  },
+  "method": "M1",
+  "reason": "start_state_review",
+  "camera_sha256": {
+    "overview": "ef3752de55567e7492689d1d596cc65dc410b411840177d957e39471187dac40",
+    "robot_1_head": "8d0a245064723ab039113dd2298a624c6df8d2a23b092666b6364b0edc2e6fbb",
+    "robot_0_head": "7d51f55f700fd148f893688b94134da3edc980ad4368379357a15c2078a16972",
+    "robot_1_wrist": "d39dbd186aceaaced802b081ada4caa37de3adfa8d279b4c8d6af0d51cbdebbc",
+    "robot_0_wrist": "a1f007a42b8c32546ca06c9b4a411bf47ffb89d7ca44d41e5cb98edb702af5dc"
+  },
+  "live_hold_at_capture": true,
+  "last_intent": null,
+  "observed_effect": "Inspect the five current views against the preceding review; intent alone is not evidence of effect.",
+  "unknown": "Grasp support, garment topology and sleeve passage require review of public observations.",
+  "question": "Continue with a direction, change M1/M2/M3, choose another checkpoint, or finish?"
+}
