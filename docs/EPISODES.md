@@ -1,6 +1,6 @@
 # 시연 목록
 
-**현재:** 새 `20261116-astra-m1-checkpoint-001`은 **hold-0010·110전이에서 live HOLD**다. 사용자 검토 후33mm 추가 요청을 수행해 실제XY순변위 R0/R1 **31.97/31.45mm**, 높이 **+0.29/+0.50mm**를 기록했다. 원래HOLD8부터 전체XY순변위49.06/48.30mm이며 목표 근처 검토다. 새6 act·17전이, 누적44호출·35 act·110전이. reset0, 열린 run으로 마감·QC·백업 전이다. [현재 GIF·5카메라](collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0010/README.ko.md) · [추가·전체 이동 분석](collection/reviews/20261116-m1-bodyward-33mm-completion.ko.md)
+**현재:** 새 `20261116-astra-m1-checkpoint-001`은 **hold-0010·110전이에서 손목 위 세 번째 줄무늬를 목표로 재개**했다. 사용자 지시에 따라 같은 방향·같은 손·양쪽 파지·대략 현재 높이를 유지해 짧게 진행한다. 목표는 손목에서 팔꿈치 쪽 세 번째 짙은 띠로 해석했으며 이전 거리 목표와 구분한다. 검토 상한20결정/새100전이, reset0. 열린 run으로 마감·QC·백업 전이다. [재개 직전 GIF·5카메라](collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0010/README.ko.md)
 
 
 **[이번 세션 영상·실패 분석 모음](collection/reviews/20261114-session-review.ko.md)**에서 E28–E32 영상과 시도별 판단을 바로 검토할 수 있습니다.

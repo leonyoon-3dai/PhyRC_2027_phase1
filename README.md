@@ -1,30 +1,15 @@
 # PhyRC 2027
 
 <!-- PHYRC_USER_REVIEW:START -->
-> **M1 live HOLD · 33mm 요청 후 약32mm 추가 이동**
+> **M1 실행 중 · 같은 방향으로 손목 위 세 번째 줄무늬까지 접근**
 >
-> 사용자의 “문제 없어 보입니다.33mm 이동 진행해주세요”에 따라 같은 방향으로 이어 갔습니다. 추가XY순변위는 R0/R1 **31.97/31.45mm**, 높이 변화는 **+0.29/+0.50mm**입니다. 추가 lift 명령은 없었습니다. 요청 방향 기준33mm보다 **1.03/1.57mm 짧은 위치**에서 검토 HOLD했습니다.
+> 사용자가 같은 방향으로 계속 밀어 넣어 손목 위 세 번째 줄무늬까지 진행하도록 지시했습니다. 손목의 피부–줄무늬 경계에서 팔꿈치 쪽으로 세는 세 번째 짙은 띠를 목표로 해석합니다. 같은 손·양쪽 파지·대략적인 높이를 유지하며, 고정한 띠와 옷 경계의 관계를 짧은 조작마다 확인합니다. 시각 정렬과 실제 진입은 구분합니다.
 >
-> 앞선 약17mm와 합친 원래50mm 요청의 전체XY순변위는 **49.06/48.30mm**입니다. 손끝은 전경 그리퍼와 옷 경계 뒤로 더 가려졌으며, 실제 입구 진입·소매 통과는 미확인입니다.
->
-> Run `20261116-astra-m1-checkpoint-001` · **hold-0010** · 관측 `fb30f5ece93bb11c` · 전이110 / tick1320 / 시뮬레이션7.008334s. 새6 act·17전이(0.85초), 누적44호출·35 act·110전이입니다. stop은 실행하지 않았으며 현재 물리 진행0으로 대기합니다.
+> Run `20261116-astra-m1-checkpoint-001` · **아래 GIF는 재개 직전 hold-0010까지의 움직임**입니다. 관측 `fb30f5ece93bb11c` · 누적110전이에서 reset 없이 재개했습니다. 이전33/50mm 목표를 새 시각 목표로 바꿨으며, 이번 검토 상한은20결정/새100전이입니다.
 
-<a href="docs/gallery/20261116-m1-guided-segments/README.ko.md"><img src="docs/gallery/20261116-m1-guided-segments/bodyward-33mm-completion.gif" width="536" alt="33mm 추가 이동 요청 후 실제약32mm 진행한93–110전이 GIF"></a>
+<a href="docs/gallery/20261116-m1-guided-segments/README.ko.md"><img src="docs/gallery/20261116-m1-guided-segments/bodyward-33mm-completion.gif" width="536" alt="재개 직전 hold-0010:33mm 요청 후 약32mm 추가 이동한 GIF"></a>
 
-실제20Hz 기록의93–110 경계18장을 모두 표시합니다. 중간 프레임은4배 느리게 재생하며 시작·끝에는 정지가 있습니다.
-
-<details>
-<summary>현재 같은 관측의5카메라와 원본 보기</summary>
-
-![hold-0010 현재 공개5카메라](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0010/cameras.png)
-
-[overview](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0010/overview.png) · [robot_1_head](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0010/robot_1_head.png) · [robot_0_head](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0010/robot_0_head.png) · [robot_1_wrist](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0010/robot_1_wrist.png) · [robot_0_wrist](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0010/robot_0_wrist.png)
-
-</details>
-
-[현재 GIF·화면 검토](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0010/README.ko.md) · [추가 이동·전체50mm 요청 분석](docs/collection/reviews/20261116-m1-bodyward-33mm-completion.ko.md) · [구간별 GIF](docs/gallery/20261116-m1-guided-segments/README.ko.md) · [현재 전략](docs/COLLECTION_PLAN.md)
-
-**GIF와 현재 화면을 보고 다음 이동 방향을 알려주세요.** 사용자 답변 전에는 추가 이동·정착·종료 없이 이 상태를 유지합니다.
+[재개 직전 GIF·5카메라](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0010/README.ko.md) · [구간별 GIF](docs/gallery/20261116-m1-guided-segments/README.ko.md) · [현재 전략](docs/COLLECTION_PLAN.md)
 <!-- PHYRC_USER_REVIEW:END -->
 
 [![E00–E36 통합 분석 보고서 PDF 열기](docs/assets/e36-integrated-report-button.svg)](docs/reports/20261114-e36-integrated-review/phyrc-e36-integrated-review.ko.pdf)
