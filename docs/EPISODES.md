@@ -1,6 +1,6 @@
 # 시연 목록
 
-**현재:** 기존 M1은120전이 정상 마감·QC120/120·비공개 고정 백업 검증을 마쳤다. 새 `20261116-astra-right-hand-hold10-001`은 동일 초기slot에서 앞110행동을 재생해 시작 HOLD1에 도달했다. 원래 HOLD10과 파지점 차이는1.86/0.63mm이며 큰 배치·지지를 확인했다. 사용자의 기존 지시에 따라 오른손 쪽R0만 두 줄무늬 간격 정도 접근하는 다음 단계를 준비한다. [복귀 비교·현재 run](collection/reviews/20261116-right-hand-hold10-branch.ko.md) · [마감 원본 요약](collection/attempts/20261116-astra-m1-checkpoint-001/README.ko.md)
+**현재:** 기존 M1은120전이 정상 마감·QC120/120·비공개 고정 백업 검증을 마쳤다. 새 `20261116-astra-right-hand-hold10-001`은 동일 초기slot에서 앞110행동을 재생해 시작 HOLD1에 도달했다. 원래 HOLD10과 파지점 차이는1.86/0.63mm이며 큰 배치·지지를 확인했다. 출발 비교·게시 후 사용자의 기존 지시로 오른손 쪽R0만 두 줄무늬 간격 정도 접근 중이다. [복귀 비교·현재 run](collection/reviews/20261116-right-hand-hold10-branch.ko.md) · [마감 원본 요약](collection/attempts/20261116-astra-m1-checkpoint-001/README.ko.md)
 
 
 **[이번 세션 영상·실패 분석 모음](collection/reviews/20261114-session-review.ko.md)**에서 E28–E32 영상과 시도별 판단을 바로 검토할 수 있습니다.

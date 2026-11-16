@@ -1,6 +1,6 @@
 # 이전110전이 복귀 확인 · R0 단독 접근 출발점
 
-**20261116-astra-right-hand-hold10-001 / hold-0001 · 출발 비교·게시 HOLD**
+**20261116-astra-right-hand-hold10-001 / hold-0001 · 출발 비교·게시 후 기존 사용자 지시로 재개**
 
 사용자가 이전 구간으로 돌아가 오른손 가까운 로봇만 두 줄무늬 간격 정도 진행하도록 지시했다. 원래 초기slot에서 마감 M1의 앞110개 행동을 새로 실행했으며, 모델의 새 행동 호출은0이다. 고유 시작 checkpoint도 추가 물리 없이 저장했다.
 
@@ -20,6 +20,6 @@
 
 [overview](overview.png) · [robot_1_head](robot_1_head.png) · [robot_0_head](robot_0_head.png) · [robot_1_wrist](robot_1_wrist.png) · [robot_0_wrist](robot_0_wrist.png) · [metadata](observation-metadata.json)
 
-공개어깨–팔–손연결의매핑은 **R0=오른손 쪽/R1=왼손 쪽**이다. 게시 후 기존 사용자 지시에 따라 R0만 접근하고 R1은 중립 명령으로 지지를 유지한다. 중립은 물리적 고정이 아니므로 실제R1운동도확인한다. 다음 목표 검토에서 새 움직임GIF와5카메라를게시한다.
+공개어깨–팔–손연결의매핑은 **R0=오른손 쪽/R1=왼손 쪽**이다. 원격 게시 검증 후 기존 사용자 지시를 이월하여 R0 단독 접근으로 재개했다. R1은 중립 명령으로 지지를 유지한다. 중립은 물리적 고정이 아니므로 실제R1운동도확인한다. 다음 목표 검토에서 새 움직임GIF와5카메라를게시한다.
 
 [원래HOLD10](../../20261116-astra-m1-checkpoint-001/hold-0010/README.ko.md) · [최신 상태](../../../../../README.md)
