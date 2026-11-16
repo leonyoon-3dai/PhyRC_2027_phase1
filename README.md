@@ -1,10 +1,16 @@
 # PhyRC 2027
 
-> **2026-11-16 연구 방향 재정비 · 기존 계획 HOLD**
+<!-- PHYRC_USER_REVIEW:START -->
+> **다음 시연: 최신 손목 근접 checkpoint에서 첫 소매 +5점**
 >
-> 지금은 분석하면서 근거와 미결 사항을 계속 기록하는 단계입니다. **checkpoint로 유용한 중간 상태를 복원하는 방법**과 **명령 실행 후 실제 변화를 확인하고 다음 행동을 바꾸는 방법**을 우선 검토합니다. 기존 시연 재개·구현·학습 계획은 보류하며, 분석 정리가 끝난 뒤 사용자가 클린 서버에서 반영합니다. 현재 최신 실제 시연은 종료된 E36입니다.
+> **현재 상태: 클린 서버 대기 · 새 시연 미실행.** 조사는 마무리했습니다. E36/933 출발 후보를 복원·검증하고, 현재 파지를 유지한 국소 교정(M1)부터 시도합니다.
 >
-> **[최신 착의 연구·데모·평가 코드 조사](docs/collection/research/2026-11-16-recent-dressing-resources.ko.md)** · **[현재 연구 방향과 누적 분석 기록](docs/collection/research/2026-11-16-checkpoint-effect-feedback.ko.md)** · [보류 상태와 현재 계획](docs/COLLECTION_PLAN.md) · [나중에 적용할 클린 서버 안내](docs/OPERATIONS.md)
+> 자동 종료 제안이나 예산 도달에서는 **시연을 HOLD → 공개 카메라 5장 게시 → 사용자에게 질문 → 텍스트 답변 후 재개·방향 변경·checkpoint 변경·종료**합니다. 이 기능은 클린 서버에서 먼저 구현·검증합니다.
+>
+> **새 live 스크린샷은 아직 없습니다.** 실행 중 HOLD가 발생하면 이 영역에 같은 관측의 overview와 양쪽 head/wrist 화면, 원본5장 링크, HOLD 이유와 질문을 게시합니다. 아래 기존 E36 영상은 과거 시연입니다.
+>
+> **[현재 계획·세 가지 방법](docs/COLLECTION_PLAN.md)** · **[클린 서버 실행 인계서](docs/collection/research/2026-11-16-user-guided-resume.ko.md)** · [환경 복원 명령](docs/OPERATIONS.md) · [실제 실행 상태](docs/project/STATUS.md)
+<!-- PHYRC_USER_REVIEW:END -->
 
 [![E00–E36 통합 분석 보고서 PDF 열기](docs/assets/e36-integrated-report-button.svg)](docs/reports/20261114-e36-integrated-review/phyrc-e36-integrated-review.ko.pdf)
 
@@ -12,7 +18,7 @@
 
 **[E36 이후: 종료·득점 분석과 여러 방법을 지원하는 후속 시스템 설계](docs/collection/research/2026-11-15-e36-continuation-options.ko.md)** · [HolidayFactory 논문 적용 검토](docs/collection/research/2026-11-15-holidayfactory-phyrc.ko.md)
 
-**2026-11-15 선행 검토:** 사람 직접 조작, Astra, 사용자 개입, 복구 감독, 후속 학습은 가능한 선택지로 보존합니다. 이들의 기존 실행 계획은 현재 HOLD이며, 최신 우선 검토 대상은 위의 checkpoint와 실행 효과 피드백입니다. 한 방법을 영구적인 정답으로 고정하지 않습니다. [현재 계획](docs/COLLECTION_PLAN.md)
+**선행 분석은 보존합니다.** 사람 조작·Astra·개입·복구·학습의 여러 가능성을 검토했고, 현재는 사용자 텍스트 피드백을 받는 checkpoint 시연을 선택했습니다. [최신 착의 연구 조사](docs/collection/research/2026-11-16-recent-dressing-resources.ko.md) · [실행 효과 분석](docs/collection/research/2026-11-16-checkpoint-effect-feedback.ko.md)
 
 [![Agentic Robotics 워크숍: PhyRC 시연 수집 참고 문서 열기](docs/assets/agentic-robotics-workshop-button.svg)](docs/collection/research/2026-11-14-agentic-robotics-workshop.ko.md)
 
@@ -40,7 +46,7 @@ https://github.com/user-attachments/assets/d2f347fe-712b-42f3-bdee-69d3fee2a47c
 
 | [**시연 영상**](docs/EPISODES.md) | [**후속 분석·설계**](docs/COLLECTION_PLAN.md) | [**Astra 코드·Hz**](docs/ASTRA.md) | [**클린 서버 시작**](docs/OPERATIONS.md) |
 |:---:|:---:|:---:|:---:|
-| E00–E36 기록과 상태 | 기존 계획 HOLD·두 연구 축 | 관측부터 HDF5까지 | 분석 후 적용할 재현 절차 |
+| E00–E36 기록과 상태 | 세 방법·사용자 HOLD | 관측부터 HDF5까지 | 복원·최소 구현·새 시연 |
 
 **E36이11결정·933전이로 정상 마감해 QC933/933을 통과했고, 당시 수집 배치를 종료했습니다. E37–E39는 실행하지 않았습니다.** 로컬5/50은 replay 구간의 픽업5점이며 새 착의 득점0·success=false입니다. [현재 상태와 고정 백업 검증](docs/project/STATUS.md) / [최신 후속 계획](docs/COLLECTION_PLAN.md). 새 시스템이나 자동 학습을 구현했다는 의미는 아닙니다.
 
@@ -56,7 +62,7 @@ https://github.com/user-attachments/assets/d2f347fe-712b-42f3-bdee-69d3fee2a47c
 
 ## 수집 시스템 재정비
 
-**기존 계획은 HOLD하고 checkpoint 복원과 실행 효과 피드백을 우선 분석합니다.** 상태 복원 전후와 다음 행동의 재현성을 어떻게 확인할지, 의도와 실제 운동·천의 변화가 다를 때 다음 행동을 어떻게 바꿀지 기록합니다. [현재 누적 분석](docs/collection/research/2026-11-16-checkpoint-effect-feedback.ko.md)은 계속 갱신할 연구 기록이며 실제 적용은 분석 정리 후 클린 서버에서 진행합니다. E36 종료·득점 분석, 직접 조작, HolidayFactory 등 선행 검토도 보존합니다. 기존 수집 [배치](docs/project/sessions/20261114-wide-hem-five-attempt-batch.ko.md)는 E36에서 종료했고 이번 갱신은 문서화입니다.
+**조사는 종료하고 사용자 피드백을 받는 시연으로 방향을 정했습니다.** 최신 출발 후보를 복원한 뒤 세 방법 중 M1부터 첫 소매 통과5점에 도전합니다. 자동 종료·예산·득점 조건에서는5카메라를 게시하고 사용자에게 다음 행동을 묻습니다. [클린 서버 인계서](docs/collection/research/2026-11-16-user-guided-resume.ko.md)에 필요한 기능, 실제 코드의 미구현 부분, 복원 순서와 시작 프롬프트를 정리했습니다. 이번 변경은 문서이며 새 시연은 아직 없습니다.
 
 [E36 후속 분석·선택지](docs/collection/research/2026-11-15-e36-continuation-options.ko.md) · [현재 계획](docs/COLLECTION_PLAN.md) · [선행 재정비 설계](docs/collection/research/2026-11-14-collection-system-redesign.ko.md)
 
@@ -83,5 +89,3 @@ https://github.com/user-attachments/assets/d2f347fe-712b-42f3-bdee-69d3fee2a47c
 GitHub에는 코드와 선별 영상이 있습니다. 전체 시연 HDF5와 필수 자산 복원에는 **접근 권한이 있는 비공개 백업**이 필요합니다. 새 서버 가이드에 고정 revision과 해시 검증 절차를 함께 남깁니다.
 
 [공식 챌린지](https://emprise.cs.cornell.edu/phyrc/challenge-2027/) / [점수·규칙](docs/project/CHALLENGE_GUIDE.ko.md) / [현재 상태](docs/project/STATUS.md) / [기록 보관함](docs/ARCHIVE.md) / [주최 측 README](README.upstream.md) / [LICENSE](LICENSE) / [NOTICE](NOTICE) / [THIRD_PARTY](THIRD_PARTY.md)
-
-

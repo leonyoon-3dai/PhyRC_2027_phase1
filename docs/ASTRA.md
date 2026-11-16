@@ -1,6 +1,6 @@
 # Astra 수집 코드
 
-**현재: E36 마감, 기존 계획 HOLD. 2026-11-16에는 checkpoint 복원과 실행 효과 피드백을 우선 분석·기록한다.** 분석이 정리된 뒤 사용자가 나중에 클린 서버에 반영할 예정이다. [현재 계획](COLLECTION_PLAN.md)과 [누적 분석](collection/research/2026-11-16-checkpoint-effect-feedback.ko.md)을 먼저 읽는다. 아래 최대5회 지시는 당시 배치 이력이며, 이 문서는 기존 구현을 설명한다. 후속 기능 구현이나 새 시연을 실행했다는 의미가 아니다.
+**현재: E36 마감·클린 서버 대기. 최신 방향은 사용자 텍스트 피드백을 받는 checkpoint 시연이다.** [현재 계획](COLLECTION_PLAN.md)과 [실행 인계서](collection/research/2026-11-16-user-guided-resume.ko.md)를 먼저 읽는다. 현재 코드의 stop/finish·예산·idle timeout은 기록을 닫으므로, 새 사용자 HOLD 흐름을 구현·검증하기 전 기존 수집기를 본 시연에 그대로 사용하지 않는다. 아래는 기존 구현과 과거 이력이며 새 기능 완료를 뜻하지 않는다.
 
 **과거 배치 승인(2026-11-14 09:29 UTC, 현재는 E36 종료):** 정리된 E33/E34 결과와 재정비 계획을 먼저 GitHub에 게시한 뒤, 기존 수집 경로로 옷 아래를 넓게 펼쳐 같은 손목보다 약간 위에서 측면으로 넣는 시연을 **최대5회** 진행한다. 예상 작업 범위는3–4시간이며 매회 마감·QC·공개 검토·고정 백업 뒤 다음 출발점을 선택한다. 사용자의 중간 피드백·중지 지시를 우선한다. 종전 E34 이후 중지는 이 범위에서 해제됐으며 새 시스템 개편·학습은 수행하지 않는다. [이번 배치](project/sessions/20261114-wide-hem-five-attempt-batch.ko.md)
 
@@ -101,7 +101,7 @@ sequenceDiagram
 
 이 예시는 [`response_schema(SCHEMA)`](../participant/collection/named_actions.py#L30)의 이름 기반 응답입니다. Pixel query를 켠 첫 응답에는 추가로 `depth_query`가 필요하며, 바로 행동할 때는 `null`입니다. 질의 후 응답은 위의 원래 행동 스키마로 돌아옵니다. `stage`와 `visual_assessment`는 모델의 의도와 시각적 판단이며 공식 득점이 아닙니다.
 
-[`stop`](../participant/collection/boundary.py#L82)은 중립 명령 1전이를 실행하고, `finish_episode`는 추가 물리 진행 없이 기록을 마감합니다. 두 응답 모두 행동값은 전부 0, `steps=1`이어야 합니다.
+[`stop`](../participant/collection/boundary.py#L82)은 중립 명령 1전이를 실행하고, `finish_episode`는 추가 물리 진행 없이 기록을 마감합니다. 두 응답 모두 행동값은 전부 0, `steps=1`이어야 합니다. **이는 기존 코드의 동작 설명이다. 새 사용자 피드백 모드에서는 모델의 stop/finish를 전송 전에 HOLD로 바꿔야 하며, `stop()`을 대기 명령으로 사용하지 않는다.**
 
 ## 4. 시간과 실행 길이
 
@@ -141,4 +141,3 @@ sequenceDiagram
 [`Actor._cli()`](../participant/collection/codex_actor.py#L265)는 웹 검색과 개발 도구 기능을 비활성화하고, [`_read_result()`](../participant/collection/codex_actor.py#L87)는 도구 실행 이벤트가 섞인 응답을 거부합니다. 같은 episode는 CLI `resume`으로 이어가며, 실패한 호출 뒤 자동으로 행동 이력을 이어 붙이지 않습니다. 공개 이미지도 픽셀로 다시 저장해 원래 파일명과 메타데이터를 제거합니다.
 
 점수와 내부 기하는 별도 검수에만 사용합니다. 공개 자료에는 선별한 입력과 최종 행동, 결과 요약만 남기며 인증 정보, 원시 추론, 이벤트 로그, 세션 DB는 게시하지 않습니다. [전체 시연](EPISODES.md)과 [현재 상태](project/STATUS.md)에서 실행별 결과를 확인합니다. E34 뒤 재개한 수집은 E35·E36 마감으로 종료됐으며, [재정비 계획](collection/research/2026-11-14-collection-system-redesign.ko.md)의 상태 원장·구간 검수·학습 연결은 미구현 제안입니다. 구현·연결 검사·기술 QC 통과를 착의 완료 실적으로 포함하지 않습니다.
-

@@ -1,6 +1,6 @@
 # 클린 서버 시작 안내
 
-**2026-11-16 현재 상태: 기존 계획 HOLD, 분석·기록 중.** checkpoint 복원과 실행 결과에 따른 다음 행동 수정을 우선 검토한다. 분석 정리가 끝난 뒤 사용자가 클린 서버에서 반영할 예정이며, 이 문서를 읽었다는 이유로 기존 수집·구현·학습을 재개하지 않는다. [현재 계획](COLLECTION_PLAN.md)과 [누적 분석](collection/research/2026-11-16-checkpoint-effect-feedback.ko.md)을 먼저 읽는다. 실제 최신 실행은 종료된 E36이다.
+**2026-11-16 최신 방향: 조사 종료·클린 서버에서 사용자 피드백 시연 준비.** 현재 실제 실행은 종료된 E36이며 이번 갱신은 문서 인계다. 클린 서버에서 이 계획으로 착수를 요청받으면 아래 환경·원본 복원과 [실행 인계서](collection/research/2026-11-16-user-guided-resume.ko.md)의 필수 기능 구현·검증을 진행한 뒤 M1 시도를 시작한다. 자동 종료·관리 예산에서는 물리0 HOLD, 지정5카메라 README 게시, 사용자 텍스트 응답을 따른다. [현재 계획](COLLECTION_PLAN.md)이 정본이다.
 
 [메인](../README.md) | [시연 목록](EPISODES.md) | [다음 수집](COLLECTION_PLAN.md) | [Astra 코드](ASTRA.md) | [클린 서버](OPERATIONS.md)
 
@@ -12,7 +12,7 @@
 
 E09·E32의 불완전 원본은 정상 replay 출처로 사용하지 않습니다. E30/E31의 host143은 simulator0·complete·QC통과와 공존했으므로 host 반환값만으로 마감을 판정하지 않습니다. 별도 process session은 host/cgroup 종료 생존을 보장하지 않으며 E32의143 발신 원인은 미확정입니다. [E32 실패 기록](project/sessions/20261114-e32-incomplete.ko.md) / [launcher 검토](project/sessions/20261114-detached-launch-preparation.ko.md).
 
-아래 설치·복원·GPU·모델 명령은 **분석 정리 후 요청된 적용 범위에서 사용할 재현 절차**다. 현재는 HOLD이며 자동 실행 지시가 아니다. [현재 계획](COLLECTION_PLAN.md)과 [미결 사항](collection/research/2026-11-16-checkpoint-effect-feedback.ko.md)을 확인한다. 과거 배치의 남은 횟수·예산을 이어받지 않는다.
+아래는 클린 서버 착수에 사용할 환경 재현 절차다. **기존 수집기의 즉시 종료 동작을 그대로 본 시연에 사용하지 않는다.** [실행 인계서](collection/research/2026-11-16-user-guided-resume.ko.md)의 checkpoint·사용자 HOLD·게시·텍스트 재개 검증을 먼저 완료한다. 현재 없는 CLI 옵션을 지어내지 않고, 검증한 새 실행 명령을 인계서에 추가한다. 과거 배치의 남은 횟수·예산을 이어받지 않는다.
 
 ## Codex CLI 시작 프롬프트
 
@@ -21,19 +21,17 @@ E09·E32의 불완전 원본은 정상 replay 출처로 사용하지 않습니�
 시연 수집 방법의 연구 근거는 [Agentic Robotics 워크숍 참고](collection/research/2026-11-14-agentic-robotics-workshop.ko.md), [E36 후속 분석](collection/research/2026-11-15-e36-continuation-options.ko.md), [HolidayFactory 적용 검토](collection/research/2026-11-15-holidayfactory-phyrc.ko.md)에 보존했습니다. 이 채팅을 보지 못한 Codex CLI도 현재 사실·선택지·미구현 부분을 구분할 수 있도록 연결합니다.
 
 ```text
-AGENTS.md, docs/project/STATUS.md, docs/COLLECTION_PLAN.md와 docs/OPERATIONS.md를 먼저 읽어라.
-현재 HEAD, 작업 트리, 서버 도구와 접근 권한을 확인하고 실제 상태를 기록하라.
-요청받은 범위에서 고정 자산과 필요한 시연만 복원하고 해시와 파일을 검증하라.
-단계가 실패하면 원인을 해결하기 전 다음 단계로 넘어가지 마라.
-2026-11-16 현재 기존 계획은 HOLD이며 연구 분석을 계속 기록하는 단계다. 과거 최대5회 배치나 남은 예산을 현재 실행 명령으로 삼지 마라.
-docs/collection/research/2026-11-16-checkpoint-effect-feedback.ko.md에서 최신 판단·미결 사항·checkpoint 및 실행 효과 피드백 설계를 먼저 읽어라.
-분석 정리 뒤 사용자가 클린 서버에서 반영할 예정이다. 현재 요청이 분석·기록이면 문서만 갱신하고, 나중에 구현·실험을 요청받으면 그 범위와 당시 최신 문서를 기준으로 적용하라.
-docs/collection/research/2026-11-15-e36-continuation-options.ko.md와 docs/collection/research/2026-11-15-holidayfactory-phyrc.ko.md를 읽어라.
-목표는 E36의 경험과 계보를 이어 추가 착의 득점을 확보할 수 있는 시스템이다. 사람 조작, Astra, 개입, 감독·복구, 후속 학습 중 한 방법을 미리 고정하지 마라.
-현재 요청이 문서 기록인지 구현인지 실험인지 구분하고 요청 범위에 맞춰 진행하라. 실행한다면 정상 원본·경계·제어원·공개 입력·예산·종료/검토 조건과 실제 준비 상태를 확인하라.
-닫힌 E36은 실행 중 환경이 아니다. 기존 state slot / initial_slot은 일부 상태를 초기화하는 근사 복원이며, prefix replay와 별개다. E36 checkpoint 원본의 존재나 복원 재현성을 검증 없이 가정하지 마라. 살아 있는 환경의 pause/resume·실시간 handoff도 별도 검토 대상이다.
-수집 방법 검토 시 docs/collection/research/2026-11-14-agentic-robotics-workshop.ko.md를 읽고, 확인된 연구 결과·PhyRC 적용 가설·미확인 자료를 구분하라. 이 문서를 actor에 주거나 후보 기능을 자동 적용하지 마라.
-완료한 검사, 미실행 검사, 부족한 외부 접근 권한과 다음 명령을 구분해 보고하라.
+AGENTS.md, docs/project/STATUS.md, docs/COLLECTION_PLAN.md, docs/OPERATIONS.md와
+docs/collection/research/2026-11-16-user-guided-resume.ko.md를 읽고 최신 계획으로 착수하라.
+조사는 종료됐다. 현재 HEAD·작업 트리·서버 권한을 확인하고 초기 자산과 E36 원본을 고정 receipt로 복원하라.
+고정 Codex CLI0.166.0 / exec / gpt-6-astra / ultra 및 actor 격리를 유지하라.
+checkpoint 연결·물리0 사용자 HOLD·5카메라 README 게시·텍스트 재개를 최소 구현하고 검증하라.
+E36/933 후보를 재현·관측하고 고유 checkpoint를 저장·복원 검증한 뒤, 적합하면 M1부터 첫 소매 새5점에 도전하라.
+출발 상태가 부적합하면 화면을 게시하고 E34/835 또는 E34/723 등 대안을 사용자에게 물어라.
+모델 종료 제안·관리 예산·득점 검토에서는 종료하지 말고5카메라를 README 상단에 push한 후 사용자 텍스트를 기다려라.
+답변에 따라 계속·방향/방법 변경·새 checkpoint 분기·종료를 처리한다. 무응답은 재개 승인이 아니다.
+공식 하드 제한·실제 장애는 정상 HOLD와 구분해 보고하고 원본과 계보를 보존하라.
+필수 복원·구현·검증·첫 시도는 이 착수 범위에서 진행한다. 과거 분석-only HOLD나 최대5회 배치를 적용하지 마라.
 ```
 
 ## 1. 먼저 준비할 것
@@ -115,14 +113,15 @@ npm --version
 
 ## 3. 원본과 자산 복원
 
-첫 서버는 초기 자산 묶음이 필요합니다. 특정 시연에서 분기하려면 그 시연의 receipt도 선택합니다. **E27은 보존·검토용 예이며 다음 시연의 부모로 자동 지정하지 않습니다.** 전체 백업 목록은 [보존 자료](ARCHIVE.md)에서 찾습니다.
+첫 서버는 초기 자산 묶음이 필요합니다. 특정 시연에서 분기하려면 그 시연의 receipt도 선택합니다. **이번 기본 복원 대상은 초기 자산과 E36입니다. E34는 이전 출발 대안을 준비할 때 추가합니다.** 전체 백업 목록은 [보존 자료](ARCHIVE.md)에서 찾습니다.
 
 | 용도 | receipt | 고정 HF revision |
 |---|---|---|
 | 초기 자산과 E07 원본 | [초기 백업](project/sessions/20261106-remote-backup-verification.json) | `e1d32f9f9ea82438f90bc379452abf83a150999b` |
-| E27 원본 검토 | [E27 백업](project/sessions/20261107-e27-backup-verification.json) | `6506b15378417c445bb8e84dbc43990a0c0fd291` |
+| 최신 출발 E36 원본 | [E36 백업](project/sessions/20261114-e36-backup-verification.json) | `dcf059881e4e6c103dc8206438a70eb1b8ccb26f` |
+| 이전 대안 E34 원본 | [E34 백업](project/sessions/20261114-e34-backup-verification.json) | `ba71dd6a07e2b05202c3dcaa5b0c9a3c17997b1d` |
 
-아래 코드는 초기 묶음을 새 staging에 받아 **크기·SHA256·archive 내부 파일**을 검사합니다. E27도 필요하면 `receipt` 한 줄만 E27 receipt 경로로 바꾸어 별도로 반복합니다. receipt의 `main` 같은 가변 참조 대신 고정 revision을 사용합니다.
+아래 코드는 초기 묶음을 새 staging에 받아 **크기·SHA256·archive 내부 파일**을 검사합니다. 초기 묶음을 복원·병합한 뒤 `receipt`를 `docs/project/sessions/20261114-e36-backup-verification.json`으로 바꿔 별도로 반복합니다. E34 대안이 필요하면 E34 receipt로 같은 절차를 수행합니다. receipt의 `main` 같은 가변 참조 대신 고정 revision을 사용합니다.
 
 ```bash
 .venv/bin/python - <<'PY_RESTORE'
@@ -250,24 +249,20 @@ PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.validate_c
 
 확인할 것은 종료 응답, 파일 완결성, 실제 `obs/action/next_obs` 정렬입니다. `quality_passed=true`는 착의 성공이나 학습 승인이 아닙니다. 모델 호출 중 물리는 멈추며, 20 Hz는 기록·행동 경계입니다. 모델의 실제 응답 주파수로 설명하지 않습니다.
 
-## 6. 기존 시연에서 이어가기
+## 6. 최신 손목 근접 상태에서 새 시연 시작
 
-우선 [시연 목록](EPISODES.md)에서 직접 부모와 경계를 선택합니다. 해당 원본의 전수 QC와 백업 receipt를 확인합니다. E09·E32 불완전 원본은 정상 분기 출처로 사용하지 않습니다.
+**새 시연의 정본은 [현재 계획](COLLECTION_PLAN.md)과 [실행 인계서](collection/research/2026-11-16-user-guided-resume.ko.md)다.** E36/933을 최신 출발 후보로 검토한다. E36 저장 슬롯이 이미 있다고 가정하지 않는다.
 
-아래는 **E27의 과거 928 경계를 읽을 수 있는지만 확인하는 CPU 예시**입니다. 다음 실행의 출발점 선택이나 물리 재실행이 아닙니다. E27 원본을 복원한 경우에만 실행합니다.
+1. 초기 자산과 E36 원본을 위3절로 복원·검증한다.
+2. 인계서의 CPU prefix 검사를 수행한다. 그 다음 필요한 checkpoint·사용자 HOLD·게시·피드백 기능을 구현하고 검증한다.
+3. 최초 한 번 E36 행동 prefix933개를 재실행하고 새로운5카메라 관측에서 펼침·파지·손목 관계를 확인한다.
+4. 적합한 상태를 고유 checkpoint로 저장하고 별도 검증 실행에서 복원·정착·다음 짧은 행동의 재현성을 확인한다. 이는 근사 복원이며 원래 E36의 정확한 solver 상태가 아니다.
+5. 검증된 checkpoint에서 M1을 시작한다. 출발이 부적합하면 화면을 게시하고 사용자에게 E34/835·E34/723 등 대안을 묻는다.
+6. 모델 stop/finish·관리 예산·득점 검토는 live HOLD한다.5카메라를 README 상단에 push하고 사용자 텍스트를 기다린다.
 
-```bash
-PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python - <<'PY_PREFIX'
-from pathlib import Path
-from participant.collection.continuation import load_replay_prefix
-prefix = load_replay_prefix(Path.cwd(), '20261107-astra-regrasp698-progress-named-001', 928)
-print(prefix.actions.shape, prefix.actions.dtype)
-PY_PREFIX
-```
+현재 collector에는 완성된 checkpoint·HOLD 실행 옵션이 없다. 실제 구현 후 검증한 새 명령과 commit을 인계서와 세션 기록에 남긴다. 기존 `--strategy`에 없는 M1 이름을 CLI에 넣거나 과거 E27/E28 재개 명령을 이번 시작 명령으로 복사하지 않는다.
 
-실제 분기는 새 환경에서 이전 행동을 다시 수행한 뒤 새 관측으로 시작합니다. **천의 정확한 physics checkpoint 복원이 아닙니다.** 직접 부모, 재실행 길이, 새 행동, 정착, 종료 정리를 각각 기록합니다. 같은 prefix와 source group의 반복 분기를 독립 시연·독립 검증 표본으로 세지 않습니다.
-
-E28의 옆면 접근·넓은 아래 입구·첫 손목 순서는 구현·CPU 검사를 마친 `coordinated-side-hem-wrists`로 새 reset에서 시험했고, pickup 5점·착의 0점으로 마감했습니다. [마감 결과와 다음 방향](collection/research/2026-11-13-e28-outcome-e29-direction.ko.md)과 [수집 계획](COLLECTION_PLAN.md)을 기준으로 후속 출발점을 검토합니다. 이후 새 전략도 구현·검사와 출발점·예산 검토를 거쳐 고유 run ID로 실행하며, 현재 `--strategy`에 없는 이름을 CLI에 넣지 않습니다.
+같은 live HOLD에서 계속할 때는 환경을 reset하지 않는다. 사용자가 다른 checkpoint를 선택하면 현재 분기를 보존하고 **새 run**으로 기록한다. 과거 점수·시간을 이월하거나 동일 source group을 독립 성공으로 세지 않는다.
 
 ## 7. 사람 조작과 브라우저
 
@@ -296,7 +291,7 @@ E28의 옆면 접근·넓은 아래 입구·첫 손목 순서는 구현·CPU 검
 
 | 증상 | 먼저 확인할 곳 |
 |---|---|
-| 자산 해시/파일 누락 | 초기 비공개 백업과 `config/assets.lock.json`. E27 archive만으로 초기 자산을 대체할 수 없음 |
+| 자산 해시/파일 누락 | 초기 비공개 백업과 `config/assets.lock.json`. E36/E34 archive만으로 초기 잠금 자산을 대체할 수 없음 |
 | Docker `invalid tar header` | [공식 설치 가이드의 Docker 29 설명](competition/SETUP.md#troubleshooting). 기존 daemon 설정을 통째로 덮어쓰지 않음 |
 | actor의 CLI/인증 오류 | 고정 PATH, `codex-cli 0.166.0`, private 권한의 본인 auth 파일, 모델 접근 권한 |
 | actor network 생성 실패 | Docker의 isolated gateway와 `--gw-priority` 지원. 격리 설정을 끄고 우회하지 않음 |
@@ -304,5 +299,3 @@ E28의 옆면 접근·넓은 아래 입구·첫 손목 순서는 구현·CPU 검
 | `active prepare/run` | `cache/runtime.lock`을 보유한 이전 실행의 정상 종료 여부. 실행 중 잠금 삭제 금지 |
 | 파일 complete=false / 중간 종료 | 실패 원본 보존. 완료 표시를 수정하지 말고 새 run ID로 재시도 |
 | 영상은 보이지만 점수 미확인 | 공식 evaluator의 별도 결과 확인. 단계 이름·그리퍼 닫힘·QC 통과를 착의 성공으로 해석하지 않음 |
-
-
