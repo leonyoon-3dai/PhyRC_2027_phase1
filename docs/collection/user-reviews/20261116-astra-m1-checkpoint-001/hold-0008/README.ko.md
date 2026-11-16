@@ -1,6 +1,8 @@
 # 사용자 검토:30mm 추가 접근과 작은 상승 후 손 정렬
 
-**20261116-astra-m1-checkpoint-001 / hold-0008 · live HOLD**
+**20261116-astra-m1-checkpoint-001 / hold-0008 · 촬영 당시 live HOLD, 이후 실제 사용자 답변으로 재개**
+
+사용자가 아주 조금 위로 올리면서50mm 더 이동하도록 지시했습니다. 같은 live 상태에서 재개했으며 최신 상태는 저장소 최상단을 확인하세요.
 
 같은 몸쪽 방향으로30mm 더 이동하면서 아주 조금 올려 달라는 지시를 실행했습니다. 새5 act·16전이(0.80초) 뒤 HOLD했고, 누적33호출·26 act·84전이입니다. 마지막 stop은 실행하지 않았습니다.
 
@@ -24,6 +26,6 @@ R1 wrist에서 손의 화면상 위치가 왼쪽 중앙 쪽으로 옮겨졌고 �
 
 [overview](overview.png) · [robot_1_head](robot_1_head.png) · [robot_0_head](robot_0_head.png) · [robot_1_wrist](robot_1_wrist.png) · [robot_0_wrist](robot_0_wrist.png) · [metadata](observation-metadata.json)
 
-열린 run으로 마감·QC·백업 전이며 사용자 답변 전 물리 진행0입니다.
+열린 run으로 마감·QC·백업 전이며 이 경계의 대기는 실제 사용자 답변으로 끝났습니다.
 
-**상승과 추가 접근 후 손이 원하는 위치에 맞았는지 확인해 주세요. 다음 지시 전에는 움직이지 않습니다.**
+이 경계에서 사용자는 아주 작은 상승을 더하며50mm 추가 접근하도록 답했습니다.
