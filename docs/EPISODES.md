@@ -1,6 +1,6 @@
 # 시연 목록
 
-**현재:** 새 `20261116-astra-m1-checkpoint-001`은 **hold-0008·84전이에서50mm 추가 접근·작은 상승을 실행 중**이다. 새 사용자 요청을 같은 live 상태에서 reset 없이 적용했으며 이번 검토 상한은12결정/새40전이다. 다음 HOLD의 GIF·5카메라와 실제 이동량을 게시한다. 열린 run으로 마감·QC·백업 전이다. [직전 GIF](gallery/20261116-m1-guided-segments/README.ko.md) · [직전 상승 결과](collection/reviews/20261116-m1-bodyward-30mm-slight-rise.ko.md)
+**현재:** 새 `20261116-astra-m1-checkpoint-001`은 **hold-0009·93전이에서 live HOLD**다.50mm 요청 중 실제 추가XY순변위 R0/R1 **17.08/16.86mm**, 상승 **2.06/2.04mm**를 수행한 뒤 손–그리퍼 가림으로 조기 검토했다. 약33mm 미실행이며50mm 완료가 아니다. 새3 act·9전이, 누적37호출·29 act·93전이이며 같은 상태에서 reset 없이 수행했다. 열린 run으로 마감·QC·백업 전이다. [현재 GIF·5카메라](collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0009/README.ko.md) · [측정·가림 분석](collection/reviews/20261116-m1-bodyward-50mm-slight-rise.ko.md)
 
 
 **[이번 세션 영상·실패 분석 모음](collection/reviews/20261114-session-review.ko.md)**에서 E28–E32 영상과 시도별 판단을 바로 검토할 수 있습니다.
