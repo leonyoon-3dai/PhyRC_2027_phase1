@@ -1,6 +1,8 @@
 # 현재 상태
 
-**현재 방향은 E36/933 출발 후보를 검증하고 M1 국소 교정으로 첫 소매 새5점에 도전하는 사용자 피드백 시연이다.** 2026-11-16 클린 서버 착수를 시작했다. 개발 대화의 `gpt-6-astra` 전환, HF CLI 2.4.0과 `leonayoon` 로그인, L40S GPU 접근을 확인했다. 초기 자산·E36 복원 및 원본 QC933/933, 격리 actor의 CLI0.166.0/Astra/ultra 실제 연결, 전체 CPU394개 검사, 실제 GPU smoke를 통과했다. E36/933 재생·checkpoint 저장/복원 및 실제 GPU HOLD 검사를 완료했다. 정착 뒤 위치·단기 명령 효과 차이를 확인하여 사용자가 현재 복원 상태에서 **몸 정면으로 후퇴→조금 하강→같은 손목으로 재접근**을 지시하여 `20261116-astra-m1-checkpoint-001`의 M1을 재개했다. reset 없이20결정/새400전이 구간을 진행하며 다음 판단 지점에서 다시 HOLD한다. [비교 근거](../collection/reviews/20261116-checkpoint-validation.ko.md)
+**현재 M1은 사용자 지시의 후퇴→하강→같은 손목 재접근을 실행한 뒤 hold-0002에서 live HOLD다.** `20261116-astra-m1-checkpoint-001`에서 reset 없이6호출·6결정 중5 act·16전이(0.80초)를 진행했다. 파지 기준점은 약16mm 낮아졌지만 손목 진입은 가림 때문에 미확인이다. 마지막 stop 제안은 dispatch하지 않았고 새 사용자 답변 전 추가 운동은 없다. [현재5카메라](../collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0002/README.ko.md) · [실제 효과 분석](../collection/reviews/20261116-m1-front-lower-wrist.ko.md)
+
+개발 대화의 `gpt-6-astra` 전환, HF CLI2.4.0과 `leonayoon` 로그인, L40S GPU, 초기 자산·E36 복원/QC933/933, 격리 CLI0.166.0/Astra/ultra 연결, CPU394개 검사와 GPU smoke/HOLD·checkpoint 비교를 확인했다. 사용자가 정착 차이를 검토하고 현재 복원 상태를 채택했다. [출발 비교](../collection/reviews/20261116-checkpoint-validation.ko.md)
 
 [현재 실행 계획](../COLLECTION_PLAN.md) · [기전·판단 기준](../MECHANISMS.ko.md) · [과거 결과 요약](../HISTORY_SUMMARY.ko.md) · [실행 인계서](../collection/research/2026-11-16-user-guided-resume.ko.md) · [환경 복원](../OPERATIONS.md)
 
@@ -8,6 +10,8 @@
 
 | 항목 | 확인한 상태 |
 |---|---|
+| 현재 열린 과제 시연 | `20261116-astra-m1-checkpoint-001`, hold-0002·16전이·물리0 대기. 마감·QC·백업 전 |
+| 현재 분기 평가 | raw0/50·first_sleeve0·success=false. checkpoint reset의 새 평가로 과거 pickup5를 이월하지 않음 |
 | 최신 정상 과제 시연 | E36 `20261114-astra-wrist-body835-001`, 정상 마감 |
 | 새 시연 출발 후보 | E36의933전이 경계. 재생·slot 저장/복원 확인. 정착 차이를 게시한 뒤 사용자가 현재 복원 상태를 채택하고 구체적 방향을 교정 |
 | 새 기능 | `e9cca07`에 checkpoint·물리0 HOLD·5카메라 export·텍스트 재개 구현. CPU394개 통과; GPU HOLD8개 검사 통과·slot 비교 완료. 원래934전이/복원1전이 전수 QC 통과 |

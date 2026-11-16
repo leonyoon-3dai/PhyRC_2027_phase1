@@ -2,7 +2,9 @@
 
 **2026-11-16 사용자 결정:** 자료 조사는 여기서 마무리한다. 가장 최근의 넓게 펼친 옷·손목 근접 상태를 출발점으로 삼고, 아래 세 방법 중 하나로 공식 첫 소매 통과 5점을 시도한다. 자동 종료 제안이나 예산 도달에서는 시연을 닫지 않고 물리를 HOLD한다. 공개 카메라 5장의 스크린샷을 README 상단에 push한 뒤 사용자에게 다음 행동을 묻고 텍스트 답변을 기다린다.
 
-**현재는 사용자 교정으로 M1을 실행 중이며 최신 정상 마감 과제 시연은 E36이다.** Astra·HF·복원·CPU394개·GPU smoke/HOLD 검사를 통과했다. E36/933의 새 slot은 저장/복원했지만 정착 후 위치와 짧은 행동 효과 차이가 있어 [사용자 검토](collection/reviews/20261116-checkpoint-validation.ko.md) 후 현재 상태의 실행을 선택했다. 이번 구간은 파지를 유지한 몸 정면 후퇴→약간 하강→같은 손목 재접근이며 단계마다 관측과 실제 효과를 확인한다. 실제 새 시연·득점·기능 검증 범위는 [STATUS](project/STATUS.md)에 기록한다. 과거 배치의 남은 횟수나 예산은 재사용하지 않는다.
+**현재 M1은 사용자 교정을 실행한 뒤 hold-0002에서 판단을 기다린다.** 후퇴→약간 하강→같은 손목 재접근을5 act·16전이로 시도했다. 파지점 약16mm 하강과 짧은 재접근을 확인했으나 손목 진입은 가림 때문에 미확인이다. [현재5카메라](collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0002/README.ko.md)와 [효과 분석](collection/reviews/20261116-m1-front-lower-wrist.ko.md)을 보고 사용자가 다음 방향을 정한다. 추가 접근·높이 또는 방향 교정은 미실행 후보이며 자동 선택하지 않는다.
+
+최신 정상 마감 과제 시연은 E36이다. Astra·HF·복원·CPU394개·GPU smoke/HOLD 검사와 E36/933 slot 비교를 마쳤고 사용자가 현재 복원 상태를 선택했다. 열린 M1은 마감·전수 QC·백업 전이다. 실제 새 시연·득점·기능 검증 범위는 [STATUS](project/STATUS.md)에 기록한다. 과거 배치의 남은 횟수나 예산은 재사용하지 않는다.
 
 [기전·판단 기준](MECHANISMS.ko.md) · [과거 결과 요약](HISTORY_SUMMARY.ko.md) · [메인](../README.md) · [클린 서버 실행 인계서](collection/research/2026-11-16-user-guided-resume.ko.md) · [환경 복원 명령](OPERATIONS.md) · [실제 상태](project/STATUS.md)
 

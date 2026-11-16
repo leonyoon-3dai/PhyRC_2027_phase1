@@ -1,19 +1,21 @@
 # PhyRC 2027
 
 <!-- PHYRC_USER_REVIEW:START -->
-> **M1 실행 중 · 사용자 교정 적용**
+> **현재 live HOLD · 후퇴 → 하강 → 재접근 후 사용자 판단 대기**
 >
-> 사용자가 현재 복원 상태를 선택하고 **몸 정면으로 물리기 → 조금 내리기 → 같은 손목으로 재접근**을 지시했습니다. 현재 파지를 유지하며 짧게 실행하고 실제 효과를 확인합니다. [복원 비교·수치·판단 근거](docs/collection/reviews/20261116-checkpoint-validation.ko.md)
+> 요청하신 세 단계의 조작을 실행했습니다. 파지 기준점은 약 **16mm 낮아졌고**, 마지막 짧은 재접근에서 반대 방향으로 약 **7mm** 움직였습니다. 물러난 전체 거리를 되돌아오지는 않았습니다. 수치는 로봇 파지점의 world 좌표 변화이며 천·손목 사이 거리와 다릅니다.
 >
-> **아래 화면은 재개 직전 hold-0001의 관측입니다.** 다음 판단 지점에서 새5카메라를 게시하고 다시 사용자 답변을 기다립니다.
+> **손목 진입은 아직 확인되지 않았습니다.** 천과 그리퍼 하우징이 손목–입구 관계를 가려 모델이 검토를 요청했습니다. 양쪽 닫기 의도를 유지한 채 물리 진행 없이 기다립니다. [실제 효과·기전 분석](docs/collection/reviews/20261116-m1-front-lower-wrist.ko.md)
 >
-> Run `20261116-astra-m1-checkpoint-001` · `hold-0001` · 관측 `d4b2a7f8c08b3fac` · 촬영 당시 기록 전이0·모델 호출0, 시뮬레이션 시각1.508333s. 실제 사용자 답변으로 reset 없이 같은 상태에서 재개했습니다.
+> Run `20261116-astra-m1-checkpoint-001` · **hold-0002** · 관측 `893fea342c192970` · 6호출·5 act·16전이(0.80초) · 기록 tick192 · 시뮬레이션 시각2.308333s. 마지막 stop 제안은 실행하지 않았습니다. 열린 run으로 마감·QC·백업 전입니다.
 
-<a href="docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0001/cameras.png"><img src="docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0001/cameras.png" width="512" alt="재개 직전 hold-0001의 같은 관측 공개5카메라. 왼쪽 robot_1, 오른쪽 robot_0; 위 head, 아래 wrist."></a>
+<a href="docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0002/cameras.png"><img src="docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0002/cameras.png" width="512" alt="후퇴·하강·재접근 뒤 hold-0002의 같은 관측 공개5카메라. 왼쪽 robot_1, 오른쪽 robot_0; 위 head, 아래 wrist."></a>
 
-**원본5장:** [overview](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0001/overview.png) · [R1 head](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0001/robot_1_head.png) · [R0 head](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0001/robot_0_head.png) · [R1 wrist](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0001/robot_1_wrist.png) · [R0 wrist](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0001/robot_0_wrist.png)
+**원본5장:** [overview](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0002/overview.png) · [R1 head](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0002/robot_1_head.png) · [R0 head](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0002/robot_0_head.png) · [R1 wrist](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0002/robot_1_wrist.png) · [R0 wrist](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0002/robot_0_wrist.png)
 
-[검토 페이지](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0001/README.ko.md) · [관측 metadata](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0001/observation-metadata.json) · [현재 전략](docs/COLLECTION_PLAN.md) · [기전 요약](docs/MECHANISMS.ko.md)
+**다음 판단:** 낮아진 위치에서 손목 쪽으로 조금 더 접근할까요, 먼저 높이·방향을 교정할까요? 자유 텍스트로 방법·출발점 변경이나 종료도 선택할 수 있습니다. 새 답변 전에는 움직이지 않습니다.
+
+[현재 검토 페이지](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0002/README.ko.md) · [관측 metadata](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0002/observation-metadata.json) · [조작 전 화면](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0001/README.ko.md) · [현재 전략](docs/COLLECTION_PLAN.md) · [기전 요약](docs/MECHANISMS.ko.md)
 <!-- PHYRC_USER_REVIEW:END -->
 
 [![E00–E36 통합 분석 보고서 PDF 열기](docs/assets/e36-integrated-report-button.svg)](docs/reports/20261114-e36-integrated-review/phyrc-e36-integrated-review.ko.pdf)
