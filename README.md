@@ -1,32 +1,15 @@
 # PhyRC 2027
 
 <!-- PHYRC_USER_REVIEW:START -->
-> **현재 live HOLD · 충분한 후퇴 후 오른손·옷 처짐 검토**
+> **M1 실행 중 · 아주 작은 추가 후퇴 → 소폭 하강**
 >
-> 사용자의 지시대로 현재 파지를 유지하며 추가 후퇴했습니다. 파지 기준점의 world Y 변화는 약 **−12.0cm / −11.4cm**, 높이 변화는 **−1.9mm / −2.6mm**였습니다(R0/R1). head 화면에서 손과 연결된 손목이 드러나고, 옷의 아래 노란 경계가 손 아래로 처진 모습이 보입니다. 천·손 사이의 완전한 비접촉이나 여유의 충분성은 화면만으로 확정하지 않습니다.
+> 사용자가 현재 거리와 처짐을 충분하다고 판단하고, 안전하게 아주 조금 더 멀어진 뒤 조금만 낮추도록 지시했습니다. 양쪽 파지를 유지하여 두 동작을 짧게 나누고 실제 이동을 확인합니다. 재접근은 하지 않습니다. 이번 검토 구간은 최대8결정/새20전이이며 작은 교정 후 바로 다시 HOLD합니다.
 >
-> 이번에는 **추가 하강·재접근·재파지 없이 후퇴만** 실행했습니다. 새5 act·23전이(1.15초), 누적12호출·10 act·39전이입니다. 마지막 stop은 실행하지 않았습니다. Run `20261116-astra-m1-checkpoint-001` · **hold-0003** · 관측 `71f456b8de829a69` · 기록 tick468 · 시뮬레이션3.458333s. 사용자 답변 전 물리 진행0으로 대기합니다.
+> Run `20261116-astra-m1-checkpoint-001` · **아래는 재개 직전 hold-0003까지의 GIF**입니다. 관측 `71f456b8de829a69` · 누적39전이에서 같은 live 상태로 재개했으며 reset하지 않았습니다.
 
-### 이번 추가 후퇴 · step16 → 39
+<a href="docs/gallery/20261116-m1-guided-segments/README.ko.md"><img src="docs/gallery/20261116-m1-guided-segments/right-hand-retreat.gif" width="536" alt="재개 직전 hold-0003까지의 추가 후퇴 GIF, 실제16–39전이,4배 느린 재생"></a>
 
-**실제 기록의 모든 프레임 · 4배 느린 재생 · 시작/끝 잠시 정지**. 왼쪽 R1·오른쪽 R0, 위 overview·각 로봇 head/wrist. 원본 카메라256×256, 중간 프레임 생성·좌우 반전 없음.
-
-<a href="docs/gallery/20261116-m1-guided-segments/right-hand-retreat.gif"><img src="docs/gallery/20261116-m1-guided-segments/right-hand-retreat.gif" width="536" alt="오른손을 드러내기 위한 추가 후퇴16–39전이, 실제5카메라의4배 느린 GIF"></a>
-
-[**구간별 GIF 전체 보기: 최초 후퇴 → 하강·중립 → 재접근 → 이번 추가 후퇴**](docs/gallery/20261116-m1-guided-segments/README.ko.md) · [이동량·가시성·처짐 분석](docs/collection/reviews/20261116-m1-right-hand-clearance.ko.md)
-
-<details>
-<summary>현재 같은 관측의 5카메라 정지 화면</summary>
-
-<a href="docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0003/cameras.png"><img src="docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0003/cameras.png" width="512" alt="hold-0003의 같은 관측 공개5카메라. 왼쪽 robot_1, 오른쪽 robot_0; 위 head, 아래 wrist."></a>
-
-</details>
-
-**원본5장:** [overview](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0003/overview.png) · [R1 head](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0003/robot_1_head.png) · [R0 head](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0003/robot_0_head.png) · [R1 wrist](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0003/robot_1_wrist.png) · [R0 wrist](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0003/robot_0_wrist.png)
-
-**다음 판단:** 오른손 주변의 거리와 옷의 처짐이 충분한가요? 현재 GIF를 보고 다음 높이·방향을 알려주세요. 새로운 지시 전에는 움직이지 않습니다.
-
-[현재 검토 페이지](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0003/README.ko.md) · [관측 metadata](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0003/observation-metadata.json) · [현재 전략](docs/COLLECTION_PLAN.md) · [기전 요약](docs/MECHANISMS.ko.md)
+[구간별 실제 GIF](docs/gallery/20261116-m1-guided-segments/README.ko.md) · [재개 직전5카메라](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0003/README.ko.md) · [현재 전략](docs/COLLECTION_PLAN.md)
 <!-- PHYRC_USER_REVIEW:END -->
 
 [![E00–E36 통합 분석 보고서 PDF 열기](docs/assets/e36-integrated-report-button.svg)](docs/reports/20261114-e36-integrated-review/phyrc-e36-integrated-review.ko.pdf)
