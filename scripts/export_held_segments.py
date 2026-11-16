@@ -23,7 +23,8 @@ TITLES = {'retreat': 'Retreat', 'lower-and-neutral': 'Lower, then neutral',
           'neutral-residual-motion': 'Neutral step / residual motion',
           'tiny-lowering': 'Tiny lowering',
           'neutral-and-tiny-lowering': 'Neutral step, then tiny lowering',
-          'tiny-bodyward-approach': 'Tiny bodyward approach / lift command 0'}
+          'tiny-bodyward-approach': 'Tiny bodyward approach / lift command 0',
+          'bodyward-15mm': 'Bodyward approach / requested target: 15 mm'}
 
 
 def sha(path):
