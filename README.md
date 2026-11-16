@@ -4,7 +4,7 @@
 >
 > 지금은 분석하면서 근거와 미결 사항을 계속 기록하는 단계입니다. **checkpoint로 유용한 중간 상태를 복원하는 방법**과 **명령 실행 후 실제 변화를 확인하고 다음 행동을 바꾸는 방법**을 우선 검토합니다. 기존 시연 재개·구현·학습 계획은 보류하며, 분석 정리가 끝난 뒤 사용자가 클린 서버에서 반영합니다. 현재 최신 실제 시연은 종료된 E36입니다.
 >
-> **[현재 연구 방향과 누적 분석 기록](docs/collection/research/2026-11-16-checkpoint-effect-feedback.ko.md)** · [보류 상태와 현재 계획](docs/COLLECTION_PLAN.md) · [나중에 적용할 클린 서버 안내](docs/OPERATIONS.md)
+> **[최신 착의 연구·데모·평가 코드 조사](docs/collection/research/2026-11-16-recent-dressing-resources.ko.md)** · **[현재 연구 방향과 누적 분석 기록](docs/collection/research/2026-11-16-checkpoint-effect-feedback.ko.md)** · [보류 상태와 현재 계획](docs/COLLECTION_PLAN.md) · [나중에 적용할 클린 서버 안내](docs/OPERATIONS.md)
 
 [![E00–E36 통합 분석 보고서 PDF 열기](docs/assets/e36-integrated-report-button.svg)](docs/reports/20261114-e36-integrated-review/phyrc-e36-integrated-review.ko.pdf)
 
