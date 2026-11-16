@@ -64,6 +64,8 @@ PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.codex_clie
 
 ## 4. HOLD 게시와 사용자 응답
 
+사용자 검토에는 **구간별 움직임 GIF와 최종5카메라를 함께 게시**한다. 실제 기록의 모든 경계를 사용하고 원래 시간·배속·끝점 정지를 표시한다. 열린 원본을 닫거나 live 파일을 직접 분석하지 않고, HOLD 경계와 원본 해시가 복사 전후 같은 고정 사본을 확보한 뒤 `scripts/export_held_segments.py`로 export한다. [현재 GIF와 사본·프레임 검증](../gallery/20261116-m1-guided-segments/README.ko.md). 게시 receipt의 자동 gate는 아래5카메라를 검증하며, GIF의 원격 SHA 확인도 운영자가 별도로 수행한다.
+
 HOLD가 출력되면 다음 두 디렉터리를 확인한다.
 
 - 공개: `docs/collection/user-reviews/RUN_ID/hold-NNNN/` — 같은 경계의 RGB5장, 패널, metadata, 설명.

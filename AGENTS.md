@@ -1,6 +1,6 @@
 # Codex 작업 지침
 
-**현재 실행:** `20261116-astra-m1-checkpoint-001`에서 hold-0002의 실제 사용자 답변을 적용해 재개했다. 이번 지시는 **오른손 전체가 보일 때까지 몸에서 충분히 후퇴한 뒤 옷이 늘어져 있는지 확인하고 사용자 판단을 요청**하는 것이다. 양쪽 파지를 유지하며 추가 하강·재접근은 하지 않는다. 같은 live 상태, reset0, 새20결정/400전이 검토 구간이다. 다음 HOLD에서는 같은 관측5장과 구간별 실제 움직임 GIF를 게시한다. 열린 run은 미마감·미QC·미백업이다.
+**현재 실행:** `20261116-astra-m1-checkpoint-001`은 **hold-0003·누적39전이에서 live HOLD**다. 사용자 지시의 충분한 추가 후퇴를5 act·23전이로 실행했다. 파지점 world Y −120.05/−113.67mm, Z −1.91/−2.63mm(R0/R1). head 화면에서 손·연결 손목의 노출과 아래 경계의 처짐이 개선됐으나 완전한 비접촉·여유의 충분성은 미확인이다. [구간별 GIF](docs/gallery/20261116-m1-guided-segments/README.ko.md)와 [현재5카메라](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0003/README.ko.md), [분석](docs/collection/reviews/20261116-m1-right-hand-clearance.ko.md)을 게시하고 실제 다음 사용자 지시를 기다린다. 추가 하강·재접근·정착·종료를 자동 실행하지 않는다. 열린 run은 미마감·미QC·미백업이다.
 
 
 **현재 사용자 지시(2026-11-16): 최신 전략으로 시연을 시작하고, 판단 지점에서5카메라를 저장소에 게시해 사용자 텍스트를 기다린다.** 개발 대화의 Astra 전환과 HF 로그인 확인 후 클린 서버 복원·필수 기능 구현/검증에 착수했다. E36/933을 우선 검증하고 M1 현재 파지 유지·국소 교정으로 첫 소매 새5점을 시도한다. [현재 계획](docs/COLLECTION_PLAN.md)과 [실행 인계서](docs/collection/research/2026-11-16-user-guided-resume.ko.md)가 정본이다. 실제 실행·검증 상태는 [STATUS](docs/project/STATUS.md)에서 확인한다.
@@ -20,7 +20,7 @@
 
 ## 현재 범위
 
-- **최신 정상 마감 과제 시연은 E36이며 새 M1은16전이 경계에서 사용자가 지시한 추가 후퇴를 실행 중이다.** checkpoint/HOLD 구현·CPU394개·GPU smoke/HOLD·원본 복원/QC를 완료했다. 사용자 교정은 같은 live 상태에 적용했고 reset하지 않았다. 닫힌 E36 원본을 덮어쓰지 않으며 구현 준비·CPU 검사·실제 연결·과제 실행을 구분한다.
+- **최신 정상 마감 과제 시연은 E36이며 새 M1은 추가 후퇴 뒤 hold-0003·39전이에서 사용자 판단을 기다린다.** checkpoint/HOLD 구현·CPU394개·GPU smoke/HOLD·원본 복원/QC를 완료했다. 사용자 교정은 같은 live 상태에 적용했고 reset하지 않았다. 닫힌 E36 원본을 덮어쓰지 않으며 구현 준비·CPU 검사·실제 연결·과제 실행을 구분한다.
 - **실제 실행·점수·백업은 [STATUS](docs/project/STATUS.md), 현재 방향은 [COLLECTION_PLAN](docs/COLLECTION_PLAN.md), 복원·구현 계약은 [실행 인계서](docs/collection/research/2026-11-16-user-guided-resume.ko.md)가 정본이다.** 이전 문서의 HOLD·재개·날짜별 TODO보다 최신 사용자 결정을 우선한다. 연구 문서 전체를 actor에 전달하지 않는다.
 - 사람 조작용 state slot과 `initial_slot` 근사 복원 경로는 이미 존재한다. 원래 E36의 완전한 FEM checkpoint는 없다. 이번 새 E36/933 재생 경계의 근사 slot 저장·복원은 검증했고, 정착과 짧은 명령 효과 차이를 게시했다. 이를 정확한 동일 상태 복원으로 설명하지 않는다. 현재 collector의 행동 재생과 구분하고, 복원 시 초기화되는 상태·정착·평가 재시작을 검토한다. 기존 관측→행동→관측 루프가 전혀 없었다거나 E36까지 모든 명령이 오작동했다고 일반화하지 않는다.
 - E36의 추가 재파지0·20결정·review10은 해당 시도의 조건이다. 향후 모든 방법의 고정 규칙으로 일반화하지 않는다. 각 실험에서 제어원, 입력, 재파지·복구 조건, 예산과 종료/검토 방식을 명시하고 공식 물리·관측·행동·평가 계약은 유지한다.
@@ -57,6 +57,7 @@
 
 - 로봇별 비교 화면은 **왼쪽 robot_1, 오른쪽 robot_0**. 4분할은 위 head, 아래 wrist다. 이름과 이미지를 함께 옮기며 픽셀을 좌우 반전하지 않는다. 원본 카메라 배열과 action 행은 바꾸지 않는다. [배치 기준](docs/gallery/ROBOT_LAYOUT.ko.md)
 - README 최상단의 `PHYRC_USER_REVIEW:START/END`에는 현재 서버/시연 상태와 최신 사용자 검토를 둔다. HOLD마다 같은 관측의 overview+양쪽 head/wrist5장·원본 링크·관측 ID·사유·질문을 push한다. 과거 이미지를 live로 표시하지 않는다. 기존 통합 PDF 버튼·공식 데모·E36 GIF는 보존하며 새 마감에도 gallery·provenance를 연결한다.
+- **사용자 요청에 따라 판단 자료에는 구간별 실제 움직임 GIF도 포함한다.** 마지막 정지 화면만으로 다음 판단을 요구하지 않는다. 실제 기록 프레임과 원래 시간·재생 배속·끝점 정지를 명시한다. 열린 원본을 닫지 않고 HOLD에서 해시·경계를 확인한 고정 사본으로 export하며, 프레임 보간이나 생성으로 빈 구간을 채우지 않는다. [현재 GIF와 출처](docs/gallery/20261116-m1-guided-segments/README.ko.md), `scripts/export_held_segments.py`를 참고한다.
 - 실제 관측, 가설, 미실행 계획을 구분한다. 모델이 붙인 stage, 파일 complete, QC 통과, 기본 reward 0은 착의 성공이 아니다. 영상 일부를 독립 시연으로 세지 않는다.
 - 과거 세션·실패·provenance·catalog·주최 측 README·LICENSE·NOTICE·THIRD_PARTY는 보존한다. 중복 설명의 이전 본문은 보관함의 고정 Git revision에서 확인한다.
 - 새 결과 마감 시 STATUS, EPISODES, catalog, 재현용 run 기록, 백업 receipt를 갱신한다. 현재 계획은 COLLECTION_PLAN 한 곳에 두고, 기전·가설·판별 근거는 MECHANISMS에, 과거 핵심 교훈은 HISTORY_SUMMARY에 요약한다. 실행 시각·hash는 상세 provenance에 보존하되 활성 문서에 시간순 로그를 복제하지 않는다.

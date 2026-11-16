@@ -1,6 +1,6 @@
 # 현재 상태
 
-**현재 M1은 hold-0002에서 실제 사용자 답변을 받아 추가 후퇴를 실행 중이다.** `20261116-astra-m1-checkpoint-001`의16전이 경계에서 reset 없이 재개했다. 오른손 전체가 보일 때까지 몸에서 충분히 물러난 뒤 옷의 처짐을 확인하고 새 HOLD에서 질문한다. 이전 구간과 이번 구간의 GIF를 게시한다. [재개 직전5카메라](../collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0002/README.ko.md) · [이전 실제 효과 분석](../collection/reviews/20261116-m1-front-lower-wrist.ko.md)
+**현재 M1은 충분한 추가 후퇴 뒤 hold-0003에서 live HOLD다.** `20261116-astra-m1-checkpoint-001`에서 새5 act·23전이(1.15초), 누적12호출·12결정·10 act·39전이를 기록했다. 파지점은 world Y 방향으로 약12.0/11.4cm 더 이동했고 높이 변화는 약1.9/2.6mm였다. head 화면의 손·연결 손목 노출과 옷의 처짐이 개선됐다. 여유가 충분한지와 다음 높이·방향은 [구간별 GIF](../gallery/20261116-m1-guided-segments/README.ko.md)와 [현재5카메라](../collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0003/README.ko.md)로 사용자 판단을 기다린다. [실제 효과 분석](../collection/reviews/20261116-m1-right-hand-clearance.ko.md). 추가 하강·재접근은 실행하지 않았다.
 
 개발 대화의 `gpt-6-astra` 전환, HF CLI2.4.0과 `leonayoon` 로그인, L40S GPU, 초기 자산·E36 복원/QC933/933, 격리 CLI0.166.0/Astra/ultra 연결, CPU394개 검사와 GPU smoke/HOLD·checkpoint 비교를 확인했다. 사용자가 정착 차이를 검토하고 현재 복원 상태를 채택했다. [출발 비교](../collection/reviews/20261116-checkpoint-validation.ko.md)
 
@@ -10,7 +10,7 @@
 
 | 항목 | 확인한 상태 |
 |---|---|
-| 현재 열린 과제 시연 | `20261116-astra-m1-checkpoint-001`, hold-0002·16전이에서 사용자 지시의 추가 후퇴 재개. 마감·QC·백업 전 |
+| 현재 열린 과제 시연 | `20261116-astra-m1-checkpoint-001`, hold-0003·39전이·물리0 대기. 마감·QC·백업 전 |
 | 현재 분기 평가 | raw0/50·first_sleeve0·success=false. checkpoint reset의 새 평가로 과거 pickup5를 이월하지 않음 |
 | 최신 정상 과제 시연 | E36 `20261114-astra-wrist-body835-001`, 정상 마감 |
 | 새 시연 출발 후보 | E36의933전이 경계. 재생·slot 저장/복원 확인. 정착 차이를 게시한 뒤 사용자가 현재 복원 상태를 채택하고 구체적 방향을 교정 |
