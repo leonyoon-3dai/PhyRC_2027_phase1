@@ -1,15 +1,34 @@
 # PhyRC 2027
 
 <!-- PHYRC_USER_REVIEW:START -->
-> **M1 실행 중 · 아주 작은 추가 후퇴 → 소폭 하강**
+> **현재 live HOLD · 아주 작은 추가 후퇴·하강 후 확인**
 >
-> 사용자가 현재 거리와 처짐을 충분하다고 판단하고, 안전하게 아주 조금 더 멀어진 뒤 조금만 낮추도록 지시했습니다. 양쪽 파지를 유지하여 두 동작을 짧게 나누고 실제 이동을 확인합니다. 재접근은 하지 않습니다. 이번 검토 구간은 최대8결정/새20전이이며 작은 교정 후 바로 다시 HOLD합니다.
+> 요청하신 작은 교정을 실행했습니다. 파지 기준점의 추가 world Y 변화는 **−4.59 / −3.69mm**, 높이 변화는 **−0.73 / −0.82mm**입니다(R0/R1). 첫 중립1전이에서 남은 운동으로 후퇴했고, 이어 lift만 작게 내려2전이를 실행했습니다. 새 후퇴 목표나 재접근·재파지는 명령하지 않았습니다.
 >
-> Run `20261116-astra-m1-checkpoint-001` · **아래는 재개 직전 hold-0003까지의 GIF**입니다. 관측 `71f456b8de829a69` · 누적39전이에서 같은 live 상태로 재개했으며 reset하지 않았습니다.
+> 손·연결 손목이 보이는 배치와 아래 경계의 처짐은 대체로 유지됐습니다.1mm 미만 하강은 공개 로봇 상태에서 확인했으며 RGB만으로 효과를 확정하기 어렵습니다. 현재 그대로 유지하며 사용자 판단을 기다립니다.
+>
+> Run `20261116-astra-m1-checkpoint-001` · **hold-0004** · 관측 `289261ccf16f0a93` · 이번2 act·3전이(0.15초), 누적15호출·12 act·42전이. 기록 tick504 · 시뮬레이션3.608334s. 마지막 stop은 실행하지 않았고 대기 중 물리 진행0입니다.
 
-<a href="docs/gallery/20261116-m1-guided-segments/README.ko.md"><img src="docs/gallery/20261116-m1-guided-segments/right-hand-retreat.gif" width="536" alt="재개 직전 hold-0003까지의 추가 후퇴 GIF, 실제16–39전이,4배 느린 재생"></a>
+### 이번 작은 교정 · step39 → 42
 
-[구간별 실제 GIF](docs/gallery/20261116-m1-guided-segments/README.ko.md) · [재개 직전5카메라](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0003/README.ko.md) · [현재 전략](docs/COLLECTION_PLAN.md)
+**실제20Hz 기록의4개 경계 · 중간 프레임4배 느리게 재생 · 시작/끝 정지**. 이동이 작으므로 GIF와 수치를 함께 확인하세요. 카메라는 원본256×256이며 프레임 생성·좌우 반전 없음.
+
+<a href="docs/gallery/20261116-m1-guided-segments/neutral-and-tiny-lowering.gif"><img src="docs/gallery/20261116-m1-guided-segments/neutral-and-tiny-lowering.gif" width="536" alt="중립에서 소폭 추가 후퇴 후 아주 작은 하강,39–42전이 실제5카메라 GIF"></a>
+
+[**동작별 GIF: 중립에서 추가 후퇴 → 소폭 하강, 이전 구간 전체**](docs/gallery/20261116-m1-guided-segments/README.ko.md) · [이동량·현재 관측 분석](docs/collection/reviews/20261116-m1-small-clearance-lower.ko.md)
+
+<details>
+<summary>현재 같은 관측의 5카메라 정지 화면</summary>
+
+<a href="docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0004/cameras.png"><img src="docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0004/cameras.png" width="512" alt="hold-0004의 동일 관측 공개5카메라. 왼쪽 R1·오른쪽 R0, 위 head·아래 wrist"></a>
+
+</details>
+
+**원본5장:** [overview](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0004/overview.png) · [R1 head](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0004/robot_1_head.png) · [R0 head](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0004/robot_0_head.png) · [R1 wrist](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0004/robot_1_wrist.png) · [R0 wrist](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0004/robot_0_wrist.png)
+
+**다음 판단:** 현재 높이·여유를 확인해 주세요. 여기서 어느 방향으로 진행할까요? 답변 전에는 움직이지 않습니다.
+
+[현재 검토 페이지](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0004/README.ko.md) · [관측 metadata](docs/collection/user-reviews/20261116-astra-m1-checkpoint-001/hold-0004/observation-metadata.json) · [현재 전략](docs/COLLECTION_PLAN.md) · [기전 요약](docs/MECHANISMS.ko.md)
 <!-- PHYRC_USER_REVIEW:END -->
 
 [![E00–E36 통합 분석 보고서 PDF 열기](docs/assets/e36-integrated-report-button.svg)](docs/reports/20261114-e36-integrated-review/phyrc-e36-integrated-review.ko.pdf)

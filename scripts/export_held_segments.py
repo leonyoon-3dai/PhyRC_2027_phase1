@@ -19,7 +19,10 @@ from PIL import Image, ImageDraw, ImageFont
 CAMERAS = ['overview', 'robot_1_head', 'robot_0_head', 'robot_1_wrist', 'robot_0_wrist']
 TITLES = {'retreat': 'Retreat', 'lower-and-neutral': 'Lower, then neutral',
           'reapproach': 'Reapproach', 'full': 'All recorded movement',
-          'right-hand-retreat': 'Retreat to inspect right hand and garment slack'}
+          'right-hand-retreat': 'Retreat to inspect right hand and garment slack',
+          'neutral-residual-motion': 'Neutral step / residual motion',
+          'tiny-lowering': 'Tiny lowering',
+          'neutral-and-tiny-lowering': 'Neutral step, then tiny lowering'}
 
 
 def sha(path):
