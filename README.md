@@ -8,6 +8,8 @@
 
 **[논문에서 가져올 판단 기준과 다음 시연 예시](docs/collection/research/2026-11-18-dexgarmentlab-phyrc.ko.md)** · [현재 실행 계획](docs/COLLECTION_PLAN.md) · [클린 서버 복원](docs/OPERATIONS.md)
 
+**[실행 효과 피드백 비교](docs/COLLECTION_PLAN.md#resume-effect-feedback)** · 짧게 움직인 뒤 실제 두 그리퍼 변위와 손·천 관계를 다음 Astra 결정에 전달하는 방식을 기존 Astra+HOLD와 비교합니다. 다음 서버에서 검토할 실험 제안입니다.
+
 <!-- PHYRC_USER_REVIEW:START -->
 > **이번 시연 종료 · 각 움직임 기록과 다음 전략 정리**
 >
