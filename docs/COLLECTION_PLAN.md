@@ -180,6 +180,23 @@ flowchart TD
 4. 각 구간의 명령·실제 양쪽 로봇 이동·천의 변화·불확실성을 기록하고, 판단 지점에 GIF와 같은 경계의5카메라를 게시한다. 관리 예산·모델 종료 제안에서는 물리0 HOLD를 유지한다.
 5. 종료 지시 후 정상 마감·전수 QC·비공개 고정 백업 재검증과 STATUS·EPISODES·catalog·이동 장부를 갱신한다. 새 학습이나 자동 반복 실험은 포함하지 않는다.
 
+<a id="resume-effect-feedback"></a>
+
+### 재개 참고 · 짧은 조작 후 실행 효과를 다음 결정에 전달
+
+**2026-11-18 비교 제안 · 미구현·미실행.** 기존 HOLD 검토에서는 사용자가 실제 효과를 확인한다. 이번 제안은 평상시에도 짧은 조작 전후의 변화를 요약해 **바로 다음 Astra 결정**에 전달하는 것이다. M1에서는 두 그리퍼가 평면상 각각 약 31–32mm 움직였고, 손이 천 경계를 넘었는지는 확인되지 않았다. 실제 운동과 손·천 관계를 따로 읽는 이유다. [M1 이동 기록](collection/reviews/20261116-m1-bodyward-33mm-completion.ko.md)
+
+| 단계 | 다음 서버에서 확인할 내용 |
+|---|---|
+| 출발 확인 | **B/HOLD1·110전이** 슬롯의 복원 직후와 정착 후를 저장 당시 5뷰와 대조한다. 파지·천 형상·손 위치에 설명할 수 없는 차이가 있으면 HOLD에서 검토하고 비교 시작 조건을 다시 정한다. |
+| 짧은 조작과 효과 확인 | 공동 왼손 쪽 접근 중 요청 명령, 두 그리퍼의 실제 변위, 같은 손과 천의 자유 경계·지지 관계를 전후 공개 관측으로 확인한다. 조작 직후와 정착 후 차이를 구분하고, 가려진 관계는 `unknown`으로 남긴다. |
+| 다음 행동 선택 | 요약을 보고 짧게 계속할지, 접근 방향을 바꿀지, HOLD에서 사용자에게 물을지 정한다. 현재 파지에서 정렬과 짧은 하강을 확인한 뒤에도 열린 구간이 부족하면, 별도 복원 분기에서 사용자 동의를 받아 한쪽 지지를 유지하며 파지 위치 한 가지를 바꿔 비교한다. |
+| 비교와 판정 | 같은 복원 조건·왼손 접근 계획·조작 예산에서 **기존 Astra+HOLD**와 **다음 결정에 효과 요약을 제공하는 Astra+HOLD**를 비교한다. 반복 정체, 지지 손실, 후속 프레임의 걸침 유지 여부를 기록한다. 착의 효과는 별도 공식 평가의 `first_sleeve` 새 5점과 재현 여부로 판단한다. |
+
+효과 요약에는 지정 5개 RGB-D 카메라와 공개 로봇 상태에서 확인한 근거를 쓴다. 공식 점수는 감독 영역에서 기록한다. 복원·정착에 사용한 전이는 새 조작과 구분한다. 재실행에서 효과가 확인된 교정부터 재사용 후보로 남기고, VLA·RL은 재현 가능한 통과나 복구 시연이 쌓인 뒤에 검토한다.
+
+참고 [워크숍 적용 검토](collection/research/2026-11-14-agentic-robotics-workshop.ko.md#methods) · [RoboMME 실행 후 확인](https://arxiv.org/abs/2611.06184) · [SimEX 시뮬레이션 실험](https://arxiv.org/abs/2609.38982) · [ASPIRE 교정 후 재검증](https://research.nvidia.com/labs/gear/aspire/)
+
 ## 7. 근거와 이전 계획
 
 [E36 실제 리뷰](collection/reviews/20261114-astra-wrist-body835-001.ko.md) · [Astra 실행 설명](ASTRA.md) · [checkpoint·효과 분석](collection/research/2026-11-16-checkpoint-effect-feedback.ko.md) · [최신 착의 연구 조사](collection/research/2026-11-16-recent-dressing-resources.ko.md) · [이전 분석 단계 계획 고정본](https://github.com/leonyoon-3dai/PhyRC_2027_phase1/blob/e63b3f6d0ed069eef004bd09b04ba99d130192b6/docs/COLLECTION_PLAN.md)
