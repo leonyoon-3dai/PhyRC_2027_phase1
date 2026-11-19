@@ -148,7 +148,7 @@ In `--training-record 1`, `1` turns training recording on and `0` turns it off.
 | done | Marks the end of an episode. Not a success flag |
 | raw_points | Cumulative total including pickup, max 50 |
 | rate_points | The points/s numerator excluding pickup, max 45 |
-| points/s | Points excluding pickup, divided by the time from first contact to the last dressing award |
+| points/s | Points excluding pickup, divided by the time from first contact to the last dressing award; the tie-breaker between equal total points |
 | success | Whether the evaluator's dressing success condition was reached |
 
 **ESC ends teleop; READY means the files are finished.** After ESC, keep the terminal open until READY.

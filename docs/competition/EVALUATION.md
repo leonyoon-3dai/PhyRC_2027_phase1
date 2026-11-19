@@ -59,6 +59,12 @@ Points, once earned, are kept even if the state changes later.
 **Dressing success** means both hands are out of different sleeves, the head/neck is out, and the front/back orientation is correct, all confirmed together for 0.5 s.
 50 points and a successful demonstration are not the same thing, so check `success` in the results separately.
 
+## Ranking
+
+Teams are ranked by **total points first** (`raw_points`, out of 50, pickup included; the mean over the evaluation layouts).
+**Points/s is the tie-breaker**: between submissions with the same points, the higher points/s ranks higher.
+Completing more of the dressing therefore always ranks higher than finishing a smaller part faster.
+
 ## points/s and failures
 
 ```text
