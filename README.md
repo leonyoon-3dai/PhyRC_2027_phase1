@@ -241,6 +241,8 @@ points/s = (total points − pickup points actually earned)
 Time is measured in simulation ticks. The numerator excludes pickup, so its maximum is 45, and waiting after your last award does not grow the denominator.
 Contact is detected using the collision meshes of the shirt and manikin. Attempts with no contact, or with a zero denominator, count as 0 when averaging over episodes.
 
+**Shirt–manikin friction is 0.35** from leaderboard checkpoint 2 (Dec 1) onward, set by default in the simulator (it was 0 at checkpoint 1); pull the latest code to train and test with it. Details in the [evaluation guide](docs/competition/EVALUATION.md#physics-shirtmanikin-friction).
+
 **Ranking: points first, then speed.** Teams are ranked by total points (out of 50, pickup included, averaged over the evaluation layouts). Points/s only breaks ties: between teams with the same points, the one that earned them faster ranks higher.
 The [evaluation guide](docs/competition/EVALUATION.md) covers failure handling, success criteria, result fields, and replay scoring.
 

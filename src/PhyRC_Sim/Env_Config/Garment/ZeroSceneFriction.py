@@ -49,7 +49,8 @@ def zero_scene_friction(stage):
     print(f'[Zero friction] {count} rigid colliders plus deformable materials: static=dynamic=0', flush=True)
 
     from .HumanClothFriction import configure_human_cloth_friction
-    configure_human_cloth_friction(stage, os.environ.get('STRETCH4_HUMAN_CONTACT_FRICTION', '0'))
+    # Shirt/manikin friction: 0.35 from leaderboard checkpoint 2 (Dec 1, 2026) onward (was 0, frictionless).
+    configure_human_cloth_friction(stage, os.environ.get('STRETCH4_HUMAN_CONTACT_FRICTION', '0.35'))
 
     from .GripperClothFriction import configure_gripper_cloth_friction
     configure_gripper_cloth_friction(stage, os.environ.get('STRETCH4_GRIPPER_CONTACT_FRICTION', '0.5'))
