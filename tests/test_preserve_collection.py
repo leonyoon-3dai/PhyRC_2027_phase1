@@ -250,6 +250,43 @@ class PreserveCollectionTest(unittest.TestCase):
             if path.is_file():
                 self.assertNotIn(b'PRIVATE_', path.read_bytes())
 
+    def test_web_segment_evidence_selects_acknowledged_actions_only(self):
+        self.modify(self.trace / 'attempt.json', segment_review={'source_hz': 20},
+                    user_guided={'enabled': True, 'hold_count': 2, 'current_hold': 'hold-0002',
+                                 'observation_id': 'b' * 64})
+        base = self.trace / 'segment-evidence'
+        for number, end in ((1, 0), (2, 2)):
+            hold = f'hold-{number:04d}'
+            folder = base / hold
+            folder.mkdir(parents=True)
+            self.write(folder / 'actions.json', {'hold': hold, 'observation_id': 'ab'[number - 1] * 64,
+                       'start_step': 0, 'end_step': end, 'actions': [] if not end else [{'start': 0, 'end': 2}]})
+            (folder / 'segment.mp4').write_bytes(b'large transient clip')
+        unpublished = base / 'hold-0003'
+        unpublished.mkdir()
+        (unpublished / 'actions.json').write_text('unpublished')
+        receipt = preservation.preserve(self.root, self.run, 'segments')
+        inventory = artifacts.verify(self.root / receipt['stage_relative_path'])
+        self.assertEqual({name for name in inventory if '/segment-evidence/' in name},
+                         {(base / hold / 'actions.json').relative_to(self.root).as_posix()
+                          for hold in ('hold-0001', 'hold-0002')})
+        final = base / 'hold-0002/actions.json'
+        self.modify(final, start_step=1)
+        with self.assertRaisesRegex(ValueError, 'range'):
+            preservation.preserve(self.root, self.run, 'bad-range')
+        self.modify(final, start_step=0, actions=[])
+        with self.assertRaisesRegex(ValueError, 'incomplete segment action range'):
+            preservation.preserve(self.root, self.run, 'missing-actions')
+        self.modify(final, actions=[{'start': 0, 'end': 2}], observation_id='e' * 64)
+        with self.assertRaisesRegex(ValueError, 'final acknowledged hold'):
+            preservation.preserve(self.root, self.run, 'bad-observation')
+        final.unlink()
+        with self.assertRaisesRegex(ValueError, 'missing/non-regular'):
+            preservation.preserve(self.root, self.run, 'missing-segment')
+        final.symlink_to(base / 'hold-0001/actions.json')
+        with self.assertRaisesRegex(ValueError, 'symlink rejected'):
+            preservation.preserve(self.root, self.run, 'linked-segment')
+
     def test_guided_checkpoint_hash_and_unreviewed_files_rejected(self):
         hold = self.guided_fixture()
         slot, _ = self.checkpoint_fixture(self.collection / 'checkpoints/start', self.run)

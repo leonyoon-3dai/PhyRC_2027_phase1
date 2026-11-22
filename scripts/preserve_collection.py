@@ -29,6 +29,9 @@ OBS_REQUIRED = {'observation.json', 'public_depth.npz', 'overview.png', 'robot_0
                 'robot_1_wrist.png', 'robot_0_head.png', 'robot_1_head.png'}
 OBS_OPTIONAL = {'current_wrist_depth.json', 'current_wrist_depth.png'}
 SOURCE_FIXED = {'run.sh', 'scripts/collect_operator.py', 'participant/streaming/collector_stream.py',
+                'tools/segment_review.py', 'tools/segment_review.html', 'config/execution_lock.json',
+                'src/PhyRC_Sim/Env_Config/Garment/ZeroSceneFriction.py',
+                'src/PhyRC_Sim/Env_Config/Garment/RandomSpawn.py', 'src/PhyRC_Sim/Policy/state.py',
                 'config/policy_interface.json', 'config/assets.lock.json',
                 'participant/research/depth_backprojection.py',
                 'src/PhyRC_Sim/Policy/training_dataset.py', 'src/PhyRC_Sim/Policy/environment.py',
@@ -205,6 +208,42 @@ def guided_review_files(directory, root, run_id):
     return selected
 
 
+def segment_action_files(trace, root, attempt):
+    """Select evidence for acknowledged web holds; leave frames, clips and the journal separate."""
+    guided = attempt['user_guided']
+    count = guided.get('hold_count')
+    require(type(count) is int and count >= 0, 'invalid segment hold count')
+    selected = []
+    previous_end = 0
+    for index in range(1, count + 1):
+        hold = f'hold-{index:04d}'
+        path = trace / 'segment-evidence' / hold / 'actions.json'
+        safe_source(path, root)
+        audit = read_json(path)
+        require(isinstance(audit, dict) and audit.get('hold') == hold
+                and isinstance(audit.get('observation_id'), str)
+                and re.fullmatch(r'[0-9a-f]{64}', audit['observation_id']),
+                'invalid segment evidence identity')
+        start, end = audit.get('start_step'), audit.get('end_step')
+        require(type(start) is int and type(end) is int and start == previous_end
+                and start <= end <= attempt['simulation_steps']
+                and isinstance(audit.get('actions'), list), 'invalid segment evidence range')
+        cursor = start
+        for action in audit['actions']:
+            require(isinstance(action, dict) and type(action.get('start')) is int
+                    and type(action.get('end')) is int and action['start'] == cursor
+                    and cursor < action['end'] <= end, 'invalid segment action range')
+            cursor = action['end']
+        require(cursor == end, 'incomplete segment action range')
+        if index == count:
+            require(hold == guided.get('current_hold')
+                    and audit['observation_id'] == guided.get('observation_id'),
+                    'segment evidence differs from final acknowledged hold')
+        selected.append(path)
+        previous_end = end
+    return selected
+
+
 def select_sources(root, run_id, validation_path):
     collection = root / 'output/collections' / run_id
     trace = root / 'output/operator-traces' / run_id
@@ -278,6 +317,8 @@ def select_sources(root, run_id, validation_path):
         if state.exists():
             require(read_json(state).get('schema') == 'phyrc-supervisor-state-v1', 'invalid supervisor state')
         selected.extend(guided_review_files(trace / 'user-review', root, run_id))
+        if 'segment_review' in attempt:
+            selected.extend(segment_action_files(trace, root, attempt))
         validation_receipt = trace / 'start-state-validation.json'
         if validation_receipt.exists():
             safe_source(validation_receipt, root)
@@ -387,7 +428,7 @@ def preserve(root, run_id, bundle_id, *, validation=None, pack=False):
             'validation_source': str(validation.relative_to(root)),
             'validation_sha256': sources[validation]['sha256'],
             'source_files': len(copied), 'source_bytes': sum(v['bytes'] for v in copied.values()),
-            'scope': 'reviewed collection + trace + source snapshot + public actor/replay observations + receipt-bound checkpoints and user reviews',
+            'scope': 'reviewed collection + trace + source snapshot + public actor/replay observations + receipt-bound checkpoints, user reviews and segment actions',
             'excluded': ['simulator.log', 'actor runtime', 'actor_events', 'credentials',
                          'session databases', 'raw CLI reasoning', 'pending/rejected feedback inbox', 'unreviewed files'],
             'remote_uploaded': False, 'remote_download_verified': False,

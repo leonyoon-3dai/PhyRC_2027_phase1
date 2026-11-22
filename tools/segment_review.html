@@ -1,0 +1,874 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>착의 시연 리뷰 · PhyRC 2027</title>
+<style>
+:root {
+  --ink: #182b2a;
+  --muted: #526968;
+  --line: #cddbd7;
+  --paper: #fff;
+  --base: #f4f7f5;
+  --accent: #00655b;
+  --wash: #e0f3ed;
+  --tone: #0d2422;
+  color: var(--ink);
+  background: var(--base);
+  font: 16px/1.55 "Inter","Pretendard","Apple SD Gothic Neo","Malgun Gothic","Noto Sans CJK KR",sans-serif;
+  font-synthesis: none;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+button,select,textarea,input {
+  font: inherit;
+  color: inherit;
+}
+button,select,summary {
+  cursor: pointer;
+}
+button,.link {
+  border: 1px solid var(--line);
+  border-radius: .55rem;
+  background: var(--paper);
+  padding: .48rem .8rem;
+  font-size: .86rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+button:hover,.link:hover {
+  border-color: #7b9691;
+}
+a {
+  color: var(--accent);
+}
+:focus-visible {
+  outline: 3px solid #00796a;
+  outline-offset: 3px;
+}
+button:disabled,textarea:disabled {
+  cursor: default;
+  opacity: .58;
+}
+[hidden] {
+  display: none!important;
+}
+header {
+  background: var(--tone);
+  color: #f2faf7;
+}
+.bar,main {
+  width: min(100% - 2.5rem,80rem);
+  margin: auto;
+}
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 3.1rem;
+}
+.brand {
+  letter-spacing: .04em;
+  font-weight: 750;
+}
+.brand span {
+  font-weight: 450;
+  color: #b4cfc6;
+}
+.bar button {
+  background: transparent;
+  color: #e6f2ef;
+  border-color: #5c7571;
+  font-size: .8rem;
+  padding: .3rem .7rem;
+}
+main {
+  padding: clamp(1.1rem,3vw,2.35rem) 0 3rem;
+}
+.heading,.section-head,.context,.badges,.scoreline,.history-actions {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  flex-wrap: wrap;
+}
+.heading {
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: .8rem;
+  margin-bottom: 1rem;
+}
+h1,h2,h3,p {
+  margin: 0;
+}
+h1 {
+  font-size: clamp(1.55rem,3vw,2.35rem);
+  line-height: 1.18;
+  letter-spacing: -.05em;
+}
+h2 {
+  font-size: 1.05rem;
+  letter-spacing: -.035em;
+}
+h3,.field-title {
+  font-size: .88rem;
+  font-weight: 700;
+}
+.context {
+  margin-top: .55rem;
+  color: var(--muted);
+  font-size: .82rem;
+  gap: .38rem .85rem;
+}
+code,.identifier,.metric {
+  font: 500 .83rem/1.5 "IBM Plex Mono",ui-monospace,monospace;
+}
+code,.identifier,p,.copy,option,.label,dd,summary,a {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+.history {
+  margin-bottom: 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: .8rem;
+  background: var(--paper);
+  padding: .9rem 1.1rem;
+}
+.history-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  align-items: end;
+  gap: .7rem;
+}
+.history label {
+  font-size: .8rem;
+  font-weight: 650;
+}
+select,textarea {
+  display: block;
+  width: 100%;
+  padding: .6rem .7rem;
+  border: 1px solid #a9bdb7;
+  border-radius: .47rem;
+  background: #fff;
+}
+select {
+  min-width: 0;
+  margin-top: .25rem;
+}
+.layout {
+  display: grid;
+  grid-template-columns: minmax(19rem,1.15fr) minmax(13.8rem,.85fr) minmax(17rem,1fr);
+  gap: 1rem;
+  align-items: start;
+}
+.column {
+  display: grid;
+  gap: 1rem;
+  min-width: 0;
+}
+.card {
+  border: 1px solid var(--line);
+  border-radius: .82rem;
+  padding: clamp(.9rem,1.8vw,1.3rem);
+  background: var(--paper);
+  min-width: 0;
+}
+.section-head {
+  justify-content: space-between;
+  margin-bottom: .68rem;
+  gap: .4rem;
+}
+.caption,.helper,.meta,.status {
+  color: var(--muted);
+  font-size: .83rem;
+}
+.caption {
+  margin-top: .45rem;
+}
+.media {
+  background: #112321;
+  display: block;
+  width: 100%;
+  aspect-ratio: auto 512/828;
+  max-height: min(76vh,49rem);
+  object-fit: contain;
+  border-radius: .48rem;
+}
+.media-error {
+  margin-top: .3rem;
+}
+.block {
+  border-top: 1px solid var(--line);
+  margin-top: 1rem;
+  padding-top: .85rem;
+}
+.copy {
+  white-space: pre-wrap;
+  line-height: 1.62;
+  font-size: .94rem;
+  margin-top: .38rem;
+}
+.proposal {
+  border-top: 3px solid var(--accent);
+}
+.badges {
+  gap: .35rem;
+  align-items: baseline;
+}
+.label {
+  border: 1px solid var(--line);
+  padding: .12rem .46rem;
+  border-radius: .36rem;
+  color: var(--muted);
+  font-size: .77rem;
+}
+.outcome {
+  font-size: .8rem;
+  padding: .12rem .5rem;
+  border-radius: .35rem;
+  background: #eef2ef;
+  color: var(--ink);
+  font-weight: 680;
+}
+.outcome[data-outcome="success"] {
+  background: #ddf3e8;
+  color: #185e40;
+}
+.outcome[data-outcome="failure"] {
+  background: #fce7df;
+  color: #8b351e;
+}
+.outcome[data-outcome="partial"] {
+  background: #f7efcf;
+  color: #705b17;
+}
+.evidence {
+  margin: .4rem 0 0;
+  padding-left: 1.25rem;
+  color: var(--muted);
+  font-size: .87rem;
+}
+.evidence li {
+  overflow-wrap: anywhere;
+}
+.scoreline {
+  justify-content: space-between;
+  align-items: baseline;
+}
+.metric {
+  color: var(--accent);
+  font-weight: 700;
+}
+details summary {
+  color: var(--muted);
+  font-size: .84rem;
+}
+.trace {
+  margin: .5rem 0 0;
+  display: grid;
+  grid-template-columns: auto minmax(0,1fr);
+  gap: .25rem .7rem;
+  font-size: .82rem;
+}
+dt {
+  color: var(--muted);
+}
+dd {
+  margin: 0;
+  font-family: ui-monospace,monospace;
+}
+fieldset {
+  border: 0;
+  padding: 0;
+  margin: .8rem 0 0;
+  min-width: 0;
+}
+legend {
+  padding: 0;
+  font-size: .83rem;
+  font-weight: 700;
+  margin-bottom: .4rem;
+}
+.choices {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(3.7rem,1fr));
+  gap: .35rem;
+}
+.choice {
+  position: relative;
+}
+.choice input {
+  position: absolute;
+  opacity: 0;
+}
+.choice span {
+  cursor: pointer;
+  display: block;
+  border: 1px solid #a9bdb7;
+  border-radius: .42rem;
+  text-align: center;
+  font-size: .87rem;
+  padding: .48rem .15rem;
+}
+.choice input:checked+span {
+  background: var(--wash);
+  border-color: var(--accent);
+  color: #004d43;
+  font-weight: 700;
+}
+.choice input:focus-visible+span {
+  outline: 3px solid #00796a;
+  outline-offset: 2px;
+}
+.feedback-label {
+  display: block;
+  margin: .8rem 0 .3rem;
+}
+textarea {
+  resize: vertical;
+  font-size: .9rem;
+  line-height: 1.5;
+  min-height: 5rem;
+}
+.primary {
+  display: block;
+  width: 100%;
+  margin-top: .65rem;
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  padding: .62rem;
+}
+.primary:hover {
+  background: #00574d;
+}
+.status {
+  min-height: 0;
+  white-space: pre-wrap;
+}
+.status:not(:empty) {
+  margin-top: .5rem;
+}
+.error {
+  color: #8e3826;
+}
+.event {
+  padding: .65rem 0;
+  font-size: .85rem;
+  border-top: 1px solid var(--line);
+}
+.event:first-child {
+  border: 0;
+}
+.event p {
+  margin: .1rem 0;
+  white-space: pre-wrap;
+}
+.event time {
+  color: var(--muted);
+  font-size: .75rem;
+}
+.notice {
+  background: var(--wash);
+  border: 1px solid #a5d1c3;
+  color: #174b40;
+  padding: .55rem .8rem;
+  border-radius: .45rem;
+  font-size: .86rem;
+  margin: 0 0 1rem;
+}
+.empty {
+  padding: clamp(1.4rem,5vw,4rem);
+  text-align: center;
+}
+.empty p {
+  margin: .4rem auto 0;
+  max-width: 30rem;
+  color: var(--muted);
+}
+.empty button {
+  margin-top: .7rem;
+}
+@media(min-width:751px) and (max-width:1040px) {
+  .layout {
+    grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+  }
+  .media-card {
+    grid-row: span 2;
+  }
+  .media {
+    max-height: 74vh;
+  }
+}
+@media(max-width:750px) {
+  .layout,.history-grid {
+    grid-template-columns: 1fr;
+  }
+  .media {
+    max-height: 68svh;
+  }
+  .bar,main {
+    width: calc(100% - 1.5rem);
+  }
+  .bar {
+    min-height: 2.8rem;
+  }
+  .card {
+    padding: 1rem;
+  }
+  .heading {
+    align-items: center;
+  }
+  .column {
+    gap: .75rem;
+  }
+  .layout {
+    gap: .75rem;
+  }
+}
+</style>
+</head>
+<body>
+<header><div class="bar"><div class="brand">PhyRC <span>2027</span></div><button id="refresh" type="button">새로고침</button></div></header>
+<main>
+  <div class="heading">
+    <div><h1>착의 시연 리뷰</h1><div id="context" class="context" hidden><span id="runId" class="identifier"></span><span id="segmentId" class="identifier"></span></div></div>
+    <button id="historyToggle" type="button" aria-controls="history" aria-expanded="false" hidden>기록 찾아보기</button>
+  </div>
+  <div id="pageMessage" class="notice" role="status" hidden></div>
+  <section id="history" class="history" aria-label="시연 기록 탐색" hidden>
+    <div class="history-grid"><label>실험<select id="runSelect"></select></label><label>구간<select id="segmentSelect"></select></label>
+    <div class="history-actions"><button id="latestButton" type="button">최신 구간</button><a class="link" id="exportLink">JSONL 받기</a></div></div>
+  </section>
+  <section id="empty" class="card empty"><h2 id="emptyTitle">구간 불러오는 중</h2><p id="emptyText"></p><button type="button" id="recoverLatest" hidden>최신 구간 열기</button></section>
+  <div id="workspace" class="layout" hidden>
+    <section class="card media-card">
+        <div class="section-head"><h2>구간 영상</h2><span class="meta" id="stepRange"></span></div>
+        <video class="media" id="clip" controls playsinline preload="metadata" aria-label="선택한 착의 구간 녹화 영상"></video>
+        <p class="helper media-error" id="mediaError" hidden>영상을 재생할 수 없습니다. <a id="clipLink">원본 클립 열기</a></p>
+    </section>
+    <div class="column">
+      <section class="card"><h2>실행한 프롬프트</h2><p id="prompt" class="copy"></p></section>
+      <section class="card"><div class="section-head"><h2>Astra 영상 분석</h2><span id="outcome" class="outcome"></span></div>
+        <div id="labels" class="badges"></div><p id="analysis" class="copy"></p>
+        <p id="reviewSamples" class="caption"></p>
+        <div class="block"><div class="scoreline"><h3>구간 경계 평가</h3><span id="score" class="metric"></span></div><p id="officialSuccess" class="helper"></p><p id="scoreChanges" class="helper"></p></div>
+        <details class="block"><summary>구간 출처</summary><dl id="trace" class="trace"></dl><div id="evidenceWrap" hidden><h3>근거 자료</h3><ul id="evidence" class="evidence"></ul></div></details>
+      </section>
+    </div>
+    <div class="column">
+      <section class="card proposal"><h2>Astra의 다음 프롬프트</h2><p id="nextPrompt" class="copy"></p></section>
+      <section class="card"><div class="section-head"><h2>사용자 피드백</h2></div>
+        <p id="locked" class="helper" hidden></p><p id="holdReason" class="helper" hidden></p>
+        <form id="feedbackForm">
+          <fieldset><legend>다음 구간 진행 방식</legend><div class="choices">
+            <label class="choice"><input type="radio" name="action" value="accept" required><span>제안 승인</span></label>
+            <label class="choice"><input type="radio" name="action" value="revise"><span>수정 요청</span></label>
+            <label class="choice"><input type="radio" name="action" value="hold"><span>보류</span></label>
+            <label class="choice"><input type="radio" name="action" value="finish"><span>시연 종료</span></label>
+          </div></fieldset>
+          <label class="field-title feedback-label" for="feedbackText">피드백 <span id="textRequirement" class="helper"></span></label>
+          <textarea id="feedbackText" rows="3" maxlength="4000" placeholder="공개 영상에서 본 옷과 손의 움직임을 근거로 다음 동작을 적으세요."></textarea>
+          <button id="sendButton" class="primary" type="submit">피드백 저장</button>
+        </form>
+        <p id="feedbackStatus" class="status" role="status"></p>
+        <div id="feedbackLog" class="block" hidden><h3>저장된 피드백</h3><div id="lastFeedback"></div>
+          <details id="olderFeedback" hidden><summary>이전 피드백</summary><div id="olderEvents"></div></details>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+<script>
+'use strict';
+
+const byId = id => document.getElementById(id);
+const outcomes = {
+  success: '성공',
+  partial: '부분 성공',
+  failure: '실패',
+  uncertain: '판단 유보'
+};
+const stages = {
+  setup: '시작 상태',
+  pickup: '셔츠 들어 올리기',
+  first_sleeve: '첫 소매 통과',
+  opposite_shoulder: '반대 어깨 넘기기',
+  second_sleeve: '두 번째 소매 통과',
+  left_upper_arm: '왼쪽 위팔 덮기',
+  right_upper_arm: '오른쪽 위팔 덮기',
+  neck: '목 통과',
+  front_orientation: '앞면 방향 맞추기',
+  success_hold: '완성 자세 유지'
+};
+const tags = {
+  edge_visible: '옷 경계 보임',
+  support_retained: '지지 유지',
+  cloth_follows: '천이 따라옴',
+  alignment_improved: '정렬 개선',
+  hand_entered: '손 진입',
+  cuff_exit_visible: '소매 밖 손 확인',
+  no_progress: '진전 없음',
+  housing_obstruction: '그리퍼 본체 가림',
+  target_unconfirmed: '목표 미확인',
+  recovery: '복구 동작',
+  other_observed: '기타 관찰',
+  review_unavailable: '분석 미수신',
+  grasp_slip: '파지 미끄러짐',
+  opening_collapsed: '입구 접힘',
+  settle_rollback: '정착 중 되밀림',
+  occluded: '가림',
+  replay_prefix: '이전 동작 재생',
+  initial_observation: '시작 관찰'
+};
+const decisions = {
+  accept: '제안 승인',
+  revise: '수정 요청',
+  hold: '보류',
+  finish: '시연 종료'
+};
+const params = new URLSearchParams(location.search);
+let selection = {
+  run: params.get('run') || '',
+  segment: params.get('segment') || ''
+};
+let record = null,
+  currentState = null,
+  requestNumber = 0,
+  sending = false;
+const drafts = new Map();
+const keyOf = r => JSON.stringify([r.run_id, r.segment_id]);
+const valueOf = id => byId(id).value;
+const radio = () => document.querySelector('input[name="action"]:checked');
+const setText = (id, value) => {
+  byId(id).textContent = value ?? '';
+};
+
+function notice(message, error = false) {
+  const box = byId('pageMessage');
+  box.textContent = message;
+  box.hidden = !message;
+  box.classList.toggle('error', error);
+}
+
+async function request(url, options = {}) {
+  const response = await fetch(url, {
+    cache: 'no-store',
+    ...options
+  });
+  if (!response.ok) {
+    const body = await response.json().catch(() => ({}));
+    throw new Error(body.error || body.message || 'HTTP ' + response.status);
+  }
+  return response.json();
+}
+
+function options(id, items, value) {
+  const field = byId(id);
+  field.replaceChildren(...items.map(([key, label]) => new Option(label, key)));
+  field.value = value;
+}
+
+function updateUrl() {
+  const url = new URL(location.href);
+  url.search = '';
+  for (const [key, value] of Object.entries(selection)) if (value) url.searchParams.set(key, value);
+  history.replaceState(null, '', url);
+}
+
+function rememberDraft() {
+  if (!record) return;
+  const old = drafts.get(keyOf(record)) || {};
+  const action = radio()?.value || '',
+    text = valueOf('feedbackText');
+  drafts.set(keyOf(record), {
+    action,
+    text,
+    id: action === old.action && text === old.text ? old.id : null
+  });
+}
+
+function requirement() {
+  const required = radio()?.value === 'revise';
+  byId('feedbackText').required = required;
+  setText('textRequirement', required ? '(필수)' : '(선택)');
+}
+
+function feedbackEvent(feedback) {
+  const div = document.createElement('div');
+  div.className = 'event';
+  const action = document.createElement('strong');
+  action.textContent = decisions[feedback.action] || feedback.action;
+  const message = document.createElement('p');
+  message.textContent = feedback.text;
+  const timestamp = document.createElement('time');
+  timestamp.dateTime = feedback.created_at;
+  const date = new Date(feedback.created_at);
+  timestamp.textContent = isNaN(date) ? feedback.created_at : date.toLocaleString('ko-KR');
+  if (feedback.id === record.claimed_feedback_id) timestamp.textContent += ' · 수집기에서 확인함';
+  div.append(action, message, timestamp);
+  return div;
+}
+
+function render(data) {
+  const current = data.latest;
+  byId('recoverLatest').hidden = true;
+  currentState = data;
+  byId('workspace').hidden = !current;
+  byId('empty').hidden = !!current;
+  byId('historyToggle').hidden = !current;
+  byId('context').hidden = !current;
+  if (!current) {
+    record = null;
+    byId('history').hidden = true;
+    byId('historyToggle').setAttribute('aria-expanded', 'false');
+    setText('emptyTitle', '아직 등록된 구간이 없습니다');
+    setText('emptyText', '첫 시연 구간이 게시되면 이곳에서 영상과 다음 제안을 확인할 수 있습니다.');
+    return;
+  }
+  const changed = !record || keyOf(record) !== keyOf(current);
+  record = current;
+  options('runSelect', data.runs.map(r => [r, r]), record.run_id);
+  const segments = data.segments.map(segment => {
+    const stage = stages[segment.stage] || segment.stage;
+    const label = [segment.segment_id, stage, outcomes[segment.outcome]].filter(Boolean).join(' · ');
+    return [segment.segment_id, label];
+  });
+  options('segmentSelect', segments, record.segment_id);
+  byId('exportLink').href = '/api/export?' + new URLSearchParams({
+    run: record.run_id
+  });
+  setText('runId', record.run_id);
+  setText('segmentId', record.segment_id);
+  setText('stepRange', 'step [' + record.start_step + ', ' + record.end_step + ')');
+  if (changed) {
+    byId('mediaError').hidden = true;
+    byId('clip').src = record.clip_url;
+    byId('clipLink').href = record.clip_url;
+    setText('feedbackStatus', '');
+    byId('feedbackForm').reset();
+    const draft = drafts.get(keyOf(record));
+    if (draft) {
+      for (const input of byId('feedbackForm').elements.action) input.checked = input.value === draft.action;
+      byId('feedbackText').value = draft.text;
+    }
+    requirement();
+  }
+  setText('prompt', record.prompt);
+  setText('analysis', record.analysis);
+  setText('nextPrompt', record.next_prompt);
+  setText('outcome', outcomes[record.outcome] || record.outcome);
+  byId('outcome').dataset.outcome = record.outcome;
+  byId('labels').replaceChildren(...[record.stage, ...record.labels].filter(Boolean).map(text => {
+    const chip = document.createElement('span');
+    chip.className = 'label';
+    chip.title = text;
+    chip.textContent = stages[text] || tags[text] || text;
+    return chip;
+  }));
+  const frames = record.review_frame_steps || [];
+  const model = record.reviewer_model;
+  const reviewed = record.hold_reason !== 'review_unavailable' && !record.labels.includes('review_unavailable');
+  const samples = reviewed && frames.length ? '대표 프레임 ' + frames.length + '장 분석' : '';
+  setText('reviewSamples', [model, samples].filter(Boolean).join(' · '));
+  const evidence = record.evidence || [];
+  byId('evidenceWrap').hidden = !evidence.length;
+  byId('evidence').replaceChildren(...evidence.map(item => {
+    const li = document.createElement('li');
+    li.textContent = item;
+    return li;
+  }));
+  const before = record.score_before,
+    after = record.score_after;
+  setText('score', before == null && after == null ? '미확인' : (before ?? '미확인') + ' → ' + (after ?? '미확인') + ' / 50');
+  const successLabel = value => value == null ? '미확인' : value ? '충족' : '미충족';
+  const first = record.evaluator_success_before,
+    last = record.evaluator_success_after;
+  setText('officialSuccess', first == null && last == null ? '' : '공식 성공 조건 ' + successLabel(first) + ' → ' + successLabel(last));
+  const previousItems = record.score_breakdown_before || {};
+  const changes = [];
+  for (const [name, value] of Object.entries(record.score_breakdown_after || {})) {
+    const previous = previousItems[name];
+    if (typeof previous === 'number' && value !== previous) {
+      changes.push((stages[name] || name) + ' ' + previous + ' → ' + value + '점');
+    }
+  }
+  setText('scoreChanges', changes.join(' · '));
+  const fields = [
+    ['부모 구간', record.parent ? record.parent.run_id + ' / ' + record.parent.segment_id : null],
+    ['구간 목표', record.stage],
+    ['의미 라벨', record.labels.join(', ')],
+    ['분석용 프레임 step', frames.length ? frames.join(', ') : null],
+    ['관찰 ID', record.observation_id],
+    ['마찰 설정', record.physics_profile],
+    ['공식 코드 리비전', record.upstream_revision],
+    ['평가 근거', record.score_source],
+    ['게시 시각', record.created_at]
+  ];
+  byId('trace').replaceChildren(...fields.filter(([, v]) => v != null).flatMap(([label, v]) => {
+    const dt = document.createElement('dt'),
+      dd = document.createElement('dd');
+    dt.textContent = label;
+    dd.textContent = v;
+    return [dt, dd];
+  }));
+  const hardHorizon = record.hold_reason === 'hard_horizon';
+  const reviewUnavailable = record.hold_reason === 'review_unavailable';
+  byId('holdReason').hidden = !hardHorizon && !reviewUnavailable;
+  setText('holdReason', hardHorizon ? '실행 한도에 도달했습니다. 보류하거나 시연을 종료할 수 있습니다.' : '영상 분석을 받지 못했습니다. 공개 영상을 보고 새 지시를 입력하거나 보류·종료할 수 있습니다.');
+  for (const input of byId('feedbackForm').elements.action) {
+    const unavailable = hardHorizon && (input.value === 'accept' || input.value === 'revise') || reviewUnavailable && input.value === 'accept';
+    input.closest('label').hidden = unavailable;
+    input.disabled = unavailable;
+    input.required = !unavailable;
+    if (unavailable) input.checked = false;
+  }
+  requirement();
+  byId('feedbackForm').hidden = !data.can_feedback;
+  byId('locked').hidden = data.can_feedback;
+  setText('locked', record.claimed_feedback_id ? '수집기가 이 구간의 피드백을 확인했습니다.' : '이 실험의 최신 구간에서 피드백을 입력할 수 있습니다.');
+  const log = record.feedback;
+  byId('feedbackLog').hidden = !log.length;
+  byId('olderFeedback').hidden = log.length < 2;
+  byId('lastFeedback').replaceChildren(...log.slice(-1).map(feedbackEvent));
+  byId('olderEvents').replaceChildren(...log.slice(0, -1).reverse().map(feedbackEvent));
+}
+
+async function load(target = selection, {
+  silent = false
+} = {}) {
+  const number = ++requestNumber;
+  try {
+    const query = new URLSearchParams();
+    if (target.run) query.set('run', target.run);
+    if (target.segment) query.set('segment', target.segment);
+    const data = await request('/api/state?' + query);
+    if (number !== requestNumber) return;
+    rememberDraft();
+    selection = target;
+    updateUrl();
+    notice('');
+    render(data);
+    if (!silent && record) setText('feedbackStatus', '');
+  } catch (error) {
+    if (number !== requestNumber) return;
+    notice('구간을 불러오지 못했습니다. ' + error.message, true);
+    if (!record) {
+      setText('emptyTitle', '요청한 구간을 열지 못했습니다');
+      setText('emptyText', '실험과 구간 이름을 확인하거나 최신 구간을 열어 주세요.');
+      byId('recoverLatest').hidden = false;
+    } else if (currentState) render(currentState);
+  }
+}
+byId('recoverLatest').addEventListener('click', () => load({
+  run: '',
+  segment: ''
+}));
+byId('refresh').addEventListener('click', () => load());
+byId('historyToggle').addEventListener('click', () => {
+  const panel = byId('history');
+  panel.hidden = !panel.hidden;
+  byId('historyToggle').setAttribute('aria-expanded', String(!panel.hidden));
+  if (!panel.hidden) byId('runSelect').focus();
+});
+byId('latestButton').addEventListener('click', () => load({
+  run: '',
+  segment: ''
+}));
+byId('runSelect').addEventListener('change', () => load({
+  run: valueOf('runSelect'),
+  segment: ''
+}));
+byId('segmentSelect').addEventListener('change', () => load({
+  run: valueOf('runSelect'),
+  segment: valueOf('segmentSelect')
+}));
+byId('clip').addEventListener('error', () => {
+  byId('mediaError').hidden = false;
+});
+byId('feedbackForm').addEventListener('input', () => {
+  requirement();
+  rememberDraft();
+});
+byId('feedbackForm').addEventListener('submit', async event => {
+  event.preventDefault();
+  if (sending || !currentState?.can_feedback) return;
+  const text = valueOf('feedbackText').trim(),
+    action = radio()?.value;
+  if (!action || action === 'revise' && !text) {
+    setText('feedbackStatus', '수정 요청에 사용할 피드백을 입력해 주세요.');
+    byId('feedbackText').focus();
+    return;
+  }
+  rememberDraft();
+  const submitted = keyOf(record),
+    draft = drafts.get(submitted);
+  if (!draft.id) draft.id = crypto.randomUUID();
+  const payload = {
+    run_id: record.run_id,
+    segment_id: record.segment_id,
+    id: draft.id,
+    action,
+    text
+  };
+  sending = true;
+  byId('sendButton').disabled = true;
+  byId('feedbackForm').querySelector('fieldset').disabled = true;
+  byId('feedbackText').disabled = true;
+  setText('feedbackStatus', '피드백을 저장하는 중입니다.');
+  try {
+    await request('/api/feedback', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+    drafts.delete(submitted);
+    if (record && keyOf(record) === submitted) {
+      byId('feedbackForm').reset();
+      requirement();
+      await load(selection, {
+        silent: true
+      });
+      setText('feedbackStatus', '피드백을 저장했습니다.');
+    }
+  } catch (error) {
+    await load(selection, {
+      silent: true
+    });
+    if (record && keyOf(record) === submitted) setText('feedbackStatus', '저장 결과를 확인해 주세요. ' + error.message);
+  } finally {
+    sending = false;
+    byId('sendButton').disabled = false;
+    byId('feedbackForm').querySelector('fieldset').disabled = false;
+    byId('feedbackText').disabled = false;
+  }
+});
+if (location.protocol === 'file:') {
+  byId('refresh').hidden = true;
+  render({
+    latest: null,
+    segments: [],
+    runs: [],
+    can_feedback: false
+  });
+  notice('읽기 전용 미리보기입니다. 시연 구간이 생기면 새 서버의 리뷰 페이지에서 영상과 피드백을 열 수 있습니다.');
+} else {
+  load();
+  setInterval(() => {
+    const editing = radio() || valueOf('feedbackText') || document.activeElement === byId('feedbackText');
+    if (document.visibilityState === 'visible' && !sending && byId('clip').paused && !editing && byId('history').hidden) load(selection, {
+      silent: true
+    });
+  }, 20000);
+}
+</script>
+</body>
+</html>

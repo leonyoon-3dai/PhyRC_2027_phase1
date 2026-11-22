@@ -1,3 +1,5 @@
+> **보관 기록** · 11월 16일까지 사용한 Astra 수집기의 호출·행동·기록 경로입니다. 현재 서버 작업은 새 계획과 수집 절차에서 시작합니다. [현재 메인](../README.md) · [새 실험 계획](active/experiment.md) · [새 서버 수집 절차](active/collection.md) · [보관 목차](ARCHIVE.md)
+
 # Astra 수집 코드
 
 **현재 방향은 checkpoint에서 M1을 시작하고 사용자 판단이 필요할 때 물리0 HOLD하는 시연입니다.** [현재 계획](COLLECTION_PLAN.md)과 [guided 실행 계약](collection/GUIDED_RUNTIME.ko.md)을 따릅니다. `--user-guided` 경로는 종료 제안·구간 예산·새 첫 소매 득점을 종료 dispatch 전에 가로채고, 같은 경계의 공개5카메라를 내보낸 뒤 게시 확인과 사용자 텍스트를 기다립니다. 기존 모드는 기존 종료 동작을 유지합니다.

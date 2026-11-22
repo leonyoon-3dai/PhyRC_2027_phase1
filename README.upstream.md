@@ -212,7 +212,7 @@ Replace the policy and checkpoint paths with your own files.
 Local scores on the public practice seeds are not final scores. For submission, prepare your code, checkpoint, dependencies, data sources, and run instructions so the results can be reproduced.
 Schedules, final seeds, where to submit, and time limits will be announced by the organizers on the [challenge website](https://emprise.cs.cornell.edu/phyrc/challenge-2027/).
 
-## 7. Scoring and points/s
+## 7. Scoring and ranking
 
 ```bash
 # Score from the start with no button press; ESC ends and saves the result
@@ -240,6 +240,10 @@ points/s = (total points − pickup points actually earned)
 
 Time is measured in simulation ticks. The numerator excludes pickup, so its maximum is 45, and waiting after your last award does not grow the denominator.
 Contact is detected using the collision meshes of the shirt and manikin. Attempts with no contact, or with a zero denominator, count as 0 when averaging over episodes.
+
+**Shirt–manikin friction is 0.35** from leaderboard checkpoint 2 (Dec 1) onward, set by default in the simulator (it was 0 at checkpoint 1); pull the latest code to train and test with it. Details in the [evaluation guide](docs/competition/EVALUATION.md#physics-shirtmanikin-friction).
+
+**Ranking: points first, then speed.** Teams are ranked by total points (out of 50, pickup included, averaged over the evaluation layouts). Points/s only breaks ties: between teams with the same points, the one that earned them faster ranks higher.
 The [evaluation guide](docs/competition/EVALUATION.md) covers failure handling, success criteria, result fields, and replay scoring.
 
 ## 8. Allowed information and fair play

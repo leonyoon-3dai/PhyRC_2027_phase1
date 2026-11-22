@@ -1,3 +1,5 @@
+> **보관 기록** · 11월 16일 서버의 고정 자산, 슬롯, HDF5 복원 명령을 보존합니다. 현재 서버 작업은 새 계획과 수집 절차에서 시작합니다. [현재 메인](../README.md) · [새 실험 계획](active/experiment.md) · [새 서버 수집 절차](active/collection.md) · [보관 목차](ARCHIVE.md)
+
 > **사용자 피드백 실행 경로는 구현·실행 검증됐습니다.** 옵션·checkpoint 준비·게시/답변 형식은 [GUIDED_RUNTIME](collection/GUIDED_RUNTIME.ko.md)을 따릅니다. 이번 시연은 종료됐으며, 다음 출발점과 방향은 [현재 계획](COLLECTION_PLAN.md), 고정 백업과 실제 검증 범위는 [STATUS](project/STATUS.md)를 확인합니다.
 
 # 클린 서버 시작 안내

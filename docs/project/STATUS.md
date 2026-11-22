@@ -1,3 +1,5 @@
+> **보관 기록** · 11월 16일 M1과 B 분기를 마감했을 때의 상태·검증 기록입니다. 현재 서버 작업은 새 계획과 수집 절차에서 시작합니다. [현재 메인](../../README.md) · [새 실험 계획](../active/experiment.md) · [새 서버 수집 절차](../active/collection.md) · [보관 목차](../ARCHIVE.md)
+
 # 현재 상태
 
 **이번 세션은 종료됐다.** 마지막 `20261116-astra-right-hand-hold10-001`은135전이에서 사용자 `finish`로 정상 마감했고 추가 물리 전이는0이다. `completed/closed/finished=true`, `capture_complete=true`, simulator 종료코드0을 확인했다. **전수 QC135/135·오류0**이며 비공개 HF 고정 revision의 강제 재다운로드·전체 파일 SHA 검증도 완료했다. 현재 live HOLD는 없다.

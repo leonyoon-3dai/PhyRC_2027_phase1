@@ -30,6 +30,9 @@ import uuid
 
 ACTOR_IMAGE = "python:3.12-slim@sha256:4840d514c583a4d3d8cad3940e68dee6f0f6f3635c12fcd0a3d74c21a5b93a54"
 SUPPORTED_CLI = "codex-cli 0.166.0"
+DEFAULT_MODEL = "gpt-6.2-astra"
+LEGACY_MODEL = "gpt-6-astra"
+ASTRA_MODELS = (DEFAULT_MODEL, LEGACY_MODEL)
 MODEL_ORIGINS = frozenset({"chatgpt.com", "auth.openai.com", "api.openai.com"})
 MAX_RESPONSE_BYTES = 2 * 1024 * 1024
 MAX_EVENT_BYTES = 16 * 1024 * 1024
@@ -176,11 +179,11 @@ class Actor:
     instead of silently retrying with ambiguous action history.
     """
 
-    def __init__(self, root: Path, model: str = "gpt-6-astra", effort: str = "ultra",
+    def __init__(self, root: Path, model: str = LEGACY_MODEL, effort: str = "ultra",
                  timeout_s: float = 600, *, auth_path: Path | None = None,
                  binary_path: Path | None = None):
-        if model != "gpt-6-astra" or effort != "ultra":
-            raise ValueError("this adapter is validated only for gpt-6-astra / ultra")
+        if model not in ASTRA_MODELS or effort != "ultra":
+            raise ValueError("select a supported Astra model with ultra reasoning")
         if not math.isfinite(timeout_s) or timeout_s <= 0:
             raise ValueError("timeout_s must be finite and positive")
         self.root = Path(root).resolve()

@@ -93,6 +93,9 @@ class WristDepthTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp); trace=root/'trace'; trace.mkdir()
             for name in ('run.sh','scripts/collect_operator.py','participant/streaming/collector_stream.py',
+                         'tools/segment_review.py','tools/segment_review.html','config/execution_lock.json',
+                         'src/PhyRC_Sim/Env_Config/Garment/ZeroSceneFriction.py',
+                         'src/PhyRC_Sim/Env_Config/Garment/RandomSpawn.py','src/PhyRC_Sim/Policy/state.py',
                          'config/policy_interface.json','config/assets.lock.json',
                          'participant/collection/wrist_depth.py',
                          'participant/collection/depth_query.py',

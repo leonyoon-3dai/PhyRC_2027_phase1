@@ -1,3 +1,5 @@
+> **보관 기록** · 11월 16일에 사용한 GitHub 게시·응답 방식의 실행 계약입니다. 현재 서버 작업은 새 계획과 수집 절차에서 시작합니다. [현재 메인](../../README.md) · [새 실험 계획](../active/experiment.md) · [새 서버 수집 절차](../active/collection.md) · [보관 목차](../ARCHIVE.md)
+
 # 사용자 피드백 시연 실행 계약
 
 [현재 계획](../COLLECTION_PLAN.md) · [Astra 코드](../ASTRA.md) · [환경 복원](../OPERATIONS.md) · [현재 상태](../project/STATUS.md)

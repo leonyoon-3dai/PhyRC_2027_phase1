@@ -17,7 +17,7 @@ from participant.collection import codex_client
 
 class SupportDiagnosticStrategyTest(unittest.TestCase):
     def prepare(self, *, strategy='coordinated-support-diagnostic', replay=True,
-                settle=0, depth=False, review_points=10):
+                settle=0, depth=False, review_points=10, seed=None, segment_review=False):
         class SelectionFinished(Exception):
             pass
 
@@ -31,6 +31,10 @@ class SupportDiagnosticStrategyTest(unittest.TestCase):
                 argv += ['--replay-prefix-run', 'private-parent', '--replay-prefix-steps', '264']
             if depth:
                 argv += ['--wrist-depth-panel']
+            if seed is not None:
+                argv += ['--seed', str(seed)]
+            if segment_review:
+                argv += ['--user-guided', '--segment-review-dir', str(root / 'journal')]
             prefix = SimpleNamespace(actions=np.zeros((264, 2, 9), np.float32),
                 trusted_metadata={'reset_seed': 892321},
                 public_lineage={'source_group': 'private-source-family', 'replay_steps': 264})
@@ -56,6 +60,19 @@ class SupportDiagnosticStrategyTest(unittest.TestCase):
         self.assertNotIn(codex_client.SLEEVE_TASK, prompt)
         self.assertEqual(result['attempt']['strategy'], 'coordinated-support-diagnostic')
         self.assertEqual(result['attempt']['plan_execution'], 'single_decision')
+
+    def test_fresh_seed_reaches_only_supervisor(self):
+        run = self.prepare(replay=False, seed=43)
+        command = run['command']
+        self.assertEqual(command[command.index('--reset-seed') + 1], '43')
+        self.assertEqual(run['prompt'], self.prepare(replay=False, seed=12345)['prompt'])
+
+    def test_segment_mode_selects_new_model_and_fresh_table_before_simulator_start(self):
+        command = self.prepare(replay=False, strategy='general', segment_review=True)['command']
+        self.assertIn('--nearest-table', command)
+        self.assertIn('--segment-frame-dir', command)
+        self.assertEqual(command[command.index('--model-id') + 1], 'gpt-6.2-astra')
+        self.assertNotIn('--initial-slot', command)
 
     def test_trusted_seed_lineage_and_review_threshold_stay_out_of_prompt(self):
         low, high = self.prepare(review_points=10), self.prepare(review_points=50)

@@ -1,3 +1,5 @@
+> **보관 기록** · E00–E36과 11월 16일 사용자 교정 시연의 영상·계보를 찾는 색인입니다. 현재 서버 작업은 새 계획과 수집 절차에서 시작합니다. [현재 메인](../README.md) · [새 실험 계획](active/experiment.md) · [새 서버 수집 절차](active/collection.md) · [보관 목차](ARCHIVE.md)
+
 # 시연 목록
 
 **현재 세션 종료:** `20261116-astra-m1-checkpoint-001` 120전이와 후속 `20261116-astra-right-hand-hold10-001` 135전이를 정상 마감했다. 후속 기록은110 replay+25 new, 새9 act·10호출이다. [각 움직임의 명령·효과·GIF](collection/reviews/20261116-user-guided-movement-ledger.ko.md) · [마감·검증 상태](project/STATUS.md) · [다음 양손 걸침 계획](COLLECTION_PLAN.md). 다음 전략은 아직 실행하지 않았다.

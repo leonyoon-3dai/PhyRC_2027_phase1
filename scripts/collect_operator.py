@@ -143,13 +143,17 @@ def parse_arguments(argv=None):
     p.add_argument('--max-requests', type=int, default=10000)
     p.add_argument('--input-timeout', type=float, default=900,
                    help='Maximum wall seconds without a request; then neutral one step and close')
+    p.add_argument('--segment-frame-dir', type=Path,
+                   help='Write public five-camera panels for a local review run')
     p.add_argument('--preview', type=Path, help='Human observer HTML served by existing Jupyter')
     p.add_argument('--webrtc', action='store_true', help='Enable existing WebRTC viewer in observation-only mode')
     p.add_argument('--evaluate', action='store_true', help='Save official scoring only in trusted evaluation files')
     p.add_argument('--profile-step-phases', action='store_true',
                    help='Trusted numeric step/observation/capture wall timings; default off')
     p.add_argument('--reset-seed', type=int,
-                   help='Trusted reset seed for a recorded-action continuation; never public actor input')
+                   help='Trusted reset seed for practice or recorded-action continuation')
+    p.add_argument('--nearest-table', action='store_true',
+                   help='Start a new local collection on the positive-X central table with checkpoint-2 friction')
     p.add_argument('--user-guided', action='store_true',
                    help='Enable trusted hold/resume/checkpoint control; idle/EOF preserve live state')
     p.add_argument('--initial-slot', type=Path,
@@ -161,8 +165,12 @@ def parse_arguments(argv=None):
         p.error('limits must be positive and finite')
     if args.reset_seed is not None and not 0 <= args.reset_seed < 2**63:
         p.error('reset seed must be in 0..2**63-1')
+    if args.segment_frame_dir and not args.user_guided:
+        p.error('segment frames require user-guided collection')
     if args.initial_slot is not None and not args.initial_slot.is_file():
         p.error('--initial-slot must be an existing slot_NAME.npz file')
+    if args.nearest_table and (args.initial_slot or os.environ.get('STRETCH4_LOAD_SLOT')):
+        p.error('nearest-table collection starts from a fresh scene')
     if args.checkpoint_dir is not None and not args.user_guided:
         p.error('--checkpoint-dir requires --user-guided')
     if args.prompt_file is not None:
@@ -272,10 +280,24 @@ def main():
             if args.preview:
                 from participant.streaming.jupyter_observer import JupyterObserver
                 preview = JupyterObserver(args.preview, run_label=args.output.name)
+            if args.segment_frame_dir:
+                from participant.collection.segment_frames import write_boundary
+            def record_frame(obs):
+                if args.segment_frame_dir:
+                    write_boundary(args.segment_frame_dir, obs, operator._tick // 12)
             def publish(obs):
                 if preview and preview.due():
                     preview.write_frame(obs['rgb'][0], simulation_time=float(obs['simulation_time_s']))
-            obs = operator.begin(seed=args.reset_seed)
+            fresh_profile = None
+            reset_seed = args.reset_seed
+            if args.nearest_table:
+                from participant.collection.fresh_start import select_practice_reset, verify_reset
+                fresh_profile = select_practice_reset(env.backend.garment_table_centers, env.M.BOX_SIZE,
+                    (env.M.ROBOT1_SPAWN, env.M.ROBOT2_SPAWN), reset_seed)
+                reset_seed = fresh_profile['episode_seed']
+            obs = operator.begin(seed=reset_seed)
+            if fresh_profile:
+                fresh_profile = verify_reset(measured_env.reset_info, fresh_profile, env.stage)
             interface = public_interface(env, measured_env.reset_info)
             write_json(args.output / 'run_metadata.json', {
                 'schema': 'participant-collection-run-v1', 'source': args.source,
@@ -289,10 +311,12 @@ def main():
                 'reset_wall_s': measured_env.reset_wall_s,
                 'simulation_time_at_ready_s': float(obs['simulation_time_s']),
                 'raw_archive': False, 'user_guided': args.user_guided,
+                **({'collection_start': fresh_profile, 'episode_seed': reset_seed} if fresh_profile else {}),
                 'initial_slot': initial_slot_provenance(args.initial_slot)})
             if args.profile_step_phases:
                 trace({'event': 'step_phase_profiling_enabled', 'schema_version': 1})
             publish(obs)
+            record_frame(obs)
             emit({'ready': True, 'observation': obs, 'public_interface': interface, 'observation_step': 0})
             inbox = queue.Queue(maxsize=8)
             threading.Thread(target=read_requests, args=(sys.stdin, inbox, stop), daemon=True).start()
@@ -388,6 +412,7 @@ def main():
                             break
                         result = operator.act(arguments['action'], 1)
                         publish(result['observation'])
+                        record_frame(result['observation'])
                         if writer.failure_reason:
                             raise RuntimeError(writer.failure_reason)
                         if not operator._active:

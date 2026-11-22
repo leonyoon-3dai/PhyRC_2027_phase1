@@ -22,6 +22,7 @@ import numpy as np
 from PIL import Image
 
 from participant.collection.boundary import CONTRACT, PUBLIC, validate_action
+from participant.collection.codex_actor import DEFAULT_MODEL, LEGACY_MODEL
 
 
 STAGES = ['preparation', 'approach', 'grasp', 'lift', 'transport', 'first_sleeve',
@@ -415,8 +416,13 @@ def compare_public_state(reference, actual):
 
 def source_snapshot(root, trace):
     paths = [root / 'run.sh', root / 'scripts/collect_operator.py',
+             root / 'tools/segment_review.py', root / 'tools/segment_review.html',
              root / 'participant/streaming/collector_stream.py',
              root / 'config/policy_interface.json', root / 'config/assets.lock.json',
+             root / 'config/execution_lock.json',
+             root / 'src/PhyRC_Sim/Env_Config/Garment/ZeroSceneFriction.py',
+             root / 'src/PhyRC_Sim/Env_Config/Garment/RandomSpawn.py',
+             root / 'src/PhyRC_Sim/Policy/state.py',
              root / 'participant/research/depth_backprojection.py',
              root / 'src/PhyRC_Sim/Policy/training_dataset.py',
              root / 'src/PhyRC_Sim/Policy/environment.py',
@@ -697,7 +703,11 @@ def main():
                         help='Exclusive source transition boundary; defaults to the completed source length')
     parser.add_argument('--replay-observe-steps', type=int, nargs='+',
                         help='One or two ascending replay boundaries to capture as first-call visual history')
-    parser.add_argument('--model', default='gpt-6-astra')
+    parser.add_argument('--seed', type=int, help='Trusted practice seed for a fresh official reset')
+    parser.add_argument('--nearest-table', action='store_true',
+                        help='Use the fresh checkpoint-2 collection start (automatic with local segment review)')
+    parser.add_argument('--model',
+                        help='Defaults to GPT-6.2 Astra for segment review; preserves the original model for legacy runs')
     parser.add_argument('--effort', default='ultra')
     parser.add_argument('--named-actions', action='store_true',
                         help='Use exact named actor channels, then pack into official arrays; exec/plan-size1 only')
@@ -715,6 +725,8 @@ def main():
                         help='After a motion act, apply 0..20 neutral control steps before observing again')
     parser.add_argument('--user-guided', action='store_true',
                         help='Persistent live HOLD and bound file feedback; first boundary always reviewed')
+    parser.add_argument('--segment-review-dir', type=Path,
+                        help='Local segment journal for clip review and human feedback at each HOLD')
     parser.add_argument('--segment-decisions', type=int, default=20)
     parser.add_argument('--segment-steps', type=int, default=400)
     parser.add_argument('--initial-slot', help='Trusted approximate slot; with replay must match the source reset slot')
@@ -725,8 +737,24 @@ def main():
     parser.add_argument('--start-state-validation',
                         help='Trusted validation receipt for this initial-slot; skips only initial setup review')
     args = parser.parse_args()
+    args.nearest_table = args.nearest_table or bool(args.segment_review_dir)
+    if args.model is None:
+        args.model = DEFAULT_MODEL if args.nearest_table else LEGACY_MODEL
+    if args.nearest_table:
+        if (args.initial_slot or args.replay_prefix_run or args.parent_attempt or args.retry_reason
+                or args.start_state_validation or args.prepare_checkpoint_only):
+            parser.error('nearest-table collection starts at step zero in a new run')
+        if args.model != DEFAULT_MODEL or args.effort != 'ultra' or args.actor_backend != 'exec':
+            parser.error('nearest-table collection uses the GPT-6.2 Astra Ultra exec actor')
+    if args.seed is not None and (not 0 <= args.seed < 2**63 or args.initial_slot or args.replay_prefix_run):
+        parser.error('--seed requires a fresh reset and an integer in 0..2**63-1')
     if args.user_guided and (args.actor_backend != 'exec' or args.plan_size != 1 or args.pixel_depth_query):
         parser.error('user-guided currently requires exec, plan-size=1 and no pixel-depth-query')
+    if args.segment_review_dir:
+        if not args.user_guided or args.mode != 'dressing' or args.prepare_checkpoint_only:
+            parser.error('local segment review requires a user-guided dressing run')
+        if shutil.which('ffmpeg') is None:
+            parser.error('local segment review needs ffmpeg on the supervisor host')
     if not 1 <= args.segment_decisions <= 2000 or not 1 <= args.segment_steps <= 18000:
         parser.error('invalid user review segment budget')
     if (args.initial_slot or args.checkpoint_dir or args.save_checkpoint_on_start) and not args.user_guided:
@@ -964,6 +992,14 @@ def main():
                '--input-timeout', str((2 if args.pixel_depth_query else 1) * args.model_timeout + 120)]
     if args.user_guided:
         command += ['--user-guided']
+    if args.nearest_table:
+        command += ['--nearest-table']
+    if args.segment_review_dir:
+        # Docker uses a different UID with the supervisor's group.
+        frame_dir = trace / 'segment-frames'
+        frame_dir.mkdir()
+        frame_dir.chmod(0o770)
+        command += ['--segment-frame-dir', '/output/operator-traces/' + args.run_id + '/segment-frames']
     if args.initial_slot:
         command += ['--initial-slot', args.initial_slot]
     if args.checkpoint_dir:
@@ -974,6 +1010,8 @@ def main():
         command += ['--profile-step-phases']
     if replay is not None:
         command += ['--reset-seed', str(replay.trusted_metadata['reset_seed'])]
+    elif args.seed is not None:
+        command += ['--reset-seed', str(args.seed)]
     started = time.monotonic()
     manifest = {
         'schema': 'phyrc-codex-attempt-v1', 'run_id': args.run_id,
@@ -1162,11 +1200,25 @@ def main():
                     actor = Actor(actor_root / f'runtime-resume-{manifest["actor_calls_attempted"]:05d}',
                                   model=args.model, effort=args.effort, timeout_s=args.model_timeout)
                     return actor
-                obs = run_guided(sim=sim, actor=actor, obs=obs, args=args, root=root,
-                    trace=trace, actor_root=actor_root, task=task, interface=interface,
-                    manifest=manifest, event=event, prepare_observation=prepare_observation,
-                    validate_decision=validate_decision, action_schema=action_schema,
-                    token_usage=token_usage, check_interrupt=check_interrupt, reset_actor=reset_guided_actor)
+                web = None
+                if args.segment_review_dir:
+                    from participant.collection.segment_bridge import SegmentBridge
+                    def make_reviewer(hold_id):
+                        return Actor(actor_root / ('reviewer-' + hold_id), model=args.model,
+                                     effort=args.effort, timeout_s=args.model_timeout)
+                    web = SegmentBridge(root=root, trace=trace, journal=args.segment_review_dir,
+                                        args=args, actor_factory=make_reviewer)
+                    manifest['segment_review'] = {'journal': str(web.journal), 'source_hz': 20,
+                                                  'motion_playback_fps': 5}
+                try:
+                    obs = run_guided(sim=sim, actor=actor, obs=obs, args=args, root=root,
+                        trace=trace, actor_root=actor_root, task=task, interface=interface,
+                        manifest=manifest, event=event, prepare_observation=prepare_observation,
+                        validate_decision=validate_decision, action_schema=action_schema,
+                        token_usage=token_usage, check_interrupt=check_interrupt, reset_actor=reset_guided_actor, web=web)
+                finally:
+                    if web:
+                        web.close()
                 finished, active = True, False
                 stop_reason = 'user_finish_or_checkpoint'
             for index in range(args.decisions if stop_reason != 'review_points' and not args.user_guided else 0):

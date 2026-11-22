@@ -1,69 +1,27 @@
-# Codex 작업 지침
+# Codex 실행 인계
 
-**현재 실행: 종료.** 사용자 지시로 `20261116-astra-right-hand-hold10-001`을 hold-0002·135전이에서 추가 물리0으로 정상 마감했다. 기록은110 replay+25 new, 새9 act·10모델 호출이다. 현재 live HOLD나 자동 재개할 세션은 없다. 각 움직임의 명령·효과·GIF는 [이동 장부](docs/collection/reviews/20261116-user-guided-movement-ledger.ko.md), QC·백업은 [STATUS](docs/project/STATUS.md)를 따른다.
+**현재 상태는 계획 리뷰 대기다.** 다음 세션에서 사용자가 새 서버에서 시작할 때 셋째 테이블에 옷이 놓인 초기 상태로 첫 10점 시연을 수집한다. 이 데이터셋은 0회에서 시작한다.
 
-**현재 사용자 방향(2026-11-16, 미실행 계획):** 마지막 R0 단독 접근 전의 새 분기 hold-0001·110전이를 출발 후보로 삼아, **두 로봇을 마네킹의 왼손 쪽으로 함께 옮긴 뒤 옷을 양손에 모두 걸치는 방향**을 시험한다. 이번 지시는 정리·종료이며 새 시연 실행 승인이 아니다. 다음 사용자 재개 지시 때 [현재 계획](docs/COLLECTION_PLAN.md)에 따라 새 run과 복원 검토부터 시작한다. R0=오른손 쪽, R1=왼손 쪽이며 카메라 이름만으로 해부학적 좌우를 정하지 않는다. 저장한 출발slot은 해시 검증만 완료했고 복원은 미검증이다.
+## 필요한 파일만 읽기
 
-**문서 관리:** [기전·판단 기준](docs/MECHANISMS.ko.md)과 [과거 결과 요약](docs/HISTORY_SUMMARY.ko.md)을 중심으로 현재 전략과 최근 분석을 관리한다. 시간별 초기 시행착오를 활성 문서에 반복하지 않는다. 세션·원본·실패·provenance·GIF·PDF는 보존하고, 현재 판단을 바꾼 근거에서 상세 이력으로 연결한다. 과거 분석-only HOLD·최대5회 배치·날짜별 TODO는 현재 지시가 아니다.
+| 지금 할 일 | 읽을 파일 |
+|---|---|
+| 시작점·목표·실행 여부 확인 | [README](README.md), [새 서버 준비](docs/active/start.md) |
+| 움직임·의미 라벨·득점 판정 선택 | [실험 계획](docs/active/experiment.md) |
+| 클립 게시, HOLD, 웹 피드백, QC·데이터 내보내기 | [수집 절차](docs/active/collection.md) |
+| 물리 변경·공식 점수 확인 | [공식 변경](docs/active/upstream.md), [정책 계약](config/policy_interface.json) |
+| 특정 슬롯, 원본, 이전 실패 또는 백업 요청 | [보관 목차](docs/ARCHIVE.md)에서 해당 항목만 연다. 보관 문서의 당시 실행 지시는 이력이다. |
 
-## 시작
+## 다음 시연
 
-이 파일은 저장소를 읽는 **개발용 Codex CLI**의 진입점이다. 실제 로봇 행동을 생성하는 격리 actor에는 저장소와 검수 자료를 전달하지 않는다.
+- 활성 경로는 `participant.collection.codex_client`의 구간 검토 모드, 격리된 `exec` actor, `gpt-6.2-astra`, `ultra`다. 고유 run ID로 시작하고 요청한 모델의 연결 실패는 그대로 기록한다. 한 환경에는 제어원 하나만 둔다.
+- 매 회차 새 run의 step 0에서 시작한다. 두 로봇의 초기 베이스에서 평균 수평 거리가 최소인 두 테이블 중 인덱스 2(+X 중앙)를 사용한다. 첫 연습 시드는 43이다. 실행 전 실제 reset의 인덱스와 셔츠–마네킹 정적·동적 마찰 0.35를 검사한다. 이전 슬롯·행동 prefix·점수·라벨은 보관함에만 둔다.
+- 시연은 관찰 가능한 의도 단위로 나눈다. 손목 근처는 작은 행동 직후와 정착 후의 차이를 보고, 반복 정체·가림·그립 손실 때는 시야·높이·접근면 중 한 가지를 바꾼다. 클립과 제안이 올라오면 웹에서 받은 피드백을 해당 run/구간에 연결한다. 무응답·보류에는 물리 진행이 없다. 구간 경계·예산·종료 시점은 수집 절차를 따른다.
+- 일상 수집에는 라이브 스트림, README 변경·push, 전체 이력 재분석이 필요하지 않다. 새 실행 중 생성물은 서버의 `output/`에 쓴다. 연결이 끊기면 감독과 collector의 실제 상태를 먼저 확인하고 이미 전송한 행동을 중복 적용하지 않는다.
 
-1. [메인](README.md)에서 대표 영상과 현재 목표를 확인한다.
-2. 새 서버라면 [GUIDED_RUNTIME](docs/collection/GUIDED_RUNTIME.ko.md)과 [OPERATIONS](docs/OPERATIONS.md)를 읽고 고정 원본·자산·모델 환경을 복원한다. 필요한 HOLD·checkpoint·게시·피드백 연결을 검증하기 전 기존 즉시 종료 수집기로 본 시연을 시작하지 않는다.
-3. 수집 변경 전 [COLLECTION_PLAN](docs/COLLECTION_PLAN.md)과 [ASTRA](docs/ASTRA.md)를 읽는다. 시연과 직접 부모는 [EPISODES](docs/EPISODES.md)에서 찾는다.
-4. 과거 세션의 “다음”, “재개”, 날짜별 TODO는 현재 지시가 아니다. 고유 실행 근거는 [보관함](docs/ARCHIVE.md)을 통해 확인한다.
-5. 시연 수집 방법을 검토할 때 [Agentic Robotics 워크숍 참고](docs/collection/research/2026-11-14-agentic-robotics-workshop.ko.md)를 읽는다. 채택 논문 39편의 조사 범위, Stretch 4+Astra 사례, 현재 코드와의 차이, 다음 비교 제안 및 원문 접근 한계를 기록했다. 개발용 참고이며 actor 입력·구현·재개 명령이 아니다. 최신 상태와 실행 계획은 계속 STATUS/COLLECTION_PLAN이 정본이다.
-6. [현재 계획](docs/COLLECTION_PLAN.md)의 양손 걸침 방향과 사용자 HOLD 절차를 따른다. [checkpoint·실행 효과 분석](docs/collection/research/2026-11-16-checkpoint-effect-feedback.ko.md), [최신 착의 연구](docs/collection/research/2026-11-16-recent-dressing-resources.ko.md), 이전 다중 방법·HolidayFactory 문서는 선행 근거다. 조사 자체를 다시 확대하지 않는다.
+## 관측과 기록
 
-## 현재 범위
-
-- **이번 두 시연은 모두 종료됐다.** 기존 M1은120전이, R0 단독 접근 분기는135전이(110 replay+25 new)로 보존한다. 마감한 과거 HOLD를 live로 표시하지 않는다. 슬롯 기반 replay 확장은 CPU399개 검사를 통과했고 실제110전이 재생·출발checkpoint 저장도 확인했다. 저장만 한 새 출발slot을 복원 검증 완료로 설명하지 않는다.
-- **실제 실행·점수·백업은 [STATUS](docs/project/STATUS.md), 현재 방향은 [COLLECTION_PLAN](docs/COLLECTION_PLAN.md), 복원·실행 계약은 [OPERATIONS](docs/OPERATIONS.md)와 [GUIDED_RUNTIME](docs/collection/GUIDED_RUNTIME.ko.md)이 정본이다.** 이전 문서의 HOLD·재개·날짜별 TODO보다 최신 사용자 결정을 우선한다. 연구 문서 전체를 actor에 전달하지 않는다.
-- 사람 조작용 state slot과 `initial_slot` 근사 복원 경로는 이미 존재한다. 원래 E36의 완전한 FEM checkpoint는 없다. 이번 새 E36/933 재생 경계의 근사 slot 저장·복원은 검증했고, 정착과 짧은 명령 효과 차이를 게시했다. 이를 정확한 동일 상태 복원으로 설명하지 않는다. 현재 collector의 행동 재생과 구분하고, 복원 시 초기화되는 상태·정착·평가 재시작을 검토한다. 기존 관측→행동→관측 루프가 전혀 없었다거나 E36까지 모든 명령이 오작동했다고 일반화하지 않는다.
-- E36의 추가 재파지0·20결정·review10은 해당 시도의 조건이다. 향후 모든 방법의 고정 규칙으로 일반화하지 않는다. 각 실험에서 제어원, 입력, 재파지·복구 조건, 예산과 종료/검토 방식을 명시하고 공식 물리·관측·행동·평가 계약은 유지한다.
-- E33–E36의 핵심 결과와 계보는 [과거 결과 요약](docs/HISTORY_SUMMARY.ko.md), 원본·검사·백업은 [보관함](docs/ARCHIVE.md)에 보존한다. E36은10act+finish·933전이·QC933/933·raw5/50·새 착의점0이다. E09·E32는 불완전 원본으로 정상 replay·학습 출처에서 제외한다. E32의 진단 백업 검증을 수집 완료로 바꾸어 설명하지 않는다.
-- 정상 평가한 시연의 최고 로컬 원점수는5/50, 착의 득점0이며 완전 착의 성공은 확인하지 못했다. E28과 후속 분기·재사용 prefix를 독립 성공 표본으로 세지 않는다. 기술 QC와 학습 승인은 별도이며 최신 시연의 학습 승인은 `unreviewed`다.
-- 모델 stop/finish, 정체, 관리 예산, 목표 득점은 종료 dispatch 전에 사용자 HOLD로 바꾼다. 물리0 대기와 기록기·프로세스 유지,5카메라 README 게시·원격 확인, 텍스트 재개를 검증한다. 사용자 무응답은 재개 승인이 아니며 구간 예산을 자동 증액하지 않는다. 실제 하드 horizon·장애는 정상 HOLD와 구분한다.
-- [미래 피드백 큐 후보](docs/collection/research/candidates/20261113-actor-feedback/README.ko.md)는 준비·CPU검사·독립 검토를 마친 미적용 패치다. 실제 모델·GPU 연결이나 실시간 사람–Astra handoff가 완료된 기능으로 설명하지 않는다. 초기 π0.5의63전이·30updates 역시 연결 시험이며 새 시연 학습·착의 개선 성과가 아니다.
-- 날짜별 세션의 재개·자동 반복·‘다음 시연’ 문구는 당시 이력이다. 과거 배치 남은 횟수는 이어받지 않는다. 최신 사용자 피드백 시연 계획에 따른 새 run만 수행한다.
-
-## 실행과 원본
-
-- 사용자 리뷰와 게시 기준은 `main`이다. 기존 작업을 덮어쓰지 않고 최신 head를 확인한 뒤 통합한다.
-- 고정 **Codex CLI 0.166.0 / exec / gpt-6-astra / ultra** 경로를 유지한다. 전역 CLI나 다른 모델·API로 임의 대체하지 않는다.
-- GPU 수집·렌더·학습·평가는 순차 실행하고 한 환경에는 제어원 하나만 둔다. 사람–Astra 실시간 handoff는 구현된 기능이 아니다.
-- 고유 run ID를 쓰며 종료 원본·실패 로그를 덮어쓰지 않는다. source commit, 입력과 프롬프트, 명령, 자산 잠금, CLI·모델, 실제 시간과 시뮬레이션 시간을 남긴다.
-- 재실행은 새 환경에서 행동 prefix를 수행하는 것이며 정확한 천 physics checkpoint가 아니다. 직접 parent와 source group, prefix·새 행동·정착·중단 정리를 구분한다.
-- E09·E32의 불완전 원본은 실패 근거로 보존하며 학습·정상 재실행 출처로 사용하지 않는다. `validate_capture` 전수 검사와 시각 검수·학습 승인은 별도다.
-- 같은 prefix나 인접 프레임을 독립 성공 표본 또는 별도 검증 출처로 세지 않는다. train/validation은 episode/source group을 기준으로 분리한다. 후속 VLA/RL은 동일 입력·예산·평가 조건에서 비교한다.
-- 복원은 고정 HF revision과 SHA를 검증하고 누락 파일만 추가한다. 원본 없는 상태·학습 cursor 복원을 검증 없이 약속하지 않는다. 서버 전원 종료와 simulator 종료를 구분한다.
-
-## 공개 관측과 행동
-
-[공식 규칙](docs/competition/RULES.md), [정책 계약](docs/competition/POLICY.md), [policy_interface.json](config/policy_interface.json)이 기준이다.
-
-- actor는 지정 RGB-D 카메라 5개와 공개 로봇 상태만 받는다. 전체 환경 객체, Gym info, 평가 JSON, audit, seed, 자유 시점, 내부 천·물체 기하를 전달하지 않는다.
-- 별도 Docker 파일시스템·내부망·제한된 송신·전용 인증 사본을 유지한다. host 저장소·평가 자료를 마운트하지 않고 도구 실행 이벤트를 거부한다. 프롬프트만으로 격리됐다고 설명하지 않는다.
-- 행동은 `float32 (2,9)`, `[-1,1]`이다. 행 0=robot_0, 행 1=robot_1. 앞 8채널은 속도 비율, gripper 0은 기존 의도 유지다. 중립에서도 목표 추종 운동이 남을 수 있다.
-- 관측·실제 행동·다음 관측은 20 Hz, 제어는 60 Hz, 물리는 240 Hz다. 모델 호출 주기와 구분한다. 입력·유한값·실행 길이·시간 제한·종료·파일 마감을 검사한다.
-- Pixel depth query는 같은 현재 공개 관측의 한 카메라에서 최대 8점을 읽는다. 물리 진행 0, 관측당 질의 1회, 원래 행동 스키마로 후속 1회다. invalid는 빈 공간이나 숨은 입구의 증거가 아니다.
-- 점수와 success는 별도 분석·선택·허용된 보상·종료에 사용한다. 다음 actor 입력이나 좌표 정답, 교사 행동으로 전달하지 않는다. 내부 상태를 actor/critic/world model/증류 교사에 넣지 않는다.
-- 공식 물리·형상·행동 한계·리셋·평가를 성능 개선 목적으로 바꾸지 않는다. 정책 외 경로로 장면 상태를 조작하지 않는다.
-
-## 표시와 문서
-
-- 로봇별 비교 화면은 **왼쪽 robot_1, 오른쪽 robot_0**. 4분할은 위 head, 아래 wrist다. 이름과 이미지를 함께 옮기며 픽셀을 좌우 반전하지 않는다. 원본 카메라 배열과 action 행은 바꾸지 않는다. [배치 기준](docs/gallery/ROBOT_LAYOUT.ko.md)
-- README 최상단의 `PHYRC_USER_REVIEW:START/END`에는 현재 서버/시연 상태와 최신 사용자 검토를 둔다. HOLD마다 같은 관측의 overview+양쪽 head/wrist5장·원본 링크·관측 ID·사유·질문을 push한다. 과거 이미지를 live로 표시하지 않는다. 기존 통합 PDF 버튼·공식 데모·E36 GIF는 보존하며 새 마감에도 gallery·provenance를 연결한다.
-- **사용자 요청에 따라 판단 자료에는 구간별 실제 움직임 GIF도 포함한다.** 마지막 정지 화면만으로 다음 판단을 요구하지 않는다. 실제 기록 프레임과 원래 시간·재생 배속·끝점 정지를 명시한다. 열린 원본을 닫지 않고 HOLD에서 해시·경계를 확인한 고정 사본으로 export하며, 프레임 보간이나 생성으로 빈 구간을 채우지 않는다. [현재 GIF와 출처](docs/gallery/20261116-m1-guided-segments/README.ko.md), `scripts/export_held_segments.py`를 참고한다.
-- 실제 관측, 가설, 미실행 계획을 구분한다. 모델이 붙인 stage, 파일 complete, QC 통과, 기본 reward 0은 착의 성공이 아니다. 영상 일부를 독립 시연으로 세지 않는다.
-- 과거 세션·실패·provenance·catalog·주최 측 README·LICENSE·NOTICE·THIRD_PARTY는 보존한다. 중복 설명의 이전 본문은 보관함의 고정 Git revision에서 확인한다.
-- 새 결과 마감 시 STATUS, EPISODES, catalog, 재현용 run 기록, 백업 receipt를 갱신한다. 현재 계획은 COLLECTION_PLAN 한 곳에 두고, 기전·가설·판별 근거는 MECHANISMS에, 과거 핵심 교훈은 HISTORY_SUMMARY에 요약한다. 실행 시각·hash는 상세 provenance에 보존하되 활성 문서에 시간순 로그를 복제하지 않는다.
-- 문서 변경은 링크·경로·코드 예제·현재/계획 구분을 검사한다. CPU 검사, 실제 CLI, GPU 실행, 과제 성능 중 수행하지 않은 검사를 통과했다고 쓰지 않는다.
-
-## 공개 범위
-
-- GitHub에는 코드·문서·선별 이미지·영상만 둔다. 큰 원본, audit·평가, 모델은 비공개 자료 저장소에 고정 revision과 검증 receipt로 남긴다.
-- `scripts/preserve_collection.py`의 허용 목록으로 정상 마감·QC 통과 원본을 보존한다. 불완전 E32는 별도 검토한 로컬 허용 목록으로 진단 전용 백업하며 정상 보존 gate를 완화하지 않는다. 분석은 별도 review/session에 두고 collection 원본에 임의 파일을 추가하지 않는다. 신규 의존성이 있으면 소스 보존 목록도 검증한다.
-- 인증 파일·키·토큰·개인 접속 주소·원시 CLI reasoning/events·세션 DB·미검수 로그·simulator.log를 게시하지 않는다. 홈이나 저장소 전체를 백업으로 압축하지 않는다.
+- actor와 영상 리뷰는 지정 공개 카메라와 허용된 관측만 사용한다. 점수·평가 원본·audit·seed·자유 시점·내부 천 기하는 감독 영역에 둔다. 사용자 수정문은 화면에서 관찰한 조작 목표로 작성한다. 공식 물리·행동·평가 조건을 적용한다. [공식 규칙](docs/competition/RULES.md)
+- 표시 순서는 왼쪽 R1, 오른쪽 R0, 위 head, 아래 wrist다. 원본 데이터와 행동 행은 R0, R1이다. `float32 (2,9)`, 20 Hz 정책·60 Hz 제어·240 Hz 물리를 유지한다.
+- 단계의 성공과 점수, `success`, 기술 QC, 학습 승인에는 각각의 근거를 남긴다. 가려진 움직임은 불확실로 기록한다. 같은 실행의 인접 구간은 같은 데이터 분할에 둔다. 초기 시드가 같은 반복은 별도로 표시하고 다른 배치로 일반화한 결과와 구분한다.
+- 실제 결과를 쓰기 전 선택한 run의 평가 유효성·항목별 점수·HDF5 전수 QC를 확인한다. 종료한 원본·분기·인증정보를 덮어쓰거나 공개하지 않는다. 검토 영상과 라벨은 비공개 원본에 연결하고, GPU·모델을 실행한 범위와 CPU 검증을 명시한다.

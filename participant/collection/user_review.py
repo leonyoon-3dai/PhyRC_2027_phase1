@@ -197,13 +197,16 @@ def validate_start_state(root, initial_slot, receipt_path):
 def run_guided(*, sim, actor, obs, args, root, trace, actor_root, task, interface,
                manifest, event, prepare_observation, validate_decision, action_schema,
                token_usage, check_interrupt, score_reader=first_sleeve_points,
-               wait=await_reply, reset_actor=None):
+               wait=await_reply, reset_actor=None, web=None):
     """Run until an explicit finish/checkpoint reply; no silent budget extension."""
     seen, hold_count, feedback, method = set(), 0, None, 'M1'
     segment_decisions, segment_steps = args.segment_decisions, args.segment_steps
     start_decisions, start_steps = manifest['decisions_completed'], manifest['simulation_steps']
     baseline = score_reader(root / 'output/collections' / args.run_id) if args.mode != 'wiring' else 0
-    goal_seen = baseline == 5
+    if web:
+        from participant.collection.segment_bridge import ACTIVE_TASK
+        method = 'segment_review'
+    goal_seen = baseline == 5 or web is not None
     manifest['user_guided'] = {'enabled': True, 'method': method, 'initial_first_sleeve': baseline,
                                'segment_decisions': segment_decisions, 'segment_steps': segment_steps,
                                'hold_count': 0, 'wait_wall_s': 0.0}
@@ -216,7 +219,8 @@ def run_guided(*, sim, actor, obs, args, root, trace, actor_root, task, interfac
         write_json(trace / 'start-state-validation.json', json.loads(Path(args.start_state_validation).read_text()))
         if baseline != validation['first_sleeve_baseline']:
             raise ValueError('restored first_sleeve differs from validation baseline')
-        reason = None
+        if not web:
+            reason = None
     actor_needs_reset = False
 
     def persist():
@@ -224,6 +228,7 @@ def run_guided(*, sim, actor, obs, args, root, trace, actor_root, task, interfac
 
     def applied(action, steps, kind, index):
         nonlocal obs
+        prior = obs
         before = float(obs['simulation_time_s'])
         t = time.monotonic()
         result = sim.dispatch('act', {'action': action.tolist(), 'steps': steps})
@@ -232,6 +237,10 @@ def run_guided(*, sim, actor, obs, args, root, trace, actor_root, task, interfac
         actual = round((float(obs['simulation_time_s']) - before) * 20)
         manifest['simulation_steps'] += actual
         manifest['environment_dispatch_wall_s'] += elapsed
+        if web:
+            web.record(index=index, kind=kind, start=manifest['simulation_steps'] - actual,
+                       end=manifest['simulation_steps'], before=prior, after=obs,
+                       action=action, intent=last_intent)
         event({'type': 'applied_segment', 'decision_index': index,
                'action_source': kind, 'model_invoked': kind == 'model',
                'start_step': manifest['simulation_steps'] - actual, 'end_step': manifest['simulation_steps'],
@@ -257,9 +266,13 @@ def run_guided(*, sim, actor, obs, args, root, trace, actor_root, task, interfac
             if reason == 'start_state_review' and args.save_checkpoint_on_start:
                 saved = sim.dispatch('save_checkpoint', {'key': f'{args.run_id}-start'})
                 write_json(trace / 'start-checkpoint.json', saved)
-            private, public, meta = export_review(obs, root=root, trace=trace, run_id=args.run_id,
-                hold_id=hold_id, step=before_step, reason=reason, method=method,
-                source_checkpoint=source, prepare_observation=prepare_observation, last_intent=last_intent)
+            if web:
+                meta = web.review(obs=obs, start=start_steps, end=before_step, hold=hold_id,
+                                  reason=reason, manifest=manifest, event=event)
+            else:
+                private, public, meta = export_review(obs, root=root, trace=trace, run_id=args.run_id,
+                    hold_id=hold_id, step=before_step, reason=reason, method=method,
+                    source_checkpoint=source, prepare_observation=prepare_observation, last_intent=last_intent)
             if getattr(args, 'prepare_checkpoint_only', False) and reason == 'start_state_review':
                 sim.dispatch('finish_episode')
                 meta['run_closed_after_capture'] = True
@@ -275,14 +288,19 @@ def run_guided(*, sim, actor, obs, args, root, trace, actor_root, task, interfac
                 manifest['user_guided']['close_reason'] = 'authorized_checkpoint_preparation'
                 persist()
                 return obs
-            manifest['status'], manifest['activity'] = 'held', 'awaiting_publication_and_user'
+            manifest['status'] = 'held'
+            manifest['activity'] = 'awaiting_web_feedback' if web else 'awaiting_publication_and_user'
             manifest['user_guided'].update(hold_count=hold_count, current_hold=hold_id,
                                           observation_id=meta['observation_id'], reason=reason)
             persist()
+            location = {'review_directory': str(web.journal)} if web else {'public_directory': str(public.relative_to(root))}
             print(json.dumps({'run_id': args.run_id, 'status': 'held', 'hold_id': hold_id,
-                              'reason': reason, 'public_directory': str(public.relative_to(root))}), flush=True)
+                              'reason': reason, **location}), flush=True)
             waiting = time.monotonic()
-            reply = wait(private, meta, sim, seen, event, check_interrupt=check_interrupt)
+            if web:
+                reply = web.wait(meta, sim, check_interrupt, event)
+            else:
+                reply = wait(private, meta, sim, seen, event, check_interrupt=check_interrupt)
             check_interrupt()
             manifest['user_guided']['wait_wall_s'] += time.monotonic() - waiting
             manifest['human_intervention'] = True
@@ -331,7 +349,10 @@ def run_guided(*, sim, actor, obs, args, root, trace, actor_root, task, interfac
         call_index = manifest['actor_calls_attempted']
         folder = actor_root / 'observations' / f'guided-{call_index:05d}'
         payload, images = prepare_observation(obs, folder)
-        prompt = task + '\n\nCurrent human-selected method: ' + method + '\n' + METHODS[method]
+        prompt = task + '\n\n' + (ACTIVE_TASK if web else 'Current human-selected method: ' + method + '\n' + METHODS[method])
+        if web:
+            effect = web.actions[-1] if web.actions else web.public_effect
+            prompt += '\nLatest public visual evidence and measured motion: ' + json.dumps(effect, ensure_ascii=False)
         if feedback:
             prompt += '\nUser task direction (use only permitted observations; no hidden state authority): ' + feedback
         prompt += '\nPublic static interpretation metadata: ' + json.dumps(interface, allow_nan=False)
@@ -389,8 +410,17 @@ def run_guided(*, sim, actor, obs, args, root, trace, actor_root, task, interfac
         if manifest['simulation_steps'] - start_steps + needed > segment_steps:
             reason = 'transition_budget'
             continue
+        if web:
+            if web.actions and web.stage != decision['stage']:
+                # This new-stage proposal has not moved the robots. Reobserve after human review.
+                reason = 'stage_change'
+                continue
+            web.stage, web.assessment = decision['stage'], decision.get('visual_assessment')
         applied(action, decision['steps'], 'model', index)
         check_interrupt()
+        if web and web.new_award(manifest['simulation_steps']):
+            reason = 'evaluator_milestone'
+            continue
         if args.mode != 'wiring' and not goal_seen and score_reader(root / 'output/collections' / args.run_id) == 5:
             goal_seen, reason = True, 'first_sleeve_new_5'
             continue
@@ -398,3 +428,8 @@ def run_guided(*, sim, actor, obs, args, root, trace, actor_root, task, interfac
             applied(np.zeros((2, 9), dtype=np.float32), settle_steps, 'controller_settle', index)
             if args.mode != 'wiring' and not goal_seen and score_reader(root / 'output/collections' / args.run_id) == 5:
                 goal_seen, reason = True, 'first_sleeve_new_5'
+        if web:
+            if settle_steps and web.new_award(manifest['simulation_steps']):
+                reason = 'evaluator_milestone'
+            elif web.assessment == 'blocked':
+                reason = 'visual_blockage'
