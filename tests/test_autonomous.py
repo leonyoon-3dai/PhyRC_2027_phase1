@@ -121,11 +121,16 @@ class AutonomousTests(unittest.TestCase):
         self.assertEqual(m['autonomous_control']['task_outcome'], 'technical_failure')
         self.assertEqual([r['hold_reason'] for r in records], ['start_state_review','actor_error','actor_error'])
 
-    def test_persistent_observed_failure_closes_instead_of_looping(self):
-        actor, sim, m, records = self.execute([proposal(steps=3) for _ in range(5)],
-                                               segment_decisions=1, report_stall=True)
-        self.assertEqual(m['autonomous_control']['close_reason'], 'repeated_no_progress')
-        self.assertEqual(sim.observation_step, 12)
+    def test_four_observed_failures_preserve_new_recovery_chosen_by_actor(self):
+        recovery = proposal(steps=9)
+        recovery['decision'].update(stage='recovery', visual_assessment='recovering',
+                                    reason='Change approach angle and regrasp the exposed rim.')
+        attempts = [proposal(steps=3) for _ in range(4)] + [recovery, proposal('stop')]
+        actor, sim, m, records = self.execute(attempts, segment_decisions=1, report_stall=True)
+        self.assertEqual(m['autonomous_control']['close_reason'], 'model_stop')
+        self.assertEqual([x['steps'] for tool,x in sim.calls if tool=='act'], [3,3,3,3,9])
+        self.assertEqual(sim.observation_step, 21)
+        self.assertTrue(all('no_progress' in r['labels'] for r in records[1:]))
 
     def test_episode_limit_includes_last_legal_action_and_final_frame(self):
         actor, sim, m, records = self.execute([proposal(steps=20)], max_steps=7, end_at_horizon=True)

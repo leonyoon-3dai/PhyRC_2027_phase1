@@ -983,7 +983,9 @@ def main():
         # The selected method replaces old strategy-specific acquisition/regrasp constraints.
         task = TASK + '\n\nHuman review controls this episode. stop/finish_episode are review proposals; the supervisor pauses without advancing physics. Inspect each new observation before a short action. Do not request hidden state or evaluation feedback.'
     if args.gpt_only:
-        task = TASK + '\n\n' + (root / 'participant/collection/prompts/autonomous_full_dressing.txt').read_text()
+        task = TASK.replace('A stop applies neutral motion for one control step and preserves grip intent.',
+                            'In this mode stop and finish_episode both end the episode without another transition.')
+        task += '\n\n' + (root / 'participant/collection/prompts/autonomous_full_dressing.txt').read_text()
     action_schema = SCHEMA
     if args.named_actions:
         from participant.collection import named_actions

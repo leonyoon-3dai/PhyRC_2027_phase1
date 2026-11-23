@@ -215,7 +215,8 @@ def apply_action(sim, obs, manifest, event, web, action, steps, kind, index, int
            'simulation_start_s': before, 'simulation_end_s': float(obs['simulation_time_s']),
            'environment_dispatch_wall_s': elapsed, 'quality_status': 'unreviewed'})
     active = result.get('active', True)
-    if actual != steps and (active or not 0 < actual <= steps) or not active and not allow_end:
+    valid_length = actual == steps or (allow_end and not active and 0 < actual <= steps)
+    if not valid_length or (not active and not allow_end):
         raise RuntimeError('collector ended or action length differed; not a live HOLD')
     return obs, active
 

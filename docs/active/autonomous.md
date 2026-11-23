@@ -1,6 +1,6 @@
 # GPT 단독 착의 실험
 
-이 모드는 새 에피소드에서 GPT가 첫 접근부터 착의 종료까지 양쪽 로봇을 제어한다. 수집기에 `--gpt-only --segment-review-dir output/segment-review`를 지정하면 구간 영상과 모델 판단을 남기면서 다음 행동을 스스로 선택한다. 실험 프롬프트는 현재 에피소드의 지정 RGB-D 카메라, 공개 로봇 상태, 적용 행동과 관측 결과를 바탕으로 판단하도록 작성했다. 이전 시연의 조작 기록과 점수 분석은 갤러리에서 운영자가 검토한다. [실험 프롬프트](../../participant/collection/prompts/autonomous_full_dressing.txt) · [이전 시연 분석](guided-retrospective.json)
+이 모드는 새 에피소드에서 GPT가 첫 접근부터 착의 종료까지 양쪽 로봇을 제어한다. 새 run ID의 수집기에 `--mode dressing --gpt-only --segment-review-dir output/segment-review`를 지정하면 구간 영상과 모델 판단을 남기면서 다음 행동을 스스로 선택한다. 실험 프롬프트는 현재 에피소드의 지정 RGB-D 카메라, 공개 로봇 상태, 적용 행동과 관측 결과를 바탕으로 판단하도록 작성했다. 이전 시연의 조작 기록과 점수 분석은 갤러리에서 운영자가 검토한다. [실험 프롬프트](../../participant/collection/prompts/autonomous_full_dressing.txt) · [이전 시연 분석](guided-retrospective.json)
 
 ## 공식 영상에서 확인한 동작
 

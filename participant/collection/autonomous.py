@@ -15,7 +15,7 @@ def run_autonomous(*, sim, actor, obs, args, root, trace, actor_root, task, inte
     schema = dict(action_schema, required=[*action_schema['required'], 'observation_review'],
                   properties=dict(action_schema['properties'], observation_review=REVIEW_SCHEMA))
     run, journal = args.run_id, web.journal
-    hold_count = start = actions = consecutive_failures = stalled_segments = 0
+    hold_count = start = actions = consecutive_failures = 0
     receipt = manifest['autonomous_control'] = dict(mode='gpt_only', intervention_count=0)
     manifest['human_intervention'] = False
     direction = None
@@ -84,7 +84,7 @@ def run_autonomous(*, sim, actor, obs, args, root, trace, actor_root, task, inte
         return decision, action, summary, index
 
     def boundary(reason, summary, terminal=None):
-        nonlocal hold_count, start, actions, direction, obs, stalled_segments
+        nonlocal hold_count, start, actions, direction, obs
         hold_count += 1
         hold = f'hold-{hold_count:04d}'
         step, sim_time = manifest['simulation_steps'], float(obs['simulation_time_s'])
@@ -96,11 +96,6 @@ def run_autonomous(*, sim, actor, obs, args, root, trace, actor_root, task, inte
             obs = result['observation']
             if reason == 'start_state_review' and args.save_checkpoint_on_start:
                 write_json(trace / 'start-checkpoint.json', sim.dispatch('save_checkpoint', {'key': run + '-start'}))
-        if summary and actions:
-            stalled = 'no_progress' in summary['labels'] and summary['outcome'] in ('failure', 'uncertain')
-            stalled_segments = stalled_segments + 1 if stalled else 0
-            if stalled_segments >= 4 and not terminal:
-                terminal = 'repeated_no_progress'
         record = web.review(obs=obs, start=start, end=step, hold=hold, reason=reason,
                             manifest=manifest, event=event, actor_review=summary)
         # Scores attached to the journal record are for retrospective review only.
@@ -124,7 +119,6 @@ def run_autonomous(*, sim, actor, obs, args, root, trace, actor_root, task, inte
             elif reason != 'hard_horizon':
                 terminal = None
                 direction = reply['text']
-                stalled_segments = 0
             set_control_state(journal, run, 'closing' if terminal else 'running')
         if terminal:
             if active:

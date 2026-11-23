@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="referrer" content="same-origin" />
+    <title>PhyRC 시연 영상</title>
+    <style>
+      [hidden] { display: none !important; }
+      :root {
+        color-scheme: dark;
+        --bg: #10171a;
+        --panel: #182125;
+        --line: #364349;
+        --ink: #eef3f2;
+        --muted: #b5c4c6;
+        --link: #a9e4cf;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font:
+          16px/1.65 Inter,
+          "Apple SD Gothic Neo",
+          system-ui,
+          sans-serif;
+      }
+      main {
+        max-width: 1280px;
+        margin: auto;
+        padding: 24px clamp(16px, 3vw, 48px) 64px;
+      }
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+      h1 {
+        font-size: clamp(1.65rem, 4vw, 2.2rem);
+      }
+      h2 {
+        font-size: 1.2rem;
+      }
+      h3,
+      dt {
+        font-size: 0.96rem;
+      }
+      a {
+        color: var(--link);
+        text-underline-offset: 0.2em;
+      }
+      a:focus-visible,
+      select:focus-visible,
+      summary:focus-visible {
+        outline: 3px solid #f2c67b;
+        outline-offset: 3px;
+      }
+      header {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+      header a {
+        font-size: 0.92rem;
+      }
+      #retro {
+        margin: 22px 0 30px;
+        border: 1px solid var(--line);
+        border-left: 3px solid var(--link);
+        border-radius: 8px;
+        padding: 16px 20px;
+        background: var(--panel);
+      }
+      #retro > p {
+        margin: 0.4rem 0;
+      }
+      summary {
+        cursor: pointer;
+        color: var(--link);
+        font-weight: 600;
+      }
+      ol {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+        gap: 18px;
+        list-style: none;
+        padding: 0;
+      }
+      ol li {
+        border-top: 1px solid var(--line);
+        padding-top: 0.5rem;
+      }
+      li + li {
+        margin: 0;
+      }
+      dl {
+        margin: 0.4rem 0;
+      }
+      dt {
+        font-weight: 650;
+        color: var(--link);
+      }
+      dd {
+        margin: 0.05rem 0 0.5rem;
+      }
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.3rem 0.9rem;
+      }
+      #workspace {
+        display: grid;
+        grid-template-columns: minmax(0, 1.5fr) minmax(270px, 0.8fr);
+        gap: clamp(18px, 3vw, 38px);
+        margin-top: 20px;
+      }
+      #player {
+        display: block;
+        width: 100%;
+        max-height: 76vh;
+        background: #080d10;
+        border-radius: 6px;
+      }
+      #clip-title {
+        margin: 0 0 0.5rem;
+      }
+      aside {
+        min-width: 0;
+      }
+      select {
+        width: 100%;
+        font: inherit;
+        color: var(--ink);
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 4px;
+        padding: 0.45rem;
+      }
+      label,
+      small {
+        color: var(--muted);
+      }
+      #list {
+        max-height: 50vh;
+        overflow: auto;
+        list-style: none;
+        margin: 0.65rem 0 0;
+        padding: 0;
+        border-top: 1px solid var(--line);
+      }
+      #permalink {
+        display: block;
+        width: 100%;
+        color: var(--link);
+        background: var(--panel);
+        border: 1px solid var(--line);
+        padding: 0.45rem;
+        font: inherit;
+        font-size: 0.85rem;
+      }
+      #list li {
+        margin: 0;
+      }
+      #list a {
+        display: block;
+        padding: 0.44rem 0.65rem;
+        border-bottom: 1px solid var(--line);
+        text-decoration: none;
+      }
+      #list [aria-current] {
+        background: #233d36;
+        color: #fff;
+        border-left: 3px solid var(--link);
+      }
+      #details h3 {
+        margin-top: 1rem;
+      }
+      #details p {
+        white-space: pre-line;
+      }
+      #feedback {
+        margin: 1rem 0 0;
+        color: var(--muted);
+      }
+      #refresh-note {
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+      @media (max-width: 700px) {
+        #workspace {
+          grid-template-columns: 1fr;
+        }
+        #list {
+          max-height: 42vh;
+        }
+        #player {
+          max-height: 63vh;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>PhyRC 시연 영상</h1>
+        <a id="home">전체 갤러리</a>
+      </header>
+      <p id="reload-note">
+        <small
+          >새 구간은 브라우저 새로고침으로 확인하세요. 보고 있는 영상은 자동으로
+          바뀌지 않습니다.</small
+        >
+      </p>
+      <p id="notice" role="status">구간 목록을 불러오는 중입니다.</p>
+      <section id="retro" hidden></section>
+      <div id="workspace" hidden>
+        <section>
+          <h2 id="clip-title"></h2>
+          <video id="player" controls playsinline preload="metadata"></video>
+          <nav>
+            <label for="permalink">이 구간 주소</label
+            ><input id="permalink" readonly aria-label="이 구간 주소" />
+          </nav>
+          <div id="details"></div>
+          <p id="feedback">
+            실행 중 개입이 필요하면 채팅에 회차와 구간을 적어 주세요.
+          </p>
+        </section>
+        <aside>
+          <label for="runs">회차</label
+          ><select id="runs"></select>
+          <p id="refresh-note"></p>
+          <ul id="list" aria-label="구간 영상"></ul>
+        </aside>
+      </div>
+    </main>
+    <script>
+      "use strict";
+      const $ = (id) => document.getElementById(id);
+      const parts = location.pathname.split("/").map(decodeURIComponent);
+      const marker = parts.lastIndexOf("PhyRC-gallery");
+      const folders = parts
+        .slice(parts.indexOf("files") + 1, marker < 0 ? -1 : marker)
+        .map(encodeURIComponent);
+      const viewRoot =
+        location.pathname.split("/files/")[0] +
+        "/view/" +
+        (folders.length ? folders.join("/") + "/" : "");
+      let currentRun = marker < 0 ? null : parts[marker + 1];
+      let currentSegment =
+        marker < 0 ? null : parts[marker + 2]?.replace(/\.html$/, "");
+      let catalog, selectedKey;
+      const media = new Map();
+      function el(tag, text) {
+        const node = document.createElement(tag);
+        if (text !== undefined) node.textContent = text;
+        return node;
+      }
+      function clipUrl(run, id) {
+        return new URL(
+          viewRoot +
+            "PhyRC-gallery/" +
+            encodeURIComponent(run) +
+            "/" +
+            encodeURIComponent(id) +
+            ".html",
+          location.href,
+        ).href;
+      }
+      function clipLink(run, id, label) {
+        const a = el("a", label);
+        a.href = clipUrl(run, id);
+        a.dataset.run = run;
+        a.dataset.segment = id;
+        return a;
+      }
+      function retrospective(r, isDetail) {
+        const box = $("retro");
+        box.replaceChildren();
+        box.hidden = !r;
+        if (box.hidden) return;
+        box.append(el("h2", r.title), el("p", r.summary));
+        const fold = el("details");
+        fold.open = !isDetail;
+        fold.append(el("summary", "이전 시연 · 공식 영상 · 다음 실험"));
+        const cases = el("ol");
+        for (const item of r.items) {
+          const li = el("li"),
+            dl = el("dl");
+          for (const [field, label] of [
+            ["observed", "이전 시연"],
+            ["demo", "공식 영상"],
+            ["next", "다음 실험"],
+          ])
+            dl.append(el("dt", label), el("dd", item[field]));
+          li.append(dl);
+          cases.append(li);
+        }
+        fold.append(cases);
+        const clips = el("nav");
+        for (const item of r.evidence_segments || []) {
+          if (
+            catalog.runs.some(
+              (g) =>
+                g.id === r.run_id &&
+                g.clips.some((c) => c.id === item.segment_id),
+            )
+          )
+            clips.append(clipLink(r.run_id, item.segment_id, item.label));
+        }
+        const sources = el("nav");
+        for (const item of r.sources || []) {
+          const url = new URL(item.url, location.origin);
+          if (url.protocol === "https:") {
+            const a = el("a", item.label);
+            a.href = url.href;
+            a.rel = "noreferrer";
+            sources.append(a);
+          }
+        }
+        fold.append(clips, sources);
+        box.append(fold);
+      }
+      function render() {
+        if (!catalog) return;
+        const run = currentRun
+          ? catalog.runs.find((g) => g.id === currentRun)
+          : catalog.runs[0];
+        const clip =
+          run &&
+          (currentSegment
+            ? run.clips.find((c) => c.id === currentSegment)
+            : run.clips[0]);
+        $("home").href = viewRoot + "PhyRC-review.html";
+        retrospective(catalog.retrospective, Boolean(currentRun));
+        if (!clip) {
+          $("notice").textContent = currentRun
+            ? "요청한 구간을 찾을 수 없습니다."
+            : "첫 구간을 기다리는 중입니다.";
+          $("workspace").hidden = true;
+          return;
+        }
+        $("notice").textContent = "";
+        $("workspace").hidden = false;
+        const runs = $("runs");
+        runs.replaceChildren();
+        for (const g of catalog.runs) {
+          const opt = el("option", g.id);
+          opt.value = g.id;
+          runs.append(opt);
+        }
+        runs.value = run.id;
+        const stateLabels = {
+          running: "자동 진행 중",
+          pause_requested: "개입 요청 처리 중",
+          held: "개입 대기",
+          closed: "종료",
+        };
+        $("refresh-note").textContent = [
+          run.clips.length + "개 구간",
+          stateLabels[run.control] || "",
+        ]
+          .filter(Boolean)
+          .join(" · ");
+        const list = $("list");
+        const scroll = list.scrollTop;
+        list.replaceChildren();
+        for (const c of run.clips) {
+          const li = el("li");
+          const a = clipLink(
+            run.id,
+            c.id,
+            c.id + " · " + c.start_step + "–" + c.end_step + "전이",
+          );
+          if (c.id === clip.id) a.setAttribute("aria-current", "page");
+          li.append(a);
+          list.append(li);
+        }
+        list.scrollTop = scroll;
+        $("clip-title").textContent =
+          clip.id + " · " + clip.start_step + "–" + clip.end_step + "전이";
+        $("permalink").value = clipUrl(run.id, clip.id);
+        const detail = $("details");
+        detail.replaceChildren();
+        for (const [label, t] of [
+          ["장면 관찰", clip.analysis],
+          ["구간 종료 시 제안", clip.next_prompt],
+        ])
+          if (t) detail.append(el("h3", label), el("p", t));
+        const key = run.id + "/" + clip.id;
+        if (key !== selectedKey) {
+          $("player").src =
+            "data:video/mp4;base64," + media.get(key).textContent.slice(0, -1);
+          selectedKey = key;
+        }
+      }
+      document.addEventListener("click", (event) => {
+        const a = event.target.closest("a");
+        if (
+          !a ||
+          event.button !== 0 ||
+          event.ctrlKey ||
+          event.metaKey ||
+          event.shiftKey ||
+          event.altKey
+        )
+          return;
+        if (a.dataset.run || a.id === "home") {
+          event.preventDefault();
+          currentRun = a.dataset.run || null;
+          currentSegment = a.dataset.segment || null;
+          render();
+        }
+      });
+      $("permalink").addEventListener("focus", (e) => e.target.select());
+      $("runs").addEventListener("change", () => {
+        currentRun = $("runs").value;
+        currentSegment = null;
+        render();
+      });
+      function latest(selector) {
+        for (const node of Array.from(
+          document.querySelectorAll(selector),
+        ).reverse()) {
+          try {
+            return JSON.parse(node.textContent);
+          } catch {
+            continue;
+          }
+        }
+        return null;
+      }
+      document.addEventListener("DOMContentLoaded", () => {
+        const groups = new Map(),
+          controls = latest("script[data-control]") || {};
+        for (const block of document.querySelectorAll("script[data-record]")) {
+          const data = block.nextElementSibling;
+          if (
+            !data ||
+            !data.hasAttribute("data-video") ||
+            !data.textContent.endsWith("!")
+          )
+            continue;
+          const clip = JSON.parse(block.textContent),
+            key = clip.run + "/" + clip.id;
+          if (media.has(key)) continue;
+          media.set(key, data);
+          const clips = groups.get(clip.run) || [];
+          clips.push(clip);
+          groups.delete(clip.run);
+          groups.set(clip.run, clips);
+        }
+        catalog = {
+          retrospective: latest("script[data-retro]"),
+          runs: Array.from(groups, ([id, clips]) => ({
+            id,
+            clips: clips.reverse(),
+            control: controls[id],
+          })).reverse(),
+        };
+        render();
+      });
+    </script>
