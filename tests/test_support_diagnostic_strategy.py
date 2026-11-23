@@ -3,6 +3,7 @@
 These checks validate orchestration, not the model's adherence or cloth support.
 """
 import json
+import hashlib
 from pathlib import Path
 import sys
 import tempfile
@@ -17,7 +18,7 @@ from participant.collection import codex_client
 
 class SupportDiagnosticStrategyTest(unittest.TestCase):
     def prepare(self, *, strategy='coordinated-support-diagnostic', replay=True,
-                settle=0, depth=False, review_points=10, seed=None, segment_review=False):
+                settle=0, depth=False, review_points=10, seed=None, segment_review=False, gpt_only=False):
         class SelectionFinished(Exception):
             pass
 
@@ -35,6 +36,11 @@ class SupportDiagnosticStrategyTest(unittest.TestCase):
                 argv += ['--seed', str(seed)]
             if segment_review:
                 argv += ['--user-guided', '--segment-review-dir', str(root / 'journal')]
+            if gpt_only:
+                argv += ['--gpt-only', '--named-actions', '--segment-review-dir', str(root / 'journal')]
+                relative = Path('participant/collection/prompts/autonomous_full_dressing.txt')
+                (root / relative).parent.mkdir(parents=True)
+                (root / relative).write_bytes((Path(__file__).resolve().parents[1] / relative).read_bytes())
             prefix = SimpleNamespace(actions=np.zeros((264, 2, 9), np.float32),
                 trusted_metadata={'reset_seed': 892321},
                 public_lineage={'source_group': 'private-source-family', 'replay_steps': 264})
@@ -73,6 +79,17 @@ class SupportDiagnosticStrategyTest(unittest.TestCase):
         self.assertIn('--segment-frame-dir', command)
         self.assertEqual(command[command.index('--model-id') + 1], 'gpt-6.2-astra')
         self.assertNotIn('--initial-slot', command)
+
+    def test_autonomous_prompt_routes_both_arms_before_head_then_fits_sleeves(self):
+        run = self.prepare(replay=False, strategy='general', gpt_only=True)
+        prompt = run['prompt']
+        phases = ('Hang the shirt on both arms first.', 'guide the neckline over the head.',
+                  'After the head pass, fit both sleeves.')
+        positions = [prompt.index(phase) for phase in phases]
+        self.assertEqual(positions, sorted(positions))
+        self.assertNotIn('seat the shirt over shoulders and upper arms, pass the head', prompt)
+        self.assertIn('each with base_forward', prompt)
+        self.assertEqual(run['attempt']['prompt_sha256'], hashlib.sha256(prompt.encode()).hexdigest())
 
     def test_trusted_seed_lineage_and_review_threshold_stay_out_of_prompt(self):
         low, high = self.prepare(review_points=10), self.prepare(review_points=50)
