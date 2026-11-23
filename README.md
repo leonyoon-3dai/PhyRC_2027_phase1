@@ -15,7 +15,7 @@
 ## 시연 3 · GPT 단독으로 양팔 먼저 걸치기
 
 <!-- demonstration-3-status -->
-**진행 중 · 0–157전이 수록.** 양팔에 옷을 먼저 걸치고 목둘레를 넘긴 뒤, 양손을 각각의 소매로 빼고 몸통까지 내리는 순서를 시험합니다. [최신 구간 갤러리](https://jupyter-fjy7731zk.gobrev.dev/view/PhyRC-review.html)
+**0–608전이 전체 · 5/50점.** 양팔에 옷을 먼저 걸치고 목둘레를 넘긴 뒤, 양손을 각각의 소매로 빼고 몸통까지 내리는 순서를 시험합니다. [최신 구간 갤러리](https://jupyter-fjy7731zk.gobrev.dev/view/PhyRC-review.html)
 <!-- /demonstration-3-status -->
 
 ![시연 3 영상. 새 환경의 첫 관측부터 시작하는 양팔 우선 착의 실험](docs/gallery/20261123-end-to-end/demonstration-3.gif)
