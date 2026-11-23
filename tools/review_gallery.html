@@ -210,7 +210,10 @@
     <main>
       <header>
         <h1>PhyRC 시연 영상</h1>
-        <a id="home">전체 갤러리</a>
+        <nav aria-label="영상 탐색">
+          <a href="#clip-title" id="jump" hidden>최신 구간 영상</a>
+          <a id="home">전체 갤러리</a>
+        </nav>
       </header>
       <p id="reload-note">
         <small
@@ -339,6 +342,9 @@
             ? run.clips.find((c) => c.id === currentSegment)
             : run.clips[0]);
         $("home").href = viewRoot + "PhyRC-review.html";
+        $("home").hidden = !currentRun;
+        $("jump").hidden = !clip;
+        $("jump").textContent = currentRun ? "선택한 구간 영상" : "최신 구간 영상";
         retrospective(catalog.retrospective, Boolean(currentRun));
         if (!clip) {
           $("notice").textContent = currentRun

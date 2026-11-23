@@ -4,6 +4,8 @@
 
 ## GPT 단독 수집
 
+기존 Brev Jupyter 주소를 쓰는 서버 운영자는 `.venv/bin/python tools/publish_review_gallery.py --destination "$HOME"`를 서비스로 실행한다. 이 구성에서 사용자는 같은 Brev 주소의 `/view/PhyRC-review.html`을 새 탭에서 열고, 새로고침해 추가된 구간을 확인한다. 위에서 이전 실험과 공식 영상을 비교하고 아래에서 회차와 구간을 고른다. 비공개 갤러리에서 본 문제가 있으면 채팅으로 정지를 요청한다. 운영자는 `tools/segment_review.py --root output/segment-review intervene --run RUN --id REQUEST_ID`로 다음 행동 경계에서 개입할 수 있다.
+
 수집 서버 운영자는 검토 서버를 시작한 뒤 다음 명령으로 고유한 회차를 연다. 빈 공간과 운반 구간은 모델이 최대 20전이 동작을 선택할 수 있다. 공개 손목 깊이 영상으로 두 겹과 손끝을 비교하고, 필요한 정착 동작은 모델이 선택한다. 영상은 여러 행동을 묶어 게시한다.
 
 ```bash
