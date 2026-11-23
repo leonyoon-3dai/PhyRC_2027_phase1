@@ -429,6 +429,8 @@ def source_snapshot(root, trace):
              root / 'src/PhyRC_Sim/Policy/stages.py',
              root / 'src/PhyRC_Sim/Env_StandAlone/Teleop_TShirt_Stretch4_Env.py']
     paths += sorted((root / 'participant/collection').glob('*.py'))
+    if (root / 'participant/collection/prompts').is_dir():
+        paths += sorted((root / 'participant/collection/prompts').glob('*.txt'))
     hashes = {}
     for path in paths:
         relative = path.relative_to(root)
@@ -725,6 +727,8 @@ def main():
                         help='After a motion act, apply 0..20 neutral control steps before observing again')
     parser.add_argument('--user-guided', action='store_true',
                         help='Persistent live HOLD and bound file feedback; first boundary always reviewed')
+    parser.add_argument('--gpt-only', action='store_true',
+                        help='Autonomous exec actor with segment publication and on-request human review')
     parser.add_argument('--segment-review-dir', type=Path,
                         help='Local segment journal for clip review and human feedback at each HOLD')
     parser.add_argument('--segment-decisions', type=int, default=20)
@@ -737,6 +741,10 @@ def main():
     parser.add_argument('--start-state-validation',
                         help='Trusted validation receipt for this initial-slot; skips only initial setup review')
     args = parser.parse_args()
+    if args.gpt_only:
+        if not args.segment_review_dir or args.mode != 'dressing':
+            parser.error('--gpt-only requires --mode dressing and --segment-review-dir')
+        args.user_guided = True
     args.nearest_table = args.nearest_table or bool(args.segment_review_dir)
     if args.model is None:
         args.model = DEFAULT_MODEL if args.nearest_table else LEGACY_MODEL
@@ -974,6 +982,8 @@ def main():
     if args.user_guided:
         # The selected method replaces old strategy-specific acquisition/regrasp constraints.
         task = TASK + '\n\nHuman review controls this episode. stop/finish_episode are review proposals; the supervisor pauses without advancing physics. Inspect each new observation before a short action. Do not request hidden state or evaluation feedback.'
+    if args.gpt_only:
+        task = TASK + '\n\n' + (root / 'participant/collection/prompts/autonomous_full_dressing.txt').read_text()
     action_schema = SCHEMA
     if args.named_actions:
         from participant.collection import named_actions
@@ -992,6 +1002,8 @@ def main():
                '--input-timeout', str((2 if args.pixel_depth_query else 1) * args.model_timeout + 120)]
     if args.user_guided:
         command += ['--user-guided']
+    if args.gpt_only:
+        command += ['--gpt-only']
     if args.nearest_table:
         command += ['--nearest-table']
     if args.segment_review_dir:
@@ -1211,7 +1223,11 @@ def main():
                     manifest['segment_review'] = {'journal': str(web.journal), 'source_hz': 20,
                                                   'motion_playback_fps': 5}
                 try:
-                    obs = run_guided(sim=sim, actor=actor, obs=obs, args=args, root=root,
+                    controller = run_guided
+                    if args.gpt_only:
+                        from participant.collection.autonomous import run_autonomous
+                        controller = run_autonomous
+                    obs = controller(sim=sim, actor=actor, obs=obs, args=args, root=root,
                         trace=trace, actor_root=actor_root, task=task, interface=interface,
                         manifest=manifest, event=event, prepare_observation=prepare_observation,
                         validate_decision=validate_decision, action_schema=action_schema,
@@ -1220,7 +1236,8 @@ def main():
                     if web:
                         web.close()
                 finished, active = True, False
-                stop_reason = 'user_finish_or_checkpoint'
+                stop_reason = (manifest['autonomous_control']['close_reason'] if args.gpt_only
+                               else 'user_finish_or_checkpoint')
             for index in range(args.decisions if stop_reason != 'review_points' and not args.user_guided else 0):
                 check_interrupt()
                 observation_dir = actor_root / 'observations' / f'{index:05d}'
@@ -1540,6 +1557,8 @@ def main():
                 finished, active = True, False
             check_interrupt()
             manifest['status'] = 'review_ready' if stop_reason == 'review_points' else 'completed'
+            if args.gpt_only and stop_reason == 'actor_error':
+                manifest['status'] = 'failed'
         except BaseException as exc:
             manifest['status'] = 'interrupted' if isinstance(exc, (KeyboardInterrupt, SystemExit)) else 'failed'
             manifest['error'] = {'type': type(exc).__name__, 'message': str(exc)}

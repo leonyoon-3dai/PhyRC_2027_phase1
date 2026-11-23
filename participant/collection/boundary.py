@@ -98,12 +98,14 @@ class Operator:
         return {'active': True, 'held': True, 'hold_id': hold_id,
                 'observation': self.observe()}
 
-    def resume(self, hold_id):
-        """A matching explicit user response is required; no reset or motion."""
+    def resume(self, hold_id, *, human_feedback=True):
+        """Resume the matching boundary and preserve the source of subsequent actions."""
         if not self._active or self._hold_id != hold_id:
             raise ValueError('stale_hold')
+        if type(human_feedback) is not bool:
+            raise ValueError('human_feedback must be a boolean')
         self._hold_id = None
-        if self._meta['operator_source'] == 'gpt':
+        if human_feedback and self._meta['operator_source'] == 'gpt':
             self._meta['operator_source'] = 'human_corrected_gpt'
         return {'active': True, 'held': False, 'hold_id': hold_id,
                 'observation': self.observe()}

@@ -194,6 +194,32 @@ def validate_start_state(root, initial_slot, receipt_path):
             'first_sleeve_baseline': value['first_sleeve_baseline'], 'checks': value['checks']}
 
 
+def apply_action(sim, obs, manifest, event, web, action, steps, kind, index, intent, *, allow_end=False):
+    prior = obs
+    before = float(obs['simulation_time_s'])
+    t = time.monotonic()
+    result = sim.dispatch('act', {'action': action.tolist(), 'steps': steps})
+    elapsed = time.monotonic() - t
+    obs = result['observation']
+    actual = round((float(obs['simulation_time_s']) - before) * 20)
+    manifest['simulation_steps'] += actual
+    manifest['environment_dispatch_wall_s'] += elapsed
+    if web:
+        web.record(index=index, kind=kind, start=manifest['simulation_steps'] - actual,
+                   end=manifest['simulation_steps'], before=prior, after=obs,
+                   action=action, intent=intent)
+    event({'type': 'applied_segment', 'decision_index': index,
+           'action_source': kind, 'model_invoked': kind == 'model',
+           'start_step': manifest['simulation_steps'] - actual, 'end_step': manifest['simulation_steps'],
+           'requested_steps': steps, 'actual_steps': actual, 'applied_action': action.tolist(),
+           'simulation_start_s': before, 'simulation_end_s': float(obs['simulation_time_s']),
+           'environment_dispatch_wall_s': elapsed, 'quality_status': 'unreviewed'})
+    active = result.get('active', True)
+    if actual != steps and (active or not 0 < actual <= steps) or not active and not allow_end:
+        raise RuntimeError('collector ended or action length differed; not a live HOLD')
+    return obs, active
+
+
 def run_guided(*, sim, actor, obs, args, root, trace, actor_root, task, interface,
                manifest, event, prepare_observation, validate_decision, action_schema,
                token_usage, check_interrupt, score_reader=first_sleeve_points,
@@ -228,28 +254,8 @@ def run_guided(*, sim, actor, obs, args, root, trace, actor_root, task, interfac
 
     def applied(action, steps, kind, index):
         nonlocal obs
-        prior = obs
-        before = float(obs['simulation_time_s'])
-        t = time.monotonic()
-        result = sim.dispatch('act', {'action': action.tolist(), 'steps': steps})
-        elapsed = time.monotonic() - t
-        obs = result['observation']
-        actual = round((float(obs['simulation_time_s']) - before) * 20)
-        manifest['simulation_steps'] += actual
-        manifest['environment_dispatch_wall_s'] += elapsed
-        if web:
-            web.record(index=index, kind=kind, start=manifest['simulation_steps'] - actual,
-                       end=manifest['simulation_steps'], before=prior, after=obs,
-                       action=action, intent=last_intent)
-        event({'type': 'applied_segment', 'decision_index': index,
-               'action_source': kind, 'model_invoked': kind == 'model',
-               'start_step': manifest['simulation_steps'] - actual, 'end_step': manifest['simulation_steps'],
-               'requested_steps': steps, 'actual_steps': actual, 'applied_action': action.tolist(),
-               'simulation_start_s': before, 'simulation_end_s': float(obs['simulation_time_s']),
-               'environment_dispatch_wall_s': elapsed, 'quality_status': 'unreviewed'})
+        obs, _ = apply_action(sim, obs, manifest, event, web, action, steps, kind, index, last_intent)
         persist()
-        if not result.get('active', True) or actual != steps:
-            raise RuntimeError('collector ended or action length differed; not a live HOLD')
 
     while True:
         check_interrupt()

@@ -1,8 +1,23 @@
 # 구간 영상으로 착의 시연 수집하기
 
-사용자가 계획을 검토하고 새 서버에서 시작을 지시하면, 이 페이지의 명령으로 **GPT‑6.2 Astra와 사용자 한 명이 새 실행을 0전이부터** 진행한다. 모든 회차에서 두 로봇과 가장 가까운 테이블을 사용하고, 새 마찰의 적용 여부를 첫 HOLD에서 확인한다. 가운데 두 테이블의 거리가 같아 +X 쪽 인덱스 2를 고정 대상으로 삼는다. 첫 연습 시드는 43이다. 수집 중에는 검토 화면에서 최근 구간만 재생하면 된다.
+현재 기본 실험에서는 GPT‑6.2 Astra가 0전이부터 착의와 실패 복구를 진행한다. 사용자는 Brev의 비공개 갤러리 주소를 새 탭에서 열어 지난 구간과 최신 영상을 확인하고, 문제가 보일 때 개입한다. 갤러리 상단에는 이전 시연의 실패 분석과 공식 영상 비교가 있다. 모든 회차에서 +X 중앙 테이블(인덱스 2)과 마찰 0.35를 확인한다. [GPT 단독 실험의 관측 기준](autonomous.md)
 
-## 새 서버에서 열기
+## GPT 단독 수집
+
+수집 서버 운영자는 검토 서버를 시작한 뒤 다음 명령으로 고유한 회차를 연다. 빈 공간과 운반 구간은 모델이 최대 20전이 동작을 선택할 수 있다. 공개 손목 깊이 영상으로 두 겹과 손끝을 비교하고, 필요한 정착 동작은 모델이 선택한다. 영상은 여러 행동을 묶어 게시한다.
+
+```bash
+export PATH="$PWD/.runtime/codex-0.166.0/node_modules/.bin:$PATH"
+phyrc_run_id="$(date -u +%Y%m%dT%H%M%SZ)-astra62-autonomous"
+PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.codex_client \
+  --run-id "$phyrc_run_id" --mode dressing --gpt-only \
+  --model gpt-6.2-astra --effort ultra --actor-backend exec --plan-size 1 \
+  --seed 43 --named-actions --wrist-depth-panel --segment-review-dir output/segment-review \
+  --segment-decisions 3 --segment-steps 60 --post-action-settle-steps 0 \
+  --max-steps 18000 --model-timeout 180
+```
+
+## 사용자 피드백 모드와 로컬 검토 서버
 
 저장소 루트에서 준비한 Python 환경과 고정 Codex CLI를 사용한다. GPU 환경 준비는 [서버 준비](start.md), 마찰과 공식 점수 기준은 [공식 변경점](upstream.md)에 있다. 브라우저는 클립과 사용자 의견을 전달하고, 서버의 수집기가 모델 호출과 시뮬레이터 제어를 담당한다.
 

@@ -63,7 +63,7 @@ PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.codex_clie
 
 ## 3. 검토 화면과 시연 시작
 
-[수집 절차](collection.md)에서 서버·SSH 연결·수집 명령 세 개를 실행한다. 첫 화면은 새 reset의 한 장면이다. 사용자가 웹에서 첫 제안을 수락하거나 수정한 뒤 첫 행동을 보낸다. 이후 각 HOLD가 해당 회차의 이전 구간에 이어진다. 득점 목표와 의미 라벨은 [실험 계획](experiment.md)에 있다.
+[수집 절차](collection.md)에 따라 새 실행과 브라우저 갤러리를 준비한다. `--gpt-only`에서는 새 reset 영상을 게시한 뒤 첫 행동부터 GPT가 선택한다. 구간별 승인을 원하는 경우 사용자 피드백 모드를 쓴다. [GPT 단독 실험](autonomous.md) · [실험 계획](experiment.md)
 
 `--segment-review-dir`는 새 출발 검사를 자동으로 켠다. 공식 샘플러로 고정 테이블을 선택하는 seed를 CPU에서 찾고, 실제 장면은 **한 번만** reset한다. 첫 회차의 seed 43은 그대로 사용된다. 다른 연습 seed를 지정해도 같은 테이블에 놓이도록 요청 seed와 실제 seed를 감독 기록에 함께 남긴다. 공식 제출의 초기화 경로는 주최 측의 배치 규칙을 따른다.
 

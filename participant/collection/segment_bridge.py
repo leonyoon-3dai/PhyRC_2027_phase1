@@ -110,7 +110,13 @@ def review_visuals(actor, frames, steps, direction, actions):
         + json.dumps({'direction': direction, 'frame_steps': steps, 'public_actions': actions},
                      ensure_ascii=False, allow_nan=False))
     result = actor.invoke(prompt, [frames / f'{i:06d}.jpg' for i in steps], SCHEMA)
-    decision = result['decision']
+    decision = validate_summary(result['decision'])
+    if steps[0] == steps[-1]:
+        decision['outcome'] = 'uncertain'
+    return decision, {'wall_s': result.get('wall_s'), 'usage': result.get('usage')}
+
+
+def validate_summary(decision):
     if (not isinstance(decision, dict) or set(decision) != set(SCHEMA['required'])
             or decision['stage'] not in STAGES or decision['outcome'] not in OUTCOMES
             or not isinstance(decision['labels'], list) or not decision['labels']
@@ -118,10 +124,7 @@ def review_visuals(actor, frames, steps, direction, actions):
             or any(not isinstance(decision[k], str) or not 0 < len(decision[k].strip()) <= 4000
                    for k in ('analysis', 'next_prompt'))):
         raise ValueError('invalid public visual review')
-    decision = dict(decision, labels=list(dict.fromkeys(decision['labels'])))
-    if steps[0] == steps[-1]:
-        decision['outcome'] = 'uncertain'
-    return decision, {'wall_s': result.get('wall_s'), 'usage': result.get('usage')}
+    return dict(decision, labels=list(dict.fromkeys(decision['labels'])))
 
 
 class SegmentBridge:
@@ -178,7 +181,7 @@ class SegmentBridge:
                 or (row.get('success_evaluated') and row.get('success')
                     and not self.previous_score.get('success')))
 
-    def review(self, *, obs, start, end, hold, reason, manifest, event):
+    def review(self, *, obs, start, end, hold, reason, manifest, event, actor_review=None):
         run = self.args.run_id
         started = time.monotonic()
         folder = self.trace / 'segment-evidence' / hold
@@ -188,21 +191,34 @@ class SegmentBridge:
         encoded = time.monotonic()
         steps = frame_selection(start, end, self.actions)
         review_reason = reason
-        try:
-            if self.reviewer is None:
-                self.reviewer = self.actor_factory(hold)
-            summary, cost = review_visuals(self.reviewer, self.frames, steps, self.direction, self.actions)
-            event(dict(type='segment_visual_review', hold_id=hold, frame_steps=steps,
-                       model=self.args.model, **cost))
-        except (ValueError, RuntimeError, OSError, TimeoutError) as exc:
-            self.close()
-            event(dict(type='segment_visual_review_error', hold_id=hold, error_type=type(exc).__name__))
-            if reason != 'hard_horizon':
-                review_reason = 'review_unavailable'
-            summary = dict(stage='setup', outcome='uncertain', labels=['review_unavailable'],
-                           analysis='영상 분석을 완료하지 못했습니다. 이 구간의 효과는 미판정입니다.',
-                           next_prompt='영상을 확인한 뒤 공개 관측에 근거한 작업 지시를 입력하세요.')
-        self.public_effect = {'review': summary['analysis'], 'sample_steps': steps,
+        if getattr(self.args, 'gpt_only', False):
+            # The action actor saw exactly this endpoint and its preceding observations.
+            # Clips still contain every recorded frame; there is no separate reviewer call.
+            steps = [end] if actor_review else []
+            summary = actor_review or dict(
+                stage=(self.public_effect or {}).get('stage', 'setup'), outcome='uncertain',
+                labels=['initial_observation' if not self.parent else 'target_unconfirmed'],
+                analysis=('첫 관측을 기록했습니다. 아직 모델 판정이나 실행한 행동이 없습니다.'
+                          if not self.parent else '이 경계에서 모델의 시각 판정을 받지 못했습니다.'),
+                next_prompt='현재 공개 카메라와 로봇 상태를 확인하고 다음 동작을 결정한다.')
+            event(dict(type='segment_observation_report', hold_id=hold, frame_steps=steps,
+                       source='action_actor' if actor_review else 'unassessed'))
+        else:
+            try:
+                if self.reviewer is None:
+                    self.reviewer = self.actor_factory(hold)
+                summary, cost = review_visuals(self.reviewer, self.frames, steps, self.direction, self.actions)
+                event(dict(type='segment_visual_review', hold_id=hold, frame_steps=steps,
+                           model=self.args.model, **cost))
+            except (ValueError, RuntimeError, OSError, TimeoutError) as exc:
+                self.close()
+                event(dict(type='segment_visual_review_error', hold_id=hold, error_type=type(exc).__name__))
+                if reason != 'hard_horizon':
+                    review_reason = 'review_unavailable'
+                summary = dict(stage='setup', outcome='uncertain', labels=['review_unavailable'],
+                               analysis='영상 분석을 완료하지 못했습니다. 이 구간의 효과는 미판정입니다.',
+                               next_prompt='영상을 확인한 뒤 공개 관측에 근거한 작업 지시를 입력하세요.')
+        self.public_effect = {'stage': summary['stage'], 'review': summary['analysis'], 'sample_steps': steps,
                               'last_applied': self.actions[-1] if self.actions else None}
         obs_id = boundary_id(obs, run, end)
         score, source = self.score_at(end)
@@ -231,6 +247,10 @@ class SegmentBridge:
                       source_group=manifest['source_group'], parent_attempt=manifest.get('parent_attempt'),
                       replay_prefix_steps=manifest['replay_steps_completed'], initial_slot=self.args.initial_slot,
                       evidence=evidence, **summary)
+        if getattr(self.args, 'gpt_only', False):
+            record.update(review_source='action_actor' if actor_review else 'unassessed')
+            if not actor_review:
+                record.pop('reviewer_model')
         publish_segment(self.journal, record, clip)
         event(dict(type='segment_published', hold_id=hold, start_step=start, end_step=end,
                    encode_wall_s=encoded - started, review_and_publish_wall_s=time.monotonic() - encoded))

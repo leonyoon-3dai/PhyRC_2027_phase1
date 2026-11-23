@@ -466,6 +466,7 @@ textarea {
       <section class="card proposal"><h2>Astra의 다음 프롬프트</h2><p id="nextPrompt" class="copy"></p></section>
       <section class="card"><div class="section-head"><h2>사용자 피드백</h2></div>
         <p id="locked" class="helper" hidden></p><p id="holdReason" class="helper" hidden></p>
+        <button type="button" id="intervene" hidden>다음 행동 경계에서 개입</button>
         <form id="feedbackForm">
           <fieldset><legend>다음 구간 진행 방식</legend><div class="choices">
             <label class="choice"><input type="radio" name="action" value="accept" required><span>제안 승인</span></label>
@@ -733,6 +734,15 @@ function render(data) {
   byId('feedbackForm').hidden = !data.can_feedback;
   byId('locked').hidden = data.can_feedback;
   setText('locked', record.claimed_feedback_id ? '수집기가 이 구간의 피드백을 확인했습니다.' : '이 실험의 최신 구간에서 피드백을 입력할 수 있습니다.');
+  const autonomous = record.control_mode === 'gpt_only';
+  byId('intervene').hidden = !(autonomous && record.control_state === 'running');
+  if (autonomous && !data.can_feedback) {
+    const messages = { running: 'GPT가 수집 중입니다. 개입을 요청하면 다음 행동 경계에서 멈춥니다.',
+      pause_requested: '개입을 요청했습니다. 수집기가 행동 경계에서 정지한 뒤 새 구간을 엽니다.',
+      held: '최신 정지 구간에서 사용자 지시를 입력할 수 있습니다.', closing: '기록을 마감하고 있습니다.',
+      closed: '시연이 종료되었습니다.', unavailable: '수집기 연결 상태를 확인해야 합니다.' };
+    setText('locked', messages[record.control_state]);
+  }
   const log = record.feedback;
   byId('feedbackLog').hidden = !log.length;
   byId('olderFeedback').hidden = log.length < 2;
@@ -791,6 +801,19 @@ byId('segmentSelect').addEventListener('change', () => load({
 }));
 byId('clip').addEventListener('error', () => {
   byId('mediaError').hidden = false;
+});
+byId('intervene').addEventListener('click', async () => {
+  const run = record.run_id;
+  byId('intervene').disabled = true;
+  try {
+    await request('/api/intervene', {method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({run_id: run, id: crypto.randomUUID()})});
+    await load({run, segment: ''});
+  } catch (error) {
+    setText('locked', error.message);
+  } finally {
+    byId('intervene').disabled = false;
+  }
 });
 byId('feedbackForm').addEventListener('input', () => {
   requirement();

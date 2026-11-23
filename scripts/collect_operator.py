@@ -56,7 +56,7 @@ def open_protocol_stream():
     return os.fdopen(protocol_fd, 'w', encoding='utf-8', buffering=1)
 
 
-def parse_request(line, *, current_step, seen, user_guided=False):
+def parse_request(line, *, current_step, seen, user_guided=False, gpt_only=False):
     def reject_constant(_):
         raise ValueError()
     try:
@@ -75,6 +75,10 @@ def parse_request(line, *, current_step, seen, user_guided=False):
         raise ProtocolError('invalid_arguments')
     if tool in SUPERVISOR_TOOLS:
         required = {'hold_id', 'reason'} if tool == 'hold' else ({'hold_id'} if tool == 'resume' else {'key'})
+        if tool == 'resume' and gpt_only:
+            required.add('human_feedback')
+            if type(arguments.get('human_feedback')) is not bool:
+                raise ProtocolError('invalid_arguments')
         if set(arguments) != required:
             raise ProtocolError('invalid_arguments')
         identifier = arguments.get('key', arguments.get('hold_id'))
@@ -156,11 +160,17 @@ def parse_arguments(argv=None):
                    help='Start a new local collection on the positive-X central table with checkpoint-2 friction')
     p.add_argument('--user-guided', action='store_true',
                    help='Enable trusted hold/resume/checkpoint control; idle/EOF preserve live state')
+    p.add_argument('--gpt-only', action='store_true',
+                   help='Enable trusted segment review and retain GPT action provenance until human feedback')
     p.add_argument('--initial-slot', type=Path,
                    help='Trusted slot_NAME.npz approximate restore; default 90-tick settling is retained')
     p.add_argument('--checkpoint-dir', type=Path,
                    help='Trusted checkpoint output root (default OUTPUT/checkpoints)')
     args = p.parse_args(argv)
+    if args.gpt_only:
+        if args.source != 'gpt':
+            p.error('--gpt-only requires --source gpt')
+        args.user_guided = True
     if args.max_steps < 1 or args.max_requests < 1 or not math.isfinite(args.input_timeout) or args.input_timeout <= 0:
         p.error('limits must be positive and finite')
     if args.reset_seed is not None and not 0 <= args.reset_seed < 2**63:
@@ -310,7 +320,8 @@ def main():
                 'evaluation_enabled': args.evaluate, 'public_interface': interface,
                 'reset_wall_s': measured_env.reset_wall_s,
                 'simulation_time_at_ready_s': float(obs['simulation_time_s']),
-                'raw_archive': False, 'user_guided': args.user_guided,
+                'raw_archive': False, 'user_guided': args.user_guided and not args.gpt_only,
+                'gpt_only': args.gpt_only,
                 **({'collection_start': fresh_profile, 'episode_seed': reset_seed} if fresh_profile else {}),
                 'initial_slot': initial_slot_provenance(args.initial_slot)})
             if args.profile_step_phases:
@@ -379,7 +390,8 @@ def main():
                     continue
                 before_steps = operator._tick // 12
                 try:
-                    request = parse_request(payload, current_step=before_steps, seen=seen, user_guided=args.user_guided)
+                    request = parse_request(payload, current_step=before_steps, seen=seen,
+                                            user_guided=args.user_guided, gpt_only=args.gpt_only)
                 except ProtocolError as exc:
                     code = str(exc)
                     trace({'event': 'request_rejected', 'error': code,
@@ -423,7 +435,8 @@ def main():
                 elif method == 'resume':
                     result = operator.resume(**arguments)
                     request_epoch = request_count
-                    save_supervisor_state('user_resumed')
+                    save_supervisor_state('user_resumed' if arguments.get('human_feedback', True)
+                                          else 'autonomous_resumed')
                 elif method == 'save_checkpoint':
                     from participant.collection.checkpoint import save_checkpoint
                     try:

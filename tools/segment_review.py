@@ -33,6 +33,17 @@ CREATE TABLE IF NOT EXISTS feedback (
 """
 
 
+AUTONOMY_SCHEMA = """
+CREATE TABLE IF NOT EXISTS autonomous_runs (
+  run TEXT PRIMARY KEY, status TEXT NOT NULL, held_segment TEXT
+);
+CREATE TABLE IF NOT EXISTS interventions (
+  run TEXT NOT NULL REFERENCES autonomous_runs(run), id TEXT NOT NULL, created TEXT NOT NULL,
+  PRIMARY KEY(run,id)
+);
+"""
+
+
 class Conflict(ValueError):
     """A different decision or publication already owns this identifier."""
 
@@ -66,7 +77,9 @@ def validate_record(value):
     optional = {"observation_id", "evidence", "hold_reason", "source_group", "parent_attempt",
                 "replay_prefix_steps", "initial_slot", "reviewer_model", "review_frame_steps",
                 "score_breakdown_before", "score_breakdown_after",
-                "evaluator_success_before", "evaluator_success_after"}
+                "evaluator_success_before", "evaluator_success_after", "review_source"}
+    if value.get("review_source", "action_actor") not in ("action_actor", "unassessed"):
+        raise ValueError("invalid review source")
     missing = required - value.keys()
     unknown = value.keys() - required - optional
     if missing or unknown:
@@ -146,13 +159,62 @@ def journal(root, write=False):
     db.row_factory = sqlite3.Row
     try:
         db.execute("PRAGMA foreign_keys = ON")
-        if db.execute("PRAGMA user_version").fetchone()[0] == 0:
-            db.executescript("BEGIN IMMEDIATE;\n" + SCHEMA + "PRAGMA user_version=1; COMMIT;")
+        if db.execute("PRAGMA user_version").fetchone()[0] < 2:
+            db.executescript("BEGIN IMMEDIATE;\n" + SCHEMA + AUTONOMY_SCHEMA + "PRAGMA user_version=2; COMMIT;")
         db.execute("BEGIN IMMEDIATE" if write else "BEGIN")
         yield db
         db.commit()
     finally:
         db.close()
+
+
+def register_autonomy(root, run_id):
+    with journal(root, write=True) as db:
+        db.execute("INSERT INTO autonomous_runs VALUES (?, 'running', NULL)", (identifier(run_id, "run"),))
+
+
+def control_state(root, run_id):
+    with journal(root) as db:
+        row = db.execute("SELECT status FROM autonomous_runs WHERE run=?", (run_id,)).fetchone()
+        return row["status"] if row else None
+
+
+def request_intervention(root, value):
+    if not isinstance(value, dict) or set(value) != {"run_id", "id"}:
+        raise ValueError("expected run_id and id")
+    run, key = identifier(value["run_id"], "run"), identifier(value["id"], "intervention")
+    with journal(root, write=True) as db:
+        row = db.execute("SELECT status FROM autonomous_runs WHERE run=?", (run,)).fetchone()
+        if not row:
+            raise Conflict("this run does not use autonomous control")
+        existing = db.execute("SELECT created FROM interventions WHERE run=? AND id=?", (run, key)).fetchone()
+        if existing:
+            return dict(run_id=run, id=key, created_at=existing["created"], control_state=row["status"])
+        if row["status"] not in ("running", "pause_requested", "held"):
+            raise Conflict("controller is closing or unavailable")
+        created = timestamp()
+        db.execute("INSERT INTO interventions VALUES (?,?,?)", (run, key, created))
+        status = "held" if row["status"] == "held" else "pause_requested"
+        db.execute("UPDATE autonomous_runs SET status=? WHERE run=?", (status, run))
+        return dict(run_id=run, id=key, created_at=created, control_state=status)
+
+
+def decide_boundary(root, run, segment, terminal):
+    """Serialize a published boundary decision against new operator requests."""
+    with journal(root, write=True) as db:
+        row = db.execute("SELECT status FROM autonomous_runs WHERE run=?", (run,)).fetchone()
+        if row["status"] == "pause_requested":
+            status = "held"
+        else:
+            status = "closing" if terminal else "running"
+        db.execute("UPDATE autonomous_runs SET status=?, held_segment=? WHERE run=?",
+                   (status, segment if status == "held" else None, run))
+        return status
+
+
+def set_control_state(root, run, status):
+    with journal(root, write=True) as db:
+        db.execute("UPDATE autonomous_runs SET status=?, held_segment=NULL WHERE run=?", (status, run))
 
 
 def select_row(db, run=None, segment=None):
@@ -176,6 +238,9 @@ def hydrate(db, row):
     rec.update(schema="phyrc-segment-v1", created_at=row["created"], clip_url="/" + media,
                clip_path=media, clip_sha256=row["digest"], claimed_feedback_id=row["claimed"],
                feedback=[dict(reply) for reply in replies])
+    control = db.execute("SELECT status FROM autonomous_runs WHERE run=?", (run,)).fetchone()
+    if control:
+        rec.update(control_mode="gpt_only", control_state=control["status"])
     return rec
 
 
@@ -242,8 +307,11 @@ def state(root, run=None, segment=None):
                              "FROM segments WHERE run=? ORDER BY rowid DESC", (row["run"],))
         segments = [dict(run_id=row["run"], segment_id=s["segment"],
                          stage=s["stage"], outcome=s["outcome"]) for s in history]
-        return dict(latest=hydrate(db, row), segments=segments, runs=runs,
-                    can_feedback=row["claimed"] is None and row["segment"] == segments[0]["segment_id"])
+        latest = hydrate(db, row)
+        control = db.execute("SELECT held_segment FROM autonomous_runs WHERE run=?", (row["run"],)).fetchone()
+        return dict(latest=latest, segments=segments, runs=runs,
+                    can_feedback=row["claimed"] is None and row["segment"] == segments[0]["segment_id"]
+                    and (control is None or control["held_segment"] == row["segment"]))
 
 
 def submit_feedback(root, value):
@@ -275,6 +343,9 @@ def submit_feedback(root, value):
             raise Conflict("feedback ID already used with different content")
         if row["claimed"] or select_row(db, run)["segment"] != seg:
             raise Conflict("review has moved on; refresh the segment")
+        control = db.execute("SELECT held_segment FROM autonomous_runs WHERE run=?", (run,)).fetchone()
+        if control and control["held_segment"] != seg:
+            raise Conflict("request intervention and wait for its held segment")
         reason = json.loads(row["payload"]).get("hold_reason")
         if reason == "hard_horizon" and action not in ("hold", "finish"):
             raise Conflict("at the hard horizon only hold or finish is available")
@@ -532,7 +603,7 @@ class ReviewHandler(BaseHTTPRequestHandler):
         segment = query.get("segment", [None])[0]
         root = self.server.root
         if self.command == "POST":
-            if url.path != "/api/feedback":
+            if url.path not in ("/api/feedback", "/api/intervene"):
                 raise KeyError("unknown route")
             origin = self.headers.get("Origin")
             if origin and origin not in ("http://" + host, "https://" + host):
@@ -544,7 +615,8 @@ class ReviewHandler(BaseHTTPRequestHandler):
             size = int(self.headers.get("Content-Length", "0"))
             if not 0 < size <= 32768:
                 raise ValueError("invalid feedback size")
-            self.json(submit_feedback(root, json.loads(self.rfile.read(size))))
+            handler = request_intervention if url.path == "/api/intervene" else submit_feedback
+            self.json(handler(root, json.loads(self.rfile.read(size))))
         elif url.path == "/":
             self.send_bytes(Path(__file__).with_suffix(".html").read_bytes(), "text/html; charset=utf-8")
         elif url.path == "/api/state":
@@ -588,6 +660,9 @@ def main(argv=None):
     bundle.add_argument("--collection", type=Path,
                         help="optional closed output/collections/RUN for verified final evaluation")
     bundle.add_argument("--out", required=True, type=Path, help="new ZIP file outside the capture directory")
+    intervene = commands.add_parser("intervene", help="request human review at the next GPT-only action boundary")
+    intervene.add_argument("--run", required=True)
+    intervene.add_argument("--id", required=True, help="unique request ID, reused on retry")
     for command in ("latest", "export", "claim"):
         sub = commands.add_parser(command)
         sub.add_argument("--run", required=command != "latest")
@@ -605,6 +680,8 @@ def main(argv=None):
         sys.stdout.write(export_rows(args.root, args.run))
     elif args.command == "bundle":
         print(bundle_run(args.root, args.run, args.out, args.collection))
+    elif args.command == "intervene":
+        print(json_text(request_intervention(args.root, dict(run_id=args.run, id=args.id))))
     elif args.command == "latest":
         print(json_text(get_segment(args.root, args.run)))
     elif args.command == "claim":

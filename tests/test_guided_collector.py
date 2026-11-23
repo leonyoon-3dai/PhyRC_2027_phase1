@@ -27,14 +27,58 @@ class FakeEnv(Env):
     def close(self): pass
 m=ModuleType('Policy.environment');m.DressingEnv=FakeEnv
 sys.modules['Policy.environment']=m
-sys.argv=['collect_operator','--output',sys.argv[1], '--source','integration_test',
+sys.argv=['collect_operator','--output',sys.argv[1], '--source','gpt' if '--gpt-only' in sys.argv[2:] else 'integration_test',
 '--source-group','hold-test','--model-id','none','--prompt','cpu test',
-'--user-guided','--input-timeout','.15','--max-requests','4']
+'--user-guided','--input-timeout','.15','--max-requests','4', *sys.argv[2:]]
 raise SystemExit(collector.main())
 '''
 
 
 class GuidedCollectorTest(unittest.TestCase):
+    def test_gpt_only_resume_requires_a_trusted_boolean(self):
+        def parse(arguments, **mode):
+            return collector.parse_request(json.dumps({'tool': 'resume', 'arguments': arguments}),
+                                           current_step=0, seen=set(), **mode)
+
+        args = {'hold_id': 'h1'}
+        for value in (None, 0, 1, 'false'):
+            with self.subTest(value=value), self.assertRaises(collector.ProtocolError):
+                parse(dict(args, human_feedback=value), user_guided=True, gpt_only=True)
+        with self.assertRaises(collector.ProtocolError):
+            parse(args, user_guided=True, gpt_only=True)
+        for mode in ({}, {'user_guided': True}):
+            with self.assertRaises(collector.ProtocolError):
+                parse(dict(args, human_feedback=False), **mode)
+        self.assertEqual(parse(args, user_guided=True)['arguments'], args)
+
+    def test_autonomous_resumes_preserve_recorded_gpt_source_until_feedback(self):
+        commands = []
+        for i, human_feedback in enumerate((False, True, False)):
+            hold = f'h{i}'
+            commands.extend([
+                {'tool': 'hold', 'arguments': {'hold_id': hold, 'reason': 'review'}},
+                {'tool': 'resume', 'arguments': {'hold_id': hold, 'human_feedback': human_feedback}},
+                {'tool': 'act', 'arguments': {'action': np.zeros((2, 9)).tolist()}},
+            ])
+        commands.append({'tool': 'finish_episode'})
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / 'capture'
+            result = subprocess.run(
+                [sys.executable, '-c', FAKE, str(out), '--gpt-only'], cwd=ROOT,
+                input=''.join(json.dumps(command) + '\n' for command in commands),
+                capture_output=True, text=True, timeout=15)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            replies = [json.loads(line) for line in result.stdout.splitlines()]
+            self.assertTrue(replies[0]['ready'])
+            self.assertEqual([reply['ok'] for reply in replies[1:]], [True] * len(commands))
+            with h5py.File(out / 'audit.hdf5') as audit:
+                np.testing.assert_array_equal(audit['demo_0/operator_source_code'][:], [1, 2, 2])
+            with h5py.File(out / 'policy.hdf5') as policy:
+                self.assertEqual(len(policy['data/demo_0/actions']), 3)
+            metadata = json.loads((out / 'run_metadata.json').read_text())
+            self.assertTrue(metadata['gpt_only'])
+            self.assertFalse(metadata['user_guided'])
+
     def test_supervisor_tools_are_opt_in_and_validate_ids(self):
         request=json.dumps({'tool':'hold','arguments':{'hold_id':'h1','reason':'review'}})
         with self.assertRaises(collector.ProtocolError):
