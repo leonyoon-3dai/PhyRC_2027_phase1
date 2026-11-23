@@ -287,6 +287,41 @@ class PreserveCollectionTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'symlink rejected'):
             preservation.preserve(self.root, self.run, 'linked-segment')
 
+    def test_autonomous_review_preserves_actions_observations_and_prompt(self):
+        hold = 'hold-0002'
+        control = {'mode': 'gpt_only', 'hold_count': 2, 'current_hold': hold, 'observation_step': 2}
+        attempt_path = self.trace / 'attempt.json'
+        prompt_name = 'participant/collection/prompts/autonomous_full_dressing.txt'
+        prompt = self.trace / 'source_snapshot' / prompt_name
+        prompt.parent.mkdir(parents=True)
+        prompt.write_text('autonomous task fixture')
+        snapshot = json.loads(attempt_path.read_text())['source_snapshot']
+        snapshot['files_sha256'][prompt_name] = artifacts.digest(prompt)
+        self.modify(attempt_path, segment_review={'source_hz': 20}, autonomous_control=control,
+                    source_snapshot=snapshot)
+        observation = self.obs.with_name('autonomous-00000')
+        self.obs.rename(observation)
+        state = self.collection / 'supervisor_state.json'
+        self.write(state, {'schema': 'phyrc-supervisor-state-v1', 'active': False})
+        evidence = self.trace / 'segment-evidence'
+        for name, end in [('hold-0001', 0), (hold, 2)]:
+            folder = evidence / name
+            folder.mkdir(parents=True)
+            self.write(folder / 'actions.json', {'hold': name, 'observation_id': 'a' * 64,
+                       'start_step': 0, 'end_step': end, 'actions': [{'start': 0, 'end': end}] if end else []})
+        receipt = preservation.preserve(self.root, self.run, 'autonomous')
+        inventory = artifacts.verify(self.root / receipt['stage_relative_path'])
+        for path in [state, prompt, observation / 'public_depth.npz', observation / 'robot_1_wrist.png',
+                     evidence / hold / 'actions.json', evidence / 'hold-0001/actions.json']:
+            self.assertIn(path.relative_to(self.root).as_posix(), inventory)
+        self.modify(attempt_path, autonomous_control=dict(control, observation_step=1))
+        with self.assertRaisesRegex(ValueError, 'final acknowledged hold'):
+            preservation.preserve(self.root, self.run, 'bad-endpoint')
+        self.modify(attempt_path, autonomous_control=control)
+        observation.rename(self.obs.with_name('guided-00000'))
+        with self.assertRaisesRegex(ValueError, 'unexpected observation directory'):
+            preservation.preserve(self.root, self.run, 'wrong-mode')
+
     def test_guided_checkpoint_hash_and_unreviewed_files_rejected(self):
         hold = self.guided_fixture()
         slot, _ = self.checkpoint_fixture(self.collection / 'checkpoints/start', self.run)

@@ -1,6 +1,6 @@
 # 구간 영상으로 착의 시연 수집하기
 
-현재 기본 실험에서는 GPT‑6.2 Astra가 0전이부터 착의와 실패 복구를 진행한다. 사용자는 Brev의 비공개 갤러리 주소를 새 탭에서 열어 지난 구간과 최신 영상을 확인하고, 문제가 보일 때 개입한다. 갤러리 상단에는 이전 시연의 실패 분석과 공식 영상 비교가 있다. 모든 회차에서 +X 중앙 테이블(인덱스 2)과 마찰 0.35를 확인한다. [GPT 단독 실험의 관측 기준](autonomous.md)
+현재 기본 실험에서는 GPT‑6.2 Astra가 0전이부터 착의와 실패 복구를 진행한다. 사용자는 Brev의 비공개 갤러리 주소를 새 탭에서 열어 지난 구간과 최신 영상을 확인하고, 문제가 보일 때 개입한다. 갤러리 첫 화면은 세 번째 시연의 0전이부터 누적되는 구간을 보여 준다. 지난 두 시연은 각 회차에서 점수와 영상을 다시 볼 수 있다. 모든 회차에서 +X 중앙 테이블(인덱스 2)과 마찰 0.35를 확인한다. [GPT 단독 실험의 관측 기준](autonomous.md)
 
 ## GPT 단독 수집
 
@@ -10,7 +10,7 @@
 
 ```bash
 export PATH="$PWD/.runtime/codex-0.166.0/node_modules/.bin:$PATH"
-phyrc_run_id="$(date -u +%Y%m%dT%H%M%SZ)-astra62-autonomous"
+phyrc_run_id="$(date -u +%Y%m%dT%H%M%SZ)-astra62-both-arms-first"
 PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.codex_client \
   --run-id "$phyrc_run_id" --mode dressing --gpt-only \
   --model gpt-6.2-astra --effort ultra --actor-backend exec --plan-size 1 \

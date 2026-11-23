@@ -81,6 +81,21 @@
       #retro > p {
         margin: 0.4rem 0;
       }
+      #demonstrations {
+        margin: 1.25rem 0 0.75rem;
+      }
+      #demonstrations ol {
+        margin: 0.55rem 0;
+      }
+      #demonstrations h3 {
+        font-size: 1.05rem;
+      }
+      #demonstrations p {
+        margin: 0.25rem 0;
+      }
+      #demonstrations small {
+        display: block;
+      }
       summary {
         cursor: pointer;
         color: var(--link);
@@ -211,8 +226,8 @@
       <header>
         <h1>PhyRC 시연 영상</h1>
         <nav aria-label="영상 탐색">
-          <a href="#clip-title" id="jump" hidden>최신 구간 영상</a>
-          <a id="home">전체 갤러리</a>
+          <a id="jump" hidden>이 시연의 최신 구간</a>
+          <a id="home">새 시연 처음으로</a>
         </nav>
       </header>
       <p id="reload-note">
@@ -221,6 +236,7 @@
           바뀌지 않습니다.</small
         >
       </p>
+      <section id="demonstrations" aria-label="시연 비교" hidden></section>
       <p id="notice" role="status">구간 목록을 불러오는 중입니다.</p>
       <section id="retro" hidden></section>
       <div id="workspace" hidden>
@@ -249,13 +265,10 @@
       const $ = (id) => document.getElementById(id);
       const parts = location.pathname.split("/").map(decodeURIComponent);
       const marker = parts.lastIndexOf("PhyRC-gallery");
-      const folders = parts
-        .slice(parts.indexOf("files") + 1, marker < 0 ? -1 : marker)
-        .map(encodeURIComponent);
-      const viewRoot =
-        location.pathname.split("/files/")[0] +
-        "/view/" +
-        (folders.length ? folders.join("/") + "/" : "");
+      const rootParts = parts.slice(0, marker < 0 ? -1 : marker);
+      const files = rootParts.indexOf("files");
+      if (files >= 0) rootParts[files] = "view";
+      const viewRoot = rootParts.map(encodeURIComponent).join("/") + "/";
       let currentRun = marker < 0 ? null : parts[marker + 1];
       let currentSegment =
         marker < 0 ? null : parts[marker + 2]?.replace(/\.html$/, "");
@@ -284,15 +297,50 @@
         a.dataset.segment = id;
         return a;
       }
-      function retrospective(r, isDetail) {
+      function demonstrations(r) {
+        const box = $("demonstrations");
+        if (!r?.demonstrations?.length) return;
+        const cards = el("ol");
+        for (const item of r.demonstrations) {
+          const li = el("li");
+          li.append(el("h3", item.title), el("p", item.summary));
+          const run = catalog.runs.find((g) => g.id === item.run_id);
+          const first = run?.clips[0];
+          const last = run?.clips.at(-1);
+          if (item.result) li.append(el("small", item.result));
+          if (item.run_id === r.featured_run) {
+            li.append(el("small", last ? last.end_step + "전이까지 영상 게시" : "0전이 초기 관측 대기 중"));
+          }
+          const choices = el("nav");
+          if (first) choices.append(clipLink(run.id, first.id, "처음부터 보기"));
+          for (const ref of item.evidence_segments || []) {
+            if (run?.clips.some((c) => c.id === ref.segment_id)) {
+              choices.append(clipLink(run.id, ref.segment_id, ref.label));
+            }
+          }
+          if (choices.childElementCount) li.append(choices);
+          cards.append(li);
+        }
+        box.append(el("h2", "시연별 목표와 결과"), cards);
+        if (r.comparison) {
+          const note = el("p", r.comparison);
+          if (r.comparison_source) {
+            const link = el("a", r.comparison_source.label);
+            link.href = r.comparison_source.url;
+            link.rel = "noreferrer";
+            note.append(" ", link);
+          }
+          box.append(note);
+        }
+        box.hidden = false;
+      }
+      function retrospective(r) {
         const box = $("retro");
         box.replaceChildren();
         box.hidden = !r;
         if (box.hidden) return;
-        box.append(el("h2", r.title), el("p", r.summary));
         const fold = el("details");
-        fold.open = !isDetail;
-        fold.append(el("summary", "이전 시연 · 공식 영상 · 다음 실험"));
+        fold.append(el("summary", r.title), el("p", r.summary));
         const cases = el("ol");
         for (const item of r.items) {
           const li = el("li"),
@@ -333,8 +381,9 @@
       }
       function render() {
         if (!catalog) return;
-        const run = currentRun
-          ? catalog.runs.find((g) => g.id === currentRun)
+        const selectedRun = currentRun || catalog.retrospective?.featured_run;
+        const run = selectedRun
+          ? catalog.runs.find((g) => g.id === selectedRun)
           : catalog.runs[0];
         const clip =
           run &&
@@ -343,9 +392,13 @@
             : run.clips[0]);
         $("home").href = viewRoot + "PhyRC-review.html";
         $("home").hidden = !currentRun;
-        $("jump").hidden = !clip;
-        $("jump").textContent = currentRun ? "선택한 구간 영상" : "최신 구간 영상";
-        retrospective(catalog.retrospective, Boolean(currentRun));
+        const newest = run?.clips.at(-1);
+        $("jump").hidden = !newest || newest.id === clip?.id;
+        if (newest) {
+          $("jump").href = clipUrl(run.id, newest.id);
+          $("jump").dataset.run = run.id;
+          $("jump").dataset.segment = newest.id;
+        }
         if (!clip) {
           $("notice").textContent = currentRun
             ? "요청한 구간을 찾을 수 없습니다."
@@ -358,7 +411,7 @@
         const runs = $("runs");
         runs.replaceChildren();
         for (const g of catalog.runs) {
-          const opt = el("option", g.id);
+          const opt = el("option", g.title || g.id);
           opt.value = g.id;
           runs.append(opt);
         }
@@ -391,7 +444,7 @@
         }
         list.scrollTop = scroll;
         $("clip-title").textContent =
-          clip.id + " · " + clip.start_step + "–" + clip.end_step + "전이";
+          (run.title ? run.title + " / " : "") + clip.id + " · " + clip.start_step + "–" + clip.end_step + "전이";
         $("permalink").value = clipUrl(run.id, clip.id);
         const detail = $("details");
         detail.replaceChildren();
@@ -423,6 +476,9 @@
           currentRun = a.dataset.run || null;
           currentSegment = a.dataset.segment || null;
           render();
+          if (a.id === "jump" || a.closest("#demonstrations, #retro")) {
+            $("clip-title").scrollIntoView({block: "start"});
+          }
         }
       });
       $("permalink").addEventListener("focus", (e) => e.target.select());
@@ -463,14 +519,19 @@
           groups.delete(clip.run);
           groups.set(clip.run, clips);
         }
+        const history = latest("script[data-retro]");
+        const titles = new Map((history?.demonstrations || []).map((d) => [d.run_id, d.title]));
         catalog = {
-          retrospective: latest("script[data-retro]"),
+          retrospective: history,
           runs: Array.from(groups, ([id, clips]) => ({
             id,
-            clips: clips.reverse(),
+            title: titles.get(id),
+            clips: clips.sort((a, b) => a.start_step - b.start_step || a.id.localeCompare(b.id)),
             control: controls[id],
           })).reverse(),
         };
+        demonstrations(history);
+        retrospective(history);
         render();
       });
     </script>

@@ -29,6 +29,7 @@ OBS_REQUIRED = {'observation.json', 'public_depth.npz', 'overview.png', 'robot_0
                 'robot_1_wrist.png', 'robot_0_head.png', 'robot_1_head.png'}
 OBS_OPTIONAL = {'current_wrist_depth.json', 'current_wrist_depth.png'}
 SOURCE_FIXED = {'run.sh', 'scripts/collect_operator.py', 'participant/streaming/collector_stream.py',
+                'participant/collection/prompts/autonomous_full_dressing.txt',
                 'tools/segment_review.py', 'tools/segment_review.html', 'config/execution_lock.json',
                 'src/PhyRC_Sim/Env_Config/Garment/ZeroSceneFriction.py',
                 'src/PhyRC_Sim/Env_Config/Garment/RandomSpawn.py', 'src/PhyRC_Sim/Policy/state.py',
@@ -84,14 +85,14 @@ def tree_files(directory):
         yield path
 
 
-def observation_files(directory, *, required, guided=False):
+def observation_files(directory, *, required, folder_pattern=r'\d{5,}'):
     if not directory.exists():
         require(not required, 'public observations directory missing')
         return []
     require(directory.is_dir() and not directory.is_symlink(), 'invalid observations directory')
     result = []
     for folder in sorted(directory.iterdir()):
-        require(folder.is_dir() and not folder.is_symlink() and re.fullmatch(r'(?:guided-)?\d{5,}' if guided else r'\d{5,}', folder.name),
+        require(folder.is_dir() and not folder.is_symlink() and re.fullmatch(folder_pattern, folder.name),
                 'unexpected observation directory: ' + folder.name)
         paths = list(tree_files(folder))
         names = {p.relative_to(folder).as_posix() for p in paths}
@@ -208,10 +209,9 @@ def guided_review_files(directory, root, run_id):
     return selected
 
 
-def segment_action_files(trace, root, attempt):
+def segment_action_files(trace, root, attempt, control):
     """Select evidence for acknowledged web holds; leave frames, clips and the journal separate."""
-    guided = attempt['user_guided']
-    count = guided.get('hold_count')
+    count = control.get('hold_count')
     require(type(count) is int and count >= 0, 'invalid segment hold count')
     selected = []
     previous_end = 0
@@ -236,8 +236,11 @@ def segment_action_files(trace, root, attempt):
             cursor = action['end']
         require(cursor == end, 'incomplete segment action range')
         if index == count:
-            require(hold == guided.get('current_hold')
-                    and audit['observation_id'] == guided.get('observation_id'),
+            if control.get('mode') == 'gpt_only':
+                matches_endpoint = end == control.get('observation_step')
+            else:
+                matches_endpoint = audit['observation_id'] == control.get('observation_id')
+            require(hold == control.get('current_hold') and matches_endpoint,
                     'segment evidence differs from final acknowledged hold')
         selected.append(path)
         previous_end = end
@@ -274,17 +277,21 @@ def select_sources(root, run_id, validation_path):
                 and validation.get('sha256', {}).get(name) == expected,
                 'capture and validation hashes disagree: ' + name)
 
-    guided = attempt.get('user_guided', {}).get('enabled') is True
+    guided_control = attempt.get('user_guided', {})
+    autonomous_control = attempt.get('autonomous_control', {})
+    guided = guided_control.get('enabled') is True
+    autonomous = autonomous_control.get('mode') == 'gpt_only'
+    reviewed = guided or autonomous
     selected = []
     observed_root = set()
     evaluation_names = {}
     for path in tree_files(collection):
         relative = path.relative_to(collection)
         if len(relative.parts) == 1:
-            require(path.name in COLLECTION_REQUIRED | COLLECTION_OPTIONAL | ({'supervisor_state.json'} if guided else set()),
+            require(path.name in COLLECTION_REQUIRED | COLLECTION_OPTIONAL | ({'supervisor_state.json'} if reviewed else set()),
                     'unreviewed collection file: ' + str(relative))
             observed_root.add(path.name)
-        elif guided and relative.parts[0] == 'checkpoints':
+        elif reviewed and relative.parts[0] == 'checkpoints':
             require(len(relative.parts) == 3, 'unexpected checkpoint nesting')
             # Validate the entire pair after scanning the collection tree.
         elif guided and relative.parts[0] == 'slot_reset':
@@ -303,7 +310,7 @@ def select_sources(root, run_id, validation_path):
     if capture.get('evaluation_enabled') is True:
         require(evaluation_names and 'evaluation_summary.json' in observed_root,
                 'enabled evaluation is missing')
-    if guided:
+    if reviewed:
         checkpoints = collection / 'checkpoints'
         if checkpoints.exists():
             require(checkpoints.is_dir() and not checkpoints.is_symlink(), 'invalid checkpoint directory')
@@ -316,9 +323,10 @@ def select_sources(root, run_id, validation_path):
         state = collection / 'supervisor_state.json'
         if state.exists():
             require(read_json(state).get('schema') == 'phyrc-supervisor-state-v1', 'invalid supervisor state')
-        selected.extend(guided_review_files(trace / 'user-review', root, run_id))
+        if guided:
+            selected.extend(guided_review_files(trace / 'user-review', root, run_id))
         if 'segment_review' in attempt:
-            selected.extend(segment_action_files(trace, root, attempt))
+            selected.extend(segment_action_files(trace, root, attempt, autonomous_control if autonomous else guided_control))
         validation_receipt = trace / 'start-state-validation.json'
         if validation_receipt.exists():
             safe_source(validation_receipt, root)
@@ -357,8 +365,13 @@ def select_sources(root, run_id, validation_path):
         require(isinstance(expected, str) and re.fullmatch(r'[a-f0-9]{64}', expected),
                 'invalid source snapshot hash')
     selected.extend(source_paths)
+    actor_folders = r'\d{5,}'
+    if autonomous:
+        actor_folders = r'autonomous-\d{5,}'
+    elif guided:
+        actor_folders = r'(?:guided-)?\d{5,}'
     selected.extend(observation_files(root / 'output/actors' / run_id / 'observations',
-                                      required=bool(attempt.get('actor_calls_attempted', 0)), guided=guided))
+                                      required=bool(attempt.get('actor_calls_attempted', 0)), folder_pattern=actor_folders))
     selected.extend(observation_files(trace / 'replay_observations', required=False))
     for path in selected:
         safe_source(path, root)
