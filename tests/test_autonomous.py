@@ -107,6 +107,19 @@ class AutonomousTests(unittest.TestCase):
         self.assertFalse(m['human_intervention'])
         self.assertEqual(actor.invoke.call_count, 4)
 
+    def test_recent_visual_reviews_keep_observed_effects_across_segment_boundaries(self):
+        decisions = [proposal(steps=3) for _ in range(6)] + [proposal('stop')]
+        for i, response in enumerate(decisions):
+            response['decision']['observation_review'].update(
+                analysis=f'camera report {i}', next_prompt=f'intended action {i}')
+        actor, _, _, _ = self.execute(decisions, segment_decisions=1, scores=True)
+        last_prompt = actor.invoke.call_args.args[0]
+        self.assertNotIn('camera report 1', last_prompt)
+        self.assertIn('camera report 3', last_prompt)
+        self.assertIn('camera report 5', last_prompt)
+        self.assertNotIn('intended action 5', last_prompt)
+        self.assertNotIn('raw_points', last_prompt)
+
     def test_exceptional_intervention_discards_proposed_action_at_same_boundary(self):
         actor, sim, m, records = self.execute([proposal(steps=20), proposal(steps=4), proposal('stop')], True)
         self.assertEqual([x['steps'] for tool,x in sim.calls if tool=='act'], [4])

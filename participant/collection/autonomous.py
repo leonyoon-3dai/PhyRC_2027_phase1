@@ -20,6 +20,7 @@ def run_autonomous(*, sim, actor, obs, args, root, trace, actor_root, task, inte
     manifest['human_intervention'] = False
     direction = None
     recent_actions = []
+    recent_visual_reviews = []
     active, acknowledged_step = True, 0
 
     def persist():
@@ -36,8 +37,10 @@ def run_autonomous(*, sim, actor, obs, args, root, trace, actor_root, task, inte
                   'Review the whole current segment when possible. Your next action is rechecked by observation '
                   'after at most 20 policy steps. Use stop only when meaningful recovery is exhausted; '
                   'use finish_episode when dressing appears complete. Each ends the episode.\n'
-                  + 'Public action and observations in this segment: '
-                  + json.dumps(dict(current_step=manifest['simulation_steps'], recent_actions=recent_actions),
+                  + 'Compare your recent public visual reviews with the current hand, rim and support. '
+                  + 'These are earlier camera interpretations and may have been occluded.\n'
+                  + json.dumps(dict(current_step=manifest['simulation_steps'], recent_actions=recent_actions,
+                                    recent_visual_reviews=recent_visual_reviews),
                                ensure_ascii=False, allow_nan=False))
         if direction:
             prompt += '\nHuman direction from the reviewed public clip: ' + direction
@@ -98,6 +101,11 @@ def run_autonomous(*, sim, actor, obs, args, root, trace, actor_root, task, inte
                 write_json(trace / 'start-checkpoint.json', sim.dispatch('save_checkpoint', {'key': run + '-start'}))
         record = web.review(obs=obs, start=start, end=step, hold=hold, reason=reason,
                             manifest=manifest, event=event, actor_review=summary)
+        if summary:
+            # Only repeat what the action actor observed. Journal rows also contain evaluator data.
+            recent_visual_reviews.append(dict(start_step=start, end_step=step, outcome=summary['outcome'],
+                                              analysis=summary['analysis']))
+            del recent_visual_reviews[:-3]
         # Scores attached to the journal record are for retrospective review only.
         # This transaction linearizes an intervention arriving during clip publication.
         if active:

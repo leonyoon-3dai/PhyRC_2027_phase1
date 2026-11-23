@@ -381,9 +381,9 @@
       }
       function render() {
         if (!catalog) return;
-        const selectedRun = currentRun || catalog.retrospective?.featured_run;
-        const run = selectedRun
-          ? catalog.runs.find((g) => g.id === selectedRun)
+        // The last published run becomes the landing page, including on a fresh server.
+        const run = currentRun
+          ? catalog.runs.find((g) => g.id === currentRun)
           : catalog.runs[0];
         const clip =
           run &&

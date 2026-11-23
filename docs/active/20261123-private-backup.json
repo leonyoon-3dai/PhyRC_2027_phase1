@@ -1,0 +1,126 @@
+{
+  "schema": "phyrc-private-series-backup-v1",
+  "repo_id": "leonayoon/phyrc-2027-phase1-private-backup",
+  "repo_type": "dataset",
+  "private": true,
+  "revision": "cf8513e35b58c5d3b88fbe8bcc5d7e6e70a88f23",
+  "verified_at_utc": "2026-11-23T07:10:36.112875+00:00",
+  "remote_download_verified": true,
+  "remote_lfs_sha256_verified_at_revision": true,
+  "verification": "Every file was downloaded at its immutable upload revision into a separate Hub/Xet cache and checked against its local byte count and SHA-256. At the common revision above the ten LFS SHA-256 values and sizes match those verified downloads. Each raw archive was restored into a new directory and its complete member manifest verified. Each review ZIP was CRC-tested and every clip matched its recorded SHA-256 and SQLite digest. Every frame sidecar contains the contiguous source JPEGs from step 0 through the final step. The SQLite snapshot passed integrity_check and foreign_key_check.",
+  "asset_count": 10,
+  "total_bytes": 11110761587,
+  "runs": [
+    {
+      "run_id": "20261122T231754Z-astra62-dressing",
+      "archive": {
+        "path": "sessions/20261123-dressing-series/20261122T231754Z-astra62-dressing/20261122T231754Z-astra62-dressing-final.tar.gz",
+        "bytes": 3869843243,
+        "sha256": "1afcda84139d7a5efc85f8e2fd12f46c38b86b89725b7d5a9177ffec8ff70ea0"
+      },
+      "review_zip": {
+        "path": "sessions/20261123-dressing-series/20261122T231754Z-astra62-dressing/20261122T231754Z-astra62-dressing.zip",
+        "bytes": 17616992,
+        "sha256": "c499963a626db9cc19d3af86abd8d5e29659d66cbc03d84cd3d71bf307ffe77e"
+      },
+      "review_frames": {
+        "path": "sessions/20261123-dressing-series/20261122T231754Z-astra62-dressing/20261122T231754Z-astra62-dressing-review-frames.tar.gz",
+        "bytes": 83493405,
+        "sha256": "cf73af8cb9d276671380a5deb07388effcc9c117e75d0e073447433b64b32298"
+      },
+      "segments": 77,
+      "review_frame_count": 1656,
+      "manifest_sha256": "45988e564f7d889841b8ae412b46031896608776b44d5ccb04fe48640d2fed62",
+      "manifest_members": 1661,
+      "qc": {
+        "transitions": 1655,
+        "quality_passed": true,
+        "raw_points": 5.0,
+        "evaluation_valid": true,
+        "success": false,
+        "training_approval": "unreviewed"
+      },
+      "upload_revision": "c71c2fcae0c34d8afe5df83bdf42caa40f297381",
+      "remote_download_verified": true,
+      "restore_verified": true
+    },
+    {
+      "run_id": "20261123T032900Z-astra62-autonomous",
+      "archive": {
+        "path": "sessions/20261123-dressing-series/20261123T032900Z-astra62-autonomous/20261123T032900Z-astra62-autonomous-final.tar.gz",
+        "bytes": 5465365080,
+        "sha256": "c8930df03589b6e5588b24a6516573695677c62566a6fda80d7103a65a6a7c0f"
+      },
+      "review_zip": {
+        "path": "sessions/20261123-dressing-series/20261123T032900Z-astra62-autonomous/20261123T032900Z-astra62-autonomous.zip",
+        "bytes": 29196548,
+        "sha256": "e4d47961fab1c33eae70b009e598101af6f68d5b8547858e44c3163ecc367c07"
+      },
+      "review_frames": {
+        "path": "sessions/20261123-dressing-series/20261123T032900Z-astra62-autonomous/20261123T032900Z-astra62-autonomous-review-frames.tar.gz",
+        "bytes": 116196302,
+        "sha256": "223e4b0391280556a96e9a9a7b76c1ff99d289237cbda82cedd70287bdc988dd"
+      },
+      "segments": 110,
+      "review_frame_count": 2196,
+      "manifest_sha256": "7a8d2989d3bdd7cef0427af99ae00751b1bc0c72d4a4e4a5c02e971d5f8c6693",
+      "manifest_members": 2159,
+      "qc": {
+        "transitions": 2195,
+        "quality_passed": true,
+        "raw_points": 20.0,
+        "evaluation_valid": true,
+        "success": false,
+        "training_approval": "unreviewed"
+      },
+      "upload_revision": "cf8513e35b58c5d3b88fbe8bcc5d7e6e70a88f23",
+      "remote_download_verified": true,
+      "restore_verified": true
+    },
+    {
+      "run_id": "20261123T061400Z-astra62-both-arms-first",
+      "archive": {
+        "path": "sessions/20261123-dressing-series/20261123T061400Z-astra62-both-arms-first/20261123T061400Z-astra62-both-arms-first-final.tar.gz",
+        "bytes": 1487873942,
+        "sha256": "8ab671e6d1cbccc02f35dd65e6e1977654986f95f427fb815aaf6bd307720179"
+      },
+      "review_zip": {
+        "path": "sessions/20261123-dressing-series/20261123T061400Z-astra62-both-arms-first/20261123T061400Z-astra62-both-arms-first.zip",
+        "bytes": 8975959,
+        "sha256": "526814b669573032a7cef60485872bd6c2c1ff591f7d930c518c0a8ce7117986"
+      },
+      "review_frames": {
+        "path": "sessions/20261123-dressing-series/20261123T061400Z-astra62-both-arms-first/20261123T061400Z-astra62-both-arms-first-review-frames.tar.gz",
+        "bytes": 31155636,
+        "sha256": "adfaa47127c14bde38c8f55b0a9a9a52b321963f41746e3324efbfdc30f8a940"
+      },
+      "segments": 30,
+      "review_frame_count": 609,
+      "manifest_sha256": "285da544bc3422feaf033f32ad59b15bcb4b99a7058338e8bf5bc21f10f5265c",
+      "manifest_members": 630,
+      "qc": {
+        "transitions": 608,
+        "quality_passed": true,
+        "raw_points": 5.0,
+        "evaluation_valid": true,
+        "success": false,
+        "training_approval": "unreviewed"
+      },
+      "upload_revision": "9c28fbe07e40e8d748aeb1de8e5b942d441240c0",
+      "remote_download_verified": true,
+      "restore_verified": true
+    }
+  ],
+  "journal": {
+    "path": "sessions/20261123-dressing-series/journal.sqlite3",
+    "bytes": 1044480,
+    "sha256": "c5003e7d584f6e0047ce7da69fd25d58feffd53bba84d74084779c2cfe206dab",
+    "upload_revision": "8ec91126441e6c23e09e365db076812b92065662",
+    "segments_by_run": {
+      "20261122T231754Z-astra62-dressing": 77,
+      "20261123T032900Z-astra62-autonomous": 110,
+      "20261123T061400Z-astra62-both-arms-first": 30
+    },
+    "remote_download_verified": true
+  }
+}

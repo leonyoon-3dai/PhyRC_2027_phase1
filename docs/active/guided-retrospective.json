@@ -5,7 +5,26 @@
     {
       "run_id": "20261123T061400Z-astra62-both-arms-first",
       "title": "시연 3 · 양팔 먼저 걸치기",
-      "summary": "목표는 양팔에 옷을 먼저 걸친 뒤 머리를 목둘레로 통과시키고, 마지막에 양팔을 각 소매에 다시 맞춰 몸판을 내리는 것입니다. GPT가 0전이부터 시작합니다."
+      "summary": "천이 양쪽 전완에 걸쳐 보인 뒤 두 집게를 어깨 쪽으로 더 옮기자 한쪽 손목이 천 위로 다시 드러났습니다. 반대편을 지지한 채 마지막에 파란 주름을 놓았습니다.",
+      "result": "종료 608전이 · 30개 구간 · 원점수 5/50. 202전이 픽업, 첫·두 번째 소매와 목 0점.",
+      "evidence_segments": [
+        {
+          "segment_id": "hold-0013",
+          "label": "양팔에 걸쳐 보인 순간"
+        },
+        {
+          "segment_id": "hold-0014",
+          "label": "전진 뒤 손목 재노출"
+        },
+        {
+          "segment_id": "hold-0028",
+          "label": "먼 손이 다시 천 위로"
+        },
+        {
+          "segment_id": "hold-0030",
+          "label": "한쪽 지지를 유지하며 주름을 놓음"
+        }
+      ]
     },
     {
       "run_id": "20261123T032900Z-astra62-autonomous",
@@ -13,9 +32,18 @@
       "summary": "첫 소매를 통과한 뒤 옷을 얼굴과 정수리까지 올려 반대쪽 팔을 입히려 했습니다. 목 통과와 두 번째 소매는 모두 0점이었습니다. 종료 때에는 먼저 입혔던 왼쪽 위팔도 소매 밖으로 빠져 있었습니다.",
       "result": "종료 2195전이 · 원점수 20/50. 161전이 픽업, 661전이 첫 소매와 반대쪽 어깨, 698전이 왼쪽 위팔에 각 5점. 목 0/10.",
       "evidence_segments": [
-        {"segment_id": "hold-0026", "label": "첫 소매와 반대 어깨"},
-        {"segment_id": "hold-0028", "label": "20점에 도달한 장면"},
-        {"segment_id": "hold-0108", "label": "옷 주름과 목둘레 비교"}
+        {
+          "segment_id": "hold-0026",
+          "label": "첫 소매와 반대 어깨"
+        },
+        {
+          "segment_id": "hold-0028",
+          "label": "20점에 도달한 장면"
+        },
+        {
+          "segment_id": "hold-0108",
+          "label": "옷 주름과 목둘레 비교"
+        }
       ]
     },
     {
@@ -24,12 +52,18 @@
       "summary": "사용자와 GPT가 양쪽 밑단을 잡아 손 앞까지 운반했습니다. 손목을 여러 번 돌린 뒤에도 손끝이 통과할 폭을 확인하기 어려웠습니다.",
       "result": "종료 1655전이 · 원점수 5/50. 픽업 5점, 첫 소매 0점.",
       "evidence_segments": [
-        {"segment_id": "hold-0077", "label": "마지막 손목 교정"}
+        {
+          "segment_id": "hold-0077",
+          "label": "마지막 손목 교정"
+        }
       ]
     }
   ],
-  "comparison": "공식 영상 32.5–35.8초에는 양쪽 전완과 얼굴이 드러나고 몸판이 내려옵니다. 시연 2에서는 접힌 천을 당겨 정수리가 보여도 목둘레가 함께 움직이지 않았습니다. 시연 3은 양팔의 첫 걸침을 유지하면서 목둘레 자체가 정수리를 넘는지 확인합니다.",
-  "comparison_source": {"label": "공식 전체 영상 31.5–35.8초", "url": "https://emprise.cs.cornell.edu/phyrc/assets/c27/media/teleop-overhead.mp4#t=31.5,35.8"},
+  "comparison": "공식 영상 끝에는 양쪽 소매 밖의 팔과 얼굴이 보입니다. 시연 2는 첫 소매와 왼쪽 위팔까지 득점했고, 시연 3은 양팔에 걸쳐 보였던 직후 한쪽 손목이 다시 드러났습니다. 다음 시연에서는 머리 쪽으로 이동하기 전에 양팔 걸침이 작은 움직임에도 유지되는지 확인합니다.",
+  "comparison_source": {
+    "label": "공식 전체 영상 31.5–35.8초",
+    "url": "https://emprise.cs.cornell.edu/phyrc/assets/c27/media/teleop-overhead.mp4#t=31.5,35.8"
+  },
   "title": "시연 1에서 밑단이 벌어지지 않은 원인과 공식 영상 비교",
   "summary": "사용자와 GPT가 함께한 1회에서 630전이에 픽업 5점을 얻었지만, 1655전이로 마감할 때까지 첫 소매는 0점이었습니다. 공식 원점수 5/50, 착의 성공 false, 속도 점수 0점/초입니다. 77개 구간을 보존했고 원본 행동·관측 1655/1655전이가 기술 검증을 통과했습니다.",
   "items": [
@@ -50,13 +84,31 @@
     }
   ],
   "evidence_segments": [
-    {"segment_id": "hold-0039", "label": "552–567전이 · 양끝 파지 확인"},
-    {"segment_id": "hold-0069", "label": "1361–1389전이 · 오른손 앞 정렬"},
-    {"segment_id": "hold-0077", "label": "1611–1655전이 · 마지막 손목 교정"}
+    {
+      "segment_id": "hold-0039",
+      "label": "552–567전이 · 양끝 파지 확인"
+    },
+    {
+      "segment_id": "hold-0069",
+      "label": "1361–1389전이 · 오른손 앞 정렬"
+    },
+    {
+      "segment_id": "hold-0077",
+      "label": "1611–1655전이 · 마지막 손목 교정"
+    }
   ],
   "sources": [
-    {"label": "공식 양면 영상 · 테이블과 손 앞 입구 비교", "url": "https://github.com/rirolab/PhyRC_2027_Challenge/blob/main/docs/videos/Front_Back_8x.mp4"},
-    {"label": "공식 전체 영상 · 16.5–21.5초", "url": "https://emprise.cs.cornell.edu/phyrc/assets/c27/media/teleop-overhead.mp4#t=16.5,21.5"},
-    {"label": "공식 과제와 첫 소매 판정", "url": "https://emprise.cs.cornell.edu/phyrc/challenge-2027/#task-details"}
+    {
+      "label": "공식 양면 영상 · 테이블과 손 앞 입구 비교",
+      "url": "https://github.com/rirolab/PhyRC_2027_Challenge/blob/main/docs/videos/Front_Back_8x.mp4"
+    },
+    {
+      "label": "공식 전체 영상 · 16.5–21.5초",
+      "url": "https://emprise.cs.cornell.edu/phyrc/assets/c27/media/teleop-overhead.mp4#t=16.5,21.5"
+    },
+    {
+      "label": "공식 과제와 첫 소매 판정",
+      "url": "https://emprise.cs.cornell.edu/phyrc/challenge-2027/#task-details"
+    }
   ]
 }

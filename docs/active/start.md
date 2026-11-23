@@ -4,13 +4,14 @@
 
 ## 1. 환경 준비
 
-Ubuntu x86-64, RTX 렌더링을 지원하는 NVIDIA GPU, Docker·NVIDIA Container Toolkit, Node/npm, Python 3.12와 uv, 호스트의 FFmpeg(libx264)를 준비한다. Ubuntu 패키지는 `ffmpeg`와 `xauth`다. Docker의 isolated bridge 기능이 필요하다. [공식 설치 절차와 GPU 요건](../competition/SETUP.md)
+Ubuntu x86-64, RTX 렌더링을 지원하는 NVIDIA GPU, Docker·NVIDIA Container Toolkit, Node/npm, Python 3.12와 uv, 호스트의 FFmpeg(libx264)를 준비한다. Ubuntu 패키지로 `ffmpeg`, `xauth`, `tmux`를 준비한다. Docker의 isolated bridge 기능이 필요하다. [공식 설치 절차와 GPU 요건](../competition/SETUP.md)
 
 아래 부분 체크아웃은 시뮬레이터 소스·자산·수집 코드·활성 문서를 받는다. 이전 영상은 열 때 가져올 수 있다. 이미 전체 clone이 있다면 해당 저장소 루트에서 환경 준비로 이어간다.
 
 ```bash
 git clone --filter=blob:none --sparse https://github.com/leonyoon-3dai/PhyRC_2027_phase1.git
 cd PhyRC_2027_phase1
+git sparse-checkout init --cone
 git sparse-checkout set assets config docs/active docs/competition examples participant scripts sitecustomize src tests tools
 git rev-parse HEAD
 uv venv --python 3.12 .venv
@@ -61,10 +62,10 @@ PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.codex_clie
 
 기술 검사 결과는 `output/operator-traces/RUN/attempt.json`에서 실제 호출과 마감, `output/collections/RUN/run_metadata.json`의 `collection_start`에서 seed, table_index=2, start_step=0, shirt_manikin_friction=0.35, verified_after_reset=true를 확인한다. 모델 접근 또는 출발 조건에서 실패하면 오류를 기록하고 그 조건을 먼저 해결한다.
 
-## 3. 검토 화면과 시연 시작
+## 3. 시연 4의 검토 화면과 시작
 
-[수집 절차](collection.md)에 따라 새 실행과 브라우저 갤러리를 준비한다. `--gpt-only`에서는 새 reset 영상을 게시한 뒤 첫 행동부터 GPT가 선택한다. 구간별 승인을 원하는 경우 사용자 피드백 모드를 쓴다. [GPT 단독 실험](autonomous.md) · [실험 계획](experiment.md)
+[시연 4 인계](20261124-handoff.ko.md#새-서버에서-시작하기)에 따라 한 번만 새 실행과 브라우저 갤러리를 준비한다. `--gpt-only`에서는 새 reset 영상을 게시한 뒤 첫 행동부터 GPT가 선택한다. 구간별 승인을 원하는 경우 사용자 피드백 모드를 쓴다. [GPT 단독 실험](autonomous.md) · [실험 계획](experiment.md)
 
 `--segment-review-dir`는 새 출발 검사를 자동으로 켠다. 공식 샘플러로 고정 테이블을 선택하는 seed를 CPU에서 찾고, 실제 장면은 **한 번만** reset한다. 첫 회차의 seed 43은 그대로 사용된다. 다른 연습 seed를 지정해도 같은 테이블에 놓이도록 요청 seed와 실제 seed를 감독 기록에 함께 남긴다. 공식 제출의 초기화 경로는 주최 측의 배치 규칙을 따른다.
 
-새 서버에서 아직 확인할 항목은 실제 모델 권한, 5카메라 입력, 의도한 물리 조건의 장면, 첫 사용자 교정이 반영된 다음 행동, 그리고 유효한 최종 점수다. 수집 명령으로 시작한 회차와 점수만 새 데이터셋에 집계한다.
+새 서버에서 아직 확인할 항목은 실제 모델 권한, 5카메라 입력, 의도한 물리 조건의 장면, GPT의 첫 실제 행동과 구간 영상 게시, 그리고 유효한 최종 점수다. 수집 명령으로 시작한 회차와 점수만 새 데이터셋에 집계한다.

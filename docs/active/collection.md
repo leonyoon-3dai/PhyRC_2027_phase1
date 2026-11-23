@@ -1,23 +1,12 @@
 # 구간 영상으로 착의 시연 수집하기
 
-현재 기본 실험에서는 GPT‑6.2 Astra가 0전이부터 착의와 실패 복구를 진행한다. 사용자는 Brev의 비공개 갤러리 주소를 새 탭에서 열어 지난 구간과 최신 영상을 확인하고, 문제가 보일 때 개입한다. 갤러리 첫 화면은 세 번째 시연의 0전이부터 누적되는 구간을 보여 준다. 지난 두 시연은 각 회차에서 점수와 영상을 다시 볼 수 있다. 모든 회차에서 +X 중앙 테이블(인덱스 2)과 마찰 0.35를 확인한다. [GPT 단독 실험의 관측 기준](autonomous.md)
+현재 기본 실험에서는 GPT‑6.2 Astra가 0전이부터 착의와 실패 복구를 진행한다. 사용자는 Brev의 비공개 갤러리 주소를 새 탭에서 열어 지난 구간과 최신 영상을 확인하고, 문제가 보일 때 개입한다. 갤러리에서는 현재 실행의 0전이와 이후 구간을 선택하고, 이전 시연이 복원돼 있으면 회차별 점수와 영상을 다시 볼 수 있다. 모든 회차에서 +X 중앙 테이블(인덱스 2)과 마찰 0.35를 확인한다. [GPT 단독 실험의 관측 기준](autonomous.md)
 
 ## GPT 단독 수집
 
 기존 Brev Jupyter 주소를 쓰는 서버 운영자는 `.venv/bin/python tools/publish_review_gallery.py --destination "$HOME"`를 서비스로 실행한다. 이 구성에서 사용자는 같은 Brev 주소의 `/view/PhyRC-review.html`을 새 탭에서 열고, 새로고침해 추가된 구간을 확인한다. 위에서 이전 실험과 공식 영상을 비교하고 아래에서 회차와 구간을 고른다. 비공개 갤러리에서 본 문제가 있으면 채팅으로 정지를 요청한다. 운영자는 `tools/segment_review.py --root output/segment-review intervene --run RUN --id REQUEST_ID`로 다음 행동 경계에서 개입할 수 있다.
 
-수집 서버 운영자는 검토 서버를 시작한 뒤 다음 명령으로 고유한 회차를 연다. 빈 공간과 운반 구간은 모델이 최대 20전이 동작을 선택할 수 있다. 공개 손목 깊이 영상으로 두 겹과 손끝을 비교하고, 필요한 정착 동작은 모델이 선택한다. 영상은 여러 행동을 묶어 게시한다.
-
-```bash
-export PATH="$PWD/.runtime/codex-0.166.0/node_modules/.bin:$PATH"
-phyrc_run_id="$(date -u +%Y%m%dT%H%M%SZ)-astra62-both-arms-first"
-PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.codex_client \
-  --run-id "$phyrc_run_id" --mode dressing --gpt-only \
-  --model gpt-6.2-astra --effort ultra --actor-backend exec --plan-size 1 \
-  --seed 43 --named-actions --wrist-depth-panel --segment-review-dir output/segment-review \
-  --segment-decisions 3 --segment-steps 60 --post-action-settle-steps 0 \
-  --max-steps 18000 --model-timeout 180
-```
+다음 클린 서버의 GPT 단독 시연은 [시연 4 인계](20261124-handoff.ko.md#새-서버에서-시작하기)에 따라 별도 ID와 tmux 세션을 사용한다. [실행기](../../participant/ops/collect_autonomous.sh)는 `--gpt-only`, 이름 있는 이중 로봇 행동, 손목 깊이 영상, 구간당 최대 3결정·60전이를 설정하고 종료 후 HDF5 검증과 구간 ZIP을 남긴다. 빈 공간 이동에서는 한 결정당 최대 20전이를 쓰고, 천과 손이 닿는 곳에서는 관찰할 수 있는 길이로 동작을 조절한다.
 
 ## 사용자 피드백 모드와 로컬 검토 서버
 
@@ -31,7 +20,7 @@ PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.codex_clie
 python tools/segment_review.py --root output/segment-review serve --port 8765
 ```
 
-사용자 PC에서 SSH 포트를 연결한다. `SSH_HOST`는 새 서버의 실제 SSH 별칭 또는 접속 주소로 바꾼다.
+로컬 검토 서버를 직접 쓰는 운영자는 SSH 포트를 연결할 수 있다. Brev 브라우저 갤러리는 위의 새 탭 주소로 연다. `SSH_HOST`는 새 서버의 실제 SSH 별칭 또는 접속 주소로 바꾼다.
 
 ```bash
 ssh -N -L 8765:127.0.0.1:8765 SSH_HOST
@@ -55,7 +44,7 @@ PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.codex_clie
 ## 첫 화면과 다음 조작
 
 1. 첫 화면은 0전이의 관측 한 장이다. 상단 overview, 왼쪽 robot_1, 오른쪽 robot_0이고 양쪽 모두 head가 위, wrist가 아래다. 배치와 옷의 위치를 확인한다. 마찰은 서버 시작 로그의 shirt/manikin 0.35, gripper/cloth 0.5, table/cloth 0.5와 대조한다. `unverified`는 해당 계수를 로그에서 확인하지 못했다는 뜻이다.
-2. 이후에는 실제 20 Hz 경계마다 지정 5뷰를 저장한다. 웹은 **구간 시작·끝을 포함한 모든 경계**를 5 fps(4배 느리게)로 재생한다. 모델은 같은 JPEG들 가운데 조작·정착 끝점을 우선한 최대 8장의 시간순 표본으로 분석한다. 모델에 들어간 정확한 전이 번호는 `review_frame_steps`에 남는다.
+2. 이후에는 실제 20 Hz 경계마다 지정 5뷰를 저장한다. 웹은 **구간 시작·끝을 포함한 모든 경계**를 5 fps(4배 느리게)로 재생한다. GPT 단독 모드에서는 행동 모델이 실제로 본 경계에서 판단하며, 별도 검토 모델을 쓰는 사용자 피드백 모드에서는 조작·정착 끝점을 우선한 최대 8장의 시간순 표본을 읽는다. 모델에 들어간 정확한 전이 번호는 `review_frame_steps`에 남는다.
 3. 직전 지시, 영상에서 확인한 변화와 실패 원인, 다음 제안을 함께 본다. 모델은 현재 구간의 지시, 기록된 실제 행동과 두 그리퍼의 공개 실측 변위로 영상 속 변화를 해석한다. 가림으로 판정할 수 없으면 `uncertain`을 쓴다. 공식 항목별 점수와 `success`는 감독자가 같은 물리 경계의 평가 샘플에서 합친다.
 4. 다음 동작을 수락하거나 공개 카메라에서 관찰한 근거로 지시를 교정한다. 수락하면 **표시된 다음 프롬프트**, 수정하면 **입력한 새 지시**가 다음 행동 호출에 들어간다. 관측 근거와 최근 실측 움직임이 함께 전달된다. HOLD는 정지 상태를 유지하고, 종료는 전이를 추가하지 않고 기록을 닫는다. 마감 예산에서는 HOLD 또는 종료를 선택한다.
 5. 새 점수·성공이 나타난 조작의 ACK, 모델이 다음 단계로 전환하는 제안, 시야상 정체, 종료 제안, 구간 예산이 검토 경계다. 단계 전환 제안은 승인 후 같은 상태에서 다시 판단한다. 클립 분석이 실패하면 화면에서 직접 교정하거나 종료할 수 있다. 기존 HOLD의 응답은 새 구간에 적용되지 않는다.
