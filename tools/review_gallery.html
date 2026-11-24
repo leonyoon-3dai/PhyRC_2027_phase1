@@ -227,18 +227,15 @@
         <h1>PhyRC 시연 영상</h1>
         <nav aria-label="영상 탐색">
           <a id="jump" hidden>이 시연의 최신 구간</a>
-          <a id="home">새 시연 처음으로</a>
+          <a id="home">최신 시연의 최신 구간</a>
         </nav>
       </header>
       <p id="reload-note">
         <small
-          >새 구간은 브라우저 새로고침으로 확인하세요. 보고 있는 영상은 자동으로
-          바뀌지 않습니다.</small
+          >새로고침하면 최신 시연의 최신 구간이 열립니다.</small
         >
       </p>
-      <section id="demonstrations" aria-label="시연 비교" hidden></section>
       <p id="notice" role="status">구간 목록을 불러오는 중입니다.</p>
-      <section id="retro" hidden></section>
       <div id="workspace" hidden>
         <section>
           <h2 id="clip-title"></h2>
@@ -259,6 +256,8 @@
           <ul id="list" aria-label="구간 영상"></ul>
         </aside>
       </div>
+      <section id="demonstrations" aria-label="시연 비교" hidden></section>
+      <section id="retro" hidden></section>
     </main>
     <script>
       "use strict";
@@ -272,6 +271,7 @@
       let currentRun = marker < 0 ? null : parts[marker + 1];
       let currentSegment =
         marker < 0 ? null : parts[marker + 2]?.replace(/\.html$/, "");
+      if (marker >= 0) $("reload-note").hidden = true;
       let catalog, selectedKey;
       const media = new Map();
       function el(tag, text) {
@@ -305,8 +305,8 @@
           const li = el("li");
           li.append(el("h3", item.title), el("p", item.summary));
           const run = catalog.runs.find((g) => g.id === item.run_id);
-          const first = run?.clips[0];
-          const last = run?.clips.at(-1);
+          const first = run?.clips.at(-1);
+          const last = run?.clips[0];
           if (item.result) li.append(el("small", item.result));
           if (item.run_id === r.featured_run) {
             li.append(el("small", last ? last.end_step + "전이까지 영상 게시" : "0전이 초기 관측 대기 중"));
@@ -381,7 +381,6 @@
       }
       function render() {
         if (!catalog) return;
-        // The last published run becomes the landing page, including on a fresh server.
         const run = currentRun
           ? catalog.runs.find((g) => g.id === currentRun)
           : catalog.runs[0];
@@ -392,7 +391,7 @@
             : run.clips[0]);
         $("home").href = viewRoot + "PhyRC-review.html";
         $("home").hidden = !currentRun;
-        const newest = run?.clips.at(-1);
+        const newest = run?.clips[0];
         $("jump").hidden = !newest || newest.id === clip?.id;
         if (newest) {
           $("jump").href = clipUrl(run.id, newest.id);
@@ -442,7 +441,7 @@
           li.append(a);
           list.append(li);
         }
-        list.scrollTop = scroll;
+        list.scrollTop = clip === newest ? 0 : scroll;
         $("clip-title").textContent =
           (run.title ? run.title + " / " : "") + clip.id + " · " + clip.start_step + "–" + clip.end_step + "전이";
         $("permalink").value = clipUrl(run.id, clip.id);
@@ -516,7 +515,6 @@
           media.set(key, data);
           const clips = groups.get(clip.run) || [];
           clips.push(clip);
-          groups.delete(clip.run);
           groups.set(clip.run, clips);
         }
         const history = latest("script[data-retro]");
@@ -526,7 +524,7 @@
           runs: Array.from(groups, ([id, clips]) => ({
             id,
             title: titles.get(id),
-            clips: clips.sort((a, b) => a.start_step - b.start_step || a.id.localeCompare(b.id)),
+            clips: clips.sort((a, b) => b.end_step - a.end_step || b.id.localeCompare(a.id)),
             control: controls[id],
           })).reverse(),
         };

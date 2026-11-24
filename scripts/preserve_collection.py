@@ -30,6 +30,7 @@ OBS_REQUIRED = {'observation.json', 'public_depth.npz', 'overview.png', 'robot_0
 OBS_OPTIONAL = {'current_wrist_depth.json', 'current_wrist_depth.png'}
 SOURCE_FIXED = {'run.sh', 'scripts/collect_operator.py', 'participant/streaming/collector_stream.py',
                 'participant/collection/prompts/autonomous_full_dressing.txt',
+                'participant/collection/prompts/gentle_wrist_dressing.txt',
                 'tools/segment_review.py', 'tools/segment_review.html', 'config/execution_lock.json',
                 'src/PhyRC_Sim/Env_Config/Garment/ZeroSceneFriction.py',
                 'src/PhyRC_Sim/Env_Config/Garment/RandomSpawn.py', 'src/PhyRC_Sim/Policy/state.py',

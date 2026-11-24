@@ -732,6 +732,12 @@ def main():
                         help='Persistent live HOLD and bound file feedback; first boundary always reviewed')
     parser.add_argument('--gpt-only', action='store_true',
                         help='Autonomous exec actor with segment publication and on-request human review')
+    parser.add_argument('--camera-briefing', action='store_true',
+                        help='Describe public camera motion and view order at the start of each GPT-only actor session')
+    parser.add_argument('--gentle-wrist-dressing', action='store_true',
+                        help='Use opposing side approaches, shallow wrist entry and bounded motion commands')
+    parser.add_argument('--until-full-score-or-feedback', action='store_true',
+                        help='In GPT-only collection, close on 50 official points or submitted operator feedback')
     parser.add_argument('--segment-review-dir', type=Path,
                         help='Local segment journal for clip review and human feedback at each HOLD')
     parser.add_argument('--segment-decisions', type=int, default=20)
@@ -744,6 +750,14 @@ def main():
     parser.add_argument('--start-state-validation',
                         help='Trusted validation receipt for this initial-slot; skips only initial setup review')
     args = parser.parse_args()
+    if args.camera_briefing and not args.gpt_only:
+        parser.error('--camera-briefing requires --gpt-only')
+    if args.gentle_wrist_dressing and not args.gpt_only:
+        parser.error('--gentle-wrist-dressing requires --gpt-only')
+    if args.until_full_score_or_feedback and not args.gpt_only:
+        parser.error('--until-full-score-or-feedback requires --gpt-only')
+    if args.until_full_score_or_feedback:
+        args.review_points = 50
     if args.gpt_only:
         if not args.segment_review_dir or args.mode != 'dressing':
             parser.error('--gpt-only requires --mode dressing and --segment-review-dir')
@@ -986,10 +1000,20 @@ def main():
         # The selected method replaces old strategy-specific acquisition/regrasp constraints.
         task = TASK + '\n\nHuman review controls this episode. stop/finish_episode are review proposals; the supervisor pauses without advancing physics. Inspect each new observation before a short action. Do not request hidden state or evaluation feedback.'
     if args.gpt_only:
-        task = (root / 'participant/collection/prompts/autonomous_full_dressing.txt').read_text().rstrip()
-        task += '\n\n' + OBSERVATION_AND_ACTION_TASK.replace(
+        prompt_file = 'gentle_wrist_dressing.txt' if args.gentle_wrist_dressing else 'autonomous_full_dressing.txt'
+        task = (root / 'participant/collection/prompts' / prompt_file).read_text().rstrip()
+        contract = OBSERVATION_AND_ACTION_TASK.replace(
             'A stop applies neutral motion for one control step and preserves grip intent.',
+            'The supervisor controls episode closure.' if args.until_full_score_or_feedback else
             'In this mode stop and finish_episode both end the episode without another transition.')
+        if args.until_full_score_or_feedback:
+            contract = contract.replace(
+                'Finish when visually complete or when continuing the current episode is unproductive; '
+                'state the visual reason. Zero action and steps=1 are required for stop and finish_episode.',
+                'Return an act decision at every observation. '
+                'If dressing appears complete, maintain support and observe the settled garment. '
+                'If progress stalls, recover support or change the approach using the current views.')
+        task += '\n\n' + contract
     action_schema = SCHEMA
     if args.named_actions:
         from participant.collection import named_actions
@@ -1042,7 +1066,8 @@ def main():
         'actor_backend': args.actor_backend, 'plan_size': args.plan_size,
         'plan_step_budget': args.plan_step_budget,
         'plan_execution': 'open_loop_list' if args.plan_size > 1 else 'single_decision',
-        'review_threshold_raw_points': None if args.mode == 'wiring' or args.user_guided else args.review_points,
+        'review_threshold_raw_points': (None if args.mode == 'wiring' or (args.user_guided and not args.until_full_score_or_feedback)
+                                        else args.review_points),
         'pickup_hold_target_simulation_s': args.pickup_hold_seconds if args.mode == 'pickup' else None,
         'actor_calls_attempted': 0, 'actor_usage': {},
         'finished': False, 'status': 'starting', 'error': None,
@@ -1060,6 +1085,10 @@ def main():
         manifest['continuation'] = dict(replay.public_lineage)
     if args.named_actions:
         manifest['named_actions'] = named_actions.public_mapping(named_actions.MAPPING)
+    if args.camera_briefing:
+        manifest['camera_briefing'] = {'delivery': 'first_request_each_actor_session'}
+    if args.gentle_wrist_dressing:
+        manifest['strategy'] = 'gentle_wrist_dressing'
     if args.pixel_depth_query:
         manifest['pixel_depth_query'] = {
             'enabled': True, 'max_queries_per_observation': 1, 'max_points': 8,
@@ -1563,6 +1592,8 @@ def main():
                 finished, active = True, False
             check_interrupt()
             manifest['status'] = 'review_ready' if stop_reason == 'review_points' else 'completed'
+            if args.until_full_score_or_feedback and stop_reason in ('environment_end', 'hard_horizon'):
+                manifest['status'] = 'incomplete'
             if args.gpt_only and stop_reason == 'actor_error':
                 manifest['status'] = 'failed'
         except BaseException as exc:
@@ -1632,6 +1663,9 @@ def main():
                 record_milestones()
             except Exception as exc:
                 manifest['score_segment_index_error'] = type(exc).__name__
+            if args.until_full_score_or_feedback and stop_reason == 'full_score':
+                gate.update(status='triggered', last_observed_raw_points=50,
+                            acknowledged_steps=manifest['acknowledged_simulation_steps'])
             if gate['status'] == 'watching':
                 gate['status'] = 'collector_ended_before_gate'
             gate['collector_status'] = manifest['status']

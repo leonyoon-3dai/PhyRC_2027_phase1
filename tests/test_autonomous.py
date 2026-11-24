@@ -6,8 +6,10 @@ from types import SimpleNamespace
 import unittest
 from unittest.mock import Mock, patch
 
+import numpy as np
+
 from participant.collection import codex_client
-from participant.collection.autonomous import run_autonomous
+from participant.collection.autonomous import CAMERA_BRIEFING, bound_gentle_action, run_autonomous
 from participant.collection.segment_bridge import SegmentBridge
 from tools import segment_review as journal
 from test_user_review import Simulator, decision
@@ -21,7 +23,8 @@ def proposal(tool='act', steps=12):
 
 class AutonomousTests(unittest.TestCase):
     def execute(self, responses, interrupt=False, segment_decisions=2, report_stall=False,
-                max_steps=90, settle=0, scores=False, end_at_horizon=False):
+                max_steps=90, settle=0, scores=False, end_at_horizon=False, supervised_close=False,
+                feedback_on_error=False, camera_briefing=False, gentle_wrist_dressing=False, events=None):
         tmp = TemporaryDirectory()
         self.addCleanup(tmp.cleanup)
         root = Path(tmp.name)
@@ -36,12 +39,13 @@ class AutonomousTests(unittest.TestCase):
         args = SimpleNamespace(run_id='test-auto', gpt_only=True, model='gpt', max_steps=max_steps,
                                segment_steps=60, segment_decisions=segment_decisions, wrist_depth_panel=False,
                                post_action_settle_steps=settle, initial_slot=None, named_actions=False,
-                               save_checkpoint_on_start=False)
+                               save_checkpoint_on_start=False, until_full_score_or_feedback=supervised_close,
+                               camera_briefing=camera_briefing, gentle_wrist_dressing=gentle_wrist_dressing)
         web = SegmentBridge(root=root, trace=trace, journal=path, args=args, actor_factory=Mock())
         if scores:
             evaluation = root / 'output/collections' / args.run_id / 'evaluation/fixture'
             evaluation.mkdir(parents=True)
-            values = [dict(physics_tick=i*12, raw_points=i, breakdown={}, success=True, success_evaluated=True)
+            values = [dict(physics_tick=i*12, raw_points=min(i, 50), breakdown={}, success=True, success_evaluated=True)
                       for i in range(max_steps + 1)]
             (evaluation / 'score_samples.jsonl').write_text(''.join(json.dumps(v) + '\n' for v in values))
         if end_at_horizon:
@@ -54,12 +58,15 @@ class AutonomousTests(unittest.TestCase):
             sim.dispatch = finish_at_limit
         manifest = dict(simulation_steps=0, environment_dispatch_wall_s=0, decisions_completed=0,
                         actor_calls_attempted=0, actor_call_wall_s=0, source_group='test', replay_steps_completed=0)
-        events = []
+        if events is None:
+            events = []
 
         def reply(prompt, images, schema):
             initial = journal.get_segment(path, args.run_id)
             self.assertIsNotNone(initial)
             self.assertIn('observation_review', schema['required'])
+            if supervised_close:
+                self.assertEqual(schema['properties']['tool']['enum'], ['act'])
             for field in ('raw_points', 'evaluator_milestone', 'score_breakdown'):
                 self.assertNotIn(field, prompt)
             if interrupt and sim.observation_step == 0 and actor.invoke.call_count == 1:
@@ -76,7 +83,9 @@ class AutonomousTests(unittest.TestCase):
         actor.invoke.side_effect = reply
 
         def handle_request():
-            if interrupt and journal.control_state(path, args.run_id) == 'held':
+            if (interrupt or feedback_on_error) and journal.control_state(path, args.run_id) == 'held':
+                if feedback_on_error:
+                    self.assertFalse(manifest['human_intervention'])
                 state = journal.state(path, args.run_id)
                 self.assertTrue(state['can_feedback'])
                 journal.submit_feedback(path, dict(run_id=args.run_id, segment_id=state['latest']['segment_id'],
@@ -106,6 +115,65 @@ class AutonomousTests(unittest.TestCase):
         self.assertEqual(m['autonomous_control']['close_reason'], 'model_finish_episode')
         self.assertFalse(m['human_intervention'])
         self.assertEqual(actor.invoke.call_count, 4)
+        self.assertTrue(all(CAMERA_BRIEFING not in call.args[0] for call in actor.invoke.call_args_list))
+
+    def test_gentle_bounds_cover_all_stages_and_preserve_coordination_and_grips(self):
+        action = np.array([[1, -.5, 0, -.4, .8, 0, -.2, 0, .8],
+                           [0, 0, .3, -.1, 0, .4, -.6, 1, -.8]], dtype=np.float32)
+        for stage in codex_client.STAGES:
+            with self.subTest(stage=stage):
+                bounded, steps, scale = bound_gentle_action(action, 20, stage)
+                early = stage in ('preparation', 'approach', 'grasp', 'lift')
+                self.assertEqual(steps, 8 if early else 4)
+                self.assertAlmostEqual(scale, .30 if early else .12)
+                np.testing.assert_allclose(bounded[:, :8], action[:, :8] * scale)
+                np.testing.assert_array_equal(bounded[:, 8], action[:, 8])
+        # With a stationary base, an arm or wrist alone must also respect the early-stage cap.
+        action[:, :3] = 0
+        bounded, steps, scale = bound_gentle_action(action, 2, 'grasp')
+        self.assertEqual((steps, scale), (2, .5))
+        np.testing.assert_allclose(bounded[:, :8], action[:, :8] * .5)
+        action[:, :8] *= .05
+        bounded, steps, scale = bound_gentle_action(action, 2, 'neck')
+        self.assertEqual((steps, scale), (2, 1.0))
+        np.testing.assert_array_equal(bounded, action)
+
+    def test_gentle_dispatch_matches_logged_limits_and_remaining_episode_budget(self):
+        early = proposal(steps=20)
+        early['decision']['action'][0][0] = -1
+        contact = proposal(steps=20)
+        contact['decision'].update(stage='shoulder')
+        contact['decision']['action'][1][5] = 1
+        contact['decision']['action'][1][8] = -1
+        events = []
+        actor, sim, _, _ = self.execute([early, contact], gentle_wrist_dressing=True,
+                                        max_steps=10, end_at_horizon=True, events=events)
+        sent = [value for tool, value in sim.calls if tool == 'act']
+        bounds = [e for e in events if e['type'] == 'gentle_wrist_action']
+        self.assertEqual([e['sent_steps'] for e in bounds], [8, 2])
+        self.assertEqual([e['requested_steps'] for e in bounds], [20, 20])
+        self.assertEqual([e['decision_index'] for e in bounds], [0, 1])
+        for e, actual in zip(bounds, sent, strict=True):
+            self.assertEqual((e['sent_action'], e['sent_steps']), (actual['action'], actual['steps']))
+        self.assertEqual(bounds[0]['requested_action'][0][0], -1)
+        self.assertAlmostEqual(sent[0]['action'][0][0], -.3)
+        self.assertEqual(bounds[1]['requested_action'][1][5], 1)
+        self.assertAlmostEqual(sent[1]['action'][1][5], .12)
+        self.assertEqual(sent[1]['action'][1][8], -1)
+        prompt = actor.invoke.call_args_list[0].args[0]
+        for text in ('4 policy steps', '8 steps', '0.12', '0.5', '0.3'):
+            self.assertIn(text, prompt)
+
+    def test_camera_briefing_once_per_actor_session(self):
+        events = []
+        actor, _, _, _ = self.execute([proposal(), RuntimeError('lost session'), proposal(), proposal('stop')],
+                                      camera_briefing=True, events=events)
+        prompts = [call.args[0] for call in actor.invoke.call_args_list]
+        self.assertEqual([p.count(CAMERA_BRIEFING) for p in prompts], [1, 0, 1, 0])
+        camera_order = codex_client.CONTRACT['competition_access']['allowed_cameras']
+        self.assertIn(', '.join(camera_order), CAMERA_BRIEFING)
+        self.assertEqual([e['model_call_index'] for e in events if e['type'] == 'camera_briefing_delivered'],
+                         [0, 2])
 
     def test_recent_visual_reviews_keep_observed_effects_across_segment_boundaries(self):
         decisions = [proposal(steps=3) for _ in range(6)] + [proposal('stop')]
@@ -151,6 +219,37 @@ class AutonomousTests(unittest.TestCase):
         self.assertEqual(records[-1]['end_step'], 7)
         self.assertEqual(records[-1]['review_source'], 'unassessed')
         self.assertEqual(m['autonomous_control']['close_reason'], 'hard_horizon')
+
+    def test_full_score_closes_before_settle_or_another_actor_call(self):
+        actor, sim, m, records = self.execute(
+            [proposal(steps=20), proposal(steps=20), proposal(steps=6)],
+            scores=True, settle=2, supervised_close=True)
+        self.assertEqual(records[-1]['score_after'], 50)
+        self.assertEqual(records[-1]['end_step'], 50)
+        self.assertEqual(actor.invoke.call_count, 3)
+        self.assertEqual(m['autonomous_control']['close_reason'], 'full_score')
+
+    def test_full_score_reached_during_settle(self):
+        _, sim, m, records = self.execute(
+            [proposal(steps=20), proposal(steps=20), proposal(steps=4)],
+            scores=True, settle=2, supervised_close=True)
+        self.assertEqual(sim.observation_step, 50)
+        self.assertEqual(records[-1]['score_after'], 50)
+        self.assertEqual(m['autonomous_control']['close_reason'], 'full_score')
+
+    def test_repeated_actor_errors_hold_scene_until_feedback(self):
+        _, sim, m, records = self.execute([RuntimeError('x'), RuntimeError('y')],
+                                           supervised_close=True, feedback_on_error=True)
+        self.assertEqual(sim.observation_step, 0)
+        self.assertEqual(records[-1]['hold_reason'], 'actor_error')
+        self.assertEqual(records[-1]['claimed_feedback_id'], 'correction')
+        self.assertEqual(m['autonomous_control']['close_reason'], 'human_feedback')
+
+    def test_submitted_feedback_ends_supervised_run_before_pending_action(self):
+        actor, sim, m, records = self.execute([proposal()], interrupt=True, supervised_close=True)
+        self.assertEqual(sim.observation_step, 0)
+        self.assertEqual(records[-1]['claimed_feedback_id'], 'correction')
+        self.assertEqual(m['autonomous_control']['close_reason'], 'human_feedback')
 
     def test_private_scores_do_not_affect_actions_settling_or_termination(self):
         def example(scores):

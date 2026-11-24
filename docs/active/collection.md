@@ -4,9 +4,9 @@
 
 ## GPT 단독 수집
 
-기존 Brev Jupyter 주소를 쓰는 서버 운영자는 `.venv/bin/python tools/publish_review_gallery.py --destination "$HOME"`를 서비스로 실행한다. 이 구성에서 사용자는 같은 Brev 주소의 `/view/PhyRC-review.html`을 새 탭에서 열고, 새로고침해 추가된 구간을 확인한다. 위에서 이전 실험과 공식 영상을 비교하고 아래에서 회차와 구간을 고른다. 비공개 갤러리에서 본 문제가 있으면 채팅으로 정지를 요청한다. 운영자는 `tools/segment_review.py --root output/segment-review intervene --run RUN --id REQUEST_ID`로 다음 행동 경계에서 개입할 수 있다.
+기존 Brev Jupyter 주소를 쓰는 서버 운영자는 `.venv/bin/python tools/publish_review_gallery.py --destination "$HOME"`를 서비스로 실행한다. 같은 Brev 주소의 `/view/PhyRC-review.html`을 열거나 새로고침하면 가장 최근 시연의 최신 구간이 화면 상단에 선택된다. 구간 목록은 최신순이다. 특정 구간을 공유할 때는 플레이어 아래의 고정 주소를 사용한다. 이전 실험과 공식 영상 비교는 플레이어 아래에서 확인한다. 비공개 갤러리에서 본 문제가 있으면 채팅으로 정지를 요청한다. 운영자는 `tools/segment_review.py --root output/segment-review intervene --run RUN --id REQUEST_ID`로 다음 행동 경계에서 개입할 수 있다.
 
-다음 클린 서버의 GPT 단독 시연은 [시연 4 인계](20261124-handoff.ko.md#새-서버에서-시작하기)에 따라 별도 ID와 tmux 세션을 사용한다. [실행기](../../participant/ops/collect_autonomous.sh)는 `--gpt-only`, 이름 있는 이중 로봇 행동, 손목 깊이 영상, 구간당 최대 3결정·60전이를 설정하고 종료 후 HDF5 검증과 구간 ZIP을 남긴다. 빈 공간 이동에서는 한 결정당 최대 20전이를 쓰고, 천과 손이 닿는 곳에서는 관찰할 수 있는 길이로 동작을 조절한다.
+시연 1–6은 종료됐다. 새 서버에서 이전 구간을 보려면 [여섯 회차 복원 절차](start.md#저장소와-지난-갤러리-열기)를 따른다. 새 회차는 사용자 지시를 받은 뒤 새 ID와 tmux 세션에서 시작한다. [실행기](../../participant/ops/collect_autonomous.sh)는 `--gpt-only`, 이름 있는 이중 로봇 행동, 손목 깊이 영상, 구간당 최대 3결정·60전이를 설정하고 종료 후 HDF5 검증과 구간 ZIP을 남긴다. 시연 4–6에 사용한 실행기는 `--until-full-score-or-feedback`를 켠다. 감독은 매 행동 직후 해당 경계의 공식 원점수 50점을 확인하면 마지막 영상을 게시하고 수집을 닫는다. 개입 후 보류하면 같은 자세로 기다리고, 의견을 제출하거나 종료를 선택하면 그 경계에서 시연을 마친다. 모델 호출이 연속 두 번 실패하면 해당 장면에서 피드백을 기다린다. 환경 종료나 18,000전이 한도 도달은 미완료로 기록한다. 기본 행동 상한은 결정당 20전이다. 시연 6의 `--gentle-wrist-dressing`에서는 운반·착의·복구 단계가 최대 4전이, 나머지 단계가 최대 8전이다.
 
 ## 사용자 피드백 모드와 로컬 검토 서버
 

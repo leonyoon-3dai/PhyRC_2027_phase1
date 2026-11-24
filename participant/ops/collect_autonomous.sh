@@ -3,11 +3,18 @@
 set -euo pipefail
 cd "$(dirname "$0")/../.."
 umask 027
-if [[ $# != 1 || ! $1 =~ ^[a-zA-Z0-9][a-zA-Z0-9_.-]{0,119}$ ]]; then
-    echo 'Usage: participant/ops/collect_autonomous.sh NEW_RUN_ID' >&2
+if [[ ! ${1:-} =~ ^[a-zA-Z0-9][a-zA-Z0-9_.-]{0,119}$ ]]; then
+    echo 'Usage: participant/ops/collect_autonomous.sh NEW_RUN_ID [--camera-briefing] [--gentle-wrist-dressing]' >&2
     exit 2
 fi
 run=$1
+shift
+for option in "$@"; do
+    case "$option" in
+        --camera-briefing|--gentle-wrist-dressing) ;;
+        *) echo "Unknown collection option: $option" >&2; exit 2 ;;
+    esac
+done
 capture="output/collections/$run"
 log="output/preflight/$run.log"
 qc="output/preflight/$run-qc.log"
@@ -31,7 +38,7 @@ printf '%s\n' "$run" > .runtime/active-autonomous-run.tmp
 mv .runtime/active-autonomous-run.tmp .runtime/active-autonomous-run
 client_status=0
 "$python_bin" -m participant.collection.codex_client \
-    --run-id "$run" --mode dressing --gpt-only \
+    --run-id "$run" --mode dressing --gpt-only --until-full-score-or-feedback "$@" \
     --model gpt-6.2-astra --effort ultra --actor-backend exec --plan-size 1 \
     --seed 43 --named-actions --wrist-depth-panel --segment-review-dir output/segment-review \
     --segment-decisions 3 --segment-steps 60 --post-action-settle-steps 0 \
