@@ -126,4 +126,4 @@
 
 ---
 
-[![지난 실험 보관함 열기](docs/assets/archive-menu.svg)](docs/ARCHIVE.md)
+[![지난 실험 보관함 열기](docs/assets/archive-menu.svg)](docs/ARCHIVE.md) [![Codex 설치 명령](docs/assets/codex-install-menu.svg)](docs/codex-install.md)
