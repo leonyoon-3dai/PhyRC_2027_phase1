@@ -1,6 +1,6 @@
-# 새 서버에서 시연 1–6 복원과 다음 회차 준비
+# 새 서버에서 시연 1–13 복원과 다음 회차 준비
 
-시연 1–6은 종료됐다. 갤러리는 CPU만으로 복원할 수 있다. GPU 시뮬레이터와 행동 모델은 사용자가 다음 회차를 요청할 때 준비한다. [여섯 회차의 비공개 백업 확인서](20261124-private-backup.json)
+시연 1–13과 Sol Max 예비 시험을 종료했다. 갤러리는 CPU만으로 복원할 수 있다. GPU 시뮬레이터와 행동 모델은 사용자가 다음 회차를 요청할 때 준비한다. [비공개 백업 확인서](20261124-demo1-13-private-backup.json) · [최종 분석과 다음 작업](20261124-demo7-13-closeout.ko.md)
 
 ## 저장소와 지난 갤러리 열기
 
@@ -14,18 +14,19 @@ git sparse-checkout set assets config docs/active docs/competition examples part
 git rev-parse HEAD
 ```
 
-리뷰 브랜치를 병합하기 전에 복원하려면 위 checkout에서 `git switch review/20261124-dressing-series-closeout`을 실행한다.
-
-Hugging Face 비공개 데이터셋에 읽기 권한이 있는 계정으로 인증한다. 아래 명령은 여섯 회차가 담긴 SQLite 저널과 각 회차의 검토 ZIP만 고정 revision에서 내려받는다. 회차별 파일과 각 영상의 SHA-256을 확인한 뒤 새 `output/segment-review`를 만든다. 기존 갤러리가 있으면 `--destination`으로 새 경로를 지정하고 게시할 때 같은 경로를 `--review-dir`에 전달한다.
+Hugging Face 비공개 데이터셋에 읽기 권한이 있는 계정으로 인증한다. 아래 명령은 14개 실행의 SQLite 저널과 검토 ZIP을 고정 revision에서 내려받는다. 파일과 각 영상의 SHA-256을 확인한 뒤 새 `output/segment-review`를 만든다. `--frames-destination`을 추가하면 누적 GIF용 0전이부터 종료 전이까지의 JPEG도 복원한다. 기존 갤러리와 프레임 디렉터리가 있으면 새 경로를 선택한다.
 
 ```bash
 command -v hf >/dev/null || uv tool install huggingface-hub==2.4.0
 hf auth whoami || hf auth login
-python3.12 scripts/restore_review_gallery.py --receipt docs/active/20261124-private-backup.json
-python3.12 tools/publish_review_gallery.py --review-dir output/segment-review --destination "$HOME" --once
+python3.12 scripts/restore_review_gallery.py \
+  --receipt docs/active/20261124-demo1-13-private-backup.json \
+  --frames-destination output/operator-traces
+.venv/bin/python tools/publish_review_gallery.py --review-dir output/segment-review \
+  --traces output/operator-traces --destination "$HOME" --once
 ```
 
-Jupyter 파일 루트가 사용자 홈이면 같은 서버의 Brev Jupyter 주소 뒤에 `/view/PhyRC-review.html`을 붙인다. 다른 파일 루트에서는 그 경로를 게시 명령의 `--destination`에 사용한다. 첫 화면에는 시연 6의 마지막 구간이 나온다. 특정 구간의 주소는 `/view/PhyRC-gallery/<run>/<hold>.html`이다. 새 회차를 수집하는 동안에는 같은 게시 명령에서 `--once`를 빼고 상시 실행하면 새로고침할 때 최신 구간이 선택된다.
+게시에는 아래 환경 준비 절의 Pillow와 FFmpeg가 필요하다. Jupyter 파일 루트가 사용자 홈이면 같은 서버의 Brev Jupyter 주소 뒤에 `/view/PhyRC-review.html`을 붙인다. 다른 파일 루트는 게시 명령의 `--destination`에 지정한다. 첫 화면은 시연 13의 마지막 구간을 열고, 누적 GIF 아래에 구간 영상을 표시한다. 특정 구간의 주소는 `/view/PhyRC-gallery/<run>/<hold>.html`이다. 새 회차를 수집하는 동안에는 게시 명령에서 `--once`를 빼고 실행한다.
 
 HDF5·최종 평가·구간 프레임을 분석하려면 확인서의 해당 `run_id`에서 `archive.path`, `review_frames.path`와 SHA-256을 찾는다. `hf download`에 확인서의 `repo_id`, 해당 파일 경로, `--repo-type dataset --revision <revision>`을 지정한다. 내려받은 원본 아카이브는 `python3.12 participant/ops/artifacts.py restore 새_디렉터리 --archive 받은_파일.tar.gz`로 내부 목록과 파일 해시까지 검증하며 복원할 수 있다.
 
@@ -85,6 +86,8 @@ PYTHONPATH=.:src/PhyRC_Sim .venv/bin/python -m participant.collection.codex_clie
 ## 3. 다음 회차의 검토 화면과 시작
 
 사용자가 새 회차의 목표와 시작을 지시하면 기존 실행과 중복되지 않는 ID로 실행한다. `participant/ops/collect_autonomous.sh NEW_RUN_ID`는 새 장면의 0전이에서 시작하며 공식 50점 또는 사용자 피드백으로 종료한다. 시연 5의 카메라 설명은 `--camera-briefing`, 시연 6의 손목·접근 제한은 `--gentle-wrist-dressing` 옵션이다. 두 옵션은 함께 사용할 수 있다. 구간별 승인을 원하는 경우 사용자 피드백 모드를 쓴다. [GPT 단독 실험](autonomous.md) · [수집과 갤러리 운영](collection.md)
+
+시연 7–13의 본 실행 구성은 `--sol-ultra --camera-briefing`이다. 사용자가 특정 영상 경계를 분기점으로 고르면 종료되고 전수 검증된 원본 수집 기록과 운영 추적을 새 서버로 복원한다. 위의 JPEG 복원 결과와 원본 아카이브의 운영 추적을 같은 `output/operator-traces/RUN`에 서로 다른 파일로 배치한다. 원본의 `output/collections/RUN`과 검증 파일도 필요하다. `--wrist-transfer-from SOURCE_RUN END_STEP`은 원본의 시드와 허용 행동을 사용해 선택 전이까지 재실행한다. `--cover-right-wrist`는 현재의 끝 파지 지시를 선택한다. 재실행은 새 시뮬레이터 관측을 만들므로, 그 지점의 밑단과 손목 관계를 다시 확인한다.
 
 `--segment-review-dir`는 새 출발 검사를 자동으로 켠다. 공식 샘플러로 고정 테이블을 선택하는 seed를 CPU에서 찾고, 실제 장면은 **한 번만** reset한다. 첫 회차의 seed 43은 그대로 사용된다. 다른 연습 seed를 지정해도 같은 테이블에 놓이도록 요청 seed와 실제 seed를 감독 기록에 함께 남긴다. 공식 제출의 초기화 경로는 주최 측의 배치 규칙을 따른다.
 

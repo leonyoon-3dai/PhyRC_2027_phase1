@@ -22,7 +22,7 @@ import numpy as np
 from PIL import Image
 
 from participant.collection.boundary import CONTRACT, PUBLIC, validate_action
-from participant.collection.codex_actor import DEFAULT_MODEL, LEGACY_MODEL
+from participant.collection.codex_actor import DEFAULT_MODEL, LEGACY_MODEL, SUPPORTED_MODEL_EFFORTS
 
 
 STAGES = ['preparation', 'approach', 'grasp', 'lift', 'transport', 'first_sleeve',
@@ -736,6 +736,10 @@ def main():
                         help='Describe public camera motion and view order at the start of each GPT-only actor session')
     parser.add_argument('--gentle-wrist-dressing', action='store_true',
                         help='Use opposing side approaches, shallow wrist entry and bounded motion commands')
+    parser.add_argument('--wrist-transfer', action='store_true',
+                        help='Prioritize the opposite wrist from a verified autonomous replay boundary')
+    parser.add_argument('--cover-right-wrist', action='store_true',
+                        help='Draw the opening past the right hand while supporting the other hand')
     parser.add_argument('--until-full-score-or-feedback', action='store_true',
                         help='In GPT-only collection, close on 50 official points or submitted operator feedback')
     parser.add_argument('--segment-review-dir', type=Path,
@@ -766,11 +770,13 @@ def main():
     if args.model is None:
         args.model = DEFAULT_MODEL if args.nearest_table else LEGACY_MODEL
     if args.nearest_table:
-        if (args.initial_slot or args.replay_prefix_run or args.parent_attempt or args.retry_reason
+        if (args.initial_slot or ((args.replay_prefix_run or args.parent_attempt or args.retry_reason)
+                                  and not (args.wrist_transfer and args.replay_prefix_run))
                 or args.start_state_validation or args.prepare_checkpoint_only):
             parser.error('nearest-table collection starts at step zero in a new run')
-        if args.model != DEFAULT_MODEL or args.effort != 'ultra' or args.actor_backend != 'exec':
-            parser.error('nearest-table collection uses the GPT-6.2 Astra Ultra exec actor')
+        if ((args.model, args.effort) not in SUPPORTED_MODEL_EFFORTS
+                or args.model == LEGACY_MODEL or args.actor_backend != 'exec'):
+            parser.error('nearest-table collection requires the GPT-6.2 Astra Ultra, Sol Max, or Sol Ultra exec actor')
     if args.seed is not None and (not 0 <= args.seed < 2**63 or args.initial_slot or args.replay_prefix_run):
         parser.error('--seed requires a fresh reset and an integer in 0..2**63-1')
     if args.user_guided and (args.actor_backend != 'exec' or args.plan_size != 1 or args.pixel_depth_query):
@@ -813,6 +819,10 @@ def main():
         parser.error('review-points must be 5..50')
     if args.replay_prefix_steps is not None and (not args.replay_prefix_run or args.replay_prefix_steps < 1):
         parser.error('positive replay-prefix-steps requires replay-prefix-run')
+    if args.wrist_transfer and not (args.gpt_only and args.replay_prefix_steps):
+        parser.error('--wrist-transfer requires --gpt-only and an exact replay prefix boundary')
+    if args.cover_right_wrist and not args.wrist_transfer:
+        parser.error('--cover-right-wrist requires --wrist-transfer')
     if args.replay_observe_steps is not None:
         cuts = args.replay_observe_steps
         if (not args.replay_prefix_run or not 1 <= len(cuts) <= 2
@@ -1001,6 +1011,10 @@ def main():
         task = TASK + '\n\nHuman review controls this episode. stop/finish_episode are review proposals; the supervisor pauses without advancing physics. Inspect each new observation before a short action. Do not request hidden state or evaluation feedback.'
     if args.gpt_only:
         prompt_file = 'gentle_wrist_dressing.txt' if args.gentle_wrist_dressing else 'autonomous_full_dressing.txt'
+        if args.wrist_transfer:
+            prompt_file = 'wrist_transfer.txt'
+        if args.cover_right_wrist:
+            prompt_file = 'cover_right_wrist.txt'
         task = (root / 'participant/collection/prompts' / prompt_file).read_text().rstrip()
         contract = OBSERVATION_AND_ACTION_TASK.replace(
             'A stop applies neutral motion for one control step and preserves grip intent.',

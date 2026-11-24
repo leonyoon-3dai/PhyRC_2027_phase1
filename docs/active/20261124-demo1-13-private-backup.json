@@ -1,0 +1,502 @@
+{
+  "schema": "phyrc-private-series-backup-v1",
+  "repo_id": "leonayoon/phyrc-2027-phase1-private-backup",
+  "repo_type": "dataset",
+  "private": true,
+  "revision": "3b0d9b1c255ead19c36f4f86a1ed7f8110de9731",
+  "previous_receipt": "20261124-private-backup.json",
+  "previous_revision": "827c347145fb13ed02525357f6b12d48ddf92339",
+  "verified_at_utc": "2026-11-24T10:36:21.339061+00:00",
+  "asset_count": 43,
+  "total_bytes": 27397870950,
+  "remote_download_verified": true,
+  "remote_lfs_sha256_verified_at_revision": true,
+  "verification": "All 43 asset paths and sizes verified at the common immutable revision. Hub LFS hashes checked when present. Downloaded all 8 new raw archives, all 14 review ZIPs and JPEG archives, and the combined journal at that revision and verified their receipt SHA-256. Earlier raw archives retain the SHA-256 and prior restore receipts. Verified the full restored gallery and contiguous source frames for 14 runs.",
+  "runs": [
+    {
+      "run_id": "20261122T231754Z-astra62-dressing",
+      "archive": {
+        "path": "sessions/20261123-dressing-series/20261122T231754Z-astra62-dressing/20261122T231754Z-astra62-dressing-final.tar.gz",
+        "bytes": 3869843243,
+        "sha256": "1afcda84139d7a5efc85f8e2fd12f46c38b86b89725b7d5a9177ffec8ff70ea0"
+      },
+      "review_zip": {
+        "path": "sessions/20261123-dressing-series/20261122T231754Z-astra62-dressing/20261122T231754Z-astra62-dressing.zip",
+        "bytes": 17616992,
+        "sha256": "c499963a626db9cc19d3af86abd8d5e29659d66cbc03d84cd3d71bf307ffe77e"
+      },
+      "review_frames": {
+        "path": "sessions/20261123-dressing-series/20261122T231754Z-astra62-dressing/20261122T231754Z-astra62-dressing-review-frames.tar.gz",
+        "bytes": 83493405,
+        "sha256": "cf73af8cb9d276671380a5deb07388effcc9c117e75d0e073447433b64b32298"
+      },
+      "segments": 77,
+      "review_frame_count": 1656,
+      "manifest_sha256": "45988e564f7d889841b8ae412b46031896608776b44d5ccb04fe48640d2fed62",
+      "manifest_members": 1661,
+      "qc": {
+        "transitions": 1655,
+        "quality_passed": true,
+        "raw_points": 5.0,
+        "evaluation_valid": true,
+        "success": false,
+        "training_approval": "unreviewed"
+      },
+      "upload_revision": "c71c2fcae0c34d8afe5df83bdf42caa40f297381",
+      "remote_download_verified": true,
+      "restore_verified": true
+    },
+    {
+      "run_id": "20261123T032900Z-astra62-autonomous",
+      "archive": {
+        "path": "sessions/20261123-dressing-series/20261123T032900Z-astra62-autonomous/20261123T032900Z-astra62-autonomous-final.tar.gz",
+        "bytes": 5465365080,
+        "sha256": "c8930df03589b6e5588b24a6516573695677c62566a6fda80d7103a65a6a7c0f"
+      },
+      "review_zip": {
+        "path": "sessions/20261123-dressing-series/20261123T032900Z-astra62-autonomous/20261123T032900Z-astra62-autonomous.zip",
+        "bytes": 29196548,
+        "sha256": "e4d47961fab1c33eae70b009e598101af6f68d5b8547858e44c3163ecc367c07"
+      },
+      "review_frames": {
+        "path": "sessions/20261123-dressing-series/20261123T032900Z-astra62-autonomous/20261123T032900Z-astra62-autonomous-review-frames.tar.gz",
+        "bytes": 116196302,
+        "sha256": "223e4b0391280556a96e9a9a7b76c1ff99d289237cbda82cedd70287bdc988dd"
+      },
+      "segments": 110,
+      "review_frame_count": 2196,
+      "manifest_sha256": "7a8d2989d3bdd7cef0427af99ae00751b1bc0c72d4a4e4a5c02e971d5f8c6693",
+      "manifest_members": 2159,
+      "qc": {
+        "transitions": 2195,
+        "quality_passed": true,
+        "raw_points": 20.0,
+        "evaluation_valid": true,
+        "success": false,
+        "training_approval": "unreviewed"
+      },
+      "upload_revision": "cf8513e35b58c5d3b88fbe8bcc5d7e6e70a88f23",
+      "remote_download_verified": true,
+      "restore_verified": true
+    },
+    {
+      "run_id": "20261123T061400Z-astra62-both-arms-first",
+      "archive": {
+        "path": "sessions/20261123-dressing-series/20261123T061400Z-astra62-both-arms-first/20261123T061400Z-astra62-both-arms-first-final.tar.gz",
+        "bytes": 1487873942,
+        "sha256": "8ab671e6d1cbccc02f35dd65e6e1977654986f95f427fb815aaf6bd307720179"
+      },
+      "review_zip": {
+        "path": "sessions/20261123-dressing-series/20261123T061400Z-astra62-both-arms-first/20261123T061400Z-astra62-both-arms-first.zip",
+        "bytes": 8975959,
+        "sha256": "526814b669573032a7cef60485872bd6c2c1ff591f7d930c518c0a8ce7117986"
+      },
+      "review_frames": {
+        "path": "sessions/20261123-dressing-series/20261123T061400Z-astra62-both-arms-first/20261123T061400Z-astra62-both-arms-first-review-frames.tar.gz",
+        "bytes": 31155636,
+        "sha256": "adfaa47127c14bde38c8f55b0a9a9a52b321963f41746e3324efbfdc30f8a940"
+      },
+      "segments": 30,
+      "review_frame_count": 609,
+      "manifest_sha256": "285da544bc3422feaf033f32ad59b15bcb4b99a7058338e8bf5bc21f10f5265c",
+      "manifest_members": 630,
+      "qc": {
+        "transitions": 608,
+        "quality_passed": true,
+        "raw_points": 5.0,
+        "evaluation_valid": true,
+        "success": false,
+        "training_approval": "unreviewed"
+      },
+      "upload_revision": "9c28fbe07e40e8d748aeb1de8e5b942d441240c0",
+      "remote_download_verified": true,
+      "restore_verified": true
+    },
+    {
+      "run_id": "20261124-astra62-bilateral-recovery-001",
+      "review_zip": {
+        "path": "sessions/20261124-dressing-series/20261124-astra62-bilateral-recovery-001/20261124-astra62-bilateral-recovery-001.zip",
+        "bytes": 13826685,
+        "sha256": "63e24eff4d4b45b05001a3dbcf3bba7d1bdc08bfc6e209db2911f6c3b30e194d"
+      },
+      "review_frames": {
+        "path": "sessions/20261124-dressing-series/20261124-astra62-bilateral-recovery-001/20261124-astra62-bilateral-recovery-001-review-frames.tar.gz",
+        "bytes": 49789953,
+        "sha256": "849ce8084b4794c6a93994b57e75f7ef527f97addbac29caf361da1e17d5781b"
+      },
+      "segments": 80,
+      "review_frame_count": 1024,
+      "qc": {
+        "transitions": 1023,
+        "quality_passed": true,
+        "raw_points": 5.0,
+        "evaluation_valid": true,
+        "success": false,
+        "training_approval": "unreviewed"
+      },
+      "archive": {
+        "path": "sessions/20261124-dressing-series/20261124-astra62-bilateral-recovery-001/20261124-astra62-bilateral-recovery-001-final.tar.gz",
+        "bytes": 2363271253,
+        "sha256": "95dc44e6b22d6938da656546753d76942c155b4408c86da0452c4a550f3e153f"
+      },
+      "manifest_sha256": "2d8a5545349dd2bf8c834bf32dff4adf88e899931b1c73794cc096f1c041a7df",
+      "manifest_members": 1931,
+      "upload_revision": "827c347145fb13ed02525357f6b12d48ddf92339",
+      "remote_download_verified": true,
+      "restore_verified": true
+    },
+    {
+      "run_id": "20261124-astra62-demo5-camera-briefing-001",
+      "review_zip": {
+        "path": "sessions/20261124-dressing-series/20261124-astra62-demo5-camera-briefing-001/20261124-astra62-demo5-camera-briefing-001.zip",
+        "bytes": 6436371,
+        "sha256": "88c5d414ab9776cc52bd43f73c4bb58bffa6c92f6f1d603bba69ddd297d8ce52"
+      },
+      "review_frames": {
+        "path": "sessions/20261124-dressing-series/20261124-astra62-demo5-camera-briefing-001/20261124-astra62-demo5-camera-briefing-001-review-frames.tar.gz",
+        "bytes": 23672054,
+        "sha256": "3af72762cbf51a502da6f1a3de2aebafd0a97c148d2b8c17017eabf8fe193fd5"
+      },
+      "segments": 24,
+      "review_frame_count": 488,
+      "qc": {
+        "transitions": 487,
+        "quality_passed": true,
+        "raw_points": 5.0,
+        "evaluation_valid": true,
+        "success": false,
+        "training_approval": "unreviewed"
+      },
+      "archive": {
+        "path": "sessions/20261124-dressing-series/20261124-astra62-demo5-camera-briefing-001/20261124-astra62-demo5-camera-briefing-001-final.tar.gz",
+        "bytes": 1139288565,
+        "sha256": "75697f45b84a8e64779a53847ccd8f5f6157c88d8c07e55b2463160681cd4ccd"
+      },
+      "manifest_sha256": "4cd77c4e828493d5c5a244f5c81499c4cc9239ff5445aa97e49c4d3da70de121",
+      "manifest_members": 570,
+      "upload_revision": "827c347145fb13ed02525357f6b12d48ddf92339",
+      "remote_download_verified": true,
+      "restore_verified": true
+    },
+    {
+      "run_id": "20261124-astra62-demo6-gentle-wrists-001",
+      "review_zip": {
+        "path": "sessions/20261124-dressing-series/20261124-astra62-demo6-gentle-wrists-001/20261124-astra62-demo6-gentle-wrists-001.zip",
+        "bytes": 7992034,
+        "sha256": "5a7feca97922aa7b7fbbff6de9447a4f85eda98373017e901c1afddd40c817e2"
+      },
+      "review_frames": {
+        "path": "sessions/20261124-dressing-series/20261124-astra62-demo6-gentle-wrists-001/20261124-astra62-demo6-gentle-wrists-001-review-frames.tar.gz",
+        "bytes": 30564936,
+        "sha256": "b1ee5aba81ad88295538572c875067833b17173ed2b0eb895a344b0d9cabde19"
+      },
+      "segments": 62,
+      "review_frame_count": 609,
+      "qc": {
+        "transitions": 608,
+        "quality_passed": true,
+        "raw_points": 5.0,
+        "evaluation_valid": true,
+        "success": false,
+        "training_approval": "unreviewed"
+      },
+      "archive": {
+        "path": "sessions/20261124-dressing-series/20261124-astra62-demo6-gentle-wrists-001/20261124-astra62-demo6-gentle-wrists-001-final.tar.gz",
+        "bytes": 1506154084,
+        "sha256": "f7b6bcb3b04e721245642740adc08d11aae39d18ea4b3d86f8e98d2cedfbd620"
+      },
+      "manifest_sha256": "6fcd470ee2b224fe8831d19b96df062d41763b3c9a8f51624efd98ab605e05fd",
+      "manifest_members": 1626,
+      "upload_revision": "827c347145fb13ed02525357f6b12d48ddf92339",
+      "remote_download_verified": true,
+      "restore_verified": true
+    },
+    {
+      "run_id": "20261124T035439Z-demo7-sol-max",
+      "archive": {
+        "path": "sessions/20261124-sol-series/20261124T035439Z-demo7-sol-max/20261124T035439Z-demo7-sol-max-final.tar.gz",
+        "bytes": 35348321,
+        "sha256": "dcb076c44460f2eb8ebfa71f2fced804873cff3376c133675ba2f461be90a665"
+      },
+      "review_zip": {
+        "path": "sessions/20261124-sol-series/20261124T035439Z-demo7-sol-max/20261124T035439Z-demo7-sol-max.zip",
+        "bytes": 322558,
+        "sha256": "367c09513f8d670c83896abe5600e75d0a48c9700092d29f0f8f1300fd1aa44e"
+      },
+      "review_frames": {
+        "path": "sessions/20261124-sol-series/20261124T035439Z-demo7-sol-max/20261124T035439Z-demo7-sol-max-review-frames.tar.gz",
+        "bytes": 637222,
+        "sha256": "6e40500111c11aa5bee0a262c5c130d605b552b537932c952d85779ab2f1fc0b"
+      },
+      "segments": 4,
+      "review_frame_count": 15,
+      "manifest_sha256": "c42f0c9ba6f1e723517a9a288114752c2e8b92e43a7e279904a4acbe5f31706f",
+      "manifest_members": 101,
+      "qc": {
+        "transitions": 14,
+        "replay_prefix_steps": 0,
+        "quality_passed": true,
+        "raw_points": 0.0,
+        "evaluation_valid": true,
+        "success": false,
+        "training_approval": "unreviewed"
+      },
+      "upload_revision": "3b0d9b1c255ead19c36f4f86a1ed7f8110de9731",
+      "remote_download_verified": true
+    },
+    {
+      "run_id": "20261124T040843Z-demo7-sol-ultra",
+      "archive": {
+        "path": "sessions/20261124-sol-series/20261124T040843Z-demo7-sol-ultra/20261124T040843Z-demo7-sol-ultra-final.tar.gz",
+        "bytes": 2527673120,
+        "sha256": "bd0a0fe815079a3523d4a5072b2417340a74895800485bd2c531b036a1977dab"
+      },
+      "review_zip": {
+        "path": "sessions/20261124-sol-series/20261124T040843Z-demo7-sol-ultra/20261124T040843Z-demo7-sol-ultra.zip",
+        "bytes": 15144558,
+        "sha256": "48ef34301f92024ff1bb17538019cde2959d4dc13f9b8babaddf127e0c3f67d6"
+      },
+      "review_frames": {
+        "path": "sessions/20261124-sol-series/20261124T040843Z-demo7-sol-ultra/20261124T040843Z-demo7-sol-ultra-review-frames.tar.gz",
+        "bytes": 53348599,
+        "sha256": "d96a0442f302cc5e7209721b390d600b53ac1d5507fef9d6b57b4ef8d991bc74"
+      },
+      "segments": 81,
+      "review_frame_count": 989,
+      "manifest_sha256": "8cca0f883fa11613819f861e690f3f363511bc4143c1f54932e3dde84794a819",
+      "manifest_members": 1690,
+      "qc": {
+        "transitions": 988,
+        "replay_prefix_steps": 0,
+        "quality_passed": true,
+        "raw_points": 5.0,
+        "evaluation_valid": true,
+        "success": false,
+        "training_approval": "unreviewed"
+      },
+      "upload_revision": "3b0d9b1c255ead19c36f4f86a1ed7f8110de9731",
+      "remote_download_verified": true
+    },
+    {
+      "run_id": "20261124T062038Z-demo8-sol-ultra-hold0033",
+      "archive": {
+        "path": "sessions/20261124-sol-series/20261124T062038Z-demo8-sol-ultra-hold0033/20261124T062038Z-demo8-sol-ultra-hold0033-final.tar.gz",
+        "bytes": 1168498401,
+        "sha256": "7efc64562fe227817e9cfc1d929f4c45cf53ec2fbe436590c06d8728e31de5de"
+      },
+      "review_zip": {
+        "path": "sessions/20261124-sol-series/20261124T062038Z-demo8-sol-ultra-hold0033/20261124T062038Z-demo8-sol-ultra-hold0033.zip",
+        "bytes": 247793,
+        "sha256": "51990ef638de434cc186931693fc7fd084a1b2809135258ebf2630067ee2c4dc"
+      },
+      "review_frames": {
+        "path": "sessions/20261124-sol-series/20261124T062038Z-demo8-sol-ultra-hold0033/20261124T062038Z-demo8-sol-ultra-hold0033-review-frames.tar.gz",
+        "bytes": 26295884,
+        "sha256": "f6a3d764b7fcd9e13e9f252b6d3582242ac1014f612f693807bea54dc385b368"
+      },
+      "segments": 2,
+      "review_frame_count": 533,
+      "manifest_sha256": "ff3d2b43dfcd2d36261fe6f38faa97296e8f7c255d5f17037c49e2e2d4201b89",
+      "manifest_members": 100,
+      "qc": {
+        "transitions": 532,
+        "replay_prefix_steps": 521,
+        "quality_passed": true,
+        "raw_points": 5.0,
+        "evaluation_valid": true,
+        "success": false,
+        "training_approval": "unreviewed"
+      },
+      "upload_revision": "3b0d9b1c255ead19c36f4f86a1ed7f8110de9731",
+      "remote_download_verified": true
+    },
+    {
+      "run_id": "20261124T063436Z-demo9-sol-ultra",
+      "archive": {
+        "path": "sessions/20261124-sol-series/20261124T063436Z-demo9-sol-ultra/20261124T063436Z-demo9-sol-ultra-final.tar.gz",
+        "bytes": 2201568931,
+        "sha256": "3092c29ad5828cb58d7efaaf41ec91a8a8bde3a0ab2e0d4e7d63af840e7b64d2"
+      },
+      "review_zip": {
+        "path": "sessions/20261124-sol-series/20261124T063436Z-demo9-sol-ultra/20261124T063436Z-demo9-sol-ultra.zip",
+        "bytes": 13329105,
+        "sha256": "643e9158a23cad2597cb416e1bf1d58822985ac140172b7ecbddfeca7786e23e"
+      },
+      "review_frames": {
+        "path": "sessions/20261124-sol-series/20261124T063436Z-demo9-sol-ultra/20261124T063436Z-demo9-sol-ultra-review-frames.tar.gz",
+        "bytes": 48306613,
+        "sha256": "3d33f127919045a2086a5198250ea02d87f0ed31aeeb7fec8e96ef017505c05d"
+      },
+      "segments": 68,
+      "review_frame_count": 908,
+      "manifest_sha256": "3e009fa52fd3b7e10d4cafe02739422eb60259e002c481e2265dd9bca1ee1545",
+      "manifest_members": 1534,
+      "qc": {
+        "transitions": 907,
+        "replay_prefix_steps": 0,
+        "quality_passed": true,
+        "raw_points": 5.0,
+        "evaluation_valid": true,
+        "success": false,
+        "training_approval": "unreviewed"
+      },
+      "upload_revision": "3b0d9b1c255ead19c36f4f86a1ed7f8110de9731",
+      "remote_download_verified": true
+    },
+    {
+      "run_id": "20261124T082311Z-demo10-sol-ultra-hold0026",
+      "archive": {
+        "path": "sessions/20261124-sol-series/20261124T082311Z-demo10-sol-ultra-hold0026/20261124T082311Z-demo10-sol-ultra-hold0026-final.tar.gz",
+        "bytes": 1087015382,
+        "sha256": "b9ea2655e2fa5d60518b3d052fc54a35ba9961b6469b755e038050a24707fb9a"
+      },
+      "review_zip": {
+        "path": "sessions/20261124-sol-series/20261124T082311Z-demo10-sol-ultra-hold0026/20261124T082311Z-demo10-sol-ultra-hold0026.zip",
+        "bytes": 1898903,
+        "sha256": "778f26b2387e04ccb121f720736398c57723174dcb2e0c7eccaa44d747bbd7e0"
+      },
+      "review_frames": {
+        "path": "sessions/20261124-sol-series/20261124T082311Z-demo10-sol-ultra-hold0026/20261124T082311Z-demo10-sol-ultra-hold0026-review-frames.tar.gz",
+        "bytes": 24596313,
+        "sha256": "8e7e0728ec10d0a7795196629dd6db2a8936b84964004d95fb8c485e47c0cdde"
+      },
+      "segments": 26,
+      "review_frame_count": 495,
+      "manifest_sha256": "395d80908d80f33c063ad98a5b283fa0c776235998bb38f4a36537ea3dc8a006",
+      "manifest_members": 323,
+      "qc": {
+        "transitions": 494,
+        "replay_prefix_steps": 419,
+        "quality_passed": true,
+        "raw_points": 5.0,
+        "evaluation_valid": true,
+        "success": false,
+        "training_approval": "unreviewed"
+      },
+      "upload_revision": "3b0d9b1c255ead19c36f4f86a1ed7f8110de9731",
+      "remote_download_verified": true
+    },
+    {
+      "run_id": "20261124T085135Z-demo11-sol-ultra-hold0026",
+      "archive": {
+        "path": "sessions/20261124-sol-series/20261124T085135Z-demo11-sol-ultra-hold0026/20261124T085135Z-demo11-sol-ultra-hold0026-final.tar.gz",
+        "bytes": 1121050334,
+        "sha256": "031b502a93edf8664160d8dd233585acdbc5b624ad7f95a40054b221ef4c5db5"
+      },
+      "review_zip": {
+        "path": "sessions/20261124-sol-series/20261124T085135Z-demo11-sol-ultra-hold0026/20261124T085135Z-demo11-sol-ultra-hold0026.zip",
+        "bytes": 2132886,
+        "sha256": "0e1e881199c7e270c1470cb218b17c116a43da545be75dc9b6cf18c6ce8f7cc8"
+      },
+      "review_frames": {
+        "path": "sessions/20261124-sol-series/20261124T085135Z-demo11-sol-ultra-hold0026/20261124T085135Z-demo11-sol-ultra-hold0026-review-frames.tar.gz",
+        "bytes": 25467909,
+        "sha256": "39536728243d0c4b455760948f45a1498d840a17cfeac59c5fd2f23ffa6b61ed"
+      },
+      "segments": 27,
+      "review_frame_count": 513,
+      "manifest_sha256": "4ca77e154cd110e969ae4611345d72151558120684d052b14338d5714755fd2a",
+      "manifest_members": 333,
+      "qc": {
+        "transitions": 512,
+        "replay_prefix_steps": 419,
+        "quality_passed": true,
+        "raw_points": 5.0,
+        "evaluation_valid": true,
+        "success": false,
+        "training_approval": "unreviewed"
+      },
+      "upload_revision": "3b0d9b1c255ead19c36f4f86a1ed7f8110de9731",
+      "remote_download_verified": true
+    },
+    {
+      "run_id": "20261124T092135Z-demo12-sol-ultra",
+      "archive": {
+        "path": "sessions/20261124-sol-series/20261124T092135Z-demo12-sol-ultra/20261124T092135Z-demo12-sol-ultra-final.tar.gz",
+        "bytes": 1147364039,
+        "sha256": "f7cec1f33ccd2cef1ed785b503a5945c4fa7a45a7d86e47d8b8c1234518d6ff1"
+      },
+      "review_zip": {
+        "path": "sessions/20261124-sol-series/20261124T092135Z-demo12-sol-ultra/20261124T092135Z-demo12-sol-ultra.zip",
+        "bytes": 2145632,
+        "sha256": "e5279bcd97947430ad6adc3aa0dc9a22892c39ecaa88532d0c5e0ea81c66bf77"
+      },
+      "review_frames": {
+        "path": "sessions/20261124-sol-series/20261124T092135Z-demo12-sol-ultra/20261124T092135Z-demo12-sol-ultra-review-frames.tar.gz",
+        "bytes": 25896199,
+        "sha256": "08ac9712c178e7838e30987621c1ea00a931876d60eac6400fb8fae08ac4e56c"
+      },
+      "segments": 32,
+      "review_frame_count": 525,
+      "manifest_sha256": "cbaee4b1cbd013eaecdd3600d205ea2c05803082274fb096a9626b89731f9e18",
+      "manifest_members": 383,
+      "qc": {
+        "transitions": 524,
+        "replay_prefix_steps": 419,
+        "quality_passed": true,
+        "raw_points": 5.0,
+        "evaluation_valid": true,
+        "success": false,
+        "training_approval": "unreviewed"
+      },
+      "upload_revision": "3b0d9b1c255ead19c36f4f86a1ed7f8110de9731",
+      "remote_download_verified": true
+    },
+    {
+      "run_id": "20261124T094901Z-demo13-sol-ultra",
+      "archive": {
+        "path": "sessions/20261124-sol-series/20261124T094901Z-demo13-sol-ultra/20261124T094901Z-demo13-sol-ultra-final.tar.gz",
+        "bytes": 1575307727,
+        "sha256": "e1d0642361a31326fd53a9d9d988c54ac2123b6e36f37879a5481e8f303103e5"
+      },
+      "review_zip": {
+        "path": "sessions/20261124-sol-series/20261124T094901Z-demo13-sol-ultra/20261124T094901Z-demo13-sol-ultra.zip",
+        "bytes": 4682930,
+        "sha256": "fd40352ec3194106c19b10a1c9d17c42bd3c5f60c594d7dc800b0625fb8a6230"
+      },
+      "review_frames": {
+        "path": "sessions/20261124-sol-series/20261124T094901Z-demo13-sol-ultra/20261124T094901Z-demo13-sol-ultra-review-frames.tar.gz",
+        "bytes": 35949909,
+        "sha256": "5c4f8636a47414c6742faab2b906d5af1eb99aacc3e06297bf246df47692f86f"
+      },
+      "segments": 44,
+      "review_frame_count": 690,
+      "manifest_sha256": "1997445334545fcb0f7790a64e4515c66a8984a0dcc5324343f82842abc216d3",
+      "manifest_members": 503,
+      "qc": {
+        "transitions": 689,
+        "replay_prefix_steps": 419,
+        "quality_passed": true,
+        "raw_points": 5.0,
+        "evaluation_valid": true,
+        "success": false,
+        "training_approval": "unreviewed"
+      },
+      "upload_revision": "3b0d9b1c255ead19c36f4f86a1ed7f8110de9731",
+      "remote_download_verified": true
+    }
+  ],
+  "journal": {
+    "path": "sessions/20261124-sol-series/journal.sqlite3",
+    "bytes": 2928640,
+    "sha256": "4e5f7771568f9e2f6bb4738c005c7573385eb11ae6d311fd872c48fd7cfc8eb0",
+    "segments_by_run": {
+      "20261122T231754Z-astra62-dressing": 77,
+      "20261123T032900Z-astra62-autonomous": 110,
+      "20261123T061400Z-astra62-both-arms-first": 30,
+      "20261124-astra62-bilateral-recovery-001": 80,
+      "20261124-astra62-demo5-camera-briefing-001": 24,
+      "20261124-astra62-demo6-gentle-wrists-001": 62,
+      "20261124T035439Z-demo7-sol-max": 4,
+      "20261124T040843Z-demo7-sol-ultra": 81,
+      "20261124T062038Z-demo8-sol-ultra-hold0033": 2,
+      "20261124T063436Z-demo9-sol-ultra": 68,
+      "20261124T082311Z-demo10-sol-ultra-hold0026": 26,
+      "20261124T085135Z-demo11-sol-ultra-hold0026": 27,
+      "20261124T092135Z-demo12-sol-ultra": 32,
+      "20261124T094901Z-demo13-sol-ultra": 44
+    },
+    "upload_revision": "3b0d9b1c255ead19c36f4f86a1ed7f8110de9731",
+    "remote_download_verified": true
+  }
+}

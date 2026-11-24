@@ -32,7 +32,10 @@ ACTOR_IMAGE = "python:3.12-slim@sha256:4840d514c583a4d3d8cad3940e68dee6f0f6f3635
 SUPPORTED_CLI = "codex-cli 0.166.0"
 DEFAULT_MODEL = "gpt-6.2-astra"
 LEGACY_MODEL = "gpt-6-astra"
-ASTRA_MODELS = (DEFAULT_MODEL, LEGACY_MODEL)
+SOL_MODEL = "gpt-6.2-sol"
+SUPPORTED_MODEL_EFFORTS = frozenset({
+    (DEFAULT_MODEL, "ultra"), (LEGACY_MODEL, "ultra"), (SOL_MODEL, "max"), (SOL_MODEL, "ultra"),
+})
 MODEL_ORIGINS = frozenset({"chatgpt.com", "auth.openai.com", "api.openai.com"})
 MAX_RESPONSE_BYTES = 2 * 1024 * 1024
 MAX_EVENT_BYTES = 16 * 1024 * 1024
@@ -182,8 +185,8 @@ class Actor:
     def __init__(self, root: Path, model: str = LEGACY_MODEL, effort: str = "ultra",
                  timeout_s: float = 600, *, auth_path: Path | None = None,
                  binary_path: Path | None = None):
-        if model not in ASTRA_MODELS or effort != "ultra":
-            raise ValueError("select a supported Astra model with ultra reasoning")
+        if (model, effort) not in SUPPORTED_MODEL_EFFORTS:
+            raise ValueError("select Astra Ultra, GPT-6.2 Sol Max, or GPT-6.2 Sol Ultra")
         if not math.isfinite(timeout_s) or timeout_s <= 0:
             raise ValueError("timeout_s must be finite and positive")
         self.root = Path(root).resolve()

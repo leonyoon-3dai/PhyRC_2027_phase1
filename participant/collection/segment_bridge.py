@@ -201,6 +201,12 @@ class SegmentBridge:
                 analysis=('첫 관측을 기록했습니다. 아직 모델 판정이나 실행한 행동이 없습니다.'
                           if not self.parent else '이 경계에서 모델의 시각 판정을 받지 못했습니다.'),
                 next_prompt='현재 공개 카메라와 로봇 상태를 확인하고 다음 동작을 결정한다.')
+            if reason == 'replay_boundary':
+                summary['analysis'] = '이전 시연의 행동을 선택한 전이까지 재현했습니다. 이 장면에서 새 행동을 시작합니다.'
+                summary['next_prompt'] = '가까운 손목의 걸침을 확인하고 유지하면서, 반대편 밑단을 다른 손끝 앞으로 옮긴다.'
+                if getattr(self.args, 'cover_right_wrist', False):
+                    summary['next_prompt'] = ('한쪽에서 천을 받치고 다른 집게를 노란 밑단의 끝쪽으로 옮겨 다시 잡는다. '
+                                              '입구를 오른손 앞으로 당겨 주먹 전체가 지날 공간을 확보한다.')
             event(dict(type='segment_observation_report', hold_id=hold, frame_steps=steps,
                        source='action_actor' if actor_review else 'unassessed'))
         else:

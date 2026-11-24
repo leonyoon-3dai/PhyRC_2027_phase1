@@ -404,16 +404,24 @@ def practice_start(metadata, rows):
     friction = profile.get("shirt_manikin_friction")
     if type(friction) not in (float, int) or not abs(friction - 0.35) <= 1e-6:
         raise ValueError("practice receipt disagrees with checkpoint-2 shirt/manikin friction")
+    prefix = rows[0].get("replay_prefix_steps", 0) if rows else 0
+    parent = rows[0].get("parent_attempt") if prefix else None
+    if prefix and (not parent or rows[0]["start_step"] != prefix or rows[0]["end_step"] != prefix):
+        raise ValueError("practice branch must begin at the recorded replay boundary")
     for row in rows:
         if (row.get("source_group") and row["source_group"] != metadata.get("source_group")
-                or row.get("initial_slot") or row.get("replay_prefix_steps", 0)):
+                or row.get("initial_slot") or row.get("replay_prefix_steps", 0) != prefix
+                or (prefix and row.get("parent_attempt") != parent)):
             raise ValueError("practice receipt disagrees with segment lineage")
         measured = re.search(r"(?:^|,\s*)shirt/manikin=([0-9.]+)(?:,|$)", row["physics_profile"])
         if measured and not abs(float(measured[1]) - friction) <= 1e-6:
             raise ValueError("segment friction disagrees with collection_start")
     fields = ("profile", "start_step", "requested_seed", "episode_seed", "table_index",
               "shirt_manikin_friction", "verified_after_reset")
-    return {key: profile[key] for key in fields}
+    result = {key: profile[key] for key in fields}
+    if prefix:
+        result.update(replay_prefix_steps=prefix, parent_attempt=parent)
+    return result
 
 
 def final_outcome(run, rows, collection=None):

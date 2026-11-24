@@ -31,6 +31,8 @@ OBS_OPTIONAL = {'current_wrist_depth.json', 'current_wrist_depth.png'}
 SOURCE_FIXED = {'run.sh', 'scripts/collect_operator.py', 'participant/streaming/collector_stream.py',
                 'participant/collection/prompts/autonomous_full_dressing.txt',
                 'participant/collection/prompts/gentle_wrist_dressing.txt',
+                'participant/collection/prompts/wrist_transfer.txt',
+                'participant/collection/prompts/cover_right_wrist.txt',
                 'tools/segment_review.py', 'tools/segment_review.html', 'config/execution_lock.json',
                 'src/PhyRC_Sim/Env_Config/Garment/ZeroSceneFriction.py',
                 'src/PhyRC_Sim/Env_Config/Garment/RandomSpawn.py', 'src/PhyRC_Sim/Policy/state.py',
@@ -215,7 +217,15 @@ def segment_action_files(trace, root, attempt, control):
     count = control.get('hold_count')
     require(type(count) is int and count >= 0, 'invalid segment hold count')
     selected = []
-    previous_end = 0
+    prefix = attempt.get('replay_steps_completed', 0)
+    require(type(prefix) is int and 0 <= prefix <= attempt['simulation_steps'], 'invalid replay prefix boundary')
+    previous_end = prefix if control.get('mode') == 'gpt_only' else 0
+    if previous_end:
+        lineage = attempt.get('continuation', {})
+        require(lineage.get('replay_validation') == 'actions_reexecuted_new_state_recorded'
+                and lineage.get('replay_steps') == prefix
+                and attempt.get('policy_suffix_start_step') == prefix,
+                'unverified replay prefix in autonomous segment history')
     for index in range(1, count + 1):
         hold = f'hold-{index:04d}'
         path = trace / 'segment-evidence' / hold / 'actions.json'

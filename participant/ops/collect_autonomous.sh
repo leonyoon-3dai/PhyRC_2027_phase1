@@ -4,16 +4,30 @@ set -euo pipefail
 cd "$(dirname "$0")/../.."
 umask 027
 if [[ ! ${1:-} =~ ^[a-zA-Z0-9][a-zA-Z0-9_.-]{0,119}$ ]]; then
-    echo 'Usage: participant/ops/collect_autonomous.sh NEW_RUN_ID [--camera-briefing] [--gentle-wrist-dressing]' >&2
+    echo 'Usage: participant/ops/collect_autonomous.sh NEW_RUN_ID [--sol-max|--sol-ultra] [--camera-briefing] [--gentle-wrist-dressing] [--wrist-transfer-from RUN STEP] [--cover-right-wrist]' >&2
     exit 2
 fi
 run=$1
 shift
-for option in "$@"; do
-    case "$option" in
-        --camera-briefing|--gentle-wrist-dressing) ;;
-        *) echo "Unknown collection option: $option" >&2; exit 2 ;;
+model=gpt-6.2-astra
+effort=ultra
+options=()
+reset=(--seed 43)
+segment_decisions=3
+while (( $# )); do
+    case "$1" in
+        --sol-max) model=gpt-6.2-sol; effort=max ;;
+        --sol-ultra) model=gpt-6.2-sol; effort=ultra ;;
+        --camera-briefing|--gentle-wrist-dressing) options+=("$1") ;;
+        --cover-right-wrist) options+=("$1"); segment_decisions=1 ;;
+        --wrist-transfer-from)
+            if (( $# < 3 )); then echo 'Expected a source run and a replay step.' >&2; exit 2; fi
+            options+=(--wrist-transfer --replay-prefix-run "$2" --replay-prefix-steps "$3")
+            reset=()
+            shift 2 ;;
+        *) echo "Unknown collection option: $1" >&2; exit 2 ;;
     esac
+    shift
 done
 capture="output/collections/$run"
 log="output/preflight/$run.log"
@@ -38,10 +52,10 @@ printf '%s\n' "$run" > .runtime/active-autonomous-run.tmp
 mv .runtime/active-autonomous-run.tmp .runtime/active-autonomous-run
 client_status=0
 "$python_bin" -m participant.collection.codex_client \
-    --run-id "$run" --mode dressing --gpt-only --until-full-score-or-feedback "$@" \
-    --model gpt-6.2-astra --effort ultra --actor-backend exec --plan-size 1 \
-    --seed 43 --named-actions --wrist-depth-panel --segment-review-dir output/segment-review \
-    --segment-decisions 3 --segment-steps 60 --post-action-settle-steps 0 \
+    --run-id "$run" --mode dressing --gpt-only --until-full-score-or-feedback "${options[@]}" \
+    --model "$model" --effort "$effort" --actor-backend exec --plan-size 1 \
+    "${reset[@]}" --named-actions --wrist-depth-panel --segment-review-dir output/segment-review \
+    --segment-decisions "$segment_decisions" --segment-steps 60 --post-action-settle-steps 0 \
     --max-steps 18000 --model-timeout 180 >"$log" 2>&1 || client_status=$?
 if [[ -e "$capture/capture.json" ]]; then
     "$python_bin" -m participant.collection.validate_capture "$capture" --output "$capture/validation.json" >"$qc" 2>&1

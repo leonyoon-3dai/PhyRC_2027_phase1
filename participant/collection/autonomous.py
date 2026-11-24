@@ -57,13 +57,14 @@ def run_autonomous(*, sim, actor, obs, args, root, trace, actor_root, task, inte
                     if supervised_close else 'Use stop only when meaningful recovery is exhausted; '
                     'use finish_episode when dressing appears complete. Each ends the episode.')
     run, journal = args.run_id, web.journal
-    hold_count = start = actions = consecutive_failures = 0
+    hold_count = actions = consecutive_failures = 0
+    start = acknowledged_step = manifest['simulation_steps']
     receipt = manifest['autonomous_control'] = dict(mode='gpt_only', intervention_count=0)
     manifest['human_intervention'] = False
     direction = None
     recent_actions = []
     recent_visual_reviews = []
-    active, acknowledged_step = True, 0
+    active = True
     camera_briefing_pending = args.camera_briefing
     gentle = getattr(args, 'gentle_wrist_dressing', False)
     recheck = 'after at most 20 policy steps. '
@@ -227,7 +228,8 @@ def run_autonomous(*, sim, actor, obs, args, root, trace, actor_root, task, inte
 
     register_autonomy(journal, run)
     try:
-        if boundary('start_state_review', None) == 'closed':
+        starting_reason = 'replay_boundary' if manifest.get('replay_steps_completed') else 'start_state_review'
+        if boundary(starting_reason, None) == 'closed':
             return obs
         reason = None
         while True:
