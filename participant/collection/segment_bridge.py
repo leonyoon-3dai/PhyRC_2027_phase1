@@ -269,6 +269,8 @@ class SegmentBridge:
             if reply:
                 if reply['action'] == 'finish':
                     action, text = 'finish', ''
+                elif getattr(self.args, 'until_full_score_or_feedback', False):
+                    action, text = 'feedback', reply['text']
                 elif reply['action'] in ('accept', 'revise') and record['hold_reason'] != 'hard_horizon':
                     if reply['action'] == 'accept' and record['hold_reason'] == 'review_unavailable':
                         raise ValueError('analysis unavailable; explicit correction required')

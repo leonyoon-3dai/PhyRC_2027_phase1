@@ -468,12 +468,13 @@ textarea {
         <p id="locked" class="helper" hidden></p><p id="holdReason" class="helper" hidden></p>
         <button type="button" id="intervene" hidden>다음 행동 경계에서 개입</button>
         <form id="feedbackForm">
-          <fieldset><legend>다음 구간 진행 방식</legend><div class="choices">
+          <fieldset><legend>이 구간에 대한 응답</legend><div class="choices">
             <label class="choice"><input type="radio" name="action" value="accept" required><span>제안 승인</span></label>
             <label class="choice"><input type="radio" name="action" value="revise"><span>수정 요청</span></label>
             <label class="choice"><input type="radio" name="action" value="hold"><span>보류</span></label>
             <label class="choice"><input type="radio" name="action" value="finish"><span>시연 종료</span></label>
           </div></fieldset>
+          <p class="helper">피드백 제출로 종료하는 회차에서는 제안 승인이나 수정 요청을 저장하면 시연이 끝납니다. 보류를 선택하면 현재 자세에서 기다립니다.</p>
           <label class="field-title feedback-label" for="feedbackText">피드백 <span id="textRequirement" class="helper"></span></label>
           <textarea id="feedbackText" rows="3" maxlength="4000" placeholder="공개 영상에서 본 옷과 손의 움직임을 근거로 다음 동작을 적으세요."></textarea>
           <button id="sendButton" class="primary" type="submit">피드백 저장</button>
@@ -739,7 +740,7 @@ function render(data) {
   if (autonomous && !data.can_feedback) {
     const messages = { running: 'GPT가 수집 중입니다. 개입을 요청하면 다음 행동 경계에서 멈춥니다.',
       pause_requested: '개입을 요청했습니다. 수집기가 행동 경계에서 정지한 뒤 새 구간을 엽니다.',
-      held: '최신 정지 구간에서 사용자 지시를 입력할 수 있습니다.', closing: '기록을 마감하고 있습니다.',
+      held: '최신 정지 구간에 피드백을 남길 수 있습니다.', closing: '기록을 마감하고 있습니다.',
       closed: '시연이 종료되었습니다.', unavailable: '수집기 연결 상태를 확인해야 합니다.' };
     setText('locked', messages[record.control_state]);
   }

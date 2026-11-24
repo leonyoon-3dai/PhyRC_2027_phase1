@@ -64,7 +64,7 @@ def restore(manifest, directory, destination):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--receipt', type=Path, default=ROOT / 'docs/active/20261123-private-backup.json')
+    parser.add_argument('--receipt', type=Path, default=ROOT / 'docs/active/20261124-private-backup.json')
     parser.add_argument('--download-root', type=Path, help='Existing snapshot with the relative paths in the receipt')
     parser.add_argument('--destination', type=Path, default=ROOT / 'output/segment-review')
     args = parser.parse_args()

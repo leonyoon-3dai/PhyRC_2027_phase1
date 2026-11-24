@@ -199,11 +199,11 @@ def request_intervention(root, value):
         return dict(run_id=run, id=key, created_at=created, control_state=status)
 
 
-def decide_boundary(root, run, segment, terminal):
+def decide_boundary(root, run, segment, terminal, *, require_feedback=False):
     """Serialize a published boundary decision against new operator requests."""
     with journal(root, write=True) as db:
         row = db.execute("SELECT status FROM autonomous_runs WHERE run=?", (run,)).fetchone()
-        if row["status"] == "pause_requested":
+        if require_feedback or row["status"] == "pause_requested":
             status = "held"
         else:
             status = "closing" if terminal else "running"

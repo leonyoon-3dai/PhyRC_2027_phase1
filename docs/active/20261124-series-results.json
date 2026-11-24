@@ -1,0 +1,304 @@
+{
+  "runs": [
+    {
+      "demo": 4,
+      "run_id": "20261124-astra62-bilateral-recovery-001",
+      "start": {
+        "start_step": 0,
+        "episode_seed": 43,
+        "table_index": 2,
+        "shirt_manikin_friction": 0.35,
+        "verified_after_reset": true
+      },
+      "transitions": 1023,
+      "clips": 80,
+      "actor_decisions": 199,
+      "applied_actions": 199,
+      "close_reason": "human_finish",
+      "evaluation": {
+        "valid": true,
+        "raw_points": 5.0,
+        "success": false,
+        "breakdown": {
+          "pickup": 5.0,
+          "first_sleeve": 0.0,
+          "opposite_shoulder": 0.0,
+          "second_sleeve": 0.0,
+          "left_upper_arm": 0,
+          "right_upper_arm": 0,
+          "neck": 0.0,
+          "front_orientation": 0.0
+        },
+        "awards": [
+          {
+            "stage": "pickup",
+            "step": 196,
+            "raw_points": 5.0
+          }
+        ]
+      },
+      "quality": {
+        "quality_passed": true,
+        "validated_transitions": 1023,
+        "training_approval": "unreviewed"
+      },
+      "evidence_clips": [
+        {
+          "segment_id": "hold-0024",
+          "start_step": 368,
+          "end_step": 380,
+          "score_after": 5.0
+        },
+        {
+          "segment_id": "hold-0031",
+          "start_step": 429,
+          "end_step": 433,
+          "score_after": 5.0
+        },
+        {
+          "segment_id": "hold-0054",
+          "start_step": 712,
+          "end_step": 728,
+          "score_after": 5.0
+        },
+        {
+          "segment_id": "hold-0079",
+          "start_step": 1007,
+          "end_step": 1019,
+          "score_after": 5.0
+        },
+        {
+          "segment_id": "hold-0080",
+          "start_step": 1019,
+          "end_step": 1023,
+          "score_after": 5.0
+        }
+      ],
+      "offline_depth_samples": {
+        "step": 728,
+        "camera": "robot_1_head",
+        "image_size_px": [
+          256,
+          256
+        ],
+        "distance": "optical_axis_m",
+        "yellow_rim": [
+          {
+            "pixel_xy": [
+              190,
+              150
+            ],
+            "m": 0.58048
+          },
+          {
+            "pixel_xy": [
+              189,
+              154
+            ],
+            "m": 0.57407
+          }
+        ],
+        "visible_hand": [
+          {
+            "pixel_xy": [
+              202,
+              151
+            ],
+            "m": 0.64844
+          },
+          {
+            "pixel_xy": [
+              202,
+              153
+            ],
+            "m": 0.64504
+          }
+        ]
+      }
+    },
+    {
+      "demo": 5,
+      "run_id": "20261124-astra62-demo5-camera-briefing-001",
+      "start": {
+        "start_step": 0,
+        "episode_seed": 43,
+        "table_index": 2,
+        "shirt_manikin_friction": 0.35,
+        "verified_after_reset": true
+      },
+      "transitions": 487,
+      "clips": 24,
+      "actor_decisions": 54,
+      "applied_actions": 53,
+      "close_reason": "human_finish",
+      "evaluation": {
+        "valid": true,
+        "raw_points": 5.0,
+        "success": false,
+        "breakdown": {
+          "pickup": 5.0,
+          "first_sleeve": 0.0,
+          "opposite_shoulder": 0.0,
+          "second_sleeve": 0.0,
+          "left_upper_arm": 0,
+          "right_upper_arm": 0,
+          "neck": 0.0,
+          "front_orientation": 0.0
+        },
+        "awards": [
+          {
+            "stage": "pickup",
+            "step": 252,
+            "raw_points": 5.0
+          }
+        ]
+      },
+      "quality": {
+        "quality_passed": true,
+        "validated_transitions": 487,
+        "training_approval": "unreviewed"
+      },
+      "evidence_clips": [
+        {
+          "segment_id": "hold-0015",
+          "start_step": 368,
+          "end_step": 393,
+          "score_after": 5.0
+        },
+        {
+          "segment_id": "hold-0016",
+          "start_step": 393,
+          "end_step": 407,
+          "score_after": 5.0
+        },
+        {
+          "segment_id": "hold-0023",
+          "start_step": 469,
+          "end_step": 479,
+          "score_after": 5.0
+        },
+        {
+          "segment_id": "hold-0024",
+          "start_step": 479,
+          "end_step": 487,
+          "score_after": 5.0
+        }
+      ],
+      "approach_kinematics": [
+        {
+          "start_step": 368,
+          "end_step": 382,
+          "axis": "world_x",
+          "robots": [
+            "robot_0",
+            "robot_1"
+          ],
+          "approx_forward_displacement_cm": 30.6
+        },
+        {
+          "start_step": 403,
+          "end_step": 407,
+          "axis": "world_x",
+          "robots": [
+            "robot_1"
+          ],
+          "approx_forward_displacement_cm": 8.8
+        }
+      ]
+    },
+    {
+      "demo": 6,
+      "run_id": "20261124-astra62-demo6-gentle-wrists-001",
+      "start": {
+        "start_step": 0,
+        "episode_seed": 43,
+        "table_index": 2,
+        "shirt_manikin_friction": 0.35,
+        "verified_after_reset": true
+      },
+      "transitions": 608,
+      "clips": 62,
+      "actor_decisions": 167,
+      "applied_actions": 166,
+      "close_reason": "human_finish",
+      "evaluation": {
+        "valid": true,
+        "raw_points": 5.0,
+        "success": false,
+        "breakdown": {
+          "pickup": 5.0,
+          "first_sleeve": 0.0,
+          "opposite_shoulder": 0.0,
+          "second_sleeve": 0.0,
+          "left_upper_arm": 0,
+          "right_upper_arm": 0,
+          "neck": 0.0,
+          "front_orientation": 0.0
+        },
+        "awards": [
+          {
+            "stage": "pickup",
+            "step": 280,
+            "raw_points": 5.0
+          }
+        ]
+      },
+      "quality": {
+        "quality_passed": true,
+        "validated_transitions": 608,
+        "training_approval": "unreviewed"
+      },
+      "evidence_clips": [
+        {
+          "segment_id": "hold-0022",
+          "start_step": 205,
+          "end_step": 213,
+          "score_after": 0.0
+        },
+        {
+          "segment_id": "hold-0028",
+          "start_step": 273,
+          "end_step": 285,
+          "score_after": 5.0
+        },
+        {
+          "segment_id": "hold-0046",
+          "start_step": 479,
+          "end_step": 488,
+          "score_after": 5.0
+        },
+        {
+          "segment_id": "hold-0048",
+          "start_step": 497,
+          "end_step": 503,
+          "score_after": 5.0
+        },
+        {
+          "segment_id": "hold-0061",
+          "start_step": 598,
+          "end_step": 604,
+          "score_after": 5.0
+        },
+        {
+          "segment_id": "hold-0062",
+          "start_step": 604,
+          "end_step": 608,
+          "score_after": 5.0
+        }
+      ],
+      "final_approach_kinematics": {
+        "start_step": 488,
+        "end_step": 608,
+        "applied_actions": 40,
+        "max_single_action_gripper_net_displacement_mm": 13.67,
+        "max_abs_normalized_motion_component": 0.098
+      },
+      "action_limit_audit": {
+        "applied_actions": 166,
+        "verified_hdf5_rows": 608,
+        "actions_velocity_scaled": 0,
+        "actions_duration_shortened": 0
+      }
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # 11월 22–23일 착의 시연 기록
 
-세 회차는 같은 시드 43, 테이블 인덱스 2, 셔츠–마네킹 마찰 0.35에서 각각 새로 시작했다. 같은 초기 배치를 다시 사용한 비교이며, 원점수는 회차별 로컬 공식 평가기의 누적값이다. 운영 서버의 구간 영상은 [비공개 갤러리](https://jupyter-fjy7731zk.gobrev.dev/view/PhyRC-review.html)에서 확인할 수 있다.
+세 회차는 같은 시드 43, 테이블 인덱스 2, 셔츠–마네킹 마찰 0.35에서 각각 새로 시작했다. 같은 초기 배치를 다시 사용한 비교이며, 원점수는 회차별 로컬 공식 평가기의 누적값이다. 이 문서의 영상 링크는 당시 운영 서버 주소다. 새 서버에서는 갤러리를 복원하고 링크 끝의 실행 ID와 구간 번호로 같은 영상을 연다. [여섯 회차 갤러리 복원](start.md)
 
 | 시연 | 실행 ID | 기록 |
 |---|---|---|
@@ -52,7 +52,7 @@
 [비공개 백업 확인서](20261123-private-backup.json)의 고정 revision에 회차별 HDF5 원본, 공개 카메라 프레임, 구간별 MP4·분석 ZIP, 갤러리 저널이 있다. 백업에 접근할 수 있는 Hugging Face 계정으로 인증한 **운영자가 새 서버의 첫 수집을 시작하기 전** 아래 한 줄을 실행하면, 3개 구간 ZIP과 저널만 받아 217개 MP4를 복원한다. 사용자 브라우저에는 새 서버의 Brev 주소만 필요하다. 이번 백업 복원에 사용한 CLI는 huggingface-hub 2.4.0이다. 새 서버에 CLI가 없으면 운영자가 `uv tool install huggingface-hub==2.4.0`으로 준비하고, 필요한 경우 `hf auth login`으로 해당 비공개 데이터셋 접근 권한을 연결한다.
 
 ```bash
-.venv/bin/python scripts/restore_review_gallery.py
+.venv/bin/python scripts/restore_review_gallery.py --receipt docs/active/20261123-private-backup.json
 ```
 
 복원기는 백업 파일과 각 클립의 SHA-256을 대조한다. 기본 대상은 새 `output/segment-review`이다. 이미 수집한 저널이 있으면 다른 빈 경로를 `--destination`으로 지정하고 그 경로로 별도의 검토 갤러리를 연다. 내려받은 고정 스냅샷은 `--download-root`로 사용할 수 있다. 새 서버에서 이 문서의 Brev 구간 링크를 열 때는 호스트를 새 인스턴스로 바꾸면 `/view/PhyRC-gallery/<run>/<hold>.html` 경로가 그대로 연결된다.
