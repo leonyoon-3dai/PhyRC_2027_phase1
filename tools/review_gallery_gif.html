@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PhyRC 시연 영상</title>
+<style>
+  body { margin: 0; background: #131921; color: #fff; font: 1rem system-ui, sans-serif; }
+  img { display: block; width: min(100%, 1024px); height: auto; margin: 0 auto; }
+  p { text-align: center; }
+  [hidden] { display: none; }
+</style>
+<img id="replay" hidden alt="최신 누적 시연 영상">
+<p id="status" role="status">GIF를 준비하는 중입니다.</p>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const {latest, runs} = JSON.parse(document.querySelector("[data-catalog]").textContent);
+    const parts = location.pathname.split("/");
+    const marker = parts.lastIndexOf("PhyRC-gallery");
+    const run = marker < 0 ? latest : decodeURIComponent(parts[marker + 1]);
+    if (!Object.hasOwn(runs, run)) return;
+    const root = parts.slice(0, marker < 0 ? -1 : marker).join("/");
+    const image = document.getElementById("replay");
+    const status = document.getElementById("status");
+    image.addEventListener("load", () => {
+      status.hidden = true;
+      image.hidden = false;
+    });
+    image.addEventListener("error", () => {
+      status.textContent = "GIF를 불러오지 못했습니다. 페이지를 새로고침해 주세요.";
+    });
+    image.src = root + "/PhyRC-gallery/" + encodeURIComponent(run) + "/latest.gif?step=" + runs[run];
+  });
+</script>

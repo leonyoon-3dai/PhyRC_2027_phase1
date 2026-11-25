@@ -4,7 +4,7 @@ set -euo pipefail
 cd "$(dirname "$0")/../.."
 umask 027
 if [[ ! ${1:-} =~ ^[a-zA-Z0-9][a-zA-Z0-9_.-]{0,119}$ ]]; then
-    echo 'Usage: participant/ops/collect_autonomous.sh NEW_RUN_ID [--sol-max|--sol-ultra] [--camera-briefing] [--gentle-wrist-dressing] [--wrist-transfer-from RUN STEP] [--cover-right-wrist]' >&2
+    echo 'Usage: participant/ops/collect_autonomous.sh NEW_RUN_ID [--sol-max|--sol-ultra] [--camera-briefing] [--gentle-wrist-dressing] [--wrist-transfer-from RUN STEP] [--cover-right-wrist] [--gpt-task-prompt FILE]' >&2
     exit 2
 fi
 run=$1
@@ -20,6 +20,11 @@ while (( $# )); do
         --sol-ultra) model=gpt-6.2-sol; effort=ultra ;;
         --camera-briefing|--gentle-wrist-dressing) options+=("$1") ;;
         --cover-right-wrist) options+=("$1"); segment_decisions=1 ;;
+        --gpt-task-prompt)
+            if (( $# < 2 )); then echo 'Expected a task prompt file.' >&2; exit 2; fi
+            options+=("$1" "$2")
+            segment_decisions=1
+            shift ;;
         --wrist-transfer-from)
             if (( $# < 3 )); then echo 'Expected a source run and a replay step.' >&2; exit 2; fi
             options+=(--wrist-transfer --replay-prefix-run "$2" --replay-prefix-steps "$3")

@@ -11,6 +11,7 @@ import re
 import shutil
 import sqlite3
 import subprocess
+import sys
 import tempfile
 import time
 
@@ -72,13 +73,13 @@ def cumulative(group, segment, frames, end, previous, *, widescreen):
     return True
 
 
-def publish(review_dir, destination, template, traces=None, *, widescreen=False):
+def publish(review_dir, destination, template, traces=None, *, widescreen=False, min_demo=14):
     entry = destination / ENTRY
     checkpoint = destination / ".PhyRC-review-publisher.json"
     header = template.read_bytes()
     uri = (review_dir / "journal.sqlite3").resolve().as_uri() + "?mode=ro"
     with closing(sqlite3.connect(uri, uri=True)) as db:
-        db.create_function("gallery_run", 1, included_run, deterministic=True)
+        db.create_function("gallery_run", 1, lambda run: included_run(run, min_demo), deterministic=True)
         rows = db.execute(
             "SELECT run,segment,payload FROM segments WHERE gallery_run(run) ORDER BY rowid"
         ).fetchall()
@@ -87,7 +88,7 @@ def publish(review_dir, destination, template, traces=None, *, widescreen=False)
             "SELECT run,status FROM autonomous_runs WHERE gallery_run(run)"
         )) if has_controls else {}
     fingerprint = hashlib.sha256(header + json_block("state", [rows, controls])).hexdigest()
-    stamp = {"catalog": fingerprint}
+    stamp = {"catalog": fingerprint, "mode": "full"}
     if checkpoint.exists() and entry.exists() and json.loads(checkpoint.read_text()) == stamp:
         return
 
@@ -127,9 +128,58 @@ def publish(review_dir, destination, template, traces=None, *, widescreen=False)
     write_atomic(checkpoint, json.dumps(stamp).encode())
 
 
-def included_run(run):
+def included_run(run, min_demo=14):
     match = re.search(r"(?:^|[-_])demo[-_]?(\d+)(?=$|[-_])", run, re.IGNORECASE)
-    return match is not None and int(match[1]) >= 14
+    return match is not None and int(match[1]) >= min_demo
+
+
+def publish_gif_only(review_dir, destination, traces, min_demo):
+    uri = (review_dir / "journal.sqlite3").resolve().as_uri() + "?mode=ro"
+    with closing(sqlite3.connect(uri, uri=True)) as db:
+        db.create_function("gallery_run", 1, lambda run: included_run(run, min_demo))
+        rows = db.execute(
+            "SELECT run, payload FROM segments "
+            "WHERE rowid IN (SELECT max(rowid) FROM segments WHERE gallery_run(run) GROUP BY run) "
+            "ORDER BY rowid DESC"
+        ).fetchall()
+    published = {}
+    for run, raw in rows:
+        if not ID.fullmatch(run):
+            raise ValueError("Invalid run identifier")
+        end = json.loads(raw)["end_step"]
+        if end < 1:
+            continue
+        group = destination / "PhyRC-gallery" / run
+        group.mkdir(mode=0o700, parents=True, exist_ok=True)
+        image = group / "latest.gif"
+        checkpoint = group / ".latest-gif-step"
+        demo = re.search(r"(?:^|-)demo(21|22)(?:-|$)", run)
+        speed = {"21": "3", "22": "4"}[demo[1]] if demo else None
+        start = max(0, end - 300)
+        timing = ["--start", str(start), "--speed", speed] if speed else []
+        stamp = f"{end}:{start}:{speed}x" if speed else str(end)
+        if not image.is_file() or not checkpoint.is_file() or checkpoint.read_text() != stamp:
+            subprocess.run(
+                [sys.executable, str(ROOT / "scripts/export_demonstration_gif.py"),
+                 str(traces / run / "segment-frames"), "--end", str(end), "--out", str(image),
+                 *timing],
+                check=True, capture_output=True, timeout=120,
+            )
+            write_atomic(checkpoint, stamp.encode())
+        link = group / "index.html"
+        if not link.exists():
+            link.symlink_to(Path("../..") / ENTRY)
+        published[run] = end
+    entry = destination / ENTRY
+    content = (ROOT / "tools/review_gallery_gif.html").read_bytes() + json_block(
+        "catalog", {"latest": next(iter(published), None), "runs": published}
+    )
+    if not entry.is_file() or entry.read_bytes() != content:
+        write_atomic(entry, content)
+    checkpoint = destination / ".PhyRC-review-publisher.json"
+    mode = b'{"mode":"gif-only"}'
+    if not checkpoint.is_file() or checkpoint.read_bytes() != mode:
+        write_atomic(checkpoint, mode)
 
 
 def main():
@@ -137,22 +187,34 @@ def main():
     p.add_argument("--review-dir", type=Path, default=ROOT / "output/segment-review")
     p.add_argument("--destination", type=Path, default=Path.home())
     p.add_argument("--traces", type=Path, help="Generate cumulative GIFs from recorded public frames in this directory")
+    p.add_argument("--min-demo", type=int, default=14, help="First demonstration number to publish")
+    p.add_argument("--gif-only", action="store_true", help="Publish one compact cumulative GIF per run")
     p.add_argument("--once", action="store_true")
     args = p.parse_args()
+    if args.gif_only and args.traces is None:
+        p.error("--gif-only requires --traces")
     args.destination.mkdir(mode=0o700, parents=True, exist_ok=True)
     with (args.destination / ".PhyRC-review-publisher.lock").open("a") as lock:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         while True:
             try:
-                publish(args.review_dir, args.destination, ROOT / "tools/review_gallery.html",
-                        args.traces, widescreen=True)
+                if args.gif_only:
+                    publish_gif_only(args.review_dir, args.destination, args.traces, args.min_demo)
+                else:
+                    publish(args.review_dir, args.destination, ROOT / "tools/review_gallery.html",
+                            args.traces, widescreen=True, min_demo=args.min_demo)
+            except subprocess.CalledProcessError as exc:
+                if args.once:
+                    raise
+                logging.warning("Gallery publication deferred: %s %s", exc,
+                                (exc.stderr or b"").decode(errors="replace").strip())
             except (sqlite3.Error, OSError, ValueError, KeyError, subprocess.SubprocessError) as exc:
                 if args.once:
                     raise
                 logging.warning("Gallery publication deferred: %s", exc)
             if args.once:
                 return
-            time.sleep(4)
+            time.sleep(30 if args.gif_only else 4)
 
 
 if __name__ == "__main__":

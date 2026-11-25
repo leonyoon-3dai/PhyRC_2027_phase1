@@ -1,0 +1,169 @@
+{
+  "schema": "phyrc-private-series-backup-v1",
+  "repo_type": "dataset",
+  "private": true,
+  "repo_id": "leonayoon/phyrc-2027-phase1-private-backup",
+  "revision": "afe609b7ea995cf791b16b835086c6f6fe9647c7",
+  "previous_revision": "86d72015ad953cf1ec3e8fd66ea6f57c5137a8fc",
+  "verified_at_utc": "2026-11-25T15:39:07.811615+00:00",
+  "asset_count": 16,
+  "total_bytes": 26173208634,
+  "journal": {
+    "path": "sessions/20261126-demo19-23/journal.sqlite3",
+    "bytes": 4030464,
+    "sha256": "f120c808d362b42160ae3a1089eaf897e9fc64776cbe2cc5b858b76bdd381259"
+  },
+  "runs": [
+    {
+      "run_id": "20261125T034643Z-demo19-sol-ultra",
+      "demonstration": 19,
+      "archive": {
+        "path": "sessions/20261126-demo19-23/20261125T034643Z-demo19-sol-ultra/capture.tar.gz",
+        "bytes": 1459387210,
+        "sha256": "ee0ab3f241dd8f831133ac33e544e2e75bf43e9f596dc18f344a11127f890d13"
+      },
+      "review_zip": {
+        "path": "sessions/20261126-demo19-23/20261125T034643Z-demo19-sol-ultra/review.zip",
+        "bytes": 1738310,
+        "sha256": "14aee3b9238cb29ddc5d958fbe30bbc5ca72a43e22f9ba0fee7e78f7bb4234ff"
+      },
+      "review_frames": {
+        "path": "sessions/20261126-demo19-23/20261125T034643Z-demo19-sol-ultra/review-frames.tar.gz",
+        "bytes": 33524377,
+        "sha256": "020ce68e8dc02f8b932fc8098f21eda4a7456ac14b26789741847c3fb48c0a0a"
+      },
+      "review_frame_count": 653,
+      "segments": 24,
+      "transitions": 652,
+      "manifest_sha256": "06e7c0bf32120dc0ecdfcf3d0d3d671b56a92ad2c996fd4f850060778de65caf",
+      "manifest_members": 303,
+      "qc": {
+        "evaluation_valid": true,
+        "quality_passed": true,
+        "raw_points": 5.0,
+        "success": false
+      }
+    },
+    {
+      "run_id": "20261125T041532Z-demo20-sol-ultra",
+      "demonstration": 20,
+      "archive": {
+        "path": "sessions/20261126-demo19-23/20261125T041532Z-demo20-sol-ultra/capture.tar.gz",
+        "bytes": 11413009257,
+        "sha256": "e4e0d96e518ddb3cf151018acf910547dc75105785a0537db4ebcaefbac49806"
+      },
+      "review_zip": {
+        "path": "sessions/20261126-demo19-23/20261125T041532Z-demo20-sol-ultra/review.zip",
+        "bytes": 68375130,
+        "sha256": "849b7c867144f2259609f9cf7591f40e4dc9b7c46c21b505117fd0614071965a"
+      },
+      "review_frames": {
+        "path": "sessions/20261126-demo19-23/20261125T041532Z-demo20-sol-ultra/review-frames.tar.gz",
+        "bytes": 250608027,
+        "sha256": "f3860780e5db30873b41e3ff9a32c3120af38ce7d4871e9a72fd92b553bd4cbc"
+      },
+      "review_frame_count": 4441,
+      "segments": 670,
+      "transitions": 4440,
+      "manifest_sha256": "3954e8e2b6c7b939fb6a9a72d688db45304aa468969794156420cd31a64e123e",
+      "manifest_members": 6772,
+      "qc": {
+        "evaluation_valid": true,
+        "quality_passed": true,
+        "raw_points": 5.0,
+        "success": false
+      }
+    },
+    {
+      "run_id": "20261125T112507Z-demo21-sol-ultra",
+      "demonstration": 21,
+      "archive": {
+        "path": "sessions/20261126-demo19-23/20261125T112507Z-demo21-sol-ultra/capture.tar.gz",
+        "bytes": 3826168232,
+        "sha256": "5b013d153bc97dec0bbe345f6a30fcaa095ecdf286786d11fa3dd6fd0dc7d6f3"
+      },
+      "review_zip": {
+        "path": "sessions/20261126-demo19-23/20261125T112507Z-demo21-sol-ultra/review.zip",
+        "bytes": 6998881,
+        "sha256": "69328d5ac27a200952a8df70435153d5ff4524e4a5f54077f0732c65fe4f7412"
+      },
+      "review_frames": {
+        "path": "sessions/20261126-demo19-23/20261125T112507Z-demo21-sol-ultra/review-frames.tar.gz",
+        "bytes": 88248385,
+        "sha256": "83fb9eaaf1809dc8a209f95d7992e62b04041613374e286f81074dd499bdda7c"
+      },
+      "review_frame_count": 1593,
+      "segments": 84,
+      "transitions": 1592,
+      "manifest_sha256": "f7dd54da5d8b4066a4336b9e7085ed01c12e76c4d4635d60be6eaba74f981118",
+      "manifest_members": 903,
+      "qc": {
+        "evaluation_valid": true,
+        "quality_passed": true,
+        "raw_points": 5.0,
+        "success": false
+      }
+    },
+    {
+      "run_id": "20261125T123947Z-demo22-sol-ultra",
+      "demonstration": 22,
+      "archive": {
+        "path": "sessions/20261126-demo19-23/20261125T123947Z-demo22-sol-ultra/capture.tar.gz",
+        "bytes": 4152940128,
+        "sha256": "86ffe4b4aeed118a6fd570a1f81b54eccce0dc9d2fd14e91fb4fc0db8947d433"
+      },
+      "review_zip": {
+        "path": "sessions/20261126-demo19-23/20261125T123947Z-demo22-sol-ultra/review.zip",
+        "bytes": 5469460,
+        "sha256": "bad257816fffef8b1d9ecb2dc5a4174ca41c22d97d8e2bfa8a047ba1a274fde0"
+      },
+      "review_frames": {
+        "path": "sessions/20261126-demo19-23/20261125T123947Z-demo22-sol-ultra/review-frames.tar.gz",
+        "bytes": 95800712,
+        "sha256": "f381c024c928989d897fbb233933e63558483d0604b5d60bd5378fe95d8e0dc6"
+      },
+      "review_frame_count": 1712,
+      "segments": 67,
+      "transitions": 1711,
+      "manifest_sha256": "2a8dcd2fa3e388fb1699cfdebd8ec5095f734e17330e18d11211c0a89f8ec984",
+      "manifest_members": 733,
+      "qc": {
+        "evaluation_valid": true,
+        "quality_passed": true,
+        "raw_points": 5.0,
+        "success": false
+      }
+    },
+    {
+      "run_id": "20261125T135251Z-demo23-sol-ultra",
+      "demonstration": 23,
+      "archive": {
+        "path": "sessions/20261126-demo19-23/20261125T135251Z-demo23-sol-ultra/capture.tar.gz",
+        "bytes": 4651379952,
+        "sha256": "ccb10e6673bc021dc18e7b3c0d7fadbaf1027f34addbddb92ba7a6bf498faebd"
+      },
+      "review_zip": {
+        "path": "sessions/20261126-demo19-23/20261125T135251Z-demo23-sol-ultra/review.zip",
+        "bytes": 9058639,
+        "sha256": "d65d86933912d205f63ccf7fd4c9d11a160bf040108a96ba7c7b41c2f8124c9a"
+      },
+      "review_frames": {
+        "path": "sessions/20261126-demo19-23/20261125T135251Z-demo23-sol-ultra/review-frames.tar.gz",
+        "bytes": 106471470,
+        "sha256": "c0ca856106f646a42570d2007edd57a69ff2e0a480e8739f9ad5e58613aa0447"
+      },
+      "review_frame_count": 1902,
+      "segments": 114,
+      "transitions": 1901,
+      "manifest_sha256": "1501ca8977fd5432c436e90841cef0bcd41d55dde13d5d116e99d7d6b74459f8",
+      "manifest_members": 1194,
+      "qc": {
+        "evaluation_valid": true,
+        "quality_passed": true,
+        "raw_points": 5.0,
+        "success": false
+      }
+    }
+  ],
+  "verification": "Verified all paths, sizes and SHA-256 against pinned Hub LFS metadata or downloaded Git-backed files. Checked the contiguous JPEG frame sequence and journal segment counts locally."
+}

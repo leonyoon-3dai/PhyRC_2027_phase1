@@ -738,6 +738,8 @@ def main():
                         help='Use opposing side approaches, shallow wrist entry and bounded motion commands')
     parser.add_argument('--wrist-transfer', action='store_true',
                         help='Prioritize the opposite wrist from a verified autonomous replay boundary')
+    parser.add_argument('--gpt-task-prompt', type=Path,
+                        help='Use this operator task prompt for a GPT-only collection')
     parser.add_argument('--cover-right-wrist', action='store_true',
                         help='Draw the opening past the right hand while supporting the other hand')
     parser.add_argument('--until-full-score-or-feedback', action='store_true',
@@ -821,6 +823,8 @@ def main():
         parser.error('positive replay-prefix-steps requires replay-prefix-run')
     if args.wrist_transfer and not (args.gpt_only and args.replay_prefix_steps):
         parser.error('--wrist-transfer requires --gpt-only and an exact replay prefix boundary')
+    if args.gpt_task_prompt and not args.gpt_only:
+        parser.error('--gpt-task-prompt requires --gpt-only')
     if args.cover_right_wrist and not args.wrist_transfer:
         parser.error('--cover-right-wrist requires --wrist-transfer')
     if args.replay_observe_steps is not None:
@@ -1015,7 +1019,8 @@ def main():
             prompt_file = 'wrist_transfer.txt'
         if args.cover_right_wrist:
             prompt_file = 'cover_right_wrist.txt'
-        task = (root / 'participant/collection/prompts' / prompt_file).read_text().rstrip()
+        prompt_path = args.gpt_task_prompt or (root / 'participant/collection/prompts' / prompt_file)
+        task = prompt_path.read_text().rstrip()
         contract = OBSERVATION_AND_ACTION_TASK.replace(
             'A stop applies neutral motion for one control step and preserves grip intent.',
             'The supervisor controls episode closure.' if args.until_full_score_or_feedback else

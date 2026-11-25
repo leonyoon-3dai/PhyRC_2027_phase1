@@ -1,6 +1,6 @@
-# 새 서버에서 시연 1–18 복원과 다음 회차 준비
+# 새 서버에서 시연 복원과 다음 회차 준비
 
-시연 1–18과 별도 기술 시험을 종료했다. 갤러리는 CPU만으로 복원할 수 있다. GPU 시뮬레이터와 행동 모델은 사용자가 다음 회차를 요청할 때 준비한다. [비공개 백업 확인서](20261125-demo1-18-private-backup.json) · [시연 14–18 결과와 다음 작업](20261125-demo14-18-closeout.ko.md)
+시연 1–23과 별도 기술 시험을 종료했다. 갤러리는 CPU만으로 복원할 수 있다. GPU 시뮬레이터와 행동 모델은 사용자가 다음 회차를 요청할 때 준비한다. [시연 19–23 결과](20261126-demo19-23-closeout.ko.md) · [시연 19–23 비공개 백업 확인서](20261126-demo19-23-private-backup.json) · [시연 1–18 비공개 백업 확인서](20261125-demo1-18-private-backup.json)
 
 ## 저장소와 지난 갤러리 열기
 
@@ -14,7 +14,7 @@ git sparse-checkout set assets config docs/active docs/competition examples part
 git rev-parse HEAD
 ```
 
-Hugging Face 비공개 데이터셋에 읽기 권한이 있는 계정으로 인증한다. 아래 명령은 19개 실행의 SQLite 저널과 검토 ZIP을 고정 revision에서 내려받는다. 파일과 각 영상의 SHA-256을 확인한 뒤 새 `output/segment-review`를 만든다. `--frames-destination`을 추가하면 누적 GIF용 0전이부터 종료 전이까지의 JPEG도 복원한다. 기존 갤러리와 프레임 디렉터리가 있으면 새 경로를 선택한다.
+Hugging Face 비공개 데이터셋에 읽기 권한이 있는 계정으로 인증한다. 아래 명령은 확인서가 지정하는 실행의 SQLite 저널과 검토 ZIP을 고정 revision에서 내려받는다. 파일과 각 영상의 SHA-256을 확인한 뒤 새 `output/segment-review`를 만든다. `--frames-destination`은 누적 GIF용 0전이부터 종료 전이까지의 JPEG를 복원한다. 기존 갤러리와 프레임 디렉터리가 있으면 새 경로를 선택한다.
 
 ```bash
 command -v hf >/dev/null || uv tool install huggingface-hub==2.4.0
@@ -22,14 +22,14 @@ hf auth whoami || hf auth login
 test -x .venv/bin/python || uv venv --python 3.12 .venv
 uv pip install --python .venv/bin/python pillow==11.0.0
 python3.12 scripts/restore_review_gallery.py \
-  --receipt docs/active/20261125-demo1-18-private-backup.json \
+  --receipt docs/active/20261126-demo19-23-private-backup.json \
   --frames-destination output/operator-traces
 .venv/bin/python tools/publish_review_gallery.py --review-dir output/segment-review \
-  --traces output/operator-traces --destination output/published-gallery --once
+  --traces output/operator-traces --destination output/published-gallery --min-demo 19 --gif-only --once
 python3.12 -m http.server 8766 --bind 127.0.0.1 --directory output/published-gallery
 ```
 
-게시에는 아래 환경 준비 절의 Pillow와 FFmpeg가 필요하다. 게시기는 시연 14부터의 목록과 영상만 `output/published-gallery`에 쓴다. 로컬 컴퓨터에서 `ssh -N -L 8766:127.0.0.1:8766 SSH_HOST`를 열고 Chrome에서 `http://127.0.0.1:8766/PhyRC-review.html`을 연다. `SSH_HOST`는 새 서버에 연결할 때 쓰는 SSH 별칭이다. 시연별 최신 구간은 `/PhyRC-gallery/<run>/index.html`, 고정 구간은 `/PhyRC-gallery/<run>/<hold>.html`에 있다. Brev 같은 인증된 HTTP 경로를 쓰는 경우 같은 출처에서 갤러리 폴더만 제공한다. 수집 중에는 게시 명령에서 `--once`를 빼고 실행한다.
+게시에는 아래 환경 준비 절의 Pillow와 FFmpeg가 필요하다. 위 명령은 시연 19부터 각 회차의 최신 GIF를 `output/published-gallery`에 쓴다. 시연 1–18은 앞선 확인서와 새 출력 경로를 사용해 복원한다. 로컬 컴퓨터에서 `ssh -N -L 8766:127.0.0.1:8766 SSH_HOST`를 열고 Chrome에서 `http://127.0.0.1:8766/PhyRC-review.html`을 연다. `SSH_HOST`는 새 서버에 연결할 때 쓰는 SSH 별칭이다. 시연별 최신 GIF는 `/PhyRC-gallery/<run>/index.html`에 있다. 상세 화면과 고정 구간 주소가 필요할 때는 게시 명령에서 `--gif-only`를 뺀다. Brev 같은 인증된 HTTP 경로를 쓰는 경우 같은 출처에서 갤러리 폴더만 제공한다. 수집 중에는 게시 명령에서 `--once`를 빼고 실행한다.
 
 HDF5·최종 평가·구간 프레임을 분석하려면 확인서의 해당 `run_id`에서 `archive.path`, `review_frames.path`와 SHA-256을 찾는다. `hf download`에 확인서의 `repo_id`, 해당 파일 경로, `--repo-type dataset --revision <revision>`을 지정한다. 내려받은 원본 아카이브는 `python3.12 participant/ops/artifacts.py restore 새_디렉터리 --archive 받은_파일.tar.gz`로 내부 목록과 파일 해시까지 검증하며 복원할 수 있다.
 
