@@ -3,7 +3,6 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="referrer" content="same-origin" />
     <title>PhyRC 시연 영상</title>
     <style>
       [hidden] { display: none !important; }
@@ -70,60 +69,10 @@
       header a {
         font-size: 0.92rem;
       }
-      #retro {
-        margin: 22px 0 30px;
-        border: 1px solid var(--line);
-        border-left: 3px solid var(--link);
-        border-radius: 8px;
-        padding: 16px 20px;
-        background: var(--panel);
-      }
-      #retro > p {
-        margin: 0.4rem 0;
-      }
-      #demonstrations {
-        margin: 1.25rem 0 0.75rem;
-      }
-      #demonstrations ol {
-        margin: 0.55rem 0;
-      }
-      #demonstrations h3 {
-        font-size: 1.05rem;
-      }
-      #demonstrations p {
-        margin: 0.25rem 0;
-      }
-      #demonstrations small {
-        display: block;
-      }
       summary {
         cursor: pointer;
         color: var(--link);
         font-weight: 600;
-      }
-      ol {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
-        gap: 18px;
-        list-style: none;
-        padding: 0;
-      }
-      ol li {
-        border-top: 1px solid var(--line);
-        padding-top: 0.5rem;
-      }
-      li + li {
-        margin: 0;
-      }
-      dl {
-        margin: 0.4rem 0;
-      }
-      dt {
-        font-weight: 650;
-        color: var(--link);
-      }
-      dd {
-        margin: 0.05rem 0 0.5rem;
       }
       nav {
         display: flex;
@@ -267,7 +216,7 @@
         </details>
         <section id="segment-player">
           <h2 id="clip-title"></h2>
-          <video id="player" controls playsinline preload="metadata"></video>
+          <video id="player" controls autoplay muted playsinline preload="none"></video>
         </section>
         <section>
           <nav>
@@ -286,25 +235,26 @@
           <ul id="list" aria-label="구간 영상"></ul>
         </aside>
       </div>
-      <section id="demonstrations" aria-label="시연 비교" hidden></section>
-      <section id="retro" hidden></section>
     </main>
     <script>
       "use strict";
       const $ = (id) => document.getElementById(id);
+      const runNumbers = {
+        "20261125T004206Z-demo15-sol-ultra-left-support": "16",
+      };
       const parts = location.pathname.split("/").map(decodeURIComponent);
       const marker = parts.lastIndexOf("PhyRC-gallery");
       const rootParts = parts.slice(0, marker < 0 ? -1 : marker);
-      const files = rootParts.indexOf("files");
+      const filesRoot = rootParts.map(encodeURIComponent).join("/") + "/";
+      const files = rootParts.lastIndexOf("files");
       if (files >= 0) rootParts[files] = "view";
       const viewRoot = rootParts.map(encodeURIComponent).join("/") + "/";
       let currentRun = marker < 0 ? null : parts[marker + 1];
-      let currentSegment =
-        marker < 0 ? null : parts[marker + 2]?.replace(/\.html$/, "");
+      const requestedPage = parts[marker + 2];
+      let currentSegment = marker < 0 || requestedPage === "index.html"
+        ? null : requestedPage?.replace(/\.html$/, "");
       if (marker >= 0) $("reload-note").hidden = true;
-      let catalog, selectedKey, gifRun, gifUrl;
-      const media = new Map();
-      const gifChunks = new Map();
+      let catalog, selectedKey, gifRun;
       function el(tag, text) {
         const node = document.createElement(tag);
         if (text !== undefined) node.textContent = text;
@@ -328,125 +278,35 @@
         a.dataset.segment = id;
         return a;
       }
-      function releaseGif() {
-        if (gifUrl) URL.revokeObjectURL(gifUrl);
-        gifUrl = null;
-        $("cumulative-image").hidden = true;
-        $("cumulative-image").removeAttribute("src");
+      function mediaUrl(run, id, extension) {
+        return filesRoot + "PhyRC-gallery/" + encodeURIComponent(run) + "/" +
+          encodeURIComponent(id) + "." + extension;
       }
       function playCumulative() {
-        releaseGif();
-        if (!$("cumulative").open || !gifRun) return;
+        const image = $("cumulative-image");
         const chosen = $("cumulative-select").value;
-        const parts = [];
-        for (const [id, data] of gifChunks.get(gifRun)) {
-          parts.push(Uint8Array.from(atob(data.textContent.slice(0, -1)), c => c.charCodeAt(0)));
-          if (id !== chosen) continue;
-          parts.push(Uint8Array.of(0x3b));
-          gifUrl = URL.createObjectURL(new Blob(parts, {type: "image/gif"}));
-          $("cumulative-image").src = gifUrl;
-          $("cumulative-image").hidden = false;
+        if (!$("cumulative").open || !gifRun || !chosen) {
+          image.hidden = true;
+          image.removeAttribute("src");
           return;
         }
+        const src = mediaUrl(gifRun, chosen, "gif");
+        if (image.getAttribute("src") !== src) image.src = src;
+        image.hidden = false;
       }
       function renderCumulative(run, clip) {
-        const chunks = gifChunks.get(run.id);
+        const clips = run.clips.filter(item => item.gif);
         const fold = $("cumulative"), select = $("cumulative-select");
-        gifRun = chunks ? run.id : null;
-        fold.hidden = !chunks;
-        if (chunks) {
-          select.replaceChildren();
-          for (const item of run.clips) {
-            if (!chunks.has(item.id)) continue;
-            const option = el("option", `0–${(item.end_step / 20).toFixed(2)}초 · ${item.id}`);
-            option.value = item.id;
-            select.append(option);
-          }
-          if (chunks.has(clip.id)) select.value = clip.id;
+        gifRun = clips.length ? run.id : null;
+        fold.hidden = !gifRun;
+        select.replaceChildren();
+        for (const item of clips) {
+          const option = el("option", `0–${(item.end_step / 20).toFixed(2)}초 · ${item.id}`);
+          option.value = item.id;
+          select.append(option);
         }
+        if (clip.gif) select.value = clip.id;
         playCumulative();
-      }
-      function demonstrations(r) {
-        const box = $("demonstrations");
-        if (!r?.demonstrations?.length) return;
-        const cards = el("ol");
-        for (const item of r.demonstrations) {
-          const li = el("li");
-          li.append(el("h3", item.title), el("p", item.summary));
-          const run = catalog.runs.find((g) => g.id === item.run_id);
-          const first = run?.clips.at(-1);
-          const last = run?.clips[0];
-          if (item.result) li.append(el("small", item.result));
-          if (item.run_id === r.featured_run) {
-            li.append(el("small", last ? last.end_step + "전이까지 영상 게시" : "0전이 초기 관측 대기 중"));
-          }
-          const choices = el("nav");
-          if (first) choices.append(clipLink(run.id, first.id, "처음부터 보기"));
-          for (const ref of item.evidence_segments || []) {
-            if (run?.clips.some((c) => c.id === ref.segment_id)) {
-              choices.append(clipLink(run.id, ref.segment_id, ref.label));
-            }
-          }
-          if (choices.childElementCount) li.append(choices);
-          cards.append(li);
-        }
-        box.append(el("h2", "시연별 목표와 결과"), cards);
-        if (r.comparison) {
-          const note = el("p", r.comparison);
-          if (r.comparison_source) {
-            const link = el("a", r.comparison_source.label);
-            link.href = r.comparison_source.url;
-            link.rel = "noreferrer";
-            note.append(" ", link);
-          }
-          box.append(note);
-        }
-        box.hidden = false;
-      }
-      function retrospective(r) {
-        const box = $("retro");
-        box.replaceChildren();
-        box.hidden = !r;
-        if (box.hidden) return;
-        const fold = el("details");
-        fold.append(el("summary", r.title), el("p", r.summary));
-        const cases = el("ol");
-        for (const item of r.items) {
-          const li = el("li"),
-            dl = el("dl");
-          for (const [field, label] of [
-            ["observed", "이전 시연"],
-            ["demo", "공식 영상"],
-            ["next", "다음 실험"],
-          ])
-            dl.append(el("dt", label), el("dd", item[field]));
-          li.append(dl);
-          cases.append(li);
-        }
-        fold.append(cases);
-        const clips = el("nav");
-        for (const item of r.evidence_segments || []) {
-          if (
-            catalog.runs.some(
-              (g) =>
-                g.id === r.run_id &&
-                g.clips.some((c) => c.id === item.segment_id),
-            )
-          )
-            clips.append(clipLink(r.run_id, item.segment_id, item.label));
-        }
-        const sources = el("nav");
-        for (const item of r.sources || []) {
-          const url = new URL(item.url, location.origin);
-          if (url.protocol === "https:") {
-            const a = el("a", item.label);
-            a.href = url.href;
-            a.rel = "noreferrer";
-            sources.append(a);
-          }
-        }
-        fold.append(clips, sources);
-        box.append(fold);
       }
       function render() {
         if (!catalog) return;
@@ -461,12 +321,8 @@
         $("home").href = viewRoot + "PhyRC-review.html";
         $("home").hidden = !currentRun;
         const newest = run?.clips[0];
-        $("jump").hidden = !newest || newest.id === clip?.id;
-        if (newest) {
-          $("jump").href = clipUrl(run.id, newest.id);
-          $("jump").dataset.run = run.id;
-          $("jump").dataset.segment = newest.id;
-        }
+        $("jump").hidden = !newest;
+        if (newest) $("jump").href = clipUrl(run.id, "index");
         if (!clip) {
           $("notice").textContent = currentRun
             ? "요청한 구간을 찾을 수 없습니다."
@@ -488,10 +344,11 @@
         origin.replaceChildren();
         origin.hidden = !clip.replay_steps;
         if (clip.replay_steps) {
-          origin.append(`0–${clip.replay_steps}전이는 이전 시연 재현 · 이후는 새 행동`);
           const parentRun = catalog.runs.find(item => item.id === clip.parent_run);
+          const parent = parentRun?.number ? `시연 ${parentRun.number}` : "이전 시연";
+          origin.append(`${parent}의 행동을 ${clip.replay_steps}전이까지 재실행 · 이후는 새 행동`);
           const parentClip = parentRun?.clips.find(item => item.end_step === clip.replay_steps);
-          if (parentClip) origin.append(" · ", clipLink(parentRun.id, parentClip.id, "분기한 원본 구간"));
+          if (parentClip) origin.append(" · ", clipLink(parentRun.id, parentClip.id, `${parent} ${parentClip.id}`));
         }
         const stateLabels = {
           running: "자동 진행 중",
@@ -533,8 +390,10 @@
           if (t) detail.append(el("h3", label), el("p", t));
         const key = run.id + "/" + clip.id;
         if (key !== selectedKey) {
-          $("player").src =
-            "data:video/mp4;base64," + media.get(key).textContent.slice(0, -1);
+          const player = $("player");
+          player.pause();
+          player.src = mediaUrl(run.id, clip.id, "mp4");
+          player.play().catch(() => {});
           selectedKey = key;
         }
       }
@@ -554,9 +413,6 @@
           currentRun = a.dataset.run || null;
           currentSegment = a.dataset.segment || null;
           render();
-          if (a.id === "jump" || a.closest("#demonstrations, #retro")) {
-            $("clip-title").scrollIntoView({block: "start"});
-          }
         }
       });
       $("permalink").addEventListener("focus", (e) => e.target.select());
@@ -567,60 +423,28 @@
         currentSegment = null;
         render();
       });
-      function latest(selector) {
-        for (const node of Array.from(
-          document.querySelectorAll(selector),
-        ).reverse()) {
-          try {
-            return JSON.parse(node.textContent);
-          } catch {
-            continue;
-          }
-        }
-        return null;
-      }
       document.addEventListener("DOMContentLoaded", () => {
-        const groups = new Map(),
-          controls = latest("script[data-control]") || {};
-        for (const block of document.querySelectorAll("script[data-record]")) {
-          const data = block.nextElementSibling;
-          if (
-            !data ||
-            !data.hasAttribute("data-video") ||
-            !data.textContent.endsWith("!")
-          )
-            continue;
-          const clip = JSON.parse(block.textContent),
-            key = clip.run + "/" + clip.id;
-          if (media.has(key)) continue;
-          media.set(key, data);
-          const gif = data.nextElementSibling;
-          if (gif?.hasAttribute("data-gif-delta") && gif.textContent.endsWith("!")) {
-            const chunks = gifChunks.get(clip.run) || new Map();
-            chunks.set(clip.id, gif);
-            gifChunks.set(clip.run, chunks);
-          }
-          const clips = groups.get(clip.run) || [];
-          clips.push(clip);
-          groups.set(clip.run, clips);
-        }
-        const history = latest("script[data-retro]");
-        const titles = new Map((history?.demonstrations || []).map((d) => [d.run_id, d.title]));
-        for (const id of groups.keys()) {
-          const sol = id.match(/-demo(\d+)-sol-(max|ultra)(?:-|$)/);
-          if (sol) titles.set(id, `시연 ${sol[1]} · GPT‑6.2 Sol ${sol[2] === "ultra" ? "Ultra" : "Max"}`);
+        const data = document.querySelector("script[data-catalog]");
+        if (!data) return;
+        const {clips, controls} = JSON.parse(data.textContent);
+        const groups = new Map();
+        for (const clip of clips) {
+          if (!groups.has(clip.run)) groups.set(clip.run, []);
+          groups.get(clip.run).push(clip);
         }
         catalog = {
-          retrospective: history,
-          runs: Array.from(groups, ([id, clips]) => ({
-            id,
-            title: titles.get(id),
-            clips: clips.sort((a, b) => b.end_step - a.end_step || b.id.localeCompare(a.id)),
-            control: controls[id],
-          })).reverse(),
+          runs: Array.from(groups, ([id, clips]) => {
+            const sol = id.match(/-demo(\d+)-sol-(max|ultra)(?:-|$)/);
+            const number = runNumbers[id] ?? sol?.[1];
+            return {
+              id,
+              number,
+              title: sol ? `시연 ${number} · GPT‑6.2 Sol ${sol[2] === "ultra" ? "Ultra" : "Max"}` : id,
+              clips: clips.sort((a, b) => b.end_step - a.end_step || b.id.localeCompare(a.id)),
+              control: controls[id],
+            };
+          }).reverse(),
         };
-        demonstrations(history);
-        retrospective(history);
         render();
       });
     </script>

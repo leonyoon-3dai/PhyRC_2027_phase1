@@ -1,6 +1,6 @@
 # Codex 실행 인계
 
-**시연 1–13과 Sol Max 예비 시험을 종료했다. 새 서버에서는 사용자 지시를 기다린다.** 최고 공식 원점수는 시연 2의 20/50점이다. 고정 Hugging Face revision에 14개 실행과 구간 영상 667개를 보존한다. [최종 분석과 다음 작업](docs/active/20261124-demo7-13-closeout.ko.md) · [새 서버 복원 절차](docs/active/start.md) · [비공개 백업 확인서](docs/active/20261124-demo1-13-private-backup.json)
+**시연 1–18과 별도 기술 시험을 종료했다. 새 서버에서는 사용자 지시를 기다린다.** 시연 18의 완결 기록은 577전이다. 이어가도록 요청받으면 검증된 원본을 재실행하고 오른손 쪽 로봇만 움직이며 양손을 관측한다. [시연 14–18 결과와 다음 작업](docs/active/20261125-demo14-18-closeout.ko.md) · [새 서버 복원 절차](docs/active/start.md)
 
 ## 필요한 파일만 읽기
 
