@@ -44,6 +44,15 @@ SCHEMA = {
         'reason': {'type': 'string'},
     },
 }
+STABLE_WRIST_TRAVEL_DEFAULT = (
+    'When the wrist being advanced is visibly seated in the garment, the grasps supporting '
+    'the cloth are stable, and the intended route is clear, advance promptly using 12–20 '
+    'policy transitions per action toward the elbow or shoulder. Use shorter actions to '
+    'test a new grasp, resolve uncertain placement, tension or clearance, or align around '
+    'the head and neck. Reobserve after each action and return to 12–20 as soon as support '
+    'and the route are clear.'
+)
+
 OBSERVATION_AND_ACTION_TASK = '''Use only the supplied designated RGB/depth observations and public robot state. You have no access to hidden garment/object state or evaluation results. Infer object positions visually; distinguish visual hypotheses from facts. Stage and visual_assessment describe your intended phase and visual judgement, never official score or success.
 
 Return exactly one decision matching the schema. Each action has two rows in robot order 0,1; each row is [base_forward, base_left, base_CCW_yaw, lift, arm_extension, wrist_yaw, wrist_pitch, wrist_roll, gripper]. The first 8 are normalized VELOCITIES in [-1,1], not positions or deltas. Use the supplied static action scales to interpret them. Base axes are robot-local: +X forward,+Y left,+Z up. Gripper >0.5 closes, <-0.5 opens; zero holds previous intent. A stop applies neutral motion for one control step and preserves grip intent. One step is 0.05 simulation seconds; at most 20 steps per decision. Use shorter steps near contact, observe the result, and correct. Both robots act simultaneously. The world is paused while you reason, so repeated action is not applied during model latency.
@@ -1052,6 +1061,11 @@ def main():
                 'Return an act decision at every observation. '
                 'If dressing appears complete, maintain support and observe the settled garment. '
                 'If progress stalls, recover support or change the approach using the current views.')
+        if not args.gentle_wrist_dressing:
+            contract = contract.replace(
+                'Use shorter steps near contact, observe the result, and correct.',
+                'At uncertain contact, use shorter steps, observe the result, and correct.')
+            task += '\n\n' + STABLE_WRIST_TRAVEL_DEFAULT
         task += '\n\n' + contract
     action_schema = SCHEMA
     if args.named_actions:
