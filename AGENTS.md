@@ -9,6 +9,7 @@
 | 시작점·목표·실행 여부 확인 | [README](README.md), [새 서버 준비](docs/active/start.md) |
 | 움직임·의미 라벨·득점 판정 선택 | [실험 계획](docs/active/experiment.md) |
 | 클립 게시, HOLD, 웹 피드백, QC·데이터 내보내기 | [수집 절차](docs/active/collection.md) |
+| 시연 25·26의 BC·RL·RSI 학습, GPU 배치, 공식 평가 준비 | [50점 착의 정책 연구](docs/active/20261126-dressing-policy-research.ko.md) |
 | 물리 변경·공식 점수 확인 | [공식 변경](docs/active/upstream.md), [정책 계약](config/policy_interface.json) |
 | 특정 슬롯, 원본, 이전 실패 또는 백업 요청 | [보관 목차](docs/ARCHIVE.md)에서 해당 항목만 연다. 보관 문서의 당시 실행 지시는 이력이다. |
 

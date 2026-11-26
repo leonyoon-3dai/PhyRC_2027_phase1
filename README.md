@@ -2,6 +2,7 @@
 
 [![시연 영상 모음](docs/assets/demonstration-videos-menu.svg)](docs/gallery/README.md#시연-영상)
 [![시연 결과와 분석](docs/assets/demonstration-analysis-menu.svg)](docs/gallery/README.md#시연-분석)
+[![50점 착의 정책 연구](docs/assets/dressing-policy-research-menu.svg)](docs/active/20261126-dressing-policy-research.ko.md)
 
 현재 **시연 29를 단독으로** 진행합니다. 시연 28의 **299전이 종료 체크포인트**에서 출발해 양팔의 착의 깊이를 맞춘 뒤 목과 어깨를 덮고, 로컬 평가 **50점**을 목표로 합니다.
 

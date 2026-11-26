@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 202 40" width="202" height="40" role="img" aria-label="50점 착의 정책 연구">
+  <rect x=".5" y=".5" width="201" height="39" rx="7" fill="#eef2fa" stroke="#b9c7e4"/>
+  <g fill="none" stroke="#365182" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14 27l6-6 4 3 7-10m-5 0h5v5"/>
+  </g>
+  <text x="44" y="25" font-family="system-ui,sans-serif" font-weight="600" font-size="14" fill="#273e68">50점 착의 정책 연구</text>
+</svg>
