@@ -1,6 +1,6 @@
 # 새 서버에서 시연 복원과 다음 회차 준비
 
-시연 1–25와 별도 기술 시험을 종료했다. 갤러리는 CPU만으로 복원할 수 있다. GPU 시뮬레이터와 행동 모델은 사용자가 다음 회차를 요청할 때 준비한다. [시연 24–25 결과](20261126-demo24-25-closeout.ko.md) · [시연 26 계획](20261126-demo26-plan.ko.md) · [시연 24–25 비공개 백업 확인서](20261126-demo24-25-private-backup.json) · [시연 19–23 백업](20261126-demo19-23-private-backup.json) · [시연 1–18 백업](20261125-demo1-18-private-backup.json)
+시연 1–32와 별도 기술 시험을 종료했습니다. [최신 마감 기록과 백업](20261126-demo26-32-handoff.ko.md)에서 필요한 자료를 선택한 뒤 아래 환경 준비를 따릅니다. 시연 24–25 복원과 시연 26 실행 예시는 당시 기록입니다. 다음 시연은 사용자가 검토 후 계획합니다.
 
 ## 저장소와 지난 갤러리 열기
 
@@ -29,7 +29,7 @@ python3.12 scripts/restore_review_gallery.py \
 python3.12 -m http.server 8766 --bind 127.0.0.1 --directory output/published-gallery
 ```
 
-게시에는 아래 환경 준비 절의 Pillow와 FFmpeg가 필요하다. 위 명령은 시연 24–25의 최신 GIF를 `output/published-gallery`에 쓴다. 이전 시연은 해당 확인서와 새 출력 경로를 사용해 복원한다. 로컬 컴퓨터에서 `ssh -N -L 8766:127.0.0.1:8766 SSH_HOST`를 열고 Chrome에서 `http://127.0.0.1:8766/PhyRC-review.html`을 연다. `SSH_HOST`는 새 서버에 연결할 때 쓰는 SSH 별칭이다. 시연별 최신 GIF는 `/PhyRC-gallery/<run>/index.html`에 있다. 상세 화면과 고정 구간 주소가 필요할 때는 게시 명령에서 `--gif-only`를 뺀다. Brev 같은 인증된 HTTP 경로를 쓰는 경우 같은 출처에서 갤러리 폴더만 제공한다. 수집 중에는 게시 명령에서 `--once`를 빼고 실행한다.
+게시에는 Pillow와 FFmpeg가 필요합니다. 위 명령은 종료된 24–25의 GIF를 `output/published-gallery`에 씁니다. 시연별 영상은 `PhyRC-gallery/<run>/index.html`에 있습니다. 구간별 검토 화면은 게시 명령에서 `--gif-only`를 뺍니다. 사용자에게는 게시 폴더만 노출하는 인증된 HTTPS 경로를 제공하고, 페이지와 영상 응답을 확인합니다. Brev에서는 해당 서버의 인증된 웹 주소에서 갤러리를 열 수 있습니다. 수집 중 자동 갱신이 필요할 때는 `--once`를 뺍니다.
 
 HDF5·최종 평가·구간 프레임을 분석하려면 확인서의 해당 `run_id`에서 `archive.path`, `review_frames.path`와 SHA-256을 찾는다. `hf download`에 확인서의 `repo_id`, 해당 파일 경로, `--repo-type dataset --revision <revision>`을 지정한다. 내려받은 원본 아카이브는 `python3.12 participant/ops/artifacts.py restore 새_디렉터리 --archive 받은_파일.tar.gz`로 내부 목록과 파일 해시까지 검증하며 복원할 수 있다.
 
