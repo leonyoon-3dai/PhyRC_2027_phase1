@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 202 40" width="202" height="40" role="img" aria-label="시연 결과와 분석">
+  <rect x=".5" y=".5" width="201" height="39" rx="7" fill="#eff6f4" stroke="#b4cec6"/>
+  <g fill="none" stroke="#245346" stroke-width="1.5" stroke-linecap="round">
+    <path d="M15 13v14h17M19 23v-4m5 4v-7m5 7v-9"/>
+  </g>
+  <text x="44" y="25" font-family="system-ui,sans-serif" font-weight="600" font-size="14" fill="#183d34">시연 결과와 분석</text>
+</svg>
