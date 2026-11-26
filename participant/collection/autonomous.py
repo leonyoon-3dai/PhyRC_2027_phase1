@@ -51,6 +51,8 @@ def run_autonomous(*, sim, actor, obs, args, root, trace, actor_root, task, inte
                    checkpoint_rejected=None):
     schema = dict(action_schema, required=[*action_schema['required'], 'observation_review'],
                   properties=dict(action_schema['properties'], observation_review=REVIEW_SCHEMA))
+    study_stop = getattr(args, 'slot_study_stop_step', None)
+    action_limit = study_stop or args.max_steps
     supervised_close = args.until_full_score_or_feedback
     if supervised_close:
         schema['properties']['tool'] = {'type': 'string', 'enum': ['act']}
@@ -134,7 +136,10 @@ def run_autonomous(*, sim, actor, obs, args, root, trace, actor_root, task, inte
         persist()
         begun, result = time.monotonic(), None
         try:
-            result = actor.invoke(prompt, images, schema)
+            try:
+                result = actor.invoke(prompt, images, schema)
+            finally:
+                actor_ended = time.monotonic()
             if camera_briefing_pending:
                 event(dict(type='camera_briefing_delivered', model_call_index=call))
                 camera_briefing_pending = False
@@ -150,7 +155,8 @@ def run_autonomous(*, sim, actor, obs, args, root, trace, actor_root, task, inte
             consecutive_failures += 1
             usage = token_usage.record(call, result, call_failed=True)
             event(dict(type='model_error', model_call_index=call, error_type=type(exc).__name__,
-                       error=str(exc), usage_accounting=usage))
+                       error=str(exc), usage_accounting=usage, actor_started_monotonic_s=begun,
+                       actor_ended_monotonic_s=actor_ended))
             if consecutive_failures == 1:
                 try:
                     actor = reset_actor()
@@ -168,6 +174,7 @@ def run_autonomous(*, sim, actor, obs, args, root, trace, actor_root, task, inte
         usage = token_usage.record(call, result)
         token_usage.update_manifest(manifest)
         event(dict(type='decision', decision_index=index, model_call_index=call, **result,
+                   actor_started_monotonic_s=begun, actor_ended_monotonic_s=actor_ended,
                    usage_accounting=usage, human_guided=bool(direction), method='gpt_only'))
         return decision, action, summary, index
 
@@ -309,7 +316,7 @@ def run_autonomous(*, sim, actor, obs, args, root, trace, actor_root, task, inte
             if not actions:
                 web.direction = summary['next_prompt']
             web.stage, web.assessment = decision['stage'], decision['visual_assessment']
-            duration = min(model_steps, args.max_steps - step)
+            duration = min(model_steps, action_limit - step)
             if duration < model_steps:
                 event(dict(type='episode_budget_cap', decision_index=index,
                            requested_steps=model_steps, executable_steps=duration))
@@ -319,7 +326,7 @@ def run_autonomous(*, sim, actor, obs, args, root, trace, actor_root, task, inte
                            sent_action=action.tolist(), requested_steps=decision['steps'], sent_steps=duration))
             execute(action, duration, 'model', index, decision['reason'])
             actions += 1
-            settle = min(settle, args.max_steps - acknowledged_step)
+            settle = min(settle, action_limit - acknowledged_step)
             goal_reached = full_score(acknowledged_step)
             if not goal_reached and active and settle and control_state(journal, run) != 'pause_requested':
                 execute(np.zeros((2, 9), dtype=np.float32), settle, 'controller_settle',
@@ -327,6 +334,9 @@ def run_autonomous(*, sim, actor, obs, args, root, trace, actor_root, task, inte
                 goal_reached = full_score(acknowledged_step)
             if goal_reached:
                 boundary('full_score', None, 'full_score')
+                return obs
+            if active and acknowledged_step == study_stop:
+                boundary('comparison_endpoint', None, 'comparison_endpoint')
                 return obs
             if not active or acknowledged_step == args.max_steps:
                 terminal = 'hard_horizon' if acknowledged_step == args.max_steps else 'environment_end'

@@ -755,6 +755,10 @@ def main():
                         help='Prioritize the opposite wrist from a verified autonomous replay boundary')
     parser.add_argument('--gpt-task-prompt', type=Path,
                         help='Use this operator task prompt for a GPT-only collection')
+    parser.add_argument('--slot-study-original-prompt', type=Path,
+                        help='Use a verified historical rendered prompt and the Demo 33/34 addendum on a slot reset')
+    parser.add_argument('--slot-study-stop-step', type=int,
+                        help='Close the study at this local transition while the simulator can still save a slot')
     parser.add_argument('--cover-right-wrist', action='store_true',
                         help='Draw the opening past the right hand while supporting the other hand')
     parser.add_argument('--until-full-score-or-feedback', action='store_true',
@@ -783,7 +787,16 @@ def main():
         if not args.segment_review_dir or args.mode != 'dressing':
             parser.error('--gpt-only requires --mode dressing and --segment-review-dir')
         args.user_guided = True
-    args.nearest_table = args.nearest_table or bool(args.segment_review_dir)
+    if args.slot_study_original_prompt:
+        if (not args.initial_slot or not args.parent_attempt or not args.source_group or not args.gpt_only
+                or not args.named_actions or args.gpt_task_prompt or args.replay_prefix_run or args.nearest_table
+                or args.start_state_validation or args.gentle_wrist_dressing or args.prepare_checkpoint_only
+                or (args.model, args.effort) != ('gpt-6.2-sol', 'ultra')):
+            parser.error('slot study requires a new Sol Ultra named-action run from a parent slot')
+    if args.slot_study_stop_step is not None and (not args.slot_study_original_prompt
+            or not 0 < args.slot_study_stop_step < args.max_steps):
+        parser.error('slot study stop must be positive and before the environment horizon')
+    args.nearest_table = args.nearest_table or bool(args.segment_review_dir and not args.slot_study_original_prompt)
     if args.model is None:
         args.model = DEFAULT_MODEL if args.nearest_table else LEGACY_MODEL
     if args.nearest_table:
@@ -1072,6 +1085,15 @@ def main():
         from participant.collection import named_actions
         task = named_actions.prompt(task)
         action_schema = named_actions.response_schema(SCHEMA)
+    if args.slot_study_original_prompt:
+        original = args.slot_study_original_prompt.read_bytes()
+        source_attempt = json.loads(args.slot_study_original_prompt.with_name('attempt.json').read_text())
+        original_digest = hashlib.sha256(original).hexdigest()
+        if (source_attempt.get('run_id') != args.parent_attempt
+                or source_attempt.get('prompt_sha256') != original_digest):
+            raise ValueError('slot study historical prompt does not match the parent attempt')
+        addendum = (root / 'participant/collection/prompts/demo33_34_dressing_addendum.txt').read_bytes()
+        task = original.decode('utf-8') + '\n\n' + addendum.decode('utf-8')
     if args.actor_backend == 'app-server':
         from participant.collection.codex_app_actor import AppActor as Actor
     else:
@@ -1134,6 +1156,10 @@ def main():
         'quality_status': 'unreviewed',
         'replay_steps_completed': 0, 'activity': 'initializing',
     }
+    if args.slot_study_original_prompt:
+        manifest['slot_study'] = {'source_run': args.parent_attempt, 'historical_prompt_sha256': original_digest,
+                                  'addendum_sha256': hashlib.sha256(addendum).hexdigest(),
+                                  'stop_step': args.slot_study_stop_step, 'environment_horizon': args.max_steps}
     if replay is not None:
         manifest['continuation'] = dict(replay.public_lineage)
     if args.named_actions:

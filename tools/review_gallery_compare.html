@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>PhyRC · 시연 33·34 비교</title>
+  <style>
+    :root {
+      font: 16px/1.45 system-ui, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+      color: #eff5f5;
+      background: #0e151b;
+    }
+    * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    body {
+      margin: 0;
+      height: 100vh;
+      height: 100dvh;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr);
+      overflow: hidden;
+    }
+    body > header, main { padding: 0 clamp(8px, 2vw, 32px); }
+    body > header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .7rem;
+      min-height: clamp(37px, 7vh, 65px);
+      background: #15212a;
+    }
+    h1, h2, p, dl, dd { margin: 0; }
+    h1 { font-size: clamp(.92rem, 2.1vw, 1.35rem); }
+    h2 { font-size: clamp(.9rem, 2.2vw, 1.55rem); }
+    .server { display: flex; align-items: center; flex-wrap: wrap; justify-content: flex-end; gap: 0 .8rem; }
+    #connection, #hardware { color: #b3c1c8; font-size: clamp(.65rem, 1.2vw, .8rem); }
+    main {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(7px, 1.5vw, 24px);
+      padding-top: clamp(5px, 2vh, 18px);
+      padding-bottom: clamp(5px, 2vh, 18px);
+      min-height: 0;
+    }
+    article {
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      min-width: 0;
+      min-height: 0;
+    }
+    .heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .25rem;
+      padding: .25rem .15rem;
+    }
+    .status, dl, .range, .message { font-size: clamp(.67rem, 1.4vw, .94rem); }
+    .status { color: #a8dbc9; }
+    .media {
+      min-width: 0;
+      min-height: 0;
+      display: grid;
+      position: relative;
+      place-items: center;
+      background: #101920;
+      border: 1px solid #304049;
+      border-radius: .4rem;
+      overflow: hidden;
+    }
+    img {
+      display: block;
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .message { color: #b4c4cd; padding: .5rem; text-align: center; }
+    .metrics { padding: .45rem .1rem 0; }
+    .range { color: #e8efef; font-variant-numeric: tabular-nums; }
+    dl { display: flex; flex-wrap: wrap; gap: 0 .8rem; color: #a7bac4; }
+    dl div { display: inline-flex; gap: .25em; }
+    dd { color: #d4e4e8; font-variant-numeric: tabular-nums; }
+    @media (max-width: 600px), (max-height: 450px) {
+      .metrics { padding-top: 2px; }
+      dl { gap: 0 .4rem; }
+      body > header { min-height: 30px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>착의 시연 비교 · 누적 GIF 4배속</h1>
+    <div class="server">
+      <span id="hardware" hidden></span>
+      <span id="connection" role="status">연결 중</span>
+    </div>
+  </header>
+  <main aria-label="시연 33과 시연 34의 다섯 카메라 영상 비교"></main>
+  <template id="panel">
+    <article>
+      <div class="heading"><h2></h2><span class="status">시작 대기</span></div>
+      <div class="media"><p class="message" role="status">첫 누적 영상을 기다리는 중입니다.</p></div>
+      <div class="metrics">
+        <p class="range">재생 구간 —</p>
+        <dl>
+          <div><dt>출발 슬롯</dt><dd data-field="source">—</dd></div>
+          <div><dt>최근 전이</dt><dd data-field="latest">—</dd></div>
+          <div><dt>전이/분</dt><dd data-field="rate">—</dd></div>
+          <div><dt>경과</dt><dd data-field="wall">—</dd></div>
+        </dl>
+      </div>
+    </article>
+  </template>
+  <script>
+    'use strict';
+
+    const refreshMs = 10000;
+    const panels = new Map();
+    const connection = document.getElementById('connection');
+    const statuses = { waiting: '시작 대기', running: '수집 중', held: '개입 대기', closed: '종료', failed: '실행 중단' };
+
+    // Jupyter renders /view/ links inside /files/. Custom Brev /phyrc/ routes
+    // serve the files directly. Retain the current user's full base path.
+    const filesRoot = new URL('.', location.href);
+    const pathParts = filesRoot.pathname.split('/');
+    if (pathParts.at(-2) === 'view') {
+      pathParts[pathParts.length - 2] = 'files';
+      filesRoot.pathname = pathParts.join('/');
+    }
+
+    function panelFor(demo) {
+      const element = document.getElementById('panel').content.firstElementChild.cloneNode(true);
+      element.querySelector('h2').textContent = '시연 ' + demo;
+      document.querySelector('main').append(element);
+      return {
+        demo, element, runId: null, image: null, gifStep: null, latest: null,
+        request: null, timer: null, loopStarted: 0, loopMs: 0
+      };
+    }
+
+    function formatWall(seconds) {
+      if (!Number.isFinite(seconds) || seconds < 0) return '—';
+      if (seconds < 60) return Math.floor(seconds) + '초';
+      const minutes = Math.floor(seconds / 60);
+      if (minutes < 60) return minutes + '분 ' + Math.floor(seconds % 60) + '초';
+      return Math.floor(minutes / 60) + '시간 ' + minutes % 60 + '분';
+    }
+
+    function showGif(panel) {
+      panel.timer = null;
+      const run = panel.latest;
+      if (!run || !run.gif_url || run.gif_end_step == null ||
+          run.gif_end_step === panel.gifStep || panel.request) return;
+
+      const url = new URL(run.gif_url, filesRoot);
+      if (url.origin !== filesRoot.origin) return;
+      url.searchParams.set('step', run.gif_end_step);
+      const next = new Image();
+      next.alt = '시연 ' + run.demo + '의 step 0부터 ' + run.gif_end_step +
+        '까지 기록된 overview 및 두 로봇의 head·wrist 카메라';
+      panel.request = next;
+      next.onload = () => {
+        if (panel.request !== next) return;
+        const media = panel.element.querySelector('.media');
+        const message = media.querySelector('.message');
+        message.hidden = true;
+        if (panel.image) panel.image.replaceWith(next);
+        else media.append(next);
+        panel.image = next;
+        panel.request = null;
+        panel.gifStep = run.gif_end_step;
+        panel.loopStarted = performance.now();
+        // Use the published GIF duration including its final-frame pause.
+        panel.loopMs = run.gif_duration_ms > 0 ? run.gif_duration_ms : run.gif_end_step * 12.5 + 100;
+        panel.element.querySelector('.range').textContent = '재생 구간  0–' + run.gif_end_step + '전이';
+        scheduleGif(panel);
+      };
+      next.onerror = () => {
+        if (panel.request !== next) return;
+        panel.request = null;
+        if (!panel.image) {
+          const message = panel.element.querySelector('.message');
+          message.hidden = false;
+          message.textContent = '영상을 불러오지 못했습니다. 다음 갱신 때 다시 확인합니다.';
+        } else {
+          panel.element.querySelector('.status').textContent = '새 영상 대기';
+        }
+      };
+      next.src = url.href;
+    }
+
+    // A frequent status refresh must not keep a long GIF stuck near frame zero.
+    // When a longer version becomes available, finish the current pass first.
+    function scheduleGif(panel) {
+      const run = panel.latest;
+      if (!run || !run.gif_url || run.gif_end_step == null ||
+          run.gif_end_step === panel.gifStep || panel.request || panel.timer !== null) return;
+      if (!panel.image) {
+        showGif(panel);
+        return;
+      }
+      const elapsed = performance.now() - panel.loopStarted;
+      const wait = Math.max(0, panel.loopMs - (elapsed % panel.loopMs));
+      panel.timer = setTimeout(() => showGif(panel), wait);
+    }
+
+    function renderRun(panel, run) {
+      const field = name => panel.element.querySelector('[data-field="' + name + '"]');
+      if (panel.runId !== run.run_id) {
+        clearTimeout(panel.timer);
+        panel.timer = null;
+        panel.request = null;
+        if (panel.image) panel.image.remove();
+        panel.image = null;
+        panel.gifStep = null;
+        panel.runId = run.run_id;
+        panel.element.querySelector('.range').textContent = '재생 구간 —';
+        const message = panel.element.querySelector('.message');
+        message.textContent = '첫 누적 영상을 기다리는 중입니다.';
+        message.hidden = false;
+      }
+      panel.latest = run;
+      panel.element.querySelector('h2').title = run.run_id || '';
+      const state = statuses[run.status] || '상태 확인 중';
+      panel.element.querySelector('.status').textContent = run.gif_error ? state + ' · 영상 갱신 지연' : state;
+      field('source').textContent = run.source_step ?? '—';
+      field('latest').textContent = run.end_step ?? '—';
+      field('rate').textContent = Number.isFinite(run.transitions_per_minute)
+        ? run.transitions_per_minute.toLocaleString('ko-KR', { maximumFractionDigits: 1 }) : '—';
+      field('wall').textContent = formatWall(run.wall_s);
+      scheduleGif(panel);
+    }
+
+    function renderHardware(performance) {
+      const fields = [];
+      if (Number.isFinite(performance?.cpu_utilization_pct)) {
+        fields.push('CPU ' + Math.round(performance.cpu_utilization_pct) + '%');
+      }
+      if (Number.isFinite(performance?.gpu?.utilization_pct)) {
+        fields.push('GPU ' + Math.round(performance.gpu.utilization_pct) + '%');
+      }
+      const hardware = document.getElementById('hardware');
+      hardware.hidden = !fields.length;
+      hardware.textContent = fields.length ? '공유 서버  ' + fields.join(' · ') : '';
+      hardware.title = performance?.sampled_at_utc || '';
+    }
+
+    let fetching = false;
+    async function refresh() {
+      if (fetching || document.hidden) return;
+      fetching = true;
+      try {
+        const response = await fetch(new URL('PhyRC-compare.json', filesRoot), { cache: 'no-store' });
+        if (!response.ok) throw Error('manifest unavailable');
+        const manifest = await response.json();
+        if (manifest.schema !== 'phyrc-demo-compare-v1' || !Array.isArray(manifest.runs)) {
+          throw Error('unknown manifest');
+        }
+        for (const [demo, panel] of panels) {
+          const run = manifest.runs.find(item => item.demo === demo);
+          if (!run) throw Error('missing demonstration');
+          renderRun(panel, run);
+        }
+        renderHardware(manifest.performance);
+        connection.textContent = '갱신 ' + new Date().toLocaleTimeString('ko-KR', { hour12: false });
+      } catch {
+        connection.textContent = '상태 갱신 대기';
+      } finally {
+        fetching = false;
+      }
+    }
+
+    for (const demo of [33, 34]) panels.set(demo, panelFor(demo));
+    refresh();
+    setInterval(refresh, refreshMs);
+    document.addEventListener('visibilitychange', refresh);
+  </script>
+</body>
+</html>

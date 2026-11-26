@@ -60,13 +60,32 @@ if [[ "$COMMAND" == build ]]; then
 fi
 umask 0002
 mkdir -p cache output .runtime/PhyRC_Sim .runtime/RCareWorld-2.0
+CACHE_DIR="$ROOT/cache"
+SIM_RUNTIME="$ROOT/.runtime"
 exec 9>cache/runtime.lock
-flock -n 9 || { printf 'This repository already has an active prepare/run. Close it first.\n' >&2; exit 2; }
+if [[ -n "${PHYRC_STUDY_LANE:-}" ]]; then
+    [[ "$COMMAND" == python && "${STRETCH4_OPERATOR_STDIN:-0}" == 1 &&
+       "$PHYRC_STUDY_LANE" =~ ^[a-zA-Z0-9][a-zA-Z0-9_.-]{0,79}$ &&
+       "${PHYRC_STUDY_GPU_UUID:-}" =~ ^GPU-[0-9a-fA-F-]+$ ]] || {
+        printf 'Invalid study lane, GPU UUID or collector command.\n' >&2; exit 2;
+    }
+    flock -sn 9 || { printf 'Prepared runtime is busy.\n' >&2; exit 2; }
+    CACHE_DIR="$ROOT/cache/study-lanes/$PHYRC_STUDY_LANE"
+    SIM_RUNTIME="$ROOT/.runtime/study-lanes/$PHYRC_STUDY_LANE"
+    [[ -d "$SIM_RUNTIME/RCareWorld-2.0" && -d "$SIM_RUNTIME/PhyRC_Sim" ]] || {
+        printf 'Prepare the study lane first.\n' >&2; exit 2;
+    }
+    mkdir -p "$CACHE_DIR"
+    exec 8>"$CACHE_DIR/runtime.lock"
+    flock -n 8 || { printf 'Study lane is already active.\n' >&2; exit 2; }
+else
+    flock -n 9 || { printf 'This repository already has an active prepare/run. Close it first.\n' >&2; exit 2; }
+fi
 for folder in kit ov pip warp glcache computecache logs data documents mpl; do
-    mkdir -p "cache/$folder"
-    chmod g+rwx "cache/$folder"
+    mkdir -p "$CACHE_DIR/$folder"
+    chmod g+rwx "$CACHE_DIR/$folder"
 done
-chmod g+rwx output .runtime .runtime/PhyRC_Sim .runtime/RCareWorld-2.0
+chmod g+rwx output "$SIM_RUNTIME" "$SIM_RUNTIME/PhyRC_Sim" "$SIM_RUNTIME/RCareWorld-2.0"
 PROJECT_COMMIT=$(git rev-parse HEAD)
 PROJECT_DIRTY=0
 if [[ -n "$(git status --porcelain --untracked-files=no)" ]]; then PROJECT_DIRTY=1; fi
@@ -75,8 +94,8 @@ ARGS=(run --rm --network=host --user "1234:$(id -g)" --label phyrc.project=PhyRC
       -e "PHYRC_SOURCE_COMMIT=$PROJECT_COMMIT" -e "PHYRC_SOURCE_DIRTY=$PROJECT_DIRTY"
       -e MPLCONFIGDIR=/isaac-sim/.cache/matplotlib -e OPENBLAS_NUM_THREADS=1
       -e "OMNICLIENT_HUB_MODE=${OMNICLIENT_HUB_MODE:-disabled}"
-      -v "$ROOT/.runtime/PhyRC_Sim:/workspace/PhyRC_Sim:rw"
-      -v "$ROOT/.runtime/RCareWorld-2.0:/workspace/RCareWorld-2.0:rw"
+      -v "$SIM_RUNTIME/PhyRC_Sim:/workspace/PhyRC_Sim:rw"
+      -v "$SIM_RUNTIME/RCareWorld-2.0:/workspace/RCareWorld-2.0:rw"
       -v "$ROOT/output:/output:rw" -v "$ROOT/scripts:/scripts:ro"
       -v "$ROOT:/project:ro" -w /workspace/PhyRC_Sim)
 # JSON-lines collectors require an open stdin; GUI/default scripts keep their
@@ -85,7 +104,7 @@ if [[ "$COMMAND" == python && "${STRETCH4_OPERATOR_STDIN:-0}" == 1 ]]; then
     ARGS+=(-i)
 fi
 for mapping in kit:kit/cache ov:.cache/ov pip:.cache/pip warp:.cache/warp glcache:.cache/nvidia/GLCache computecache:.nv/ComputeCache logs:.nvidia-omniverse/logs data:.local/share/ov/data documents:Documents mpl:.cache/matplotlib; do
-    ARGS+=(-v "$ROOT/cache/${mapping%%:*}:/isaac-sim/${mapping#*:}:rw")
+    ARGS+=(-v "$CACHE_DIR/${mapping%%:*}:/isaac-sim/${mapping#*:}:rw")
 done
 cpu() {
     docker "${ARGS[@]}" --entrypoint /bin/bash "$IMAGE" -c '
@@ -117,10 +136,14 @@ if [[ "$COMMAND" == cpu ]]; then
     cpu "$@"
     exit 0
 fi
-[[ -f .runtime/PhyRC_Sim/Assets/Garment/Tops/Modelink/t_shirt_short.usd ]] || {
+[[ -f "$SIM_RUNTIME/PhyRC_Sim/Assets/Garment/Tops/Modelink/t_shirt_short.usd" ]] || {
     printf 'Run ./run.sh prepare first.\n' >&2; exit 2;
 }
-ARGS+=(--gpus all)
+if [[ -n "${PHYRC_STUDY_LANE:-}" ]]; then
+    ARGS+=(--gpus "device=$PHYRC_STUDY_GPU_UUID")
+else
+    ARGS+=(--gpus all)
+fi
 # Only project-specific override names are forwarded, never arbitrary host secrets.
 while IFS= read -r name; do
     case "$name" in STRETCH4_*|HUMAN_*|BOX_*|ROBOT_*|ROBOT1_*|ROBOT2_*|GARMENT_X_OFFSETS)

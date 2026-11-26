@@ -199,7 +199,8 @@ def apply_action(sim, obs, manifest, event, web, action, steps, kind, index, int
     before = float(obs['simulation_time_s'])
     t = time.monotonic()
     result = sim.dispatch('act', {'action': action.tolist(), 'steps': steps})
-    elapsed = time.monotonic() - t
+    ended = time.monotonic()
+    elapsed = ended - t
     obs = result['observation']
     actual = round((float(obs['simulation_time_s']) - before) * 20)
     manifest['simulation_steps'] += actual
@@ -213,7 +214,8 @@ def apply_action(sim, obs, manifest, event, web, action, steps, kind, index, int
            'start_step': manifest['simulation_steps'] - actual, 'end_step': manifest['simulation_steps'],
            'requested_steps': steps, 'actual_steps': actual, 'applied_action': action.tolist(),
            'simulation_start_s': before, 'simulation_end_s': float(obs['simulation_time_s']),
-           'environment_dispatch_wall_s': elapsed, 'quality_status': 'unreviewed'})
+           'environment_dispatch_wall_s': elapsed, 'dispatch_started_monotonic_s': t,
+           'dispatch_ended_monotonic_s': ended, 'quality_status': 'unreviewed'})
     active = result.get('active', True)
     valid_length = actual == steps or (allow_end and not active and 0 < actual <= steps)
     if not valid_length or (not active and not allow_end):

@@ -26,7 +26,7 @@ class AutonomousTests(unittest.TestCase):
     def execute(self, responses, interrupt=False, segment_decisions=2, report_stall=False,
                 max_steps=90, settle=0, scores=False, end_at_horizon=False, supervised_close=False,
                 feedback_on_error=False, camera_briefing=False, gentle_wrist_dressing=False, events=None,
-                checkpoint_steps=(), checkpoint_every_review=False):
+                checkpoint_steps=(), checkpoint_every_review=False, slot_study_stop_step=None):
         tmp = TemporaryDirectory()
         self.addCleanup(tmp.cleanup)
         root = Path(tmp.name)
@@ -43,7 +43,7 @@ class AutonomousTests(unittest.TestCase):
                                post_action_settle_steps=settle, initial_slot=None, named_actions=False,
                                save_checkpoint_on_start=False, until_full_score_or_feedback=supervised_close,
                                camera_briefing=camera_briefing, gentle_wrist_dressing=gentle_wrist_dressing,
-                               checkpoint_every_review=checkpoint_every_review)
+                               checkpoint_every_review=checkpoint_every_review, slot_study_stop_step=slot_study_stop_step)
         web = SegmentBridge(root=root, trace=trace, journal=path, args=args, actor_factory=Mock())
         control = None
         if checkpoint_steps or checkpoint_every_review:
@@ -159,6 +159,52 @@ class AutonomousTests(unittest.TestCase):
                          ['step-000004', 'finish-000011'])
         self.assertEqual([(r['start_step'], r['end_step']) for r in records], [(0, 0), (0, 4), (4, 11)])
         self.assertFalse(manifest['human_intervention'])
+
+    def test_comparison_endpoint_limits_action_before_natural_horizon(self):
+        events = []
+        actor, sim, manifest, records = self.execute(
+            [proposal(steps=20)], supervised_close=True, scores=True, max_steps=90,
+            slot_study_stop_step=7, settle=3, checkpoint_steps=(5, 'finish'), events=events)
+        self.assertEqual([args['steps'] for tool, args in sim.calls if tool == 'act'], [5, 2])
+        self.assertEqual([args['key'] for tool, args in sim.calls if tool == 'save_checkpoint'],
+                         ['step-000005', 'finish-000007'])
+        self.assertEqual([tool for tool, _ in sim.calls[-2:]], ['save_checkpoint', 'finish_episode'])
+        self.assertEqual(sim.observation_step, 7)
+        self.assertEqual(records[-1]['end_step'], 7)
+        self.assertEqual(records[-1]['hold_reason'], 'comparison_endpoint')
+        self.assertEqual(manifest['autonomous_control']['close_reason'], 'comparison_endpoint')
+        self.assertEqual(actor.invoke.call_count, 1)
+        self.assertEqual([e['executable_steps'] for e in events if e['type'] == 'episode_budget_cap'], [7])
+
+    def test_comparison_endpoint_limits_settle_and_reuses_exact_checkpoint(self):
+        events = []
+        actor, sim, _, _ = self.execute(
+            [proposal(steps=8)], supervised_close=True, scores=True, slot_study_stop_step=9, settle=4,
+            checkpoint_steps=(9, 'finish'), events=events)
+        actions = [e for e in events if e['type'] == 'applied_segment']
+        self.assertEqual([(e['action_source'], e['actual_steps']) for e in actions],
+                         [('model', 8), ('controller_settle', 1)])
+        self.assertEqual([args['key'] for tool, args in sim.calls if tool == 'save_checkpoint'],
+                         ['step-000009'])
+        self.assertEqual([e['step'] for e in events if e['type'] == 'final_checkpoint'], [9])
+        self.assertEqual(actor.invoke.call_count, 1)
+        self.assertEqual(sim.observation_step, 9)
+
+    def test_same_host_phase_timestamps_span_actor_errors_and_action_rpc(self):
+        events = []
+        self.execute([RuntimeError('retry'), proposal(steps=3), proposal('finish_episode')], events=events)
+        phase_events = [row for row in events if row['type'] in ('decision', 'model_error', 'applied_segment')]
+        self.assertEqual([row['type'] for row in phase_events],
+                         ['model_error', 'decision', 'applied_segment', 'decision'])
+        previous = 0
+        for row in phase_events:
+            phase = 'dispatch' if row['type'] == 'applied_segment' else 'actor'
+            start, end = row[phase + '_started_monotonic_s'], row[phase + '_ended_monotonic_s']
+            self.assertLessEqual(previous, start)
+            self.assertLessEqual(start, end)
+            if phase == 'dispatch':
+                self.assertEqual(end - start, row['environment_dispatch_wall_s'])
+            previous = end
 
     def test_gentle_bounds_cover_all_stages_and_preserve_coordination_and_grips(self):
         action = np.array([[1, -.5, 0, -.4, .8, 0, -.2, 0, .8],
