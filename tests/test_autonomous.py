@@ -10,6 +10,7 @@ import numpy as np
 
 from participant.collection import codex_client
 from participant.collection.autonomous import CAMERA_BRIEFING, bound_gentle_action, run_autonomous
+from participant.collection.replay_checkpoints import ReplayCheckpoints
 from participant.collection.segment_bridge import SegmentBridge
 from tools import segment_review as journal
 from test_user_review import Simulator, decision
@@ -24,7 +25,8 @@ def proposal(tool='act', steps=12):
 class AutonomousTests(unittest.TestCase):
     def execute(self, responses, interrupt=False, segment_decisions=2, report_stall=False,
                 max_steps=90, settle=0, scores=False, end_at_horizon=False, supervised_close=False,
-                feedback_on_error=False, camera_briefing=False, gentle_wrist_dressing=False, events=None):
+                feedback_on_error=False, camera_briefing=False, gentle_wrist_dressing=False, events=None,
+                checkpoint_steps=(), checkpoint_every_review=False):
         tmp = TemporaryDirectory()
         self.addCleanup(tmp.cleanup)
         root = Path(tmp.name)
@@ -40,8 +42,24 @@ class AutonomousTests(unittest.TestCase):
                                segment_steps=60, segment_decisions=segment_decisions, wrist_depth_panel=False,
                                post_action_settle_steps=settle, initial_slot=None, named_actions=False,
                                save_checkpoint_on_start=False, until_full_score_or_feedback=supervised_close,
-                               camera_briefing=camera_briefing, gentle_wrist_dressing=gentle_wrist_dressing)
+                               camera_briefing=camera_briefing, gentle_wrist_dressing=gentle_wrist_dressing,
+                               checkpoint_every_review=checkpoint_every_review)
         web = SegmentBridge(root=root, trace=trace, journal=path, args=args, actor_factory=Mock())
+        control = None
+        if checkpoint_steps or checkpoint_every_review:
+            control = ReplayCheckpoints(trace)
+            control.initialize(0, checkpoint_steps, max_step=max_steps - 1)
+            dispatch = sim.dispatch
+            def capture_checkpoint(tool, arguments=None):
+                if tool == 'save_checkpoint':
+                    sim.calls.append((tool, arguments))
+                    return {'checkpoint': {'key': arguments['key'], 'observation_step': sim.observation_step,
+                                           'simulation_time_s': sim.obs['simulation_time_s']}}
+                result = dispatch(tool, arguments)
+                if tool in ('hold', 'resume'):
+                    result['hold_id'] = arguments['hold_id']
+                return result
+            sim.dispatch = capture_checkpoint
         if scores:
             evaluation = root / 'output/collections' / args.run_id / 'evaluation/fixture'
             evaluation.mkdir(parents=True)
@@ -99,7 +117,8 @@ class AutonomousTests(unittest.TestCase):
                            event=events.append, prepare_observation=lambda obs, folder: ({}, []),
                            validate_decision=codex_client.validate_decision, action_schema=codex_client.SCHEMA,
                            token_usage=codex_client.TokenUsageAccounting(), check_interrupt=handle_request,
-                           reset_actor=lambda: actor, web=web)
+                           reset_actor=lambda: actor, web=web, checkpoint_control=control,
+                           checkpoint_rejected=codex_client.SimulatorRequestRejected)
         records = [json.loads(line) for line in journal.export_rows(path, args.run_id).splitlines()]
         self.assertEqual(records[0]['review_source'], 'unassessed')
         self.assertEqual(records[-1]['control_state'], 'closed')
@@ -116,6 +135,30 @@ class AutonomousTests(unittest.TestCase):
         self.assertFalse(m['human_intervention'])
         self.assertEqual(actor.invoke.call_count, 4)
         self.assertTrue(all(CAMERA_BRIEFING not in call.args[0] for call in actor.invoke.call_args_list))
+
+    def test_checkpoints_split_dressing_and_settle_then_save_live_final_hold(self):
+        events = []
+        actor, sim, manifest, records = self.execute(
+            [proposal(steps=12), proposal('finish_episode')], settle=2,
+            checkpoint_steps=(5, 13, 'finish'), events=events)
+        self.assertEqual([args['steps'] for tool, args in sim.calls if tool == 'act'], [5, 7, 1, 1])
+        self.assertEqual([args['key'] for tool, args in sim.calls if tool == 'save_checkpoint'],
+                         ['step-000005', 'step-000013', 'finish-000014'])
+        self.assertEqual([tool for tool, _ in sim.calls[-2:]], ['save_checkpoint', 'finish_episode'])
+        self.assertEqual(records[-1]['end_step'], 14)
+        self.assertEqual(actor.invoke.call_count, 2)
+        self.assertFalse(manifest['human_intervention'])
+        self.assertEqual([event['step'] for event in events if event['type'].endswith('_checkpoint')],
+                         [5, 13, 14])
+
+    def test_automatic_review_checkpoints_reuse_saved_steps_and_save_at_finish(self):
+        _, sim, manifest, records = self.execute(
+            [proposal(steps=4), proposal(steps=7), proposal('finish_episode')], segment_decisions=1,
+            checkpoint_steps=(4,), checkpoint_every_review=True)
+        self.assertEqual([args['key'] for tool, args in sim.calls if tool == 'save_checkpoint'],
+                         ['step-000004', 'finish-000011'])
+        self.assertEqual([(r['start_step'], r['end_step']) for r in records], [(0, 0), (0, 4), (4, 11)])
+        self.assertFalse(manifest['human_intervention'])
 
     def test_gentle_bounds_cover_all_stages_and_preserve_coordination_and_grips(self):
         action = np.array([[1, -.5, 0, -.4, .8, 0, -.2, 0, .8],

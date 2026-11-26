@@ -8,6 +8,20 @@
 
 시연 1–18은 종료됐다. 새 서버에서 이전 구간을 보려면 [복원 절차](start.md#저장소와-지난-갤러리-열기)를 따른다. 새 회차는 사용자 지시를 받은 뒤 새 ID와 tmux 세션에서 시작한다. [실행기](../../participant/ops/collect_autonomous.sh)는 `--gpt-only`, 이름 있는 이중 로봇 행동, 손목 깊이 영상, 구간당 최대 3결정·60전이를 설정하고 종료 후 HDF5 검증과 구간 ZIP을 남긴다. `--cover-right-wrist`로 진행하는 집중 분기는 구간당 최대 1결정이다. 감독은 매 행동 직후 해당 경계의 공식 원점수 50점을 확인하면 마지막 영상을 게시하고 수집을 닫는다. 개입 후 보류하면 같은 자세로 기다리고, 의견을 제출하거나 종료를 선택하면 그 경계에서 시연을 마친다. 모델 호출이 연속 두 번 실패하면 해당 장면에서 피드백을 기다린다. 환경 종료나 18,000전이 한도 도달은 미완료로 기록한다. 기본 행동 상한은 결정당 20전이다. 시연 6의 `--gentle-wrist-dressing`에서는 운반·착의·복구 단계가 최대 4전이, 나머지 단계가 최대 8전이다.
 
+## 시연 중 체크포인트 저장
+
+GPT 단독 시연은 원본 행동 재생과 새 착의 행동에서 체크포인트를 저장할 수 있다. 시작 전에 `--checkpoint-step 1200 --checkpoint-step 1900 --checkpoint-step finish`처럼 예약하거나, 시연 중 별도 터미널에서 요청한다. 기존 `--replay-checkpoint-step` 옵션으로도 분기점까지의 저장 전이를 지정할 수 있다.
+
+```bash
+.venv/bin/python -m participant.collection.replay_checkpoints --run RUN --step 1900
+.venv/bin/python -m participant.collection.replay_checkpoints --run RUN --step finish
+.venv/bin/python -m participant.collection.replay_checkpoints --run RUN
+```
+
+`--step next`는 아직 전송하기로 확정하지 않은 첫 전이를 고른다. 수집기는 요청 경계에서 물리 시간을 진행하지 않고 HOLD, 저장, 재개를 순서대로 실행한다. `finish`는 정상 종료 직전의 HOLD에 저장을 예약한다. 환경이 전이 상한으로 스스로 닫히기 전에 저장하려면 상한보다 앞선 전이를 지정한다. 기본 저장 위치는 `output/collections/RUN/checkpoints/`이다. 상태 조회에는 저장 결과와 `receipt.json`의 정보가 표시된다. 슬롯은 근사 복원용이며 복원 성능은 별도 시험으로 확인한다.
+
+`--checkpoint-every-review`를 켜면 새 착의 중 움직임이 있었던 검토 구간의 끝과 정상 종료 직전에 저장한다. 같은 경계에서 앞서 저장한 슬롯은 재사용한다. 원본 행동 재생 구간의 자동 저장은 `--checkpoint-step` 목록으로 지정한다. [시연 26 실행 예시](20261126-demo26-plan.ko.md#시작-명령)
+
 ## 사용자 피드백 모드와 로컬 검토 서버
 
 저장소 루트에서 준비한 Python 환경과 고정 Codex CLI를 사용한다. GPU 환경 준비는 [서버 준비](start.md), 마찰과 공식 점수 기준은 [공식 변경점](upstream.md)에 있다. 브라우저는 클립과 사용자 의견을 전달하고, 서버의 수집기가 모델 호출과 시뮬레이터 제어를 담당한다.

@@ -1,0 +1,97 @@
+{
+  "schema": "phyrc-private-series-backup-v1",
+  "repo_type": "dataset",
+  "private": true,
+  "repo_id": "leonayoon/phyrc-2027-phase1-private-backup",
+  "revision": "de22758988e509392e114d241e1526c6b0db7103",
+  "previous_revision": "afe609b7ea995cf791b16b835086c6f6fe9647c7",
+  "verified_at_utc": "2026-11-26T00:46:26.978289+00:00",
+  "asset_count": 9,
+  "total_bytes": 9515331125,
+  "journal": {
+    "path": "sessions/20261126-demo24-25/journal.sqlite3",
+    "bytes": 307200,
+    "sha256": "58d0f6d2e2b95e1355f052cf08eb1e3cce15cbeaa85b580a67c001ff956ce05c"
+  },
+  "runs": [
+    {
+      "run_id": "20261125T222243Z-demo24-sol-ultra",
+      "demonstration": 24,
+      "archive": {
+        "path": "sessions/20261126-demo24-25/20261125T222243Z-demo24-sol-ultra/capture.tar.gz",
+        "bytes": 3377695961,
+        "sha256": "cb9b3dad82e4aa6d01e307670d04ea2a997e42018c41ce049a251c662972a224"
+      },
+      "review_zip": {
+        "path": "sessions/20261126-demo24-25/20261125T222243Z-demo24-sol-ultra/review.zip",
+        "bytes": 2194426,
+        "sha256": "64ec3dc0a4215a006c570b09283ec3c3244ae7cd52f89a53cc95c63cd59155bf"
+      },
+      "review_frames": {
+        "path": "sessions/20261126-demo24-25/20261125T222243Z-demo24-sol-ultra/review-frames.tar.gz",
+        "bytes": 79123534,
+        "sha256": "8e5c33dd7ec933d255424e0a6830d183ded6bba9e9e3636247e7d2503ecd3741"
+      },
+      "review_frame_count": 1451,
+      "segments": 13,
+      "transitions": 1450,
+      "manifest_sha256": "77c37c1b0c4830af03ed37598b4fc5cf3c220ba9e0851d2e36a96abcb74f50fc",
+      "manifest_members": 238,
+      "qc": {
+        "evaluation_valid": true,
+        "quality_passed": true,
+        "raw_points": 5.0,
+        "success": false
+      }
+    },
+    {
+      "run_id": "20261125T225836Z-demo25-sol-ultra",
+      "demonstration": 25,
+      "archive": {
+        "path": "sessions/20261126-demo24-25/20261125T225836Z-demo25-sol-ultra/capture.tar.gz",
+        "bytes": 5905267786,
+        "sha256": "9ec1ce533609d65bea3b06c7da9e6aef675614d1cd6ed6da5ab05c4c084ea4f5"
+      },
+      "review_zip": {
+        "path": "sessions/20261126-demo24-25/20261125T225836Z-demo25-sol-ultra/review.zip",
+        "bytes": 14615037,
+        "sha256": "1db12c74ed995de1a72a2085514948cd310542a5e27f601e54f7591d39b82c1c"
+      },
+      "review_frames": {
+        "path": "sessions/20261126-demo24-25/20261125T225836Z-demo25-sol-ultra/review-frames.tar.gz",
+        "bytes": 135759542,
+        "sha256": "71d2684fe638ab225932d2c2614a2eec255a2888466e0530ecb8b520315936e9"
+      },
+      "review_frame_count": 2347,
+      "segments": 53,
+      "transitions": 2346,
+      "manifest_sha256": "0eca1e28cf8e60d015bdbf5e213551f801477ea731fd14d19b81dd56a46441df",
+      "manifest_members": 1136,
+      "qc": {
+        "evaluation_valid": true,
+        "quality_passed": true,
+        "raw_points": 5.0,
+        "success": false
+      },
+      "checkpoints": [
+        {
+          "step": 1200,
+          "exact_physics_checkpoint": false,
+          "restore_validated": false,
+          "archive_member_prefix": "output/collections/20261125T225836Z-demo25-sol-ultra/checkpoints/replay-001200",
+          "receipt": {
+            "path": "sessions/20261126-demo24-25/20261125T225836Z-demo25-sol-ultra/checkpoints/replay-001200/receipt.json",
+            "bytes": 1886,
+            "sha256": "9d8c41827d9583c8f823017bf3a77c90c965720d6cc5aaa4147a829237a8c3e3"
+          },
+          "slot": {
+            "path": "sessions/20261126-demo24-25/20261125T225836Z-demo25-sol-ultra/checkpoints/replay-001200/slot_replay-001200.npz",
+            "bytes": 365753,
+            "sha256": "150b1c12cfc91752f140da46f3b28eb5d0401d8a94ba4d8104734b845c1e80c5"
+          }
+        }
+      ]
+    }
+  ],
+  "verification": "Verified all paths, sizes and SHA-256 against pinned Hub LFS metadata or downloaded Git-backed files. Checked both review ZIPs and all JPEGs by a local restore and matched the separately retrievable checkpoint pair against its preserved archive and slot receipt."
+}

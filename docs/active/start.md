@@ -1,6 +1,6 @@
 # 새 서버에서 시연 복원과 다음 회차 준비
 
-시연 1–23과 별도 기술 시험을 종료했다. 갤러리는 CPU만으로 복원할 수 있다. GPU 시뮬레이터와 행동 모델은 사용자가 다음 회차를 요청할 때 준비한다. [시연 19–23 결과](20261126-demo19-23-closeout.ko.md) · [시연 19–23 비공개 백업 확인서](20261126-demo19-23-private-backup.json) · [시연 1–18 비공개 백업 확인서](20261125-demo1-18-private-backup.json)
+시연 1–25와 별도 기술 시험을 종료했다. 갤러리는 CPU만으로 복원할 수 있다. GPU 시뮬레이터와 행동 모델은 사용자가 다음 회차를 요청할 때 준비한다. [시연 24–25 결과](20261126-demo24-25-closeout.ko.md) · [시연 26 계획](20261126-demo26-plan.ko.md) · [시연 24–25 비공개 백업 확인서](20261126-demo24-25-private-backup.json) · [시연 19–23 백업](20261126-demo19-23-private-backup.json) · [시연 1–18 백업](20261125-demo1-18-private-backup.json)
 
 ## 저장소와 지난 갤러리 열기
 
@@ -22,14 +22,14 @@ hf auth whoami || hf auth login
 test -x .venv/bin/python || uv venv --python 3.12 .venv
 uv pip install --python .venv/bin/python pillow==11.0.0
 python3.12 scripts/restore_review_gallery.py \
-  --receipt docs/active/20261126-demo19-23-private-backup.json \
+  --receipt docs/active/20261126-demo24-25-private-backup.json \
   --frames-destination output/operator-traces
 .venv/bin/python tools/publish_review_gallery.py --review-dir output/segment-review \
-  --traces output/operator-traces --destination output/published-gallery --min-demo 19 --gif-only --once
+  --traces output/operator-traces --destination output/published-gallery --min-demo 24 --gif-only --once
 python3.12 -m http.server 8766 --bind 127.0.0.1 --directory output/published-gallery
 ```
 
-게시에는 아래 환경 준비 절의 Pillow와 FFmpeg가 필요하다. 위 명령은 시연 19부터 각 회차의 최신 GIF를 `output/published-gallery`에 쓴다. 시연 1–18은 앞선 확인서와 새 출력 경로를 사용해 복원한다. 로컬 컴퓨터에서 `ssh -N -L 8766:127.0.0.1:8766 SSH_HOST`를 열고 Chrome에서 `http://127.0.0.1:8766/PhyRC-review.html`을 연다. `SSH_HOST`는 새 서버에 연결할 때 쓰는 SSH 별칭이다. 시연별 최신 GIF는 `/PhyRC-gallery/<run>/index.html`에 있다. 상세 화면과 고정 구간 주소가 필요할 때는 게시 명령에서 `--gif-only`를 뺀다. Brev 같은 인증된 HTTP 경로를 쓰는 경우 같은 출처에서 갤러리 폴더만 제공한다. 수집 중에는 게시 명령에서 `--once`를 빼고 실행한다.
+게시에는 아래 환경 준비 절의 Pillow와 FFmpeg가 필요하다. 위 명령은 시연 24–25의 최신 GIF를 `output/published-gallery`에 쓴다. 이전 시연은 해당 확인서와 새 출력 경로를 사용해 복원한다. 로컬 컴퓨터에서 `ssh -N -L 8766:127.0.0.1:8766 SSH_HOST`를 열고 Chrome에서 `http://127.0.0.1:8766/PhyRC-review.html`을 연다. `SSH_HOST`는 새 서버에 연결할 때 쓰는 SSH 별칭이다. 시연별 최신 GIF는 `/PhyRC-gallery/<run>/index.html`에 있다. 상세 화면과 고정 구간 주소가 필요할 때는 게시 명령에서 `--gif-only`를 뺀다. Brev 같은 인증된 HTTP 경로를 쓰는 경우 같은 출처에서 갤러리 폴더만 제공한다. 수집 중에는 게시 명령에서 `--once`를 빼고 실행한다.
 
 HDF5·최종 평가·구간 프레임을 분석하려면 확인서의 해당 `run_id`에서 `archive.path`, `review_frames.path`와 SHA-256을 찾는다. `hf download`에 확인서의 `repo_id`, 해당 파일 경로, `--repo-type dataset --revision <revision>`을 지정한다. 내려받은 원본 아카이브는 `python3.12 participant/ops/artifacts.py restore 새_디렉터리 --archive 받은_파일.tar.gz`로 내부 목록과 파일 해시까지 검증하며 복원할 수 있다.
 

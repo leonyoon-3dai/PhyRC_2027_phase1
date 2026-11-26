@@ -708,6 +708,12 @@ def main():
                         help='Exclusive source transition boundary; defaults to the completed source length')
     parser.add_argument('--replay-observe-steps', type=int, nargs='+',
                         help='One or two ascending replay boundaries to capture as first-call visual history')
+    parser.add_argument('--replay-checkpoint-step', type=int, action='append', default=[],
+                        help='Approximate checkpoint boundary in a GPT-only replay; repeat to save several')
+    parser.add_argument('--checkpoint-step', action='append', default=[],
+                        help='Approximate checkpoint at a GPT-only transition or finish; repeat as needed')
+    parser.add_argument('--checkpoint-every-review', action='store_true',
+                        help='Save at each live GPT-only review boundary with movement and at finish')
     parser.add_argument('--seed', type=int, help='Trusted practice seed for a fresh official reset')
     parser.add_argument('--nearest-table', action='store_true',
                         help='Use the fresh checkpoint-2 collection start (automatic with local segment review)')
@@ -821,6 +827,17 @@ def main():
         parser.error('review-points must be 5..50')
     if args.replay_prefix_steps is not None and (not args.replay_prefix_run or args.replay_prefix_steps < 1):
         parser.error('positive replay-prefix-steps requires replay-prefix-run')
+    if args.replay_checkpoint_step and (not args.replay_prefix_run or not args.gpt_only):
+        parser.error('replay checkpoint steps require a GPT-only replay')
+    if args.checkpoint_step and (not args.gpt_only or any(
+            step != 'finish' and (not re.fullmatch(r'[0-9]{1,9}', step)
+                                  or not 0 < int(step) < args.max_steps)
+            for step in args.checkpoint_step)):
+        parser.error('checkpoint-step requires GPT-only and a step before max-steps, or finish')
+    if args.checkpoint_every_review and not args.gpt_only:
+        parser.error('checkpoint-every-review requires GPT-only')
+    planned_checkpoints = [*args.replay_checkpoint_step,
+                           *(step if step == 'finish' else int(step) for step in args.checkpoint_step)]
     if args.wrist_transfer and not (args.gpt_only and args.replay_prefix_steps):
         parser.error('--wrist-transfer requires --gpt-only and an exact replay prefix boundary')
     if args.gpt_task_prompt and not args.gpt_only:
@@ -887,6 +904,7 @@ def main():
         parser.error('parent-attempt and retry-reason must be supplied together')
     root = Path(__file__).resolve().parents[2]
     replay = None
+    replay_checkpoints = None
     if args.replay_prefix_run:
         from participant.collection.continuation import load_replay_prefix
         replay = load_replay_prefix(root, args.replay_prefix_run, args.replay_prefix_steps,
@@ -899,6 +917,8 @@ def main():
             parser.error('replay descendants must retain their source group')
         if len(replay.actions) >= args.max_steps:
             parser.error('max-steps must leave room after the replay prefix')
+        if any(not 1 <= step <= len(replay.actions) for step in args.replay_checkpoint_step):
+            parser.error('replay checkpoint steps must be within the replay prefix')
         args.parent_attempt = args.replay_prefix_run
         args.retry_reason = args.retry_reason or 'recorded_action_prefix_then_fresh_actor'
         args.source_group = replay.public_lineage['source_group']
@@ -1179,6 +1199,12 @@ def main():
             dump(trace / 'review_gate.json', gate)
             record_milestones()
         try:
+            if args.gpt_only:
+                from participant.collection.replay_checkpoints import ReplayCheckpoints
+                control = ReplayCheckpoints(trace)
+                control.initialize(len(replay.actions) if replay is not None else 0,
+                                   planned_checkpoints, max_step=args.max_steps - 1)
+                replay_checkpoints = control
             sim = Simulator(command, root, log)
             manifest['simulator_pid'] = sim.process.pid
             ready = sim.receive()
@@ -1195,8 +1221,10 @@ def main():
                 manifest['continuation']['initial_public_state_comparison'] = compare_public_state(
                     replay.initial_public_state, obs)
                 dump(trace / 'attempt.json', manifest)
-                for chunk in iter_action_chunks(replay.actions,
-                                                cut_boundaries=args.replay_observe_steps or ()):
+                chunks = iter_action_chunks(replay.actions, cut_boundaries=args.replay_observe_steps or ())
+                if replay_checkpoints is not None:
+                    chunks = replay_checkpoints.chunks(chunks)
+                for chunk in chunks:
                     check_interrupt()
                     before = float(obs['simulation_time_s'])
                     t = time.monotonic()
@@ -1220,6 +1248,13 @@ def main():
                            'simulation_start_s': before, 'simulation_end_s': after,
                            'environment_dispatch_wall_s': elapsed, 'model_invoked': False})
                     boundary = manifest['replay_steps_completed']
+                    if steps != chunk.steps or not active:
+                        raise RuntimeError('replay prefix ended before the requested branch boundary')
+                    if replay_checkpoints is not None:
+                        check_interrupt()
+                        saved = replay_checkpoints.save_due(sim, boundary, obs, rejected=SimulatorRequestRejected)
+                        if saved is not None:
+                            event({'type': 'replay_checkpoint', 'step': boundary, **saved})
                     if args.replay_observe_steps and boundary in args.replay_observe_steps:
                         if steps != chunk.steps or boundary != chunk.end_step:
                             raise RuntimeError('historical observation did not reach its exact replay boundary')
@@ -1240,8 +1275,6 @@ def main():
                     dump(trace / 'attempt.json', manifest)
                     check_interrupt()
                     check_review_gate()
-                    if steps != chunk.steps or not active:
-                        raise RuntimeError('replay prefix ended before the requested branch boundary')
                     if stop_reason == 'review_points':
                         break
                 replay_complete = manifest['replay_steps_completed'] == len(replay.actions)
@@ -1278,14 +1311,19 @@ def main():
                                                   'motion_playback_fps': 5}
                 try:
                     controller = run_guided
+                    checkpoint_options = {}
                     if args.gpt_only:
                         from participant.collection.autonomous import run_autonomous
                         controller = run_autonomous
+                        replay_checkpoints.start_dressing()
+                        checkpoint_options.update(checkpoint_control=replay_checkpoints,
+                                                  checkpoint_rejected=SimulatorRequestRejected)
                     obs = controller(sim=sim, actor=actor, obs=obs, args=args, root=root,
                         trace=trace, actor_root=actor_root, task=task, interface=interface,
                         manifest=manifest, event=event, prepare_observation=prepare_observation,
                         validate_decision=validate_decision, action_schema=action_schema,
-                        token_usage=token_usage, check_interrupt=check_interrupt, reset_actor=reset_guided_actor, web=web)
+                        token_usage=token_usage, check_interrupt=check_interrupt, reset_actor=reset_guided_actor,
+                        web=web, **checkpoint_options)
                 finally:
                     if web:
                         web.close()
@@ -1620,6 +1658,11 @@ def main():
             manifest['error'] = {'type': type(exc).__name__, 'message': str(exc)}
             raise
         finally:
+            if replay_checkpoints is not None:
+                try:
+                    replay_checkpoints.close()
+                except (ValueError, OSError) as exc:
+                    manifest['replay_checkpoint_control_error'] = str(exc)
             if pending_plan:
                 event({'type': 'plan_suffix_discarded', 'reason': manifest['status'],
                        'segments': [{'plan_id': item[2]['plan_id'],

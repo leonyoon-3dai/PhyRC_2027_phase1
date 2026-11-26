@@ -4,7 +4,7 @@ set -euo pipefail
 cd "$(dirname "$0")/../.."
 umask 027
 if [[ ! ${1:-} =~ ^[a-zA-Z0-9][a-zA-Z0-9_.-]{0,119}$ ]]; then
-    echo 'Usage: participant/ops/collect_autonomous.sh NEW_RUN_ID [--sol-max|--sol-ultra] [--camera-briefing] [--gentle-wrist-dressing] [--wrist-transfer-from RUN STEP] [--cover-right-wrist] [--gpt-task-prompt FILE]' >&2
+    echo 'Usage: participant/ops/collect_autonomous.sh NEW_RUN_ID [--sol-max|--sol-ultra] [--camera-briefing] [--gentle-wrist-dressing] [--wrist-transfer-from RUN STEP] [--cover-right-wrist] [--gpt-task-prompt FILE] [--replay-checkpoint-step STEP ...] [--checkpoint-step STEP|finish ...] [--checkpoint-every-review]' >&2
     exit 2
 fi
 run=$1
@@ -18,8 +18,12 @@ while (( $# )); do
     case "$1" in
         --sol-max) model=gpt-6.2-sol; effort=max ;;
         --sol-ultra) model=gpt-6.2-sol; effort=ultra ;;
-        --camera-briefing|--gentle-wrist-dressing) options+=("$1") ;;
+        --camera-briefing|--gentle-wrist-dressing|--checkpoint-every-review) options+=("$1") ;;
         --cover-right-wrist) options+=("$1"); segment_decisions=1 ;;
+        --replay-checkpoint-step|--checkpoint-step)
+            if (( $# < 2 )); then echo 'Expected a checkpoint boundary.' >&2; exit 2; fi
+            options+=("$1" "$2")
+            shift ;;
         --gpt-task-prompt)
             if (( $# < 2 )); then echo 'Expected a task prompt file.' >&2; exit 2; fi
             options+=("$1" "$2")

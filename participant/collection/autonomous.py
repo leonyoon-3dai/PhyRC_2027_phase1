@@ -47,7 +47,8 @@ def bound_gentle_action(action, steps, stage):
 
 def run_autonomous(*, sim, actor, obs, args, root, trace, actor_root, task, interface,
                    manifest, event, prepare_observation, validate_decision, action_schema,
-                   token_usage, check_interrupt, reset_actor, web):
+                   token_usage, check_interrupt, reset_actor, web, checkpoint_control=None,
+                   checkpoint_rejected=None):
     schema = dict(action_schema, required=[*action_schema['required'], 'observation_review'],
                   properties=dict(action_schema['properties'], observation_review=REVIEW_SCHEMA))
     supervised_close = args.until_full_score_or_feedback
@@ -79,6 +80,28 @@ def run_autonomous(*, sim, actor, obs, args, root, trace, actor_root, task, inte
 
     def persist():
         write_json(trace / 'attempt.json', manifest)
+
+    def execute(action, steps, kind, index, intent):
+        nonlocal obs, active, acknowledged_step, recent_actions
+        step = manifest['simulation_steps']
+        end = step + steps
+        boundaries = checkpoint_control.boundaries(step, end) if checkpoint_control else (end,)
+        first_action = len(web.actions)
+        for boundary_step in boundaries:
+            obs, active = apply_action(sim, obs, manifest, event, web, action, boundary_step - step,
+                                       kind, index, intent, allow_end=True)
+            acknowledged_step = manifest['simulation_steps']
+            persist()
+            check_interrupt()
+            if not active:
+                break
+            if checkpoint_control:
+                record = checkpoint_control.save_due(sim, acknowledged_step, obs,
+                                                     rejected=checkpoint_rejected, prefix='step')
+                if record is not None:
+                    event({'type': 'dressing_checkpoint', 'step': acknowledged_step, **record})
+            step = acknowledged_step
+        recent_actions = (recent_actions + web.actions[first_action:])[-4:]
 
     def infer():
         nonlocal consecutive_failures, actor, camera_briefing_pending
@@ -179,6 +202,13 @@ def run_autonomous(*, sim, actor, obs, args, root, trace, actor_root, task, inte
         manifest.update(status='held', activity='awaiting_web_feedback' if overridden else 'autonomous_review')
         receipt.update(current_hold=hold, hold_count=hold_count, observation_step=step)
         persist()
+        automatic_checkpoints = checkpoint_control is not None and getattr(args, 'checkpoint_every_review', False)
+        if active and automatic_checkpoints and step > start and not terminal:
+            record = checkpoint_control.reuse_saved(step, str(step))
+            if record is None:
+                record = checkpoint_control.save_held(
+                    sim, step, obs, f'review-{step:06d}', str(step), rejected=checkpoint_rejected)
+            event({'type': 'review_checkpoint', 'step': step, **record})
         if overridden:
             reply = web.wait(record, sim, check_interrupt, event)
             receipt['intervention_count'] += 1
@@ -193,7 +223,14 @@ def run_autonomous(*, sim, actor, obs, args, root, trace, actor_root, task, inte
                 direction = reply['text']
             set_control_state(journal, run, 'closing' if terminal else 'running')
         if terminal:
+            save_final = checkpoint_control is not None and checkpoint_control.begin_finish()
             if active:
+                if save_final or automatic_checkpoints:
+                    record = checkpoint_control.reuse_saved(step, 'finish')
+                    if record is None:
+                        record = checkpoint_control.save_held(
+                            sim, step, obs, f'finish-{step:06d}', 'finish', rejected=checkpoint_rejected)
+                    event({'type': 'final_checkpoint', 'step': step, **record})
                 sim.dispatch('finish_episode')
             set_control_state(journal, run, 'closed')
             receipt['close_reason'] = terminal
@@ -280,21 +317,13 @@ def run_autonomous(*, sim, actor, obs, args, root, trace, actor_root, task, inte
                 event(dict(type='gentle_wrist_action', decision_index=index, stage=decision['stage'],
                            velocity_scale=scale, requested_action=requested_action.tolist(),
                            sent_action=action.tolist(), requested_steps=decision['steps'], sent_steps=duration))
-            obs, active = apply_action(sim, obs, manifest, event, web, action, duration,
-                                       'model', index, decision['reason'], allow_end=True)
-            acknowledged_step = manifest['simulation_steps']
+            execute(action, duration, 'model', index, decision['reason'])
             actions += 1
-            recent_actions = (recent_actions + [web.actions[-1]])[-4:]
-            persist()
-            check_interrupt()
             settle = min(settle, args.max_steps - acknowledged_step)
             goal_reached = full_score(acknowledged_step)
             if not goal_reached and active and settle and control_state(journal, run) != 'pause_requested':
-                obs, active = apply_action(sim, obs, manifest, event, web, np.zeros((2, 9), dtype=np.float32),
-                                           settle, 'controller_settle', index, decision['reason'], allow_end=True)
-                acknowledged_step = manifest['simulation_steps']
-                recent_actions = (recent_actions + [web.actions[-1]])[-4:]
-                persist()
+                execute(np.zeros((2, 9), dtype=np.float32), settle, 'controller_settle',
+                        index, decision['reason'])
                 goal_reached = full_score(acknowledged_step)
             if goal_reached:
                 boundary('full_score', None, 'full_score')
