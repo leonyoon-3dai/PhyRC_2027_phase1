@@ -92,10 +92,38 @@
     {
       "demo": 45,
       "step": 212,
-      "kind": "latest_acknowledged",
+      "kind": "intermediate",
       "asset": "demo45-step000212.jpg",
       "source_sha256": "b2e54dbeed489b1feb6ba838c34dfaeb5aeedfa7e37ffe920dc044b3c2f8e7db",
       "asset_sha256": "6bfc4de13a3500f6b11aeb32e528ed03092a7d6abac155f1f49a3a3a3b138a98"
+    },
+    {
+      "demo": 45,
+      "step": 226,
+      "kind": "intermediate",
+      "asset": "demo45-step000226.jpg",
+      "source_sha256": "ce909b590fe34dc4f965f51628a74ee043326a80df4d93217781dab403ab8678",
+      "asset_sha256": "4d6f06bf672c0f75455a2b382b8906bf168e5a71a0b71f7415a40bf3283dc3a1"
+    },
+    {
+      "demo": 45,
+      "step": 294,
+      "kind": "end_checkpoint",
+      "asset": "demo45-step000294.jpg",
+      "source_sha256": "adccf6a99d4ad5f8c21bedc3372b2a48bc9ccc1b225b2e700a672c01d14f907d",
+      "asset_sha256": "7cd3f84acf0ff08054150c444289b39681857993d8b5a8fbe8d6fe7b15063c8e"
+    }
+  ],
+  "closeout_markers": [
+    {
+      "demo": 44,
+      "step": 400,
+      "finished_at_utc": "2026-11-27T06:43:27.300308+00:00"
+    },
+    {
+      "demo": 45,
+      "step": 294,
+      "finished_at_utc": "2026-11-27T06:53:28.261700+00:00"
     }
   ]
 }

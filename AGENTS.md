@@ -1,12 +1,12 @@
 # Codex 실행 인계
 
-**다음 실험은 시연 37·38의 한쪽 팔꿈치 착의다.** 실행 요청을 받으면 [시연 37·38 계획](docs/active/20261127-demo37-38-plan.ko.md)에서 각 슬롯과 조작 방법을 확인하고, 복원·정착 후 새 0전이부터 센다. 두 회차 모두 새 400전이 상한과 계획의 조기 종료 조건을 따른다. [마감 기록과 복원](docs/active/20261126-demo26-32-handoff.ko.md) · [시연 영상과 분석](docs/gallery/README.md) · [새 서버 준비](docs/active/start.md)
+**시연 45까지 수집을 마쳤다.** 다음 시연은 사용자가 [README의 후보](README.md#다음-실험-후보--영상-검토-후-선택)를 검토하고 출발 슬롯과 방법을 선택한 뒤 실행한다. 복원·정착 후 새 0전이에서 양쪽 파지와 작업 팔의 손목을 다시 확인한다. [시연 영상과 종료 슬롯](docs/gallery/README.md) · [44·45 분기 분석](docs/gallery/20261127-demo44-45-branches/README.md) · [새 서버 준비](docs/active/start.md)
 
 ## 필요한 파일만 읽기
 
 | 지금 할 일 | 읽을 파일 |
 |---|---|
-| 시연 37·38 출발 슬롯, 조작 방법과 종료 기준 | [한쪽 팔꿈치 계획](docs/active/20261127-demo37-38-plan.ko.md) |
+| 가장 최근 종료 전이, 출발점과 다음 시연 후보 | [시연 37–45 결과](docs/gallery/README.md#시연-분석), [README](README.md) |
 | 시연 33·34 동시 실행, 브라우저 주소 전달, 성능 점검 | [동시 실행 기록](docs/active/20261127-demo33-34-plan.ko.md) |
 | 시작점·목표·실행 여부 확인 | [README](README.md), [새 서버 준비](docs/active/start.md) |
 | 움직임·의미 라벨·득점 판정 선택 | [실험 계획](docs/active/experiment.md) |

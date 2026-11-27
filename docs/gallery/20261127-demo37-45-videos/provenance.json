@@ -1,0 +1,333 @@
+{
+  "schema": "phyrc-public-five-camera-video-provenance-v1",
+  "generated_utc": "2026-11-27T06:58:05.317683+00:00",
+  "scope": "Designated public RGB boundary images and their fixed camera and step labels only. No audio or auxiliary streams.",
+  "source": {
+    "panel_px": [
+      512,
+      828
+    ],
+    "policy_hz": 20,
+    "ordering": "Sequential JPEG boundary indices 0 through the listed end, inclusive. The final boundary follows the last acknowledged transition.",
+    "sequence_sha256": "SHA-256 of the concatenated 32-byte SHA-256 digests of the original JPEGs in ascending boundary order.",
+    "cameras": {
+      "top": "overview",
+      "middle_left": "robot_1_head",
+      "middle_right": "robot_0_head",
+      "bottom_left": "robot_1_wrist",
+      "bottom_right": "robot_0_wrist"
+    }
+  },
+  "mp4": {
+    "encode": "FFmpeg libx264, slow preset, H.264 yuv420p, fast-start, one video track",
+    "size_px": [
+      512,
+      828
+    ],
+    "fps": 20,
+    "playback_speed": 1,
+    "ordering": "All source boundary images in sequence, one per output frame, no omissions, temporal interpolation or wall-clock waits."
+  },
+  "gif": {
+    "size_px": [
+      640,
+      345
+    ],
+    "playback_speed": 1,
+    "ordering": "A public boundary every eight transitions and the exact final boundary. Each sample holds for the corresponding simulated time and the final frame holds for 100 ms.",
+    "layout": "Overview left; R1 and R0 head and wrist views on the right.",
+    "loop": true
+  },
+  "episodes": [
+    {
+      "demo": 35,
+      "record_status": "completed",
+      "capture_qc_passed": true,
+      "public_rgb_boundary_source": {
+        "boundaries": [
+          0,
+          263
+        ],
+        "frames": 264,
+        "sequence_sha256": "cb91e61f68bba816f24de3e67b902e39731650b2618783ba40b99a329dd3a6a6",
+        "edge_frame_sha256": {
+          "Step 0": "b699a035ffd0a912ebc2376f158985a78799180f4547ca7c60ca016977d98917",
+          "Step 263": "3a648b047a08874ce2eb78699335c1563de44a667cf5a11fb6f88feb7e8e8740"
+        },
+        "archive": {
+          "receipt": "docs/active/20261127-demo35-36-private-backup.json",
+          "revision": "d87c684fc3313d9bb1e04368ef9e71a1da05cdd0",
+          "bytes": 16141258,
+          "sha256": "219501b16ee0d4f64d62f46d8e617da7125cc5502598c7b0c8e0cc85aae5ea03"
+        }
+      },
+      "mp4": {
+        "path": "docs/gallery/assets/20261127-demo35-full/event.mp4",
+        "bytes": 679825,
+        "sha256": "e086e8d3ecdbb88a6edc3fd2cbe14c8d71d8a259067e6a9bd5bfa8baf5d05a85",
+        "frames": 264,
+        "duration_s": 13.2
+      }
+    },
+    {
+      "demo": 36,
+      "record_status": "completed",
+      "capture_qc_passed": true,
+      "public_rgb_boundary_source": {
+        "boundaries": [
+          0,
+          269
+        ],
+        "frames": 270,
+        "sequence_sha256": "d12f9fa773b96b999904c5bea5d378b19e669639faa7cf2146c87ccedec8023a",
+        "edge_frame_sha256": {
+          "Step 0": "e36efeab74f73f474b6282e6429355d02cf3d32099bc9e3d1d227b44ab5591af",
+          "Step 269": "a276523bbeb914f5bb46756e449c9b3ee5f02c6593d1b255eceb58d4bc2941f4"
+        },
+        "archive": {
+          "receipt": "docs/active/20261127-demo35-36-private-backup.json",
+          "revision": "d87c684fc3313d9bb1e04368ef9e71a1da05cdd0",
+          "bytes": 15667734,
+          "sha256": "71898abb86fbbf6cfa0a3643fad933955cf3f87d4ef2b8d291d2ff592e896e28"
+        }
+      },
+      "mp4": {
+        "path": "docs/gallery/assets/20261127-demo36-full/event.mp4",
+        "bytes": 690655,
+        "sha256": "252b7d30303b335a063cea4d2ccc572edd0310ee2ba19b92df884f5a4cec0b3c",
+        "frames": 270,
+        "duration_s": 13.5
+      }
+    },
+    {
+      "demo": 37,
+      "record_status": "completed",
+      "capture_qc_passed": true,
+      "public_rgb_boundary_source": {
+        "boundaries": [
+          0,
+          400
+        ],
+        "frames": 401,
+        "sequence_sha256": "a7031fa271264ac3c8e25cdd366a8f0993b422c6c32f5e3f95ffd322072191c4",
+        "edge_frame_sha256": {
+          "Step 0": "3f3c1501e919cf0f917a4778c8da0d8db3503605163a9d5af162059e2373e65d",
+          "Step 400": "c6a6cf0467a1a85706ec7670b7142923afc6efb58f42a70c73803e3f86b2f194"
+        }
+      },
+      "mp4": {
+        "path": "docs/gallery/assets/20261127-demo37-full/event.mp4",
+        "bytes": 687088,
+        "sha256": "3287b6911194bc5c86a1e875689f190817cea268732ce8ca7879a7cec0b96ff9",
+        "frames": 401,
+        "duration_s": 20.05
+      }
+    },
+    {
+      "demo": 38,
+      "record_status": "completed",
+      "capture_qc_passed": true,
+      "public_rgb_boundary_source": {
+        "boundaries": [
+          0,
+          399
+        ],
+        "frames": 400,
+        "sequence_sha256": "66bcee221367d1e1e3d7ddf0712524f8086b96e9ad7ade9c9a3f3678687546ef",
+        "edge_frame_sha256": {
+          "Step 0": "ff38d29929242174a758233731c74eaecf6324e8d6dfa1a99d2f625848616515",
+          "Step 399": "33fbb9f96d5c45ae74df40335d4a6cdd60b4e89b5aa4d77be90adaee46270f48"
+        }
+      },
+      "mp4": {
+        "path": "docs/gallery/assets/20261127-demo38-full/event.mp4",
+        "bytes": 689837,
+        "sha256": "3219ece27d7cb68bf34cf2dd630339b549dd9fdb5df6c5c91f4650862d349741",
+        "frames": 400,
+        "duration_s": 20.0
+      }
+    },
+    {
+      "demo": 39,
+      "record_status": "interrupted",
+      "capture_qc_passed": false,
+      "public_rgb_boundary_source": {
+        "boundaries": [
+          0,
+          163
+        ],
+        "frames": 164,
+        "sequence_sha256": "e2d199294c0e403278053166d79661329ea01e99624b6da636773634b74b5825",
+        "edge_frame_sha256": {
+          "Step 0": "6571ece5fa39c234be6e4f61f8275212ccd541958169576e333393bd2e7b8bbd",
+          "Step 163": "4220c595fb71ce95f77521fbaf6e61e1f8142fd0068431839628d96b0f403793"
+        }
+      },
+      "mp4": {
+        "path": "docs/gallery/assets/20261127-demo39-full/event.mp4",
+        "bytes": 656443,
+        "sha256": "edd8d83558bfbc7969436fab1432052753ff4afa52154bb9f710d0923b9431a6",
+        "frames": 164,
+        "duration_s": 8.2
+      }
+    },
+    {
+      "demo": 40,
+      "record_status": "completed",
+      "capture_qc_passed": true,
+      "public_rgb_boundary_source": {
+        "boundaries": [
+          0,
+          400
+        ],
+        "frames": 401,
+        "sequence_sha256": "5b6168c3e4be00d50828ee72198f0d746a18c9609c1faddf5c431664f42cda46",
+        "edge_frame_sha256": {
+          "Step 0": "093a3a99722f32e6b0570d38e10aab37a6c16f0ade26a33e3d169ab6edda9fe0",
+          "Step 400": "de149d46533b4957ffeb51bf22eae1423048364a79a2430aa33a815cbffe09d3"
+        }
+      },
+      "mp4": {
+        "path": "docs/gallery/assets/20261127-demo40-full/event.mp4",
+        "bytes": 688798,
+        "sha256": "c055c5999f6d8c683a87d95a439900c4028b0febfc8cb7bf75c932d930fa019b",
+        "frames": 401,
+        "duration_s": 20.05
+      }
+    },
+    {
+      "demo": 41,
+      "record_status": "completed",
+      "capture_qc_passed": true,
+      "public_rgb_boundary_source": {
+        "boundaries": [
+          0,
+          111
+        ],
+        "frames": 112,
+        "sequence_sha256": "793562e9a659c2ef8f7e5223a22b124f6151add29f71fb91f9f1050a621ccb00",
+        "edge_frame_sha256": {
+          "Step 0": "42b9f19d92c562a4e11a66d13f4b9ba185f5783ec7a525b65d7e9e08204632b2",
+          "Step 111": "ec705b8a65f838024df0e381f989f00bf7de4b84efc9ddc842a0ffb14deb608a"
+        }
+      },
+      "mp4": {
+        "path": "docs/gallery/assets/20261127-demo41-full/event.mp4",
+        "bytes": 507974,
+        "sha256": "fbd3d8a36183b6bcbf6c9832c572b36d96f943af9a25cda13ef303837583230b",
+        "frames": 112,
+        "duration_s": 5.6
+      }
+    },
+    {
+      "demo": 42,
+      "record_status": "completed",
+      "capture_qc_passed": true,
+      "public_rgb_boundary_source": {
+        "boundaries": [
+          0,
+          400
+        ],
+        "frames": 401,
+        "sequence_sha256": "1893786bf9adb9c6f9d5cf07f33b04f21415e56b8a499a35a5c5db919dcdfe26",
+        "edge_frame_sha256": {
+          "Step 0": "8aedd3d07bb062f07499a609c9b69a1160a27af47b410b24781480efd4e7a37a",
+          "Step 400": "881e3aa50e886afce2ea405957b2633db046786f32f62f4d4c6198a2129eff2c"
+        }
+      },
+      "mp4": {
+        "path": "docs/gallery/assets/20261127-demo42-full/event.mp4",
+        "bytes": 689906,
+        "sha256": "4bdb3cd20b362d5c1cb4aabceca7e1bb9522ff0ad06ebc87ac3dac7735593f8b",
+        "frames": 401,
+        "duration_s": 20.05
+      }
+    },
+    {
+      "demo": 43,
+      "record_status": "completed",
+      "capture_qc_passed": true,
+      "public_rgb_boundary_source": {
+        "boundaries": [
+          0,
+          164
+        ],
+        "frames": 165,
+        "sequence_sha256": "c38019e2fee5a33999532afca66a4c37eebe3923ee29477ae8fa475e4162b7bd",
+        "edge_frame_sha256": {
+          "Step 0": "851ea4cbd861d0cb77c7878fe32953c9caa4114648ce681c8e973f39c0017a3b",
+          "Step 164": "804739286bbddc82dd5c57511b736ac8de50a468ed80aa951b09c2bf65d47719"
+        }
+      },
+      "mp4": {
+        "path": "docs/gallery/assets/20261127-demo43-full/event.mp4",
+        "bytes": 695223,
+        "sha256": "f205397d527de4234716e359acd3b6eb37836f899f396e3181d5600f1aa1ca25",
+        "frames": 165,
+        "duration_s": 8.25
+      }
+    },
+    {
+      "demo": 44,
+      "record_status": "completed",
+      "capture_qc_passed": true,
+      "public_rgb_boundary_source": {
+        "boundaries": [
+          0,
+          400
+        ],
+        "frames": 401,
+        "sequence_sha256": "84c5a8bf824a8efec9c309b008ffa0b1b04aac3e2378a568b9954f575c044784",
+        "edge_frame_sha256": {
+          "Step 0": "218c6f8ad7e2da6432426d4ec9cc87e8aa19ae3c2fc998710d95b193b6b9ae07",
+          "Step 400": "ea2026f1239e9f99c4779615a6aa329fa90d1505e03576694b87c40ae744f3ab"
+        }
+      },
+      "mp4": {
+        "path": "docs/gallery/assets/20261127-demo44-full/event.mp4",
+        "bytes": 726101,
+        "sha256": "f2423f3f9a19d49bd4a7218047487917cb7721254b1da454c04a3b5f363a235e",
+        "frames": 401,
+        "duration_s": 20.05
+      },
+      "gif": {
+        "path": "docs/gallery/20261127-demo37-45-videos/demonstration-44.gif",
+        "bytes": 3276774,
+        "sha256": "43f8b9e739edc1f34e8ebb43b77e60a1e35d37cc413fce6e439ab6ecd97c960a",
+        "frames": 51,
+        "duration_s": 20.1
+      }
+    },
+    {
+      "demo": 45,
+      "record_status": "completed",
+      "capture_qc_passed": true,
+      "public_rgb_boundary_source": {
+        "boundaries": [
+          0,
+          294
+        ],
+        "frames": 295,
+        "sequence_sha256": "c37208daa1651f810ae522a1cd61e5ac004469a53d35c449ffff623cfacfecb7",
+        "edge_frame_sha256": {
+          "Step 0": "c290986638d99191db4635150800e91ca2867d938cb3b7c3ce40c6d0420ef7e5",
+          "Step 294": "adccf6a99d4ad5f8c21bedc3372b2a48bc9ccc1b225b2e700a672c01d14f907d"
+        }
+      },
+      "mp4": {
+        "path": "docs/gallery/assets/20261127-demo45-full/event.mp4",
+        "bytes": 650465,
+        "sha256": "fc97b816c8fc12a96a4bc47d91097a4cab0bf06bcb2a96d7d68662e9d776789a",
+        "frames": 295,
+        "duration_s": 14.75
+      },
+      "gif": {
+        "path": "docs/gallery/20261127-demo37-45-videos/demonstration-45.gif",
+        "bytes": 2395416,
+        "sha256": "7b4d7c14ffe7c4a5d21d2d961c53e4507bc353cfa5ec5db33611c19ae42373ea",
+        "frames": 38,
+        "duration_s": 14.8
+      }
+    }
+  ]
+}
