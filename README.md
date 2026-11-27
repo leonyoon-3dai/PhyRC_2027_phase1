@@ -1,5 +1,6 @@
 # PhyRC 2027 · 두 로봇의 티셔츠 착의
 
+[![시연 44·45 분기 분석](docs/assets/demo44-45-branches-menu.svg)](docs/gallery/20261127-demo44-45-branches/README.md)
 [![시연 영상 모음](docs/assets/demonstration-videos-menu.svg)](docs/gallery/README.md#시연-영상)
 [![시연 결과와 분석](docs/assets/demonstration-analysis-menu.svg)](docs/gallery/README.md#시연-분석)
 [![50점 착의 정책 연구](docs/assets/dressing-policy-research-menu.svg)](docs/active/20261126-dressing-policy-research.ko.md)
