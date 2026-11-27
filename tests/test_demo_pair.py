@@ -138,6 +138,42 @@ class PairTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'compatibility'):
                 pair.source_plan(self.root, source, 'test')
 
+    def test_elbow_study_uses_one_shared_slot_with_distinct_tasks(self):
+        original = self.fixture(pair.ELBOW_SOURCES[0])
+        shared = self.put(pair.ELBOW_COMMON, b'Common elbow criterion')
+        tasks = {35: b'Outer hem task', 36: b'Near cuff task'}
+        for demo, path in pair.ELBOW_PROMPTS.items():
+            self.put(path, tasks[demo])
+        for source in pair.ELBOW_SOURCES:
+            demo = source[0]
+            with self.subTest(demo=demo), patch.object(checkpoint, 'ROOT', self.root):
+                run = pair.source_plan(self.root, source, 'elbow')
+                cmd = pair.collector_command(run)
+                self.assertEqual(run['source_step'], 1200)
+                self.assertEqual(run['local_stop'], 400)
+                self.assertNotIn('--until-full-score-or-feedback', cmd)
+                cmd[cmd.index('--slot-study-original-prompt') + 1] = str(original)
+                task_args = [i + 1 for i, value in enumerate(cmd) if value == '--slot-study-task-prompt']
+                self.assertEqual([cmd[i] for i in task_args], [str(pair.ELBOW_COMMON), str(pair.ELBOW_PROMPTS[demo])])
+                for i in task_args:
+                    cmd[i] = str(self.root / cmd[i])
+                with patch.object(codex_client, '__file__', str(self.root / 'participant/collection/codex_client.py')), \
+                     patch.object(codex_client.signal, 'signal'), \
+                     patch.object(codex_client, 'source_snapshot', return_value={}), \
+                     patch.object(codex_client, 'Simulator', side_effect=StopBeforeSimulator) as sim, \
+                     patch.object(sys, 'argv', cmd[2:]), self.assertRaises(StopBeforeSimulator):
+                    codex_client.main()
+                self.assertIn('/' + run['slot'], sim.call_args.args[0])
+                trace = self.root / 'output/operator-traces' / run['run_id']
+                actual = (trace / 'prompt.txt').read_bytes()
+                self.assertIn(shared.read_bytes() + b'\n\n' + tasks[demo], actual)
+                self.assertNotIn(self.base, actual)
+                for other_demo, other_task in tasks.items():
+                    if other_demo != demo:
+                        self.assertNotIn(other_task, actual)
+                info = pair.read(trace / 'attempt.json')
+                self.assertEqual(info['slot_study']['historical_prompt_sha256'], pair.digest(original))
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -757,6 +757,8 @@ def main():
                         help='Use this operator task prompt for a GPT-only collection')
     parser.add_argument('--slot-study-original-prompt', type=Path,
                         help='Use a verified historical rendered prompt and the Demo 33/34 addendum on a slot reset')
+    parser.add_argument('--slot-study-task-prompt', type=Path, action='append',
+                        help='Replace the historical slot-study task with these prompt files in order')
     parser.add_argument('--slot-study-stop-step', type=int,
                         help='Close the study at this local transition while the simulator can still save a slot')
     parser.add_argument('--cover-right-wrist', action='store_true',
@@ -796,6 +798,8 @@ def main():
     if args.slot_study_stop_step is not None and (not args.slot_study_original_prompt
             or not 0 < args.slot_study_stop_step < args.max_steps):
         parser.error('slot study stop must be positive and before the environment horizon')
+    if args.slot_study_task_prompt and not args.slot_study_original_prompt:
+        parser.error('--slot-study-task-prompt requires --slot-study-original-prompt')
     args.nearest_table = args.nearest_table or bool(args.segment_review_dir and not args.slot_study_original_prompt)
     if args.model is None:
         args.model = DEFAULT_MODEL if args.nearest_table else LEGACY_MODEL
@@ -1062,7 +1066,8 @@ def main():
         if args.cover_right_wrist:
             prompt_file = 'cover_right_wrist.txt'
         prompt_path = args.gpt_task_prompt or (root / 'participant/collection/prompts' / prompt_file)
-        task = prompt_path.read_text().rstrip()
+        task = '\n\n'.join(path.read_text().rstrip()
+                           for path in (args.slot_study_task_prompt or [prompt_path]))
         contract = OBSERVATION_AND_ACTION_TASK.replace(
             'A stop applies neutral motion for one control step and preserves grip intent.',
             'The supervisor controls episode closure.' if args.until_full_score_or_feedback else
@@ -1080,6 +1085,8 @@ def main():
                 'At uncertain contact, use shorter steps, observe the result, and correct.')
             task += '\n\n' + STABLE_WRIST_TRAVEL_DEFAULT
         task += '\n\n' + contract
+        if args.slot_study_task_prompt and args.wrist_depth_panel:
+            task += '\n\n' + WRIST_DEPTH_TASK
     action_schema = SCHEMA
     if args.named_actions:
         from participant.collection import named_actions
@@ -1092,8 +1099,11 @@ def main():
         if (source_attempt.get('run_id') != args.parent_attempt
                 or source_attempt.get('prompt_sha256') != original_digest):
             raise ValueError('slot study historical prompt does not match the parent attempt')
-        addendum = (root / 'participant/collection/prompts/demo33_34_dressing_addendum.txt').read_bytes()
-        task = original.decode('utf-8') + '\n\n' + addendum.decode('utf-8')
+        if args.slot_study_task_prompt:
+            addendum = task.encode('utf-8')
+        else:
+            addendum = (root / 'participant/collection/prompts/demo33_34_dressing_addendum.txt').read_bytes()
+            task = original.decode('utf-8') + '\n\n' + addendum.decode('utf-8')
     if args.actor_backend == 'app-server':
         from participant.collection.codex_app_actor import AppActor as Actor
     else:
@@ -1160,6 +1170,8 @@ def main():
         manifest['slot_study'] = {'source_run': args.parent_attempt, 'historical_prompt_sha256': original_digest,
                                   'addendum_sha256': hashlib.sha256(addendum).hexdigest(),
                                   'stop_step': args.slot_study_stop_step, 'environment_horizon': args.max_steps}
+        if args.slot_study_task_prompt:
+            manifest['slot_study']['prompt_mode'] = 'replacement_task'
     if replay is not None:
         manifest['continuation'] = dict(replay.public_lineage)
     if args.named_actions:

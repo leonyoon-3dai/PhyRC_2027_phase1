@@ -1,0 +1,115 @@
+{
+  "schema": "phyrc-private-series-backup-v1",
+  "repo_type": "dataset",
+  "private": true,
+  "repo_id": "leonayoon/phyrc-2027-phase1-private-backup",
+  "previous_revision": "7dbccc9a654207596b60b9fd2cec331318c16238",
+  "runs": [
+    {
+      "run_id": "20261127T013634Z-demo35-36-demo35-sol-ultra",
+      "demonstration": 35,
+      "archive": {
+        "path": "sessions/20261127-demo35-36/20261127T013634Z-demo35-36-demo35-sol-ultra/capture.tar.gz",
+        "bytes": 743294742,
+        "sha256": "11939747924edebc9ddc385129512085b2af5fbbbdfd0eafb05461b35c7a0b08"
+      },
+      "review_zip": {
+        "path": "sessions/20261127-demo35-36/20261127T013634Z-demo35-36-demo35-sol-ultra/review.zip",
+        "bytes": 3755171,
+        "sha256": "c44d8a59cd507bb849cf69ac4e29987fe94de6a25bfdf02eb19f196e20325e5c"
+      },
+      "review_frames": {
+        "path": "sessions/20261127-demo35-36/20261127T013634Z-demo35-36-demo35-sol-ultra/review-frames.tar.gz",
+        "bytes": 16141258,
+        "sha256": "219501b16ee0d4f64d62f46d8e617da7125cc5502598c7b0c8e0cc85aae5ea03"
+      },
+      "review_frame_count": 264,
+      "segments": 19,
+      "transitions": 263,
+      "manifest_sha256": "913f9d06297196775ec7afd55b3075fdff6994de69ae76d05bc3e3ec830e5895",
+      "manifest_members": 535,
+      "qc": {
+        "evaluation_valid": true,
+        "quality_passed": true,
+        "raw_points": 0.0,
+        "success": false
+      },
+      "checkpoints": [
+        {
+          "step": 263,
+          "exact_physics_checkpoint": false,
+          "restore_validated": false,
+          "archive_member_prefix": "output/collections/20261127T013634Z-demo35-36-demo35-sol-ultra/checkpoints/finish-000263",
+          "receipt": {
+            "path": "sessions/20261127-demo35-36/20261127T013634Z-demo35-36-demo35-sol-ultra/checkpoints/finish-000263/receipt.json",
+            "bytes": 1902,
+            "sha256": "aa2a458611978e613d6c122cbae39652fd405648b0cdce1d0cee7f5f0a8c00a1"
+          },
+          "slot": {
+            "path": "sessions/20261127-demo35-36/20261127T013634Z-demo35-36-demo35-sol-ultra/checkpoints/finish-000263/slot_finish-000263.npz",
+            "bytes": 364294,
+            "sha256": "681128e6a6e3ee7a75f8643156e66cee985a06a2e3432726c4c4ff2327a1656e"
+          }
+        }
+      ]
+    },
+    {
+      "run_id": "20261127T013634Z-demo35-36-demo36-sol-ultra",
+      "demonstration": 36,
+      "archive": {
+        "path": "sessions/20261127-demo35-36/20261127T013634Z-demo35-36-demo36-sol-ultra/capture.tar.gz",
+        "bytes": 716738246,
+        "sha256": "fb341b020d3902e35868d02682e1d18cfcbea3a385eb3ba4565c3771498d7f43"
+      },
+      "review_zip": {
+        "path": "sessions/20261127-demo35-36/20261127T013634Z-demo35-36-demo36-sol-ultra/review.zip",
+        "bytes": 3643976,
+        "sha256": "6569ed11248e9e63b5319d3c2828d0e6f797d86e9076a84d78363e371cf77e44"
+      },
+      "review_frames": {
+        "path": "sessions/20261127-demo35-36/20261127T013634Z-demo35-36-demo36-sol-ultra/review-frames.tar.gz",
+        "bytes": 15667734,
+        "sha256": "71898abb86fbbf6cfa0a3643fad933955cf3f87d4ef2b8d291d2ff592e896e28"
+      },
+      "review_frame_count": 270,
+      "segments": 20,
+      "transitions": 269,
+      "manifest_sha256": "1465ebec65877603bce984be54f9ef54265d39c5b5eaf9a682138b690390548a",
+      "manifest_members": 518,
+      "qc": {
+        "evaluation_valid": true,
+        "quality_passed": true,
+        "raw_points": 0.0,
+        "success": false
+      },
+      "checkpoints": [
+        {
+          "step": 269,
+          "exact_physics_checkpoint": false,
+          "restore_validated": false,
+          "archive_member_prefix": "output/collections/20261127T013634Z-demo35-36-demo36-sol-ultra/checkpoints/finish-000269",
+          "receipt": {
+            "path": "sessions/20261127-demo35-36/20261127T013634Z-demo35-36-demo36-sol-ultra/checkpoints/finish-000269/receipt.json",
+            "bytes": 1902,
+            "sha256": "c0a76f97bf88bcccf6bedb85ba49a234e1745e2f799d60122371e9471120dbb8"
+          },
+          "slot": {
+            "path": "sessions/20261127-demo35-36/20261127T013634Z-demo35-36-demo36-sol-ultra/checkpoints/finish-000269/slot_finish-000269.npz",
+            "bytes": 362916,
+            "sha256": "08148c365eb3752aa4dfef89ffc0fdf0aee812c6e0711e7f6f56cf2387a92016"
+          }
+        }
+      ]
+    }
+  ],
+  "journal": {
+    "path": "sessions/20261127-demo35-36/journal.sqlite3",
+    "bytes": 196608,
+    "sha256": "058c3bf16cd85faccc16e736a118096b43bcc57e4f8b911775ba86f7a148c1f9"
+  },
+  "asset_count": 11,
+  "total_bytes": 1500168749,
+  "verification": "The source capture archive and its manifest were checksum-verified during packaging. Every reviewed clip was checked against the filtered SQLite journal, and every restored JPEG was compared byte-for-byte. Checkpoint SHA-256 hashes were checked against their close receipts. All 11 files were downloaded at the exact private revision and verified by size and SHA-256.",
+  "revision": "d87c684fc3313d9bb1e04368ef9e71a1da05cdd0",
+  "remote_download_verified": true
+}

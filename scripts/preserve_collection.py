@@ -30,6 +30,11 @@ OBS_REQUIRED = {'observation.json', 'public_depth.npz', 'overview.png', 'robot_0
 OBS_OPTIONAL = {'current_wrist_depth.json', 'current_wrist_depth.png'}
 SOURCE_FIXED = {'run.sh', 'scripts/collect_operator.py', 'participant/streaming/collector_stream.py',
                 'participant/collection/prompts/autonomous_full_dressing.txt',
+                'participant/collection/prompts/demo26_center_hem_neck_first.txt',
+                'participant/collection/prompts/demo33_34_dressing_addendum.txt',
+                'participant/collection/prompts/demo35_36_elbow_common.txt',
+                'participant/collection/prompts/demo35_outer_hem_elbow.txt',
+                'participant/collection/prompts/demo36_near_cuff_elbow.txt',
                 'participant/collection/prompts/gentle_wrist_dressing.txt',
                 'participant/collection/prompts/wrist_transfer.txt',
                 'participant/collection/prompts/cover_right_wrist.txt',
@@ -305,7 +310,7 @@ def select_sources(root, run_id, validation_path):
         elif reviewed and relative.parts[0] == 'checkpoints':
             require(len(relative.parts) == 3, 'unexpected checkpoint nesting')
             # Validate the entire pair after scanning the collection tree.
-        elif guided and relative.parts[0] == 'slot_reset':
+        elif reviewed and relative.parts[0] == 'slot_reset':
             require(relative.as_posix() in {'slot_reset/before_settle.npz', 'slot_reset/after_settle.npz'},
                     'unreviewed slot reset snapshot')
         else:

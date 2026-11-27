@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Preflight or run Demo 33 and 34 as two independent collectors on one GPU."""
+"""Preflight or run two independent demo collectors on one GPU."""
 import argparse
 import fcntl
 import hashlib
@@ -18,7 +18,12 @@ from datetime import datetime, timezone
 ROOT = Path(__file__).resolve().parents[2]
 SOURCES = ((33, 25, 1200, '20261126-demo24-25-private-backup.json'),
            (34, 26, 2905, '20261126-demo26-32-private-backup.json'))
-ADDENDUM = Path('participant/collection/prompts/demo33_34_dressing_addendum.txt')
+ELBOW_SOURCES = tuple((demo, *SOURCES[0][1:]) for demo in (35, 36))
+PROMPTS = Path('participant/collection/prompts')
+ADDENDUM = PROMPTS / 'demo33_34_dressing_addendum.txt'
+ELBOW_PROMPTS = {35: PROMPTS / 'demo35_outer_hem_elbow.txt',
+                 36: PROMPTS / 'demo36_near_cuff_elbow.txt'}
+ELBOW_COMMON = PROMPTS / 'demo35_36_elbow_common.txt'
 PYTHON = Path('.venv/bin/python')
 sys.path.insert(0, str(ROOT))
 from participant.collection.checkpoint import verify_checkpoint
@@ -85,18 +90,30 @@ def source_plan(root, source, pair_id):
             or config['source_group'] != group or not config['evaluation_enabled']):
         raise ValueError(f'Demo {old_demo}: unexpected original collection or prompt')
     run_id = f'{pair_id}-demo{demo}-sol-ultra'
-    return dict(demo=demo, run_id=run_id, root=str(root), source_run=old_id, source_step=offset,
+    run = dict(demo=demo, run_id=run_id, root=str(root), source_run=old_id, source_step=offset,
                 source_end=old['transitions'], source_group=group, slot=str(slot.relative_to(root)),
                 slot_sha256=saved['slot_sha256'], source_prompt=str(prompt.relative_to(root)),
-                source_prompt_sha256=attempt['prompt_sha256'], addendum_sha256=digest(root / ADDENDUM),
+                source_prompt_sha256=attempt['prompt_sha256'],
                 source_decisions_per_review=attempt['decisions_requested'], local_horizon=config['max_steps'],
                 local_stop=old['transitions'] - offset if demo == 33 else None)
+    if demo in ELBOW_PROMPTS:
+        task_files = (ELBOW_COMMON, ELBOW_PROMPTS[demo])
+        task_hashes = {}
+        for path in task_files:
+            contents = (root / path).read_text(encoding='utf-8')
+            if not contents.strip():
+                raise ValueError(f'Empty task prompt: {path}')
+            task_hashes[str(path)] = digest(root / path)
+        run.update(local_stop=400, addendum_sha256=None, task_prompt_sha256=task_hashes)
+    else:
+        run['addendum_sha256'] = digest(root / ADDENDUM)
+    return run
 
 
 def collector_command(run):
     run_id = run['run_id']
     options = [str(PYTHON), '-m', 'participant.collection.codex_client', '--run-id', run_id,
-               '--mode', 'dressing', '--gpt-only', '--until-full-score-or-feedback',
+               '--mode', 'dressing', '--gpt-only',
                '--model', 'gpt-6.2-sol', '--effort', 'ultra', '--actor-backend', 'exec',
                '--plan-size', '1', '--named-actions', '--camera-briefing', '--wrist-depth-panel',
                '--segment-review-dir', 'output/segment-review', '--segment-decisions',
@@ -104,8 +121,15 @@ def collector_command(run):
                '--max-steps', str(run['local_horizon']), '--model-timeout', '180', '--parent-attempt',
                run['source_run'], '--retry-reason', 'approximate_slot_fresh_model_continuation', '--source-group', run['source_group'], '--initial-slot', '/' + run['slot'],
                '--slot-study-original-prompt', run['source_prompt'], '--checkpoint-step', 'finish']
+    if run['demo'] in ELBOW_PROMPTS:
+        for path in (ELBOW_COMMON, ELBOW_PROMPTS[run['demo']]):
+            options += ['--slot-study-task-prompt', str(path)]
+    else:
+        options.append('--until-full-score-or-feedback')
     if run['local_stop'] is not None:
-        options += ['--slot-study-stop-step', str(run['local_stop']), '--checkpoint-step', '100']
+        options += ['--slot-study-stop-step', str(run['local_stop'])]
+    if run['demo'] == 33:
+        options += ['--checkpoint-step', '100']
     return options
 
 
@@ -120,10 +144,11 @@ def gpu_info(selector):
 
 
 def preflight(args):
-    pair_dir = ROOT / 'output/demo33-34' / args.pair_id
+    elbow_study = args.study == '35-36'
+    pair_dir = ROOT / 'output' / f'demo{args.study}' / args.pair_id
     if pair_dir.exists():
         raise FileExistsError(f'Use a new pair ID: {pair_dir}')
-    runs = [source_plan(ROOT, s, args.pair_id) for s in SOURCES]
+    runs = [source_plan(ROOT, s, args.pair_id) for s in (ELBOW_SOURCES if elbow_study else SOURCES)]
     for run in runs:
         run['lane'] = f'{args.pair_id}-demo{run["demo"]}'
         for path in (*(ROOT / 'output' / x / run['run_id'] for x in ('operator-traces', 'collections', 'actors')),
@@ -138,8 +163,12 @@ def preflight(args):
                 prepared = ROOT / '.runtime/PhyRC_Sim' / Path(source_file).relative_to('src/PhyRC_Sim')
                 if not prepared.is_file() or digest(prepared) != expected:
                     raise ValueError(f'Prepared physics source differs: {prepared}. Run ./run.sh prepare from the verified checkout.')
-    for path in (ROOT / PYTHON, ROOT / '.runtime/PhyRC_Sim/Assets/Garment/Tops/Modelink/t_shirt_short.usd',
-                 ROOT / 'tools/publish_demo_pair.py', ROOT / 'participant/ops/pair_performance.py'):
+    dependencies = [PYTHON, Path('.runtime/PhyRC_Sim/Assets/Garment/Tops/Modelink/t_shirt_short.usd'),
+                    Path('participant/ops/pair_performance.py')]
+    if not elbow_study:
+        dependencies.append(Path('tools/publish_demo_pair.py'))
+    for relative in dependencies:
+        path = ROOT / relative
         if not path.is_file():
             raise FileNotFoundError(f'Missing server dependency: {path}')
     for name in ('docker', 'ffmpeg', 'nvidia-smi', 'flock', 'cp'):
@@ -165,21 +194,24 @@ def preflight(args):
     sim_image = output(['docker', 'image', 'inspect', '--format', '{{.Id}}', image])
     output(['docker', 'image', 'inspect', '--format', '{{.Id}}', ACTOR_IMAGE])
     gpu = gpu_info(args.gpu)
-    if not args.destination.is_dir() or not os.access(args.destination, os.W_OK | os.X_OK):
-        raise ValueError('Destination must be a writable directory served by the authenticated Jupyter instance')
-    lock_path = args.destination / '.PhyRC-compare.lock'
-    if lock_path.exists():
-        with lock_path.open('r') as lock:
-            try:
-                fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
-            except BlockingIOError as exc:
-                raise ValueError('Another pair publisher owns this destination. Choose a different destination and port.') from exc
-    with socket.socket() as check:
-        check.bind(('127.0.0.1', args.proxy_port))
+    if not elbow_study:
+        if not args.destination.is_dir() or not os.access(args.destination, os.W_OK | os.X_OK):
+            raise ValueError('Destination must be a writable directory served by the authenticated Jupyter instance')
+        lock_path = args.destination / '.PhyRC-compare.lock'
+        if lock_path.exists():
+            with lock_path.open('r') as lock:
+                try:
+                    fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                except BlockingIOError as exc:
+                    raise ValueError('Another pair publisher owns this destination. Choose a different destination and port.') from exc
+        with socket.socket() as check:
+            check.bind(('127.0.0.1', args.proxy_port))
     plan = dict(schema='phyrc-concurrent-pair-v1', pair_id=args.pair_id, runs=runs, gpu_uuid=gpu['uuid'],
                 gpu=gpu, image=image, image_id=sim_image, git_commit=output(['git', 'rev-parse', 'HEAD']),
                 dirty=bool(output(['git', 'status', '--porcelain', '--untracked-files=no'])),
                 review_destination=str(args.destination), proxy_port=args.proxy_port)
+    if elbow_study:
+        plan['internal_publisher'] = False
     return pair_dir, plan, env
 
 
@@ -230,22 +262,26 @@ def run_pair(args, folder, plan, env):
         prepare_lanes(plan['runs'])
         if interrupted:
             raise InterruptedError('Pair interrupted during preparation')
-        publisher = spawn([str(PYTHON), 'tools/publish_demo_pair.py', '--pair', str(spec),
-                           '--destination', str(args.destination), '--proxy-port', str(args.proxy_port)],
-                          env, folder / 'publisher.log')
+        if plan.get('internal_publisher', True):
+            publisher = spawn([str(PYTHON), 'tools/publish_demo_pair.py', '--pair', str(spec),
+                               '--destination', str(args.destination), '--proxy-port', str(args.proxy_port)],
+                              env, folder / 'publisher.log')
         monitor = spawn([str(PYTHON), 'participant/ops/pair_performance.py', 'sample', '--pair', str(spec)],
                         env, folder / 'performance.log')
         ready_by = time.monotonic() + 35
         while True:
             if interrupted:
                 raise InterruptedError('Pair interrupted before collector startup')
-            if publisher.poll() is not None or monitor.poll() is not None:
+            if (publisher is not None and publisher.poll() is not None) or monitor.poll() is not None:
                 raise OSError('A review or performance worker failed at startup; see publisher.log/performance.log')
-            snapshot = args.destination / 'PhyRC-compare.json'
-            if snapshot.is_file() and (folder / 'telemetry.json').is_file():
-                rows = read(snapshot).get('runs', [])
-                if [r.get('run_id') for r in rows] == [r['run_id'] for r in plan['runs']]:
+            if (folder / 'telemetry.json').is_file():
+                if publisher is None:
                     break
+                snapshot = args.destination / 'PhyRC-compare.json'
+                if snapshot.is_file():
+                    rows = read(snapshot).get('runs', [])
+                    if [r.get('run_id') for r in rows] == [r['run_id'] for r in plan['runs']]:
+                        break
             if time.monotonic() >= ready_by:
                 raise TimeoutError('Review or telemetry worker did not publish its first paired state')
             time.sleep(0.25)
@@ -258,14 +294,20 @@ def run_pair(args, folder, plan, env):
             if interrupted and worker.poll() is None:
                 worker.terminate()
             states[num]['pid'] = worker.pid
-        state('running', publisher_pid=publisher.pid, monitor_pid=monitor.pid)
-        print(f'Pair {args.pair_id} started. Review through Jupyter /proxy/{args.proxy_port}/PhyRC-compare.html',
-              flush=True)
-        while any(p.poll() is None for p in children.values()):
+        publisher_pid = publisher.pid if publisher else None
+        state('running', publisher_pid=publisher_pid, monitor_pid=monitor.pid)
+        review_link = f' Review through Jupyter /proxy/{args.proxy_port}/PhyRC-compare.html' if publisher else ''
+        print(f'Pair {args.pair_id} started.{review_link}', flush=True)
+        while True:
+            active = False
             for i, process in children.items():
-                if states[i]['returncode'] != process.returncode:
-                    states[i]['returncode'] = process.returncode
-                    state('running', publisher_pid=publisher.pid, monitor_pid=monitor.pid)
+                code = process.poll()
+                active |= code is None
+                if states[i]['returncode'] != code:
+                    states[i]['returncode'] = code
+                    state('running', publisher_pid=publisher_pid, monitor_pid=monitor.pid)
+            if not active:
+                break
             time.sleep(1)
     except (OSError, ValueError, subprocess.SubprocessError) as exc:
         failure = str(exc)
@@ -311,6 +353,7 @@ def run_pair(args, folder, plan, env):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('action', choices=('preflight', 'run'))
+    parser.add_argument('--study', choices=('33-34', '35-36'), default='33-34')
     parser.add_argument('--pair-id', required=True)
     parser.add_argument('--gpu', default='0', help='Physical nvidia-smi index or GPU UUID')
     parser.add_argument('--destination', type=Path, default=Path.home())
@@ -327,8 +370,9 @@ def main():
         if args.action == 'preflight':
             print(json.dumps(plan, indent=2))
             return 0
-        folder.parent.mkdir(parents=True, exist_ok=True)
-        with (folder.parent / (plan['gpu_uuid'] + '.lock')).open('a') as device:
+        lock_dir = ROOT / 'output/demo33-34'
+        lock_dir.mkdir(parents=True, exist_ok=True)
+        with (lock_dir / (plan['gpu_uuid'] + '.lock')).open('a') as device:
             fcntl.flock(device, fcntl.LOCK_EX | fcntl.LOCK_NB)
             return run_pair(args, folder, plan, env)
     except (OSError, KeyError, ValueError, subprocess.SubprocessError) as exc:

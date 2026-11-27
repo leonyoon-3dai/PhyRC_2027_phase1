@@ -1,0 +1,140 @@
+{
+  "schema": "phyrc-elbow-handoff-v1",
+  "repo_id": "leonayoon/phyrc-2027-phase1-private-backup",
+  "repo_type": "dataset",
+  "revision": "7dbccc9a654207596b60b9fd2cec331318c16238",
+  "files": [
+    {
+      "path": "elbow-handoff/20261127-demo35-36/output/collections/20261125T225836Z-demo25-sol-ultra/checkpoints/replay-001200/receipt.json",
+      "destination": "output/collections/20261125T225836Z-demo25-sol-ultra/checkpoints/replay-001200/receipt.json",
+      "bytes": 1886,
+      "sha256": "9d8c41827d9583c8f823017bf3a77c90c965720d6cc5aaa4147a829237a8c3e3"
+    },
+    {
+      "path": "elbow-handoff/20261127-demo35-36/output/collections/20261125T225836Z-demo25-sol-ultra/checkpoints/replay-001200/slot_replay-001200.npz",
+      "destination": "output/collections/20261125T225836Z-demo25-sol-ultra/checkpoints/replay-001200/slot_replay-001200.npz",
+      "bytes": 365753,
+      "sha256": "150b1c12cfc91752f140da46f3b28eb5d0401d8a94ba4d8104734b845c1e80c5"
+    },
+    {
+      "path": "elbow-handoff/20261127-demo35-36/output/collections/20261125T225836Z-demo25-sol-ultra/run_metadata.json",
+      "destination": "output/collections/20261125T225836Z-demo25-sol-ultra/run_metadata.json",
+      "bytes": 9282,
+      "sha256": "026ccd020932e7049e0d9064cbe232fb0cb8dbadd36616bec7d7f966de6aaa2d"
+    },
+    {
+      "path": "elbow-handoff/20261127-demo35-36/output/collections/20261127T013634Z-demo35-36-demo35-sol-ultra/capture.json",
+      "destination": "output/collections/20261127T013634Z-demo35-36-demo35-sol-ultra/capture.json",
+      "bytes": 536,
+      "sha256": "c2f9d2c619e342a5298eb3269f0d29c4d7b084f3d47bc8a9b9d7e84658e6bff7"
+    },
+    {
+      "path": "elbow-handoff/20261127-demo35-36/output/collections/20261127T013634Z-demo35-36-demo35-sol-ultra/checkpoints/finish-000263/receipt.json",
+      "destination": "output/collections/20261127T013634Z-demo35-36-demo35-sol-ultra/checkpoints/finish-000263/receipt.json",
+      "bytes": 1902,
+      "sha256": "aa2a458611978e613d6c122cbae39652fd405648b0cdce1d0cee7f5f0a8c00a1"
+    },
+    {
+      "path": "elbow-handoff/20261127-demo35-36/output/collections/20261127T013634Z-demo35-36-demo35-sol-ultra/checkpoints/finish-000263/slot_finish-000263.npz",
+      "destination": "output/collections/20261127T013634Z-demo35-36-demo35-sol-ultra/checkpoints/finish-000263/slot_finish-000263.npz",
+      "bytes": 364294,
+      "sha256": "681128e6a6e3ee7a75f8643156e66cee985a06a2e3432726c4c4ff2327a1656e"
+    },
+    {
+      "path": "elbow-handoff/20261127-demo35-36/output/collections/20261127T013634Z-demo35-36-demo35-sol-ultra/evaluation_summary.json",
+      "destination": "output/collections/20261127T013634Z-demo35-36-demo35-sol-ultra/evaluation_summary.json",
+      "bytes": 16408,
+      "sha256": "aeba73a514f77342a8dda1aabcfe3d3184113a3f048bcacb86d00f213c0e1baa"
+    },
+    {
+      "path": "elbow-handoff/20261127-demo35-36/output/collections/20261127T013634Z-demo35-36-demo35-sol-ultra/run_metadata.json",
+      "destination": "output/collections/20261127T013634Z-demo35-36-demo35-sol-ultra/run_metadata.json",
+      "bytes": 9425,
+      "sha256": "746f05bdd9c04782df5091adce66364cdeb28a35fca79ff7ebac63576ba5539f"
+    },
+    {
+      "path": "elbow-handoff/20261127-demo35-36/output/collections/20261127T013634Z-demo35-36-demo35-sol-ultra/validation.json",
+      "destination": "output/collections/20261127T013634Z-demo35-36-demo35-sol-ultra/validation.json",
+      "bytes": 1491,
+      "sha256": "0598ffafd626ebba02c84fee3de7d9ac5a8b1167394e36ef607fba0738757b56"
+    },
+    {
+      "path": "elbow-handoff/20261127-demo35-36/output/collections/20261127T013634Z-demo35-36-demo36-sol-ultra/capture.json",
+      "destination": "output/collections/20261127T013634Z-demo35-36-demo36-sol-ultra/capture.json",
+      "bytes": 535,
+      "sha256": "14c8db6911c6d342de68faf46f79c46414f9572609545ccfcd585d9806a8d3b1"
+    },
+    {
+      "path": "elbow-handoff/20261127-demo35-36/output/collections/20261127T013634Z-demo35-36-demo36-sol-ultra/checkpoints/finish-000269/receipt.json",
+      "destination": "output/collections/20261127T013634Z-demo35-36-demo36-sol-ultra/checkpoints/finish-000269/receipt.json",
+      "bytes": 1902,
+      "sha256": "c0a76f97bf88bcccf6bedb85ba49a234e1745e2f799d60122371e9471120dbb8"
+    },
+    {
+      "path": "elbow-handoff/20261127-demo35-36/output/collections/20261127T013634Z-demo35-36-demo36-sol-ultra/checkpoints/finish-000269/slot_finish-000269.npz",
+      "destination": "output/collections/20261127T013634Z-demo35-36-demo36-sol-ultra/checkpoints/finish-000269/slot_finish-000269.npz",
+      "bytes": 362916,
+      "sha256": "08148c365eb3752aa4dfef89ffc0fdf0aee812c6e0711e7f6f56cf2387a92016"
+    },
+    {
+      "path": "elbow-handoff/20261127-demo35-36/output/collections/20261127T013634Z-demo35-36-demo36-sol-ultra/evaluation_summary.json",
+      "destination": "output/collections/20261127T013634Z-demo35-36-demo36-sol-ultra/evaluation_summary.json",
+      "bytes": 16409,
+      "sha256": "ff307dbdb51bd923898dc21d38291986e48dd2163b3c997171db5d9cfd29320d"
+    },
+    {
+      "path": "elbow-handoff/20261127-demo35-36/output/collections/20261127T013634Z-demo35-36-demo36-sol-ultra/run_metadata.json",
+      "destination": "output/collections/20261127T013634Z-demo35-36-demo36-sol-ultra/run_metadata.json",
+      "bytes": 9425,
+      "sha256": "837dc2bca8f342f9698f4f049ae1cedfe80acdd4198cd2877e8a76b48c413e3e"
+    },
+    {
+      "path": "elbow-handoff/20261127-demo35-36/output/collections/20261127T013634Z-demo35-36-demo36-sol-ultra/validation.json",
+      "destination": "output/collections/20261127T013634Z-demo35-36-demo36-sol-ultra/validation.json",
+      "bytes": 1491,
+      "sha256": "0f95afe05a0f1a798e04c33f602a0366a960efd050033983f941985d7ee2f3ac"
+    },
+    {
+      "path": "elbow-handoff/20261127-demo35-36/output/demo33-34-sources/demo25-manifest.json",
+      "destination": "output/demo33-34-sources/demo25-manifest.json",
+      "bytes": 238087,
+      "sha256": "0eca1e28cf8e60d015bdbf5e213551f801477ea731fd14d19b81dd56a46441df"
+    },
+    {
+      "path": "elbow-handoff/20261127-demo35-36/output/operator-traces/20261125T225836Z-demo25-sol-ultra/attempt.json",
+      "destination": "output/operator-traces/20261125T225836Z-demo25-sol-ultra/attempt.json",
+      "bytes": 11724,
+      "sha256": "175d36e9806354684bd140b62cf6a051c60b37feb4d2c2d2ed7f9f6733a88cfb"
+    },
+    {
+      "path": "elbow-handoff/20261127-demo35-36/output/operator-traces/20261125T225836Z-demo25-sol-ultra/prompt.txt",
+      "destination": "output/operator-traces/20261125T225836Z-demo25-sol-ultra/prompt.txt",
+      "bytes": 5458,
+      "sha256": "431027e8b62558b43f9938d46c7b440535a2f43a4bf688dfce772639636368eb"
+    },
+    {
+      "path": "elbow-handoff/20261127-demo35-36/output/operator-traces/20261127T013634Z-demo35-36-demo35-sol-ultra/attempt.json",
+      "destination": "output/operator-traces/20261127T013634Z-demo35-36-demo35-sol-ultra/attempt.json",
+      "bytes": 10509,
+      "sha256": "130a172b2a7a3e48c5cdc672358b7e2d7eab8906f7e2c8da99bb26c54551701b"
+    },
+    {
+      "path": "elbow-handoff/20261127-demo35-36/output/operator-traces/20261127T013634Z-demo35-36-demo35-sol-ultra/prompt.txt",
+      "destination": "output/operator-traces/20261127T013634Z-demo35-36-demo35-sol-ultra/prompt.txt",
+      "bytes": 7025,
+      "sha256": "78e185404f31c10bb8a2affda0ab9cfabbc0c105bc30abe8292afa8aee4adafe"
+    },
+    {
+      "path": "elbow-handoff/20261127-demo35-36/output/operator-traces/20261127T013634Z-demo35-36-demo36-sol-ultra/attempt.json",
+      "destination": "output/operator-traces/20261127T013634Z-demo35-36-demo36-sol-ultra/attempt.json",
+      "bytes": 10508,
+      "sha256": "32251d64051c3aca045fce18448fd557d36608f27b8ad0b4b1725a749f7c9355"
+    },
+    {
+      "path": "elbow-handoff/20261127-demo35-36/output/operator-traces/20261127T013634Z-demo35-36-demo36-sol-ultra/prompt.txt",
+      "destination": "output/operator-traces/20261127T013634Z-demo35-36-demo36-sol-ultra/prompt.txt",
+      "bytes": 7026,
+      "sha256": "83fc405d3a45cfe68e0bf7cf135312fdbad97322edc61071b9546bf9c1a66023"
+    }
+  ]
+}
