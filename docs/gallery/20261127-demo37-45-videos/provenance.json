@@ -67,6 +67,14 @@
         "sha256": "e086e8d3ecdbb88a6edc3fd2cbe14c8d71d8a259067e6a9bd5bfa8baf5d05a85",
         "frames": 264,
         "duration_s": 13.2
+      },
+      "gif": {
+        "path": "docs/gallery/20261127-demo37-45-videos/demonstration-35.gif",
+        "bytes": 2220949,
+        "sha256": "aa07a67b03b23c6d4c7a0b3ac727aa1fe244c2464c0684f3246489c12d1d3c53",
+        "frames": 34,
+        "duration_s": 13.25,
+        "source_mp4_sha256": "e086e8d3ecdbb88a6edc3fd2cbe14c8d71d8a259067e6a9bd5bfa8baf5d05a85"
       }
     },
     {
@@ -97,6 +105,14 @@
         "sha256": "252b7d30303b335a063cea4d2ccc572edd0310ee2ba19b92df884f5a4cec0b3c",
         "frames": 270,
         "duration_s": 13.5
+      },
+      "gif": {
+        "path": "docs/gallery/20261127-demo37-45-videos/demonstration-36.gif",
+        "bytes": 2209409,
+        "sha256": "bf96be58695fb555771a675b509447209b8f079b4a19ee4bb0dee44cf92c0cd7",
+        "frames": 35,
+        "duration_s": 13.55,
+        "source_mp4_sha256": "252b7d30303b335a063cea4d2ccc572edd0310ee2ba19b92df884f5a4cec0b3c"
       }
     },
     {
@@ -121,6 +137,14 @@
         "sha256": "3287b6911194bc5c86a1e875689f190817cea268732ce8ca7879a7cec0b96ff9",
         "frames": 401,
         "duration_s": 20.05
+      },
+      "gif": {
+        "path": "docs/gallery/20261127-demo37-45-videos/demonstration-37.gif",
+        "bytes": 3333578,
+        "sha256": "3521cce0e5b6deb563b809da74918ea933499a3298b0adb3c0efd7d1ec76ef49",
+        "frames": 51,
+        "duration_s": 20.1,
+        "source_mp4_sha256": "3287b6911194bc5c86a1e875689f190817cea268732ce8ca7879a7cec0b96ff9"
       }
     },
     {
@@ -144,7 +168,15 @@
         "bytes": 689837,
         "sha256": "3219ece27d7cb68bf34cf2dd630339b549dd9fdb5df6c5c91f4650862d349741",
         "frames": 400,
-        "duration_s": 20.0
+        "duration_s": 20
+      },
+      "gif": {
+        "path": "docs/gallery/20261127-demo37-45-videos/demonstration-38.gif",
+        "bytes": 3185157,
+        "sha256": "458e25bc037481549f0a7802a1c2eb31fa8f742b9ce464ce72459fe7f81e902b",
+        "frames": 51,
+        "duration_s": 20.05,
+        "source_mp4_sha256": "3219ece27d7cb68bf34cf2dd630339b549dd9fdb5df6c5c91f4650862d349741"
       }
     },
     {
@@ -169,6 +201,14 @@
         "sha256": "edd8d83558bfbc7969436fab1432052753ff4afa52154bb9f710d0923b9431a6",
         "frames": 164,
         "duration_s": 8.2
+      },
+      "gif": {
+        "path": "docs/gallery/20261127-demo37-45-videos/demonstration-39.gif",
+        "bytes": 1485863,
+        "sha256": "c6089de5301cc14c87318ee4320dc10fca5d90d150db7ec5c182fafc3576d947",
+        "frames": 22,
+        "duration_s": 8.25,
+        "source_mp4_sha256": "edd8d83558bfbc7969436fab1432052753ff4afa52154bb9f710d0923b9431a6"
       }
     },
     {
@@ -193,6 +233,14 @@
         "sha256": "c055c5999f6d8c683a87d95a439900c4028b0febfc8cb7bf75c932d930fa019b",
         "frames": 401,
         "duration_s": 20.05
+      },
+      "gif": {
+        "path": "docs/gallery/20261127-demo37-45-videos/demonstration-40.gif",
+        "bytes": 3119959,
+        "sha256": "e1be6283b2117634cb29e5b7d756ecab175f9f6e9d2472c3b2a2c57cd4282d8e",
+        "frames": 51,
+        "duration_s": 20.1,
+        "source_mp4_sha256": "c055c5999f6d8c683a87d95a439900c4028b0febfc8cb7bf75c932d930fa019b"
       }
     },
     {
@@ -217,6 +265,14 @@
         "sha256": "fbd3d8a36183b6bcbf6c9832c572b36d96f943af9a25cda13ef303837583230b",
         "frames": 112,
         "duration_s": 5.6
+      },
+      "gif": {
+        "path": "docs/gallery/20261127-demo37-45-videos/demonstration-41.gif",
+        "bytes": 1010998,
+        "sha256": "c74fb323c58ce22324d7d6721218e26772fc05860fbc5036d7753792dd0a54b3",
+        "frames": 15,
+        "duration_s": 5.65,
+        "source_mp4_sha256": "fbd3d8a36183b6bcbf6c9832c572b36d96f943af9a25cda13ef303837583230b"
       }
     },
     {
@@ -241,6 +297,14 @@
         "sha256": "4bdb3cd20b362d5c1cb4aabceca7e1bb9522ff0ad06ebc87ac3dac7735593f8b",
         "frames": 401,
         "duration_s": 20.05
+      },
+      "gif": {
+        "path": "docs/gallery/20261127-demo37-45-videos/demonstration-42.gif",
+        "bytes": 2992075,
+        "sha256": "c7af7d0593642f560456b3526b8dc1fcbd9c09e3ccd7e8f1c96e925e5a8c191d",
+        "frames": 51,
+        "duration_s": 20.1,
+        "source_mp4_sha256": "4bdb3cd20b362d5c1cb4aabceca7e1bb9522ff0ad06ebc87ac3dac7735593f8b"
       }
     },
     {
@@ -265,6 +329,14 @@
         "sha256": "f205397d527de4234716e359acd3b6eb37836f899f396e3181d5600f1aa1ca25",
         "frames": 165,
         "duration_s": 8.25
+      },
+      "gif": {
+        "path": "docs/gallery/20261127-demo37-45-videos/demonstration-43.gif",
+        "bytes": 1409097,
+        "sha256": "20dbe0ef82f5583763a7dc4ccb4b049c35a339343ac39fe3c36ccf8af6630a42",
+        "frames": 22,
+        "duration_s": 8.3,
+        "source_mp4_sha256": "f205397d527de4234716e359acd3b6eb37836f899f396e3181d5600f1aa1ca25"
       }
     },
     {
